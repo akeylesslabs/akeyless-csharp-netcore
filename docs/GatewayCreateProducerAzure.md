@@ -1,0 +1,24 @@
+# akeyless.Model.GatewayCreateProducerAzure
+gatewayCreateProducerAzure is a command that creates azure producer
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AppObjId** | **string** | Azure App Object Id | [optional] 
+**ClientId** | **string** | Azure Client ID | 
+**ClientSecret** | **string** | Azure Client Secret | 
+**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
+**Name** | **string** | Producer name | 
+**ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
+**TenantId** | **string** | Azure Tenant ID | 
+**Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UserGroupObjId** | **string** | User Group Object Id | [optional] 
+**UserPortalAccess** | **bool** | Azure User portal access | [optional] [default to false]
+**UserPrincipalName** | **string** | User Principal Name | [optional] 
+**UserProgrammaticAccess** | **bool** | Azure User programmatic access | [optional] [default to true]
+**UserRoleTemplateId** | **string** | User Role Template Id | [optional] 
+**UserTtl** | **string** | User TTL | [optional] [default to "60m"]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

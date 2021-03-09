@@ -1,0 +1,9 @@
+# akeyless.Model.ProducersConfigPart
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Producers** | [**List&lt;Producer&gt;**](Producer.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
