@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akeyless", "src\akeyless\akeyless.csproj", "{AA547D54-4DFC-482D-8344-2285C1D0D259}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akeyless", "src\akeyless\akeyless.csproj", "{0155912C-564D-43F2-BE9B-5CDE9EBE044E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akeyless.Test", "src\akeyless.Test\akeyless.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AA547D54-4DFC-482D-8344-2285C1D0D259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA547D54-4DFC-482D-8344-2285C1D0D259}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA547D54-4DFC-482D-8344-2285C1D0D259}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA547D54-4DFC-482D-8344-2285C1D0D259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0155912C-564D-43F2-BE9B-5CDE9EBE044E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0155912C-564D-43F2-BE9B-5CDE9EBE044E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0155912C-564D-43F2-BE9B-5CDE9EBE044E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0155912C-564D-43F2-BE9B-5CDE9EBE044E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
