@@ -31,7 +31,7 @@ namespace akeyless.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.0.15";
+        public const string Version = "2.2.2";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -96,7 +96,7 @@ namespace akeyless.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "OpenAPI-Generator/2.0.15/csharp";
+            UserAgent = "OpenAPI-Generator/2.2.2/csharp";
             BasePath = "https://api.akeyless.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -351,7 +351,7 @@ namespace akeyless.Client
             String report = "C# SDK (akeyless) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 2.0\n";
-            report += "    SDK Package Version: 2.0.15\n";
+            report += "    SDK Package Version: 2.2.2\n";
 
             return report;
         }
