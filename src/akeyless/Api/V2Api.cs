@@ -1418,25 +1418,6 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> GetDynamicPkiCertificate ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> GetDynamicPkiCertificateWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
         Dictionary<string, string> GetDynamicSecretValue (GetDynamicSecretValue body);
@@ -3642,25 +3623,6 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (AuthMethod)</returns>
         System.Threading.Tasks.Task<ApiResponse<AuthMethod>> GetAuthMethodAsyncWithHttpInfo (GetAuthMethod body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> GetDynamicPkiCertificateAsync ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetDynamicPkiCertificateAsyncWithHttpInfo ();
         /// <summary>
         /// 
         /// </summary>
@@ -12164,105 +12126,6 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAuthMethod", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> GetDynamicPkiCertificate ()
-        {
-             akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = GetDynamicPkiCertificateWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public akeyless.Client.ApiResponse< Dictionary<string, string> > GetDynamicPkiCertificateWithHttpInfo ()
-        {
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post< Dictionary<string, string> >("/get-dynamic-pki-certificate", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetDynamicPkiCertificate", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetDynamicPkiCertificateAsync ()
-        {
-             akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = await GetDynamicPkiCertificateAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, string>>> GetDynamicPkiCertificateAsyncWithHttpInfo ()
-        {
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-            
-            foreach (var _contentType in _contentTypes)
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
-            
-            foreach (var _accept in _accepts)
-                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
-            
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, string>>("/get-dynamic-pki-certificate", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetDynamicPkiCertificate", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

@@ -13,14 +13,14 @@ Contact: support@akeyless.io
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1EC6D538-C437-42C6-B377-415EAFB25702}</ProjectGuid>
+    <ProjectGuid>{8AA40C95-3A2A-4F07-A48A-1553446B98B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>akeyless</RootNamespace>
     <AssemblyName>akeyless</AssemblyName>
     <Description>A library generated from a OpenAPI doc</Description>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <FileAlignment>512</FileAlignment>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\akeyless.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/akeylesslabs/akeyless-csharp-netcore.git</RepositoryUrl>

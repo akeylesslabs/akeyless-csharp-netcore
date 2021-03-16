@@ -7,6 +7,6 @@
         "RestSharp": "106.10.1"
     },
     "frameworks": {
-        "netstandard2.1": {}
+        "netstandard2.0": {}
     }
 }

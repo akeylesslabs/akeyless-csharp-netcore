@@ -70,7 +70,6 @@ Method | HTTP request | Description
 [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method | 
-[**GetDynamicPkiCertificate**](V2Api.md#getdynamicpkicertificate) | **POST** /get-dynamic-pki-certificate | 
 [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value | 
 [**GetRSAPublic**](V2Api.md#getrsapublic) | **POST** /get-rsa-public | 
 [**GetRole**](V2Api.md#getrole) | **POST** /get-role | 
@@ -4591,70 +4590,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getAuthMethodResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="getdynamicpkicertificate"></a>
-# **GetDynamicPkiCertificate**
-> Dictionary&lt;string, string&gt; GetDynamicPkiCertificate ()
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class GetDynamicPkiCertificateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-
-            try
-            {
-                Dictionary<string, string> result = apiInstance.GetDynamicPkiCertificate();
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.GetDynamicPkiCertificate: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**Dictionary<string, string>**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | getDynamicSecretValueResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

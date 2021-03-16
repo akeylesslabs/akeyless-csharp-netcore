@@ -13,7 +13,7 @@ Contact: support@akeyless.io
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>akeyless.Test</RootNamespace>
     <AssemblyName>akeyless.Test</AssemblyName>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -24,7 +24,7 @@ Contact: support@akeyless.io
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\akeyless\akeyless.csproj">
-      <Project>{1EC6D538-C437-42C6-B377-415EAFB25702}</Project>
+      <Project>{8AA40C95-3A2A-4F07-A48A-1553446B98B5}</Project>
       <Name>akeyless</Name>
     </ProjectReference>
   </ItemGroup>
