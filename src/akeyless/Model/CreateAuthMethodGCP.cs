@@ -48,12 +48,11 @@ namespace akeyless.Model
         /// <param name="boundServiceAccounts">&#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated..</param>
         /// <param name="boundZones">&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone..</param>
         /// <param name="name">Auth Method name (required).</param>
-        /// <param name="serviceAccountData">ServiceAccount credentials data instead of giving a file path, base64 encoded.</param>
-        /// <param name="serviceAccountFile">ServiceAccount credentials file path to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins with GCP.</param>
+        /// <param name="serviceAccountCredsData">ServiceAccount credentials data instead of giving a file path, base64 encoded.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of the GCP Access Rules.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string name = default(string), string serviceAccountData = default(string), string serviceAccountFile = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string name = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodGCP and cannot be null");
@@ -66,8 +65,7 @@ namespace akeyless.Model
             this.BoundRegions = boundRegions;
             this.BoundServiceAccounts = boundServiceAccounts;
             this.BoundZones = boundZones;
-            this.ServiceAccountData = serviceAccountData;
-            this.ServiceAccountFile = serviceAccountFile;
+            this.ServiceAccountCredsData = serviceAccountCredsData;
             this.Token = token;
             this.Type = type;
             this.UidToken = uidToken;
@@ -98,35 +96,35 @@ namespace akeyless.Model
         /// A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d ....
         /// </summary>
         /// <value>A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d ....</value>
-        [DataMember(Name="bound_labels", EmitDefaultValue=false)]
+        [DataMember(Name="bound-labels", EmitDefaultValue=false)]
         public List<string> BoundLabels { get; set; }
 
         /// <summary>
         /// &#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.
         /// </summary>
         /// <value>&#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.</value>
-        [DataMember(Name="bound_projects", EmitDefaultValue=false)]
+        [DataMember(Name="bound-projects", EmitDefaultValue=false)]
         public List<string> BoundProjects { get; set; }
 
         /// <summary>
         /// List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
         /// </summary>
         /// <value>List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.</value>
-        [DataMember(Name="bound_regions", EmitDefaultValue=false)]
+        [DataMember(Name="bound-regions", EmitDefaultValue=false)]
         public List<string> BoundRegions { get; set; }
 
         /// <summary>
         /// &#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated.
         /// </summary>
         /// <value>&#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated.</value>
-        [DataMember(Name="bound_service_accounts", EmitDefaultValue=false)]
+        [DataMember(Name="bound-service-accounts", EmitDefaultValue=false)]
         public List<string> BoundServiceAccounts { get; set; }
 
         /// <summary>
         /// &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
         /// </summary>
         /// <value>&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.</value>
-        [DataMember(Name="bound_zones", EmitDefaultValue=false)]
+        [DataMember(Name="bound-zones", EmitDefaultValue=false)]
         public List<string> BoundZones { get; set; }
 
         /// <summary>
@@ -140,15 +138,8 @@ namespace akeyless.Model
         /// ServiceAccount credentials data instead of giving a file path, base64 encoded
         /// </summary>
         /// <value>ServiceAccount credentials data instead of giving a file path, base64 encoded</value>
-        [DataMember(Name="service_account_data", EmitDefaultValue=false)]
-        public string ServiceAccountData { get; set; }
-
-        /// <summary>
-        /// ServiceAccount credentials file path to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins with GCP
-        /// </summary>
-        /// <value>ServiceAccount credentials file path to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins with GCP</value>
-        [DataMember(Name="service_account_file", EmitDefaultValue=false)]
-        public string ServiceAccountFile { get; set; }
+        [DataMember(Name="service-account-creds-data", EmitDefaultValue=false)]
+        public string ServiceAccountCredsData { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -188,8 +179,7 @@ namespace akeyless.Model
             sb.Append("  BoundServiceAccounts: ").Append(BoundServiceAccounts).Append("\n");
             sb.Append("  BoundZones: ").Append(BoundZones).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ServiceAccountData: ").Append(ServiceAccountData).Append("\n");
-            sb.Append("  ServiceAccountFile: ").Append(ServiceAccountFile).Append("\n");
+            sb.Append("  ServiceAccountCredsData: ").Append(ServiceAccountCredsData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -278,14 +268,9 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.ServiceAccountData == input.ServiceAccountData ||
-                    (this.ServiceAccountData != null &&
-                    this.ServiceAccountData.Equals(input.ServiceAccountData))
-                ) && 
-                (
-                    this.ServiceAccountFile == input.ServiceAccountFile ||
-                    (this.ServiceAccountFile != null &&
-                    this.ServiceAccountFile.Equals(input.ServiceAccountFile))
+                    this.ServiceAccountCredsData == input.ServiceAccountCredsData ||
+                    (this.ServiceAccountCredsData != null &&
+                    this.ServiceAccountCredsData.Equals(input.ServiceAccountCredsData))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -330,10 +315,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.BoundZones.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.ServiceAccountData != null)
-                    hashCode = hashCode * 59 + this.ServiceAccountData.GetHashCode();
-                if (this.ServiceAccountFile != null)
-                    hashCode = hashCode * 59 + this.ServiceAccountFile.GetHashCode();
+                if (this.ServiceAccountCredsData != null)
+                    hashCode = hashCode * 59 + this.ServiceAccountCredsData.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.Type != null)

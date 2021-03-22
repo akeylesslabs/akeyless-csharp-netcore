@@ -182,6 +182,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateAuthMethodGCPOutput</returns>
+        CreateAuthMethodGCPOutput CreateAuthMethodGCP (CreateAuthMethodGCP body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateAuthMethodGCPOutput</returns>
+        ApiResponse<CreateAuthMethodGCPOutput> CreateAuthMethodGCPWithHttpInfo (CreateAuthMethodGCP body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAuthMethodHuaweiOutput</returns>
         CreateAuthMethodHuaweiOutput CreateAuthMethodHuawei (CreateAuthMethodHuawei body);
 
@@ -2386,6 +2407,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (CreateAuthMethodAzureADOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateAuthMethodAzureADOutput>> CreateAuthMethodAzureADAsyncWithHttpInfo (CreateAuthMethodAzureAD body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateAuthMethodGCPOutput</returns>
+        System.Threading.Tasks.Task<CreateAuthMethodGCPOutput> CreateAuthMethodGCPAsync (CreateAuthMethodGCP body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateAuthMethodGCPOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAuthMethodGCPOutput>> CreateAuthMethodGCPAsyncWithHttpInfo (CreateAuthMethodGCP body);
         /// <summary>
         /// 
         /// </summary>
@@ -5361,6 +5403,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateAuthMethodAzureAD", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateAuthMethodGCPOutput</returns>
+        public CreateAuthMethodGCPOutput CreateAuthMethodGCP (CreateAuthMethodGCP body)
+        {
+             akeyless.Client.ApiResponse<CreateAuthMethodGCPOutput> localVarResponse = CreateAuthMethodGCPWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateAuthMethodGCPOutput</returns>
+        public akeyless.Client.ApiResponse< CreateAuthMethodGCPOutput > CreateAuthMethodGCPWithHttpInfo (CreateAuthMethodGCP body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAuthMethodGCP");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateAuthMethodGCPOutput >("/create-auth-method-gcp", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAuthMethodGCP", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateAuthMethodGCPOutput</returns>
+        public async System.Threading.Tasks.Task<CreateAuthMethodGCPOutput> CreateAuthMethodGCPAsync (CreateAuthMethodGCP body)
+        {
+             akeyless.Client.ApiResponse<CreateAuthMethodGCPOutput> localVarResponse = await CreateAuthMethodGCPAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateAuthMethodGCPOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAuthMethodGCPOutput>> CreateAuthMethodGCPAsyncWithHttpInfo (CreateAuthMethodGCP body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAuthMethodGCP");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAuthMethodGCPOutput>("/create-auth-method-gcp", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAuthMethodGCP", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

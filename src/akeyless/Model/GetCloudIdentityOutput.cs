@@ -34,12 +34,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCloudIdentityOutput" /> class.
         /// </summary>
+        /// <param name="provider">provider.</param>
         /// <param name="token">token.</param>
-        public GetCloudIdentityOutput(string token = default(string))
+        public GetCloudIdentityOutput(string provider = default(string), string token = default(string))
         {
+            this.Provider = provider;
             this.Token = token;
         }
         
+        /// <summary>
+        /// Gets or Sets Provider
+        /// </summary>
+        [DataMember(Name="provider", EmitDefaultValue=false)]
+        public string Provider { get; set; }
+
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
@@ -54,6 +62,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetCloudIdentityOutput {\n");
+            sb.Append("  Provider: ").Append(Provider).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -90,6 +99,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Provider == input.Provider ||
+                    (this.Provider != null &&
+                    this.Provider.Equals(input.Provider))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -105,6 +119,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Provider != null)
+                    hashCode = hashCode * 59 + this.Provider.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 return hashCode;

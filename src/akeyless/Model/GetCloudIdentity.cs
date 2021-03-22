@@ -35,11 +35,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetCloudIdentity" /> class.
         /// </summary>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
+        /// <param name="debug">debug.</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
         /// <param name="urlSafe">Escapes the token so it can be safely placed inside a URL query.</param>
-        public GetCloudIdentity(string azureAdObjectId = default(string), string gcpAudience = default(string), bool urlSafe = default(bool))
+        public GetCloudIdentity(string azureAdObjectId = default(string), bool debug = default(bool), string gcpAudience = default(string), bool urlSafe = default(bool))
         {
             this.AzureAdObjectId = azureAdObjectId;
+            this.Debug = debug;
             this.GcpAudience = gcpAudience;
             this.UrlSafe = urlSafe;
         }
@@ -50,6 +52,12 @@ namespace akeyless.Model
         /// <value>Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad)</value>
         [DataMember(Name="azure_ad_object_id", EmitDefaultValue=false)]
         public string AzureAdObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Debug
+        /// </summary>
+        [DataMember(Name="debug", EmitDefaultValue=false)]
+        public bool Debug { get; set; }
 
         /// <summary>
         /// GCP JWT audience
@@ -74,6 +82,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GetCloudIdentity {\n");
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
+            sb.Append("  Debug: ").Append(Debug).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  UrlSafe: ").Append(UrlSafe).Append("\n");
             sb.Append("}\n");
@@ -116,6 +125,10 @@ namespace akeyless.Model
                     this.AzureAdObjectId.Equals(input.AzureAdObjectId))
                 ) && 
                 (
+                    this.Debug == input.Debug ||
+                    this.Debug.Equals(input.Debug)
+                ) && 
+                (
                     this.GcpAudience == input.GcpAudience ||
                     (this.GcpAudience != null &&
                     this.GcpAudience.Equals(input.GcpAudience))
@@ -137,6 +150,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AzureAdObjectId != null)
                     hashCode = hashCode * 59 + this.AzureAdObjectId.GetHashCode();
+                hashCode = hashCode * 59 + this.Debug.GetHashCode();
                 if (this.GcpAudience != null)
                     hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
                 hashCode = hashCode * 59 + this.UrlSafe.GetHashCode();

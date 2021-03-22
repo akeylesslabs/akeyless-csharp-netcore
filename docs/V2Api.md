@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**CreateAuthMethod**](V2Api.md#createauthmethod) | **POST** /create-auth-method | 
 [**CreateAuthMethodAWSIAM**](V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam | 
 [**CreateAuthMethodAzureAD**](V2Api.md#createauthmethodazuread) | **POST** /create-auth-method-azure-ad | 
+[**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei | 
 [**CreateAuthMethodOAuth2**](V2Api.md#createauthmethodoauth2) | **POST** /create-auth-method-oauth2 | 
 [**CreateAuthMethodSAML**](V2Api.md#createauthmethodsaml) | **POST** /create-auth-method-saml | 
@@ -584,6 +585,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createAuthMethodAzureADResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodgcp"></a>
+# **CreateAuthMethodGCP**
+> CreateAuthMethodGCPOutput CreateAuthMethodGCP (CreateAuthMethodGCP body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodGCPExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodGCP(); // CreateAuthMethodGCP | 
+
+            try
+            {
+                CreateAuthMethodGCPOutput result = apiInstance.CreateAuthMethodGCP(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodGCP: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodGCP**](CreateAuthMethodGCP.md)|  | 
+
+### Return type
+
+[**CreateAuthMethodGCPOutput**](CreateAuthMethodGCPOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodGCPResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
