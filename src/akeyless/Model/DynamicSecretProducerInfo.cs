@@ -34,16 +34,24 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretProducerInfo" /> class.
         /// </summary>
+        /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="producerMetadata">producerMetadata.</param>
-        /// <param name="producerStatus">ProducerStatus defines types of Producer Status.</param>
+        /// <param name="producerStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="producerType">producerType.</param>
-        public DynamicSecretProducerInfo(string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
+        public DynamicSecretProducerInfo(long gwClusterId = default(long), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
         {
+            this.GwClusterId = gwClusterId;
             this.ProducerMetadata = producerMetadata;
             this.ProducerStatus = producerStatus;
             this.ProducerType = producerType;
         }
         
+        /// <summary>
+        /// Gets or Sets GwClusterId
+        /// </summary>
+        [DataMember(Name="gw_cluster_id", EmitDefaultValue=false)]
+        public long GwClusterId { get; set; }
+
         /// <summary>
         /// Gets or Sets ProducerMetadata
         /// </summary>
@@ -51,9 +59,9 @@ namespace akeyless.Model
         public string ProducerMetadata { get; set; }
 
         /// <summary>
-        /// ProducerStatus defines types of Producer Status
+        /// RotationStatus defines types of rotation Status
         /// </summary>
-        /// <value>ProducerStatus defines types of Producer Status</value>
+        /// <value>RotationStatus defines types of rotation Status</value>
         [DataMember(Name="producer_status", EmitDefaultValue=false)]
         public string ProducerStatus { get; set; }
 
@@ -71,6 +79,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DynamicSecretProducerInfo {\n");
+            sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  ProducerMetadata: ").Append(ProducerMetadata).Append("\n");
             sb.Append("  ProducerStatus: ").Append(ProducerStatus).Append("\n");
             sb.Append("  ProducerType: ").Append(ProducerType).Append("\n");
@@ -109,6 +118,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.GwClusterId == input.GwClusterId ||
+                    this.GwClusterId.Equals(input.GwClusterId)
+                ) && 
+                (
                     this.ProducerMetadata == input.ProducerMetadata ||
                     (this.ProducerMetadata != null &&
                     this.ProducerMetadata.Equals(input.ProducerMetadata))
@@ -134,6 +147,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
                 if (this.ProducerMetadata != null)
                     hashCode = hashCode * 59 + this.ProducerMetadata.GetHashCode();
                 if (this.ProducerStatus != null)

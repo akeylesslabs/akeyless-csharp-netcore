@@ -34,29 +34,47 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Target" /> class.
         /// </summary>
+        /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
+        /// <param name="lastVersion">lastVersion.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="targetId">targetId.</param>
         /// <param name="targetItemsAssoc">targetItemsAssoc.</param>
         /// <param name="targetName">targetName.</param>
         /// <param name="targetType">targetType.</param>
+        /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(string comment = default(string), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), bool withCustomerFragment = default(bool))
+        public Target(List<string> clientPermissions = default(List<string>), string comment = default(string), int lastVersion = default(int), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
+            this.ClientPermissions = clientPermissions;
             this.Comment = comment;
+            this.LastVersion = lastVersion;
             this.ProtectionKeyName = protectionKeyName;
             this.TargetId = targetId;
             this.TargetItemsAssoc = targetItemsAssoc;
             this.TargetName = targetName;
             this.TargetType = targetType;
+            this.TargetVersions = targetVersions;
             this.WithCustomerFragment = withCustomerFragment;
         }
         
+        /// <summary>
+        /// Gets or Sets ClientPermissions
+        /// </summary>
+        [DataMember(Name="client_permissions", EmitDefaultValue=false)]
+        public List<string> ClientPermissions { get; set; }
+
         /// <summary>
         /// Gets or Sets Comment
         /// </summary>
         [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastVersion
+        /// </summary>
+        [DataMember(Name="last_version", EmitDefaultValue=false)]
+        public int LastVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets ProtectionKeyName
@@ -89,6 +107,12 @@ namespace akeyless.Model
         public string TargetType { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetVersions
+        /// </summary>
+        [DataMember(Name="target_versions", EmitDefaultValue=false)]
+        public List<ItemVersion> TargetVersions { get; set; }
+
+        /// <summary>
         /// Gets or Sets WithCustomerFragment
         /// </summary>
         [DataMember(Name="with_customer_fragment", EmitDefaultValue=false)]
@@ -102,12 +126,15 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Target {\n");
+            sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
             sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetItemsAssoc: ").Append(TargetItemsAssoc).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  TargetType: ").Append(TargetType).Append("\n");
+            sb.Append("  TargetVersions: ").Append(TargetVersions).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -144,9 +171,19 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.ClientPermissions == input.ClientPermissions ||
+                    this.ClientPermissions != null &&
+                    input.ClientPermissions != null &&
+                    this.ClientPermissions.SequenceEqual(input.ClientPermissions)
+                ) && 
+                (
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.LastVersion == input.LastVersion ||
+                    this.LastVersion.Equals(input.LastVersion)
                 ) && 
                 (
                     this.ProtectionKeyName == input.ProtectionKeyName ||
@@ -174,6 +211,12 @@ namespace akeyless.Model
                     this.TargetType.Equals(input.TargetType))
                 ) && 
                 (
+                    this.TargetVersions == input.TargetVersions ||
+                    this.TargetVersions != null &&
+                    input.TargetVersions != null &&
+                    this.TargetVersions.SequenceEqual(input.TargetVersions)
+                ) && 
+                (
                     this.WithCustomerFragment == input.WithCustomerFragment ||
                     this.WithCustomerFragment.Equals(input.WithCustomerFragment)
                 );
@@ -188,8 +231,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ClientPermissions != null)
+                    hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.LastVersion.GetHashCode();
                 if (this.ProtectionKeyName != null)
                     hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
                 hashCode = hashCode * 59 + this.TargetId.GetHashCode();
@@ -199,6 +245,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.TargetType != null)
                     hashCode = hashCode * 59 + this.TargetType.GetHashCode();
+                if (this.TargetVersions != null)
+                    hashCode = hashCode * 59 + this.TargetVersions.GetHashCode();
                 hashCode = hashCode * 59 + this.WithCustomerFragment.GetHashCode();
                 return hashCode;
             }

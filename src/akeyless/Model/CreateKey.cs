@@ -39,7 +39,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateKey" /> class.
         /// </summary>
-        /// <param name="alg">Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048] (required).</param>
+        /// <param name="alg">Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="metadata">Metadata about the key.</param>
         /// <param name="name">Key name (required).</param>
@@ -62,9 +62,9 @@ namespace akeyless.Model
         }
         
         /// <summary>
-        /// Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048]
+        /// Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096]
         /// </summary>
-        /// <value>Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048]</value>
+        /// <value>Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096]</value>
         [DataMember(Name="alg", EmitDefaultValue=false)]
         public string Alg { get; set; }
 

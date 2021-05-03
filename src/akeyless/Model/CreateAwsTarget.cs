@@ -39,33 +39,39 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAwsTarget" /> class.
         /// </summary>
+        /// <param name="accessKey">accessKey.</param>
         /// <param name="accessKeyId">accessKeyId.</param>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="region">region.</param>
-        /// <param name="secretAccessKey">secretAccessKey.</param>
         /// <param name="sessionToken">sessionToken.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAwsTarget(string accessKeyId = default(string), string comment = default(string), string name = default(string), string protectionKey = default(string), string region = default(string), string secretAccessKey = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAwsTarget(string accessKey = default(string), string accessKeyId = default(string), string comment = default(string), string name = default(string), string protectionKey = default(string), string region = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAwsTarget and cannot be null");
+            this.AccessKey = accessKey;
             this.AccessKeyId = accessKeyId;
             this.Comment = comment;
             this.ProtectionKey = protectionKey;
             this.Region = region;
-            this.SecretAccessKey = secretAccessKey;
             this.SessionToken = sessionToken;
             this.Token = token;
             this.UidToken = uidToken;
         }
         
         /// <summary>
+        /// Gets or Sets AccessKey
+        /// </summary>
+        [DataMember(Name="access-key", EmitDefaultValue=false)]
+        public string AccessKey { get; set; }
+
+        /// <summary>
         /// Gets or Sets AccessKeyId
         /// </summary>
-        [DataMember(Name="access_key_id", EmitDefaultValue=false)]
+        [DataMember(Name="access-key-id", EmitDefaultValue=false)]
         public string AccessKeyId { get; set; }
 
         /// <summary>
@@ -96,15 +102,9 @@ namespace akeyless.Model
         public string Region { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecretAccessKey
-        /// </summary>
-        [DataMember(Name="secret_access_key", EmitDefaultValue=false)]
-        public string SecretAccessKey { get; set; }
-
-        /// <summary>
         /// Gets or Sets SessionToken
         /// </summary>
-        [DataMember(Name="session_token", EmitDefaultValue=false)]
+        [DataMember(Name="session-token", EmitDefaultValue=false)]
         public string SessionToken { get; set; }
 
         /// <summary>
@@ -129,12 +129,12 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateAwsTarget {\n");
+            sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
             sb.Append("  AccessKeyId: ").Append(AccessKeyId).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
-            sb.Append("  SecretAccessKey: ").Append(SecretAccessKey).Append("\n");
             sb.Append("  SessionToken: ").Append(SessionToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -173,6 +173,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AccessKey == input.AccessKey ||
+                    (this.AccessKey != null &&
+                    this.AccessKey.Equals(input.AccessKey))
+                ) && 
+                (
                     this.AccessKeyId == input.AccessKeyId ||
                     (this.AccessKeyId != null &&
                     this.AccessKeyId.Equals(input.AccessKeyId))
@@ -196,11 +201,6 @@ namespace akeyless.Model
                     this.Region == input.Region ||
                     (this.Region != null &&
                     this.Region.Equals(input.Region))
-                ) && 
-                (
-                    this.SecretAccessKey == input.SecretAccessKey ||
-                    (this.SecretAccessKey != null &&
-                    this.SecretAccessKey.Equals(input.SecretAccessKey))
                 ) && 
                 (
                     this.SessionToken == input.SessionToken ||
@@ -228,6 +228,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AccessKey != null)
+                    hashCode = hashCode * 59 + this.AccessKey.GetHashCode();
                 if (this.AccessKeyId != null)
                     hashCode = hashCode * 59 + this.AccessKeyId.GetHashCode();
                 if (this.Comment != null)
@@ -238,8 +240,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.Region != null)
                     hashCode = hashCode * 59 + this.Region.GetHashCode();
-                if (this.SecretAccessKey != null)
-                    hashCode = hashCode * 59 + this.SecretAccessKey.GetHashCode();
                 if (this.SessionToken != null)
                     hashCode = hashCode * 59 + this.SessionToken.GetHashCode();
                 if (this.Token != null)

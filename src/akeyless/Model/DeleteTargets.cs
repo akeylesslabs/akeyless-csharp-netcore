@@ -39,7 +39,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteTargets" /> class.
         /// </summary>
-        /// <param name="path">Path to delete the auth methods from (required).</param>
+        /// <param name="path">Path to delete the targets from (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public DeleteTargets(string path = default(string), string token = default(string), string uidToken = default(string))
@@ -51,9 +51,9 @@ namespace akeyless.Model
         }
         
         /// <summary>
-        /// Path to delete the auth methods from
+        /// Path to delete the targets from
         /// </summary>
-        /// <value>Path to delete the auth methods from</value>
+        /// <value>Path to delete the targets from</value>
         [DataMember(Name="path", EmitDefaultValue=false)]
         public string Path { get; set; }
 

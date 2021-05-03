@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeletionDate** | **DateTime** |  | [optional] 
+**ItemId** | **long** |  | [optional] 
 **ItemName** | **string** |  | [optional] 
 **VersionDeleted** | **int** |  | [optional] 
 

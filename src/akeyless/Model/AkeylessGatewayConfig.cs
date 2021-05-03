@@ -44,10 +44,11 @@ namespace akeyless.Model
         /// <param name="logForwarding">logForwarding.</param>
         /// <param name="migrations">migrations.</param>
         /// <param name="producers">producers.</param>
+        /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="uidentity">uidentity.</param>
         /// <param name="version">version.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.LogForwarding = logForwarding;
             this.Migrations = migrations;
             this.Producers = producers;
+            this.Rotators = rotators;
             this.Saml = saml;
             this.Uidentity = uidentity;
             this.Version = version;
@@ -125,6 +127,12 @@ namespace akeyless.Model
         public ProducersConfigPart Producers { get; set; }
 
         /// <summary>
+        /// Gets or Sets Rotators
+        /// </summary>
+        [DataMember(Name="rotators", EmitDefaultValue=false)]
+        public RotatorsConfigPart Rotators { get; set; }
+
+        /// <summary>
         /// Gets or Sets Saml
         /// </summary>
         [DataMember(Name="saml", EmitDefaultValue=false)]
@@ -160,6 +168,7 @@ namespace akeyless.Model
             sb.Append("  LogForwarding: ").Append(LogForwarding).Append("\n");
             sb.Append("  Migrations: ").Append(Migrations).Append("\n");
             sb.Append("  Producers: ").Append(Producers).Append("\n");
+            sb.Append("  Rotators: ").Append(Rotators).Append("\n");
             sb.Append("  Saml: ").Append(Saml).Append("\n");
             sb.Append("  Uidentity: ").Append(Uidentity).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
@@ -248,6 +257,11 @@ namespace akeyless.Model
                     this.Producers.Equals(input.Producers))
                 ) && 
                 (
+                    this.Rotators == input.Rotators ||
+                    (this.Rotators != null &&
+                    this.Rotators.Equals(input.Rotators))
+                ) && 
+                (
                     this.Saml == input.Saml ||
                     (this.Saml != null &&
                     this.Saml.Equals(input.Saml))
@@ -292,6 +306,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Migrations.GetHashCode();
                 if (this.Producers != null)
                     hashCode = hashCode * 59 + this.Producers.GetHashCode();
+                if (this.Rotators != null)
+                    hashCode = hashCode * 59 + this.Rotators.GetHashCode();
                 if (this.Saml != null)
                     hashCode = hashCode * 59 + this.Saml.GetHashCode();
                 if (this.Uidentity != null)

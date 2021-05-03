@@ -34,8 +34,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetTypeDetailesInput" /> class.
         /// </summary>
-        /// <param name="adminName">adminName.</param>
-        /// <param name="adminPwd">adminPwd.</param>
         /// <param name="awsAccessKeyId">awsAccessKeyId.</param>
         /// <param name="awsRegion">awsRegion.</param>
         /// <param name="awsSecretAccessKey">awsSecretAccessKey.</param>
@@ -47,20 +45,20 @@ namespace akeyless.Model
         /// <param name="dbServerCertificates">(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set..</param>
         /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
         /// <param name="dbUserName">dbUserName.</param>
-        /// <param name="hostName">hostName.</param>
-        /// <param name="hostPort">hostPort.</param>
-        /// <param name="ip">ip.</param>
+        /// <param name="host">host.</param>
         /// <param name="mongodbDbName">mongodbDbName.</param>
         /// <param name="mongodbUriConnection">mongodbUriConnection.</param>
+        /// <param name="password">password.</param>
         /// <param name="port">port.</param>
+        /// <param name="privateKey">privateKey.</param>
+        /// <param name="privateKeyPassword">privateKeyPassword.</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
         /// <param name="url">url.</param>
-        public TargetTypeDetailesInput(string adminName = default(string), string adminPwd = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string hostName = default(string), string hostPort = default(string), List<string> ip = default(List<string>), string mongodbDbName = default(string), string mongodbUriConnection = default(string), string port = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string url = default(string))
+        /// <param name="username">username.</param>
+        public TargetTypeDetailesInput(string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string host = default(string), string mongodbDbName = default(string), string mongodbUriConnection = default(string), string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string url = default(string), string username = default(string))
         {
-            this.AdminName = adminName;
-            this.AdminPwd = adminPwd;
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsRegion = awsRegion;
             this.AwsSecretAccessKey = awsSecretAccessKey;
@@ -72,30 +70,20 @@ namespace akeyless.Model
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             this.DbUserName = dbUserName;
-            this.HostName = hostName;
-            this.HostPort = hostPort;
-            this.Ip = ip;
+            this.Host = host;
             this.MongodbDbName = mongodbDbName;
             this.MongodbUriConnection = mongodbUriConnection;
+            this.Password = password;
             this.Port = port;
+            this.PrivateKey = privateKey;
+            this.PrivateKeyPassword = privateKeyPassword;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
             this.Url = url;
+            this.Username = username;
         }
         
-        /// <summary>
-        /// Gets or Sets AdminName
-        /// </summary>
-        [DataMember(Name="admin_name", EmitDefaultValue=false)]
-        public string AdminName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdminPwd
-        /// </summary>
-        [DataMember(Name="admin_pwd", EmitDefaultValue=false)]
-        public string AdminPwd { get; set; }
-
         /// <summary>
         /// Gets or Sets AwsAccessKeyId
         /// </summary>
@@ -165,22 +153,10 @@ namespace akeyless.Model
         public string DbUserName { get; set; }
 
         /// <summary>
-        /// Gets or Sets HostName
+        /// Gets or Sets Host
         /// </summary>
-        [DataMember(Name="host_name", EmitDefaultValue=false)]
-        public string HostName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HostPort
-        /// </summary>
-        [DataMember(Name="host_port", EmitDefaultValue=false)]
-        public string HostPort { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Ip
-        /// </summary>
-        [DataMember(Name="ip", EmitDefaultValue=false)]
-        public List<string> Ip { get; set; }
+        [DataMember(Name="host", EmitDefaultValue=false)]
+        public string Host { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbDbName
@@ -195,10 +171,28 @@ namespace akeyless.Model
         public string MongodbUriConnection { get; set; }
 
         /// <summary>
+        /// Gets or Sets Password
+        /// </summary>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name="port", EmitDefaultValue=false)]
         public string Port { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivateKey
+        /// </summary>
+        [DataMember(Name="private_key", EmitDefaultValue=false)]
+        public string PrivateKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivateKeyPassword
+        /// </summary>
+        [DataMember(Name="private_key_password", EmitDefaultValue=false)]
+        public string PrivateKeyPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerPassword
@@ -225,6 +219,12 @@ namespace akeyless.Model
         public string Url { get; set; }
 
         /// <summary>
+        /// Gets or Sets Username
+        /// </summary>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -232,8 +232,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TargetTypeDetailesInput {\n");
-            sb.Append("  AdminName: ").Append(AdminName).Append("\n");
-            sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
             sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
             sb.Append("  AwsSecretAccessKey: ").Append(AwsSecretAccessKey).Append("\n");
@@ -245,16 +243,18 @@ namespace akeyless.Model
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbUserName: ").Append(DbUserName).Append("\n");
-            sb.Append("  HostName: ").Append(HostName).Append("\n");
-            sb.Append("  HostPort: ").Append(HostPort).Append("\n");
-            sb.Append("  Ip: ").Append(Ip).Append("\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  MongodbDbName: ").Append(MongodbDbName).Append("\n");
             sb.Append("  MongodbUriConnection: ").Append(MongodbUriConnection).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
+            sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
+            sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -289,16 +289,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.AdminName == input.AdminName ||
-                    (this.AdminName != null &&
-                    this.AdminName.Equals(input.AdminName))
-                ) && 
-                (
-                    this.AdminPwd == input.AdminPwd ||
-                    (this.AdminPwd != null &&
-                    this.AdminPwd.Equals(input.AdminPwd))
-                ) && 
                 (
                     this.AwsAccessKeyId == input.AwsAccessKeyId ||
                     (this.AwsAccessKeyId != null &&
@@ -355,20 +345,9 @@ namespace akeyless.Model
                     this.DbUserName.Equals(input.DbUserName))
                 ) && 
                 (
-                    this.HostName == input.HostName ||
-                    (this.HostName != null &&
-                    this.HostName.Equals(input.HostName))
-                ) && 
-                (
-                    this.HostPort == input.HostPort ||
-                    (this.HostPort != null &&
-                    this.HostPort.Equals(input.HostPort))
-                ) && 
-                (
-                    this.Ip == input.Ip ||
-                    this.Ip != null &&
-                    input.Ip != null &&
-                    this.Ip.SequenceEqual(input.Ip)
+                    this.Host == input.Host ||
+                    (this.Host != null &&
+                    this.Host.Equals(input.Host))
                 ) && 
                 (
                     this.MongodbDbName == input.MongodbDbName ||
@@ -381,9 +360,24 @@ namespace akeyless.Model
                     this.MongodbUriConnection.Equals(input.MongodbUriConnection))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.Port == input.Port ||
                     (this.Port != null &&
                     this.Port.Equals(input.Port))
+                ) && 
+                (
+                    this.PrivateKey == input.PrivateKey ||
+                    (this.PrivateKey != null &&
+                    this.PrivateKey.Equals(input.PrivateKey))
+                ) && 
+                (
+                    this.PrivateKeyPassword == input.PrivateKeyPassword ||
+                    (this.PrivateKeyPassword != null &&
+                    this.PrivateKeyPassword.Equals(input.PrivateKeyPassword))
                 ) && 
                 (
                     this.RabbitmqServerPassword == input.RabbitmqServerPassword ||
@@ -404,6 +398,11 @@ namespace akeyless.Model
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -416,10 +415,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AdminName != null)
-                    hashCode = hashCode * 59 + this.AdminName.GetHashCode();
-                if (this.AdminPwd != null)
-                    hashCode = hashCode * 59 + this.AdminPwd.GetHashCode();
                 if (this.AwsAccessKeyId != null)
                     hashCode = hashCode * 59 + this.AwsAccessKeyId.GetHashCode();
                 if (this.AwsRegion != null)
@@ -442,18 +437,20 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
                 if (this.DbUserName != null)
                     hashCode = hashCode * 59 + this.DbUserName.GetHashCode();
-                if (this.HostName != null)
-                    hashCode = hashCode * 59 + this.HostName.GetHashCode();
-                if (this.HostPort != null)
-                    hashCode = hashCode * 59 + this.HostPort.GetHashCode();
-                if (this.Ip != null)
-                    hashCode = hashCode * 59 + this.Ip.GetHashCode();
+                if (this.Host != null)
+                    hashCode = hashCode * 59 + this.Host.GetHashCode();
                 if (this.MongodbDbName != null)
                     hashCode = hashCode * 59 + this.MongodbDbName.GetHashCode();
                 if (this.MongodbUriConnection != null)
                     hashCode = hashCode * 59 + this.MongodbUriConnection.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
+                if (this.PrivateKey != null)
+                    hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
+                if (this.PrivateKeyPassword != null)
+                    hashCode = hashCode * 59 + this.PrivateKeyPassword.GetHashCode();
                 if (this.RabbitmqServerPassword != null)
                     hashCode = hashCode * 59 + this.RabbitmqServerPassword.GetHashCode();
                 if (this.RabbitmqServerUri != null)
@@ -462,6 +459,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RabbitmqServerUser.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

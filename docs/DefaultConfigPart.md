@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DefaultProtectionKeyId** | **long** |  | [optional] 
+**DefaultSecretLocation** | **string** |  | [optional] 
 **OpenIdConnectAccessId** | **string** |  | [optional] 
 **SamlAccessId** | **string** |  | [optional] 
 

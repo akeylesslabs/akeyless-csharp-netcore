@@ -39,13 +39,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteTargetAssociation" /> class.
         /// </summary>
-        /// <param name="assocId">The association id to be deleted (required).</param>
+        /// <param name="assocId">The association id to be deleted.</param>
+        /// <param name="name">Item name (required).</param>
+        /// <param name="targetName">The target to associate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteTargetAssociation(string assocId = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteTargetAssociation(string assocId = default(string), string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
-            // to ensure "assocId" is required (not null)
-            this.AssocId = assocId ?? throw new ArgumentNullException("assocId is a required property for DeleteTargetAssociation and cannot be null");
+            // to ensure "name" is required (not null)
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for DeleteTargetAssociation and cannot be null");
+            this.AssocId = assocId;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -56,6 +60,20 @@ namespace akeyless.Model
         /// <value>The association id to be deleted</value>
         [DataMember(Name="assoc-id", EmitDefaultValue=false)]
         public string AssocId { get; set; }
+
+        /// <summary>
+        /// Item name
+        /// </summary>
+        /// <value>Item name</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The target to associate
+        /// </summary>
+        /// <value>The target to associate</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -80,6 +98,8 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class DeleteTargetAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -122,6 +142,16 @@ namespace akeyless.Model
                     this.AssocId.Equals(input.AssocId))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -144,6 +174,10 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -39,7 +39,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadRSA" /> class.
         /// </summary>
-        /// <param name="alg">Key type. options: [RSA1024, RSA2048] (required).</param>
+        /// <param name="alg">Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
         /// <param name="cert">Path to a file that contain the certificate in a PEM format..</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
@@ -70,9 +70,9 @@ namespace akeyless.Model
         }
         
         /// <summary>
-        /// Key type. options: [RSA1024, RSA2048]
+        /// Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]
         /// </summary>
-        /// <value>Key type. options: [RSA1024, RSA2048]</value>
+        /// <value>Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]</value>
         [DataMember(Name="alg", EmitDefaultValue=false)]
         public string Alg { get; set; }
 

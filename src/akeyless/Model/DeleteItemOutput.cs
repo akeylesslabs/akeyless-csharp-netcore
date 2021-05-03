@@ -35,11 +35,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DeleteItemOutput" /> class.
         /// </summary>
         /// <param name="deletionDate">deletionDate.</param>
+        /// <param name="itemId">itemId.</param>
         /// <param name="itemName">itemName.</param>
         /// <param name="versionDeleted">versionDeleted.</param>
-        public DeleteItemOutput(DateTime deletionDate = default(DateTime), string itemName = default(string), int versionDeleted = default(int))
+        public DeleteItemOutput(DateTime deletionDate = default(DateTime), long itemId = default(long), string itemName = default(string), int versionDeleted = default(int))
         {
             this.DeletionDate = deletionDate;
+            this.ItemId = itemId;
             this.ItemName = itemName;
             this.VersionDeleted = versionDeleted;
         }
@@ -49,6 +51,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="deletion_date", EmitDefaultValue=false)]
         public DateTime DeletionDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemId
+        /// </summary>
+        [DataMember(Name="item_id", EmitDefaultValue=false)]
+        public long ItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemName
@@ -71,6 +79,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class DeleteItemOutput {\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  VersionDeleted: ").Append(VersionDeleted).Append("\n");
             sb.Append("}\n");
@@ -113,6 +122,10 @@ namespace akeyless.Model
                     this.DeletionDate.Equals(input.DeletionDate))
                 ) && 
                 (
+                    this.ItemId == input.ItemId ||
+                    this.ItemId.Equals(input.ItemId)
+                ) && 
+                (
                     this.ItemName == input.ItemName ||
                     (this.ItemName != null &&
                     this.ItemName.Equals(input.ItemName))
@@ -134,6 +147,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DeletionDate != null)
                     hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
+                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
                 if (this.ItemName != null)
                     hashCode = hashCode * 59 + this.ItemName.GetHashCode();
                 hashCode = hashCode * 59 + this.VersionDeleted.GetHashCode();

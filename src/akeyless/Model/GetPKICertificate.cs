@@ -42,20 +42,17 @@ namespace akeyless.Model
         /// <param name="altNames">The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
         /// <param name="certIssuerName">The name of the PKI certificate issuer (required).</param>
         /// <param name="commonName">The common name to be included in the PKI certificate.</param>
-        /// <param name="keyFilePath">The client public or private key file path (in case of a private key, it will be use to extract the public key) (required).</param>
-        /// <param name="outfile">Output file path with the certificate. If not provided, the file with the certificate will be created in the same location of the provided public key with the -cert extension.</param>
+        /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
-        public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string keyFilePath = default(string), string outfile = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string keyDataBase64 = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             this.CertIssuerName = certIssuerName ?? throw new ArgumentNullException("certIssuerName is a required property for GetPKICertificate and cannot be null");
-            // to ensure "keyFilePath" is required (not null)
-            this.KeyFilePath = keyFilePath ?? throw new ArgumentNullException("keyFilePath is a required property for GetPKICertificate and cannot be null");
             this.AltNames = altNames;
             this.CommonName = commonName;
-            this.Outfile = outfile;
+            this.KeyDataBase64 = keyDataBase64;
             this.Token = token;
             this.UidToken = uidToken;
             this.UriSans = uriSans;
@@ -83,18 +80,11 @@ namespace akeyless.Model
         public string CommonName { get; set; }
 
         /// <summary>
-        /// The client public or private key file path (in case of a private key, it will be use to extract the public key)
+        /// PKI key file contents. If this option is used, the certificate will be printed to stdout
         /// </summary>
-        /// <value>The client public or private key file path (in case of a private key, it will be use to extract the public key)</value>
-        [DataMember(Name="key-file-path", EmitDefaultValue=false)]
-        public string KeyFilePath { get; set; }
-
-        /// <summary>
-        /// Output file path with the certificate. If not provided, the file with the certificate will be created in the same location of the provided public key with the -cert extension
-        /// </summary>
-        /// <value>Output file path with the certificate. If not provided, the file with the certificate will be created in the same location of the provided public key with the -cert extension</value>
-        [DataMember(Name="outfile", EmitDefaultValue=false)]
-        public string Outfile { get; set; }
+        /// <value>PKI key file contents. If this option is used, the certificate will be printed to stdout</value>
+        [DataMember(Name="key-data-base64", EmitDefaultValue=false)]
+        public string KeyDataBase64 { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -128,8 +118,7 @@ namespace akeyless.Model
             sb.Append("  AltNames: ").Append(AltNames).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
-            sb.Append("  KeyFilePath: ").Append(KeyFilePath).Append("\n");
-            sb.Append("  Outfile: ").Append(Outfile).Append("\n");
+            sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UriSans: ").Append(UriSans).Append("\n");
@@ -183,14 +172,9 @@ namespace akeyless.Model
                     this.CommonName.Equals(input.CommonName))
                 ) && 
                 (
-                    this.KeyFilePath == input.KeyFilePath ||
-                    (this.KeyFilePath != null &&
-                    this.KeyFilePath.Equals(input.KeyFilePath))
-                ) && 
-                (
-                    this.Outfile == input.Outfile ||
-                    (this.Outfile != null &&
-                    this.Outfile.Equals(input.Outfile))
+                    this.KeyDataBase64 == input.KeyDataBase64 ||
+                    (this.KeyDataBase64 != null &&
+                    this.KeyDataBase64.Equals(input.KeyDataBase64))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -224,10 +208,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
                 if (this.CommonName != null)
                     hashCode = hashCode * 59 + this.CommonName.GetHashCode();
-                if (this.KeyFilePath != null)
-                    hashCode = hashCode * 59 + this.KeyFilePath.GetHashCode();
-                if (this.Outfile != null)
-                    hashCode = hashCode * 59 + this.Outfile.GetHashCode();
+                if (this.KeyDataBase64 != null)
+                    hashCode = hashCode * 59 + this.KeyDataBase64.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -40,12 +40,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetTargetDetails" /> class.
         /// </summary>
         /// <param name="name">Target name (required).</param>
+        /// <param name="showVersions">Include all target versions in reply (default to false).</param>
+        /// <param name="targetVersion">Target version.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetTargetDetails(string name = default(string), string token = default(string), string uidToken = default(string))
+        public GetTargetDetails(string name = default(string), bool showVersions = false, int targetVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GetTargetDetails and cannot be null");
+            this.ShowVersions = showVersions;
+            this.TargetVersion = targetVersion;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -56,6 +60,20 @@ namespace akeyless.Model
         /// <value>Target name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Include all target versions in reply
+        /// </summary>
+        /// <value>Include all target versions in reply</value>
+        [DataMember(Name="show-versions", EmitDefaultValue=false)]
+        public bool ShowVersions { get; set; }
+
+        /// <summary>
+        /// Target version
+        /// </summary>
+        /// <value>Target version</value>
+        [DataMember(Name="target-version", EmitDefaultValue=false)]
+        public int TargetVersion { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -80,6 +98,8 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GetTargetDetails {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ShowVersions: ").Append(ShowVersions).Append("\n");
+            sb.Append("  TargetVersion: ").Append(TargetVersion).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -122,6 +142,14 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ShowVersions == input.ShowVersions ||
+                    this.ShowVersions.Equals(input.ShowVersions)
+                ) && 
+                (
+                    this.TargetVersion == input.TargetVersion ||
+                    this.TargetVersion.Equals(input.TargetVersion)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -144,6 +172,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.ShowVersions.GetHashCode();
+                hashCode = hashCode * 59 + this.TargetVersion.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -34,12 +34,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetPKICertificateOutput" /> class.
         /// </summary>
+        /// <param name="data">data.</param>
         /// <param name="path">path.</param>
-        public GetPKICertificateOutput(string path = default(string))
+        public GetPKICertificateOutput(string data = default(string), string path = default(string))
         {
+            this.Data = data;
             this.Path = path;
         }
         
+        /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name="data", EmitDefaultValue=false)]
+        public string Data { get; set; }
+
         /// <summary>
         /// Gets or Sets Path
         /// </summary>
@@ -54,6 +62,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetPKICertificateOutput {\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -90,6 +99,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -105,6 +119,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Data != null)
+                    hashCode = hashCode * 59 + this.Data.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 return hashCode;

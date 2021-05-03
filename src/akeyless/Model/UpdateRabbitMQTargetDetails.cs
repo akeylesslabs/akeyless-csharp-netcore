@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateRabbitMQTargetDetails" /> class.
         /// </summary>
         /// <param name="name">Target name (required).</param>
+        /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRabbitMQTargetDetails(string name = default(string), string protectionKey = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRabbitMQTargetDetails(string name = default(string), bool newVersion = false, string protectionKey = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateRabbitMQTargetDetails and cannot be null");
+            this.NewVersion = newVersion;
             this.ProtectionKey = protectionKey;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
@@ -64,6 +66,13 @@ namespace akeyless.Model
         /// <value>Target name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Whether to create a new version of not
+        /// </summary>
+        /// <value>Whether to create a new version of not</value>
+        [DataMember(Name="new-version", EmitDefaultValue=false)]
+        public bool NewVersion { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -113,6 +122,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateRabbitMQTargetDetails {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
@@ -159,6 +169,10 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.NewVersion == input.NewVersion ||
+                    this.NewVersion.Equals(input.NewVersion)
+                ) && 
+                (
                     this.ProtectionKey == input.ProtectionKey ||
                     (this.ProtectionKey != null &&
                     this.ProtectionKey.Equals(input.ProtectionKey))
@@ -201,6 +215,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.RabbitmqServerPassword != null)

@@ -44,13 +44,14 @@ namespace akeyless.Model
         /// <param name="mongoDbName">mongoDbName.</param>
         /// <param name="mongoUri">mongoUri.</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
         /// <param name="port">port.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="pwd">pwd.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), bool newVersion = false, string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateDBTargetDetails and cannot be null");
@@ -58,6 +59,7 @@ namespace akeyless.Model
             this.HostName = hostName;
             this.MongoDbName = mongoDbName;
             this.MongoUri = mongoUri;
+            this.NewVersion = newVersion;
             this.Port = port;
             this.ProtectionKey = protectionKey;
             this.Pwd = pwd;
@@ -96,6 +98,13 @@ namespace akeyless.Model
         /// <value>Target name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Whether to create a new version of not
+        /// </summary>
+        /// <value>Whether to create a new version of not</value>
+        [DataMember(Name="new-version", EmitDefaultValue=false)]
+        public bool NewVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets Port
@@ -149,6 +158,7 @@ namespace akeyless.Model
             sb.Append("  MongoDbName: ").Append(MongoDbName).Append("\n");
             sb.Append("  MongoUri: ").Append(MongoUri).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
@@ -215,6 +225,10 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.NewVersion == input.NewVersion ||
+                    this.NewVersion.Equals(input.NewVersion)
+                ) && 
+                (
                     this.Port == input.Port ||
                     (this.Port != null &&
                     this.Port.Equals(input.Port))
@@ -265,6 +279,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MongoUri.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
                 if (this.ProtectionKey != null)

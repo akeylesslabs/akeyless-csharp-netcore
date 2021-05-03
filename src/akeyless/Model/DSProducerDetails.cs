@@ -69,6 +69,7 @@ namespace akeyless.Model
         /// <param name="chefServerUrl">chefServerUrl.</param>
         /// <param name="chefServerUsername">chefServerUsername.</param>
         /// <param name="chefSkipSsl">chefSkipSsl.</param>
+        /// <param name="createSyncUrl">createSyncUrl.</param>
         /// <param name="dbHostName">dbHostName.</param>
         /// <param name="dbIsolationLevel">dbIsolationLevel.</param>
         /// <param name="dbMaxIdleConns">dbMaxIdleConns.</param>
@@ -93,6 +94,12 @@ namespace akeyless.Model
         /// <param name="enableAdminRotation">enableAdminRotation.</param>
         /// <param name="failureMessage">failureMessage.</param>
         /// <param name="fixedUserOnly">fixedUserOnly.</param>
+        /// <param name="gcpKeyAlgo">gcpKeyAlgo.</param>
+        /// <param name="gcpServiceAccountEmail">gcpServiceAccountEmail.</param>
+        /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
+        /// <param name="gcpTokenLifetime">gcpTokenLifetime.</param>
+        /// <param name="gcpTokenScope">gcpTokenScope.</param>
+        /// <param name="gcpTokenType">gcpTokenType.</param>
         /// <param name="gkeClusterCaCertificate">gkeClusterCaCertificate.</param>
         /// <param name="gkeClusterComputeZone">gkeClusterComputeZone.</param>
         /// <param name="gkeClusterEndpoint">gkeClusterEndpoint.</param>
@@ -119,6 +126,7 @@ namespace akeyless.Model
         /// <param name="mssqlCreationStatements">mssqlCreationStatements.</param>
         /// <param name="mssqlRevocationStatements">mssqlRevocationStatements.</param>
         /// <param name="mysqlCreationStatements">mysqlCreationStatements.</param>
+        /// <param name="payload">payload.</param>
         /// <param name="postgresCreationStatements">postgresCreationStatements.</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
@@ -128,7 +136,10 @@ namespace akeyless.Model
         /// <param name="rabbitmqUserTags">rabbitmqUserTags.</param>
         /// <param name="rabbitmqUserVhost">rabbitmqUserVhost.</param>
         /// <param name="rabbitmqUserWritePermission">rabbitmqUserWritePermission.</param>
+        /// <param name="revokeSyncUrl">revokeSyncUrl.</param>
+        /// <param name="rotateSyncUrl">rotateSyncUrl.</param>
         /// <param name="shouldStop">TODO delete this after migration.</param>
+        /// <param name="timeoutSeconds">timeoutSeconds.</param>
         /// <param name="userPrincipalName">userPrincipalName.</param>
         /// <param name="userTtl">userTtl.</param>
         /// <param name="venafiAllowSubdomains">venafiAllowSubdomains.</param>
@@ -144,7 +155,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string failureMessage = default(string), string fixedUserOnly = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterComputeZone = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeProjectId = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), long lastAdminRotation = default(long), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string shouldStop = default(string), string userPrincipalName = default(string), string userTtl = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterComputeZone = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeProjectId = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), long lastAdminRotation = default(long), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string payload = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), string shouldStop = default(string), long timeoutSeconds = default(long), string userPrincipalName = default(string), string userTtl = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -181,6 +192,7 @@ namespace akeyless.Model
             this.ChefServerUrl = chefServerUrl;
             this.ChefServerUsername = chefServerUsername;
             this.ChefSkipSsl = chefSkipSsl;
+            this.CreateSyncUrl = createSyncUrl;
             this.DbHostName = dbHostName;
             this.DbIsolationLevel = dbIsolationLevel;
             this.DbMaxIdleConns = dbMaxIdleConns;
@@ -205,6 +217,12 @@ namespace akeyless.Model
             this.EnableAdminRotation = enableAdminRotation;
             this.FailureMessage = failureMessage;
             this.FixedUserOnly = fixedUserOnly;
+            this.GcpKeyAlgo = gcpKeyAlgo;
+            this.GcpServiceAccountEmail = gcpServiceAccountEmail;
+            this.GcpServiceAccountKey = gcpServiceAccountKey;
+            this.GcpTokenLifetime = gcpTokenLifetime;
+            this.GcpTokenScope = gcpTokenScope;
+            this.GcpTokenType = gcpTokenType;
             this.GkeClusterCaCertificate = gkeClusterCaCertificate;
             this.GkeClusterComputeZone = gkeClusterComputeZone;
             this.GkeClusterEndpoint = gkeClusterEndpoint;
@@ -231,6 +249,7 @@ namespace akeyless.Model
             this.MssqlCreationStatements = mssqlCreationStatements;
             this.MssqlRevocationStatements = mssqlRevocationStatements;
             this.MysqlCreationStatements = mysqlCreationStatements;
+            this.Payload = payload;
             this.PostgresCreationStatements = postgresCreationStatements;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
@@ -240,7 +259,10 @@ namespace akeyless.Model
             this.RabbitmqUserTags = rabbitmqUserTags;
             this.RabbitmqUserVhost = rabbitmqUserVhost;
             this.RabbitmqUserWritePermission = rabbitmqUserWritePermission;
+            this.RevokeSyncUrl = revokeSyncUrl;
+            this.RotateSyncUrl = rotateSyncUrl;
             this.ShouldStop = shouldStop;
+            this.TimeoutSeconds = timeoutSeconds;
             this.UserPrincipalName = userPrincipalName;
             this.UserTtl = userTtl;
             this.VenafiAllowSubdomains = venafiAllowSubdomains;
@@ -469,6 +491,12 @@ namespace akeyless.Model
         public bool ChefSkipSsl { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreateSyncUrl
+        /// </summary>
+        [DataMember(Name="create_sync_url", EmitDefaultValue=false)]
+        public string CreateSyncUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets DbHostName
         /// </summary>
         [DataMember(Name="db_host_name", EmitDefaultValue=false)]
@@ -613,6 +641,42 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="fixed_user_only", EmitDefaultValue=false)]
         public string FixedUserOnly { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpKeyAlgo
+        /// </summary>
+        [DataMember(Name="gcp_key_algo", EmitDefaultValue=false)]
+        public string GcpKeyAlgo { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpServiceAccountEmail
+        /// </summary>
+        [DataMember(Name="gcp_service_account_email", EmitDefaultValue=false)]
+        public string GcpServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpServiceAccountKey
+        /// </summary>
+        [DataMember(Name="gcp_service_account_key", EmitDefaultValue=false)]
+        public List<int> GcpServiceAccountKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpTokenLifetime
+        /// </summary>
+        [DataMember(Name="gcp_token_lifetime", EmitDefaultValue=false)]
+        public string GcpTokenLifetime { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpTokenScope
+        /// </summary>
+        [DataMember(Name="gcp_token_scope", EmitDefaultValue=false)]
+        public string GcpTokenScope { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpTokenType
+        /// </summary>
+        [DataMember(Name="gcp_token_type", EmitDefaultValue=false)]
+        public string GcpTokenType { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeClusterCaCertificate
@@ -774,6 +838,12 @@ namespace akeyless.Model
         public string MysqlCreationStatements { get; set; }
 
         /// <summary>
+        /// Gets or Sets Payload
+        /// </summary>
+        [DataMember(Name="payload", EmitDefaultValue=false)]
+        public string Payload { get; set; }
+
+        /// <summary>
         /// Gets or Sets PostgresCreationStatements
         /// </summary>
         [DataMember(Name="postgres_creation_statements", EmitDefaultValue=false)]
@@ -828,11 +898,29 @@ namespace akeyless.Model
         public string RabbitmqUserWritePermission { get; set; }
 
         /// <summary>
+        /// Gets or Sets RevokeSyncUrl
+        /// </summary>
+        [DataMember(Name="revoke_sync_url", EmitDefaultValue=false)]
+        public string RevokeSyncUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RotateSyncUrl
+        /// </summary>
+        [DataMember(Name="rotate_sync_url", EmitDefaultValue=false)]
+        public string RotateSyncUrl { get; set; }
+
+        /// <summary>
         /// TODO delete this after migration
         /// </summary>
         /// <value>TODO delete this after migration</value>
         [DataMember(Name="should_stop", EmitDefaultValue=false)]
         public string ShouldStop { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TimeoutSeconds
+        /// </summary>
+        [DataMember(Name="timeout_seconds", EmitDefaultValue=false)]
+        public long TimeoutSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets UserPrincipalName
@@ -967,6 +1055,7 @@ namespace akeyless.Model
             sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
             sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
             sb.Append("  ChefSkipSsl: ").Append(ChefSkipSsl).Append("\n");
+            sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
             sb.Append("  DbHostName: ").Append(DbHostName).Append("\n");
             sb.Append("  DbIsolationLevel: ").Append(DbIsolationLevel).Append("\n");
             sb.Append("  DbMaxIdleConns: ").Append(DbMaxIdleConns).Append("\n");
@@ -991,6 +1080,12 @@ namespace akeyless.Model
             sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
+            sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
+            sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
+            sb.Append("  GcpServiceAccountKey: ").Append(GcpServiceAccountKey).Append("\n");
+            sb.Append("  GcpTokenLifetime: ").Append(GcpTokenLifetime).Append("\n");
+            sb.Append("  GcpTokenScope: ").Append(GcpTokenScope).Append("\n");
+            sb.Append("  GcpTokenType: ").Append(GcpTokenType).Append("\n");
             sb.Append("  GkeClusterCaCertificate: ").Append(GkeClusterCaCertificate).Append("\n");
             sb.Append("  GkeClusterComputeZone: ").Append(GkeClusterComputeZone).Append("\n");
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
@@ -1017,6 +1112,7 @@ namespace akeyless.Model
             sb.Append("  MssqlCreationStatements: ").Append(MssqlCreationStatements).Append("\n");
             sb.Append("  MssqlRevocationStatements: ").Append(MssqlRevocationStatements).Append("\n");
             sb.Append("  MysqlCreationStatements: ").Append(MysqlCreationStatements).Append("\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  PostgresCreationStatements: ").Append(PostgresCreationStatements).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
@@ -1026,7 +1122,10 @@ namespace akeyless.Model
             sb.Append("  RabbitmqUserTags: ").Append(RabbitmqUserTags).Append("\n");
             sb.Append("  RabbitmqUserVhost: ").Append(RabbitmqUserVhost).Append("\n");
             sb.Append("  RabbitmqUserWritePermission: ").Append(RabbitmqUserWritePermission).Append("\n");
+            sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
+            sb.Append("  RotateSyncUrl: ").Append(RotateSyncUrl).Append("\n");
             sb.Append("  ShouldStop: ").Append(ShouldStop).Append("\n");
+            sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("  UserPrincipalName: ").Append(UserPrincipalName).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("  VenafiAllowSubdomains: ").Append(VenafiAllowSubdomains).Append("\n");
@@ -1245,6 +1344,11 @@ namespace akeyless.Model
                     this.ChefSkipSsl.Equals(input.ChefSkipSsl)
                 ) && 
                 (
+                    this.CreateSyncUrl == input.CreateSyncUrl ||
+                    (this.CreateSyncUrl != null &&
+                    this.CreateSyncUrl.Equals(input.CreateSyncUrl))
+                ) && 
+                (
                     this.DbHostName == input.DbHostName ||
                     (this.DbHostName != null &&
                     this.DbHostName.Equals(input.DbHostName))
@@ -1361,6 +1465,37 @@ namespace akeyless.Model
                     this.FixedUserOnly == input.FixedUserOnly ||
                     (this.FixedUserOnly != null &&
                     this.FixedUserOnly.Equals(input.FixedUserOnly))
+                ) && 
+                (
+                    this.GcpKeyAlgo == input.GcpKeyAlgo ||
+                    (this.GcpKeyAlgo != null &&
+                    this.GcpKeyAlgo.Equals(input.GcpKeyAlgo))
+                ) && 
+                (
+                    this.GcpServiceAccountEmail == input.GcpServiceAccountEmail ||
+                    (this.GcpServiceAccountEmail != null &&
+                    this.GcpServiceAccountEmail.Equals(input.GcpServiceAccountEmail))
+                ) && 
+                (
+                    this.GcpServiceAccountKey == input.GcpServiceAccountKey ||
+                    this.GcpServiceAccountKey != null &&
+                    input.GcpServiceAccountKey != null &&
+                    this.GcpServiceAccountKey.SequenceEqual(input.GcpServiceAccountKey)
+                ) && 
+                (
+                    this.GcpTokenLifetime == input.GcpTokenLifetime ||
+                    (this.GcpTokenLifetime != null &&
+                    this.GcpTokenLifetime.Equals(input.GcpTokenLifetime))
+                ) && 
+                (
+                    this.GcpTokenScope == input.GcpTokenScope ||
+                    (this.GcpTokenScope != null &&
+                    this.GcpTokenScope.Equals(input.GcpTokenScope))
+                ) && 
+                (
+                    this.GcpTokenType == input.GcpTokenType ||
+                    (this.GcpTokenType != null &&
+                    this.GcpTokenType.Equals(input.GcpTokenType))
                 ) && 
                 (
                     this.GkeClusterCaCertificate == input.GkeClusterCaCertificate ||
@@ -1491,6 +1626,11 @@ namespace akeyless.Model
                     this.MysqlCreationStatements.Equals(input.MysqlCreationStatements))
                 ) && 
                 (
+                    this.Payload == input.Payload ||
+                    (this.Payload != null &&
+                    this.Payload.Equals(input.Payload))
+                ) && 
+                (
                     this.PostgresCreationStatements == input.PostgresCreationStatements ||
                     (this.PostgresCreationStatements != null &&
                     this.PostgresCreationStatements.Equals(input.PostgresCreationStatements))
@@ -1536,9 +1676,23 @@ namespace akeyless.Model
                     this.RabbitmqUserWritePermission.Equals(input.RabbitmqUserWritePermission))
                 ) && 
                 (
+                    this.RevokeSyncUrl == input.RevokeSyncUrl ||
+                    (this.RevokeSyncUrl != null &&
+                    this.RevokeSyncUrl.Equals(input.RevokeSyncUrl))
+                ) && 
+                (
+                    this.RotateSyncUrl == input.RotateSyncUrl ||
+                    (this.RotateSyncUrl != null &&
+                    this.RotateSyncUrl.Equals(input.RotateSyncUrl))
+                ) && 
+                (
                     this.ShouldStop == input.ShouldStop ||
                     (this.ShouldStop != null &&
                     this.ShouldStop.Equals(input.ShouldStop))
+                ) && 
+                (
+                    this.TimeoutSeconds == input.TimeoutSeconds ||
+                    this.TimeoutSeconds.Equals(input.TimeoutSeconds)
                 ) && 
                 (
                     this.UserPrincipalName == input.UserPrincipalName ||
@@ -1685,6 +1839,8 @@ namespace akeyless.Model
                 if (this.ChefServerUsername != null)
                     hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
                 hashCode = hashCode * 59 + this.ChefSkipSsl.GetHashCode();
+                if (this.CreateSyncUrl != null)
+                    hashCode = hashCode * 59 + this.CreateSyncUrl.GetHashCode();
                 if (this.DbHostName != null)
                     hashCode = hashCode * 59 + this.DbHostName.GetHashCode();
                 if (this.DbIsolationLevel != null)
@@ -1731,6 +1887,18 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
                 if (this.FixedUserOnly != null)
                     hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
+                if (this.GcpKeyAlgo != null)
+                    hashCode = hashCode * 59 + this.GcpKeyAlgo.GetHashCode();
+                if (this.GcpServiceAccountEmail != null)
+                    hashCode = hashCode * 59 + this.GcpServiceAccountEmail.GetHashCode();
+                if (this.GcpServiceAccountKey != null)
+                    hashCode = hashCode * 59 + this.GcpServiceAccountKey.GetHashCode();
+                if (this.GcpTokenLifetime != null)
+                    hashCode = hashCode * 59 + this.GcpTokenLifetime.GetHashCode();
+                if (this.GcpTokenScope != null)
+                    hashCode = hashCode * 59 + this.GcpTokenScope.GetHashCode();
+                if (this.GcpTokenType != null)
+                    hashCode = hashCode * 59 + this.GcpTokenType.GetHashCode();
                 if (this.GkeClusterCaCertificate != null)
                     hashCode = hashCode * 59 + this.GkeClusterCaCertificate.GetHashCode();
                 if (this.GkeClusterComputeZone != null)
@@ -1781,6 +1949,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MssqlRevocationStatements.GetHashCode();
                 if (this.MysqlCreationStatements != null)
                     hashCode = hashCode * 59 + this.MysqlCreationStatements.GetHashCode();
+                if (this.Payload != null)
+                    hashCode = hashCode * 59 + this.Payload.GetHashCode();
                 if (this.PostgresCreationStatements != null)
                     hashCode = hashCode * 59 + this.PostgresCreationStatements.GetHashCode();
                 if (this.RabbitmqServerPassword != null)
@@ -1799,8 +1969,13 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RabbitmqUserVhost.GetHashCode();
                 if (this.RabbitmqUserWritePermission != null)
                     hashCode = hashCode * 59 + this.RabbitmqUserWritePermission.GetHashCode();
+                if (this.RevokeSyncUrl != null)
+                    hashCode = hashCode * 59 + this.RevokeSyncUrl.GetHashCode();
+                if (this.RotateSyncUrl != null)
+                    hashCode = hashCode * 59 + this.RotateSyncUrl.GetHashCode();
                 if (this.ShouldStop != null)
                     hashCode = hashCode * 59 + this.ShouldStop.GetHashCode();
+                hashCode = hashCode * 59 + this.TimeoutSeconds.GetHashCode();
                 if (this.UserPrincipalName != null)
                     hashCode = hashCode * 59 + this.UserPrincipalName.GetHashCode();
                 if (this.UserTtl != null)

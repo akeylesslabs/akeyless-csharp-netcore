@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Target name | 
+**NewVersion** | **bool** | Whether to create a new version of not | [optional] [default to false]
 **ProtectionKey** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **RabbitmqServerPassword** | **string** |  | [optional] 
 **RabbitmqServerUri** | **string** |  | [optional] 

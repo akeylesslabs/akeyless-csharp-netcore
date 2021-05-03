@@ -39,41 +39,29 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRdpTarget" /> class.
         /// </summary>
-        /// <param name="adminName">adminName.</param>
-        /// <param name="adminPwd">adminPwd.</param>
         /// <param name="comment">Comment about the target.</param>
-        /// <param name="hostName">hostName.</param>
-        /// <param name="hostPort">hostPort.</param>
+        /// <param name="host">host.</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="pass">pass.</param>
+        /// <param name="port">port.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateRdpTarget(string adminName = default(string), string adminPwd = default(string), string comment = default(string), string hostName = default(string), string hostPort = default(string), string name = default(string), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="user">user.</param>
+        public CreateRdpTarget(string comment = default(string), string host = default(string), string name = default(string), string pass = default(string), string port = default(string), string protectionKey = default(string), string token = default(string), string uidToken = default(string), string user = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateRdpTarget and cannot be null");
-            this.AdminName = adminName;
-            this.AdminPwd = adminPwd;
             this.Comment = comment;
-            this.HostName = hostName;
-            this.HostPort = hostPort;
+            this.Host = host;
+            this.Pass = pass;
+            this.Port = port;
             this.ProtectionKey = protectionKey;
             this.Token = token;
             this.UidToken = uidToken;
+            this.User = user;
         }
         
-        /// <summary>
-        /// Gets or Sets AdminName
-        /// </summary>
-        [DataMember(Name="admin_name", EmitDefaultValue=false)]
-        public string AdminName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdminPwd
-        /// </summary>
-        [DataMember(Name="admin_pwd", EmitDefaultValue=false)]
-        public string AdminPwd { get; set; }
-
         /// <summary>
         /// Comment about the target
         /// </summary>
@@ -82,16 +70,10 @@ namespace akeyless.Model
         public string Comment { get; set; }
 
         /// <summary>
-        /// Gets or Sets HostName
+        /// Gets or Sets Host
         /// </summary>
-        [DataMember(Name="host_name", EmitDefaultValue=false)]
-        public string HostName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HostPort
-        /// </summary>
-        [DataMember(Name="host_port", EmitDefaultValue=false)]
-        public string HostPort { get; set; }
+        [DataMember(Name="host", EmitDefaultValue=false)]
+        public string Host { get; set; }
 
         /// <summary>
         /// Target name
@@ -99,6 +81,18 @@ namespace akeyless.Model
         /// <value>Target name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Pass
+        /// </summary>
+        [DataMember(Name="pass", EmitDefaultValue=false)]
+        public string Pass { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Port
+        /// </summary>
+        [DataMember(Name="port", EmitDefaultValue=false)]
+        public string Port { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -122,6 +116,12 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Gets or Sets User
+        /// </summary>
+        [DataMember(Name="user", EmitDefaultValue=false)]
+        public string User { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -129,15 +129,15 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateRdpTarget {\n");
-            sb.Append("  AdminName: ").Append(AdminName).Append("\n");
-            sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
-            sb.Append("  HostName: ").Append(HostName).Append("\n");
-            sb.Append("  HostPort: ").Append(HostPort).Append("\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Pass: ").Append(Pass).Append("\n");
+            sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -173,34 +173,29 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.AdminName == input.AdminName ||
-                    (this.AdminName != null &&
-                    this.AdminName.Equals(input.AdminName))
-                ) && 
-                (
-                    this.AdminPwd == input.AdminPwd ||
-                    (this.AdminPwd != null &&
-                    this.AdminPwd.Equals(input.AdminPwd))
-                ) && 
-                (
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
-                    this.HostName == input.HostName ||
-                    (this.HostName != null &&
-                    this.HostName.Equals(input.HostName))
-                ) && 
-                (
-                    this.HostPort == input.HostPort ||
-                    (this.HostPort != null &&
-                    this.HostPort.Equals(input.HostPort))
+                    this.Host == input.Host ||
+                    (this.Host != null &&
+                    this.Host.Equals(input.Host))
                 ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Pass == input.Pass ||
+                    (this.Pass != null &&
+                    this.Pass.Equals(input.Pass))
+                ) && 
+                (
+                    this.Port == input.Port ||
+                    (this.Port != null &&
+                    this.Port.Equals(input.Port))
                 ) && 
                 (
                     this.ProtectionKey == input.ProtectionKey ||
@@ -216,6 +211,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.User == input.User ||
+                    (this.User != null &&
+                    this.User.Equals(input.User))
                 );
         }
 
@@ -228,24 +228,24 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AdminName != null)
-                    hashCode = hashCode * 59 + this.AdminName.GetHashCode();
-                if (this.AdminPwd != null)
-                    hashCode = hashCode * 59 + this.AdminPwd.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                if (this.HostName != null)
-                    hashCode = hashCode * 59 + this.HostName.GetHashCode();
-                if (this.HostPort != null)
-                    hashCode = hashCode * 59 + this.HostPort.GetHashCode();
+                if (this.Host != null)
+                    hashCode = hashCode * 59 + this.Host.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Pass != null)
+                    hashCode = hashCode * 59 + this.Pass.GetHashCode();
+                if (this.Port != null)
+                    hashCode = hashCode * 59 + this.Port.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.User != null)
+                    hashCode = hashCode * 59 + this.User.GetHashCode();
                 return hashCode;
             }
         }

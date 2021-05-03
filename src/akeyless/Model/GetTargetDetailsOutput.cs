@@ -34,16 +34,24 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTargetDetailsOutput" /> class.
         /// </summary>
+        /// <param name="target">target.</param>
         /// <param name="value">value.</param>
-        public GetTargetDetailsOutput(TargetTypeDetailesInput value = default(TargetTypeDetailesInput))
+        public GetTargetDetailsOutput(Target target = default(Target), TargetTypeDetailesInput value = default(TargetTypeDetailesInput))
         {
+            this.Target = target;
             this.Value = value;
         }
         
         /// <summary>
+        /// Gets or Sets Target
+        /// </summary>
+        [DataMember(Name="target", EmitDefaultValue=false)]
+        public Target Target { get; set; }
+
+        /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="Value", EmitDefaultValue=false)]
+        [DataMember(Name="value", EmitDefaultValue=false)]
         public TargetTypeDetailesInput Value { get; set; }
 
         /// <summary>
@@ -54,6 +62,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetTargetDetailsOutput {\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -90,6 +99,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Target == input.Target ||
+                    (this.Target != null &&
+                    this.Target.Equals(input.Target))
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
@@ -105,6 +119,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Target != null)
+                    hashCode = hashCode * 59 + this.Target.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;

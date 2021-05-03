@@ -39,14 +39,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
-        /// <param name="itemName">The item to associate (required).</param>
+        /// <param name="name">The item to associate (required).</param>
         /// <param name="targetName">The target to associate (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AssocTargetItem(string itemName = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public AssocTargetItem(string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
-            // to ensure "itemName" is required (not null)
-            this.ItemName = itemName ?? throw new ArgumentNullException("itemName is a required property for AssocTargetItem and cannot be null");
+            // to ensure "name" is required (not null)
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for AssocTargetItem and cannot be null");
             // to ensure "targetName" is required (not null)
             this.TargetName = targetName ?? throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             this.Token = token;
@@ -57,8 +57,8 @@ namespace akeyless.Model
         /// The item to associate
         /// </summary>
         /// <value>The item to associate</value>
-        [DataMember(Name="item-name", EmitDefaultValue=false)]
-        public string ItemName { get; set; }
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// The target to associate
@@ -89,7 +89,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
-            sb.Append("  ItemName: ").Append(ItemName).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -128,9 +128,9 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.ItemName == input.ItemName ||
-                    (this.ItemName != null &&
-                    this.ItemName.Equals(input.ItemName))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.TargetName == input.TargetName ||
@@ -158,8 +158,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ItemName != null)
-                    hashCode = hashCode * 59 + this.ItemName.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)

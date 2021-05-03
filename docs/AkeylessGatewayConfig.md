@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **LogForwarding** | [**LogForwardingConfigPart**](LogForwardingConfigPart.md) |  | [optional] 
 **Migrations** | [**MigrationsConfigPart**](MigrationsConfigPart.md) |  | [optional] 
 **Producers** | [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
+**Rotators** | [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
 **Saml** | [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
 **Uidentity** | [**UIdentityConfigPart**](UIdentityConfigPart.md) |  | [optional] 
 **Version** | **int** |  | [optional] 

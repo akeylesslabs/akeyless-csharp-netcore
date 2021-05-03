@@ -39,23 +39,41 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteTarget" /> class.
         /// </summary>
+        /// <param name="enforceDeletion">Enforce deletion (default to false).</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="targetVersion">Target version.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteTarget(string name = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteTarget(bool enforceDeletion = false, string name = default(string), int targetVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for DeleteTarget and cannot be null");
+            this.EnforceDeletion = enforceDeletion;
+            this.TargetVersion = targetVersion;
             this.Token = token;
             this.UidToken = uidToken;
         }
         
+        /// <summary>
+        /// Enforce deletion
+        /// </summary>
+        /// <value>Enforce deletion</value>
+        [DataMember(Name="enforce-deletion", EmitDefaultValue=false)]
+        public bool EnforceDeletion { get; set; }
+
         /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Target version
+        /// </summary>
+        /// <value>Target version</value>
+        [DataMember(Name="target-version", EmitDefaultValue=false)]
+        public int TargetVersion { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -79,7 +97,9 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DeleteTarget {\n");
+            sb.Append("  EnforceDeletion: ").Append(EnforceDeletion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  TargetVersion: ").Append(TargetVersion).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -117,9 +137,17 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.EnforceDeletion == input.EnforceDeletion ||
+                    this.EnforceDeletion.Equals(input.EnforceDeletion)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.TargetVersion == input.TargetVersion ||
+                    this.TargetVersion.Equals(input.TargetVersion)
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -142,8 +170,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.EnforceDeletion.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.TargetVersion.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

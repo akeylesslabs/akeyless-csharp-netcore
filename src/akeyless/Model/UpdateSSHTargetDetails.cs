@@ -39,28 +39,38 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSSHTargetDetails" /> class.
         /// </summary>
-        /// <param name="ip">ip.</param>
+        /// <param name="host">host.</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
         /// <param name="port">port.</param>
+        /// <param name="privateKey">privateKey.</param>
+        /// <param name="privateKeyPassword">privateKeyPassword.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="sshPassword">sshPassword.</param>
+        /// <param name="sshUsername">sshUsername.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHTargetDetails(List<string> ip = default(List<string>), string name = default(string), string port = default(string), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateSSHTargetDetails(string host = default(string), string name = default(string), bool newVersion = false, string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string protectionKey = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateSSHTargetDetails and cannot be null");
-            this.Ip = ip;
+            this.Host = host;
+            this.NewVersion = newVersion;
             this.Port = port;
+            this.PrivateKey = privateKey;
+            this.PrivateKeyPassword = privateKeyPassword;
             this.ProtectionKey = protectionKey;
+            this.SshPassword = sshPassword;
+            this.SshUsername = sshUsername;
             this.Token = token;
             this.UidToken = uidToken;
         }
         
         /// <summary>
-        /// Gets or Sets Ip
+        /// Gets or Sets Host
         /// </summary>
-        [DataMember(Name="ip", EmitDefaultValue=false)]
-        public List<string> Ip { get; set; }
+        [DataMember(Name="host", EmitDefaultValue=false)]
+        public string Host { get; set; }
 
         /// <summary>
         /// Target name
@@ -70,10 +80,29 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Whether to create a new version of not
+        /// </summary>
+        /// <value>Whether to create a new version of not</value>
+        [DataMember(Name="new-version", EmitDefaultValue=false)]
+        public bool NewVersion { get; set; }
+
+        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name="port", EmitDefaultValue=false)]
         public string Port { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivateKey
+        /// </summary>
+        [DataMember(Name="private-key", EmitDefaultValue=false)]
+        public string PrivateKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivateKeyPassword
+        /// </summary>
+        [DataMember(Name="private-key-password", EmitDefaultValue=false)]
+        public string PrivateKeyPassword { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -81,6 +110,18 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name="protection_key", EmitDefaultValue=false)]
         public string ProtectionKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SshPassword
+        /// </summary>
+        [DataMember(Name="ssh-password", EmitDefaultValue=false)]
+        public string SshPassword { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SshUsername
+        /// </summary>
+        [DataMember(Name="ssh-username", EmitDefaultValue=false)]
+        public string SshUsername { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -104,10 +145,15 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UpdateSSHTargetDetails {\n");
-            sb.Append("  Ip: ").Append(Ip).Append("\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
+            sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
+            sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
+            sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
+            sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -145,10 +191,9 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.Ip == input.Ip ||
-                    this.Ip != null &&
-                    input.Ip != null &&
-                    this.Ip.SequenceEqual(input.Ip)
+                    this.Host == input.Host ||
+                    (this.Host != null &&
+                    this.Host.Equals(input.Host))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -156,14 +201,38 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.NewVersion == input.NewVersion ||
+                    this.NewVersion.Equals(input.NewVersion)
+                ) && 
+                (
                     this.Port == input.Port ||
                     (this.Port != null &&
                     this.Port.Equals(input.Port))
                 ) && 
                 (
+                    this.PrivateKey == input.PrivateKey ||
+                    (this.PrivateKey != null &&
+                    this.PrivateKey.Equals(input.PrivateKey))
+                ) && 
+                (
+                    this.PrivateKeyPassword == input.PrivateKeyPassword ||
+                    (this.PrivateKeyPassword != null &&
+                    this.PrivateKeyPassword.Equals(input.PrivateKeyPassword))
+                ) && 
+                (
                     this.ProtectionKey == input.ProtectionKey ||
                     (this.ProtectionKey != null &&
                     this.ProtectionKey.Equals(input.ProtectionKey))
+                ) && 
+                (
+                    this.SshPassword == input.SshPassword ||
+                    (this.SshPassword != null &&
+                    this.SshPassword.Equals(input.SshPassword))
+                ) && 
+                (
+                    this.SshUsername == input.SshUsername ||
+                    (this.SshUsername != null &&
+                    this.SshUsername.Equals(input.SshUsername))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -186,14 +255,23 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Ip != null)
-                    hashCode = hashCode * 59 + this.Ip.GetHashCode();
+                if (this.Host != null)
+                    hashCode = hashCode * 59 + this.Host.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
+                if (this.PrivateKey != null)
+                    hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
+                if (this.PrivateKeyPassword != null)
+                    hashCode = hashCode * 59 + this.PrivateKeyPassword.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                if (this.SshPassword != null)
+                    hashCode = hashCode * 59 + this.SshPassword.GetHashCode();
+                if (this.SshUsername != null)
+                    hashCode = hashCode * 59 + this.SshUsername.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
