@@ -34,17 +34,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminsConfigPart" /> class.
         /// </summary>
-        /// <param name="admins">admins.</param>
-        public AdminsConfigPart(List<string> admins = default(List<string>))
+        /// <param name="allowedAccess">allowedAccess.</param>
+        public AdminsConfigPart(Dictionary<string, AllowedAccess> allowedAccess = default(Dictionary<string, AllowedAccess>))
         {
-            this.Admins = admins;
+            this.AllowedAccess = allowedAccess;
         }
         
         /// <summary>
-        /// Gets or Sets Admins
+        /// Gets or Sets AllowedAccess
         /// </summary>
-        [DataMember(Name="admins", EmitDefaultValue=false)]
-        public List<string> Admins { get; set; }
+        [DataMember(Name="allowed_access", EmitDefaultValue=false)]
+        public Dictionary<string, AllowedAccess> AllowedAccess { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,7 +54,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AdminsConfigPart {\n");
-            sb.Append("  Admins: ").Append(Admins).Append("\n");
+            sb.Append("  AllowedAccess: ").Append(AllowedAccess).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -90,10 +90,10 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.Admins == input.Admins ||
-                    this.Admins != null &&
-                    input.Admins != null &&
-                    this.Admins.SequenceEqual(input.Admins)
+                    this.AllowedAccess == input.AllowedAccess ||
+                    this.AllowedAccess != null &&
+                    input.AllowedAccess != null &&
+                    this.AllowedAccess.SequenceEqual(input.AllowedAccess)
                 );
         }
 
@@ -106,8 +106,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Admins != null)
-                    hashCode = hashCode * 59 + this.Admins.GetHashCode();
+                if (this.AllowedAccess != null)
+                    hashCode = hashCode * 59 + this.AllowedAccess.GetHashCode();
                 return hashCode;
             }
         }

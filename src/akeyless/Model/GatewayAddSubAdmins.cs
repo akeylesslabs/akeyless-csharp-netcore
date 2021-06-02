@@ -39,20 +39,42 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayAddSubAdmins" /> class.
         /// </summary>
+        /// <param name="allowGwApi">allowGwApi.</param>
+        /// <param name="allowGwLogin">allowGwLogin.</param>
         /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
-        /// <param name="subAdmin">SubAdmins to add (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="subAdminAccessId">SubAdmins to add (required).</param>
+        /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayAddSubAdmins(string gatewayUrl = "http://localhost:8000", List<string> subAdmin = default(List<string>), string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public GatewayAddSubAdmins(bool allowGwApi = default(bool), bool allowGwLogin = default(bool), string gatewayUrl = "http://localhost:8000", string password = default(string), string subAdminAccessId = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string username = default(string))
         {
-            // to ensure "subAdmin" is required (not null)
-            this.SubAdmin = subAdmin ?? throw new ArgumentNullException("subAdmin is a required property for GatewayAddSubAdmins and cannot be null");
+            // to ensure "subAdminAccessId" is required (not null)
+            this.SubAdminAccessId = subAdminAccessId ?? throw new ArgumentNullException("subAdminAccessId is a required property for GatewayAddSubAdmins and cannot be null");
+            this.AllowGwApi = allowGwApi;
+            this.AllowGwLogin = allowGwLogin;
             // use default value if no "gatewayUrl" provided
             this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
+            this.Password = password;
+            this.SubClaims = subClaims;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
+        /// <summary>
+        /// Gets or Sets AllowGwApi
+        /// </summary>
+        [DataMember(Name="allow-gw-api", EmitDefaultValue=false)]
+        public bool AllowGwApi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowGwLogin
+        /// </summary>
+        [DataMember(Name="allow-gw-login", EmitDefaultValue=false)]
+        public bool AllowGwLogin { get; set; }
+
         /// <summary>
         /// Gateway url
         /// </summary>
@@ -61,11 +83,25 @@ namespace akeyless.Model
         public string GatewayUrl { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// SubAdmins to add
         /// </summary>
         /// <value>SubAdmins to add</value>
-        [DataMember(Name="sub-admin", EmitDefaultValue=false)]
-        public List<string> SubAdmin { get; set; }
+        [DataMember(Name="sub-admin-access-id", EmitDefaultValue=false)]
+        public string SubAdminAccessId { get; set; }
+
+        /// <summary>
+        /// key/val of sub claims, e.g group&#x3D;admins,developers
+        /// </summary>
+        /// <value>key/val of sub claims, e.g group&#x3D;admins,developers</value>
+        [DataMember(Name="sub-claims", EmitDefaultValue=false)]
+        public Dictionary<string, string> SubClaims { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -82,6 +118,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -89,10 +132,15 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayAddSubAdmins {\n");
+            sb.Append("  AllowGwApi: ").Append(AllowGwApi).Append("\n");
+            sb.Append("  AllowGwLogin: ").Append(AllowGwLogin).Append("\n");
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
-            sb.Append("  SubAdmin: ").Append(SubAdmin).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  SubAdminAccessId: ").Append(SubAdminAccessId).Append("\n");
+            sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -128,15 +176,33 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AllowGwApi == input.AllowGwApi ||
+                    this.AllowGwApi.Equals(input.AllowGwApi)
+                ) && 
+                (
+                    this.AllowGwLogin == input.AllowGwLogin ||
+                    this.AllowGwLogin.Equals(input.AllowGwLogin)
+                ) && 
+                (
                     this.GatewayUrl == input.GatewayUrl ||
                     (this.GatewayUrl != null &&
                     this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
-                    this.SubAdmin == input.SubAdmin ||
-                    this.SubAdmin != null &&
-                    input.SubAdmin != null &&
-                    this.SubAdmin.SequenceEqual(input.SubAdmin)
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.SubAdminAccessId == input.SubAdminAccessId ||
+                    (this.SubAdminAccessId != null &&
+                    this.SubAdminAccessId.Equals(input.SubAdminAccessId))
+                ) && 
+                (
+                    this.SubClaims == input.SubClaims ||
+                    this.SubClaims != null &&
+                    input.SubClaims != null &&
+                    this.SubClaims.SequenceEqual(input.SubClaims)
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -147,6 +213,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -159,14 +230,22 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.AllowGwApi.GetHashCode();
+                hashCode = hashCode * 59 + this.AllowGwLogin.GetHashCode();
                 if (this.GatewayUrl != null)
                     hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
-                if (this.SubAdmin != null)
-                    hashCode = hashCode * 59 + this.SubAdmin.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.SubAdminAccessId != null)
+                    hashCode = hashCode * 59 + this.SubAdminAccessId.GetHashCode();
+                if (this.SubClaims != null)
+                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

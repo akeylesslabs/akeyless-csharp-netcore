@@ -42,11 +42,13 @@ namespace akeyless.Model
         /// <param name="gatewayUrl">Gateway url.</param>
         /// <param name="host">Host.</param>
         /// <param name="name">Producer Name (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="softDelete">Soft Delete.</param>
         /// <param name="tmpCredsId">Tmp Creds ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayRevokeTmpUsers(string gatewayUrl = default(string), string host = default(string), string name = default(string), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public GatewayRevokeTmpUsers(string gatewayUrl = default(string), string host = default(string), string name = default(string), string password = default(string), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayRevokeTmpUsers and cannot be null");
@@ -54,9 +56,11 @@ namespace akeyless.Model
             this.TmpCredsId = tmpCredsId ?? throw new ArgumentNullException("tmpCredsId is a required property for GatewayRevokeTmpUsers and cannot be null");
             this.GatewayUrl = gatewayUrl;
             this.Host = host;
+            this.Password = password;
             this.SoftDelete = softDelete;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -79,6 +83,13 @@ namespace akeyless.Model
         /// <value>Producer Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// Soft Delete
@@ -109,6 +120,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -119,10 +137,12 @@ namespace akeyless.Model
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  SoftDelete: ").Append(SoftDelete).Append("\n");
             sb.Append("  TmpCredsId: ").Append(TmpCredsId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -173,6 +193,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.SoftDelete == input.SoftDelete ||
                     this.SoftDelete.Equals(input.SoftDelete)
                 ) && 
@@ -190,6 +215,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -208,6 +238,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 hashCode = hashCode * 59 + this.SoftDelete.GetHashCode();
                 if (this.TmpCredsId != null)
                     hashCode = hashCode * 59 + this.TmpCredsId.GetHashCode();
@@ -215,6 +247,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -40,17 +40,21 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayDeleteSubAdmins" /> class.
         /// </summary>
         /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
-        /// <param name="subAdmin">SubAdmins to be removed (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="subAdminId">SubAdminID to be removed (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayDeleteSubAdmins(string gatewayUrl = "http://localhost:8000", List<string> subAdmin = default(List<string>), string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public GatewayDeleteSubAdmins(string gatewayUrl = "http://localhost:8000", string password = default(string), string subAdminId = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
-            // to ensure "subAdmin" is required (not null)
-            this.SubAdmin = subAdmin ?? throw new ArgumentNullException("subAdmin is a required property for GatewayDeleteSubAdmins and cannot be null");
+            // to ensure "subAdminId" is required (not null)
+            this.SubAdminId = subAdminId ?? throw new ArgumentNullException("subAdminId is a required property for GatewayDeleteSubAdmins and cannot be null");
             // use default value if no "gatewayUrl" provided
             this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
+            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -61,11 +65,18 @@ namespace akeyless.Model
         public string GatewayUrl { get; set; }
 
         /// <summary>
-        /// SubAdmins to be removed
+        /// Required only when the authentication process requires a username and password
         /// </summary>
-        /// <value>SubAdmins to be removed</value>
-        [DataMember(Name="sub-admin", EmitDefaultValue=false)]
-        public List<string> SubAdmin { get; set; }
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// SubAdminID to be removed
+        /// </summary>
+        /// <value>SubAdminID to be removed</value>
+        [DataMember(Name="sub-admin-id", EmitDefaultValue=false)]
+        public string SubAdminId { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -82,6 +93,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -90,9 +108,11 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayDeleteSubAdmins {\n");
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
-            sb.Append("  SubAdmin: ").Append(SubAdmin).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  SubAdminId: ").Append(SubAdminId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,10 +153,14 @@ namespace akeyless.Model
                     this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
-                    this.SubAdmin == input.SubAdmin ||
-                    this.SubAdmin != null &&
-                    input.SubAdmin != null &&
-                    this.SubAdmin.SequenceEqual(input.SubAdmin)
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.SubAdminId == input.SubAdminId ||
+                    (this.SubAdminId != null &&
+                    this.SubAdminId.Equals(input.SubAdminId))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -147,6 +171,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -161,12 +190,16 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.GatewayUrl != null)
                     hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
-                if (this.SubAdmin != null)
-                    hashCode = hashCode * 59 + this.SubAdmin.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.SubAdminId != null)
+                    hashCode = hashCode * 59 + this.SubAdminId.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

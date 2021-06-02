@@ -41,10 +41,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="keyName">The name of the RSA key to use in the verification process (required).</param>
         /// <param name="message">The message to be verified (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="signature">The message&#39;s signature (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public VerifyPKCS1(string keyName = default(string), string message = default(string), string signature = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public VerifyPKCS1(string keyName = default(string), string message = default(string), string password = default(string), string signature = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "keyName" is required (not null)
             this.KeyName = keyName ?? throw new ArgumentNullException("keyName is a required property for VerifyPKCS1 and cannot be null");
@@ -52,8 +54,10 @@ namespace akeyless.Model
             this.Message = message ?? throw new ArgumentNullException("message is a required property for VerifyPKCS1 and cannot be null");
             // to ensure "signature" is required (not null)
             this.Signature = signature ?? throw new ArgumentNullException("signature is a required property for VerifyPKCS1 and cannot be null");
+            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -69,6 +73,13 @@ namespace akeyless.Model
         /// <value>The message to be verified</value>
         [DataMember(Name="message", EmitDefaultValue=false)]
         public string Message { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// The message&#39;s signature
@@ -92,6 +103,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,9 +119,11 @@ namespace akeyless.Model
             sb.Append("class VerifyPKCS1 {\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -149,6 +169,11 @@ namespace akeyless.Model
                     this.Message.Equals(input.Message))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.Signature == input.Signature ||
                     (this.Signature != null &&
                     this.Signature.Equals(input.Signature))
@@ -162,6 +187,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -178,12 +208,16 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Message != null)
                     hashCode = hashCode * 59 + this.Message.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Signature != null)
                     hashCode = hashCode * 59 + this.Signature.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

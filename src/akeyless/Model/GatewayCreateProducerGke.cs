@@ -44,13 +44,14 @@ namespace akeyless.Model
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint (required).</param>
         /// <param name="gkeClusterName">GKE cluster name (required).</param>
         /// <param name="gkeServiceAccountEmail">GKE service account email (required).</param>
-        /// <param name="gkeServiceAccountKeyFilePath">GKE Service Account key faile path (required).</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGke(string gatewayUrl = "http://localhost:8000", string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string gkeServiceAccountKeyFilePath = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public GatewayCreateProducerGke(string gatewayUrl = "http://localhost:8000", string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "gkeClusterCert" is required (not null)
             this.GkeClusterCert = gkeClusterCert ?? throw new ArgumentNullException("gkeClusterCert is a required property for GatewayCreateProducerGke and cannot be null");
@@ -60,17 +61,17 @@ namespace akeyless.Model
             this.GkeClusterName = gkeClusterName ?? throw new ArgumentNullException("gkeClusterName is a required property for GatewayCreateProducerGke and cannot be null");
             // to ensure "gkeServiceAccountEmail" is required (not null)
             this.GkeServiceAccountEmail = gkeServiceAccountEmail ?? throw new ArgumentNullException("gkeServiceAccountEmail is a required property for GatewayCreateProducerGke and cannot be null");
-            // to ensure "gkeServiceAccountKeyFilePath" is required (not null)
-            this.GkeServiceAccountKeyFilePath = gkeServiceAccountKeyFilePath ?? throw new ArgumentNullException("gkeServiceAccountKeyFilePath is a required property for GatewayCreateProducerGke and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerGke and cannot be null");
             // use default value if no "gatewayUrl" provided
             this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
+            this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
+            this.Username = username;
         }
         
         /// <summary>
@@ -109,18 +110,18 @@ namespace akeyless.Model
         public string GkeServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// GKE Service Account key faile path
-        /// </summary>
-        /// <value>GKE Service Account key faile path</value>
-        [DataMember(Name="gke-service-account-key-file-path", EmitDefaultValue=false)]
-        public string GkeServiceAccountKeyFilePath { get; set; }
-
-        /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -151,6 +152,13 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -163,12 +171,13 @@ namespace akeyless.Model
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountEmail: ").Append(GkeServiceAccountEmail).Append("\n");
-            sb.Append("  GkeServiceAccountKeyFilePath: ").Append(GkeServiceAccountKeyFilePath).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,14 +238,14 @@ namespace akeyless.Model
                     this.GkeServiceAccountEmail.Equals(input.GkeServiceAccountEmail))
                 ) && 
                 (
-                    this.GkeServiceAccountKeyFilePath == input.GkeServiceAccountKeyFilePath ||
-                    (this.GkeServiceAccountKeyFilePath != null &&
-                    this.GkeServiceAccountKeyFilePath.Equals(input.GkeServiceAccountKeyFilePath))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -257,6 +266,11 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -279,10 +293,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
                 if (this.GkeServiceAccountEmail != null)
                     hashCode = hashCode * 59 + this.GkeServiceAccountEmail.GetHashCode();
-                if (this.GkeServiceAccountKeyFilePath != null)
-                    hashCode = hashCode * 59 + this.GkeServiceAccountKeyFilePath.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.Token != null)
@@ -291,6 +305,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

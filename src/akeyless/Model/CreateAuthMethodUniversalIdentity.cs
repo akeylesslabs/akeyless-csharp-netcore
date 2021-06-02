@@ -43,11 +43,14 @@ namespace akeyless.Model
         /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
         /// <param name="denyInheritance">Deny from root to create children.</param>
         /// <param name="denyRotate">Deny from the token to rotate.</param>
+        /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Token ttl.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), string name = default(string), string token = default(string), int ttl = default(int), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public CreateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), string name = default(string), string password = default(string), string token = default(string), int ttl = default(int), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodUniversalIdentity and cannot be null");
@@ -55,9 +58,12 @@ namespace akeyless.Model
             this.BoundIps = boundIps;
             this.DenyInheritance = denyInheritance;
             this.DenyRotate = denyRotate;
+            this.ForceSubClaims = forceSubClaims;
+            this.Password = password;
             this.Token = token;
             this.Ttl = ttl;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -89,11 +95,25 @@ namespace akeyless.Model
         public bool DenyRotate { get; set; }
 
         /// <summary>
+        /// if true: enforce role-association must include sub claims
+        /// </summary>
+        /// <value>if true: enforce role-association must include sub claims</value>
+        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
+        public bool ForceSubClaims { get; set; }
+
+        /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -117,6 +137,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -128,10 +155,13 @@ namespace akeyless.Model
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
+            sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -185,9 +215,18 @@ namespace akeyless.Model
                     this.DenyRotate.Equals(input.DenyRotate)
                 ) && 
                 (
+                    this.ForceSubClaims == input.ForceSubClaims ||
+                    this.ForceSubClaims.Equals(input.ForceSubClaims)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -202,6 +241,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -219,13 +263,18 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.DenyInheritance.GetHashCode();
                 hashCode = hashCode * 59 + this.DenyRotate.GetHashCode();
+                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

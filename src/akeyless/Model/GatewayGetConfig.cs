@@ -35,14 +35,18 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayGetConfig" /> class.
         /// </summary>
         /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayGetConfig(string gatewayUrl = "http://localhost:8000", string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public GatewayGetConfig(string gatewayUrl = "http://localhost:8000", string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // use default value if no "gatewayUrl" provided
             this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
+            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -51,6 +55,13 @@ namespace akeyless.Model
         /// <value>Gateway url</value>
         [DataMember(Name="gateway-url", EmitDefaultValue=false)]
         public string GatewayUrl { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -67,6 +78,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -75,8 +93,10 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayGetConfig {\n");
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,6 +137,11 @@ namespace akeyless.Model
                     this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -125,6 +150,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -139,10 +169,14 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.GatewayUrl != null)
                     hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -52,11 +52,13 @@ namespace akeyless.Model
         /// <param name="mongodbUriOptions">MongoDB server URI options.</param>
         /// <param name="mongodbUsername">MongoDB server username.</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Encrypt producer with following key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerMongo(string gatewayUrl = "http://localhost:8000", string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public GatewayCreateProducerMongo(string gatewayUrl = "http://localhost:8000", string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "mongodbName" is required (not null)
             this.MongodbName = mongodbName ?? throw new ArgumentNullException("mongodbName is a required property for GatewayCreateProducerMongo and cannot be null");
@@ -75,11 +77,13 @@ namespace akeyless.Model
             this.MongodbServerUri = mongodbServerUri;
             this.MongodbUriOptions = mongodbUriOptions;
             this.MongodbUsername = mongodbUsername;
+            this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
+            this.Username = username;
         }
         
         /// <summary>
@@ -174,6 +178,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// Encrypt producer with following key
         /// </summary>
         /// <value>Encrypt producer with following key</value>
@@ -202,6 +213,13 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -222,10 +240,12 @@ namespace akeyless.Model
             sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
             sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -326,6 +346,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
                     (this.ProducerEncryptionKeyName != null &&
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
@@ -344,6 +369,11 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -382,6 +412,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MongodbUsername.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.Token != null)
@@ -390,6 +422,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

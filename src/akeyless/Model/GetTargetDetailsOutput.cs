@@ -36,7 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="target">target.</param>
         /// <param name="value">value.</param>
-        public GetTargetDetailsOutput(Target target = default(Target), TargetTypeDetailesInput value = default(TargetTypeDetailesInput))
+        public GetTargetDetailsOutput(Target target = default(Target), TargetTypeDetailsInput value = default(TargetTypeDetailsInput))
         {
             this.Target = target;
             this.Value = value;
@@ -52,7 +52,7 @@ namespace akeyless.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public TargetTypeDetailesInput Value { get; set; }
+        public TargetTypeDetailsInput Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

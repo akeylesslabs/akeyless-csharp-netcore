@@ -40,19 +40,23 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AssocRoleAuthMethod" /> class.
         /// </summary>
         /// <param name="amName">The auth method to associate (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="roleName">The role to associate (required).</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AssocRoleAuthMethod(string amName = default(string), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public AssocRoleAuthMethod(string amName = default(string), string password = default(string), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "amName" is required (not null)
             this.AmName = amName ?? throw new ArgumentNullException("amName is a required property for AssocRoleAuthMethod and cannot be null");
             // to ensure "roleName" is required (not null)
             this.RoleName = roleName ?? throw new ArgumentNullException("roleName is a required property for AssocRoleAuthMethod and cannot be null");
+            this.Password = password;
             this.SubClaims = subClaims;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -61,6 +65,13 @@ namespace akeyless.Model
         /// <value>The auth method to associate</value>
         [DataMember(Name="am-name", EmitDefaultValue=false)]
         public string AmName { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// The role to associate
@@ -91,6 +102,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -99,10 +117,12 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class AssocRoleAuthMethod {\n");
             sb.Append("  AmName: ").Append(AmName).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -143,6 +163,11 @@ namespace akeyless.Model
                     this.AmName.Equals(input.AmName))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.RoleName == input.RoleName ||
                     (this.RoleName != null &&
                     this.RoleName.Equals(input.RoleName))
@@ -162,6 +187,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -176,6 +206,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AmName != null)
                     hashCode = hashCode * 59 + this.AmName.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RoleName != null)
                     hashCode = hashCode * 59 + this.RoleName.GetHashCode();
                 if (this.SubClaims != null)
@@ -184,6 +216,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

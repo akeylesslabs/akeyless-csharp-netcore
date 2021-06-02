@@ -119,6 +119,48 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateAWSTargetOutput</returns>
+        CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
+        ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo (CreateAWSTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateArtifactoryTargetOutput</returns>
+        CreateArtifactoryTargetOutput CreateArtifactoryTarget (CreateArtifactoryTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateArtifactoryTargetOutput</returns>
+        ApiResponse<CreateArtifactoryTargetOutput> CreateArtifactoryTargetWithHttpInfo (CreateArtifactoryTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAuthMethodOutput</returns>
         CreateAuthMethodOutput CreateAuthMethod (CreateAuthMethod body);
 
@@ -287,8 +329,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateAwsTarget (CreateAwsTarget body);
+        /// <returns>CreateAzureTargetOutput</returns>
+        CreateAzureTargetOutput CreateAzureTarget (CreateAzureTarget body);
 
         /// <summary>
         /// 
@@ -298,8 +340,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateAwsTargetWithHttpInfo (CreateAwsTarget body);
+        /// <returns>ApiResponse of CreateAzureTargetOutput</returns>
+        ApiResponse<CreateAzureTargetOutput> CreateAzureTargetWithHttpInfo (CreateAzureTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -308,8 +350,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateDBTarget (CreateDBTarget body);
+        /// <returns>CreateClassicKeyOutput</returns>
+        CreateClassicKeyOutput CreateClassicKey (CreateClassicKey body);
 
         /// <summary>
         /// 
@@ -319,8 +361,50 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateDBTargetWithHttpInfo (CreateDBTarget body);
+        /// <returns>ApiResponse of CreateClassicKeyOutput</returns>
+        ApiResponse<CreateClassicKeyOutput> CreateClassicKeyWithHttpInfo (CreateClassicKey body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateDBTargetOutput</returns>
+        CreateDBTargetOutput CreateDBTarget (CreateDBTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateDBTargetOutput</returns>
+        ApiResponse<CreateDBTargetOutput> CreateDBTargetWithHttpInfo (CreateDBTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateDFCKeyOutput</returns>
+        CreateDFCKeyOutput CreateDFCKey (CreateDFCKey body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateDFCKeyOutput</returns>
+        ApiResponse<CreateDFCKeyOutput> CreateDFCKeyWithHttpInfo (CreateDFCKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -350,6 +434,69 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateEKSTargetOutput</returns>
+        CreateEKSTargetOutput CreateEKSTarget (CreateEKSTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateEKSTargetOutput</returns>
+        ApiResponse<CreateEKSTargetOutput> CreateEKSTargetWithHttpInfo (CreateEKSTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateGKETargetOutput</returns>
+        CreateGKETargetOutput CreateGKETarget (CreateGKETarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateGKETargetOutput</returns>
+        ApiResponse<CreateGKETargetOutput> CreateGKETargetWithHttpInfo (CreateGKETarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateGcpTargetOutput</returns>
+        CreateGcpTargetOutput CreateGcpTarget (CreateGcpTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateGcpTargetOutput</returns>
+        ApiResponse<CreateGcpTargetOutput> CreateGcpTargetWithHttpInfo (CreateGcpTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateKeyOutput</returns>
         CreateKeyOutput CreateKey (CreateKey body);
 
@@ -363,27 +510,6 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of CreateKeyOutput</returns>
         ApiResponse<CreateKeyOutput> CreateKeyWithHttpInfo (CreateKey body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateManagedKeyOutput</returns>
-        CreateManagedKeyOutput CreateManagedKey (CreateManagedKey body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateManagedKeyOutput</returns>
-        ApiResponse<CreateManagedKeyOutput> CreateManagedKeyWithHttpInfo (CreateManagedKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -413,8 +539,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateRabbitMQTarget (CreateRabbitMQTarget body);
+        /// <returns>CreateRabbitMQTargetOutput</returns>
+        CreateRabbitMQTargetOutput CreateRabbitMQTarget (CreateRabbitMQTarget body);
 
         /// <summary>
         /// 
@@ -424,29 +550,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateRabbitMQTargetWithHttpInfo (CreateRabbitMQTarget body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateRdpTarget (CreateRdpTarget body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateRdpTargetWithHttpInfo (CreateRdpTarget body);
+        /// <returns>ApiResponse of CreateRabbitMQTargetOutput</returns>
+        ApiResponse<CreateRabbitMQTargetOutput> CreateRabbitMQTargetWithHttpInfo (CreateRabbitMQTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -518,8 +623,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateSSHTarget (CreateSSHTarget body);
+        /// <returns>CreateSSHTargetOutput</returns>
+        CreateSSHTargetOutput CreateSSHTarget (CreateSSHTarget body);
 
         /// <summary>
         /// 
@@ -529,8 +634,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateSSHTargetWithHttpInfo (CreateSSHTarget body);
+        /// <returns>ApiResponse of CreateSSHTargetOutput</returns>
+        ApiResponse<CreateSSHTargetOutput> CreateSSHTargetWithHttpInfo (CreateSSHTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -560,8 +665,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateTarget (Object body);
+        /// <returns>CreateWebTargetOutput</returns>
+        CreateWebTargetOutput CreateWebTarget (CreateWebTarget body);
 
         /// <summary>
         /// 
@@ -571,29 +676,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateTargetWithHttpInfo (Object body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        CreateTargetOutput CreateWebTarget (CreateWebTarget body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        ApiResponse<CreateTargetOutput> CreateWebTargetWithHttpInfo (CreateWebTarget body);
+        /// <returns>ApiResponse of CreateWebTargetOutput</returns>
+        ApiResponse<CreateWebTargetOutput> CreateWebTargetWithHttpInfo (CreateWebTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -959,8 +1043,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>GatewayAddSubAdminsOutput</returns>
-        GatewayAddSubAdminsOutput GatewayAddSubAdmins (GatewayAddSubAdmins body);
+        /// <returns>Object</returns>
+        Object GatewayAddSubAdmins (GatewayAddSubAdmins body);
 
         /// <summary>
         /// 
@@ -970,8 +1054,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of GatewayAddSubAdminsOutput</returns>
-        ApiResponse<GatewayAddSubAdminsOutput> GatewayAddSubAdminsWithHttpInfo (GatewayAddSubAdmins body);
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> GatewayAddSubAdminsWithHttpInfo (GatewayAddSubAdmins body);
         /// <summary>
         /// 
         /// </summary>
@@ -1274,6 +1358,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerSnowflakeOutput</returns>
+        GatewayCreateProducerSnowflakeOutput GatewayCreateProducerSnowflake (GatewayCreateProducerSnowflake body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerSnowflakeOutput</returns>
+        ApiResponse<GatewayCreateProducerSnowflakeOutput> GatewayCreateProducerSnowflakeWithHttpInfo (GatewayCreateProducerSnowflake body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayDeleteProducerOutput</returns>
         GatewayDeleteProducerOutput GatewayDeleteProducer (GatewayDeleteProducer body);
 
@@ -1295,8 +1400,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>GatewayDeleteSubAdminsOutput</returns>
-        GatewayDeleteSubAdminsOutput GatewayDeleteSubAdmins (GatewayDeleteSubAdmins body);
+        /// <returns>Object</returns>
+        Object GatewayDeleteSubAdmins (GatewayDeleteSubAdmins body);
 
         /// <summary>
         /// 
@@ -1306,8 +1411,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of GatewayDeleteSubAdminsOutput</returns>
-        ApiResponse<GatewayDeleteSubAdminsOutput> GatewayDeleteSubAdminsWithHttpInfo (GatewayDeleteSubAdmins body);
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> GatewayDeleteSubAdminsWithHttpInfo (GatewayDeleteSubAdmins body);
         /// <summary>
         /// 
         /// </summary>
@@ -1483,25 +1588,6 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GatewayUpdateItem ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GatewayUpdateItemWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
         void GatewayUpdateTmpUsers (GatewayUpdateTmpUsers body);
@@ -1605,8 +1691,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GetPKICertificateOutput</returns>
-        GetPKICertificateOutput GetPKICertificate ();
+        GetPKICertificateOutput GetPKICertificate (GetPKICertificate body);
 
         /// <summary>
         /// 
@@ -1615,8 +1702,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of GetPKICertificateOutput</returns>
-        ApiResponse<GetPKICertificateOutput> GetPKICertificateWithHttpInfo ();
+        ApiResponse<GetPKICertificateOutput> GetPKICertificateWithHttpInfo (GetPKICertificate body);
         /// <summary>
         /// 
         /// </summary>
@@ -2192,6 +2280,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Object</returns>
+        Object UpdateAssoc (UpdateAssoc body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> UpdateAssocWithHttpInfo (UpdateAssoc body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>UpdateTargetOutput</returns>
         UpdateTargetOutput UpdateDBTargetDetails (UpdateDBTargetDetails body);
 
@@ -2577,6 +2686,48 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of CreateAWSTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync (CreateAWSTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetAsyncWithHttpInfo (CreateAWSTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateArtifactoryTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateArtifactoryTargetOutput> CreateArtifactoryTargetAsync (CreateArtifactoryTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateArtifactoryTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateArtifactoryTargetOutput>> CreateArtifactoryTargetAsyncWithHttpInfo (CreateArtifactoryTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of CreateAuthMethodOutput</returns>
         System.Threading.Tasks.Task<CreateAuthMethodOutput> CreateAuthMethodAsync (CreateAuthMethod body);
 
@@ -2745,8 +2896,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateAwsTargetAsync (CreateAwsTarget body);
+        /// <returns>Task of CreateAzureTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateAzureTargetOutput> CreateAzureTargetAsync (CreateAzureTarget body);
 
         /// <summary>
         /// 
@@ -2756,8 +2907,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateAwsTargetAsyncWithHttpInfo (CreateAwsTarget body);
+        /// <returns>Task of ApiResponse (CreateAzureTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAzureTargetOutput>> CreateAzureTargetAsyncWithHttpInfo (CreateAzureTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -2766,8 +2917,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateDBTargetAsync (CreateDBTarget body);
+        /// <returns>Task of CreateClassicKeyOutput</returns>
+        System.Threading.Tasks.Task<CreateClassicKeyOutput> CreateClassicKeyAsync (CreateClassicKey body);
 
         /// <summary>
         /// 
@@ -2777,8 +2928,50 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateDBTargetAsyncWithHttpInfo (CreateDBTarget body);
+        /// <returns>Task of ApiResponse (CreateClassicKeyOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateClassicKeyOutput>> CreateClassicKeyAsyncWithHttpInfo (CreateClassicKey body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateDBTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateDBTargetOutput> CreateDBTargetAsync (CreateDBTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateDBTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDBTargetOutput>> CreateDBTargetAsyncWithHttpInfo (CreateDBTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateDFCKeyOutput</returns>
+        System.Threading.Tasks.Task<CreateDFCKeyOutput> CreateDFCKeyAsync (CreateDFCKey body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateDFCKeyOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDFCKeyOutput>> CreateDFCKeyAsyncWithHttpInfo (CreateDFCKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -2808,6 +3001,69 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of CreateEKSTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateEKSTargetOutput> CreateEKSTargetAsync (CreateEKSTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateEKSTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateEKSTargetOutput>> CreateEKSTargetAsyncWithHttpInfo (CreateEKSTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateGKETargetOutput</returns>
+        System.Threading.Tasks.Task<CreateGKETargetOutput> CreateGKETargetAsync (CreateGKETarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateGKETargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateGKETargetOutput>> CreateGKETargetAsyncWithHttpInfo (CreateGKETarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateGcpTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateGcpTargetOutput> CreateGcpTargetAsync (CreateGcpTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateGcpTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateGcpTargetOutput>> CreateGcpTargetAsyncWithHttpInfo (CreateGcpTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of CreateKeyOutput</returns>
         System.Threading.Tasks.Task<CreateKeyOutput> CreateKeyAsync (CreateKey body);
 
@@ -2821,27 +3077,6 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (CreateKeyOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateKeyOutput>> CreateKeyAsyncWithHttpInfo (CreateKey body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of CreateManagedKeyOutput</returns>
-        System.Threading.Tasks.Task<CreateManagedKeyOutput> CreateManagedKeyAsync (CreateManagedKey body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateManagedKeyOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateManagedKeyOutput>> CreateManagedKeyAsyncWithHttpInfo (CreateManagedKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -2871,8 +3106,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateRabbitMQTargetAsync (CreateRabbitMQTarget body);
+        /// <returns>Task of CreateRabbitMQTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateRabbitMQTargetOutput> CreateRabbitMQTargetAsync (CreateRabbitMQTarget body);
 
         /// <summary>
         /// 
@@ -2882,29 +3117,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateRabbitMQTargetAsyncWithHttpInfo (CreateRabbitMQTarget body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateRdpTargetAsync (CreateRdpTarget body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateRdpTargetAsyncWithHttpInfo (CreateRdpTarget body);
+        /// <returns>Task of ApiResponse (CreateRabbitMQTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateRabbitMQTargetOutput>> CreateRabbitMQTargetAsyncWithHttpInfo (CreateRabbitMQTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -2976,8 +3190,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateSSHTargetAsync (CreateSSHTarget body);
+        /// <returns>Task of CreateSSHTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateSSHTargetOutput> CreateSSHTargetAsync (CreateSSHTarget body);
 
         /// <summary>
         /// 
@@ -2987,8 +3201,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateSSHTargetAsyncWithHttpInfo (CreateSSHTarget body);
+        /// <returns>Task of ApiResponse (CreateSSHTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateSSHTargetOutput>> CreateSSHTargetAsyncWithHttpInfo (CreateSSHTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -3018,8 +3232,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateTargetAsync (Object body);
+        /// <returns>Task of CreateWebTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateWebTargetOutput> CreateWebTargetAsync (CreateWebTarget body);
 
         /// <summary>
         /// 
@@ -3029,29 +3243,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateTargetAsyncWithHttpInfo (Object body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateTargetOutput> CreateWebTargetAsync (CreateWebTarget body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTargetOutput>> CreateWebTargetAsyncWithHttpInfo (CreateWebTarget body);
+        /// <returns>Task of ApiResponse (CreateWebTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWebTargetOutput>> CreateWebTargetAsyncWithHttpInfo (CreateWebTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -3417,8 +3610,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of GatewayAddSubAdminsOutput</returns>
-        System.Threading.Tasks.Task<GatewayAddSubAdminsOutput> GatewayAddSubAdminsAsync (GatewayAddSubAdmins body);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GatewayAddSubAdminsAsync (GatewayAddSubAdmins body);
 
         /// <summary>
         /// 
@@ -3428,8 +3621,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (GatewayAddSubAdminsOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GatewayAddSubAdminsOutput>> GatewayAddSubAdminsAsyncWithHttpInfo (GatewayAddSubAdmins body);
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GatewayAddSubAdminsAsyncWithHttpInfo (GatewayAddSubAdmins body);
         /// <summary>
         /// 
         /// </summary>
@@ -3732,6 +3925,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerSnowflakeOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateProducerSnowflakeOutput> GatewayCreateProducerSnowflakeAsync (GatewayCreateProducerSnowflake body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerSnowflakeOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerSnowflakeOutput>> GatewayCreateProducerSnowflakeAsyncWithHttpInfo (GatewayCreateProducerSnowflake body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GatewayDeleteProducerOutput</returns>
         System.Threading.Tasks.Task<GatewayDeleteProducerOutput> GatewayDeleteProducerAsync (GatewayDeleteProducer body);
 
@@ -3753,8 +3967,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of GatewayDeleteSubAdminsOutput</returns>
-        System.Threading.Tasks.Task<GatewayDeleteSubAdminsOutput> GatewayDeleteSubAdminsAsync (GatewayDeleteSubAdmins body);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GatewayDeleteSubAdminsAsync (GatewayDeleteSubAdmins body);
 
         /// <summary>
         /// 
@@ -3764,8 +3978,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (GatewayDeleteSubAdminsOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GatewayDeleteSubAdminsOutput>> GatewayDeleteSubAdminsAsyncWithHttpInfo (GatewayDeleteSubAdmins body);
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GatewayDeleteSubAdminsAsyncWithHttpInfo (GatewayDeleteSubAdmins body);
         /// <summary>
         /// 
         /// </summary>
@@ -3941,25 +4155,6 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GatewayUpdateItemAsync ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GatewayUpdateItemAsyncWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task GatewayUpdateTmpUsersAsync (GatewayUpdateTmpUsers body);
@@ -4063,8 +4258,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GetPKICertificateOutput</returns>
-        System.Threading.Tasks.Task<GetPKICertificateOutput> GetPKICertificateAsync ();
+        System.Threading.Tasks.Task<GetPKICertificateOutput> GetPKICertificateAsync (GetPKICertificate body);
 
         /// <summary>
         /// 
@@ -4073,8 +4269,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GetPKICertificateOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetPKICertificateOutput>> GetPKICertificateAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<GetPKICertificateOutput>> GetPKICertificateAsyncWithHttpInfo (GetPKICertificate body);
         /// <summary>
         /// 
         /// </summary>
@@ -4642,6 +4839,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (UpdateTargetOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateTargetOutput>> UpdateAWSTargetDetailsAsyncWithHttpInfo (UpdateAWSTargetDetails body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> UpdateAssocAsync (UpdateAssoc body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAssocAsyncWithHttpInfo (UpdateAssoc body);
         /// <summary>
         /// 
         /// </summary>
@@ -5508,6 +5726,236 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Configure", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateAWSTargetOutput</returns>
+        public CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = CreateAWSTargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateAWSTargetOutput > CreateAWSTargetWithHttpInfo (CreateAWSTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAWSTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateAWSTargetOutput >("/create-aws-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAWSTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateAWSTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync (CreateAWSTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = await CreateAWSTargetAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetAsyncWithHttpInfo (CreateAWSTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAWSTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAWSTargetOutput>("/create-aws-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAWSTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateArtifactoryTargetOutput</returns>
+        public CreateArtifactoryTargetOutput CreateArtifactoryTarget (CreateArtifactoryTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateArtifactoryTargetOutput> localVarResponse = CreateArtifactoryTargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateArtifactoryTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateArtifactoryTargetOutput > CreateArtifactoryTargetWithHttpInfo (CreateArtifactoryTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateArtifactoryTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateArtifactoryTargetOutput >("/create-artifactory-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateArtifactoryTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateArtifactoryTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateArtifactoryTargetOutput> CreateArtifactoryTargetAsync (CreateArtifactoryTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateArtifactoryTargetOutput> localVarResponse = await CreateArtifactoryTargetAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateArtifactoryTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateArtifactoryTargetOutput>> CreateArtifactoryTargetAsyncWithHttpInfo (CreateArtifactoryTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateArtifactoryTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateArtifactoryTargetOutput>("/create-artifactory-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateArtifactoryTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -6439,10 +6887,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateAwsTarget (CreateAwsTarget body)
+        /// <returns>CreateAzureTargetOutput</returns>
+        public CreateAzureTargetOutput CreateAzureTarget (CreateAzureTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateAwsTargetWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateAzureTargetOutput> localVarResponse = CreateAzureTargetWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -6451,12 +6899,12 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateAwsTargetWithHttpInfo (CreateAwsTarget body)
+        /// <returns>ApiResponse of CreateAzureTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateAzureTargetOutput > CreateAzureTargetWithHttpInfo (CreateAzureTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAwsTarget");
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAzureTarget");
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
@@ -6479,11 +6927,11 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-aws-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< CreateAzureTargetOutput >("/create-azure-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateAwsTarget", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateAzureTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -6495,10 +6943,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateAwsTargetAsync (CreateAwsTarget body)
+        /// <returns>Task of CreateAzureTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateAzureTargetOutput> CreateAzureTargetAsync (CreateAzureTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateAwsTargetAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateAzureTargetOutput> localVarResponse = await CreateAzureTargetAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -6508,12 +6956,12 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateAwsTargetAsyncWithHttpInfo (CreateAwsTarget body)
+        /// <returns>Task of ApiResponse (CreateAzureTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAzureTargetOutput>> CreateAzureTargetAsyncWithHttpInfo (CreateAzureTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAwsTarget");
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAzureTarget");
 
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
@@ -6538,11 +6986,11 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-aws-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAzureTargetOutput>("/create-azure-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateAwsTarget", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateAzureTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -6554,10 +7002,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateDBTarget (CreateDBTarget body)
+        /// <returns>CreateClassicKeyOutput</returns>
+        public CreateClassicKeyOutput CreateClassicKey (CreateClassicKey body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateDBTargetWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateClassicKeyOutput> localVarResponse = CreateClassicKeyWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -6566,8 +7014,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateDBTargetWithHttpInfo (CreateDBTarget body)
+        /// <returns>ApiResponse of CreateClassicKeyOutput</returns>
+        public akeyless.Client.ApiResponse< CreateClassicKeyOutput > CreateClassicKeyWithHttpInfo (CreateClassicKey body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateClassicKey");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateClassicKeyOutput >("/create-classic-key", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateClassicKey", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateClassicKeyOutput</returns>
+        public async System.Threading.Tasks.Task<CreateClassicKeyOutput> CreateClassicKeyAsync (CreateClassicKey body)
+        {
+             akeyless.Client.ApiResponse<CreateClassicKeyOutput> localVarResponse = await CreateClassicKeyAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateClassicKeyOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateClassicKeyOutput>> CreateClassicKeyAsyncWithHttpInfo (CreateClassicKey body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateClassicKey");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateClassicKeyOutput>("/create-classic-key", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateClassicKey", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateDBTargetOutput</returns>
+        public CreateDBTargetOutput CreateDBTarget (CreateDBTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateDBTargetOutput> localVarResponse = CreateDBTargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateDBTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateDBTargetOutput > CreateDBTargetWithHttpInfo (CreateDBTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -6594,7 +7157,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-db-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< CreateDBTargetOutput >("/create-db-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -6610,10 +7173,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateDBTargetAsync (CreateDBTarget body)
+        /// <returns>Task of CreateDBTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateDBTargetOutput> CreateDBTargetAsync (CreateDBTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateDBTargetAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateDBTargetOutput> localVarResponse = await CreateDBTargetAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -6623,8 +7186,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateDBTargetAsyncWithHttpInfo (CreateDBTarget body)
+        /// <returns>Task of ApiResponse (CreateDBTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateDBTargetOutput>> CreateDBTargetAsyncWithHttpInfo (CreateDBTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -6653,11 +7216,126 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-db-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDBTargetOutput>("/create-db-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDBTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateDFCKeyOutput</returns>
+        public CreateDFCKeyOutput CreateDFCKey (CreateDFCKey body)
+        {
+             akeyless.Client.ApiResponse<CreateDFCKeyOutput> localVarResponse = CreateDFCKeyWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateDFCKeyOutput</returns>
+        public akeyless.Client.ApiResponse< CreateDFCKeyOutput > CreateDFCKeyWithHttpInfo (CreateDFCKey body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateDFCKey");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateDFCKeyOutput >("/create-dfc-key", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDFCKey", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateDFCKeyOutput</returns>
+        public async System.Threading.Tasks.Task<CreateDFCKeyOutput> CreateDFCKeyAsync (CreateDFCKey body)
+        {
+             akeyless.Client.ApiResponse<CreateDFCKeyOutput> localVarResponse = await CreateDFCKeyAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateDFCKeyOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateDFCKeyOutput>> CreateDFCKeyAsyncWithHttpInfo (CreateDFCKey body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateDFCKey");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDFCKeyOutput>("/create-dfc-key", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDFCKey", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -6784,6 +7462,351 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateEKSTargetOutput</returns>
+        public CreateEKSTargetOutput CreateEKSTarget (CreateEKSTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateEKSTargetOutput> localVarResponse = CreateEKSTargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateEKSTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateEKSTargetOutput > CreateEKSTargetWithHttpInfo (CreateEKSTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateEKSTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateEKSTargetOutput >("/create-eks-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEKSTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateEKSTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateEKSTargetOutput> CreateEKSTargetAsync (CreateEKSTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateEKSTargetOutput> localVarResponse = await CreateEKSTargetAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateEKSTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateEKSTargetOutput>> CreateEKSTargetAsyncWithHttpInfo (CreateEKSTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateEKSTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateEKSTargetOutput>("/create-eks-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEKSTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateGKETargetOutput</returns>
+        public CreateGKETargetOutput CreateGKETarget (CreateGKETarget body)
+        {
+             akeyless.Client.ApiResponse<CreateGKETargetOutput> localVarResponse = CreateGKETargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateGKETargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateGKETargetOutput > CreateGKETargetWithHttpInfo (CreateGKETarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateGKETarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateGKETargetOutput >("/create-gke-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateGKETarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateGKETargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateGKETargetOutput> CreateGKETargetAsync (CreateGKETarget body)
+        {
+             akeyless.Client.ApiResponse<CreateGKETargetOutput> localVarResponse = await CreateGKETargetAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateGKETargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateGKETargetOutput>> CreateGKETargetAsyncWithHttpInfo (CreateGKETarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateGKETarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateGKETargetOutput>("/create-gke-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateGKETarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateGcpTargetOutput</returns>
+        public CreateGcpTargetOutput CreateGcpTarget (CreateGcpTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateGcpTargetOutput> localVarResponse = CreateGcpTargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateGcpTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateGcpTargetOutput > CreateGcpTargetWithHttpInfo (CreateGcpTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateGcpTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateGcpTargetOutput >("/create-gcp-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateGcpTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateGcpTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateGcpTargetOutput> CreateGcpTargetAsync (CreateGcpTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateGcpTargetOutput> localVarResponse = await CreateGcpTargetAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateGcpTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateGcpTargetOutput>> CreateGcpTargetAsyncWithHttpInfo (CreateGcpTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateGcpTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateGcpTargetOutput>("/create-gcp-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateGcpTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateKeyOutput</returns>
         public CreateKeyOutput CreateKey (CreateKey body)
         {
@@ -6888,121 +7911,6 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateKey", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateManagedKeyOutput</returns>
-        public CreateManagedKeyOutput CreateManagedKey (CreateManagedKey body)
-        {
-             akeyless.Client.ApiResponse<CreateManagedKeyOutput> localVarResponse = CreateManagedKeyWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateManagedKeyOutput</returns>
-        public akeyless.Client.ApiResponse< CreateManagedKeyOutput > CreateManagedKeyWithHttpInfo (CreateManagedKey body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateManagedKey");
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateManagedKeyOutput >("/create-managed-key", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateManagedKey", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of CreateManagedKeyOutput</returns>
-        public async System.Threading.Tasks.Task<CreateManagedKeyOutput> CreateManagedKeyAsync (CreateManagedKey body)
-        {
-             akeyless.Client.ApiResponse<CreateManagedKeyOutput> localVarResponse = await CreateManagedKeyAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateManagedKeyOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateManagedKeyOutput>> CreateManagedKeyAsyncWithHttpInfo (CreateManagedKey body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateManagedKey");
-
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-            
-            foreach (var _contentType in _contentTypes)
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
-            
-            foreach (var _accept in _accepts)
-                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
-            
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateManagedKeyOutput>("/create-managed-key", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateManagedKey", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -7129,10 +8037,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateRabbitMQTarget (CreateRabbitMQTarget body)
+        /// <returns>CreateRabbitMQTargetOutput</returns>
+        public CreateRabbitMQTargetOutput CreateRabbitMQTarget (CreateRabbitMQTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateRabbitMQTargetWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateRabbitMQTargetOutput> localVarResponse = CreateRabbitMQTargetWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -7141,8 +8049,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateRabbitMQTargetWithHttpInfo (CreateRabbitMQTarget body)
+        /// <returns>ApiResponse of CreateRabbitMQTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateRabbitMQTargetOutput > CreateRabbitMQTargetWithHttpInfo (CreateRabbitMQTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -7169,7 +8077,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-rabbitMQ-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< CreateRabbitMQTargetOutput >("/create-rabbitmq-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -7185,10 +8093,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateRabbitMQTargetAsync (CreateRabbitMQTarget body)
+        /// <returns>Task of CreateRabbitMQTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateRabbitMQTargetOutput> CreateRabbitMQTargetAsync (CreateRabbitMQTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateRabbitMQTargetAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateRabbitMQTargetOutput> localVarResponse = await CreateRabbitMQTargetAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -7198,8 +8106,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateRabbitMQTargetAsyncWithHttpInfo (CreateRabbitMQTarget body)
+        /// <returns>Task of ApiResponse (CreateRabbitMQTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateRabbitMQTargetOutput>> CreateRabbitMQTargetAsyncWithHttpInfo (CreateRabbitMQTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -7228,126 +8136,11 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-rabbitMQ-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateRabbitMQTargetOutput>("/create-rabbitmq-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateRabbitMQTarget", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateRdpTarget (CreateRdpTarget body)
-        {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateRdpTargetWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateRdpTargetWithHttpInfo (CreateRdpTarget body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateRdpTarget");
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-rdp-target", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateRdpTarget", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateRdpTargetAsync (CreateRdpTarget body)
-        {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateRdpTargetAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateRdpTargetAsyncWithHttpInfo (CreateRdpTarget body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateRdpTarget");
-
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-            
-            foreach (var _contentType in _contentTypes)
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
-            
-            foreach (var _accept in _accepts)
-                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
-            
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-rdp-target", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateRdpTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -7704,10 +8497,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateSSHTarget (CreateSSHTarget body)
+        /// <returns>CreateSSHTargetOutput</returns>
+        public CreateSSHTargetOutput CreateSSHTarget (CreateSSHTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateSSHTargetWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateSSHTargetOutput> localVarResponse = CreateSSHTargetWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -7716,8 +8509,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateSSHTargetWithHttpInfo (CreateSSHTarget body)
+        /// <returns>ApiResponse of CreateSSHTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateSSHTargetOutput > CreateSSHTargetWithHttpInfo (CreateSSHTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -7744,7 +8537,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-ssh-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< CreateSSHTargetOutput >("/create-ssh-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -7760,10 +8553,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateSSHTargetAsync (CreateSSHTarget body)
+        /// <returns>Task of CreateSSHTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateSSHTargetOutput> CreateSSHTargetAsync (CreateSSHTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateSSHTargetAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateSSHTargetOutput> localVarResponse = await CreateSSHTargetAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -7773,8 +8566,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateSSHTargetAsyncWithHttpInfo (CreateSSHTarget body)
+        /// <returns>Task of ApiResponse (CreateSSHTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateSSHTargetOutput>> CreateSSHTargetAsyncWithHttpInfo (CreateSSHTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -7803,7 +8596,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-ssh-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateSSHTargetOutput>("/create-ssh-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -7934,10 +8727,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateTarget (Object body)
+        /// <returns>CreateWebTargetOutput</returns>
+        public CreateWebTargetOutput CreateWebTarget (CreateWebTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateTargetWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateWebTargetOutput> localVarResponse = CreateWebTargetWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -7946,123 +8739,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateTargetWithHttpInfo (Object body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateTarget");
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-target", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateTarget", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateTargetAsync (Object body)
-        {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateTargetAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateTargetAsyncWithHttpInfo (Object body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateTarget");
-
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-            
-            foreach (var _contentType in _contentTypes)
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
-            
-            foreach (var _accept in _accepts)
-                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
-            
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-target", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateTarget", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateTargetOutput</returns>
-        public CreateTargetOutput CreateWebTarget (CreateWebTarget body)
-        {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = CreateWebTargetWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateTargetOutput > CreateWebTargetWithHttpInfo (CreateWebTarget body)
+        /// <returns>ApiResponse of CreateWebTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateWebTargetOutput > CreateWebTargetWithHttpInfo (CreateWebTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -8089,7 +8767,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< CreateTargetOutput >("/create-web-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< CreateWebTargetOutput >("/create-web-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -8105,10 +8783,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of CreateTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateTargetOutput> CreateWebTargetAsync (CreateWebTarget body)
+        /// <returns>Task of CreateWebTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateWebTargetOutput> CreateWebTargetAsync (CreateWebTarget body)
         {
-             akeyless.Client.ApiResponse<CreateTargetOutput> localVarResponse = await CreateWebTargetAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<CreateWebTargetOutput> localVarResponse = await CreateWebTargetAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -8118,8 +8796,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (CreateTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTargetOutput>> CreateWebTargetAsyncWithHttpInfo (CreateWebTarget body)
+        /// <returns>Task of ApiResponse (CreateWebTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateWebTargetOutput>> CreateWebTargetAsyncWithHttpInfo (CreateWebTarget body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -8148,7 +8826,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTargetOutput>("/create-web-target", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWebTargetOutput>("/create-web-target", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -10119,10 +10797,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>GatewayAddSubAdminsOutput</returns>
-        public GatewayAddSubAdminsOutput GatewayAddSubAdmins (GatewayAddSubAdmins body)
+        /// <returns>Object</returns>
+        public Object GatewayAddSubAdmins (GatewayAddSubAdmins body)
         {
-             akeyless.Client.ApiResponse<GatewayAddSubAdminsOutput> localVarResponse = GatewayAddSubAdminsWithHttpInfo(body);
+             akeyless.Client.ApiResponse<Object> localVarResponse = GatewayAddSubAdminsWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -10131,8 +10809,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of GatewayAddSubAdminsOutput</returns>
-        public akeyless.Client.ApiResponse< GatewayAddSubAdminsOutput > GatewayAddSubAdminsWithHttpInfo (GatewayAddSubAdmins body)
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse< Object > GatewayAddSubAdminsWithHttpInfo (GatewayAddSubAdmins body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -10159,7 +10837,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< GatewayAddSubAdminsOutput >("/gateway-add-sub-admins", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< Object >("/gateway-add-sub-admins", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -10175,10 +10853,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of GatewayAddSubAdminsOutput</returns>
-        public async System.Threading.Tasks.Task<GatewayAddSubAdminsOutput> GatewayAddSubAdminsAsync (GatewayAddSubAdmins body)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GatewayAddSubAdminsAsync (GatewayAddSubAdmins body)
         {
-             akeyless.Client.ApiResponse<GatewayAddSubAdminsOutput> localVarResponse = await GatewayAddSubAdminsAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<Object> localVarResponse = await GatewayAddSubAdminsAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -10188,8 +10866,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (GatewayAddSubAdminsOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayAddSubAdminsOutput>> GatewayAddSubAdminsAsyncWithHttpInfo (GatewayAddSubAdmins body)
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> GatewayAddSubAdminsAsyncWithHttpInfo (GatewayAddSubAdmins body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -10218,7 +10896,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayAddSubAdminsOutput>("/gateway-add-sub-admins", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/gateway-add-sub-admins", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -11836,6 +12514,121 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerSnowflakeOutput</returns>
+        public GatewayCreateProducerSnowflakeOutput GatewayCreateProducerSnowflake (GatewayCreateProducerSnowflake body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerSnowflakeOutput> localVarResponse = GatewayCreateProducerSnowflakeWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerSnowflakeOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayCreateProducerSnowflakeOutput > GatewayCreateProducerSnowflakeWithHttpInfo (GatewayCreateProducerSnowflake body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerSnowflake");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayCreateProducerSnowflakeOutput >("/gateway-create-producer-snowflake", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerSnowflake", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerSnowflakeOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateProducerSnowflakeOutput> GatewayCreateProducerSnowflakeAsync (GatewayCreateProducerSnowflake body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerSnowflakeOutput> localVarResponse = await GatewayCreateProducerSnowflakeAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerSnowflakeOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerSnowflakeOutput>> GatewayCreateProducerSnowflakeAsyncWithHttpInfo (GatewayCreateProducerSnowflake body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerSnowflake");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateProducerSnowflakeOutput>("/gateway-create-producer-snowflake", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerSnowflake", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayDeleteProducerOutput</returns>
         public GatewayDeleteProducerOutput GatewayDeleteProducer (GatewayDeleteProducer body)
         {
@@ -11951,10 +12744,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>GatewayDeleteSubAdminsOutput</returns>
-        public GatewayDeleteSubAdminsOutput GatewayDeleteSubAdmins (GatewayDeleteSubAdmins body)
+        /// <returns>Object</returns>
+        public Object GatewayDeleteSubAdmins (GatewayDeleteSubAdmins body)
         {
-             akeyless.Client.ApiResponse<GatewayDeleteSubAdminsOutput> localVarResponse = GatewayDeleteSubAdminsWithHttpInfo(body);
+             akeyless.Client.ApiResponse<Object> localVarResponse = GatewayDeleteSubAdminsWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -11963,8 +12756,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of GatewayDeleteSubAdminsOutput</returns>
-        public akeyless.Client.ApiResponse< GatewayDeleteSubAdminsOutput > GatewayDeleteSubAdminsWithHttpInfo (GatewayDeleteSubAdmins body)
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse< Object > GatewayDeleteSubAdminsWithHttpInfo (GatewayDeleteSubAdmins body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11991,7 +12784,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< GatewayDeleteSubAdminsOutput >("/gateway-delete-sub-admins", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< Object >("/gateway-delete-sub-admins", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -12007,10 +12800,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of GatewayDeleteSubAdminsOutput</returns>
-        public async System.Threading.Tasks.Task<GatewayDeleteSubAdminsOutput> GatewayDeleteSubAdminsAsync (GatewayDeleteSubAdmins body)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GatewayDeleteSubAdminsAsync (GatewayDeleteSubAdmins body)
         {
-             akeyless.Client.ApiResponse<GatewayDeleteSubAdminsOutput> localVarResponse = await GatewayDeleteSubAdminsAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<Object> localVarResponse = await GatewayDeleteSubAdminsAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -12020,8 +12813,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (GatewayDeleteSubAdminsOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayDeleteSubAdminsOutput>> GatewayDeleteSubAdminsAsyncWithHttpInfo (GatewayDeleteSubAdmins body)
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> GatewayDeleteSubAdminsAsyncWithHttpInfo (GatewayDeleteSubAdmins body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -12050,7 +12843,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayDeleteSubAdminsOutput>("/gateway-delete-sub-admins", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/gateway-delete-sub-admins", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -12983,103 +13776,6 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GatewayUpdateItem ()
-        {
-             GatewayUpdateItemWithHttpInfo();
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public akeyless.Client.ApiResponse<Object> GatewayUpdateItemWithHttpInfo ()
-        {
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/update-managed-key", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GatewayUpdateItem", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GatewayUpdateItemAsync ()
-        {
-             await GatewayUpdateItemAsyncWithHttpInfo();
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> GatewayUpdateItemAsyncWithHttpInfo ()
-        {
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-            
-            foreach (var _contentType in _contentTypes)
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
-            
-            foreach (var _accept in _accepts)
-                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
-            
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/update-managed-key", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GatewayUpdateItem", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
         public void GatewayUpdateTmpUsers (GatewayUpdateTmpUsers body)
@@ -13637,10 +14333,11 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GetPKICertificateOutput</returns>
-        public GetPKICertificateOutput GetPKICertificate ()
+        public GetPKICertificateOutput GetPKICertificate (GetPKICertificate body)
         {
-             akeyless.Client.ApiResponse<GetPKICertificateOutput> localVarResponse = GetPKICertificateWithHttpInfo();
+             akeyless.Client.ApiResponse<GetPKICertificateOutput> localVarResponse = GetPKICertificateWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -13648,12 +14345,18 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of GetPKICertificateOutput</returns>
-        public akeyless.Client.ApiResponse< GetPKICertificateOutput > GetPKICertificateWithHttpInfo ()
+        public akeyless.Client.ApiResponse< GetPKICertificateOutput > GetPKICertificateWithHttpInfo (GetPKICertificate body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GetPKICertificate");
+
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13667,6 +14370,7 @@ namespace akeyless.Api
             var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.Data = body;
 
 
             // make the HTTP request
@@ -13685,10 +14389,11 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GetPKICertificateOutput</returns>
-        public async System.Threading.Tasks.Task<GetPKICertificateOutput> GetPKICertificateAsync ()
+        public async System.Threading.Tasks.Task<GetPKICertificateOutput> GetPKICertificateAsync (GetPKICertificate body)
         {
-             akeyless.Client.ApiResponse<GetPKICertificateOutput> localVarResponse = await GetPKICertificateAsyncWithHttpInfo();
+             akeyless.Client.ApiResponse<GetPKICertificateOutput> localVarResponse = await GetPKICertificateAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -13697,13 +14402,19 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GetPKICertificateOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GetPKICertificateOutput>> GetPKICertificateAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GetPKICertificateOutput>> GetPKICertificateAsyncWithHttpInfo (GetPKICertificate body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GetPKICertificate");
+
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13717,6 +14428,7 @@ namespace akeyless.Api
             foreach (var _accept in _accepts)
                 localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
             
+            localVarRequestOptions.Data = body;
 
 
             // make the HTTP request
@@ -16823,6 +17535,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateAWSTargetDetails", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Object</returns>
+        public Object UpdateAssoc (UpdateAssoc body)
+        {
+             akeyless.Client.ApiResponse<Object> localVarResponse = UpdateAssocWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse< Object > UpdateAssocWithHttpInfo (UpdateAssoc body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateAssoc");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< Object >("/update-assoc", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAssoc", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> UpdateAssocAsync (UpdateAssoc body)
+        {
+             akeyless.Client.ApiResponse<Object> localVarResponse = await UpdateAssocAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> UpdateAssocAsyncWithHttpInfo (UpdateAssoc body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateAssoc");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/update-assoc", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAssoc", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

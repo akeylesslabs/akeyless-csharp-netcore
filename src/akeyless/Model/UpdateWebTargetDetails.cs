@@ -41,19 +41,23 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="url">url.</param>
-        public UpdateWebTargetDetails(string name = default(string), bool newVersion = false, string protectionKey = default(string), string token = default(string), string uidToken = default(string), string url = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public UpdateWebTargetDetails(string name = default(string), bool newVersion = false, string password = default(string), string protectionKey = default(string), string token = default(string), string uidToken = default(string), string url = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateWebTargetDetails and cannot be null");
             this.NewVersion = newVersion;
+            this.Password = password;
             this.ProtectionKey = protectionKey;
             this.Token = token;
             this.UidToken = uidToken;
             this.Url = url;
+            this.Username = username;
         }
         
         /// <summary>
@@ -69,6 +73,13 @@ namespace akeyless.Model
         /// <value>Whether to create a new version of not</value>
         [DataMember(Name="new-version", EmitDefaultValue=false)]
         public bool NewVersion { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -98,6 +109,13 @@ namespace akeyless.Model
         public string Url { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,10 +125,12 @@ namespace akeyless.Model
             sb.Append("class UpdateWebTargetDetails {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +175,11 @@ namespace akeyless.Model
                     this.NewVersion.Equals(input.NewVersion)
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.ProtectionKey == input.ProtectionKey ||
                     (this.ProtectionKey != null &&
                     this.ProtectionKey.Equals(input.ProtectionKey))
@@ -173,6 +198,11 @@ namespace akeyless.Model
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -188,6 +218,8 @@ namespace akeyless.Model
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.Token != null)
@@ -196,6 +228,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

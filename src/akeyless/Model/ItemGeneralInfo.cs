@@ -35,14 +35,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ItemGeneralInfo" /> class.
         /// </summary>
         /// <param name="certIssueDetails">certIssueDetails.</param>
+        /// <param name="classicKeyDetails">classicKeyDetails.</param>
         /// <param name="dynamicSecretProducerDetails">dynamicSecretProducerDetails.</param>
-        /// <param name="managedKeyDetails">managedKeyDetails.</param>
         /// <param name="rotatedSecretDetails">rotatedSecretDetails.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), ManagedKeyDetailsInfo managedKeyDetails = default(ManagedKeyDetailsInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo))
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo))
         {
             this.CertIssueDetails = certIssueDetails;
+            this.ClassicKeyDetails = classicKeyDetails;
             this.DynamicSecretProducerDetails = dynamicSecretProducerDetails;
-            this.ManagedKeyDetails = managedKeyDetails;
             this.RotatedSecretDetails = rotatedSecretDetails;
         }
         
@@ -53,16 +53,16 @@ namespace akeyless.Model
         public CertificateIssueInfo CertIssueDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets ClassicKeyDetails
+        /// </summary>
+        [DataMember(Name="classic_key_details", EmitDefaultValue=false)]
+        public ClassicKeyDetailsInfo ClassicKeyDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets DynamicSecretProducerDetails
         /// </summary>
         [DataMember(Name="dynamic_secret_producer_details", EmitDefaultValue=false)]
         public DynamicSecretProducerInfo DynamicSecretProducerDetails { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ManagedKeyDetails
-        /// </summary>
-        [DataMember(Name="managed_key_details", EmitDefaultValue=false)]
-        public ManagedKeyDetailsInfo ManagedKeyDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatedSecretDetails
@@ -79,8 +79,8 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class ItemGeneralInfo {\n");
             sb.Append("  CertIssueDetails: ").Append(CertIssueDetails).Append("\n");
+            sb.Append("  ClassicKeyDetails: ").Append(ClassicKeyDetails).Append("\n");
             sb.Append("  DynamicSecretProducerDetails: ").Append(DynamicSecretProducerDetails).Append("\n");
-            sb.Append("  ManagedKeyDetails: ").Append(ManagedKeyDetails).Append("\n");
             sb.Append("  RotatedSecretDetails: ").Append(RotatedSecretDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -122,14 +122,14 @@ namespace akeyless.Model
                     this.CertIssueDetails.Equals(input.CertIssueDetails))
                 ) && 
                 (
+                    this.ClassicKeyDetails == input.ClassicKeyDetails ||
+                    (this.ClassicKeyDetails != null &&
+                    this.ClassicKeyDetails.Equals(input.ClassicKeyDetails))
+                ) && 
+                (
                     this.DynamicSecretProducerDetails == input.DynamicSecretProducerDetails ||
                     (this.DynamicSecretProducerDetails != null &&
                     this.DynamicSecretProducerDetails.Equals(input.DynamicSecretProducerDetails))
-                ) && 
-                (
-                    this.ManagedKeyDetails == input.ManagedKeyDetails ||
-                    (this.ManagedKeyDetails != null &&
-                    this.ManagedKeyDetails.Equals(input.ManagedKeyDetails))
                 ) && 
                 (
                     this.RotatedSecretDetails == input.RotatedSecretDetails ||
@@ -149,10 +149,10 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.CertIssueDetails != null)
                     hashCode = hashCode * 59 + this.CertIssueDetails.GetHashCode();
+                if (this.ClassicKeyDetails != null)
+                    hashCode = hashCode * 59 + this.ClassicKeyDetails.GetHashCode();
                 if (this.DynamicSecretProducerDetails != null)
                     hashCode = hashCode * 59 + this.DynamicSecretProducerDetails.GetHashCode();
-                if (this.ManagedKeyDetails != null)
-                    hashCode = hashCode * 59 + this.ManagedKeyDetails.GetHashCode();
                 if (this.RotatedSecretDetails != null)
                     hashCode = hashCode * 59 + this.RotatedSecretDetails.GetHashCode();
                 return hashCode;

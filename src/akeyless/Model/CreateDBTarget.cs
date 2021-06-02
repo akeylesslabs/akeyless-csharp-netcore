@@ -40,32 +40,60 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateDBTarget" /> class.
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
+        /// <param name="dbName">dbName.</param>
+        /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
+        /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="dbType">dbType.</param>
-        /// <param name="hostName">hostName.</param>
-        /// <param name="mongoDbName">mongoDbName.</param>
-        /// <param name="mongoUri">mongoUri.</param>
+        /// <param name="host">host.</param>
+        /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="mongodbAtlas">mongodbAtlas.</param>
+        /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
+        /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
+        /// <param name="mongodbAtlasProjectId">MongoDB Atlas project ID.</param>
+        /// <param name="mongodbDefaultAuthDb">MongoDB server default authentication database.</param>
+        /// <param name="mongodbHostPort">MongoDB server host and port.</param>
+        /// <param name="mongodbPassword">MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters.</param>
+        /// <param name="mongodbServerUri">MongoDB server URI.</param>
+        /// <param name="mongodbUriOptions">MongoDB server URI options.</param>
+        /// <param name="mongodbUsername">MongoDB server username.</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="port">port.</param>
-        /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="pwd">pwd.</param>
+        /// <param name="snowflakeAccount">snowflakeAccount.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string comment = default(string), string dbType = default(string), string hostName = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbPassword = default(string), string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), string userName = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateDBTarget and cannot be null");
             this.Comment = comment;
+            this.DbName = dbName;
+            this.DbServerCertificates = dbServerCertificates;
+            this.DbServerName = dbServerName;
             this.DbType = dbType;
-            this.HostName = hostName;
-            this.MongoDbName = mongoDbName;
-            this.MongoUri = mongoUri;
+            this.Host = host;
+            this.Key = key;
+            this.MongodbAtlas = mongodbAtlas;
+            this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
+            this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
+            this.MongodbAtlasProjectId = mongodbAtlasProjectId;
+            this.MongodbDefaultAuthDb = mongodbDefaultAuthDb;
+            this.MongodbHostPort = mongodbHostPort;
+            this.MongodbPassword = mongodbPassword;
+            this.MongodbServerUri = mongodbServerUri;
+            this.MongodbUriOptions = mongodbUriOptions;
+            this.MongodbUsername = mongodbUsername;
+            this.Password = password;
             this.Port = port;
-            this.ProtectionKey = protectionKey;
             this.Pwd = pwd;
+            this.SnowflakeAccount = snowflakeAccount;
             this.Token = token;
             this.UidToken = uidToken;
             this.UserName = userName;
+            this.Username = username;
         }
         
         /// <summary>
@@ -76,28 +104,112 @@ namespace akeyless.Model
         public string Comment { get; set; }
 
         /// <summary>
+        /// Gets or Sets DbName
+        /// </summary>
+        [DataMember(Name="db-name", EmitDefaultValue=false)]
+        public string DbName { get; set; }
+
+        /// <summary>
+        /// (Optional) DB server certificates
+        /// </summary>
+        /// <value>(Optional) DB server certificates</value>
+        [DataMember(Name="db-server-certificates", EmitDefaultValue=false)]
+        public string DbServerCertificates { get; set; }
+
+        /// <summary>
+        /// (Optional) Server name for certificate verification
+        /// </summary>
+        /// <value>(Optional) Server name for certificate verification</value>
+        [DataMember(Name="db-server-name", EmitDefaultValue=false)]
+        public string DbServerName { get; set; }
+
+        /// <summary>
         /// Gets or Sets DbType
         /// </summary>
-        [DataMember(Name="db_type", EmitDefaultValue=false)]
+        [DataMember(Name="db-type", EmitDefaultValue=false)]
         public string DbType { get; set; }
 
         /// <summary>
-        /// Gets or Sets HostName
+        /// Gets or Sets Host
         /// </summary>
-        [DataMember(Name="host_name", EmitDefaultValue=false)]
-        public string HostName { get; set; }
+        [DataMember(Name="host", EmitDefaultValue=false)]
+        public string Host { get; set; }
 
         /// <summary>
-        /// Gets or Sets MongoDbName
+        /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
-        [DataMember(Name="mongo_db_name", EmitDefaultValue=false)]
-        public string MongoDbName { get; set; }
+        /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
+        [DataMember(Name="key", EmitDefaultValue=false)]
+        public string Key { get; set; }
 
         /// <summary>
-        /// Gets or Sets MongoUri
+        /// Gets or Sets MongodbAtlas
         /// </summary>
-        [DataMember(Name="mongo_uri", EmitDefaultValue=false)]
-        public string MongoUri { get; set; }
+        [DataMember(Name="mongodb-atlas", EmitDefaultValue=false)]
+        public bool MongodbAtlas { get; set; }
+
+        /// <summary>
+        /// MongoDB Atlas private key
+        /// </summary>
+        /// <value>MongoDB Atlas private key</value>
+        [DataMember(Name="mongodb-atlas-api-private-key", EmitDefaultValue=false)]
+        public string MongodbAtlasApiPrivateKey { get; set; }
+
+        /// <summary>
+        /// MongoDB Atlas public key
+        /// </summary>
+        /// <value>MongoDB Atlas public key</value>
+        [DataMember(Name="mongodb-atlas-api-public-key", EmitDefaultValue=false)]
+        public string MongodbAtlasApiPublicKey { get; set; }
+
+        /// <summary>
+        /// MongoDB Atlas project ID
+        /// </summary>
+        /// <value>MongoDB Atlas project ID</value>
+        [DataMember(Name="mongodb-atlas-project-id", EmitDefaultValue=false)]
+        public string MongodbAtlasProjectId { get; set; }
+
+        /// <summary>
+        /// MongoDB server default authentication database
+        /// </summary>
+        /// <value>MongoDB server default authentication database</value>
+        [DataMember(Name="mongodb-default-auth-db", EmitDefaultValue=false)]
+        public string MongodbDefaultAuthDb { get; set; }
+
+        /// <summary>
+        /// MongoDB server host and port
+        /// </summary>
+        /// <value>MongoDB server host and port</value>
+        [DataMember(Name="mongodb-host-port", EmitDefaultValue=false)]
+        public string MongodbHostPort { get; set; }
+
+        /// <summary>
+        /// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
+        /// </summary>
+        /// <value>MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters</value>
+        [DataMember(Name="mongodb-password", EmitDefaultValue=false)]
+        public string MongodbPassword { get; set; }
+
+        /// <summary>
+        /// MongoDB server URI
+        /// </summary>
+        /// <value>MongoDB server URI</value>
+        [DataMember(Name="mongodb-server-uri", EmitDefaultValue=false)]
+        public string MongodbServerUri { get; set; }
+
+        /// <summary>
+        /// MongoDB server URI options
+        /// </summary>
+        /// <value>MongoDB server URI options</value>
+        [DataMember(Name="mongodb-uri-options", EmitDefaultValue=false)]
+        public string MongodbUriOptions { get; set; }
+
+        /// <summary>
+        /// MongoDB server username
+        /// </summary>
+        /// <value>MongoDB server username</value>
+        [DataMember(Name="mongodb-username", EmitDefaultValue=false)]
+        public string MongodbUsername { get; set; }
 
         /// <summary>
         /// Target name
@@ -107,23 +219,29 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name="port", EmitDefaultValue=false)]
         public string Port { get; set; }
 
         /// <summary>
-        /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
-        /// </summary>
-        /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
-        [DataMember(Name="protection_key", EmitDefaultValue=false)]
-        public string ProtectionKey { get; set; }
-
-        /// <summary>
         /// Gets or Sets Pwd
         /// </summary>
         [DataMember(Name="pwd", EmitDefaultValue=false)]
         public string Pwd { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SnowflakeAccount
+        /// </summary>
+        [DataMember(Name="snowflake-account", EmitDefaultValue=false)]
+        public string SnowflakeAccount { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -142,8 +260,15 @@ namespace akeyless.Model
         /// <summary>
         /// Gets or Sets UserName
         /// </summary>
-        [DataMember(Name="user_name", EmitDefaultValue=false)]
+        [DataMember(Name="user-name", EmitDefaultValue=false)]
         public string UserName { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,17 +279,31 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateDBTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  DbName: ").Append(DbName).Append("\n");
+            sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
+            sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
-            sb.Append("  HostName: ").Append(HostName).Append("\n");
-            sb.Append("  MongoDbName: ").Append(MongoDbName).Append("\n");
-            sb.Append("  MongoUri: ").Append(MongoUri).Append("\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MongodbAtlas: ").Append(MongodbAtlas).Append("\n");
+            sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
+            sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
+            sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
+            sb.Append("  MongodbDefaultAuthDb: ").Append(MongodbDefaultAuthDb).Append("\n");
+            sb.Append("  MongodbHostPort: ").Append(MongodbHostPort).Append("\n");
+            sb.Append("  MongodbPassword: ").Append(MongodbPassword).Append("\n");
+            sb.Append("  MongodbServerUri: ").Append(MongodbServerUri).Append("\n");
+            sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
+            sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
-            sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
+            sb.Append("  SnowflakeAccount: ").Append(SnowflakeAccount).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,24 +344,83 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
+                    this.DbName == input.DbName ||
+                    (this.DbName != null &&
+                    this.DbName.Equals(input.DbName))
+                ) && 
+                (
+                    this.DbServerCertificates == input.DbServerCertificates ||
+                    (this.DbServerCertificates != null &&
+                    this.DbServerCertificates.Equals(input.DbServerCertificates))
+                ) && 
+                (
+                    this.DbServerName == input.DbServerName ||
+                    (this.DbServerName != null &&
+                    this.DbServerName.Equals(input.DbServerName))
+                ) && 
+                (
                     this.DbType == input.DbType ||
                     (this.DbType != null &&
                     this.DbType.Equals(input.DbType))
                 ) && 
                 (
-                    this.HostName == input.HostName ||
-                    (this.HostName != null &&
-                    this.HostName.Equals(input.HostName))
+                    this.Host == input.Host ||
+                    (this.Host != null &&
+                    this.Host.Equals(input.Host))
                 ) && 
                 (
-                    this.MongoDbName == input.MongoDbName ||
-                    (this.MongoDbName != null &&
-                    this.MongoDbName.Equals(input.MongoDbName))
+                    this.Key == input.Key ||
+                    (this.Key != null &&
+                    this.Key.Equals(input.Key))
                 ) && 
                 (
-                    this.MongoUri == input.MongoUri ||
-                    (this.MongoUri != null &&
-                    this.MongoUri.Equals(input.MongoUri))
+                    this.MongodbAtlas == input.MongodbAtlas ||
+                    this.MongodbAtlas.Equals(input.MongodbAtlas)
+                ) && 
+                (
+                    this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
+                    (this.MongodbAtlasApiPrivateKey != null &&
+                    this.MongodbAtlasApiPrivateKey.Equals(input.MongodbAtlasApiPrivateKey))
+                ) && 
+                (
+                    this.MongodbAtlasApiPublicKey == input.MongodbAtlasApiPublicKey ||
+                    (this.MongodbAtlasApiPublicKey != null &&
+                    this.MongodbAtlasApiPublicKey.Equals(input.MongodbAtlasApiPublicKey))
+                ) && 
+                (
+                    this.MongodbAtlasProjectId == input.MongodbAtlasProjectId ||
+                    (this.MongodbAtlasProjectId != null &&
+                    this.MongodbAtlasProjectId.Equals(input.MongodbAtlasProjectId))
+                ) && 
+                (
+                    this.MongodbDefaultAuthDb == input.MongodbDefaultAuthDb ||
+                    (this.MongodbDefaultAuthDb != null &&
+                    this.MongodbDefaultAuthDb.Equals(input.MongodbDefaultAuthDb))
+                ) && 
+                (
+                    this.MongodbHostPort == input.MongodbHostPort ||
+                    (this.MongodbHostPort != null &&
+                    this.MongodbHostPort.Equals(input.MongodbHostPort))
+                ) && 
+                (
+                    this.MongodbPassword == input.MongodbPassword ||
+                    (this.MongodbPassword != null &&
+                    this.MongodbPassword.Equals(input.MongodbPassword))
+                ) && 
+                (
+                    this.MongodbServerUri == input.MongodbServerUri ||
+                    (this.MongodbServerUri != null &&
+                    this.MongodbServerUri.Equals(input.MongodbServerUri))
+                ) && 
+                (
+                    this.MongodbUriOptions == input.MongodbUriOptions ||
+                    (this.MongodbUriOptions != null &&
+                    this.MongodbUriOptions.Equals(input.MongodbUriOptions))
+                ) && 
+                (
+                    this.MongodbUsername == input.MongodbUsername ||
+                    (this.MongodbUsername != null &&
+                    this.MongodbUsername.Equals(input.MongodbUsername))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -230,19 +428,24 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.Port == input.Port ||
                     (this.Port != null &&
                     this.Port.Equals(input.Port))
                 ) && 
                 (
-                    this.ProtectionKey == input.ProtectionKey ||
-                    (this.ProtectionKey != null &&
-                    this.ProtectionKey.Equals(input.ProtectionKey))
-                ) && 
-                (
                     this.Pwd == input.Pwd ||
                     (this.Pwd != null &&
                     this.Pwd.Equals(input.Pwd))
+                ) && 
+                (
+                    this.SnowflakeAccount == input.SnowflakeAccount ||
+                    (this.SnowflakeAccount != null &&
+                    this.SnowflakeAccount.Equals(input.SnowflakeAccount))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -258,6 +461,11 @@ namespace akeyless.Model
                     this.UserName == input.UserName ||
                     (this.UserName != null &&
                     this.UserName.Equals(input.UserName))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -272,28 +480,55 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                if (this.DbName != null)
+                    hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                if (this.DbServerCertificates != null)
+                    hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
+                if (this.DbServerName != null)
+                    hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
                 if (this.DbType != null)
                     hashCode = hashCode * 59 + this.DbType.GetHashCode();
-                if (this.HostName != null)
-                    hashCode = hashCode * 59 + this.HostName.GetHashCode();
-                if (this.MongoDbName != null)
-                    hashCode = hashCode * 59 + this.MongoDbName.GetHashCode();
-                if (this.MongoUri != null)
-                    hashCode = hashCode * 59 + this.MongoUri.GetHashCode();
+                if (this.Host != null)
+                    hashCode = hashCode * 59 + this.Host.GetHashCode();
+                if (this.Key != null)
+                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                hashCode = hashCode * 59 + this.MongodbAtlas.GetHashCode();
+                if (this.MongodbAtlasApiPrivateKey != null)
+                    hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
+                if (this.MongodbAtlasApiPublicKey != null)
+                    hashCode = hashCode * 59 + this.MongodbAtlasApiPublicKey.GetHashCode();
+                if (this.MongodbAtlasProjectId != null)
+                    hashCode = hashCode * 59 + this.MongodbAtlasProjectId.GetHashCode();
+                if (this.MongodbDefaultAuthDb != null)
+                    hashCode = hashCode * 59 + this.MongodbDefaultAuthDb.GetHashCode();
+                if (this.MongodbHostPort != null)
+                    hashCode = hashCode * 59 + this.MongodbHostPort.GetHashCode();
+                if (this.MongodbPassword != null)
+                    hashCode = hashCode * 59 + this.MongodbPassword.GetHashCode();
+                if (this.MongodbServerUri != null)
+                    hashCode = hashCode * 59 + this.MongodbServerUri.GetHashCode();
+                if (this.MongodbUriOptions != null)
+                    hashCode = hashCode * 59 + this.MongodbUriOptions.GetHashCode();
+                if (this.MongodbUsername != null)
+                    hashCode = hashCode * 59 + this.MongodbUsername.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
-                if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.Pwd != null)
                     hashCode = hashCode * 59 + this.Pwd.GetHashCode();
+                if (this.SnowflakeAccount != null)
+                    hashCode = hashCode * 59 + this.SnowflakeAccount.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserName != null)
                     hashCode = hashCode * 59 + this.UserName.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

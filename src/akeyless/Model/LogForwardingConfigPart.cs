@@ -34,6 +34,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LogForwardingConfigPart" /> class.
         /// </summary>
+        /// <param name="awsS3Config">awsS3Config.</param>
+        /// <param name="azureAnalyticsConfig">azureAnalyticsConfig.</param>
         /// <param name="elasticsearchConfig">elasticsearchConfig.</param>
         /// <param name="loganEnable">loganEnable.</param>
         /// <param name="loganUrl">loganUrl.</param>
@@ -43,8 +45,10 @@ namespace akeyless.Model
         /// <param name="splunkConfig">splunkConfig.</param>
         /// <param name="syslogConfig">syslogConfig.</param>
         /// <param name="targetLogType">targetLogType.</param>
-        public LogForwardingConfigPart(ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
+        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
         {
+            this.AwsS3Config = awsS3Config;
+            this.AzureAnalyticsConfig = azureAnalyticsConfig;
             this.ElasticsearchConfig = elasticsearchConfig;
             this.LoganEnable = loganEnable;
             this.LoganUrl = loganUrl;
@@ -56,6 +60,18 @@ namespace akeyless.Model
             this.TargetLogType = targetLogType;
         }
         
+        /// <summary>
+        /// Gets or Sets AwsS3Config
+        /// </summary>
+        [DataMember(Name="aws_s3_config", EmitDefaultValue=false)]
+        public AwsS3LogForwardingConfig AwsS3Config { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureAnalyticsConfig
+        /// </summary>
+        [DataMember(Name="azure_analytics_config", EmitDefaultValue=false)]
+        public AzureLogAnalyticsForwardingConfig AzureAnalyticsConfig { get; set; }
+
         /// <summary>
         /// Gets or Sets ElasticsearchConfig
         /// </summary>
@@ -118,6 +134,8 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class LogForwardingConfigPart {\n");
+            sb.Append("  AwsS3Config: ").Append(AwsS3Config).Append("\n");
+            sb.Append("  AzureAnalyticsConfig: ").Append(AzureAnalyticsConfig).Append("\n");
             sb.Append("  ElasticsearchConfig: ").Append(ElasticsearchConfig).Append("\n");
             sb.Append("  LoganEnable: ").Append(LoganEnable).Append("\n");
             sb.Append("  LoganUrl: ").Append(LoganUrl).Append("\n");
@@ -161,6 +179,16 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.AwsS3Config == input.AwsS3Config ||
+                    (this.AwsS3Config != null &&
+                    this.AwsS3Config.Equals(input.AwsS3Config))
+                ) && 
+                (
+                    this.AzureAnalyticsConfig == input.AzureAnalyticsConfig ||
+                    (this.AzureAnalyticsConfig != null &&
+                    this.AzureAnalyticsConfig.Equals(input.AzureAnalyticsConfig))
+                ) && 
                 (
                     this.ElasticsearchConfig == input.ElasticsearchConfig ||
                     (this.ElasticsearchConfig != null &&
@@ -216,6 +244,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AwsS3Config != null)
+                    hashCode = hashCode * 59 + this.AwsS3Config.GetHashCode();
+                if (this.AzureAnalyticsConfig != null)
+                    hashCode = hashCode * 59 + this.AzureAnalyticsConfig.GetHashCode();
                 if (this.ElasticsearchConfig != null)
                     hashCode = hashCode * 59 + this.ElasticsearchConfig.GetHashCode();
                 hashCode = hashCode * 59 + this.LoganEnable.GetHashCode();

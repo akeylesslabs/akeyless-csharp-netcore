@@ -51,12 +51,15 @@ namespace akeyless.Model
         /// <param name="boundSpid">A list of service principal IDs that the access is restricted to.</param>
         /// <param name="boundSubId">A list of subscription ids that the access is restricted to.</param>
         /// <param name="boundTenantId">The Azure tenant id that the access is restricted to (required).</param>
+        /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="issuer">Issuer URL (default to &quot;https://sts.windows.net/---bound_tenant_id---&quot;).</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (default to &quot;https://login.microsoftonline.com/common/discovery/keys&quot;).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string issuer = "https://sts.windows.net/---bound_tenant_id---", string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", string name = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="username">Required only when the authentication process requires a username and password.</param>
+        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), string issuer = "https://sts.windows.net/---bound_tenant_id---", string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             this.BoundTenantId = boundTenantId ?? throw new ArgumentNullException("boundTenantId is a required property for CreateAuthMethodAzureAD and cannot be null");
@@ -74,12 +77,15 @@ namespace akeyless.Model
             this.BoundRgId = boundRgId;
             this.BoundSpid = boundSpid;
             this.BoundSubId = boundSubId;
+            this.ForceSubClaims = forceSubClaims;
             // use default value if no "issuer" provided
             this.Issuer = issuer ?? "https://sts.windows.net/---bound_tenant_id---";
             // use default value if no "jwksUri" provided
             this.JwksUri = jwksUri ?? "https://login.microsoftonline.com/common/discovery/keys";
+            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
         
         /// <summary>
@@ -167,6 +173,13 @@ namespace akeyless.Model
         public string BoundTenantId { get; set; }
 
         /// <summary>
+        /// if true: enforce role-association must include sub claims
+        /// </summary>
+        /// <value>if true: enforce role-association must include sub claims</value>
+        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
+        public bool ForceSubClaims { get; set; }
+
+        /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
@@ -188,6 +201,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -200,6 +220,13 @@ namespace akeyless.Model
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
         [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
+
+        /// <summary>
+        /// Required only when the authentication process requires a username and password
+        /// </summary>
+        /// <value>Required only when the authentication process requires a username and password</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -221,11 +248,14 @@ namespace akeyless.Model
             sb.Append("  BoundSpid: ").Append(BoundSpid).Append("\n");
             sb.Append("  BoundSubId: ").Append(BoundSubId).Append("\n");
             sb.Append("  BoundTenantId: ").Append(BoundTenantId).Append("\n");
+            sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -329,6 +359,10 @@ namespace akeyless.Model
                     this.BoundTenantId.Equals(input.BoundTenantId))
                 ) && 
                 (
+                    this.ForceSubClaims == input.ForceSubClaims ||
+                    this.ForceSubClaims.Equals(input.ForceSubClaims)
+                ) && 
+                (
                     this.Issuer == input.Issuer ||
                     (this.Issuer != null &&
                     this.Issuer.Equals(input.Issuer))
@@ -344,6 +378,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -352,6 +391,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -387,16 +431,21 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.BoundSubId.GetHashCode();
                 if (this.BoundTenantId != null)
                     hashCode = hashCode * 59 + this.BoundTenantId.GetHashCode();
+                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.Issuer != null)
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
                 if (this.JwksUri != null)
                     hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="assocId">assocId.</param>
         /// <param name="itemName">itemName.</param>
-        public TargetItemAssociation(string assocId = default(string), string itemName = default(string))
+        /// <param name="itemType">itemType.</param>
+        public TargetItemAssociation(string assocId = default(string), string itemName = default(string), string itemType = default(string))
         {
             this.AssocId = assocId;
             this.ItemName = itemName;
+            this.ItemType = itemType;
         }
         
         /// <summary>
@@ -55,6 +57,12 @@ namespace akeyless.Model
         public string ItemName { get; set; }
 
         /// <summary>
+        /// Gets or Sets ItemType
+        /// </summary>
+        [DataMember(Name="item_type", EmitDefaultValue=false)]
+        public string ItemType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +72,7 @@ namespace akeyless.Model
             sb.Append("class TargetItemAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
+            sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,6 +116,11 @@ namespace akeyless.Model
                     this.ItemName == input.ItemName ||
                     (this.ItemName != null &&
                     this.ItemName.Equals(input.ItemName))
+                ) && 
+                (
+                    this.ItemType == input.ItemType ||
+                    (this.ItemType != null &&
+                    this.ItemType.Equals(input.ItemType))
                 );
         }
 
@@ -123,6 +137,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
                 if (this.ItemName != null)
                     hashCode = hashCode * 59 + this.ItemName.GetHashCode();
+                if (this.ItemType != null)
+                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
                 return hashCode;
             }
         }

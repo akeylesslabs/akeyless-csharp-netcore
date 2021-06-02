@@ -34,17 +34,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSubAdminsListReplyObj" /> class.
         /// </summary>
-        /// <param name="subAdmins">subAdmins.</param>
-        public GetSubAdminsListReplyObj(List<string> subAdmins = default(List<string>))
+        /// <param name="allowedAccess">allowedAccess.</param>
+        public GetSubAdminsListReplyObj(Dictionary<string, AllowedAccess> allowedAccess = default(Dictionary<string, AllowedAccess>))
         {
-            this.SubAdmins = subAdmins;
+            this.AllowedAccess = allowedAccess;
         }
         
         /// <summary>
-        /// Gets or Sets SubAdmins
+        /// Gets or Sets AllowedAccess
         /// </summary>
-        [DataMember(Name="sub_admins", EmitDefaultValue=false)]
-        public List<string> SubAdmins { get; set; }
+        [DataMember(Name="allowed_access", EmitDefaultValue=false)]
+        public Dictionary<string, AllowedAccess> AllowedAccess { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,7 +54,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetSubAdminsListReplyObj {\n");
-            sb.Append("  SubAdmins: ").Append(SubAdmins).Append("\n");
+            sb.Append("  AllowedAccess: ").Append(AllowedAccess).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -90,10 +90,10 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.SubAdmins == input.SubAdmins ||
-                    this.SubAdmins != null &&
-                    input.SubAdmins != null &&
-                    this.SubAdmins.SequenceEqual(input.SubAdmins)
+                    this.AllowedAccess == input.AllowedAccess ||
+                    this.AllowedAccess != null &&
+                    input.AllowedAccess != null &&
+                    this.AllowedAccess.SequenceEqual(input.AllowedAccess)
                 );
         }
 
@@ -106,8 +106,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SubAdmins != null)
-                    hashCode = hashCode * 59 + this.SubAdmins.GetHashCode();
+                if (this.AllowedAccess != null)
+                    hashCode = hashCode * 59 + this.AllowedAccess.GetHashCode();
                 return hashCode;
             }
         }

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ClientSecret** | **string** | Azure Client Secret | 
 **GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
+**Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **TenantId** | **string** | Azure Tenant ID | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **UserProgrammaticAccess** | **bool** | Azure User programmatic access | [optional] [default to true]
 **UserRoleTemplateId** | **string** | User Role Template Id | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]
+**Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
