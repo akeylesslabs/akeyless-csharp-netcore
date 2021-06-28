@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayRevokeTmpUsers" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url.</param>
         /// <param name="host">Host.</param>
         /// <param name="name">Producer Name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
@@ -48,13 +47,12 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayRevokeTmpUsers(string gatewayUrl = default(string), string host = default(string), string name = default(string), string password = default(string), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public GatewayRevokeTmpUsers(string host = default(string), string name = default(string), string password = default(string), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayRevokeTmpUsers and cannot be null");
             // to ensure "tmpCredsId" is required (not null)
             this.TmpCredsId = tmpCredsId ?? throw new ArgumentNullException("tmpCredsId is a required property for GatewayRevokeTmpUsers and cannot be null");
-            this.GatewayUrl = gatewayUrl;
             this.Host = host;
             this.Password = password;
             this.SoftDelete = softDelete;
@@ -63,13 +61,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// Host
         /// </summary>
@@ -134,7 +125,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayRevokeTmpUsers {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -177,11 +167,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
                 (
                     this.Host == input.Host ||
                     (this.Host != null &&
@@ -232,8 +217,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
                 if (this.Name != null)

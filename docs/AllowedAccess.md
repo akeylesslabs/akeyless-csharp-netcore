@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AllowedApi** | **bool** |  | [optional] 
 **AllowedsLogin** | **bool** |  | [optional] 
 **ErrMsg** | **string** |  | [optional] 
+**Hash** | **string** |  | [optional] 
 **IsValid** | **bool** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **SubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 

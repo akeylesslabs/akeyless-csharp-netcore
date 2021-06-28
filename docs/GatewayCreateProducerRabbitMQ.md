@@ -4,7 +4,6 @@ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

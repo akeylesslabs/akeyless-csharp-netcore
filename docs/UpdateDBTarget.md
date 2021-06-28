@@ -1,0 +1,36 @@
+# akeyless.Model.UpdateDBTarget
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Comment** | **string** | Comment about the target | [optional] 
+**DbName** | **string** |  | [optional] 
+**DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
+**DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
+**DbType** | **string** |  | [optional] 
+**Host** | **string** |  | [optional] 
+**Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MongodbAtlas** | **bool** |  | [optional] 
+**MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
+**MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 
+**MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 
+**MongodbDefaultAuthDb** | **string** | MongoDB server default authentication database | [optional] 
+**MongodbHostPort** | **string** | MongoDB server host and port | [optional] 
+**MongodbPassword** | **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
+**MongodbServerUri** | **string** | MongoDB server URI | [optional] 
+**MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
+**MongodbUsername** | **string** | MongoDB server username | [optional] 
+**Name** | **string** | Target name | 
+**NewName** | **string** | New target name | 
+**Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
+**Port** | **string** |  | [optional] 
+**Pwd** | **string** |  | [optional] 
+**SnowflakeAccount** | **string** |  | [optional] 
+**Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UpdateVersion** | **bool** | Create new version for the target | [optional] [default to false]
+**UserName** | **string** |  | [optional] 
+**Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

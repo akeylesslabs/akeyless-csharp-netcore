@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="clientCertificateData">clientCertificateData.</param>
         /// <param name="clientKeyData">clientKeyData.</param>
-        public ClientData(string clientCertificateData = default(string), string clientKeyData = default(string))
+        /// <param name="parentCertificateData">parentCertificateData.</param>
+        public ClientData(string clientCertificateData = default(string), string clientKeyData = default(string), string parentCertificateData = default(string))
         {
             this.ClientCertificateData = clientCertificateData;
             this.ClientKeyData = clientKeyData;
+            this.ParentCertificateData = parentCertificateData;
         }
         
         /// <summary>
@@ -55,6 +57,12 @@ namespace akeyless.Model
         public string ClientKeyData { get; set; }
 
         /// <summary>
+        /// Gets or Sets ParentCertificateData
+        /// </summary>
+        [DataMember(Name="parentCertificateData", EmitDefaultValue=false)]
+        public string ParentCertificateData { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +72,7 @@ namespace akeyless.Model
             sb.Append("class ClientData {\n");
             sb.Append("  ClientCertificateData: ").Append(ClientCertificateData).Append("\n");
             sb.Append("  ClientKeyData: ").Append(ClientKeyData).Append("\n");
+            sb.Append("  ParentCertificateData: ").Append(ParentCertificateData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,6 +116,11 @@ namespace akeyless.Model
                     this.ClientKeyData == input.ClientKeyData ||
                     (this.ClientKeyData != null &&
                     this.ClientKeyData.Equals(input.ClientKeyData))
+                ) && 
+                (
+                    this.ParentCertificateData == input.ParentCertificateData ||
+                    (this.ParentCertificateData != null &&
+                    this.ParentCertificateData.Equals(input.ParentCertificateData))
                 );
         }
 
@@ -123,6 +137,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ClientCertificateData.GetHashCode();
                 if (this.ClientKeyData != null)
                     hashCode = hashCode * 59 + this.ClientKeyData.GetHashCode();
+                if (this.ParentCertificateData != null)
+                    hashCode = hashCode * 59 + this.ParentCertificateData.GetHashCode();
                 return hashCode;
             }
         }

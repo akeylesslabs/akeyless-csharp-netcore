@@ -47,10 +47,10 @@ namespace akeyless.Model
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">Token ttl.</param>
+        /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), string name = default(string), string password = default(string), string token = default(string), int ttl = default(int), string uidToken = default(string), string username = default(string))
+        public CreateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), string name = default(string), string password = default(string), string token = default(string), int ttl = 60, string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodUniversalIdentity and cannot be null");

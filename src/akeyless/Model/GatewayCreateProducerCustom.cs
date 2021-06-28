@@ -40,7 +40,6 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerCustom" /> class.
         /// </summary>
         /// <param name="createSyncUrl">URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create (required).</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="payload">Secret payload to be sent with each create/revoke webhook request.</param>
@@ -52,7 +51,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerCustom(string createSyncUrl = default(string), string gatewayUrl = "http://localhost:8000", string name = default(string), string password = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerCustom(string createSyncUrl = default(string), string name = default(string), string password = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "createSyncUrl" is required (not null)
             this.CreateSyncUrl = createSyncUrl ?? throw new ArgumentNullException("createSyncUrl is a required property for GatewayCreateProducerCustom and cannot be null");
@@ -60,8 +59,6 @@ namespace akeyless.Model
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerCustom and cannot be null");
             // to ensure "revokeSyncUrl" is required (not null)
             this.RevokeSyncUrl = revokeSyncUrl ?? throw new ArgumentNullException("revokeSyncUrl is a required property for GatewayCreateProducerCustom and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             this.Payload = payload;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -80,13 +77,6 @@ namespace akeyless.Model
         /// <value>URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create</value>
         [DataMember(Name="create-sync-url", EmitDefaultValue=false)]
         public string CreateSyncUrl { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// Producer name
@@ -174,7 +164,6 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerCustom {\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
@@ -224,11 +213,6 @@ namespace akeyless.Model
                     this.CreateSyncUrl == input.CreateSyncUrl ||
                     (this.CreateSyncUrl != null &&
                     this.CreateSyncUrl.Equals(input.CreateSyncUrl))
-                ) && 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -297,8 +281,6 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.CreateSyncUrl != null)
                     hashCode = hashCode * 59 + this.CreateSyncUrl.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

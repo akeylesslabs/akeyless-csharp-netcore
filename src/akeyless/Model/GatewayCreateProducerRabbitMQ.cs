@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerRabbitMQ" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -55,7 +54,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerRabbitMQ(string gatewayUrl = "http://localhost:8000", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerRabbitMQ(string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
@@ -71,8 +70,6 @@ namespace akeyless.Model
             this.RabbitmqUserReadPermission = rabbitmqUserReadPermission ?? throw new ArgumentNullException("rabbitmqUserReadPermission is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
             // to ensure "rabbitmqUserWritePermission" is required (not null)
             this.RabbitmqUserWritePermission = rabbitmqUserWritePermission ?? throw new ArgumentNullException("rabbitmqUserWritePermission is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RabbitmqUserTags = rabbitmqUserTags;
@@ -84,13 +81,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// Producer name
         /// </summary>
@@ -204,7 +194,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerRabbitMQ {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -254,11 +243,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
@@ -345,8 +329,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

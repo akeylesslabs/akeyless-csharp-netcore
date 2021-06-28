@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | **string** | Comment about the target | [optional] 
+**GkeAccountKey** | **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | **string** | GKE cluster CA certificate | 
 **GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | 
 **GkeClusterName** | **string** | GKE cluster name | 

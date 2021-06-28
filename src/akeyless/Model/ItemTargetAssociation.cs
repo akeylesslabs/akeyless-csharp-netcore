@@ -35,10 +35,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ItemTargetAssociation" /> class.
         /// </summary>
         /// <param name="assocId">assocId.</param>
+        /// <param name="targetId">targetId.</param>
         /// <param name="targetName">targetName.</param>
-        public ItemTargetAssociation(string assocId = default(string), string targetName = default(string))
+        public ItemTargetAssociation(string assocId = default(string), long targetId = default(long), string targetName = default(string))
         {
             this.AssocId = assocId;
+            this.TargetId = targetId;
             this.TargetName = targetName;
         }
         
@@ -47,6 +49,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="assoc_id", EmitDefaultValue=false)]
         public string AssocId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TargetId
+        /// </summary>
+        [DataMember(Name="target_id", EmitDefaultValue=false)]
+        public long TargetId { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetName
@@ -63,6 +71,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class ItemTargetAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
+            sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -104,6 +113,10 @@ namespace akeyless.Model
                     this.AssocId.Equals(input.AssocId))
                 ) && 
                 (
+                    this.TargetId == input.TargetId ||
+                    this.TargetId.Equals(input.TargetId)
+                ) && 
+                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
@@ -121,6 +134,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                hashCode = hashCode * 59 + this.TargetId.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 return hashCode;

@@ -4,7 +4,6 @@ gatewayGetConfig is a command that returns gateway configuration
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

@@ -41,7 +41,6 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="eksAccessKeyId">Access Key ID (required).</param>
-        /// <param name="eksAssumeRole">IAM assume role.</param>
         /// <param name="eksClusterCert">EKS cluster CA certificate (required).</param>
         /// <param name="eksClusterEndpoint">EKS cluster URL endpoint (required).</param>
         /// <param name="eksClusterName">EKS cluster name (required).</param>
@@ -53,7 +52,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             this.EksAccessKeyId = eksAccessKeyId ?? throw new ArgumentNullException("eksAccessKeyId is a required property for CreateEKSTarget and cannot be null");
@@ -68,7 +67,6 @@ namespace akeyless.Model
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateEKSTarget and cannot be null");
             this.Comment = comment;
-            this.EksAssumeRole = eksAssumeRole;
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? "us-east-2";
             this.Key = key;
@@ -91,13 +89,6 @@ namespace akeyless.Model
         /// <value>Access Key ID</value>
         [DataMember(Name="eks-access-key-id", EmitDefaultValue=false)]
         public string EksAccessKeyId { get; set; }
-
-        /// <summary>
-        /// IAM assume role
-        /// </summary>
-        /// <value>IAM assume role</value>
-        [DataMember(Name="eks-assume-role", EmitDefaultValue=false)]
-        public string EksAssumeRole { get; set; }
 
         /// <summary>
         /// EKS cluster CA certificate
@@ -186,7 +177,6 @@ namespace akeyless.Model
             sb.Append("class CreateEKSTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
-            sb.Append("  EksAssumeRole: ").Append(EksAssumeRole).Append("\n");
             sb.Append("  EksClusterCert: ").Append(EksClusterCert).Append("\n");
             sb.Append("  EksClusterEndpoint: ").Append(EksClusterEndpoint).Append("\n");
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
@@ -241,11 +231,6 @@ namespace akeyless.Model
                     this.EksAccessKeyId == input.EksAccessKeyId ||
                     (this.EksAccessKeyId != null &&
                     this.EksAccessKeyId.Equals(input.EksAccessKeyId))
-                ) && 
-                (
-                    this.EksAssumeRole == input.EksAssumeRole ||
-                    (this.EksAssumeRole != null &&
-                    this.EksAssumeRole.Equals(input.EksAssumeRole))
                 ) && 
                 (
                     this.EksClusterCert == input.EksClusterCert ||
@@ -317,8 +302,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.EksAccessKeyId != null)
                     hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
-                if (this.EksAssumeRole != null)
-                    hashCode = hashCode * 59 + this.EksAssumeRole.GetHashCode();
                 if (this.EksClusterCert != null)
                     hashCode = hashCode * 59 + this.EksClusterCert.GetHashCode();
                 if (this.EksClusterEndpoint != null)

@@ -58,7 +58,6 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
         /// <param name="dbUserName">dbUserName.</param>
         /// <param name="eksAccessKeyId">eksAccessKeyId.</param>
-        /// <param name="eksAssumeRole">eksAssumeRole.</param>
         /// <param name="eksClusterCaCertificate">eksClusterCaCertificate.</param>
         /// <param name="eksClusterEndpoint">eksClusterEndpoint.</param>
         /// <param name="eksClusterName">eksClusterName.</param>
@@ -68,17 +67,20 @@ namespace akeyless.Model
         /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
         /// <param name="gkeClusterCaCertificate">gkeClusterCaCertificate.</param>
         /// <param name="gkeClusterEndpoint">gkeClusterEndpoint.</param>
-        /// <param name="gkeClusterName">GKEProjectID            string &#x60;json:\&quot;gke_project_id\&quot;&#x60;.</param>
+        /// <param name="gkeClusterName">gkeClusterName.</param>
         /// <param name="gkeServiceAccountKey">gkeServiceAccountKey.</param>
-        /// <param name="gkeServiceAccountName">GKEClusterComputeZone   string &#x60;json:\&quot;gke_cluster_compute_zone\&quot;&#x60;.</param>
+        /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
         /// <param name="host">host.</param>
-        /// <param name="mongodbAtlas">mongodbAtlas.</param>
+        /// <param name="k8sBearerToken">k8sBearerToken.</param>
+        /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
+        /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
         /// <param name="mongodbAtlasApiPrivateKey">mongodbAtlasApiPrivateKey.</param>
         /// <param name="mongodbAtlasApiPublicKey">mongodbAtlasApiPublicKey.</param>
         /// <param name="mongodbAtlasProjectId">mongodb atlas fields.</param>
         /// <param name="mongodbDbName">common fields.</param>
         /// <param name="mongodbDefaultAuthDb">mongodbDefaultAuthDb.</param>
         /// <param name="mongodbHostPort">mongodbHostPort.</param>
+        /// <param name="mongodbIsAtlas">mongodbIsAtlas.</param>
         /// <param name="mongodbPassword">mongodbPassword.</param>
         /// <param name="mongodbUriConnection">mongodb fields.</param>
         /// <param name="mongodbUriOptions">mongodbUriOptions.</param>
@@ -99,7 +101,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string url = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string url = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -125,7 +127,6 @@ namespace akeyless.Model
             this.DbServerName = dbServerName;
             this.DbUserName = dbUserName;
             this.EksAccessKeyId = eksAccessKeyId;
-            this.EksAssumeRole = eksAssumeRole;
             this.EksClusterCaCertificate = eksClusterCaCertificate;
             this.EksClusterEndpoint = eksClusterEndpoint;
             this.EksClusterName = eksClusterName;
@@ -139,13 +140,16 @@ namespace akeyless.Model
             this.GkeServiceAccountKey = gkeServiceAccountKey;
             this.GkeServiceAccountName = gkeServiceAccountName;
             this.Host = host;
-            this.MongodbAtlas = mongodbAtlas;
+            this.K8sBearerToken = k8sBearerToken;
+            this.K8sClusterCaCertificate = k8sClusterCaCertificate;
+            this.K8sClusterEndpoint = k8sClusterEndpoint;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
             this.MongodbDbName = mongodbDbName;
             this.MongodbDefaultAuthDb = mongodbDefaultAuthDb;
             this.MongodbHostPort = mongodbHostPort;
+            this.MongodbIsAtlas = mongodbIsAtlas;
             this.MongodbPassword = mongodbPassword;
             this.MongodbUriConnection = mongodbUriConnection;
             this.MongodbUriOptions = mongodbUriOptions;
@@ -315,12 +319,6 @@ namespace akeyless.Model
         public string EksAccessKeyId { get; set; }
 
         /// <summary>
-        /// Gets or Sets EksAssumeRole
-        /// </summary>
-        [DataMember(Name="eks_assume_role", EmitDefaultValue=false)]
-        public string EksAssumeRole { get; set; }
-
-        /// <summary>
         /// Gets or Sets EksClusterCaCertificate
         /// </summary>
         [DataMember(Name="eks_cluster_ca_certificate", EmitDefaultValue=false)]
@@ -375,9 +373,8 @@ namespace akeyless.Model
         public string GkeClusterEndpoint { get; set; }
 
         /// <summary>
-        /// GKEProjectID            string &#x60;json:\&quot;gke_project_id\&quot;&#x60;
+        /// Gets or Sets GkeClusterName
         /// </summary>
-        /// <value>GKEProjectID            string &#x60;json:\&quot;gke_project_id\&quot;&#x60;</value>
         [DataMember(Name="gke_cluster_name", EmitDefaultValue=false)]
         public string GkeClusterName { get; set; }
 
@@ -388,9 +385,8 @@ namespace akeyless.Model
         public string GkeServiceAccountKey { get; set; }
 
         /// <summary>
-        /// GKEClusterComputeZone   string &#x60;json:\&quot;gke_cluster_compute_zone\&quot;&#x60;
+        /// Gets or Sets GkeServiceAccountName
         /// </summary>
-        /// <value>GKEClusterComputeZone   string &#x60;json:\&quot;gke_cluster_compute_zone\&quot;&#x60;</value>
         [DataMember(Name="gke_service_account_name", EmitDefaultValue=false)]
         public string GkeServiceAccountName { get; set; }
 
@@ -401,10 +397,22 @@ namespace akeyless.Model
         public string Host { get; set; }
 
         /// <summary>
-        /// Gets or Sets MongodbAtlas
+        /// Gets or Sets K8sBearerToken
         /// </summary>
-        [DataMember(Name="mongodb_atlas", EmitDefaultValue=false)]
-        public bool MongodbAtlas { get; set; }
+        [DataMember(Name="k8s_bearer_token", EmitDefaultValue=false)]
+        public string K8sBearerToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets K8sClusterCaCertificate
+        /// </summary>
+        [DataMember(Name="k8s_cluster_ca_certificate", EmitDefaultValue=false)]
+        public string K8sClusterCaCertificate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets K8sClusterEndpoint
+        /// </summary>
+        [DataMember(Name="k8s_cluster_endpoint", EmitDefaultValue=false)]
+        public string K8sClusterEndpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbAtlasApiPrivateKey
@@ -443,6 +451,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="mongodb_host_port", EmitDefaultValue=false)]
         public string MongodbHostPort { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MongodbIsAtlas
+        /// </summary>
+        [DataMember(Name="mongodb_is_atlas", EmitDefaultValue=false)]
+        public bool MongodbIsAtlas { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbPassword
@@ -597,7 +611,6 @@ namespace akeyless.Model
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbUserName: ").Append(DbUserName).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
-            sb.Append("  EksAssumeRole: ").Append(EksAssumeRole).Append("\n");
             sb.Append("  EksClusterCaCertificate: ").Append(EksClusterCaCertificate).Append("\n");
             sb.Append("  EksClusterEndpoint: ").Append(EksClusterEndpoint).Append("\n");
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
@@ -611,13 +624,16 @@ namespace akeyless.Model
             sb.Append("  GkeServiceAccountKey: ").Append(GkeServiceAccountKey).Append("\n");
             sb.Append("  GkeServiceAccountName: ").Append(GkeServiceAccountName).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
-            sb.Append("  MongodbAtlas: ").Append(MongodbAtlas).Append("\n");
+            sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
+            sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
+            sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
             sb.Append("  MongodbDbName: ").Append(MongodbDbName).Append("\n");
             sb.Append("  MongodbDefaultAuthDb: ").Append(MongodbDefaultAuthDb).Append("\n");
             sb.Append("  MongodbHostPort: ").Append(MongodbHostPort).Append("\n");
+            sb.Append("  MongodbIsAtlas: ").Append(MongodbIsAtlas).Append("\n");
             sb.Append("  MongodbPassword: ").Append(MongodbPassword).Append("\n");
             sb.Append("  MongodbUriConnection: ").Append(MongodbUriConnection).Append("\n");
             sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
@@ -792,11 +808,6 @@ namespace akeyless.Model
                     this.EksAccessKeyId.Equals(input.EksAccessKeyId))
                 ) && 
                 (
-                    this.EksAssumeRole == input.EksAssumeRole ||
-                    (this.EksAssumeRole != null &&
-                    this.EksAssumeRole.Equals(input.EksAssumeRole))
-                ) && 
-                (
                     this.EksClusterCaCertificate == input.EksClusterCaCertificate ||
                     (this.EksClusterCaCertificate != null &&
                     this.EksClusterCaCertificate.Equals(input.EksClusterCaCertificate))
@@ -863,8 +874,19 @@ namespace akeyless.Model
                     this.Host.Equals(input.Host))
                 ) && 
                 (
-                    this.MongodbAtlas == input.MongodbAtlas ||
-                    this.MongodbAtlas.Equals(input.MongodbAtlas)
+                    this.K8sBearerToken == input.K8sBearerToken ||
+                    (this.K8sBearerToken != null &&
+                    this.K8sBearerToken.Equals(input.K8sBearerToken))
+                ) && 
+                (
+                    this.K8sClusterCaCertificate == input.K8sClusterCaCertificate ||
+                    (this.K8sClusterCaCertificate != null &&
+                    this.K8sClusterCaCertificate.Equals(input.K8sClusterCaCertificate))
+                ) && 
+                (
+                    this.K8sClusterEndpoint == input.K8sClusterEndpoint ||
+                    (this.K8sClusterEndpoint != null &&
+                    this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
                 ) && 
                 (
                     this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
@@ -895,6 +917,10 @@ namespace akeyless.Model
                     this.MongodbHostPort == input.MongodbHostPort ||
                     (this.MongodbHostPort != null &&
                     this.MongodbHostPort.Equals(input.MongodbHostPort))
+                ) && 
+                (
+                    this.MongodbIsAtlas == input.MongodbIsAtlas ||
+                    this.MongodbIsAtlas.Equals(input.MongodbIsAtlas)
                 ) && 
                 (
                     this.MongodbPassword == input.MongodbPassword ||
@@ -1053,8 +1079,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbUserName.GetHashCode();
                 if (this.EksAccessKeyId != null)
                     hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
-                if (this.EksAssumeRole != null)
-                    hashCode = hashCode * 59 + this.EksAssumeRole.GetHashCode();
                 if (this.EksClusterCaCertificate != null)
                     hashCode = hashCode * 59 + this.EksClusterCaCertificate.GetHashCode();
                 if (this.EksClusterEndpoint != null)
@@ -1081,7 +1105,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GkeServiceAccountName.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
-                hashCode = hashCode * 59 + this.MongodbAtlas.GetHashCode();
+                if (this.K8sBearerToken != null)
+                    hashCode = hashCode * 59 + this.K8sBearerToken.GetHashCode();
+                if (this.K8sClusterCaCertificate != null)
+                    hashCode = hashCode * 59 + this.K8sClusterCaCertificate.GetHashCode();
+                if (this.K8sClusterEndpoint != null)
+                    hashCode = hashCode * 59 + this.K8sClusterEndpoint.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)
                     hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
                 if (this.MongodbAtlasApiPublicKey != null)
@@ -1094,6 +1123,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MongodbDefaultAuthDb.GetHashCode();
                 if (this.MongodbHostPort != null)
                     hashCode = hashCode * 59 + this.MongodbHostPort.GetHashCode();
+                hashCode = hashCode * 59 + this.MongodbIsAtlas.GetHashCode();
                 if (this.MongodbPassword != null)
                     hashCode = hashCode * 59 + this.MongodbPassword.GetHashCode();
                 if (this.MongodbUriConnection != null)

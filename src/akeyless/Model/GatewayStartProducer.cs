@@ -39,30 +39,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayStartProducer" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayStartProducer(string gatewayUrl = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public GatewayStartProducer(string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayStartProducer and cannot be null");
-            this.GatewayUrl = gatewayUrl;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// Producer name
         /// </summary>
@@ -106,7 +97,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayStartProducer {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -147,11 +137,6 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -187,8 +172,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

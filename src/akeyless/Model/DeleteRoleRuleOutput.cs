@@ -34,12 +34,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteRoleRuleOutput" /> class.
         /// </summary>
+        /// <param name="deleted">deleted.</param>
         /// <param name="result">result.</param>
-        public DeleteRoleRuleOutput(string result = default(string))
+        public DeleteRoleRuleOutput(bool deleted = default(bool), string result = default(string))
         {
+            this.Deleted = deleted;
             this.Result = result;
         }
         
+        /// <summary>
+        /// Gets or Sets Deleted
+        /// </summary>
+        [DataMember(Name="deleted", EmitDefaultValue=false)]
+        public bool Deleted { get; set; }
+
         /// <summary>
         /// Gets or Sets Result
         /// </summary>
@@ -54,6 +62,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DeleteRoleRuleOutput {\n");
+            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
             sb.Append("  Result: ").Append(Result).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -90,6 +99,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Deleted == input.Deleted ||
+                    this.Deleted.Equals(input.Deleted)
+                ) && 
+                (
                     this.Result == input.Result ||
                     (this.Result != null &&
                     this.Result.Equals(input.Result))
@@ -105,6 +118,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Deleted.GetHashCode();
                 if (this.Result != null)
                     hashCode = hashCode * 59 + this.Result.GetHashCode();
                 return hashCode;

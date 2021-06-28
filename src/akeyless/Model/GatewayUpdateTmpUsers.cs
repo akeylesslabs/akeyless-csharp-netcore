@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateTmpUsers" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url.</param>
         /// <param name="name">Producer Name (required).</param>
         /// <param name="newTtlMin">New TTL in Minutes (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
@@ -47,27 +46,19 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayUpdateTmpUsers(string gatewayUrl = default(string), string name = default(string), long newTtlMin = default(long), string password = default(string), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public GatewayUpdateTmpUsers(string name = default(string), long newTtlMin = default(long), string password = default(string), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayUpdateTmpUsers and cannot be null");
             this.NewTtlMin = newTtlMin;
             // to ensure "tmpCredsId" is required (not null)
             this.TmpCredsId = tmpCredsId ?? throw new ArgumentNullException("tmpCredsId is a required property for GatewayUpdateTmpUsers and cannot be null");
-            this.GatewayUrl = gatewayUrl;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// Producer Name
         /// </summary>
@@ -125,7 +116,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayUpdateTmpUsers {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewTtlMin: ").Append(NewTtlMin).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -167,11 +157,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
@@ -217,8 +202,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.NewTtlMin.GetHashCode();

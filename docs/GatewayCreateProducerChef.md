@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **ChefServerKey** | **string** | Server key | 
 **ChefServerUrl** | **string** | Server URL | 
 **ChefServerUsername** | **string** | Server username | 
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerMongo" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
         /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
         /// <param name="mongodbAtlasProjectId">MongoDB Atlas project ID.</param>
@@ -58,14 +57,12 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMongo(string gatewayUrl = "http://localhost:8000", string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "mongodbName" is required (not null)
             this.MongodbName = mongodbName ?? throw new ArgumentNullException("mongodbName is a required property for GatewayCreateProducerMongo and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerMongo and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
@@ -86,13 +83,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// MongoDB Atlas private key
         /// </summary>
@@ -227,7 +217,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerMongo {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
@@ -280,11 +269,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
                 (
                     this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
                     (this.MongodbAtlasApiPrivateKey != null &&
@@ -386,8 +370,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)
                     hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
                 if (this.MongodbAtlasApiPublicKey != null)

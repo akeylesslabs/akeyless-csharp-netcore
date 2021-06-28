@@ -4,7 +4,6 @@ gatewayCreateProducerMongo is a command that creates either mongodb  producer or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 

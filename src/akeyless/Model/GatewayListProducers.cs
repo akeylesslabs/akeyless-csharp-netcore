@@ -34,28 +34,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayListProducers" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayListProducers(string gatewayUrl = "http://localhost:8000", string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public GatewayListProducers(string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
@@ -92,7 +82,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayListProducers {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -132,11 +121,6 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
-                (
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
@@ -167,8 +151,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)

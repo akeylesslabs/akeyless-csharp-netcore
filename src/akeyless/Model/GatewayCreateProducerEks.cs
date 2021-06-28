@@ -46,7 +46,6 @@ namespace akeyless.Model
         /// <param name="eksClusterName">EKS cluster name (required).</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="eksSecretAccessKey">Secret Access Key (required).</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -54,7 +53,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string gatewayUrl = "http://localhost:8000", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             this.EksAccessKeyId = eksAccessKeyId ?? throw new ArgumentNullException("eksAccessKeyId is a required property for GatewayCreateProducerEks and cannot be null");
@@ -71,8 +70,6 @@ namespace akeyless.Model
             this.EksAssumeRole = eksAssumeRole;
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? "us-east-2";
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Token = token;
@@ -130,13 +127,6 @@ namespace akeyless.Model
         /// <value>Secret Access Key</value>
         [DataMember(Name="eks-secret-access-key", EmitDefaultValue=false)]
         public string EksSecretAccessKey { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// Producer name
@@ -202,7 +192,6 @@ namespace akeyless.Model
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -280,11 +269,6 @@ namespace akeyless.Model
                     this.EksSecretAccessKey.Equals(input.EksSecretAccessKey))
                 ) && 
                 (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -344,8 +328,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.EksRegion.GetHashCode();
                 if (this.EksSecretAccessKey != null)
                     hashCode = hashCode * 59 + this.EksSecretAccessKey.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

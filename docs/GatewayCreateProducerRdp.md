@@ -5,7 +5,6 @@ gatewayCreateProducerRdp is a command that creates rdp producer
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FixedUserOnly** | **string** | Fixed user | [optional] [default to "false"]
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

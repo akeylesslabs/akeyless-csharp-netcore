@@ -35,7 +35,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="EncryptOutput" /> class.
         /// </summary>
         /// <param name="result">result.</param>
-        public EncryptOutput(List<int> result = default(List<int>))
+        public EncryptOutput(string result = default(string))
         {
             this.Result = result;
         }
@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// Gets or Sets Result
         /// </summary>
         [DataMember(Name="result", EmitDefaultValue=false)]
-        public List<int> Result { get; set; }
+        public string Result { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,9 +91,8 @@ namespace akeyless.Model
             return 
                 (
                     this.Result == input.Result ||
-                    this.Result != null &&
-                    input.Result != null &&
-                    this.Result.SequenceEqual(input.Result)
+                    (this.Result != null &&
+                    this.Result.Equals(input.Result))
                 );
         }
 

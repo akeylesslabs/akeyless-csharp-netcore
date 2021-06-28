@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Certificates** | **string** |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 
+**DisplayId** | **string** |  | [optional] 
 **IsEnabled** | **bool** |  | [optional] 
 **ItemGeneralInfo** | [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
 **ItemId** | **long** |  | [optional] 

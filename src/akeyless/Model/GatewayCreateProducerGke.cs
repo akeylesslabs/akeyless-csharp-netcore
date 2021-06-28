@@ -39,7 +39,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerGke" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
+        /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
         /// <param name="gkeClusterCert">GKE cluster CA certificate (required).</param>
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint (required).</param>
         /// <param name="gkeClusterName">GKE cluster name (required).</param>
@@ -51,7 +51,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerGke(string gatewayUrl = "http://localhost:8000", string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerGke(string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "gkeClusterCert" is required (not null)
             this.GkeClusterCert = gkeClusterCert ?? throw new ArgumentNullException("gkeClusterCert is a required property for GatewayCreateProducerGke and cannot be null");
@@ -63,8 +63,7 @@ namespace akeyless.Model
             this.GkeServiceAccountEmail = gkeServiceAccountEmail ?? throw new ArgumentNullException("gkeServiceAccountEmail is a required property for GatewayCreateProducerGke and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerGke and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
+            this.GkeAccountKey = gkeAccountKey;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Token = token;
@@ -75,11 +74,11 @@ namespace akeyless.Model
         }
         
         /// <summary>
-        /// Gateway url
+        /// GKE Service Account key file path
         /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
+        /// <value>GKE Service Account key file path</value>
+        [DataMember(Name="gke-account-key", EmitDefaultValue=false)]
+        public string GkeAccountKey { get; set; }
 
         /// <summary>
         /// GKE cluster CA certificate
@@ -166,7 +165,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerGke {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
+            sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
             sb.Append("  GkeClusterCert: ").Append(GkeClusterCert).Append("\n");
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
@@ -213,9 +212,9 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
+                    this.GkeAccountKey == input.GkeAccountKey ||
+                    (this.GkeAccountKey != null &&
+                    this.GkeAccountKey.Equals(input.GkeAccountKey))
                 ) && 
                 (
                     this.GkeClusterCert == input.GkeClusterCert ||
@@ -283,8 +282,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
+                if (this.GkeAccountKey != null)
+                    hashCode = hashCode * 59 + this.GkeAccountKey.GetHashCode();
                 if (this.GkeClusterCert != null)
                     hashCode = hashCode * 59 + this.GkeClusterCert.GetHashCode();
                 if (this.GkeClusterEndpoint != null)

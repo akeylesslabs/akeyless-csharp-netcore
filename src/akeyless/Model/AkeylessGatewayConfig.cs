@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="cf">cf.</param>
         /// <param name="configProtectionKeyName">configProtectionKeyName.</param>
         /// <param name="general">general.</param>
+        /// <param name="kmipClients">kmipClients.</param>
         /// <param name="ldap">ldap.</param>
         /// <param name="leadership">leadership.</param>
         /// <param name="logForwarding">logForwarding.</param>
@@ -48,13 +49,14 @@ namespace akeyless.Model
         /// <param name="saml">saml.</param>
         /// <param name="uidentity">uidentity.</param>
         /// <param name="version">version.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), KMIPClientsConfigPart kmipClients = default(KMIPClientsConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
         {
             this.Admins = admins;
             this.Cache = cache;
             this.Cf = cf;
             this.ConfigProtectionKeyName = configProtectionKeyName;
             this.General = general;
+            this.KmipClients = kmipClients;
             this.Ldap = ldap;
             this.Leadership = leadership;
             this.LogForwarding = logForwarding;
@@ -95,6 +97,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="general", EmitDefaultValue=false)]
         public GeneralConfigPart General { get; set; }
+
+        /// <summary>
+        /// Gets or Sets KmipClients
+        /// </summary>
+        [DataMember(Name="kmip_clients", EmitDefaultValue=false)]
+        public KMIPClientsConfigPart KmipClients { get; set; }
 
         /// <summary>
         /// Gets or Sets Ldap
@@ -163,6 +171,7 @@ namespace akeyless.Model
             sb.Append("  Cf: ").Append(Cf).Append("\n");
             sb.Append("  ConfigProtectionKeyName: ").Append(ConfigProtectionKeyName).Append("\n");
             sb.Append("  General: ").Append(General).Append("\n");
+            sb.Append("  KmipClients: ").Append(KmipClients).Append("\n");
             sb.Append("  Ldap: ").Append(Ldap).Append("\n");
             sb.Append("  Leadership: ").Append(Leadership).Append("\n");
             sb.Append("  LogForwarding: ").Append(LogForwarding).Append("\n");
@@ -232,6 +241,11 @@ namespace akeyless.Model
                     this.General.Equals(input.General))
                 ) && 
                 (
+                    this.KmipClients == input.KmipClients ||
+                    (this.KmipClients != null &&
+                    this.KmipClients.Equals(input.KmipClients))
+                ) && 
+                (
                     this.Ldap == input.Ldap ||
                     (this.Ldap != null &&
                     this.Ldap.Equals(input.Ldap))
@@ -296,6 +310,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ConfigProtectionKeyName.GetHashCode();
                 if (this.General != null)
                     hashCode = hashCode * 59 + this.General.GetHashCode();
+                if (this.KmipClients != null)
+                    hashCode = hashCode * 59 + this.KmipClients.GetHashCode();
                 if (this.Ldap != null)
                     hashCode = hashCode * 59 + this.Ldap.GetHashCode();
                 if (this.Leadership != null)

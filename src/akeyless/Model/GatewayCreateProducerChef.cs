@@ -43,7 +43,6 @@ namespace akeyless.Model
         /// <param name="chefServerKey">Server key (required).</param>
         /// <param name="chefServerUrl">Server URL (required).</param>
         /// <param name="chefServerUsername">Server username (required).</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -52,7 +51,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string gatewayUrl = "http://localhost:8000", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "chefOrgs" is required (not null)
             this.ChefOrgs = chefOrgs ?? throw new ArgumentNullException("chefOrgs is a required property for GatewayCreateProducerChef and cannot be null");
@@ -64,8 +63,6 @@ namespace akeyless.Model
             this.ChefServerUsername = chefServerUsername ?? throw new ArgumentNullException("chefServerUsername is a required property for GatewayCreateProducerChef and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerChef and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SkipSsl = skipSsl;
@@ -103,13 +100,6 @@ namespace akeyless.Model
         /// <value>Server username</value>
         [DataMember(Name="chef-server-username", EmitDefaultValue=false)]
         public string ChefServerUsername { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// Producer name
@@ -179,7 +169,6 @@ namespace akeyless.Model
             sb.Append("  ChefServerKey: ").Append(ChefServerKey).Append("\n");
             sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
             sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -243,11 +232,6 @@ namespace akeyless.Model
                     this.ChefServerUsername.Equals(input.ChefServerUsername))
                 ) && 
                 (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -305,8 +289,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ChefServerUrl.GetHashCode();
                 if (this.ChefServerUsername != null)
                     hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

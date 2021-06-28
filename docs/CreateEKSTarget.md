@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | **string** | Comment about the target | [optional] 
 **EksAccessKeyId** | **string** | Access Key ID | 
-**EksAssumeRole** | **string** | IAM assume role | [optional] 
 **EksClusterCert** | **string** | EKS cluster CA certificate | 
 **EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
 **EksClusterName** | **string** | EKS cluster name | 

@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerGcp" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="gcpCredType">gcpCredType (required).</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
@@ -52,7 +51,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerGcp(string gatewayUrl = "http://localhost:8000", string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerGcp(string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "gcpCredType" is required (not null)
             this.GcpCredType = gcpCredType ?? throw new ArgumentNullException("gcpCredType is a required property for GatewayCreateProducerGcp and cannot be null");
@@ -60,8 +59,6 @@ namespace akeyless.Model
             this.GcpSaEmail = gcpSaEmail ?? throw new ArgumentNullException("gcpSaEmail is a required property for GatewayCreateProducerGcp and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerGcp and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.GcpKey = gcpKey;
             this.GcpKeyAlgo = gcpKeyAlgo;
             this.GcpTokenScopes = gcpTokenScopes;
@@ -74,13 +71,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// Gets or Sets GcpCredType
         /// </summary>
@@ -172,7 +162,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerGcp {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  GcpCredType: ").Append(GcpCredType).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
@@ -219,11 +208,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
                 (
                     this.GcpCredType == input.GcpCredType ||
                     (this.GcpCredType != null &&
@@ -295,8 +279,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.GcpCredType != null)
                     hashCode = hashCode * 59 + this.GcpCredType.GetHashCode();
                 if (this.GcpKey != null)

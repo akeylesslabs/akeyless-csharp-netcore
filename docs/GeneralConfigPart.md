@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **EnableTlsConfigure** | **bool** |  | [optional] 
 **EnableTlsCurl** | **bool** |  | [optional] 
 **EnableTlsHvp** | **bool** |  | [optional] 
+**GwClusterUrl** | **string** |  | [optional] 
 **TcpPort** | **string** |  | [optional] 
 **TlsCert** | **string** |  | [optional] 
 **TlsKey** | **string** |  | [optional] 

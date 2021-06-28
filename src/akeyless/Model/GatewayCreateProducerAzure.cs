@@ -42,7 +42,6 @@ namespace akeyless.Model
         /// <param name="appObjId">Azure App Object Id.</param>
         /// <param name="clientId">Azure Client ID (required).</param>
         /// <param name="clientSecret">Azure Client Secret (required).</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -56,7 +55,7 @@ namespace akeyless.Model
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string clientId = default(string), string clientSecret = default(string), string gatewayUrl = "http://localhost:8000", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerAzure(string appObjId = default(string), string clientId = default(string), string clientSecret = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "clientId" is required (not null)
             this.ClientId = clientId ?? throw new ArgumentNullException("clientId is a required property for GatewayCreateProducerAzure and cannot be null");
@@ -67,8 +66,6 @@ namespace akeyless.Model
             // to ensure "tenantId" is required (not null)
             this.TenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for GatewayCreateProducerAzure and cannot be null");
             this.AppObjId = appObjId;
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Token = token;
@@ -103,13 +100,6 @@ namespace akeyless.Model
         /// <value>Azure Client Secret</value>
         [DataMember(Name="client-secret", EmitDefaultValue=false)]
         public string ClientSecret { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// Producer name
@@ -213,7 +203,6 @@ namespace akeyless.Model
             sb.Append("  AppObjId: ").Append(AppObjId).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -275,11 +264,6 @@ namespace akeyless.Model
                     this.ClientSecret == input.ClientSecret ||
                     (this.ClientSecret != null &&
                     this.ClientSecret.Equals(input.ClientSecret))
-                ) && 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -361,8 +345,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ClientId.GetHashCode();
                 if (this.ClientSecret != null)
                     hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

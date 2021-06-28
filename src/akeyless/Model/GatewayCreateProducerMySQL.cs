@@ -41,7 +41,6 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="mysqlDbname">MySQL DB Name (required).</param>
         /// <param name="mysqlHost">MySQL Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="mysqlPassword">MySQL Password (required).</param>
@@ -55,7 +54,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string gatewayUrl = "http://localhost:8000", string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "mysqlDbname" is required (not null)
             this.MysqlDbname = mysqlDbname ?? throw new ArgumentNullException("mysqlDbname is a required property for GatewayCreateProducerMySQL and cannot be null");
@@ -67,8 +66,6 @@ namespace akeyless.Model
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerMySQL and cannot be null");
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             // use default value if no "mysqlHost" provided
             this.MysqlHost = mysqlHost ?? "127.0.0.1";
             // use default value if no "mysqlPort" provided
@@ -96,13 +93,6 @@ namespace akeyless.Model
         /// <value>(Optional) Server name for certificate verification</value>
         [DataMember(Name="db-server-name", EmitDefaultValue=false)]
         public string DbServerName { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// MySQL DB Name
@@ -205,7 +195,6 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerMySQL {\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  MysqlDbname: ").Append(MysqlDbname).Append("\n");
             sb.Append("  MysqlHost: ").Append(MysqlHost).Append("\n");
             sb.Append("  MysqlPassword: ").Append(MysqlPassword).Append("\n");
@@ -262,11 +251,6 @@ namespace akeyless.Model
                     this.DbServerName == input.DbServerName ||
                     (this.DbServerName != null &&
                     this.DbServerName.Equals(input.DbServerName))
-                ) && 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
                     this.MysqlDbname == input.MysqlDbname ||
@@ -348,8 +332,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
                 if (this.DbServerName != null)
                     hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.MysqlDbname != null)
                     hashCode = hashCode * 59 + this.MysqlDbname.GetHashCode();
                 if (this.MysqlHost != null)

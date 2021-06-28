@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateGKETarget" /> class.
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
+        /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
         /// <param name="gkeClusterCert">GKE cluster CA certificate (required).</param>
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint (required).</param>
         /// <param name="gkeClusterName">GKE cluster name (required).</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateGKETarget(string comment = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "gkeClusterCert" is required (not null)
             this.GkeClusterCert = gkeClusterCert ?? throw new ArgumentNullException("gkeClusterCert is a required property for CreateGKETarget and cannot be null");
@@ -63,6 +64,7 @@ namespace akeyless.Model
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateGKETarget and cannot be null");
             this.Comment = comment;
+            this.GkeAccountKey = gkeAccountKey;
             this.Key = key;
             this.Password = password;
             this.Token = token;
@@ -76,6 +78,13 @@ namespace akeyless.Model
         /// <value>Comment about the target</value>
         [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// GKE Service Account key file path
+        /// </summary>
+        /// <value>GKE Service Account key file path</value>
+        [DataMember(Name="gke-account-key", EmitDefaultValue=false)]
+        public string GkeAccountKey { get; set; }
 
         /// <summary>
         /// GKE cluster CA certificate
@@ -156,6 +165,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateGKETarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
             sb.Append("  GkeClusterCert: ").Append(GkeClusterCert).Append("\n");
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
@@ -204,6 +214,11 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.GkeAccountKey == input.GkeAccountKey ||
+                    (this.GkeAccountKey != null &&
+                    this.GkeAccountKey.Equals(input.GkeAccountKey))
                 ) && 
                 (
                     this.GkeClusterCert == input.GkeClusterCert ||
@@ -268,6 +283,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                if (this.GkeAccountKey != null)
+                    hashCode = hashCode * 59 + this.GkeAccountKey.GetHashCode();
                 if (this.GkeClusterCert != null)
                     hashCode = hashCode * 59 + this.GkeClusterCert.GetHashCode();
                 if (this.GkeClusterEndpoint != null)

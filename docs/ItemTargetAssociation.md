@@ -5,6 +5,7 @@ ItemTargetAssociation includes details of an association between an item and a t
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** |  | [optional] 
+**TargetId** | **long** |  | [optional] 
 **TargetName** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

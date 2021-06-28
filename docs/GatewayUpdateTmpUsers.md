@@ -4,7 +4,6 @@ gatewayUpdateTmpUsers is a command that returns gateway configuration
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GatewayUrl** | **string** | Gateway url | [optional] 
 **Name** | **string** | Producer Name | 
 **NewTtlMin** | **long** | New TTL in Minutes | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 

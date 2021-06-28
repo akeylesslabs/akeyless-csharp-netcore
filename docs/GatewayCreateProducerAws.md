@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **AwsUserPolicies** | **string** | AWS User policies | [optional] 
 **AwsUserProgrammaticAccess** | **bool** | AWS User programmatic access | [optional] [default to true]
 **EnableAdminRotation** | **bool** | Automatic admin credentials rotation | [optional] [default to false]
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

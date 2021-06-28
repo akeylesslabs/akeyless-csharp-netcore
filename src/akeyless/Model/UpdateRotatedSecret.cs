@@ -40,8 +40,9 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateRotatedSecret" /> class.
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
+        /// <param name="apiId">apiId.</param>
+        /// <param name="apiKey">apiKey.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Secret name (required).</param>
         /// <param name="newMetadata">New item metadata (default to &quot;default_metadata&quot;).</param>
@@ -57,14 +58,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string autoRotate = default(string), string gatewayUrl = "http://localhost:8000", string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = false, string password = default(string), List<string> rmTag = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = false, string password = default(string), List<string> rmTag = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateRotatedSecret and cannot be null");
             this.AddTag = addTag;
+            this.ApiId = apiId;
+            this.ApiKey = apiKey;
             this.AutoRotate = autoRotate;
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Key = key;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? "default_metadata";
@@ -90,18 +91,23 @@ namespace akeyless.Model
         public List<string> AddTag { get; set; }
 
         /// <summary>
+        /// Gets or Sets ApiId
+        /// </summary>
+        [DataMember(Name="api-id", EmitDefaultValue=false)]
+        public string ApiId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ApiKey
+        /// </summary>
+        [DataMember(Name="api-key", EmitDefaultValue=false)]
+        public string ApiKey { get; set; }
+
+        /// <summary>
         /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation
         /// </summary>
         /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
         [DataMember(Name="auto-rotate", EmitDefaultValue=false)]
         public string AutoRotate { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -213,8 +219,9 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateRotatedSecret {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
+            sb.Append("  ApiId: ").Append(ApiId).Append("\n");
+            sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
@@ -271,14 +278,19 @@ namespace akeyless.Model
                     this.AddTag.SequenceEqual(input.AddTag)
                 ) && 
                 (
+                    this.ApiId == input.ApiId ||
+                    (this.ApiId != null &&
+                    this.ApiId.Equals(input.ApiId))
+                ) && 
+                (
+                    this.ApiKey == input.ApiKey ||
+                    (this.ApiKey != null &&
+                    this.ApiKey.Equals(input.ApiKey))
+                ) && 
+                (
                     this.AutoRotate == input.AutoRotate ||
                     (this.AutoRotate != null &&
                     this.AutoRotate.Equals(input.AutoRotate))
-                ) && 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -367,10 +379,12 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AddTag != null)
                     hashCode = hashCode * 59 + this.AddTag.GetHashCode();
+                if (this.ApiId != null)
+                    hashCode = hashCode * 59 + this.ApiId.GetHashCode();
+                if (this.ApiKey != null)
+                    hashCode = hashCode * 59 + this.ApiKey.GetHashCode();
                 if (this.AutoRotate != null)
                     hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)

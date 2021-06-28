@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **AppObjId** | **string** | Azure App Object Id | [optional] 
 **ClientId** | **string** | Azure Client ID | 
 **ClientSecret** | **string** | Azure Client Secret | 
-**GatewayUrl** | **string** | Gateway url | [optional] [default to "http://localhost:8000"]
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

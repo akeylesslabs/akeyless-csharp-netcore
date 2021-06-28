@@ -35,10 +35,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetPKICertificateOutput" /> class.
         /// </summary>
         /// <param name="data">data.</param>
+        /// <param name="parentCert">parentCert.</param>
         /// <param name="path">path.</param>
-        public GetPKICertificateOutput(string data = default(string), string path = default(string))
+        public GetPKICertificateOutput(string data = default(string), string parentCert = default(string), string path = default(string))
         {
             this.Data = data;
+            this.ParentCert = parentCert;
             this.Path = path;
         }
         
@@ -47,6 +49,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="data", EmitDefaultValue=false)]
         public string Data { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ParentCert
+        /// </summary>
+        [DataMember(Name="parent_cert", EmitDefaultValue=false)]
+        public string ParentCert { get; set; }
 
         /// <summary>
         /// Gets or Sets Path
@@ -63,6 +71,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GetPKICertificateOutput {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  ParentCert: ").Append(ParentCert).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -104,6 +113,11 @@ namespace akeyless.Model
                     this.Data.Equals(input.Data))
                 ) && 
                 (
+                    this.ParentCert == input.ParentCert ||
+                    (this.ParentCert != null &&
+                    this.ParentCert.Equals(input.ParentCert))
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -121,6 +135,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Data != null)
                     hashCode = hashCode * 59 + this.Data.GetHashCode();
+                if (this.ParentCert != null)
+                    hashCode = hashCode * 59 + this.ParentCert.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 return hashCode;

@@ -40,7 +40,6 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerPostgreSQL" /> class.
         /// </summary>
         /// <param name="creationStatements">PostgreSQL Creation statements.</param>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="postgresqlDbName">PostgreSQL DB Name (required).</param>
@@ -53,7 +52,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerPostgreSQL(string creationStatements = default(string), string gatewayUrl = "http://localhost:8000", string name = default(string), string password = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerPostgreSQL(string creationStatements = default(string), string name = default(string), string password = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerPostgreSQL and cannot be null");
@@ -64,8 +63,6 @@ namespace akeyless.Model
             // to ensure "postgresqlUsername" is required (not null)
             this.PostgresqlUsername = postgresqlUsername ?? throw new ArgumentNullException("postgresqlUsername is a required property for GatewayCreateProducerPostgreSQL and cannot be null");
             this.CreationStatements = creationStatements;
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.Password = password;
             // use default value if no "postgresqlHost" provided
             this.PostgresqlHost = postgresqlHost ?? "127.0.0.1";
@@ -85,13 +82,6 @@ namespace akeyless.Model
         /// <value>PostgreSQL Creation statements</value>
         [DataMember(Name="creation-statements", EmitDefaultValue=false)]
         public string CreationStatements { get; set; }
-
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// Producer name
@@ -186,7 +176,6 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerPostgreSQL {\n");
             sb.Append("  CreationStatements: ").Append(CreationStatements).Append("\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PostgresqlDbName: ").Append(PostgresqlDbName).Append("\n");
@@ -237,11 +226,6 @@ namespace akeyless.Model
                     this.CreationStatements == input.CreationStatements ||
                     (this.CreationStatements != null &&
                     this.CreationStatements.Equals(input.CreationStatements))
-                ) && 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -316,8 +300,6 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.CreationStatements != null)
                     hashCode = hashCode * 59 + this.CreationStatements.GetHashCode();
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

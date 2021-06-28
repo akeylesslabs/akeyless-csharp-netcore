@@ -39,16 +39,18 @@ namespace akeyless.Model
         /// <param name="allowedApi">allowedApi.</param>
         /// <param name="allowedsLogin">allowedsLogin.</param>
         /// <param name="errMsg">errMsg.</param>
+        /// <param name="hash">hash.</param>
         /// <param name="isValid">isValid.</param>
         /// <param name="name">name.</param>
         /// <param name="subClaims">subClaims.</param>
-        public AllowedAccess(string accId = default(string), string accessRulesType = default(string), bool allowedApi = default(bool), bool allowedsLogin = default(bool), string errMsg = default(string), bool isValid = default(bool), string name = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
+        public AllowedAccess(string accId = default(string), string accessRulesType = default(string), bool allowedApi = default(bool), bool allowedsLogin = default(bool), string errMsg = default(string), string hash = default(string), bool isValid = default(bool), string name = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
         {
             this.AccId = accId;
             this.AccessRulesType = accessRulesType;
             this.AllowedApi = allowedApi;
             this.AllowedsLogin = allowedsLogin;
             this.ErrMsg = errMsg;
+            this.Hash = hash;
             this.IsValid = isValid;
             this.Name = name;
             this.SubClaims = subClaims;
@@ -85,6 +87,12 @@ namespace akeyless.Model
         public string ErrMsg { get; set; }
 
         /// <summary>
+        /// Gets or Sets Hash
+        /// </summary>
+        [DataMember(Name="hash", EmitDefaultValue=false)]
+        public string Hash { get; set; }
+
+        /// <summary>
         /// Gets or Sets IsValid
         /// </summary>
         [DataMember(Name="is_valid", EmitDefaultValue=false)]
@@ -115,6 +123,7 @@ namespace akeyless.Model
             sb.Append("  AllowedApi: ").Append(AllowedApi).Append("\n");
             sb.Append("  AllowedsLogin: ").Append(AllowedsLogin).Append("\n");
             sb.Append("  ErrMsg: ").Append(ErrMsg).Append("\n");
+            sb.Append("  Hash: ").Append(Hash).Append("\n");
             sb.Append("  IsValid: ").Append(IsValid).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
@@ -176,6 +185,11 @@ namespace akeyless.Model
                     this.ErrMsg.Equals(input.ErrMsg))
                 ) && 
                 (
+                    this.Hash == input.Hash ||
+                    (this.Hash != null &&
+                    this.Hash.Equals(input.Hash))
+                ) && 
+                (
                     this.IsValid == input.IsValid ||
                     this.IsValid.Equals(input.IsValid)
                 ) && 
@@ -209,6 +223,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.AllowedsLogin.GetHashCode();
                 if (this.ErrMsg != null)
                     hashCode = hashCode * 59 + this.ErrMsg.GetHashCode();
+                if (this.Hash != null)
+                    hashCode = hashCode * 59 + this.Hash.GetHashCode();
                 hashCode = hashCode * 59 + this.IsValid.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

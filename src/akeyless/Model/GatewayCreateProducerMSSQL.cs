@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerMSSQL" /> class.
         /// </summary>
-        /// <param name="gatewayUrl">Gateway url (default to &quot;http://localhost:8000&quot;).</param>
         /// <param name="mssqlCreateStatements">MSSQL Creation statements.</param>
         /// <param name="mssqlDbname">MSSQL Name (required).</param>
         /// <param name="mssqlHost">MSSQL Host (default to &quot;127.0.0.1&quot;).</param>
@@ -54,7 +53,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMSSQL(string gatewayUrl = "http://localhost:8000", string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = "127.0.0.1", string mssqlPassword = default(string), string mssqlPort = "1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMSSQL(string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = "127.0.0.1", string mssqlPassword = default(string), string mssqlPort = "1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "mssqlDbname" is required (not null)
             this.MssqlDbname = mssqlDbname ?? throw new ArgumentNullException("mssqlDbname is a required property for GatewayCreateProducerMSSQL and cannot be null");
@@ -64,8 +63,6 @@ namespace akeyless.Model
             this.MssqlUsername = mssqlUsername ?? throw new ArgumentNullException("mssqlUsername is a required property for GatewayCreateProducerMSSQL and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerMSSQL and cannot be null");
-            // use default value if no "gatewayUrl" provided
-            this.GatewayUrl = gatewayUrl ?? "http://localhost:8000";
             this.MssqlCreateStatements = mssqlCreateStatements;
             // use default value if no "mssqlHost" provided
             this.MssqlHost = mssqlHost ?? "127.0.0.1";
@@ -81,13 +78,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Gateway url
-        /// </summary>
-        /// <value>Gateway url</value>
-        [DataMember(Name="gateway-url", EmitDefaultValue=false)]
-        public string GatewayUrl { get; set; }
-
         /// <summary>
         /// MSSQL Creation statements
         /// </summary>
@@ -194,7 +184,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerMSSQL {\n");
-            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  MssqlCreateStatements: ").Append(MssqlCreateStatements).Append("\n");
             sb.Append("  MssqlDbname: ").Append(MssqlDbname).Append("\n");
             sb.Append("  MssqlHost: ").Append(MssqlHost).Append("\n");
@@ -243,11 +232,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.GatewayUrl == input.GatewayUrl ||
-                    (this.GatewayUrl != null &&
-                    this.GatewayUrl.Equals(input.GatewayUrl))
-                ) && 
                 (
                     this.MssqlCreateStatements == input.MssqlCreateStatements ||
                     (this.MssqlCreateStatements != null &&
@@ -329,8 +313,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.MssqlCreateStatements != null)
                     hashCode = hashCode * 59 + this.MssqlCreateStatements.GetHashCode();
                 if (this.MssqlDbname != null)

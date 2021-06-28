@@ -67,13 +67,13 @@ namespace akeyless.Model
         /// <summary>
         /// Gets or Sets ClientId
         /// </summary>
-        [DataMember(Name="client_id", EmitDefaultValue=false)]
+        [DataMember(Name="client-id", EmitDefaultValue=false)]
         public string ClientId { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientSecret
         /// </summary>
-        [DataMember(Name="client_secret", EmitDefaultValue=false)]
+        [DataMember(Name="client-secret", EmitDefaultValue=false)]
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace akeyless.Model
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name="tenant_id", EmitDefaultValue=false)]
+        [DataMember(Name="tenant-id", EmitDefaultValue=false)]
         public string TenantId { get; set; }
 
         /// <summary>
