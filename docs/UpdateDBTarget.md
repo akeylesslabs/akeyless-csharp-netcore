@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DbName** | **string** |  | [optional] 
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
-**DbType** | **string** |  | [optional] 
+**DbType** | **string** |  | 
 **Host** | **string** |  | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | **bool** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | **string** | MongoDB server username | [optional] 
 **Name** | **string** | Target name | 
-**NewName** | **string** | New target name | 
+**NewName** | **string** | New target name | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | **string** |  | [optional] 
 **Pwd** | **string** |  | [optional] 

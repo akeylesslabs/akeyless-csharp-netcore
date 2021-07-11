@@ -38,6 +38,7 @@ Method | HTTP request | Description
 [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target | 
 [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt | 
 [**DecryptPKCS1**](V2Api.md#decryptpkcs1) | **POST** /decrypt-pkcs1 | 
+[**DecryptWithClassicKey**](V2Api.md#decryptwithclassickey) | **POST** /decrypt-with-classic-key | 
 [**DeleteAuthMethod**](V2Api.md#deleteauthmethod) | **POST** /delete-auth-method | 
 [**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods | 
 [**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item | 
@@ -53,6 +54,7 @@ Method | HTTP request | Description
 [**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions | 
 [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#encryptpkcs1) | **POST** /encrypt-pkcs1 | 
+[**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#gatewaycreateproduceraws) | **POST** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#gatewaycreateproducerazure) | **POST** /gateway-create-producer-azure | 
@@ -104,7 +106,9 @@ Method | HTTP request | Description
 [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key | 
 [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state | 
 [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule | 
+[**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 | 
+[**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key | 
 [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth | 
 [**UidCreateChildToken**](V2Api.md#uidcreatechildtoken) | **POST** /uid-create-child-token | 
 [**UidGenerateToken**](V2Api.md#uidgeneratetoken) | **POST** /uid-generate-token | 
@@ -136,7 +140,9 @@ Method | HTTP request | Description
 [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa | 
+[**VerifyJWTWithClassicKey**](V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key | 
 [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 | 
+[**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key | 
 
 
 <a name="assocroleauthmethod"></a>
@@ -2448,6 +2454,74 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="decryptwithclassickey"></a>
+# **DecryptWithClassicKey**
+> DecryptWithClassicKeyOutput DecryptWithClassicKey (DecryptWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DecryptWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DecryptWithClassicKey(); // DecryptWithClassicKey | 
+
+            try
+            {
+                DecryptWithClassicKeyOutput result = apiInstance.DecryptWithClassicKey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DecryptWithClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DecryptWithClassicKey**](DecryptWithClassicKey.md)|  | 
+
+### Return type
+
+[**DecryptWithClassicKeyOutput**](DecryptWithClassicKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | decryptWithClassicKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deleteauthmethod"></a>
 # **DeleteAuthMethod**
 > DeleteAuthMethodOutput DeleteAuthMethod (DeleteAuthMethod body)
@@ -3464,6 +3538,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | encryptPKCS1Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="encryptwithclassickey"></a>
+# **EncryptWithClassicKey**
+> EncryptOutput EncryptWithClassicKey (EncryptWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EncryptWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new EncryptWithClassicKey(); // EncryptWithClassicKey | 
+
+            try
+            {
+                EncryptOutput result = apiInstance.EncryptWithClassicKey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EncryptWithClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EncryptWithClassicKey**](EncryptWithClassicKey.md)|  | 
+
+### Return type
+
+[**EncryptOutput**](EncryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | encryptResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6926,6 +7068,73 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="signjwtwithclassickey"></a>
+# **SignJWTWithClassicKey**
+> void SignJWTWithClassicKey (SignJWTWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class SignJWTWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new SignJWTWithClassicKey(); // SignJWTWithClassicKey | 
+
+            try
+            {
+                apiInstance.SignJWTWithClassicKey(body);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.SignJWTWithClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SignJWTWithClassicKey**](SignJWTWithClassicKey.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="signpkcs1"></a>
 # **SignPKCS1**
 > SignPKCS1Output SignPKCS1 (SignPKCS1 body)
@@ -6990,6 +7199,73 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | signPKCS1Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="signpkicertwithclassickey"></a>
+# **SignPKICertWithClassicKey**
+> void SignPKICertWithClassicKey (SignPKICertWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class SignPKICertWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new SignPKICertWithClassicKey(); // SignPKICertWithClassicKey | 
+
+            try
+            {
+                apiInstance.SignPKICertWithClassicKey(body);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.SignPKICertWithClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SignPKICertWithClassicKey**](SignPKICertWithClassicKey.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -9098,6 +9374,73 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="verifyjwtwithclassickey"></a>
+# **VerifyJWTWithClassicKey**
+> void VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class VerifyJWTWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new VerifyJWTWithClassicKey(); // VerifyJWTWithClassicKey | 
+
+            try
+            {
+                apiInstance.VerifyJWTWithClassicKey(body);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.VerifyJWTWithClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**VerifyJWTWithClassicKey**](VerifyJWTWithClassicKey.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="verifypkcs1"></a>
 # **VerifyPKCS1**
 > Object VerifyPKCS1 (VerifyPKCS1 body)
@@ -9162,6 +9505,73 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | verifyPKCS1Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="verifypkicertwithclassickey"></a>
+# **VerifyPKICertWithClassicKey**
+> void VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class VerifyPKICertWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new VerifyPKICertWithClassicKey(); // VerifyPKICertWithClassicKey | 
+
+            try
+            {
+                apiInstance.VerifyPKICertWithClassicKey(body);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.VerifyPKICertWithClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**VerifyPKICertWithClassicKey**](VerifyPKICertWithClassicKey.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

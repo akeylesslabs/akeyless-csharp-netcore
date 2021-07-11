@@ -43,7 +43,7 @@ namespace akeyless.Model
         /// <param name="dbName">dbName.</param>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
-        /// <param name="dbType">dbType.</param>
+        /// <param name="dbType">dbType (required).</param>
         /// <param name="host">host.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="mongodbAtlas">mongodbAtlas.</param>
@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="mongodbUriOptions">MongoDB server URI options.</param>
         /// <param name="mongodbUsername">MongoDB server username.</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newName">New target name (required).</param>
+        /// <param name="newName">New target name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
@@ -69,15 +69,14 @@ namespace akeyless.Model
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbPassword = default(string), string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string userName = default(string), string username = default(string))
         {
+            // to ensure "dbType" is required (not null)
+            this.DbType = dbType ?? throw new ArgumentNullException("dbType is a required property for UpdateDBTarget and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateDBTarget and cannot be null");
-            // to ensure "newName" is required (not null)
-            this.NewName = newName ?? throw new ArgumentNullException("newName is a required property for UpdateDBTarget and cannot be null");
             this.Comment = comment;
             this.DbName = dbName;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
-            this.DbType = dbType;
             this.Host = host;
             this.Key = key;
             this.MongodbAtlas = mongodbAtlas;
@@ -90,6 +89,7 @@ namespace akeyless.Model
             this.MongodbServerUri = mongodbServerUri;
             this.MongodbUriOptions = mongodbUriOptions;
             this.MongodbUsername = mongodbUsername;
+            this.NewName = newName;
             this.Password = password;
             this.Port = port;
             this.Pwd = pwd;

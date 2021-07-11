@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="gkeServiceAccountEmail">GKE service account email (required).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newName">New target name (required).</param>
+        /// <param name="newName">New target name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -65,11 +65,10 @@ namespace akeyless.Model
             this.GkeServiceAccountEmail = gkeServiceAccountEmail ?? throw new ArgumentNullException("gkeServiceAccountEmail is a required property for UpdateGKETarget and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateGKETarget and cannot be null");
-            // to ensure "newName" is required (not null)
-            this.NewName = newName ?? throw new ArgumentNullException("newName is a required property for UpdateGKETarget and cannot be null");
             this.Comment = comment;
             this.GkeAccountKey = gkeAccountKey;
             this.Key = key;
+            this.NewName = newName;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;

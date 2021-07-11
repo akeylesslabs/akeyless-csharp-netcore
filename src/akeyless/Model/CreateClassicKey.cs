@@ -39,7 +39,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateClassicKey" /> class.
         /// </summary>
-        /// <param name="alg">Classic Key type; options: [AES256GCM, RSA2048] (required).</param>
+        /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] (required).</param>
+        /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
         /// <param name="metadata">Metadata about the classic key.</param>
@@ -50,12 +51,13 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateClassicKey(string alg = default(string), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string password = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string password = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "alg" is required (not null)
             this.Alg = alg ?? throw new ArgumentNullException("alg is a required property for CreateClassicKey and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateClassicKey and cannot be null");
+            this.CertFileData = certFileData;
             this.Key = key;
             this.KeyData = keyData;
             this.Metadata = metadata;
@@ -68,11 +70,18 @@ namespace akeyless.Model
         }
         
         /// <summary>
-        /// Classic Key type; options: [AES256GCM, RSA2048]
+        /// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]
         /// </summary>
-        /// <value>Classic Key type; options: [AES256GCM, RSA2048]</value>
+        /// <value>Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]</value>
         [DataMember(Name="alg", EmitDefaultValue=false)]
         public string Alg { get; set; }
+
+        /// <summary>
+        /// Certificate in a PEM format.
+        /// </summary>
+        /// <value>Certificate in a PEM format.</value>
+        [DataMember(Name="cert-file-data", EmitDefaultValue=false)]
+        public string CertFileData { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -153,6 +162,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateClassicKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
+            sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -201,6 +211,11 @@ namespace akeyless.Model
                     this.Alg == input.Alg ||
                     (this.Alg != null &&
                     this.Alg.Equals(input.Alg))
+                ) && 
+                (
+                    this.CertFileData == input.CertFileData ||
+                    (this.CertFileData != null &&
+                    this.CertFileData.Equals(input.CertFileData))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -266,6 +281,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Alg != null)
                     hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                if (this.CertFileData != null)
+                    hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.KeyData != null)

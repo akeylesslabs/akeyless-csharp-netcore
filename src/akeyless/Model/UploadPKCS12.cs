@@ -39,7 +39,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadPKCS12" /> class.
         /// </summary>
-        /// <param name="cert">Path to a file that contain the certificate in a PEM format. If this parameter is not empty, the certificate will be taken from here and not from the PKCS#12 input file.</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="_in">PKCS#12 input file (private key and certificate only) (required).</param>
         /// <param name="metadata">A metadata about the key.</param>
@@ -51,7 +50,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UploadPKCS12(string cert = default(string), string customerFrgId = default(string), string _in = default(string), string metadata = default(string), string name = default(string), string passphrase = default(string), string password = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UploadPKCS12(string customerFrgId = default(string), string _in = default(string), string metadata = default(string), string name = default(string), string passphrase = default(string), string password = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "_in" is required (not null)
             this.In = _in ?? throw new ArgumentNullException("_in is a required property for UploadPKCS12 and cannot be null");
@@ -59,7 +58,6 @@ namespace akeyless.Model
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UploadPKCS12 and cannot be null");
             // to ensure "passphrase" is required (not null)
             this.Passphrase = passphrase ?? throw new ArgumentNullException("passphrase is a required property for UploadPKCS12 and cannot be null");
-            this.Cert = cert;
             this.CustomerFrgId = customerFrgId;
             this.Metadata = metadata;
             this.Password = password;
@@ -70,13 +68,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Path to a file that contain the certificate in a PEM format. If this parameter is not empty, the certificate will be taken from here and not from the PKCS#12 input file
-        /// </summary>
-        /// <value>Path to a file that contain the certificate in a PEM format. If this parameter is not empty, the certificate will be taken from here and not from the PKCS#12 input file</value>
-        [DataMember(Name="cert", EmitDefaultValue=false)]
-        public string Cert { get; set; }
-
         /// <summary>
         /// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
         /// </summary>
@@ -162,7 +153,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UploadPKCS12 {\n");
-            sb.Append("  Cert: ").Append(Cert).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  In: ").Append(In).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -208,11 +198,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.Cert == input.Cert ||
-                    (this.Cert != null &&
-                    this.Cert.Equals(input.Cert))
-                ) && 
                 (
                     this.CustomerFrgId == input.CustomerFrgId ||
                     (this.CustomerFrgId != null &&
@@ -279,8 +264,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Cert != null)
-                    hashCode = hashCode * 59 + this.Cert.GetHashCode();
                 if (this.CustomerFrgId != null)
                     hashCode = hashCode * 59 + this.CustomerFrgId.GetHashCode();
                 if (this.In != null)

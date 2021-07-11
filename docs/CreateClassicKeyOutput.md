@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClassicKeyId** | **long** |  | [optional] 
+**ClassicKeyId** | **string** |  | [optional] 
 **ClassicKeyName** | **string** |  | [optional] 
 **ClassicKeyType** | **string** |  | [optional] 
 

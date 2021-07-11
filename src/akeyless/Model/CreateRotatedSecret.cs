@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="sshPassword">sshPassword.</param>
         /// <param name="sshUsername">sshUsername.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
-        /// <param name="targetName">targetName.</param>
+        /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
@@ -61,6 +61,8 @@ namespace akeyless.Model
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateRotatedSecret and cannot be null");
+            // to ensure "targetName" is required (not null)
+            this.TargetName = targetName ?? throw new ArgumentNullException("targetName is a required property for CreateRotatedSecret and cannot be null");
             this.ApiId = apiId;
             this.ApiKey = apiKey;
             this.AutoRotate = autoRotate;
@@ -74,7 +76,6 @@ namespace akeyless.Model
             this.SshPassword = sshPassword;
             this.SshUsername = sshUsername;
             this.Tags = tags;
-            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -172,8 +173,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or Sets TargetName
+        /// Target name
         /// </summary>
+        /// <value>Target name</value>
         [DataMember(Name="target-name", EmitDefaultValue=false)]
         public string TargetName { get; set; }
 

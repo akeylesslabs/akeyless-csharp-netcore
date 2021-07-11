@@ -4,7 +4,8 @@ CreateClassicKey is a command that creates classic key
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alg** | **string** | Classic Key type; options: [AES256GCM, RSA2048] | 
+**Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
+**CertFileData** | **string** | Certificate in a PEM format. | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **KeyData** | **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | **string** | Metadata about the classic key | [optional] 

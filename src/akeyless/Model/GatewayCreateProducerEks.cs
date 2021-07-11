@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="eksAccessKeyId">Access Key ID (required).</param>
         /// <param name="eksAssumeRole">IAM assume role.</param>
-        /// <param name="eksClusterCert">EKS cluster CA certificate (required).</param>
+        /// <param name="eksClusterCaCert">EKS cluster CA certificate (required).</param>
         /// <param name="eksClusterEndpoint">EKS cluster URL endpoint (required).</param>
         /// <param name="eksClusterName">EKS cluster name (required).</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
@@ -53,12 +53,12 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             this.EksAccessKeyId = eksAccessKeyId ?? throw new ArgumentNullException("eksAccessKeyId is a required property for GatewayCreateProducerEks and cannot be null");
-            // to ensure "eksClusterCert" is required (not null)
-            this.EksClusterCert = eksClusterCert ?? throw new ArgumentNullException("eksClusterCert is a required property for GatewayCreateProducerEks and cannot be null");
+            // to ensure "eksClusterCaCert" is required (not null)
+            this.EksClusterCaCert = eksClusterCaCert ?? throw new ArgumentNullException("eksClusterCaCert is a required property for GatewayCreateProducerEks and cannot be null");
             // to ensure "eksClusterEndpoint" is required (not null)
             this.EksClusterEndpoint = eksClusterEndpoint ?? throw new ArgumentNullException("eksClusterEndpoint is a required property for GatewayCreateProducerEks and cannot be null");
             // to ensure "eksClusterName" is required (not null)
@@ -97,8 +97,8 @@ namespace akeyless.Model
         /// EKS cluster CA certificate
         /// </summary>
         /// <value>EKS cluster CA certificate</value>
-        [DataMember(Name="eks-cluster-cert", EmitDefaultValue=false)]
-        public string EksClusterCert { get; set; }
+        [DataMember(Name="eks-cluster-ca-cert", EmitDefaultValue=false)]
+        public string EksClusterCaCert { get; set; }
 
         /// <summary>
         /// EKS cluster URL endpoint
@@ -187,7 +187,7 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerEks {\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
             sb.Append("  EksAssumeRole: ").Append(EksAssumeRole).Append("\n");
-            sb.Append("  EksClusterCert: ").Append(EksClusterCert).Append("\n");
+            sb.Append("  EksClusterCaCert: ").Append(EksClusterCaCert).Append("\n");
             sb.Append("  EksClusterEndpoint: ").Append(EksClusterEndpoint).Append("\n");
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
@@ -244,9 +244,9 @@ namespace akeyless.Model
                     this.EksAssumeRole.Equals(input.EksAssumeRole))
                 ) && 
                 (
-                    this.EksClusterCert == input.EksClusterCert ||
-                    (this.EksClusterCert != null &&
-                    this.EksClusterCert.Equals(input.EksClusterCert))
+                    this.EksClusterCaCert == input.EksClusterCaCert ||
+                    (this.EksClusterCaCert != null &&
+                    this.EksClusterCaCert.Equals(input.EksClusterCaCert))
                 ) && 
                 (
                     this.EksClusterEndpoint == input.EksClusterEndpoint ||
@@ -318,8 +318,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
                 if (this.EksAssumeRole != null)
                     hashCode = hashCode * 59 + this.EksAssumeRole.GetHashCode();
-                if (this.EksClusterCert != null)
-                    hashCode = hashCode * 59 + this.EksClusterCert.GetHashCode();
+                if (this.EksClusterCaCert != null)
+                    hashCode = hashCode * 59 + this.EksClusterCaCert.GetHashCode();
                 if (this.EksClusterEndpoint != null)
                     hashCode = hashCode * 59 + this.EksClusterEndpoint.GetHashCode();
                 if (this.EksClusterName != null)

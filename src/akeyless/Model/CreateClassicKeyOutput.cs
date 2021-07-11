@@ -37,7 +37,7 @@ namespace akeyless.Model
         /// <param name="classicKeyId">classicKeyId.</param>
         /// <param name="classicKeyName">classicKeyName.</param>
         /// <param name="classicKeyType">classicKeyType.</param>
-        public CreateClassicKeyOutput(long classicKeyId = default(long), string classicKeyName = default(string), string classicKeyType = default(string))
+        public CreateClassicKeyOutput(string classicKeyId = default(string), string classicKeyName = default(string), string classicKeyType = default(string))
         {
             this.ClassicKeyId = classicKeyId;
             this.ClassicKeyName = classicKeyName;
@@ -48,7 +48,7 @@ namespace akeyless.Model
         /// Gets or Sets ClassicKeyId
         /// </summary>
         [DataMember(Name="classic_key_id", EmitDefaultValue=false)]
-        public long ClassicKeyId { get; set; }
+        public string ClassicKeyId { get; set; }
 
         /// <summary>
         /// Gets or Sets ClassicKeyName
@@ -109,7 +109,8 @@ namespace akeyless.Model
             return 
                 (
                     this.ClassicKeyId == input.ClassicKeyId ||
-                    this.ClassicKeyId.Equals(input.ClassicKeyId)
+                    (this.ClassicKeyId != null &&
+                    this.ClassicKeyId.Equals(input.ClassicKeyId))
                 ) && 
                 (
                     this.ClassicKeyName == input.ClassicKeyName ||
@@ -132,7 +133,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.ClassicKeyId.GetHashCode();
+                if (this.ClassicKeyId != null)
+                    hashCode = hashCode * 59 + this.ClassicKeyId.GetHashCode();
                 if (this.ClassicKeyName != null)
                     hashCode = hashCode * 59 + this.ClassicKeyName.GetHashCode();
                 if (this.ClassicKeyType != null)

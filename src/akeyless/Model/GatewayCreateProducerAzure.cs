@@ -40,12 +40,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerAzure" /> class.
         /// </summary>
         /// <param name="appObjId">Azure App Object Id.</param>
-        /// <param name="clientId">Azure Client ID (required).</param>
-        /// <param name="clientSecret">Azure Client Secret (required).</param>
+        /// <param name="azureClientId">Azure Client ID (required).</param>
+        /// <param name="azureClientSecret">Azure Client Secret (required).</param>
+        /// <param name="azureTenantId">Azure Tenant ID (required).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="tenantId">Azure Tenant ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userGroupObjId">User Group Object Id.</param>
@@ -55,16 +55,16 @@ namespace akeyless.Model
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string clientId = default(string), string clientSecret = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "clientId" is required (not null)
-            this.ClientId = clientId ?? throw new ArgumentNullException("clientId is a required property for GatewayCreateProducerAzure and cannot be null");
-            // to ensure "clientSecret" is required (not null)
-            this.ClientSecret = clientSecret ?? throw new ArgumentNullException("clientSecret is a required property for GatewayCreateProducerAzure and cannot be null");
+            // to ensure "azureClientId" is required (not null)
+            this.AzureClientId = azureClientId ?? throw new ArgumentNullException("azureClientId is a required property for GatewayCreateProducerAzure and cannot be null");
+            // to ensure "azureClientSecret" is required (not null)
+            this.AzureClientSecret = azureClientSecret ?? throw new ArgumentNullException("azureClientSecret is a required property for GatewayCreateProducerAzure and cannot be null");
+            // to ensure "azureTenantId" is required (not null)
+            this.AzureTenantId = azureTenantId ?? throw new ArgumentNullException("azureTenantId is a required property for GatewayCreateProducerAzure and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerAzure and cannot be null");
-            // to ensure "tenantId" is required (not null)
-            this.TenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for GatewayCreateProducerAzure and cannot be null");
             this.AppObjId = appObjId;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -91,15 +91,22 @@ namespace akeyless.Model
         /// Azure Client ID
         /// </summary>
         /// <value>Azure Client ID</value>
-        [DataMember(Name="client-id", EmitDefaultValue=false)]
-        public string ClientId { get; set; }
+        [DataMember(Name="azure-client-id", EmitDefaultValue=false)]
+        public string AzureClientId { get; set; }
 
         /// <summary>
         /// Azure Client Secret
         /// </summary>
         /// <value>Azure Client Secret</value>
-        [DataMember(Name="client-secret", EmitDefaultValue=false)]
-        public string ClientSecret { get; set; }
+        [DataMember(Name="azure-client-secret", EmitDefaultValue=false)]
+        public string AzureClientSecret { get; set; }
+
+        /// <summary>
+        /// Azure Tenant ID
+        /// </summary>
+        /// <value>Azure Tenant ID</value>
+        [DataMember(Name="azure-tenant-id", EmitDefaultValue=false)]
+        public string AzureTenantId { get; set; }
 
         /// <summary>
         /// Producer name
@@ -121,13 +128,6 @@ namespace akeyless.Model
         /// <value>Dynamic producer encryption key</value>
         [DataMember(Name="producer-encryption-key-name", EmitDefaultValue=false)]
         public string ProducerEncryptionKeyName { get; set; }
-
-        /// <summary>
-        /// Azure Tenant ID
-        /// </summary>
-        /// <value>Azure Tenant ID</value>
-        [DataMember(Name="tenant-id", EmitDefaultValue=false)]
-        public string TenantId { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -201,12 +201,12 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerAzure {\n");
             sb.Append("  AppObjId: ").Append(AppObjId).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+            sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
+            sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
+            sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
-            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserGroupObjId: ").Append(UserGroupObjId).Append("\n");
@@ -256,14 +256,19 @@ namespace akeyless.Model
                     this.AppObjId.Equals(input.AppObjId))
                 ) && 
                 (
-                    this.ClientId == input.ClientId ||
-                    (this.ClientId != null &&
-                    this.ClientId.Equals(input.ClientId))
+                    this.AzureClientId == input.AzureClientId ||
+                    (this.AzureClientId != null &&
+                    this.AzureClientId.Equals(input.AzureClientId))
                 ) && 
                 (
-                    this.ClientSecret == input.ClientSecret ||
-                    (this.ClientSecret != null &&
-                    this.ClientSecret.Equals(input.ClientSecret))
+                    this.AzureClientSecret == input.AzureClientSecret ||
+                    (this.AzureClientSecret != null &&
+                    this.AzureClientSecret.Equals(input.AzureClientSecret))
+                ) && 
+                (
+                    this.AzureTenantId == input.AzureTenantId ||
+                    (this.AzureTenantId != null &&
+                    this.AzureTenantId.Equals(input.AzureTenantId))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -279,11 +284,6 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
                     (this.ProducerEncryptionKeyName != null &&
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
-                ) && 
-                (
-                    this.TenantId == input.TenantId ||
-                    (this.TenantId != null &&
-                    this.TenantId.Equals(input.TenantId))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -341,18 +341,18 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AppObjId != null)
                     hashCode = hashCode * 59 + this.AppObjId.GetHashCode();
-                if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
-                if (this.ClientSecret != null)
-                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
+                if (this.AzureClientId != null)
+                    hashCode = hashCode * 59 + this.AzureClientId.GetHashCode();
+                if (this.AzureClientSecret != null)
+                    hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
+                if (this.AzureTenantId != null)
+                    hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
-                if (this.TenantId != null)
-                    hashCode = hashCode * 59 + this.TenantId.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

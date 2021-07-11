@@ -40,7 +40,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodGCP" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
-        /// <param name="audience">The audience to verify in the JWT received by the client (default to &quot;akeyless.io&quot;).</param>
+        /// <param name="audience">The audience to verify in the JWT received by the client (required) (default to &quot;akeyless.io&quot;).</param>
         /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
         /// <param name="boundLabels">A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d .....</param>
         /// <param name="boundProjects">&#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate..</param>
@@ -52,16 +52,18 @@ namespace akeyless.Model
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="serviceAccountCredsData">ServiceAccount credentials data instead of giving a file path, base64 encoded.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">Type of the GCP Access Rules.</param>
+        /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), string name = default(string), string password = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string username = default(string))
         {
+            // to ensure "audience" is required (not null)
+            this.Audience = audience ?? throw new ArgumentNullException("audience is a required property for CreateAuthMethodGCP and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodGCP and cannot be null");
+            // to ensure "type" is required (not null)
+            this.Type = type ?? throw new ArgumentNullException("type is a required property for CreateAuthMethodGCP and cannot be null");
             this.AccessExpires = accessExpires;
-            // use default value if no "audience" provided
-            this.Audience = audience ?? "akeyless.io";
             this.BoundIps = boundIps;
             this.BoundLabels = boundLabels;
             this.BoundProjects = boundProjects;
@@ -72,7 +74,6 @@ namespace akeyless.Model
             this.Password = password;
             this.ServiceAccountCredsData = serviceAccountCredsData;
             this.Token = token;
-            this.Type = type;
             this.UidToken = uidToken;
             this.Username = username;
         }

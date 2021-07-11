@@ -41,25 +41,25 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="eksAccessKeyId">Access Key ID (required).</param>
-        /// <param name="eksClusterCert">EKS cluster CA certificate (required).</param>
+        /// <param name="eksClusterCaCert">EKS cluster CA certificate (required).</param>
         /// <param name="eksClusterEndpoint">EKS cluster URL endpoint (required).</param>
         /// <param name="eksClusterName">EKS cluster name (required).</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="eksSecretAccessKey">Secret Access Key (required).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newName">New target name (required).</param>
+        /// <param name="newName">New target name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Create new version for the target (default to false).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string username = default(string))
+        public UpdateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string username = default(string))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             this.EksAccessKeyId = eksAccessKeyId ?? throw new ArgumentNullException("eksAccessKeyId is a required property for UpdateEKSTarget and cannot be null");
-            // to ensure "eksClusterCert" is required (not null)
-            this.EksClusterCert = eksClusterCert ?? throw new ArgumentNullException("eksClusterCert is a required property for UpdateEKSTarget and cannot be null");
+            // to ensure "eksClusterCaCert" is required (not null)
+            this.EksClusterCaCert = eksClusterCaCert ?? throw new ArgumentNullException("eksClusterCaCert is a required property for UpdateEKSTarget and cannot be null");
             // to ensure "eksClusterEndpoint" is required (not null)
             this.EksClusterEndpoint = eksClusterEndpoint ?? throw new ArgumentNullException("eksClusterEndpoint is a required property for UpdateEKSTarget and cannot be null");
             // to ensure "eksClusterName" is required (not null)
@@ -68,12 +68,11 @@ namespace akeyless.Model
             this.EksSecretAccessKey = eksSecretAccessKey ?? throw new ArgumentNullException("eksSecretAccessKey is a required property for UpdateEKSTarget and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateEKSTarget and cannot be null");
-            // to ensure "newName" is required (not null)
-            this.NewName = newName ?? throw new ArgumentNullException("newName is a required property for UpdateEKSTarget and cannot be null");
             this.Comment = comment;
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? "us-east-2";
             this.Key = key;
+            this.NewName = newName;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
@@ -99,8 +98,8 @@ namespace akeyless.Model
         /// EKS cluster CA certificate
         /// </summary>
         /// <value>EKS cluster CA certificate</value>
-        [DataMember(Name="eks-cluster-cert", EmitDefaultValue=false)]
-        public string EksClusterCert { get; set; }
+        [DataMember(Name="eks-cluster-ca-cert", EmitDefaultValue=false)]
+        public string EksClusterCaCert { get; set; }
 
         /// <summary>
         /// EKS cluster URL endpoint
@@ -196,7 +195,7 @@ namespace akeyless.Model
             sb.Append("class UpdateEKSTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
-            sb.Append("  EksClusterCert: ").Append(EksClusterCert).Append("\n");
+            sb.Append("  EksClusterCaCert: ").Append(EksClusterCaCert).Append("\n");
             sb.Append("  EksClusterEndpoint: ").Append(EksClusterEndpoint).Append("\n");
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
@@ -254,9 +253,9 @@ namespace akeyless.Model
                     this.EksAccessKeyId.Equals(input.EksAccessKeyId))
                 ) && 
                 (
-                    this.EksClusterCert == input.EksClusterCert ||
-                    (this.EksClusterCert != null &&
-                    this.EksClusterCert.Equals(input.EksClusterCert))
+                    this.EksClusterCaCert == input.EksClusterCaCert ||
+                    (this.EksClusterCaCert != null &&
+                    this.EksClusterCaCert.Equals(input.EksClusterCaCert))
                 ) && 
                 (
                     this.EksClusterEndpoint == input.EksClusterEndpoint ||
@@ -332,8 +331,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.EksAccessKeyId != null)
                     hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
-                if (this.EksClusterCert != null)
-                    hashCode = hashCode * 59 + this.EksClusterCert.GetHashCode();
+                if (this.EksClusterCaCert != null)
+                    hashCode = hashCode * 59 + this.EksClusterCaCert.GetHashCode();
                 if (this.EksClusterEndpoint != null)
                     hashCode = hashCode * 59 + this.EksClusterEndpoint.GetHashCode();
                 if (this.EksClusterName != null)

@@ -39,10 +39,10 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerAws" /> class.
         /// </summary>
-        /// <param name="accessKeyId">Access Key ID (required).</param>
         /// <param name="accessMode">accessMode.</param>
-        /// <param name="accessSecretKey">Secret Access Key (required).</param>
         /// <param name="adminRotationIntervalDays">Admin credentials rotation interval (days) (default to 0).</param>
+        /// <param name="awsAccessKeyId">Access Key ID (required).</param>
+        /// <param name="awsAccessSecretKey">Secret Access Key (required).</param>
         /// <param name="awsRoleArns">AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode).</param>
         /// <param name="awsUserConsoleAccess">AWS User console access (default to false).</param>
         /// <param name="awsUserGroups">AWS User groups.</param>
@@ -57,12 +57,12 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerAws(string accessKeyId = default(string), string accessMode = default(string), string accessSecretKey = default(string), long adminRotationIntervalDays = 0, string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, bool enableAdminRotation = false, string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, bool enableAdminRotation = false, string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "accessKeyId" is required (not null)
-            this.AccessKeyId = accessKeyId ?? throw new ArgumentNullException("accessKeyId is a required property for GatewayCreateProducerAws and cannot be null");
-            // to ensure "accessSecretKey" is required (not null)
-            this.AccessSecretKey = accessSecretKey ?? throw new ArgumentNullException("accessSecretKey is a required property for GatewayCreateProducerAws and cannot be null");
+            // to ensure "awsAccessKeyId" is required (not null)
+            this.AwsAccessKeyId = awsAccessKeyId ?? throw new ArgumentNullException("awsAccessKeyId is a required property for GatewayCreateProducerAws and cannot be null");
+            // to ensure "awsAccessSecretKey" is required (not null)
+            this.AwsAccessSecretKey = awsAccessSecretKey ?? throw new ArgumentNullException("awsAccessSecretKey is a required property for GatewayCreateProducerAws and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerAws and cannot be null");
             this.AccessMode = accessMode;
@@ -85,24 +85,10 @@ namespace akeyless.Model
         }
         
         /// <summary>
-        /// Access Key ID
-        /// </summary>
-        /// <value>Access Key ID</value>
-        [DataMember(Name="access-key-id", EmitDefaultValue=false)]
-        public string AccessKeyId { get; set; }
-
-        /// <summary>
         /// Gets or Sets AccessMode
         /// </summary>
         [DataMember(Name="access-mode", EmitDefaultValue=false)]
         public string AccessMode { get; set; }
-
-        /// <summary>
-        /// Secret Access Key
-        /// </summary>
-        /// <value>Secret Access Key</value>
-        [DataMember(Name="access-secret-key", EmitDefaultValue=false)]
-        public string AccessSecretKey { get; set; }
 
         /// <summary>
         /// Admin credentials rotation interval (days)
@@ -110,6 +96,20 @@ namespace akeyless.Model
         /// <value>Admin credentials rotation interval (days)</value>
         [DataMember(Name="admin-rotation-interval-days", EmitDefaultValue=false)]
         public long AdminRotationIntervalDays { get; set; }
+
+        /// <summary>
+        /// Access Key ID
+        /// </summary>
+        /// <value>Access Key ID</value>
+        [DataMember(Name="aws-access-key-id", EmitDefaultValue=false)]
+        public string AwsAccessKeyId { get; set; }
+
+        /// <summary>
+        /// Secret Access Key
+        /// </summary>
+        /// <value>Secret Access Key</value>
+        [DataMember(Name="aws-access-secret-key", EmitDefaultValue=false)]
+        public string AwsAccessSecretKey { get; set; }
 
         /// <summary>
         /// AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode)
@@ -217,10 +217,10 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerAws {\n");
-            sb.Append("  AccessKeyId: ").Append(AccessKeyId).Append("\n");
             sb.Append("  AccessMode: ").Append(AccessMode).Append("\n");
-            sb.Append("  AccessSecretKey: ").Append(AccessSecretKey).Append("\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
+            sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
+            sb.Append("  AwsAccessSecretKey: ").Append(AwsAccessSecretKey).Append("\n");
             sb.Append("  AwsRoleArns: ").Append(AwsRoleArns).Append("\n");
             sb.Append("  AwsUserConsoleAccess: ").Append(AwsUserConsoleAccess).Append("\n");
             sb.Append("  AwsUserGroups: ").Append(AwsUserGroups).Append("\n");
@@ -270,23 +270,23 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.AccessKeyId == input.AccessKeyId ||
-                    (this.AccessKeyId != null &&
-                    this.AccessKeyId.Equals(input.AccessKeyId))
-                ) && 
-                (
                     this.AccessMode == input.AccessMode ||
                     (this.AccessMode != null &&
                     this.AccessMode.Equals(input.AccessMode))
                 ) && 
                 (
-                    this.AccessSecretKey == input.AccessSecretKey ||
-                    (this.AccessSecretKey != null &&
-                    this.AccessSecretKey.Equals(input.AccessSecretKey))
-                ) && 
-                (
                     this.AdminRotationIntervalDays == input.AdminRotationIntervalDays ||
                     this.AdminRotationIntervalDays.Equals(input.AdminRotationIntervalDays)
+                ) && 
+                (
+                    this.AwsAccessKeyId == input.AwsAccessKeyId ||
+                    (this.AwsAccessKeyId != null &&
+                    this.AwsAccessKeyId.Equals(input.AwsAccessKeyId))
+                ) && 
+                (
+                    this.AwsAccessSecretKey == input.AwsAccessSecretKey ||
+                    (this.AwsAccessSecretKey != null &&
+                    this.AwsAccessSecretKey.Equals(input.AwsAccessSecretKey))
                 ) && 
                 (
                     this.AwsRoleArns == input.AwsRoleArns ||
@@ -366,13 +366,13 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AccessKeyId != null)
-                    hashCode = hashCode * 59 + this.AccessKeyId.GetHashCode();
                 if (this.AccessMode != null)
                     hashCode = hashCode * 59 + this.AccessMode.GetHashCode();
-                if (this.AccessSecretKey != null)
-                    hashCode = hashCode * 59 + this.AccessSecretKey.GetHashCode();
                 hashCode = hashCode * 59 + this.AdminRotationIntervalDays.GetHashCode();
+                if (this.AwsAccessKeyId != null)
+                    hashCode = hashCode * 59 + this.AwsAccessKeyId.GetHashCode();
+                if (this.AwsAccessSecretKey != null)
+                    hashCode = hashCode * 59 + this.AwsAccessSecretKey.GetHashCode();
                 if (this.AwsRoleArns != null)
                     hashCode = hashCode * 59 + this.AwsRoleArns.GetHashCode();
                 hashCode = hashCode * 59 + this.AwsUserConsoleAccess.GetHashCode();

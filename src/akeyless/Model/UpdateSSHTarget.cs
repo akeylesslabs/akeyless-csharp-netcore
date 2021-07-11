@@ -43,7 +43,7 @@ namespace akeyless.Model
         /// <param name="host">host.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newName">New target name (required).</param>
+        /// <param name="newName">New target name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="port">port.</param>
         /// <param name="privateKey">privateKey.</param>
@@ -58,11 +58,10 @@ namespace akeyless.Model
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateSSHTarget and cannot be null");
-            // to ensure "newName" is required (not null)
-            this.NewName = newName ?? throw new ArgumentNullException("newName is a required property for UpdateSSHTarget and cannot be null");
             this.Comment = comment;
             this.Host = host;
             this.Key = key;
+            this.NewName = newName;
             this.Password = password;
             this.Port = port;
             this.PrivateKey = privateKey;

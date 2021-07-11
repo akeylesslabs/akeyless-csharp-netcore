@@ -43,9 +43,10 @@ namespace akeyless.Model
         /// <param name="logzIoConfig">logzIoConfig.</param>
         /// <param name="pullIntervalSec">pullIntervalSec.</param>
         /// <param name="splunkConfig">splunkConfig.</param>
+        /// <param name="stdOut">stdOut.</param>
         /// <param name="syslogConfig">syslogConfig.</param>
         /// <param name="targetLogType">targetLogType.</param>
-        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
+        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), bool stdOut = default(bool), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
         {
             this.AwsS3Config = awsS3Config;
             this.AzureAnalyticsConfig = azureAnalyticsConfig;
@@ -56,6 +57,7 @@ namespace akeyless.Model
             this.LogzIoConfig = logzIoConfig;
             this.PullIntervalSec = pullIntervalSec;
             this.SplunkConfig = splunkConfig;
+            this.StdOut = stdOut;
             this.SyslogConfig = syslogConfig;
             this.TargetLogType = targetLogType;
         }
@@ -115,6 +117,12 @@ namespace akeyless.Model
         public SplunkLogForwardingConfig SplunkConfig { get; set; }
 
         /// <summary>
+        /// Gets or Sets StdOut
+        /// </summary>
+        [DataMember(Name="std_out", EmitDefaultValue=false)]
+        public bool StdOut { get; set; }
+
+        /// <summary>
         /// Gets or Sets SyslogConfig
         /// </summary>
         [DataMember(Name="syslog_config", EmitDefaultValue=false)]
@@ -143,6 +151,7 @@ namespace akeyless.Model
             sb.Append("  LogzIoConfig: ").Append(LogzIoConfig).Append("\n");
             sb.Append("  PullIntervalSec: ").Append(PullIntervalSec).Append("\n");
             sb.Append("  SplunkConfig: ").Append(SplunkConfig).Append("\n");
+            sb.Append("  StdOut: ").Append(StdOut).Append("\n");
             sb.Append("  SyslogConfig: ").Append(SyslogConfig).Append("\n");
             sb.Append("  TargetLogType: ").Append(TargetLogType).Append("\n");
             sb.Append("}\n");
@@ -224,6 +233,10 @@ namespace akeyless.Model
                     this.SplunkConfig.Equals(input.SplunkConfig))
                 ) && 
                 (
+                    this.StdOut == input.StdOut ||
+                    this.StdOut.Equals(input.StdOut)
+                ) && 
+                (
                     this.SyslogConfig == input.SyslogConfig ||
                     (this.SyslogConfig != null &&
                     this.SyslogConfig.Equals(input.SyslogConfig))
@@ -261,6 +274,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.PullIntervalSec.GetHashCode();
                 if (this.SplunkConfig != null)
                     hashCode = hashCode * 59 + this.SplunkConfig.GetHashCode();
+                hashCode = hashCode * 59 + this.StdOut.GetHashCode();
                 if (this.SyslogConfig != null)
                     hashCode = hashCode * 59 + this.SyslogConfig.GetHashCode();
                 if (this.TargetLogType != null)

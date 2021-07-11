@@ -4,10 +4,10 @@ gatewayCreateProducerAws is a command that creates aws producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessKeyId** | **string** | Access Key ID | 
 **AccessMode** | **string** |  | [optional] 
-**AccessSecretKey** | **string** | Secret Access Key | 
 **AdminRotationIntervalDays** | **long** | Admin credentials rotation interval (days) | [optional] [default to 0]
+**AwsAccessKeyId** | **string** | Access Key ID | 
+**AwsAccessSecretKey** | **string** | Secret Access Key | 
 **AwsRoleArns** | **string** | AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode) | [optional] 
 **AwsUserConsoleAccess** | **bool** | AWS User console access | [optional] [default to false]
 **AwsUserGroups** | **string** | AWS User groups | [optional] 

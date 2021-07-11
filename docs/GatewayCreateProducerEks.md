@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EksAccessKeyId** | **string** | Access Key ID | 
 **EksAssumeRole** | **string** | IAM assume role | [optional] 
-**EksClusterCert** | **string** | EKS cluster CA certificate | 
+**EksClusterCaCert** | **string** | EKS cluster CA certificate | 
 **EksClusterEndpoint** | **string** | EKS cluster URL endpoint | 
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | **string** | Region | [optional] [default to "us-east-2"]
