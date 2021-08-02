@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassicKeyAttributes** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **ClassicKeyId** | **string** |  | [optional] 
 **IsProvidedByUser** | **bool** |  | [optional] 
 **IsUnexportable** | **bool** |  | [optional] 

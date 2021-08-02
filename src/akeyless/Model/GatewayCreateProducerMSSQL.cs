@@ -49,11 +49,15 @@ namespace akeyless.Model
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
+        /// <param name="secureAccessDbSchema">secureAccessDbSchema.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMSSQL(string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = "127.0.0.1", string mssqlPassword = default(string), string mssqlPort = "1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMSSQL(string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = "127.0.0.1", string mssqlPassword = default(string), string mssqlPort = "1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "mssqlDbname" is required (not null)
             this.MssqlDbname = mssqlDbname ?? throw new ArgumentNullException("mssqlDbname is a required property for GatewayCreateProducerMSSQL and cannot be null");
@@ -71,6 +75,10 @@ namespace akeyless.Model
             this.MssqlRevocationStatements = mssqlRevocationStatements;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessDbSchema = secureAccessDbSchema;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -149,6 +157,30 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessBastionIssuer
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessDbSchema
+        /// </summary>
+        [DataMember(Name="secure-access-db-schema", EmitDefaultValue=false)]
+        public string SecureAccessDbSchema { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -194,6 +226,10 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -283,6 +319,27 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessDbSchema == input.SecureAccessDbSchema ||
+                    (this.SecureAccessDbSchema != null &&
+                    this.SecureAccessDbSchema.Equals(input.SecureAccessDbSchema))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -333,6 +390,14 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessDbSchema != null)
+                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

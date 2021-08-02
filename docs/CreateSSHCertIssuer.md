@@ -9,6 +9,11 @@ Name | Type | Description | Notes
 **Name** | **string** | SSH certificate issuer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Principals** | **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
+**SecureAccessBastionApi** | **string** |  | [optional] 
+**SecureAccessBastionSsh** | **string** |  | [optional] 
+**SecureAccessEnable** | **string** |  | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
+**SecureAccessSshCredsUser** | **string** |  | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **long** | The requested Time To Live for the certificate, use second units | 

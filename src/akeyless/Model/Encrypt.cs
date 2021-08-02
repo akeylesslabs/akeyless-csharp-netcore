@@ -39,26 +39,34 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Encrypt" /> class.
         /// </summary>
+        /// <param name="displayId">The display id of the key to use in the encryption process.</param>
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
-        /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
+        /// <param name="keyName">The name of the key to use in the encryption process.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="plaintext">Data to be encrypted (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public Encrypt(Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string password = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string password = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
-            // to ensure "keyName" is required (not null)
-            this.KeyName = keyName ?? throw new ArgumentNullException("keyName is a required property for Encrypt and cannot be null");
             // to ensure "plaintext" is required (not null)
             this.Plaintext = plaintext ?? throw new ArgumentNullException("plaintext is a required property for Encrypt and cannot be null");
+            this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
+            this.KeyName = keyName;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
         
+        /// <summary>
+        /// The display id of the key to use in the encryption process
+        /// </summary>
+        /// <value>The display id of the key to use in the encryption process</value>
+        [DataMember(Name="display-id", EmitDefaultValue=false)]
+        public string DisplayId { get; set; }
+
         /// <summary>
         /// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
         /// </summary>
@@ -116,6 +124,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Encrypt {\n");
+            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -157,6 +166,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
                 (
                     this.EncryptionContext == input.EncryptionContext ||
                     this.EncryptionContext != null &&
@@ -204,6 +218,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DisplayId != null)
+                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.EncryptionContext != null)
                     hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
                 if (this.KeyName != null)

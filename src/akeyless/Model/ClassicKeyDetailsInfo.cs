@@ -34,6 +34,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassicKeyDetailsInfo" /> class.
         /// </summary>
+        /// <param name="classicKeyAttributes">classicKeyAttributes.</param>
         /// <param name="classicKeyId">classicKeyId.</param>
         /// <param name="isProvidedByUser">isProvidedByUser.</param>
         /// <param name="isUnexportable">isUnexportable.</param>
@@ -43,8 +44,9 @@ namespace akeyless.Model
         /// <param name="targetAliasHelper">targetAliasHelper.</param>
         /// <param name="targetTypes">targetTypes.</param>
         /// <param name="targets">targets.</param>
-        public ClassicKeyDetailsInfo(string classicKeyId = default(string), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
+        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
         {
+            this.ClassicKeyAttributes = classicKeyAttributes;
             this.ClassicKeyId = classicKeyId;
             this.IsProvidedByUser = isProvidedByUser;
             this.IsUnexportable = isUnexportable;
@@ -56,6 +58,12 @@ namespace akeyless.Model
             this.Targets = targets;
         }
         
+        /// <summary>
+        /// Gets or Sets ClassicKeyAttributes
+        /// </summary>
+        [DataMember(Name="classic_key_attributes", EmitDefaultValue=false)]
+        public Dictionary<string, List<string>> ClassicKeyAttributes { get; set; }
+
         /// <summary>
         /// Gets or Sets ClassicKeyId
         /// </summary>
@@ -119,6 +127,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ClassicKeyDetailsInfo {\n");
+            sb.Append("  ClassicKeyAttributes: ").Append(ClassicKeyAttributes).Append("\n");
             sb.Append("  ClassicKeyId: ").Append(ClassicKeyId).Append("\n");
             sb.Append("  IsProvidedByUser: ").Append(IsProvidedByUser).Append("\n");
             sb.Append("  IsUnexportable: ").Append(IsUnexportable).Append("\n");
@@ -162,6 +171,12 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.ClassicKeyAttributes == input.ClassicKeyAttributes ||
+                    this.ClassicKeyAttributes != null &&
+                    input.ClassicKeyAttributes != null &&
+                    this.ClassicKeyAttributes.SequenceEqual(input.ClassicKeyAttributes)
+                ) && 
                 (
                     this.ClassicKeyId == input.ClassicKeyId ||
                     (this.ClassicKeyId != null &&
@@ -218,6 +233,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ClassicKeyAttributes != null)
+                    hashCode = hashCode * 59 + this.ClassicKeyAttributes.GetHashCode();
                 if (this.ClassicKeyId != null)
                     hashCode = hashCode * 59 + this.ClassicKeyId.GetHashCode();
                 hashCode = hashCode * 59 + this.IsProvidedByUser.GetHashCode();

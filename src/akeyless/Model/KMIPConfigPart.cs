@@ -26,41 +26,33 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// KMIPClient
+    /// KMIPConfigPart
     /// </summary>
     [DataContract]
-    public partial class KMIPClient :  IEquatable<KMIPClient>, IValidatableObject
+    public partial class KMIPConfigPart :  IEquatable<KMIPConfigPart>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="KMIPClient" /> class.
+        /// Initializes a new instance of the <see cref="KMIPConfigPart" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="name">name.</param>
-        /// <param name="rules">rules.</param>
-        public KMIPClient(string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        /// <param name="clients">clients.</param>
+        /// <param name="serverEnc">serverEnc.</param>
+        public KMIPConfigPart(Dictionary<string, KMIPClient> clients = default(Dictionary<string, KMIPClient>), List<int> serverEnc = default(List<int>))
         {
-            this.Id = id;
-            this.Name = name;
-            this.Rules = rules;
+            this.Clients = clients;
+            this.ServerEnc = serverEnc;
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Clients
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
+        [DataMember(Name="clients", EmitDefaultValue=false)]
+        public Dictionary<string, KMIPClient> Clients { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Gets or Sets ServerEnc
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Rules
-        /// </summary>
-        [DataMember(Name="rules", EmitDefaultValue=false)]
-        public List<PathRule> Rules { get; set; }
+        [DataMember(Name="server_enc", EmitDefaultValue=false)]
+        public List<int> ServerEnc { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +61,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class KMIPClient {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Rules: ").Append(Rules).Append("\n");
+            sb.Append("class KMIPConfigPart {\n");
+            sb.Append("  Clients: ").Append(Clients).Append("\n");
+            sb.Append("  ServerEnc: ").Append(ServerEnc).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,35 +84,31 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as KMIPClient);
+            return this.Equals(input as KMIPConfigPart);
         }
 
         /// <summary>
-        /// Returns true if KMIPClient instances are equal
+        /// Returns true if KMIPConfigPart instances are equal
         /// </summary>
-        /// <param name="input">Instance of KMIPClient to be compared</param>
+        /// <param name="input">Instance of KMIPConfigPart to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(KMIPClient input)
+        public bool Equals(KMIPConfigPart input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Clients == input.Clients ||
+                    this.Clients != null &&
+                    input.Clients != null &&
+                    this.Clients.SequenceEqual(input.Clients)
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Rules == input.Rules ||
-                    this.Rules != null &&
-                    input.Rules != null &&
-                    this.Rules.SequenceEqual(input.Rules)
+                    this.ServerEnc == input.ServerEnc ||
+                    this.ServerEnc != null &&
+                    input.ServerEnc != null &&
+                    this.ServerEnc.SequenceEqual(input.ServerEnc)
                 );
         }
 
@@ -134,12 +121,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Rules != null)
-                    hashCode = hashCode * 59 + this.Rules.GetHashCode();
+                if (this.Clients != null)
+                    hashCode = hashCode * 59 + this.Clients.GetHashCode();
+                if (this.ServerEnc != null)
+                    hashCode = hashCode * 59 + this.ServerEnc.GetHashCode();
                 return hashCode;
             }
         }

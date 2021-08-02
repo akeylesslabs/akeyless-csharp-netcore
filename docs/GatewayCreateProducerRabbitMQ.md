@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | **string** | User Tags | [optional] 
 **RabbitmqUserVhost** | **string** | User Virtual Host | [optional] 
 **RabbitmqUserWritePermission** | **string** | User write permission | 
+**SecureAccessEnable** | **string** |  | [optional] 
+**SecureAccessUrl** | **string** |  | [optional] 
+**SecureAccessWebBrowsing** | **bool** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]

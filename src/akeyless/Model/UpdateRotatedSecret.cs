@@ -50,15 +50,17 @@ namespace akeyless.Model
         /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
+        /// <param name="rotatedPassword">rotatedPassword.</param>
+        /// <param name="rotatedUsername">rotatedUsername.</param>
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
-        /// <param name="sshPassword">sshPassword.</param>
-        /// <param name="sshUsername">sshUsername.</param>
+        /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
+        /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = false, string password = default(string), List<string> rmTag = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = false, string password = default(string), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateRotatedSecret and cannot be null");
@@ -73,6 +75,8 @@ namespace akeyless.Model
             this.NewVersion = newVersion;
             this.Password = password;
             this.RmTag = rmTag;
+            this.RotatedPassword = rotatedPassword;
+            this.RotatedUsername = rotatedUsername;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
             this.RotatorCredsType = rotatorCredsType;
@@ -159,6 +163,18 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
+        /// Gets or Sets RotatedPassword
+        /// </summary>
+        [DataMember(Name="rotated-password", EmitDefaultValue=false)]
+        public string RotatedPassword { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RotatedUsername
+        /// </summary>
+        [DataMember(Name="rotated-username", EmitDefaultValue=false)]
+        public string RotatedUsername { get; set; }
+
+        /// <summary>
         /// Gets or Sets RotationHour
         /// </summary>
         [DataMember(Name="rotation-hour", EmitDefaultValue=false)]
@@ -178,14 +194,16 @@ namespace akeyless.Model
         public string RotatorCredsType { get; set; }
 
         /// <summary>
-        /// Gets or Sets SshPassword
+        /// Deprecated: use RotatedPassword
         /// </summary>
+        /// <value>Deprecated: use RotatedPassword</value>
         [DataMember(Name="ssh-password", EmitDefaultValue=false)]
         public string SshPassword { get; set; }
 
         /// <summary>
-        /// Gets or Sets SshUsername
+        /// Deprecated: use RotatedUser
         /// </summary>
+        /// <value>Deprecated: use RotatedUser</value>
         [DataMember(Name="ssh-username", EmitDefaultValue=false)]
         public string SshUsername { get; set; }
 
@@ -229,6 +247,8 @@ namespace akeyless.Model
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
+            sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
+            sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
@@ -328,6 +348,16 @@ namespace akeyless.Model
                     this.RmTag.SequenceEqual(input.RmTag)
                 ) && 
                 (
+                    this.RotatedPassword == input.RotatedPassword ||
+                    (this.RotatedPassword != null &&
+                    this.RotatedPassword.Equals(input.RotatedPassword))
+                ) && 
+                (
+                    this.RotatedUsername == input.RotatedUsername ||
+                    (this.RotatedUsername != null &&
+                    this.RotatedUsername.Equals(input.RotatedUsername))
+                ) && 
+                (
                     this.RotationHour == input.RotationHour ||
                     this.RotationHour.Equals(input.RotationHour)
                 ) && 
@@ -398,6 +428,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RmTag != null)
                     hashCode = hashCode * 59 + this.RmTag.GetHashCode();
+                if (this.RotatedPassword != null)
+                    hashCode = hashCode * 59 + this.RotatedPassword.GetHashCode();
+                if (this.RotatedUsername != null)
+                    hashCode = hashCode * 59 + this.RotatedUsername.GetHashCode();
                 hashCode = hashCode * 59 + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)
                     hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();

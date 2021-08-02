@@ -10,12 +10,14 @@ Name | Type | Description | Notes
 **Metadata** | **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
+**RotatedPassword** | **string** |  | [optional] 
+**RotatedUsername** | **string** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
 **RotationInterval** | **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | **string** |  | [optional] 
 **RotatorType** | **string** |  | [optional] 
-**SshPassword** | **string** |  | [optional] 
-**SshUsername** | **string** |  | [optional] 
+**SshPassword** | **string** | Deprecated: use RotatedPassword | [optional] 
+**SshUsername** | **string** | Deprecated: use RotatedUser | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

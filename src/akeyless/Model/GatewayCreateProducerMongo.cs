@@ -53,11 +53,14 @@ namespace akeyless.Model
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Encrypt producer with following key.</param>
+        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "mongodbName" is required (not null)
             this.MongodbName = mongodbName ?? throw new ArgumentNullException("mongodbName is a required property for GatewayCreateProducerMongo and cannot be null");
@@ -76,6 +79,9 @@ namespace akeyless.Model
             this.MongodbUsername = mongodbUsername;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -182,6 +188,24 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessBastionIssuer
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -231,6 +255,9 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -340,6 +367,22 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -398,6 +441,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

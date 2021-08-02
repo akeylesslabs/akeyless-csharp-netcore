@@ -26,59 +26,53 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerMySQL is a command that creates mysql producer
+    /// gatewayCreateProducerOracleDb is a command that creates oracle db producer
     /// </summary>
     [DataContract]
-    public partial class GatewayCreateProducerMySQL :  IEquatable<GatewayCreateProducerMySQL>, IValidatableObject
+    public partial class GatewayCreateProducerOracleDb :  IEquatable<GatewayCreateProducerOracleDb>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerMySQL" /> class.
+        /// Initializes a new instance of the <see cref="GatewayCreateProducerOracleDb" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GatewayCreateProducerMySQL() { }
+        protected GatewayCreateProducerOracleDb() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerMySQL" /> class.
+        /// Initializes a new instance of the <see cref="GatewayCreateProducerOracleDb" /> class.
         /// </summary>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
-        /// <param name="mysqlDbname">MySQL DB Name (required).</param>
-        /// <param name="mysqlHost">MySQL Host (default to &quot;127.0.0.1&quot;).</param>
-        /// <param name="mysqlPassword">MySQL Password (required).</param>
-        /// <param name="mysqlPort">MySQL Port (default to &quot;3306&quot;).</param>
-        /// <param name="mysqlScreationStatements">MySQL Creation statements.</param>
-        /// <param name="mysqlUsername">MySQL Username (required).</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="oracleHost">Oracle Host (default to &quot;127.0.0.1&quot;).</param>
+        /// <param name="oraclePassword">Oracle Password (required).</param>
+        /// <param name="oraclePort">Oracle Port (default to &quot;1521&quot;).</param>
+        /// <param name="oracleScreationStatements">Oracle Creation statements.</param>
+        /// <param name="oracleServiceName">Oracle DB Name (required).</param>
+        /// <param name="oracleUsername">Oracle Username (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "mysqlDbname" is required (not null)
-            this.MysqlDbname = mysqlDbname ?? throw new ArgumentNullException("mysqlDbname is a required property for GatewayCreateProducerMySQL and cannot be null");
-            // to ensure "mysqlPassword" is required (not null)
-            this.MysqlPassword = mysqlPassword ?? throw new ArgumentNullException("mysqlPassword is a required property for GatewayCreateProducerMySQL and cannot be null");
-            // to ensure "mysqlUsername" is required (not null)
-            this.MysqlUsername = mysqlUsername ?? throw new ArgumentNullException("mysqlUsername is a required property for GatewayCreateProducerMySQL and cannot be null");
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerMySQL and cannot be null");
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerOracleDb and cannot be null");
+            // to ensure "oraclePassword" is required (not null)
+            this.OraclePassword = oraclePassword ?? throw new ArgumentNullException("oraclePassword is a required property for GatewayCreateProducerOracleDb and cannot be null");
+            // to ensure "oracleServiceName" is required (not null)
+            this.OracleServiceName = oracleServiceName ?? throw new ArgumentNullException("oracleServiceName is a required property for GatewayCreateProducerOracleDb and cannot be null");
+            // to ensure "oracleUsername" is required (not null)
+            this.OracleUsername = oracleUsername ?? throw new ArgumentNullException("oracleUsername is a required property for GatewayCreateProducerOracleDb and cannot be null");
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
-            // use default value if no "mysqlHost" provided
-            this.MysqlHost = mysqlHost ?? "127.0.0.1";
-            // use default value if no "mysqlPort" provided
-            this.MysqlPort = mysqlPort ?? "3306";
-            this.MysqlScreationStatements = mysqlScreationStatements;
+            // use default value if no "oracleHost" provided
+            this.OracleHost = oracleHost ?? "127.0.0.1";
+            // use default value if no "oraclePort" provided
+            this.OraclePort = oraclePort ?? "1521";
+            this.OracleScreationStatements = oracleScreationStatements;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
-            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
-            this.SecureAccessEnable = secureAccessEnable;
-            this.SecureAccessHost = secureAccessHost;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -101,53 +95,53 @@ namespace akeyless.Model
         public string DbServerName { get; set; }
 
         /// <summary>
-        /// MySQL DB Name
-        /// </summary>
-        /// <value>MySQL DB Name</value>
-        [DataMember(Name="mysql-dbname", EmitDefaultValue=false)]
-        public string MysqlDbname { get; set; }
-
-        /// <summary>
-        /// MySQL Host
-        /// </summary>
-        /// <value>MySQL Host</value>
-        [DataMember(Name="mysql-host", EmitDefaultValue=false)]
-        public string MysqlHost { get; set; }
-
-        /// <summary>
-        /// MySQL Password
-        /// </summary>
-        /// <value>MySQL Password</value>
-        [DataMember(Name="mysql-password", EmitDefaultValue=false)]
-        public string MysqlPassword { get; set; }
-
-        /// <summary>
-        /// MySQL Port
-        /// </summary>
-        /// <value>MySQL Port</value>
-        [DataMember(Name="mysql-port", EmitDefaultValue=false)]
-        public string MysqlPort { get; set; }
-
-        /// <summary>
-        /// MySQL Creation statements
-        /// </summary>
-        /// <value>MySQL Creation statements</value>
-        [DataMember(Name="mysql-screation-statements", EmitDefaultValue=false)]
-        public string MysqlScreationStatements { get; set; }
-
-        /// <summary>
-        /// MySQL Username
-        /// </summary>
-        /// <value>MySQL Username</value>
-        [DataMember(Name="mysql-username", EmitDefaultValue=false)]
-        public string MysqlUsername { get; set; }
-
-        /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Oracle Host
+        /// </summary>
+        /// <value>Oracle Host</value>
+        [DataMember(Name="oracle-host", EmitDefaultValue=false)]
+        public string OracleHost { get; set; }
+
+        /// <summary>
+        /// Oracle Password
+        /// </summary>
+        /// <value>Oracle Password</value>
+        [DataMember(Name="oracle-password", EmitDefaultValue=false)]
+        public string OraclePassword { get; set; }
+
+        /// <summary>
+        /// Oracle Port
+        /// </summary>
+        /// <value>Oracle Port</value>
+        [DataMember(Name="oracle-port", EmitDefaultValue=false)]
+        public string OraclePort { get; set; }
+
+        /// <summary>
+        /// Oracle Creation statements
+        /// </summary>
+        /// <value>Oracle Creation statements</value>
+        [DataMember(Name="oracle-screation-statements", EmitDefaultValue=false)]
+        public string OracleScreationStatements { get; set; }
+
+        /// <summary>
+        /// Oracle DB Name
+        /// </summary>
+        /// <value>Oracle DB Name</value>
+        [DataMember(Name="oracle-service-name", EmitDefaultValue=false)]
+        public string OracleServiceName { get; set; }
+
+        /// <summary>
+        /// Oracle Username
+        /// </summary>
+        /// <value>Oracle Username</value>
+        [DataMember(Name="oracle-username", EmitDefaultValue=false)]
+        public string OracleUsername { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -162,24 +156,6 @@ namespace akeyless.Model
         /// <value>Dynamic producer encryption key</value>
         [DataMember(Name="producer-encryption-key-name", EmitDefaultValue=false)]
         public string ProducerEncryptionKeyName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SecureAccessBastionIssuer
-        /// </summary>
-        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
-        public string SecureAccessBastionIssuer { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SecureAccessEnable
-        /// </summary>
-        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
-        public string SecureAccessEnable { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SecureAccessHost
-        /// </summary>
-        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
-        public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -216,21 +192,18 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GatewayCreateProducerMySQL {\n");
+            sb.Append("class GatewayCreateProducerOracleDb {\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
-            sb.Append("  MysqlDbname: ").Append(MysqlDbname).Append("\n");
-            sb.Append("  MysqlHost: ").Append(MysqlHost).Append("\n");
-            sb.Append("  MysqlPassword: ").Append(MysqlPassword).Append("\n");
-            sb.Append("  MysqlPort: ").Append(MysqlPort).Append("\n");
-            sb.Append("  MysqlScreationStatements: ").Append(MysqlScreationStatements).Append("\n");
-            sb.Append("  MysqlUsername: ").Append(MysqlUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OracleHost: ").Append(OracleHost).Append("\n");
+            sb.Append("  OraclePassword: ").Append(OraclePassword).Append("\n");
+            sb.Append("  OraclePort: ").Append(OraclePort).Append("\n");
+            sb.Append("  OracleScreationStatements: ").Append(OracleScreationStatements).Append("\n");
+            sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
+            sb.Append("  OracleUsername: ").Append(OracleUsername).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
-            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
-            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
-            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -255,15 +228,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GatewayCreateProducerMySQL);
+            return this.Equals(input as GatewayCreateProducerOracleDb);
         }
 
         /// <summary>
-        /// Returns true if GatewayCreateProducerMySQL instances are equal
+        /// Returns true if GatewayCreateProducerOracleDb instances are equal
         /// </summary>
-        /// <param name="input">Instance of GatewayCreateProducerMySQL to be compared</param>
+        /// <param name="input">Instance of GatewayCreateProducerOracleDb to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GatewayCreateProducerMySQL input)
+        public bool Equals(GatewayCreateProducerOracleDb input)
         {
             if (input == null)
                 return false;
@@ -280,39 +253,39 @@ namespace akeyless.Model
                     this.DbServerName.Equals(input.DbServerName))
                 ) && 
                 (
-                    this.MysqlDbname == input.MysqlDbname ||
-                    (this.MysqlDbname != null &&
-                    this.MysqlDbname.Equals(input.MysqlDbname))
-                ) && 
-                (
-                    this.MysqlHost == input.MysqlHost ||
-                    (this.MysqlHost != null &&
-                    this.MysqlHost.Equals(input.MysqlHost))
-                ) && 
-                (
-                    this.MysqlPassword == input.MysqlPassword ||
-                    (this.MysqlPassword != null &&
-                    this.MysqlPassword.Equals(input.MysqlPassword))
-                ) && 
-                (
-                    this.MysqlPort == input.MysqlPort ||
-                    (this.MysqlPort != null &&
-                    this.MysqlPort.Equals(input.MysqlPort))
-                ) && 
-                (
-                    this.MysqlScreationStatements == input.MysqlScreationStatements ||
-                    (this.MysqlScreationStatements != null &&
-                    this.MysqlScreationStatements.Equals(input.MysqlScreationStatements))
-                ) && 
-                (
-                    this.MysqlUsername == input.MysqlUsername ||
-                    (this.MysqlUsername != null &&
-                    this.MysqlUsername.Equals(input.MysqlUsername))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.OracleHost == input.OracleHost ||
+                    (this.OracleHost != null &&
+                    this.OracleHost.Equals(input.OracleHost))
+                ) && 
+                (
+                    this.OraclePassword == input.OraclePassword ||
+                    (this.OraclePassword != null &&
+                    this.OraclePassword.Equals(input.OraclePassword))
+                ) && 
+                (
+                    this.OraclePort == input.OraclePort ||
+                    (this.OraclePort != null &&
+                    this.OraclePort.Equals(input.OraclePort))
+                ) && 
+                (
+                    this.OracleScreationStatements == input.OracleScreationStatements ||
+                    (this.OracleScreationStatements != null &&
+                    this.OracleScreationStatements.Equals(input.OracleScreationStatements))
+                ) && 
+                (
+                    this.OracleServiceName == input.OracleServiceName ||
+                    (this.OracleServiceName != null &&
+                    this.OracleServiceName.Equals(input.OracleServiceName))
+                ) && 
+                (
+                    this.OracleUsername == input.OracleUsername ||
+                    (this.OracleUsername != null &&
+                    this.OracleUsername.Equals(input.OracleUsername))
                 ) && 
                 (
                     this.Password == input.Password ||
@@ -323,22 +296,6 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
                     (this.ProducerEncryptionKeyName != null &&
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
-                ) && 
-                (
-                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
-                    (this.SecureAccessBastionIssuer != null &&
-                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
-                ) && 
-                (
-                    this.SecureAccessEnable == input.SecureAccessEnable ||
-                    (this.SecureAccessEnable != null &&
-                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
-                ) && 
-                (
-                    this.SecureAccessHost == input.SecureAccessHost ||
-                    this.SecureAccessHost != null &&
-                    input.SecureAccessHost != null &&
-                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -375,30 +332,24 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
                 if (this.DbServerName != null)
                     hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
-                if (this.MysqlDbname != null)
-                    hashCode = hashCode * 59 + this.MysqlDbname.GetHashCode();
-                if (this.MysqlHost != null)
-                    hashCode = hashCode * 59 + this.MysqlHost.GetHashCode();
-                if (this.MysqlPassword != null)
-                    hashCode = hashCode * 59 + this.MysqlPassword.GetHashCode();
-                if (this.MysqlPort != null)
-                    hashCode = hashCode * 59 + this.MysqlPort.GetHashCode();
-                if (this.MysqlScreationStatements != null)
-                    hashCode = hashCode * 59 + this.MysqlScreationStatements.GetHashCode();
-                if (this.MysqlUsername != null)
-                    hashCode = hashCode * 59 + this.MysqlUsername.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.OracleHost != null)
+                    hashCode = hashCode * 59 + this.OracleHost.GetHashCode();
+                if (this.OraclePassword != null)
+                    hashCode = hashCode * 59 + this.OraclePassword.GetHashCode();
+                if (this.OraclePort != null)
+                    hashCode = hashCode * 59 + this.OraclePort.GetHashCode();
+                if (this.OracleScreationStatements != null)
+                    hashCode = hashCode * 59 + this.OracleScreationStatements.GetHashCode();
+                if (this.OracleServiceName != null)
+                    hashCode = hashCode * 59 + this.OracleServiceName.GetHashCode();
+                if (this.OracleUsername != null)
+                    hashCode = hashCode * 59 + this.OracleUsername.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
-                if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
-                if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
-                if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

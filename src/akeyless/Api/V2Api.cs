@@ -1354,6 +1354,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerOracleDbOutput</returns>
+        GatewayCreateProducerOracleDbOutput GatewayCreateProducerOracleDb (GatewayCreateProducerOracleDb body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerOracleDbOutput</returns>
+        ApiResponse<GatewayCreateProducerOracleDbOutput> GatewayCreateProducerOracleDbWithHttpInfo (GatewayCreateProducerOracleDb body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerPostgreSQLOutput</returns>
         GatewayCreateProducerPostgreSQLOutput GatewayCreateProducerPostgreSQL (GatewayCreateProducerPostgreSQL body);
 
@@ -4266,6 +4287,27 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (GatewayCreateProducerNativeK8SOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerNativeK8SOutput>> GatewayCreateProducerNativeK8SAsyncWithHttpInfo ();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerOracleDbOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateProducerOracleDbOutput> GatewayCreateProducerOracleDbAsync (GatewayCreateProducerOracleDb body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerOracleDbOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerOracleDbOutput>> GatewayCreateProducerOracleDbAsyncWithHttpInfo (GatewayCreateProducerOracleDb body);
         /// <summary>
         /// 
         /// </summary>
@@ -13177,6 +13219,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayCreateProducerNativeK8S", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerOracleDbOutput</returns>
+        public GatewayCreateProducerOracleDbOutput GatewayCreateProducerOracleDb (GatewayCreateProducerOracleDb body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerOracleDbOutput> localVarResponse = GatewayCreateProducerOracleDbWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerOracleDbOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayCreateProducerOracleDbOutput > GatewayCreateProducerOracleDbWithHttpInfo (GatewayCreateProducerOracleDb body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerOracleDb");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayCreateProducerOracleDbOutput >("/gateway-create-producer-oracle", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerOracleDb", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerOracleDbOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateProducerOracleDbOutput> GatewayCreateProducerOracleDbAsync (GatewayCreateProducerOracleDb body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerOracleDbOutput> localVarResponse = await GatewayCreateProducerOracleDbAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerOracleDbOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerOracleDbOutput>> GatewayCreateProducerOracleDbAsyncWithHttpInfo (GatewayCreateProducerOracleDb body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerOracleDb");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateProducerOracleDbOutput>("/gateway-create-producer-oracle", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerOracleDb", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

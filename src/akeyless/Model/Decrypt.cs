@@ -40,19 +40,20 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Decrypt" /> class.
         /// </summary>
         /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format (required).</param>
+        /// <param name="displayId">The display id of the key to use in the decryption process.</param>
         /// <param name="encryptionContext">The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail.</param>
-        /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
+        /// <param name="keyName">The name of the key to use in the decryption process.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public Decrypt(string ciphertext = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public Decrypt(string ciphertext = default(string), string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "ciphertext" is required (not null)
             this.Ciphertext = ciphertext ?? throw new ArgumentNullException("ciphertext is a required property for Decrypt and cannot be null");
-            // to ensure "keyName" is required (not null)
-            this.KeyName = keyName ?? throw new ArgumentNullException("keyName is a required property for Decrypt and cannot be null");
+            this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
+            this.KeyName = keyName;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
@@ -65,6 +66,13 @@ namespace akeyless.Model
         /// <value>Ciphertext to be decrypted in base64 encoded format</value>
         [DataMember(Name="ciphertext", EmitDefaultValue=false)]
         public string Ciphertext { get; set; }
+
+        /// <summary>
+        /// The display id of the key to use in the decryption process
+        /// </summary>
+        /// <value>The display id of the key to use in the decryption process</value>
+        [DataMember(Name="display-id", EmitDefaultValue=false)]
+        public string DisplayId { get; set; }
 
         /// <summary>
         /// The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail
@@ -117,6 +125,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class Decrypt {\n");
             sb.Append("  Ciphertext: ").Append(Ciphertext).Append("\n");
+            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -163,6 +172,11 @@ namespace akeyless.Model
                     this.Ciphertext.Equals(input.Ciphertext))
                 ) && 
                 (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
                     this.EncryptionContext == input.EncryptionContext ||
                     this.EncryptionContext != null &&
                     input.EncryptionContext != null &&
@@ -206,6 +220,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Ciphertext != null)
                     hashCode = hashCode * 59 + this.Ciphertext.GetHashCode();
+                if (this.DisplayId != null)
+                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.EncryptionContext != null)
                     hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
                 if (this.KeyName != null)

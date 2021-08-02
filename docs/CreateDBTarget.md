@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | **string** | MongoDB server username | [optional] 
 **Name** | **string** | Target name | 
+**OracleServiceName** | **string** |  | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Port** | **string** |  | [optional] 
 **Pwd** | **string** |  | [optional] 

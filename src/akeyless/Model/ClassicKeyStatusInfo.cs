@@ -36,7 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="errorDate">errorDate.</param>
         /// <param name="lastError">lastError.</param>
-        /// <param name="lastStatus">ClassicKeyTargetStatus defines status of managed key target.</param>
+        /// <param name="lastStatus">ClassicKeyTargetStatus defines status of classic key target.</param>
         /// <param name="version">version.</param>
         public ClassicKeyStatusInfo(DateTime errorDate = default(DateTime), string lastError = default(string), string lastStatus = default(string), long version = default(long))
         {
@@ -59,9 +59,9 @@ namespace akeyless.Model
         public string LastError { get; set; }
 
         /// <summary>
-        /// ClassicKeyTargetStatus defines status of managed key target
+        /// ClassicKeyTargetStatus defines status of classic key target
         /// </summary>
-        /// <value>ClassicKeyTargetStatus defines status of managed key target</value>
+        /// <value>ClassicKeyTargetStatus defines status of classic key target</value>
         [DataMember(Name="last_status", EmitDefaultValue=false)]
         public string LastStatus { get; set; }
 

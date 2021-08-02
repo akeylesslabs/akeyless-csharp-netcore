@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
+        /// <param name="gcpSaEmail">GCP service account email (required).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
@@ -49,8 +50,10 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Create new version for the target (default to false).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateGcpTarget(string comment = default(string), string gcpKey = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string username = default(string))
+        public UpdateGcpTarget(string comment = default(string), string gcpKey = default(string), string gcpSaEmail = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string username = default(string))
         {
+            // to ensure "gcpSaEmail" is required (not null)
+            this.GcpSaEmail = gcpSaEmail ?? throw new ArgumentNullException("gcpSaEmail is a required property for UpdateGcpTarget and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateGcpTarget and cannot be null");
             this.Comment = comment;
@@ -77,6 +80,13 @@ namespace akeyless.Model
         /// <value>Base64-encoded service account private key text</value>
         [DataMember(Name="gcp-key", EmitDefaultValue=false)]
         public string GcpKey { get; set; }
+
+        /// <summary>
+        /// GCP service account email
+        /// </summary>
+        /// <value>GCP service account email</value>
+        [DataMember(Name="gcp-sa-email", EmitDefaultValue=false)]
+        public string GcpSaEmail { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -144,6 +154,7 @@ namespace akeyless.Model
             sb.Append("class UpdateGcpTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
+            sb.Append("  GcpSaEmail: ").Append(GcpSaEmail).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -195,6 +206,11 @@ namespace akeyless.Model
                     this.GcpKey == input.GcpKey ||
                     (this.GcpKey != null &&
                     this.GcpKey.Equals(input.GcpKey))
+                ) && 
+                (
+                    this.GcpSaEmail == input.GcpSaEmail ||
+                    (this.GcpSaEmail != null &&
+                    this.GcpSaEmail.Equals(input.GcpSaEmail))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -250,6 +266,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.GcpKey != null)
                     hashCode = hashCode * 59 + this.GcpKey.GetHashCode();
+                if (this.GcpSaEmail != null)
+                    hashCode = hashCode * 59 + this.GcpSaEmail.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)

@@ -58,6 +58,7 @@ namespace akeyless.Model
         /// <param name="mongodbUsername">MongoDB server username.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
+        /// <param name="oracleServiceName">oracleServiceName.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
@@ -67,7 +68,7 @@ namespace akeyless.Model
         /// <param name="updateVersion">Create new version for the target (default to false).</param>
         /// <param name="userName">userName.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbPassword = default(string), string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string userName = default(string), string username = default(string))
+        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbPassword = default(string), string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string userName = default(string), string username = default(string))
         {
             // to ensure "dbType" is required (not null)
             this.DbType = dbType ?? throw new ArgumentNullException("dbType is a required property for UpdateDBTarget and cannot be null");
@@ -90,6 +91,7 @@ namespace akeyless.Model
             this.MongodbUriOptions = mongodbUriOptions;
             this.MongodbUsername = mongodbUsername;
             this.NewName = newName;
+            this.OracleServiceName = oracleServiceName;
             this.Password = password;
             this.Port = port;
             this.Pwd = pwd;
@@ -231,6 +233,12 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Gets or Sets OracleServiceName
+        /// </summary>
+        [DataMember(Name="oracle-service-name", EmitDefaultValue=false)]
+        public string OracleServiceName { get; set; }
+
+        /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
@@ -316,6 +324,7 @@ namespace akeyless.Model
             sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
@@ -454,6 +463,11 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
+                    this.OracleServiceName == input.OracleServiceName ||
+                    (this.OracleServiceName != null &&
+                    this.OracleServiceName.Equals(input.OracleServiceName))
+                ) && 
+                (
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
@@ -545,6 +559,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                if (this.OracleServiceName != null)
+                    hashCode = hashCode * 59 + this.OracleServiceName.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Port != null)

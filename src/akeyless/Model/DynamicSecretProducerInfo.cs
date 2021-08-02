@@ -35,12 +35,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretProducerInfo" /> class.
         /// </summary>
         /// <param name="gwClusterId">gwClusterId.</param>
+        /// <param name="producerLastKeepAlive">producerLastKeepAlive.</param>
         /// <param name="producerMetadata">producerMetadata.</param>
         /// <param name="producerStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="producerType">producerType.</param>
-        public DynamicSecretProducerInfo(long gwClusterId = default(long), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
+        public DynamicSecretProducerInfo(long gwClusterId = default(long), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
         {
             this.GwClusterId = gwClusterId;
+            this.ProducerLastKeepAlive = producerLastKeepAlive;
             this.ProducerMetadata = producerMetadata;
             this.ProducerStatus = producerStatus;
             this.ProducerType = producerType;
@@ -51,6 +53,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="gw_cluster_id", EmitDefaultValue=false)]
         public long GwClusterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProducerLastKeepAlive
+        /// </summary>
+        [DataMember(Name="producer_last_keep_alive", EmitDefaultValue=false)]
+        public string ProducerLastKeepAlive { get; set; }
 
         /// <summary>
         /// Gets or Sets ProducerMetadata
@@ -80,6 +88,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class DynamicSecretProducerInfo {\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
+            sb.Append("  ProducerLastKeepAlive: ").Append(ProducerLastKeepAlive).Append("\n");
             sb.Append("  ProducerMetadata: ").Append(ProducerMetadata).Append("\n");
             sb.Append("  ProducerStatus: ").Append(ProducerStatus).Append("\n");
             sb.Append("  ProducerType: ").Append(ProducerType).Append("\n");
@@ -122,6 +131,11 @@ namespace akeyless.Model
                     this.GwClusterId.Equals(input.GwClusterId)
                 ) && 
                 (
+                    this.ProducerLastKeepAlive == input.ProducerLastKeepAlive ||
+                    (this.ProducerLastKeepAlive != null &&
+                    this.ProducerLastKeepAlive.Equals(input.ProducerLastKeepAlive))
+                ) && 
+                (
                     this.ProducerMetadata == input.ProducerMetadata ||
                     (this.ProducerMetadata != null &&
                     this.ProducerMetadata.Equals(input.ProducerMetadata))
@@ -148,6 +162,8 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
+                if (this.ProducerLastKeepAlive != null)
+                    hashCode = hashCode * 59 + this.ProducerLastKeepAlive.GetHashCode();
                 if (this.ProducerMetadata != null)
                     hashCode = hashCode * 59 + this.ProducerMetadata.GetHashCode();
                 if (this.ProducerStatus != null)

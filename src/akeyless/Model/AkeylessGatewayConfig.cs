@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="saml">saml.</param>
         /// <param name="uidentity">uidentity.</param>
         /// <param name="version">version.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), KMIPClientsConfigPart kmipClients = default(KMIPClientsConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -102,7 +102,7 @@ namespace akeyless.Model
         /// Gets or Sets KmipClients
         /// </summary>
         [DataMember(Name="kmip_clients", EmitDefaultValue=false)]
-        public KMIPClientsConfigPart KmipClients { get; set; }
+        public KMIPConfigPart KmipClients { get; set; }
 
         /// <summary>
         /// Gets or Sets Ldap

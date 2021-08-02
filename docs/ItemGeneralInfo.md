@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClassicKeyDetails** | [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
 **DynamicSecretProducerDetails** | [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
 **RotatedSecretDetails** | [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
+**SecureRemoteAccessDetails** | [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

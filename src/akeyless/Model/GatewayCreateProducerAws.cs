@@ -53,11 +53,16 @@ namespace akeyless.Model
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="region">Region (default to &quot;us-east-2&quot;).</param>
+        /// <param name="secureAccessAwsAccountId">secureAccessAwsAccountId.</param>
+        /// <param name="secureAccessAwsNativeCli">secureAccessAwsNativeCli.</param>
+        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, bool enableAdminRotation = false, string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, bool enableAdminRotation = false, string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "awsAccessKeyId" is required (not null)
             this.AwsAccessKeyId = awsAccessKeyId ?? throw new ArgumentNullException("awsAccessKeyId is a required property for GatewayCreateProducerAws and cannot be null");
@@ -77,6 +82,11 @@ namespace akeyless.Model
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             // use default value if no "region" provided
             this.Region = region ?? "us-east-2";
+            this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
+            this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -182,6 +192,36 @@ namespace akeyless.Model
         public string Region { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessAwsAccountId
+        /// </summary>
+        [DataMember(Name="secure-access-aws-account-id", EmitDefaultValue=false)]
+        public string SecureAccessAwsAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessAwsNativeCli
+        /// </summary>
+        [DataMember(Name="secure-access-aws-native-cli", EmitDefaultValue=false)]
+        public bool SecureAccessAwsNativeCli { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionIssuer
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessWebBrowsing
+        /// </summary>
+        [DataMember(Name="secure-access-web-browsing", EmitDefaultValue=false)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -231,6 +271,11 @@ namespace akeyless.Model
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
+            sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
+            sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -336,6 +381,29 @@ namespace akeyless.Model
                     this.Region.Equals(input.Region))
                 ) && 
                 (
+                    this.SecureAccessAwsAccountId == input.SecureAccessAwsAccountId ||
+                    (this.SecureAccessAwsAccountId != null &&
+                    this.SecureAccessAwsAccountId.Equals(input.SecureAccessAwsAccountId))
+                ) && 
+                (
+                    this.SecureAccessAwsNativeCli == input.SecureAccessAwsNativeCli ||
+                    this.SecureAccessAwsNativeCli.Equals(input.SecureAccessAwsNativeCli)
+                ) && 
+                (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -390,6 +458,14 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.Region != null)
                     hashCode = hashCode * 59 + this.Region.GetHashCode();
+                if (this.SecureAccessAwsAccountId != null)
+                    hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessAwsNativeCli.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

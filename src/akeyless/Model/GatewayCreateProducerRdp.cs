@@ -48,11 +48,14 @@ namespace akeyless.Model
         /// <param name="rdpHostName">Hostname (required).</param>
         /// <param name="rdpHostPort">Port (default to &quot;22&quot;).</param>
         /// <param name="rdpUserGroups">Groups (required).</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="secureAccessRdpDomain">secureAccessRdpDomain.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerRdp(string fixedUserOnly = "false", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerRdp(string fixedUserOnly = "false", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerRdp and cannot be null");
@@ -70,6 +73,9 @@ namespace akeyless.Model
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             // use default value if no "rdpHostPort" provided
             this.RdpHostPort = rdpHostPort ?? "22";
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -141,6 +147,24 @@ namespace akeyless.Model
         public string RdpUserGroups { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessRdpDomain
+        /// </summary>
+        [DataMember(Name="secure-access-rdp-domain", EmitDefaultValue=false)]
+        public string SecureAccessRdpDomain { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -185,6 +209,9 @@ namespace akeyless.Model
             sb.Append("  RdpHostName: ").Append(RdpHostName).Append("\n");
             sb.Append("  RdpHostPort: ").Append(RdpHostPort).Append("\n");
             sb.Append("  RdpUserGroups: ").Append(RdpUserGroups).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -269,6 +296,22 @@ namespace akeyless.Model
                     this.RdpUserGroups.Equals(input.RdpUserGroups))
                 ) && 
                 (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessRdpDomain == input.SecureAccessRdpDomain ||
+                    (this.SecureAccessRdpDomain != null &&
+                    this.SecureAccessRdpDomain.Equals(input.SecureAccessRdpDomain))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -317,6 +360,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RdpHostPort.GetHashCode();
                 if (this.RdpUserGroups != null)
                     hashCode = hashCode * 59 + this.RdpUserGroups.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.SecureAccessRdpDomain != null)
+                    hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

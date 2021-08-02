@@ -45,10 +45,28 @@ namespace akeyless.Model
         /// <param name="newName">New item name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
+        /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
+        /// <param name="secureAccessAwsAccountId">secureAccessAwsAccountId.</param>
+        /// <param name="secureAccessAwsNativeCli">secureAccessAwsNativeCli.</param>
+        /// <param name="secureAccessAwsRegion">secureAccessAwsRegion.</param>
+        /// <param name="secureAccessBastionApi">secureAccessBastionApi.</param>
+        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
+        /// <param name="secureAccessBastionSsh">secureAccessBastionSsh.</param>
+        /// <param name="secureAccessClusterEndpoint">secureAccessClusterEndpoint.</param>
+        /// <param name="secureAccessDashboardUrl">secureAccessDashboardUrl.</param>
+        /// <param name="secureAccessDbName">secureAccessDbName.</param>
+        /// <param name="secureAccessDbSchema">secureAccessDbSchema.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="secureAccessRdpDomain">secureAccessRdpDomain.</param>
+        /// <param name="secureAccessSshCreds">secureAccessSshCreds.</param>
+        /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
+        /// <param name="secureAccessUrl">secureAccessUrl.</param>
+        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
@@ -58,6 +76,24 @@ namespace akeyless.Model
             this.NewName = newName;
             this.Password = password;
             this.RmTag = rmTag;
+            this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
+            this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
+            this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
+            this.SecureAccessAwsRegion = secureAccessAwsRegion;
+            this.SecureAccessBastionApi = secureAccessBastionApi;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessBastionSsh = secureAccessBastionSsh;
+            this.SecureAccessClusterEndpoint = secureAccessClusterEndpoint;
+            this.SecureAccessDashboardUrl = secureAccessDashboardUrl;
+            this.SecureAccessDbName = secureAccessDbName;
+            this.SecureAccessDbSchema = secureAccessDbSchema;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessRdpDomain = secureAccessRdpDomain;
+            this.SecureAccessSshCreds = secureAccessSshCreds;
+            this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
+            this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -106,6 +142,114 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessAllowPortForwading
+        /// </summary>
+        [DataMember(Name="secure-access-allow-port-forwading", EmitDefaultValue=false)]
+        public bool SecureAccessAllowPortForwading { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessAwsAccountId
+        /// </summary>
+        [DataMember(Name="secure-access-aws-account-id", EmitDefaultValue=false)]
+        public string SecureAccessAwsAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessAwsNativeCli
+        /// </summary>
+        [DataMember(Name="secure-access-aws-native-cli", EmitDefaultValue=false)]
+        public bool SecureAccessAwsNativeCli { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessAwsRegion
+        /// </summary>
+        [DataMember(Name="secure-access-aws-region", EmitDefaultValue=false)]
+        public string SecureAccessAwsRegion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionApi
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-api", EmitDefaultValue=false)]
+        public string SecureAccessBastionApi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionIssuer
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionSsh
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-ssh", EmitDefaultValue=false)]
+        public string SecureAccessBastionSsh { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessClusterEndpoint
+        /// </summary>
+        [DataMember(Name="secure-access-cluster-endpoint", EmitDefaultValue=false)]
+        public string SecureAccessClusterEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessDashboardUrl
+        /// </summary>
+        [DataMember(Name="secure-access-dashboard-url", EmitDefaultValue=false)]
+        public string SecureAccessDashboardUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessDbName
+        /// </summary>
+        [DataMember(Name="secure-access-db-name", EmitDefaultValue=false)]
+        public string SecureAccessDbName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessDbSchema
+        /// </summary>
+        [DataMember(Name="secure-access-db-schema", EmitDefaultValue=false)]
+        public string SecureAccessDbSchema { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessRdpDomain
+        /// </summary>
+        [DataMember(Name="secure-access-rdp-domain", EmitDefaultValue=false)]
+        public string SecureAccessRdpDomain { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessSshCreds
+        /// </summary>
+        [DataMember(Name="secure-access-ssh-creds", EmitDefaultValue=false)]
+        public string SecureAccessSshCreds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessSshCredsUser
+        /// </summary>
+        [DataMember(Name="secure-access-ssh-creds-user", EmitDefaultValue=false)]
+        public string SecureAccessSshCredsUser { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessUrl
+        /// </summary>
+        [DataMember(Name="secure-access-url", EmitDefaultValue=false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessWebBrowsing
+        /// </summary>
+        [DataMember(Name="secure-access-web-browsing", EmitDefaultValue=false)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -140,6 +284,24 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
+            sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
+            sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
+            sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");
+            sb.Append("  SecureAccessAwsRegion: ").Append(SecureAccessAwsRegion).Append("\n");
+            sb.Append("  SecureAccessBastionApi: ").Append(SecureAccessBastionApi).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessBastionSsh: ").Append(SecureAccessBastionSsh).Append("\n");
+            sb.Append("  SecureAccessClusterEndpoint: ").Append(SecureAccessClusterEndpoint).Append("\n");
+            sb.Append("  SecureAccessDashboardUrl: ").Append(SecureAccessDashboardUrl).Append("\n");
+            sb.Append("  SecureAccessDbName: ").Append(SecureAccessDbName).Append("\n");
+            sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
+            sb.Append("  SecureAccessSshCreds: ").Append(SecureAccessSshCreds).Append("\n");
+            sb.Append("  SecureAccessSshCredsUser: ").Append(SecureAccessSshCredsUser).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
@@ -210,6 +372,94 @@ namespace akeyless.Model
                     this.RmTag.SequenceEqual(input.RmTag)
                 ) && 
                 (
+                    this.SecureAccessAllowPortForwading == input.SecureAccessAllowPortForwading ||
+                    this.SecureAccessAllowPortForwading.Equals(input.SecureAccessAllowPortForwading)
+                ) && 
+                (
+                    this.SecureAccessAwsAccountId == input.SecureAccessAwsAccountId ||
+                    (this.SecureAccessAwsAccountId != null &&
+                    this.SecureAccessAwsAccountId.Equals(input.SecureAccessAwsAccountId))
+                ) && 
+                (
+                    this.SecureAccessAwsNativeCli == input.SecureAccessAwsNativeCli ||
+                    this.SecureAccessAwsNativeCli.Equals(input.SecureAccessAwsNativeCli)
+                ) && 
+                (
+                    this.SecureAccessAwsRegion == input.SecureAccessAwsRegion ||
+                    (this.SecureAccessAwsRegion != null &&
+                    this.SecureAccessAwsRegion.Equals(input.SecureAccessAwsRegion))
+                ) && 
+                (
+                    this.SecureAccessBastionApi == input.SecureAccessBastionApi ||
+                    (this.SecureAccessBastionApi != null &&
+                    this.SecureAccessBastionApi.Equals(input.SecureAccessBastionApi))
+                ) && 
+                (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessBastionSsh == input.SecureAccessBastionSsh ||
+                    (this.SecureAccessBastionSsh != null &&
+                    this.SecureAccessBastionSsh.Equals(input.SecureAccessBastionSsh))
+                ) && 
+                (
+                    this.SecureAccessClusterEndpoint == input.SecureAccessClusterEndpoint ||
+                    (this.SecureAccessClusterEndpoint != null &&
+                    this.SecureAccessClusterEndpoint.Equals(input.SecureAccessClusterEndpoint))
+                ) && 
+                (
+                    this.SecureAccessDashboardUrl == input.SecureAccessDashboardUrl ||
+                    (this.SecureAccessDashboardUrl != null &&
+                    this.SecureAccessDashboardUrl.Equals(input.SecureAccessDashboardUrl))
+                ) && 
+                (
+                    this.SecureAccessDbName == input.SecureAccessDbName ||
+                    (this.SecureAccessDbName != null &&
+                    this.SecureAccessDbName.Equals(input.SecureAccessDbName))
+                ) && 
+                (
+                    this.SecureAccessDbSchema == input.SecureAccessDbSchema ||
+                    (this.SecureAccessDbSchema != null &&
+                    this.SecureAccessDbSchema.Equals(input.SecureAccessDbSchema))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessRdpDomain == input.SecureAccessRdpDomain ||
+                    (this.SecureAccessRdpDomain != null &&
+                    this.SecureAccessRdpDomain.Equals(input.SecureAccessRdpDomain))
+                ) && 
+                (
+                    this.SecureAccessSshCreds == input.SecureAccessSshCreds ||
+                    (this.SecureAccessSshCreds != null &&
+                    this.SecureAccessSshCreds.Equals(input.SecureAccessSshCreds))
+                ) && 
+                (
+                    this.SecureAccessSshCredsUser == input.SecureAccessSshCredsUser ||
+                    (this.SecureAccessSshCredsUser != null &&
+                    this.SecureAccessSshCredsUser.Equals(input.SecureAccessSshCredsUser))
+                ) && 
+                (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -247,6 +497,39 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RmTag != null)
                     hashCode = hashCode * 59 + this.RmTag.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
+                if (this.SecureAccessAwsAccountId != null)
+                    hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessAwsNativeCli.GetHashCode();
+                if (this.SecureAccessAwsRegion != null)
+                    hashCode = hashCode * 59 + this.SecureAccessAwsRegion.GetHashCode();
+                if (this.SecureAccessBastionApi != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionApi.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessBastionSsh != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionSsh.GetHashCode();
+                if (this.SecureAccessClusterEndpoint != null)
+                    hashCode = hashCode * 59 + this.SecureAccessClusterEndpoint.GetHashCode();
+                if (this.SecureAccessDashboardUrl != null)
+                    hashCode = hashCode * 59 + this.SecureAccessDashboardUrl.GetHashCode();
+                if (this.SecureAccessDbName != null)
+                    hashCode = hashCode * 59 + this.SecureAccessDbName.GetHashCode();
+                if (this.SecureAccessDbSchema != null)
+                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.SecureAccessRdpDomain != null)
+                    hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
+                if (this.SecureAccessSshCreds != null)
+                    hashCode = hashCode * 59 + this.SecureAccessSshCreds.GetHashCode();
+                if (this.SecureAccessSshCredsUser != null)
+                    hashCode = hashCode * 59 + this.SecureAccessSshCredsUser.GetHashCode();
+                if (this.SecureAccessUrl != null)
+                    hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -99,6 +99,7 @@ Name | Type | Description | Notes
 **MssqlCreationStatements** | **string** |  | [optional] 
 **MssqlRevocationStatements** | **string** |  | [optional] 
 **MysqlCreationStatements** | **string** |  | [optional] 
+**OracleCreationStatements** | **string** |  | [optional] 
 **Payload** | **string** |  | [optional] 
 **PostgresCreationStatements** | **string** |  | [optional] 
 **RabbitmqServerPassword** | **string** |  | [optional] 

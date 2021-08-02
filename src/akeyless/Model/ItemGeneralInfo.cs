@@ -38,12 +38,14 @@ namespace akeyless.Model
         /// <param name="classicKeyDetails">classicKeyDetails.</param>
         /// <param name="dynamicSecretProducerDetails">dynamicSecretProducerDetails.</param>
         /// <param name="rotatedSecretDetails">rotatedSecretDetails.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo))
+        /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess))
         {
             this.CertIssueDetails = certIssueDetails;
             this.ClassicKeyDetails = classicKeyDetails;
             this.DynamicSecretProducerDetails = dynamicSecretProducerDetails;
             this.RotatedSecretDetails = rotatedSecretDetails;
+            this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
         }
         
         /// <summary>
@@ -71,6 +73,12 @@ namespace akeyless.Model
         public RotatedSecretDetailsInfo RotatedSecretDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureRemoteAccessDetails
+        /// </summary>
+        [DataMember(Name="secure_remote_access_details", EmitDefaultValue=false)]
+        public SecureRemoteAccess SecureRemoteAccessDetails { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +90,7 @@ namespace akeyless.Model
             sb.Append("  ClassicKeyDetails: ").Append(ClassicKeyDetails).Append("\n");
             sb.Append("  DynamicSecretProducerDetails: ").Append(DynamicSecretProducerDetails).Append("\n");
             sb.Append("  RotatedSecretDetails: ").Append(RotatedSecretDetails).Append("\n");
+            sb.Append("  SecureRemoteAccessDetails: ").Append(SecureRemoteAccessDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -135,6 +144,11 @@ namespace akeyless.Model
                     this.RotatedSecretDetails == input.RotatedSecretDetails ||
                     (this.RotatedSecretDetails != null &&
                     this.RotatedSecretDetails.Equals(input.RotatedSecretDetails))
+                ) && 
+                (
+                    this.SecureRemoteAccessDetails == input.SecureRemoteAccessDetails ||
+                    (this.SecureRemoteAccessDetails != null &&
+                    this.SecureRemoteAccessDetails.Equals(input.SecureRemoteAccessDetails))
                 );
         }
 
@@ -155,6 +169,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DynamicSecretProducerDetails.GetHashCode();
                 if (this.RotatedSecretDetails != null)
                     hashCode = hashCode * 59 + this.RotatedSecretDetails.GetHashCode();
+                if (this.SecureRemoteAccessDetails != null)
+                    hashCode = hashCode * 59 + this.SecureRemoteAccessDetails.GetHashCode();
                 return hashCode;
             }
         }

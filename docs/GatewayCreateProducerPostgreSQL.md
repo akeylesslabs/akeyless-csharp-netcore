@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **PostgresqlPort** | **string** | PostgreSQL Port | [optional] [default to "5432"]
 **PostgresqlUsername** | **string** | PostgreSQL Username | 
 **ProducerEncryptionKey** | **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessBastionIssuer** | **string** |  | [optional] 
+**SecureAccessDbSchema** | **string** |  | [optional] 
+**SecureAccessEnable** | **string** |  | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]

@@ -44,12 +44,18 @@ namespace akeyless.Model
         /// <param name="name">Secret name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="secureAccessSshCreds">secureAccessSshCreds.</param>
+        /// <param name="secureAccessUrl">secureAccessUrl.</param>
+        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="value">The secret value (required).</param>
-        public CreateSecret(string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
+        public CreateSecret(string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateSecret and cannot be null");
@@ -59,6 +65,12 @@ namespace akeyless.Model
             this.MultilineValue = multilineValue;
             this.Password = password;
             this.ProtectionKey = protectionKey;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessSshCreds = secureAccessSshCreds;
+            this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -99,6 +111,42 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name="protection_key", EmitDefaultValue=false)]
         public string ProtectionKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionIssuer
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessSshCreds
+        /// </summary>
+        [DataMember(Name="secure-access-ssh-creds", EmitDefaultValue=false)]
+        public string SecureAccessSshCreds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessUrl
+        /// </summary>
+        [DataMember(Name="secure-access-url", EmitDefaultValue=false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessWebBrowsing
+        /// </summary>
+        [DataMember(Name="secure-access-web-browsing", EmitDefaultValue=false)]
+        public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
@@ -148,6 +196,12 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessSshCreds: ").Append(SecureAccessSshCreds).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -212,6 +266,36 @@ namespace akeyless.Model
                     this.ProtectionKey.Equals(input.ProtectionKey))
                 ) && 
                 (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessSshCreds == input.SecureAccessSshCreds ||
+                    (this.SecureAccessSshCreds != null &&
+                    this.SecureAccessSshCreds.Equals(input.SecureAccessSshCreds))
+                ) && 
+                (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -257,6 +341,17 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.SecureAccessSshCreds != null)
+                    hashCode = hashCode * 59 + this.SecureAccessSshCreds.GetHashCode();
+                if (this.SecureAccessUrl != null)
+                    hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.Token != null)

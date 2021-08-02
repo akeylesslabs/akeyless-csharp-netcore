@@ -45,12 +45,17 @@ namespace akeyless.Model
         /// <param name="name">SSH certificate issuer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="principals">Signed certificates with principal, e.g example_role1,example_role2.</param>
+        /// <param name="secureAccessBastionApi">secureAccessBastionApi.</param>
+        /// <param name="secureAccessBastionSsh">secureAccessBastionSsh.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, use second units (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string password = default(string), string principals = default(string), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
+        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string password = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             this.AllowedUsers = allowedUsers ?? throw new ArgumentNullException("allowedUsers is a required property for CreateSSHCertIssuer and cannot be null");
@@ -63,6 +68,11 @@ namespace akeyless.Model
             this.Metadata = metadata;
             this.Password = password;
             this.Principals = principals;
+            this.SecureAccessBastionApi = secureAccessBastionApi;
+            this.SecureAccessBastionSsh = secureAccessBastionSsh;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -109,6 +119,36 @@ namespace akeyless.Model
         /// <value>Signed certificates with principal, e.g example_role1,example_role2</value>
         [DataMember(Name="principals", EmitDefaultValue=false)]
         public string Principals { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionApi
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-api", EmitDefaultValue=false)]
+        public string SecureAccessBastionApi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessBastionSsh
+        /// </summary>
+        [DataMember(Name="secure-access-bastion-ssh", EmitDefaultValue=false)]
+        public string SecureAccessBastionSsh { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessSshCredsUser
+        /// </summary>
+        [DataMember(Name="secure-access-ssh-creds-user", EmitDefaultValue=false)]
+        public string SecureAccessSshCredsUser { get; set; }
 
         /// <summary>
         /// A key to sign the certificate with
@@ -159,6 +199,11 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Principals: ").Append(Principals).Append("\n");
+            sb.Append("  SecureAccessBastionApi: ").Append(SecureAccessBastionApi).Append("\n");
+            sb.Append("  SecureAccessBastionSsh: ").Append(SecureAccessBastionSsh).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessSshCredsUser: ").Append(SecureAccessSshCredsUser).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
@@ -230,6 +275,32 @@ namespace akeyless.Model
                     this.Principals.Equals(input.Principals))
                 ) && 
                 (
+                    this.SecureAccessBastionApi == input.SecureAccessBastionApi ||
+                    (this.SecureAccessBastionApi != null &&
+                    this.SecureAccessBastionApi.Equals(input.SecureAccessBastionApi))
+                ) && 
+                (
+                    this.SecureAccessBastionSsh == input.SecureAccessBastionSsh ||
+                    (this.SecureAccessBastionSsh != null &&
+                    this.SecureAccessBastionSsh.Equals(input.SecureAccessBastionSsh))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessSshCredsUser == input.SecureAccessSshCredsUser ||
+                    (this.SecureAccessSshCredsUser != null &&
+                    this.SecureAccessSshCredsUser.Equals(input.SecureAccessSshCredsUser))
+                ) && 
+                (
                     this.SignerKeyName == input.SignerKeyName ||
                     (this.SignerKeyName != null &&
                     this.SignerKeyName.Equals(input.SignerKeyName))
@@ -276,6 +347,16 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Principals != null)
                     hashCode = hashCode * 59 + this.Principals.GetHashCode();
+                if (this.SecureAccessBastionApi != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionApi.GetHashCode();
+                if (this.SecureAccessBastionSsh != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionSsh.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.SecureAccessSshCredsUser != null)
+                    hashCode = hashCode * 59 + this.SecureAccessSshCredsUser.GetHashCode();
                 if (this.SignerKeyName != null)
                     hashCode = hashCode * 59 + this.SignerKeyName.GetHashCode();
                 if (this.Token != null)

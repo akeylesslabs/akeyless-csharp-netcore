@@ -26,41 +26,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// KMIPClient
+    /// GatewayCreateProducerOracleDbOutput
     /// </summary>
     [DataContract]
-    public partial class KMIPClient :  IEquatable<KMIPClient>, IValidatableObject
+    public partial class GatewayCreateProducerOracleDbOutput :  IEquatable<GatewayCreateProducerOracleDbOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="KMIPClient" /> class.
+        /// Initializes a new instance of the <see cref="GatewayCreateProducerOracleDbOutput" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="name">name.</param>
-        /// <param name="rules">rules.</param>
-        public KMIPClient(string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        /// <param name="producerDetails">producerDetails.</param>
+        public GatewayCreateProducerOracleDbOutput(DSProducerDetails producerDetails = default(DSProducerDetails))
         {
-            this.Id = id;
-            this.Name = name;
-            this.Rules = rules;
+            this.ProducerDetails = producerDetails;
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets ProducerDetails
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Rules
-        /// </summary>
-        [DataMember(Name="rules", EmitDefaultValue=false)]
-        public List<PathRule> Rules { get; set; }
+        [DataMember(Name="producer_details", EmitDefaultValue=false)]
+        public DSProducerDetails ProducerDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +53,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class KMIPClient {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Rules: ").Append(Rules).Append("\n");
+            sb.Append("class GatewayCreateProducerOracleDbOutput {\n");
+            sb.Append("  ProducerDetails: ").Append(ProducerDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,35 +75,24 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as KMIPClient);
+            return this.Equals(input as GatewayCreateProducerOracleDbOutput);
         }
 
         /// <summary>
-        /// Returns true if KMIPClient instances are equal
+        /// Returns true if GatewayCreateProducerOracleDbOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of KMIPClient to be compared</param>
+        /// <param name="input">Instance of GatewayCreateProducerOracleDbOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(KMIPClient input)
+        public bool Equals(GatewayCreateProducerOracleDbOutput input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Rules == input.Rules ||
-                    this.Rules != null &&
-                    input.Rules != null &&
-                    this.Rules.SequenceEqual(input.Rules)
+                    this.ProducerDetails == input.ProducerDetails ||
+                    (this.ProducerDetails != null &&
+                    this.ProducerDetails.Equals(input.ProducerDetails))
                 );
         }
 
@@ -134,12 +105,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Rules != null)
-                    hashCode = hashCode * 59 + this.Rules.GetHashCode();
+                if (this.ProducerDetails != null)
+                    hashCode = hashCode * 59 + this.ProducerDetails.GetHashCode();
                 return hashCode;
             }
         }
