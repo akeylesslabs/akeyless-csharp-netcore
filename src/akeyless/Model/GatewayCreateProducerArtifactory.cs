@@ -39,34 +39,33 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerArtifactory" /> class.
         /// </summary>
-        /// <param name="artifactoryAdminName">Artifactory Admin Name (required).</param>
-        /// <param name="artifactoryAdminPwd">Artifactory Admin password (required).</param>
+        /// <param name="artifactoryAdminName">Artifactory Admin Name.</param>
+        /// <param name="artifactoryAdminPwd">Artifactory Admin password.</param>
         /// <param name="artifactoryTokenAudience">Token Audience (required).</param>
         /// <param name="artifactoryTokenScope">Token Scope (required).</param>
-        /// <param name="baseUrl">Base URL (required).</param>
+        /// <param name="baseUrl">Base URL.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "artifactoryAdminName" is required (not null)
-            this.ArtifactoryAdminName = artifactoryAdminName ?? throw new ArgumentNullException("artifactoryAdminName is a required property for GatewayCreateProducerArtifactory and cannot be null");
-            // to ensure "artifactoryAdminPwd" is required (not null)
-            this.ArtifactoryAdminPwd = artifactoryAdminPwd ?? throw new ArgumentNullException("artifactoryAdminPwd is a required property for GatewayCreateProducerArtifactory and cannot be null");
             // to ensure "artifactoryTokenAudience" is required (not null)
             this.ArtifactoryTokenAudience = artifactoryTokenAudience ?? throw new ArgumentNullException("artifactoryTokenAudience is a required property for GatewayCreateProducerArtifactory and cannot be null");
             // to ensure "artifactoryTokenScope" is required (not null)
             this.ArtifactoryTokenScope = artifactoryTokenScope ?? throw new ArgumentNullException("artifactoryTokenScope is a required property for GatewayCreateProducerArtifactory and cannot be null");
-            // to ensure "baseUrl" is required (not null)
-            this.BaseUrl = baseUrl ?? throw new ArgumentNullException("baseUrl is a required property for GatewayCreateProducerArtifactory and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerArtifactory and cannot be null");
+            this.ArtifactoryAdminName = artifactoryAdminName;
+            this.ArtifactoryAdminPwd = artifactoryAdminPwd;
+            this.BaseUrl = baseUrl;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -131,6 +130,13 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -174,6 +180,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -253,6 +260,11 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -299,6 +311,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

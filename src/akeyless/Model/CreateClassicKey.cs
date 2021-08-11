@@ -41,27 +41,27 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
-        /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
         /// <param name="metadata">Metadata about the classic key.</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="protectionKeyName">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="tags">List of the tags attached to this classic key.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string password = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string password = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "alg" is required (not null)
             this.Alg = alg ?? throw new ArgumentNullException("alg is a required property for CreateClassicKey and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateClassicKey and cannot be null");
             this.CertFileData = certFileData;
-            this.Key = key;
             this.KeyData = keyData;
             this.Metadata = metadata;
             this.Password = password;
+            this.ProtectionKeyName = protectionKeyName;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -82,13 +82,6 @@ namespace akeyless.Model
         /// <value>Certificate in a PEM format.</value>
         [DataMember(Name="cert-file-data", EmitDefaultValue=false)]
         public string CertFileData { get; set; }
-
-        /// <summary>
-        /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
-        /// </summary>
-        /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
-        [DataMember(Name="key", EmitDefaultValue=false)]
-        public string Key { get; set; }
 
         /// <summary>
         /// Base64-encoded classic key value
@@ -117,6 +110,13 @@ namespace akeyless.Model
         /// <value>Required only when the authentication process requires a username and password</value>
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
+
+        /// <summary>
+        /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
+        /// </summary>
+        /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
+        [DataMember(Name="protection-key-name", EmitDefaultValue=false)]
+        public string ProtectionKeyName { get; set; }
 
         /// <summary>
         /// List of the tags attached to this classic key
@@ -163,11 +163,11 @@ namespace akeyless.Model
             sb.Append("class CreateClassicKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
-            sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -218,11 +218,6 @@ namespace akeyless.Model
                     this.CertFileData.Equals(input.CertFileData))
                 ) && 
                 (
-                    this.Key == input.Key ||
-                    (this.Key != null &&
-                    this.Key.Equals(input.Key))
-                ) && 
-                (
                     this.KeyData == input.KeyData ||
                     (this.KeyData != null &&
                     this.KeyData.Equals(input.KeyData))
@@ -241,6 +236,11 @@ namespace akeyless.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.ProtectionKeyName == input.ProtectionKeyName ||
+                    (this.ProtectionKeyName != null &&
+                    this.ProtectionKeyName.Equals(input.ProtectionKeyName))
                 ) && 
                 (
                     this.Tags == input.Tags ||
@@ -283,8 +283,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Alg.GetHashCode();
                 if (this.CertFileData != null)
                     hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
-                if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.KeyData != null)
                     hashCode = hashCode * 59 + this.KeyData.GetHashCode();
                 if (this.Metadata != null)
@@ -293,6 +291,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.ProtectionKeyName != null)
+                    hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)

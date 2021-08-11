@@ -39,11 +39,11 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerNativeK8S" /> class.
         /// </summary>
-        /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required).</param>
-        /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required).</param>
-        /// <param name="k8sClusterToken">K8S cluster Bearer token (required).</param>
+        /// <param name="k8sClusterCaCert">K8S cluster CA certificate.</param>
+        /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint.</param>
+        /// <param name="k8sClusterToken">K8S cluster Bearer token.</param>
         /// <param name="k8sNamespace">K8S namespace.</param>
-        /// <param name="k8sServiceAccount">K8S service account (required).</param>
+        /// <param name="k8sServiceAccount">K8S service account.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -53,23 +53,20 @@ namespace akeyless.Model
         /// <param name="secureAccessDashboardUrl">secureAccessDashboardUrl.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerNativeK8S(string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerNativeK8S(string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWebBrowsing = default(bool), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "k8sClusterCaCert" is required (not null)
-            this.K8sClusterCaCert = k8sClusterCaCert ?? throw new ArgumentNullException("k8sClusterCaCert is a required property for GatewayCreateProducerNativeK8S and cannot be null");
-            // to ensure "k8sClusterEndpoint" is required (not null)
-            this.K8sClusterEndpoint = k8sClusterEndpoint ?? throw new ArgumentNullException("k8sClusterEndpoint is a required property for GatewayCreateProducerNativeK8S and cannot be null");
-            // to ensure "k8sClusterToken" is required (not null)
-            this.K8sClusterToken = k8sClusterToken ?? throw new ArgumentNullException("k8sClusterToken is a required property for GatewayCreateProducerNativeK8S and cannot be null");
-            // to ensure "k8sServiceAccount" is required (not null)
-            this.K8sServiceAccount = k8sServiceAccount ?? throw new ArgumentNullException("k8sServiceAccount is a required property for GatewayCreateProducerNativeK8S and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerNativeK8S and cannot be null");
+            this.K8sClusterCaCert = k8sClusterCaCert;
+            this.K8sClusterEndpoint = k8sClusterEndpoint;
+            this.K8sClusterToken = k8sClusterToken;
             this.K8sNamespace = k8sNamespace;
+            this.K8sServiceAccount = k8sServiceAccount;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
@@ -78,6 +75,7 @@ namespace akeyless.Model
             this.SecureAccessDashboardUrl = secureAccessDashboardUrl;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -178,6 +176,13 @@ namespace akeyless.Model
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -227,6 +232,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessDashboardUrl: ").Append(SecureAccessDashboardUrl).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -334,6 +340,11 @@ namespace akeyless.Model
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -390,6 +401,8 @@ namespace akeyless.Model
                 if (this.SecureAccessEnable != null)
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

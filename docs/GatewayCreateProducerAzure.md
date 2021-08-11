@@ -5,14 +5,15 @@ gatewayCreateProducerAzure is a command that creates azure producer
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | **string** | Azure App Object Id | [optional] 
-**AzureClientId** | **string** | Azure Client ID | 
-**AzureClientSecret** | **string** | Azure Client Secret | 
-**AzureTenantId** | **string** | Azure Tenant ID | 
+**AzureClientId** | **string** | Azure Client ID | [optional] 
+**AzureClientSecret** | **string** | Azure Client Secret | [optional] 
+**AzureTenantId** | **string** | Azure Tenant ID | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessEnable** | **string** |  | [optional] 
 **SecureAccessWebBrowsing** | **bool** |  | [optional] 
+**TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserGroupObjId** | **string** | User Group Object Id | [optional] 

@@ -40,21 +40,21 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="VerifyJWTWithClassicKey" /> class.
         /// </summary>
         /// <param name="displayId">The name of the key to use in the verify JWT process (required).</param>
-        /// <param name="jwtClaims">JWTClaims (required).</param>
+        /// <param name="jwt">JWT (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
-        /// <param name="signature">Signature (required).</param>
+        /// <param name="requiredClaims">RequiredClaims (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="version">classic key version (required).</param>
-        public VerifyJWTWithClassicKey(string displayId = default(string), string jwtClaims = default(string), string password = default(string), string signature = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = default(int))
+        public VerifyJWTWithClassicKey(string displayId = default(string), string jwt = default(string), string password = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             this.DisplayId = displayId ?? throw new ArgumentNullException("displayId is a required property for VerifyJWTWithClassicKey and cannot be null");
-            // to ensure "jwtClaims" is required (not null)
-            this.JwtClaims = jwtClaims ?? throw new ArgumentNullException("jwtClaims is a required property for VerifyJWTWithClassicKey and cannot be null");
-            // to ensure "signature" is required (not null)
-            this.Signature = signature ?? throw new ArgumentNullException("signature is a required property for VerifyJWTWithClassicKey and cannot be null");
+            // to ensure "jwt" is required (not null)
+            this.Jwt = jwt ?? throw new ArgumentNullException("jwt is a required property for VerifyJWTWithClassicKey and cannot be null");
+            // to ensure "requiredClaims" is required (not null)
+            this.RequiredClaims = requiredClaims ?? throw new ArgumentNullException("requiredClaims is a required property for VerifyJWTWithClassicKey and cannot be null");
             this.Version = version;
             this.Password = password;
             this.Token = token;
@@ -70,11 +70,11 @@ namespace akeyless.Model
         public string DisplayId { get; set; }
 
         /// <summary>
-        /// JWTClaims
+        /// JWT
         /// </summary>
-        /// <value>JWTClaims</value>
-        [DataMember(Name="jwt-claims", EmitDefaultValue=false)]
-        public string JwtClaims { get; set; }
+        /// <value>JWT</value>
+        [DataMember(Name="jwt", EmitDefaultValue=false)]
+        public string Jwt { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -84,11 +84,11 @@ namespace akeyless.Model
         public string Password { get; set; }
 
         /// <summary>
-        /// Signature
+        /// RequiredClaims
         /// </summary>
-        /// <value>Signature</value>
-        [DataMember(Name="signature", EmitDefaultValue=false)]
-        public string Signature { get; set; }
+        /// <value>RequiredClaims</value>
+        [DataMember(Name="required-claims", EmitDefaultValue=false)]
+        public string RequiredClaims { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -127,9 +127,9 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class VerifyJWTWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
-            sb.Append("  JwtClaims: ").Append(JwtClaims).Append("\n");
+            sb.Append("  Jwt: ").Append(Jwt).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
+            sb.Append("  RequiredClaims: ").Append(RequiredClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
@@ -174,9 +174,9 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
-                    this.JwtClaims == input.JwtClaims ||
-                    (this.JwtClaims != null &&
-                    this.JwtClaims.Equals(input.JwtClaims))
+                    this.Jwt == input.Jwt ||
+                    (this.Jwt != null &&
+                    this.Jwt.Equals(input.Jwt))
                 ) && 
                 (
                     this.Password == input.Password ||
@@ -184,9 +184,9 @@ namespace akeyless.Model
                     this.Password.Equals(input.Password))
                 ) && 
                 (
-                    this.Signature == input.Signature ||
-                    (this.Signature != null &&
-                    this.Signature.Equals(input.Signature))
+                    this.RequiredClaims == input.RequiredClaims ||
+                    (this.RequiredClaims != null &&
+                    this.RequiredClaims.Equals(input.RequiredClaims))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -220,12 +220,12 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                if (this.JwtClaims != null)
-                    hashCode = hashCode * 59 + this.JwtClaims.GetHashCode();
+                if (this.Jwt != null)
+                    hashCode = hashCode * 59 + this.Jwt.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
-                if (this.Signature != null)
-                    hashCode = hashCode * 59 + this.Signature.GetHashCode();
+                if (this.RequiredClaims != null)
+                    hashCode = hashCode * 59 + this.RequiredClaims.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

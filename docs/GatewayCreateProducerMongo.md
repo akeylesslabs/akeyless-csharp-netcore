@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 
 **MongodbDefaultAuthDb** | **string** | MongoDB server default authentication database | [optional] 
 **MongodbHostPort** | **string** | MongoDB server host and port | [optional] 
-**MongodbName** | **string** | MongoDB Name | 
+**MongodbName** | **string** | MongoDB Name | [optional] 
 **MongodbPassword** | **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
 **MongodbRoles** | **string** | MongoDB Roles | [optional] [default to "[]"]
 **MongodbServerUri** | **string** | MongoDB server URI | [optional] 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | **string** |  | [optional] 
 **SecureAccessEnable** | **string** |  | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
+**TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]

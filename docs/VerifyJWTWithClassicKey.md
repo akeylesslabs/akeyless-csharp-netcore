@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | **string** | The name of the key to use in the verify JWT process | 
-**JwtClaims** | **string** | JWTClaims | 
+**Jwt** | **string** | JWT | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
-**Signature** | **string** | Signature | 
+**RequiredClaims** | **string** | RequiredClaims | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | **string** | Required only when the authentication process requires a username and password | [optional] 

@@ -5,10 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | **string** | Comment about the target | [optional] 
 **GkeAccountKey** | **string** | GKE Service Account key file path | [optional] 
-**GkeClusterCert** | **string** | GKE cluster CA certificate | 
-**GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | 
-**GkeClusterName** | **string** | GKE cluster name | 
-**GkeServiceAccountEmail** | **string** | GKE service account email | 
+**GkeClusterCert** | **string** | GKE cluster CA certificate | [optional] 
+**GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | [optional] 
+**GkeClusterName** | **string** | GKE cluster name | [optional] 
+**GkeServiceAccountEmail** | **string** | GKE service account email | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 

@@ -41,44 +41,43 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
-        /// <param name="mysqlDbname">MySQL DB Name (required).</param>
+        /// <param name="mysqlDbname">MySQL DB Name.</param>
         /// <param name="mysqlHost">MySQL Host (default to &quot;127.0.0.1&quot;).</param>
-        /// <param name="mysqlPassword">MySQL Password (required).</param>
+        /// <param name="mysqlPassword">MySQL Password.</param>
         /// <param name="mysqlPort">MySQL Port (default to &quot;3306&quot;).</param>
         /// <param name="mysqlScreationStatements">MySQL Creation statements.</param>
-        /// <param name="mysqlUsername">MySQL Username (required).</param>
+        /// <param name="mysqlUsername">MySQL Username.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "mysqlDbname" is required (not null)
-            this.MysqlDbname = mysqlDbname ?? throw new ArgumentNullException("mysqlDbname is a required property for GatewayCreateProducerMySQL and cannot be null");
-            // to ensure "mysqlPassword" is required (not null)
-            this.MysqlPassword = mysqlPassword ?? throw new ArgumentNullException("mysqlPassword is a required property for GatewayCreateProducerMySQL and cannot be null");
-            // to ensure "mysqlUsername" is required (not null)
-            this.MysqlUsername = mysqlUsername ?? throw new ArgumentNullException("mysqlUsername is a required property for GatewayCreateProducerMySQL and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerMySQL and cannot be null");
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
+            this.MysqlDbname = mysqlDbname;
             // use default value if no "mysqlHost" provided
             this.MysqlHost = mysqlHost ?? "127.0.0.1";
+            this.MysqlPassword = mysqlPassword;
             // use default value if no "mysqlPort" provided
             this.MysqlPort = mysqlPort ?? "3306";
             this.MysqlScreationStatements = mysqlScreationStatements;
+            this.MysqlUsername = mysqlUsername;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -182,6 +181,13 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -231,6 +237,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -341,6 +348,11 @@ namespace akeyless.Model
                     this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -399,6 +411,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
                 if (this.SecureAccessHost != null)
                     hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -43,36 +43,35 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="oracleHost">Oracle Host (default to &quot;127.0.0.1&quot;).</param>
-        /// <param name="oraclePassword">Oracle Password (required).</param>
+        /// <param name="oraclePassword">Oracle Password.</param>
         /// <param name="oraclePort">Oracle Port (default to &quot;1521&quot;).</param>
         /// <param name="oracleScreationStatements">Oracle Creation statements.</param>
-        /// <param name="oracleServiceName">Oracle DB Name (required).</param>
-        /// <param name="oracleUsername">Oracle Username (required).</param>
+        /// <param name="oracleServiceName">Oracle DB Name.</param>
+        /// <param name="oracleUsername">Oracle Username.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerOracleDb and cannot be null");
-            // to ensure "oraclePassword" is required (not null)
-            this.OraclePassword = oraclePassword ?? throw new ArgumentNullException("oraclePassword is a required property for GatewayCreateProducerOracleDb and cannot be null");
-            // to ensure "oracleServiceName" is required (not null)
-            this.OracleServiceName = oracleServiceName ?? throw new ArgumentNullException("oracleServiceName is a required property for GatewayCreateProducerOracleDb and cannot be null");
-            // to ensure "oracleUsername" is required (not null)
-            this.OracleUsername = oracleUsername ?? throw new ArgumentNullException("oracleUsername is a required property for GatewayCreateProducerOracleDb and cannot be null");
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             // use default value if no "oracleHost" provided
             this.OracleHost = oracleHost ?? "127.0.0.1";
+            this.OraclePassword = oraclePassword;
             // use default value if no "oraclePort" provided
             this.OraclePort = oraclePort ?? "1521";
             this.OracleScreationStatements = oracleScreationStatements;
+            this.OracleServiceName = oracleServiceName;
+            this.OracleUsername = oracleUsername;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -158,6 +157,13 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -204,6 +210,7 @@ namespace akeyless.Model
             sb.Append("  OracleUsername: ").Append(OracleUsername).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -298,6 +305,11 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -350,6 +362,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

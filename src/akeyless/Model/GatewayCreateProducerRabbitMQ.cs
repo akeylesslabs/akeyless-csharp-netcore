@@ -42,44 +42,40 @@ namespace akeyless.Model
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="rabbitmqAdminPwd">RabbitMQ Admin password (required).</param>
-        /// <param name="rabbitmqAdminUser">RabbitMQ Admin User (required).</param>
-        /// <param name="rabbitmqServerUri">Server URI (required).</param>
-        /// <param name="rabbitmqUserConfPermission">User configuration permission (required).</param>
-        /// <param name="rabbitmqUserReadPermission">User read permission (required).</param>
+        /// <param name="rabbitmqAdminPwd">RabbitMQ Admin password.</param>
+        /// <param name="rabbitmqAdminUser">RabbitMQ Admin User.</param>
+        /// <param name="rabbitmqServerUri">Server URI.</param>
+        /// <param name="rabbitmqUserConfPermission">User configuration permission.</param>
+        /// <param name="rabbitmqUserReadPermission">User read permission.</param>
         /// <param name="rabbitmqUserTags">User Tags.</param>
         /// <param name="rabbitmqUserVhost">User Virtual Host.</param>
-        /// <param name="rabbitmqUserWritePermission">User write permission (required).</param>
+        /// <param name="rabbitmqUserWritePermission">User write permission.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessUrl">secureAccessUrl.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerRabbitMQ(string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerRabbitMQ(string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // to ensure "rabbitmqAdminPwd" is required (not null)
-            this.RabbitmqAdminPwd = rabbitmqAdminPwd ?? throw new ArgumentNullException("rabbitmqAdminPwd is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // to ensure "rabbitmqAdminUser" is required (not null)
-            this.RabbitmqAdminUser = rabbitmqAdminUser ?? throw new ArgumentNullException("rabbitmqAdminUser is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // to ensure "rabbitmqServerUri" is required (not null)
-            this.RabbitmqServerUri = rabbitmqServerUri ?? throw new ArgumentNullException("rabbitmqServerUri is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // to ensure "rabbitmqUserConfPermission" is required (not null)
-            this.RabbitmqUserConfPermission = rabbitmqUserConfPermission ?? throw new ArgumentNullException("rabbitmqUserConfPermission is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // to ensure "rabbitmqUserReadPermission" is required (not null)
-            this.RabbitmqUserReadPermission = rabbitmqUserReadPermission ?? throw new ArgumentNullException("rabbitmqUserReadPermission is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
-            // to ensure "rabbitmqUserWritePermission" is required (not null)
-            this.RabbitmqUserWritePermission = rabbitmqUserWritePermission ?? throw new ArgumentNullException("rabbitmqUserWritePermission is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.RabbitmqAdminPwd = rabbitmqAdminPwd;
+            this.RabbitmqAdminUser = rabbitmqAdminUser;
+            this.RabbitmqServerUri = rabbitmqServerUri;
+            this.RabbitmqUserConfPermission = rabbitmqUserConfPermission;
+            this.RabbitmqUserReadPermission = rabbitmqUserReadPermission;
             this.RabbitmqUserTags = rabbitmqUserTags;
             this.RabbitmqUserVhost = rabbitmqUserVhost;
+            this.RabbitmqUserWritePermission = rabbitmqUserWritePermission;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -183,6 +179,13 @@ namespace akeyless.Model
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -232,6 +235,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -340,6 +344,11 @@ namespace akeyless.Model
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -397,6 +406,8 @@ namespace akeyless.Model
                 if (this.SecureAccessUrl != null)
                     hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

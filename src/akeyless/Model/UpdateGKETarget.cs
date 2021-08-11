@@ -41,10 +41,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
-        /// <param name="gkeClusterCert">GKE cluster CA certificate (required).</param>
-        /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint (required).</param>
-        /// <param name="gkeClusterName">GKE cluster name (required).</param>
-        /// <param name="gkeServiceAccountEmail">GKE service account email (required).</param>
+        /// <param name="gkeClusterCert">GKE cluster CA certificate.</param>
+        /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
+        /// <param name="gkeClusterName">GKE cluster name.</param>
+        /// <param name="gkeServiceAccountEmail">GKE service account email.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
@@ -55,18 +55,14 @@ namespace akeyless.Model
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         public UpdateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string username = default(string))
         {
-            // to ensure "gkeClusterCert" is required (not null)
-            this.GkeClusterCert = gkeClusterCert ?? throw new ArgumentNullException("gkeClusterCert is a required property for UpdateGKETarget and cannot be null");
-            // to ensure "gkeClusterEndpoint" is required (not null)
-            this.GkeClusterEndpoint = gkeClusterEndpoint ?? throw new ArgumentNullException("gkeClusterEndpoint is a required property for UpdateGKETarget and cannot be null");
-            // to ensure "gkeClusterName" is required (not null)
-            this.GkeClusterName = gkeClusterName ?? throw new ArgumentNullException("gkeClusterName is a required property for UpdateGKETarget and cannot be null");
-            // to ensure "gkeServiceAccountEmail" is required (not null)
-            this.GkeServiceAccountEmail = gkeServiceAccountEmail ?? throw new ArgumentNullException("gkeServiceAccountEmail is a required property for UpdateGKETarget and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateGKETarget and cannot be null");
             this.Comment = comment;
             this.GkeAccountKey = gkeAccountKey;
+            this.GkeClusterCert = gkeClusterCert;
+            this.GkeClusterEndpoint = gkeClusterEndpoint;
+            this.GkeClusterName = gkeClusterName;
+            this.GkeServiceAccountEmail = gkeServiceAccountEmail;
             this.Key = key;
             this.NewName = newName;
             this.Password = password;

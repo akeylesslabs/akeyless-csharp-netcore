@@ -39,13 +39,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerEks" /> class.
         /// </summary>
-        /// <param name="eksAccessKeyId">Access Key ID (required).</param>
+        /// <param name="eksAccessKeyId">Access Key ID.</param>
         /// <param name="eksAssumeRole">IAM assume role.</param>
-        /// <param name="eksClusterCaCert">EKS cluster CA certificate (required).</param>
-        /// <param name="eksClusterEndpoint">EKS cluster URL endpoint (required).</param>
-        /// <param name="eksClusterName">EKS cluster name (required).</param>
+        /// <param name="eksClusterCaCert">EKS cluster CA certificate.</param>
+        /// <param name="eksClusterEndpoint">EKS cluster URL endpoint.</param>
+        /// <param name="eksClusterName">EKS cluster name.</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
-        /// <param name="eksSecretAccessKey">Secret Access Key (required).</param>
+        /// <param name="eksSecretAccessKey">Secret Access Key.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -53,33 +53,30 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
         /// <param name="secureAccessClusterEndpoint">secureAccessClusterEndpoint.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "eksAccessKeyId" is required (not null)
-            this.EksAccessKeyId = eksAccessKeyId ?? throw new ArgumentNullException("eksAccessKeyId is a required property for GatewayCreateProducerEks and cannot be null");
-            // to ensure "eksClusterCaCert" is required (not null)
-            this.EksClusterCaCert = eksClusterCaCert ?? throw new ArgumentNullException("eksClusterCaCert is a required property for GatewayCreateProducerEks and cannot be null");
-            // to ensure "eksClusterEndpoint" is required (not null)
-            this.EksClusterEndpoint = eksClusterEndpoint ?? throw new ArgumentNullException("eksClusterEndpoint is a required property for GatewayCreateProducerEks and cannot be null");
-            // to ensure "eksClusterName" is required (not null)
-            this.EksClusterName = eksClusterName ?? throw new ArgumentNullException("eksClusterName is a required property for GatewayCreateProducerEks and cannot be null");
-            // to ensure "eksSecretAccessKey" is required (not null)
-            this.EksSecretAccessKey = eksSecretAccessKey ?? throw new ArgumentNullException("eksSecretAccessKey is a required property for GatewayCreateProducerEks and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerEks and cannot be null");
+            this.EksAccessKeyId = eksAccessKeyId;
             this.EksAssumeRole = eksAssumeRole;
+            this.EksClusterCaCert = eksClusterCaCert;
+            this.EksClusterEndpoint = eksClusterEndpoint;
+            this.EksClusterName = eksClusterName;
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? "us-east-2";
+            this.EksSecretAccessKey = eksSecretAccessKey;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessClusterEndpoint = secureAccessClusterEndpoint;
             this.SecureAccessEnable = secureAccessEnable;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -182,6 +179,13 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -231,6 +235,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessClusterEndpoint: ").Append(SecureAccessClusterEndpoint).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -339,6 +344,11 @@ namespace akeyless.Model
                     this.SecureAccessEnable.Equals(input.SecureAccessEnable))
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -396,6 +406,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessClusterEndpoint.GetHashCode();
                 if (this.SecureAccessEnable != null)
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

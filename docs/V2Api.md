@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item | 
 [**Auth**](V2Api.md#auth) | **POST** /auth | 
 [**Configure**](V2Api.md#configure) | **POST** /configure | 
+[**Connect**](V2Api.md#connect) | **POST** /connect | 
 [**CreateAWSTarget**](V2Api.md#createawstarget) | **POST** /create-aws-target | 
 [**CreateArtifactoryTarget**](V2Api.md#createartifactorytarget) | **POST** /create-artifactory-target | 
 [**CreateAuthMethod**](V2Api.md#createauthmethod) | **POST** /create-auth-method | 
@@ -58,6 +59,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory | 
 [**GatewayCreateProducerAws**](V2Api.md#gatewaycreateproduceraws) | **POST** /gateway-create-producer-aws | 
 [**GatewayCreateProducerAzure**](V2Api.md#gatewaycreateproducerazure) | **POST** /gateway-create-producer-azure | 
+[**GatewayCreateProducerCassandra**](V2Api.md#gatewaycreateproducercassandra) | **POST** /gateway-create-producer-cassandra | 
 [**GatewayCreateProducerCertificateAutomation**](V2Api.md#gatewaycreateproducercertificateautomation) | **POST** /gateway-create-producer-certificate-automation | 
 [**GatewayCreateProducerCustom**](V2Api.md#gatewaycreateproducercustom) | **POST** /gateway-create-producer-custom | 
 [**GatewayCreateProducerEks**](V2Api.md#gatewaycreateproducereks) | **POST** /gateway-create-producer-eks | 
@@ -95,6 +97,17 @@ Method | HTTP request | Description
 [**GetSecretValue**](V2Api.md#getsecretvalue) | **POST** /get-secret-value | 
 [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target | 
 [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details | 
+[**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule | 
+[**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule | 
+[**KmipCreateClient**](V2Api.md#kmipcreateclient) | **POST** /kmip-create-client | 
+[**KmipDeleteClient**](V2Api.md#kmipdeleteclient) | **POST** /kmip-delete-client | 
+[**KmipDescribeClient**](V2Api.md#kmipdescribeclient) | **POST** /kmip-get-client | 
+[**KmipDescribeServer**](V2Api.md#kmipdescribeserver) | **POST** /kmip-get-environment | 
+[**KmipListClients**](V2Api.md#kmiplistclients) | **POST** /kmip-list-clients | 
+[**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client | 
+[**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment | 
+[**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment | 
+[**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state | 
 [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods | 
 [**ListItems**](V2Api.md#listitems) | **POST** /list-items | 
 [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles | 
@@ -415,6 +428,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | configureResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="connect"></a>
+# **Connect**
+> Object Connect (Connect body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ConnectExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new Connect(); // Connect | 
+
+            try
+            {
+                Object result = apiInstance.Connect(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.Connect: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Connect**](Connect.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | connectResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3815,6 +3896,74 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaycreateproducercassandra"></a>
+# **GatewayCreateProducerCassandra**
+> GatewayCreateProducerCassandraOutput GatewayCreateProducerCassandra (GatewayCreateProducerCassandra body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateProducerCassandraExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerCassandra(); // GatewayCreateProducerCassandra | 
+
+            try
+            {
+                GatewayCreateProducerCassandraOutput result = apiInstance.GatewayCreateProducerCassandra(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCassandra: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerCassandra**](GatewayCreateProducerCassandra.md)|  | 
+
+### Return type
+
+[**GatewayCreateProducerCassandraOutput**](GatewayCreateProducerCassandraOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayCreateProducerCassandraResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaycreateproducercertificateautomation"></a>
 # **GatewayCreateProducerCertificateAutomation**
 > GatewayCreateProducerCertificateAutomationOutput GatewayCreateProducerCertificateAutomation (GatewayCreateProducerCertificateAutomation body)
@@ -4361,7 +4510,7 @@ No authorization required
 
 <a name="gatewaycreateproducernativek8s"></a>
 # **GatewayCreateProducerNativeK8S**
-> GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S ()
+> GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S (GatewayCreateProducerNativeK8S body)
 
 
 
@@ -4382,10 +4531,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerNativeK8S(); // GatewayCreateProducerNativeK8S | 
 
             try
             {
-                GatewayCreateProducerNativeK8SOutput result = apiInstance.GatewayCreateProducerNativeK8S();
+                GatewayCreateProducerNativeK8SOutput result = apiInstance.GatewayCreateProducerNativeK8S(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4400,7 +4550,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerNativeK8S**](GatewayCreateProducerNativeK8S.md)|  | 
 
 ### Return type
 
@@ -4412,7 +4565,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6321,6 +6474,754 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="kmipclientdeleterule"></a>
+# **KmipClientDeleteRule**
+> KMIPClientUpdateResponse KmipClientDeleteRule (KmipClientDeleteRule body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipClientDeleteRuleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipClientDeleteRule(); // KmipClientDeleteRule |  (optional) 
+
+            try
+            {
+                KMIPClientUpdateResponse result = apiInstance.KmipClientDeleteRule(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipClientDeleteRule: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipClientDeleteRule**](KmipClientDeleteRule.md)|  | [optional] 
+
+### Return type
+
+[**KMIPClientUpdateResponse**](KMIPClientUpdateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipClientDeleteRuleResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipclientsetrule"></a>
+# **KmipClientSetRule**
+> KMIPClientUpdateResponse KmipClientSetRule (KmipClientSetRule body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipClientSetRuleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipClientSetRule(); // KmipClientSetRule |  (optional) 
+
+            try
+            {
+                KMIPClientUpdateResponse result = apiInstance.KmipClientSetRule(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipClientSetRule: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipClientSetRule**](KmipClientSetRule.md)|  | [optional] 
+
+### Return type
+
+[**KMIPClientUpdateResponse**](KMIPClientUpdateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipClientSetRuleResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipcreateclient"></a>
+# **KmipCreateClient**
+> KmipCreateClientOutput KmipCreateClient (KmipCreateClient body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipCreateClientExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipCreateClient(); // KmipCreateClient |  (optional) 
+
+            try
+            {
+                KmipCreateClientOutput result = apiInstance.KmipCreateClient(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipCreateClient: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipCreateClient**](KmipCreateClient.md)|  | [optional] 
+
+### Return type
+
+[**KmipCreateClientOutput**](KmipCreateClientOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipCreateClientResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipdeleteclient"></a>
+# **KmipDeleteClient**
+> Object KmipDeleteClient (KmipDeleteClient body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipDeleteClientExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipDeleteClient(); // KmipDeleteClient |  (optional) 
+
+            try
+            {
+                Object result = apiInstance.KmipDeleteClient(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipDeleteClient: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDeleteClient**](KmipDeleteClient.md)|  | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipDeleteClientResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipdescribeclient"></a>
+# **KmipDescribeClient**
+> KMIPClientGetResponse KmipDescribeClient (KmipDescribeClient body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipDescribeClientExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipDescribeClient(); // KmipDescribeClient |  (optional) 
+
+            try
+            {
+                KMIPClientGetResponse result = apiInstance.KmipDescribeClient(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipDescribeClient: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDescribeClient**](KmipDescribeClient.md)|  | [optional] 
+
+### Return type
+
+[**KMIPClientGetResponse**](KMIPClientGetResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipDescribeClientResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipdescribeserver"></a>
+# **KmipDescribeServer**
+> KmipDescribeServerOutput KmipDescribeServer (KmipDescribeServer body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipDescribeServerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipDescribeServer(); // KmipDescribeServer |  (optional) 
+
+            try
+            {
+                KmipDescribeServerOutput result = apiInstance.KmipDescribeServer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipDescribeServer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDescribeServer**](KmipDescribeServer.md)|  | [optional] 
+
+### Return type
+
+[**KmipDescribeServerOutput**](KmipDescribeServerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipDescribeServerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmiplistclients"></a>
+# **KmipListClients**
+> KMIPClientListResponse KmipListClients (KmipListClients body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipListClientsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipListClients(); // KmipListClients |  (optional) 
+
+            try
+            {
+                KMIPClientListResponse result = apiInstance.KmipListClients(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipListClients: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipListClients**](KmipListClients.md)|  | [optional] 
+
+### Return type
+
+[**KMIPClientListResponse**](KMIPClientListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipListClientsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmiprenewclientcertificate"></a>
+# **KmipRenewClientCertificate**
+> KmipRenewClientCertificateOutput KmipRenewClientCertificate (KmipRenewClientCertificate body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipRenewClientCertificateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipRenewClientCertificate(); // KmipRenewClientCertificate |  (optional) 
+
+            try
+            {
+                KmipRenewClientCertificateOutput result = apiInstance.KmipRenewClientCertificate(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipRenewClientCertificate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipRenewClientCertificate**](KmipRenewClientCertificate.md)|  | [optional] 
+
+### Return type
+
+[**KmipRenewClientCertificateOutput**](KmipRenewClientCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipRenewClientCertificateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmiprenewservercertificate"></a>
+# **KmipRenewServerCertificate**
+> KmipRenewServerCertificateOutput KmipRenewServerCertificate (KmipRenewServerCertificate body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipRenewServerCertificateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipRenewServerCertificate(); // KmipRenewServerCertificate |  (optional) 
+
+            try
+            {
+                KmipRenewServerCertificateOutput result = apiInstance.KmipRenewServerCertificate(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipRenewServerCertificate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipRenewServerCertificate**](KmipRenewServerCertificate.md)|  | [optional] 
+
+### Return type
+
+[**KmipRenewServerCertificateOutput**](KmipRenewServerCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipRenewServerCertificateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipserversetup"></a>
+# **KmipServerSetup**
+> KMIPEnvironmentCreateResponse KmipServerSetup (KmipServerSetup body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipServerSetupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipServerSetup(); // KmipServerSetup |  (optional) 
+
+            try
+            {
+                KMIPEnvironmentCreateResponse result = apiInstance.KmipServerSetup(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipServerSetup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipServerSetup**](KmipServerSetup.md)|  | [optional] 
+
+### Return type
+
+[**KMIPEnvironmentCreateResponse**](KMIPEnvironmentCreateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipServerSetupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipsetserverstate"></a>
+# **KmipSetServerState**
+> KmipSetServerStateOutput KmipSetServerState (KmipSetServerState body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipSetServerStateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipSetServerState(); // KmipSetServerState |  (optional) 
+
+            try
+            {
+                KmipSetServerStateOutput result = apiInstance.KmipSetServerState(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipSetServerState: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipSetServerState**](KmipSetServerState.md)|  | [optional] 
+
+### Return type
+
+[**KmipSetServerStateOutput**](KmipSetServerStateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipSetServerStateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="listauthmethods"></a>
 # **ListAuthMethods**
 > ListAuthMethodsOutput ListAuthMethods (ListAuthMethods body)
@@ -7139,7 +8040,7 @@ No authorization required
 
 <a name="signjwtwithclassickey"></a>
 # **SignJWTWithClassicKey**
-> void SignJWTWithClassicKey (SignJWTWithClassicKey body)
+> SignJWTOutput SignJWTWithClassicKey (SignJWTWithClassicKey body)
 
 
 
@@ -7164,7 +8065,8 @@ namespace Example
 
             try
             {
-                apiInstance.SignJWTWithClassicKey(body);
+                SignJWTOutput result = apiInstance.SignJWTWithClassicKey(body);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -7185,7 +8087,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SignJWTOutput**](SignJWTOutput.md)
 
 ### Authorization
 
@@ -7199,7 +8101,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** |  |  -  |
+| **200** | signJWTWithClassicKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7274,7 +8176,7 @@ No authorization required
 
 <a name="signpkicertwithclassickey"></a>
 # **SignPKICertWithClassicKey**
-> void SignPKICertWithClassicKey (SignPKICertWithClassicKey body)
+> SignPKICertOutput SignPKICertWithClassicKey (SignPKICertWithClassicKey body)
 
 
 
@@ -7299,7 +8201,8 @@ namespace Example
 
             try
             {
-                apiInstance.SignPKICertWithClassicKey(body);
+                SignPKICertOutput result = apiInstance.SignPKICertWithClassicKey(body);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -7320,7 +8223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SignPKICertOutput**](SignPKICertOutput.md)
 
 ### Authorization
 
@@ -7334,7 +8237,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** |  |  -  |
+| **200** | signPKICertWithClassicKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -9445,7 +10348,7 @@ No authorization required
 
 <a name="verifyjwtwithclassickey"></a>
 # **VerifyJWTWithClassicKey**
-> void VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body)
+> VerifyJWTOutput VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body)
 
 
 
@@ -9470,7 +10373,8 @@ namespace Example
 
             try
             {
-                apiInstance.VerifyJWTWithClassicKey(body);
+                VerifyJWTOutput result = apiInstance.VerifyJWTWithClassicKey(body);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -9491,7 +10395,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**VerifyJWTOutput**](VerifyJWTOutput.md)
 
 ### Authorization
 
@@ -9505,7 +10409,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** |  |  -  |
+| **200** | verifyJWTWithClassicKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -9580,7 +10484,7 @@ No authorization required
 
 <a name="verifypkicertwithclassickey"></a>
 # **VerifyPKICertWithClassicKey**
-> void VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body)
+> VerifyPKICertOutput VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body)
 
 
 
@@ -9605,7 +10509,8 @@ namespace Example
 
             try
             {
-                apiInstance.VerifyPKICertWithClassicKey(body);
+                VerifyPKICertOutput result = apiInstance.VerifyPKICertWithClassicKey(body);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -9626,7 +10531,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**VerifyPKICertOutput**](VerifyPKICertOutput.md)
 
 ### Authorization
 
@@ -9640,7 +10545,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** |  |  -  |
+| **200** | verifyPKICertWithClassicKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

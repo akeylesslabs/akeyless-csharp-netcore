@@ -40,12 +40,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerMSSQL" /> class.
         /// </summary>
         /// <param name="mssqlCreateStatements">MSSQL Creation statements.</param>
-        /// <param name="mssqlDbname">MSSQL Name (required).</param>
+        /// <param name="mssqlDbname">MSSQL Name.</param>
         /// <param name="mssqlHost">MSSQL Host (default to &quot;127.0.0.1&quot;).</param>
-        /// <param name="mssqlPassword">MSSQL Password (required).</param>
+        /// <param name="mssqlPassword">MSSQL Password.</param>
         /// <param name="mssqlPort">MSSQL Port (default to &quot;1433&quot;).</param>
         /// <param name="mssqlRevocationStatements">MSSQL Revocation statements.</param>
-        /// <param name="mssqlUsername">MSSQL Username (required).</param>
+        /// <param name="mssqlUsername">MSSQL Username.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -53,32 +53,31 @@ namespace akeyless.Model
         /// <param name="secureAccessDbSchema">secureAccessDbSchema.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMSSQL(string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = "127.0.0.1", string mssqlPassword = default(string), string mssqlPort = "1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMSSQL(string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = "127.0.0.1", string mssqlPassword = default(string), string mssqlPort = "1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "mssqlDbname" is required (not null)
-            this.MssqlDbname = mssqlDbname ?? throw new ArgumentNullException("mssqlDbname is a required property for GatewayCreateProducerMSSQL and cannot be null");
-            // to ensure "mssqlPassword" is required (not null)
-            this.MssqlPassword = mssqlPassword ?? throw new ArgumentNullException("mssqlPassword is a required property for GatewayCreateProducerMSSQL and cannot be null");
-            // to ensure "mssqlUsername" is required (not null)
-            this.MssqlUsername = mssqlUsername ?? throw new ArgumentNullException("mssqlUsername is a required property for GatewayCreateProducerMSSQL and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerMSSQL and cannot be null");
             this.MssqlCreateStatements = mssqlCreateStatements;
+            this.MssqlDbname = mssqlDbname;
             // use default value if no "mssqlHost" provided
             this.MssqlHost = mssqlHost ?? "127.0.0.1";
+            this.MssqlPassword = mssqlPassword;
             // use default value if no "mssqlPort" provided
             this.MssqlPort = mssqlPort ?? "1433";
             this.MssqlRevocationStatements = mssqlRevocationStatements;
+            this.MssqlUsername = mssqlUsername;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessDbSchema = secureAccessDbSchema;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -181,6 +180,13 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -230,6 +236,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -340,6 +347,11 @@ namespace akeyless.Model
                     this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -398,6 +410,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
                 if (this.SecureAccessHost != null)
                     hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertificateIssueDate** | **DateTime** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Rules** | [**List&lt;PathRule&gt;**](PathRule.md) |  | [optional] 

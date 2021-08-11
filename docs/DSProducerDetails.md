@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **AzureUserPortalAccess** | **bool** |  | [optional] 
 **AzureUserProgrammaticAccess** | **bool** |  | [optional] 
 **AzureUserRolesTemplateId** | **string** |  | [optional] 
+**CassandraCreationStatements** | **string** |  | [optional] 
 **ChefOrganizations** | **string** |  | [optional] 
 **ChefServerAccessMode** | **string** |  | [optional] 
 **ChefServerHostName** | **string** |  | [optional] 

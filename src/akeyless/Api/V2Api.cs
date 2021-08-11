@@ -119,6 +119,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Object</returns>
+        Object Connect (Connect body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> ConnectWithHttpInfo (Connect body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAWSTargetOutput</returns>
         CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body);
 
@@ -1167,6 +1188,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerCassandraOutput</returns>
+        GatewayCreateProducerCassandraOutput GatewayCreateProducerCassandra (GatewayCreateProducerCassandra body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerCassandraOutput</returns>
+        ApiResponse<GatewayCreateProducerCassandraOutput> GatewayCreateProducerCassandraWithHttpInfo (GatewayCreateProducerCassandra body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerCertificateAutomationOutput</returns>
         GatewayCreateProducerCertificateAutomationOutput GatewayCreateProducerCertificateAutomation (GatewayCreateProducerCertificateAutomation body);
 
@@ -1334,8 +1376,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerNativeK8SOutput</returns>
-        GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S ();
+        GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S (GatewayCreateProducerNativeK8S body);
 
         /// <summary>
         /// 
@@ -1344,8 +1387,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayCreateProducerNativeK8SOutput</returns>
-        ApiResponse<GatewayCreateProducerNativeK8SOutput> GatewayCreateProducerNativeK8SWithHttpInfo ();
+        ApiResponse<GatewayCreateProducerNativeK8SOutput> GatewayCreateProducerNativeK8SWithHttpInfo (GatewayCreateProducerNativeK8S body);
         /// <summary>
         /// 
         /// </summary>
@@ -1939,6 +1983,237 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientUpdateResponse</returns>
+        KMIPClientUpdateResponse KmipClientDeleteRule (KmipClientDeleteRule body = default(KmipClientDeleteRule));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientUpdateResponse</returns>
+        ApiResponse<KMIPClientUpdateResponse> KmipClientDeleteRuleWithHttpInfo (KmipClientDeleteRule body = default(KmipClientDeleteRule));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientUpdateResponse</returns>
+        KMIPClientUpdateResponse KmipClientSetRule (KmipClientSetRule body = default(KmipClientSetRule));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientUpdateResponse</returns>
+        ApiResponse<KMIPClientUpdateResponse> KmipClientSetRuleWithHttpInfo (KmipClientSetRule body = default(KmipClientSetRule));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipCreateClientOutput</returns>
+        KmipCreateClientOutput KmipCreateClient (KmipCreateClient body = default(KmipCreateClient));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipCreateClientOutput</returns>
+        ApiResponse<KmipCreateClientOutput> KmipCreateClientWithHttpInfo (KmipCreateClient body = default(KmipCreateClient));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Object</returns>
+        Object KmipDeleteClient (KmipDeleteClient body = default(KmipDeleteClient));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> KmipDeleteClientWithHttpInfo (KmipDeleteClient body = default(KmipDeleteClient));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientGetResponse</returns>
+        KMIPClientGetResponse KmipDescribeClient (KmipDescribeClient body = default(KmipDescribeClient));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientGetResponse</returns>
+        ApiResponse<KMIPClientGetResponse> KmipDescribeClientWithHttpInfo (KmipDescribeClient body = default(KmipDescribeClient));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipDescribeServerOutput</returns>
+        KmipDescribeServerOutput KmipDescribeServer (KmipDescribeServer body = default(KmipDescribeServer));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipDescribeServerOutput</returns>
+        ApiResponse<KmipDescribeServerOutput> KmipDescribeServerWithHttpInfo (KmipDescribeServer body = default(KmipDescribeServer));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientListResponse</returns>
+        KMIPClientListResponse KmipListClients (KmipListClients body = default(KmipListClients));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientListResponse</returns>
+        ApiResponse<KMIPClientListResponse> KmipListClientsWithHttpInfo (KmipListClients body = default(KmipListClients));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipRenewClientCertificateOutput</returns>
+        KmipRenewClientCertificateOutput KmipRenewClientCertificate (KmipRenewClientCertificate body = default(KmipRenewClientCertificate));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipRenewClientCertificateOutput</returns>
+        ApiResponse<KmipRenewClientCertificateOutput> KmipRenewClientCertificateWithHttpInfo (KmipRenewClientCertificate body = default(KmipRenewClientCertificate));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipRenewServerCertificateOutput</returns>
+        KmipRenewServerCertificateOutput KmipRenewServerCertificate (KmipRenewServerCertificate body = default(KmipRenewServerCertificate));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipRenewServerCertificateOutput</returns>
+        ApiResponse<KmipRenewServerCertificateOutput> KmipRenewServerCertificateWithHttpInfo (KmipRenewServerCertificate body = default(KmipRenewServerCertificate));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPEnvironmentCreateResponse</returns>
+        KMIPEnvironmentCreateResponse KmipServerSetup (KmipServerSetup body = default(KmipServerSetup));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPEnvironmentCreateResponse</returns>
+        ApiResponse<KMIPEnvironmentCreateResponse> KmipServerSetupWithHttpInfo (KmipServerSetup body = default(KmipServerSetup));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipSetServerStateOutput</returns>
+        KmipSetServerStateOutput KmipSetServerState (KmipSetServerState body = default(KmipSetServerState));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipSetServerStateOutput</returns>
+        ApiResponse<KmipSetServerStateOutput> KmipSetServerStateWithHttpInfo (KmipSetServerState body = default(KmipSetServerState));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ListAuthMethodsOutput</returns>
         ListAuthMethodsOutput ListAuthMethods (ListAuthMethods body);
@@ -2192,8 +2467,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void SignJWTWithClassicKey (SignJWTWithClassicKey body);
+        /// <returns>SignJWTOutput</returns>
+        SignJWTOutput SignJWTWithClassicKey (SignJWTWithClassicKey body);
 
         /// <summary>
         /// 
@@ -2203,8 +2478,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SignJWTWithClassicKeyWithHttpInfo (SignJWTWithClassicKey body);
+        /// <returns>ApiResponse of SignJWTOutput</returns>
+        ApiResponse<SignJWTOutput> SignJWTWithClassicKeyWithHttpInfo (SignJWTWithClassicKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -2234,8 +2509,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void SignPKICertWithClassicKey (SignPKICertWithClassicKey body);
+        /// <returns>SignPKICertOutput</returns>
+        SignPKICertOutput SignPKICertWithClassicKey (SignPKICertWithClassicKey body);
 
         /// <summary>
         /// 
@@ -2245,8 +2520,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SignPKICertWithClassicKeyWithHttpInfo (SignPKICertWithClassicKey body);
+        /// <returns>ApiResponse of SignPKICertOutput</returns>
+        ApiResponse<SignPKICertOutput> SignPKICertWithClassicKeyWithHttpInfo (SignPKICertWithClassicKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -2904,8 +3179,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body);
+        /// <returns>VerifyJWTOutput</returns>
+        VerifyJWTOutput VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body);
 
         /// <summary>
         /// 
@@ -2915,8 +3190,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> VerifyJWTWithClassicKeyWithHttpInfo (VerifyJWTWithClassicKey body);
+        /// <returns>ApiResponse of VerifyJWTOutput</returns>
+        ApiResponse<VerifyJWTOutput> VerifyJWTWithClassicKeyWithHttpInfo (VerifyJWTWithClassicKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -2946,8 +3221,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body);
+        /// <returns>VerifyPKICertOutput</returns>
+        VerifyPKICertOutput VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body);
 
         /// <summary>
         /// 
@@ -2957,8 +3232,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> VerifyPKICertWithClassicKeyWithHttpInfo (VerifyPKICertWithClassicKey body);
+        /// <returns>ApiResponse of VerifyPKICertOutput</returns>
+        ApiResponse<VerifyPKICertOutput> VerifyPKICertWithClassicKeyWithHttpInfo (VerifyPKICertWithClassicKey body);
         #endregion Synchronous Operations
     }
 
@@ -3052,6 +3327,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (ConfigureOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<ConfigureOutput>> ConfigureAsyncWithHttpInfo (Configure body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> ConnectAsync (Connect body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ConnectAsyncWithHttpInfo (Connect body);
         /// <summary>
         /// 
         /// </summary>
@@ -4108,6 +4404,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerCassandraOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateProducerCassandraOutput> GatewayCreateProducerCassandraAsync (GatewayCreateProducerCassandra body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerCassandraOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerCassandraOutput>> GatewayCreateProducerCassandraAsyncWithHttpInfo (GatewayCreateProducerCassandra body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GatewayCreateProducerCertificateAutomationOutput</returns>
         System.Threading.Tasks.Task<GatewayCreateProducerCertificateAutomationOutput> GatewayCreateProducerCertificateAutomationAsync (GatewayCreateProducerCertificateAutomation body);
 
@@ -4275,8 +4592,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GatewayCreateProducerNativeK8SOutput</returns>
-        System.Threading.Tasks.Task<GatewayCreateProducerNativeK8SOutput> GatewayCreateProducerNativeK8SAsync ();
+        System.Threading.Tasks.Task<GatewayCreateProducerNativeK8SOutput> GatewayCreateProducerNativeK8SAsync (GatewayCreateProducerNativeK8S body);
 
         /// <summary>
         /// 
@@ -4285,8 +4603,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GatewayCreateProducerNativeK8SOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerNativeK8SOutput>> GatewayCreateProducerNativeK8SAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerNativeK8SOutput>> GatewayCreateProducerNativeK8SAsyncWithHttpInfo (GatewayCreateProducerNativeK8S body);
         /// <summary>
         /// 
         /// </summary>
@@ -4880,6 +5199,237 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientUpdateResponse</returns>
+        System.Threading.Tasks.Task<KMIPClientUpdateResponse> KmipClientDeleteRuleAsync (KmipClientDeleteRule body = default(KmipClientDeleteRule));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientUpdateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMIPClientUpdateResponse>> KmipClientDeleteRuleAsyncWithHttpInfo (KmipClientDeleteRule body = default(KmipClientDeleteRule));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientUpdateResponse</returns>
+        System.Threading.Tasks.Task<KMIPClientUpdateResponse> KmipClientSetRuleAsync (KmipClientSetRule body = default(KmipClientSetRule));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientUpdateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMIPClientUpdateResponse>> KmipClientSetRuleAsyncWithHttpInfo (KmipClientSetRule body = default(KmipClientSetRule));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipCreateClientOutput</returns>
+        System.Threading.Tasks.Task<KmipCreateClientOutput> KmipCreateClientAsync (KmipCreateClient body = default(KmipCreateClient));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipCreateClientOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipCreateClientOutput>> KmipCreateClientAsyncWithHttpInfo (KmipCreateClient body = default(KmipCreateClient));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> KmipDeleteClientAsync (KmipDeleteClient body = default(KmipDeleteClient));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> KmipDeleteClientAsyncWithHttpInfo (KmipDeleteClient body = default(KmipDeleteClient));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientGetResponse</returns>
+        System.Threading.Tasks.Task<KMIPClientGetResponse> KmipDescribeClientAsync (KmipDescribeClient body = default(KmipDescribeClient));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientGetResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMIPClientGetResponse>> KmipDescribeClientAsyncWithHttpInfo (KmipDescribeClient body = default(KmipDescribeClient));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipDescribeServerOutput</returns>
+        System.Threading.Tasks.Task<KmipDescribeServerOutput> KmipDescribeServerAsync (KmipDescribeServer body = default(KmipDescribeServer));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipDescribeServerOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipDescribeServerOutput>> KmipDescribeServerAsyncWithHttpInfo (KmipDescribeServer body = default(KmipDescribeServer));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientListResponse</returns>
+        System.Threading.Tasks.Task<KMIPClientListResponse> KmipListClientsAsync (KmipListClients body = default(KmipListClients));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientListResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMIPClientListResponse>> KmipListClientsAsyncWithHttpInfo (KmipListClients body = default(KmipListClients));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipRenewClientCertificateOutput</returns>
+        System.Threading.Tasks.Task<KmipRenewClientCertificateOutput> KmipRenewClientCertificateAsync (KmipRenewClientCertificate body = default(KmipRenewClientCertificate));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipRenewClientCertificateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipRenewClientCertificateOutput>> KmipRenewClientCertificateAsyncWithHttpInfo (KmipRenewClientCertificate body = default(KmipRenewClientCertificate));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipRenewServerCertificateOutput</returns>
+        System.Threading.Tasks.Task<KmipRenewServerCertificateOutput> KmipRenewServerCertificateAsync (KmipRenewServerCertificate body = default(KmipRenewServerCertificate));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipRenewServerCertificateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipRenewServerCertificateOutput>> KmipRenewServerCertificateAsyncWithHttpInfo (KmipRenewServerCertificate body = default(KmipRenewServerCertificate));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPEnvironmentCreateResponse</returns>
+        System.Threading.Tasks.Task<KMIPEnvironmentCreateResponse> KmipServerSetupAsync (KmipServerSetup body = default(KmipServerSetup));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPEnvironmentCreateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMIPEnvironmentCreateResponse>> KmipServerSetupAsyncWithHttpInfo (KmipServerSetup body = default(KmipServerSetup));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipSetServerStateOutput</returns>
+        System.Threading.Tasks.Task<KmipSetServerStateOutput> KmipSetServerStateAsync (KmipSetServerState body = default(KmipSetServerState));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipSetServerStateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipSetServerStateOutput>> KmipSetServerStateAsyncWithHttpInfo (KmipSetServerState body = default(KmipSetServerState));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>Task of ListAuthMethodsOutput</returns>
         System.Threading.Tasks.Task<ListAuthMethodsOutput> ListAuthMethodsAsync (ListAuthMethods body);
@@ -5133,8 +5683,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SignJWTWithClassicKeyAsync (SignJWTWithClassicKey body);
+        /// <returns>Task of SignJWTOutput</returns>
+        System.Threading.Tasks.Task<SignJWTOutput> SignJWTWithClassicKeyAsync (SignJWTWithClassicKey body);
 
         /// <summary>
         /// 
@@ -5144,8 +5694,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SignJWTWithClassicKeyAsyncWithHttpInfo (SignJWTWithClassicKey body);
+        /// <returns>Task of ApiResponse (SignJWTOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignJWTOutput>> SignJWTWithClassicKeyAsyncWithHttpInfo (SignJWTWithClassicKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -5175,8 +5725,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SignPKICertWithClassicKeyAsync (SignPKICertWithClassicKey body);
+        /// <returns>Task of SignPKICertOutput</returns>
+        System.Threading.Tasks.Task<SignPKICertOutput> SignPKICertWithClassicKeyAsync (SignPKICertWithClassicKey body);
 
         /// <summary>
         /// 
@@ -5186,8 +5736,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SignPKICertWithClassicKeyAsyncWithHttpInfo (SignPKICertWithClassicKey body);
+        /// <returns>Task of ApiResponse (SignPKICertOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignPKICertOutput>> SignPKICertWithClassicKeyAsyncWithHttpInfo (SignPKICertWithClassicKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -5845,8 +6395,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task VerifyJWTWithClassicKeyAsync (VerifyJWTWithClassicKey body);
+        /// <returns>Task of VerifyJWTOutput</returns>
+        System.Threading.Tasks.Task<VerifyJWTOutput> VerifyJWTWithClassicKeyAsync (VerifyJWTWithClassicKey body);
 
         /// <summary>
         /// 
@@ -5856,8 +6406,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> VerifyJWTWithClassicKeyAsyncWithHttpInfo (VerifyJWTWithClassicKey body);
+        /// <returns>Task of ApiResponse (VerifyJWTOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VerifyJWTOutput>> VerifyJWTWithClassicKeyAsyncWithHttpInfo (VerifyJWTWithClassicKey body);
         /// <summary>
         /// 
         /// </summary>
@@ -5887,8 +6437,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task VerifyPKICertWithClassicKeyAsync (VerifyPKICertWithClassicKey body);
+        /// <returns>Task of VerifyPKICertOutput</returns>
+        System.Threading.Tasks.Task<VerifyPKICertOutput> VerifyPKICertWithClassicKeyAsync (VerifyPKICertWithClassicKey body);
 
         /// <summary>
         /// 
@@ -5898,8 +6448,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> VerifyPKICertWithClassicKeyAsyncWithHttpInfo (VerifyPKICertWithClassicKey body);
+        /// <returns>Task of ApiResponse (VerifyPKICertOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VerifyPKICertOutput>> VerifyPKICertWithClassicKeyAsyncWithHttpInfo (VerifyPKICertWithClassicKey body);
         #endregion Asynchronous Operations
     }
 
@@ -6474,6 +7024,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Configure", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Object</returns>
+        public Object Connect (Connect body)
+        {
+             akeyless.Client.ApiResponse<Object> localVarResponse = ConnectWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse< Object > ConnectWithHttpInfo (Connect body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->Connect");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< Object >("/connect", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Connect", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> ConnectAsync (Connect body)
+        {
+             akeyless.Client.ApiResponse<Object> localVarResponse = await ConnectAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> ConnectAsyncWithHttpInfo (Connect body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->Connect");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/connect", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Connect", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -12219,6 +12884,121 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerCassandraOutput</returns>
+        public GatewayCreateProducerCassandraOutput GatewayCreateProducerCassandra (GatewayCreateProducerCassandra body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerCassandraOutput> localVarResponse = GatewayCreateProducerCassandraWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerCassandraOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayCreateProducerCassandraOutput > GatewayCreateProducerCassandraWithHttpInfo (GatewayCreateProducerCassandra body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerCassandra");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayCreateProducerCassandraOutput >("/gateway-create-producer-cassandra", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerCassandra", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerCassandraOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateProducerCassandraOutput> GatewayCreateProducerCassandraAsync (GatewayCreateProducerCassandra body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerCassandraOutput> localVarResponse = await GatewayCreateProducerCassandraAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerCassandraOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerCassandraOutput>> GatewayCreateProducerCassandraAsyncWithHttpInfo (GatewayCreateProducerCassandra body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerCassandra");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateProducerCassandraOutput>("/gateway-create-producer-cassandra", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerCassandra", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerCertificateAutomationOutput</returns>
         public GatewayCreateProducerCertificateAutomationOutput GatewayCreateProducerCertificateAutomation (GatewayCreateProducerCertificateAutomation body)
         {
@@ -13130,10 +13910,11 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerNativeK8SOutput</returns>
-        public GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S ()
+        public GatewayCreateProducerNativeK8SOutput GatewayCreateProducerNativeK8S (GatewayCreateProducerNativeK8S body)
         {
-             akeyless.Client.ApiResponse<GatewayCreateProducerNativeK8SOutput> localVarResponse = GatewayCreateProducerNativeK8SWithHttpInfo();
+             akeyless.Client.ApiResponse<GatewayCreateProducerNativeK8SOutput> localVarResponse = GatewayCreateProducerNativeK8SWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -13141,12 +13922,18 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayCreateProducerNativeK8SOutput</returns>
-        public akeyless.Client.ApiResponse< GatewayCreateProducerNativeK8SOutput > GatewayCreateProducerNativeK8SWithHttpInfo ()
+        public akeyless.Client.ApiResponse< GatewayCreateProducerNativeK8SOutput > GatewayCreateProducerNativeK8SWithHttpInfo (GatewayCreateProducerNativeK8S body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerNativeK8S");
+
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13160,6 +13947,7 @@ namespace akeyless.Api
             var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.Data = body;
 
 
             // make the HTTP request
@@ -13178,10 +13966,11 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GatewayCreateProducerNativeK8SOutput</returns>
-        public async System.Threading.Tasks.Task<GatewayCreateProducerNativeK8SOutput> GatewayCreateProducerNativeK8SAsync ()
+        public async System.Threading.Tasks.Task<GatewayCreateProducerNativeK8SOutput> GatewayCreateProducerNativeK8SAsync (GatewayCreateProducerNativeK8S body)
         {
-             akeyless.Client.ApiResponse<GatewayCreateProducerNativeK8SOutput> localVarResponse = await GatewayCreateProducerNativeK8SAsyncWithHttpInfo();
+             akeyless.Client.ApiResponse<GatewayCreateProducerNativeK8SOutput> localVarResponse = await GatewayCreateProducerNativeK8SAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -13190,13 +13979,19 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GatewayCreateProducerNativeK8SOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerNativeK8SOutput>> GatewayCreateProducerNativeK8SAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerNativeK8SOutput>> GatewayCreateProducerNativeK8SAsyncWithHttpInfo (GatewayCreateProducerNativeK8S body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerNativeK8S");
+
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13210,6 +14005,7 @@ namespace akeyless.Api
             foreach (var _accept in _accepts)
                 localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
             
+            localVarRequestOptions.Data = body;
 
 
             // make the HTTP request
@@ -16429,6 +17225,1183 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientUpdateResponse</returns>
+        public KMIPClientUpdateResponse KmipClientDeleteRule (KmipClientDeleteRule body = default(KmipClientDeleteRule))
+        {
+             akeyless.Client.ApiResponse<KMIPClientUpdateResponse> localVarResponse = KmipClientDeleteRuleWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientUpdateResponse</returns>
+        public akeyless.Client.ApiResponse< KMIPClientUpdateResponse > KmipClientDeleteRuleWithHttpInfo (KmipClientDeleteRule body = default(KmipClientDeleteRule))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KMIPClientUpdateResponse >("/kmip-client-delete-rule", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipClientDeleteRule", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientUpdateResponse</returns>
+        public async System.Threading.Tasks.Task<KMIPClientUpdateResponse> KmipClientDeleteRuleAsync (KmipClientDeleteRule body = default(KmipClientDeleteRule))
+        {
+             akeyless.Client.ApiResponse<KMIPClientUpdateResponse> localVarResponse = await KmipClientDeleteRuleAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientUpdateResponse)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KMIPClientUpdateResponse>> KmipClientDeleteRuleAsyncWithHttpInfo (KmipClientDeleteRule body = default(KmipClientDeleteRule))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMIPClientUpdateResponse>("/kmip-client-delete-rule", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipClientDeleteRule", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientUpdateResponse</returns>
+        public KMIPClientUpdateResponse KmipClientSetRule (KmipClientSetRule body = default(KmipClientSetRule))
+        {
+             akeyless.Client.ApiResponse<KMIPClientUpdateResponse> localVarResponse = KmipClientSetRuleWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientUpdateResponse</returns>
+        public akeyless.Client.ApiResponse< KMIPClientUpdateResponse > KmipClientSetRuleWithHttpInfo (KmipClientSetRule body = default(KmipClientSetRule))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KMIPClientUpdateResponse >("/kmip-client-set-rule", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipClientSetRule", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientUpdateResponse</returns>
+        public async System.Threading.Tasks.Task<KMIPClientUpdateResponse> KmipClientSetRuleAsync (KmipClientSetRule body = default(KmipClientSetRule))
+        {
+             akeyless.Client.ApiResponse<KMIPClientUpdateResponse> localVarResponse = await KmipClientSetRuleAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientUpdateResponse)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KMIPClientUpdateResponse>> KmipClientSetRuleAsyncWithHttpInfo (KmipClientSetRule body = default(KmipClientSetRule))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMIPClientUpdateResponse>("/kmip-client-set-rule", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipClientSetRule", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipCreateClientOutput</returns>
+        public KmipCreateClientOutput KmipCreateClient (KmipCreateClient body = default(KmipCreateClient))
+        {
+             akeyless.Client.ApiResponse<KmipCreateClientOutput> localVarResponse = KmipCreateClientWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipCreateClientOutput</returns>
+        public akeyless.Client.ApiResponse< KmipCreateClientOutput > KmipCreateClientWithHttpInfo (KmipCreateClient body = default(KmipCreateClient))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KmipCreateClientOutput >("/kmip-create-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipCreateClient", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipCreateClientOutput</returns>
+        public async System.Threading.Tasks.Task<KmipCreateClientOutput> KmipCreateClientAsync (KmipCreateClient body = default(KmipCreateClient))
+        {
+             akeyless.Client.ApiResponse<KmipCreateClientOutput> localVarResponse = await KmipCreateClientAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipCreateClientOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipCreateClientOutput>> KmipCreateClientAsyncWithHttpInfo (KmipCreateClient body = default(KmipCreateClient))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipCreateClientOutput>("/kmip-create-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipCreateClient", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Object</returns>
+        public Object KmipDeleteClient (KmipDeleteClient body = default(KmipDeleteClient))
+        {
+             akeyless.Client.ApiResponse<Object> localVarResponse = KmipDeleteClientWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse< Object > KmipDeleteClientWithHttpInfo (KmipDeleteClient body = default(KmipDeleteClient))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< Object >("/kmip-delete-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipDeleteClient", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> KmipDeleteClientAsync (KmipDeleteClient body = default(KmipDeleteClient))
+        {
+             akeyless.Client.ApiResponse<Object> localVarResponse = await KmipDeleteClientAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> KmipDeleteClientAsyncWithHttpInfo (KmipDeleteClient body = default(KmipDeleteClient))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/kmip-delete-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipDeleteClient", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientGetResponse</returns>
+        public KMIPClientGetResponse KmipDescribeClient (KmipDescribeClient body = default(KmipDescribeClient))
+        {
+             akeyless.Client.ApiResponse<KMIPClientGetResponse> localVarResponse = KmipDescribeClientWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientGetResponse</returns>
+        public akeyless.Client.ApiResponse< KMIPClientGetResponse > KmipDescribeClientWithHttpInfo (KmipDescribeClient body = default(KmipDescribeClient))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KMIPClientGetResponse >("/kmip-get-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipDescribeClient", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientGetResponse</returns>
+        public async System.Threading.Tasks.Task<KMIPClientGetResponse> KmipDescribeClientAsync (KmipDescribeClient body = default(KmipDescribeClient))
+        {
+             akeyless.Client.ApiResponse<KMIPClientGetResponse> localVarResponse = await KmipDescribeClientAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientGetResponse)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KMIPClientGetResponse>> KmipDescribeClientAsyncWithHttpInfo (KmipDescribeClient body = default(KmipDescribeClient))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMIPClientGetResponse>("/kmip-get-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipDescribeClient", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipDescribeServerOutput</returns>
+        public KmipDescribeServerOutput KmipDescribeServer (KmipDescribeServer body = default(KmipDescribeServer))
+        {
+             akeyless.Client.ApiResponse<KmipDescribeServerOutput> localVarResponse = KmipDescribeServerWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipDescribeServerOutput</returns>
+        public akeyless.Client.ApiResponse< KmipDescribeServerOutput > KmipDescribeServerWithHttpInfo (KmipDescribeServer body = default(KmipDescribeServer))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KmipDescribeServerOutput >("/kmip-get-environment", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipDescribeServer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipDescribeServerOutput</returns>
+        public async System.Threading.Tasks.Task<KmipDescribeServerOutput> KmipDescribeServerAsync (KmipDescribeServer body = default(KmipDescribeServer))
+        {
+             akeyless.Client.ApiResponse<KmipDescribeServerOutput> localVarResponse = await KmipDescribeServerAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipDescribeServerOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipDescribeServerOutput>> KmipDescribeServerAsyncWithHttpInfo (KmipDescribeServer body = default(KmipDescribeServer))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipDescribeServerOutput>("/kmip-get-environment", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipDescribeServer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPClientListResponse</returns>
+        public KMIPClientListResponse KmipListClients (KmipListClients body = default(KmipListClients))
+        {
+             akeyless.Client.ApiResponse<KMIPClientListResponse> localVarResponse = KmipListClientsWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPClientListResponse</returns>
+        public akeyless.Client.ApiResponse< KMIPClientListResponse > KmipListClientsWithHttpInfo (KmipListClients body = default(KmipListClients))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KMIPClientListResponse >("/kmip-list-clients", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipListClients", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPClientListResponse</returns>
+        public async System.Threading.Tasks.Task<KMIPClientListResponse> KmipListClientsAsync (KmipListClients body = default(KmipListClients))
+        {
+             akeyless.Client.ApiResponse<KMIPClientListResponse> localVarResponse = await KmipListClientsAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPClientListResponse)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KMIPClientListResponse>> KmipListClientsAsyncWithHttpInfo (KmipListClients body = default(KmipListClients))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMIPClientListResponse>("/kmip-list-clients", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipListClients", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipRenewClientCertificateOutput</returns>
+        public KmipRenewClientCertificateOutput KmipRenewClientCertificate (KmipRenewClientCertificate body = default(KmipRenewClientCertificate))
+        {
+             akeyless.Client.ApiResponse<KmipRenewClientCertificateOutput> localVarResponse = KmipRenewClientCertificateWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipRenewClientCertificateOutput</returns>
+        public akeyless.Client.ApiResponse< KmipRenewClientCertificateOutput > KmipRenewClientCertificateWithHttpInfo (KmipRenewClientCertificate body = default(KmipRenewClientCertificate))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KmipRenewClientCertificateOutput >("/kmip-renew-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipRenewClientCertificate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipRenewClientCertificateOutput</returns>
+        public async System.Threading.Tasks.Task<KmipRenewClientCertificateOutput> KmipRenewClientCertificateAsync (KmipRenewClientCertificate body = default(KmipRenewClientCertificate))
+        {
+             akeyless.Client.ApiResponse<KmipRenewClientCertificateOutput> localVarResponse = await KmipRenewClientCertificateAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipRenewClientCertificateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipRenewClientCertificateOutput>> KmipRenewClientCertificateAsyncWithHttpInfo (KmipRenewClientCertificate body = default(KmipRenewClientCertificate))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipRenewClientCertificateOutput>("/kmip-renew-client", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipRenewClientCertificate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipRenewServerCertificateOutput</returns>
+        public KmipRenewServerCertificateOutput KmipRenewServerCertificate (KmipRenewServerCertificate body = default(KmipRenewServerCertificate))
+        {
+             akeyless.Client.ApiResponse<KmipRenewServerCertificateOutput> localVarResponse = KmipRenewServerCertificateWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipRenewServerCertificateOutput</returns>
+        public akeyless.Client.ApiResponse< KmipRenewServerCertificateOutput > KmipRenewServerCertificateWithHttpInfo (KmipRenewServerCertificate body = default(KmipRenewServerCertificate))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KmipRenewServerCertificateOutput >("/kmip-renew-environment", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipRenewServerCertificate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipRenewServerCertificateOutput</returns>
+        public async System.Threading.Tasks.Task<KmipRenewServerCertificateOutput> KmipRenewServerCertificateAsync (KmipRenewServerCertificate body = default(KmipRenewServerCertificate))
+        {
+             akeyless.Client.ApiResponse<KmipRenewServerCertificateOutput> localVarResponse = await KmipRenewServerCertificateAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipRenewServerCertificateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipRenewServerCertificateOutput>> KmipRenewServerCertificateAsyncWithHttpInfo (KmipRenewServerCertificate body = default(KmipRenewServerCertificate))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipRenewServerCertificateOutput>("/kmip-renew-environment", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipRenewServerCertificate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KMIPEnvironmentCreateResponse</returns>
+        public KMIPEnvironmentCreateResponse KmipServerSetup (KmipServerSetup body = default(KmipServerSetup))
+        {
+             akeyless.Client.ApiResponse<KMIPEnvironmentCreateResponse> localVarResponse = KmipServerSetupWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KMIPEnvironmentCreateResponse</returns>
+        public akeyless.Client.ApiResponse< KMIPEnvironmentCreateResponse > KmipServerSetupWithHttpInfo (KmipServerSetup body = default(KmipServerSetup))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KMIPEnvironmentCreateResponse >("/kmip-create-environment", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipServerSetup", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KMIPEnvironmentCreateResponse</returns>
+        public async System.Threading.Tasks.Task<KMIPEnvironmentCreateResponse> KmipServerSetupAsync (KmipServerSetup body = default(KmipServerSetup))
+        {
+             akeyless.Client.ApiResponse<KMIPEnvironmentCreateResponse> localVarResponse = await KmipServerSetupAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KMIPEnvironmentCreateResponse)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KMIPEnvironmentCreateResponse>> KmipServerSetupAsyncWithHttpInfo (KmipServerSetup body = default(KmipServerSetup))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMIPEnvironmentCreateResponse>("/kmip-create-environment", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipServerSetup", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>KmipSetServerStateOutput</returns>
+        public KmipSetServerStateOutput KmipSetServerState (KmipSetServerState body = default(KmipSetServerState))
+        {
+             akeyless.Client.ApiResponse<KmipSetServerStateOutput> localVarResponse = KmipSetServerStateWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of KmipSetServerStateOutput</returns>
+        public akeyless.Client.ApiResponse< KmipSetServerStateOutput > KmipSetServerStateWithHttpInfo (KmipSetServerState body = default(KmipSetServerState))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< KmipSetServerStateOutput >("/kmip-set-environment-state", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipSetServerState", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of KmipSetServerStateOutput</returns>
+        public async System.Threading.Tasks.Task<KmipSetServerStateOutput> KmipSetServerStateAsync (KmipSetServerState body = default(KmipSetServerState))
+        {
+             akeyless.Client.ApiResponse<KmipSetServerStateOutput> localVarResponse = await KmipSetServerStateAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse (KmipSetServerStateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipSetServerStateOutput>> KmipSetServerStateAsyncWithHttpInfo (KmipSetServerState body = default(KmipSetServerState))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipSetServerStateOutput>("/kmip-set-environment-state", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipSetServerState", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ListAuthMethodsOutput</returns>
         public ListAuthMethodsOutput ListAuthMethods (ListAuthMethods body)
@@ -17802,10 +19775,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void SignJWTWithClassicKey (SignJWTWithClassicKey body)
+        /// <returns>SignJWTOutput</returns>
+        public SignJWTOutput SignJWTWithClassicKey (SignJWTWithClassicKey body)
         {
-             SignJWTWithClassicKeyWithHttpInfo(body);
+             akeyless.Client.ApiResponse<SignJWTOutput> localVarResponse = SignJWTWithClassicKeyWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -17813,8 +19787,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public akeyless.Client.ApiResponse<Object> SignJWTWithClassicKeyWithHttpInfo (SignJWTWithClassicKey body)
+        /// <returns>ApiResponse of SignJWTOutput</returns>
+        public akeyless.Client.ApiResponse< SignJWTOutput > SignJWTWithClassicKeyWithHttpInfo (SignJWTWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -17841,7 +19815,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/sign-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< SignJWTOutput >("/sign-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -17857,10 +19831,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SignJWTWithClassicKeyAsync (SignJWTWithClassicKey body)
+        /// <returns>Task of SignJWTOutput</returns>
+        public async System.Threading.Tasks.Task<SignJWTOutput> SignJWTWithClassicKeyAsync (SignJWTWithClassicKey body)
         {
-             await SignJWTWithClassicKeyAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<SignJWTOutput> localVarResponse = await SignJWTWithClassicKeyAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -17869,8 +19844,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> SignJWTWithClassicKeyAsyncWithHttpInfo (SignJWTWithClassicKey body)
+        /// <returns>Task of ApiResponse (SignJWTOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<SignJWTOutput>> SignJWTWithClassicKeyAsyncWithHttpInfo (SignJWTWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -17899,7 +19874,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/sign-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignJWTOutput>("/sign-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -18030,10 +20005,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void SignPKICertWithClassicKey (SignPKICertWithClassicKey body)
+        /// <returns>SignPKICertOutput</returns>
+        public SignPKICertOutput SignPKICertWithClassicKey (SignPKICertWithClassicKey body)
         {
-             SignPKICertWithClassicKeyWithHttpInfo(body);
+             akeyless.Client.ApiResponse<SignPKICertOutput> localVarResponse = SignPKICertWithClassicKeyWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -18041,8 +20017,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public akeyless.Client.ApiResponse<Object> SignPKICertWithClassicKeyWithHttpInfo (SignPKICertWithClassicKey body)
+        /// <returns>ApiResponse of SignPKICertOutput</returns>
+        public akeyless.Client.ApiResponse< SignPKICertOutput > SignPKICertWithClassicKeyWithHttpInfo (SignPKICertWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -18069,7 +20045,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/sign-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< SignPKICertOutput >("/sign-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -18085,10 +20061,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SignPKICertWithClassicKeyAsync (SignPKICertWithClassicKey body)
+        /// <returns>Task of SignPKICertOutput</returns>
+        public async System.Threading.Tasks.Task<SignPKICertOutput> SignPKICertWithClassicKeyAsync (SignPKICertWithClassicKey body)
         {
-             await SignPKICertWithClassicKeyAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<SignPKICertOutput> localVarResponse = await SignPKICertWithClassicKeyAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -18097,8 +20074,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> SignPKICertWithClassicKeyAsyncWithHttpInfo (SignPKICertWithClassicKey body)
+        /// <returns>Task of ApiResponse (SignPKICertOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<SignPKICertOutput>> SignPKICertWithClassicKeyAsyncWithHttpInfo (SignPKICertWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -18127,7 +20104,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/sign-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignPKICertOutput>("/sign-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -21692,10 +23669,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body)
+        /// <returns>VerifyJWTOutput</returns>
+        public VerifyJWTOutput VerifyJWTWithClassicKey (VerifyJWTWithClassicKey body)
         {
-             VerifyJWTWithClassicKeyWithHttpInfo(body);
+             akeyless.Client.ApiResponse<VerifyJWTOutput> localVarResponse = VerifyJWTWithClassicKeyWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -21703,8 +23681,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public akeyless.Client.ApiResponse<Object> VerifyJWTWithClassicKeyWithHttpInfo (VerifyJWTWithClassicKey body)
+        /// <returns>ApiResponse of VerifyJWTOutput</returns>
+        public akeyless.Client.ApiResponse< VerifyJWTOutput > VerifyJWTWithClassicKeyWithHttpInfo (VerifyJWTWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -21731,7 +23709,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/verify-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< VerifyJWTOutput >("/verify-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -21747,10 +23725,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task VerifyJWTWithClassicKeyAsync (VerifyJWTWithClassicKey body)
+        /// <returns>Task of VerifyJWTOutput</returns>
+        public async System.Threading.Tasks.Task<VerifyJWTOutput> VerifyJWTWithClassicKeyAsync (VerifyJWTWithClassicKey body)
         {
-             await VerifyJWTWithClassicKeyAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<VerifyJWTOutput> localVarResponse = await VerifyJWTWithClassicKeyAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -21759,8 +23738,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> VerifyJWTWithClassicKeyAsyncWithHttpInfo (VerifyJWTWithClassicKey body)
+        /// <returns>Task of ApiResponse (VerifyJWTOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<VerifyJWTOutput>> VerifyJWTWithClassicKeyAsyncWithHttpInfo (VerifyJWTWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -21789,7 +23768,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/verify-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VerifyJWTOutput>("/verify-jwt-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -21920,10 +23899,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body)
+        /// <returns>VerifyPKICertOutput</returns>
+        public VerifyPKICertOutput VerifyPKICertWithClassicKey (VerifyPKICertWithClassicKey body)
         {
-             VerifyPKICertWithClassicKeyWithHttpInfo(body);
+             akeyless.Client.ApiResponse<VerifyPKICertOutput> localVarResponse = VerifyPKICertWithClassicKeyWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -21931,8 +23911,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public akeyless.Client.ApiResponse<Object> VerifyPKICertWithClassicKeyWithHttpInfo (VerifyPKICertWithClassicKey body)
+        /// <returns>ApiResponse of VerifyPKICertOutput</returns>
+        public akeyless.Client.ApiResponse< VerifyPKICertOutput > VerifyPKICertWithClassicKeyWithHttpInfo (VerifyPKICertWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -21959,7 +23939,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/verify-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< VerifyPKICertOutput >("/verify-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -21975,10 +23955,11 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task VerifyPKICertWithClassicKeyAsync (VerifyPKICertWithClassicKey body)
+        /// <returns>Task of VerifyPKICertOutput</returns>
+        public async System.Threading.Tasks.Task<VerifyPKICertOutput> VerifyPKICertWithClassicKeyAsync (VerifyPKICertWithClassicKey body)
         {
-             await VerifyPKICertWithClassicKeyAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<VerifyPKICertOutput> localVarResponse = await VerifyPKICertWithClassicKeyAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -21987,8 +23968,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> VerifyPKICertWithClassicKeyAsyncWithHttpInfo (VerifyPKICertWithClassicKey body)
+        /// <returns>Task of ApiResponse (VerifyPKICertOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<VerifyPKICertOutput>> VerifyPKICertWithClassicKeyAsyncWithHttpInfo (VerifyPKICertWithClassicKey body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -22017,7 +23998,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/verify-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VerifyPKICertOutput>("/verify-pki-cert-with-classic-key", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {

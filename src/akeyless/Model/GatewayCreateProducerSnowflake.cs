@@ -39,26 +39,26 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerSnowflake" /> class.
         /// </summary>
-        /// <param name="account">Account name (required).</param>
-        /// <param name="dbName">Database name (required).</param>
+        /// <param name="account">Account name.</param>
+        /// <param name="dbName">Database name.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="role">User role.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
         {
-            // to ensure "account" is required (not null)
-            this.Account = account ?? throw new ArgumentNullException("account is a required property for GatewayCreateProducerSnowflake and cannot be null");
-            // to ensure "dbName" is required (not null)
-            this.DbName = dbName ?? throw new ArgumentNullException("dbName is a required property for GatewayCreateProducerSnowflake and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerSnowflake and cannot be null");
+            this.Account = account;
+            this.DbName = dbName;
             this.Password = password;
             this.Role = role;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -101,6 +101,13 @@ namespace akeyless.Model
         /// <value>User role</value>
         [DataMember(Name="role", EmitDefaultValue=false)]
         public string Role { get; set; }
+
+        /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -150,6 +157,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -215,6 +223,11 @@ namespace akeyless.Model
                     this.Role.Equals(input.Role))
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -260,6 +273,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Role != null)
                     hashCode = hashCode * 59 + this.Role.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

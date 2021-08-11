@@ -40,14 +40,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerAzure" /> class.
         /// </summary>
         /// <param name="appObjId">Azure App Object Id.</param>
-        /// <param name="azureClientId">Azure Client ID (required).</param>
-        /// <param name="azureClientSecret">Azure Client Secret (required).</param>
-        /// <param name="azureTenantId">Azure Tenant ID (required).</param>
+        /// <param name="azureClientId">Azure Client ID.</param>
+        /// <param name="azureClientSecret">Azure Client Secret.</param>
+        /// <param name="azureTenantId">Azure Tenant ID.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userGroupObjId">User Group Object Id.</param>
@@ -57,21 +58,19 @@ namespace akeyless.Model
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWebBrowsing = default(bool), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "azureClientId" is required (not null)
-            this.AzureClientId = azureClientId ?? throw new ArgumentNullException("azureClientId is a required property for GatewayCreateProducerAzure and cannot be null");
-            // to ensure "azureClientSecret" is required (not null)
-            this.AzureClientSecret = azureClientSecret ?? throw new ArgumentNullException("azureClientSecret is a required property for GatewayCreateProducerAzure and cannot be null");
-            // to ensure "azureTenantId" is required (not null)
-            this.AzureTenantId = azureTenantId ?? throw new ArgumentNullException("azureTenantId is a required property for GatewayCreateProducerAzure and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerAzure and cannot be null");
             this.AppObjId = appObjId;
+            this.AzureClientId = azureClientId;
+            this.AzureClientSecret = azureClientSecret;
+            this.AzureTenantId = azureTenantId;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             this.UserGroupObjId = userGroupObjId;
@@ -144,6 +143,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="secure-access-web-browsing", EmitDefaultValue=false)]
         public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -225,6 +231,7 @@ namespace akeyless.Model
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserGroupObjId: ").Append(UserGroupObjId).Append("\n");
@@ -313,6 +320,11 @@ namespace akeyless.Model
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -383,6 +395,8 @@ namespace akeyless.Model
                 if (this.SecureAccessEnable != null)
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

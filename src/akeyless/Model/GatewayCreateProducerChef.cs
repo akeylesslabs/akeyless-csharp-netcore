@@ -39,33 +39,31 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerChef" /> class.
         /// </summary>
-        /// <param name="chefOrgs">Organizations (required).</param>
-        /// <param name="chefServerKey">Server key (required).</param>
-        /// <param name="chefServerUrl">Server URL (required).</param>
-        /// <param name="chefServerUsername">Server username (required).</param>
+        /// <param name="chefOrgs">Organizations.</param>
+        /// <param name="chefServerKey">Server key.</param>
+        /// <param name="chefServerUrl">Server URL.</param>
+        /// <param name="chefServerUsername">Server username.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="skipSsl">Skip SSL (default to true).</param>
+        /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
-            // to ensure "chefOrgs" is required (not null)
-            this.ChefOrgs = chefOrgs ?? throw new ArgumentNullException("chefOrgs is a required property for GatewayCreateProducerChef and cannot be null");
-            // to ensure "chefServerKey" is required (not null)
-            this.ChefServerKey = chefServerKey ?? throw new ArgumentNullException("chefServerKey is a required property for GatewayCreateProducerChef and cannot be null");
-            // to ensure "chefServerUrl" is required (not null)
-            this.ChefServerUrl = chefServerUrl ?? throw new ArgumentNullException("chefServerUrl is a required property for GatewayCreateProducerChef and cannot be null");
-            // to ensure "chefServerUsername" is required (not null)
-            this.ChefServerUsername = chefServerUsername ?? throw new ArgumentNullException("chefServerUsername is a required property for GatewayCreateProducerChef and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerChef and cannot be null");
+            this.ChefOrgs = chefOrgs;
+            this.ChefServerKey = chefServerKey;
+            this.ChefServerUrl = chefServerUrl;
+            this.ChefServerUsername = chefServerUsername;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SkipSsl = skipSsl;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
@@ -130,6 +128,13 @@ namespace akeyless.Model
         public bool SkipSsl { get; set; }
 
         /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -173,6 +178,7 @@ namespace akeyless.Model
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SkipSsl: ").Append(SkipSsl).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
@@ -251,6 +257,11 @@ namespace akeyless.Model
                     this.SkipSsl.Equals(input.SkipSsl)
                 ) && 
                 (
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -296,6 +307,8 @@ namespace akeyless.Model
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 hashCode = hashCode * 59 + this.SkipSsl.GetHashCode();
+                if (this.TargetName != null)
+                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

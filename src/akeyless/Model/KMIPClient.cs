@@ -34,16 +34,24 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KMIPClient" /> class.
         /// </summary>
+        /// <param name="certificateIssueDate">certificateIssueDate.</param>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
         /// <param name="rules">rules.</param>
-        public KMIPClient(string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        public KMIPClient(DateTime certificateIssueDate = default(DateTime), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
         {
+            this.CertificateIssueDate = certificateIssueDate;
             this.Id = id;
             this.Name = name;
             this.Rules = rules;
         }
         
+        /// <summary>
+        /// Gets or Sets CertificateIssueDate
+        /// </summary>
+        [DataMember(Name="certificate_issue_date", EmitDefaultValue=false)]
+        public DateTime CertificateIssueDate { get; set; }
+
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
@@ -70,6 +78,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class KMIPClient {\n");
+            sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Rules: ").Append(Rules).Append("\n");
@@ -108,6 +117,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.CertificateIssueDate == input.CertificateIssueDate ||
+                    (this.CertificateIssueDate != null &&
+                    this.CertificateIssueDate.Equals(input.CertificateIssueDate))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -134,6 +148,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertificateIssueDate != null)
+                    hashCode = hashCode * 59 + this.CertificateIssueDate.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
