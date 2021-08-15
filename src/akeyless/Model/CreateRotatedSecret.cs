@@ -51,6 +51,7 @@ namespace akeyless.Model
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
+        /// <param name="rotatorCustomCmd">rotatorCustomCmd.</param>
         /// <param name="rotatorType">rotatorType.</param>
         /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateRotatedSecret and cannot be null");
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
             this.RotatorCredsType = rotatorCredsType;
+            this.RotatorCustomCmd = rotatorCustomCmd;
             this.RotatorType = rotatorType;
             this.SshPassword = sshPassword;
             this.SshUsername = sshUsername;
@@ -164,6 +166,12 @@ namespace akeyless.Model
         public string RotatorCredsType { get; set; }
 
         /// <summary>
+        /// Gets or Sets RotatorCustomCmd
+        /// </summary>
+        [DataMember(Name="rotator-custom-cmd", EmitDefaultValue=false)]
+        public string RotatorCustomCmd { get; set; }
+
+        /// <summary>
         /// Gets or Sets RotatorType
         /// </summary>
         [DataMember(Name="rotator-type", EmitDefaultValue=false)]
@@ -238,6 +246,7 @@ namespace akeyless.Model
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
+            sb.Append("  RotatorCustomCmd: ").Append(RotatorCustomCmd).Append("\n");
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
             sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
@@ -340,6 +349,11 @@ namespace akeyless.Model
                     this.RotatorCredsType.Equals(input.RotatorCredsType))
                 ) && 
                 (
+                    this.RotatorCustomCmd == input.RotatorCustomCmd ||
+                    (this.RotatorCustomCmd != null &&
+                    this.RotatorCustomCmd.Equals(input.RotatorCustomCmd))
+                ) && 
+                (
                     this.RotatorType == input.RotatorType ||
                     (this.RotatorType != null &&
                     this.RotatorType.Equals(input.RotatorType))
@@ -414,6 +428,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();
                 if (this.RotatorCredsType != null)
                     hashCode = hashCode * 59 + this.RotatorCredsType.GetHashCode();
+                if (this.RotatorCustomCmd != null)
+                    hashCode = hashCode * 59 + this.RotatorCustomCmd.GetHashCode();
                 if (this.RotatorType != null)
                     hashCode = hashCode * 59 + this.RotatorType.GetHashCode();
                 if (this.SshPassword != null)

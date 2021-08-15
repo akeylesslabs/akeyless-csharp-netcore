@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **RotationHour** | **int** |  | [optional] 
 **RotationInterval** | **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **RotatorCredsType** | **string** |  | [optional] 
+**RotatorCustomCmd** | **string** |  | [optional] 
 **RotatorType** | **string** |  | [optional] 
 **SshPassword** | **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | **string** | Deprecated: use RotatedUser | [optional] 
