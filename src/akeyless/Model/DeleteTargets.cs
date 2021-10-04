@@ -39,17 +39,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteTargets" /> class.
         /// </summary>
-        /// <param name="enforceDeletion">Enforce deletion (default to false).</param>
+        /// <param name="forceDeletion">Enforce deletion (default to false).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="path">Path to delete the targets from (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public DeleteTargets(bool enforceDeletion = false, string password = default(string), string path = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public DeleteTargets(bool forceDeletion = false, string password = default(string), string path = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "path" is required (not null)
             this.Path = path ?? throw new ArgumentNullException("path is a required property for DeleteTargets and cannot be null");
-            this.EnforceDeletion = enforceDeletion;
+            this.ForceDeletion = forceDeletion;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
@@ -60,8 +60,8 @@ namespace akeyless.Model
         /// Enforce deletion
         /// </summary>
         /// <value>Enforce deletion</value>
-        [DataMember(Name="enforce-deletion", EmitDefaultValue=false)]
-        public bool EnforceDeletion { get; set; }
+        [DataMember(Name="force-deletion", EmitDefaultValue=false)]
+        public bool ForceDeletion { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -106,7 +106,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DeleteTargets {\n");
-            sb.Append("  EnforceDeletion: ").Append(EnforceDeletion).Append("\n");
+            sb.Append("  ForceDeletion: ").Append(ForceDeletion).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -147,8 +147,8 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.EnforceDeletion == input.EnforceDeletion ||
-                    this.EnforceDeletion.Equals(input.EnforceDeletion)
+                    this.ForceDeletion == input.ForceDeletion ||
+                    this.ForceDeletion.Equals(input.ForceDeletion)
                 ) && 
                 (
                     this.Password == input.Password ||
@@ -186,7 +186,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.EnforceDeletion.GetHashCode();
+                hashCode = hashCode * 59 + this.ForceDeletion.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Path != null)

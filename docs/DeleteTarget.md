@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnforceDeletion** | **bool** | Enforce deletion | [optional] [default to false]
+**ForceDeletion** | **bool** | Enforce deletion | [optional] [default to false]
 **Name** | **string** | Target name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **TargetVersion** | **int** | Target version | [optional] 

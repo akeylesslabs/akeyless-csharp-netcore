@@ -308,6 +308,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateAuthMethodOIDCOutput</returns>
+        CreateAuthMethodOIDCOutput CreateAuthMethodOIDC (CreateAuthMethodOIDC body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateAuthMethodOIDCOutput</returns>
+        ApiResponse<CreateAuthMethodOIDCOutput> CreateAuthMethodOIDCWithHttpInfo (CreateAuthMethodOIDC body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAuthMethodSAMLOutput</returns>
         CreateAuthMethodSAMLOutput CreateAuthMethodSAML (CreateAuthMethodSAML body);
 
@@ -718,6 +739,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of CreateWebTargetOutput</returns>
         ApiResponse<CreateWebTargetOutput> CreateWebTargetWithHttpInfo (CreateWebTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateLdapTargetOutput</returns>
+        CreateLdapTargetOutput CreateldapTarget (CreateLdapTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateLdapTargetOutput</returns>
+        ApiResponse<CreateLdapTargetOutput> CreateldapTargetWithHttpInfo (CreateLdapTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -1474,6 +1516,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayCreateProducerRdpOutput</returns>
         ApiResponse<GatewayCreateProducerRdpOutput> GatewayCreateProducerRdpWithHttpInfo (GatewayCreateProducerRdp body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerRedshiftOutput</returns>
+        GatewayCreateProducerRedshiftOutput GatewayCreateProducerRedshift (GatewayCreateProducerRedshift body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerRedshiftOutput</returns>
+        ApiResponse<GatewayCreateProducerRedshiftOutput> GatewayCreateProducerRedshiftWithHttpInfo (GatewayCreateProducerRedshift body);
         /// <summary>
         /// 
         /// </summary>
@@ -3524,6 +3587,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of CreateAuthMethodOIDCOutput</returns>
+        System.Threading.Tasks.Task<CreateAuthMethodOIDCOutput> CreateAuthMethodOIDCAsync (CreateAuthMethodOIDC body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateAuthMethodOIDCOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAuthMethodOIDCOutput>> CreateAuthMethodOIDCAsyncWithHttpInfo (CreateAuthMethodOIDC body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of CreateAuthMethodSAMLOutput</returns>
         System.Threading.Tasks.Task<CreateAuthMethodSAMLOutput> CreateAuthMethodSAMLAsync (CreateAuthMethodSAML body);
 
@@ -3934,6 +4018,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (CreateWebTargetOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWebTargetOutput>> CreateWebTargetAsyncWithHttpInfo (CreateWebTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateLdapTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateLdapTargetOutput> CreateldapTargetAsync (CreateLdapTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateLdapTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateLdapTargetOutput>> CreateldapTargetAsyncWithHttpInfo (CreateLdapTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -4690,6 +4795,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GatewayCreateProducerRdpOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerRdpOutput>> GatewayCreateProducerRdpAsyncWithHttpInfo (GatewayCreateProducerRdp body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerRedshiftOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateProducerRedshiftOutput> GatewayCreateProducerRedshiftAsync (GatewayCreateProducerRedshift body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerRedshiftOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerRedshiftOutput>> GatewayCreateProducerRedshiftAsyncWithHttpInfo (GatewayCreateProducerRedshift body);
         /// <summary>
         /// 
         /// </summary>
@@ -8070,6 +8196,121 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateAuthMethodOIDCOutput</returns>
+        public CreateAuthMethodOIDCOutput CreateAuthMethodOIDC (CreateAuthMethodOIDC body)
+        {
+             akeyless.Client.ApiResponse<CreateAuthMethodOIDCOutput> localVarResponse = CreateAuthMethodOIDCWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateAuthMethodOIDCOutput</returns>
+        public akeyless.Client.ApiResponse< CreateAuthMethodOIDCOutput > CreateAuthMethodOIDCWithHttpInfo (CreateAuthMethodOIDC body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAuthMethodOIDC");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateAuthMethodOIDCOutput >("/create-auth-method-oidc", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAuthMethodOIDC", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateAuthMethodOIDCOutput</returns>
+        public async System.Threading.Tasks.Task<CreateAuthMethodOIDCOutput> CreateAuthMethodOIDCAsync (CreateAuthMethodOIDC body)
+        {
+             akeyless.Client.ApiResponse<CreateAuthMethodOIDCOutput> localVarResponse = await CreateAuthMethodOIDCAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateAuthMethodOIDCOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAuthMethodOIDCOutput>> CreateAuthMethodOIDCAsyncWithHttpInfo (CreateAuthMethodOIDC body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAuthMethodOIDC");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAuthMethodOIDCOutput>("/create-auth-method-oidc", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAuthMethodOIDC", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAuthMethodSAMLOutput</returns>
         public CreateAuthMethodSAMLOutput CreateAuthMethodSAML (CreateAuthMethodSAML body)
         {
@@ -10343,6 +10584,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateWebTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateLdapTargetOutput</returns>
+        public CreateLdapTargetOutput CreateldapTarget (CreateLdapTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateLdapTargetOutput> localVarResponse = CreateldapTargetWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateLdapTargetOutput</returns>
+        public akeyless.Client.ApiResponse< CreateLdapTargetOutput > CreateldapTargetWithHttpInfo (CreateLdapTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateldapTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< CreateLdapTargetOutput >("/create-ldap-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateldapTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of CreateLdapTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateLdapTargetOutput> CreateldapTargetAsync (CreateLdapTarget body)
+        {
+             akeyless.Client.ApiResponse<CreateLdapTargetOutput> localVarResponse = await CreateldapTargetAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (CreateLdapTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateLdapTargetOutput>> CreateldapTargetAsyncWithHttpInfo (CreateLdapTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateldapTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateLdapTargetOutput>("/create-ldap-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateldapTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -14475,6 +14831,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayCreateProducerRdp", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerRedshiftOutput</returns>
+        public GatewayCreateProducerRedshiftOutput GatewayCreateProducerRedshift (GatewayCreateProducerRedshift body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerRedshiftOutput> localVarResponse = GatewayCreateProducerRedshiftWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerRedshiftOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayCreateProducerRedshiftOutput > GatewayCreateProducerRedshiftWithHttpInfo (GatewayCreateProducerRedshift body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerRedshift");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayCreateProducerRedshiftOutput >("/gateway-create-producer-redshift", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerRedshift", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerRedshiftOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateProducerRedshiftOutput> GatewayCreateProducerRedshiftAsync (GatewayCreateProducerRedshift body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerRedshiftOutput> localVarResponse = await GatewayCreateProducerRedshiftAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerRedshiftOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerRedshiftOutput>> GatewayCreateProducerRedshiftAsyncWithHttpInfo (GatewayCreateProducerRedshift body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerRedshift");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateProducerRedshiftOutput>("/gateway-create-producer-redshift", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerRedshift", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

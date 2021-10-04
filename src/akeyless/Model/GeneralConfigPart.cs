@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="akeylessUrl">akeylessUrl.</param>
         /// <param name="apiTokenTtl">apiTokenTtl.</param>
+        /// <param name="displayName">displayName.</param>
         /// <param name="enableTls">enableTls.</param>
         /// <param name="enableTlsConfigure">enableTlsConfigure.</param>
         /// <param name="enableTlsCurl">enableTlsCurl.</param>
@@ -44,10 +45,11 @@ namespace akeyless.Model
         /// <param name="tcpPort">tcpPort.</param>
         /// <param name="tlsCert">tlsCert.</param>
         /// <param name="tlsKey">tlsKey.</param>
-        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
+        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
         {
             this.AkeylessUrl = akeylessUrl;
             this.ApiTokenTtl = apiTokenTtl;
+            this.DisplayName = displayName;
             this.EnableTls = enableTls;
             this.EnableTlsConfigure = enableTlsConfigure;
             this.EnableTlsCurl = enableTlsCurl;
@@ -69,6 +71,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="api_token_ttl", EmitDefaultValue=false)]
         public string ApiTokenTtl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DisplayName
+        /// </summary>
+        [DataMember(Name="display_name", EmitDefaultValue=false)]
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableTls
@@ -128,6 +136,7 @@ namespace akeyless.Model
             sb.Append("class GeneralConfigPart {\n");
             sb.Append("  AkeylessUrl: ").Append(AkeylessUrl).Append("\n");
             sb.Append("  ApiTokenTtl: ").Append(ApiTokenTtl).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  EnableTls: ").Append(EnableTls).Append("\n");
             sb.Append("  EnableTlsConfigure: ").Append(EnableTlsConfigure).Append("\n");
             sb.Append("  EnableTlsCurl: ").Append(EnableTlsCurl).Append("\n");
@@ -181,6 +190,11 @@ namespace akeyless.Model
                     this.ApiTokenTtl.Equals(input.ApiTokenTtl))
                 ) && 
                 (
+                    this.DisplayName == input.DisplayName ||
+                    (this.DisplayName != null &&
+                    this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
                     this.EnableTls == input.EnableTls ||
                     this.EnableTls.Equals(input.EnableTls)
                 ) && 
@@ -231,6 +245,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AkeylessUrl.GetHashCode();
                 if (this.ApiTokenTtl != null)
                     hashCode = hashCode * 59 + this.ApiTokenTtl.GetHashCode();
+                if (this.DisplayName != null)
+                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
                 hashCode = hashCode * 59 + this.EnableTls.GetHashCode();
                 hashCode = hashCode * 59 + this.EnableTlsConfigure.GetHashCode();
                 hashCode = hashCode * 59 + this.EnableTlsCurl.GetHashCode();

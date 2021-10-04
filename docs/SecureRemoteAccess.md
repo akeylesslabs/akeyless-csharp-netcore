@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **SshPrivateKey** | **bool** |  | [optional] 
 **SshUser** | **string** |  | [optional] 
 **Url** | **string** |  | [optional] 
+**UseInternalBastion** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

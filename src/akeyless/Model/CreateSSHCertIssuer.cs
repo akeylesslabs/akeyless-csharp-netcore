@@ -50,12 +50,13 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
+        /// <param name="secureAccessUseInternalBastion">secureAccessUseInternalBastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">The requested Time To Live for the certificate, use second units (required).</param>
+        /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string password = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
+        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string password = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             this.AllowedUsers = allowedUsers ?? throw new ArgumentNullException("allowedUsers is a required property for CreateSSHCertIssuer and cannot be null");
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
+            this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -151,6 +153,12 @@ namespace akeyless.Model
         public string SecureAccessSshCredsUser { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessUseInternalBastion
+        /// </summary>
+        [DataMember(Name="secure-access-use-internal-bastion", EmitDefaultValue=false)]
+        public bool SecureAccessUseInternalBastion { get; set; }
+
+        /// <summary>
         /// A key to sign the certificate with
         /// </summary>
         /// <value>A key to sign the certificate with</value>
@@ -165,9 +173,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// The requested Time To Live for the certificate, use second units
+        /// he requested Time To Live for the certificate, in seconds
         /// </summary>
-        /// <value>The requested Time To Live for the certificate, use second units</value>
+        /// <value>he requested Time To Live for the certificate, in seconds</value>
         [DataMember(Name="ttl", EmitDefaultValue=false)]
         public long Ttl { get; set; }
 
@@ -204,6 +212,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessSshCredsUser: ").Append(SecureAccessSshCredsUser).Append("\n");
+            sb.Append("  SecureAccessUseInternalBastion: ").Append(SecureAccessUseInternalBastion).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
@@ -301,6 +310,10 @@ namespace akeyless.Model
                     this.SecureAccessSshCredsUser.Equals(input.SecureAccessSshCredsUser))
                 ) && 
                 (
+                    this.SecureAccessUseInternalBastion == input.SecureAccessUseInternalBastion ||
+                    this.SecureAccessUseInternalBastion.Equals(input.SecureAccessUseInternalBastion)
+                ) && 
+                (
                     this.SignerKeyName == input.SignerKeyName ||
                     (this.SignerKeyName != null &&
                     this.SignerKeyName.Equals(input.SignerKeyName))
@@ -357,6 +370,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 if (this.SecureAccessSshCredsUser != null)
                     hashCode = hashCode * 59 + this.SecureAccessSshCredsUser.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessUseInternalBastion.GetHashCode();
                 if (this.SignerKeyName != null)
                     hashCode = hashCode * 59 + this.SignerKeyName.GetHashCode();
                 if (this.Token != null)

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei | 
 [**CreateAuthMethodOAuth2**](V2Api.md#createauthmethodoauth2) | **POST** /create-auth-method-oauth2 | 
+[**CreateAuthMethodOIDC**](V2Api.md#createauthmethodoidc) | **POST** /create-auth-method-oidc | 
 [**CreateAuthMethodSAML**](V2Api.md#createauthmethodsaml) | **POST** /create-auth-method-saml | 
 [**CreateAuthMethodUniversalIdentity**](V2Api.md#createauthmethoduniversalidentity) | **POST** /create-auth-method-universal-identity | 
 [**CreateAzureTarget**](V2Api.md#createazuretarget) | **POST** /create-azure-target | 
@@ -37,6 +38,7 @@ Method | HTTP request | Description
 [**CreateSSHTarget**](V2Api.md#createsshtarget) | **POST** /create-ssh-target | 
 [**CreateSecret**](V2Api.md#createsecret) | **POST** /create-secret | 
 [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target | 
+[**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target | 
 [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt | 
 [**DecryptPKCS1**](V2Api.md#decryptpkcs1) | **POST** /decrypt-pkcs1 | 
 [**DecryptWithClassicKey**](V2Api.md#decryptwithclassickey) | **POST** /decrypt-with-classic-key | 
@@ -73,6 +75,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#gatewaycreateproducerpostgresql) | **POST** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#gatewaycreateproducerrabbitmq) | **POST** /gateway-create-producer-rabbitmq | 
 [**GatewayCreateProducerRdp**](V2Api.md#gatewaycreateproducerrdp) | **POST** /gateway-create-producer-rdp | 
+[**GatewayCreateProducerRedshift**](V2Api.md#gatewaycreateproducerredshift) | **POST** /gateway-create-producer-redshift | 
 [**GatewayCreateProducerSnowflake**](V2Api.md#gatewaycreateproducersnowflake) | **POST** /gateway-create-producer-snowflake | 
 [**GatewayDeleteAllowedManagementAccess**](V2Api.md#gatewaydeleteallowedmanagementaccess) | **POST** /gateway-delete-allowed-management-access | 
 [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer | 
@@ -1040,6 +1043,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createAuthMethodOAuth2Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodoidc"></a>
+# **CreateAuthMethodOIDC**
+> CreateAuthMethodOIDCOutput CreateAuthMethodOIDC (CreateAuthMethodOIDC body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodOIDCExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodOIDC(); // CreateAuthMethodOIDC | 
+
+            try
+            {
+                CreateAuthMethodOIDCOutput result = apiInstance.CreateAuthMethodOIDC(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodOIDC: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodOIDC**](CreateAuthMethodOIDC.md)|  | 
+
+### Return type
+
+[**CreateAuthMethodOIDCOutput**](CreateAuthMethodOIDCOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodOIDCResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2396,6 +2467,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createWebTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createldaptarget"></a>
+# **CreateldapTarget**
+> CreateLdapTargetOutput CreateldapTarget (CreateLdapTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateldapTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateLdapTarget(); // CreateLdapTarget | 
+
+            try
+            {
+                CreateLdapTargetOutput result = apiInstance.CreateldapTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateldapTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateLdapTarget**](CreateLdapTarget.md)|  | 
+
+### Return type
+
+[**CreateLdapTargetOutput**](CreateLdapTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createldapTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4844,6 +4983,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayCreateProducerRdpResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaycreateproducerredshift"></a>
+# **GatewayCreateProducerRedshift**
+> GatewayCreateProducerRedshiftOutput GatewayCreateProducerRedshift (GatewayCreateProducerRedshift body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateProducerRedshiftExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerRedshift(); // GatewayCreateProducerRedshift | 
+
+            try
+            {
+                GatewayCreateProducerRedshiftOutput result = apiInstance.GatewayCreateProducerRedshift(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRedshift: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerRedshift**](GatewayCreateProducerRedshift.md)|  | 
+
+### Return type
+
+[**GatewayCreateProducerRedshiftOutput**](GatewayCreateProducerRedshiftOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayCreateProducerRedshiftResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

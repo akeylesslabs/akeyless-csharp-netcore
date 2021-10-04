@@ -15,11 +15,7 @@ Name | Type | Description | Notes
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 
 **MongodbDefaultAuthDb** | **string** | MongoDB server default authentication database | [optional] 
-**MongodbHostPort** | **string** | MongoDB server host and port | [optional] 
-**MongodbPassword** | **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
-**MongodbServerUri** | **string** | MongoDB server URI | [optional] 
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
-**MongodbUsername** | **string** | MongoDB server username | [optional] 
 **Name** | **string** | Target name | 
 **OracleServiceName** | **string** |  | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 

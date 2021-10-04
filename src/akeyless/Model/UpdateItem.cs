@@ -62,11 +62,12 @@ namespace akeyless.Model
         /// <param name="secureAccessSshCreds">secureAccessSshCreds.</param>
         /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
         /// <param name="secureAccessUrl">secureAccessUrl.</param>
+        /// <param name="secureAccessUseInternalBastion">secureAccessUseInternalBastion.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
@@ -93,6 +94,7 @@ namespace akeyless.Model
             this.SecureAccessSshCreds = secureAccessSshCreds;
             this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
             this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.Token = token;
             this.UidToken = uidToken;
@@ -244,6 +246,12 @@ namespace akeyless.Model
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessUseInternalBastion
+        /// </summary>
+        [DataMember(Name="secure-access-use-internal-bastion", EmitDefaultValue=false)]
+        public bool SecureAccessUseInternalBastion { get; set; }
+
+        /// <summary>
         /// Gets or Sets SecureAccessWebBrowsing
         /// </summary>
         [DataMember(Name="secure-access-web-browsing", EmitDefaultValue=false)]
@@ -301,6 +309,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessSshCreds: ").Append(SecureAccessSshCreds).Append("\n");
             sb.Append("  SecureAccessSshCredsUser: ").Append(SecureAccessSshCredsUser).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessUseInternalBastion: ").Append(SecureAccessUseInternalBastion).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -456,6 +465,10 @@ namespace akeyless.Model
                     this.SecureAccessUrl.Equals(input.SecureAccessUrl))
                 ) && 
                 (
+                    this.SecureAccessUseInternalBastion == input.SecureAccessUseInternalBastion ||
+                    this.SecureAccessUseInternalBastion.Equals(input.SecureAccessUseInternalBastion)
+                ) && 
+                (
                     this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
@@ -529,6 +542,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessSshCredsUser.GetHashCode();
                 if (this.SecureAccessUrl != null)
                     hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessUseInternalBastion.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **SecureAccessClusterEndpoint** | **string** |  | [optional] 
 **SecureAccessDashboardUrl** | **string** |  | [optional] 
 **SecureAccessEnable** | **string** |  | [optional] 
+**SecureAccessWeb** | **bool** |  | [optional] 
 **SecureAccessWebBrowsing** | **bool** |  | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

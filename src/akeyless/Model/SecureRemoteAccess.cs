@@ -57,7 +57,8 @@ namespace akeyless.Model
         /// <param name="sshPrivateKey">sshPrivateKey.</param>
         /// <param name="sshUser">sshUser.</param>
         /// <param name="url">url.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string region = default(string), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string))
+        /// <param name="useInternalBastion">useInternalBastion.</param>
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string region = default(string), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.SshPrivateKey = sshPrivateKey;
             this.SshUser = sshUser;
             this.Url = url;
+            this.UseInternalBastion = useInternalBastion;
         }
         
         /// <summary>
@@ -223,6 +225,12 @@ namespace akeyless.Model
         public string Url { get; set; }
 
         /// <summary>
+        /// Gets or Sets UseInternalBastion
+        /// </summary>
+        [DataMember(Name="use_internal_bastion", EmitDefaultValue=false)]
+        public bool UseInternalBastion { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -253,6 +261,7 @@ namespace akeyless.Model
             sb.Append("  SshPrivateKey: ").Append(SshPrivateKey).Append("\n");
             sb.Append("  SshUser: ").Append(SshUser).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  UseInternalBastion: ").Append(UseInternalBastion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -393,6 +402,10 @@ namespace akeyless.Model
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
+                ) && 
+                (
+                    this.UseInternalBastion == input.UseInternalBastion ||
+                    this.UseInternalBastion.Equals(input.UseInternalBastion)
                 );
         }
 
@@ -442,6 +455,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SshUser.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
+                hashCode = hashCode * 59 + this.UseInternalBastion.GetHashCode();
                 return hashCode;
             }
         }

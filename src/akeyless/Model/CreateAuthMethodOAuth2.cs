@@ -26,7 +26,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using OpenID/Oauth2.
+    /// createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using Oauth2.
     /// </summary>
     [DataContract]
     public partial class CreateAuthMethodOAuth2 :  IEquatable<CreateAuthMethodOAuth2>, IValidatableObject

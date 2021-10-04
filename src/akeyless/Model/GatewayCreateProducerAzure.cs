@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessWeb">secureAccessWeb.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWebBrowsing = default(bool), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerAzure and cannot be null");
@@ -69,6 +70,7 @@ namespace akeyless.Model
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.TargetName = targetName;
             this.Token = token;
@@ -137,6 +139,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
         public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessWeb
+        /// </summary>
+        [DataMember(Name="secure-access-web", EmitDefaultValue=false)]
+        public bool SecureAccessWeb { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessWebBrowsing
@@ -230,6 +238,7 @@ namespace akeyless.Model
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -316,6 +325,10 @@ namespace akeyless.Model
                     this.SecureAccessEnable.Equals(input.SecureAccessEnable))
                 ) && 
                 (
+                    this.SecureAccessWeb == input.SecureAccessWeb ||
+                    this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
                     this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
@@ -394,6 +407,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.SecureAccessEnable != null)
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();

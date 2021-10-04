@@ -52,7 +52,7 @@ namespace akeyless.Model
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorCustomCmd">rotatorCustomCmd.</param>
-        /// <param name="rotatorType">rotatorType.</param>
+        /// <param name="rotatorType">Rotator Type (required).</param>
         /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
@@ -64,6 +64,8 @@ namespace akeyless.Model
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateRotatedSecret and cannot be null");
+            // to ensure "rotatorType" is required (not null)
+            this.RotatorType = rotatorType ?? throw new ArgumentNullException("rotatorType is a required property for CreateRotatedSecret and cannot be null");
             // to ensure "targetName" is required (not null)
             this.TargetName = targetName ?? throw new ArgumentNullException("targetName is a required property for CreateRotatedSecret and cannot be null");
             this.ApiId = apiId;
@@ -78,7 +80,6 @@ namespace akeyless.Model
             this.RotationInterval = rotationInterval;
             this.RotatorCredsType = rotatorCredsType;
             this.RotatorCustomCmd = rotatorCustomCmd;
-            this.RotatorType = rotatorType;
             this.SshPassword = sshPassword;
             this.SshUsername = sshUsername;
             this.Tags = tags;
@@ -172,8 +173,9 @@ namespace akeyless.Model
         public string RotatorCustomCmd { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatorType
+        /// Rotator Type
         /// </summary>
+        /// <value>Rotator Type</value>
         [DataMember(Name="rotator-type", EmitDefaultValue=false)]
         public string RotatorType { get; set; }
 

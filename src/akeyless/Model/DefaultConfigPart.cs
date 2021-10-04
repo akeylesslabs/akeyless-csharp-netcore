@@ -36,13 +36,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="defaultProtectionKeyId">defaultProtectionKeyId.</param>
         /// <param name="defaultSecretLocation">defaultSecretLocation.</param>
-        /// <param name="openIdConnectAccessId">openIdConnectAccessId.</param>
+        /// <param name="oidcAccessId">oidcAccessId.</param>
         /// <param name="samlAccessId">samlAccessId.</param>
-        public DefaultConfigPart(long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string openIdConnectAccessId = default(string), string samlAccessId = default(string))
+        public DefaultConfigPart(long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string oidcAccessId = default(string), string samlAccessId = default(string))
         {
             this.DefaultProtectionKeyId = defaultProtectionKeyId;
             this.DefaultSecretLocation = defaultSecretLocation;
-            this.OpenIdConnectAccessId = openIdConnectAccessId;
+            this.OidcAccessId = oidcAccessId;
             this.SamlAccessId = samlAccessId;
         }
         
@@ -59,10 +59,10 @@ namespace akeyless.Model
         public string DefaultSecretLocation { get; set; }
 
         /// <summary>
-        /// Gets or Sets OpenIdConnectAccessId
+        /// Gets or Sets OidcAccessId
         /// </summary>
-        [DataMember(Name="open_id_connect_access_id", EmitDefaultValue=false)]
-        public string OpenIdConnectAccessId { get; set; }
+        [DataMember(Name="oidc_access_id", EmitDefaultValue=false)]
+        public string OidcAccessId { get; set; }
 
         /// <summary>
         /// Gets or Sets SamlAccessId
@@ -80,7 +80,7 @@ namespace akeyless.Model
             sb.Append("class DefaultConfigPart {\n");
             sb.Append("  DefaultProtectionKeyId: ").Append(DefaultProtectionKeyId).Append("\n");
             sb.Append("  DefaultSecretLocation: ").Append(DefaultSecretLocation).Append("\n");
-            sb.Append("  OpenIdConnectAccessId: ").Append(OpenIdConnectAccessId).Append("\n");
+            sb.Append("  OidcAccessId: ").Append(OidcAccessId).Append("\n");
             sb.Append("  SamlAccessId: ").Append(SamlAccessId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -126,9 +126,9 @@ namespace akeyless.Model
                     this.DefaultSecretLocation.Equals(input.DefaultSecretLocation))
                 ) && 
                 (
-                    this.OpenIdConnectAccessId == input.OpenIdConnectAccessId ||
-                    (this.OpenIdConnectAccessId != null &&
-                    this.OpenIdConnectAccessId.Equals(input.OpenIdConnectAccessId))
+                    this.OidcAccessId == input.OidcAccessId ||
+                    (this.OidcAccessId != null &&
+                    this.OidcAccessId.Equals(input.OidcAccessId))
                 ) && 
                 (
                     this.SamlAccessId == input.SamlAccessId ||
@@ -149,8 +149,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.DefaultProtectionKeyId.GetHashCode();
                 if (this.DefaultSecretLocation != null)
                     hashCode = hashCode * 59 + this.DefaultSecretLocation.GetHashCode();
-                if (this.OpenIdConnectAccessId != null)
-                    hashCode = hashCode * 59 + this.OpenIdConnectAccessId.GetHashCode();
+                if (this.OidcAccessId != null)
+                    hashCode = hashCode * 59 + this.OidcAccessId.GetHashCode();
                 if (this.SamlAccessId != null)
                     hashCode = hashCode * 59 + this.SamlAccessId.GetHashCode();
                 return hashCode;

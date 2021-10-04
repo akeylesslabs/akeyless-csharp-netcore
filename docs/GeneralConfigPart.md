@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AkeylessUrl** | **string** |  | [optional] 
 **ApiTokenTtl** | **string** |  | [optional] 
+**DisplayName** | **string** |  | [optional] 
 **EnableTls** | **bool** |  | [optional] 
 **EnableTlsConfigure** | **bool** |  | [optional] 
 **EnableTlsCurl** | **bool** |  | [optional] 

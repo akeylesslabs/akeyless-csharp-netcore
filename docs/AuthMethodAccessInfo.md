@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **HuaweiAccessRules** | [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
 **LdapAccessRules** | [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
+**OidcAccessRules** | [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
 **RulesType** | **string** |  | [optional] 
 **SamlAccessRules** | [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
 **UniversalIdentityAccessRules** | [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 

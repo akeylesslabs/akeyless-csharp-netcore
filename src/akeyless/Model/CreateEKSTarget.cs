@@ -51,8 +51,9 @@ namespace akeyless.Model
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool), string username = default(string))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             this.EksAccessKeyId = eksAccessKeyId ?? throw new ArgumentNullException("eksAccessKeyId is a required property for CreateEKSTarget and cannot be null");
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseGwCloudIdentity = useGwCloudIdentity;
             this.Username = username;
         }
         
@@ -161,6 +163,12 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Gets or Sets UseGwCloudIdentity
+        /// </summary>
+        [DataMember(Name="use-gw-cloud-identity", EmitDefaultValue=false)]
+        public bool UseGwCloudIdentity { get; set; }
+
+        /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
@@ -187,6 +195,7 @@ namespace akeyless.Model
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -283,6 +292,10 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
+                    this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -322,6 +335,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;

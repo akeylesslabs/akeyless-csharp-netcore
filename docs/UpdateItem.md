@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **SecureAccessSshCreds** | **string** |  | [optional] 
 **SecureAccessSshCredsUser** | **string** |  | [optional] 
 **SecureAccessUrl** | **string** |  | [optional] 
+**SecureAccessUseInternalBastion** | **bool** |  | [optional] 
 **SecureAccessWebBrowsing** | **bool** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

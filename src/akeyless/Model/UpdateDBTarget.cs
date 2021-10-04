@@ -51,11 +51,7 @@ namespace akeyless.Model
         /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
         /// <param name="mongodbAtlasProjectId">MongoDB Atlas project ID.</param>
         /// <param name="mongodbDefaultAuthDb">MongoDB server default authentication database.</param>
-        /// <param name="mongodbHostPort">MongoDB server host and port.</param>
-        /// <param name="mongodbPassword">MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters.</param>
-        /// <param name="mongodbServerUri">MongoDB server URI.</param>
         /// <param name="mongodbUriOptions">MongoDB server URI options.</param>
-        /// <param name="mongodbUsername">MongoDB server username.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="oracleServiceName">oracleServiceName.</param>
@@ -68,7 +64,7 @@ namespace akeyless.Model
         /// <param name="updateVersion">Create new version for the target (default to false).</param>
         /// <param name="userName">userName.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbPassword = default(string), string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string userName = default(string), string username = default(string))
+        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string userName = default(string), string username = default(string))
         {
             // to ensure "dbType" is required (not null)
             this.DbType = dbType ?? throw new ArgumentNullException("dbType is a required property for UpdateDBTarget and cannot be null");
@@ -85,11 +81,7 @@ namespace akeyless.Model
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
             this.MongodbDefaultAuthDb = mongodbDefaultAuthDb;
-            this.MongodbHostPort = mongodbHostPort;
-            this.MongodbPassword = mongodbPassword;
-            this.MongodbServerUri = mongodbServerUri;
             this.MongodbUriOptions = mongodbUriOptions;
-            this.MongodbUsername = mongodbUsername;
             this.NewName = newName;
             this.OracleServiceName = oracleServiceName;
             this.Password = password;
@@ -184,39 +176,11 @@ namespace akeyless.Model
         public string MongodbDefaultAuthDb { get; set; }
 
         /// <summary>
-        /// MongoDB server host and port
-        /// </summary>
-        /// <value>MongoDB server host and port</value>
-        [DataMember(Name="mongodb-host-port", EmitDefaultValue=false)]
-        public string MongodbHostPort { get; set; }
-
-        /// <summary>
-        /// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
-        /// </summary>
-        /// <value>MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters</value>
-        [DataMember(Name="mongodb-password", EmitDefaultValue=false)]
-        public string MongodbPassword { get; set; }
-
-        /// <summary>
-        /// MongoDB server URI
-        /// </summary>
-        /// <value>MongoDB server URI</value>
-        [DataMember(Name="mongodb-server-uri", EmitDefaultValue=false)]
-        public string MongodbServerUri { get; set; }
-
-        /// <summary>
         /// MongoDB server URI options
         /// </summary>
         /// <value>MongoDB server URI options</value>
         [DataMember(Name="mongodb-uri-options", EmitDefaultValue=false)]
         public string MongodbUriOptions { get; set; }
-
-        /// <summary>
-        /// MongoDB server username
-        /// </summary>
-        /// <value>MongoDB server username</value>
-        [DataMember(Name="mongodb-username", EmitDefaultValue=false)]
-        public string MongodbUsername { get; set; }
 
         /// <summary>
         /// Target name
@@ -317,11 +281,7 @@ namespace akeyless.Model
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
             sb.Append("  MongodbDefaultAuthDb: ").Append(MongodbDefaultAuthDb).Append("\n");
-            sb.Append("  MongodbHostPort: ").Append(MongodbHostPort).Append("\n");
-            sb.Append("  MongodbPassword: ").Append(MongodbPassword).Append("\n");
-            sb.Append("  MongodbServerUri: ").Append(MongodbServerUri).Append("\n");
             sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
-            sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
@@ -428,29 +388,9 @@ namespace akeyless.Model
                     this.MongodbDefaultAuthDb.Equals(input.MongodbDefaultAuthDb))
                 ) && 
                 (
-                    this.MongodbHostPort == input.MongodbHostPort ||
-                    (this.MongodbHostPort != null &&
-                    this.MongodbHostPort.Equals(input.MongodbHostPort))
-                ) && 
-                (
-                    this.MongodbPassword == input.MongodbPassword ||
-                    (this.MongodbPassword != null &&
-                    this.MongodbPassword.Equals(input.MongodbPassword))
-                ) && 
-                (
-                    this.MongodbServerUri == input.MongodbServerUri ||
-                    (this.MongodbServerUri != null &&
-                    this.MongodbServerUri.Equals(input.MongodbServerUri))
-                ) && 
-                (
                     this.MongodbUriOptions == input.MongodbUriOptions ||
                     (this.MongodbUriOptions != null &&
                     this.MongodbUriOptions.Equals(input.MongodbUriOptions))
-                ) && 
-                (
-                    this.MongodbUsername == input.MongodbUsername ||
-                    (this.MongodbUsername != null &&
-                    this.MongodbUsername.Equals(input.MongodbUsername))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -545,16 +485,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MongodbAtlasProjectId.GetHashCode();
                 if (this.MongodbDefaultAuthDb != null)
                     hashCode = hashCode * 59 + this.MongodbDefaultAuthDb.GetHashCode();
-                if (this.MongodbHostPort != null)
-                    hashCode = hashCode * 59 + this.MongodbHostPort.GetHashCode();
-                if (this.MongodbPassword != null)
-                    hashCode = hashCode * 59 + this.MongodbPassword.GetHashCode();
-                if (this.MongodbServerUri != null)
-                    hashCode = hashCode * 59 + this.MongodbServerUri.GetHashCode();
                 if (this.MongodbUriOptions != null)
                     hashCode = hashCode * 59 + this.MongodbUriOptions.GetHashCode();
-                if (this.MongodbUsername != null)
-                    hashCode = hashCode * 59 + this.MongodbUsername.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

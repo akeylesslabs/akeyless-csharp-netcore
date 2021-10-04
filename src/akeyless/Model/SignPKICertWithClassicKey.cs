@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="signingMethod">SigningMethod (required).</param>
         /// <param name="streetAddress">A comma-separated list of the street address that will be set in the issued certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">The requested Time To Live for the certificate, use second units (required).</param>
+        /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
@@ -192,9 +192,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// The requested Time To Live for the certificate, use second units
+        /// he requested Time To Live for the certificate, in seconds
         /// </summary>
-        /// <value>The requested Time To Live for the certificate, use second units</value>
+        /// <value>he requested Time To Live for the certificate, in seconds</value>
         [DataMember(Name="ttl", EmitDefaultValue=false)]
         public long Ttl { get; set; }
 

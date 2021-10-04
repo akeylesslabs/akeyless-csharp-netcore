@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="streetAddress">A comma-separated list of the street address that will be set in the issued certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">The requested Time To Live for the certificate, use second units (required).</param>
+        /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
@@ -251,9 +251,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// The requested Time To Live for the certificate, use second units
+        /// he requested Time To Live for the certificate, in seconds
         /// </summary>
-        /// <value>The requested Time To Live for the certificate, use second units</value>
+        /// <value>he requested Time To Live for the certificate, in seconds</value>
         [DataMember(Name="ttl", EmitDefaultValue=false)]
         public long Ttl { get; set; }
 

@@ -142,13 +142,16 @@ namespace akeyless.Model
         /// <param name="rabbitmqUserTags">rabbitmqUserTags.</param>
         /// <param name="rabbitmqUserVhost">rabbitmqUserVhost.</param>
         /// <param name="rabbitmqUserWritePermission">rabbitmqUserWritePermission.</param>
+        /// <param name="redshiftCreationStatements">redshiftCreationStatements.</param>
         /// <param name="revokeSyncUrl">revokeSyncUrl.</param>
         /// <param name="rotateSyncUrl">rotateSyncUrl.</param>
+        /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sfUserRole">generated  users info.</param>
         /// <param name="sfWarehouseName">sfWarehouseName.</param>
         /// <param name="shouldStop">TODO delete this after migration.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
+        /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
         /// <param name="userPrincipalName">userPrincipalName.</param>
         /// <param name="userTtl">userTtl.</param>
         /// <param name="venafiAllowSubdomains">venafiAllowSubdomains.</param>
@@ -164,7 +167,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string payload = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), long timeoutSeconds = default(long), string userPrincipalName = default(string), string userTtl = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string payload = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -274,13 +277,16 @@ namespace akeyless.Model
             this.RabbitmqUserTags = rabbitmqUserTags;
             this.RabbitmqUserVhost = rabbitmqUserVhost;
             this.RabbitmqUserWritePermission = rabbitmqUserWritePermission;
+            this.RedshiftCreationStatements = redshiftCreationStatements;
             this.RevokeSyncUrl = revokeSyncUrl;
             this.RotateSyncUrl = rotateSyncUrl;
+            this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
             this.SfAccount = sfAccount;
             this.SfUserRole = sfUserRole;
             this.SfWarehouseName = sfWarehouseName;
             this.ShouldStop = shouldStop;
             this.TimeoutSeconds = timeoutSeconds;
+            this.UseGwCloudIdentity = useGwCloudIdentity;
             this.UserPrincipalName = userPrincipalName;
             this.UserTtl = userTtl;
             this.VenafiAllowSubdomains = venafiAllowSubdomains;
@@ -953,6 +959,12 @@ namespace akeyless.Model
         public string RabbitmqUserWritePermission { get; set; }
 
         /// <summary>
+        /// Gets or Sets RedshiftCreationStatements
+        /// </summary>
+        [DataMember(Name="redshift_creation_statements", EmitDefaultValue=false)]
+        public string RedshiftCreationStatements { get; set; }
+
+        /// <summary>
         /// Gets or Sets RevokeSyncUrl
         /// </summary>
         [DataMember(Name="revoke_sync_url", EmitDefaultValue=false)]
@@ -963,6 +975,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="rotate_sync_url", EmitDefaultValue=false)]
         public string RotateSyncUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureRemoteAccessDetails
+        /// </summary>
+        [DataMember(Name="secure_remote_access_details", EmitDefaultValue=false)]
+        public SecureRemoteAccess SecureRemoteAccessDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets SfAccount
@@ -995,6 +1013,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="timeout_seconds", EmitDefaultValue=false)]
         public long TimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseGwCloudIdentity
+        /// </summary>
+        [DataMember(Name="use_gw_cloud_identity", EmitDefaultValue=false)]
+        public bool UseGwCloudIdentity { get; set; }
 
         /// <summary>
         /// Gets or Sets UserPrincipalName
@@ -1202,13 +1226,16 @@ namespace akeyless.Model
             sb.Append("  RabbitmqUserTags: ").Append(RabbitmqUserTags).Append("\n");
             sb.Append("  RabbitmqUserVhost: ").Append(RabbitmqUserVhost).Append("\n");
             sb.Append("  RabbitmqUserWritePermission: ").Append(RabbitmqUserWritePermission).Append("\n");
+            sb.Append("  RedshiftCreationStatements: ").Append(RedshiftCreationStatements).Append("\n");
             sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
             sb.Append("  RotateSyncUrl: ").Append(RotateSyncUrl).Append("\n");
+            sb.Append("  SecureRemoteAccessDetails: ").Append(SecureRemoteAccessDetails).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
             sb.Append("  SfUserRole: ").Append(SfUserRole).Append("\n");
             sb.Append("  SfWarehouseName: ").Append(SfWarehouseName).Append("\n");
             sb.Append("  ShouldStop: ").Append(ShouldStop).Append("\n");
             sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
+            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("  UserPrincipalName: ").Append(UserPrincipalName).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("  VenafiAllowSubdomains: ").Append(VenafiAllowSubdomains).Append("\n");
@@ -1790,6 +1817,11 @@ namespace akeyless.Model
                     this.RabbitmqUserWritePermission.Equals(input.RabbitmqUserWritePermission))
                 ) && 
                 (
+                    this.RedshiftCreationStatements == input.RedshiftCreationStatements ||
+                    (this.RedshiftCreationStatements != null &&
+                    this.RedshiftCreationStatements.Equals(input.RedshiftCreationStatements))
+                ) && 
+                (
                     this.RevokeSyncUrl == input.RevokeSyncUrl ||
                     (this.RevokeSyncUrl != null &&
                     this.RevokeSyncUrl.Equals(input.RevokeSyncUrl))
@@ -1798,6 +1830,11 @@ namespace akeyless.Model
                     this.RotateSyncUrl == input.RotateSyncUrl ||
                     (this.RotateSyncUrl != null &&
                     this.RotateSyncUrl.Equals(input.RotateSyncUrl))
+                ) && 
+                (
+                    this.SecureRemoteAccessDetails == input.SecureRemoteAccessDetails ||
+                    (this.SecureRemoteAccessDetails != null &&
+                    this.SecureRemoteAccessDetails.Equals(input.SecureRemoteAccessDetails))
                 ) && 
                 (
                     this.SfAccount == input.SfAccount ||
@@ -1822,6 +1859,10 @@ namespace akeyless.Model
                 (
                     this.TimeoutSeconds == input.TimeoutSeconds ||
                     this.TimeoutSeconds.Equals(input.TimeoutSeconds)
+                ) && 
+                (
+                    this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
+                    this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
                 ) && 
                 (
                     this.UserPrincipalName == input.UserPrincipalName ||
@@ -2110,10 +2151,14 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RabbitmqUserVhost.GetHashCode();
                 if (this.RabbitmqUserWritePermission != null)
                     hashCode = hashCode * 59 + this.RabbitmqUserWritePermission.GetHashCode();
+                if (this.RedshiftCreationStatements != null)
+                    hashCode = hashCode * 59 + this.RedshiftCreationStatements.GetHashCode();
                 if (this.RevokeSyncUrl != null)
                     hashCode = hashCode * 59 + this.RevokeSyncUrl.GetHashCode();
                 if (this.RotateSyncUrl != null)
                     hashCode = hashCode * 59 + this.RotateSyncUrl.GetHashCode();
+                if (this.SecureRemoteAccessDetails != null)
+                    hashCode = hashCode * 59 + this.SecureRemoteAccessDetails.GetHashCode();
                 if (this.SfAccount != null)
                     hashCode = hashCode * 59 + this.SfAccount.GetHashCode();
                 if (this.SfUserRole != null)
@@ -2123,6 +2168,7 @@ namespace akeyless.Model
                 if (this.ShouldStop != null)
                     hashCode = hashCode * 59 + this.ShouldStop.GetHashCode();
                 hashCode = hashCode * 59 + this.TimeoutSeconds.GetHashCode();
+                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
                 if (this.UserPrincipalName != null)
                     hashCode = hashCode * 59 + this.UserPrincipalName.GetHashCode();
                 if (this.UserTtl != null)
