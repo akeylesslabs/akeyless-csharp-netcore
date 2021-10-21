@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ApiId** | **string** |  | [optional] 
 **ApiKey** | **string** |  | [optional] 
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | [optional] 
+**CustomPayload** | **string** |  | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 
 **NewMetadata** | **string** | New item metadata | [optional] [default to "default_metadata"]

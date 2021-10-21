@@ -40,13 +40,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateLdapTarget" /> class.
         /// </summary>
         /// <param name="accessId">Access ID (required).</param>
-        /// <param name="bindDn">Bind DN.</param>
-        /// <param name="bindDnPassword">Bind DN Password.</param>
+        /// <param name="bindDn">Bind DN (required).</param>
+        /// <param name="bindDnPassword">Bind DN Password (required).</param>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="enableAnonymSearch">EnableAnonymousSearch.</param>
-        /// <param name="groupAttribute">Group attribute.</param>
-        /// <param name="groupDn">Group DN.</param>
-        /// <param name="groupFilter">Group attribute.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL (required).</param>
@@ -56,26 +53,21 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="userAttribute">User Attribute.</param>
-        /// <param name="userDn">User DN (required).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateLdapTarget(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), bool enableAnonymSearch = default(bool), string groupAttribute = default(string), string groupDn = default(string), string groupFilter = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string password = default(string), string privateKey = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
+        public CreateLdapTarget(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), bool enableAnonymSearch = default(bool), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string password = default(string), string privateKey = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "accessId" is required (not null)
             this.AccessId = accessId ?? throw new ArgumentNullException("accessId is a required property for CreateLdapTarget and cannot be null");
+            // to ensure "bindDn" is required (not null)
+            this.BindDn = bindDn ?? throw new ArgumentNullException("bindDn is a required property for CreateLdapTarget and cannot be null");
+            // to ensure "bindDnPassword" is required (not null)
+            this.BindDnPassword = bindDnPassword ?? throw new ArgumentNullException("bindDnPassword is a required property for CreateLdapTarget and cannot be null");
             // to ensure "ldapUrl" is required (not null)
             this.LdapUrl = ldapUrl ?? throw new ArgumentNullException("ldapUrl is a required property for CreateLdapTarget and cannot be null");
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateLdapTarget and cannot be null");
-            // to ensure "userDn" is required (not null)
-            this.UserDn = userDn ?? throw new ArgumentNullException("userDn is a required property for CreateLdapTarget and cannot be null");
-            this.BindDn = bindDn;
-            this.BindDnPassword = bindDnPassword;
             this.Comment = comment;
             this.EnableAnonymSearch = enableAnonymSearch;
-            this.GroupAttribute = groupAttribute;
-            this.GroupDn = groupDn;
-            this.GroupFilter = groupFilter;
             this.Key = key;
             this.LdapCaCert = ldapCaCert;
             this.Password = password;
@@ -83,7 +75,6 @@ namespace akeyless.Model
             this.Token = token;
             this.TokenExpiration = tokenExpiration;
             this.UidToken = uidToken;
-            this.UserAttribute = userAttribute;
             this.Username = username;
         }
         
@@ -121,27 +112,6 @@ namespace akeyless.Model
         /// <value>EnableAnonymousSearch</value>
         [DataMember(Name="enable-anonym-search", EmitDefaultValue=false)]
         public bool EnableAnonymSearch { get; set; }
-
-        /// <summary>
-        /// Group attribute
-        /// </summary>
-        /// <value>Group attribute</value>
-        [DataMember(Name="group-attribute", EmitDefaultValue=false)]
-        public string GroupAttribute { get; set; }
-
-        /// <summary>
-        /// Group DN
-        /// </summary>
-        /// <value>Group DN</value>
-        [DataMember(Name="group-dn", EmitDefaultValue=false)]
-        public string GroupDn { get; set; }
-
-        /// <summary>
-        /// Group attribute
-        /// </summary>
-        /// <value>Group attribute</value>
-        [DataMember(Name="group-filter", EmitDefaultValue=false)]
-        public string GroupFilter { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -207,20 +177,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// User Attribute
-        /// </summary>
-        /// <value>User Attribute</value>
-        [DataMember(Name="user-attribute", EmitDefaultValue=false)]
-        public string UserAttribute { get; set; }
-
-        /// <summary>
-        /// User DN
-        /// </summary>
-        /// <value>User DN</value>
-        [DataMember(Name="user-dn", EmitDefaultValue=false)]
-        public string UserDn { get; set; }
-
-        /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
@@ -240,9 +196,6 @@ namespace akeyless.Model
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  EnableAnonymSearch: ").Append(EnableAnonymSearch).Append("\n");
-            sb.Append("  GroupAttribute: ").Append(GroupAttribute).Append("\n");
-            sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
-            sb.Append("  GroupFilter: ").Append(GroupFilter).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
@@ -252,8 +205,6 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  UserAttribute: ").Append(UserAttribute).Append("\n");
-            sb.Append("  UserDn: ").Append(UserDn).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -314,21 +265,6 @@ namespace akeyless.Model
                     this.EnableAnonymSearch.Equals(input.EnableAnonymSearch)
                 ) && 
                 (
-                    this.GroupAttribute == input.GroupAttribute ||
-                    (this.GroupAttribute != null &&
-                    this.GroupAttribute.Equals(input.GroupAttribute))
-                ) && 
-                (
-                    this.GroupDn == input.GroupDn ||
-                    (this.GroupDn != null &&
-                    this.GroupDn.Equals(input.GroupDn))
-                ) && 
-                (
-                    this.GroupFilter == input.GroupFilter ||
-                    (this.GroupFilter != null &&
-                    this.GroupFilter.Equals(input.GroupFilter))
-                ) && 
-                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -374,16 +310,6 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
-                    this.UserAttribute == input.UserAttribute ||
-                    (this.UserAttribute != null &&
-                    this.UserAttribute.Equals(input.UserAttribute))
-                ) && 
-                (
-                    this.UserDn == input.UserDn ||
-                    (this.UserDn != null &&
-                    this.UserDn.Equals(input.UserDn))
-                ) && 
-                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -408,12 +334,6 @@ namespace akeyless.Model
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 hashCode = hashCode * 59 + this.EnableAnonymSearch.GetHashCode();
-                if (this.GroupAttribute != null)
-                    hashCode = hashCode * 59 + this.GroupAttribute.GetHashCode();
-                if (this.GroupDn != null)
-                    hashCode = hashCode * 59 + this.GroupDn.GetHashCode();
-                if (this.GroupFilter != null)
-                    hashCode = hashCode * 59 + this.GroupFilter.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.LdapCaCert != null)
@@ -432,10 +352,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.TokenExpiration.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.UserAttribute != null)
-                    hashCode = hashCode * 59 + this.UserAttribute.GetHashCode();
-                if (this.UserDn != null)
-                    hashCode = hashCode * 59 + this.UserDn.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;

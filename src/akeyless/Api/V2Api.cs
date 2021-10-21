@@ -1167,6 +1167,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateK8SAuthConfigOutput</returns>
+        GatewayCreateK8SAuthConfigOutput GatewayCreateK8SAuthConfig (GatewayCreateK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateK8SAuthConfigOutput</returns>
+        ApiResponse<GatewayCreateK8SAuthConfigOutput> GatewayCreateK8SAuthConfigWithHttpInfo (GatewayCreateK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerArtifactoryOutput</returns>
         GatewayCreateProducerArtifactoryOutput GatewayCreateProducerArtifactory (GatewayCreateProducerArtifactory body);
 
@@ -1348,6 +1369,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayCreateProducerGkeOutput</returns>
         ApiResponse<GatewayCreateProducerGkeOutput> GatewayCreateProducerGkeWithHttpInfo (GatewayCreateProducerGke body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerLdapOutput</returns>
+        GatewayCreateProducerLdapOutput GatewayCreateProducerLdap (GatewayCreateProducerLdap body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerLdapOutput</returns>
+        ApiResponse<GatewayCreateProducerLdapOutput> GatewayCreateProducerLdapWithHttpInfo (GatewayCreateProducerLdap body);
         /// <summary>
         /// 
         /// </summary>
@@ -1587,6 +1629,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayDeleteK8SAuthConfigOutput</returns>
+        GatewayDeleteK8SAuthConfigOutput GatewayDeleteK8SAuthConfig (GatewayDeleteK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayDeleteK8SAuthConfigOutput</returns>
+        ApiResponse<GatewayDeleteK8SAuthConfigOutput> GatewayDeleteK8SAuthConfigWithHttpInfo (GatewayDeleteK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayDeleteProducerOutput</returns>
         GatewayDeleteProducerOutput GatewayDeleteProducer (GatewayDeleteProducer body);
 
@@ -1621,6 +1684,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of AkeylessGatewayConfig</returns>
         ApiResponse<AkeylessGatewayConfig> GatewayGetConfigWithHttpInfo (GatewayGetConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayGetK8SAuthConfigOutput</returns>
+        GatewayGetK8SAuthConfigOutput GatewayGetK8SAuthConfig (GatewayGetK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayGetK8SAuthConfigOutput</returns>
+        ApiResponse<GatewayGetK8SAuthConfigOutput> GatewayGetK8SAuthConfigWithHttpInfo (GatewayGetK8SAuthConfig body);
         /// <summary>
         /// 
         /// </summary>
@@ -1942,8 +2026,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> GetRotatedSecretValue (GetRotatedSecretValue body);
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        Dictionary<string, Object> GetRotatedSecretValue (GetRotatedSecretValue body);
 
         /// <summary>
         /// 
@@ -1953,8 +2037,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> GetRotatedSecretValueWithHttpInfo (GetRotatedSecretValue body);
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        ApiResponse<Dictionary<string, Object>> GetRotatedSecretValueWithHttpInfo (GetRotatedSecretValue body);
         /// <summary>
         /// 
         /// </summary>
@@ -4446,6 +4530,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateK8SAuthConfigOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateK8SAuthConfigOutput> GatewayCreateK8SAuthConfigAsync (GatewayCreateK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateK8SAuthConfigOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateK8SAuthConfigOutput>> GatewayCreateK8SAuthConfigAsyncWithHttpInfo (GatewayCreateK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GatewayCreateProducerArtifactoryOutput</returns>
         System.Threading.Tasks.Task<GatewayCreateProducerArtifactoryOutput> GatewayCreateProducerArtifactoryAsync (GatewayCreateProducerArtifactory body);
 
@@ -4627,6 +4732,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GatewayCreateProducerGkeOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerGkeOutput>> GatewayCreateProducerGkeAsyncWithHttpInfo (GatewayCreateProducerGke body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerLdapOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateProducerLdapOutput> GatewayCreateProducerLdapAsync (GatewayCreateProducerLdap body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerLdapOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerLdapOutput>> GatewayCreateProducerLdapAsyncWithHttpInfo (GatewayCreateProducerLdap body);
         /// <summary>
         /// 
         /// </summary>
@@ -4866,6 +4992,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of GatewayDeleteK8SAuthConfigOutput</returns>
+        System.Threading.Tasks.Task<GatewayDeleteK8SAuthConfigOutput> GatewayDeleteK8SAuthConfigAsync (GatewayDeleteK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayDeleteK8SAuthConfigOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayDeleteK8SAuthConfigOutput>> GatewayDeleteK8SAuthConfigAsyncWithHttpInfo (GatewayDeleteK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GatewayDeleteProducerOutput</returns>
         System.Threading.Tasks.Task<GatewayDeleteProducerOutput> GatewayDeleteProducerAsync (GatewayDeleteProducer body);
 
@@ -4900,6 +5047,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (AkeylessGatewayConfig)</returns>
         System.Threading.Tasks.Task<ApiResponse<AkeylessGatewayConfig>> GatewayGetConfigAsyncWithHttpInfo (GatewayGetConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayGetK8SAuthConfigOutput</returns>
+        System.Threading.Tasks.Task<GatewayGetK8SAuthConfigOutput> GatewayGetK8SAuthConfigAsync (GatewayGetK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayGetK8SAuthConfigOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayGetK8SAuthConfigOutput>> GatewayGetK8SAuthConfigAsyncWithHttpInfo (GatewayGetK8SAuthConfig body);
         /// <summary>
         /// 
         /// </summary>
@@ -5221,8 +5389,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> GetRotatedSecretValueAsync (GetRotatedSecretValue body);
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, Object>> GetRotatedSecretValueAsync (GetRotatedSecretValue body);
 
         /// <summary>
         /// 
@@ -5232,8 +5400,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetRotatedSecretValueAsyncWithHttpInfo (GetRotatedSecretValue body);
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetRotatedSecretValueAsyncWithHttpInfo (GetRotatedSecretValue body);
         /// <summary>
         /// 
         /// </summary>
@@ -12895,6 +13063,121 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateK8SAuthConfigOutput</returns>
+        public GatewayCreateK8SAuthConfigOutput GatewayCreateK8SAuthConfig (GatewayCreateK8SAuthConfig body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateK8SAuthConfigOutput> localVarResponse = GatewayCreateK8SAuthConfigWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateK8SAuthConfigOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayCreateK8SAuthConfigOutput > GatewayCreateK8SAuthConfigWithHttpInfo (GatewayCreateK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateK8SAuthConfig");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayCreateK8SAuthConfigOutput >("/gateway-create-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateK8SAuthConfigOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateK8SAuthConfigOutput> GatewayCreateK8SAuthConfigAsync (GatewayCreateK8SAuthConfig body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateK8SAuthConfigOutput> localVarResponse = await GatewayCreateK8SAuthConfigAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateK8SAuthConfigOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateK8SAuthConfigOutput>> GatewayCreateK8SAuthConfigAsyncWithHttpInfo (GatewayCreateK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateK8SAuthConfig");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateK8SAuthConfigOutput>("/gateway-create-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerArtifactoryOutput</returns>
         public GatewayCreateProducerArtifactoryOutput GatewayCreateProducerArtifactory (GatewayCreateProducerArtifactory body)
         {
@@ -13911,6 +14194,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayCreateProducerGke", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerLdapOutput</returns>
+        public GatewayCreateProducerLdapOutput GatewayCreateProducerLdap (GatewayCreateProducerLdap body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerLdapOutput> localVarResponse = GatewayCreateProducerLdapWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerLdapOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayCreateProducerLdapOutput > GatewayCreateProducerLdapWithHttpInfo (GatewayCreateProducerLdap body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerLdap");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayCreateProducerLdapOutput >("/gateway-create-producer-ldap", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerLdap", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayCreateProducerLdapOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateProducerLdapOutput> GatewayCreateProducerLdapAsync (GatewayCreateProducerLdap body)
+        {
+             akeyless.Client.ApiResponse<GatewayCreateProducerLdapOutput> localVarResponse = await GatewayCreateProducerLdapAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerLdapOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerLdapOutput>> GatewayCreateProducerLdapAsyncWithHttpInfo (GatewayCreateProducerLdap body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerLdap");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateProducerLdapOutput>("/gateway-create-producer-ldap", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerLdap", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -15187,6 +15585,121 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayDeleteK8SAuthConfigOutput</returns>
+        public GatewayDeleteK8SAuthConfigOutput GatewayDeleteK8SAuthConfig (GatewayDeleteK8SAuthConfig body)
+        {
+             akeyless.Client.ApiResponse<GatewayDeleteK8SAuthConfigOutput> localVarResponse = GatewayDeleteK8SAuthConfigWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayDeleteK8SAuthConfigOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayDeleteK8SAuthConfigOutput > GatewayDeleteK8SAuthConfigWithHttpInfo (GatewayDeleteK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayDeleteK8SAuthConfig");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayDeleteK8SAuthConfigOutput >("/gateway-delete-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayDeleteK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayDeleteK8SAuthConfigOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayDeleteK8SAuthConfigOutput> GatewayDeleteK8SAuthConfigAsync (GatewayDeleteK8SAuthConfig body)
+        {
+             akeyless.Client.ApiResponse<GatewayDeleteK8SAuthConfigOutput> localVarResponse = await GatewayDeleteK8SAuthConfigAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayDeleteK8SAuthConfigOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayDeleteK8SAuthConfigOutput>> GatewayDeleteK8SAuthConfigAsyncWithHttpInfo (GatewayDeleteK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayDeleteK8SAuthConfig");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayDeleteK8SAuthConfigOutput>("/gateway-delete-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayDeleteK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayDeleteProducerOutput</returns>
         public GatewayDeleteProducerOutput GatewayDeleteProducer (GatewayDeleteProducer body)
         {
@@ -15406,6 +15919,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayGetConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayGetK8SAuthConfigOutput</returns>
+        public GatewayGetK8SAuthConfigOutput GatewayGetK8SAuthConfig (GatewayGetK8SAuthConfig body)
+        {
+             akeyless.Client.ApiResponse<GatewayGetK8SAuthConfigOutput> localVarResponse = GatewayGetK8SAuthConfigWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayGetK8SAuthConfigOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayGetK8SAuthConfigOutput > GatewayGetK8SAuthConfigWithHttpInfo (GatewayGetK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayGetK8SAuthConfig");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayGetK8SAuthConfigOutput >("/gateway-get-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayGetK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayGetK8SAuthConfigOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayGetK8SAuthConfigOutput> GatewayGetK8SAuthConfigAsync (GatewayGetK8SAuthConfig body)
+        {
+             akeyless.Client.ApiResponse<GatewayGetK8SAuthConfigOutput> localVarResponse = await GatewayGetK8SAuthConfigAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayGetK8SAuthConfigOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayGetK8SAuthConfigOutput>> GatewayGetK8SAuthConfigAsyncWithHttpInfo (GatewayGetK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayGetK8SAuthConfig");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayGetK8SAuthConfigOutput>("/gateway-get-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayGetK8SAuthConfig", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -17122,10 +17750,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> GetRotatedSecretValue (GetRotatedSecretValue body)
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        public Dictionary<string, Object> GetRotatedSecretValue (GetRotatedSecretValue body)
         {
-             akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = GetRotatedSecretValueWithHttpInfo(body);
+             akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = GetRotatedSecretValueWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -17134,8 +17762,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public akeyless.Client.ApiResponse< Dictionary<string, string> > GetRotatedSecretValueWithHttpInfo (GetRotatedSecretValue body)
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        public akeyless.Client.ApiResponse< Dictionary<string, Object> > GetRotatedSecretValueWithHttpInfo (GetRotatedSecretValue body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -17162,7 +17790,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post< Dictionary<string, string> >("/get-rotated-secret-value", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post< Dictionary<string, Object> >("/get-rotated-secret-value", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -17178,10 +17806,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetRotatedSecretValueAsync (GetRotatedSecretValue body)
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetRotatedSecretValueAsync (GetRotatedSecretValue body)
         {
-             akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = await GetRotatedSecretValueAsyncWithHttpInfo(body);
+             akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = await GetRotatedSecretValueAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -17191,8 +17819,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, string>>> GetRotatedSecretValueAsyncWithHttpInfo (GetRotatedSecretValue body)
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, Object>>> GetRotatedSecretValueAsyncWithHttpInfo (GetRotatedSecretValue body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -17221,7 +17849,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, string>>("/get-rotated-secret-value", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, Object>>("/get-rotated-secret-value", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {

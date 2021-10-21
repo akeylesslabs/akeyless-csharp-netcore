@@ -80,14 +80,9 @@ namespace akeyless.Model
         /// <param name="ldapBindDn">ldapBindDn.</param>
         /// <param name="ldapBindPassword">ldapBindPassword.</param>
         /// <param name="ldapCertificate">ldapCertificate.</param>
-        /// <param name="ldapGroupAttr">ldapGroupAttr.</param>
-        /// <param name="ldapGroupDn">ldapGroupDn.</param>
-        /// <param name="ldapGroupFilter">ldapGroupFilter.</param>
         /// <param name="ldapPrivateKey">ldapPrivateKey.</param>
         /// <param name="ldapTokenExpiration">ldapTokenExpiration.</param>
         /// <param name="ldapUrl">ldapUrl.</param>
-        /// <param name="ldapUserAttr">ldapUserAttr.</param>
-        /// <param name="ldapUserDn">ldapUserDn.</param>
         /// <param name="mongodbAtlasApiPrivateKey">mongodbAtlasApiPrivateKey.</param>
         /// <param name="mongodbAtlasApiPublicKey">mongodbAtlasApiPublicKey.</param>
         /// <param name="mongodbAtlasProjectId">mongodb atlas fields.</param>
@@ -100,6 +95,7 @@ namespace akeyless.Model
         /// <param name="mongodbUriOptions">mongodbUriOptions.</param>
         /// <param name="mongodbUsername">mongodbUsername.</param>
         /// <param name="password">password.</param>
+        /// <param name="payload">payload.</param>
         /// <param name="port">port.</param>
         /// <param name="privateKey">privateKey.</param>
         /// <param name="privateKeyPassword">privateKeyPassword.</param>
@@ -116,7 +112,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAccessId = default(string), bool ldapAnonymousSearch = default(bool), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapGroupAttr = default(string), string ldapGroupDn = default(string), string ldapGroupFilter = default(string), string ldapPrivateKey = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAccessId = default(string), bool ldapAnonymousSearch = default(bool), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapPrivateKey = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -164,14 +160,9 @@ namespace akeyless.Model
             this.LdapBindDn = ldapBindDn;
             this.LdapBindPassword = ldapBindPassword;
             this.LdapCertificate = ldapCertificate;
-            this.LdapGroupAttr = ldapGroupAttr;
-            this.LdapGroupDn = ldapGroupDn;
-            this.LdapGroupFilter = ldapGroupFilter;
             this.LdapPrivateKey = ldapPrivateKey;
             this.LdapTokenExpiration = ldapTokenExpiration;
             this.LdapUrl = ldapUrl;
-            this.LdapUserAttr = ldapUserAttr;
-            this.LdapUserDn = ldapUserDn;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
@@ -184,6 +175,7 @@ namespace akeyless.Model
             this.MongodbUriOptions = mongodbUriOptions;
             this.MongodbUsername = mongodbUsername;
             this.Password = password;
+            this.Payload = payload;
             this.Port = port;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassword = privateKeyPassword;
@@ -481,24 +473,6 @@ namespace akeyless.Model
         public string LdapCertificate { get; set; }
 
         /// <summary>
-        /// Gets or Sets LdapGroupAttr
-        /// </summary>
-        [DataMember(Name="ldap_group_attr", EmitDefaultValue=false)]
-        public string LdapGroupAttr { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapGroupDn
-        /// </summary>
-        [DataMember(Name="ldap_group_dn", EmitDefaultValue=false)]
-        public string LdapGroupDn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapGroupFilter
-        /// </summary>
-        [DataMember(Name="ldap_group_filter", EmitDefaultValue=false)]
-        public string LdapGroupFilter { get; set; }
-
-        /// <summary>
         /// Gets or Sets LdapPrivateKey
         /// </summary>
         [DataMember(Name="ldap_private_key", EmitDefaultValue=false)]
@@ -515,18 +489,6 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="ldap_url", EmitDefaultValue=false)]
         public string LdapUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapUserAttr
-        /// </summary>
-        [DataMember(Name="ldap_user_attr", EmitDefaultValue=false)]
-        public string LdapUserAttr { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapUserDn
-        /// </summary>
-        [DataMember(Name="ldap_user_dn", EmitDefaultValue=false)]
-        public string LdapUserDn { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbAtlasApiPrivateKey
@@ -602,6 +564,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Payload
+        /// </summary>
+        [DataMember(Name="payload", EmitDefaultValue=false)]
+        public string Payload { get; set; }
 
         /// <summary>
         /// Gets or Sets Port
@@ -753,14 +721,9 @@ namespace akeyless.Model
             sb.Append("  LdapBindDn: ").Append(LdapBindDn).Append("\n");
             sb.Append("  LdapBindPassword: ").Append(LdapBindPassword).Append("\n");
             sb.Append("  LdapCertificate: ").Append(LdapCertificate).Append("\n");
-            sb.Append("  LdapGroupAttr: ").Append(LdapGroupAttr).Append("\n");
-            sb.Append("  LdapGroupDn: ").Append(LdapGroupDn).Append("\n");
-            sb.Append("  LdapGroupFilter: ").Append(LdapGroupFilter).Append("\n");
             sb.Append("  LdapPrivateKey: ").Append(LdapPrivateKey).Append("\n");
             sb.Append("  LdapTokenExpiration: ").Append(LdapTokenExpiration).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
-            sb.Append("  LdapUserAttr: ").Append(LdapUserAttr).Append("\n");
-            sb.Append("  LdapUserDn: ").Append(LdapUserDn).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
@@ -773,6 +736,7 @@ namespace akeyless.Model
             sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
             sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
@@ -1053,21 +1017,6 @@ namespace akeyless.Model
                     this.LdapCertificate.Equals(input.LdapCertificate))
                 ) && 
                 (
-                    this.LdapGroupAttr == input.LdapGroupAttr ||
-                    (this.LdapGroupAttr != null &&
-                    this.LdapGroupAttr.Equals(input.LdapGroupAttr))
-                ) && 
-                (
-                    this.LdapGroupDn == input.LdapGroupDn ||
-                    (this.LdapGroupDn != null &&
-                    this.LdapGroupDn.Equals(input.LdapGroupDn))
-                ) && 
-                (
-                    this.LdapGroupFilter == input.LdapGroupFilter ||
-                    (this.LdapGroupFilter != null &&
-                    this.LdapGroupFilter.Equals(input.LdapGroupFilter))
-                ) && 
-                (
                     this.LdapPrivateKey == input.LdapPrivateKey ||
                     (this.LdapPrivateKey != null &&
                     this.LdapPrivateKey.Equals(input.LdapPrivateKey))
@@ -1081,16 +1030,6 @@ namespace akeyless.Model
                     this.LdapUrl == input.LdapUrl ||
                     (this.LdapUrl != null &&
                     this.LdapUrl.Equals(input.LdapUrl))
-                ) && 
-                (
-                    this.LdapUserAttr == input.LdapUserAttr ||
-                    (this.LdapUserAttr != null &&
-                    this.LdapUserAttr.Equals(input.LdapUserAttr))
-                ) && 
-                (
-                    this.LdapUserDn == input.LdapUserDn ||
-                    (this.LdapUserDn != null &&
-                    this.LdapUserDn.Equals(input.LdapUserDn))
                 ) && 
                 (
                     this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
@@ -1150,6 +1089,11 @@ namespace akeyless.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.Payload == input.Payload ||
+                    (this.Payload != null &&
+                    this.Payload.Equals(input.Payload))
                 ) && 
                 (
                     this.Port == input.Port ||
@@ -1330,22 +1274,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LdapBindPassword.GetHashCode();
                 if (this.LdapCertificate != null)
                     hashCode = hashCode * 59 + this.LdapCertificate.GetHashCode();
-                if (this.LdapGroupAttr != null)
-                    hashCode = hashCode * 59 + this.LdapGroupAttr.GetHashCode();
-                if (this.LdapGroupDn != null)
-                    hashCode = hashCode * 59 + this.LdapGroupDn.GetHashCode();
-                if (this.LdapGroupFilter != null)
-                    hashCode = hashCode * 59 + this.LdapGroupFilter.GetHashCode();
                 if (this.LdapPrivateKey != null)
                     hashCode = hashCode * 59 + this.LdapPrivateKey.GetHashCode();
                 if (this.LdapTokenExpiration != null)
                     hashCode = hashCode * 59 + this.LdapTokenExpiration.GetHashCode();
                 if (this.LdapUrl != null)
                     hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
-                if (this.LdapUserAttr != null)
-                    hashCode = hashCode * 59 + this.LdapUserAttr.GetHashCode();
-                if (this.LdapUserDn != null)
-                    hashCode = hashCode * 59 + this.LdapUserDn.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)
                     hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
                 if (this.MongodbAtlasApiPublicKey != null)
@@ -1369,6 +1303,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MongodbUsername.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.Payload != null)
+                    hashCode = hashCode * 59 + this.Payload.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
                 if (this.PrivateKey != null)

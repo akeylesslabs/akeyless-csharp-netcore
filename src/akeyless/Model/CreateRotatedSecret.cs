@@ -42,6 +42,10 @@ namespace akeyless.Model
         /// <param name="apiId">apiId.</param>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
+        /// <param name="customPayload">customPayload.</param>
+        /// <param name="groupAttribute">Group attribute.</param>
+        /// <param name="groupDn">Group DN.</param>
+        /// <param name="groupFilter">Group attribute.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="name">Secret name (required).</param>
@@ -49,7 +53,7 @@ namespace akeyless.Model
         /// <param name="rotatedPassword">rotatedPassword.</param>
         /// <param name="rotatedUsername">rotatedUsername.</param>
         /// <param name="rotationHour">rotationHour.</param>
-        /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
+        /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorCustomCmd">rotatorCustomCmd.</param>
         /// <param name="rotatorType">Rotator Type (required).</param>
@@ -59,8 +63,10 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="userAttribute">User Attribute.</param>
+        /// <param name="userDn">User DN.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string groupAttribute = default(string), string groupDn = default(string), string groupFilter = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateRotatedSecret and cannot be null");
@@ -71,6 +77,10 @@ namespace akeyless.Model
             this.ApiId = apiId;
             this.ApiKey = apiKey;
             this.AutoRotate = autoRotate;
+            this.CustomPayload = customPayload;
+            this.GroupAttribute = groupAttribute;
+            this.GroupDn = groupDn;
+            this.GroupFilter = groupFilter;
             this.Key = key;
             this.Metadata = metadata;
             this.Password = password;
@@ -85,6 +95,8 @@ namespace akeyless.Model
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UserAttribute = userAttribute;
+            this.UserDn = userDn;
             this.Username = username;
         }
         
@@ -106,6 +118,33 @@ namespace akeyless.Model
         /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
         [DataMember(Name="auto-rotate", EmitDefaultValue=false)]
         public string AutoRotate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustomPayload
+        /// </summary>
+        [DataMember(Name="custom-payload", EmitDefaultValue=false)]
+        public string CustomPayload { get; set; }
+
+        /// <summary>
+        /// Group attribute
+        /// </summary>
+        /// <value>Group attribute</value>
+        [DataMember(Name="group-attribute", EmitDefaultValue=false)]
+        public string GroupAttribute { get; set; }
+
+        /// <summary>
+        /// Group DN
+        /// </summary>
+        /// <value>Group DN</value>
+        [DataMember(Name="group-dn", EmitDefaultValue=false)]
+        public string GroupDn { get; set; }
+
+        /// <summary>
+        /// Group attribute
+        /// </summary>
+        /// <value>Group attribute</value>
+        [DataMember(Name="group-filter", EmitDefaultValue=false)]
+        public string GroupFilter { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -154,9 +193,9 @@ namespace akeyless.Model
         public int RotationHour { get; set; }
 
         /// <summary>
-        /// The number of days to wait between every automatic key rotation (7-365)
+        /// The number of days to wait between every automatic key rotation (1-365)
         /// </summary>
-        /// <value>The number of days to wait between every automatic key rotation (7-365)</value>
+        /// <value>The number of days to wait between every automatic key rotation (1-365)</value>
         [DataMember(Name="rotation-interval", EmitDefaultValue=false)]
         public string RotationInterval { get; set; }
 
@@ -222,6 +261,20 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// User Attribute
+        /// </summary>
+        /// <value>User Attribute</value>
+        [DataMember(Name="user-attribute", EmitDefaultValue=false)]
+        public string UserAttribute { get; set; }
+
+        /// <summary>
+        /// User DN
+        /// </summary>
+        /// <value>User DN</value>
+        [DataMember(Name="user-dn", EmitDefaultValue=false)]
+        public string UserDn { get; set; }
+
+        /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
@@ -239,6 +292,10 @@ namespace akeyless.Model
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
+            sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
+            sb.Append("  GroupAttribute: ").Append(GroupAttribute).Append("\n");
+            sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
+            sb.Append("  GroupFilter: ").Append(GroupFilter).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -256,6 +313,8 @@ namespace akeyless.Model
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UserAttribute: ").Append(UserAttribute).Append("\n");
+            sb.Append("  UserDn: ").Append(UserDn).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -305,6 +364,26 @@ namespace akeyless.Model
                     this.AutoRotate == input.AutoRotate ||
                     (this.AutoRotate != null &&
                     this.AutoRotate.Equals(input.AutoRotate))
+                ) && 
+                (
+                    this.CustomPayload == input.CustomPayload ||
+                    (this.CustomPayload != null &&
+                    this.CustomPayload.Equals(input.CustomPayload))
+                ) && 
+                (
+                    this.GroupAttribute == input.GroupAttribute ||
+                    (this.GroupAttribute != null &&
+                    this.GroupAttribute.Equals(input.GroupAttribute))
+                ) && 
+                (
+                    this.GroupDn == input.GroupDn ||
+                    (this.GroupDn != null &&
+                    this.GroupDn.Equals(input.GroupDn))
+                ) && 
+                (
+                    this.GroupFilter == input.GroupFilter ||
+                    (this.GroupFilter != null &&
+                    this.GroupFilter.Equals(input.GroupFilter))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -392,6 +471,16 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.UserAttribute == input.UserAttribute ||
+                    (this.UserAttribute != null &&
+                    this.UserAttribute.Equals(input.UserAttribute))
+                ) && 
+                (
+                    this.UserDn == input.UserDn ||
+                    (this.UserDn != null &&
+                    this.UserDn.Equals(input.UserDn))
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -413,6 +502,14 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ApiKey.GetHashCode();
                 if (this.AutoRotate != null)
                     hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
+                if (this.CustomPayload != null)
+                    hashCode = hashCode * 59 + this.CustomPayload.GetHashCode();
+                if (this.GroupAttribute != null)
+                    hashCode = hashCode * 59 + this.GroupAttribute.GetHashCode();
+                if (this.GroupDn != null)
+                    hashCode = hashCode * 59 + this.GroupDn.GetHashCode();
+                if (this.GroupFilter != null)
+                    hashCode = hashCode * 59 + this.GroupFilter.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Metadata != null)
@@ -446,6 +543,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.UserAttribute != null)
+                    hashCode = hashCode * 59 + this.UserAttribute.GetHashCode();
+                if (this.UserDn != null)
+                    hashCode = hashCode * 59 + this.UserDn.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;

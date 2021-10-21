@@ -35,14 +35,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ItemVersion" /> class.
         /// </summary>
         /// <param name="creationDate">creationDate.</param>
+        /// <param name="customerFragmentId">customerFragmentId.</param>
         /// <param name="deletionDate">deletionDate.</param>
         /// <param name="itemVersionState">ItemState defines the different states an Item can be in.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="version">version.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public ItemVersion(DateTime creationDate = default(DateTime), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
+        public ItemVersion(DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
         {
             this.CreationDate = creationDate;
+            this.CustomerFragmentId = customerFragmentId;
             this.DeletionDate = deletionDate;
             this.ItemVersionState = itemVersionState;
             this.ProtectionKeyName = protectionKeyName;
@@ -55,6 +57,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="creation_date", EmitDefaultValue=false)]
         public DateTime CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustomerFragmentId
+        /// </summary>
+        [DataMember(Name="customer_fragment_id", EmitDefaultValue=false)]
+        public string CustomerFragmentId { get; set; }
 
         /// <summary>
         /// Gets or Sets DeletionDate
@@ -96,6 +104,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class ItemVersion {\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  CustomerFragmentId: ").Append(CustomerFragmentId).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  ItemVersionState: ").Append(ItemVersionState).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
@@ -141,6 +150,11 @@ namespace akeyless.Model
                     this.CreationDate.Equals(input.CreationDate))
                 ) && 
                 (
+                    this.CustomerFragmentId == input.CustomerFragmentId ||
+                    (this.CustomerFragmentId != null &&
+                    this.CustomerFragmentId.Equals(input.CustomerFragmentId))
+                ) && 
+                (
                     this.DeletionDate == input.DeletionDate ||
                     (this.DeletionDate != null &&
                     this.DeletionDate.Equals(input.DeletionDate))
@@ -176,6 +190,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.CreationDate != null)
                     hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
+                if (this.CustomerFragmentId != null)
+                    hashCode = hashCode * 59 + this.CustomerFragmentId.GetHashCode();
                 if (this.DeletionDate != null)
                     hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
                 if (this.ItemVersionState != null)

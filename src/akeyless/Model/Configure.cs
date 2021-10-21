@@ -36,12 +36,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access Key.</param>
-        /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s) (default to &quot;access_key&quot;).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string gcpAudience = default(string))
+        /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string gcpAudience = default(string), string k8sAuthConfigName = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -51,6 +52,7 @@ namespace akeyless.Model
             this.AdminPassword = adminPassword;
             this.AzureAdObjectId = azureAdObjectId;
             this.GcpAudience = gcpAudience;
+            this.K8sAuthConfigName = k8sAuthConfigName;
         }
         
         /// <summary>
@@ -68,9 +70,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam)
+        /// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)
         /// </summary>
-        /// <value>Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam)</value>
+        /// <value>Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)</value>
         [DataMember(Name="access-type", EmitDefaultValue=false)]
         public string AccessType { get; set; }
 
@@ -103,6 +105,13 @@ namespace akeyless.Model
         public string GcpAudience { get; set; }
 
         /// <summary>
+        /// The K8S Auth config name (relevant only for access-type&#x3D;k8s)
+        /// </summary>
+        /// <value>The K8S Auth config name (relevant only for access-type&#x3D;k8s)</value>
+        [DataMember(Name="k8s-auth-config-name", EmitDefaultValue=false)]
+        public string K8sAuthConfigName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -117,6 +126,7 @@ namespace akeyless.Model
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
+            sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -185,6 +195,11 @@ namespace akeyless.Model
                     this.GcpAudience == input.GcpAudience ||
                     (this.GcpAudience != null &&
                     this.GcpAudience.Equals(input.GcpAudience))
+                ) && 
+                (
+                    this.K8sAuthConfigName == input.K8sAuthConfigName ||
+                    (this.K8sAuthConfigName != null &&
+                    this.K8sAuthConfigName.Equals(input.K8sAuthConfigName))
                 );
         }
 
@@ -211,6 +226,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureAdObjectId.GetHashCode();
                 if (this.GcpAudience != null)
                     hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
+                if (this.K8sAuthConfigName != null)
+                    hashCode = hashCode * 59 + this.K8sAuthConfigName.GetHashCode();
                 return hashCode;
             }
         }

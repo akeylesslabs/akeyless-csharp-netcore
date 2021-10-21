@@ -36,16 +36,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access key (relevant only for access-type&#x3D;access_key).</param>
-        /// <param name="accessType">Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp) (default to &quot;access_key&quot;).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
+        /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
+        /// <param name="k8sServiceAccountToken">The K8S service account token. (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string cloudId = default(string), string gcpAudience = default(string), string jwt = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string cloudId = default(string), string gcpAudience = default(string), string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -56,6 +58,8 @@ namespace akeyless.Model
             this.CloudId = cloudId;
             this.GcpAudience = gcpAudience;
             this.Jwt = jwt;
+            this.K8sAuthConfigName = k8sAuthConfigName;
+            this.K8sServiceAccountToken = k8sServiceAccountToken;
             this.LdapPassword = ldapPassword;
             this.LdapUsername = ldapUsername;
             this.UidToken = uidToken;
@@ -76,9 +80,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp)
+        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)
         /// </summary>
-        /// <value>Access Type (access_key/password/saml/ldap/azure_ad/aws_iam/universal_identity/jwt/gcp)</value>
+        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)</value>
         [DataMember(Name="access-type", EmitDefaultValue=false)]
         public string AccessType { get; set; }
 
@@ -118,6 +122,20 @@ namespace akeyless.Model
         public string Jwt { get; set; }
 
         /// <summary>
+        /// The K8S Auth config name (relevant only for access-type&#x3D;k8s)
+        /// </summary>
+        /// <value>The K8S Auth config name (relevant only for access-type&#x3D;k8s)</value>
+        [DataMember(Name="k8s-auth-config-name", EmitDefaultValue=false)]
+        public string K8sAuthConfigName { get; set; }
+
+        /// <summary>
+        /// The K8S service account token. (relevant only for access-type&#x3D;k8s)
+        /// </summary>
+        /// <value>The K8S service account token. (relevant only for access-type&#x3D;k8s)</value>
+        [DataMember(Name="k8s-service-account-token", EmitDefaultValue=false)]
+        public string K8sServiceAccountToken { get; set; }
+
+        /// <summary>
         /// LDAP password (relevant only for access-type&#x3D;ldap)
         /// </summary>
         /// <value>LDAP password (relevant only for access-type&#x3D;ldap)</value>
@@ -154,6 +172,8 @@ namespace akeyless.Model
             sb.Append("  CloudId: ").Append(CloudId).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  Jwt: ").Append(Jwt).Append("\n");
+            sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
+            sb.Append("  K8sServiceAccountToken: ").Append(K8sServiceAccountToken).Append("\n");
             sb.Append("  LdapPassword: ").Append(LdapPassword).Append("\n");
             sb.Append("  LdapUsername: ").Append(LdapUsername).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -232,6 +252,16 @@ namespace akeyless.Model
                     this.Jwt.Equals(input.Jwt))
                 ) && 
                 (
+                    this.K8sAuthConfigName == input.K8sAuthConfigName ||
+                    (this.K8sAuthConfigName != null &&
+                    this.K8sAuthConfigName.Equals(input.K8sAuthConfigName))
+                ) && 
+                (
+                    this.K8sServiceAccountToken == input.K8sServiceAccountToken ||
+                    (this.K8sServiceAccountToken != null &&
+                    this.K8sServiceAccountToken.Equals(input.K8sServiceAccountToken))
+                ) && 
+                (
                     this.LdapPassword == input.LdapPassword ||
                     (this.LdapPassword != null &&
                     this.LdapPassword.Equals(input.LdapPassword))
@@ -273,6 +303,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
                 if (this.Jwt != null)
                     hashCode = hashCode * 59 + this.Jwt.GetHashCode();
+                if (this.K8sAuthConfigName != null)
+                    hashCode = hashCode * 59 + this.K8sAuthConfigName.GetHashCode();
+                if (this.K8sServiceAccountToken != null)
+                    hashCode = hashCode * 59 + this.K8sServiceAccountToken.GetHashCode();
                 if (this.LdapPassword != null)
                     hashCode = hashCode * 59 + this.LdapPassword.GetHashCode();
                 if (this.LdapUsername != null)

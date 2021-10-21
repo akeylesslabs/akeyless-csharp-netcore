@@ -34,18 +34,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SAMLAccessRules" /> class.
         /// </summary>
+        /// <param name="allowedRedirectURIs">Allowed redirect URIs after the authentication.</param>
         /// <param name="boundAttributes">The attributes that login is restricted to..</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
         /// <param name="idpMetadataXml">IDP metadata XML.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public SAMLAccessRules(List<SAMLAttribute> boundAttributes = default(List<SAMLAttribute>), string idpMetadataUrl = default(string), string idpMetadataXml = default(string), string uniqueIdentifier = default(string))
+        public SAMLAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<SAMLAttribute> boundAttributes = default(List<SAMLAttribute>), string idpMetadataUrl = default(string), string idpMetadataXml = default(string), string uniqueIdentifier = default(string))
         {
+            this.AllowedRedirectURIs = allowedRedirectURIs;
             this.BoundAttributes = boundAttributes;
             this.IdpMetadataUrl = idpMetadataUrl;
             this.IdpMetadataXml = idpMetadataXml;
             this.UniqueIdentifier = uniqueIdentifier;
         }
         
+        /// <summary>
+        /// Allowed redirect URIs after the authentication
+        /// </summary>
+        /// <value>Allowed redirect URIs after the authentication</value>
+        [DataMember(Name="allowed_redirect_URIs", EmitDefaultValue=false)]
+        public List<string> AllowedRedirectURIs { get; set; }
+
         /// <summary>
         /// The attributes that login is restricted to.
         /// </summary>
@@ -82,6 +91,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class SAMLAccessRules {\n");
+            sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
             sb.Append("  BoundAttributes: ").Append(BoundAttributes).Append("\n");
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
             sb.Append("  IdpMetadataXml: ").Append(IdpMetadataXml).Append("\n");
@@ -121,6 +131,12 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AllowedRedirectURIs == input.AllowedRedirectURIs ||
+                    this.AllowedRedirectURIs != null &&
+                    input.AllowedRedirectURIs != null &&
+                    this.AllowedRedirectURIs.SequenceEqual(input.AllowedRedirectURIs)
+                ) && 
+                (
                     this.BoundAttributes == input.BoundAttributes ||
                     this.BoundAttributes != null &&
                     input.BoundAttributes != null &&
@@ -152,6 +168,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AllowedRedirectURIs != null)
+                    hashCode = hashCode * 59 + this.AllowedRedirectURIs.GetHashCode();
                 if (this.BoundAttributes != null)
                     hashCode = hashCode * 59 + this.BoundAttributes.GetHashCode();
                 if (this.IdpMetadataUrl != null)

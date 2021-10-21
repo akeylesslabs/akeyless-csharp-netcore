@@ -39,17 +39,19 @@ namespace akeyless.Model
         /// <param name="lastRotationError">lastRotationError.</param>
         /// <param name="numberOfVersionsToSave">numberOfVersionsToSave.</param>
         /// <param name="rotationHour">rotationHour.</param>
+        /// <param name="rotationIntervalMin">rotationIntervalMin.</param>
         /// <param name="rotationStatement">rotationStatement.</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="rotatorType">rotatorType.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string))
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.GwClusterId = gwClusterId;
             this.LastRotationError = lastRotationError;
             this.NumberOfVersionsToSave = numberOfVersionsToSave;
             this.RotationHour = rotationHour;
+            this.RotationIntervalMin = rotationIntervalMin;
             this.RotationStatement = rotationStatement;
             this.RotatorCredsType = rotatorCredsType;
             this.RotatorStatus = rotatorStatus;
@@ -85,6 +87,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="rotation_hour", EmitDefaultValue=false)]
         public int RotationHour { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RotationIntervalMin
+        /// </summary>
+        [DataMember(Name="rotation_interval_min", EmitDefaultValue=false)]
+        public bool RotationIntervalMin { get; set; }
 
         /// <summary>
         /// Gets or Sets RotationStatement
@@ -124,6 +132,7 @@ namespace akeyless.Model
             sb.Append("  LastRotationError: ").Append(LastRotationError).Append("\n");
             sb.Append("  NumberOfVersionsToSave: ").Append(NumberOfVersionsToSave).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
+            sb.Append("  RotationIntervalMin: ").Append(RotationIntervalMin).Append("\n");
             sb.Append("  RotationStatement: ").Append(RotationStatement).Append("\n");
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
             sb.Append("  RotatorStatus: ").Append(RotatorStatus).Append("\n");
@@ -184,6 +193,10 @@ namespace akeyless.Model
                     this.RotationHour.Equals(input.RotationHour)
                 ) && 
                 (
+                    this.RotationIntervalMin == input.RotationIntervalMin ||
+                    this.RotationIntervalMin.Equals(input.RotationIntervalMin)
+                ) && 
+                (
                     this.RotationStatement == input.RotationStatement ||
                     (this.RotationStatement != null &&
                     this.RotationStatement.Equals(input.RotationStatement))
@@ -220,6 +233,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LastRotationError.GetHashCode();
                 hashCode = hashCode * 59 + this.NumberOfVersionsToSave.GetHashCode();
                 hashCode = hashCode * 59 + this.RotationHour.GetHashCode();
+                hashCode = hashCode * 59 + this.RotationIntervalMin.GetHashCode();
                 if (this.RotationStatement != null)
                     hashCode = hashCode * 59 + this.RotationStatement.GetHashCode();
                 if (this.RotatorCredsType != null)

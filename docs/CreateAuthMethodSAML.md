@@ -5,6 +5,7 @@ createAuthMethodSAML is a command that creates a new auth method that will be av
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedRedirectUri** | **List&lt;string&gt;** | Allowed redirect URIs after the authentication | [optional] 
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist of the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **IdpMetadataUrl** | **string** | IDP metadata url | [optional] 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | **bool** | if true the role associated with this auth method must include sub claims | [optional] 
 **GcpAccessRules** | [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
 **HuaweiAccessRules** | [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] 
+**K8sAccessRules** | [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] 
 **LdapAccessRules** | [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] 
 **Oauth2AccessRules** | [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] 
 **OidcAccessRules** | [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 

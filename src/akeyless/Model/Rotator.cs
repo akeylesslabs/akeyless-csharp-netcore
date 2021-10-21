@@ -37,12 +37,14 @@ namespace akeyless.Model
         /// <param name="id">id.</param>
         /// <param name="lastError">lastError.</param>
         /// <param name="name">name.</param>
+        /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="type">type.</param>
-        public Rotator(long id = default(long), string lastError = default(string), string name = default(string), string type = default(string))
+        public Rotator(long id = default(long), string lastError = default(string), string name = default(string), int rotationInterval = default(int), string type = default(string))
         {
             this.Id = id;
             this.LastError = lastError;
             this.Name = name;
+            this.RotationInterval = rotationInterval;
             this.Type = type;
         }
         
@@ -65,6 +67,12 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets RotationInterval
+        /// </summary>
+        [DataMember(Name="rotation_interval", EmitDefaultValue=false)]
+        public int RotationInterval { get; set; }
+
+        /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
@@ -81,6 +89,7 @@ namespace akeyless.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -131,6 +140,10 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.RotationInterval == input.RotationInterval ||
+                    this.RotationInterval.Equals(input.RotationInterval)
+                ) && 
+                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
@@ -151,6 +164,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LastError.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;

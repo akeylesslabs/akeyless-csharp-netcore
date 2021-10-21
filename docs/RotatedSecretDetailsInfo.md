@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **LastRotationError** | **string** |  | [optional] 
 **NumberOfVersionsToSave** | **int** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
+**RotationIntervalMin** | **bool** |  | [optional] 
 **RotationStatement** | **string** |  | [optional] 
 **RotatorCredsType** | **string** |  | [optional] 
 **RotatorStatus** | **string** | RotationStatus defines types of rotation Status | [optional] 

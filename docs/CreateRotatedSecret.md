@@ -6,6 +6,10 @@ Name | Type | Description | Notes
 **ApiId** | **string** |  | [optional] 
 **ApiKey** | **string** |  | [optional] 
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | [optional] 
+**CustomPayload** | **string** |  | [optional] 
+**GroupAttribute** | **string** | Group attribute | [optional] 
+**GroupDn** | **string** | Group DN | [optional] 
+**GroupFilter** | **string** | Group attribute | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
@@ -13,7 +17,7 @@ Name | Type | Description | Notes
 **RotatedPassword** | **string** |  | [optional] 
 **RotatedUsername** | **string** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
-**RotationInterval** | **string** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
+**RotationInterval** | **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorCredsType** | **string** |  | [optional] 
 **RotatorCustomCmd** | **string** |  | [optional] 
 **RotatorType** | **string** | Rotator Type | 
@@ -23,6 +27,8 @@ Name | Type | Description | Notes
 **TargetName** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UserAttribute** | **string** | User Attribute | [optional] 
+**UserDn** | **string** | User DN | [optional] 
 **Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

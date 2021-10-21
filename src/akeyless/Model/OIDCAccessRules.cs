@@ -34,13 +34,15 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="OIDCAccessRules" /> class.
         /// </summary>
+        /// <param name="allowedRedirectURIs">Allowed redirect URIs after the authentication.</param>
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="clientId">Client ID.</param>
         /// <param name="clientSecret">Client Secret.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OIDCAccessRules(List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), string issuer = default(string), string uniqueIdentifier = default(string))
+        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), string issuer = default(string), string uniqueIdentifier = default(string))
         {
+            this.AllowedRedirectURIs = allowedRedirectURIs;
             this.BoundClaims = boundClaims;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
@@ -48,6 +50,13 @@ namespace akeyless.Model
             this.UniqueIdentifier = uniqueIdentifier;
         }
         
+        /// <summary>
+        /// Allowed redirect URIs after the authentication
+        /// </summary>
+        /// <value>Allowed redirect URIs after the authentication</value>
+        [DataMember(Name="allowed_redirect_URIs", EmitDefaultValue=false)]
+        public List<string> AllowedRedirectURIs { get; set; }
+
         /// <summary>
         /// The claims that login is restricted to.
         /// </summary>
@@ -91,6 +100,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class OIDCAccessRules {\n");
+            sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
@@ -131,6 +141,12 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AllowedRedirectURIs == input.AllowedRedirectURIs ||
+                    this.AllowedRedirectURIs != null &&
+                    input.AllowedRedirectURIs != null &&
+                    this.AllowedRedirectURIs.SequenceEqual(input.AllowedRedirectURIs)
+                ) && 
+                (
                     this.BoundClaims == input.BoundClaims ||
                     this.BoundClaims != null &&
                     input.BoundClaims != null &&
@@ -167,6 +183,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AllowedRedirectURIs != null)
+                    hashCode = hashCode * 59 + this.AllowedRedirectURIs.GetHashCode();
                 if (this.BoundClaims != null)
                     hashCode = hashCode * 59 + this.BoundClaims.GetHashCode();
                 if (this.ClientId != null)

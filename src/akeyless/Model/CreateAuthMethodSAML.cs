@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodSAML" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
         /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
@@ -49,13 +50,14 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateAuthMethodSAML(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string idpMetadataUrl = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
+        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string idpMetadataUrl = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodSAML and cannot be null");
             // to ensure "uniqueIdentifier" is required (not null)
             this.UniqueIdentifier = uniqueIdentifier ?? throw new ArgumentNullException("uniqueIdentifier is a required property for CreateAuthMethodSAML and cannot be null");
             this.AccessExpires = accessExpires;
+            this.AllowedRedirectUri = allowedRedirectUri;
             this.BoundIps = boundIps;
             this.ForceSubClaims = forceSubClaims;
             this.IdpMetadataUrl = idpMetadataUrl;
@@ -71,6 +73,13 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name="access-expires", EmitDefaultValue=false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Allowed redirect URIs after the authentication
+        /// </summary>
+        /// <value>Allowed redirect URIs after the authentication</value>
+        [DataMember(Name="allowed-redirect-uri", EmitDefaultValue=false)]
+        public List<string> AllowedRedirectUri { get; set; }
 
         /// <summary>
         /// A CIDR whitelist of the IPs that the access is restricted to
@@ -144,6 +153,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateAuthMethodSAML {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
@@ -190,6 +200,12 @@ namespace akeyless.Model
                 (
                     this.AccessExpires == input.AccessExpires ||
                     this.AccessExpires.Equals(input.AccessExpires)
+                ) && 
+                (
+                    this.AllowedRedirectUri == input.AllowedRedirectUri ||
+                    this.AllowedRedirectUri != null &&
+                    input.AllowedRedirectUri != null &&
+                    this.AllowedRedirectUri.SequenceEqual(input.AllowedRedirectUri)
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -248,6 +264,8 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                if (this.AllowedRedirectUri != null)
+                    hashCode = hashCode * 59 + this.AllowedRedirectUri.GetHashCode();
                 if (this.BoundIps != null)
                     hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
