@@ -51,12 +51,13 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="secureAccessRdpDomain">secureAccessRdpDomain.</param>
+        /// <param name="secureAccessRdpUser">secureAccessRdpUser.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerRdp(string fixedUserOnly = "false", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerRdp(string fixedUserOnly = "false", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerRdp and cannot be null");
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
+            this.SecureAccessRdpUser = secureAccessRdpUser;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
@@ -163,6 +165,12 @@ namespace akeyless.Model
         public string SecureAccessRdpDomain { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessRdpUser
+        /// </summary>
+        [DataMember(Name="secure-access-rdp-user", EmitDefaultValue=false)]
+        public string SecureAccessRdpUser { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -217,6 +225,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
+            sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -318,6 +327,11 @@ namespace akeyless.Model
                     this.SecureAccessRdpDomain.Equals(input.SecureAccessRdpDomain))
                 ) && 
                 (
+                    this.SecureAccessRdpUser == input.SecureAccessRdpUser ||
+                    (this.SecureAccessRdpUser != null &&
+                    this.SecureAccessRdpUser.Equals(input.SecureAccessRdpUser))
+                ) && 
+                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
@@ -377,6 +391,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 if (this.SecureAccessRdpDomain != null)
                     hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
+                if (this.SecureAccessRdpUser != null)
+                    hashCode = hashCode * 59 + this.SecureAccessRdpUser.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)

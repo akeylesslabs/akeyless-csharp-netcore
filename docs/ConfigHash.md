@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Ldap** | **string** |  | [optional] 
 **Leadership** | **string** |  | [optional] 
 **LogForwarding** | **string** |  | [optional] 
+**MQueue** | **string** |  | [optional] 
 **Migrations** | **string** |  | [optional] 
 **Producers** | [**Object**](.md) |  | [optional] 
 **Rotators** | [**Object**](.md) |  | [optional] 

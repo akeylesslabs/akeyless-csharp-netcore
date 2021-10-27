@@ -87,10 +87,12 @@ Method | HTTP request | Description
 [**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds | 
 [**GatewayListAllowedManagementAccess**](V2Api.md#gatewaylistallowedmanagementaccess) | **POST** /gateway-list-allowed-management-access | 
+[**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration | 
 [**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers | 
 [**GatewayRevokeTmpUsers**](V2Api.md#gatewayrevoketmpusers) | **POST** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer | 
+[**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration | 
 [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method | 
@@ -5807,6 +5809,74 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaylistmigration"></a>
+# **GatewayListMigration**
+> GatewayMigrationListOutput GatewayListMigration (GatewayListMigration body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayListMigrationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayListMigration(); // GatewayListMigration | 
+
+            try
+            {
+                GatewayMigrationListOutput result = apiInstance.GatewayListMigration(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayListMigration: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayListMigration**](GatewayListMigration.md)|  | 
+
+### Return type
+
+[**GatewayMigrationListOutput**](GatewayMigrationListOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayMigrationListResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaylistproducers"></a>
 # **GatewayListProducers**
 > GetProducersListReplyObj GatewayListProducers (GatewayListProducers body)
@@ -6074,6 +6144,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayStopProducerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaysyncmigration"></a>
+# **GatewaySyncMigration**
+> GatewayMigrationSyncOutput GatewaySyncMigration (GatewaySyncMigration body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewaySyncMigrationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewaySyncMigration(); // GatewaySyncMigration | 
+
+            try
+            {
+                GatewayMigrationSyncOutput result = apiInstance.GatewaySyncMigration(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewaySyncMigration: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewaySyncMigration**](GatewaySyncMigration.md)|  | 
+
+### Return type
+
+[**GatewayMigrationSyncOutput**](GatewayMigrationSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayMigrationSyncResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

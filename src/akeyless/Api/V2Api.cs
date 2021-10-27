@@ -1776,6 +1776,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayMigrationListOutput</returns>
+        GatewayMigrationListOutput GatewayListMigration (GatewayListMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationListOutput</returns>
+        ApiResponse<GatewayMigrationListOutput> GatewayListMigrationWithHttpInfo (GatewayListMigration body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GetProducersListReplyObj</returns>
         GetProducersListReplyObj GatewayListProducers (GatewayListProducers body);
 
@@ -1852,6 +1873,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayStopProducerOutput</returns>
         ApiResponse<GatewayStopProducerOutput> GatewayStopProducerWithHttpInfo (GatewayStopProducer body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayMigrationSyncOutput</returns>
+        GatewayMigrationSyncOutput GatewaySyncMigration (GatewaySyncMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationSyncOutput</returns>
+        ApiResponse<GatewayMigrationSyncOutput> GatewaySyncMigrationWithHttpInfo (GatewaySyncMigration body);
         /// <summary>
         /// 
         /// </summary>
@@ -5139,6 +5181,27 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>Task of GatewayMigrationListOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigrationListOutput> GatewayListMigrationAsync (GatewayListMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayMigrationListOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigrationListOutput>> GatewayListMigrationAsyncWithHttpInfo (GatewayListMigration body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of GetProducersListReplyObj</returns>
         System.Threading.Tasks.Task<GetProducersListReplyObj> GatewayListProducersAsync (GatewayListProducers body);
 
@@ -5215,6 +5278,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GatewayStopProducerOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayStopProducerOutput>> GatewayStopProducerAsyncWithHttpInfo (GatewayStopProducer body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayMigrationSyncOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigrationSyncOutput> GatewaySyncMigrationAsync (GatewaySyncMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayMigrationSyncOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigrationSyncOutput>> GatewaySyncMigrationAsyncWithHttpInfo (GatewaySyncMigration body);
         /// <summary>
         /// 
         /// </summary>
@@ -16390,6 +16474,121 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayMigrationListOutput</returns>
+        public GatewayMigrationListOutput GatewayListMigration (GatewayListMigration body)
+        {
+             akeyless.Client.ApiResponse<GatewayMigrationListOutput> localVarResponse = GatewayListMigrationWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationListOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayMigrationListOutput > GatewayListMigrationWithHttpInfo (GatewayListMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayListMigration");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayMigrationListOutput >("/gateway-list-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayListMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayMigrationListOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigrationListOutput> GatewayListMigrationAsync (GatewayListMigration body)
+        {
+             akeyless.Client.ApiResponse<GatewayMigrationListOutput> localVarResponse = await GatewayListMigrationAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayMigrationListOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigrationListOutput>> GatewayListMigrationAsyncWithHttpInfo (GatewayListMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayListMigration");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigrationListOutput>("/gateway-list-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayListMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GetProducersListReplyObj</returns>
         public GetProducersListReplyObj GatewayListProducers (GatewayListProducers body)
         {
@@ -16837,6 +17036,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayStopProducer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayMigrationSyncOutput</returns>
+        public GatewayMigrationSyncOutput GatewaySyncMigration (GatewaySyncMigration body)
+        {
+             akeyless.Client.ApiResponse<GatewayMigrationSyncOutput> localVarResponse = GatewaySyncMigrationWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationSyncOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayMigrationSyncOutput > GatewaySyncMigrationWithHttpInfo (GatewaySyncMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewaySyncMigration");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayMigrationSyncOutput >("/gateway-sync-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewaySyncMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayMigrationSyncOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigrationSyncOutput> GatewaySyncMigrationAsync (GatewaySyncMigration body)
+        {
+             akeyless.Client.ApiResponse<GatewayMigrationSyncOutput> localVarResponse = await GatewaySyncMigrationAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayMigrationSyncOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigrationSyncOutput>> GatewaySyncMigrationAsyncWithHttpInfo (GatewaySyncMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewaySyncMigration");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigrationSyncOutput>("/gateway-sync-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewaySyncMigration", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

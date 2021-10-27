@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accountId">accountId.</param>
         /// <param name="allowPortForwarding">allowPortForwarding.</param>
+        /// <param name="allowProvidingExternalUsername">allowProvidingExternalUsername.</param>
         /// <param name="bastionApi">bastionApi.</param>
         /// <param name="bastionIssuer">bastionIssuer.</param>
         /// <param name="bastionIssuerId">bastionIssuerId.</param>
@@ -51,6 +52,7 @@ namespace akeyless.Model
         /// <param name="isWeb">isWeb.</param>
         /// <param name="isolated">isolated.</param>
         /// <param name="native">native.</param>
+        /// <param name="rdpUser">rdpUser.</param>
         /// <param name="region">region.</param>
         /// <param name="schema">schema.</param>
         /// <param name="sshPassword">sshPassword.</param>
@@ -58,10 +60,11 @@ namespace akeyless.Model
         /// <param name="sshUser">sshUser.</param>
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string region = default(string), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdpUser = default(string), string region = default(string), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
+            this.AllowProvidingExternalUsername = allowProvidingExternalUsername;
             this.BastionApi = bastionApi;
             this.BastionIssuer = bastionIssuer;
             this.BastionIssuerId = bastionIssuerId;
@@ -77,6 +80,7 @@ namespace akeyless.Model
             this.IsWeb = isWeb;
             this.Isolated = isolated;
             this.Native = native;
+            this.RdpUser = rdpUser;
             this.Region = region;
             this.Schema = schema;
             this.SshPassword = sshPassword;
@@ -97,6 +101,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="allow_port_forwarding", EmitDefaultValue=false)]
         public bool AllowPortForwarding { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowProvidingExternalUsername
+        /// </summary>
+        [DataMember(Name="allow_providing_external_username", EmitDefaultValue=false)]
+        public bool AllowProvidingExternalUsername { get; set; }
 
         /// <summary>
         /// Gets or Sets BastionApi
@@ -189,6 +199,12 @@ namespace akeyless.Model
         public bool Native { get; set; }
 
         /// <summary>
+        /// Gets or Sets RdpUser
+        /// </summary>
+        [DataMember(Name="rdp_user", EmitDefaultValue=false)]
+        public string RdpUser { get; set; }
+
+        /// <summary>
         /// Gets or Sets Region
         /// </summary>
         [DataMember(Name="region", EmitDefaultValue=false)]
@@ -240,6 +256,7 @@ namespace akeyless.Model
             sb.Append("class SecureRemoteAccess {\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AllowPortForwarding: ").Append(AllowPortForwarding).Append("\n");
+            sb.Append("  AllowProvidingExternalUsername: ").Append(AllowProvidingExternalUsername).Append("\n");
             sb.Append("  BastionApi: ").Append(BastionApi).Append("\n");
             sb.Append("  BastionIssuer: ").Append(BastionIssuer).Append("\n");
             sb.Append("  BastionIssuerId: ").Append(BastionIssuerId).Append("\n");
@@ -255,6 +272,7 @@ namespace akeyless.Model
             sb.Append("  IsWeb: ").Append(IsWeb).Append("\n");
             sb.Append("  Isolated: ").Append(Isolated).Append("\n");
             sb.Append("  Native: ").Append(Native).Append("\n");
+            sb.Append("  RdpUser: ").Append(RdpUser).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  Schema: ").Append(Schema).Append("\n");
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
@@ -304,6 +322,10 @@ namespace akeyless.Model
                 (
                     this.AllowPortForwarding == input.AllowPortForwarding ||
                     this.AllowPortForwarding.Equals(input.AllowPortForwarding)
+                ) && 
+                (
+                    this.AllowProvidingExternalUsername == input.AllowProvidingExternalUsername ||
+                    this.AllowProvidingExternalUsername.Equals(input.AllowProvidingExternalUsername)
                 ) && 
                 (
                     this.BastionApi == input.BastionApi ||
@@ -376,6 +398,11 @@ namespace akeyless.Model
                     this.Native.Equals(input.Native)
                 ) && 
                 (
+                    this.RdpUser == input.RdpUser ||
+                    (this.RdpUser != null &&
+                    this.RdpUser.Equals(input.RdpUser))
+                ) && 
+                (
                     this.Region == input.Region ||
                     (this.Region != null &&
                     this.Region.Equals(input.Region))
@@ -421,6 +448,7 @@ namespace akeyless.Model
                 if (this.AccountId != null)
                     hashCode = hashCode * 59 + this.AccountId.GetHashCode();
                 hashCode = hashCode * 59 + this.AllowPortForwarding.GetHashCode();
+                hashCode = hashCode * 59 + this.AllowProvidingExternalUsername.GetHashCode();
                 if (this.BastionApi != null)
                     hashCode = hashCode * 59 + this.BastionApi.GetHashCode();
                 if (this.BastionIssuer != null)
@@ -445,6 +473,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.IsWeb.GetHashCode();
                 hashCode = hashCode * 59 + this.Isolated.GetHashCode();
                 hashCode = hashCode * 59 + this.Native.GetHashCode();
+                if (this.RdpUser != null)
+                    hashCode = hashCode * 59 + this.RdpUser.GetHashCode();
                 if (this.Region != null)
                     hashCode = hashCode * 59 + this.Region.GetHashCode();
                 if (this.Schema != null)

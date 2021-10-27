@@ -44,13 +44,14 @@ namespace akeyless.Model
         /// <param name="ldap">ldap.</param>
         /// <param name="leadership">leadership.</param>
         /// <param name="logForwarding">logForwarding.</param>
+        /// <param name="messageQueueInfo">messageQueueInfo.</param>
         /// <param name="migrations">migrations.</param>
         /// <param name="producers">producers.</param>
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="uidentity">uidentity.</param>
         /// <param name="version">version.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.Ldap = ldap;
             this.Leadership = leadership;
             this.LogForwarding = logForwarding;
+            this.MessageQueueInfo = messageQueueInfo;
             this.Migrations = migrations;
             this.Producers = producers;
             this.Rotators = rotators;
@@ -131,6 +133,12 @@ namespace akeyless.Model
         public LogForwardingConfigPart LogForwarding { get; set; }
 
         /// <summary>
+        /// Gets or Sets MessageQueueInfo
+        /// </summary>
+        [DataMember(Name="message_queue_info", EmitDefaultValue=false)]
+        public GatewayMessageQueueInfo MessageQueueInfo { get; set; }
+
+        /// <summary>
         /// Gets or Sets Migrations
         /// </summary>
         [DataMember(Name="migrations", EmitDefaultValue=false)]
@@ -184,6 +192,7 @@ namespace akeyless.Model
             sb.Append("  Ldap: ").Append(Ldap).Append("\n");
             sb.Append("  Leadership: ").Append(Leadership).Append("\n");
             sb.Append("  LogForwarding: ").Append(LogForwarding).Append("\n");
+            sb.Append("  MessageQueueInfo: ").Append(MessageQueueInfo).Append("\n");
             sb.Append("  Migrations: ").Append(Migrations).Append("\n");
             sb.Append("  Producers: ").Append(Producers).Append("\n");
             sb.Append("  Rotators: ").Append(Rotators).Append("\n");
@@ -275,6 +284,11 @@ namespace akeyless.Model
                     this.LogForwarding.Equals(input.LogForwarding))
                 ) && 
                 (
+                    this.MessageQueueInfo == input.MessageQueueInfo ||
+                    (this.MessageQueueInfo != null &&
+                    this.MessageQueueInfo.Equals(input.MessageQueueInfo))
+                ) && 
+                (
                     this.Migrations == input.Migrations ||
                     (this.Migrations != null &&
                     this.Migrations.Equals(input.Migrations))
@@ -334,6 +348,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Leadership.GetHashCode();
                 if (this.LogForwarding != null)
                     hashCode = hashCode * 59 + this.LogForwarding.GetHashCode();
+                if (this.MessageQueueInfo != null)
+                    hashCode = hashCode * 59 + this.MessageQueueInfo.GetHashCode();
                 if (this.Migrations != null)
                     hashCode = hashCode * 59 + this.Migrations.GetHashCode();
                 if (this.Producers != null)

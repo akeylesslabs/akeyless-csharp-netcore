@@ -43,12 +43,13 @@ namespace akeyless.Model
         /// <param name="ldap">ldap.</param>
         /// <param name="leadership">leadership.</param>
         /// <param name="logForwarding">logForwarding.</param>
+        /// <param name="mQueue">mQueue.</param>
         /// <param name="migrations">migrations.</param>
         /// <param name="producers">producers.</param>
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="universalIdentity">universalIdentity.</param>
-        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string migrations = default(string), Object producers = default(Object), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
+        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrations = default(string), Object producers = default(Object), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.Ldap = ldap;
             this.Leadership = leadership;
             this.LogForwarding = logForwarding;
+            this.MQueue = mQueue;
             this.Migrations = migrations;
             this.Producers = producers;
             this.Rotators = rotators;
@@ -121,6 +123,12 @@ namespace akeyless.Model
         public string LogForwarding { get; set; }
 
         /// <summary>
+        /// Gets or Sets MQueue
+        /// </summary>
+        [DataMember(Name="m_queue", EmitDefaultValue=false)]
+        public string MQueue { get; set; }
+
+        /// <summary>
         /// Gets or Sets Migrations
         /// </summary>
         [DataMember(Name="migrations", EmitDefaultValue=false)]
@@ -167,6 +175,7 @@ namespace akeyless.Model
             sb.Append("  Ldap: ").Append(Ldap).Append("\n");
             sb.Append("  Leadership: ").Append(Leadership).Append("\n");
             sb.Append("  LogForwarding: ").Append(LogForwarding).Append("\n");
+            sb.Append("  MQueue: ").Append(MQueue).Append("\n");
             sb.Append("  Migrations: ").Append(Migrations).Append("\n");
             sb.Append("  Producers: ").Append(Producers).Append("\n");
             sb.Append("  Rotators: ").Append(Rotators).Append("\n");
@@ -252,6 +261,11 @@ namespace akeyless.Model
                     this.LogForwarding.Equals(input.LogForwarding))
                 ) && 
                 (
+                    this.MQueue == input.MQueue ||
+                    (this.MQueue != null &&
+                    this.MQueue.Equals(input.MQueue))
+                ) && 
+                (
                     this.Migrations == input.Migrations ||
                     (this.Migrations != null &&
                     this.Migrations.Equals(input.Migrations))
@@ -305,6 +319,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Leadership.GetHashCode();
                 if (this.LogForwarding != null)
                     hashCode = hashCode * 59 + this.LogForwarding.GetHashCode();
+                if (this.MQueue != null)
+                    hashCode = hashCode * 59 + this.MQueue.GetHashCode();
                 if (this.Migrations != null)
                     hashCode = hashCode * 59 + this.Migrations.GetHashCode();
                 if (this.Producers != null)
