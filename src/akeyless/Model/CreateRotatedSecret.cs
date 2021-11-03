@@ -43,9 +43,6 @@ namespace akeyless.Model
         /// <param name="apiKey">apiKey.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="customPayload">customPayload.</param>
-        /// <param name="groupAttribute">Group attribute.</param>
-        /// <param name="groupDn">Group DN.</param>
-        /// <param name="groupFilter">Group attribute.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="name">Secret name (required).</param>
@@ -66,7 +63,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string groupAttribute = default(string), string groupDn = default(string), string groupFilter = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateRotatedSecret and cannot be null");
@@ -78,9 +75,6 @@ namespace akeyless.Model
             this.ApiKey = apiKey;
             this.AutoRotate = autoRotate;
             this.CustomPayload = customPayload;
-            this.GroupAttribute = groupAttribute;
-            this.GroupDn = groupDn;
-            this.GroupFilter = groupFilter;
             this.Key = key;
             this.Metadata = metadata;
             this.Password = password;
@@ -124,27 +118,6 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="custom-payload", EmitDefaultValue=false)]
         public string CustomPayload { get; set; }
-
-        /// <summary>
-        /// Group attribute
-        /// </summary>
-        /// <value>Group attribute</value>
-        [DataMember(Name="group-attribute", EmitDefaultValue=false)]
-        public string GroupAttribute { get; set; }
-
-        /// <summary>
-        /// Group DN
-        /// </summary>
-        /// <value>Group DN</value>
-        [DataMember(Name="group-dn", EmitDefaultValue=false)]
-        public string GroupDn { get; set; }
-
-        /// <summary>
-        /// Group attribute
-        /// </summary>
-        /// <value>Group attribute</value>
-        [DataMember(Name="group-filter", EmitDefaultValue=false)]
-        public string GroupFilter { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -293,9 +266,6 @@ namespace akeyless.Model
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
-            sb.Append("  GroupAttribute: ").Append(GroupAttribute).Append("\n");
-            sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
-            sb.Append("  GroupFilter: ").Append(GroupFilter).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -369,21 +339,6 @@ namespace akeyless.Model
                     this.CustomPayload == input.CustomPayload ||
                     (this.CustomPayload != null &&
                     this.CustomPayload.Equals(input.CustomPayload))
-                ) && 
-                (
-                    this.GroupAttribute == input.GroupAttribute ||
-                    (this.GroupAttribute != null &&
-                    this.GroupAttribute.Equals(input.GroupAttribute))
-                ) && 
-                (
-                    this.GroupDn == input.GroupDn ||
-                    (this.GroupDn != null &&
-                    this.GroupDn.Equals(input.GroupDn))
-                ) && 
-                (
-                    this.GroupFilter == input.GroupFilter ||
-                    (this.GroupFilter != null &&
-                    this.GroupFilter.Equals(input.GroupFilter))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -504,12 +459,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
                 if (this.CustomPayload != null)
                     hashCode = hashCode * 59 + this.CustomPayload.GetHashCode();
-                if (this.GroupAttribute != null)
-                    hashCode = hashCode * 59 + this.GroupAttribute.GetHashCode();
-                if (this.GroupDn != null)
-                    hashCode = hashCode * 59 + this.GroupDn.GetHashCode();
-                if (this.GroupFilter != null)
-                    hashCode = hashCode * 59 + this.GroupFilter.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Metadata != null)

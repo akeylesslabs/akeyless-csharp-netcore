@@ -118,16 +118,10 @@ namespace akeyless.Model
         /// <param name="k8sNamespace">k8sNamespace.</param>
         /// <param name="k8sServiceAccount">k8sServiceAccount.</param>
         /// <param name="lastAdminRotation">lastAdminRotation.</param>
-        /// <param name="ldapAccessId">ldapAccessId.</param>
-        /// <param name="ldapAnonymousSearch">ldapAnonymousSearch.</param>
         /// <param name="ldapAudience">ldapAudience.</param>
         /// <param name="ldapBindDn">ldapBindDn.</param>
         /// <param name="ldapBindPassword">ldapBindPassword.</param>
         /// <param name="ldapCertificate">ldapCertificate.</param>
-        /// <param name="ldapGroupAttr">ldapGroupAttr.</param>
-        /// <param name="ldapGroupDn">ldapGroupDn.</param>
-        /// <param name="ldapGroupFilter">ldapGroupFilter.</param>
-        /// <param name="ldapPrivateKey">ldapPrivateKey.</param>
         /// <param name="ldapTokenExpiration">ldapTokenExpiration.</param>
         /// <param name="ldapUrl">ldapUrl.</param>
         /// <param name="ldapUserAttr">ldapUserAttr.</param>
@@ -183,7 +177,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAccessId = default(string), bool ldapAnonymousSearch = default(bool), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapGroupAttr = default(string), string ldapGroupDn = default(string), string ldapGroupFilter = default(string), string ldapPrivateKey = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string payload = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), List<int> gcpServiceAccountKey = default(List<int>), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string payload = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -269,16 +263,10 @@ namespace akeyless.Model
             this.K8sNamespace = k8sNamespace;
             this.K8sServiceAccount = k8sServiceAccount;
             this.LastAdminRotation = lastAdminRotation;
-            this.LdapAccessId = ldapAccessId;
-            this.LdapAnonymousSearch = ldapAnonymousSearch;
             this.LdapAudience = ldapAudience;
             this.LdapBindDn = ldapBindDn;
             this.LdapBindPassword = ldapBindPassword;
             this.LdapCertificate = ldapCertificate;
-            this.LdapGroupAttr = ldapGroupAttr;
-            this.LdapGroupDn = ldapGroupDn;
-            this.LdapGroupFilter = ldapGroupFilter;
-            this.LdapPrivateKey = ldapPrivateKey;
             this.LdapTokenExpiration = ldapTokenExpiration;
             this.LdapUrl = ldapUrl;
             this.LdapUserAttr = ldapUserAttr;
@@ -843,18 +831,6 @@ namespace akeyless.Model
         public long LastAdminRotation { get; set; }
 
         /// <summary>
-        /// Gets or Sets LdapAccessId
-        /// </summary>
-        [DataMember(Name="ldap_access_id", EmitDefaultValue=false)]
-        public string LdapAccessId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapAnonymousSearch
-        /// </summary>
-        [DataMember(Name="ldap_anonymous_search", EmitDefaultValue=false)]
-        public bool LdapAnonymousSearch { get; set; }
-
-        /// <summary>
         /// Gets or Sets LdapAudience
         /// </summary>
         [DataMember(Name="ldap_audience", EmitDefaultValue=false)]
@@ -877,30 +853,6 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="ldap_certificate", EmitDefaultValue=false)]
         public string LdapCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapGroupAttr
-        /// </summary>
-        [DataMember(Name="ldap_group_attr", EmitDefaultValue=false)]
-        public string LdapGroupAttr { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapGroupDn
-        /// </summary>
-        [DataMember(Name="ldap_group_dn", EmitDefaultValue=false)]
-        public string LdapGroupDn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapGroupFilter
-        /// </summary>
-        [DataMember(Name="ldap_group_filter", EmitDefaultValue=false)]
-        public string LdapGroupFilter { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapPrivateKey
-        /// </summary>
-        [DataMember(Name="ldap_private_key", EmitDefaultValue=false)]
-        public string LdapPrivateKey { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapTokenExpiration
@@ -1330,16 +1282,10 @@ namespace akeyless.Model
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
             sb.Append("  K8sServiceAccount: ").Append(K8sServiceAccount).Append("\n");
             sb.Append("  LastAdminRotation: ").Append(LastAdminRotation).Append("\n");
-            sb.Append("  LdapAccessId: ").Append(LdapAccessId).Append("\n");
-            sb.Append("  LdapAnonymousSearch: ").Append(LdapAnonymousSearch).Append("\n");
             sb.Append("  LdapAudience: ").Append(LdapAudience).Append("\n");
             sb.Append("  LdapBindDn: ").Append(LdapBindDn).Append("\n");
             sb.Append("  LdapBindPassword: ").Append(LdapBindPassword).Append("\n");
             sb.Append("  LdapCertificate: ").Append(LdapCertificate).Append("\n");
-            sb.Append("  LdapGroupAttr: ").Append(LdapGroupAttr).Append("\n");
-            sb.Append("  LdapGroupDn: ").Append(LdapGroupDn).Append("\n");
-            sb.Append("  LdapGroupFilter: ").Append(LdapGroupFilter).Append("\n");
-            sb.Append("  LdapPrivateKey: ").Append(LdapPrivateKey).Append("\n");
             sb.Append("  LdapTokenExpiration: ").Append(LdapTokenExpiration).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  LdapUserAttr: ").Append(LdapUserAttr).Append("\n");
@@ -1842,15 +1788,6 @@ namespace akeyless.Model
                     this.LastAdminRotation.Equals(input.LastAdminRotation)
                 ) && 
                 (
-                    this.LdapAccessId == input.LdapAccessId ||
-                    (this.LdapAccessId != null &&
-                    this.LdapAccessId.Equals(input.LdapAccessId))
-                ) && 
-                (
-                    this.LdapAnonymousSearch == input.LdapAnonymousSearch ||
-                    this.LdapAnonymousSearch.Equals(input.LdapAnonymousSearch)
-                ) && 
-                (
                     this.LdapAudience == input.LdapAudience ||
                     (this.LdapAudience != null &&
                     this.LdapAudience.Equals(input.LdapAudience))
@@ -1869,26 +1806,6 @@ namespace akeyless.Model
                     this.LdapCertificate == input.LdapCertificate ||
                     (this.LdapCertificate != null &&
                     this.LdapCertificate.Equals(input.LdapCertificate))
-                ) && 
-                (
-                    this.LdapGroupAttr == input.LdapGroupAttr ||
-                    (this.LdapGroupAttr != null &&
-                    this.LdapGroupAttr.Equals(input.LdapGroupAttr))
-                ) && 
-                (
-                    this.LdapGroupDn == input.LdapGroupDn ||
-                    (this.LdapGroupDn != null &&
-                    this.LdapGroupDn.Equals(input.LdapGroupDn))
-                ) && 
-                (
-                    this.LdapGroupFilter == input.LdapGroupFilter ||
-                    (this.LdapGroupFilter != null &&
-                    this.LdapGroupFilter.Equals(input.LdapGroupFilter))
-                ) && 
-                (
-                    this.LdapPrivateKey == input.LdapPrivateKey ||
-                    (this.LdapPrivateKey != null &&
-                    this.LdapPrivateKey.Equals(input.LdapPrivateKey))
                 ) && 
                 (
                     this.LdapTokenExpiration == input.LdapTokenExpiration ||
@@ -2327,9 +2244,6 @@ namespace akeyless.Model
                 if (this.K8sServiceAccount != null)
                     hashCode = hashCode * 59 + this.K8sServiceAccount.GetHashCode();
                 hashCode = hashCode * 59 + this.LastAdminRotation.GetHashCode();
-                if (this.LdapAccessId != null)
-                    hashCode = hashCode * 59 + this.LdapAccessId.GetHashCode();
-                hashCode = hashCode * 59 + this.LdapAnonymousSearch.GetHashCode();
                 if (this.LdapAudience != null)
                     hashCode = hashCode * 59 + this.LdapAudience.GetHashCode();
                 if (this.LdapBindDn != null)
@@ -2338,14 +2252,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LdapBindPassword.GetHashCode();
                 if (this.LdapCertificate != null)
                     hashCode = hashCode * 59 + this.LdapCertificate.GetHashCode();
-                if (this.LdapGroupAttr != null)
-                    hashCode = hashCode * 59 + this.LdapGroupAttr.GetHashCode();
-                if (this.LdapGroupDn != null)
-                    hashCode = hashCode * 59 + this.LdapGroupDn.GetHashCode();
-                if (this.LdapGroupFilter != null)
-                    hashCode = hashCode * 59 + this.LdapGroupFilter.GetHashCode();
-                if (this.LdapPrivateKey != null)
-                    hashCode = hashCode * 59 + this.LdapPrivateKey.GetHashCode();
                 if (this.LdapTokenExpiration != null)
                     hashCode = hashCode * 59 + this.LdapTokenExpiration.GetHashCode();
                 if (this.LdapUrl != null)

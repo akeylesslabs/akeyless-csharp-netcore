@@ -39,25 +39,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateLdapTarget" /> class.
         /// </summary>
-        /// <param name="accessId">Access ID (required).</param>
         /// <param name="bindDn">Bind DN (required).</param>
         /// <param name="bindDnPassword">Bind DN Password (required).</param>
         /// <param name="comment">Comment about the target.</param>
-        /// <param name="enableAnonymSearch">EnableAnonymousSearch.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL (required).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
-        /// <param name="privateKey">Base64-encoded ldap private key text.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateLdapTarget(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), bool enableAnonymSearch = default(bool), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string password = default(string), string privateKey = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string username = default(string))
+        public CreateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string password = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string username = default(string))
         {
-            // to ensure "accessId" is required (not null)
-            this.AccessId = accessId ?? throw new ArgumentNullException("accessId is a required property for CreateLdapTarget and cannot be null");
             // to ensure "bindDn" is required (not null)
             this.BindDn = bindDn ?? throw new ArgumentNullException("bindDn is a required property for CreateLdapTarget and cannot be null");
             // to ensure "bindDnPassword" is required (not null)
@@ -67,24 +62,15 @@ namespace akeyless.Model
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateLdapTarget and cannot be null");
             this.Comment = comment;
-            this.EnableAnonymSearch = enableAnonymSearch;
             this.Key = key;
             this.LdapCaCert = ldapCaCert;
             this.Password = password;
-            this.PrivateKey = privateKey;
             this.Token = token;
             this.TokenExpiration = tokenExpiration;
             this.UidToken = uidToken;
             this.Username = username;
         }
         
-        /// <summary>
-        /// Access ID
-        /// </summary>
-        /// <value>Access ID</value>
-        [DataMember(Name="access-id", EmitDefaultValue=false)]
-        public string AccessId { get; set; }
-
         /// <summary>
         /// Bind DN
         /// </summary>
@@ -105,13 +91,6 @@ namespace akeyless.Model
         /// <value>Comment about the target</value>
         [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
-
-        /// <summary>
-        /// EnableAnonymousSearch
-        /// </summary>
-        /// <value>EnableAnonymousSearch</value>
-        [DataMember(Name="enable-anonym-search", EmitDefaultValue=false)]
-        public bool EnableAnonymSearch { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -149,13 +128,6 @@ namespace akeyless.Model
         public string Password { get; set; }
 
         /// <summary>
-        /// Base64-encoded ldap private key text
-        /// </summary>
-        /// <value>Base64-encoded ldap private key text</value>
-        [DataMember(Name="private-key", EmitDefaultValue=false)]
-        public string PrivateKey { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -191,17 +163,14 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateLdapTarget {\n");
-            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
-            sb.Append("  EnableAnonymSearch: ").Append(EnableAnonymSearch).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -241,11 +210,6 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.AccessId == input.AccessId ||
-                    (this.AccessId != null &&
-                    this.AccessId.Equals(input.AccessId))
-                ) && 
-                (
                     this.BindDn == input.BindDn ||
                     (this.BindDn != null &&
                     this.BindDn.Equals(input.BindDn))
@@ -259,10 +223,6 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
-                ) && 
-                (
-                    this.EnableAnonymSearch == input.EnableAnonymSearch ||
-                    this.EnableAnonymSearch.Equals(input.EnableAnonymSearch)
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -288,11 +248,6 @@ namespace akeyless.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
-                ) && 
-                (
-                    this.PrivateKey == input.PrivateKey ||
-                    (this.PrivateKey != null &&
-                    this.PrivateKey.Equals(input.PrivateKey))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -325,15 +280,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
                 if (this.BindDn != null)
                     hashCode = hashCode * 59 + this.BindDn.GetHashCode();
                 if (this.BindDnPassword != null)
                     hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableAnonymSearch.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.LdapCaCert != null)
@@ -344,8 +296,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
-                if (this.PrivateKey != null)
-                    hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.TokenExpiration != null)

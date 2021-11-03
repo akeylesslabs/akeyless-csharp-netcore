@@ -39,19 +39,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerLdap" /> class.
         /// </summary>
-        /// <param name="accessId">Access ID.</param>
         /// <param name="bindDn">Bind DN.</param>
         /// <param name="bindDnPassword">Bind DN Password.</param>
-        /// <param name="enableAnonymSearch">EnableAnonymousSearch.</param>
-        /// <param name="fixedUserOnly">Fixed user (default to &quot;false&quot;).</param>
-        /// <param name="groupAttribute">Group attribute.</param>
-        /// <param name="groupDn">Group DN.</param>
-        /// <param name="groupFilter">Group attribute.</param>
+        /// <param name="externalUsername">Fixed user (default to &quot;false&quot;).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
-        /// <param name="privateKey">Base64-encoded ldap private key text.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -61,23 +55,17 @@ namespace akeyless.Model
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerLdap(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), bool enableAnonymSearch = default(bool), string fixedUserOnly = "false", string groupAttribute = default(string), string groupDn = default(string), string groupFilter = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string password = default(string), string privateKey = default(string), string producerEncryptionKeyName = default(string), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerLdap(string bindDn = default(string), string bindDnPassword = default(string), string externalUsername = "false", string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerLdap and cannot be null");
-            this.AccessId = accessId;
             this.BindDn = bindDn;
             this.BindDnPassword = bindDnPassword;
-            this.EnableAnonymSearch = enableAnonymSearch;
-            // use default value if no "fixedUserOnly" provided
-            this.FixedUserOnly = fixedUserOnly ?? "false";
-            this.GroupAttribute = groupAttribute;
-            this.GroupDn = groupDn;
-            this.GroupFilter = groupFilter;
+            // use default value if no "externalUsername" provided
+            this.ExternalUsername = externalUsername ?? "false";
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
             this.Password = password;
-            this.PrivateKey = privateKey;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.TargetName = targetName;
             this.Token = token;
@@ -90,13 +78,6 @@ namespace akeyless.Model
             this.Username = username;
         }
         
-        /// <summary>
-        /// Access ID
-        /// </summary>
-        /// <value>Access ID</value>
-        [DataMember(Name="access-id", EmitDefaultValue=false)]
-        public string AccessId { get; set; }
-
         /// <summary>
         /// Bind DN
         /// </summary>
@@ -112,39 +93,11 @@ namespace akeyless.Model
         public string BindDnPassword { get; set; }
 
         /// <summary>
-        /// EnableAnonymousSearch
-        /// </summary>
-        /// <value>EnableAnonymousSearch</value>
-        [DataMember(Name="enable-anonym-search", EmitDefaultValue=false)]
-        public bool EnableAnonymSearch { get; set; }
-
-        /// <summary>
         /// Fixed user
         /// </summary>
         /// <value>Fixed user</value>
-        [DataMember(Name="fixed-user-only", EmitDefaultValue=false)]
-        public string FixedUserOnly { get; set; }
-
-        /// <summary>
-        /// Group attribute
-        /// </summary>
-        /// <value>Group attribute</value>
-        [DataMember(Name="group-attribute", EmitDefaultValue=false)]
-        public string GroupAttribute { get; set; }
-
-        /// <summary>
-        /// Group DN
-        /// </summary>
-        /// <value>Group DN</value>
-        [DataMember(Name="group-dn", EmitDefaultValue=false)]
-        public string GroupDn { get; set; }
-
-        /// <summary>
-        /// Group attribute
-        /// </summary>
-        /// <value>Group attribute</value>
-        [DataMember(Name="group-filter", EmitDefaultValue=false)]
-        public string GroupFilter { get; set; }
+        [DataMember(Name="external-username", EmitDefaultValue=false)]
+        public string ExternalUsername { get; set; }
 
         /// <summary>
         /// CA Certificate File Content
@@ -173,13 +126,6 @@ namespace akeyless.Model
         /// <value>Required only when the authentication process requires a username and password</value>
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
-
-        /// <summary>
-        /// Base64-encoded ldap private key text
-        /// </summary>
-        /// <value>Base64-encoded ldap private key text</value>
-        [DataMember(Name="private-key", EmitDefaultValue=false)]
-        public string PrivateKey { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -252,19 +198,13 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerLdap {\n");
-            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
-            sb.Append("  EnableAnonymSearch: ").Append(EnableAnonymSearch).Append("\n");
-            sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
-            sb.Append("  GroupAttribute: ").Append(GroupAttribute).Append("\n");
-            sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
-            sb.Append("  GroupFilter: ").Append(GroupFilter).Append("\n");
+            sb.Append("  ExternalUsername: ").Append(ExternalUsername).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -309,11 +249,6 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.AccessId == input.AccessId ||
-                    (this.AccessId != null &&
-                    this.AccessId.Equals(input.AccessId))
-                ) && 
-                (
                     this.BindDn == input.BindDn ||
                     (this.BindDn != null &&
                     this.BindDn.Equals(input.BindDn))
@@ -324,28 +259,9 @@ namespace akeyless.Model
                     this.BindDnPassword.Equals(input.BindDnPassword))
                 ) && 
                 (
-                    this.EnableAnonymSearch == input.EnableAnonymSearch ||
-                    this.EnableAnonymSearch.Equals(input.EnableAnonymSearch)
-                ) && 
-                (
-                    this.FixedUserOnly == input.FixedUserOnly ||
-                    (this.FixedUserOnly != null &&
-                    this.FixedUserOnly.Equals(input.FixedUserOnly))
-                ) && 
-                (
-                    this.GroupAttribute == input.GroupAttribute ||
-                    (this.GroupAttribute != null &&
-                    this.GroupAttribute.Equals(input.GroupAttribute))
-                ) && 
-                (
-                    this.GroupDn == input.GroupDn ||
-                    (this.GroupDn != null &&
-                    this.GroupDn.Equals(input.GroupDn))
-                ) && 
-                (
-                    this.GroupFilter == input.GroupFilter ||
-                    (this.GroupFilter != null &&
-                    this.GroupFilter.Equals(input.GroupFilter))
+                    this.ExternalUsername == input.ExternalUsername ||
+                    (this.ExternalUsername != null &&
+                    this.ExternalUsername.Equals(input.ExternalUsername))
                 ) && 
                 (
                     this.LdapCaCert == input.LdapCaCert ||
@@ -366,11 +282,6 @@ namespace akeyless.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
-                ) && 
-                (
-                    this.PrivateKey == input.PrivateKey ||
-                    (this.PrivateKey != null &&
-                    this.PrivateKey.Equals(input.PrivateKey))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -428,21 +339,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
                 if (this.BindDn != null)
                     hashCode = hashCode * 59 + this.BindDn.GetHashCode();
                 if (this.BindDnPassword != null)
                     hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableAnonymSearch.GetHashCode();
-                if (this.FixedUserOnly != null)
-                    hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
-                if (this.GroupAttribute != null)
-                    hashCode = hashCode * 59 + this.GroupAttribute.GetHashCode();
-                if (this.GroupDn != null)
-                    hashCode = hashCode * 59 + this.GroupDn.GetHashCode();
-                if (this.GroupFilter != null)
-                    hashCode = hashCode * 59 + this.GroupFilter.GetHashCode();
+                if (this.ExternalUsername != null)
+                    hashCode = hashCode * 59 + this.ExternalUsername.GetHashCode();
                 if (this.LdapCaCert != null)
                     hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
                 if (this.LdapUrl != null)
@@ -451,8 +353,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
-                if (this.PrivateKey != null)
-                    hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.TargetName != null)

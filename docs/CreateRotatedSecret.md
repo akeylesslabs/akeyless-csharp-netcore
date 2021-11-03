@@ -7,9 +7,6 @@ Name | Type | Description | Notes
 **ApiKey** | **string** |  | [optional] 
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | **string** |  | [optional] 
-**GroupAttribute** | **string** | Group attribute | [optional] 
-**GroupDn** | **string** | Group DN | [optional] 
-**GroupFilter** | **string** | Group attribute | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 

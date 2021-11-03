@@ -4,19 +4,13 @@ gatewayCreateProducerLdap is a command that creates ldap producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessId** | **string** | Access ID | [optional] 
 **BindDn** | **string** | Bind DN | [optional] 
 **BindDnPassword** | **string** | Bind DN Password | [optional] 
-**EnableAnonymSearch** | **bool** | EnableAnonymousSearch | [optional] 
-**FixedUserOnly** | **string** | Fixed user | [optional] [default to "false"]
-**GroupAttribute** | **string** | Group attribute | [optional] 
-**GroupDn** | **string** | Group DN | [optional] 
-**GroupFilter** | **string** | Group attribute | [optional] 
+**ExternalUsername** | **string** | Fixed user | [optional] [default to "false"]
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | [optional] 
 **Name** | **string** | Producer name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
-**PrivateKey** | **string** | Base64-encoded ldap private key text | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
