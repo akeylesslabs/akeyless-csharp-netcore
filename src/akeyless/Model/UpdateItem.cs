@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="secureAccessAddHost">secureAccessAddHost.</param>
+        /// <param name="secureAccessAllowExternalUser">secureAccessAllowExternalUser.</param>
         /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
         /// <param name="secureAccessAwsAccountId">secureAccessAwsAccountId.</param>
         /// <param name="secureAccessAwsNativeCli">secureAccessAwsNativeCli.</param>
@@ -70,7 +71,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.Password = password;
             this.RmTag = rmTag;
             this.SecureAccessAddHost = secureAccessAddHost;
+            this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
             this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
             this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
@@ -154,6 +156,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="secure-access-add-host", EmitDefaultValue=false)]
         public List<string> SecureAccessAddHost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessAllowExternalUser
+        /// </summary>
+        [DataMember(Name="secure-access-allow-external-user", EmitDefaultValue=false)]
+        public string SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAllowPortForwading
@@ -317,6 +325,7 @@ namespace akeyless.Model
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  SecureAccessAddHost: ").Append(SecureAccessAddHost).Append("\n");
+            sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
             sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
             sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
             sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");
@@ -412,6 +421,11 @@ namespace akeyless.Model
                     this.SecureAccessAddHost != null &&
                     input.SecureAccessAddHost != null &&
                     this.SecureAccessAddHost.SequenceEqual(input.SecureAccessAddHost)
+                ) && 
+                (
+                    this.SecureAccessAllowExternalUser == input.SecureAccessAllowExternalUser ||
+                    (this.SecureAccessAllowExternalUser != null &&
+                    this.SecureAccessAllowExternalUser.Equals(input.SecureAccessAllowExternalUser))
                 ) && 
                 (
                     this.SecureAccessAllowPortForwading == input.SecureAccessAllowPortForwading ||
@@ -556,6 +570,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RmTag.GetHashCode();
                 if (this.SecureAccessAddHost != null)
                     hashCode = hashCode * 59 + this.SecureAccessAddHost.GetHashCode();
+                if (this.SecureAccessAllowExternalUser != null)
+                    hashCode = hashCode * 59 + this.SecureAccessAllowExternalUser.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
                 if (this.SecureAccessAwsAccountId != null)
                     hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();

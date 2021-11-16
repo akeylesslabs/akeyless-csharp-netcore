@@ -36,7 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access key (relevant only for access-type&#x3D;access_key).</param>
-        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s) (default to &quot;access_key&quot;).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
@@ -80,9 +80,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)
+        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)
         /// </summary>
-        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp)</value>
+        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)</value>
         [DataMember(Name="access-type", EmitDefaultValue=false)]
         public string AccessType { get; set; }
 

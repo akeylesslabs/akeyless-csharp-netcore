@@ -1,23 +1,18 @@
-# akeyless.Model.GatewayCreateProducerRdp
-gatewayCreateProducerRdp is a command that creates rdp producer
+# akeyless.Model.GatewayUpdateProducerGcp
+gatewayUpdateProducerGcp is a command that updates a GCP producer
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FixedUserOnly** | **string** | Fixed user | [optional] [default to "false"]
+**GcpCredType** | **string** |  | [optional] 
+**GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
+**GcpKeyAlgo** | **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 
+**GcpSaEmail** | **string** | GCP service account email | [optional] 
+**GcpTokenScopes** | **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
 **Name** | **string** | Producer name | 
+**NewName** | **string** | Producer name | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
-**RdpAdminName** | **string** | RDP Admin Name | [optional] 
-**RdpAdminPwd** | **string** | RDP Admin password | [optional] 
-**RdpHostName** | **string** | Hostname | [optional] 
-**RdpHostPort** | **string** | Port | [optional] [default to "22"]
-**RdpUserGroups** | **string** | Groups | [optional] 
-**SecureAccessAllowExternalUser** | **bool** |  | [optional] 
-**SecureAccessEnable** | **string** |  | [optional] 
-**SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
-**SecureAccessRdpDomain** | **string** |  | [optional] 
-**SecureAccessRdpUser** | **string** |  | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

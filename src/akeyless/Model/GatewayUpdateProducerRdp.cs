@@ -26,21 +26,22 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerRdp is a command that creates rdp producer
+    /// gatewayUpdateProducerRdp is a command that updates rdp producer
     /// </summary>
     [DataContract]
-    public partial class GatewayCreateProducerRdp :  IEquatable<GatewayCreateProducerRdp>, IValidatableObject
+    public partial class GatewayUpdateProducerRdp :  IEquatable<GatewayUpdateProducerRdp>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerRdp" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateProducerRdp" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GatewayCreateProducerRdp() { }
+        protected GatewayUpdateProducerRdp() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerRdp" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateProducerRdp" /> class.
         /// </summary>
         /// <param name="fixedUserOnly">Fixed user (default to &quot;false&quot;).</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="newName">Producer name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="rdpAdminName">RDP Admin Name.</param>
@@ -58,12 +59,13 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerRdp(string fixedUserOnly = "false", string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayUpdateProducerRdp(string fixedUserOnly = "false", string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerRdp and cannot be null");
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayUpdateProducerRdp and cannot be null");
             // use default value if no "fixedUserOnly" provided
             this.FixedUserOnly = fixedUserOnly ?? "false";
+            this.NewName = newName;
             this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RdpAdminName = rdpAdminName;
@@ -98,6 +100,13 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Producer name
+        /// </summary>
+        /// <value>Producer name</value>
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -220,9 +229,10 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GatewayCreateProducerRdp {\n");
+            sb.Append("class GatewayUpdateProducerRdp {\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RdpAdminName: ").Append(RdpAdminName).Append("\n");
@@ -260,15 +270,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GatewayCreateProducerRdp);
+            return this.Equals(input as GatewayUpdateProducerRdp);
         }
 
         /// <summary>
-        /// Returns true if GatewayCreateProducerRdp instances are equal
+        /// Returns true if GatewayUpdateProducerRdp instances are equal
         /// </summary>
-        /// <param name="input">Instance of GatewayCreateProducerRdp to be compared</param>
+        /// <param name="input">Instance of GatewayUpdateProducerRdp to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GatewayCreateProducerRdp input)
+        public bool Equals(GatewayUpdateProducerRdp input)
         {
             if (input == null)
                 return false;
@@ -283,6 +293,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.NewName == input.NewName ||
+                    (this.NewName != null &&
+                    this.NewName.Equals(input.NewName))
                 ) && 
                 (
                     this.Password == input.Password ||
@@ -384,6 +399,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.NewName != null)
+                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)

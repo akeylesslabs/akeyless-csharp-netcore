@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="active">active.</param>
         /// <param name="id">id.</param>
+        /// <param name="init">init.</param>
         /// <param name="name">name.</param>
         /// <param name="type">type.</param>
-        public Producer(bool active = default(bool), long id = default(long), string name = default(string), string type = default(string))
+        public Producer(bool active = default(bool), long id = default(long), bool init = default(bool), string name = default(string), string type = default(string))
         {
             this.Active = active;
             this.Id = id;
+            this.Init = init;
             this.Name = name;
             this.Type = type;
         }
@@ -57,6 +59,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Init
+        /// </summary>
+        [DataMember(Name="init", EmitDefaultValue=false)]
+        public bool Init { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -80,6 +88,7 @@ namespace akeyless.Model
             sb.Append("class Producer {\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Init: ").Append(Init).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -125,6 +134,10 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id)
                 ) && 
                 (
+                    this.Init == input.Init ||
+                    this.Init.Equals(input.Init)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -147,6 +160,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.Active.GetHashCode();
                 hashCode = hashCode * 59 + this.Id.GetHashCode();
+                hashCode = hashCode * 59 + this.Init.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Type != null)

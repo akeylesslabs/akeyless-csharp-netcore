@@ -36,7 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access Key.</param>
-        /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s) (default to &quot;access_key&quot;).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
@@ -70,9 +70,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)
+        /// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s)
         /// </summary>
-        /// <value>Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/k8s)</value>
+        /// <value>Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s)</value>
         [DataMember(Name="access-type", EmitDefaultValue=false)]
         public string AccessType { get; set; }
 

@@ -1,11 +1,12 @@
-# akeyless.Model.GatewayCreateProducerRdp
-gatewayCreateProducerRdp is a command that creates rdp producer
+# akeyless.Model.GatewayUpdateProducerRdp
+gatewayUpdateProducerRdp is a command that updates rdp producer
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FixedUserOnly** | **string** | Fixed user | [optional] [default to "false"]
 **Name** | **string** | Producer name | 
+**NewName** | **string** | Producer name | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RdpAdminName** | **string** | RDP Admin Name | [optional] 
