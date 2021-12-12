@@ -34,21 +34,43 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ElasticsearchLogForwardingConfig" /> class.
         /// </summary>
-        /// <param name="elasticsearchHost">elasticsearchHost.</param>
+        /// <param name="elasticsearchApiKey">elasticsearchApiKey.</param>
+        /// <param name="elasticsearchAuthType">elasticsearchAuthType.</param>
+        /// <param name="elasticsearchCloudId">elasticsearchCloudId.</param>
         /// <param name="elasticsearchIndex">elasticsearchIndex.</param>
         /// <param name="elasticsearchNodes">elasticsearchNodes.</param>
-        public ElasticsearchLogForwardingConfig(string elasticsearchHost = default(string), string elasticsearchIndex = default(string), string elasticsearchNodes = default(string))
+        /// <param name="elasticsearchPassword">elasticsearchPassword.</param>
+        /// <param name="elasticsearchServerType">elasticsearchServerType.</param>
+        /// <param name="elasticsearchUserName">elasticsearchUserName.</param>
+        public ElasticsearchLogForwardingConfig(string elasticsearchApiKey = default(string), string elasticsearchAuthType = default(string), string elasticsearchCloudId = default(string), string elasticsearchIndex = default(string), string elasticsearchNodes = default(string), string elasticsearchPassword = default(string), string elasticsearchServerType = default(string), string elasticsearchUserName = default(string))
         {
-            this.ElasticsearchHost = elasticsearchHost;
+            this.ElasticsearchApiKey = elasticsearchApiKey;
+            this.ElasticsearchAuthType = elasticsearchAuthType;
+            this.ElasticsearchCloudId = elasticsearchCloudId;
             this.ElasticsearchIndex = elasticsearchIndex;
             this.ElasticsearchNodes = elasticsearchNodes;
+            this.ElasticsearchPassword = elasticsearchPassword;
+            this.ElasticsearchServerType = elasticsearchServerType;
+            this.ElasticsearchUserName = elasticsearchUserName;
         }
         
         /// <summary>
-        /// Gets or Sets ElasticsearchHost
+        /// Gets or Sets ElasticsearchApiKey
         /// </summary>
-        [DataMember(Name="elasticsearch_host", EmitDefaultValue=false)]
-        public string ElasticsearchHost { get; set; }
+        [DataMember(Name="elasticsearch_api_key", EmitDefaultValue=false)]
+        public string ElasticsearchApiKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ElasticsearchAuthType
+        /// </summary>
+        [DataMember(Name="elasticsearch_auth_type", EmitDefaultValue=false)]
+        public string ElasticsearchAuthType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ElasticsearchCloudId
+        /// </summary>
+        [DataMember(Name="elasticsearch_cloud_id", EmitDefaultValue=false)]
+        public string ElasticsearchCloudId { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchIndex
@@ -63,6 +85,24 @@ namespace akeyless.Model
         public string ElasticsearchNodes { get; set; }
 
         /// <summary>
+        /// Gets or Sets ElasticsearchPassword
+        /// </summary>
+        [DataMember(Name="elasticsearch_password", EmitDefaultValue=false)]
+        public string ElasticsearchPassword { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ElasticsearchServerType
+        /// </summary>
+        [DataMember(Name="elasticsearch_server_type", EmitDefaultValue=false)]
+        public string ElasticsearchServerType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ElasticsearchUserName
+        /// </summary>
+        [DataMember(Name="elasticsearch_user_name", EmitDefaultValue=false)]
+        public string ElasticsearchUserName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -70,9 +110,14 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ElasticsearchLogForwardingConfig {\n");
-            sb.Append("  ElasticsearchHost: ").Append(ElasticsearchHost).Append("\n");
+            sb.Append("  ElasticsearchApiKey: ").Append(ElasticsearchApiKey).Append("\n");
+            sb.Append("  ElasticsearchAuthType: ").Append(ElasticsearchAuthType).Append("\n");
+            sb.Append("  ElasticsearchCloudId: ").Append(ElasticsearchCloudId).Append("\n");
             sb.Append("  ElasticsearchIndex: ").Append(ElasticsearchIndex).Append("\n");
             sb.Append("  ElasticsearchNodes: ").Append(ElasticsearchNodes).Append("\n");
+            sb.Append("  ElasticsearchPassword: ").Append(ElasticsearchPassword).Append("\n");
+            sb.Append("  ElasticsearchServerType: ").Append(ElasticsearchServerType).Append("\n");
+            sb.Append("  ElasticsearchUserName: ").Append(ElasticsearchUserName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,9 +153,19 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.ElasticsearchHost == input.ElasticsearchHost ||
-                    (this.ElasticsearchHost != null &&
-                    this.ElasticsearchHost.Equals(input.ElasticsearchHost))
+                    this.ElasticsearchApiKey == input.ElasticsearchApiKey ||
+                    (this.ElasticsearchApiKey != null &&
+                    this.ElasticsearchApiKey.Equals(input.ElasticsearchApiKey))
+                ) && 
+                (
+                    this.ElasticsearchAuthType == input.ElasticsearchAuthType ||
+                    (this.ElasticsearchAuthType != null &&
+                    this.ElasticsearchAuthType.Equals(input.ElasticsearchAuthType))
+                ) && 
+                (
+                    this.ElasticsearchCloudId == input.ElasticsearchCloudId ||
+                    (this.ElasticsearchCloudId != null &&
+                    this.ElasticsearchCloudId.Equals(input.ElasticsearchCloudId))
                 ) && 
                 (
                     this.ElasticsearchIndex == input.ElasticsearchIndex ||
@@ -121,6 +176,21 @@ namespace akeyless.Model
                     this.ElasticsearchNodes == input.ElasticsearchNodes ||
                     (this.ElasticsearchNodes != null &&
                     this.ElasticsearchNodes.Equals(input.ElasticsearchNodes))
+                ) && 
+                (
+                    this.ElasticsearchPassword == input.ElasticsearchPassword ||
+                    (this.ElasticsearchPassword != null &&
+                    this.ElasticsearchPassword.Equals(input.ElasticsearchPassword))
+                ) && 
+                (
+                    this.ElasticsearchServerType == input.ElasticsearchServerType ||
+                    (this.ElasticsearchServerType != null &&
+                    this.ElasticsearchServerType.Equals(input.ElasticsearchServerType))
+                ) && 
+                (
+                    this.ElasticsearchUserName == input.ElasticsearchUserName ||
+                    (this.ElasticsearchUserName != null &&
+                    this.ElasticsearchUserName.Equals(input.ElasticsearchUserName))
                 );
         }
 
@@ -133,12 +203,22 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ElasticsearchHost != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchHost.GetHashCode();
+                if (this.ElasticsearchApiKey != null)
+                    hashCode = hashCode * 59 + this.ElasticsearchApiKey.GetHashCode();
+                if (this.ElasticsearchAuthType != null)
+                    hashCode = hashCode * 59 + this.ElasticsearchAuthType.GetHashCode();
+                if (this.ElasticsearchCloudId != null)
+                    hashCode = hashCode * 59 + this.ElasticsearchCloudId.GetHashCode();
                 if (this.ElasticsearchIndex != null)
                     hashCode = hashCode * 59 + this.ElasticsearchIndex.GetHashCode();
                 if (this.ElasticsearchNodes != null)
                     hashCode = hashCode * 59 + this.ElasticsearchNodes.GetHashCode();
+                if (this.ElasticsearchPassword != null)
+                    hashCode = hashCode * 59 + this.ElasticsearchPassword.GetHashCode();
+                if (this.ElasticsearchServerType != null)
+                    hashCode = hashCode * 59 + this.ElasticsearchServerType.GetHashCode();
+                if (this.ElasticsearchUserName != null)
+                    hashCode = hashCode * 59 + this.ElasticsearchUserName.GetHashCode();
                 return hashCode;
             }
         }

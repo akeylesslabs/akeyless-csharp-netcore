@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="awsS3Config">awsS3Config.</param>
         /// <param name="azureAnalyticsConfig">azureAnalyticsConfig.</param>
+        /// <param name="datadogConfig">datadogConfig.</param>
         /// <param name="elasticsearchConfig">elasticsearchConfig.</param>
         /// <param name="loganEnable">loganEnable.</param>
         /// <param name="loganUrl">loganUrl.</param>
@@ -46,10 +47,11 @@ namespace akeyless.Model
         /// <param name="stdOut">stdOut.</param>
         /// <param name="syslogConfig">syslogConfig.</param>
         /// <param name="targetLogType">targetLogType.</param>
-        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), bool stdOut = default(bool), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
+        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), bool stdOut = default(bool), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
         {
             this.AwsS3Config = awsS3Config;
             this.AzureAnalyticsConfig = azureAnalyticsConfig;
+            this.DatadogConfig = datadogConfig;
             this.ElasticsearchConfig = elasticsearchConfig;
             this.LoganEnable = loganEnable;
             this.LoganUrl = loganUrl;
@@ -73,6 +75,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="azure_analytics_config", EmitDefaultValue=false)]
         public AzureLogAnalyticsForwardingConfig AzureAnalyticsConfig { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DatadogConfig
+        /// </summary>
+        [DataMember(Name="datadog_config", EmitDefaultValue=false)]
+        public DatadogForwardingConfig DatadogConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchConfig
@@ -144,6 +152,7 @@ namespace akeyless.Model
             sb.Append("class LogForwardingConfigPart {\n");
             sb.Append("  AwsS3Config: ").Append(AwsS3Config).Append("\n");
             sb.Append("  AzureAnalyticsConfig: ").Append(AzureAnalyticsConfig).Append("\n");
+            sb.Append("  DatadogConfig: ").Append(DatadogConfig).Append("\n");
             sb.Append("  ElasticsearchConfig: ").Append(ElasticsearchConfig).Append("\n");
             sb.Append("  LoganEnable: ").Append(LoganEnable).Append("\n");
             sb.Append("  LoganUrl: ").Append(LoganUrl).Append("\n");
@@ -197,6 +206,11 @@ namespace akeyless.Model
                     this.AzureAnalyticsConfig == input.AzureAnalyticsConfig ||
                     (this.AzureAnalyticsConfig != null &&
                     this.AzureAnalyticsConfig.Equals(input.AzureAnalyticsConfig))
+                ) && 
+                (
+                    this.DatadogConfig == input.DatadogConfig ||
+                    (this.DatadogConfig != null &&
+                    this.DatadogConfig.Equals(input.DatadogConfig))
                 ) && 
                 (
                     this.ElasticsearchConfig == input.ElasticsearchConfig ||
@@ -261,6 +275,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AwsS3Config.GetHashCode();
                 if (this.AzureAnalyticsConfig != null)
                     hashCode = hashCode * 59 + this.AzureAnalyticsConfig.GetHashCode();
+                if (this.DatadogConfig != null)
+                    hashCode = hashCode * 59 + this.DatadogConfig.GetHashCode();
                 if (this.ElasticsearchConfig != null)
                     hashCode = hashCode * 59 + this.ElasticsearchConfig.GetHashCode();
                 hashCode = hashCode * 59 + this.LoganEnable.GetHashCode();

@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**CreateAuthMethodAzureAD**](V2Api.md#createauthmethodazuread) | **POST** /create-auth-method-azure-ad | 
 [**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei | 
+[**CreateAuthMethodK8S**](V2Api.md#createauthmethodk8s) | **POST** /create-auth-method-k8s | 
+[**CreateAuthMethodLDAP**](V2Api.md#createauthmethodldap) | **POST** /create-auth-method-ldap | 
 [**CreateAuthMethodOAuth2**](V2Api.md#createauthmethodoauth2) | **POST** /create-auth-method-oauth2 | 
 [**CreateAuthMethodOIDC**](V2Api.md#createauthmethodoidc) | **POST** /create-auth-method-oidc | 
 [**CreateAuthMethodSAML**](V2Api.md#createauthmethodsaml) | **POST** /create-auth-method-saml | 
@@ -93,12 +95,25 @@ Method | HTTP request | Description
 [**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer | 
 [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration | 
+[**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item | 
+[**GatewayUpdateProducerArtifactory**](V2Api.md#gatewayupdateproducerartifactory) | **POST** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws | 
+[**GatewayUpdateProducerAzure**](V2Api.md#gatewayupdateproducerazure) | **POST** /gateway-update-producer-azure | 
+[**GatewayUpdateProducerCassandra**](V2Api.md#gatewayupdateproducercassandra) | **POST** /gateway-update-producer-cassandra | 
+[**GatewayUpdateProducerCustom**](V2Api.md#gatewayupdateproducercustom) | **POST** /gateway-update-producer-custom | 
+[**GatewayUpdateProducerEks**](V2Api.md#gatewayupdateproducereks) | **POST** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#gatewayupdateproducergcp) | **POST** /gateway-update-producer-gcp | 
+[**GatewayUpdateProducerGke**](V2Api.md#gatewayupdateproducergke) | **POST** /gateway-update-producer-gke | 
+[**GatewayUpdateProducerLdap**](V2Api.md#gatewayupdateproducerldap) | **POST** /gateway-update-producer-ldap | 
 [**GatewayUpdateProducerMSSQL**](V2Api.md#gatewayupdateproducermssql) | **POST** /gateway-update-producer-mssql | 
 [**GatewayUpdateProducerMongo**](V2Api.md#gatewayupdateproducermongo) | **POST** /gateway-update-producer-mongo | 
 [**GatewayUpdateProducerMySQL**](V2Api.md#gatewayupdateproducermysql) | **POST** /gateway-update-producer-mysql | 
+[**GatewayUpdateProducerNativeK8S**](V2Api.md#gatewayupdateproducernativek8s) | **POST** /gateway-update-producer-k8s-native | 
+[**GatewayUpdateProducerOracleDb**](V2Api.md#gatewayupdateproduceroracledb) | **POST** /gateway-update-producer-oracle | 
+[**GatewayUpdateProducerPostgreSQL**](V2Api.md#gatewayupdateproducerpostgresql) | **POST** /gateway-update-producer-postgresql | 
+[**GatewayUpdateProducerRabbitMQ**](V2Api.md#gatewayupdateproducerrabbitmq) | **POST** /gateway-update-producer-rabbitmq | 
 [**GatewayUpdateProducerRdp**](V2Api.md#gatewayupdateproducerrdp) | **POST** /gateway-update-producer-rdp | 
+[**GatewayUpdateProducerRedshift**](V2Api.md#gatewayupdateproducerredshift) | **POST** /gateway-update-producer-redshift | 
 [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method | 
@@ -110,6 +125,7 @@ Method | HTTP request | Description
 [**GetRotatedSecretValue**](V2Api.md#getrotatedsecretvalue) | **POST** /get-rotated-secret-value | 
 [**GetSSHCertificate**](V2Api.md#getsshcertificate) | **POST** /get-ssh-certificate | 
 [**GetSecretValue**](V2Api.md#getsecretvalue) | **POST** /get-secret-value | 
+[**GetTags**](V2Api.md#gettags) | **POST** /get-tags | 
 [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target | 
 [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details | 
 [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule | 
@@ -144,23 +160,36 @@ Method | HTTP request | Description
 [**UidListChildren**](V2Api.md#uidlistchildren) | **POST** /uid-list-children | 
 [**UidRevokeToken**](V2Api.md#uidrevoketoken) | **POST** /uid-revoke-token | 
 [**UidRotateToken**](V2Api.md#uidrotatetoken) | **POST** /uid-rotate-token | 
-[**UpdateAWSTarget**](V2Api.md#updateawstarget) | **PUT** /update-aws-target | 
+[**UpdateAWSTarget**](V2Api.md#updateawstarget) | **POST** /update-aws-target | 
 [**UpdateAWSTargetDetails**](V2Api.md#updateawstargetdetails) | **POST** /update-aws-target-details | 
+[**UpdateArtifactoryTarget**](V2Api.md#updateartifactorytarget) | **POST** /update-artifactory-target | 
 [**UpdateAssoc**](V2Api.md#updateassoc) | **POST** /update-assoc | 
-[**UpdateAzureTarget**](V2Api.md#updateazuretarget) | **PUT** /update-azure-target | 
+[**UpdateAuthMethod**](V2Api.md#updateauthmethod) | **POST** /update-auth-method | 
+[**UpdateAuthMethodAWSIAM**](V2Api.md#updateauthmethodawsiam) | **POST** /update-auth-method-aws-iam | 
+[**UpdateAuthMethodAzureAD**](V2Api.md#updateauthmethodazuread) | **POST** /update-auth-method-azure-ad | 
+[**UpdateAuthMethodGCP**](V2Api.md#updateauthmethodgcp) | **POST** /update-auth-method-gcp | 
+[**UpdateAuthMethodK8S**](V2Api.md#updateauthmethodk8s) | **POST** /update-auth-method-k8s | 
+[**UpdateAuthMethodLDAP**](V2Api.md#updateauthmethodldap) | **POST** /update-auth-method-ldap | 
+[**UpdateAuthMethodOAuth2**](V2Api.md#updateauthmethodoauth2) | **POST** /update-auth-method-oauth2 | 
+[**UpdateAuthMethodOIDC**](V2Api.md#updateauthmethodoidc) | **POST** /update-auth-method-oidc | 
+[**UpdateAuthMethodSAML**](V2Api.md#updateauthmethodsaml) | **POST** /update-auth-method-saml | 
+[**UpdateAuthMethodUniversalIdentity**](V2Api.md#updateauthmethoduniversalidentity) | **POST** /update-auth-method-universal-identity | 
+[**UpdateAzureTarget**](V2Api.md#updateazuretarget) | **POST** /update-azure-target | 
 [**UpdateDBTarget**](V2Api.md#updatedbtarget) | **POST** /update-db-target | 
 [**UpdateDBTargetDetails**](V2Api.md#updatedbtargetdetails) | **POST** /update-db-target-details | 
-[**UpdateEKSTarget**](V2Api.md#updateekstarget) | **PUT** /update-eks-target | 
-[**UpdateGKETarget**](V2Api.md#updategketarget) | **PUT** /update-gke-target | 
-[**UpdateGcpTarget**](V2Api.md#updategcptarget) | **PUT** /update-gcp-target | 
+[**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target | 
+[**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target | 
+[**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target | 
 [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item | 
-[**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **PUT** /update-k8s-target | 
+[**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target | 
+[**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer | 
 [**UpdateRDPTargetDetails**](V2Api.md#updaterdptargetdetails) | **POST** /update-rdp-target-details | 
-[**UpdateRabbitMQTarget**](V2Api.md#updaterabbitmqtarget) | **PUT** /update-rabbitmq-target | 
+[**UpdateRabbitMQTarget**](V2Api.md#updaterabbitmqtarget) | **POST** /update-rabbitmq-target | 
 [**UpdateRabbitMQTargetDetails**](V2Api.md#updaterabbitmqtargetdetails) | **POST** /update-rabbitmq-target-details | 
 [**UpdateRole**](V2Api.md#updaterole) | **POST** /update-role | 
 [**UpdateRotatedSecret**](V2Api.md#updaterotatedsecret) | **POST** /update-rotated-secret | 
 [**UpdateRotationSettings**](V2Api.md#updaterotationsettings) | **POST** /update-rotation-settingsrotate-key | 
+[**UpdateSSHCertIssuer**](V2Api.md#updatesshcertissuer) | **POST** /update-ssh-cert-issuer | 
 [**UpdateSSHTarget**](V2Api.md#updatesshtarget) | **POST** /update-ssh-target | 
 [**UpdateSSHTargetDetails**](V2Api.md#updatesshtargetdetails) | **POST** /update-ssh-target-details | 
 [**UpdateSecretVal**](V2Api.md#updatesecretval) | **POST** /update-secret-val | 
@@ -987,6 +1016,142 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createAuthMethodHuaweiResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodk8s"></a>
+# **CreateAuthMethodK8S**
+> CreateAuthMethodK8SOutput CreateAuthMethodK8S (CreateAuthMethodK8S body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodK8SExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodK8S(); // CreateAuthMethodK8S | 
+
+            try
+            {
+                CreateAuthMethodK8SOutput result = apiInstance.CreateAuthMethodK8S(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodK8S: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodK8S**](CreateAuthMethodK8S.md)|  | 
+
+### Return type
+
+[**CreateAuthMethodK8SOutput**](CreateAuthMethodK8SOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodK8SResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodldap"></a>
+# **CreateAuthMethodLDAP**
+> CreateAuthMethodLDAPOutput CreateAuthMethodLDAP (CreateAuthMethodLDAP body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodLDAPExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodLDAP(); // CreateAuthMethodLDAP | 
+
+            try
+            {
+                CreateAuthMethodLDAPOutput result = apiInstance.CreateAuthMethodLDAP(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodLDAP: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodLDAP**](CreateAuthMethodLDAP.md)|  | 
+
+### Return type
+
+[**CreateAuthMethodLDAPOutput**](CreateAuthMethodLDAPOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodLDAPResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1877,7 +2042,7 @@ No authorization required
 
 <a name="createnativek8starget"></a>
 # **CreateNativeK8STarget**
-> CreateNativeK8STarget CreateNativeK8STarget ()
+> CreateNativeK8STargetOutput CreateNativeK8STarget (CreateNativeK8STarget body)
 
 
 
@@ -1898,10 +2063,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new CreateNativeK8STarget(); // CreateNativeK8STarget | 
 
             try
             {
-                CreateNativeK8STarget result = apiInstance.CreateNativeK8STarget();
+                CreateNativeK8STargetOutput result = apiInstance.CreateNativeK8STarget(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1916,11 +2082,14 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateNativeK8STarget**](CreateNativeK8STarget.md)|  | 
 
 ### Return type
 
-[**CreateNativeK8STarget**](CreateNativeK8STarget.md)
+[**CreateNativeK8STargetOutput**](CreateNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -1928,13 +2097,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | createNativeK8STarget |  -  |
+| **200** | createNativeK8STargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6222,6 +6391,142 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdateitem"></a>
+# **GatewayUpdateItem**
+> GatewayUpdateItemOutput GatewayUpdateItem (GatewayUpdateItem body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateItemExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateItem(); // GatewayUpdateItem | 
+
+            try
+            {
+                GatewayUpdateItemOutput result = apiInstance.GatewayUpdateItem(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateItem: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateItem**](GatewayUpdateItem.md)|  | 
+
+### Return type
+
+[**GatewayUpdateItemOutput**](GatewayUpdateItemOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateItemResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerartifactory"></a>
+# **GatewayUpdateProducerArtifactory**
+> GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory (GatewayUpdateProducerArtifactory body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerArtifactoryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerArtifactory(); // GatewayUpdateProducerArtifactory | 
+
+            try
+            {
+                GatewayUpdateProducerArtifactoryOutput result = apiInstance.GatewayUpdateProducerArtifactory(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerArtifactory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerArtifactory**](GatewayUpdateProducerArtifactory.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerArtifactoryOutput**](GatewayUpdateProducerArtifactoryOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerArtifactoryResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdateproduceraws"></a>
 # **GatewayUpdateProducerAws**
 > GatewayUpdateProducerAwsOutput GatewayUpdateProducerAws (GatewayUpdateProducerAws body)
@@ -6290,6 +6595,278 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdateproducerazure"></a>
+# **GatewayUpdateProducerAzure**
+> GatewayUpdateProducerAzureOutput GatewayUpdateProducerAzure (GatewayUpdateProducerAzure body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerAzureExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerAzure(); // GatewayUpdateProducerAzure | 
+
+            try
+            {
+                GatewayUpdateProducerAzureOutput result = apiInstance.GatewayUpdateProducerAzure(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAzure: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerAzure**](GatewayUpdateProducerAzure.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerAzureOutput**](GatewayUpdateProducerAzureOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerAzureResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducercassandra"></a>
+# **GatewayUpdateProducerCassandra**
+> GatewayUpdateProducerCassandraOutput GatewayUpdateProducerCassandra (GatewayUpdateProducerCassandra body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerCassandraExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerCassandra(); // GatewayUpdateProducerCassandra | 
+
+            try
+            {
+                GatewayUpdateProducerCassandraOutput result = apiInstance.GatewayUpdateProducerCassandra(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCassandra: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerCassandra**](GatewayUpdateProducerCassandra.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerCassandraOutput**](GatewayUpdateProducerCassandraOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerCassandraResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducercustom"></a>
+# **GatewayUpdateProducerCustom**
+> GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom (GatewayUpdateProducerCustom body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerCustomExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerCustom(); // GatewayUpdateProducerCustom |  (optional) 
+
+            try
+            {
+                GatewayUpdateProducerCustomOutput result = apiInstance.GatewayUpdateProducerCustom(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCustom: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerCustom**](GatewayUpdateProducerCustom.md)|  | [optional] 
+
+### Return type
+
+[**GatewayUpdateProducerCustomOutput**](GatewayUpdateProducerCustomOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayUpdateProducerCustomResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducereks"></a>
+# **GatewayUpdateProducerEks**
+> GatewayUpdateProducerEksOutput GatewayUpdateProducerEks (GatewayUpdateProducerEks body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerEksExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerEks(); // GatewayUpdateProducerEks | 
+
+            try
+            {
+                GatewayUpdateProducerEksOutput result = apiInstance.GatewayUpdateProducerEks(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerEks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerEks**](GatewayUpdateProducerEks.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerEksOutput**](GatewayUpdateProducerEksOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerEksResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdateproducergcp"></a>
 # **GatewayUpdateProducerGcp**
 > GatewayUpdateProducerGcpOutput GatewayUpdateProducerGcp (GatewayUpdateProducerGcp body)
@@ -6354,6 +6931,142 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayUpdateProducerGcpResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducergke"></a>
+# **GatewayUpdateProducerGke**
+> GatewayUpdateProducerGkeOutput GatewayUpdateProducerGke (GatewayUpdateProducerGke body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerGkeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerGke(); // GatewayUpdateProducerGke | 
+
+            try
+            {
+                GatewayUpdateProducerGkeOutput result = apiInstance.GatewayUpdateProducerGke(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGke: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerGke**](GatewayUpdateProducerGke.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerGkeOutput**](GatewayUpdateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerGkeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerldap"></a>
+# **GatewayUpdateProducerLdap**
+> GatewayUpdateProducerLdapOutput GatewayUpdateProducerLdap (GatewayUpdateProducerLdap body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerLdapExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerLdap(); // GatewayUpdateProducerLdap | 
+
+            try
+            {
+                GatewayUpdateProducerLdapOutput result = apiInstance.GatewayUpdateProducerLdap(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerLdap: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerLdap**](GatewayUpdateProducerLdap.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerLdapOutput**](GatewayUpdateProducerLdapOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerLdapResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6562,6 +7275,278 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdateproducernativek8s"></a>
+# **GatewayUpdateProducerNativeK8S**
+> GatewayUpdateProducerNativeK8SOutput GatewayUpdateProducerNativeK8S (GatewayUpdateProducerNativeK8S body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerNativeK8SExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerNativeK8S(); // GatewayUpdateProducerNativeK8S | 
+
+            try
+            {
+                GatewayUpdateProducerNativeK8SOutput result = apiInstance.GatewayUpdateProducerNativeK8S(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerNativeK8S: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerNativeK8S**](GatewayUpdateProducerNativeK8S.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerNativeK8SOutput**](GatewayUpdateProducerNativeK8SOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerNativeK8SResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproduceroracledb"></a>
+# **GatewayUpdateProducerOracleDb**
+> GatewayUpdateProducerOracleDbOutput GatewayUpdateProducerOracleDb (GatewayUpdateProducerOracleDb body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerOracleDbExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerOracleDb(); // GatewayUpdateProducerOracleDb | 
+
+            try
+            {
+                GatewayUpdateProducerOracleDbOutput result = apiInstance.GatewayUpdateProducerOracleDb(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerOracleDb: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerOracleDb**](GatewayUpdateProducerOracleDb.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerOracleDbOutput**](GatewayUpdateProducerOracleDbOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerOracleDbResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerpostgresql"></a>
+# **GatewayUpdateProducerPostgreSQL**
+> GatewayUpdateProducerPostgreSQLOutput GatewayUpdateProducerPostgreSQL (GatewayUpdateProducerPostgreSQL body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerPostgreSQLExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerPostgreSQL(); // GatewayUpdateProducerPostgreSQL | 
+
+            try
+            {
+                GatewayUpdateProducerPostgreSQLOutput result = apiInstance.GatewayUpdateProducerPostgreSQL(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerPostgreSQL: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerPostgreSQL**](GatewayUpdateProducerPostgreSQL.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerPostgreSQLOutput**](GatewayUpdateProducerPostgreSQLOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerPostgreSQLResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerrabbitmq"></a>
+# **GatewayUpdateProducerRabbitMQ**
+> GatewayUpdateProducerRabbitMQOutput GatewayUpdateProducerRabbitMQ (GatewayUpdateProducerRabbitMQ body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerRabbitMQExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerRabbitMQ(); // GatewayUpdateProducerRabbitMQ | 
+
+            try
+            {
+                GatewayUpdateProducerRabbitMQOutput result = apiInstance.GatewayUpdateProducerRabbitMQ(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRabbitMQ: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerRabbitMQ**](GatewayUpdateProducerRabbitMQ.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerRabbitMQOutput**](GatewayUpdateProducerRabbitMQOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerRabbitMQResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdateproducerrdp"></a>
 # **GatewayUpdateProducerRdp**
 > GatewayUpdateProducerRdpOutput GatewayUpdateProducerRdp (GatewayUpdateProducerRdp body)
@@ -6626,6 +7611,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayUpdateProducerRdpResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerredshift"></a>
+# **GatewayUpdateProducerRedshift**
+> GatewayUpdateProducerRedshiftOutput GatewayUpdateProducerRedshift (GatewayUpdateProducerRedshift body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerRedshiftExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerRedshift(); // GatewayUpdateProducerRedshift | 
+
+            try
+            {
+                GatewayUpdateProducerRedshiftOutput result = apiInstance.GatewayUpdateProducerRedshift(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRedshift: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerRedshift**](GatewayUpdateProducerRedshift.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerRedshiftOutput**](GatewayUpdateProducerRedshiftOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerRedshiftResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7369,6 +8422,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getSecretValueResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gettags"></a>
+# **GetTags**
+> List&lt;string&gt; GetTags (GetTags body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetTagsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GetTags(); // GetTags | 
+
+            try
+            {
+                List<string> result = apiInstance.GetTags(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetTags: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetTags**](GetTags.md)|  | 
+
+### Return type
+
+**List<string>**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getTagsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -9821,6 +10942,74 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updateartifactorytarget"></a>
+# **UpdateArtifactoryTarget**
+> UpdateArtifactoryTargetOutput UpdateArtifactoryTarget (UpdateArtifactoryTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateArtifactoryTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateArtifactoryTarget(); // UpdateArtifactoryTarget | 
+
+            try
+            {
+                UpdateArtifactoryTargetOutput result = apiInstance.UpdateArtifactoryTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateArtifactoryTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateArtifactoryTarget**](UpdateArtifactoryTarget.md)|  | 
+
+### Return type
+
+[**UpdateArtifactoryTargetOutput**](UpdateArtifactoryTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateArtifactoryTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateassoc"></a>
 # **UpdateAssoc**
 > Object UpdateAssoc (UpdateAssoc body)
@@ -9885,6 +11074,686 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateAssocResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethod"></a>
+# **UpdateAuthMethod**
+> UpdateAuthMethodOutput UpdateAuthMethod (UpdateAuthMethod body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethod(); // UpdateAuthMethod | 
+
+            try
+            {
+                UpdateAuthMethodOutput result = apiInstance.UpdateAuthMethod(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethod: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethod**](UpdateAuthMethod.md)|  | 
+
+### Return type
+
+[**UpdateAuthMethodOutput**](UpdateAuthMethodOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodawsiam"></a>
+# **UpdateAuthMethodAWSIAM**
+> Object UpdateAuthMethodAWSIAM (UpdateAuthMethodAWSIAM body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodAWSIAMExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodAWSIAM(); // UpdateAuthMethodAWSIAM | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodAWSIAM(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodAWSIAM: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodAWSIAM**](UpdateAuthMethodAWSIAM.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodAWSIAMResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodazuread"></a>
+# **UpdateAuthMethodAzureAD**
+> Object UpdateAuthMethodAzureAD (UpdateAuthMethodAzureAD body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodAzureADExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodAzureAD(); // UpdateAuthMethodAzureAD | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodAzureAD(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodAzureAD: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodAzureAD**](UpdateAuthMethodAzureAD.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodAzureADResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodgcp"></a>
+# **UpdateAuthMethodGCP**
+> Object UpdateAuthMethodGCP (UpdateAuthMethodGCP body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodGCPExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodGCP(); // UpdateAuthMethodGCP | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodGCP(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodGCP: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodGCP**](UpdateAuthMethodGCP.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodGCPResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodk8s"></a>
+# **UpdateAuthMethodK8S**
+> UpdateAuthMethodK8SOutput UpdateAuthMethodK8S (UpdateAuthMethodK8S body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodK8SExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodK8S(); // UpdateAuthMethodK8S | 
+
+            try
+            {
+                UpdateAuthMethodK8SOutput result = apiInstance.UpdateAuthMethodK8S(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodK8S: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodK8S**](UpdateAuthMethodK8S.md)|  | 
+
+### Return type
+
+[**UpdateAuthMethodK8SOutput**](UpdateAuthMethodK8SOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodK8SResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodldap"></a>
+# **UpdateAuthMethodLDAP**
+> Object UpdateAuthMethodLDAP (UpdateAuthMethodLDAP body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodLDAPExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodLDAP(); // UpdateAuthMethodLDAP | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodLDAP(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodLDAP: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodLDAP**](UpdateAuthMethodLDAP.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodLDAPResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodoauth2"></a>
+# **UpdateAuthMethodOAuth2**
+> Object UpdateAuthMethodOAuth2 (UpdateAuthMethodOAuth2 body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodOAuth2Example
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodOAuth2(); // UpdateAuthMethodOAuth2 | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodOAuth2(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOAuth2: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodOAuth2**](UpdateAuthMethodOAuth2.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodOAuth2Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodoidc"></a>
+# **UpdateAuthMethodOIDC**
+> Object UpdateAuthMethodOIDC (UpdateAuthMethodOIDC body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodOIDCExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodOIDC(); // UpdateAuthMethodOIDC | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodOIDC(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOIDC: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodOIDC**](UpdateAuthMethodOIDC.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodOIDCResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodsaml"></a>
+# **UpdateAuthMethodSAML**
+> Object UpdateAuthMethodSAML (UpdateAuthMethodSAML body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodSAMLExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodSAML(); // UpdateAuthMethodSAML | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodSAML(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodSAML: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodSAML**](UpdateAuthMethodSAML.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodSAMLResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethoduniversalidentity"></a>
+# **UpdateAuthMethodUniversalIdentity**
+> Object UpdateAuthMethodUniversalIdentity (UpdateAuthMethodUniversalIdentity body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodUniversalIdentityExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodUniversalIdentity(); // UpdateAuthMethodUniversalIdentity | 
+
+            try
+            {
+                Object result = apiInstance.UpdateAuthMethodUniversalIdentity(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodUniversalIdentity: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodUniversalIdentity**](UpdateAuthMethodUniversalIdentity.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodUniversalIdentityResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -10433,6 +12302,74 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updatepkicertissuer"></a>
+# **UpdatePKICertIssuer**
+> UpdatePKICertIssuerOutput UpdatePKICertIssuer (UpdatePKICertIssuer body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdatePKICertIssuerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdatePKICertIssuer(); // UpdatePKICertIssuer | 
+
+            try
+            {
+                UpdatePKICertIssuerOutput result = apiInstance.UpdatePKICertIssuer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdatePKICertIssuer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdatePKICertIssuer**](UpdatePKICertIssuer.md)|  | 
+
+### Return type
+
+[**UpdatePKICertIssuerOutput**](UpdatePKICertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updatePKICertIssuerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updaterdptargetdetails"></a>
 # **UpdateRDPTargetDetails**
 > UpdateTargetOutput UpdateRDPTargetDetails (UpdateRDPTargetDetails body)
@@ -10833,6 +12770,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | rotateKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatesshcertissuer"></a>
+# **UpdateSSHCertIssuer**
+> UpdateSSHCertIssuerOutput UpdateSSHCertIssuer (UpdateSSHCertIssuer body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateSSHCertIssuerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateSSHCertIssuer(); // UpdateSSHCertIssuer | 
+
+            try
+            {
+                UpdateSSHCertIssuerOutput result = apiInstance.UpdateSSHCertIssuer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateSSHCertIssuer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateSSHCertIssuer**](UpdateSSHCertIssuer.md)|  | 
+
+### Return type
+
+[**UpdateSSHCertIssuerOutput**](UpdateSSHCertIssuerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateSSHCertIssuerResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

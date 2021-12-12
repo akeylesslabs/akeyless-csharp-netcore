@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SignUsingAkeylessPki** | **bool** | Use Akeyless PKI issuer or Venafi issuer | [optional] 
 **SignerKeyName** | **string** | Signer key name | [optional] 
 **StorePrivateKey** | **bool** | Store private key | [optional] 
+**Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

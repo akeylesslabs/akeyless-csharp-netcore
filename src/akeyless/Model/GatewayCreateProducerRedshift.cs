@@ -48,12 +48,15 @@ namespace akeyless.Model
         /// <param name="redshiftPassword">Redshift Password.</param>
         /// <param name="redshiftPort">Redshift Port (default to &quot;5439&quot;).</param>
         /// <param name="redshiftUsername">Redshift Username.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerRedshift(string creationStatements = default(string), string name = default(string), string password = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = "127.0.0.1", string redshiftPassword = default(string), string redshiftPort = "5439", string redshiftUsername = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerRedshift(string creationStatements = default(string), string name = default(string), string password = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = "127.0.0.1", string redshiftPassword = default(string), string redshiftPort = "5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerRedshift and cannot be null");
@@ -67,6 +70,9 @@ namespace akeyless.Model
             // use default value if no "redshiftPort" provided
             this.RedshiftPort = redshiftPort ?? "5439";
             this.RedshiftUsername = redshiftUsername;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
@@ -139,6 +145,25 @@ namespace akeyless.Model
         public string RedshiftUsername { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// List of the tags attached to this secret
+        /// </summary>
+        /// <value>List of the tags attached to this secret</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public List<string> Tags { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -190,6 +215,9 @@ namespace akeyless.Model
             sb.Append("  RedshiftPassword: ").Append(RedshiftPassword).Append("\n");
             sb.Append("  RedshiftPort: ").Append(RedshiftPort).Append("\n");
             sb.Append("  RedshiftUsername: ").Append(RedshiftUsername).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -275,6 +303,23 @@ namespace akeyless.Model
                     this.RedshiftUsername.Equals(input.RedshiftUsername))
                 ) && 
                 (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
@@ -328,6 +373,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RedshiftPort.GetHashCode();
                 if (this.RedshiftUsername != null)
                     hashCode = hashCode * 59 + this.RedshiftUsername.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)

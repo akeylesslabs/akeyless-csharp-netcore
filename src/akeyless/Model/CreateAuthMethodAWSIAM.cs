@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="boundArn">A list of full arns that the access is restricted to.</param>
         /// <param name="boundAwsAccountId">A list of AWS account-IDs that the access is restricted to (required).</param>
-        /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
+        /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundResourceId">A list of full resource ids that the access is restricted to.</param>
         /// <param name="boundRoleId">A list of full role ids that the access is restricted to.</param>
         /// <param name="boundRoleName">A list of full role-name that the access is restricted to.</param>
@@ -100,9 +100,9 @@ namespace akeyless.Model
         public List<string> BoundAwsAccountId { get; set; }
 
         /// <summary>
-        /// A CIDR whitelist of the IPs that the access is restricted to
+        /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
-        /// <value>A CIDR whitelist of the IPs that the access is restricted to</value>
+        /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name="bound-ips", EmitDefaultValue=false)]
         public List<string> BoundIps { get; set; }
 

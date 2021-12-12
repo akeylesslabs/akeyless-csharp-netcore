@@ -44,13 +44,14 @@ namespace akeyless.Model
         /// <param name="name">Producer name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="role">User role.</param>
+        /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerSnowflake and cannot be null");
@@ -58,6 +59,7 @@ namespace akeyless.Model
             this.DbName = dbName;
             this.Password = password;
             this.Role = role;
+            this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
@@ -101,6 +103,13 @@ namespace akeyless.Model
         /// <value>User role</value>
         [DataMember(Name="role", EmitDefaultValue=false)]
         public string Role { get; set; }
+
+        /// <summary>
+        /// List of the tags attached to this secret
+        /// </summary>
+        /// <value>List of the tags attached to this secret</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public List<string> Tags { get; set; }
 
         /// <summary>
         /// Target name
@@ -157,6 +166,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -223,6 +233,12 @@ namespace akeyless.Model
                     this.Role.Equals(input.Role))
                 ) && 
                 (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
@@ -273,6 +289,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Role != null)
                     hashCode = hashCode * 59 + this.Role.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)

@@ -52,11 +52,12 @@ namespace akeyless.Model
         /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
         /// <param name="secureAccessUseInternalBastion">secureAccessUseInternalBastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
+        /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string password = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
+        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string password = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             this.AllowedUsers = allowedUsers ?? throw new ArgumentNullException("allowedUsers is a required property for CreateSSHCertIssuer and cannot be null");
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
             this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
+            this.Tag = tag;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -166,6 +168,13 @@ namespace akeyless.Model
         public string SignerKeyName { get; set; }
 
         /// <summary>
+        /// List of the tags attached to this key
+        /// </summary>
+        /// <value>List of the tags attached to this key</value>
+        [DataMember(Name="tag", EmitDefaultValue=false)]
+        public List<string> Tag { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -214,6 +223,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessSshCredsUser: ").Append(SecureAccessSshCredsUser).Append("\n");
             sb.Append("  SecureAccessUseInternalBastion: ").Append(SecureAccessUseInternalBastion).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
+            sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -319,6 +329,12 @@ namespace akeyless.Model
                     this.SignerKeyName.Equals(input.SignerKeyName))
                 ) && 
                 (
+                    this.Tag == input.Tag ||
+                    this.Tag != null &&
+                    input.Tag != null &&
+                    this.Tag.SequenceEqual(input.Tag)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -373,6 +389,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.SecureAccessUseInternalBastion.GetHashCode();
                 if (this.SignerKeyName != null)
                     hashCode = hashCode * 59 + this.SignerKeyName.GetHashCode();
+                if (this.Tag != null)
+                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 hashCode = hashCode * 59 + this.Ttl.GetHashCode();

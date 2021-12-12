@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsS3Config** | [**AwsS3LogForwardingConfig**](AwsS3LogForwardingConfig.md) |  | [optional] 
 **AzureAnalyticsConfig** | [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] 
+**DatadogConfig** | [**DatadogForwardingConfig**](DatadogForwardingConfig.md) |  | [optional] 
 **ElasticsearchConfig** | [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] 
 **LoganEnable** | **bool** |  | [optional] 
 **LoganUrl** | **string** |  | [optional] 

@@ -46,12 +46,13 @@ namespace akeyless.Model
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
         /// <param name="rotateSyncUrl">URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate.</param>
+        /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="timeoutSec">Maximum allowed time in seconds for the webhook to return the results (default to 60).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerCustom(string createSyncUrl = default(string), string name = default(string), string password = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerCustom(string createSyncUrl = default(string), string name = default(string), string password = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "createSyncUrl" is required (not null)
             this.CreateSyncUrl = createSyncUrl ?? throw new ArgumentNullException("createSyncUrl is a required property for GatewayCreateProducerCustom and cannot be null");
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.Payload = payload;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RotateSyncUrl = rotateSyncUrl;
+            this.Tags = tags;
             this.TimeoutSec = timeoutSec;
             this.Token = token;
             this.UidToken = uidToken;
@@ -121,6 +123,13 @@ namespace akeyless.Model
         public string RotateSyncUrl { get; set; }
 
         /// <summary>
+        /// List of the tags attached to this secret
+        /// </summary>
+        /// <value>List of the tags attached to this secret</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public List<string> Tags { get; set; }
+
+        /// <summary>
         /// Maximum allowed time in seconds for the webhook to return the results
         /// </summary>
         /// <value>Maximum allowed time in seconds for the webhook to return the results</value>
@@ -170,6 +179,7 @@ namespace akeyless.Model
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
             sb.Append("  RotateSyncUrl: ").Append(RotateSyncUrl).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TimeoutSec: ").Append(TimeoutSec).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -245,6 +255,12 @@ namespace akeyless.Model
                     this.RotateSyncUrl.Equals(input.RotateSyncUrl))
                 ) && 
                 (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
                     this.TimeoutSec == input.TimeoutSec ||
                     this.TimeoutSec.Equals(input.TimeoutSec)
                 ) && 
@@ -293,6 +309,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RevokeSyncUrl.GetHashCode();
                 if (this.RotateSyncUrl != null)
                     hashCode = hashCode * 59 + this.RotateSyncUrl.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 hashCode = hashCode * 59 + this.TimeoutSec.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();

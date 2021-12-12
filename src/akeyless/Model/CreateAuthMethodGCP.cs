@@ -41,11 +41,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="audience">The audience to verify in the JWT received by the client (required) (default to &quot;akeyless.io&quot;).</param>
-        /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
+        /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundLabels">A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d .....</param>
         /// <param name="boundProjects">&#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate..</param>
         /// <param name="boundRegions">List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored..</param>
-        /// <param name="boundServiceAccounts">&#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated..</param>
+        /// <param name="boundServiceAccounts">List of service accounts the service account must be part of in order to be authenticated..</param>
         /// <param name="boundZones">&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone..</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="name">Auth Method name (required).</param>
@@ -93,9 +93,9 @@ namespace akeyless.Model
         public string Audience { get; set; }
 
         /// <summary>
-        /// A CIDR whitelist of the IPs that the access is restricted to
+        /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
-        /// <value>A CIDR whitelist of the IPs that the access is restricted to</value>
+        /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name="bound-ips", EmitDefaultValue=false)]
         public List<string> BoundIps { get; set; }
 
@@ -121,9 +121,9 @@ namespace akeyless.Model
         public List<string> BoundRegions { get; set; }
 
         /// <summary>
-        /// &#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated.
+        /// List of service accounts the service account must be part of in order to be authenticated.
         /// </summary>
-        /// <value>&#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated.</value>
+        /// <value>List of service accounts the service account must be part of in order to be authenticated.</value>
         [DataMember(Name="bound-service-accounts", EmitDefaultValue=false)]
         public List<string> BoundServiceAccounts { get; set; }
 

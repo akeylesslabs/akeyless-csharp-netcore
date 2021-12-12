@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
-        /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
+        /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="clientId">Client ID.</param>
         /// <param name="clientSecret">Client Secret.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
@@ -86,9 +86,9 @@ namespace akeyless.Model
         public List<string> AllowedRedirectUri { get; set; }
 
         /// <summary>
-        /// A CIDR whitelist of the IPs that the access is restricted to
+        /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
-        /// <value>A CIDR whitelist of the IPs that the access is restricted to</value>
+        /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name="bound-ips", EmitDefaultValue=false)]
         public List<string> BoundIps { get; set; }
 

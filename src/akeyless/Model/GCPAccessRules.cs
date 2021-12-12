@@ -38,7 +38,7 @@ namespace akeyless.Model
         /// <param name="boundLabels">A map of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d .....</param>
         /// <param name="boundProjects">Human and Machine authentication section Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate..</param>
         /// <param name="boundRegions">List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored..</param>
-        /// <param name="boundServiceAccounts">&#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated.</param>
+        /// <param name="boundServiceAccounts">List of service accounts the service account must be part of in order to be authenticated.</param>
         /// <param name="boundZones">&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone..</param>
         /// <param name="serviceAccount">ServiceAccount holds the credentials file contents to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins against GCP base64 encoded string.</param>
         /// <param name="type">type.</param>
@@ -84,9 +84,9 @@ namespace akeyless.Model
         public List<string> BoundRegions { get; set; }
 
         /// <summary>
-        /// &#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated
+        /// List of service accounts the service account must be part of in order to be authenticated
         /// </summary>
-        /// <value>&#x3D;&#x3D;&#x3D; Human authentication section &#x3D;&#x3D;&#x3D; List of service accounts the service account must be part of in order to be authenticated</value>
+        /// <value>List of service accounts the service account must be part of in order to be authenticated</value>
         [DataMember(Name="bound_service_accounts", EmitDefaultValue=false)]
         public List<string> BoundServiceAccounts { get; set; }
 

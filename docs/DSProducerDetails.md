@@ -129,6 +129,7 @@ Name | Type | Description | Notes
 **SfUserRole** | **string** | generated  users info | [optional] 
 **SfWarehouseName** | **string** |  | [optional] 
 **ShouldStop** | **string** | TODO delete this after migration | [optional] 
+**Tags** | **List&lt;string&gt;** |  | [optional] 
 **TimeoutSeconds** | **long** |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
 **UserPrincipalName** | **string** |  | [optional] 

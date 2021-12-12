@@ -60,11 +60,12 @@ namespace akeyless.Model
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="streetAddress">A comma-separated list of the street address that will be set in the issued certificate.</param>
+        /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreatePKICertIssuer and cannot be null");
@@ -91,6 +92,7 @@ namespace akeyless.Model
             this.Province = province;
             this.ServerFlag = serverFlag;
             this.StreetAddress = streetAddress;
+            this.Tag = tag;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -244,6 +246,13 @@ namespace akeyless.Model
         public string StreetAddress { get; set; }
 
         /// <summary>
+        /// List of the tags attached to this key
+        /// </summary>
+        /// <value>List of the tags attached to this key</value>
+        [DataMember(Name="tag", EmitDefaultValue=false)]
+        public List<string> Tag { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -300,6 +309,7 @@ namespace akeyless.Model
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
+            sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -437,6 +447,12 @@ namespace akeyless.Model
                     this.StreetAddress.Equals(input.StreetAddress))
                 ) && 
                 (
+                    this.Tag == input.Tag ||
+                    this.Tag != null &&
+                    input.Tag != null &&
+                    this.Tag.SequenceEqual(input.Tag)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -501,6 +517,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SignerKeyName.GetHashCode();
                 if (this.StreetAddress != null)
                     hashCode = hashCode * 59 + this.StreetAddress.GetHashCode();
+                if (this.Tag != null)
+                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 hashCode = hashCode * 59 + this.Ttl.GetHashCode();

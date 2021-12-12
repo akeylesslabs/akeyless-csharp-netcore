@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="audience">The audience in the Kubernetes JWT that the access is restricted to.</param>
-        /// <param name="boundIps">A CIDR whitelist of the IPs that the access is restricted to.</param>
+        /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundNamespaces">A list of namespaces that the access is restricted to.</param>
         /// <param name="boundPodNames">A list of pod names that the access is restricted to.</param>
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
@@ -49,10 +49,11 @@ namespace akeyless.Model
         /// <param name="genKey">If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway) (default to &quot;true&quot;).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="publicKey">Base64-encoded public key text for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", string name = default(string), string password = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodK8S and cannot be null");
@@ -66,6 +67,7 @@ namespace akeyless.Model
             // use default value if no "genKey" provided
             this.GenKey = genKey ?? "true";
             this.Password = password;
+            this.PublicKey = publicKey;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
@@ -86,9 +88,9 @@ namespace akeyless.Model
         public string Audience { get; set; }
 
         /// <summary>
-        /// A CIDR whitelist of the IPs that the access is restricted to
+        /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
-        /// <value>A CIDR whitelist of the IPs that the access is restricted to</value>
+        /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name="bound-ips", EmitDefaultValue=false)]
         public List<string> BoundIps { get; set; }
 
@@ -142,6 +144,13 @@ namespace akeyless.Model
         public string Password { get; set; }
 
         /// <summary>
+        /// Base64-encoded public key text for K8S authentication method is required [RSA2048]
+        /// </summary>
+        /// <value>Base64-encoded public key text for K8S authentication method is required [RSA2048]</value>
+        [DataMember(Name="public-key", EmitDefaultValue=false)]
+        public string PublicKey { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -180,6 +189,7 @@ namespace akeyless.Model
             sb.Append("  GenKey: ").Append(GenKey).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  PublicKey: ").Append(PublicKey).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
@@ -270,6 +280,11 @@ namespace akeyless.Model
                     this.Password.Equals(input.Password))
                 ) && 
                 (
+                    this.PublicKey == input.PublicKey ||
+                    (this.PublicKey != null &&
+                    this.PublicKey.Equals(input.PublicKey))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -313,6 +328,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.PublicKey != null)
+                    hashCode = hashCode * 59 + this.PublicKey.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
