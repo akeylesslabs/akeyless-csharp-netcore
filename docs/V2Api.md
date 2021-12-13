@@ -198,6 +198,7 @@ Method | HTTP request | Description
 [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa | 
+[**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token | 
 [**VerifyJWTWithClassicKey**](V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key | 
 [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 | 
 [**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key | 
@@ -13382,6 +13383,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | uploadRSAResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="validatetoken"></a>
+# **ValidateToken**
+> ValidateTokenOutput ValidateToken (ValidateToken body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ValidateTokenExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ValidateToken(); // ValidateToken | 
+
+            try
+            {
+                ValidateTokenOutput result = apiInstance.ValidateToken(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ValidateToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ValidateToken**](ValidateToken.md)|  | 
+
+### Return type
+
+[**ValidateTokenOutput**](ValidateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | validateTokenResponse wraps response body. |  -  |
+| **401** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
