@@ -100,6 +100,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws | 
 [**GatewayUpdateProducerAzure**](V2Api.md#gatewayupdateproducerazure) | **POST** /gateway-update-producer-azure | 
 [**GatewayUpdateProducerCassandra**](V2Api.md#gatewayupdateproducercassandra) | **POST** /gateway-update-producer-cassandra | 
+[**GatewayUpdateProducerCertificateAutomation**](V2Api.md#gatewayupdateproducercertificateautomation) | **POST** /gateway-update-producer-certificate-automation | 
 [**GatewayUpdateProducerCustom**](V2Api.md#gatewayupdateproducercustom) | **POST** /gateway-update-producer-custom | 
 [**GatewayUpdateProducerEks**](V2Api.md#gatewayupdateproducereks) | **POST** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#gatewayupdateproducergcp) | **POST** /gateway-update-producer-gcp | 
@@ -114,6 +115,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerRabbitMQ**](V2Api.md#gatewayupdateproducerrabbitmq) | **POST** /gateway-update-producer-rabbitmq | 
 [**GatewayUpdateProducerRdp**](V2Api.md#gatewayupdateproducerrdp) | **POST** /gateway-update-producer-rdp | 
 [**GatewayUpdateProducerRedshift**](V2Api.md#gatewayupdateproducerredshift) | **POST** /gateway-update-producer-redshift | 
+[**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake | 
 [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo | 
 [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method | 
@@ -6732,6 +6734,74 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdateproducercertificateautomation"></a>
+# **GatewayUpdateProducerCertificateAutomation**
+> GatewayUpdateProducerCertificateAutomationOutput GatewayUpdateProducerCertificateAutomation (GatewayUpdateProducerCertificateAutomation body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerCertificateAutomationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerCertificateAutomation(); // GatewayUpdateProducerCertificateAutomation | 
+
+            try
+            {
+                GatewayUpdateProducerCertificateAutomationOutput result = apiInstance.GatewayUpdateProducerCertificateAutomation(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCertificateAutomation: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerCertificateAutomation**](GatewayUpdateProducerCertificateAutomation.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerCertificateAutomationOutput**](GatewayUpdateProducerCertificateAutomationOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerCertificateAutomationResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdateproducercustom"></a>
 # **GatewayUpdateProducerCustom**
 > GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom (GatewayUpdateProducerCustom body = null)
@@ -7680,6 +7750,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayUpdateProducerRedshiftResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducersnowflake"></a>
+# **GatewayUpdateProducerSnowflake**
+> GatewayUpdateProducerSnowflakeOutput GatewayUpdateProducerSnowflake (GatewayUpdateProducerSnowflake body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerSnowflakeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerSnowflake(); // GatewayUpdateProducerSnowflake | 
+
+            try
+            {
+                GatewayUpdateProducerSnowflakeOutput result = apiInstance.GatewayUpdateProducerSnowflake(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerSnowflake: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerSnowflake**](GatewayUpdateProducerSnowflake.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerSnowflakeOutput**](GatewayUpdateProducerSnowflakeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerSnowflakeResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

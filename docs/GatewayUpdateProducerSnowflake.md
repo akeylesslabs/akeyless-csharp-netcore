@@ -1,5 +1,5 @@
-# akeyless.Model.GatewayCreateProducerSnowflake
-gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+# akeyless.Model.GatewayUpdateProducerSnowflake
+gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
 ## Properties
 
 Name | Type | Description | Notes
@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccountUsername** | **string** | Database Username | [optional] 
 **DbName** | **string** | Database name | [optional] 
 **Name** | **string** | Producer name | 
+**NewName** | **string** | Producer name | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Role** | **string** | User role | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 

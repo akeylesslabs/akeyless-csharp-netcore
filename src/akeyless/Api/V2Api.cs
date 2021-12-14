@@ -2050,6 +2050,27 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerCertificateAutomationOutput</returns>
+        GatewayUpdateProducerCertificateAutomationOutput GatewayUpdateProducerCertificateAutomation (GatewayUpdateProducerCertificateAutomation body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerCertificateAutomationOutput</returns>
+        ApiResponse<GatewayUpdateProducerCertificateAutomationOutput> GatewayUpdateProducerCertificateAutomationWithHttpInfo (GatewayUpdateProducerCertificateAutomation body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>GatewayUpdateProducerCustomOutput</returns>
         GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom (GatewayUpdateProducerCustom body = default(GatewayUpdateProducerCustom));
@@ -2337,6 +2358,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayUpdateProducerRedshiftOutput</returns>
         ApiResponse<GatewayUpdateProducerRedshiftOutput> GatewayUpdateProducerRedshiftWithHttpInfo (GatewayUpdateProducerRedshift body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerSnowflakeOutput</returns>
+        GatewayUpdateProducerSnowflakeOutput GatewayUpdateProducerSnowflake (GatewayUpdateProducerSnowflake body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerSnowflakeOutput</returns>
+        ApiResponse<GatewayUpdateProducerSnowflakeOutput> GatewayUpdateProducerSnowflakeWithHttpInfo (GatewayUpdateProducerSnowflake body);
         /// <summary>
         /// 
         /// </summary>
@@ -6213,6 +6255,27 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayUpdateProducerCertificateAutomationOutput</returns>
+        System.Threading.Tasks.Task<GatewayUpdateProducerCertificateAutomationOutput> GatewayUpdateProducerCertificateAutomationAsync (GatewayUpdateProducerCertificateAutomation body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerCertificateAutomationOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerCertificateAutomationOutput>> GatewayUpdateProducerCertificateAutomationAsyncWithHttpInfo (GatewayUpdateProducerCertificateAutomation body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of GatewayUpdateProducerCustomOutput</returns>
         System.Threading.Tasks.Task<GatewayUpdateProducerCustomOutput> GatewayUpdateProducerCustomAsync (GatewayUpdateProducerCustom body = default(GatewayUpdateProducerCustom));
@@ -6500,6 +6563,27 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (GatewayUpdateProducerRedshiftOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerRedshiftOutput>> GatewayUpdateProducerRedshiftAsyncWithHttpInfo (GatewayUpdateProducerRedshift body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayUpdateProducerSnowflakeOutput</returns>
+        System.Threading.Tasks.Task<GatewayUpdateProducerSnowflakeOutput> GatewayUpdateProducerSnowflakeAsync (GatewayUpdateProducerSnowflake body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerSnowflakeOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerSnowflakeOutput>> GatewayUpdateProducerSnowflakeAsyncWithHttpInfo (GatewayUpdateProducerSnowflake body);
         /// <summary>
         /// 
         /// </summary>
@@ -19498,6 +19582,121 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerCertificateAutomationOutput</returns>
+        public GatewayUpdateProducerCertificateAutomationOutput GatewayUpdateProducerCertificateAutomation (GatewayUpdateProducerCertificateAutomation body)
+        {
+             akeyless.Client.ApiResponse<GatewayUpdateProducerCertificateAutomationOutput> localVarResponse = GatewayUpdateProducerCertificateAutomationWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerCertificateAutomationOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayUpdateProducerCertificateAutomationOutput > GatewayUpdateProducerCertificateAutomationWithHttpInfo (GatewayUpdateProducerCertificateAutomation body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerCertificateAutomation");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayUpdateProducerCertificateAutomationOutput >("/gateway-update-producer-certificate-automation", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerCertificateAutomation", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayUpdateProducerCertificateAutomationOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayUpdateProducerCertificateAutomationOutput> GatewayUpdateProducerCertificateAutomationAsync (GatewayUpdateProducerCertificateAutomation body)
+        {
+             akeyless.Client.ApiResponse<GatewayUpdateProducerCertificateAutomationOutput> localVarResponse = await GatewayUpdateProducerCertificateAutomationAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerCertificateAutomationOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayUpdateProducerCertificateAutomationOutput>> GatewayUpdateProducerCertificateAutomationAsyncWithHttpInfo (GatewayUpdateProducerCertificateAutomation body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerCertificateAutomation");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateProducerCertificateAutomationOutput>("/gateway-update-producer-certificate-automation", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerCertificateAutomation", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>GatewayUpdateProducerCustomOutput</returns>
         public GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom (GatewayUpdateProducerCustom body = default(GatewayUpdateProducerCustom))
@@ -21090,6 +21289,121 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayUpdateProducerRedshift", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerSnowflakeOutput</returns>
+        public GatewayUpdateProducerSnowflakeOutput GatewayUpdateProducerSnowflake (GatewayUpdateProducerSnowflake body)
+        {
+             akeyless.Client.ApiResponse<GatewayUpdateProducerSnowflakeOutput> localVarResponse = GatewayUpdateProducerSnowflakeWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerSnowflakeOutput</returns>
+        public akeyless.Client.ApiResponse< GatewayUpdateProducerSnowflakeOutput > GatewayUpdateProducerSnowflakeWithHttpInfo (GatewayUpdateProducerSnowflake body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerSnowflake");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post< GatewayUpdateProducerSnowflakeOutput >("/gateway-update-producer-snowflake", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerSnowflake", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of GatewayUpdateProducerSnowflakeOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayUpdateProducerSnowflakeOutput> GatewayUpdateProducerSnowflakeAsync (GatewayUpdateProducerSnowflake body)
+        {
+             akeyless.Client.ApiResponse<GatewayUpdateProducerSnowflakeOutput> localVarResponse = await GatewayUpdateProducerSnowflakeAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerSnowflakeOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayUpdateProducerSnowflakeOutput>> GatewayUpdateProducerSnowflakeAsyncWithHttpInfo (GatewayUpdateProducerSnowflake body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerSnowflake");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var _contentType in _contentTypes)
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", _contentType);
+            
+            foreach (var _accept in _accepts)
+                localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
+            
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateProducerSnowflakeOutput>("/gateway-update-producer-snowflake", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerSnowflake", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

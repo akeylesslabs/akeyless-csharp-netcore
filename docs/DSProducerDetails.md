@@ -67,7 +67,7 @@ Name | Type | Description | Notes
 **FixedUserOnly** | **string** |  | [optional] 
 **GcpKeyAlgo** | **string** |  | [optional] 
 **GcpServiceAccountEmail** | **string** |  | [optional] 
-**GcpServiceAccountKey** | **List&lt;int&gt;** |  | [optional] 
+**GcpServiceAccountKey** | **string** |  | [optional] 
 **GcpTokenLifetime** | **string** |  | [optional] 
 **GcpTokenScope** | **string** |  | [optional] 
 **GcpTokenType** | **string** |  | [optional] 

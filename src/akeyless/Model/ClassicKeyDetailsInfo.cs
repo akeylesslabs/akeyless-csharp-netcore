@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="classicKeyAttributes">classicKeyAttributes.</param>
         /// <param name="classicKeyId">classicKeyId.</param>
+        /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="isProvidedByUser">isProvidedByUser.</param>
         /// <param name="isUnexportable">isUnexportable.</param>
         /// <param name="keyState">ItemState defines the different states an Item can be in.</param>
@@ -44,10 +45,11 @@ namespace akeyless.Model
         /// <param name="targetAliasHelper">targetAliasHelper.</param>
         /// <param name="targetTypes">targetTypes.</param>
         /// <param name="targets">targets.</param>
-        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
+        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), long gwClusterId = default(long), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
         {
             this.ClassicKeyAttributes = classicKeyAttributes;
             this.ClassicKeyId = classicKeyId;
+            this.GwClusterId = gwClusterId;
             this.IsProvidedByUser = isProvidedByUser;
             this.IsUnexportable = isUnexportable;
             this.KeyState = keyState;
@@ -69,6 +71,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name="classic_key_id", EmitDefaultValue=false)]
         public string ClassicKeyId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GwClusterId
+        /// </summary>
+        [DataMember(Name="gw_cluster_id", EmitDefaultValue=false)]
+        public long GwClusterId { get; set; }
 
         /// <summary>
         /// Gets or Sets IsProvidedByUser
@@ -129,6 +137,7 @@ namespace akeyless.Model
             sb.Append("class ClassicKeyDetailsInfo {\n");
             sb.Append("  ClassicKeyAttributes: ").Append(ClassicKeyAttributes).Append("\n");
             sb.Append("  ClassicKeyId: ").Append(ClassicKeyId).Append("\n");
+            sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  IsProvidedByUser: ").Append(IsProvidedByUser).Append("\n");
             sb.Append("  IsUnexportable: ").Append(IsUnexportable).Append("\n");
             sb.Append("  KeyState: ").Append(KeyState).Append("\n");
@@ -181,6 +190,10 @@ namespace akeyless.Model
                     this.ClassicKeyId == input.ClassicKeyId ||
                     (this.ClassicKeyId != null &&
                     this.ClassicKeyId.Equals(input.ClassicKeyId))
+                ) && 
+                (
+                    this.GwClusterId == input.GwClusterId ||
+                    this.GwClusterId.Equals(input.GwClusterId)
                 ) && 
                 (
                     this.IsProvidedByUser == input.IsProvidedByUser ||
@@ -237,6 +250,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ClassicKeyAttributes.GetHashCode();
                 if (this.ClassicKeyId != null)
                     hashCode = hashCode * 59 + this.ClassicKeyId.GetHashCode();
+                hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
                 hashCode = hashCode * 59 + this.IsProvidedByUser.GetHashCode();
                 hashCode = hashCode * 59 + this.IsUnexportable.GetHashCode();
                 if (this.KeyState != null)

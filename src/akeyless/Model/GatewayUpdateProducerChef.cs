@@ -26,80 +26,82 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+    /// gatewayUpdateProducerChef is a command that updates chef producer
     /// </summary>
     [DataContract]
-    public partial class GatewayCreateProducerSnowflake :  IEquatable<GatewayCreateProducerSnowflake>, IValidatableObject
+    public partial class GatewayUpdateProducerChef :  IEquatable<GatewayUpdateProducerChef>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerSnowflake" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateProducerChef" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GatewayCreateProducerSnowflake() { }
+        protected GatewayUpdateProducerChef() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerSnowflake" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateProducerChef" /> class.
         /// </summary>
-        /// <param name="account">Account name.</param>
-        /// <param name="accountPassword">Database Password.</param>
-        /// <param name="accountUsername">Database Username.</param>
-        /// <param name="dbName">Database name.</param>
+        /// <param name="chefOrgs">Organizations.</param>
+        /// <param name="chefServerKey">Server key.</param>
+        /// <param name="chefServerUrl">Server URL.</param>
+        /// <param name="chefServerUsername">Server username.</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="newName">Producer name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
-        /// <param name="role">User role.</param>
+        /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="skipSsl">Skip SSL (default to true).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
+        /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
+        public GatewayUpdateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerSnowflake and cannot be null");
-            this.Account = account;
-            this.AccountPassword = accountPassword;
-            this.AccountUsername = accountUsername;
-            this.DbName = dbName;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayUpdateProducerChef and cannot be null");
+            this.ChefOrgs = chefOrgs;
+            this.ChefServerKey = chefServerKey;
+            this.ChefServerUrl = chefServerUrl;
+            this.ChefServerUsername = chefServerUsername;
+            this.NewName = newName;
             this.Password = password;
-            this.Role = role;
+            this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SkipSsl = skipSsl;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
-            this.UserTtl = userTtl ?? "24h";
+            this.UserTtl = userTtl ?? "60m";
             this.Username = username;
-            this.Warehouse = warehouse;
         }
         
         /// <summary>
-        /// Account name
+        /// Organizations
         /// </summary>
-        /// <value>Account name</value>
-        [DataMember(Name="account", EmitDefaultValue=false)]
-        public string Account { get; set; }
+        /// <value>Organizations</value>
+        [DataMember(Name="chef-orgs", EmitDefaultValue=false)]
+        public string ChefOrgs { get; set; }
 
         /// <summary>
-        /// Database Password
+        /// Server key
         /// </summary>
-        /// <value>Database Password</value>
-        [DataMember(Name="account-password", EmitDefaultValue=false)]
-        public string AccountPassword { get; set; }
+        /// <value>Server key</value>
+        [DataMember(Name="chef-server-key", EmitDefaultValue=false)]
+        public string ChefServerKey { get; set; }
 
         /// <summary>
-        /// Database Username
+        /// Server URL
         /// </summary>
-        /// <value>Database Username</value>
-        [DataMember(Name="account-username", EmitDefaultValue=false)]
-        public string AccountUsername { get; set; }
+        /// <value>Server URL</value>
+        [DataMember(Name="chef-server-url", EmitDefaultValue=false)]
+        public string ChefServerUrl { get; set; }
 
         /// <summary>
-        /// Database name
+        /// Server username
         /// </summary>
-        /// <value>Database name</value>
-        [DataMember(Name="db-name", EmitDefaultValue=false)]
-        public string DbName { get; set; }
+        /// <value>Server username</value>
+        [DataMember(Name="chef-server-username", EmitDefaultValue=false)]
+        public string ChefServerUsername { get; set; }
 
         /// <summary>
         /// Producer name
@@ -109,6 +111,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Producer name
+        /// </summary>
+        /// <value>Producer name</value>
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        public string NewName { get; set; }
+
+        /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
@@ -116,11 +125,18 @@ namespace akeyless.Model
         public string Password { get; set; }
 
         /// <summary>
-        /// User role
+        /// Dynamic producer encryption key
         /// </summary>
-        /// <value>User role</value>
-        [DataMember(Name="role", EmitDefaultValue=false)]
-        public string Role { get; set; }
+        /// <value>Dynamic producer encryption key</value>
+        [DataMember(Name="producer-encryption-key-name", EmitDefaultValue=false)]
+        public string ProducerEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Skip SSL
+        /// </summary>
+        /// <value>Skip SSL</value>
+        [DataMember(Name="skip-ssl", EmitDefaultValue=false)]
+        public bool SkipSsl { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
@@ -165,34 +181,28 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// Warehouse name
-        /// </summary>
-        /// <value>Warehouse name</value>
-        [DataMember(Name="warehouse", EmitDefaultValue=false)]
-        public string Warehouse { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GatewayCreateProducerSnowflake {\n");
-            sb.Append("  Account: ").Append(Account).Append("\n");
-            sb.Append("  AccountPassword: ").Append(AccountPassword).Append("\n");
-            sb.Append("  AccountUsername: ").Append(AccountUsername).Append("\n");
-            sb.Append("  DbName: ").Append(DbName).Append("\n");
+            sb.Append("class GatewayUpdateProducerChef {\n");
+            sb.Append("  ChefOrgs: ").Append(ChefOrgs).Append("\n");
+            sb.Append("  ChefServerKey: ").Append(ChefServerKey).Append("\n");
+            sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
+            sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SkipSsl: ").Append(SkipSsl).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Warehouse: ").Append(Warehouse).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -213,39 +223,39 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GatewayCreateProducerSnowflake);
+            return this.Equals(input as GatewayUpdateProducerChef);
         }
 
         /// <summary>
-        /// Returns true if GatewayCreateProducerSnowflake instances are equal
+        /// Returns true if GatewayUpdateProducerChef instances are equal
         /// </summary>
-        /// <param name="input">Instance of GatewayCreateProducerSnowflake to be compared</param>
+        /// <param name="input">Instance of GatewayUpdateProducerChef to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GatewayCreateProducerSnowflake input)
+        public bool Equals(GatewayUpdateProducerChef input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Account == input.Account ||
-                    (this.Account != null &&
-                    this.Account.Equals(input.Account))
+                    this.ChefOrgs == input.ChefOrgs ||
+                    (this.ChefOrgs != null &&
+                    this.ChefOrgs.Equals(input.ChefOrgs))
                 ) && 
                 (
-                    this.AccountPassword == input.AccountPassword ||
-                    (this.AccountPassword != null &&
-                    this.AccountPassword.Equals(input.AccountPassword))
+                    this.ChefServerKey == input.ChefServerKey ||
+                    (this.ChefServerKey != null &&
+                    this.ChefServerKey.Equals(input.ChefServerKey))
                 ) && 
                 (
-                    this.AccountUsername == input.AccountUsername ||
-                    (this.AccountUsername != null &&
-                    this.AccountUsername.Equals(input.AccountUsername))
+                    this.ChefServerUrl == input.ChefServerUrl ||
+                    (this.ChefServerUrl != null &&
+                    this.ChefServerUrl.Equals(input.ChefServerUrl))
                 ) && 
                 (
-                    this.DbName == input.DbName ||
-                    (this.DbName != null &&
-                    this.DbName.Equals(input.DbName))
+                    this.ChefServerUsername == input.ChefServerUsername ||
+                    (this.ChefServerUsername != null &&
+                    this.ChefServerUsername.Equals(input.ChefServerUsername))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -253,14 +263,23 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.NewName == input.NewName ||
+                    (this.NewName != null &&
+                    this.NewName.Equals(input.NewName))
+                ) && 
+                (
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
                 ) && 
                 (
-                    this.Role == input.Role ||
-                    (this.Role != null &&
-                    this.Role.Equals(input.Role))
+                    this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
+                    (this.ProducerEncryptionKeyName != null &&
+                    this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
+                ) && 
+                (
+                    this.SkipSsl == input.SkipSsl ||
+                    this.SkipSsl.Equals(input.SkipSsl)
                 ) && 
                 (
                     this.Tags == input.Tags ||
@@ -292,11 +311,6 @@ namespace akeyless.Model
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
-                ) && 
-                (
-                    this.Warehouse == input.Warehouse ||
-                    (this.Warehouse != null &&
-                    this.Warehouse.Equals(input.Warehouse))
                 );
         }
 
@@ -309,20 +323,23 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Account != null)
-                    hashCode = hashCode * 59 + this.Account.GetHashCode();
-                if (this.AccountPassword != null)
-                    hashCode = hashCode * 59 + this.AccountPassword.GetHashCode();
-                if (this.AccountUsername != null)
-                    hashCode = hashCode * 59 + this.AccountUsername.GetHashCode();
-                if (this.DbName != null)
-                    hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                if (this.ChefOrgs != null)
+                    hashCode = hashCode * 59 + this.ChefOrgs.GetHashCode();
+                if (this.ChefServerKey != null)
+                    hashCode = hashCode * 59 + this.ChefServerKey.GetHashCode();
+                if (this.ChefServerUrl != null)
+                    hashCode = hashCode * 59 + this.ChefServerUrl.GetHashCode();
+                if (this.ChefServerUsername != null)
+                    hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.NewName != null)
+                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
-                if (this.Role != null)
-                    hashCode = hashCode * 59 + this.Role.GetHashCode();
+                if (this.ProducerEncryptionKeyName != null)
+                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                hashCode = hashCode * 59 + this.SkipSsl.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)
@@ -335,8 +352,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
-                if (this.Warehouse != null)
-                    hashCode = hashCode * 59 + this.Warehouse.GetHashCode();
                 return hashCode;
             }
         }

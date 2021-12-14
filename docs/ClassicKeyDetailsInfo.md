@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClassicKeyAttributes** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **ClassicKeyId** | **string** |  | [optional] 
+**GwClusterId** | **long** |  | [optional] 
 **IsProvidedByUser** | **bool** |  | [optional] 
 **IsUnexportable** | **bool** |  | [optional] 
 **KeyState** | **string** | ItemState defines the different states an Item can be in | [optional] 

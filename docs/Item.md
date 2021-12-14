@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **ProtectionKeyName** | **string** |  | [optional] 
 **PublicValue** | **string** |  | [optional] 
 **RotationInterval** | **long** |  | [optional] 
+**TargetVersions** | [**List&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

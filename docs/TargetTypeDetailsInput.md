@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **EksRegion** | **string** |  | [optional] 
 **EksSecretAccessKey** | **string** |  | [optional] 
 **GcpServiceAccountEmail** | **string** |  | [optional] 
-**GcpServiceAccountKey** | **List&lt;int&gt;** |  | [optional] 
+**GcpServiceAccountKey** | **string** |  | [optional] 
 **GkeClusterCaCertificate** | **string** |  | [optional] 
 **GkeClusterEndpoint** | **string** |  | [optional] 
 **GkeClusterName** | **string** |  | [optional] 

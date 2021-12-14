@@ -26,24 +26,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+    /// gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
     /// </summary>
     [DataContract]
-    public partial class GatewayCreateProducerSnowflake :  IEquatable<GatewayCreateProducerSnowflake>, IValidatableObject
+    public partial class GatewayUpdateProducerSnowflake :  IEquatable<GatewayUpdateProducerSnowflake>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerSnowflake" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateProducerSnowflake" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GatewayCreateProducerSnowflake() { }
+        protected GatewayUpdateProducerSnowflake() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateProducerSnowflake" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateProducerSnowflake" /> class.
         /// </summary>
         /// <param name="account">Account name.</param>
         /// <param name="accountPassword">Database Password.</param>
         /// <param name="accountUsername">Database Username.</param>
         /// <param name="dbName">Database name.</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="newName">Producer name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="role">User role.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
@@ -53,14 +54,15 @@ namespace akeyless.Model
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
+        public GatewayUpdateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string name = default(string), string newName = default(string), string password = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerSnowflake and cannot be null");
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayUpdateProducerSnowflake and cannot be null");
             this.Account = account;
             this.AccountPassword = accountPassword;
             this.AccountUsername = accountUsername;
             this.DbName = dbName;
+            this.NewName = newName;
             this.Password = password;
             this.Role = role;
             this.Tags = tags;
@@ -107,6 +109,13 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Producer name
+        /// </summary>
+        /// <value>Producer name</value>
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -178,12 +187,13 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GatewayCreateProducerSnowflake {\n");
+            sb.Append("class GatewayUpdateProducerSnowflake {\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  AccountPassword: ").Append(AccountPassword).Append("\n");
             sb.Append("  AccountUsername: ").Append(AccountUsername).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -213,15 +223,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GatewayCreateProducerSnowflake);
+            return this.Equals(input as GatewayUpdateProducerSnowflake);
         }
 
         /// <summary>
-        /// Returns true if GatewayCreateProducerSnowflake instances are equal
+        /// Returns true if GatewayUpdateProducerSnowflake instances are equal
         /// </summary>
-        /// <param name="input">Instance of GatewayCreateProducerSnowflake to be compared</param>
+        /// <param name="input">Instance of GatewayUpdateProducerSnowflake to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GatewayCreateProducerSnowflake input)
+        public bool Equals(GatewayUpdateProducerSnowflake input)
         {
             if (input == null)
                 return false;
@@ -251,6 +261,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.NewName == input.NewName ||
+                    (this.NewName != null &&
+                    this.NewName.Equals(input.NewName))
                 ) && 
                 (
                     this.Password == input.Password ||
@@ -319,6 +334,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbName.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.NewName != null)
+                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Role != null)
