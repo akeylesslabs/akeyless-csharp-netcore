@@ -302,7 +302,6 @@ Class | Method | HTTP request | Description
 *V2Api* | [**UpdateWebTarget**](docs/V2Api.md#updatewebtarget) | **POST** /update-web-target | 
 *V2Api* | [**UpdateWebTargetDetails**](docs/V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details | 
 *V2Api* | [**UploadRSA**](docs/V2Api.md#uploadrsa) | **POST** /upload-rsa | 
-*V2Api* | [**ValidateToken**](docs/V2Api.md#validatetoken) | **POST** /validate-token | 
 *V2Api* | [**VerifyJWTWithClassicKey**](docs/V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key | 
 *V2Api* | [**VerifyPKCS1**](docs/V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 | 
 *V2Api* | [**VerifyPKICertWithClassicKey**](docs/V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key | 
@@ -762,8 +761,6 @@ Class | Method | HTTP request | Description
  - [Model.UpdateWebTargetOutput](docs/UpdateWebTargetOutput.md)
  - [Model.UploadPKCS12](docs/UploadPKCS12.md)
  - [Model.UploadRSA](docs/UploadRSA.md)
- - [Model.ValidateToken](docs/ValidateToken.md)
- - [Model.ValidateTokenOutput](docs/ValidateTokenOutput.md)
  - [Model.VerifyJWTOutput](docs/VerifyJWTOutput.md)
  - [Model.VerifyJWTWithClassicKey](docs/VerifyJWTWithClassicKey.md)
  - [Model.VerifyPKCS1](docs/VerifyPKCS1.md)
