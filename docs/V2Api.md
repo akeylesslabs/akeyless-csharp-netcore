@@ -549,7 +549,7 @@ No authorization required
 
 <a name="createawstarget"></a>
 # **CreateAWSTarget**
-> CreateAWSTargetOutput CreateAWSTarget ()
+> CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body)
 
 
 
@@ -570,10 +570,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new CreateAWSTarget(); // CreateAWSTarget | 
 
             try
             {
-                CreateAWSTargetOutput result = apiInstance.CreateAWSTarget();
+                CreateAWSTargetOutput result = apiInstance.CreateAWSTarget(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -588,7 +589,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAWSTarget**](CreateAWSTarget.md)|  | 
 
 ### Return type
 
@@ -600,7 +604,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

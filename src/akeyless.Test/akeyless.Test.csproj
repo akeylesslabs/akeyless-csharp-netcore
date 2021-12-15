@@ -24,7 +24,7 @@ Contact: support@akeyless.io
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\akeyless\akeyless.csproj">
-      <Project>{AA67EF86-8E64-431B-A5BA-93AA1D474574}</Project>
+      <Project>{64F44B73-2961-4273-BB09-3BBFB35A32E2}</Project>
       <Name>akeyless</Name>
     </ProjectReference>
   </ItemGroup>

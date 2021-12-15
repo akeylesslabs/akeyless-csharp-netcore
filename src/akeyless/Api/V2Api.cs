@@ -139,8 +139,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAWSTargetOutput</returns>
-        CreateAWSTargetOutput CreateAWSTarget ();
+        CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body);
 
         /// <summary>
         /// 
@@ -149,8 +150,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
-        ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo ();
+        ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo (CreateAWSTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -4342,8 +4344,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of CreateAWSTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync ();
+        System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync (CreateAWSTarget body);
 
         /// <summary>
         /// 
@@ -4352,8 +4355,9 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetAsyncWithHttpInfo (CreateAWSTarget body);
         /// <summary>
         /// 
         /// </summary>
@@ -9123,10 +9127,11 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateAWSTargetOutput</returns>
-        public CreateAWSTargetOutput CreateAWSTarget ()
+        public CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body)
         {
-             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = CreateAWSTargetWithHttpInfo();
+             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = CreateAWSTargetWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -9134,12 +9139,18 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
-        public akeyless.Client.ApiResponse< CreateAWSTargetOutput > CreateAWSTargetWithHttpInfo ()
+        public akeyless.Client.ApiResponse< CreateAWSTargetOutput > CreateAWSTargetWithHttpInfo (CreateAWSTarget body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAWSTarget");
+
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9153,6 +9164,7 @@ namespace akeyless.Api
             var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.Data = body;
 
 
             // make the HTTP request
@@ -9171,10 +9183,11 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of CreateAWSTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync ()
+        public async System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync (CreateAWSTarget body)
         {
-             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = await CreateAWSTargetAsyncWithHttpInfo();
+             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = await CreateAWSTargetAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -9183,13 +9196,19 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetAsyncWithHttpInfo (CreateAWSTarget body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAWSTarget");
+
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9203,6 +9222,7 @@ namespace akeyless.Api
             foreach (var _accept in _accepts)
                 localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
             
+            localVarRequestOptions.Data = body;
 
 
             // make the HTTP request
