@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**Auth**](V2Api.md#auth) | **POST** /auth | 
 [**Configure**](V2Api.md#configure) | **POST** /configure | 
 [**Connect**](V2Api.md#connect) | **POST** /connect | 
-[**CreateAWSTarget**](V2Api.md#createawstarget) | **POST** /create-aws-target | 
+[**CreateAWStarget**](V2Api.md#createawstarget) | **POST** /create-aws-target | 
 [**CreateArtifactoryTarget**](V2Api.md#createartifactorytarget) | **POST** /create-artifactory-target | 
 [**CreateAuthMethod**](V2Api.md#createauthmethod) | **POST** /create-auth-method | 
 [**CreateAuthMethodAWSIAM**](V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam | 
@@ -553,8 +553,8 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="createawstarget"></a>
-# **CreateAWSTarget**
-> CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body)
+# **CreateAWStarget**
+> CreateAWSTargetOutput CreateAWStarget (CreateAWSTarget body)
 
 
 
@@ -568,7 +568,7 @@ using akeyless.Model;
 
 namespace Example
 {
-    public class CreateAWSTargetExample
+    public class CreateAWStargetExample
     {
         public static void Main()
         {
@@ -579,12 +579,12 @@ namespace Example
 
             try
             {
-                CreateAWSTargetOutput result = apiInstance.CreateAWSTarget(body);
+                CreateAWSTargetOutput result = apiInstance.CreateAWStarget(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAWSTarget: " + e.Message );
+                Debug.Print("Exception when calling V2Api.CreateAWStarget: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
