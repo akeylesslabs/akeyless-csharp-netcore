@@ -13,7 +13,7 @@ Contact: support@akeyless.io
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AB584577-13A7-4A7C-9A3D-973FCA4E6325}</ProjectGuid>
+    <ProjectGuid>{AA67EF86-8E64-431B-A5BA-93AA1D474574}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>akeyless</RootNamespace>
