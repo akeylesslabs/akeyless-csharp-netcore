@@ -1,4 +1,5 @@
 # akeyless.Model.SyslogLogForwardingConfig
+
 ## Properties
 
 Name | Type | Description | Notes

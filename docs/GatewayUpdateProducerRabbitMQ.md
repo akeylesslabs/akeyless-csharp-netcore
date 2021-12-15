@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayUpdateProducerRabbitMQ
 gatewayUpdateProducerRabbitMQ is a command that updates rabbitmq producer
+
 ## Properties
 
 Name | Type | Description | Notes

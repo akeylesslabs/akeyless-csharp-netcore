@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// UidRevokeToken
     /// </summary>
-    [DataContract]
-    public partial class UidRevokeToken :  IEquatable<UidRevokeToken>, IValidatableObject
+    [DataContract(Name = "uidRevokeToken")]
+    public partial class UidRevokeToken : IEquatable<UidRevokeToken>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UidRevokeToken" /> class.
@@ -49,63 +50,69 @@ namespace akeyless.Model
         public UidRevokeToken(string authMethodName = default(string), string password = default(string), string revokeToken = default(string), string revokeType = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "revokeToken" is required (not null)
-            this.RevokeToken = revokeToken ?? throw new ArgumentNullException("revokeToken is a required property for UidRevokeToken and cannot be null");
+            if (revokeToken == null) {
+                throw new ArgumentNullException("revokeToken is a required property for UidRevokeToken and cannot be null");
+            }
+            this.RevokeToken = revokeToken;
             // to ensure "revokeType" is required (not null)
-            this.RevokeType = revokeType ?? throw new ArgumentNullException("revokeType is a required property for UidRevokeToken and cannot be null");
+            if (revokeType == null) {
+                throw new ArgumentNullException("revokeType is a required property for UidRevokeToken and cannot be null");
+            }
+            this.RevokeType = revokeType;
             this.AuthMethodName = authMethodName;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// The universal identity auth method name
         /// </summary>
         /// <value>The universal identity auth method name</value>
-        [DataMember(Name="auth-method-name", EmitDefaultValue=false)]
+        [DataMember(Name = "auth-method-name", EmitDefaultValue = false)]
         public string AuthMethodName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// the universal identity token/token-id to revoke
         /// </summary>
         /// <value>the universal identity token/token-id to revoke</value>
-        [DataMember(Name="revoke-token", EmitDefaultValue=false)]
+        [DataMember(Name = "revoke-token", IsRequired = true, EmitDefaultValue = false)]
         public string RevokeToken { get; set; }
 
         /// <summary>
         /// revokeSelf/revokeAll (delete only this token/this token and his children)
         /// </summary>
         /// <value>revokeSelf/revokeAll (delete only this token/this token and his children)</value>
-        [DataMember(Name="revoke-type", EmitDefaultValue=false)]
+        [DataMember(Name = "revoke-type", IsRequired = true, EmitDefaultValue = false)]
         public string RevokeType { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -126,14 +133,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -226,7 +233,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,4 +1,5 @@
 # akeyless.Model.GetPKICertificateOutput
+
 ## Properties
 
 Name | Type | Description | Notes

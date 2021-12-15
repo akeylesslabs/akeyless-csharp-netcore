@@ -1,4 +1,5 @@
 # akeyless.Model.GetSSHCertificate
+
 ## Properties
 
 Name | Type | Description | Notes

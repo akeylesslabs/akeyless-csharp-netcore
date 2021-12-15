@@ -1,5 +1,6 @@
 # akeyless.Model.CreateAuthMethodLDAP
 createAuthMethodLDAP is a command that creates a new auth method that will be able to authenticate using LDAP.
+
 ## Properties
 
 Name | Type | Description | Notes

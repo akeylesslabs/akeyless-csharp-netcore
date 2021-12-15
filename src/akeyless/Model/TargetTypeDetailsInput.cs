@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// TargetTypeDetailsInput
     /// </summary>
-    [DataContract]
-    public partial class TargetTypeDetailsInput :  IEquatable<TargetTypeDetailsInput>, IValidatableObject
+    [DataContract(Name = "TargetTypeDetailsInput")]
+    public partial class TargetTypeDetailsInput : IEquatable<TargetTypeDetailsInput>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetTypeDetailsInput" /> class.
@@ -187,460 +188,460 @@ namespace akeyless.Model
             this.VenafiUseTpp = venafiUseTpp;
             this.VenafiZone = venafiZone;
         }
-        
+
         /// <summary>
         /// Gets or Sets ArtifactoryAdminApikey
         /// </summary>
-        [DataMember(Name="artifactory_admin_apikey", EmitDefaultValue=false)]
+        [DataMember(Name = "artifactory_admin_apikey", EmitDefaultValue = false)]
         public string ArtifactoryAdminApikey { get; set; }
 
         /// <summary>
         /// Gets or Sets ArtifactoryAdminUsername
         /// </summary>
-        [DataMember(Name="artifactory_admin_username", EmitDefaultValue=false)]
+        [DataMember(Name = "artifactory_admin_username", EmitDefaultValue = false)]
         public string ArtifactoryAdminUsername { get; set; }
 
         /// <summary>
         /// Gets or Sets ArtifactoryBaseUrl
         /// </summary>
-        [DataMember(Name="artifactory_base_url", EmitDefaultValue=false)]
+        [DataMember(Name = "artifactory_base_url", EmitDefaultValue = false)]
         public string ArtifactoryBaseUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsAccessKeyId
         /// </summary>
-        [DataMember(Name="aws_access_key_id", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_access_key_id", EmitDefaultValue = false)]
         public string AwsAccessKeyId { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsRegion
         /// </summary>
-        [DataMember(Name="aws_region", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsSecretAccessKey
         /// </summary>
-        [DataMember(Name="aws_secret_access_key", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_secret_access_key", EmitDefaultValue = false)]
         public string AwsSecretAccessKey { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsSessionToken
         /// </summary>
-        [DataMember(Name="aws_session_token", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_session_token", EmitDefaultValue = false)]
         public string AwsSessionToken { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureClientId
         /// </summary>
-        [DataMember(Name="azure_client_id", EmitDefaultValue=false)]
+        [DataMember(Name = "azure_client_id", EmitDefaultValue = false)]
         public string AzureClientId { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureClientSecret
         /// </summary>
-        [DataMember(Name="azure_client_secret", EmitDefaultValue=false)]
+        [DataMember(Name = "azure_client_secret", EmitDefaultValue = false)]
         public string AzureClientSecret { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureTenantId
         /// </summary>
-        [DataMember(Name="azure_tenant_id", EmitDefaultValue=false)]
+        [DataMember(Name = "azure_tenant_id", EmitDefaultValue = false)]
         public string AzureTenantId { get; set; }
 
         /// <summary>
         /// Gets or Sets ChefServerHostName
         /// </summary>
-        [DataMember(Name="chef_server_host_name", EmitDefaultValue=false)]
+        [DataMember(Name = "chef_server_host_name", EmitDefaultValue = false)]
         public string ChefServerHostName { get; set; }
 
         /// <summary>
         /// Gets or Sets ChefServerKey
         /// </summary>
-        [DataMember(Name="chef_server_key", EmitDefaultValue=false)]
+        [DataMember(Name = "chef_server_key", EmitDefaultValue = false)]
         public string ChefServerKey { get; set; }
 
         /// <summary>
         /// Gets or Sets ChefServerPort
         /// </summary>
-        [DataMember(Name="chef_server_port", EmitDefaultValue=false)]
+        [DataMember(Name = "chef_server_port", EmitDefaultValue = false)]
         public string ChefServerPort { get; set; }
 
         /// <summary>
         /// Gets or Sets ChefServerUrl
         /// </summary>
-        [DataMember(Name="chef_server_url", EmitDefaultValue=false)]
+        [DataMember(Name = "chef_server_url", EmitDefaultValue = false)]
         public string ChefServerUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets ChefServerUsername
         /// </summary>
-        [DataMember(Name="chef_server_username", EmitDefaultValue=false)]
+        [DataMember(Name = "chef_server_username", EmitDefaultValue = false)]
         public string ChefServerUsername { get; set; }
 
         /// <summary>
         /// Gets or Sets ChefSkipSsl
         /// </summary>
-        [DataMember(Name="chef_skip_ssl", EmitDefaultValue=false)]
+        [DataMember(Name = "chef_skip_ssl", EmitDefaultValue = true)]
         public bool ChefSkipSsl { get; set; }
 
         /// <summary>
         /// Gets or Sets DbHostName
         /// </summary>
-        [DataMember(Name="db_host_name", EmitDefaultValue=false)]
+        [DataMember(Name = "db_host_name", EmitDefaultValue = false)]
         public string DbHostName { get; set; }
 
         /// <summary>
         /// Gets or Sets DbName
         /// </summary>
-        [DataMember(Name="db_name", EmitDefaultValue=false)]
+        [DataMember(Name = "db_name", EmitDefaultValue = false)]
         public string DbName { get; set; }
 
         /// <summary>
         /// Gets or Sets DbPort
         /// </summary>
-        [DataMember(Name="db_port", EmitDefaultValue=false)]
+        [DataMember(Name = "db_port", EmitDefaultValue = false)]
         public string DbPort { get; set; }
 
         /// <summary>
         /// Gets or Sets DbPwd
         /// </summary>
-        [DataMember(Name="db_pwd", EmitDefaultValue=false)]
+        [DataMember(Name = "db_pwd", EmitDefaultValue = false)]
         public string DbPwd { get; set; }
 
         /// <summary>
         /// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set.
         /// </summary>
         /// <value>(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set.</value>
-        [DataMember(Name="db_server_certificates", EmitDefaultValue=false)]
+        [DataMember(Name = "db_server_certificates", EmitDefaultValue = false)]
         public string DbServerCertificates { get; set; }
 
         /// <summary>
         /// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address.
         /// </summary>
         /// <value>(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address.</value>
-        [DataMember(Name="db_server_name", EmitDefaultValue=false)]
+        [DataMember(Name = "db_server_name", EmitDefaultValue = false)]
         public string DbServerName { get; set; }
 
         /// <summary>
         /// Gets or Sets DbUserName
         /// </summary>
-        [DataMember(Name="db_user_name", EmitDefaultValue=false)]
+        [DataMember(Name = "db_user_name", EmitDefaultValue = false)]
         public string DbUserName { get; set; }
 
         /// <summary>
         /// Gets or Sets EksAccessKeyId
         /// </summary>
-        [DataMember(Name="eks_access_key_id", EmitDefaultValue=false)]
+        [DataMember(Name = "eks_access_key_id", EmitDefaultValue = false)]
         public string EksAccessKeyId { get; set; }
 
         /// <summary>
         /// Gets or Sets EksClusterCaCertificate
         /// </summary>
-        [DataMember(Name="eks_cluster_ca_certificate", EmitDefaultValue=false)]
+        [DataMember(Name = "eks_cluster_ca_certificate", EmitDefaultValue = false)]
         public string EksClusterCaCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets EksClusterEndpoint
         /// </summary>
-        [DataMember(Name="eks_cluster_endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "eks_cluster_endpoint", EmitDefaultValue = false)]
         public string EksClusterEndpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets EksClusterName
         /// </summary>
-        [DataMember(Name="eks_cluster_name", EmitDefaultValue=false)]
+        [DataMember(Name = "eks_cluster_name", EmitDefaultValue = false)]
         public string EksClusterName { get; set; }
 
         /// <summary>
         /// Gets or Sets EksRegion
         /// </summary>
-        [DataMember(Name="eks_region", EmitDefaultValue=false)]
+        [DataMember(Name = "eks_region", EmitDefaultValue = false)]
         public string EksRegion { get; set; }
 
         /// <summary>
         /// Gets or Sets EksSecretAccessKey
         /// </summary>
-        [DataMember(Name="eks_secret_access_key", EmitDefaultValue=false)]
+        [DataMember(Name = "eks_secret_access_key", EmitDefaultValue = false)]
         public string EksSecretAccessKey { get; set; }
 
         /// <summary>
         /// Gets or Sets GcpServiceAccountEmail
         /// </summary>
-        [DataMember(Name="gcp_service_account_email", EmitDefaultValue=false)]
+        [DataMember(Name = "gcp_service_account_email", EmitDefaultValue = false)]
         public string GcpServiceAccountEmail { get; set; }
 
         /// <summary>
         /// Gets or Sets GcpServiceAccountKey
         /// </summary>
-        [DataMember(Name="gcp_service_account_key", EmitDefaultValue=false)]
+        [DataMember(Name = "gcp_service_account_key", EmitDefaultValue = false)]
         public string GcpServiceAccountKey { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeClusterCaCertificate
         /// </summary>
-        [DataMember(Name="gke_cluster_ca_certificate", EmitDefaultValue=false)]
+        [DataMember(Name = "gke_cluster_ca_certificate", EmitDefaultValue = false)]
         public string GkeClusterCaCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeClusterEndpoint
         /// </summary>
-        [DataMember(Name="gke_cluster_endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "gke_cluster_endpoint", EmitDefaultValue = false)]
         public string GkeClusterEndpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeClusterName
         /// </summary>
-        [DataMember(Name="gke_cluster_name", EmitDefaultValue=false)]
+        [DataMember(Name = "gke_cluster_name", EmitDefaultValue = false)]
         public string GkeClusterName { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeServiceAccountKey
         /// </summary>
-        [DataMember(Name="gke_service_account_key", EmitDefaultValue=false)]
+        [DataMember(Name = "gke_service_account_key", EmitDefaultValue = false)]
         public string GkeServiceAccountKey { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeServiceAccountName
         /// </summary>
-        [DataMember(Name="gke_service_account_name", EmitDefaultValue=false)]
+        [DataMember(Name = "gke_service_account_name", EmitDefaultValue = false)]
         public string GkeServiceAccountName { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
         /// </summary>
-        [DataMember(Name="host", EmitDefaultValue=false)]
+        [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sBearerToken
         /// </summary>
-        [DataMember(Name="k8s_bearer_token", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_bearer_token", EmitDefaultValue = false)]
         public string K8sBearerToken { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sClusterCaCertificate
         /// </summary>
-        [DataMember(Name="k8s_cluster_ca_certificate", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_cluster_ca_certificate", EmitDefaultValue = false)]
         public string K8sClusterCaCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sClusterEndpoint
         /// </summary>
-        [DataMember(Name="k8s_cluster_endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_cluster_endpoint", EmitDefaultValue = false)]
         public string K8sClusterEndpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapAudience
         /// </summary>
-        [DataMember(Name="ldap_audience", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_audience", EmitDefaultValue = false)]
         public string LdapAudience { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapBindDn
         /// </summary>
-        [DataMember(Name="ldap_bind_dn", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_bind_dn", EmitDefaultValue = false)]
         public string LdapBindDn { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapBindPassword
         /// </summary>
-        [DataMember(Name="ldap_bind_password", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_bind_password", EmitDefaultValue = false)]
         public string LdapBindPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapCertificate
         /// </summary>
-        [DataMember(Name="ldap_certificate", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_certificate", EmitDefaultValue = false)]
         public string LdapCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapTokenExpiration
         /// </summary>
-        [DataMember(Name="ldap_token_expiration", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_token_expiration", EmitDefaultValue = false)]
         public string LdapTokenExpiration { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapUrl
         /// </summary>
-        [DataMember(Name="ldap_url", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_url", EmitDefaultValue = false)]
         public string LdapUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbAtlasApiPrivateKey
         /// </summary>
-        [DataMember(Name="mongodb_atlas_api_private_key", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_atlas_api_private_key", EmitDefaultValue = false)]
         public string MongodbAtlasApiPrivateKey { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbAtlasApiPublicKey
         /// </summary>
-        [DataMember(Name="mongodb_atlas_api_public_key", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_atlas_api_public_key", EmitDefaultValue = false)]
         public string MongodbAtlasApiPublicKey { get; set; }
 
         /// <summary>
         /// mongodb atlas fields
         /// </summary>
         /// <value>mongodb atlas fields</value>
-        [DataMember(Name="mongodb_atlas_project_id", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_atlas_project_id", EmitDefaultValue = false)]
         public string MongodbAtlasProjectId { get; set; }
 
         /// <summary>
         /// common fields
         /// </summary>
         /// <value>common fields</value>
-        [DataMember(Name="mongodb_db_name", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_db_name", EmitDefaultValue = false)]
         public string MongodbDbName { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbDefaultAuthDb
         /// </summary>
-        [DataMember(Name="mongodb_default_auth_db", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_default_auth_db", EmitDefaultValue = false)]
         public string MongodbDefaultAuthDb { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbHostPort
         /// </summary>
-        [DataMember(Name="mongodb_host_port", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_host_port", EmitDefaultValue = false)]
         public string MongodbHostPort { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbIsAtlas
         /// </summary>
-        [DataMember(Name="mongodb_is_atlas", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_is_atlas", EmitDefaultValue = true)]
         public bool MongodbIsAtlas { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbPassword
         /// </summary>
-        [DataMember(Name="mongodb_password", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_password", EmitDefaultValue = false)]
         public string MongodbPassword { get; set; }
 
         /// <summary>
         /// mongodb fields
         /// </summary>
         /// <value>mongodb fields</value>
-        [DataMember(Name="mongodb_uri_connection", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_uri_connection", EmitDefaultValue = false)]
         public string MongodbUriConnection { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbUriOptions
         /// </summary>
-        [DataMember(Name="mongodb_uri_options", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_uri_options", EmitDefaultValue = false)]
         public string MongodbUriOptions { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbUsername
         /// </summary>
-        [DataMember(Name="mongodb_username", EmitDefaultValue=false)]
+        [DataMember(Name = "mongodb_username", EmitDefaultValue = false)]
         public string MongodbUsername { get; set; }
 
         /// <summary>
         /// Gets or Sets Password
         /// </summary>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets Payload
         /// </summary>
-        [DataMember(Name="payload", EmitDefaultValue=false)]
+        [DataMember(Name = "payload", EmitDefaultValue = false)]
         public string Payload { get; set; }
 
         /// <summary>
         /// Gets or Sets Port
         /// </summary>
-        [DataMember(Name="port", EmitDefaultValue=false)]
+        [DataMember(Name = "port", EmitDefaultValue = false)]
         public string Port { get; set; }
 
         /// <summary>
         /// Gets or Sets PrivateKey
         /// </summary>
-        [DataMember(Name="private_key", EmitDefaultValue=false)]
+        [DataMember(Name = "private_key", EmitDefaultValue = false)]
         public string PrivateKey { get; set; }
 
         /// <summary>
         /// Gets or Sets PrivateKeyPassword
         /// </summary>
-        [DataMember(Name="private_key_password", EmitDefaultValue=false)]
+        [DataMember(Name = "private_key_password", EmitDefaultValue = false)]
         public string PrivateKeyPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerPassword
         /// </summary>
-        [DataMember(Name="rabbitmq_server_password", EmitDefaultValue=false)]
+        [DataMember(Name = "rabbitmq_server_password", EmitDefaultValue = false)]
         public string RabbitmqServerPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerUri
         /// </summary>
-        [DataMember(Name="rabbitmq_server_uri", EmitDefaultValue=false)]
+        [DataMember(Name = "rabbitmq_server_uri", EmitDefaultValue = false)]
         public string RabbitmqServerUri { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerUser
         /// </summary>
-        [DataMember(Name="rabbitmq_server_user", EmitDefaultValue=false)]
+        [DataMember(Name = "rabbitmq_server_user", EmitDefaultValue = false)]
         public string RabbitmqServerUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SfAccount
         /// </summary>
-        [DataMember(Name="sf_account", EmitDefaultValue=false)]
+        [DataMember(Name = "sf_account", EmitDefaultValue = false)]
         public string SfAccount { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name="url", EmitDefaultValue=false)]
+        [DataMember(Name = "url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets UseGwCloudIdentity
         /// </summary>
-        [DataMember(Name="use_gw_cloud_identity", EmitDefaultValue=false)]
+        [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
         public bool UseGwCloudIdentity { get; set; }
 
         /// <summary>
         /// Gets or Sets Username
         /// </summary>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiApiKey
         /// </summary>
-        [DataMember(Name="venafi_api_key", EmitDefaultValue=false)]
+        [DataMember(Name = "venafi_api_key", EmitDefaultValue = false)]
         public string VenafiApiKey { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiBaseUrl
         /// </summary>
-        [DataMember(Name="venafi_base_url", EmitDefaultValue=false)]
+        [DataMember(Name = "venafi_base_url", EmitDefaultValue = false)]
         public string VenafiBaseUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiTppPassword
         /// </summary>
-        [DataMember(Name="venafi_tpp_password", EmitDefaultValue=false)]
+        [DataMember(Name = "venafi_tpp_password", EmitDefaultValue = false)]
         public string VenafiTppPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiTppUsername
         /// </summary>
-        [DataMember(Name="venafi_tpp_username", EmitDefaultValue=false)]
+        [DataMember(Name = "venafi_tpp_username", EmitDefaultValue = false)]
         public string VenafiTppUsername { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiUseTpp
         /// </summary>
-        [DataMember(Name="venafi_use_tpp", EmitDefaultValue=false)]
+        [DataMember(Name = "venafi_use_tpp", EmitDefaultValue = true)]
         public bool VenafiUseTpp { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiZone
         /// </summary>
-        [DataMember(Name="venafi_zone", EmitDefaultValue=false)]
+        [DataMember(Name = "venafi_zone", EmitDefaultValue = false)]
         public string VenafiZone { get; set; }
 
         /// <summary>
@@ -729,14 +730,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -1297,7 +1298,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerPostgreSQLOutput
+
 ## Properties
 
 Name | Type | Description | Notes

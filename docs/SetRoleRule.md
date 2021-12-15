@@ -1,4 +1,5 @@
 # akeyless.Model.SetRoleRule
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,6 @@
 # akeyless.Model.RotatedSecretDetailsInfo
 RotatedSecretDetailsInfo The rotated secret rotator info
+
 ## Properties
 
 Name | Type | Description | Notes

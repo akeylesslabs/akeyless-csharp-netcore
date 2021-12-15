@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// SystemAccessCredentialsReplyObj
     /// </summary>
-    [DataContract]
-    public partial class SystemAccessCredentialsReplyObj :  IEquatable<SystemAccessCredentialsReplyObj>, IValidatableObject
+    [DataContract(Name = "SystemAccessCredentialsReplyObj")]
+    public partial class SystemAccessCredentialsReplyObj : IEquatable<SystemAccessCredentialsReplyObj>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemAccessCredentialsReplyObj" /> class.
@@ -45,33 +46,33 @@ namespace akeyless.Model
             this.KfmCreds = kfmCreds;
             this.UamCreds = uamCreds;
         }
-        
+
         /// <summary>
         /// Temporary credentials for accessing Auth
         /// </summary>
         /// <value>Temporary credentials for accessing Auth</value>
-        [DataMember(Name="auth_creds", EmitDefaultValue=false)]
+        [DataMember(Name = "auth_creds", EmitDefaultValue = false)]
         public string AuthCreds { get; set; }
 
         /// <summary>
         /// Credentials expiration date
         /// </summary>
         /// <value>Credentials expiration date</value>
-        [DataMember(Name="expiry", EmitDefaultValue=false)]
+        [DataMember(Name = "expiry", EmitDefaultValue = false)]
         public long Expiry { get; set; }
 
         /// <summary>
         /// Temporary credentials for accessing the KFMs instances
         /// </summary>
         /// <value>Temporary credentials for accessing the KFMs instances</value>
-        [DataMember(Name="kfm_creds", EmitDefaultValue=false)]
+        [DataMember(Name = "kfm_creds", EmitDefaultValue = false)]
         public string KfmCreds { get; set; }
 
         /// <summary>
         /// Temporary credentials for accessing the UAM service
         /// </summary>
         /// <value>Temporary credentials for accessing the UAM service</value>
-        [DataMember(Name="uam_creds", EmitDefaultValue=false)]
+        [DataMember(Name = "uam_creds", EmitDefaultValue = false)]
         public string UamCreds { get; set; }
 
         /// <summary>
@@ -89,14 +90,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

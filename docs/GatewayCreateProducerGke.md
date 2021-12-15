@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerGke
 gatewayCreateProducerGke is a command that creates gke producer
+
 ## Properties
 
 Name | Type | Description | Notes

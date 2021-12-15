@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// GetSSHCertificate
     /// </summary>
-    [DataContract]
-    public partial class GetSSHCertificate :  IEquatable<GetSSHCertificate>, IValidatableObject
+    [DataContract(Name = "getSSHCertificate")]
+    public partial class GetSSHCertificate : IEquatable<GetSSHCertificate>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSSHCertificate" /> class.
@@ -49,63 +50,69 @@ namespace akeyless.Model
         public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), string password = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
-            this.CertIssuerName = certIssuerName ?? throw new ArgumentNullException("certIssuerName is a required property for GetSSHCertificate and cannot be null");
+            if (certIssuerName == null) {
+                throw new ArgumentNullException("certIssuerName is a required property for GetSSHCertificate and cannot be null");
+            }
+            this.CertIssuerName = certIssuerName;
             // to ensure "certUsername" is required (not null)
-            this.CertUsername = certUsername ?? throw new ArgumentNullException("certUsername is a required property for GetSSHCertificate and cannot be null");
+            if (certUsername == null) {
+                throw new ArgumentNullException("certUsername is a required property for GetSSHCertificate and cannot be null");
+            }
+            this.CertUsername = certUsername;
             this.Password = password;
             this.PublicKeyData = publicKeyData;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// The name of the SSH certificate issuer
         /// </summary>
         /// <value>The name of the SSH certificate issuer</value>
-        [DataMember(Name="cert-issuer-name", EmitDefaultValue=false)]
+        [DataMember(Name = "cert-issuer-name", IsRequired = true, EmitDefaultValue = false)]
         public string CertIssuerName { get; set; }
 
         /// <summary>
         /// The username to sign in the SSH certificate
         /// </summary>
         /// <value>The username to sign in the SSH certificate</value>
-        [DataMember(Name="cert-username", EmitDefaultValue=false)]
+        [DataMember(Name = "cert-username", IsRequired = true, EmitDefaultValue = false)]
         public string CertUsername { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// SSH public key file contents. If this option is used, the certificate will be printed to stdout
         /// </summary>
         /// <value>SSH public key file contents. If this option is used, the certificate will be printed to stdout</value>
-        [DataMember(Name="public-key-data", EmitDefaultValue=false)]
+        [DataMember(Name = "public-key-data", EmitDefaultValue = false)]
         public string PublicKeyData { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -126,14 +133,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -226,7 +233,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

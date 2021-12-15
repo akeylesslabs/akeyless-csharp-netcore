@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerOracleDb
 gatewayCreateProducerOracleDb is a command that creates oracle db producer
+
 ## Properties
 
 Name | Type | Description | Notes

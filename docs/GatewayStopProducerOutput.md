@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayStopProducerOutput
+
 ## Properties
 
 Name | Type | Description | Notes

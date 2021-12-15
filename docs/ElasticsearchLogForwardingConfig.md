@@ -1,4 +1,5 @@
 # akeyless.Model.ElasticsearchLogForwardingConfig
+
 ## Properties
 
 Name | Type | Description | Notes

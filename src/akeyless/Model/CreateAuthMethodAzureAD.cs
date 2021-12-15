@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// createAuthMethodAzureAD is a command that creates a new auth method that will be able to authenticate using Azure Active Directory credentials.
     /// </summary>
-    [DataContract]
-    public partial class CreateAuthMethodAzureAD :  IEquatable<CreateAuthMethodAzureAD>, IValidatableObject
+    [DataContract(Name = "createAuthMethodAzureAD")]
+    public partial class CreateAuthMethodAzureAD : IEquatable<CreateAuthMethodAzureAD>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAuthMethodAzureAD" /> class.
@@ -62,9 +63,15 @@ namespace akeyless.Model
         public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), string issuer = "https://sts.windows.net/---bound_tenant_id---", string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
-            this.BoundTenantId = boundTenantId ?? throw new ArgumentNullException("boundTenantId is a required property for CreateAuthMethodAzureAD and cannot be null");
+            if (boundTenantId == null) {
+                throw new ArgumentNullException("boundTenantId is a required property for CreateAuthMethodAzureAD and cannot be null");
+            }
+            this.BoundTenantId = boundTenantId;
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodAzureAD and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for CreateAuthMethodAzureAD and cannot be null");
+            }
+            this.Name = name;
             this.AccessExpires = accessExpires;
             // use default value if no "audience" provided
             this.Audience = audience ?? "https://management.azure.com/";
@@ -87,145 +94,145 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Access expiration date in Unix timestamp (select 0 for access without expiry date)
         /// </summary>
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
-        [DataMember(Name="access-expires", EmitDefaultValue=false)]
+        [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
 
         /// <summary>
         /// The audience in the JWT
         /// </summary>
         /// <value>The audience in the JWT</value>
-        [DataMember(Name="audience", EmitDefaultValue=false)]
+        [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
 
         /// <summary>
         /// A list of group ids that the access is restricted to
         /// </summary>
         /// <value>A list of group ids that the access is restricted to</value>
-        [DataMember(Name="bound-group-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-group-id", EmitDefaultValue = false)]
         public List<string> BoundGroupId { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
-        [DataMember(Name="bound-ips", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
 
         /// <summary>
         /// A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc)
         /// </summary>
         /// <value>A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc)</value>
-        [DataMember(Name="bound-providers", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-providers", EmitDefaultValue = false)]
         public List<string> BoundProviders { get; set; }
 
         /// <summary>
         /// A list of full resource ids that the access is restricted to
         /// </summary>
         /// <value>A list of full resource ids that the access is restricted to</value>
-        [DataMember(Name="bound-resource-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-resource-id", EmitDefaultValue = false)]
         public List<string> BoundResourceId { get; set; }
 
         /// <summary>
         /// A list of resource names that the access is restricted to (e.g, a virtual machine name, scale set name, etc).
         /// </summary>
         /// <value>A list of resource names that the access is restricted to (e.g, a virtual machine name, scale set name, etc).</value>
-        [DataMember(Name="bound-resource-names", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-resource-names", EmitDefaultValue = false)]
         public List<string> BoundResourceNames { get; set; }
 
         /// <summary>
         /// A list of resource types that the access is restricted to (e.g, virtualMachines, userAssignedIdentities, etc)
         /// </summary>
         /// <value>A list of resource types that the access is restricted to (e.g, virtualMachines, userAssignedIdentities, etc)</value>
-        [DataMember(Name="bound-resource-types", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-resource-types", EmitDefaultValue = false)]
         public List<string> BoundResourceTypes { get; set; }
 
         /// <summary>
         /// A list of resource groups that the access is restricted to
         /// </summary>
         /// <value>A list of resource groups that the access is restricted to</value>
-        [DataMember(Name="bound-rg-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-rg-id", EmitDefaultValue = false)]
         public List<string> BoundRgId { get; set; }
 
         /// <summary>
         /// A list of service principal IDs that the access is restricted to
         /// </summary>
         /// <value>A list of service principal IDs that the access is restricted to</value>
-        [DataMember(Name="bound-spid", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-spid", EmitDefaultValue = false)]
         public List<string> BoundSpid { get; set; }
 
         /// <summary>
         /// A list of subscription ids that the access is restricted to
         /// </summary>
         /// <value>A list of subscription ids that the access is restricted to</value>
-        [DataMember(Name="bound-sub-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-sub-id", EmitDefaultValue = false)]
         public List<string> BoundSubId { get; set; }
 
         /// <summary>
         /// The Azure tenant id that the access is restricted to
         /// </summary>
         /// <value>The Azure tenant id that the access is restricted to</value>
-        [DataMember(Name="bound-tenant-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-tenant-id", IsRequired = true, EmitDefaultValue = false)]
         public string BoundTenantId { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
         /// </summary>
         /// <value>if true: enforce role-association must include sub claims</value>
-        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
+        [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
-        [DataMember(Name="issuer", EmitDefaultValue=false)]
+        [DataMember(Name = "issuer", EmitDefaultValue = false)]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
-        [DataMember(Name="jwks-uri", EmitDefaultValue=false)]
+        [DataMember(Name = "jwks-uri", EmitDefaultValue = false)]
         public string JwksUri { get; set; }
 
         /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -259,14 +266,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -455,7 +462,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

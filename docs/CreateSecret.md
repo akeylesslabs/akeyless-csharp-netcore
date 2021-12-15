@@ -1,4 +1,5 @@
 # akeyless.Model.CreateSecret
+
 ## Properties
 
 Name | Type | Description | Notes

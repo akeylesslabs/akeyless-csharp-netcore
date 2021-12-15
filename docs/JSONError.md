@@ -1,4 +1,5 @@
 # akeyless.Model.JSONError
+
 ## Properties
 
 Name | Type | Description | Notes

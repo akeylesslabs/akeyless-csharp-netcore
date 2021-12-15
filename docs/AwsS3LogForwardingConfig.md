@@ -1,4 +1,5 @@
 # akeyless.Model.AwsS3LogForwardingConfig
+
 ## Properties
 
 Name | Type | Description | Notes

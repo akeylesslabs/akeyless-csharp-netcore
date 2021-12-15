@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// VerifyJWTWithClassicKey
     /// </summary>
-    [DataContract]
-    public partial class VerifyJWTWithClassicKey :  IEquatable<VerifyJWTWithClassicKey>, IValidatableObject
+    [DataContract(Name = "verifyJWTWithClassicKey")]
+    public partial class VerifyJWTWithClassicKey : IEquatable<VerifyJWTWithClassicKey>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VerifyJWTWithClassicKey" /> class.
@@ -50,73 +51,82 @@ namespace akeyless.Model
         public VerifyJWTWithClassicKey(string displayId = default(string), string jwt = default(string), string password = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            this.DisplayId = displayId ?? throw new ArgumentNullException("displayId is a required property for VerifyJWTWithClassicKey and cannot be null");
+            if (displayId == null) {
+                throw new ArgumentNullException("displayId is a required property for VerifyJWTWithClassicKey and cannot be null");
+            }
+            this.DisplayId = displayId;
             // to ensure "jwt" is required (not null)
-            this.Jwt = jwt ?? throw new ArgumentNullException("jwt is a required property for VerifyJWTWithClassicKey and cannot be null");
+            if (jwt == null) {
+                throw new ArgumentNullException("jwt is a required property for VerifyJWTWithClassicKey and cannot be null");
+            }
+            this.Jwt = jwt;
             // to ensure "requiredClaims" is required (not null)
-            this.RequiredClaims = requiredClaims ?? throw new ArgumentNullException("requiredClaims is a required property for VerifyJWTWithClassicKey and cannot be null");
-            this.Version = version;
+            if (requiredClaims == null) {
+                throw new ArgumentNullException("requiredClaims is a required property for VerifyJWTWithClassicKey and cannot be null");
+            }
+            this.RequiredClaims = requiredClaims;
+            this._Version = version;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// The name of the key to use in the verify JWT process
         /// </summary>
         /// <value>The name of the key to use in the verify JWT process</value>
-        [DataMember(Name="display-id", EmitDefaultValue=false)]
+        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
         public string DisplayId { get; set; }
 
         /// <summary>
         /// JWT
         /// </summary>
         /// <value>JWT</value>
-        [DataMember(Name="jwt", EmitDefaultValue=false)]
+        [DataMember(Name = "jwt", IsRequired = true, EmitDefaultValue = false)]
         public string Jwt { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// RequiredClaims
         /// </summary>
         /// <value>RequiredClaims</value>
-        [DataMember(Name="required-claims", EmitDefaultValue=false)]
+        [DataMember(Name = "required-claims", IsRequired = true, EmitDefaultValue = false)]
         public string RequiredClaims { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int Version { get; set; }
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
+        public int _Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,18 +143,18 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -204,8 +214,8 @@ namespace akeyless.Model
                     this.Username.Equals(input.Username))
                 ) && 
                 (
-                    this.Version == input.Version ||
-                    this.Version.Equals(input.Version)
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -232,7 +242,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
-                hashCode = hashCode * 59 + this.Version.GetHashCode();
+                hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -242,7 +252,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

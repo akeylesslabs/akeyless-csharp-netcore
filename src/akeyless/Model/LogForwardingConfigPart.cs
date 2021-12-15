@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// LogForwardingConfigPart
     /// </summary>
-    [DataContract]
-    public partial class LogForwardingConfigPart :  IEquatable<LogForwardingConfigPart>, IValidatableObject
+    [DataContract(Name = "LogForwardingConfigPart")]
+    public partial class LogForwardingConfigPart : IEquatable<LogForwardingConfigPart>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LogForwardingConfigPart" /> class.
@@ -63,83 +64,83 @@ namespace akeyless.Model
             this.SyslogConfig = syslogConfig;
             this.TargetLogType = targetLogType;
         }
-        
+
         /// <summary>
         /// Gets or Sets AwsS3Config
         /// </summary>
-        [DataMember(Name="aws_s3_config", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_s3_config", EmitDefaultValue = false)]
         public AwsS3LogForwardingConfig AwsS3Config { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureAnalyticsConfig
         /// </summary>
-        [DataMember(Name="azure_analytics_config", EmitDefaultValue=false)]
+        [DataMember(Name = "azure_analytics_config", EmitDefaultValue = false)]
         public AzureLogAnalyticsForwardingConfig AzureAnalyticsConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets DatadogConfig
         /// </summary>
-        [DataMember(Name="datadog_config", EmitDefaultValue=false)]
+        [DataMember(Name = "datadog_config", EmitDefaultValue = false)]
         public DatadogForwardingConfig DatadogConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchConfig
         /// </summary>
-        [DataMember(Name="elasticsearch_config", EmitDefaultValue=false)]
+        [DataMember(Name = "elasticsearch_config", EmitDefaultValue = false)]
         public ElasticsearchLogForwardingConfig ElasticsearchConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets LoganEnable
         /// </summary>
-        [DataMember(Name="logan_enable", EmitDefaultValue=false)]
+        [DataMember(Name = "logan_enable", EmitDefaultValue = true)]
         public bool LoganEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets LoganUrl
         /// </summary>
-        [DataMember(Name="logan_url", EmitDefaultValue=false)]
+        [DataMember(Name = "logan_url", EmitDefaultValue = false)]
         public string LoganUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets LogstashConfig
         /// </summary>
-        [DataMember(Name="logstash_config", EmitDefaultValue=false)]
+        [DataMember(Name = "logstash_config", EmitDefaultValue = false)]
         public LogstashLogForwardingConfig LogstashConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets LogzIoConfig
         /// </summary>
-        [DataMember(Name="logz_io_config", EmitDefaultValue=false)]
+        [DataMember(Name = "logz_io_config", EmitDefaultValue = false)]
         public LogzIoLogForwardingConfig LogzIoConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets PullIntervalSec
         /// </summary>
-        [DataMember(Name="pull_interval_sec", EmitDefaultValue=false)]
+        [DataMember(Name = "pull_interval_sec", EmitDefaultValue = false)]
         public string PullIntervalSec { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkConfig
         /// </summary>
-        [DataMember(Name="splunk_config", EmitDefaultValue=false)]
+        [DataMember(Name = "splunk_config", EmitDefaultValue = false)]
         public SplunkLogForwardingConfig SplunkConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets StdOut
         /// </summary>
-        [DataMember(Name="std_out", EmitDefaultValue=false)]
+        [DataMember(Name = "std_out", EmitDefaultValue = true)]
         public bool StdOut { get; set; }
 
         /// <summary>
         /// Gets or Sets SyslogConfig
         /// </summary>
-        [DataMember(Name="syslog_config", EmitDefaultValue=false)]
+        [DataMember(Name = "syslog_config", EmitDefaultValue = false)]
         public SyslogLogForwardingConfig SyslogConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetLogType
         /// </summary>
-        [DataMember(Name="target_log_type", EmitDefaultValue=false)]
+        [DataMember(Name = "target_log_type", EmitDefaultValue = false)]
         public string TargetLogType { get; set; }
 
         /// <summary>
@@ -166,14 +167,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -304,7 +305,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

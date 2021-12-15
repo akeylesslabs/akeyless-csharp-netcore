@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// getCloudIdentity is a command that gets Cloud Identity Token (relevant only for access-type&#x3D;azure_ad, aws_iam, gcp).
     /// </summary>
-    [DataContract]
-    public partial class GetCloudIdentity :  IEquatable<GetCloudIdentity>, IValidatableObject
+    [DataContract(Name = "getCloudIdentity")]
+    public partial class GetCloudIdentity : IEquatable<GetCloudIdentity>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCloudIdentity" /> class.
@@ -45,32 +46,32 @@ namespace akeyless.Model
             this.GcpAudience = gcpAudience;
             this.UrlSafe = urlSafe;
         }
-        
+
         /// <summary>
         /// Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad)
         /// </summary>
         /// <value>Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad)</value>
-        [DataMember(Name="azure_ad_object_id", EmitDefaultValue=false)]
+        [DataMember(Name = "azure_ad_object_id", EmitDefaultValue = false)]
         public string AzureAdObjectId { get; set; }
 
         /// <summary>
         /// Gets or Sets Debug
         /// </summary>
-        [DataMember(Name="debug", EmitDefaultValue=false)]
+        [DataMember(Name = "debug", EmitDefaultValue = true)]
         public bool Debug { get; set; }
 
         /// <summary>
         /// GCP JWT audience
         /// </summary>
         /// <value>GCP JWT audience</value>
-        [DataMember(Name="gcp-audience", EmitDefaultValue=false)]
+        [DataMember(Name = "gcp-audience", EmitDefaultValue = false)]
         public string GcpAudience { get; set; }
 
         /// <summary>
         /// Escapes the token so it can be safely placed inside a URL query
         /// </summary>
         /// <value>Escapes the token so it can be safely placed inside a URL query</value>
-        [DataMember(Name="url_safe", EmitDefaultValue=false)]
+        [DataMember(Name = "url_safe", EmitDefaultValue = true)]
         public bool UrlSafe { get; set; }
 
         /// <summary>
@@ -88,14 +89,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -163,7 +164,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

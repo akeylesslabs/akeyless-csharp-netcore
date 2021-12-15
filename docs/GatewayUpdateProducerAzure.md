@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayUpdateProducerAzure
 gatewayUpdateProducerAzure is a command that updates azure producer
+
 ## Properties
 
 Name | Type | Description | Notes

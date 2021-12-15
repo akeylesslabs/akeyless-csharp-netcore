@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerSnowflake
 gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+
 ## Properties
 
 Name | Type | Description | Notes

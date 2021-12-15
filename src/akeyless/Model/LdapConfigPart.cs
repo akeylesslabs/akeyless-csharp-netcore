@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// LdapConfigPart
     /// </summary>
-    [DataContract]
-    public partial class LdapConfigPart :  IEquatable<LdapConfigPart>, IValidatableObject
+    [DataContract(Name = "LdapConfigPart")]
+    public partial class LdapConfigPart : IEquatable<LdapConfigPart>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LdapConfigPart" /> class.
@@ -65,89 +66,89 @@ namespace akeyless.Model
             this.LdapUserAttr = ldapUserAttr;
             this.LdapUserDn = ldapUserDn;
         }
-        
+
         /// <summary>
         /// Gets or Sets LdapAccessId
         /// </summary>
-        [DataMember(Name="ldap_access_id", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_access_id", EmitDefaultValue = false)]
         public string LdapAccessId { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapAnonymousSearch
         /// </summary>
-        [DataMember(Name="ldap_anonymous_search", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_anonymous_search", EmitDefaultValue = true)]
         public bool LdapAnonymousSearch { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapBindDn
         /// </summary>
-        [DataMember(Name="ldap_bind_dn", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_bind_dn", EmitDefaultValue = false)]
         public string LdapBindDn { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapBindPassword
         /// </summary>
-        [DataMember(Name="ldap_bind_password", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_bind_password", EmitDefaultValue = false)]
         public string LdapBindPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapCert
         /// </summary>
-        [DataMember(Name="ldap_cert", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_cert", EmitDefaultValue = false)]
         public string LdapCert { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapEnable
         /// </summary>
-        [DataMember(Name="ldap_enable", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_enable", EmitDefaultValue = true)]
         public bool LdapEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapGroupAttr
         /// </summary>
-        [DataMember(Name="ldap_group_attr", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_group_attr", EmitDefaultValue = false)]
         public string LdapGroupAttr { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapGroupDn
         /// </summary>
-        [DataMember(Name="ldap_group_dn", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_group_dn", EmitDefaultValue = false)]
         public string LdapGroupDn { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapGroupFilter
         /// </summary>
-        [DataMember(Name="ldap_group_filter", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_group_filter", EmitDefaultValue = false)]
         public string LdapGroupFilter { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapPrivateKey
         /// </summary>
-        [DataMember(Name="ldap_private_key", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_private_key", EmitDefaultValue = false)]
         public string LdapPrivateKey { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapTokenExpiration
         /// </summary>
-        [DataMember(Name="ldap_token_expiration", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_token_expiration", EmitDefaultValue = false)]
         public string LdapTokenExpiration { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapUrl
         /// </summary>
-        [DataMember(Name="ldap_url", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_url", EmitDefaultValue = false)]
         public string LdapUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapUserAttr
         /// </summary>
-        [DataMember(Name="ldap_user_attr", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_user_attr", EmitDefaultValue = false)]
         public string LdapUserAttr { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapUserDn
         /// </summary>
-        [DataMember(Name="ldap_user_dn", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_user_dn", EmitDefaultValue = false)]
         public string LdapUserDn { get; set; }
 
         /// <summary>
@@ -175,14 +176,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -320,7 +321,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

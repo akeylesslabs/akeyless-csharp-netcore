@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayGetK8SAuthConfig
 gatewayGetK8SAuth is a command that gets k8s auth config
+
 ## Properties
 
 Name | Type | Description | Notes

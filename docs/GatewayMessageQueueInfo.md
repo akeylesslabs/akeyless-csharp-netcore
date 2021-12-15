@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayMessageQueueInfo
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerOracleDbOutput
+
 ## Properties
 
 Name | Type | Description | Notes

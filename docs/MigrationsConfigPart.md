@@ -1,4 +1,5 @@
 # akeyless.Model.MigrationsConfigPart
+
 ## Properties
 
 Name | Type | Description | Notes

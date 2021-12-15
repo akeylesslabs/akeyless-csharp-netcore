@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// UploadRSA
     /// </summary>
-    [DataContract]
-    public partial class UploadRSA :  IEquatable<UploadRSA>, IValidatableObject
+    [DataContract(Name = "uploadRSA")]
+    public partial class UploadRSA : IEquatable<UploadRSA>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadRSA" /> class.
@@ -54,9 +55,15 @@ namespace akeyless.Model
         public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "alg" is required (not null)
-            this.Alg = alg ?? throw new ArgumentNullException("alg is a required property for UploadRSA and cannot be null");
+            if (alg == null) {
+                throw new ArgumentNullException("alg is a required property for UploadRSA and cannot be null");
+            }
+            this.Alg = alg;
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for UploadRSA and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for UploadRSA and cannot be null");
+            }
+            this.Name = name;
             this.CertFileData = certFileData;
             this.CustomerFrgId = customerFrgId;
             this.Metadata = metadata;
@@ -68,89 +75,89 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]
         /// </summary>
         /// <value>Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096]</value>
-        [DataMember(Name="alg", EmitDefaultValue=false)]
+        [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = false)]
         public string Alg { get; set; }
 
         /// <summary>
         /// Certificate in a PEM format.
         /// </summary>
         /// <value>Certificate in a PEM format.</value>
-        [DataMember(Name="cert-file-data", EmitDefaultValue=false)]
+        [DataMember(Name = "cert-file-data", EmitDefaultValue = false)]
         public string CertFileData { get; set; }
 
         /// <summary>
         /// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
         /// </summary>
         /// <value>The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)</value>
-        [DataMember(Name="customer-frg-id", EmitDefaultValue=false)]
+        [DataMember(Name = "customer-frg-id", EmitDefaultValue = false)]
         public string CustomerFrgId { get; set; }
 
         /// <summary>
         /// A metadata about the key
         /// </summary>
         /// <value>A metadata about the key</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
         /// <summary>
         /// Name of key to be created
         /// </summary>
         /// <value>Name of key to be created</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// RSA private key data, base64 encoded
         /// </summary>
         /// <value>RSA private key data, base64 encoded</value>
-        [DataMember(Name="rsa-file-data", EmitDefaultValue=false)]
+        [DataMember(Name = "rsa-file-data", EmitDefaultValue = false)]
         public string RsaFileData { get; set; }
 
         /// <summary>
         /// The number of fragments that the item will be split into
         /// </summary>
         /// <value>The number of fragments that the item will be split into</value>
-        [DataMember(Name="split-level", EmitDefaultValue=false)]
+        [DataMember(Name = "split-level", EmitDefaultValue = false)]
         public long SplitLevel { get; set; }
 
         /// <summary>
         /// List of the tags attached to this key
         /// </summary>
         /// <value>List of the tags attached to this key</value>
-        [DataMember(Name="tag", EmitDefaultValue=false)]
+        [DataMember(Name = "tag", EmitDefaultValue = false)]
         public List<string> Tag { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -176,14 +183,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -310,7 +317,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

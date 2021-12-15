@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// AuthMethodAccessInfo
     /// </summary>
-    [DataContract]
-    public partial class AuthMethodAccessInfo :  IEquatable<AuthMethodAccessInfo>, IValidatableObject
+    [DataContract(Name = "AuthMethodAccessInfo")]
+    public partial class AuthMethodAccessInfo : IEquatable<AuthMethodAccessInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthMethodAccessInfo" /> class.
@@ -71,109 +72,109 @@ namespace akeyless.Model
             this.SamlAccessRules = samlAccessRules;
             this.UniversalIdentityAccessRules = universalIdentityAccessRules;
         }
-        
+
         /// <summary>
         /// Gets or Sets AccessExpires
         /// </summary>
-        [DataMember(Name="access_expires", EmitDefaultValue=false)]
+        [DataMember(Name = "access_expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
 
         /// <summary>
         /// for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself
         /// </summary>
         /// <value>for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself</value>
-        [DataMember(Name="access_id_alias", EmitDefaultValue=false)]
+        [DataMember(Name = "access_id_alias", EmitDefaultValue = false)]
         public string AccessIdAlias { get; set; }
 
         /// <summary>
         /// Gets or Sets ApiKeyAccessRules
         /// </summary>
-        [DataMember(Name="api_key_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "api_key_access_rules", EmitDefaultValue = false)]
         public APIKeyAccessRules ApiKeyAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsIamAccessRules
         /// </summary>
-        [DataMember(Name="aws_iam_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_iam_access_rules", EmitDefaultValue = false)]
         public AWSIAMAccessRules AwsIamAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureAdAccessRules
         /// </summary>
-        [DataMember(Name="azure_ad_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "azure_ad_access_rules", EmitDefaultValue = false)]
         public AzureADAccessRules AzureAdAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets CidrWhitelist
         /// </summary>
-        [DataMember(Name="cidr_whitelist", EmitDefaultValue=false)]
+        [DataMember(Name = "cidr_whitelist", EmitDefaultValue = false)]
         public string CidrWhitelist { get; set; }
 
         /// <summary>
         /// Gets or Sets EmailPassAccessRules
         /// </summary>
-        [DataMember(Name="email_pass_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "email_pass_access_rules", EmitDefaultValue = false)]
         public EmailPassAccessRules EmailPassAccessRules { get; set; }
 
         /// <summary>
         /// if true the role associated with this auth method must include sub claims
         /// </summary>
         /// <value>if true the role associated with this auth method must include sub claims</value>
-        [DataMember(Name="force_sub_claims", EmitDefaultValue=false)]
+        [DataMember(Name = "force_sub_claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
         /// Gets or Sets GcpAccessRules
         /// </summary>
-        [DataMember(Name="gcp_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "gcp_access_rules", EmitDefaultValue = false)]
         public GCPAccessRules GcpAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets HuaweiAccessRules
         /// </summary>
-        [DataMember(Name="huawei_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "huawei_access_rules", EmitDefaultValue = false)]
         public HuaweiAccessRules HuaweiAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sAccessRules
         /// </summary>
-        [DataMember(Name="k8s_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_access_rules", EmitDefaultValue = false)]
         public KubernetesAccessRules K8sAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapAccessRules
         /// </summary>
-        [DataMember(Name="ldap_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_access_rules", EmitDefaultValue = false)]
         public LDAPAccessRules LdapAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets Oauth2AccessRules
         /// </summary>
-        [DataMember(Name="oauth2_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "oauth2_access_rules", EmitDefaultValue = false)]
         public OAuth2AccessRules Oauth2AccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets OidcAccessRules
         /// </summary>
-        [DataMember(Name="oidc_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "oidc_access_rules", EmitDefaultValue = false)]
         public OIDCAccessRules OidcAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets RulesType
         /// </summary>
-        [DataMember(Name="rules_type", EmitDefaultValue=false)]
+        [DataMember(Name = "rules_type", EmitDefaultValue = false)]
         public string RulesType { get; set; }
 
         /// <summary>
         /// Gets or Sets SamlAccessRules
         /// </summary>
-        [DataMember(Name="saml_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "saml_access_rules", EmitDefaultValue = false)]
         public SAMLAccessRules SamlAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets UniversalIdentityAccessRules
         /// </summary>
-        [DataMember(Name="universal_identity_access_rules", EmitDefaultValue=false)]
+        [DataMember(Name = "universal_identity_access_rules", EmitDefaultValue = false)]
         public UniversalIdentityAccessRules UniversalIdentityAccessRules { get; set; }
 
         /// <summary>
@@ -204,14 +205,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -370,7 +371,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

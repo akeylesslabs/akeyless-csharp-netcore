@@ -1,4 +1,5 @@
 # akeyless.Model.AWSIAMAccessRules
+
 ## Properties
 
 Name | Type | Description | Notes

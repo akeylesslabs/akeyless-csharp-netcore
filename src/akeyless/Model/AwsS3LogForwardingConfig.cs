@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// AwsS3LogForwardingConfig
     /// </summary>
-    [DataContract]
-    public partial class AwsS3LogForwardingConfig :  IEquatable<AwsS3LogForwardingConfig>, IValidatableObject
+    [DataContract(Name = "AwsS3LogForwardingConfig")]
+    public partial class AwsS3LogForwardingConfig : IEquatable<AwsS3LogForwardingConfig>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AwsS3LogForwardingConfig" /> class.
@@ -47,35 +48,35 @@ namespace akeyless.Model
             this.BucketName = bucketName;
             this.LogFolder = logFolder;
         }
-        
+
         /// <summary>
         /// Gets or Sets AwsAccessId
         /// </summary>
-        [DataMember(Name="aws_access_id", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_access_id", EmitDefaultValue = false)]
         public string AwsAccessId { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsAccessKey
         /// </summary>
-        [DataMember(Name="aws_access_key", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_access_key", EmitDefaultValue = false)]
         public string AwsAccessKey { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsRegion
         /// </summary>
-        [DataMember(Name="aws_region", EmitDefaultValue=false)]
+        [DataMember(Name = "aws_region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
         /// <summary>
         /// Gets or Sets BucketName
         /// </summary>
-        [DataMember(Name="bucket_name", EmitDefaultValue=false)]
+        [DataMember(Name = "bucket_name", EmitDefaultValue = false)]
         public string BucketName { get; set; }
 
         /// <summary>
         /// Gets or Sets LogFolder
         /// </summary>
-        [DataMember(Name="log_folder", EmitDefaultValue=false)]
+        [DataMember(Name = "log_folder", EmitDefaultValue = false)]
         public string LogFolder { get; set; }
 
         /// <summary>
@@ -94,14 +95,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

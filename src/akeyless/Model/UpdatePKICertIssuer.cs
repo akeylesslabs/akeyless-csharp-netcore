@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// UpdatePKICertIssuer
     /// </summary>
-    [DataContract]
-    public partial class UpdatePKICertIssuer :  IEquatable<UpdatePKICertIssuer>, IValidatableObject
+    [DataContract(Name = "UpdatePKICertIssuer")]
+    public partial class UpdatePKICertIssuer : IEquatable<UpdatePKICertIssuer>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdatePKICertIssuer" /> class.
@@ -70,9 +71,15 @@ namespace akeyless.Model
         public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdatePKICertIssuer and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for UpdatePKICertIssuer and cannot be null");
+            }
+            this.Name = name;
             // to ensure "signerKeyName" is required (not null)
-            this.SignerKeyName = signerKeyName ?? throw new ArgumentNullException("signerKeyName is a required property for UpdatePKICertIssuer and cannot be null");
+            if (signerKeyName == null) {
+                throw new ArgumentNullException("signerKeyName is a required property for UpdatePKICertIssuer and cannot be null");
+            }
+            this.SignerKeyName = signerKeyName;
             this.Ttl = ttl;
             this.AddTag = addTag;
             this.AllowAnyName = allowAnyName;
@@ -101,201 +108,201 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// List of the new tags that will be attached to this item
         /// </summary>
         /// <value>List of the new tags that will be attached to this item</value>
-        [DataMember(Name="add-tag", EmitDefaultValue=false)]
+        [DataMember(Name = "add-tag", EmitDefaultValue = false)]
         public List<string> AddTag { get; set; }
 
         /// <summary>
         /// If set, clients can request certificates for any CN
         /// </summary>
         /// <value>If set, clients can request certificates for any CN</value>
-        [DataMember(Name="allow-any-name", EmitDefaultValue=false)]
+        [DataMember(Name = "allow-any-name", EmitDefaultValue = true)]
         public bool AllowAnyName { get; set; }
 
         /// <summary>
         /// If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains
         /// </summary>
         /// <value>If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains</value>
-        [DataMember(Name="allow-subdomains", EmitDefaultValue=false)]
+        [DataMember(Name = "allow-subdomains", EmitDefaultValue = true)]
         public bool AllowSubdomains { get; set; }
 
         /// <summary>
         /// A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list)
         /// </summary>
         /// <value>A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list)</value>
-        [DataMember(Name="allowed-domains", EmitDefaultValue=false)]
+        [DataMember(Name = "allowed-domains", EmitDefaultValue = false)]
         public string AllowedDomains { get; set; }
 
         /// <summary>
         /// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
         /// </summary>
         /// <value>A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)</value>
-        [DataMember(Name="allowed-uri-sans", EmitDefaultValue=false)]
+        [DataMember(Name = "allowed-uri-sans", EmitDefaultValue = false)]
         public string AllowedUriSans { get; set; }
 
         /// <summary>
         /// If set, certificates will be flagged for client auth use
         /// </summary>
         /// <value>If set, certificates will be flagged for client auth use</value>
-        [DataMember(Name="client-flag", EmitDefaultValue=false)]
+        [DataMember(Name = "client-flag", EmitDefaultValue = true)]
         public bool ClientFlag { get; set; }
 
         /// <summary>
         /// If set, certificates will be flagged for code signing use
         /// </summary>
         /// <value>If set, certificates will be flagged for code signing use</value>
-        [DataMember(Name="code-signing-flag", EmitDefaultValue=false)]
+        [DataMember(Name = "code-signing-flag", EmitDefaultValue = true)]
         public bool CodeSigningFlag { get; set; }
 
         /// <summary>
         /// A comma-separated list of the country that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the country that will be set in the issued certificate</value>
-        [DataMember(Name="country", EmitDefaultValue=false)]
+        [DataMember(Name = "country", EmitDefaultValue = false)]
         public string Country { get; set; }
 
         /// <summary>
         /// key-usage
         /// </summary>
         /// <value>key-usage</value>
-        [DataMember(Name="key-usage", EmitDefaultValue=false)]
+        [DataMember(Name = "key-usage", EmitDefaultValue = false)]
         public string KeyUsage { get; set; }
 
         /// <summary>
         /// A comma-separated list of the locality that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the locality that will be set in the issued certificate</value>
-        [DataMember(Name="locality", EmitDefaultValue=false)]
+        [DataMember(Name = "locality", EmitDefaultValue = false)]
         public string Locality { get; set; }
 
         /// <summary>
         /// A metadata about the issuer
         /// </summary>
         /// <value>A metadata about the issuer</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
         /// <summary>
         /// PKI certificate issuer name
         /// </summary>
         /// <value>PKI certificate issuer name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// New item name
         /// </summary>
         /// <value>New item name</value>
-        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// If set, any names are allowed for CN and SANs in the certificate and not only a valid host name
         /// </summary>
         /// <value>If set, any names are allowed for CN and SANs in the certificate and not only a valid host name</value>
-        [DataMember(Name="not-enforce-hostnames", EmitDefaultValue=false)]
+        [DataMember(Name = "not-enforce-hostnames", EmitDefaultValue = true)]
         public bool NotEnforceHostnames { get; set; }
 
         /// <summary>
         /// If set, clients can request certificates without a CN
         /// </summary>
         /// <value>If set, clients can request certificates without a CN</value>
-        [DataMember(Name="not-require-cn", EmitDefaultValue=false)]
+        [DataMember(Name = "not-require-cn", EmitDefaultValue = true)]
         public bool NotRequireCn { get; set; }
 
         /// <summary>
         /// A comma-separated list of organizational units (OU) that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of organizational units (OU) that will be set in the issued certificate</value>
-        [DataMember(Name="organizational-units", EmitDefaultValue=false)]
+        [DataMember(Name = "organizational-units", EmitDefaultValue = false)]
         public string OrganizationalUnits { get; set; }
 
         /// <summary>
         /// A comma-separated list of organizations (O) that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of organizations (O) that will be set in the issued certificate</value>
-        [DataMember(Name="organizations", EmitDefaultValue=false)]
+        [DataMember(Name = "organizations", EmitDefaultValue = false)]
         public string Organizations { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// A comma-separated list of the postal code that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the postal code that will be set in the issued certificate</value>
-        [DataMember(Name="postal-code", EmitDefaultValue=false)]
+        [DataMember(Name = "postal-code", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// A comma-separated list of the province that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the province that will be set in the issued certificate</value>
-        [DataMember(Name="province", EmitDefaultValue=false)]
+        [DataMember(Name = "province", EmitDefaultValue = false)]
         public string Province { get; set; }
 
         /// <summary>
         /// List of the existent tags that will be removed from this item
         /// </summary>
         /// <value>List of the existent tags that will be removed from this item</value>
-        [DataMember(Name="rm-tag", EmitDefaultValue=false)]
+        [DataMember(Name = "rm-tag", EmitDefaultValue = false)]
         public List<string> RmTag { get; set; }
 
         /// <summary>
         /// If set, certificates will be flagged for server auth use
         /// </summary>
         /// <value>If set, certificates will be flagged for server auth use</value>
-        [DataMember(Name="server-flag", EmitDefaultValue=false)]
+        [DataMember(Name = "server-flag", EmitDefaultValue = true)]
         public bool ServerFlag { get; set; }
 
         /// <summary>
         /// A key to sign the certificate with
         /// </summary>
         /// <value>A key to sign the certificate with</value>
-        [DataMember(Name="signer-key-name", EmitDefaultValue=false)]
+        [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = false)]
         public string SignerKeyName { get; set; }
 
         /// <summary>
         /// A comma-separated list of the street address that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the street address that will be set in the issued certificate</value>
-        [DataMember(Name="street-address", EmitDefaultValue=false)]
+        [DataMember(Name = "street-address", EmitDefaultValue = false)]
         public string StreetAddress { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// he requested Time To Live for the certificate, in seconds
         /// </summary>
         /// <value>he requested Time To Live for the certificate, in seconds</value>
-        [DataMember(Name="ttl", EmitDefaultValue=false)]
+        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
         public long Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -337,14 +344,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -570,7 +577,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,4 +1,5 @@
 # akeyless.Model.CreateRotatedSecretOutput
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayUpdateProducerChef
 gatewayUpdateProducerChef is a command that updates chef producer
+
 ## Properties
 
 Name | Type | Description | Notes

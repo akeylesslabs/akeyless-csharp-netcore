@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayListMigration
 gatewayListMigration is a command that list migration
+
 ## Properties
 
 Name | Type | Description | Notes

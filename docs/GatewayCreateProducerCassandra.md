@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerCassandra
 gatewayCreateProducerCassandra is a command that creates a Cassandra producer
+
 ## Properties
 
 Name | Type | Description | Notes

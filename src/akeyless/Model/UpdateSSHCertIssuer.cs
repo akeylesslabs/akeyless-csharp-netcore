@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// UpdateSSHCertIssuer
     /// </summary>
-    [DataContract]
-    public partial class UpdateSSHCertIssuer :  IEquatable<UpdateSSHCertIssuer>, IValidatableObject
+    [DataContract(Name = "updateSSHCertIssuer")]
+    public partial class UpdateSSHCertIssuer : IEquatable<UpdateSSHCertIssuer>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSSHCertIssuer" /> class.
@@ -62,11 +63,20 @@ namespace akeyless.Model
         public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string newName = default(string), string password = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
-            this.AllowedUsers = allowedUsers ?? throw new ArgumentNullException("allowedUsers is a required property for UpdateSSHCertIssuer and cannot be null");
+            if (allowedUsers == null) {
+                throw new ArgumentNullException("allowedUsers is a required property for UpdateSSHCertIssuer and cannot be null");
+            }
+            this.AllowedUsers = allowedUsers;
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateSSHCertIssuer and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for UpdateSSHCertIssuer and cannot be null");
+            }
+            this.Name = name;
             // to ensure "signerKeyName" is required (not null)
-            this.SignerKeyName = signerKeyName ?? throw new ArgumentNullException("signerKeyName is a required property for UpdateSSHCertIssuer and cannot be null");
+            if (signerKeyName == null) {
+                throw new ArgumentNullException("signerKeyName is a required property for UpdateSSHCertIssuer and cannot be null");
+            }
+            this.SignerKeyName = signerKeyName;
             this.Ttl = ttl;
             this.AddTag = addTag;
             this.Extensions = extensions;
@@ -85,139 +95,139 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// List of the new tags that will be attached to this item
         /// </summary>
         /// <value>List of the new tags that will be attached to this item</value>
-        [DataMember(Name="add-tag", EmitDefaultValue=false)]
+        [DataMember(Name = "add-tag", EmitDefaultValue = false)]
         public List<string> AddTag { get; set; }
 
         /// <summary>
         /// Users allowed to fetch the certificate, e.g root,ubuntu
         /// </summary>
         /// <value>Users allowed to fetch the certificate, e.g root,ubuntu</value>
-        [DataMember(Name="allowed-users", EmitDefaultValue=false)]
+        [DataMember(Name = "allowed-users", IsRequired = true, EmitDefaultValue = false)]
         public string AllowedUsers { get; set; }
 
         /// <summary>
         /// Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;
         /// </summary>
         /// <value>Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;</value>
-        [DataMember(Name="extensions", EmitDefaultValue=false)]
+        [DataMember(Name = "extensions", EmitDefaultValue = false)]
         public Dictionary<string, string> Extensions { get; set; }
 
         /// <summary>
         /// A metadata about the issuer
         /// </summary>
         /// <value>A metadata about the issuer</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
         /// <summary>
         /// SSH certificate issuer name
         /// </summary>
         /// <value>SSH certificate issuer name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// New item name
         /// </summary>
         /// <value>New item name</value>
-        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Signed certificates with principal, e.g example_role1,example_role2
         /// </summary>
         /// <value>Signed certificates with principal, e.g example_role1,example_role2</value>
-        [DataMember(Name="principals", EmitDefaultValue=false)]
+        [DataMember(Name = "principals", EmitDefaultValue = false)]
         public string Principals { get; set; }
 
         /// <summary>
         /// List of the existent tags that will be removed from this item
         /// </summary>
         /// <value>List of the existent tags that will be removed from this item</value>
-        [DataMember(Name="rm-tag", EmitDefaultValue=false)]
+        [DataMember(Name = "rm-tag", EmitDefaultValue = false)]
         public List<string> RmTag { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionApi
         /// </summary>
-        [DataMember(Name="secure-access-bastion-api", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-bastion-api", EmitDefaultValue = false)]
         public string SecureAccessBastionApi { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionSsh
         /// </summary>
-        [DataMember(Name="secure-access-bastion-ssh", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-bastion-ssh", EmitDefaultValue = false)]
         public string SecureAccessBastionSsh { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessEnable
         /// </summary>
-        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessHost
         /// </summary>
-        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessSshCredsUser
         /// </summary>
-        [DataMember(Name="secure-access-ssh-creds-user", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-ssh-creds-user", EmitDefaultValue = false)]
         public string SecureAccessSshCredsUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessUseInternalBastion
         /// </summary>
-        [DataMember(Name="secure-access-use-internal-bastion", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-use-internal-bastion", EmitDefaultValue = true)]
         public bool SecureAccessUseInternalBastion { get; set; }
 
         /// <summary>
         /// A key to sign the certificate with
         /// </summary>
         /// <value>A key to sign the certificate with</value>
-        [DataMember(Name="signer-key-name", EmitDefaultValue=false)]
+        [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = false)]
         public string SignerKeyName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// he requested Time To Live for the certificate, in seconds
         /// </summary>
         /// <value>he requested Time To Live for the certificate, in seconds</value>
-        [DataMember(Name="ttl", EmitDefaultValue=false)]
+        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
         public long Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -251,14 +261,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -442,7 +452,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

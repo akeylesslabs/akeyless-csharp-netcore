@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerLdap
 gatewayCreateProducerLdap is a command that creates ldap producer
+
 ## Properties
 
 Name | Type | Description | Notes

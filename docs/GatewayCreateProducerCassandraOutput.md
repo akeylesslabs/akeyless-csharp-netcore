@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayCreateProducerCassandraOutput
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// Auth
     /// </summary>
-    [DataContract]
-    public partial class Auth :  IEquatable<Auth>, IValidatableObject
+    [DataContract(Name = "auth")]
+    public partial class Auth : IEquatable<Auth>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Auth" /> class.
@@ -64,96 +65,96 @@ namespace akeyless.Model
             this.LdapUsername = ldapUsername;
             this.UidToken = uidToken;
         }
-        
+
         /// <summary>
         /// Access ID
         /// </summary>
         /// <value>Access ID</value>
-        [DataMember(Name="access-id", EmitDefaultValue=false)]
+        [DataMember(Name = "access-id", EmitDefaultValue = false)]
         public string AccessId { get; set; }
 
         /// <summary>
         /// Access key (relevant only for access-type&#x3D;access_key)
         /// </summary>
         /// <value>Access key (relevant only for access-type&#x3D;access_key)</value>
-        [DataMember(Name="access-key", EmitDefaultValue=false)]
+        [DataMember(Name = "access-key", EmitDefaultValue = false)]
         public string AccessKey { get; set; }
 
         /// <summary>
         /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)
         /// </summary>
         /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)</value>
-        [DataMember(Name="access-type", EmitDefaultValue=false)]
+        [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
 
         /// <summary>
         /// Email (relevant only for access-type&#x3D;password)
         /// </summary>
         /// <value>Email (relevant only for access-type&#x3D;password)</value>
-        [DataMember(Name="admin-email", EmitDefaultValue=false)]
+        [DataMember(Name = "admin-email", EmitDefaultValue = false)]
         public string AdminEmail { get; set; }
 
         /// <summary>
         /// Password (relevant only for access-type&#x3D;password)
         /// </summary>
         /// <value>Password (relevant only for access-type&#x3D;password)</value>
-        [DataMember(Name="admin-password", EmitDefaultValue=false)]
+        [DataMember(Name = "admin-password", EmitDefaultValue = false)]
         public string AdminPassword { get; set; }
 
         /// <summary>
         /// The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp)
         /// </summary>
         /// <value>The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp)</value>
-        [DataMember(Name="cloud-id", EmitDefaultValue=false)]
+        [DataMember(Name = "cloud-id", EmitDefaultValue = false)]
         public string CloudId { get; set; }
 
         /// <summary>
         /// GCP JWT audience
         /// </summary>
         /// <value>GCP JWT audience</value>
-        [DataMember(Name="gcp-audience", EmitDefaultValue=false)]
+        [DataMember(Name = "gcp-audience", EmitDefaultValue = false)]
         public string GcpAudience { get; set; }
 
         /// <summary>
         /// The Json Web Token (relevant only for access-type&#x3D;jwt/oidc)
         /// </summary>
         /// <value>The Json Web Token (relevant only for access-type&#x3D;jwt/oidc)</value>
-        [DataMember(Name="jwt", EmitDefaultValue=false)]
+        [DataMember(Name = "jwt", EmitDefaultValue = false)]
         public string Jwt { get; set; }
 
         /// <summary>
         /// The K8S Auth config name (relevant only for access-type&#x3D;k8s)
         /// </summary>
         /// <value>The K8S Auth config name (relevant only for access-type&#x3D;k8s)</value>
-        [DataMember(Name="k8s-auth-config-name", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s-auth-config-name", EmitDefaultValue = false)]
         public string K8sAuthConfigName { get; set; }
 
         /// <summary>
         /// The K8S service account token. (relevant only for access-type&#x3D;k8s)
         /// </summary>
         /// <value>The K8S service account token. (relevant only for access-type&#x3D;k8s)</value>
-        [DataMember(Name="k8s-service-account-token", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s-service-account-token", EmitDefaultValue = false)]
         public string K8sServiceAccountToken { get; set; }
 
         /// <summary>
         /// LDAP password (relevant only for access-type&#x3D;ldap)
         /// </summary>
         /// <value>LDAP password (relevant only for access-type&#x3D;ldap)</value>
-        [DataMember(Name="ldap_password", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_password", EmitDefaultValue = false)]
         public string LdapPassword { get; set; }
 
         /// <summary>
         /// LDAP username (relevant only for access-type&#x3D;ldap)
         /// </summary>
         /// <value>LDAP username (relevant only for access-type&#x3D;ldap)</value>
-        [DataMember(Name="ldap_username", EmitDefaultValue=false)]
+        [DataMember(Name = "ldap_username", EmitDefaultValue = false)]
         public string LdapUsername { get; set; }
 
         /// <summary>
         /// The universal_identity token (relevant only for access-type&#x3D;universal_identity)
         /// </summary>
         /// <value>The universal_identity token (relevant only for access-type&#x3D;universal_identity)</value>
-        [DataMember(Name="uid_token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid_token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
@@ -180,14 +181,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -322,7 +323,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,4 +1,5 @@
 # akeyless.Model.LDAPAccessRules
+
 ## Properties
 
 Name | Type | Description | Notes

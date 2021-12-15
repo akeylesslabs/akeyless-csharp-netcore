@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// createAuthMethodHuawei is a command that creates a new auth method that will be able to authenticate using Huawei credentials.
     /// </summary>
-    [DataContract]
-    public partial class CreateAuthMethodHuawei :  IEquatable<CreateAuthMethodHuawei>, IValidatableObject
+    [DataContract(Name = "createAuthMethodHuawei")]
+    public partial class CreateAuthMethodHuawei : IEquatable<CreateAuthMethodHuawei>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAuthMethodHuawei" /> class.
@@ -57,7 +58,10 @@ namespace akeyless.Model
         public CreateAuthMethodHuawei(long accessExpires = 0, string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodHuawei and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for CreateAuthMethodHuawei and cannot be null");
+            }
+            this.Name = name;
             this.AccessExpires = accessExpires;
             // use default value if no "authUrl" provided
             this.AuthUrl = authUrl ?? "https://iam.myhwclouds.com:443/v3";
@@ -74,110 +78,110 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Access expiration date in Unix timestamp (select 0 for access without expiry date)
         /// </summary>
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
-        [DataMember(Name="access-expires", EmitDefaultValue=false)]
+        [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
 
         /// <summary>
         /// sts URL
         /// </summary>
         /// <value>sts URL</value>
-        [DataMember(Name="auth-url", EmitDefaultValue=false)]
+        [DataMember(Name = "auth-url", EmitDefaultValue = false)]
         public string AuthUrl { get; set; }
 
         /// <summary>
         /// A list of domain IDs that the access is restricted to
         /// </summary>
         /// <value>A list of domain IDs that the access is restricted to</value>
-        [DataMember(Name="bound-domain-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-domain-id", EmitDefaultValue = false)]
         public List<string> BoundDomainId { get; set; }
 
         /// <summary>
         /// A list of domain names that the access is restricted to
         /// </summary>
         /// <value>A list of domain names that the access is restricted to</value>
-        [DataMember(Name="bound-domain-name", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-domain-name", EmitDefaultValue = false)]
         public List<string> BoundDomainName { get; set; }
 
         /// <summary>
         /// A CIDR whitelist of the IPs that the access is restricted to
         /// </summary>
         /// <value>A CIDR whitelist of the IPs that the access is restricted to</value>
-        [DataMember(Name="bound-ips", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
 
         /// <summary>
         /// A list of full tenant ids that the access is restricted to
         /// </summary>
         /// <value>A list of full tenant ids that the access is restricted to</value>
-        [DataMember(Name="bound-tenant-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-tenant-id", EmitDefaultValue = false)]
         public List<string> BoundTenantId { get; set; }
 
         /// <summary>
         /// A list of full tenant names that the access is restricted to
         /// </summary>
         /// <value>A list of full tenant names that the access is restricted to</value>
-        [DataMember(Name="bound-tenant-name", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-tenant-name", EmitDefaultValue = false)]
         public List<string> BoundTenantName { get; set; }
 
         /// <summary>
         /// A list of full user ids that the access is restricted to
         /// </summary>
         /// <value>A list of full user ids that the access is restricted to</value>
-        [DataMember(Name="bound-user-id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-user-id", EmitDefaultValue = false)]
         public List<string> BoundUserId { get; set; }
 
         /// <summary>
         /// A list of full user-name that the access is restricted to
         /// </summary>
         /// <value>A list of full user-name that the access is restricted to</value>
-        [DataMember(Name="bound-user-name", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-user-name", EmitDefaultValue = false)]
         public List<string> BoundUserName { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
         /// </summary>
         /// <value>if true: enforce role-association must include sub claims</value>
-        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
+        [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -206,14 +210,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -365,7 +369,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

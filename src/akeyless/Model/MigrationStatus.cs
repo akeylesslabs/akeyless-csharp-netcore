@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// MigrationStatus
     /// </summary>
-    [DataContract]
-    public partial class MigrationStatus :  IEquatable<MigrationStatus>, IValidatableObject
+    [DataContract(Name = "MigrationStatus")]
+    public partial class MigrationStatus : IEquatable<MigrationStatus>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MigrationStatus" /> class.
@@ -41,17 +42,17 @@ namespace akeyless.Model
             this.LastMessages = lastMessages;
             this.LastStatuses = lastStatuses;
         }
-        
+
         /// <summary>
         /// Gets or Sets LastMessages
         /// </summary>
-        [DataMember(Name="last_messages", EmitDefaultValue=false)]
+        [DataMember(Name = "last_messages", EmitDefaultValue = false)]
         public Dictionary<string, string> LastMessages { get; set; }
 
         /// <summary>
         /// Gets or Sets LastStatuses
         /// </summary>
-        [DataMember(Name="last_statuses", EmitDefaultValue=false)]
+        [DataMember(Name = "last_statuses", EmitDefaultValue = false)]
         public Dictionary<string, string> LastStatuses { get; set; }
 
         /// <summary>
@@ -67,14 +68,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

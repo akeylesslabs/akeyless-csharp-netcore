@@ -1,4 +1,5 @@
 # akeyless.Model.CreateSSHTarget
+
 ## Properties
 
 Name | Type | Description | Notes

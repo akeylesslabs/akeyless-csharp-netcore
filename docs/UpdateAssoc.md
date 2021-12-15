@@ -1,5 +1,6 @@
 # akeyless.Model.UpdateAssoc
 updateAssoc is a command that updates the sub-claims of an association between role and auth method.
+
 ## Properties
 
 Name | Type | Description | Notes

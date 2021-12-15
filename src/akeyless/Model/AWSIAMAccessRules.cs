@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// AWSIAMAccessRules
     /// </summary>
-    [DataContract]
-    public partial class AWSIAMAccessRules :  IEquatable<AWSIAMAccessRules>, IValidatableObject
+    [DataContract(Name = "AWSIAMAccessRules")]
+    public partial class AWSIAMAccessRules : IEquatable<AWSIAMAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AWSIAMAccessRules" /> class.
@@ -53,61 +54,61 @@ namespace akeyless.Model
             this.UserId = userId;
             this.UserName = userName;
         }
-        
+
         /// <summary>
         /// The list of account ids that the login is restricted to.
         /// </summary>
         /// <value>The list of account ids that the login is restricted to.</value>
-        [DataMember(Name="account_id", EmitDefaultValue=false)]
+        [DataMember(Name = "account_id", EmitDefaultValue = false)]
         public List<string> AccountId { get; set; }
 
         /// <summary>
         /// The list of ARNs that the login is restricted to.
         /// </summary>
         /// <value>The list of ARNs that the login is restricted to.</value>
-        [DataMember(Name="arn", EmitDefaultValue=false)]
+        [DataMember(Name = "arn", EmitDefaultValue = false)]
         public List<string> Arn { get; set; }
 
         /// <summary>
         /// The list of resource ids that the login is restricted to.
         /// </summary>
         /// <value>The list of resource ids that the login is restricted to.</value>
-        [DataMember(Name="resource_id", EmitDefaultValue=false)]
+        [DataMember(Name = "resource_id", EmitDefaultValue = false)]
         public List<string> ResourceId { get; set; }
 
         /// <summary>
         /// The list of role ids that the login is restricted to.
         /// </summary>
         /// <value>The list of role ids that the login is restricted to.</value>
-        [DataMember(Name="role_id", EmitDefaultValue=false)]
+        [DataMember(Name = "role_id", EmitDefaultValue = false)]
         public List<string> RoleId { get; set; }
 
         /// <summary>
         /// The list of role names that the login is restricted to.
         /// </summary>
         /// <value>The list of role names that the login is restricted to.</value>
-        [DataMember(Name="role_name", EmitDefaultValue=false)]
+        [DataMember(Name = "role_name", EmitDefaultValue = false)]
         public List<string> RoleName { get; set; }
 
         /// <summary>
         /// The sts URL.
         /// </summary>
         /// <value>The sts URL.</value>
-        [DataMember(Name="sts_endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "sts_endpoint", EmitDefaultValue = false)]
         public string StsEndpoint { get; set; }
 
         /// <summary>
         /// The list of user ids that the login is restricted to.
         /// </summary>
         /// <value>The list of user ids that the login is restricted to.</value>
-        [DataMember(Name="user_id", EmitDefaultValue=false)]
+        [DataMember(Name = "user_id", EmitDefaultValue = false)]
         public List<string> UserId { get; set; }
 
         /// <summary>
         /// The list of user names that the login is restricted to.
         /// </summary>
         /// <value>The list of user names that the login is restricted to.</value>
-        [DataMember(Name="user_name", EmitDefaultValue=false)]
+        [DataMember(Name = "user_name", EmitDefaultValue = false)]
         public List<string> UserName { get; set; }
 
         /// <summary>
@@ -129,14 +130,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -243,7 +244,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

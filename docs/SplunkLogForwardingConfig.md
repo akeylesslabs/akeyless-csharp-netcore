@@ -1,4 +1,5 @@
 # akeyless.Model.SplunkLogForwardingConfig
+
 ## Properties
 
 Name | Type | Description | Notes

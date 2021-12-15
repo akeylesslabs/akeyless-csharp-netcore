@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateArtifactoryTarget
+
 ## Properties
 
 Name | Type | Description | Notes

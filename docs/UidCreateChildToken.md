@@ -1,5 +1,6 @@
 # akeyless.Model.UidCreateChildToken
 uidCreateChildToken is a command that creates a new child token using Akeyless Universal Identity.
+
 ## Properties
 
 Name | Type | Description | Notes

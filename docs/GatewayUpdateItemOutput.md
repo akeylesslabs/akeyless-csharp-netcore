@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayUpdateItemOutput
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # akeyless.Model.CreateAzureTarget
+
 ## Properties
 
 Name | Type | Description | Notes

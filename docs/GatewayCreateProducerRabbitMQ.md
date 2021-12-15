@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerRabbitMQ
 gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
+
 ## Properties
 
 Name | Type | Description | Notes

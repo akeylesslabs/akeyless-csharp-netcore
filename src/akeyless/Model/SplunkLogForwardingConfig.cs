@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// SplunkLogForwardingConfig
     /// </summary>
-    [DataContract]
-    public partial class SplunkLogForwardingConfig :  IEquatable<SplunkLogForwardingConfig>, IValidatableObject
+    [DataContract(Name = "SplunkLogForwardingConfig")]
+    public partial class SplunkLogForwardingConfig : IEquatable<SplunkLogForwardingConfig>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SplunkLogForwardingConfig" /> class.
@@ -47,35 +48,35 @@ namespace akeyless.Model
             this.SplunkToken = splunkToken;
             this.SplunkUrl = splunkUrl;
         }
-        
+
         /// <summary>
         /// Gets or Sets SplunkIndex
         /// </summary>
-        [DataMember(Name="splunk_index", EmitDefaultValue=false)]
+        [DataMember(Name = "splunk_index", EmitDefaultValue = false)]
         public string SplunkIndex { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkSource
         /// </summary>
-        [DataMember(Name="splunk_source", EmitDefaultValue=false)]
+        [DataMember(Name = "splunk_source", EmitDefaultValue = false)]
         public string SplunkSource { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkSourcetype
         /// </summary>
-        [DataMember(Name="splunk_sourcetype", EmitDefaultValue=false)]
+        [DataMember(Name = "splunk_sourcetype", EmitDefaultValue = false)]
         public string SplunkSourcetype { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkToken
         /// </summary>
-        [DataMember(Name="splunk_token", EmitDefaultValue=false)]
+        [DataMember(Name = "splunk_token", EmitDefaultValue = false)]
         public string SplunkToken { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkUrl
         /// </summary>
-        [DataMember(Name="splunk_url", EmitDefaultValue=false)]
+        [DataMember(Name = "splunk_url", EmitDefaultValue = false)]
         public string SplunkUrl { get; set; }
 
         /// <summary>
@@ -94,14 +95,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

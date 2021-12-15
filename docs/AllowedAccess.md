@@ -1,4 +1,5 @@
 # akeyless.Model.AllowedAccess
+
 ## Properties
 
 Name | Type | Description | Notes

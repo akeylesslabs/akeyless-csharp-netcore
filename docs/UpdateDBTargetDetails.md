@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateDBTargetDetails
+
 ## Properties
 
 Name | Type | Description | Notes

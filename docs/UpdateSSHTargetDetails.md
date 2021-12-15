@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateSSHTargetDetails
+
 ## Properties
 
 Name | Type | Description | Notes

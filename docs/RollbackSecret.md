@@ -1,4 +1,5 @@
 # akeyless.Model.RollbackSecret
+
 ## Properties
 
 Name | Type | Description | Notes

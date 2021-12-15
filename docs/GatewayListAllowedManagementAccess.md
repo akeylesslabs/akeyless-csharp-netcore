@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayListAllowedManagementAccess
 gatewayListAllowedManagementAccess is a command that returns list sub admins
+
 ## Properties
 
 Name | Type | Description | Notes

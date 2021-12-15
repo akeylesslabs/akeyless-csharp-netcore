@@ -1,5 +1,6 @@
 # akeyless.Model.CreateAuthMethodAWSIAM
 createAuthMethodAWSIAM is a command that creates a new Auth Method that will be able to authenticate using AWS IAM credentials.
+
 ## Properties
 
 Name | Type | Description | Notes

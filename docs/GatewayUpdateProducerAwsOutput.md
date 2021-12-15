@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerAwsOutput
+
 ## Properties
 
 Name | Type | Description | Notes

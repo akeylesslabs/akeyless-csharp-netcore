@@ -1,5 +1,6 @@
 # akeyless.Model.UpdateAuthMethodLDAP
 updateAuthMethodLDAP is a command that updates a new auth method that will be able to authenticate using LDAP.
+
 ## Properties
 
 Name | Type | Description | Notes

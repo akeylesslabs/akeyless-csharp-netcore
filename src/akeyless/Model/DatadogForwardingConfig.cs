@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// DatadogForwardingConfig
     /// </summary>
-    [DataContract]
-    public partial class DatadogForwardingConfig :  IEquatable<DatadogForwardingConfig>, IValidatableObject
+    [DataContract(Name = "DatadogForwardingConfig")]
+    public partial class DatadogForwardingConfig : IEquatable<DatadogForwardingConfig>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DatadogForwardingConfig" /> class.
@@ -47,35 +48,35 @@ namespace akeyless.Model
             this.DatadogLogSource = datadogLogSource;
             this.DatadogLogTags = datadogLogTags;
         }
-        
+
         /// <summary>
         /// Gets or Sets DatadogApiKey
         /// </summary>
-        [DataMember(Name="datadog_api_key", EmitDefaultValue=false)]
+        [DataMember(Name = "datadog_api_key", EmitDefaultValue = false)]
         public string DatadogApiKey { get; set; }
 
         /// <summary>
         /// Gets or Sets DatadogHost
         /// </summary>
-        [DataMember(Name="datadog_host", EmitDefaultValue=false)]
+        [DataMember(Name = "datadog_host", EmitDefaultValue = false)]
         public string DatadogHost { get; set; }
 
         /// <summary>
         /// Gets or Sets DatadogLogService
         /// </summary>
-        [DataMember(Name="datadog_log_service", EmitDefaultValue=false)]
+        [DataMember(Name = "datadog_log_service", EmitDefaultValue = false)]
         public string DatadogLogService { get; set; }
 
         /// <summary>
         /// Gets or Sets DatadogLogSource
         /// </summary>
-        [DataMember(Name="datadog_log_source", EmitDefaultValue=false)]
+        [DataMember(Name = "datadog_log_source", EmitDefaultValue = false)]
         public string DatadogLogSource { get; set; }
 
         /// <summary>
         /// Gets or Sets DatadogLogTags
         /// </summary>
-        [DataMember(Name="datadog_log_tags", EmitDefaultValue=false)]
+        [DataMember(Name = "datadog_log_tags", EmitDefaultValue = false)]
         public string DatadogLogTags { get; set; }
 
         /// <summary>
@@ -94,14 +95,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

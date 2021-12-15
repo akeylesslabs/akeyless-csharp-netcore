@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// UpdateDBTargetDetails
     /// </summary>
-    [DataContract]
-    public partial class UpdateDBTargetDetails :  IEquatable<UpdateDBTargetDetails>, IValidatableObject
+    [DataContract(Name = "updateDBTargetDetails")]
+    public partial class UpdateDBTargetDetails : IEquatable<UpdateDBTargetDetails>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateDBTargetDetails" /> class.
@@ -56,7 +57,10 @@ namespace akeyless.Model
         public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), bool newVersion = false, string password = default(string), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateDBTargetDetails and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for UpdateDBTargetDetails and cannot be null");
+            }
+            this.Name = name;
             this.DbType = dbType;
             this.HostName = hostName;
             this.MongoDbName = mongoDbName;
@@ -71,96 +75,96 @@ namespace akeyless.Model
             this.UserName = userName;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Gets or Sets DbType
         /// </summary>
-        [DataMember(Name="db_type", EmitDefaultValue=false)]
+        [DataMember(Name = "db_type", EmitDefaultValue = false)]
         public string DbType { get; set; }
 
         /// <summary>
         /// Gets or Sets HostName
         /// </summary>
-        [DataMember(Name="host_name", EmitDefaultValue=false)]
+        [DataMember(Name = "host_name", EmitDefaultValue = false)]
         public string HostName { get; set; }
 
         /// <summary>
         /// Gets or Sets MongoDbName
         /// </summary>
-        [DataMember(Name="mongo_db_name", EmitDefaultValue=false)]
+        [DataMember(Name = "mongo_db_name", EmitDefaultValue = false)]
         public string MongoDbName { get; set; }
 
         /// <summary>
         /// Gets or Sets MongoUri
         /// </summary>
-        [DataMember(Name="mongo_uri", EmitDefaultValue=false)]
+        [DataMember(Name = "mongo_uri", EmitDefaultValue = false)]
         public string MongoUri { get; set; }
 
         /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Whether to create a new version of not
         /// </summary>
         /// <value>Whether to create a new version of not</value>
-        [DataMember(Name="new-version", EmitDefaultValue=false)]
+        [DataMember(Name = "new-version", EmitDefaultValue = true)]
         public bool NewVersion { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets Port
         /// </summary>
-        [DataMember(Name="port", EmitDefaultValue=false)]
+        [DataMember(Name = "port", EmitDefaultValue = false)]
         public string Port { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
-        [DataMember(Name="protection_key", EmitDefaultValue=false)]
+        [DataMember(Name = "protection_key", EmitDefaultValue = false)]
         public string ProtectionKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Pwd
         /// </summary>
-        [DataMember(Name="pwd", EmitDefaultValue=false)]
+        [DataMember(Name = "pwd", EmitDefaultValue = false)]
         public string Pwd { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Gets or Sets UserName
         /// </summary>
-        [DataMember(Name="user_name", EmitDefaultValue=false)]
+        [DataMember(Name = "user_name", EmitDefaultValue = false)]
         public string UserName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -188,14 +192,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -335,7 +339,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

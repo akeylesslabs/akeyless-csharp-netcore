@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateRoleOutput
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// Item
     /// </summary>
-    [DataContract]
-    public partial class Item :  IEquatable<Item>, IValidatableObject
+    [DataContract(Name = "Item")]
+    public partial class Item : IEquatable<Item>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Item" /> class.
@@ -89,162 +90,162 @@ namespace akeyless.Model
             this.TargetVersions = targetVersions;
             this.WithCustomerFragment = withCustomerFragment;
         }
-        
+
         /// <summary>
         /// Gets or Sets AutoRotate
         /// </summary>
-        [DataMember(Name="auto_rotate", EmitDefaultValue=false)]
+        [DataMember(Name = "auto_rotate", EmitDefaultValue = true)]
         public bool AutoRotate { get; set; }
 
         /// <summary>
         /// Gets or Sets CertIssuerSignerKeyName
         /// </summary>
-        [DataMember(Name="cert_issuer_signer_key_name", EmitDefaultValue=false)]
+        [DataMember(Name = "cert_issuer_signer_key_name", EmitDefaultValue = false)]
         public string CertIssuerSignerKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificateIssueDetails
         /// </summary>
-        [DataMember(Name="certificate_issue_details", EmitDefaultValue=false)]
+        [DataMember(Name = "certificate_issue_details", EmitDefaultValue = false)]
         public CertificateIssueInfo CertificateIssueDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets Certificates
         /// </summary>
-        [DataMember(Name="certificates", EmitDefaultValue=false)]
+        [DataMember(Name = "certificates", EmitDefaultValue = false)]
         public string Certificates { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientPermissions
         /// </summary>
-        [DataMember(Name="client_permissions", EmitDefaultValue=false)]
+        [DataMember(Name = "client_permissions", EmitDefaultValue = false)]
         public List<string> ClientPermissions { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomerFragmentId
         /// </summary>
-        [DataMember(Name="customer_fragment_id", EmitDefaultValue=false)]
+        [DataMember(Name = "customer_fragment_id", EmitDefaultValue = false)]
         public string CustomerFragmentId { get; set; }
 
         /// <summary>
         /// Gets or Sets DeletionDate
         /// </summary>
-        [DataMember(Name="deletion_date", EmitDefaultValue=false)]
+        [DataMember(Name = "deletion_date", EmitDefaultValue = false)]
         public DateTime DeletionDate { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayId
         /// </summary>
-        [DataMember(Name="display_id", EmitDefaultValue=false)]
+        [DataMember(Name = "display_id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
 
         /// <summary>
         /// Gets or Sets IsEnabled
         /// </summary>
-        [DataMember(Name="is_enabled", EmitDefaultValue=false)]
+        [DataMember(Name = "is_enabled", EmitDefaultValue = true)]
         public bool IsEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemGeneralInfo
         /// </summary>
-        [DataMember(Name="item_general_info", EmitDefaultValue=false)]
+        [DataMember(Name = "item_general_info", EmitDefaultValue = false)]
         public ItemGeneralInfo ItemGeneralInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemId
         /// </summary>
-        [DataMember(Name="item_id", EmitDefaultValue=false)]
+        [DataMember(Name = "item_id", EmitDefaultValue = false)]
         public long ItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemMetadata
         /// </summary>
-        [DataMember(Name="item_metadata", EmitDefaultValue=false)]
+        [DataMember(Name = "item_metadata", EmitDefaultValue = false)]
         public string ItemMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemName
         /// </summary>
-        [DataMember(Name="item_name", EmitDefaultValue=false)]
+        [DataMember(Name = "item_name", EmitDefaultValue = false)]
         public string ItemName { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemSize
         /// </summary>
-        [DataMember(Name="item_size", EmitDefaultValue=false)]
+        [DataMember(Name = "item_size", EmitDefaultValue = false)]
         public long ItemSize { get; set; }
 
         /// <summary>
         /// ItemState defines the different states an Item can be in
         /// </summary>
         /// <value>ItemState defines the different states an Item can be in</value>
-        [DataMember(Name="item_state", EmitDefaultValue=false)]
+        [DataMember(Name = "item_state", EmitDefaultValue = false)]
         public string ItemState { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemTags
         /// </summary>
-        [DataMember(Name="item_tags", EmitDefaultValue=false)]
+        [DataMember(Name = "item_tags", EmitDefaultValue = false)]
         public List<string> ItemTags { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemTargetsAssoc
         /// </summary>
-        [DataMember(Name="item_targets_assoc", EmitDefaultValue=false)]
+        [DataMember(Name = "item_targets_assoc", EmitDefaultValue = false)]
         public List<ItemTargetAssociation> ItemTargetsAssoc { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemType
         /// </summary>
-        [DataMember(Name="item_type", EmitDefaultValue=false)]
+        [DataMember(Name = "item_type", EmitDefaultValue = false)]
         public string ItemType { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemVersions
         /// </summary>
-        [DataMember(Name="item_versions", EmitDefaultValue=false)]
+        [DataMember(Name = "item_versions", EmitDefaultValue = false)]
         public List<ItemVersion> ItemVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets LastVersion
         /// </summary>
-        [DataMember(Name="last_version", EmitDefaultValue=false)]
+        [DataMember(Name = "last_version", EmitDefaultValue = false)]
         public int LastVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets NextRotationDate
         /// </summary>
-        [DataMember(Name="next_rotation_date", EmitDefaultValue=false)]
+        [DataMember(Name = "next_rotation_date", EmitDefaultValue = false)]
         public DateTime NextRotationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ProtectionKeyName
         /// </summary>
-        [DataMember(Name="protection_key_name", EmitDefaultValue=false)]
+        [DataMember(Name = "protection_key_name", EmitDefaultValue = false)]
         public string ProtectionKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets PublicValue
         /// </summary>
-        [DataMember(Name="public_value", EmitDefaultValue=false)]
+        [DataMember(Name = "public_value", EmitDefaultValue = false)]
         public string PublicValue { get; set; }
 
         /// <summary>
         /// Gets or Sets RotationInterval
         /// </summary>
-        [DataMember(Name="rotation_interval", EmitDefaultValue=false)]
+        [DataMember(Name = "rotation_interval", EmitDefaultValue = false)]
         public long RotationInterval { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetVersions
         /// </summary>
-        [DataMember(Name="target_versions", EmitDefaultValue=false)]
+        [DataMember(Name = "target_versions", EmitDefaultValue = false)]
         public List<TargetItemVersion> TargetVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets WithCustomerFragment
         /// </summary>
-        [DataMember(Name="with_customer_fragment", EmitDefaultValue=false)]
+        [DataMember(Name = "with_customer_fragment", EmitDefaultValue = true)]
         public bool WithCustomerFragment { get; set; }
 
         /// <summary>
@@ -284,14 +285,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -508,7 +509,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

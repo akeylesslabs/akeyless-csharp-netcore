@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayMigrationSyncOutput
+
 ## Properties
 
 Name | Type | Description | Notes

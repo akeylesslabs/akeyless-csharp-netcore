@@ -1,4 +1,5 @@
 # akeyless.Model.K8SAuthsConfigLastChange
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # akeyless.Model.ValidateTokenOutput
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # akeyless.Model.GetSubAdminsListReplyObj
+
 ## Properties
 
 Name | Type | Description | Notes

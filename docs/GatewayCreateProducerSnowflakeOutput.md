@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayCreateProducerSnowflakeOutput
+
 ## Properties
 
 Name | Type | Description | Notes

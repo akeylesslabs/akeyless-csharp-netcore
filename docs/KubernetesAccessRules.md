@@ -1,4 +1,5 @@
 # akeyless.Model.KubernetesAccessRules
+
 ## Properties
 
 Name | Type | Description | Notes

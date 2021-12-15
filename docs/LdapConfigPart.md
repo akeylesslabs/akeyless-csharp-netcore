@@ -1,4 +1,5 @@
 # akeyless.Model.LdapConfigPart
+
 ## Properties
 
 Name | Type | Description | Notes

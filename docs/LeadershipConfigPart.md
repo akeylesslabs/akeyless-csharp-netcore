@@ -1,4 +1,5 @@
 # akeyless.Model.LeadershipConfigPart
+
 ## Properties
 
 Name | Type | Description | Notes

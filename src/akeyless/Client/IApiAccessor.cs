@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -22,14 +22,14 @@ namespace akeyless.Client
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        IReadableConfiguration Configuration {get; set;}
+        IReadableConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Gets the base path of the API client.
         /// </summary>
         /// <value>The base path</value>
-        String GetBasePath();
-        
+        string GetBasePath();
+
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>

@@ -1,4 +1,5 @@
 # akeyless.Model.PathRule
+
 ## Properties
 
 Name | Type | Description | Notes
