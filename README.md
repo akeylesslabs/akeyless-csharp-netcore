@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *V2Api* | [**Auth**](docs/V2Api.md#auth) | **POST** /auth | 
 *V2Api* | [**Configure**](docs/V2Api.md#configure) | **POST** /configure | 
 *V2Api* | [**Connect**](docs/V2Api.md#connect) | **POST** /connect | 
+*V2Api* | [**CreateAWSTarget**](docs/V2Api.md#createawstarget) | **POST** /create-aws-target | 
 *V2Api* | [**CreateArtifactoryTarget**](docs/V2Api.md#createartifactorytarget) | **POST** /create-artifactory-target | 
 *V2Api* | [**CreateAuthMethod**](docs/V2Api.md#createauthmethod) | **POST** /create-auth-method | 
 *V2Api* | [**CreateAuthMethodAWSIAM**](docs/V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam | 
@@ -342,6 +343,8 @@ Class | Method | HTTP request | Description
  - [Model.Configure](docs/Configure.md)
  - [Model.ConfigureOutput](docs/ConfigureOutput.md)
  - [Model.Connect](docs/Connect.md)
+ - [Model.CreateAWSTarget](docs/CreateAWSTarget.md)
+ - [Model.CreateAWSTargetOutput](docs/CreateAWSTargetOutput.md)
  - [Model.CreateArtifactoryTarget](docs/CreateArtifactoryTarget.md)
  - [Model.CreateArtifactoryTargetOutput](docs/CreateArtifactoryTargetOutput.md)
  - [Model.CreateAuthMethod](docs/CreateAuthMethod.md)
