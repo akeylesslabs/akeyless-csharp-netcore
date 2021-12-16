@@ -33,7 +33,6 @@ docs/ConfigHash.md
 docs/Configure.md
 docs/ConfigureOutput.md
 docs/Connect.md
-docs/CreateAWSTarget.md
 docs/CreateAWSTargetOutput.md
 docs/CreateArtifactoryTarget.md
 docs/CreateArtifactoryTargetOutput.md
@@ -94,6 +93,7 @@ docs/CreateSSHTarget.md
 docs/CreateSSHTargetOutput.md
 docs/CreateSecret.md
 docs/CreateSecretOutput.md
+docs/CreateTargetAWS.md
 docs/CreateTargetItemAssocOutput.md
 docs/CreateWebTarget.md
 docs/CreateWebTargetOutput.md
@@ -462,6 +462,7 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/CreateTargetAWSTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -512,7 +513,6 @@ src/akeyless/Model/ConfigHash.cs
 src/akeyless/Model/Configure.cs
 src/akeyless/Model/ConfigureOutput.cs
 src/akeyless/Model/Connect.cs
-src/akeyless/Model/CreateAWSTarget.cs
 src/akeyless/Model/CreateAWSTargetOutput.cs
 src/akeyless/Model/CreateArtifactoryTarget.cs
 src/akeyless/Model/CreateArtifactoryTargetOutput.cs
@@ -573,6 +573,7 @@ src/akeyless/Model/CreateSSHTarget.cs
 src/akeyless/Model/CreateSSHTargetOutput.cs
 src/akeyless/Model/CreateSecret.cs
 src/akeyless/Model/CreateSecretOutput.cs
+src/akeyless/Model/CreateTargetAWS.cs
 src/akeyless/Model/CreateTargetItemAssocOutput.cs
 src/akeyless/Model/CreateWebTarget.cs
 src/akeyless/Model/CreateWebTargetOutput.cs

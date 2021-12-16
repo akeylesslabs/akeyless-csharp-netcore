@@ -554,7 +554,7 @@ No authorization required
 
 <a name="createawstarget"></a>
 # **CreateAWSTarget**
-> CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body)
+> CreateAWSTargetOutput CreateAWSTarget (CreateTargetAWS body)
 
 
 
@@ -575,7 +575,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new CreateAWSTarget(); // CreateAWSTarget | 
+            var body = new CreateTargetAWS(); // CreateTargetAWS | 
 
             try
             {
@@ -597,7 +597,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateAWSTarget**](CreateAWSTarget.md)|  | 
+ **body** | [**CreateTargetAWS**](CreateTargetAWS.md)|  | 
 
 ### Return type
 

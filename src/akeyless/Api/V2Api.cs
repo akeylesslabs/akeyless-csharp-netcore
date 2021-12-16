@@ -123,7 +123,7 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>CreateAWSTargetOutput</returns>
-        CreateAWSTargetOutput CreateAWSTarget(CreateAWSTarget body);
+        CreateAWSTargetOutput CreateAWSTarget(CreateTargetAWS body);
 
         /// <summary>
         /// 
@@ -134,7 +134,7 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
-        ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo(CreateAWSTarget body);
+        ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo(CreateTargetAWS body);
         /// <summary>
         /// 
         /// </summary>
@@ -3757,7 +3757,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAWSTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync(CreateTargetAWS body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -3769,7 +3769,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetWithHttpInfoAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetWithHttpInfoAsync(CreateTargetAWS body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8939,7 +8939,7 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>CreateAWSTargetOutput</returns>
-        public CreateAWSTargetOutput CreateAWSTarget(CreateAWSTarget body)
+        public CreateAWSTargetOutput CreateAWSTarget(CreateTargetAWS body)
         {
             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = CreateAWSTargetWithHttpInfo(body);
             return localVarResponse.Data;
@@ -8951,7 +8951,7 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
-        public akeyless.Client.ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo(CreateAWSTarget body)
+        public akeyless.Client.ApiResponse<CreateAWSTargetOutput> CreateAWSTargetWithHttpInfo(CreateTargetAWS body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -8996,7 +8996,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAWSTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWSTargetAsync(CreateTargetAWS body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = await CreateAWSTargetWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -9009,7 +9009,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetWithHttpInfoAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAWSTargetOutput>> CreateAWSTargetWithHttpInfoAsync(CreateTargetAWS body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
