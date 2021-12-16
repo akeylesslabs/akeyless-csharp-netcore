@@ -1,5 +1,4 @@
 # akeyless.Model.ReverseRBACClient
-
 ## Properties
 
 Name | Type | Description | Notes

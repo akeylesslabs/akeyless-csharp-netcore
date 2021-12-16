@@ -1,5 +1,4 @@
 # akeyless.Model.GetTags
-
 ## Properties
 
 Name | Type | Description | Notes

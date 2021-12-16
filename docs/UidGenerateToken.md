@@ -1,6 +1,5 @@
 # akeyless.Model.UidGenerateToken
 uidGenerateToken is a command that generates a new token using Akeyless Universal Identity.
-
 ## Properties
 
 Name | Type | Description | Notes

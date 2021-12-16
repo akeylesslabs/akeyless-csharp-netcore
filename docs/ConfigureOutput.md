@@ -1,5 +1,4 @@
 # akeyless.Model.ConfigureOutput
-
 ## Properties
 
 Name | Type | Description | Notes

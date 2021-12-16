@@ -1,6 +1,5 @@
 # akeyless.Model.UpdateAuthMethodOIDC
 updateAuthMethodOIDC is a command that updates a new auth method that will be available to authenticate using OIDC.
-
 ## Properties
 
 Name | Type | Description | Notes

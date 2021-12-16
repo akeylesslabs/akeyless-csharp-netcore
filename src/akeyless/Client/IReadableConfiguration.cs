@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -11,7 +11,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Security.Cryptography.X509Certificates;
 
 namespace akeyless.Client
@@ -48,7 +47,7 @@ namespace akeyless.Client
         /// <summary>
         /// Gets the date time format.
         /// </summary>
-        /// <value>Date time format.</value>
+        /// <value>Date time foramt.</value>
         string DateTimeFormat { get; }
 
         /// <summary>
@@ -75,12 +74,6 @@ namespace akeyless.Client
         /// </summary>
         /// <value>HTTP connection timeout.</value>
         int Timeout { get; }
-
-        /// <summary>
-        /// Gets the proxy.
-        /// </summary>
-        /// <value>Proxy.</value>
-        WebProxy Proxy { get; }
 
         /// <summary>
         /// Gets the user agent.

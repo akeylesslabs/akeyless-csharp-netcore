@@ -1,5 +1,4 @@
 # akeyless.Model.RefreshKeyOutput
-
 ## Properties
 
 Name | Type | Description | Notes

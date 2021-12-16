@@ -1,6 +1,5 @@
 # akeyless.Model.OIDCCustomClaim
 OIDCCustomClaim is a custom claim specific to OIDC authentication method.
-
 ## Properties
 
 Name | Type | Description | Notes

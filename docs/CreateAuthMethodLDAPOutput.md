@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAuthMethodLDAPOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateProducerNativeK8S
 gatewayCreateProducerNativeK8S is a command that creates k8s producer
-
 ## Properties
 
 Name | Type | Description | Notes

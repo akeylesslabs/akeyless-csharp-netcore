@@ -1,5 +1,4 @@
 # akeyless.Model.CreateDBTargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

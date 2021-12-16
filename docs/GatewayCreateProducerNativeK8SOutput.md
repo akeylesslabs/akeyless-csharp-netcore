@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerNativeK8SOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateWebTargetDetails
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// MoveObjects
     /// </summary>
-    [DataContract(Name = "moveObjects")]
-    public partial class MoveObjects : IEquatable<MoveObjects>, IValidatableObject
+    [DataContract]
+    public partial class MoveObjects :  IEquatable<MoveObjects>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MoveObjects" /> class.
@@ -50,15 +49,9 @@ namespace akeyless.Model
         public MoveObjects(string objectsType = "item", string password = default(string), string source = default(string), string target = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "source" is required (not null)
-            if (source == null) {
-                throw new ArgumentNullException("source is a required property for MoveObjects and cannot be null");
-            }
-            this.Source = source;
+            this.Source = source ?? throw new ArgumentNullException("source is a required property for MoveObjects and cannot be null");
             // to ensure "target" is required (not null)
-            if (target == null) {
-                throw new ArgumentNullException("target is a required property for MoveObjects and cannot be null");
-            }
-            this.Target = target;
+            this.Target = target ?? throw new ArgumentNullException("target is a required property for MoveObjects and cannot be null");
             // use default value if no "objectsType" provided
             this.ObjectsType = objectsType ?? "item";
             this.Password = password;
@@ -66,54 +59,54 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// The objects type to move (item/auth_method/role)
         /// </summary>
         /// <value>The objects type to move (item/auth_method/role)</value>
-        [DataMember(Name = "objects-type", EmitDefaultValue = false)]
+        [DataMember(Name="objects-type", EmitDefaultValue=false)]
         public string ObjectsType { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Source path to move the objects from
         /// </summary>
         /// <value>Source path to move the objects from</value>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="source", EmitDefaultValue=false)]
         public string Source { get; set; }
 
         /// <summary>
         /// Target path to move the objects to
         /// </summary>
         /// <value>Target path to move the objects to</value>
-        [DataMember(Name = "target", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="target", EmitDefaultValue=false)]
         public string Target { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -134,14 +127,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -234,7 +227,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

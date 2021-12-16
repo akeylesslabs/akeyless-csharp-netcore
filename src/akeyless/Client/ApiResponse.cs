@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -45,7 +45,7 @@ namespace akeyless.Client
         /// <summary>
         /// Gets or sets any error text defined by the calling client.
         /// </summary>
-        string ErrorText { get; set; }
+        String ErrorText { get; set; }
 
         /// <summary>
         /// Gets or sets any cookies passed along on the response.
@@ -64,7 +64,7 @@ namespace akeyless.Client
     public class ApiResponse<T> : IApiResponse
     {
         #region Properties
-
+        
         /// <summary>
         /// Gets or sets the status code (HTTP status code)
         /// </summary>
@@ -86,7 +86,7 @@ namespace akeyless.Client
         /// <summary>
         /// Gets or sets any error text defined by the calling client.
         /// </summary>
-        public string ErrorText { get; set; }
+        public String ErrorText { get; set; }
 
         /// <summary>
         /// Gets or sets any cookies passed along on the response.
@@ -112,12 +112,12 @@ namespace akeyless.Client
         /// <summary>
         /// The raw content
         /// </summary>
-        public string RawContent { get; }
-
+        public string RawContent { get;}
+        
         #endregion Properties
-
+        
         #region Constructors
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiResponse{T}" /> class.
         /// </summary>

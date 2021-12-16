@@ -1,5 +1,4 @@
 # akeyless.Model.HashiPayload
-
 ## Properties
 
 Name | Type | Description | Notes

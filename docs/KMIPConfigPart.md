@@ -1,5 +1,4 @@
 # akeyless.Model.KMIPConfigPart
-
 ## Properties
 
 Name | Type | Description | Notes

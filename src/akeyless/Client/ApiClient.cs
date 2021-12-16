@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -13,28 +13,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
-using System.Threading;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 using RestSharp;
 using RestSharp.Deserializers;
+using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 using RestSharpMethod = RestSharp.Method;
-using Polly;
 
 namespace akeyless.Client
 {
     /// <summary>
-    /// Allows RestSharp to Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON.
+    /// Allows RestSharp to Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON. 
     /// </summary>
     internal class CustomJsonCodec : RestSharp.Serializers.ISerializer, RestSharp.Deserializers.IDeserializer
     {
@@ -48,7 +45,7 @@ namespace akeyless.Client
             {
                 NamingStrategy = new CamelCaseNamingStrategy
                 {
-                    OverrideSpecifiedNames = false
+                    OverrideSpecifiedNames = true
                 }
             }
         };
@@ -64,27 +61,15 @@ namespace akeyless.Client
             _configuration = configuration;
         }
 
-        /// <summary>
-        /// Serialize the object into a JSON string.
-        /// </summary>
-        /// <param name="obj">Object to be serialized.</param>
-        /// <returns>A JSON string.</returns>
         public string Serialize(object obj)
         {
-            if (obj != null && obj is akeyless.Model.AbstractOpenAPISchema)
-            {
-                // the object to be serialized is an oneOf/anyOf schema
-                return ((akeyless.Model.AbstractOpenAPISchema)obj).ToJson();
-            }
-            else
-            {
-                return JsonConvert.SerializeObject(obj, _serializerSettings);
-            }
+            var result = JsonConvert.SerializeObject(obj, _serializerSettings);
+            return result;
         }
 
         public T Deserialize<T>(IRestResponse response)
         {
-            var result = (T)Deserialize(response, typeof(T));
+            var result = (T) Deserialize(response, typeof(T));
             return result;
         }
 
@@ -96,6 +81,7 @@ namespace akeyless.Client
         /// <returns>Object representation of the JSON string.</returns>
         internal object Deserialize(IRestResponse response, Type type)
         {
+            IList<Parameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
@@ -104,34 +90,33 @@ namespace akeyless.Client
             // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
             if (type == typeof(Stream))
             {
-                var bytes = response.RawBytes;
-                if (response.Headers != null)
+                if (headers != null)
                 {
-                    var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
+                    var filePath = String.IsNullOrEmpty(_configuration.TempFolderPath)
                         ? Path.GetTempPath()
                         : _configuration.TempFolderPath;
                     var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in response.Headers)
+                    foreach (var header in headers)
                     {
                         var match = regex.Match(header.ToString());
                         if (match.Success)
                         {
                             string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, bytes);
+                            File.WriteAllBytes(fileName, response.RawBytes);
                             return new FileStream(fileName, FileMode.Open);
                         }
                     }
                 }
-                var stream = new MemoryStream(bytes);
+                var stream = new MemoryStream(response.RawBytes);
                 return stream;
             }
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
-                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
+                return DateTime.Parse(response.Content,  null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
-            if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
+            if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
             {
                 return Convert.ChangeType(response.Content, type);
             }
@@ -158,29 +143,12 @@ namespace akeyless.Client
         }
     }
     /// <summary>
-    /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
+    /// Provides a default implementation of an Api client (both synchronous and asynchronous implementatios),
     /// encapsulating general REST accessor use cases.
     /// </summary>
     public partial class ApiClient : ISynchronousClient, IAsynchronousClient
     {
-        private readonly string _baseUrl;
-
-        /// <summary>
-        /// Specifies the settings on a <see cref="JsonSerializer" /> object.
-        /// These settings can be adjusted to accommodate custom serialization rules.
-        /// </summary>
-        public JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
-        {
-            // OpenAPI generated types generally hide default constructors.
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-            ContractResolver = new DefaultContractResolver
-            {
-                NamingStrategy = new CamelCaseNamingStrategy
-                {
-                    OverrideSpecifiedNames = false
-                }
-            }
-        };
+        private readonly String _baseUrl;
 
         /// <summary>
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
@@ -208,7 +176,7 @@ namespace akeyless.Client
         /// </summary>
         /// <param name="basePath">The target service's base path in URL format.</param>
         /// <exception cref="ArgumentException"></exception>
-        public ApiClient(string basePath)
+        public ApiClient(String basePath)
         {
             if (string.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
@@ -269,18 +237,18 @@ namespace akeyless.Client
         /// <exception cref="ArgumentNullException"></exception>
         private RestRequest NewRequest(
             HttpMethod method,
-            string path,
+            String path,
             RequestOptions options,
             IReadableConfiguration configuration)
         {
             if (path == null) throw new ArgumentNullException("path");
             if (options == null) throw new ArgumentNullException("options");
             if (configuration == null) throw new ArgumentNullException("configuration");
-
+            
             RestRequest request = new RestRequest(Method(method))
             {
                 Resource = path,
-                JsonSerializer = new CustomJsonCodec(SerializerSettings, configuration)
+                JsonSerializer = new CustomJsonCodec(configuration)
             };
 
             if (options.PathParameters != null)
@@ -290,7 +258,7 @@ namespace akeyless.Client
                     request.AddParameter(pathParam.Key, pathParam.Value, ParameterType.UrlSegment);
                 }
             }
-
+            
             if (options.QueryParameters != null)
             {
                 foreach (var queryParam in options.QueryParameters)
@@ -331,40 +299,25 @@ namespace akeyless.Client
 
             if (options.Data != null)
             {
-                if (options.Data is Stream stream)
+                if (options.HeaderParameters != null)
                 {
-                    var contentType = "application/octet-stream";
-                    if (options.HeaderParameters != null)
+                    var contentTypes = options.HeaderParameters["Content-Type"];
+                    if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
                     {
-                        var contentTypes = options.HeaderParameters["Content-Type"];
-                        contentType = contentTypes[0];
-                    }
-
-                    var bytes = ClientUtils.ReadAsBytes(stream);
-                    request.AddParameter(contentType, bytes, ParameterType.RequestBody);
-                }
-                else
-                {
-                    if (options.HeaderParameters != null)
-                    {
-                        var contentTypes = options.HeaderParameters["Content-Type"];
-                        if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
-                        {
-                            request.RequestFormat = DataFormat.Json;
-                        }
-                        else
-                        {
-                            // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
-                        }
+                        request.RequestFormat = DataFormat.Json;
                     }
                     else
                     {
-                        // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
-                        request.RequestFormat = DataFormat.Json;
+                        // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
                     }
-
-                    request.AddJsonBody(options.Data);
                 }
+                else
+                {
+                    // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
+                    request.RequestFormat = DataFormat.Json;
+                }
+
+                request.AddJsonBody(options.Data);
             }
 
             if (options.FileParameters != null)
@@ -387,7 +340,7 @@ namespace akeyless.Client
                     request.AddCookie(cookie.Name, cookie.Value);
                 }
             }
-
+            
             return request;
         }
 
@@ -401,7 +354,7 @@ namespace akeyless.Client
                 ErrorText = response.ErrorMessage,
                 Cookies = new List<Cookie>()
             };
-
+            
             if (response.Headers != null)
             {
                 foreach (var responseHeader in response.Headers)
@@ -416,9 +369,9 @@ namespace akeyless.Client
                 {
                     transformed.Cookies.Add(
                         new Cookie(
-                            responseCookies.Name,
-                            responseCookies.Value,
-                            responseCookies.Path,
+                            responseCookies.Name, 
+                            responseCookies.Value, 
+                            responseCookies.Path, 
                             responseCookies.Domain)
                         );
                 }
@@ -435,34 +388,16 @@ namespace akeyless.Client
             var existingDeserializer = req.JsonSerializer as IDeserializer;
             if (existingDeserializer != null)
             {
-                client.AddHandler("application/json", () => existingDeserializer);
-                client.AddHandler("text/json", () => existingDeserializer);
-                client.AddHandler("text/x-json", () => existingDeserializer);
-                client.AddHandler("text/javascript", () => existingDeserializer);
-                client.AddHandler("*+json", () => existingDeserializer);
+                client.AddHandler(() => existingDeserializer, "application/json", "text/json", "text/x-json", "text/javascript", "*+json");
             }
             else
             {
-                var customDeserializer = new CustomJsonCodec(SerializerSettings, configuration);
-                client.AddHandler("application/json", () => customDeserializer);
-                client.AddHandler("text/json", () => customDeserializer);
-                client.AddHandler("text/x-json", () => customDeserializer);
-                client.AddHandler("text/javascript", () => customDeserializer);
-                client.AddHandler("*+json", () => customDeserializer);
+                client.AddHandler(() => new CustomJsonCodec(configuration), "application/json", "text/json", "text/x-json", "text/javascript", "*+json");
             }
 
-            var xmlDeserializer = new XmlDeserializer();
-            client.AddHandler("application/xml", () => xmlDeserializer);
-            client.AddHandler("text/xml", () => xmlDeserializer);
-            client.AddHandler("*+xml", () => xmlDeserializer);
-            client.AddHandler("*", () => xmlDeserializer);
+            client.AddHandler(() => new XmlDeserializer(), "application/xml", "text/xml", "*+xml", "*");
 
             client.Timeout = configuration.Timeout;
-
-            if (configuration.Proxy != null)
-            {
-                client.Proxy = configuration.Proxy;
-            }
 
             if (configuration.UserAgent != null)
             {
@@ -476,38 +411,7 @@ namespace akeyless.Client
 
             InterceptRequest(req);
 
-            IRestResponse<T> response;
-            if (RetryConfiguration.RetryPolicy != null)
-            {
-                var policy = RetryConfiguration.RetryPolicy;
-                var policyResult = policy.ExecuteAndCapture(() => client.Execute(req));
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
-                {
-                    Request = req,
-                    ErrorException = policyResult.FinalException
-                };
-            }
-            else
-            {
-                response = client.Execute<T>(req);
-            }
-
-            // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
-            if (typeof(akeyless.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
-            {
-                try
-                {
-                    response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
-                }
-                catch (Exception ex)
-                {
-                    throw ex.InnerException != null ? ex.InnerException : ex;
-                }
-            }
-            else if (typeof(T).Name == "Stream") // for binary response
-            {
-                response.Data = (T)(object)new MemoryStream(response.RawBytes);
-            }
+            var response = client.Execute<T>(req);
 
             InterceptResponse(req, response);
 
@@ -519,7 +423,7 @@ namespace akeyless.Client
 
             if (response.Cookies != null && response.Cookies.Count > 0)
             {
-                if (result.Cookies == null) result.Cookies = new List<Cookie>();
+                if(result.Cookies == null) result.Cookies = new List<Cookie>();
                 foreach (var restResponseCookie in response.Cookies)
                 {
                     var cookie = new Cookie(
@@ -546,7 +450,7 @@ namespace akeyless.Client
             return result;
         }
 
-        private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, IReadableConfiguration configuration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, IReadableConfiguration configuration)
         {
             RestClient client = new RestClient(_baseUrl);
 
@@ -554,34 +458,16 @@ namespace akeyless.Client
             var existingDeserializer = req.JsonSerializer as IDeserializer;
             if (existingDeserializer != null)
             {
-                client.AddHandler("application/json", () => existingDeserializer);
-                client.AddHandler("text/json", () => existingDeserializer);
-                client.AddHandler("text/x-json", () => existingDeserializer);
-                client.AddHandler("text/javascript", () => existingDeserializer);
-                client.AddHandler("*+json", () => existingDeserializer);
+                client.AddHandler(() => existingDeserializer, "application/json", "text/json", "text/x-json", "text/javascript", "*+json");
             }
             else
             {
-                var customDeserializer = new CustomJsonCodec(SerializerSettings, configuration);
-                client.AddHandler("application/json", () => customDeserializer);
-                client.AddHandler("text/json", () => customDeserializer);
-                client.AddHandler("text/x-json", () => customDeserializer);
-                client.AddHandler("text/javascript", () => customDeserializer);
-                client.AddHandler("*+json", () => customDeserializer);
+                client.AddHandler(() => new CustomJsonCodec(configuration), "application/json", "text/json", "text/x-json", "text/javascript", "*+json");
             }
 
-            var xmlDeserializer = new XmlDeserializer();
-            client.AddHandler("application/xml", () => xmlDeserializer);
-            client.AddHandler("text/xml", () => xmlDeserializer);
-            client.AddHandler("*+xml", () => xmlDeserializer);
-            client.AddHandler("*", () => xmlDeserializer);
+            client.AddHandler(() => new XmlDeserializer(), "application/xml", "text/xml", "*+xml", "*");
 
             client.Timeout = configuration.Timeout;
-
-            if (configuration.Proxy != null)
-            {
-                client.Proxy = configuration.Proxy;
-            }
 
             if (configuration.UserAgent != null)
             {
@@ -595,31 +481,7 @@ namespace akeyless.Client
 
             InterceptRequest(req);
 
-            IRestResponse<T> response;
-            if (RetryConfiguration.AsyncRetryPolicy != null)
-            {
-                var policy = RetryConfiguration.AsyncRetryPolicy;
-                var policyResult = await policy.ExecuteAndCaptureAsync((ct) => client.ExecuteAsync(req, ct), cancellationToken).ConfigureAwait(false);
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
-                {
-                    Request = req,
-                    ErrorException = policyResult.FinalException
-                };
-            }
-            else
-            {
-                response = await client.ExecuteAsync<T>(req, cancellationToken).ConfigureAwait(false);
-            }
-
-            // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
-            if (typeof(akeyless.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
-            {
-                response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
-            }
-            else if (typeof(T).Name == "Stream") // for binary response
-            {
-                response.Data = (T)(object)new MemoryStream(response.RawBytes);
-            }
+            var response = await client.ExecuteAsync<T>(req);
 
             InterceptResponse(req, response);
 
@@ -631,7 +493,7 @@ namespace akeyless.Client
 
             if (response.Cookies != null && response.Cookies.Count > 0)
             {
-                if (result.Cookies == null) result.Cookies = new List<Cookie>();
+                if(result.Cookies == null) result.Cookies = new List<Cookie>();
                 foreach (var restResponseCookie in response.Cookies)
                 {
                     var cookie = new Cookie(
@@ -666,12 +528,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Get, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Get, path, options, config), config);
         }
 
         /// <summary>
@@ -681,12 +542,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Post, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Post, path, options, config), config);
         }
 
         /// <summary>
@@ -696,12 +556,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Put, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Put, path, options, config), config);
         }
 
         /// <summary>
@@ -711,12 +570,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Delete, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Delete, path, options, config), config);
         }
 
         /// <summary>
@@ -726,12 +584,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Head, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Head, path, options, config), config);
         }
 
         /// <summary>
@@ -741,12 +598,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Options, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Options, path, options, config), config);
         }
 
         /// <summary>
@@ -756,12 +612,11 @@ namespace akeyless.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Patch, path, options, config), config, cancellationToken);
+            return ExecAsync<T>(NewRequest(HttpMethod.Patch, path, options, config), config);
         }
         #endregion IAsynchronousClient
 

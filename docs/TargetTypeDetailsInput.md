@@ -1,5 +1,4 @@
 # akeyless.Model.TargetTypeDetailsInput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.KmipListClients
-
 ## Properties
 
 Name | Type | Description | Notes

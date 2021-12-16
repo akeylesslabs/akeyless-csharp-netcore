@@ -1,6 +1,5 @@
 # akeyless.Model.UpdateRotationSettings
 updateRotationSettings is a command that updates rotations settings of an existing key
-
 ## Properties
 
 Name | Type | Description | Notes

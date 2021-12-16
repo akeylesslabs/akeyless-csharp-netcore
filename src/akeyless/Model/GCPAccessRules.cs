@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// GCPAccessRules
     /// </summary>
-    [DataContract(Name = "GCPAccessRules")]
-    public partial class GCPAccessRules : IEquatable<GCPAccessRules>, IValidatableObject
+    [DataContract]
+    public partial class GCPAccessRules :  IEquatable<GCPAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GCPAccessRules" /> class.
@@ -55,60 +54,60 @@ namespace akeyless.Model
             this.ServiceAccount = serviceAccount;
             this.Type = type;
         }
-
+        
         /// <summary>
         /// The audience in the JWT
         /// </summary>
         /// <value>The audience in the JWT</value>
-        [DataMember(Name = "audience", EmitDefaultValue = false)]
+        [DataMember(Name="audience", EmitDefaultValue=false)]
         public string Audience { get; set; }
 
         /// <summary>
         /// A map of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d ....
         /// </summary>
         /// <value>A map of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d ....</value>
-        [DataMember(Name = "bound_labels", EmitDefaultValue = false)]
+        [DataMember(Name="bound_labels", EmitDefaultValue=false)]
         public Dictionary<string, string> BoundLabels { get; set; }
 
         /// <summary>
         /// Human and Machine authentication section Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.
         /// </summary>
         /// <value>Human and Machine authentication section Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.</value>
-        [DataMember(Name = "bound_projects", EmitDefaultValue = false)]
+        [DataMember(Name="bound_projects", EmitDefaultValue=false)]
         public List<string> BoundProjects { get; set; }
 
         /// <summary>
         /// List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
         /// </summary>
         /// <value>List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.</value>
-        [DataMember(Name = "bound_regions", EmitDefaultValue = false)]
+        [DataMember(Name="bound_regions", EmitDefaultValue=false)]
         public List<string> BoundRegions { get; set; }
 
         /// <summary>
         /// List of service accounts the service account must be part of in order to be authenticated
         /// </summary>
         /// <value>List of service accounts the service account must be part of in order to be authenticated</value>
-        [DataMember(Name = "bound_service_accounts", EmitDefaultValue = false)]
+        [DataMember(Name="bound_service_accounts", EmitDefaultValue=false)]
         public List<string> BoundServiceAccounts { get; set; }
 
         /// <summary>
         /// &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
         /// </summary>
         /// <value>&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.</value>
-        [DataMember(Name = "bound_zones", EmitDefaultValue = false)]
+        [DataMember(Name="bound_zones", EmitDefaultValue=false)]
         public List<string> BoundZones { get; set; }
 
         /// <summary>
         /// ServiceAccount holds the credentials file contents to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins against GCP base64 encoded string
         /// </summary>
         /// <value>ServiceAccount holds the credentials file contents to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins against GCP base64 encoded string</value>
-        [DataMember(Name = "service_account", EmitDefaultValue = false)]
+        [DataMember(Name="service_account", EmitDefaultValue=false)]
         public string ServiceAccount { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public string Type { get; set; }
 
         /// <summary>
@@ -130,14 +129,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -242,7 +241,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

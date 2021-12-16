@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerPostgreSQL
 gatewayUpdateProducerPostgreSQL is a command that updates postgresql producer
-
 ## Properties
 
 Name | Type | Description | Notes

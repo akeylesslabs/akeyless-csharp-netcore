@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// uidCreateChildToken is a command that creates a new child token using Akeyless Universal Identity.
     /// </summary>
-    [DataContract(Name = "uidCreateChildToken")]
-    public partial class UidCreateChildToken : IEquatable<UidCreateChildToken>, IValidatableObject
+    [DataContract]
+    public partial class UidCreateChildToken :  IEquatable<UidCreateChildToken>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UidCreateChildToken" /> class.
@@ -58,75 +57,75 @@ namespace akeyless.Model
             this.UidTokenId = uidTokenId;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// The universal identity auth method name, required only when uid-token is not provided
         /// </summary>
         /// <value>The universal identity auth method name, required only when uid-token is not provided</value>
-        [DataMember(Name = "auth-method-name", EmitDefaultValue = false)]
+        [DataMember(Name="auth-method-name", EmitDefaultValue=false)]
         public string AuthMethodName { get; set; }
 
         /// <summary>
         /// Deny from new child to create their own children
         /// </summary>
         /// <value>Deny from new child to create their own children</value>
-        [DataMember(Name = "child-deny-inheritance", EmitDefaultValue = true)]
+        [DataMember(Name="child-deny-inheritance", EmitDefaultValue=false)]
         public bool ChildDenyInheritance { get; set; }
 
         /// <summary>
         /// Deny from new child to rotate
         /// </summary>
         /// <value>Deny from new child to rotate</value>
-        [DataMember(Name = "child-deny-rotate", EmitDefaultValue = true)]
+        [DataMember(Name="child-deny-rotate", EmitDefaultValue=false)]
         public bool ChildDenyRotate { get; set; }
 
         /// <summary>
         /// New child token ttl
         /// </summary>
         /// <value>New child token ttl</value>
-        [DataMember(Name = "child-ttl", EmitDefaultValue = false)]
+        [DataMember(Name="child-ttl", EmitDefaultValue=false)]
         public int ChildTtl { get; set; }
 
         /// <summary>
         /// New Token comment
         /// </summary>
         /// <value>New Token comment</value>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
+        [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// The ID of the uid-token, required only when uid-token is not provided
         /// </summary>
         /// <value>The ID of the uid-token, required only when uid-token is not provided</value>
-        [DataMember(Name = "uid-token-id", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token-id", EmitDefaultValue=false)]
         public string UidTokenId { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -150,14 +149,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -265,7 +264,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

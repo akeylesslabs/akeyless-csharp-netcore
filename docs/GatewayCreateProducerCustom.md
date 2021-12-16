@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerCustom
-
 ## Properties
 
 Name | Type | Description | Notes

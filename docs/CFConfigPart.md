@@ -1,5 +1,4 @@
 # akeyless.Model.CFConfigPart
-
 ## Properties
 
 Name | Type | Description | Notes

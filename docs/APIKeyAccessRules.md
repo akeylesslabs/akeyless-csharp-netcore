@@ -1,5 +1,4 @@
 # akeyless.Model.APIKeyAccessRules
-
 ## Properties
 
 Name | Type | Description | Notes

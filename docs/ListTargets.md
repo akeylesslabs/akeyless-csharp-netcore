@@ -1,5 +1,4 @@
 # akeyless.Model.ListTargets
-
 ## Properties
 
 Name | Type | Description | Notes

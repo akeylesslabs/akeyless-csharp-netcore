@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// UpdateItem
     /// </summary>
-    [DataContract(Name = "updateItem")]
-    public partial class UpdateItem : IEquatable<UpdateItem>, IValidatableObject
+    [DataContract]
+    public partial class UpdateItem :  IEquatable<UpdateItem>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateItem" /> class.
@@ -75,10 +74,7 @@ namespace akeyless.Model
         public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string password = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
-            }
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
             this.AddTag = addTag;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? "default_metadata";
@@ -112,206 +108,206 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// List of the new tags that will be attached to this item
         /// </summary>
         /// <value>List of the new tags that will be attached to this item</value>
-        [DataMember(Name = "add-tag", EmitDefaultValue = false)]
+        [DataMember(Name="add-tag", EmitDefaultValue=false)]
         public List<string> AddTag { get; set; }
 
         /// <summary>
         /// Current item name
         /// </summary>
         /// <value>Current item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// New item metadata
         /// </summary>
         /// <value>New item metadata</value>
-        [DataMember(Name = "new-metadata", EmitDefaultValue = false)]
+        [DataMember(Name="new-metadata", EmitDefaultValue=false)]
         public string NewMetadata { get; set; }
 
         /// <summary>
         /// New item name
         /// </summary>
         /// <value>New item name</value>
-        [DataMember(Name = "new-name", EmitDefaultValue = false)]
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// List of the existent tags that will be removed from this item
         /// </summary>
         /// <value>List of the existent tags that will be removed from this item</value>
-        [DataMember(Name = "rm-tag", EmitDefaultValue = false)]
+        [DataMember(Name="rm-tag", EmitDefaultValue=false)]
         public List<string> RmTag { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAddHost
         /// </summary>
-        [DataMember(Name = "secure-access-add-host", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-add-host", EmitDefaultValue=false)]
         public List<string> SecureAccessAddHost { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAllowExternalUser
         /// </summary>
-        [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-allow-external-user", EmitDefaultValue=false)]
         public string SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAllowPortForwading
         /// </summary>
-        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
+        [DataMember(Name="secure-access-allow-port-forwading", EmitDefaultValue=false)]
         public bool SecureAccessAllowPortForwading { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAwsAccountId
         /// </summary>
-        [DataMember(Name = "secure-access-aws-account-id", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-aws-account-id", EmitDefaultValue=false)]
         public string SecureAccessAwsAccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAwsNativeCli
         /// </summary>
-        [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
+        [DataMember(Name="secure-access-aws-native-cli", EmitDefaultValue=false)]
         public bool SecureAccessAwsNativeCli { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAwsRegion
         /// </summary>
-        [DataMember(Name = "secure-access-aws-region", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-aws-region", EmitDefaultValue=false)]
         public string SecureAccessAwsRegion { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionApi
         /// </summary>
-        [DataMember(Name = "secure-access-bastion-api", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-bastion-api", EmitDefaultValue=false)]
         public string SecureAccessBastionApi { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionIssuer
         /// </summary>
-        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionSsh
         /// </summary>
-        [DataMember(Name = "secure-access-bastion-ssh", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-bastion-ssh", EmitDefaultValue=false)]
         public string SecureAccessBastionSsh { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessClusterEndpoint
         /// </summary>
-        [DataMember(Name = "secure-access-cluster-endpoint", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-cluster-endpoint", EmitDefaultValue=false)]
         public string SecureAccessClusterEndpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessDashboardUrl
         /// </summary>
-        [DataMember(Name = "secure-access-dashboard-url", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-dashboard-url", EmitDefaultValue=false)]
         public string SecureAccessDashboardUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessDbName
         /// </summary>
-        [DataMember(Name = "secure-access-db-name", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-db-name", EmitDefaultValue=false)]
         public string SecureAccessDbName { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessDbSchema
         /// </summary>
-        [DataMember(Name = "secure-access-db-schema", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-db-schema", EmitDefaultValue=false)]
         public string SecureAccessDbSchema { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessEnable
         /// </summary>
-        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessHost
         /// </summary>
-        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessRdpDomain
         /// </summary>
-        [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-rdp-domain", EmitDefaultValue=false)]
         public string SecureAccessRdpDomain { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessRdpUser
         /// </summary>
-        [DataMember(Name = "secure-access-rdp-user", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-rdp-user", EmitDefaultValue=false)]
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessRmHost
         /// </summary>
-        [DataMember(Name = "secure-access-rm-host", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-rm-host", EmitDefaultValue=false)]
         public List<string> SecureAccessRmHost { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessSshCreds
         /// </summary>
-        [DataMember(Name = "secure-access-ssh-creds", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-ssh-creds", EmitDefaultValue=false)]
         public string SecureAccessSshCreds { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessSshCredsUser
         /// </summary>
-        [DataMember(Name = "secure-access-ssh-creds-user", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-ssh-creds-user", EmitDefaultValue=false)]
         public string SecureAccessSshCredsUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessUrl
         /// </summary>
-        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-url", EmitDefaultValue=false)]
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessUseInternalBastion
         /// </summary>
-        [DataMember(Name = "secure-access-use-internal-bastion", EmitDefaultValue = true)]
+        [DataMember(Name="secure-access-use-internal-bastion", EmitDefaultValue=false)]
         public bool SecureAccessUseInternalBastion { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessWebBrowsing
         /// </summary>
-        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        [DataMember(Name="secure-access-web-browsing", EmitDefaultValue=false)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -357,14 +353,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -629,7 +625,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

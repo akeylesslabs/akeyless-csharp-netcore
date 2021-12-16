@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerEks
 gatewayUpdateProducerEks is a command that updates eks producer
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.UIDTokenDetails
-
 ## Properties
 
 Name | Type | Description | Notes

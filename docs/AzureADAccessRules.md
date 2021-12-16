@@ -1,6 +1,5 @@
 # akeyless.Model.AzureADAccessRules
 AzureADAccessRules contains access rules specific to Azure Active Directory authentication.
-
 ## Properties
 
 Name | Type | Description | Notes

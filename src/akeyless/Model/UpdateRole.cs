@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// UpdateRole
     /// </summary>
-    [DataContract(Name = "updateRole")]
-    public partial class UpdateRole : IEquatable<UpdateRole>, IValidatableObject
+    [DataContract]
+    public partial class UpdateRole :  IEquatable<UpdateRole>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateRole" /> class.
@@ -53,10 +52,7 @@ namespace akeyless.Model
         public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string gwAnalyticsAccess = default(string), string name = default(string), string newComment = "default_comment", string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for UpdateRole and cannot be null");
-            }
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateRole and cannot be null");
             this.AnalyticsAccess = analyticsAccess;
             this.AuditAccess = auditAccess;
             this.GwAnalyticsAccess = gwAnalyticsAccess;
@@ -68,75 +64,75 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
         /// </summary>
         /// <value>Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
-        [DataMember(Name = "analytics-access", EmitDefaultValue = false)]
+        [DataMember(Name="analytics-access", EmitDefaultValue=false)]
         public string AnalyticsAccess { get; set; }
 
         /// <summary>
         /// Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
         /// </summary>
         /// <value>Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.</value>
-        [DataMember(Name = "audit-access", EmitDefaultValue = false)]
+        [DataMember(Name="audit-access", EmitDefaultValue=false)]
         public string AuditAccess { get; set; }
 
         /// <summary>
         /// Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
         /// </summary>
         /// <value>Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
-        [DataMember(Name = "gw-analytics-access", EmitDefaultValue = false)]
+        [DataMember(Name="gw-analytics-access", EmitDefaultValue=false)]
         public string GwAnalyticsAccess { get; set; }
 
         /// <summary>
         /// Role name
         /// </summary>
         /// <value>Role name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// New comment about the role
         /// </summary>
         /// <value>New comment about the role</value>
-        [DataMember(Name = "new-comment", EmitDefaultValue = false)]
+        [DataMember(Name="new-comment", EmitDefaultValue=false)]
         public string NewComment { get; set; }
 
         /// <summary>
         /// New Role name
         /// </summary>
         /// <value>New Role name</value>
-        [DataMember(Name = "new-name", EmitDefaultValue = false)]
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -160,14 +156,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -281,7 +277,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

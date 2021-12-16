@@ -1,5 +1,4 @@
 # akeyless.Model.UpdatePKICertIssuer
-
 ## Properties
 
 Name | Type | Description | Notes

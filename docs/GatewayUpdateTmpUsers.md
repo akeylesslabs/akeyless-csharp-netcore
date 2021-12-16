@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateTmpUsers
 gatewayUpdateTmpUsers is a command that returns gateway configuration
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAWSTargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

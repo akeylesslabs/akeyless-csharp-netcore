@@ -1,5 +1,4 @@
 # akeyless.Model.KmipDescribeServerOutput
-
 ## Properties
 
 Name | Type | Description | Notes

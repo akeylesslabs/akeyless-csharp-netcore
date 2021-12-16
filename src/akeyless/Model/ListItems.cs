@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// ListItems
     /// </summary>
-    [DataContract(Name = "listItems")]
-    public partial class ListItems : IEquatable<ListItems>, IValidatableObject
+    [DataContract]
+    public partial class ListItems :  IEquatable<ListItems>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ListItems" /> class.
@@ -56,68 +55,68 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Filter by item name or part of it
         /// </summary>
         /// <value>Filter by item name or part of it</value>
-        [DataMember(Name = "filter", EmitDefaultValue = false)]
+        [DataMember(Name="filter", EmitDefaultValue=false)]
         public string Filter { get; set; }
 
         /// <summary>
         /// Next page reference
         /// </summary>
         /// <value>Next page reference</value>
-        [DataMember(Name = "pagination-token", EmitDefaultValue = false)]
+        [DataMember(Name="pagination-token", EmitDefaultValue=false)]
         public string PaginationToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Path to folder
         /// </summary>
         /// <value>Path to folder</value>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
+        [DataMember(Name="path", EmitDefaultValue=false)]
         public string Path { get; set; }
 
         /// <summary>
         /// Filter by item tag
         /// </summary>
         /// <value>Filter by item tag</value>
-        [DataMember(Name = "tag", EmitDefaultValue = false)]
+        [DataMember(Name="tag", EmitDefaultValue=false)]
         public string Tag { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret]
         /// </summary>
         /// <value>The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret]</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public List<string> Type { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -140,14 +139,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -255,7 +254,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

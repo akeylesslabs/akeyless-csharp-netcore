@@ -1,5 +1,4 @@
 # akeyless.Model.CreateLdapTargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

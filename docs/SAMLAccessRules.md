@@ -1,5 +1,4 @@
 # akeyless.Model.SAMLAccessRules
-
 ## Properties
 
 Name | Type | Description | Notes

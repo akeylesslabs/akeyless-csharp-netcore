@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// AkeylessGatewayConfig
     /// </summary>
-    [DataContract(Name = "AkeylessGatewayConfig")]
-    public partial class AkeylessGatewayConfig : IEquatable<AkeylessGatewayConfig>, IValidatableObject
+    [DataContract]
+    public partial class AkeylessGatewayConfig :  IEquatable<AkeylessGatewayConfig>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AkeylessGatewayConfig" /> class.
@@ -70,110 +69,110 @@ namespace akeyless.Model
             this.Rotators = rotators;
             this.Saml = saml;
             this.Uidentity = uidentity;
-            this._Version = version;
+            this.Version = version;
         }
-
+        
         /// <summary>
         /// Gets or Sets Admins
         /// </summary>
-        [DataMember(Name = "admins", EmitDefaultValue = false)]
+        [DataMember(Name="admins", EmitDefaultValue=false)]
         public AdminsConfigPart Admins { get; set; }
 
         /// <summary>
         /// Gets or Sets Cache
         /// </summary>
-        [DataMember(Name = "cache", EmitDefaultValue = false)]
+        [DataMember(Name="cache", EmitDefaultValue=false)]
         public CacheConfigPart Cache { get; set; }
 
         /// <summary>
         /// Gets or Sets Cf
         /// </summary>
-        [DataMember(Name = "cf", EmitDefaultValue = false)]
+        [DataMember(Name="cf", EmitDefaultValue=false)]
         public CFConfigPart Cf { get; set; }
 
         /// <summary>
         /// Gets or Sets ConfigProtectionKeyName
         /// </summary>
-        [DataMember(Name = "config_protection_key_name", EmitDefaultValue = false)]
+        [DataMember(Name="config_protection_key_name", EmitDefaultValue=false)]
         public string ConfigProtectionKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets General
         /// </summary>
-        [DataMember(Name = "general", EmitDefaultValue = false)]
+        [DataMember(Name="general", EmitDefaultValue=false)]
         public GeneralConfigPart General { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sAuths
         /// </summary>
-        [DataMember(Name = "k8s_auths", EmitDefaultValue = false)]
+        [DataMember(Name="k8s_auths", EmitDefaultValue=false)]
         public K8SAuthsConfigPart K8sAuths { get; set; }
 
         /// <summary>
         /// Gets or Sets KmipClients
         /// </summary>
-        [DataMember(Name = "kmip_clients", EmitDefaultValue = false)]
+        [DataMember(Name="kmip_clients", EmitDefaultValue=false)]
         public KMIPConfigPart KmipClients { get; set; }
 
         /// <summary>
         /// Gets or Sets Ldap
         /// </summary>
-        [DataMember(Name = "ldap", EmitDefaultValue = false)]
+        [DataMember(Name="ldap", EmitDefaultValue=false)]
         public LdapConfigPart Ldap { get; set; }
 
         /// <summary>
         /// Gets or Sets Leadership
         /// </summary>
-        [DataMember(Name = "leadership", EmitDefaultValue = false)]
+        [DataMember(Name="leadership", EmitDefaultValue=false)]
         public LeadershipConfigPart Leadership { get; set; }
 
         /// <summary>
         /// Gets or Sets LogForwarding
         /// </summary>
-        [DataMember(Name = "log_forwarding", EmitDefaultValue = false)]
+        [DataMember(Name="log_forwarding", EmitDefaultValue=false)]
         public LogForwardingConfigPart LogForwarding { get; set; }
 
         /// <summary>
         /// Gets or Sets MessageQueueInfo
         /// </summary>
-        [DataMember(Name = "message_queue_info", EmitDefaultValue = false)]
+        [DataMember(Name="message_queue_info", EmitDefaultValue=false)]
         public GatewayMessageQueueInfo MessageQueueInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets Migrations
         /// </summary>
-        [DataMember(Name = "migrations", EmitDefaultValue = false)]
+        [DataMember(Name="migrations", EmitDefaultValue=false)]
         public MigrationsConfigPart Migrations { get; set; }
 
         /// <summary>
         /// Gets or Sets Producers
         /// </summary>
-        [DataMember(Name = "producers", EmitDefaultValue = false)]
+        [DataMember(Name="producers", EmitDefaultValue=false)]
         public ProducersConfigPart Producers { get; set; }
 
         /// <summary>
         /// Gets or Sets Rotators
         /// </summary>
-        [DataMember(Name = "rotators", EmitDefaultValue = false)]
+        [DataMember(Name="rotators", EmitDefaultValue=false)]
         public RotatorsConfigPart Rotators { get; set; }
 
         /// <summary>
         /// Gets or Sets Saml
         /// </summary>
-        [DataMember(Name = "saml", EmitDefaultValue = false)]
+        [DataMember(Name="saml", EmitDefaultValue=false)]
         public DefaultConfigPart Saml { get; set; }
 
         /// <summary>
         /// Gets or Sets Uidentity
         /// </summary>
-        [DataMember(Name = "uidentity", EmitDefaultValue = false)]
+        [DataMember(Name="uidentity", EmitDefaultValue=false)]
         public UIdentityConfigPart Uidentity { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Version
+        /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public int _Version { get; set; }
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -199,18 +198,18 @@ namespace akeyless.Model
             sb.Append("  Rotators: ").Append(Rotators).Append("\n");
             sb.Append("  Saml: ").Append(Saml).Append("\n");
             sb.Append("  Uidentity: ").Append(Uidentity).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -315,8 +314,8 @@ namespace akeyless.Model
                     this.Uidentity.Equals(input.Uidentity))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.Version == input.Version ||
+                    this.Version.Equals(input.Version)
                 );
         }
 
@@ -361,7 +360,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Saml.GetHashCode();
                 if (this.Uidentity != null)
                     hashCode = hashCode * 59 + this.Uidentity.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -371,7 +370,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

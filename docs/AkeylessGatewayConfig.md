@@ -1,5 +1,4 @@
 # akeyless.Model.AkeylessGatewayConfig
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -20,7 +19,7 @@ Name | Type | Description | Notes
 **Rotators** | [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
 **Saml** | [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
 **Uidentity** | [**UIdentityConfigPart**](UIdentityConfigPart.md) |  | [optional] 
-**_Version** | **int** |  | [optional] 
+**Version** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

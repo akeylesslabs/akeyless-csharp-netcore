@@ -1,5 +1,4 @@
 # akeyless.Model.KmipRenewServerCertificate
-
 ## Properties
 
 Name | Type | Description | Notes

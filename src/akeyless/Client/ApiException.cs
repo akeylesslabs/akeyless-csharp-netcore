@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -31,15 +31,9 @@ namespace akeyless.Client
         public object ErrorContent { get; private set; }
 
         /// <summary>
-        /// Gets or sets the HTTP headers
-        /// </summary>
-        /// <value>HTTP headers</value>
-        public Multimap<string, string> Headers { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
         /// </summary>
-        public ApiException() { }
+        public ApiException() {}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
@@ -57,12 +51,10 @@ namespace akeyless.Client
         /// <param name="errorCode">HTTP status code.</param>
         /// <param name="message">Error message.</param>
         /// <param name="errorContent">Error content.</param>
-        /// <param name="headers">HTTP Headers.</param>
-        public ApiException(int errorCode, string message, object errorContent = null, Multimap<string, string> headers = null) : base(message)
+        public ApiException(int errorCode, string message, object errorContent = null) : base(message)
         {
             this.ErrorCode = errorCode;
             this.ErrorContent = errorContent;
-            this.Headers = headers;
         }
     }
 

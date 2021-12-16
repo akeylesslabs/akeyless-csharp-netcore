@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayUpdateProducerLdapOutput
-
 ## Properties
 
 Name | Type | Description | Notes

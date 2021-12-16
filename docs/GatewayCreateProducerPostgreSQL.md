@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateProducerPostgreSQL
 gatewayCreateProducerPostgreSQL is a command that creates postgresql producer
-
 ## Properties
 
 Name | Type | Description | Notes

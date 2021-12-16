@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// gatewayUpdateProducerMongo is a command that updates either mongodb  producer or mongodb atlas producer
     /// </summary>
-    [DataContract(Name = "gatewayUpdateProducerMongo")]
-    public partial class GatewayUpdateProducerMongo : IEquatable<GatewayUpdateProducerMongo>, IValidatableObject
+    [DataContract]
+    public partial class GatewayUpdateProducerMongo :  IEquatable<GatewayUpdateProducerMongo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerMongo" /> class.
@@ -68,10 +67,7 @@ namespace akeyless.Model
         public GatewayUpdateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for GatewayUpdateProducerMongo and cannot be null");
-            }
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayUpdateProducerMongo and cannot be null");
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
@@ -99,176 +95,176 @@ namespace akeyless.Model
             this.UserTtl = userTtl ?? "60m";
             this.Username = username;
         }
-
+        
         /// <summary>
         /// MongoDB Atlas private key
         /// </summary>
         /// <value>MongoDB Atlas private key</value>
-        [DataMember(Name = "mongodb-atlas-api-private-key", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-atlas-api-private-key", EmitDefaultValue=false)]
         public string MongodbAtlasApiPrivateKey { get; set; }
 
         /// <summary>
         /// MongoDB Atlas public key
         /// </summary>
         /// <value>MongoDB Atlas public key</value>
-        [DataMember(Name = "mongodb-atlas-api-public-key", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-atlas-api-public-key", EmitDefaultValue=false)]
         public string MongodbAtlasApiPublicKey { get; set; }
 
         /// <summary>
         /// MongoDB Atlas project ID
         /// </summary>
         /// <value>MongoDB Atlas project ID</value>
-        [DataMember(Name = "mongodb-atlas-project-id", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-atlas-project-id", EmitDefaultValue=false)]
         public string MongodbAtlasProjectId { get; set; }
 
         /// <summary>
         /// MongoDB server default authentication database
         /// </summary>
         /// <value>MongoDB server default authentication database</value>
-        [DataMember(Name = "mongodb-default-auth-db", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-default-auth-db", EmitDefaultValue=false)]
         public string MongodbDefaultAuthDb { get; set; }
 
         /// <summary>
         /// MongoDB server host and port
         /// </summary>
         /// <value>MongoDB server host and port</value>
-        [DataMember(Name = "mongodb-host-port", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-host-port", EmitDefaultValue=false)]
         public string MongodbHostPort { get; set; }
 
         /// <summary>
         /// MongoDB Name
         /// </summary>
         /// <value>MongoDB Name</value>
-        [DataMember(Name = "mongodb-name", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-name", EmitDefaultValue=false)]
         public string MongodbName { get; set; }
 
         /// <summary>
         /// MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
         /// </summary>
         /// <value>MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters</value>
-        [DataMember(Name = "mongodb-password", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-password", EmitDefaultValue=false)]
         public string MongodbPassword { get; set; }
 
         /// <summary>
         /// MongoDB Roles
         /// </summary>
         /// <value>MongoDB Roles</value>
-        [DataMember(Name = "mongodb-roles", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-roles", EmitDefaultValue=false)]
         public string MongodbRoles { get; set; }
 
         /// <summary>
         /// MongoDB server URI
         /// </summary>
         /// <value>MongoDB server URI</value>
-        [DataMember(Name = "mongodb-server-uri", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-server-uri", EmitDefaultValue=false)]
         public string MongodbServerUri { get; set; }
 
         /// <summary>
         /// MongoDB server URI options
         /// </summary>
         /// <value>MongoDB server URI options</value>
-        [DataMember(Name = "mongodb-uri-options", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-uri-options", EmitDefaultValue=false)]
         public string MongodbUriOptions { get; set; }
 
         /// <summary>
         /// MongoDB server username
         /// </summary>
         /// <value>MongoDB server username</value>
-        [DataMember(Name = "mongodb-username", EmitDefaultValue = false)]
+        [DataMember(Name="mongodb-username", EmitDefaultValue=false)]
         public string MongodbUsername { get; set; }
 
         /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "new-name", EmitDefaultValue = false)]
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Encrypt producer with following key
         /// </summary>
         /// <value>Encrypt producer with following key</value>
-        [DataMember(Name = "producer-encryption-key-name", EmitDefaultValue = false)]
+        [DataMember(Name="producer-encryption-key-name", EmitDefaultValue=false)]
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionIssuer
         /// </summary>
-        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessEnable
         /// </summary>
-        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessHost
         /// </summary>
-        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessWeb
         /// </summary>
-        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        [DataMember(Name="secure-access-web", EmitDefaultValue=false)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
         /// </summary>
         /// <value>List of the tags attached to this secret</value>
-        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        [DataMember(Name="tags", EmitDefaultValue=false)]
         public List<string> Tags { get; set; }
 
         /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "target-name", EmitDefaultValue = false)]
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
         public string TargetName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// User TTL
         /// </summary>
         /// <value>User TTL</value>
-        [DataMember(Name = "user-ttl", EmitDefaultValue = false)]
+        [DataMember(Name="user-ttl", EmitDefaultValue=false)]
         public string UserTtl { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -307,14 +303,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -533,7 +529,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

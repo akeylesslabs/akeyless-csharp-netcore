@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// Target
     /// </summary>
-    [DataContract(Name = "Target")]
-    public partial class Target : IEquatable<Target>, IValidatableObject
+    [DataContract]
+    public partial class Target :  IEquatable<Target>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Target" /> class.
@@ -58,65 +57,65 @@ namespace akeyless.Model
             this.TargetVersions = targetVersions;
             this.WithCustomerFragment = withCustomerFragment;
         }
-
+        
         /// <summary>
         /// Gets or Sets ClientPermissions
         /// </summary>
-        [DataMember(Name = "client_permissions", EmitDefaultValue = false)]
+        [DataMember(Name="client_permissions", EmitDefaultValue=false)]
         public List<string> ClientPermissions { get; set; }
 
         /// <summary>
         /// Gets or Sets Comment
         /// </summary>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
+        [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
 
         /// <summary>
         /// Gets or Sets LastVersion
         /// </summary>
-        [DataMember(Name = "last_version", EmitDefaultValue = false)]
+        [DataMember(Name="last_version", EmitDefaultValue=false)]
         public int LastVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets ProtectionKeyName
         /// </summary>
-        [DataMember(Name = "protection_key_name", EmitDefaultValue = false)]
+        [DataMember(Name="protection_key_name", EmitDefaultValue=false)]
         public string ProtectionKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetId
         /// </summary>
-        [DataMember(Name = "target_id", EmitDefaultValue = false)]
+        [DataMember(Name="target_id", EmitDefaultValue=false)]
         public long TargetId { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetItemsAssoc
         /// </summary>
-        [DataMember(Name = "target_items_assoc", EmitDefaultValue = false)]
+        [DataMember(Name="target_items_assoc", EmitDefaultValue=false)]
         public List<TargetItemAssociation> TargetItemsAssoc { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetName
         /// </summary>
-        [DataMember(Name = "target_name", EmitDefaultValue = false)]
+        [DataMember(Name="target_name", EmitDefaultValue=false)]
         public string TargetName { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetType
         /// </summary>
-        [DataMember(Name = "target_type", EmitDefaultValue = false)]
+        [DataMember(Name="target_type", EmitDefaultValue=false)]
         public string TargetType { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetVersions
         /// </summary>
-        [DataMember(Name = "target_versions", EmitDefaultValue = false)]
+        [DataMember(Name="target_versions", EmitDefaultValue=false)]
         public List<ItemVersion> TargetVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets WithCustomerFragment
         /// </summary>
-        [DataMember(Name = "with_customer_fragment", EmitDefaultValue = true)]
+        [DataMember(Name="with_customer_fragment", EmitDefaultValue=false)]
         public bool WithCustomerFragment { get; set; }
 
         /// <summary>
@@ -140,14 +139,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -258,7 +257,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

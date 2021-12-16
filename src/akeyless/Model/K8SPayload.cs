@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// K8SPayload
     /// </summary>
-    [DataContract(Name = "K8SPayload")]
-    public partial class K8SPayload : IEquatable<K8SPayload>, IValidatableObject
+    [DataContract]
+    public partial class K8SPayload :  IEquatable<K8SPayload>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="K8SPayload" /> class.
@@ -56,59 +55,59 @@ namespace akeyless.Model
             this.Token = token;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Gets or Sets Ca
         /// </summary>
-        [DataMember(Name = "ca", EmitDefaultValue = false)]
+        [DataMember(Name="ca", EmitDefaultValue=false)]
         public List<int> Ca { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientCert
         /// </summary>
-        [DataMember(Name = "client_cert", EmitDefaultValue = false)]
+        [DataMember(Name="client_cert", EmitDefaultValue=false)]
         public List<int> ClientCert { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientKey
         /// </summary>
-        [DataMember(Name = "client_key", EmitDefaultValue = false)]
+        [DataMember(Name="client_key", EmitDefaultValue=false)]
         public List<int> ClientKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Namespace
         /// </summary>
-        [DataMember(Name = "namespace", EmitDefaultValue = false)]
+        [DataMember(Name="namespace", EmitDefaultValue=false)]
         public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or Sets Password
         /// </summary>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets Server
         /// </summary>
-        [DataMember(Name = "server", EmitDefaultValue = false)]
+        [DataMember(Name="server", EmitDefaultValue=false)]
         public string Server { get; set; }
 
         /// <summary>
         /// Gets or Sets SkipSystem
         /// </summary>
-        [DataMember(Name = "skip_system", EmitDefaultValue = true)]
+        [DataMember(Name="skip_system", EmitDefaultValue=false)]
         public bool SkipSystem { get; set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// Gets or Sets Username
         /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -131,14 +130,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -246,7 +245,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

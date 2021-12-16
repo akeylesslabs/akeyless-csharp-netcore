@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAuthMethodUniversalIdentityOutput
-
 ## Properties
 
 Name | Type | Description | Notes

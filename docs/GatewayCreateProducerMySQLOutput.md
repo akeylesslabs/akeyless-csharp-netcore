@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerMySQLOutput
-
 ## Properties
 
 Name | Type | Description | Notes

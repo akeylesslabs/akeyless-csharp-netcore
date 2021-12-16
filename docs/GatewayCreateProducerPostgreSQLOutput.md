@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerPostgreSQLOutput
-
 ## Properties
 
 Name | Type | Description | Notes

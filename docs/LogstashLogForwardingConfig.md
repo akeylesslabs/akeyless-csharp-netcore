@@ -1,5 +1,4 @@
 # akeyless.Model.LogstashLogForwardingConfig
-
 ## Properties
 
 Name | Type | Description | Notes

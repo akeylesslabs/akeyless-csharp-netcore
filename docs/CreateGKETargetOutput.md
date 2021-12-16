@@ -1,5 +1,4 @@
 # akeyless.Model.CreateGKETargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

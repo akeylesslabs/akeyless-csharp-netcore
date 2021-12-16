@@ -1,5 +1,4 @@
 # akeyless.Model.SecureRemoteAccess
-
 ## Properties
 
 Name | Type | Description | Notes

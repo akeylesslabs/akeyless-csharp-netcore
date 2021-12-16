@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateSecretVal
-
 ## Properties
 
 Name | Type | Description | Notes

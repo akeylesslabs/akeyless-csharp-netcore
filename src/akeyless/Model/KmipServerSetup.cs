@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// KmipServerSetup
     /// </summary>
-    [DataContract(Name = "kmipServerSetup")]
-    public partial class KmipServerSetup : IEquatable<KmipServerSetup>, IValidatableObject
+    [DataContract]
+    public partial class KmipServerSetup :  IEquatable<KmipServerSetup>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipServerSetup" /> class.
@@ -50,10 +49,7 @@ namespace akeyless.Model
         public KmipServerSetup(long certificateTtl = default(long), string hostname = default(string), string password = default(string), string root = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "hostname" is required (not null)
-            if (hostname == null) {
-                throw new ArgumentNullException("hostname is a required property for KmipServerSetup and cannot be null");
-            }
-            this.Hostname = hostname;
+            this.Hostname = hostname ?? throw new ArgumentNullException("hostname is a required property for KmipServerSetup and cannot be null");
             this.CertificateTtl = certificateTtl;
             this.Password = password;
             this.Root = root;
@@ -61,52 +57,52 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Gets or Sets CertificateTtl
         /// </summary>
-        [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
+        [DataMember(Name="certificate-ttl", EmitDefaultValue=false)]
         public long CertificateTtl { get; set; }
 
         /// <summary>
         /// Hostname
         /// </summary>
         /// <value>Hostname</value>
-        [DataMember(Name = "hostname", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="hostname", EmitDefaultValue=false)]
         public string Hostname { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets Root
         /// </summary>
-        [DataMember(Name = "root", EmitDefaultValue = false)]
+        [DataMember(Name="root", EmitDefaultValue=false)]
         public string Root { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -127,14 +123,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -225,7 +221,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

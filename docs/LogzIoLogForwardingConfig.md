@@ -1,5 +1,4 @@
 # akeyless.Model.LogzIoLogForwardingConfig
-
 ## Properties
 
 Name | Type | Description | Notes

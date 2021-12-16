@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -11,7 +11,6 @@
 
 using System;
 using System.Collections;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -36,7 +35,7 @@ namespace akeyless.Client
         }
 
         /// <summary>
-        /// Convert params to key/value pairs.
+        /// Convert params to key/value pairs. 
         /// Use collectionFormat to properly format lists and collections.
         /// </summary>
         /// <param name="collectionFormat">The swagger-supported collection format, one of: csv, tsv, ssv, pipes, multi</param>
@@ -54,21 +53,6 @@ namespace akeyless.Client
                     parameters.Add(name, ParameterToString(item));
                 }
             }
-            else if (value is IDictionary dictionary)
-            {
-                if(collectionFormat == "deepObject") {
-                    foreach (DictionaryEntry entry in dictionary)
-                    {
-                        parameters.Add(name + "[" + entry.Key + "]", ParameterToString(entry.Value));
-                    }
-                }
-                else {
-                    foreach (DictionaryEntry entry in dictionary)
-                    {
-                        parameters.Add(entry.Key.ToString(), ParameterToString(entry.Value));
-                    }
-                }
-            }
             else
             {
                 parameters.Add(name, ParameterToString(value));
@@ -76,7 +60,7 @@ namespace akeyless.Client
 
             return parameters;
         }
-
+        
         /// <summary>
         /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a list, join the list with ",".
@@ -104,14 +88,14 @@ namespace akeyless.Client
             if (obj is ICollection collection)
                 return string.Join(",", collection.Cast<object>());
 
-            return Convert.ToString(obj, CultureInfo.InvariantCulture);
+            return Convert.ToString(obj);
         }
 
         /// <summary>
         /// URL encode a string
         /// Credit/Ref: https://github.com/restsharp/RestSharp/blob/master/RestSharp/Extensions/StringExtensions.cs#L50
         /// </summary>
-        /// <param name="input">string to be URL encoded</param>
+        /// <param name="input">String to be URL encoded</param>
         /// <returns>Byte array</returns>
         public static string UrlEncode(string input)
         {
@@ -145,7 +129,7 @@ namespace akeyless.Client
         /// <summary>
         /// Encode string in base64 format.
         /// </summary>
-        /// <param name="text">string to be encoded.</param>
+        /// <param name="text">String to be encoded.</param>
         /// <returns>Encoded string.</returns>
         public static string Base64Encode(string text)
         {
@@ -173,7 +157,7 @@ namespace akeyless.Client
         /// </summary>
         /// <param name="contentTypes">The Content-Type array to select from.</param>
         /// <returns>The Content-Type header to use.</returns>
-        public static string SelectHeaderContentType(string[] contentTypes)
+        public static String SelectHeaderContentType(String[] contentTypes)
         {
             if (contentTypes.Length == 0)
                 return null;
@@ -194,7 +178,7 @@ namespace akeyless.Client
         /// </summary>
         /// <param name="accepts">The accepts array to select from.</param>
         /// <returns>The Accept header to use.</returns>
-        public static string SelectHeaderAccept(string[] accepts)
+        public static String SelectHeaderAccept(String[] accepts)
         {
             if (accepts.Length == 0)
                 return null;
@@ -202,7 +186,7 @@ namespace akeyless.Client
             if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
                 return "application/json";
 
-            return string.Join(",", accepts);
+            return String.Join(",", accepts);
         }
 
         /// <summary>
@@ -220,9 +204,9 @@ namespace akeyless.Client
         /// </summary>
         /// <param name="mime">MIME</param>
         /// <returns>Returns True if MIME type is json.</returns>
-        public static bool IsJsonMime(string mime)
+        public static bool IsJsonMime(String mime)
         {
-            if (string.IsNullOrWhiteSpace(mime)) return false;
+            if (String.IsNullOrWhiteSpace(mime)) return false;
 
             return JsonRegex.IsMatch(mime) || mime.Equals("application/json-patch+json");
         }

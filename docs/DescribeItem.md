@@ -1,5 +1,4 @@
 # akeyless.Model.DescribeItem
-
 ## Properties
 
 Name | Type | Description | Notes

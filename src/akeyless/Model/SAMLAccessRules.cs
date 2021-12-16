@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// SAMLAccessRules
     /// </summary>
-    [DataContract(Name = "SAMLAccessRules")]
-    public partial class SAMLAccessRules : IEquatable<SAMLAccessRules>, IValidatableObject
+    [DataContract]
+    public partial class SAMLAccessRules :  IEquatable<SAMLAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SAMLAccessRules" /> class.
@@ -48,40 +47,40 @@ namespace akeyless.Model
             this.IdpMetadataXml = idpMetadataXml;
             this.UniqueIdentifier = uniqueIdentifier;
         }
-
+        
         /// <summary>
         /// Allowed redirect URIs after the authentication
         /// </summary>
         /// <value>Allowed redirect URIs after the authentication</value>
-        [DataMember(Name = "allowed_redirect_URIs", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_redirect_URIs", EmitDefaultValue=false)]
         public List<string> AllowedRedirectURIs { get; set; }
 
         /// <summary>
         /// The attributes that login is restricted to.
         /// </summary>
         /// <value>The attributes that login is restricted to.</value>
-        [DataMember(Name = "bound_attributes", EmitDefaultValue = false)]
+        [DataMember(Name="bound_attributes", EmitDefaultValue=false)]
         public List<SAMLAttribute> BoundAttributes { get; set; }
 
         /// <summary>
         /// IDP metadata url
         /// </summary>
         /// <value>IDP metadata url</value>
-        [DataMember(Name = "idp_metadata_url", EmitDefaultValue = false)]
+        [DataMember(Name="idp_metadata_url", EmitDefaultValue=false)]
         public string IdpMetadataUrl { get; set; }
 
         /// <summary>
         /// IDP metadata XML
         /// </summary>
         /// <value>IDP metadata XML</value>
-        [DataMember(Name = "idp_metadata_xml", EmitDefaultValue = false)]
+        [DataMember(Name="idp_metadata_xml", EmitDefaultValue=false)]
         public string IdpMetadataXml { get; set; }
 
         /// <summary>
         /// A unique identifier to distinguish different users
         /// </summary>
         /// <value>A unique identifier to distinguish different users</value>
-        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
+        [DataMember(Name="unique_identifier", EmitDefaultValue=false)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
@@ -100,14 +99,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -188,7 +187,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

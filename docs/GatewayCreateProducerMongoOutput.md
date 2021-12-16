@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerMongoOutput
-
 ## Properties
 
 Name | Type | Description | Notes

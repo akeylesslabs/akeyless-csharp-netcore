@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayDeleteAllowedManagementAccess
 gatewayDeleteAllowedManagementAccess is a command that deletes sub-admins
-
 ## Properties
 
 Name | Type | Description | Notes

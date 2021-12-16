@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayUpdateProducerMSSQLOutput
-
 ## Properties
 
 Name | Type | Description | Notes

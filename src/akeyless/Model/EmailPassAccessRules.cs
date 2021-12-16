@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// EmailPassAccessRules
     /// </summary>
-    [DataContract(Name = "EmailPassAccessRules")]
-    public partial class EmailPassAccessRules : IEquatable<EmailPassAccessRules>, IValidatableObject
+    [DataContract]
+    public partial class EmailPassAccessRules :  IEquatable<EmailPassAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailPassAccessRules" /> class.
@@ -44,25 +43,25 @@ namespace akeyless.Model
             this.Email = email;
             this.HashPass = hashPass;
         }
-
+        
         /// <summary>
         /// Gets or Sets Alg
         /// </summary>
-        [DataMember(Name = "alg", EmitDefaultValue = false)]
+        [DataMember(Name="alg", EmitDefaultValue=false)]
         public string Alg { get; set; }
 
         /// <summary>
         /// The Email value
         /// </summary>
         /// <value>The Email value</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [DataMember(Name="email", EmitDefaultValue=false)]
         public string Email { get; set; }
 
         /// <summary>
         /// The password value
         /// </summary>
         /// <value>The password value</value>
-        [DataMember(Name = "hash_pass", EmitDefaultValue = false)]
+        [DataMember(Name="hash_pass", EmitDefaultValue=false)]
         public string HashPass { get; set; }
 
         /// <summary>
@@ -79,14 +78,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -151,7 +150,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateNativeK8STargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

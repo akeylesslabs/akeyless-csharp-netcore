@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateProducerRedshift
 gatewayCreateProducerRedshift is a command that creates redshift producer
-
 ## Properties
 
 Name | Type | Description | Notes

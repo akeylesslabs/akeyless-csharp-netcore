@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerCassandra
 gatewayUpdateProducerCassandra is a command that updates a Cassandra producer
-
 ## Properties
 
 Name | Type | Description | Notes

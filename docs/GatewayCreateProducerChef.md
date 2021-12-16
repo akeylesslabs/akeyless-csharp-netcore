@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateProducerChef
 gatewayCreateProducerChef is a command that creates chef producer
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateAuthMethodOutput
-
 ## Properties
 
 Name | Type | Description | Notes

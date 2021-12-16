@@ -1,5 +1,4 @@
 # akeyless.Model.SAMLAttribute
-
 ## Properties
 
 Name | Type | Description | Notes

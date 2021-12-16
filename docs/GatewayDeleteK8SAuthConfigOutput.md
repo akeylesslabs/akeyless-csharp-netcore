@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayDeleteK8SAuthConfigOutput
-
 ## Properties
 
 Name | Type | Description | Notes

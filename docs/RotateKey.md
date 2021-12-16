@@ -1,6 +1,5 @@
 # akeyless.Model.RotateKey
 rotateKey is a command that rotates an existing key, creating a new version. [Deprecated: Use command update-rotation-settings] of it.
-
 ## Properties
 
 Name | Type | Description | Notes

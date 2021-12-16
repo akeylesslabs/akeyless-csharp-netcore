@@ -1,6 +1,5 @@
 # akeyless.Model.UidListChildren
 uidListChildren is a command that lists child token ids of Akeyless Universal Identity.
-
 ## Properties
 
 Name | Type | Description | Notes

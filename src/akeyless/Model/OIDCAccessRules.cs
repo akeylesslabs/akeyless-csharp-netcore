@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// OIDCAccessRules contains access rules specific to Open Id Connect authentication method.
     /// </summary>
-    [DataContract(Name = "OIDCAccessRules")]
-    public partial class OIDCAccessRules : IEquatable<OIDCAccessRules>, IValidatableObject
+    [DataContract]
+    public partial class OIDCAccessRules :  IEquatable<OIDCAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OIDCAccessRules" /> class.
@@ -50,47 +49,47 @@ namespace akeyless.Model
             this.Issuer = issuer;
             this.UniqueIdentifier = uniqueIdentifier;
         }
-
+        
         /// <summary>
         /// Allowed redirect URIs after the authentication
         /// </summary>
         /// <value>Allowed redirect URIs after the authentication</value>
-        [DataMember(Name = "allowed_redirect_URIs", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_redirect_URIs", EmitDefaultValue=false)]
         public List<string> AllowedRedirectURIs { get; set; }
 
         /// <summary>
         /// The claims that login is restricted to.
         /// </summary>
         /// <value>The claims that login is restricted to.</value>
-        [DataMember(Name = "bound_claims", EmitDefaultValue = false)]
+        [DataMember(Name="bound_claims", EmitDefaultValue=false)]
         public List<OIDCCustomClaim> BoundClaims { get; set; }
 
         /// <summary>
         /// Client ID
         /// </summary>
         /// <value>Client ID</value>
-        [DataMember(Name = "client_id", EmitDefaultValue = false)]
+        [DataMember(Name="client_id", EmitDefaultValue=false)]
         public string ClientId { get; set; }
 
         /// <summary>
         /// Client Secret
         /// </summary>
         /// <value>Client Secret</value>
-        [DataMember(Name = "client_secret", EmitDefaultValue = false)]
+        [DataMember(Name="client_secret", EmitDefaultValue=false)]
         public string ClientSecret { get; set; }
 
         /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
-        [DataMember(Name = "issuer", EmitDefaultValue = false)]
+        [DataMember(Name="issuer", EmitDefaultValue=false)]
         public string Issuer { get; set; }
 
         /// <summary>
         /// A unique identifier to distinguish different users
         /// </summary>
         /// <value>A unique identifier to distinguish different users</value>
-        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
+        [DataMember(Name="unique_identifier", EmitDefaultValue=false)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
@@ -110,14 +109,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -205,7 +204,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

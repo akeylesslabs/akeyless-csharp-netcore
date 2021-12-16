@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayAddAllowedManagementAccess
 gatewayAddAllowedManagementAccess is a command that adds sub-admins
-
 ## Properties
 
 Name | Type | Description | Notes

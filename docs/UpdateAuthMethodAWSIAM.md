@@ -1,6 +1,5 @@
 # akeyless.Model.UpdateAuthMethodAWSIAM
 updateAuthMethodAWSIAM is a command that updates a new Auth Method that will be able to authenticate using AWS IAM credentials.
-
 ## Properties
 
 Name | Type | Description | Notes

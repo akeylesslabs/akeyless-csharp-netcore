@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// ClassicKeyStatusInfo
     /// </summary>
-    [DataContract(Name = "ClassicKeyStatusInfo")]
-    public partial class ClassicKeyStatusInfo : IEquatable<ClassicKeyStatusInfo>, IValidatableObject
+    [DataContract]
+    public partial class ClassicKeyStatusInfo :  IEquatable<ClassicKeyStatusInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassicKeyStatusInfo" /> class.
@@ -44,33 +43,33 @@ namespace akeyless.Model
             this.ErrorDate = errorDate;
             this.LastError = lastError;
             this.LastStatus = lastStatus;
-            this._Version = version;
+            this.Version = version;
         }
-
+        
         /// <summary>
         /// Gets or Sets ErrorDate
         /// </summary>
-        [DataMember(Name = "error_date", EmitDefaultValue = false)]
+        [DataMember(Name="error_date", EmitDefaultValue=false)]
         public DateTime ErrorDate { get; set; }
 
         /// <summary>
         /// Gets or Sets LastError
         /// </summary>
-        [DataMember(Name = "last_error", EmitDefaultValue = false)]
+        [DataMember(Name="last_error", EmitDefaultValue=false)]
         public string LastError { get; set; }
 
         /// <summary>
         /// ClassicKeyTargetStatus defines status of classic key target
         /// </summary>
         /// <value>ClassicKeyTargetStatus defines status of classic key target</value>
-        [DataMember(Name = "last_status", EmitDefaultValue = false)]
+        [DataMember(Name="last_status", EmitDefaultValue=false)]
         public string LastStatus { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Version
+        /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public long _Version { get; set; }
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public long Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,18 +82,18 @@ namespace akeyless.Model
             sb.Append("  ErrorDate: ").Append(ErrorDate).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  LastStatus: ").Append(LastStatus).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -134,8 +133,8 @@ namespace akeyless.Model
                     this.LastStatus.Equals(input.LastStatus))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.Version == input.Version ||
+                    this.Version.Equals(input.Version)
                 );
         }
 
@@ -154,7 +153,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LastError.GetHashCode();
                 if (this.LastStatus != null)
                     hashCode = hashCode * 59 + this.LastStatus.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -164,7 +163,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

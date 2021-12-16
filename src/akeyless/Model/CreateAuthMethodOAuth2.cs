@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// createAuthMethodOAuth2 is a command that creates a new auth method that will be able to authenticate using Oauth2.
     /// </summary>
-    [DataContract(Name = "createAuthMethodOAuth2")]
-    public partial class CreateAuthMethodOAuth2 : IEquatable<CreateAuthMethodOAuth2>, IValidatableObject
+    [DataContract]
+    public partial class CreateAuthMethodOAuth2 :  IEquatable<CreateAuthMethodOAuth2>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAuthMethodOAuth2" /> class.
@@ -56,20 +55,11 @@ namespace akeyless.Model
         public CreateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string issuer = default(string), string jwksUri = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
         {
             // to ensure "jwksUri" is required (not null)
-            if (jwksUri == null) {
-                throw new ArgumentNullException("jwksUri is a required property for CreateAuthMethodOAuth2 and cannot be null");
-            }
-            this.JwksUri = jwksUri;
+            this.JwksUri = jwksUri ?? throw new ArgumentNullException("jwksUri is a required property for CreateAuthMethodOAuth2 and cannot be null");
             // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for CreateAuthMethodOAuth2 and cannot be null");
-            }
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for CreateAuthMethodOAuth2 and cannot be null");
             // to ensure "uniqueIdentifier" is required (not null)
-            if (uniqueIdentifier == null) {
-                throw new ArgumentNullException("uniqueIdentifier is a required property for CreateAuthMethodOAuth2 and cannot be null");
-            }
-            this.UniqueIdentifier = uniqueIdentifier;
+            this.UniqueIdentifier = uniqueIdentifier ?? throw new ArgumentNullException("uniqueIdentifier is a required property for CreateAuthMethodOAuth2 and cannot be null");
             this.AccessExpires = accessExpires;
             this.Audience = audience;
             this.BoundClientIds = boundClientIds;
@@ -81,96 +71,96 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Access expiration date in Unix timestamp (select 0 for access without expiry date)
         /// </summary>
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
-        [DataMember(Name = "access-expires", EmitDefaultValue = false)]
+        [DataMember(Name="access-expires", EmitDefaultValue=false)]
         public long AccessExpires { get; set; }
 
         /// <summary>
         /// The audience in the JWT
         /// </summary>
         /// <value>The audience in the JWT</value>
-        [DataMember(Name = "audience", EmitDefaultValue = false)]
+        [DataMember(Name="audience", EmitDefaultValue=false)]
         public string Audience { get; set; }
 
         /// <summary>
         /// The clients ids that the access is restricted to
         /// </summary>
         /// <value>The clients ids that the access is restricted to</value>
-        [DataMember(Name = "bound-client-ids", EmitDefaultValue = false)]
+        [DataMember(Name="bound-client-ids", EmitDefaultValue=false)]
         public List<string> BoundClientIds { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
-        [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
+        [DataMember(Name="bound-ips", EmitDefaultValue=false)]
         public List<string> BoundIps { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
         /// </summary>
         /// <value>if true: enforce role-association must include sub claims</value>
-        [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
+        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
-        [DataMember(Name = "issuer", EmitDefaultValue = false)]
+        [DataMember(Name="issuer", EmitDefaultValue=false)]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
-        [DataMember(Name = "jwks-uri", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="jwks-uri", EmitDefaultValue=false)]
         public string JwksUri { get; set; }
 
         /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
         /// </summary>
         /// <value>A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.</value>
-        [DataMember(Name = "unique-identifier", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="unique-identifier", EmitDefaultValue=false)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -197,14 +187,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -337,7 +327,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

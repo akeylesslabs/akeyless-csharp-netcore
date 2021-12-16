@@ -1,5 +1,4 @@
 # akeyless.Model.K8SAuthsConfigPart
-
 ## Properties
 
 Name | Type | Description | Notes

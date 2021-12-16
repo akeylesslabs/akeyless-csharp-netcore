@@ -1,5 +1,4 @@
 # akeyless.Model.VerifyPKICertOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.GetTargetDetails
-
 ## Properties
 
 Name | Type | Description | Notes

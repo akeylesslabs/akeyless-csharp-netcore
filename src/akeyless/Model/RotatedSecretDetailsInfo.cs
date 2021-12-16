@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// RotatedSecretDetailsInfo The rotated secret rotator info
     /// </summary>
-    [DataContract(Name = "RotatedSecretDetailsInfo")]
-    public partial class RotatedSecretDetailsInfo : IEquatable<RotatedSecretDetailsInfo>, IValidatableObject
+    [DataContract]
+    public partial class RotatedSecretDetailsInfo :  IEquatable<RotatedSecretDetailsInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RotatedSecretDetailsInfo" /> class.
@@ -58,66 +57,66 @@ namespace akeyless.Model
             this.RotatorStatus = rotatorStatus;
             this.RotatorType = rotatorType;
         }
-
+        
         /// <summary>
         /// Gets or Sets DeletePreviousVersionInDays
         /// </summary>
-        [DataMember(Name = "delete_previous_version_in_days", EmitDefaultValue = false)]
+        [DataMember(Name="delete_previous_version_in_days", EmitDefaultValue=false)]
         public int DeletePreviousVersionInDays { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterId
         /// </summary>
-        [DataMember(Name = "gw_cluster_id", EmitDefaultValue = false)]
+        [DataMember(Name="gw_cluster_id", EmitDefaultValue=false)]
         public long GwClusterId { get; set; }
 
         /// <summary>
         /// Gets or Sets LastRotationError
         /// </summary>
-        [DataMember(Name = "last_rotation_error", EmitDefaultValue = false)]
+        [DataMember(Name="last_rotation_error", EmitDefaultValue=false)]
         public string LastRotationError { get; set; }
 
         /// <summary>
         /// Gets or Sets NumberOfVersionsToSave
         /// </summary>
-        [DataMember(Name = "number_of_versions_to_save", EmitDefaultValue = false)]
+        [DataMember(Name="number_of_versions_to_save", EmitDefaultValue=false)]
         public int NumberOfVersionsToSave { get; set; }
 
         /// <summary>
         /// Gets or Sets RotationHour
         /// </summary>
-        [DataMember(Name = "rotation_hour", EmitDefaultValue = false)]
+        [DataMember(Name="rotation_hour", EmitDefaultValue=false)]
         public int RotationHour { get; set; }
 
         /// <summary>
         /// Gets or Sets RotationIntervalMin
         /// </summary>
-        [DataMember(Name = "rotation_interval_min", EmitDefaultValue = true)]
+        [DataMember(Name="rotation_interval_min", EmitDefaultValue=false)]
         public bool RotationIntervalMin { get; set; }
 
         /// <summary>
         /// Gets or Sets RotationStatement
         /// </summary>
-        [DataMember(Name = "rotation_statement", EmitDefaultValue = false)]
+        [DataMember(Name="rotation_statement", EmitDefaultValue=false)]
         public string RotationStatement { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatorCredsType
         /// </summary>
-        [DataMember(Name = "rotator_creds_type", EmitDefaultValue = false)]
+        [DataMember(Name="rotator_creds_type", EmitDefaultValue=false)]
         public string RotatorCredsType { get; set; }
 
         /// <summary>
         /// RotationStatus defines types of rotation Status
         /// </summary>
         /// <value>RotationStatus defines types of rotation Status</value>
-        [DataMember(Name = "rotator_status", EmitDefaultValue = false)]
+        [DataMember(Name="rotator_status", EmitDefaultValue=false)]
         public string RotatorStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatorType
         /// </summary>
-        [DataMember(Name = "rotator_type", EmitDefaultValue = false)]
+        [DataMember(Name="rotator_type", EmitDefaultValue=false)]
         public string RotatorType { get; set; }
 
         /// <summary>
@@ -141,14 +140,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -252,7 +251,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

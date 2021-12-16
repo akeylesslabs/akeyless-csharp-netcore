@@ -266,7 +266,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -335,7 +334,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -403,7 +401,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -474,7 +471,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -543,7 +539,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -554,7 +549,7 @@ No authorization required
 
 <a name="createawstarget"></a>
 # **CreateAWSTarget**
-> CreateAWSTargetOutput CreateAWSTarget (CreateTargetAWS body)
+> CreateAWSTargetOutput CreateAWSTarget (CreateAWSTarget body)
 
 
 
@@ -575,7 +570,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new CreateTargetAWS(); // CreateTargetAWS | 
+            var body = new CreateAWSTarget(); // CreateAWSTarget | 
 
             try
             {
@@ -597,7 +592,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateTargetAWS**](CreateTargetAWS.md)|  | 
+ **body** | [**CreateAWSTarget**](CreateAWSTarget.md)|  | 
 
 ### Return type
 
@@ -611,7 +606,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -681,7 +675,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -749,7 +742,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -819,7 +811,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -887,7 +878,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -957,7 +947,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1025,7 +1014,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1095,7 +1083,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1163,7 +1150,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1233,7 +1219,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1301,7 +1286,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1371,7 +1355,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1439,7 +1422,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1509,7 +1491,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1577,7 +1558,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1647,7 +1627,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1715,7 +1694,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1785,7 +1763,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1853,7 +1830,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1923,7 +1899,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -1991,7 +1966,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2061,7 +2035,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2129,7 +2102,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2199,7 +2171,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2267,7 +2238,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2337,7 +2307,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2405,7 +2374,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2475,7 +2443,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2543,7 +2510,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2613,7 +2579,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2681,7 +2646,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2751,7 +2715,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2819,7 +2782,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2889,7 +2851,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -2957,7 +2918,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3027,7 +2987,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3095,7 +3054,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3165,7 +3123,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3233,7 +3190,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3303,7 +3259,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3371,7 +3326,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3441,7 +3395,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3509,7 +3462,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3579,7 +3531,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3647,7 +3598,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3717,7 +3667,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3785,7 +3734,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3855,7 +3803,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -3923,7 +3870,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3993,7 +3939,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4061,7 +4006,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4131,7 +4075,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4199,7 +4142,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4269,7 +4211,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4337,7 +4278,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4407,7 +4347,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4475,7 +4414,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4545,7 +4483,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4613,7 +4550,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4683,7 +4619,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4751,7 +4686,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4821,7 +4755,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -4889,7 +4822,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -4959,7 +4891,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5027,7 +4958,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5097,7 +5027,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5165,7 +5094,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5235,7 +5163,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5303,7 +5230,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5373,7 +5299,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5441,7 +5366,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5511,7 +5435,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5579,7 +5502,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5649,7 +5571,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5717,7 +5638,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5787,7 +5707,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5855,7 +5774,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -5925,7 +5843,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -5993,7 +5910,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6063,7 +5979,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6131,7 +6046,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6201,7 +6115,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6268,7 +6181,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6338,7 +6250,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6406,7 +6317,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6476,7 +6386,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6544,7 +6453,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6614,7 +6522,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6682,7 +6589,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6752,7 +6658,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6820,7 +6725,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6890,7 +6794,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -6958,7 +6861,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7028,7 +6930,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7096,7 +6997,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7166,7 +7066,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7234,7 +7133,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7304,7 +7202,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7372,7 +7269,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7442,7 +7338,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7510,7 +7405,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7580,7 +7474,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7648,7 +7541,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7718,7 +7610,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7786,7 +7677,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7856,7 +7746,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7925,7 +7814,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -7993,7 +7881,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8057,7 +7944,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8127,7 +8013,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8195,7 +8080,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8265,7 +8149,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8333,7 +8216,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8403,7 +8285,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8471,7 +8352,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8541,7 +8421,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8609,7 +8488,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8679,7 +8557,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8747,7 +8624,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8817,7 +8693,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -8885,7 +8760,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8955,7 +8829,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9023,7 +8896,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9093,7 +8965,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9161,7 +9032,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9231,7 +9101,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9299,7 +9168,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9369,7 +9237,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9437,7 +9304,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9507,7 +9373,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9575,7 +9440,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9645,7 +9509,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9713,7 +9576,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9783,7 +9645,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9851,7 +9712,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9921,7 +9781,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -9989,7 +9848,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10059,7 +9917,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10127,7 +9984,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10197,7 +10053,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10265,7 +10120,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10335,7 +10189,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10403,7 +10256,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10473,7 +10325,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10541,7 +10392,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10611,7 +10461,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10679,7 +10528,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10749,7 +10597,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10817,7 +10664,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10887,7 +10733,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -10955,7 +10800,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11025,7 +10869,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11093,7 +10936,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11163,7 +11005,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11231,7 +11072,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11301,7 +11141,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11369,7 +11208,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11439,7 +11277,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11507,7 +11344,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11577,7 +11413,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11645,7 +11480,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11715,7 +11549,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11783,7 +11616,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11853,7 +11685,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -11921,7 +11752,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11991,7 +11821,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12059,7 +11888,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12129,7 +11957,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12197,7 +12024,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12267,7 +12093,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12335,7 +12160,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12405,7 +12229,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12473,7 +12296,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12543,7 +12365,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12611,7 +12432,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12681,7 +12501,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12749,7 +12568,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12819,7 +12637,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -12887,7 +12704,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12957,7 +12773,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13026,7 +12841,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13090,7 +12904,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -13160,7 +12973,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13228,7 +13040,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -13298,7 +13109,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13366,7 +13176,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -13436,7 +13245,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13504,7 +13312,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -13574,7 +13381,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13642,7 +13448,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -13712,7 +13517,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13780,7 +13584,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -13851,7 +13654,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13920,7 +13722,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -13988,7 +13789,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 | Status code | Description | Response headers |

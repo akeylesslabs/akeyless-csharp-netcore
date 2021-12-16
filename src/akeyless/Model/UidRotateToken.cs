@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// uidRotateToken is a command that rotates an Akeyless Universal Identity token.
     /// </summary>
-    [DataContract(Name = "uidRotateToken")]
-    public partial class UidRotateToken : IEquatable<UidRotateToken>, IValidatableObject
+    [DataContract]
+    public partial class UidRotateToken :  IEquatable<UidRotateToken>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UidRotateToken" /> class.
@@ -46,33 +45,33 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.WithManualAck = withManualAck;
         }
-
+        
         /// <summary>
         /// Create a new child token with default parameters
         /// </summary>
         /// <value>Create a new child token with default parameters</value>
-        [DataMember(Name = "fork", EmitDefaultValue = true)]
+        [DataMember(Name="fork", EmitDefaultValue=false)]
         public bool Fork { get; set; }
 
         /// <summary>
         /// The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token)
         /// </summary>
         /// <value>The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token)</value>
-        [DataMember(Name = "send-manual-ack-token", EmitDefaultValue = false)]
+        [DataMember(Name="send-manual-ack-token", EmitDefaultValue=false)]
         public string SendManualAckToken { get; set; }
 
         /// <summary>
         /// The Universal identity token
         /// </summary>
         /// <value>The Universal identity token</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Disable automatic ack
         /// </summary>
         /// <value>Disable automatic ack</value>
-        [DataMember(Name = "with-manual-ack", EmitDefaultValue = true)]
+        [DataMember(Name="with-manual-ack", EmitDefaultValue=false)]
         public bool WithManualAck { get; set; }
 
         /// <summary>
@@ -90,14 +89,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -165,7 +164,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

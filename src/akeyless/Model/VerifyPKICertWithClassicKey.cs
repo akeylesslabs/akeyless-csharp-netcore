@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// VerifyPKICertWithClassicKey
     /// </summary>
-    [DataContract(Name = "verifyPKICertWithClassicKey")]
-    public partial class VerifyPKICertWithClassicKey : IEquatable<VerifyPKICertWithClassicKey>, IValidatableObject
+    [DataContract]
+    public partial class VerifyPKICertWithClassicKey :  IEquatable<VerifyPKICertWithClassicKey>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VerifyPKICertWithClassicKey" /> class.
@@ -50,70 +49,64 @@ namespace akeyless.Model
         public VerifyPKICertWithClassicKey(string displayId = default(string), string password = default(string), string pkiCert = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            if (displayId == null) {
-                throw new ArgumentNullException("displayId is a required property for VerifyPKICertWithClassicKey and cannot be null");
-            }
-            this.DisplayId = displayId;
+            this.DisplayId = displayId ?? throw new ArgumentNullException("displayId is a required property for VerifyPKICertWithClassicKey and cannot be null");
             // to ensure "pkiCert" is required (not null)
-            if (pkiCert == null) {
-                throw new ArgumentNullException("pkiCert is a required property for VerifyPKICertWithClassicKey and cannot be null");
-            }
-            this.PkiCert = pkiCert;
-            this._Version = version;
+            this.PkiCert = pkiCert ?? throw new ArgumentNullException("pkiCert is a required property for VerifyPKICertWithClassicKey and cannot be null");
+            this.Version = version;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// The name of the key to use in the verify PKICert process
         /// </summary>
         /// <value>The name of the key to use in the verify PKICert process</value>
-        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="display-id", EmitDefaultValue=false)]
         public string DisplayId { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// PkiCert
         /// </summary>
         /// <value>PkiCert</value>
-        [DataMember(Name = "pki-cert", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="pki-cert", EmitDefaultValue=false)]
         public string PkiCert { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
-        public int _Version { get; set; }
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,18 +122,18 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -195,8 +188,8 @@ namespace akeyless.Model
                     this.Username.Equals(input.Username))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.Version == input.Version ||
+                    this.Version.Equals(input.Version)
                 );
         }
 
@@ -221,7 +214,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -231,7 +224,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

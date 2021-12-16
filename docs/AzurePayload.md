@@ -1,5 +1,4 @@
 # akeyless.Model.AzurePayload
-
 ## Properties
 
 Name | Type | Description | Notes

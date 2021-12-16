@@ -1,6 +1,5 @@
 # akeyless.Model.UpdateAuthMethodAzureAD
 updateAuthMethodAzureAD is a command that updates a new auth method that will be able to authenticate using Azure Active Directory credentials.
-
 ## Properties
 
 Name | Type | Description | Notes

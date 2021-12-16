@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// gatewayUpdateProducerRdp is a command that updates rdp producer
     /// </summary>
-    [DataContract(Name = "gatewayUpdateProducerRdp")]
-    public partial class GatewayUpdateProducerRdp : IEquatable<GatewayUpdateProducerRdp>, IValidatableObject
+    [DataContract]
+    public partial class GatewayUpdateProducerRdp :  IEquatable<GatewayUpdateProducerRdp>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerRdp" /> class.
@@ -64,10 +63,7 @@ namespace akeyless.Model
         public GatewayUpdateProducerRdp(string fixedUserOnly = "false", string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for GatewayUpdateProducerRdp and cannot be null");
-            }
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayUpdateProducerRdp and cannot be null");
             // use default value if no "fixedUserOnly" provided
             this.FixedUserOnly = fixedUserOnly ?? "false";
             this.NewName = newName;
@@ -92,147 +88,147 @@ namespace akeyless.Model
             this.UserTtl = userTtl ?? "60m";
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Fixed user
         /// </summary>
         /// <value>Fixed user</value>
-        [DataMember(Name = "fixed-user-only", EmitDefaultValue = false)]
+        [DataMember(Name="fixed-user-only", EmitDefaultValue=false)]
         public string FixedUserOnly { get; set; }
 
         /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "new-name", EmitDefaultValue = false)]
+        [DataMember(Name="new-name", EmitDefaultValue=false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
         /// </summary>
         /// <value>Dynamic producer encryption key</value>
-        [DataMember(Name = "producer-encryption-key-name", EmitDefaultValue = false)]
+        [DataMember(Name="producer-encryption-key-name", EmitDefaultValue=false)]
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
         /// RDP Admin Name
         /// </summary>
         /// <value>RDP Admin Name</value>
-        [DataMember(Name = "rdp-admin-name", EmitDefaultValue = false)]
+        [DataMember(Name="rdp-admin-name", EmitDefaultValue=false)]
         public string RdpAdminName { get; set; }
 
         /// <summary>
         /// RDP Admin password
         /// </summary>
         /// <value>RDP Admin password</value>
-        [DataMember(Name = "rdp-admin-pwd", EmitDefaultValue = false)]
+        [DataMember(Name="rdp-admin-pwd", EmitDefaultValue=false)]
         public string RdpAdminPwd { get; set; }
 
         /// <summary>
         /// Hostname
         /// </summary>
         /// <value>Hostname</value>
-        [DataMember(Name = "rdp-host-name", EmitDefaultValue = false)]
+        [DataMember(Name="rdp-host-name", EmitDefaultValue=false)]
         public string RdpHostName { get; set; }
 
         /// <summary>
         /// Port
         /// </summary>
         /// <value>Port</value>
-        [DataMember(Name = "rdp-host-port", EmitDefaultValue = false)]
+        [DataMember(Name="rdp-host-port", EmitDefaultValue=false)]
         public string RdpHostPort { get; set; }
 
         /// <summary>
         /// Groups
         /// </summary>
         /// <value>Groups</value>
-        [DataMember(Name = "rdp-user-groups", EmitDefaultValue = false)]
+        [DataMember(Name="rdp-user-groups", EmitDefaultValue=false)]
         public string RdpUserGroups { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAllowExternalUser
         /// </summary>
-        [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = true)]
+        [DataMember(Name="secure-access-allow-external-user", EmitDefaultValue=false)]
         public bool SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessEnable
         /// </summary>
-        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessHost
         /// </summary>
-        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-host", EmitDefaultValue=false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessRdpDomain
         /// </summary>
-        [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-rdp-domain", EmitDefaultValue=false)]
         public string SecureAccessRdpDomain { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessRdpUser
         /// </summary>
-        [DataMember(Name = "secure-access-rdp-user", EmitDefaultValue = false)]
+        [DataMember(Name="secure-access-rdp-user", EmitDefaultValue=false)]
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
         /// </summary>
         /// <value>List of the tags attached to this secret</value>
-        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        [DataMember(Name="tags", EmitDefaultValue=false)]
         public List<string> Tags { get; set; }
 
         /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "target-name", EmitDefaultValue = false)]
+        [DataMember(Name="target-name", EmitDefaultValue=false)]
         public string TargetName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// User TTL
         /// </summary>
         /// <value>User TTL</value>
-        [DataMember(Name = "user-ttl", EmitDefaultValue = false)]
+        [DataMember(Name="user-ttl", EmitDefaultValue=false)]
         public string UserTtl { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -267,14 +263,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -465,7 +461,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

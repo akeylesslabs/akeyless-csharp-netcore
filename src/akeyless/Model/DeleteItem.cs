@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// DeleteItem
     /// </summary>
-    [DataContract(Name = "deleteItem")]
-    public partial class DeleteItem : IEquatable<DeleteItem>, IValidatableObject
+    [DataContract]
+    public partial class DeleteItem :  IEquatable<DeleteItem>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteItem" /> class.
@@ -51,74 +50,71 @@ namespace akeyless.Model
         public DeleteItem(bool deleteImmediately = false, long deleteInDays = 7, string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = -1)
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for DeleteItem and cannot be null");
-            }
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("name is a required property for DeleteItem and cannot be null");
             this.DeleteImmediately = deleteImmediately;
             this.DeleteInDays = deleteInDays;
             this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
-            this._Version = version;
+            this.Version = version;
         }
-
+        
         /// <summary>
         /// When delete-in-days&#x3D;-1, must be set
         /// </summary>
         /// <value>When delete-in-days&#x3D;-1, must be set</value>
-        [DataMember(Name = "delete-immediately", EmitDefaultValue = true)]
+        [DataMember(Name="delete-immediately", EmitDefaultValue=false)]
         public bool DeleteImmediately { get; set; }
 
         /// <summary>
         /// The number of days to wait before deleting the item (relevant for keys only)
         /// </summary>
         /// <value>The number of days to wait before deleting the item (relevant for keys only)</value>
-        [DataMember(Name = "delete-in-days", EmitDefaultValue = false)]
+        [DataMember(Name="delete-in-days", EmitDefaultValue=false)]
         public long DeleteInDays { get; set; }
 
         /// <summary>
         /// Item name
         /// </summary>
         /// <value>Item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
         /// The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default)
         /// </summary>
         /// <value>The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default)</value>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public int _Version { get; set; }
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,18 +131,18 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -204,8 +200,8 @@ namespace akeyless.Model
                     this.Username.Equals(input.Username))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.Version == input.Version ||
+                    this.Version.Equals(input.Version)
                 );
         }
 
@@ -230,7 +226,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -240,7 +236,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

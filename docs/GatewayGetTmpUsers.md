@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayGetTmpUsers
 gatewayGetTmpUsers is a command that returns gateway configuration
-
 ## Properties
 
 Name | Type | Description | Notes

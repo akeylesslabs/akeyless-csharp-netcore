@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerNativeK8S
 gatewayUpdateProducerNativeK8S is a command that updates k8s producer
-
 ## Properties
 
 Name | Type | Description | Notes

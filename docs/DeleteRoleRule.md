@@ -1,5 +1,4 @@
 # akeyless.Model.DeleteRoleRule
-
 ## Properties
 
 Name | Type | Description | Notes

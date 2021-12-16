@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayDeleteProducerOutput
-
 ## Properties
 
 Name | Type | Description | Notes

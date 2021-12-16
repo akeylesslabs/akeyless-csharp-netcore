@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// gatewayAddAllowedManagementAccess is a command that adds sub-admins
     /// </summary>
-    [DataContract(Name = "gatewayAddAllowedManagementAccess")]
-    public partial class GatewayAddAllowedManagementAccess : IEquatable<GatewayAddAllowedManagementAccess>, IValidatableObject
+    [DataContract]
+    public partial class GatewayAddAllowedManagementAccess :  IEquatable<GatewayAddAllowedManagementAccess>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayAddAllowedManagementAccess" /> class.
@@ -51,10 +50,7 @@ namespace akeyless.Model
         public GatewayAddAllowedManagementAccess(bool allowGwApi = default(bool), bool allowGwLogin = default(bool), string password = default(string), string subAdminAccessId = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "subAdminAccessId" is required (not null)
-            if (subAdminAccessId == null) {
-                throw new ArgumentNullException("subAdminAccessId is a required property for GatewayAddAllowedManagementAccess and cannot be null");
-            }
-            this.SubAdminAccessId = subAdminAccessId;
+            this.SubAdminAccessId = subAdminAccessId ?? throw new ArgumentNullException("subAdminAccessId is a required property for GatewayAddAllowedManagementAccess and cannot be null");
             this.AllowGwApi = allowGwApi;
             this.AllowGwLogin = allowGwLogin;
             this.Password = password;
@@ -63,59 +59,59 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// Gets or Sets AllowGwApi
         /// </summary>
-        [DataMember(Name = "allow-gw-api", EmitDefaultValue = true)]
+        [DataMember(Name="allow-gw-api", EmitDefaultValue=false)]
         public bool AllowGwApi { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowGwLogin
         /// </summary>
-        [DataMember(Name = "allow-gw-login", EmitDefaultValue = true)]
+        [DataMember(Name="allow-gw-login", EmitDefaultValue=false)]
         public bool AllowGwLogin { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// SubAdmins to add
         /// </summary>
         /// <value>SubAdmins to add</value>
-        [DataMember(Name = "sub-admin-access-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="sub-admin-access-id", EmitDefaultValue=false)]
         public string SubAdminAccessId { get; set; }
 
         /// <summary>
         /// key/val of sub claims, e.g group&#x3D;admins,developers
         /// </summary>
         /// <value>key/val of sub claims, e.g group&#x3D;admins,developers</value>
-        [DataMember(Name = "sub-claims", EmitDefaultValue = false)]
+        [DataMember(Name="sub-claims", EmitDefaultValue=false)]
         public Dictionary<string, string> SubClaims { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -137,14 +133,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -241,7 +237,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

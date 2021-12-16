@@ -1,5 +1,4 @@
 # akeyless.Model.CreatePKICertIssuerOutput
-
 ## Properties
 
 Name | Type | Description | Notes

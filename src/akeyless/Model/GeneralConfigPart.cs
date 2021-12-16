@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// GeneralConfigPart
     /// </summary>
-    [DataContract(Name = "GeneralConfigPart")]
-    public partial class GeneralConfigPart : IEquatable<GeneralConfigPart>, IValidatableObject
+    [DataContract]
+    public partial class GeneralConfigPart :  IEquatable<GeneralConfigPart>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneralConfigPart" /> class.
@@ -60,71 +59,71 @@ namespace akeyless.Model
             this.TlsCert = tlsCert;
             this.TlsKey = tlsKey;
         }
-
+        
         /// <summary>
         /// Gets or Sets AkeylessUrl
         /// </summary>
-        [DataMember(Name = "akeyless_url", EmitDefaultValue = false)]
+        [DataMember(Name="akeyless_url", EmitDefaultValue=false)]
         public string AkeylessUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets ApiTokenTtl
         /// </summary>
-        [DataMember(Name = "api_token_ttl", EmitDefaultValue = false)]
+        [DataMember(Name="api_token_ttl", EmitDefaultValue=false)]
         public string ApiTokenTtl { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayName
         /// </summary>
-        [DataMember(Name = "display_name", EmitDefaultValue = false)]
+        [DataMember(Name="display_name", EmitDefaultValue=false)]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableTls
         /// </summary>
-        [DataMember(Name = "enable_tls", EmitDefaultValue = true)]
+        [DataMember(Name="enable_tls", EmitDefaultValue=false)]
         public bool EnableTls { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableTlsConfigure
         /// </summary>
-        [DataMember(Name = "enable_tls_configure", EmitDefaultValue = true)]
+        [DataMember(Name="enable_tls_configure", EmitDefaultValue=false)]
         public bool EnableTlsConfigure { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableTlsCurl
         /// </summary>
-        [DataMember(Name = "enable_tls_curl", EmitDefaultValue = true)]
+        [DataMember(Name="enable_tls_curl", EmitDefaultValue=false)]
         public bool EnableTlsCurl { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableTlsHvp
         /// </summary>
-        [DataMember(Name = "enable_tls_hvp", EmitDefaultValue = true)]
+        [DataMember(Name="enable_tls_hvp", EmitDefaultValue=false)]
         public bool EnableTlsHvp { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterUrl
         /// </summary>
-        [DataMember(Name = "gw_cluster_url", EmitDefaultValue = false)]
+        [DataMember(Name="gw_cluster_url", EmitDefaultValue=false)]
         public string GwClusterUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets TcpPort
         /// </summary>
-        [DataMember(Name = "tcp_port", EmitDefaultValue = false)]
+        [DataMember(Name="tcp_port", EmitDefaultValue=false)]
         public string TcpPort { get; set; }
 
         /// <summary>
         /// Gets or Sets TlsCert
         /// </summary>
-        [DataMember(Name = "tls_cert", EmitDefaultValue = false)]
+        [DataMember(Name="tls_cert", EmitDefaultValue=false)]
         public string TlsCert { get; set; }
 
         /// <summary>
         /// Gets or Sets TlsKey
         /// </summary>
-        [DataMember(Name = "tls_key", EmitDefaultValue = false)]
+        [DataMember(Name="tls_key", EmitDefaultValue=false)]
         public string TlsKey { get; set; }
 
         /// <summary>
@@ -149,14 +148,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -269,7 +268,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

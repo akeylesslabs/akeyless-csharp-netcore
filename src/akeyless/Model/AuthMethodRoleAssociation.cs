@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// AuthMethodRoleAssociation includes details of an association between an auth method and a role.
     /// </summary>
-    [DataContract(Name = "AuthMethodRoleAssociation")]
-    public partial class AuthMethodRoleAssociation : IEquatable<AuthMethodRoleAssociation>, IValidatableObject
+    [DataContract]
+    public partial class AuthMethodRoleAssociation :  IEquatable<AuthMethodRoleAssociation>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthMethodRoleAssociation" /> class.
@@ -46,29 +45,29 @@ namespace akeyless.Model
             this.RoleName = roleName;
             this.Rules = rules;
         }
-
+        
         /// <summary>
         /// Gets or Sets AssocId
         /// </summary>
-        [DataMember(Name = "assoc_id", EmitDefaultValue = false)]
+        [DataMember(Name="assoc_id", EmitDefaultValue=false)]
         public string AssocId { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthMethodSubClaims
         /// </summary>
-        [DataMember(Name = "auth_method_sub_claims", EmitDefaultValue = false)]
+        [DataMember(Name="auth_method_sub_claims", EmitDefaultValue=false)]
         public Dictionary<string, List<string>> AuthMethodSubClaims { get; set; }
 
         /// <summary>
         /// Gets or Sets RoleName
         /// </summary>
-        [DataMember(Name = "role_name", EmitDefaultValue = false)]
+        [DataMember(Name="role_name", EmitDefaultValue=false)]
         public string RoleName { get; set; }
 
         /// <summary>
         /// Gets or Sets Rules
         /// </summary>
-        [DataMember(Name = "rules", EmitDefaultValue = false)]
+        [DataMember(Name="rules", EmitDefaultValue=false)]
         public Rules Rules { get; set; }
 
         /// <summary>
@@ -86,14 +85,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

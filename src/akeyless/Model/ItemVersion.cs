@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// ItemVersion
     /// </summary>
-    [DataContract(Name = "ItemVersion")]
-    public partial class ItemVersion : IEquatable<ItemVersion>, IValidatableObject
+    [DataContract]
+    public partial class ItemVersion :  IEquatable<ItemVersion>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemVersion" /> class.
@@ -49,51 +48,51 @@ namespace akeyless.Model
             this.DeletionDate = deletionDate;
             this.ItemVersionState = itemVersionState;
             this.ProtectionKeyName = protectionKeyName;
-            this._Version = version;
+            this.Version = version;
             this.WithCustomerFragment = withCustomerFragment;
         }
-
+        
         /// <summary>
         /// Gets or Sets CreationDate
         /// </summary>
-        [DataMember(Name = "creation_date", EmitDefaultValue = false)]
+        [DataMember(Name="creation_date", EmitDefaultValue=false)]
         public DateTime CreationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomerFragmentId
         /// </summary>
-        [DataMember(Name = "customer_fragment_id", EmitDefaultValue = false)]
+        [DataMember(Name="customer_fragment_id", EmitDefaultValue=false)]
         public string CustomerFragmentId { get; set; }
 
         /// <summary>
         /// Gets or Sets DeletionDate
         /// </summary>
-        [DataMember(Name = "deletion_date", EmitDefaultValue = false)]
+        [DataMember(Name="deletion_date", EmitDefaultValue=false)]
         public DateTime DeletionDate { get; set; }
 
         /// <summary>
         /// ItemState defines the different states an Item can be in
         /// </summary>
         /// <value>ItemState defines the different states an Item can be in</value>
-        [DataMember(Name = "item_version_state", EmitDefaultValue = false)]
+        [DataMember(Name="item_version_state", EmitDefaultValue=false)]
         public string ItemVersionState { get; set; }
 
         /// <summary>
         /// Gets or Sets ProtectionKeyName
         /// </summary>
-        [DataMember(Name = "protection_key_name", EmitDefaultValue = false)]
+        [DataMember(Name="protection_key_name", EmitDefaultValue=false)]
         public string ProtectionKeyName { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Version
+        /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public int _Version { get; set; }
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int Version { get; set; }
 
         /// <summary>
         /// Gets or Sets WithCustomerFragment
         /// </summary>
-        [DataMember(Name = "with_customer_fragment", EmitDefaultValue = true)]
+        [DataMember(Name="with_customer_fragment", EmitDefaultValue=false)]
         public bool WithCustomerFragment { get; set; }
 
         /// <summary>
@@ -109,19 +108,19 @@ namespace akeyless.Model
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  ItemVersionState: ").Append(ItemVersionState).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -171,8 +170,8 @@ namespace akeyless.Model
                     this.ProtectionKeyName.Equals(input.ProtectionKeyName))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.Version == input.Version ||
+                    this.Version.Equals(input.Version)
                 ) && 
                 (
                     this.WithCustomerFragment == input.WithCustomerFragment ||
@@ -199,7 +198,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ItemVersionState.GetHashCode();
                 if (this.ProtectionKeyName != null)
                     hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.Version.GetHashCode();
                 hashCode = hashCode * 59 + this.WithCustomerFragment.GetHashCode();
                 return hashCode;
             }
@@ -210,7 +209,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

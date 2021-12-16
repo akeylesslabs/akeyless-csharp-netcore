@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayUpdateProducerRedshiftOutput
-
 ## Properties
 
 Name | Type | Description | Notes

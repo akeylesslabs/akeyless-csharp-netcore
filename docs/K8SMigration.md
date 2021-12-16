@@ -1,5 +1,4 @@
 # akeyless.Model.K8SMigration
-
 ## Properties
 
 Name | Type | Description | Notes

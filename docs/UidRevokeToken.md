@@ -1,5 +1,4 @@
 # akeyless.Model.UidRevokeToken
-
 ## Properties
 
 Name | Type | Description | Notes

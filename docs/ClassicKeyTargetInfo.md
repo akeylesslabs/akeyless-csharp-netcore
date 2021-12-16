@@ -1,5 +1,4 @@
 # akeyless.Model.ClassicKeyTargetInfo
-
 ## Properties
 
 Name | Type | Description | Notes

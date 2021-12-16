@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerRedshift
 gatewayUpdateProducerRedshift is a command that updates redshift producer
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.Configure
-
 ## Properties
 
 Name | Type | Description | Notes

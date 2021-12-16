@@ -1,5 +1,4 @@
 # akeyless.Model.DescribePermissionsOutput
-
 ## Properties
 
 Name | Type | Description | Notes

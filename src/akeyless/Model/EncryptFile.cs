@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// EncryptFile
     /// </summary>
-    [DataContract(Name = "encryptFile")]
-    public partial class EncryptFile : IEquatable<EncryptFile>, IValidatableObject
+    [DataContract]
+    public partial class EncryptFile :  IEquatable<EncryptFile>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EncryptFile" /> class.
@@ -51,15 +50,9 @@ namespace akeyless.Model
         public EncryptFile(Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), string keyName = default(string), string _out = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "_in" is required (not null)
-            if (_in == null) {
-                throw new ArgumentNullException("_in is a required property for EncryptFile and cannot be null");
-            }
-            this.In = _in;
+            this.In = _in ?? throw new ArgumentNullException("_in is a required property for EncryptFile and cannot be null");
             // to ensure "keyName" is required (not null)
-            if (keyName == null) {
-                throw new ArgumentNullException("keyName is a required property for EncryptFile and cannot be null");
-            }
-            this.KeyName = keyName;
+            this.KeyName = keyName ?? throw new ArgumentNullException("keyName is a required property for EncryptFile and cannot be null");
             this.EncryptionContext = encryptionContext;
             this.Out = _out;
             this.Password = password;
@@ -67,61 +60,61 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-
+        
         /// <summary>
         /// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
         /// </summary>
         /// <value>name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail</value>
-        [DataMember(Name = "encryption-context", EmitDefaultValue = false)]
+        [DataMember(Name="encryption-context", EmitDefaultValue=false)]
         public Dictionary<string, string> EncryptionContext { get; set; }
 
         /// <summary>
         /// Path to the file to be encrypted. If not provided, the content will be taken from stdin
         /// </summary>
         /// <value>Path to the file to be encrypted. If not provided, the content will be taken from stdin</value>
-        [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="in", EmitDefaultValue=false)]
         public string In { get; set; }
 
         /// <summary>
         /// The name of the key to use in the encryption process
         /// </summary>
         /// <value>The name of the key to use in the encryption process</value>
-        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name="key-name", EmitDefaultValue=false)]
         public string KeyName { get; set; }
 
         /// <summary>
         /// Path to the output file. If not provided, the output will be sent to stdout
         /// </summary>
         /// <value>Path to the output file. If not provided, the output will be sent to stdout</value>
-        [DataMember(Name = "out", EmitDefaultValue = false)]
+        [DataMember(Name="out", EmitDefaultValue=false)]
         public string Out { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
+        [DataMember(Name="uid-token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -143,14 +136,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -251,7 +244,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

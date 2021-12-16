@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAuthMethodK8SOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.CustomerFragment
-
 ## Properties
 
 Name | Type | Description | Notes

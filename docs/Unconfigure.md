@@ -1,5 +1,4 @@
 # akeyless.Model.Unconfigure
-
 ## Properties
 
 Name | Type | Description | Notes

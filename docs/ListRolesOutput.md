@@ -1,5 +1,4 @@
 # akeyless.Model.ListRolesOutput
-
 ## Properties
 
 Name | Type | Description | Notes

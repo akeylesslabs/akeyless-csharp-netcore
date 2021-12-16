@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// LDAPAccessRules
     /// </summary>
-    [DataContract(Name = "LDAPAccessRules")]
-    public partial class LDAPAccessRules : IEquatable<LDAPAccessRules>, IValidatableObject
+    [DataContract]
+    public partial class LDAPAccessRules :  IEquatable<LDAPAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LDAPAccessRules" /> class.
@@ -44,25 +43,25 @@ namespace akeyless.Model
             this.Key = key;
             this.UniqueIdentifier = uniqueIdentifier;
         }
-
+        
         /// <summary>
         /// Gets or Sets Alg
         /// </summary>
-        [DataMember(Name = "alg", EmitDefaultValue = false)]
+        [DataMember(Name="alg", EmitDefaultValue=false)]
         public string Alg { get; set; }
 
         /// <summary>
         /// The public key value of LDAP.
         /// </summary>
         /// <value>The public key value of LDAP.</value>
-        [DataMember(Name = "key", EmitDefaultValue = false)]
+        [DataMember(Name="key", EmitDefaultValue=false)]
         public string Key { get; set; }
 
         /// <summary>
         /// A unique identifier to distinguish different users
         /// </summary>
         /// <value>A unique identifier to distinguish different users</value>
-        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
+        [DataMember(Name="unique_identifier", EmitDefaultValue=false)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
@@ -79,14 +78,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -151,7 +150,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

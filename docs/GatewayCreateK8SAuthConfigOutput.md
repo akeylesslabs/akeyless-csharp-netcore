@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateK8SAuthConfigOutput
-
 ## Properties
 
 Name | Type | Description | Notes

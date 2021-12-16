@@ -1,6 +1,5 @@
 # akeyless.Model.Decrypt
 decrypt is a command that decrypts ciphertext into plaintext by using an AES key.
-
 ## Properties
 
 Name | Type | Description | Notes

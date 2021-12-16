@@ -1,5 +1,4 @@
 # akeyless.Model.ProducersConfigPart
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.ReverseRBACOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// ClassicKeyDetailsInfo
     /// </summary>
-    [DataContract(Name = "ClassicKeyDetailsInfo")]
-    public partial class ClassicKeyDetailsInfo : IEquatable<ClassicKeyDetailsInfo>, IValidatableObject
+    [DataContract]
+    public partial class ClassicKeyDetailsInfo :  IEquatable<ClassicKeyDetailsInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassicKeyDetailsInfo" /> class.
@@ -60,72 +59,72 @@ namespace akeyless.Model
             this.TargetTypes = targetTypes;
             this.Targets = targets;
         }
-
+        
         /// <summary>
         /// Gets or Sets ClassicKeyAttributes
         /// </summary>
-        [DataMember(Name = "classic_key_attributes", EmitDefaultValue = false)]
+        [DataMember(Name="classic_key_attributes", EmitDefaultValue=false)]
         public Dictionary<string, List<string>> ClassicKeyAttributes { get; set; }
 
         /// <summary>
         /// Gets or Sets ClassicKeyId
         /// </summary>
-        [DataMember(Name = "classic_key_id", EmitDefaultValue = false)]
+        [DataMember(Name="classic_key_id", EmitDefaultValue=false)]
         public string ClassicKeyId { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterId
         /// </summary>
-        [DataMember(Name = "gw_cluster_id", EmitDefaultValue = false)]
+        [DataMember(Name="gw_cluster_id", EmitDefaultValue=false)]
         public long GwClusterId { get; set; }
 
         /// <summary>
         /// Gets or Sets IsProvidedByUser
         /// </summary>
-        [DataMember(Name = "is_provided_by_user", EmitDefaultValue = true)]
+        [DataMember(Name="is_provided_by_user", EmitDefaultValue=false)]
         public bool IsProvidedByUser { get; set; }
 
         /// <summary>
         /// Gets or Sets IsUnexportable
         /// </summary>
-        [DataMember(Name = "is_unexportable", EmitDefaultValue = true)]
+        [DataMember(Name="is_unexportable", EmitDefaultValue=false)]
         public bool IsUnexportable { get; set; }
 
         /// <summary>
         /// ItemState defines the different states an Item can be in
         /// </summary>
         /// <value>ItemState defines the different states an Item can be in</value>
-        [DataMember(Name = "key_state", EmitDefaultValue = false)]
+        [DataMember(Name="key_state", EmitDefaultValue=false)]
         public string KeyState { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyType
         /// </summary>
-        [DataMember(Name = "key_type", EmitDefaultValue = false)]
+        [DataMember(Name="key_type", EmitDefaultValue=false)]
         public string KeyType { get; set; }
 
         /// <summary>
         /// Gets or Sets LastError
         /// </summary>
-        [DataMember(Name = "last_error", EmitDefaultValue = false)]
+        [DataMember(Name="last_error", EmitDefaultValue=false)]
         public string LastError { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetAliasHelper
         /// </summary>
-        [DataMember(Name = "target_alias_helper", EmitDefaultValue = false)]
+        [DataMember(Name="target_alias_helper", EmitDefaultValue=false)]
         public string TargetAliasHelper { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetTypes
         /// </summary>
-        [DataMember(Name = "target_types", EmitDefaultValue = false)]
+        [DataMember(Name="target_types", EmitDefaultValue=false)]
         public List<string> TargetTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets Targets
         /// </summary>
-        [DataMember(Name = "targets", EmitDefaultValue = false)]
+        [DataMember(Name="targets", EmitDefaultValue=false)]
         public List<ClassicKeyTargetInfo> Targets { get; set; }
 
         /// <summary>
@@ -150,14 +149,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -275,7 +274,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

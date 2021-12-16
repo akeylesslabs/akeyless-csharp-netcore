@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// AzureADAccessRules contains access rules specific to Azure Active Directory authentication.
     /// </summary>
-    [DataContract(Name = "AzureADAccessRules")]
-    public partial class AzureADAccessRules : IEquatable<AzureADAccessRules>, IValidatableObject
+    [DataContract]
+    public partial class AzureADAccessRules :  IEquatable<AzureADAccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureADAccessRules" /> class.
@@ -62,89 +61,89 @@ namespace akeyless.Model
             this.Issuer = issuer;
             this.JwksUri = jwksUri;
         }
-
+        
         /// <summary>
         /// The audience in the JWT.
         /// </summary>
         /// <value>The audience in the JWT.</value>
-        [DataMember(Name = "ad_endpoint", EmitDefaultValue = false)]
+        [DataMember(Name="ad_endpoint", EmitDefaultValue=false)]
         public string AdEndpoint { get; set; }
 
         /// <summary>
         /// The list of group ids that login is restricted to.
         /// </summary>
         /// <value>The list of group ids that login is restricted to.</value>
-        [DataMember(Name = "bound_group_ids", EmitDefaultValue = false)]
+        [DataMember(Name="bound_group_ids", EmitDefaultValue=false)]
         public List<string> BoundGroupIds { get; set; }
 
         /// <summary>
         /// The list of resource groups that login is restricted to.
         /// </summary>
         /// <value>The list of resource groups that login is restricted to.</value>
-        [DataMember(Name = "bound_resource_groups", EmitDefaultValue = false)]
+        [DataMember(Name="bound_resource_groups", EmitDefaultValue=false)]
         public List<string> BoundResourceGroups { get; set; }
 
         /// <summary>
         /// The list of full resource ids that the login is restricted to.
         /// </summary>
         /// <value>The list of full resource ids that the login is restricted to.</value>
-        [DataMember(Name = "bound_resource_ids", EmitDefaultValue = false)]
+        [DataMember(Name="bound_resource_ids", EmitDefaultValue=false)]
         public List<string> BoundResourceIds { get; set; }
 
         /// <summary>
         /// The list of resource names that the login is restricted to (e.g, a virtual machine name, scale set name, etc).
         /// </summary>
         /// <value>The list of resource names that the login is restricted to (e.g, a virtual machine name, scale set name, etc).</value>
-        [DataMember(Name = "bound_resource_names", EmitDefaultValue = false)]
+        [DataMember(Name="bound_resource_names", EmitDefaultValue=false)]
         public List<string> BoundResourceNames { get; set; }
 
         /// <summary>
         /// The list of resource providers that login is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc).
         /// </summary>
         /// <value>The list of resource providers that login is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc).</value>
-        [DataMember(Name = "bound_resource_providers", EmitDefaultValue = false)]
+        [DataMember(Name="bound_resource_providers", EmitDefaultValue=false)]
         public List<string> BoundResourceProviders { get; set; }
 
         /// <summary>
         /// The list of resource types that login is restricted to  (e.g, virtualMachines, userAssignedIdentities, etc).
         /// </summary>
         /// <value>The list of resource types that login is restricted to  (e.g, virtualMachines, userAssignedIdentities, etc).</value>
-        [DataMember(Name = "bound_resource_types", EmitDefaultValue = false)]
+        [DataMember(Name="bound_resource_types", EmitDefaultValue=false)]
         public List<string> BoundResourceTypes { get; set; }
 
         /// <summary>
         /// The list of service principal IDs that login is restricted to.
         /// </summary>
         /// <value>The list of service principal IDs that login is restricted to.</value>
-        [DataMember(Name = "bound_service_principal_ids", EmitDefaultValue = false)]
+        [DataMember(Name="bound_service_principal_ids", EmitDefaultValue=false)]
         public List<string> BoundServicePrincipalIds { get; set; }
 
         /// <summary>
         /// The list of subscription IDs that login is restricted to.
         /// </summary>
         /// <value>The list of subscription IDs that login is restricted to.</value>
-        [DataMember(Name = "bound_subscription_ids", EmitDefaultValue = false)]
+        [DataMember(Name="bound_subscription_ids", EmitDefaultValue=false)]
         public List<string> BoundSubscriptionIds { get; set; }
 
         /// <summary>
         /// The tenants id for the Azure Active Directory organization.
         /// </summary>
         /// <value>The tenants id for the Azure Active Directory organization.</value>
-        [DataMember(Name = "bound_tenant_id", EmitDefaultValue = false)]
+        [DataMember(Name="bound_tenant_id", EmitDefaultValue=false)]
         public string BoundTenantId { get; set; }
 
         /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
-        [DataMember(Name = "issuer", EmitDefaultValue = false)]
+        [DataMember(Name="issuer", EmitDefaultValue=false)]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
-        [DataMember(Name = "jwks_uri", EmitDefaultValue = false)]
+        [DataMember(Name="jwks_uri", EmitDefaultValue=false)]
         public string JwksUri { get; set; }
 
         /// <summary>
@@ -170,14 +169,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -313,7 +312,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

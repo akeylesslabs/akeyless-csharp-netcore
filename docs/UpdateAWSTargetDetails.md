@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateAWSTargetDetails
-
 ## Properties
 
 Name | Type | Description | Notes

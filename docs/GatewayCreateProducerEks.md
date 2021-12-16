@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateProducerEks
 gatewayCreateProducerEks is a command that creates eks producer
-
 ## Properties
 
 Name | Type | Description | Notes

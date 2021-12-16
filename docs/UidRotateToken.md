@@ -1,6 +1,5 @@
 # akeyless.Model.UidRotateToken
 uidRotateToken is a command that rotates an Akeyless Universal Identity token.
-
 ## Properties
 
 Name | Type | Description | Notes

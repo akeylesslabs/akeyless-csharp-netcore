@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// UIDTokenDetails
     /// </summary>
-    [DataContract(Name = "UIDTokenDetails")]
-    public partial class UIDTokenDetails : IEquatable<UIDTokenDetails>, IValidatableObject
+    [DataContract]
+    public partial class UIDTokenDetails :  IEquatable<UIDTokenDetails>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UIDTokenDetails" /> class.
@@ -58,65 +57,65 @@ namespace akeyless.Model
             this.Revoked = revoked;
             this.Ttl = ttl;
         }
-
+        
         /// <summary>
         /// Gets or Sets Children
         /// </summary>
-        [DataMember(Name = "children", EmitDefaultValue = false)]
+        [DataMember(Name="children", EmitDefaultValue=false)]
         public Dictionary<string, UIDTokenDetails> Children { get; set; }
 
         /// <summary>
         /// Gets or Sets Comment
         /// </summary>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
+        [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
 
         /// <summary>
         /// Gets or Sets DenyInheritance
         /// </summary>
-        [DataMember(Name = "deny_inheritance", EmitDefaultValue = true)]
+        [DataMember(Name="deny_inheritance", EmitDefaultValue=false)]
         public bool DenyInheritance { get; set; }
 
         /// <summary>
         /// Gets or Sets DenyRotate
         /// </summary>
-        [DataMember(Name = "deny_rotate", EmitDefaultValue = true)]
+        [DataMember(Name="deny_rotate", EmitDefaultValue=false)]
         public bool DenyRotate { get; set; }
 
         /// <summary>
         /// Gets or Sets Depth
         /// </summary>
-        [DataMember(Name = "depth", EmitDefaultValue = false)]
+        [DataMember(Name="depth", EmitDefaultValue=false)]
         public int Depth { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiredDate
         /// </summary>
-        [DataMember(Name = "expired_date", EmitDefaultValue = false)]
+        [DataMember(Name="expired_date", EmitDefaultValue=false)]
         public string ExpiredDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets LastRotate
         /// </summary>
-        [DataMember(Name = "last_rotate", EmitDefaultValue = false)]
+        [DataMember(Name="last_rotate", EmitDefaultValue=false)]
         public string LastRotate { get; set; }
 
         /// <summary>
         /// Gets or Sets Revoked
         /// </summary>
-        [DataMember(Name = "revoked", EmitDefaultValue = true)]
+        [DataMember(Name="revoked", EmitDefaultValue=false)]
         public bool Revoked { get; set; }
 
         /// <summary>
         /// Gets or Sets Ttl
         /// </summary>
-        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        [DataMember(Name="ttl", EmitDefaultValue=false)]
         public int Ttl { get; set; }
 
         /// <summary>
@@ -140,14 +139,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -252,7 +251,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

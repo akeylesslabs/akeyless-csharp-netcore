@@ -1,5 +1,4 @@
 # akeyless.Model.CreateWebTarget
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerCertificateAutomationOutput
-
 ## Properties
 
 Name | Type | Description | Notes

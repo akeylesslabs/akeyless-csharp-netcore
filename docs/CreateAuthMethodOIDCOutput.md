@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAuthMethodOIDCOutput
-
 ## Properties
 
 Name | Type | Description | Notes

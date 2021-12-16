@@ -1,6 +1,5 @@
 # akeyless.Model.DeleteRoleAssociation
 deleteRoleAssociation is a command that deletes an association between role and auth method.
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.AdminsConfigPart
-
 ## Properties
 
 Name | Type | Description | Notes

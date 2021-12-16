@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// ElasticsearchLogForwardingConfig
     /// </summary>
-    [DataContract(Name = "ElasticsearchLogForwardingConfig")]
-    public partial class ElasticsearchLogForwardingConfig : IEquatable<ElasticsearchLogForwardingConfig>, IValidatableObject
+    [DataContract]
+    public partial class ElasticsearchLogForwardingConfig :  IEquatable<ElasticsearchLogForwardingConfig>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ElasticsearchLogForwardingConfig" /> class.
@@ -54,53 +53,53 @@ namespace akeyless.Model
             this.ElasticsearchServerType = elasticsearchServerType;
             this.ElasticsearchUserName = elasticsearchUserName;
         }
-
+        
         /// <summary>
         /// Gets or Sets ElasticsearchApiKey
         /// </summary>
-        [DataMember(Name = "elasticsearch_api_key", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_api_key", EmitDefaultValue=false)]
         public string ElasticsearchApiKey { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchAuthType
         /// </summary>
-        [DataMember(Name = "elasticsearch_auth_type", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_auth_type", EmitDefaultValue=false)]
         public string ElasticsearchAuthType { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchCloudId
         /// </summary>
-        [DataMember(Name = "elasticsearch_cloud_id", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_cloud_id", EmitDefaultValue=false)]
         public string ElasticsearchCloudId { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchIndex
         /// </summary>
-        [DataMember(Name = "elasticsearch_index", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_index", EmitDefaultValue=false)]
         public string ElasticsearchIndex { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchNodes
         /// </summary>
-        [DataMember(Name = "elasticsearch_nodes", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_nodes", EmitDefaultValue=false)]
         public string ElasticsearchNodes { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchPassword
         /// </summary>
-        [DataMember(Name = "elasticsearch_password", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_password", EmitDefaultValue=false)]
         public string ElasticsearchPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchServerType
         /// </summary>
-        [DataMember(Name = "elasticsearch_server_type", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_server_type", EmitDefaultValue=false)]
         public string ElasticsearchServerType { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchUserName
         /// </summary>
-        [DataMember(Name = "elasticsearch_user_name", EmitDefaultValue = false)]
+        [DataMember(Name="elasticsearch_user_name", EmitDefaultValue=false)]
         public string ElasticsearchUserName { get; set; }
 
         /// <summary>
@@ -122,14 +121,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -229,7 +228,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

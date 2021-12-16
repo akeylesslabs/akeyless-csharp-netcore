@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// UIdentityConfigPart
     /// </summary>
-    [DataContract(Name = "UIdentityConfigPart")]
-    public partial class UIdentityConfigPart : IEquatable<UIdentityConfigPart>, IValidatableObject
+    [DataContract]
+    public partial class UIdentityConfigPart :  IEquatable<UIdentityConfigPart>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UIdentityConfigPart" /> class.
@@ -48,35 +47,35 @@ namespace akeyless.Model
             this.UidStatus = uidStatus;
             this.UidToken = uidToken;
         }
-
+        
         /// <summary>
         /// Gets or Sets UidAccessId
         /// </summary>
-        [DataMember(Name = "uid_access_id", EmitDefaultValue = false)]
+        [DataMember(Name="uid_access_id", EmitDefaultValue=false)]
         public string UidAccessId { get; set; }
 
         /// <summary>
         /// Gets or Sets UidEnable
         /// </summary>
-        [DataMember(Name = "uid_enable", EmitDefaultValue = true)]
+        [DataMember(Name="uid_enable", EmitDefaultValue=false)]
         public bool UidEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets UidRotateInterval
         /// </summary>
-        [DataMember(Name = "uid_rotate_interval", EmitDefaultValue = false)]
+        [DataMember(Name="uid_rotate_interval", EmitDefaultValue=false)]
         public string UidRotateInterval { get; set; }
 
         /// <summary>
         /// Gets or Sets UidStatus
         /// </summary>
-        [DataMember(Name = "uid_status", EmitDefaultValue = false)]
+        [DataMember(Name="uid_status", EmitDefaultValue=false)]
         public string UidStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets UidToken
         /// </summary>
-        [DataMember(Name = "uid_token", EmitDefaultValue = false)]
+        [DataMember(Name="uid_token", EmitDefaultValue=false)]
         public string UidToken { get; set; }
 
         /// <summary>
@@ -95,14 +94,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -179,7 +178,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,5 +1,4 @@
 # akeyless.Model.KMIPClientListResponse
-
 ## Properties
 
 Name | Type | Description | Notes

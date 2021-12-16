@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAuthMethodHuaweiOutput
-
 ## Properties
 
 Name | Type | Description | Notes

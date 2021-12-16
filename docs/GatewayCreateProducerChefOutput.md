@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerChefOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.CreateSecretOutput
-
 ## Properties
 
 Name | Type | Description | Notes

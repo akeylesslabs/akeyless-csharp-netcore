@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerMSSQL
 gatewayUpdateProducerMSSQL is a command that updates mssql producer
-
 ## Properties
 
 Name | Type | Description | Notes

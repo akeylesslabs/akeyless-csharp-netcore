@@ -1,5 +1,4 @@
 # akeyless.Model.ConfigHash
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -15,8 +14,8 @@ Name | Type | Description | Notes
 **LogForwarding** | **string** |  | [optional] 
 **MQueue** | **string** |  | [optional] 
 **Migrations** | **string** |  | [optional] 
-**Producers** | **Object** |  | [optional] 
-**Rotators** | **Object** |  | [optional] 
+**Producers** | [**Object**](.md) |  | [optional] 
+**Rotators** | [**Object**](.md) |  | [optional] 
 **Saml** | **string** |  | [optional] 
 **UniversalIdentity** | **string** |  | [optional] 
 

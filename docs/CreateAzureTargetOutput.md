@@ -1,5 +1,4 @@
 # akeyless.Model.CreateAzureTargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

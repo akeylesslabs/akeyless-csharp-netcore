@@ -1,5 +1,4 @@
 # akeyless.Model.EncryptWithClassicKeyOutput
-
 ## Properties
 
 Name | Type | Description | Notes

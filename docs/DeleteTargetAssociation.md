@@ -1,6 +1,5 @@
 # akeyless.Model.DeleteTargetAssociation
 deleteTargetAssociation is a command that deletes an association between target and item.
-
 ## Properties
 
 Name | Type | Description | Notes

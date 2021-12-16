@@ -1,5 +1,4 @@
 # akeyless.Model.KmipClientSetRule
-
 ## Properties
 
 Name | Type | Description | Notes

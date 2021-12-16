@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// MigrationsConfigPart
     /// </summary>
-    [DataContract(Name = "MigrationsConfigPart")]
-    public partial class MigrationsConfigPart : IEquatable<MigrationsConfigPart>, IValidatableObject
+    [DataContract]
+    public partial class MigrationsConfigPart :  IEquatable<MigrationsConfigPart>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MigrationsConfigPart" /> class.
@@ -46,29 +45,29 @@ namespace akeyless.Model
             this.HashiMigrations = hashiMigrations;
             this.K8sMigrations = k8sMigrations;
         }
-
+        
         /// <summary>
         /// Gets or Sets AwsSecretsMigrations
         /// </summary>
-        [DataMember(Name = "aws_secrets_migrations", EmitDefaultValue = false)]
+        [DataMember(Name="aws_secrets_migrations", EmitDefaultValue=false)]
         public List<AWSSecretsMigration> AwsSecretsMigrations { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureKvMigrations
         /// </summary>
-        [DataMember(Name = "azure_kv_migrations", EmitDefaultValue = false)]
+        [DataMember(Name="azure_kv_migrations", EmitDefaultValue=false)]
         public List<AzureKeyVaultMigration> AzureKvMigrations { get; set; }
 
         /// <summary>
         /// Gets or Sets HashiMigrations
         /// </summary>
-        [DataMember(Name = "hashi_migrations", EmitDefaultValue = false)]
+        [DataMember(Name="hashi_migrations", EmitDefaultValue=false)]
         public List<HashiMigration> HashiMigrations { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sMigrations
         /// </summary>
-        [DataMember(Name = "k8s_migrations", EmitDefaultValue = false)]
+        [DataMember(Name="k8s_migrations", EmitDefaultValue=false)]
         public List<K8SMigration> K8sMigrations { get; set; }
 
         /// <summary>
@@ -86,14 +85,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -169,7 +168,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

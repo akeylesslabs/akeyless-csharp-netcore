@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// Configure
     /// </summary>
-    [DataContract(Name = "configure")]
-    public partial class Configure : IEquatable<Configure>, IValidatableObject
+    [DataContract]
+    public partial class Configure :  IEquatable<Configure>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Configure" /> class.
@@ -55,61 +54,61 @@ namespace akeyless.Model
             this.GcpAudience = gcpAudience;
             this.K8sAuthConfigName = k8sAuthConfigName;
         }
-
+        
         /// <summary>
         /// Access ID
         /// </summary>
         /// <value>Access ID</value>
-        [DataMember(Name = "access-id", EmitDefaultValue = false)]
+        [DataMember(Name="access-id", EmitDefaultValue=false)]
         public string AccessId { get; set; }
 
         /// <summary>
         /// Access Key
         /// </summary>
         /// <value>Access Key</value>
-        [DataMember(Name = "access-key", EmitDefaultValue = false)]
+        [DataMember(Name="access-key", EmitDefaultValue=false)]
         public string AccessKey { get; set; }
 
         /// <summary>
         /// Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s)
         /// </summary>
         /// <value>Access Type (access_key/password/azure_ad/saml/oidc/ldap/aws_iam/gcp/k8s)</value>
-        [DataMember(Name = "access-type", EmitDefaultValue = false)]
+        [DataMember(Name="access-type", EmitDefaultValue=false)]
         public string AccessType { get; set; }
 
         /// <summary>
         /// Email (relevant only for access-type&#x3D;password)
         /// </summary>
         /// <value>Email (relevant only for access-type&#x3D;password)</value>
-        [DataMember(Name = "admin-email", EmitDefaultValue = false)]
+        [DataMember(Name="admin-email", EmitDefaultValue=false)]
         public string AdminEmail { get; set; }
 
         /// <summary>
         /// Password (relevant only for access-type&#x3D;password)
         /// </summary>
         /// <value>Password (relevant only for access-type&#x3D;password)</value>
-        [DataMember(Name = "admin-password", EmitDefaultValue = false)]
+        [DataMember(Name="admin-password", EmitDefaultValue=false)]
         public string AdminPassword { get; set; }
 
         /// <summary>
         /// Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad)
         /// </summary>
         /// <value>Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad)</value>
-        [DataMember(Name = "azure_ad_object_id", EmitDefaultValue = false)]
+        [DataMember(Name="azure_ad_object_id", EmitDefaultValue=false)]
         public string AzureAdObjectId { get; set; }
 
         /// <summary>
         /// GCP JWT audience
         /// </summary>
         /// <value>GCP JWT audience</value>
-        [DataMember(Name = "gcp-audience", EmitDefaultValue = false)]
+        [DataMember(Name="gcp-audience", EmitDefaultValue=false)]
         public string GcpAudience { get; set; }
 
         /// <summary>
         /// The K8S Auth config name (relevant only for access-type&#x3D;k8s)
         /// </summary>
         /// <value>The K8S Auth config name (relevant only for access-type&#x3D;k8s)</value>
-        [DataMember(Name = "k8s-auth-config-name", EmitDefaultValue = false)]
+        [DataMember(Name="k8s-auth-config-name", EmitDefaultValue=false)]
         public string K8sAuthConfigName { get; set; }
 
         /// <summary>
@@ -131,14 +130,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -238,7 +237,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

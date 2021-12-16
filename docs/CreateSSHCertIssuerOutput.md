@@ -1,5 +1,4 @@
 # akeyless.Model.CreateSSHCertIssuerOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// AzureKeyVaultMigration
     /// </summary>
-    [DataContract(Name = "AzureKeyVaultMigration")]
-    public partial class AzureKeyVaultMigration : IEquatable<AzureKeyVaultMigration>, IValidatableObject
+    [DataContract]
+    public partial class AzureKeyVaultMigration :  IEquatable<AzureKeyVaultMigration>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureKeyVaultMigration" /> class.
@@ -42,17 +41,17 @@ namespace akeyless.Model
             this.General = general;
             this.Payload = payload;
         }
-
+        
         /// <summary>
         /// Gets or Sets General
         /// </summary>
-        [DataMember(Name = "general", EmitDefaultValue = false)]
+        [DataMember(Name="general", EmitDefaultValue=false)]
         public MigrationGeneral General { get; set; }
 
         /// <summary>
         /// Gets or Sets Payload
         /// </summary>
-        [DataMember(Name = "payload", EmitDefaultValue = false)]
+        [DataMember(Name="payload", EmitDefaultValue=false)]
         public AzurePayload Payload { get; set; }
 
         /// <summary>
@@ -68,14 +67,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

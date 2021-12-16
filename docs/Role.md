@@ -1,5 +1,4 @@
 # akeyless.Model.Role
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.ClassicKeyDetailsInfo
-
 ## Properties
 
 Name | Type | Description | Notes

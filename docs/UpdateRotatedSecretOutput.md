@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateRotatedSecretOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// RollbackSecretOutput
     /// </summary>
-    [DataContract(Name = "rollbackSecretOutput")]
-    public partial class RollbackSecretOutput : IEquatable<RollbackSecretOutput>, IValidatableObject
+    [DataContract]
+    public partial class RollbackSecretOutput :  IEquatable<RollbackSecretOutput>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RollbackSecretOutput" /> class.
@@ -40,20 +39,20 @@ namespace akeyless.Model
         public RollbackSecretOutput(string name = default(string), int version = default(int))
         {
             this.Name = name;
-            this._Version = version;
+            this.Version = version;
         }
-
+        
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Version
+        /// Gets or Sets Version
         /// </summary>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public int _Version { get; set; }
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,18 +63,18 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class RollbackSecretOutput {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -105,8 +104,8 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.Version == input.Version ||
+                    this.Version.Equals(input.Version)
                 );
         }
 
@@ -121,7 +120,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -131,7 +130,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

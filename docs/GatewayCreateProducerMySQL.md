@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateProducerMySQL
 gatewayCreateProducerMySQL is a command that creates mysql producer
-
 ## Properties
 
 Name | Type | Description | Notes

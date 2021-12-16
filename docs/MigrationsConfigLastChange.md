@@ -1,5 +1,4 @@
 # akeyless.Model.MigrationsConfigLastChange
-
 ## Properties
 
 Name | Type | Description | Notes

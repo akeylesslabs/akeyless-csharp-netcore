@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// SSHCertificateIssueDetails
     /// </summary>
-    [DataContract(Name = "SSHCertificateIssueDetails")]
-    public partial class SSHCertificateIssueDetails : IEquatable<SSHCertificateIssueDetails>, IValidatableObject
+    [DataContract]
+    public partial class SSHCertificateIssueDetails :  IEquatable<SSHCertificateIssueDetails>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SSHCertificateIssueDetails" /> class.
@@ -54,56 +53,56 @@ namespace akeyless.Model
             this.Principals = principals;
             this.StaticKeyId = staticKeyId;
         }
-
+        
         /// <summary>
         /// Relevant for host certificate
         /// </summary>
         /// <value>Relevant for host certificate</value>
-        [DataMember(Name = "allowed_domains", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_domains", EmitDefaultValue=false)]
         public List<string> AllowedDomains { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedUserKeyLengths
         /// </summary>
-        [DataMember(Name = "allowed_user_key_lengths", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_user_key_lengths", EmitDefaultValue=false)]
         public Dictionary<string, long> AllowedUserKeyLengths { get; set; }
 
         /// <summary>
         /// Relevant for user certificate
         /// </summary>
         /// <value>Relevant for user certificate</value>
-        [DataMember(Name = "allowed_users", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_users", EmitDefaultValue=false)]
         public List<string> AllowedUsers { get; set; }
 
         /// <summary>
         /// Gets or Sets CertType
         /// </summary>
-        [DataMember(Name = "cert_type", EmitDefaultValue = false)]
+        [DataMember(Name="cert_type", EmitDefaultValue=false)]
         public int CertType { get; set; }
 
         /// <summary>
         /// Gets or Sets CriticalOptions
         /// </summary>
-        [DataMember(Name = "critical_options", EmitDefaultValue = false)]
+        [DataMember(Name="critical_options", EmitDefaultValue=false)]
         public Dictionary<string, string> CriticalOptions { get; set; }
 
         /// <summary>
         /// Gets or Sets Extensions
         /// </summary>
-        [DataMember(Name = "extensions", EmitDefaultValue = false)]
+        [DataMember(Name="extensions", EmitDefaultValue=false)]
         public Dictionary<string, string> Extensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Principals
         /// </summary>
-        [DataMember(Name = "principals", EmitDefaultValue = false)]
+        [DataMember(Name="principals", EmitDefaultValue=false)]
         public List<string> Principals { get; set; }
 
         /// <summary>
         /// In case it is empty, the key ID will be combination of user identifiers and a random string
         /// </summary>
         /// <value>In case it is empty, the key ID will be combination of user identifiers and a random string</value>
-        [DataMember(Name = "static_key_id", EmitDefaultValue = false)]
+        [DataMember(Name="static_key_id", EmitDefaultValue=false)]
         public string StaticKeyId { get; set; }
 
         /// <summary>
@@ -125,14 +124,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -236,7 +235,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

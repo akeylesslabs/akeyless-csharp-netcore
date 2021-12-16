@@ -1,5 +1,4 @@
 # akeyless.Model.ListAuthMethodsOutput
-
 ## Properties
 
 Name | Type | Description | Notes

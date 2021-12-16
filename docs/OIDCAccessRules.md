@@ -1,6 +1,5 @@
 # akeyless.Model.OIDCAccessRules
 OIDCAccessRules contains access rules specific to Open Id Connect authentication method.
-
 ## Properties
 
 Name | Type | Description | Notes

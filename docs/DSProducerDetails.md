@@ -1,5 +1,4 @@
 # akeyless.Model.DSProducerDetails
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// PKICertificateIssueDetails
     /// </summary>
-    [DataContract(Name = "PKICertificateIssueDetails")]
-    public partial class PKICertificateIssueDetails : IEquatable<PKICertificateIssueDetails>, IValidatableObject
+    [DataContract]
+    public partial class PKICertificateIssueDetails :  IEquatable<PKICertificateIssueDetails>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PKICertificateIssueDetails" /> class.
@@ -82,138 +81,138 @@ namespace akeyless.Model
             this.ServerFlag = serverFlag;
             this.StreetAddress = streetAddress;
         }
-
+        
         /// <summary>
         /// Gets or Sets AllowAnyName
         /// </summary>
-        [DataMember(Name = "allow_any_name", EmitDefaultValue = true)]
+        [DataMember(Name="allow_any_name", EmitDefaultValue=false)]
         public bool AllowAnyName { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowSubdomains
         /// </summary>
-        [DataMember(Name = "allow_subdomains", EmitDefaultValue = true)]
+        [DataMember(Name="allow_subdomains", EmitDefaultValue=false)]
         public bool AllowSubdomains { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedDomainsList
         /// </summary>
-        [DataMember(Name = "allowed_domains_list", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_domains_list", EmitDefaultValue=false)]
         public List<string> AllowedDomainsList { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedUriSans
         /// </summary>
-        [DataMember(Name = "allowed_uri_sans", EmitDefaultValue = false)]
+        [DataMember(Name="allowed_uri_sans", EmitDefaultValue=false)]
         public List<string> AllowedUriSans { get; set; }
 
         /// <summary>
         /// Gets or Sets BasicConstraintsValidForNonCa
         /// </summary>
-        [DataMember(Name = "basic_constraints_valid_for_non_ca", EmitDefaultValue = true)]
+        [DataMember(Name="basic_constraints_valid_for_non_ca", EmitDefaultValue=false)]
         public bool BasicConstraintsValidForNonCa { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientFlag
         /// </summary>
-        [DataMember(Name = "client_flag", EmitDefaultValue = true)]
+        [DataMember(Name="client_flag", EmitDefaultValue=false)]
         public bool ClientFlag { get; set; }
 
         /// <summary>
         /// Gets or Sets CodeSigningFlag
         /// </summary>
-        [DataMember(Name = "code_signing_flag", EmitDefaultValue = true)]
+        [DataMember(Name="code_signing_flag", EmitDefaultValue=false)]
         public bool CodeSigningFlag { get; set; }
 
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
-        [DataMember(Name = "country", EmitDefaultValue = false)]
+        [DataMember(Name="country", EmitDefaultValue=false)]
         public List<string> Country { get; set; }
 
         /// <summary>
         /// Gets or Sets EnforceHostnames
         /// </summary>
-        [DataMember(Name = "enforce_hostnames", EmitDefaultValue = true)]
+        [DataMember(Name="enforce_hostnames", EmitDefaultValue=false)]
         public bool EnforceHostnames { get; set; }
 
         /// <summary>
         /// Gets or Sets IsCa
         /// </summary>
-        [DataMember(Name = "is_ca", EmitDefaultValue = true)]
+        [DataMember(Name="is_ca", EmitDefaultValue=false)]
         public bool IsCa { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyBits
         /// </summary>
-        [DataMember(Name = "key_bits", EmitDefaultValue = false)]
+        [DataMember(Name="key_bits", EmitDefaultValue=false)]
         public long KeyBits { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyType
         /// </summary>
-        [DataMember(Name = "key_type", EmitDefaultValue = false)]
+        [DataMember(Name="key_type", EmitDefaultValue=false)]
         public string KeyType { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyUsageList
         /// </summary>
-        [DataMember(Name = "key_usage_list", EmitDefaultValue = false)]
+        [DataMember(Name="key_usage_list", EmitDefaultValue=false)]
         public List<string> KeyUsageList { get; set; }
 
         /// <summary>
         /// Gets or Sets Locality
         /// </summary>
-        [DataMember(Name = "locality", EmitDefaultValue = false)]
+        [DataMember(Name="locality", EmitDefaultValue=false)]
         public List<string> Locality { get; set; }
 
         /// <summary>
         /// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
         /// </summary>
         /// <value>A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.</value>
-        [DataMember(Name = "not_before_duration", EmitDefaultValue = false)]
+        [DataMember(Name="not_before_duration", EmitDefaultValue=false)]
         public long NotBeforeDuration { get; set; }
 
         /// <summary>
         /// Gets or Sets OrganizationList
         /// </summary>
-        [DataMember(Name = "organization_list", EmitDefaultValue = false)]
+        [DataMember(Name="organization_list", EmitDefaultValue=false)]
         public List<string> OrganizationList { get; set; }
 
         /// <summary>
         /// Gets or Sets OrganizationUnitList
         /// </summary>
-        [DataMember(Name = "organization_unit_list", EmitDefaultValue = false)]
+        [DataMember(Name="organization_unit_list", EmitDefaultValue=false)]
         public List<string> OrganizationUnitList { get; set; }
 
         /// <summary>
         /// Gets or Sets PostalCode
         /// </summary>
-        [DataMember(Name = "postal_code", EmitDefaultValue = false)]
+        [DataMember(Name="postal_code", EmitDefaultValue=false)]
         public List<string> PostalCode { get; set; }
 
         /// <summary>
         /// Gets or Sets Province
         /// </summary>
-        [DataMember(Name = "province", EmitDefaultValue = false)]
+        [DataMember(Name="province", EmitDefaultValue=false)]
         public List<string> Province { get; set; }
 
         /// <summary>
         /// Gets or Sets RequireCn
         /// </summary>
-        [DataMember(Name = "require_cn", EmitDefaultValue = true)]
+        [DataMember(Name="require_cn", EmitDefaultValue=false)]
         public bool RequireCn { get; set; }
 
         /// <summary>
         /// Gets or Sets ServerFlag
         /// </summary>
-        [DataMember(Name = "server_flag", EmitDefaultValue = true)]
+        [DataMember(Name="server_flag", EmitDefaultValue=false)]
         public bool ServerFlag { get; set; }
 
         /// <summary>
         /// Gets or Sets StreetAddress
         /// </summary>
-        [DataMember(Name = "street_address", EmitDefaultValue = false)]
+        [DataMember(Name="street_address", EmitDefaultValue=false)]
         public List<string> StreetAddress { get; set; }
 
         /// <summary>
@@ -249,14 +248,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -442,7 +441,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

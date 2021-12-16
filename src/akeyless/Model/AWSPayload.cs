@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// AWSPayload
     /// </summary>
-    [DataContract(Name = "AWSPayload")]
-    public partial class AWSPayload : IEquatable<AWSPayload>, IValidatableObject
+    [DataContract]
+    public partial class AWSPayload :  IEquatable<AWSPayload>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AWSPayload" /> class.
@@ -44,23 +43,23 @@ namespace akeyless.Model
             this.Region = region;
             this.Secret = secret;
         }
-
+        
         /// <summary>
         /// Gets or Sets Key
         /// </summary>
-        [DataMember(Name = "key", EmitDefaultValue = false)]
+        [DataMember(Name="key", EmitDefaultValue=false)]
         public string Key { get; set; }
 
         /// <summary>
         /// Gets or Sets Region
         /// </summary>
-        [DataMember(Name = "region", EmitDefaultValue = false)]
+        [DataMember(Name="region", EmitDefaultValue=false)]
         public string Region { get; set; }
 
         /// <summary>
         /// Gets or Sets Secret
         /// </summary>
-        [DataMember(Name = "secret", EmitDefaultValue = false)]
+        [DataMember(Name="secret", EmitDefaultValue=false)]
         public string Secret { get; set; }
 
         /// <summary>
@@ -77,14 +76,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -149,7 +148,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

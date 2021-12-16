@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerEksOutput
-
 ## Properties
 
 Name | Type | Description | Notes

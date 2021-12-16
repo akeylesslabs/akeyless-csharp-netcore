@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// K8SAuthsConfigLastChange
     /// </summary>
-    [DataContract(Name = "K8SAuthsConfigLastChange")]
-    public partial class K8SAuthsConfigLastChange : IEquatable<K8SAuthsConfigLastChange>, IValidatableObject
+    [DataContract]
+    public partial class K8SAuthsConfigLastChange :  IEquatable<K8SAuthsConfigLastChange>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="K8SAuthsConfigLastChange" /> class.
@@ -44,23 +43,23 @@ namespace akeyless.Model
             this.CreatedK8sAuthsIds = createdK8sAuthsIds;
             this.DeletedK8sAuthsIds = deletedK8sAuthsIds;
         }
-
+        
         /// <summary>
         /// Gets or Sets ChangedK8sAuthsIds
         /// </summary>
-        [DataMember(Name = "changed_k8s_auths_ids", EmitDefaultValue = false)]
+        [DataMember(Name="changed_k8s_auths_ids", EmitDefaultValue=false)]
         public List<string> ChangedK8sAuthsIds { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedK8sAuthsIds
         /// </summary>
-        [DataMember(Name = "created_k8s_auths_ids", EmitDefaultValue = false)]
+        [DataMember(Name="created_k8s_auths_ids", EmitDefaultValue=false)]
         public List<string> CreatedK8sAuthsIds { get; set; }
 
         /// <summary>
         /// Gets or Sets DeletedK8sAuthsIds
         /// </summary>
-        [DataMember(Name = "deleted_k8s_auths_ids", EmitDefaultValue = false)]
+        [DataMember(Name="deleted_k8s_auths_ids", EmitDefaultValue=false)]
         public List<string> DeletedK8sAuthsIds { get; set; }
 
         /// <summary>
@@ -77,14 +76,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -152,7 +151,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

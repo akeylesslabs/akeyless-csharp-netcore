@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateSSHCertIssuer
-
 ## Properties
 
 Name | Type | Description | Notes

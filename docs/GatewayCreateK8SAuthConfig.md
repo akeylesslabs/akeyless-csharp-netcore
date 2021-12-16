@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayCreateK8SAuthConfig
 gatewayCreateK8SAuth is a command that creates k8s auth config
-
 ## Properties
 
 Name | Type | Description | Notes

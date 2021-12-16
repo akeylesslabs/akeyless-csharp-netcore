@@ -1,5 +1,4 @@
 # akeyless.Model.KMIPEnvironmentCreateResponse
-
 ## Properties
 
 Name | Type | Description | Notes

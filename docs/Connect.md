@@ -1,6 +1,5 @@
 # akeyless.Model.Connect
 connect is a command that performs secure remote access
-
 ## Properties
 
 Name | Type | Description | Notes

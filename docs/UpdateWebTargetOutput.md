@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateWebTargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

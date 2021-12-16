@@ -1,5 +1,4 @@
 # akeyless.Model.StaticCredsAuthOutput
-
 ## Properties
 
 Name | Type | Description | Notes

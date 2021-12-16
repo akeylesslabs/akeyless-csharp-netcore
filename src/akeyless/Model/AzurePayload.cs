@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// AzurePayload
     /// </summary>
-    [DataContract(Name = "AzurePayload")]
-    public partial class AzurePayload : IEquatable<AzurePayload>, IValidatableObject
+    [DataContract]
+    public partial class AzurePayload :  IEquatable<AzurePayload>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AzurePayload" /> class.
@@ -46,29 +45,29 @@ namespace akeyless.Model
             this.Secret = secret;
             this.Tenant = tenant;
         }
-
+        
         /// <summary>
         /// Gets or Sets _Client
         /// </summary>
-        [DataMember(Name = "client", EmitDefaultValue = false)]
+        [DataMember(Name="client", EmitDefaultValue=false)]
         public string _Client { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Secret
         /// </summary>
-        [DataMember(Name = "secret", EmitDefaultValue = false)]
+        [DataMember(Name="secret", EmitDefaultValue=false)]
         public string Secret { get; set; }
 
         /// <summary>
         /// Gets or Sets Tenant
         /// </summary>
-        [DataMember(Name = "tenant", EmitDefaultValue = false)]
+        [DataMember(Name="tenant", EmitDefaultValue=false)]
         public string Tenant { get; set; }
 
         /// <summary>
@@ -86,14 +85,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -165,7 +164,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerArtifactoryOutput
-
 ## Properties
 
 Name | Type | Description | Notes

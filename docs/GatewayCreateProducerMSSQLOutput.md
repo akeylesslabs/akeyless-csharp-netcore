@@ -1,5 +1,4 @@
 # akeyless.Model.GatewayCreateProducerMSSQLOutput
-
 ## Properties
 
 Name | Type | Description | Notes

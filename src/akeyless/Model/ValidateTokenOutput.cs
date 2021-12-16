@@ -1,4 +1,4 @@
-/*
+/* 
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,17 +10,16 @@
 
 
 using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -29,8 +28,8 @@ namespace akeyless.Model
     /// <summary>
     /// ValidateTokenOutput
     /// </summary>
-    [DataContract(Name = "validateTokenOutput")]
-    public partial class ValidateTokenOutput : IEquatable<ValidateTokenOutput>, IValidatableObject
+    [DataContract]
+    public partial class ValidateTokenOutput :  IEquatable<ValidateTokenOutput>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateTokenOutput" /> class.
@@ -44,23 +43,23 @@ namespace akeyless.Model
             this.IsValid = isValid;
             this.Reason = reason;
         }
-
+        
         /// <summary>
         /// Gets or Sets Expiration
         /// </summary>
-        [DataMember(Name = "expiration", EmitDefaultValue = false)]
+        [DataMember(Name="expiration", EmitDefaultValue=false)]
         public string Expiration { get; set; }
 
         /// <summary>
         /// Gets or Sets IsValid
         /// </summary>
-        [DataMember(Name = "is_valid", EmitDefaultValue = true)]
+        [DataMember(Name="is_valid", EmitDefaultValue=false)]
         public bool IsValid { get; set; }
 
         /// <summary>
         /// Gets or Sets Reason
         /// </summary>
-        [DataMember(Name = "reason", EmitDefaultValue = false)]
+        [DataMember(Name="reason", EmitDefaultValue=false)]
         public string Reason { get; set; }
 
         /// <summary>
@@ -77,14 +76,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-
+  
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -147,7 +146,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

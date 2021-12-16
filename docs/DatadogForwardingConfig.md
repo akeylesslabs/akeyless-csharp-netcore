@@ -1,5 +1,4 @@
 # akeyless.Model.DatadogForwardingConfig
-
 ## Properties
 
 Name | Type | Description | Notes

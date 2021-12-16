@@ -1,6 +1,5 @@
 # akeyless.Model.AssocTargetItem
 assocTargetItem is a command that creates an association between target and item.
-
 ## Properties
 
 Name | Type | Description | Notes

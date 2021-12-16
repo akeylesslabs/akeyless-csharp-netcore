@@ -1,5 +1,4 @@
 # akeyless.Model.AuthMethod
-
 ## Properties
 
 Name | Type | Description | Notes

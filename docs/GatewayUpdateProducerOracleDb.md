@@ -1,6 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerOracleDb
 gatewayUpdateProducerOracleDb is a command that updates oracle db producer
-
 ## Properties
 
 Name | Type | Description | Notes

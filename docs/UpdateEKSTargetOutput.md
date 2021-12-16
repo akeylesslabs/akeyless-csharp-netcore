@@ -1,5 +1,4 @@
 # akeyless.Model.UpdateEKSTargetOutput
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,4 @@
 # akeyless.Model.DeleteAuthMethodOutput
-
 ## Properties
 
 Name | Type | Description | Notes
