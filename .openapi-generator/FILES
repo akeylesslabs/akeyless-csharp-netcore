@@ -33,8 +33,6 @@ docs/ConfigHash.md
 docs/Configure.md
 docs/ConfigureOutput.md
 docs/Connect.md
-docs/CreateAWSTarget.md
-docs/CreateAWSTargetOutput.md
 docs/CreateArtifactoryTarget.md
 docs/CreateArtifactoryTargetOutput.md
 docs/CreateAuthMethod.md
@@ -512,8 +510,6 @@ src/akeyless/Model/ConfigHash.cs
 src/akeyless/Model/Configure.cs
 src/akeyless/Model/ConfigureOutput.cs
 src/akeyless/Model/Connect.cs
-src/akeyless/Model/CreateAWSTarget.cs
-src/akeyless/Model/CreateAWSTargetOutput.cs
 src/akeyless/Model/CreateArtifactoryTarget.cs
 src/akeyless/Model/CreateArtifactoryTargetOutput.cs
 src/akeyless/Model/CreateAuthMethod.cs

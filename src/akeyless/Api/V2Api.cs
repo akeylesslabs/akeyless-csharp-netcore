@@ -122,24 +122,6 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>CreateAWSTargetOutput</returns>
-        CreateAWSTargetOutput CreateAWStarget(CreateAWSTarget body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
-        ApiResponse<CreateAWSTargetOutput> CreateAWStargetWithHttpInfo(CreateAWSTarget body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
         /// <returns>CreateArtifactoryTargetOutput</returns>
         CreateArtifactoryTargetOutput CreateArtifactoryTarget(CreateArtifactoryTarget body);
 
@@ -3747,29 +3729,6 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> ConnectWithHttpInfoAsync(Connect body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateAWSTargetOutput</returns>
-        System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWStargetAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAWSTargetOutput>> CreateAWStargetWithHttpInfoAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8927,123 +8886,6 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Connect", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>CreateAWSTargetOutput</returns>
-        public CreateAWSTargetOutput CreateAWStarget(CreateAWSTarget body)
-        {
-            akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = CreateAWStargetWithHttpInfo(body);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of CreateAWSTargetOutput</returns>
-        public akeyless.Client.ApiResponse<CreateAWSTargetOutput> CreateAWStargetWithHttpInfo(CreateAWSTarget body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAWStarget");
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateAWSTargetOutput>("/create-aws-target", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateAWStarget", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateAWSTargetOutput</returns>
-        public async System.Threading.Tasks.Task<CreateAWSTargetOutput> CreateAWStargetAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            akeyless.Client.ApiResponse<CreateAWSTargetOutput> localVarResponse = await CreateAWStargetWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateAWSTargetOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateAWSTargetOutput>> CreateAWStargetWithHttpInfoAsync(CreateAWSTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateAWStarget");
-
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAWSTargetOutput>("/create-aws-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("CreateAWStarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
