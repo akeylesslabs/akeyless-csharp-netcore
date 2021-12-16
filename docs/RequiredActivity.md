@@ -1,4 +1,5 @@
 # akeyless.Model.RequiredActivity
+
 ## Properties
 
 Name | Type | Description | Notes

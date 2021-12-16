@@ -1,4 +1,5 @@
 # akeyless.Model.CreateAuthMethodAzureADOutput
+
 ## Properties
 
 Name | Type | Description | Notes

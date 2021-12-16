@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// KmipDescribeServerOutput
     /// </summary>
-    [DataContract]
-    public partial class KmipDescribeServerOutput :  IEquatable<KmipDescribeServerOutput>, IValidatableObject
+    [DataContract(Name = "kmipDescribeServerOutput")]
+    public partial class KmipDescribeServerOutput : IEquatable<KmipDescribeServerOutput>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipDescribeServerOutput" /> class.
@@ -45,29 +46,29 @@ namespace akeyless.Model
             this.Hostname = hostname;
             this.Root = root;
         }
-        
+
         /// <summary>
         /// Gets or Sets Active
         /// </summary>
-        [DataMember(Name="active", EmitDefaultValue=false)]
+        [DataMember(Name = "active", EmitDefaultValue = true)]
         public bool Active { get; set; }
 
         /// <summary>
         /// Gets or Sets CaCert
         /// </summary>
-        [DataMember(Name="ca_cert", EmitDefaultValue=false)]
+        [DataMember(Name = "ca_cert", EmitDefaultValue = false)]
         public List<int> CaCert { get; set; }
 
         /// <summary>
         /// Gets or Sets Hostname
         /// </summary>
-        [DataMember(Name="hostname", EmitDefaultValue=false)]
+        [DataMember(Name = "hostname", EmitDefaultValue = false)]
         public string Hostname { get; set; }
 
         /// <summary>
         /// Gets or Sets Root
         /// </summary>
-        [DataMember(Name="root", EmitDefaultValue=false)]
+        [DataMember(Name = "root", EmitDefaultValue = false)]
         public string Root { get; set; }
 
         /// <summary>
@@ -85,14 +86,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -163,7 +164,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

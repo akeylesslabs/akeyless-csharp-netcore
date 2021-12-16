@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// ClassicKeyTargetInfo
     /// </summary>
-    [DataContract]
-    public partial class ClassicKeyTargetInfo :  IEquatable<ClassicKeyTargetInfo>, IValidatableObject
+    [DataContract(Name = "ClassicKeyTargetInfo")]
+    public partial class ClassicKeyTargetInfo : IEquatable<ClassicKeyTargetInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassicKeyTargetInfo" /> class.
@@ -47,35 +48,35 @@ namespace akeyless.Model
             this.TargetAssocId = targetAssocId;
             this.TargetType = targetType;
         }
-        
+
         /// <summary>
         /// Gets or Sets ExternalKmsId
         /// </summary>
-        [DataMember(Name="external_kms_id", EmitDefaultValue=false)]
+        [DataMember(Name = "external_kms_id", EmitDefaultValue = false)]
         public ExternalKMSKeyId ExternalKmsId { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyPurpose
         /// </summary>
-        [DataMember(Name="key_purpose", EmitDefaultValue=false)]
+        [DataMember(Name = "key_purpose", EmitDefaultValue = false)]
         public List<string> KeyPurpose { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyStatus
         /// </summary>
-        [DataMember(Name="key_status", EmitDefaultValue=false)]
+        [DataMember(Name = "key_status", EmitDefaultValue = false)]
         public ClassicKeyStatusInfo KeyStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetAssocId
         /// </summary>
-        [DataMember(Name="target_assoc_id", EmitDefaultValue=false)]
+        [DataMember(Name = "target_assoc_id", EmitDefaultValue = false)]
         public string TargetAssocId { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetType
         /// </summary>
-        [DataMember(Name="target_type", EmitDefaultValue=false)]
+        [DataMember(Name = "target_type", EmitDefaultValue = false)]
         public string TargetType { get; set; }
 
         /// <summary>
@@ -94,14 +95,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -181,7 +182,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

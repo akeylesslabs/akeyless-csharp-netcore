@@ -1,4 +1,5 @@
 # akeyless.Model.CreateDynamicSecret
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// OAuth2AccessRules contains access rules specific to OAuth2 authentication method.
     /// </summary>
-    [DataContract]
-    public partial class OAuth2AccessRules :  IEquatable<OAuth2AccessRules>, IValidatableObject
+    [DataContract(Name = "OAuth2AccessRules")]
+    public partial class OAuth2AccessRules : IEquatable<OAuth2AccessRules>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OAuth2AccessRules" /> class.
@@ -49,47 +50,47 @@ namespace akeyless.Model
             this.JwksUri = jwksUri;
             this.UniqueIdentifier = uniqueIdentifier;
         }
-        
+
         /// <summary>
         /// The audience in the JWT.
         /// </summary>
         /// <value>The audience in the JWT.</value>
-        [DataMember(Name="audience", EmitDefaultValue=false)]
+        [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
 
         /// <summary>
         /// The claims that login is restricted to.
         /// </summary>
         /// <value>The claims that login is restricted to.</value>
-        [DataMember(Name="bound_claims", EmitDefaultValue=false)]
+        [DataMember(Name = "bound_claims", EmitDefaultValue = false)]
         public List<OAuth2CustomClaim> BoundClaims { get; set; }
 
         /// <summary>
         /// The clients ids that login is restricted to.
         /// </summary>
         /// <value>The clients ids that login is restricted to.</value>
-        [DataMember(Name="bound_clients_id", EmitDefaultValue=false)]
+        [DataMember(Name = "bound_clients_id", EmitDefaultValue = false)]
         public List<string> BoundClientsId { get; set; }
 
         /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
-        [DataMember(Name="issuer", EmitDefaultValue=false)]
+        [DataMember(Name = "issuer", EmitDefaultValue = false)]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
-        [DataMember(Name="jwks_uri", EmitDefaultValue=false)]
+        [DataMember(Name = "jwks_uri", EmitDefaultValue = false)]
         public string JwksUri { get; set; }
 
         /// <summary>
         /// A unique identifier to distinguish different users
         /// </summary>
         /// <value>A unique identifier to distinguish different users</value>
-        [DataMember(Name="unique_identifier", EmitDefaultValue=false)]
+        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
@@ -109,14 +110,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -204,7 +205,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

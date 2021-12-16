@@ -1,4 +1,5 @@
 # akeyless.Model.GetRole
+
 ## Properties
 
 Name | Type | Description | Notes

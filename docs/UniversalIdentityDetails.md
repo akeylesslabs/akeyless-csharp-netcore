@@ -1,4 +1,5 @@
 # akeyless.Model.UniversalIdentityDetails
+
 ## Properties
 
 Name | Type | Description | Notes

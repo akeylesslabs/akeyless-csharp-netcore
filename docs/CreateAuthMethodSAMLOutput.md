@@ -1,4 +1,5 @@
 # akeyless.Model.CreateAuthMethodSAMLOutput
+
 ## Properties
 
 Name | Type | Description | Notes

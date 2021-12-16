@@ -1,4 +1,5 @@
 # akeyless.Model.RotatorsConfigPart
+
 ## Properties
 
 Name | Type | Description | Notes

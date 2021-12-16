@@ -1,4 +1,5 @@
 # akeyless.Model.UidRotateTokenOutput
+
 ## Properties
 
 Name | Type | Description | Notes

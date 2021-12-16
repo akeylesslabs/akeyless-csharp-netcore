@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// ConfigChange
     /// </summary>
-    [DataContract]
-    public partial class ConfigChange :  IEquatable<ConfigChange>, IValidatableObject
+    [DataContract(Name = "ConfigChange")]
+    public partial class ConfigChange : IEquatable<ConfigChange>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigChange" /> class.
@@ -47,35 +48,35 @@ namespace akeyless.Model
             this.RequiredActivity = requiredActivity;
             this.UpdateStamp = updateStamp;
         }
-        
+
         /// <summary>
         /// Gets or Sets ConfigHash
         /// </summary>
-        [DataMember(Name="config_hash", EmitDefaultValue=false)]
+        [DataMember(Name = "config_hash", EmitDefaultValue = false)]
         public ConfigHash ConfigHash { get; set; }
 
         /// <summary>
         /// Gets or Sets LastChange
         /// </summary>
-        [DataMember(Name="last_change", EmitDefaultValue=false)]
+        [DataMember(Name = "last_change", EmitDefaultValue = false)]
         public LastConfigChange LastChange { get; set; }
 
         /// <summary>
         /// Gets or Sets LastStatus
         /// </summary>
-        [DataMember(Name="last_status", EmitDefaultValue=false)]
+        [DataMember(Name = "last_status", EmitDefaultValue = false)]
         public LastStatusInfo LastStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets RequiredActivity
         /// </summary>
-        [DataMember(Name="required_activity", EmitDefaultValue=false)]
+        [DataMember(Name = "required_activity", EmitDefaultValue = false)]
         public RequiredActivity RequiredActivity { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdateStamp
         /// </summary>
-        [DataMember(Name="update_stamp", EmitDefaultValue=false)]
+        [DataMember(Name = "update_stamp", EmitDefaultValue = false)]
         public long UpdateStamp { get; set; }
 
         /// <summary>
@@ -94,14 +95,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -178,7 +179,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

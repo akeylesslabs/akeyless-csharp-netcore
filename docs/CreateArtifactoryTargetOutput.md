@@ -1,4 +1,5 @@
 # akeyless.Model.CreateArtifactoryTargetOutput
+
 ## Properties
 
 Name | Type | Description | Notes

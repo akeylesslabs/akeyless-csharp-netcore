@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// GetDynamicSecretValue
     /// </summary>
-    [DataContract]
-    public partial class GetDynamicSecretValue :  IEquatable<GetDynamicSecretValue>, IValidatableObject
+    [DataContract(Name = "getDynamicSecretValue")]
+    public partial class GetDynamicSecretValue : IEquatable<GetDynamicSecretValue>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetDynamicSecretValue" /> class.
@@ -51,7 +52,10 @@ namespace akeyless.Model
         public GetDynamicSecretValue(List<string> args = default(List<string>), string host = default(string), string name = default(string), string password = default(string), string target = default(string), long timeout = 15, string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GetDynamicSecretValue and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for GetDynamicSecretValue and cannot be null");
+            }
+            this.Name = name;
             this.Args = args;
             this.Host = host;
             this.Password = password;
@@ -61,68 +65,68 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Optional arguments as key&#x3D;value pairs or JSON strings, e.g - \\\&quot;- -args&#x3D;csr&#x3D;base64_encoded_csr - -args&#x3D;common_name&#x3D;bar\\\&quot; or args&#x3D;&#39;{\\\&quot;csr\\\&quot;:\\\&quot;base64_encoded_csr\\\&quot;}. It is possible to combine both formats.&#39;
         /// </summary>
         /// <value>Optional arguments as key&#x3D;value pairs or JSON strings, e.g - \\\&quot;- -args&#x3D;csr&#x3D;base64_encoded_csr - -args&#x3D;common_name&#x3D;bar\\\&quot; or args&#x3D;&#39;{\\\&quot;csr\\\&quot;:\\\&quot;base64_encoded_csr\\\&quot;}. It is possible to combine both formats.&#39;</value>
-        [DataMember(Name="args", EmitDefaultValue=false)]
+        [DataMember(Name = "args", EmitDefaultValue = false)]
         public List<string> Args { get; set; }
 
         /// <summary>
         /// Host
         /// </summary>
         /// <value>Host</value>
-        [DataMember(Name="host", EmitDefaultValue=false)]
+        [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
 
         /// <summary>
         /// Dynamic secret name
         /// </summary>
         /// <value>Dynamic secret name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Target Name
         /// </summary>
         /// <value>Target Name</value>
-        [DataMember(Name="target", EmitDefaultValue=false)]
+        [DataMember(Name = "target", EmitDefaultValue = false)]
         public string Target { get; set; }
 
         /// <summary>
         /// Timeout in seconds
         /// </summary>
         /// <value>Timeout in seconds</value>
-        [DataMember(Name="timeout", EmitDefaultValue=false)]
+        [DataMember(Name = "timeout", EmitDefaultValue = false)]
         public long Timeout { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -145,14 +149,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -258,7 +262,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

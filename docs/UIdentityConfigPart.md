@@ -1,4 +1,5 @@
 # akeyless.Model.UIdentityConfigPart
+
 ## Properties
 
 Name | Type | Description | Notes

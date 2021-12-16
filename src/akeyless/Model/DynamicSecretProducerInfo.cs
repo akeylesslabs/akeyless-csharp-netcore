@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
     /// </summary>
-    [DataContract]
-    public partial class DynamicSecretProducerInfo :  IEquatable<DynamicSecretProducerInfo>, IValidatableObject
+    [DataContract(Name = "DynamicSecretProducerInfo")]
+    public partial class DynamicSecretProducerInfo : IEquatable<DynamicSecretProducerInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretProducerInfo" /> class.
@@ -47,36 +48,36 @@ namespace akeyless.Model
             this.ProducerStatus = producerStatus;
             this.ProducerType = producerType;
         }
-        
+
         /// <summary>
         /// Gets or Sets GwClusterId
         /// </summary>
-        [DataMember(Name="gw_cluster_id", EmitDefaultValue=false)]
+        [DataMember(Name = "gw_cluster_id", EmitDefaultValue = false)]
         public long GwClusterId { get; set; }
 
         /// <summary>
         /// Gets or Sets ProducerLastKeepAlive
         /// </summary>
-        [DataMember(Name="producer_last_keep_alive", EmitDefaultValue=false)]
+        [DataMember(Name = "producer_last_keep_alive", EmitDefaultValue = false)]
         public string ProducerLastKeepAlive { get; set; }
 
         /// <summary>
         /// Gets or Sets ProducerMetadata
         /// </summary>
-        [DataMember(Name="producer_metadata", EmitDefaultValue=false)]
+        [DataMember(Name = "producer_metadata", EmitDefaultValue = false)]
         public string ProducerMetadata { get; set; }
 
         /// <summary>
         /// RotationStatus defines types of rotation Status
         /// </summary>
         /// <value>RotationStatus defines types of rotation Status</value>
-        [DataMember(Name="producer_status", EmitDefaultValue=false)]
+        [DataMember(Name = "producer_status", EmitDefaultValue = false)]
         public string ProducerStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets ProducerType
         /// </summary>
-        [DataMember(Name="producer_type", EmitDefaultValue=false)]
+        [DataMember(Name = "producer_type", EmitDefaultValue = false)]
         public string ProducerType { get; set; }
 
         /// <summary>
@@ -95,14 +96,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -179,7 +180,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

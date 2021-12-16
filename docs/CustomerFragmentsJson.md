@@ -1,4 +1,5 @@
 # akeyless.Model.CustomerFragmentsJson
+
 ## Properties
 
 Name | Type | Description | Notes

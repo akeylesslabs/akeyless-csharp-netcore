@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerArtifactory
 gatewayCreateProducerArtifactory is a command that creates artifactory producer
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayGetProducer
 gatewayGetProducer is a command that returns producer
+
 ## Properties
 
 Name | Type | Description | Notes

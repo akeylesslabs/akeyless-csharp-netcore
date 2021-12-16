@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerMSSQL
 gatewayCreateProducerMSSQL is a command that creates mssql producer
+
 ## Properties
 
 Name | Type | Description | Notes

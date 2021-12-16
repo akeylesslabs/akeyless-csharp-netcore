@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayCreateProducerAwsOutput
+
 ## Properties
 
 Name | Type | Description | Notes

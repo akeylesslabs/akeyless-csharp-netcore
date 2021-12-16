@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerMySQLOutput
+
 ## Properties
 
 Name | Type | Description | Notes

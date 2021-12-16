@@ -1,4 +1,5 @@
 # akeyless.Model.TargetItemVersion
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -9,7 +10,7 @@ Name | Type | Description | Notes
 **ItemVersionState** | **string** | ItemState defines the different states an Item can be in | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
 **TargetName** | **string** |  | [optional] 
-**Version** | **int** |  | [optional] 
+**_Version** | **int** |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

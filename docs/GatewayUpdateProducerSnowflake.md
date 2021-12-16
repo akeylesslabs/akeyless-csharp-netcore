@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayUpdateProducerSnowflake
 gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
+
 ## Properties
 
 Name | Type | Description | Notes

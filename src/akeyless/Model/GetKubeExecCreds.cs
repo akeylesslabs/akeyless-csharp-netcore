@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// getKubeExecCreds is a command that gets credentials for authentication with Kubernetes cluster based on a PKI cert issuer.
     /// </summary>
-    [DataContract]
-    public partial class GetKubeExecCreds :  IEquatable<GetKubeExecCreds>, IValidatableObject
+    [DataContract(Name = "getKubeExecCreds")]
+    public partial class GetKubeExecCreds : IEquatable<GetKubeExecCreds>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetKubeExecCreds" /> class.
@@ -51,7 +52,10 @@ namespace akeyless.Model
         public GetKubeExecCreds(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string keyDataBase64 = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string), string username = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
-            this.CertIssuerName = certIssuerName ?? throw new ArgumentNullException("certIssuerName is a required property for GetKubeExecCreds and cannot be null");
+            if (certIssuerName == null) {
+                throw new ArgumentNullException("certIssuerName is a required property for GetKubeExecCreds and cannot be null");
+            }
+            this.CertIssuerName = certIssuerName;
             this.AltNames = altNames;
             this.CommonName = commonName;
             this.KeyDataBase64 = keyDataBase64;
@@ -61,68 +65,68 @@ namespace akeyless.Model
             this.UriSans = uriSans;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
         /// </summary>
         /// <value>The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)</value>
-        [DataMember(Name="alt-names", EmitDefaultValue=false)]
+        [DataMember(Name = "alt-names", EmitDefaultValue = false)]
         public string AltNames { get; set; }
 
         /// <summary>
         /// The name of the PKI certificate issuer
         /// </summary>
         /// <value>The name of the PKI certificate issuer</value>
-        [DataMember(Name="cert-issuer-name", EmitDefaultValue=false)]
+        [DataMember(Name = "cert-issuer-name", IsRequired = true, EmitDefaultValue = false)]
         public string CertIssuerName { get; set; }
 
         /// <summary>
         /// The common name to be included in the PKI certificate
         /// </summary>
         /// <value>The common name to be included in the PKI certificate</value>
-        [DataMember(Name="common-name", EmitDefaultValue=false)]
+        [DataMember(Name = "common-name", EmitDefaultValue = false)]
         public string CommonName { get; set; }
 
         /// <summary>
         /// PKI key file contents. If this option is used, the certificate will be printed to stdout
         /// </summary>
         /// <value>PKI key file contents. If this option is used, the certificate will be printed to stdout</value>
-        [DataMember(Name="key-data-base64", EmitDefaultValue=false)]
+        [DataMember(Name = "key-data-base64", EmitDefaultValue = false)]
         public string KeyDataBase64 { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
         /// </summary>
         /// <value>The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)</value>
-        [DataMember(Name="uri-sans", EmitDefaultValue=false)]
+        [DataMember(Name = "uri-sans", EmitDefaultValue = false)]
         public string UriSans { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -145,14 +149,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -259,7 +263,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

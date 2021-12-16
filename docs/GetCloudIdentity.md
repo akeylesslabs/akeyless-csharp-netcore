@@ -1,5 +1,6 @@
 # akeyless.Model.GetCloudIdentity
 getCloudIdentity is a command that gets Cloud Identity Token (relevant only for access-type=azure_ad, aws_iam, gcp).
+
 ## Properties
 
 Name | Type | Description | Notes

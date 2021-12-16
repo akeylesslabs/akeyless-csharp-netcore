@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayListProducers
 gatewayListProducers is a command that returns producer
+
 ## Properties
 
 Name | Type | Description | Notes

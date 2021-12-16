@@ -1,4 +1,5 @@
 # akeyless.Model.PKICertificateIssueDetails
+
 ## Properties
 
 Name | Type | Description | Notes

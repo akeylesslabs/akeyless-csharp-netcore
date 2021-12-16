@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayDeleteProducer
 gatewayDeleteProducer is a command that deletes producer
+
 ## Properties
 
 Name | Type | Description | Notes

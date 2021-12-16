@@ -1,4 +1,5 @@
 # akeyless.Model.Rules
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// gatewayCreateProducerGke is a command that creates gke producer
     /// </summary>
-    [DataContract]
-    public partial class GatewayCreateProducerGke :  IEquatable<GatewayCreateProducerGke>, IValidatableObject
+    [DataContract(Name = "gatewayCreateProducerGke")]
+    public partial class GatewayCreateProducerGke : IEquatable<GatewayCreateProducerGke>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerGke" /> class.
@@ -61,7 +62,10 @@ namespace akeyless.Model
         public GatewayCreateProducerGke(string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateProducerGke and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for GatewayCreateProducerGke and cannot be null");
+            }
+            this.Name = name;
             this.GkeAccountKey = gkeAccountKey;
             this.GkeClusterCert = gkeClusterCert;
             this.GkeClusterEndpoint = gkeClusterEndpoint;
@@ -82,133 +86,133 @@ namespace akeyless.Model
             this.UserTtl = userTtl ?? "60m";
             this.Username = username;
         }
-        
+
         /// <summary>
         /// GKE Service Account key file path
         /// </summary>
         /// <value>GKE Service Account key file path</value>
-        [DataMember(Name="gke-account-key", EmitDefaultValue=false)]
+        [DataMember(Name = "gke-account-key", EmitDefaultValue = false)]
         public string GkeAccountKey { get; set; }
 
         /// <summary>
         /// GKE cluster CA certificate
         /// </summary>
         /// <value>GKE cluster CA certificate</value>
-        [DataMember(Name="gke-cluster-cert", EmitDefaultValue=false)]
+        [DataMember(Name = "gke-cluster-cert", EmitDefaultValue = false)]
         public string GkeClusterCert { get; set; }
 
         /// <summary>
         /// GKE cluster URL endpoint
         /// </summary>
         /// <value>GKE cluster URL endpoint</value>
-        [DataMember(Name="gke-cluster-endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "gke-cluster-endpoint", EmitDefaultValue = false)]
         public string GkeClusterEndpoint { get; set; }
 
         /// <summary>
         /// GKE cluster name
         /// </summary>
         /// <value>GKE cluster name</value>
-        [DataMember(Name="gke-cluster-name", EmitDefaultValue=false)]
+        [DataMember(Name = "gke-cluster-name", EmitDefaultValue = false)]
         public string GkeClusterName { get; set; }
 
         /// <summary>
         /// GKE service account email
         /// </summary>
         /// <value>GKE service account email</value>
-        [DataMember(Name="gke-service-account-email", EmitDefaultValue=false)]
+        [DataMember(Name = "gke-service-account-email", EmitDefaultValue = false)]
         public string GkeServiceAccountEmail { get; set; }
 
         /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
         /// </summary>
         /// <value>Dynamic producer encryption key</value>
-        [DataMember(Name="producer-encryption-key-name", EmitDefaultValue=false)]
+        [DataMember(Name = "producer-encryption-key-name", EmitDefaultValue = false)]
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAllowPortForwading
         /// </summary>
-        [DataMember(Name="secure-access-allow-port-forwading", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
         public bool SecureAccessAllowPortForwading { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessBastionIssuer
         /// </summary>
-        [DataMember(Name="secure-access-bastion-issuer", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessClusterEndpoint
         /// </summary>
-        [DataMember(Name="secure-access-cluster-endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-cluster-endpoint", EmitDefaultValue = false)]
         public string SecureAccessClusterEndpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessEnable
         /// </summary>
-        [DataMember(Name="secure-access-enable", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessWeb
         /// </summary>
-        [DataMember(Name="secure-access-web", EmitDefaultValue=false)]
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
         /// </summary>
         /// <value>List of the tags attached to this secret</value>
-        [DataMember(Name="tags", EmitDefaultValue=false)]
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 
         /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name="target-name", EmitDefaultValue=false)]
+        [DataMember(Name = "target-name", EmitDefaultValue = false)]
         public string TargetName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// User TTL
         /// </summary>
         /// <value>User TTL</value>
-        [DataMember(Name="user-ttl", EmitDefaultValue=false)]
+        [DataMember(Name = "user-ttl", EmitDefaultValue = false)]
         public string UserTtl { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -241,14 +245,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -422,7 +426,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

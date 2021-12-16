@@ -1,5 +1,6 @@
 # akeyless.Model.AuthMethodRoleAssociation
 AuthMethodRoleAssociation includes details of an association between an auth method and a role.
+
 ## Properties
 
 Name | Type | Description | Notes

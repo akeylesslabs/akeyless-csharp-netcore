@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayCreateProducerRdp
 gatewayCreateProducerRdp is a command that creates rdp producer
+
 ## Properties
 
 Name | Type | Description | Notes

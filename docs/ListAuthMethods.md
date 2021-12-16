@@ -1,5 +1,6 @@
 # akeyless.Model.ListAuthMethods
 listAuthMethods is a command that returns a list of all auth methods in the account.
+
 ## Properties
 
 Name | Type | Description | Notes

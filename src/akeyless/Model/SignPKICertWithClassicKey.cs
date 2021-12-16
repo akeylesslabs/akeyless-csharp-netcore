@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// SignPKICertWithClassicKey
     /// </summary>
-    [DataContract]
-    public partial class SignPKICertWithClassicKey :  IEquatable<SignPKICertWithClassicKey>, IValidatableObject
+    [DataContract(Name = "signPKICertWithClassicKey")]
+    public partial class SignPKICertWithClassicKey : IEquatable<SignPKICertWithClassicKey>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SignPKICertWithClassicKey" /> class.
@@ -62,11 +63,17 @@ namespace akeyless.Model
         public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), string username = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            this.DisplayId = displayId ?? throw new ArgumentNullException("displayId is a required property for SignPKICertWithClassicKey and cannot be null");
+            if (displayId == null) {
+                throw new ArgumentNullException("displayId is a required property for SignPKICertWithClassicKey and cannot be null");
+            }
+            this.DisplayId = displayId;
             // to ensure "signingMethod" is required (not null)
-            this.SigningMethod = signingMethod ?? throw new ArgumentNullException("signingMethod is a required property for SignPKICertWithClassicKey and cannot be null");
+            if (signingMethod == null) {
+                throw new ArgumentNullException("signingMethod is a required property for SignPKICertWithClassicKey and cannot be null");
+            }
+            this.SigningMethod = signingMethod;
             this.Ttl = ttl;
-            this.Version = version;
+            this._Version = version;
             this.CommonName = commonName;
             this.Country = country;
             this.DnsNames = dnsNames;
@@ -85,146 +92,146 @@ namespace akeyless.Model
             this.UriSans = uriSans;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// The common name to be included in the PKI certificate
         /// </summary>
         /// <value>The common name to be included in the PKI certificate</value>
-        [DataMember(Name="common-name", EmitDefaultValue=false)]
+        [DataMember(Name = "common-name", EmitDefaultValue = false)]
         public string CommonName { get; set; }
 
         /// <summary>
         /// A comma-separated list of the country that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the country that will be set in the issued certificate</value>
-        [DataMember(Name="country", EmitDefaultValue=false)]
+        [DataMember(Name = "country", EmitDefaultValue = false)]
         public string Country { get; set; }
 
         /// <summary>
         /// The name of the key to use in the sign PKI Cert process
         /// </summary>
         /// <value>The name of the key to use in the sign PKI Cert process</value>
-        [DataMember(Name="display-id", EmitDefaultValue=false)]
+        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
         public string DisplayId { get; set; }
 
         /// <summary>
         /// DNS Names to be included in the PKI certificate (in a comma-delimited list)
         /// </summary>
         /// <value>DNS Names to be included in the PKI certificate (in a comma-delimited list)</value>
-        [DataMember(Name="dns-names", EmitDefaultValue=false)]
+        [DataMember(Name = "dns-names", EmitDefaultValue = false)]
         public string DnsNames { get; set; }
 
         /// <summary>
         /// key-usage
         /// </summary>
         /// <value>key-usage</value>
-        [DataMember(Name="key-usage", EmitDefaultValue=false)]
+        [DataMember(Name = "key-usage", EmitDefaultValue = false)]
         public string KeyUsage { get; set; }
 
         /// <summary>
         /// A comma-separated list of the locality that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the locality that will be set in the issued certificate</value>
-        [DataMember(Name="locality", EmitDefaultValue=false)]
+        [DataMember(Name = "locality", EmitDefaultValue = false)]
         public string Locality { get; set; }
 
         /// <summary>
         /// A comma-separated list of organizational units (OU) that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of organizational units (OU) that will be set in the issued certificate</value>
-        [DataMember(Name="organizational-units", EmitDefaultValue=false)]
+        [DataMember(Name = "organizational-units", EmitDefaultValue = false)]
         public string OrganizationalUnits { get; set; }
 
         /// <summary>
         /// A comma-separated list of organizations (O) that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of organizations (O) that will be set in the issued certificate</value>
-        [DataMember(Name="organizations", EmitDefaultValue=false)]
+        [DataMember(Name = "organizations", EmitDefaultValue = false)]
         public string Organizations { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// A comma-separated list of the postal code that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the postal code that will be set in the issued certificate</value>
-        [DataMember(Name="postal-code", EmitDefaultValue=false)]
+        [DataMember(Name = "postal-code", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// A comma-separated list of the province that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the province that will be set in the issued certificate</value>
-        [DataMember(Name="province", EmitDefaultValue=false)]
+        [DataMember(Name = "province", EmitDefaultValue = false)]
         public string Province { get; set; }
 
         /// <summary>
         /// PublicKey using for signing in a PEM format.
         /// </summary>
         /// <value>PublicKey using for signing in a PEM format.</value>
-        [DataMember(Name="public-key-pem-data", EmitDefaultValue=false)]
+        [DataMember(Name = "public-key-pem-data", EmitDefaultValue = false)]
         public string PublicKeyPemData { get; set; }
 
         /// <summary>
         /// SigningMethod
         /// </summary>
         /// <value>SigningMethod</value>
-        [DataMember(Name="signing-method", EmitDefaultValue=false)]
+        [DataMember(Name = "signing-method", IsRequired = true, EmitDefaultValue = false)]
         public string SigningMethod { get; set; }
 
         /// <summary>
         /// A comma-separated list of the street address that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the street address that will be set in the issued certificate</value>
-        [DataMember(Name="street-address", EmitDefaultValue=false)]
+        [DataMember(Name = "street-address", EmitDefaultValue = false)]
         public string StreetAddress { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// he requested Time To Live for the certificate, in seconds
         /// </summary>
         /// <value>he requested Time To Live for the certificate, in seconds</value>
-        [DataMember(Name="ttl", EmitDefaultValue=false)]
+        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
         public long Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
         /// </summary>
         /// <value>The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)</value>
-        [DataMember(Name="uri-sans", EmitDefaultValue=false)]
+        [DataMember(Name = "uri-sans", EmitDefaultValue = false)]
         public string UriSans { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int Version { get; set; }
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
+        public int _Version { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -253,18 +260,18 @@ namespace akeyless.Model
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UriSans: ").Append(UriSans).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -383,8 +390,8 @@ namespace akeyless.Model
                     this.Username.Equals(input.Username))
                 ) && 
                 (
-                    this.Version == input.Version ||
-                    this.Version.Equals(input.Version)
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -434,7 +441,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UriSans.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
-                hashCode = hashCode * 59 + this.Version.GetHashCode();
+                hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }
         }
@@ -444,7 +451,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

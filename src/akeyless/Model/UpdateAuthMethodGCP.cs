@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// updateAuthMethodGCP is a command that updates a new auth method that will be able to authenticate using GCP IAM Service Account credentials or GCE instance credentials.
     /// </summary>
-    [DataContract]
-    public partial class UpdateAuthMethodGCP :  IEquatable<UpdateAuthMethodGCP>, IValidatableObject
+    [DataContract(Name = "updateAuthMethodGCP")]
+    public partial class UpdateAuthMethodGCP : IEquatable<UpdateAuthMethodGCP>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateAuthMethodGCP" /> class.
@@ -59,11 +60,20 @@ namespace akeyless.Model
         public UpdateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), string name = default(string), string newName = default(string), string password = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "audience" is required (not null)
-            this.Audience = audience ?? throw new ArgumentNullException("audience is a required property for UpdateAuthMethodGCP and cannot be null");
+            if (audience == null) {
+                throw new ArgumentNullException("audience is a required property for UpdateAuthMethodGCP and cannot be null");
+            }
+            this.Audience = audience;
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateAuthMethodGCP and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for UpdateAuthMethodGCP and cannot be null");
+            }
+            this.Name = name;
             // to ensure "type" is required (not null)
-            this.Type = type ?? throw new ArgumentNullException("type is a required property for UpdateAuthMethodGCP and cannot be null");
+            if (type == null) {
+                throw new ArgumentNullException("type is a required property for UpdateAuthMethodGCP and cannot be null");
+            }
+            this.Type = type;
             this.AccessExpires = accessExpires;
             this.BoundIps = boundIps;
             this.BoundLabels = boundLabels;
@@ -79,124 +89,124 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Access expiration date in Unix timestamp (select 0 for access without expiry date)
         /// </summary>
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
-        [DataMember(Name="access-expires", EmitDefaultValue=false)]
+        [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
 
         /// <summary>
         /// The audience to verify in the JWT received by the client
         /// </summary>
         /// <value>The audience to verify in the JWT received by the client</value>
-        [DataMember(Name="audience", EmitDefaultValue=false)]
+        [DataMember(Name = "audience", IsRequired = true, EmitDefaultValue = false)]
         public string Audience { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
-        [DataMember(Name="bound-ips", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
 
         /// <summary>
         /// A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d ....
         /// </summary>
         /// <value>A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d ....</value>
-        [DataMember(Name="bound-labels", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-labels", EmitDefaultValue = false)]
         public List<string> BoundLabels { get; set; }
 
         /// <summary>
         /// &#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.
         /// </summary>
         /// <value>&#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate.</value>
-        [DataMember(Name="bound-projects", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-projects", EmitDefaultValue = false)]
         public List<string> BoundProjects { get; set; }
 
         /// <summary>
         /// List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.
         /// </summary>
         /// <value>List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored.</value>
-        [DataMember(Name="bound-regions", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-regions", EmitDefaultValue = false)]
         public List<string> BoundRegions { get; set; }
 
         /// <summary>
         /// List of service accounts the service account must be part of in order to be authenticated.
         /// </summary>
         /// <value>List of service accounts the service account must be part of in order to be authenticated.</value>
-        [DataMember(Name="bound-service-accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-service-accounts", EmitDefaultValue = false)]
         public List<string> BoundServiceAccounts { get; set; }
 
         /// <summary>
         /// &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
         /// </summary>
         /// <value>&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.</value>
-        [DataMember(Name="bound-zones", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-zones", EmitDefaultValue = false)]
         public List<string> BoundZones { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
         /// </summary>
         /// <value>if true: enforce role-association must include sub claims</value>
-        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
+        [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Auth Method new name
         /// </summary>
         /// <value>Auth Method new name</value>
-        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// ServiceAccount credentials data instead of giving a file path, base64 encoded
         /// </summary>
         /// <value>ServiceAccount credentials data instead of giving a file path, base64 encoded</value>
-        [DataMember(Name="service-account-creds-data", EmitDefaultValue=false)]
+        [DataMember(Name = "service-account-creds-data", EmitDefaultValue = false)]
         public string ServiceAccountCredsData { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// Type of the GCP Access Rules
         /// </summary>
         /// <value>Type of the GCP Access Rules</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -227,14 +237,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -399,7 +409,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,5 +1,6 @@
 # akeyless.Model.GatewayUpdateProducerArtifactory
 gatewayUpdateProducerArtifactory is a command that updates artifactory producer
+
 ## Properties
 
 Name | Type | Description | Notes

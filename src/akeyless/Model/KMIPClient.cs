@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// KMIPClient
     /// </summary>
-    [DataContract]
-    public partial class KMIPClient :  IEquatable<KMIPClient>, IValidatableObject
+    [DataContract(Name = "KMIPClient")]
+    public partial class KMIPClient : IEquatable<KMIPClient>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KMIPClient" /> class.
@@ -45,29 +46,29 @@ namespace akeyless.Model
             this.Name = name;
             this.Rules = rules;
         }
-        
+
         /// <summary>
         /// Gets or Sets CertificateIssueDate
         /// </summary>
-        [DataMember(Name="certificate_issue_date", EmitDefaultValue=false)]
+        [DataMember(Name = "certificate_issue_date", EmitDefaultValue = false)]
         public DateTime CertificateIssueDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Rules
         /// </summary>
-        [DataMember(Name="rules", EmitDefaultValue=false)]
+        [DataMember(Name = "rules", EmitDefaultValue = false)]
         public List<PathRule> Rules { get; set; }
 
         /// <summary>
@@ -85,14 +86,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -165,7 +166,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

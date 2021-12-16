@@ -1,5 +1,6 @@
 # akeyless.Model.CreateAuthMethodK8S
 createAuthMethodK8S is a command that creates a new auth method that will be able to authenticate using K8S.
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,6 @@
 # akeyless.Model.UpdateAuthMethodK8S
 updateAuthMethodK8S is a command that updates a new auth method that will be able to authenticate using K8S.
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayCreateProducerRabbitMQOutput
+
 ## Properties
 
 Name | Type | Description | Notes

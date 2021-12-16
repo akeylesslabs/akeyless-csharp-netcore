@@ -1,5 +1,6 @@
 # akeyless.Model.CreateAuthMethodAzureAD
 createAuthMethodAzureAD is a command that creates a new auth method that will be able to authenticate using Azure Active Directory credentials.
+
 ## Properties
 
 Name | Type | Description | Notes

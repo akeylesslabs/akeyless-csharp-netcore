@@ -1,4 +1,5 @@
 # akeyless.Model.LogForwardingConfigPart
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,5 +1,6 @@
 # akeyless.Model.GetKubeExecCreds
 getKubeExecCreds is a command that gets credentials for authentication with Kubernetes cluster based on a PKI cert issuer.
+
 ## Properties
 
 Name | Type | Description | Notes

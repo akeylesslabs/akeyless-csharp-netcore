@@ -1,4 +1,5 @@
 # akeyless.Model.SignJWTOutput
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// gatewayCreateK8SAuth is a command that creates k8s auth config
     /// </summary>
-    [DataContract]
-    public partial class GatewayCreateK8SAuthConfig :  IEquatable<GatewayCreateK8SAuthConfig>, IValidatableObject
+    [DataContract(Name = "gatewayCreateK8SAuthConfig")]
+    public partial class GatewayCreateK8SAuthConfig : IEquatable<GatewayCreateK8SAuthConfig>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateK8SAuthConfig" /> class.
@@ -55,13 +56,25 @@ namespace akeyless.Model
         public GatewayCreateK8SAuthConfig(string accessId = default(string), string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string password = default(string), string signingKey = default(string), string token = default(string), long tokenExp = default(long), string tokenReviewerJwt = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "accessId" is required (not null)
-            this.AccessId = accessId ?? throw new ArgumentNullException("accessId is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            if (accessId == null) {
+                throw new ArgumentNullException("accessId is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            }
+            this.AccessId = accessId;
             // to ensure "k8sHost" is required (not null)
-            this.K8sHost = k8sHost ?? throw new ArgumentNullException("k8sHost is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            if (k8sHost == null) {
+                throw new ArgumentNullException("k8sHost is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            }
+            this.K8sHost = k8sHost;
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            }
+            this.Name = name;
             // to ensure "signingKey" is required (not null)
-            this.SigningKey = signingKey ?? throw new ArgumentNullException("signingKey is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            if (signingKey == null) {
+                throw new ArgumentNullException("signingKey is a required property for GatewayCreateK8SAuthConfig and cannot be null");
+            }
+            this.SigningKey = signingKey;
             this.ConfigEncryptionKeyName = configEncryptionKeyName;
             this.K8sCaCert = k8sCaCert;
             this.K8sIssuer = k8sIssuer;
@@ -72,96 +85,96 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// The access ID of the Kubernetes auth method
         /// </summary>
         /// <value>The access ID of the Kubernetes auth method</value>
-        [DataMember(Name="access-id", EmitDefaultValue=false)]
+        [DataMember(Name = "access-id", IsRequired = true, EmitDefaultValue = false)]
         public string AccessId { get; set; }
 
         /// <summary>
         /// Config encryption key
         /// </summary>
         /// <value>Config encryption key</value>
-        [DataMember(Name="config-encryption-key-name", EmitDefaultValue=false)]
+        [DataMember(Name = "config-encryption-key-name", EmitDefaultValue = false)]
         public string ConfigEncryptionKeyName { get; set; }
 
         /// <summary>
         /// The CA Cert (in PEM format) to use to call into the kubernetes API server
         /// </summary>
         /// <value>The CA Cert (in PEM format) to use to call into the kubernetes API server</value>
-        [DataMember(Name="k8s-ca-cert", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s-ca-cert", EmitDefaultValue = false)]
         public string K8sCaCert { get; set; }
 
         /// <summary>
         /// The URL of the kubernetes API server
         /// </summary>
         /// <value>The URL of the kubernetes API server</value>
-        [DataMember(Name="k8s-host", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s-host", IsRequired = true, EmitDefaultValue = false)]
         public string K8sHost { get; set; }
 
         /// <summary>
         /// The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.
         /// </summary>
         /// <value>The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.</value>
-        [DataMember(Name="k8s-issuer", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s-issuer", EmitDefaultValue = false)]
         public string K8sIssuer { get; set; }
 
         /// <summary>
         /// K8S Auth config name
         /// </summary>
         /// <value>K8S Auth config name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
         /// </summary>
         /// <value>The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth</value>
-        [DataMember(Name="signing-key", EmitDefaultValue=false)]
+        [DataMember(Name = "signing-key", IsRequired = true, EmitDefaultValue = false)]
         public string SigningKey { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// Time in seconds of expiration of the Akeyless Kube Auth Method token
         /// </summary>
         /// <value>Time in seconds of expiration of the Akeyless Kube Auth Method token</value>
-        [DataMember(Name="token-exp", EmitDefaultValue=false)]
+        [DataMember(Name = "token-exp", EmitDefaultValue = false)]
         public long TokenExp { get; set; }
 
         /// <summary>
         /// A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
         /// </summary>
         /// <value>A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.</value>
-        [DataMember(Name="token-reviewer-jwt", EmitDefaultValue=false)]
+        [DataMember(Name = "token-reviewer-jwt", EmitDefaultValue = false)]
         public string TokenReviewerJwt { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -188,14 +201,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -328,7 +341,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

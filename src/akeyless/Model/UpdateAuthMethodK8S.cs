@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// updateAuthMethodK8S is a command that updates a new auth method that will be able to authenticate using K8S.
     /// </summary>
-    [DataContract]
-    public partial class UpdateAuthMethodK8S :  IEquatable<UpdateAuthMethodK8S>, IValidatableObject
+    [DataContract(Name = "updateAuthMethodK8S")]
+    public partial class UpdateAuthMethodK8S : IEquatable<UpdateAuthMethodK8S>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateAuthMethodK8S" /> class.
@@ -57,7 +58,10 @@ namespace akeyless.Model
         public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", string name = default(string), string newName = default(string), string password = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
-            this.Name = name ?? throw new ArgumentNullException("name is a required property for UpdateAuthMethodK8S and cannot be null");
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for UpdateAuthMethodK8S and cannot be null");
+            }
+            this.Name = name;
             this.AccessExpires = accessExpires;
             this.Audience = audience;
             this.BoundIps = boundIps;
@@ -74,110 +78,110 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Username = username;
         }
-        
+
         /// <summary>
         /// Access expiration date in Unix timestamp (select 0 for access without expiry date)
         /// </summary>
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
-        [DataMember(Name="access-expires", EmitDefaultValue=false)]
+        [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
 
         /// <summary>
         /// The audience in the Kubernetes JWT that the access is restricted to
         /// </summary>
         /// <value>The audience in the Kubernetes JWT that the access is restricted to</value>
-        [DataMember(Name="audience", EmitDefaultValue=false)]
+        [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
         /// </summary>
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
-        [DataMember(Name="bound-ips", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
 
         /// <summary>
         /// A list of namespaces that the access is restricted to
         /// </summary>
         /// <value>A list of namespaces that the access is restricted to</value>
-        [DataMember(Name="bound-namespaces", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-namespaces", EmitDefaultValue = false)]
         public List<string> BoundNamespaces { get; set; }
 
         /// <summary>
         /// A list of pod names that the access is restricted to
         /// </summary>
         /// <value>A list of pod names that the access is restricted to</value>
-        [DataMember(Name="bound-pod-names", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-pod-names", EmitDefaultValue = false)]
         public List<string> BoundPodNames { get; set; }
 
         /// <summary>
         /// A list of service account names that the access is restricted to
         /// </summary>
         /// <value>A list of service account names that the access is restricted to</value>
-        [DataMember(Name="bound-sa-names", EmitDefaultValue=false)]
+        [DataMember(Name = "bound-sa-names", EmitDefaultValue = false)]
         public List<string> BoundSaNames { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
         /// </summary>
         /// <value>if true: enforce role-association must include sub claims</value>
-        [DataMember(Name="force-sub-claims", EmitDefaultValue=false)]
+        [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
         /// If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway)
         /// </summary>
         /// <value>If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway)</value>
-        [DataMember(Name="gen-key", EmitDefaultValue=false)]
+        [DataMember(Name = "gen-key", EmitDefaultValue = false)]
         public string GenKey { get; set; }
 
         /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Auth Method new name
         /// </summary>
         /// <value>Auth Method new name</value>
-        [DataMember(Name="new-name", EmitDefaultValue=false)]
+        [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
         /// Base64-encoded public key text for K8S authentication method is required [RSA2048]
         /// </summary>
         /// <value>Base64-encoded public key text for K8S authentication method is required [RSA2048]</value>
-        [DataMember(Name="public-key", EmitDefaultValue=false)]
+        [DataMember(Name = "public-key", EmitDefaultValue = false)]
         public string PublicKey { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
-        [DataMember(Name="uid-token", EmitDefaultValue=false)]
+        [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
         /// </summary>
         /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>
@@ -206,14 +210,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -362,7 +366,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

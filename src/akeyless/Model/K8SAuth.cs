@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// K8SAuth
     /// </summary>
-    [DataContract]
-    public partial class K8SAuth :  IEquatable<K8SAuth>, IValidatableObject
+    [DataContract(Name = "K8SAuth")]
+    public partial class K8SAuth : IEquatable<K8SAuth>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="K8SAuth" /> class.
@@ -63,93 +64,93 @@ namespace akeyless.Model
             this.ProtectionKey = protectionKey;
             this.UseLocalCaJwt = useLocalCaJwt;
         }
-        
+
         /// <summary>
         /// AuthMethodTokenExpiration is time in seconds of expiration of the Akeyless Kube Auth Method token
         /// </summary>
         /// <value>AuthMethodTokenExpiration is time in seconds of expiration of the Akeyless Kube Auth Method token</value>
-        [DataMember(Name="am_token_expiration", EmitDefaultValue=false)]
+        [DataMember(Name = "am_token_expiration", EmitDefaultValue = false)]
         public long AmTokenExpiration { get; set; }
 
         /// <summary>
         /// AuthMethodAccessId of the Kubernetes auth method
         /// </summary>
         /// <value>AuthMethodAccessId of the Kubernetes auth method</value>
-        [DataMember(Name="auth_method_access_id", EmitDefaultValue=false)]
+        [DataMember(Name = "auth_method_access_id", EmitDefaultValue = false)]
         public string AuthMethodAccessId { get; set; }
 
         /// <summary>
         /// AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
         /// </summary>
         /// <value>AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method</value>
-        [DataMember(Name="auth_method_prv_key_pem", EmitDefaultValue=false)]
+        [DataMember(Name = "auth_method_prv_key_pem", EmitDefaultValue = false)]
         public string AuthMethodPrvKeyPem { get; set; }
 
         /// <summary>
         /// DisableISSValidation is optional parameter to disable ISS validation
         /// </summary>
         /// <value>DisableISSValidation is optional parameter to disable ISS validation</value>
-        [DataMember(Name="disable_iss_validation", EmitDefaultValue=false)]
+        [DataMember(Name = "disable_iss_validation", EmitDefaultValue = true)]
         public bool DisableIssValidation { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// K8SCACert is the CA Cert to use to call into the kubernetes API
         /// </summary>
         /// <value>K8SCACert is the CA Cert to use to call into the kubernetes API</value>
-        [DataMember(Name="k8s_ca_cert", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_ca_cert", EmitDefaultValue = false)]
         public string K8sCaCert { get; set; }
 
         /// <summary>
         /// K8SHost is the url string for the kubernetes API
         /// </summary>
         /// <value>K8SHost is the url string for the kubernetes API</value>
-        [DataMember(Name="k8s_host", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_host", EmitDefaultValue = false)]
         public string K8sHost { get; set; }
 
         /// <summary>
         /// K8SIssuer is the claim that specifies who issued the Kubernetes token
         /// </summary>
         /// <value>K8SIssuer is the claim that specifies who issued the Kubernetes token</value>
-        [DataMember(Name="k8s_issuer", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_issuer", EmitDefaultValue = false)]
         public string K8sIssuer { get; set; }
 
         /// <summary>
         /// K8SPublicKeysPEM is the list of public key in PEM format
         /// </summary>
         /// <value>K8SPublicKeysPEM is the list of public key in PEM format</value>
-        [DataMember(Name="k8s_pub_keys_pem", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_pub_keys_pem", EmitDefaultValue = false)]
         public List<string> K8sPubKeysPem { get; set; }
 
         /// <summary>
         /// K8STokenReviewerJW\&quot;K8S Auth config %v successfully created\\n\&quot;, clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call
         /// </summary>
         /// <value>K8STokenReviewerJW\&quot;K8S Auth config %v successfully created\\n\&quot;, clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call</value>
-        [DataMember(Name="k8s_token_reviewer_jwt", EmitDefaultValue=false)]
+        [DataMember(Name = "k8s_token_reviewer_jwt", EmitDefaultValue = false)]
         public string K8sTokenReviewerJwt { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets ProtectionKey
         /// </summary>
-        [DataMember(Name="protection_key", EmitDefaultValue=false)]
+        [DataMember(Name = "protection_key", EmitDefaultValue = false)]
         public string ProtectionKey { get; set; }
 
         /// <summary>
         /// UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
         /// </summary>
         /// <value>UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod</value>
-        [DataMember(Name="use_local_ca_jwt", EmitDefaultValue=false)]
+        [DataMember(Name = "use_local_ca_jwt", EmitDefaultValue = true)]
         public bool UseLocalCaJwt { get; set; }
 
         /// <summary>
@@ -176,14 +177,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -313,7 +314,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

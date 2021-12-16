@@ -1,4 +1,5 @@
 # akeyless.Model.AzureLogAnalyticsForwardingConfig
+
 ## Properties
 
 Name | Type | Description | Notes

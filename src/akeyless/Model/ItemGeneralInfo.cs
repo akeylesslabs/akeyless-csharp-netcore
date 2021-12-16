@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// ItemGeneralInfo
     /// </summary>
-    [DataContract]
-    public partial class ItemGeneralInfo :  IEquatable<ItemGeneralInfo>, IValidatableObject
+    [DataContract(Name = "ItemGeneralInfo")]
+    public partial class ItemGeneralInfo : IEquatable<ItemGeneralInfo>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemGeneralInfo" /> class.
@@ -47,35 +48,35 @@ namespace akeyless.Model
             this.RotatedSecretDetails = rotatedSecretDetails;
             this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
         }
-        
+
         /// <summary>
         /// Gets or Sets CertIssueDetails
         /// </summary>
-        [DataMember(Name="cert_issue_details", EmitDefaultValue=false)]
+        [DataMember(Name = "cert_issue_details", EmitDefaultValue = false)]
         public CertificateIssueInfo CertIssueDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets ClassicKeyDetails
         /// </summary>
-        [DataMember(Name="classic_key_details", EmitDefaultValue=false)]
+        [DataMember(Name = "classic_key_details", EmitDefaultValue = false)]
         public ClassicKeyDetailsInfo ClassicKeyDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets DynamicSecretProducerDetails
         /// </summary>
-        [DataMember(Name="dynamic_secret_producer_details", EmitDefaultValue=false)]
+        [DataMember(Name = "dynamic_secret_producer_details", EmitDefaultValue = false)]
         public DynamicSecretProducerInfo DynamicSecretProducerDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatedSecretDetails
         /// </summary>
-        [DataMember(Name="rotated_secret_details", EmitDefaultValue=false)]
+        [DataMember(Name = "rotated_secret_details", EmitDefaultValue = false)]
         public RotatedSecretDetailsInfo RotatedSecretDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureRemoteAccessDetails
         /// </summary>
-        [DataMember(Name="secure_remote_access_details", EmitDefaultValue=false)]
+        [DataMember(Name = "secure_remote_access_details", EmitDefaultValue = false)]
         public SecureRemoteAccess SecureRemoteAccessDetails { get; set; }
 
         /// <summary>
@@ -94,14 +95,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

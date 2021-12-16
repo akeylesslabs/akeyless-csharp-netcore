@@ -1,4 +1,5 @@
 # akeyless.Model.ListItemsInPathOutput
+
 ## Properties
 
 Name | Type | Description | Notes

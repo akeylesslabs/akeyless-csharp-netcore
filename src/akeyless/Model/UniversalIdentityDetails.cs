@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// UniversalIdentityDetails
     /// </summary>
-    [DataContract]
-    public partial class UniversalIdentityDetails :  IEquatable<UniversalIdentityDetails>, IValidatableObject
+    [DataContract(Name = "UniversalIdentityDetails")]
+    public partial class UniversalIdentityDetails : IEquatable<UniversalIdentityDetails>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UniversalIdentityDetails" /> class.
@@ -43,23 +44,23 @@ namespace akeyless.Model
             this.NumberOfTokens = numberOfTokens;
             this.Root = root;
         }
-        
+
         /// <summary>
         /// Gets or Sets MaxDepth
         /// </summary>
-        [DataMember(Name="max_depth", EmitDefaultValue=false)]
+        [DataMember(Name = "max_depth", EmitDefaultValue = false)]
         public int MaxDepth { get; set; }
 
         /// <summary>
         /// Gets or Sets NumberOfTokens
         /// </summary>
-        [DataMember(Name="number_of_tokens", EmitDefaultValue=false)]
+        [DataMember(Name = "number_of_tokens", EmitDefaultValue = false)]
         public long NumberOfTokens { get; set; }
 
         /// <summary>
         /// Gets or Sets Root
         /// </summary>
-        [DataMember(Name="root", EmitDefaultValue=false)]
+        [DataMember(Name = "root", EmitDefaultValue = false)]
         public UIDTokenDetails Root { get; set; }
 
         /// <summary>
@@ -76,14 +77,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -144,7 +145,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

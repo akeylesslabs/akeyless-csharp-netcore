@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// AllowedAccess
     /// </summary>
-    [DataContract]
-    public partial class AllowedAccess :  IEquatable<AllowedAccess>, IValidatableObject
+    [DataContract(Name = "AllowedAccess")]
+    public partial class AllowedAccess : IEquatable<AllowedAccess>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AllowedAccess" /> class.
@@ -55,59 +56,59 @@ namespace akeyless.Model
             this.Name = name;
             this.SubClaims = subClaims;
         }
-        
+
         /// <summary>
         /// Gets or Sets AccId
         /// </summary>
-        [DataMember(Name="acc_id", EmitDefaultValue=false)]
+        [DataMember(Name = "acc_id", EmitDefaultValue = false)]
         public string AccId { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessRulesType
         /// </summary>
-        [DataMember(Name="access_rules_type", EmitDefaultValue=false)]
+        [DataMember(Name = "access_rules_type", EmitDefaultValue = false)]
         public string AccessRulesType { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedApi
         /// </summary>
-        [DataMember(Name="allowed_api", EmitDefaultValue=false)]
+        [DataMember(Name = "allowed_api", EmitDefaultValue = true)]
         public bool AllowedApi { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedsLogin
         /// </summary>
-        [DataMember(Name="alloweds_login", EmitDefaultValue=false)]
+        [DataMember(Name = "alloweds_login", EmitDefaultValue = true)]
         public bool AllowedsLogin { get; set; }
 
         /// <summary>
         /// Gets or Sets ErrMsg
         /// </summary>
-        [DataMember(Name="err_msg", EmitDefaultValue=false)]
+        [DataMember(Name = "err_msg", EmitDefaultValue = false)]
         public string ErrMsg { get; set; }
 
         /// <summary>
         /// Gets or Sets Hash
         /// </summary>
-        [DataMember(Name="hash", EmitDefaultValue=false)]
+        [DataMember(Name = "hash", EmitDefaultValue = false)]
         public string Hash { get; set; }
 
         /// <summary>
         /// Gets or Sets IsValid
         /// </summary>
-        [DataMember(Name="is_valid", EmitDefaultValue=false)]
+        [DataMember(Name = "is_valid", EmitDefaultValue = true)]
         public bool IsValid { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets SubClaims
         /// </summary>
-        [DataMember(Name="sub_claims", EmitDefaultValue=false)]
+        [DataMember(Name = "sub_claims", EmitDefaultValue = false)]
         public Dictionary<string, List<string>> SubClaims { get; set; }
 
         /// <summary>
@@ -130,14 +131,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -239,7 +240,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -1,4 +1,5 @@
 # akeyless.Model.CreateWebTargetOutput
+
 ## Properties
 
 Name | Type | Description | Notes

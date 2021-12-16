@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateRabbitMQTargetOutput
+
 ## Properties
 
 Name | Type | Description | Notes

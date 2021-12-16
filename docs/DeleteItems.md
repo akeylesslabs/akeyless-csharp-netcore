@@ -1,4 +1,5 @@
 # akeyless.Model.DeleteItems
+
 ## Properties
 
 Name | Type | Description | Notes

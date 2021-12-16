@@ -1,4 +1,5 @@
 # akeyless.Model.ListTargetsOutput
+
 ## Properties
 
 Name | Type | Description | Notes

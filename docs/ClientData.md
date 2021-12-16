@@ -1,4 +1,5 @@
 # akeyless.Model.ClientData
+
 ## Properties
 
 Name | Type | Description | Notes

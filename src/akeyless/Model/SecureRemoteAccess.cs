@@ -1,4 +1,4 @@
-/* 
+/*
  * Akeyless API
  *
  * The purpose of this application is to provide access to Akeyless API.
@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 
@@ -28,8 +29,8 @@ namespace akeyless.Model
     /// <summary>
     /// SecureRemoteAccess
     /// </summary>
-    [DataContract]
-    public partial class SecureRemoteAccess :  IEquatable<SecureRemoteAccess>, IValidatableObject
+    [DataContract(Name = "SecureRemoteAccess")]
+    public partial class SecureRemoteAccess : IEquatable<SecureRemoteAccess>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SecureRemoteAccess" /> class.
@@ -89,161 +90,161 @@ namespace akeyless.Model
             this.Url = url;
             this.UseInternalBastion = useInternalBastion;
         }
-        
+
         /// <summary>
         /// Gets or Sets AccountId
         /// </summary>
-        [DataMember(Name="account_id", EmitDefaultValue=false)]
+        [DataMember(Name = "account_id", EmitDefaultValue = false)]
         public string AccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowPortForwarding
         /// </summary>
-        [DataMember(Name="allow_port_forwarding", EmitDefaultValue=false)]
+        [DataMember(Name = "allow_port_forwarding", EmitDefaultValue = true)]
         public bool AllowPortForwarding { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowProvidingExternalUsername
         /// </summary>
-        [DataMember(Name="allow_providing_external_username", EmitDefaultValue=false)]
+        [DataMember(Name = "allow_providing_external_username", EmitDefaultValue = true)]
         public bool AllowProvidingExternalUsername { get; set; }
 
         /// <summary>
         /// Gets or Sets BastionApi
         /// </summary>
-        [DataMember(Name="bastion_api", EmitDefaultValue=false)]
+        [DataMember(Name = "bastion_api", EmitDefaultValue = false)]
         public string BastionApi { get; set; }
 
         /// <summary>
         /// Gets or Sets BastionIssuer
         /// </summary>
-        [DataMember(Name="bastion_issuer", EmitDefaultValue=false)]
+        [DataMember(Name = "bastion_issuer", EmitDefaultValue = false)]
         public string BastionIssuer { get; set; }
 
         /// <summary>
         /// Gets or Sets BastionIssuerId
         /// </summary>
-        [DataMember(Name="bastion_issuer_id", EmitDefaultValue=false)]
+        [DataMember(Name = "bastion_issuer_id", EmitDefaultValue = false)]
         public long BastionIssuerId { get; set; }
 
         /// <summary>
         /// Gets or Sets BastionSsh
         /// </summary>
-        [DataMember(Name="bastion_ssh", EmitDefaultValue=false)]
+        [DataMember(Name = "bastion_ssh", EmitDefaultValue = false)]
         public string BastionSsh { get; set; }
 
         /// <summary>
         /// Gets or Sets Category
         /// </summary>
-        [DataMember(Name="category", EmitDefaultValue=false)]
+        [DataMember(Name = "category", EmitDefaultValue = false)]
         public string Category { get; set; }
 
         /// <summary>
         /// Gets or Sets DashboardUrl
         /// </summary>
-        [DataMember(Name="dashboard_url", EmitDefaultValue=false)]
+        [DataMember(Name = "dashboard_url", EmitDefaultValue = false)]
         public string DashboardUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets DbName
         /// </summary>
-        [DataMember(Name="db_name", EmitDefaultValue=false)]
+        [DataMember(Name = "db_name", EmitDefaultValue = false)]
         public string DbName { get; set; }
 
         /// <summary>
         /// Gets or Sets Domain
         /// </summary>
-        [DataMember(Name="domain", EmitDefaultValue=false)]
+        [DataMember(Name = "domain", EmitDefaultValue = false)]
         public string Domain { get; set; }
 
         /// <summary>
         /// Gets or Sets Enable
         /// </summary>
-        [DataMember(Name="enable", EmitDefaultValue=false)]
+        [DataMember(Name = "enable", EmitDefaultValue = true)]
         public bool Enable { get; set; }
 
         /// <summary>
         /// Gets or Sets Endpoint
         /// </summary>
-        [DataMember(Name="endpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "endpoint", EmitDefaultValue = false)]
         public string Endpoint { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
         /// </summary>
-        [DataMember(Name="host", EmitDefaultValue=false)]
+        [DataMember(Name = "host", EmitDefaultValue = false)]
         public List<string> Host { get; set; }
 
         /// <summary>
         /// Gets or Sets IsCli
         /// </summary>
-        [DataMember(Name="is_cli", EmitDefaultValue=false)]
+        [DataMember(Name = "is_cli", EmitDefaultValue = true)]
         public bool IsCli { get; set; }
 
         /// <summary>
         /// Gets or Sets IsWeb
         /// </summary>
-        [DataMember(Name="is_web", EmitDefaultValue=false)]
+        [DataMember(Name = "is_web", EmitDefaultValue = true)]
         public bool IsWeb { get; set; }
 
         /// <summary>
         /// Gets or Sets Isolated
         /// </summary>
-        [DataMember(Name="isolated", EmitDefaultValue=false)]
+        [DataMember(Name = "isolated", EmitDefaultValue = true)]
         public bool Isolated { get; set; }
 
         /// <summary>
         /// Gets or Sets Native
         /// </summary>
-        [DataMember(Name="native", EmitDefaultValue=false)]
+        [DataMember(Name = "native", EmitDefaultValue = true)]
         public bool Native { get; set; }
 
         /// <summary>
         /// Gets or Sets RdpUser
         /// </summary>
-        [DataMember(Name="rdp_user", EmitDefaultValue=false)]
+        [DataMember(Name = "rdp_user", EmitDefaultValue = false)]
         public string RdpUser { get; set; }
 
         /// <summary>
         /// Gets or Sets Region
         /// </summary>
-        [DataMember(Name="region", EmitDefaultValue=false)]
+        [DataMember(Name = "region", EmitDefaultValue = false)]
         public string Region { get; set; }
 
         /// <summary>
         /// Gets or Sets Schema
         /// </summary>
-        [DataMember(Name="schema", EmitDefaultValue=false)]
+        [DataMember(Name = "schema", EmitDefaultValue = false)]
         public string Schema { get; set; }
 
         /// <summary>
         /// Gets or Sets SshPassword
         /// </summary>
-        [DataMember(Name="ssh_password", EmitDefaultValue=false)]
+        [DataMember(Name = "ssh_password", EmitDefaultValue = true)]
         public bool SshPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets SshPrivateKey
         /// </summary>
-        [DataMember(Name="ssh_private_key", EmitDefaultValue=false)]
+        [DataMember(Name = "ssh_private_key", EmitDefaultValue = true)]
         public bool SshPrivateKey { get; set; }
 
         /// <summary>
         /// Gets or Sets SshUser
         /// </summary>
-        [DataMember(Name="ssh_user", EmitDefaultValue=false)]
+        [DataMember(Name = "ssh_user", EmitDefaultValue = false)]
         public string SshUser { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name="url", EmitDefaultValue=false)]
+        [DataMember(Name = "url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets UseInternalBastion
         /// </summary>
-        [DataMember(Name="use_internal_bastion", EmitDefaultValue=false)]
+        [DataMember(Name = "use_internal_bastion", EmitDefaultValue = true)]
         public bool UseInternalBastion { get; set; }
 
         /// <summary>
@@ -283,14 +284,14 @@ namespace akeyless.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -495,7 +496,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             yield break;
         }

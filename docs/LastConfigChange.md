@@ -1,4 +1,5 @@
 # akeyless.Model.LastConfigChange
+
 ## Properties
 
 Name | Type | Description | Notes
