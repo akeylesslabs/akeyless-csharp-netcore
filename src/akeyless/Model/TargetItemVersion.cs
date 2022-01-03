@@ -39,16 +39,18 @@ namespace akeyless.Model
         /// <param name="customerFragmentId">customerFragmentId.</param>
         /// <param name="deletionDate">deletionDate.</param>
         /// <param name="itemVersionState">ItemState defines the different states an Item can be in.</param>
+        /// <param name="latestVersion">latestVersion.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="targetName">targetName.</param>
         /// <param name="version">version.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public TargetItemVersion(DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), string protectionKeyName = default(string), string targetName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
+        public TargetItemVersion(DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), bool latestVersion = default(bool), string protectionKeyName = default(string), string targetName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
         {
             this.CreationDate = creationDate;
             this.CustomerFragmentId = customerFragmentId;
             this.DeletionDate = deletionDate;
             this.ItemVersionState = itemVersionState;
+            this.LatestVersion = latestVersion;
             this.ProtectionKeyName = protectionKeyName;
             this.TargetName = targetName;
             this._Version = version;
@@ -79,6 +81,12 @@ namespace akeyless.Model
         /// <value>ItemState defines the different states an Item can be in</value>
         [DataMember(Name = "item_version_state", EmitDefaultValue = false)]
         public string ItemVersionState { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LatestVersion
+        /// </summary>
+        [DataMember(Name = "latest_version", EmitDefaultValue = true)]
+        public bool LatestVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets ProtectionKeyName
@@ -116,6 +124,7 @@ namespace akeyless.Model
             sb.Append("  CustomerFragmentId: ").Append(CustomerFragmentId).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  ItemVersionState: ").Append(ItemVersionState).Append("\n");
+            sb.Append("  LatestVersion: ").Append(LatestVersion).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
@@ -175,6 +184,10 @@ namespace akeyless.Model
                     this.ItemVersionState.Equals(input.ItemVersionState))
                 ) && 
                 (
+                    this.LatestVersion == input.LatestVersion ||
+                    this.LatestVersion.Equals(input.LatestVersion)
+                ) && 
+                (
                     this.ProtectionKeyName == input.ProtectionKeyName ||
                     (this.ProtectionKeyName != null &&
                     this.ProtectionKeyName.Equals(input.ProtectionKeyName))
@@ -211,6 +224,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
                 if (this.ItemVersionState != null)
                     hashCode = hashCode * 59 + this.ItemVersionState.GetHashCode();
+                hashCode = hashCode * 59 + this.LatestVersion.GetHashCode();
                 if (this.ProtectionKeyName != null)
                     hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
                 if (this.TargetName != null)

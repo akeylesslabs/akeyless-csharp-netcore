@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiId">apiId.</param>
         /// <param name="apiKey">apiKey.</param>
+        /// <param name="authenticationCredentials">authenticationCredentials.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="customPayload">customPayload.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.TargetName = targetName;
             this.ApiId = apiId;
             this.ApiKey = apiKey;
+            this.AuthenticationCredentials = authenticationCredentials;
             this.AutoRotate = autoRotate;
             this.CustomPayload = customPayload;
             this.Key = key;
@@ -115,6 +117,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "api-key", EmitDefaultValue = false)]
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AuthenticationCredentials
+        /// </summary>
+        [DataMember(Name = "authentication-credentials", EmitDefaultValue = false)]
+        public string AuthenticationCredentials { get; set; }
 
         /// <summary>
         /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation
@@ -274,6 +282,7 @@ namespace akeyless.Model
             sb.Append("class CreateRotatedSecret {\n");
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
+            sb.Append("  AuthenticationCredentials: ").Append(AuthenticationCredentials).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -339,6 +348,11 @@ namespace akeyless.Model
                     this.ApiKey == input.ApiKey ||
                     (this.ApiKey != null &&
                     this.ApiKey.Equals(input.ApiKey))
+                ) && 
+                (
+                    this.AuthenticationCredentials == input.AuthenticationCredentials ||
+                    (this.AuthenticationCredentials != null &&
+                    this.AuthenticationCredentials.Equals(input.AuthenticationCredentials))
                 ) && 
                 (
                     this.AutoRotate == input.AutoRotate ||
@@ -465,6 +479,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ApiId.GetHashCode();
                 if (this.ApiKey != null)
                     hashCode = hashCode * 59 + this.ApiKey.GetHashCode();
+                if (this.AuthenticationCredentials != null)
+                    hashCode = hashCode * 59 + this.AuthenticationCredentials.GetHashCode();
                 if (this.AutoRotate != null)
                     hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
                 if (this.CustomPayload != null)
