@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="boundServiceAccounts">List of service accounts the service account must be part of in order to be authenticated..</param>
         /// <param name="boundZones">&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone..</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), string name = default(string), string newName = default(string), string password = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string newName = default(string), string password = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "audience" is required (not null)
             if (audience == null) {
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.BoundServiceAccounts = boundServiceAccounts;
             this.BoundZones = boundZones;
             this.ForceSubClaims = forceSubClaims;
+            this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.Password = password;
             this.ServiceAccountCredsData = serviceAccountCredsData;
@@ -152,6 +154,13 @@ namespace akeyless.Model
         /// <value>if true: enforce role-association must include sub claims</value>
         [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
+
+        /// <summary>
+        /// Jwt TTL
+        /// </summary>
+        /// <value>Jwt TTL</value>
+        [DataMember(Name = "jwt-ttl", EmitDefaultValue = false)]
+        public long JwtTtl { get; set; }
 
         /// <summary>
         /// Auth Method name
@@ -226,6 +235,7 @@ namespace akeyless.Model
             sb.Append("  BoundServiceAccounts: ").Append(BoundServiceAccounts).Append("\n");
             sb.Append("  BoundZones: ").Append(BoundZones).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
+            sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -318,6 +328,10 @@ namespace akeyless.Model
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
                 (
+                    this.JwtTtl == input.JwtTtl ||
+                    this.JwtTtl.Equals(input.JwtTtl)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -384,6 +398,7 @@ namespace akeyless.Model
                 if (this.BoundZones != null)
                     hashCode = hashCode * 59 + this.BoundZones.GetHashCode();
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

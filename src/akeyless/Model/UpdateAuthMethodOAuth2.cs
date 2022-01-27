@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (required).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string issuer = default(string), string jwksUri = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
+        public UpdateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string issuer = default(string), string jwksUri = default(string), long jwtTtl = 0, string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
         {
             // to ensure "jwksUri" is required (not null)
             if (jwksUri == null) {
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.BoundIps = boundIps;
             this.ForceSubClaims = forceSubClaims;
             this.Issuer = issuer;
+            this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.Password = password;
             this.Token = token;
@@ -132,6 +134,13 @@ namespace akeyless.Model
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
         [DataMember(Name = "jwks-uri", IsRequired = true, EmitDefaultValue = false)]
         public string JwksUri { get; set; }
+
+        /// <summary>
+        /// Jwt TTL
+        /// </summary>
+        /// <value>Jwt TTL</value>
+        [DataMember(Name = "jwt-ttl", EmitDefaultValue = false)]
+        public long JwtTtl { get; set; }
 
         /// <summary>
         /// Auth Method name
@@ -197,6 +206,7 @@ namespace akeyless.Model
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
+            sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -274,6 +284,10 @@ namespace akeyless.Model
                     this.JwksUri.Equals(input.JwksUri))
                 ) && 
                 (
+                    this.JwtTtl == input.JwtTtl ||
+                    this.JwtTtl.Equals(input.JwtTtl)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -331,6 +345,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
                 if (this.JwksUri != null)
                     hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
+                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

@@ -41,13 +41,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AssocRoleAuthMethod" /> class.
         /// </summary>
         /// <param name="amName">The auth method to associate (required).</param>
+        /// <param name="caseSensitive">caseSensitive.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="roleName">The role to associate (required).</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public AssocRoleAuthMethod(string amName = default(string), string password = default(string), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string username = default(string))
+        public AssocRoleAuthMethod(string amName = default(string), string caseSensitive = default(string), string password = default(string), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "amName" is required (not null)
             if (amName == null) {
@@ -59,6 +60,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("roleName is a required property for AssocRoleAuthMethod and cannot be null");
             }
             this.RoleName = roleName;
+            this.CaseSensitive = caseSensitive;
             this.Password = password;
             this.SubClaims = subClaims;
             this.Token = token;
@@ -72,6 +74,12 @@ namespace akeyless.Model
         /// <value>The auth method to associate</value>
         [DataMember(Name = "am-name", IsRequired = true, EmitDefaultValue = false)]
         public string AmName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CaseSensitive
+        /// </summary>
+        [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
+        public string CaseSensitive { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -124,6 +132,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class AssocRoleAuthMethod {\n");
             sb.Append("  AmName: ").Append(AmName).Append("\n");
+            sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
@@ -170,6 +179,11 @@ namespace akeyless.Model
                     this.AmName.Equals(input.AmName))
                 ) && 
                 (
+                    this.CaseSensitive == input.CaseSensitive ||
+                    (this.CaseSensitive != null &&
+                    this.CaseSensitive.Equals(input.CaseSensitive))
+                ) && 
+                (
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
@@ -213,6 +227,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AmName != null)
                     hashCode = hashCode * 59 + this.AmName.GetHashCode();
+                if (this.CaseSensitive != null)
+                    hashCode = hashCode * 59 + this.CaseSensitive.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RoleName != null)

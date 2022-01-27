@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] [default to "https://sts.windows.net/---bound_tenant_id---"]
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] [default to "https://login.microsoftonline.com/common/discovery/keys"]
+**JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

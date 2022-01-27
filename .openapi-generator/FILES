@@ -99,6 +99,7 @@ docs/CreateWebTarget.md
 docs/CreateWebTargetOutput.md
 docs/CustomerFragment.md
 docs/CustomerFragmentsJson.md
+docs/CustomerFullAddress.md
 docs/DSProducerDetails.md
 docs/DatadogForwardingConfig.md
 docs/Decrypt.md
@@ -211,6 +212,8 @@ docs/GatewayStopProducerOutput.md
 docs/GatewaySyncMigration.md
 docs/GatewayUpdateItem.md
 docs/GatewayUpdateItemOutput.md
+docs/GatewayUpdateK8SAuthConfig.md
+docs/GatewayUpdateK8SAuthConfigOutput.md
 docs/GatewayUpdateProducerArtifactory.md
 docs/GatewayUpdateProducerArtifactoryOutput.md
 docs/GatewayUpdateProducerAws.md
@@ -256,6 +259,8 @@ docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateTmpUsers.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
+docs/GetAccountSettings.md
+docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
 docs/GetCloudIdentity.md
 docs/GetCloudIdentityOutput.md
@@ -349,6 +354,7 @@ docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
+docs/RevokeCreds.md
 docs/Role.md
 docs/RoleAuthMethodAssociation.md
 docs/RollbackSecret.md
@@ -371,11 +377,14 @@ docs/SignPKCS1.md
 docs/SignPKCS1Output.md
 docs/SignPKICertOutput.md
 docs/SignPKICertWithClassicKey.md
+docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
+docs/SraInfo.md
 docs/StaticCredsAuth.md
 docs/StaticCredsAuthOutput.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
+docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
@@ -396,6 +405,8 @@ docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
 docs/UpdateAWSTarget.md
 docs/UpdateAWSTargetDetails.md
+docs/UpdateAccountSettings.md
+docs/UpdateAccountSettingsOutput.md
 docs/UpdateArtifactoryTarget.md
 docs/UpdateArtifactoryTargetOutput.md
 docs/UpdateAssoc.md
@@ -462,6 +473,17 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/CustomerFullAddressTests.cs
+src/akeyless.Test/Model/GatewayUpdateK8SAuthConfigOutputTests.cs
+src/akeyless.Test/Model/GatewayUpdateK8SAuthConfigTests.cs
+src/akeyless.Test/Model/GetAccountSettingsCommandOutputTests.cs
+src/akeyless.Test/Model/GetAccountSettingsTests.cs
+src/akeyless.Test/Model/RevokeCredsTests.cs
+src/akeyless.Test/Model/SmInfoTests.cs
+src/akeyless.Test/Model/SraInfoTests.cs
+src/akeyless.Test/Model/SystemAccessCredsSettingsTests.cs
+src/akeyless.Test/Model/UpdateAccountSettingsOutputTests.cs
+src/akeyless.Test/Model/UpdateAccountSettingsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -578,6 +600,7 @@ src/akeyless/Model/CreateWebTarget.cs
 src/akeyless/Model/CreateWebTargetOutput.cs
 src/akeyless/Model/CustomerFragment.cs
 src/akeyless/Model/CustomerFragmentsJson.cs
+src/akeyless/Model/CustomerFullAddress.cs
 src/akeyless/Model/DSProducerDetails.cs
 src/akeyless/Model/DatadogForwardingConfig.cs
 src/akeyless/Model/Decrypt.cs
@@ -690,6 +713,8 @@ src/akeyless/Model/GatewayStopProducerOutput.cs
 src/akeyless/Model/GatewaySyncMigration.cs
 src/akeyless/Model/GatewayUpdateItem.cs
 src/akeyless/Model/GatewayUpdateItemOutput.cs
+src/akeyless/Model/GatewayUpdateK8SAuthConfig.cs
+src/akeyless/Model/GatewayUpdateK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayUpdateProducerArtifactory.cs
 src/akeyless/Model/GatewayUpdateProducerArtifactoryOutput.cs
 src/akeyless/Model/GatewayUpdateProducerAws.cs
@@ -735,6 +760,8 @@ src/akeyless/Model/GatewayUpdateProducerSnowflakeOutput.cs
 src/akeyless/Model/GatewayUpdateTmpUsers.cs
 src/akeyless/Model/GenCustomerFragment.cs
 src/akeyless/Model/GeneralConfigPart.cs
+src/akeyless/Model/GetAccountSettings.cs
+src/akeyless/Model/GetAccountSettingsCommandOutput.cs
 src/akeyless/Model/GetAuthMethod.cs
 src/akeyless/Model/GetCloudIdentity.cs
 src/akeyless/Model/GetCloudIdentityOutput.cs
@@ -828,6 +855,7 @@ src/akeyless/Model/RequiredActivity.cs
 src/akeyless/Model/ReverseRBAC.cs
 src/akeyless/Model/ReverseRBACClient.cs
 src/akeyless/Model/ReverseRBACOutput.cs
+src/akeyless/Model/RevokeCreds.cs
 src/akeyless/Model/Role.cs
 src/akeyless/Model/RoleAuthMethodAssociation.cs
 src/akeyless/Model/RollbackSecret.cs
@@ -850,11 +878,14 @@ src/akeyless/Model/SignPKCS1.cs
 src/akeyless/Model/SignPKCS1Output.cs
 src/akeyless/Model/SignPKICertOutput.cs
 src/akeyless/Model/SignPKICertWithClassicKey.cs
+src/akeyless/Model/SmInfo.cs
 src/akeyless/Model/SplunkLogForwardingConfig.cs
+src/akeyless/Model/SraInfo.cs
 src/akeyless/Model/StaticCredsAuth.cs
 src/akeyless/Model/StaticCredsAuthOutput.cs
 src/akeyless/Model/SyslogLogForwardingConfig.cs
 src/akeyless/Model/SystemAccessCredentialsReplyObj.cs
+src/akeyless/Model/SystemAccessCredsSettings.cs
 src/akeyless/Model/Target.cs
 src/akeyless/Model/TargetItemAssociation.cs
 src/akeyless/Model/TargetItemVersion.cs
@@ -875,6 +906,8 @@ src/akeyless/Model/UniversalIdentityAccessRules.cs
 src/akeyless/Model/UniversalIdentityDetails.cs
 src/akeyless/Model/UpdateAWSTarget.cs
 src/akeyless/Model/UpdateAWSTargetDetails.cs
+src/akeyless/Model/UpdateAccountSettings.cs
+src/akeyless/Model/UpdateAccountSettingsOutput.cs
 src/akeyless/Model/UpdateArtifactoryTarget.cs
 src/akeyless/Model/UpdateArtifactoryTargetOutput.cs
 src/akeyless/Model/UpdateAssoc.cs

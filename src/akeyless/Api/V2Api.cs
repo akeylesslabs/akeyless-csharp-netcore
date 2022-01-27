@@ -1688,6 +1688,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayUpdateK8SAuthConfigOutput</returns>
+        GatewayUpdateK8SAuthConfigOutput GatewayUpdateK8SAuthConfig(GatewayUpdateK8SAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateK8SAuthConfigOutput</returns>
+        ApiResponse<GatewayUpdateK8SAuthConfigOutput> GatewayUpdateK8SAuthConfigWithHttpInfo(GatewayUpdateK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayUpdateProducerArtifactoryOutput</returns>
         GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(GatewayUpdateProducerArtifactory body);
 
@@ -2077,6 +2095,24 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
         ApiResponse<Dictionary<string, string>> GetAccountLogoWithHttpInfo();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GetAccountSettingsCommandOutput</returns>
+        GetAccountSettingsCommandOutput GetAccountSettings(GetAccountSettings body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GetAccountSettingsCommandOutput</returns>
+        ApiResponse<GetAccountSettingsCommandOutput> GetAccountSettingsWithHttpInfo(GetAccountSettings body);
         /// <summary>
         /// 
         /// </summary>
@@ -2639,6 +2675,22 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Object</returns>
+        Object RevokeCreds();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> RevokeCredsWithHttpInfo();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>RollbackSecretOutput</returns>
         RollbackSecretOutput RollbackSecret(RollbackSecret body);
@@ -2905,6 +2957,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of UpdateTargetOutput</returns>
         ApiResponse<UpdateTargetOutput> UpdateAWSTargetDetailsWithHttpInfo(UpdateAWSTargetDetails body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>UpdateAccountSettingsOutput</returns>
+        UpdateAccountSettingsOutput UpdateAccountSettings(UpdateAccountSettings body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateAccountSettingsOutput</returns>
+        ApiResponse<UpdateAccountSettingsOutput> UpdateAccountSettingsWithHttpInfo(UpdateAccountSettings body);
         /// <summary>
         /// 
         /// </summary>
@@ -5757,6 +5827,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateK8SAuthConfigOutput</returns>
+        System.Threading.Tasks.Task<GatewayUpdateK8SAuthConfigOutput> GatewayUpdateK8SAuthConfigAsync(GatewayUpdateK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateK8SAuthConfigOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayUpdateK8SAuthConfigOutput>> GatewayUpdateK8SAuthConfigWithHttpInfoAsync(GatewayUpdateK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayUpdateProducerArtifactoryOutput</returns>
         System.Threading.Tasks.Task<GatewayUpdateProducerArtifactoryOutput> GatewayUpdateProducerArtifactoryAsync(GatewayUpdateProducerArtifactory body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -6252,6 +6345,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetAccountLogoWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountSettingsCommandOutput</returns>
+        System.Threading.Tasks.Task<GetAccountSettingsCommandOutput> GetAccountSettingsAsync(GetAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountSettingsCommandOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccountSettingsCommandOutput>> GetAccountSettingsWithHttpInfoAsync(GetAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -6972,6 +7088,27 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> RevokeCredsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> RevokeCredsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RollbackSecretOutput</returns>
@@ -7310,6 +7447,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTargetOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateTargetOutput>> UpdateAWSTargetDetailsWithHttpInfoAsync(UpdateAWSTargetDetails body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateAccountSettingsOutput</returns>
+        System.Threading.Tasks.Task<UpdateAccountSettingsOutput> UpdateAccountSettingsAsync(UpdateAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateAccountSettingsOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateAccountSettingsOutput>> UpdateAccountSettingsWithHttpInfoAsync(UpdateAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -19107,6 +19267,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayUpdateK8SAuthConfigOutput</returns>
+        public GatewayUpdateK8SAuthConfigOutput GatewayUpdateK8SAuthConfig(GatewayUpdateK8SAuthConfig body)
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateK8SAuthConfigOutput> localVarResponse = GatewayUpdateK8SAuthConfigWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateK8SAuthConfigOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayUpdateK8SAuthConfigOutput> GatewayUpdateK8SAuthConfigWithHttpInfo(GatewayUpdateK8SAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateK8SAuthConfig");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayUpdateK8SAuthConfigOutput>("/gateway-update-k8s-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateK8SAuthConfigOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayUpdateK8SAuthConfigOutput> GatewayUpdateK8SAuthConfigAsync(GatewayUpdateK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateK8SAuthConfigOutput> localVarResponse = await GatewayUpdateK8SAuthConfigWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateK8SAuthConfigOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayUpdateK8SAuthConfigOutput>> GatewayUpdateK8SAuthConfigWithHttpInfoAsync(GatewayUpdateK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateK8SAuthConfig");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateK8SAuthConfigOutput>("/gateway-update-k8s-auth-config", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayUpdateProducerArtifactoryOutput</returns>
         public GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(GatewayUpdateProducerArtifactory body)
         {
@@ -21644,6 +21921,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAccountLogo", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GetAccountSettingsCommandOutput</returns>
+        public GetAccountSettingsCommandOutput GetAccountSettings(GetAccountSettings body)
+        {
+            akeyless.Client.ApiResponse<GetAccountSettingsCommandOutput> localVarResponse = GetAccountSettingsWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GetAccountSettingsCommandOutput</returns>
+        public akeyless.Client.ApiResponse<GetAccountSettingsCommandOutput> GetAccountSettingsWithHttpInfo(GetAccountSettings body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GetAccountSettings");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GetAccountSettingsCommandOutput>("/get-account-settings", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountSettings", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountSettingsCommandOutput</returns>
+        public async System.Threading.Tasks.Task<GetAccountSettingsCommandOutput> GetAccountSettingsAsync(GetAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GetAccountSettingsCommandOutput> localVarResponse = await GetAccountSettingsWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountSettingsCommandOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GetAccountSettingsCommandOutput>> GetAccountSettingsWithHttpInfoAsync(GetAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GetAccountSettings");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetAccountSettingsCommandOutput>("/get-account-settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountSettings", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -25185,6 +25579,107 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Object</returns>
+        public Object RevokeCreds()
+        {
+            akeyless.Client.ApiResponse<Object> localVarResponse = RevokeCredsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse<Object> RevokeCredsWithHttpInfo()
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/revoke-creds", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RevokeCreds", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> RevokeCredsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<Object> localVarResponse = await RevokeCredsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> RevokeCredsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/revoke-creds", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RevokeCreds", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns>RollbackSecretOutput</returns>
         public RollbackSecretOutput RollbackSecret(RollbackSecret body)
@@ -26930,6 +27425,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateAWSTargetDetails", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>UpdateAccountSettingsOutput</returns>
+        public UpdateAccountSettingsOutput UpdateAccountSettings(UpdateAccountSettings body)
+        {
+            akeyless.Client.ApiResponse<UpdateAccountSettingsOutput> localVarResponse = UpdateAccountSettingsWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateAccountSettingsOutput</returns>
+        public akeyless.Client.ApiResponse<UpdateAccountSettingsOutput> UpdateAccountSettingsWithHttpInfo(UpdateAccountSettings body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateAccountSettings");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpdateAccountSettingsOutput>("/update-account-settings", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAccountSettings", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateAccountSettingsOutput</returns>
+        public async System.Threading.Tasks.Task<UpdateAccountSettingsOutput> UpdateAccountSettingsAsync(UpdateAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<UpdateAccountSettingsOutput> localVarResponse = await UpdateAccountSettingsWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateAccountSettingsOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<UpdateAccountSettingsOutput>> UpdateAccountSettingsWithHttpInfoAsync(UpdateAccountSettings body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateAccountSettings");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateAccountSettingsOutput>("/update-account-settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAccountSettings", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

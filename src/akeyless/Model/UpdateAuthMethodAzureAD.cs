@@ -55,13 +55,14 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="issuer">Issuer URL (default to &quot;https://sts.windows.net/---bound_tenant_id---&quot;).</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (default to &quot;https://login.microsoftonline.com/common/discovery/keys&quot;).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), string issuer = "https://sts.windows.net/---bound_tenant_id---", string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), string issuer = "https://sts.windows.net/---bound_tenant_id---", string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null) {
@@ -90,6 +91,7 @@ namespace akeyless.Model
             this.Issuer = issuer ?? "https://sts.windows.net/---bound_tenant_id---";
             // use default value if no "jwksUri" provided
             this.JwksUri = jwksUri ?? "https://login.microsoftonline.com/common/discovery/keys";
+            this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.Password = password;
             this.Token = token;
@@ -203,6 +205,13 @@ namespace akeyless.Model
         public string JwksUri { get; set; }
 
         /// <summary>
+        /// Jwt TTL
+        /// </summary>
+        /// <value>Jwt TTL</value>
+        [DataMember(Name = "jwt-ttl", EmitDefaultValue = false)]
+        public long JwtTtl { get; set; }
+
+        /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
@@ -267,6 +276,7 @@ namespace akeyless.Model
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
+            sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -390,6 +400,10 @@ namespace akeyless.Model
                     this.JwksUri.Equals(input.JwksUri))
                 ) && 
                 (
+                    this.JwtTtl == input.JwtTtl ||
+                    this.JwtTtl.Equals(input.JwtTtl)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -458,6 +472,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
                 if (this.JwksUri != null)
                     hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
+                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

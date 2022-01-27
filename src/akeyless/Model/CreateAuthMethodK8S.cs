@@ -48,13 +48,14 @@ namespace akeyless.Model
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="genKey">If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway) (default to &quot;true&quot;).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="publicKey">Base64-encoded public key text for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", string name = default(string), string password = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", long jwtTtl = 0, string name = default(string), string password = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -70,6 +71,7 @@ namespace akeyless.Model
             this.ForceSubClaims = forceSubClaims;
             // use default value if no "genKey" provided
             this.GenKey = genKey ?? "true";
+            this.JwtTtl = jwtTtl;
             this.Password = password;
             this.PublicKey = publicKey;
             this.Token = token;
@@ -134,6 +136,13 @@ namespace akeyless.Model
         public string GenKey { get; set; }
 
         /// <summary>
+        /// Jwt TTL
+        /// </summary>
+        /// <value>Jwt TTL</value>
+        [DataMember(Name = "jwt-ttl", EmitDefaultValue = false)]
+        public long JwtTtl { get; set; }
+
+        /// <summary>
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
@@ -191,6 +200,7 @@ namespace akeyless.Model
             sb.Append("  BoundSaNames: ").Append(BoundSaNames).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GenKey: ").Append(GenKey).Append("\n");
+            sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PublicKey: ").Append(PublicKey).Append("\n");
@@ -274,6 +284,10 @@ namespace akeyless.Model
                     this.GenKey.Equals(input.GenKey))
                 ) && 
                 (
+                    this.JwtTtl == input.JwtTtl ||
+                    this.JwtTtl.Equals(input.JwtTtl)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -328,6 +342,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.GenKey != null)
                     hashCode = hashCode * 59 + this.GenKey.GetHashCode();
+                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)

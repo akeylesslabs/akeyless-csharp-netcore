@@ -35,7 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneralConfigPart" /> class.
         /// </summary>
-        /// <param name="akeylessUrl">akeylessUrl.</param>
+        /// <param name="akeylessUrl">AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB..</param>
         /// <param name="apiTokenTtl">apiTokenTtl.</param>
         /// <param name="displayName">displayName.</param>
         /// <param name="enableTls">enableTls.</param>
@@ -62,8 +62,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets AkeylessUrl
+        /// AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB.
         /// </summary>
+        /// <value>AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB.</value>
         [DataMember(Name = "akeyless_url", EmitDefaultValue = false)]
         public string AkeylessUrl { get; set; }
 

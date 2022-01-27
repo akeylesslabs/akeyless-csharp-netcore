@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **IdpMetadataUrl** | **string** | IDP metadata url | [optional] 
+**JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
 **Password** | **string** | Required only when the authentication process requires a username and password | [optional] 

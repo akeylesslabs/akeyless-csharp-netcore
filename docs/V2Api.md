@@ -96,6 +96,7 @@ Method | HTTP request | Description
 [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item | 
+[**GatewayUpdateK8SAuthConfig**](V2Api.md#gatewayupdatek8sauthconfig) | **POST** /gateway-update-k8s-auth-config | 
 [**GatewayUpdateProducerArtifactory**](V2Api.md#gatewayupdateproducerartifactory) | **POST** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws | 
 [**GatewayUpdateProducerAzure**](V2Api.md#gatewayupdateproducerazure) | **POST** /gateway-update-producer-azure | 
@@ -118,6 +119,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake | 
 [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds | 
 [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo | 
+[**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings | 
 [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method | 
 [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value | 
 [**GetKubeExecCreds**](V2Api.md#getkubeexeccreds) | **POST** /get-kube-exec-creds | 
@@ -149,6 +151,7 @@ Method | HTTP request | Description
 [**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds | 
 [**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key | 
 [**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac | 
+[**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds | 
 [**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret | 
 [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key | 
 [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state | 
@@ -164,6 +167,7 @@ Method | HTTP request | Description
 [**UidRotateToken**](V2Api.md#uidrotatetoken) | **POST** /uid-rotate-token | 
 [**UpdateAWSTarget**](V2Api.md#updateawstarget) | **POST** /update-aws-target | 
 [**UpdateAWSTargetDetails**](V2Api.md#updateawstargetdetails) | **POST** /update-aws-target-details | 
+[**UpdateAccountSettings**](V2Api.md#updateaccountsettings) | **POST** /update-account-settings | 
 [**UpdateArtifactoryTarget**](V2Api.md#updateartifactorytarget) | **POST** /update-artifactory-target | 
 [**UpdateAssoc**](V2Api.md#updateassoc) | **POST** /update-assoc | 
 [**UpdateAuthMethod**](V2Api.md#updateauthmethod) | **POST** /update-auth-method | 
@@ -6554,6 +6558,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdatek8sauthconfig"></a>
+# **GatewayUpdateK8SAuthConfig**
+> GatewayUpdateK8SAuthConfigOutput GatewayUpdateK8SAuthConfig (GatewayUpdateK8SAuthConfig body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateK8SAuthConfigExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateK8SAuthConfig(); // GatewayUpdateK8SAuthConfig | 
+
+            try
+            {
+                GatewayUpdateK8SAuthConfigOutput result = apiInstance.GatewayUpdateK8SAuthConfig(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateK8SAuthConfig: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateK8SAuthConfig**](GatewayUpdateK8SAuthConfig.md)|  | 
+
+### Return type
+
+[**GatewayUpdateK8SAuthConfigOutput**](GatewayUpdateK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateK8SAuthConfigResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdateproducerartifactory"></a>
 # **GatewayUpdateProducerArtifactory**
 > GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory (GatewayUpdateProducerArtifactory body)
@@ -8063,6 +8136,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getAccountLogoResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getaccountsettings"></a>
+# **GetAccountSettings**
+> GetAccountSettingsCommandOutput GetAccountSettings (GetAccountSettings body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetAccountSettingsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GetAccountSettings(); // GetAccountSettings | 
+
+            try
+            {
+                GetAccountSettingsCommandOutput result = apiInstance.GetAccountSettings(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetAccountSettings: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GetAccountSettings**](GetAccountSettings.md)|  | 
+
+### Return type
+
+[**GetAccountSettingsCommandOutput**](GetAccountSettingsCommandOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getAccountSettingsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -10206,6 +10348,71 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="revokecreds"></a>
+# **RevokeCreds**
+> Object RevokeCreds ()
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RevokeCredsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+
+            try
+            {
+                Object result = apiInstance.RevokeCreds();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RevokeCreds: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | revokeCredsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="rollbacksecret"></a>
 # **RollbackSecret**
 > RollbackSecretOutput RollbackSecret (RollbackSecret body)
@@ -11237,6 +11444,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateaccountsettings"></a>
+# **UpdateAccountSettings**
+> UpdateAccountSettingsOutput UpdateAccountSettings (UpdateAccountSettings body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAccountSettingsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAccountSettings(); // UpdateAccountSettings | 
+
+            try
+            {
+                UpdateAccountSettingsOutput result = apiInstance.UpdateAccountSettings(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAccountSettings: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAccountSettings**](UpdateAccountSettings.md)|  | 
+
+### Return type
+
+[**UpdateAccountSettingsOutput**](UpdateAccountSettingsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAccountSettingsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

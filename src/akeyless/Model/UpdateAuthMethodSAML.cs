@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string idpMetadataUrl = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
+        public UpdateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string idpMetadataUrl = default(string), long jwtTtl = 0, string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -69,6 +70,7 @@ namespace akeyless.Model
             this.BoundIps = boundIps;
             this.ForceSubClaims = forceSubClaims;
             this.IdpMetadataUrl = idpMetadataUrl;
+            this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.Password = password;
             this.Token = token;
@@ -110,6 +112,13 @@ namespace akeyless.Model
         /// <value>IDP metadata url</value>
         [DataMember(Name = "idp-metadata-url", EmitDefaultValue = false)]
         public string IdpMetadataUrl { get; set; }
+
+        /// <summary>
+        /// Jwt TTL
+        /// </summary>
+        /// <value>Jwt TTL</value>
+        [DataMember(Name = "jwt-ttl", EmitDefaultValue = false)]
+        public long JwtTtl { get; set; }
 
         /// <summary>
         /// Auth Method name
@@ -173,6 +182,7 @@ namespace akeyless.Model
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
+            sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -240,6 +250,10 @@ namespace akeyless.Model
                     this.IdpMetadataUrl.Equals(input.IdpMetadataUrl))
                 ) && 
                 (
+                    this.JwtTtl == input.JwtTtl ||
+                    this.JwtTtl.Equals(input.JwtTtl)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -293,6 +307,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.IdpMetadataUrl != null)
                     hashCode = hashCode * 59 + this.IdpMetadataUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
