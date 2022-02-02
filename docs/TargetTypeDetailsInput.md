@@ -70,6 +70,8 @@ Name | Type | Description | Notes
 **RabbitmqServerUri** | **string** |  | [optional] 
 **RabbitmqServerUser** | **string** |  | [optional] 
 **SfAccount** | **string** |  | [optional] 
+**SslConnectionCertificate** | **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
+**SslConnectionMode** | **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **Url** | **string** |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
 **Username** | **string** |  | [optional] 

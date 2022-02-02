@@ -49,18 +49,20 @@ namespace akeyless.Model
         /// <param name="postgresqlPort">PostgreSQL Port (default to &quot;5432&quot;).</param>
         /// <param name="postgresqlUsername">PostgreSQL Username.</param>
         /// <param name="producerEncryptionKey">Dynamic producer encryption key.</param>
+        /// <param name="revocationStatement">PostgreSQL Revocation statements.</param>
         /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
         /// <param name="secureAccessDbSchema">secureAccessDbSchema.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="secureAccessWeb">secureAccessWeb.</param>
+        /// <param name="ssl">SSL connection mode.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerPostgreSQL(string creationStatements = default(string), string name = default(string), string password = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerPostgreSQL(string creationStatements = default(string), string name = default(string), string password = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string revocationStatement = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -77,11 +79,13 @@ namespace akeyless.Model
             this.PostgresqlPort = postgresqlPort ?? "5432";
             this.PostgresqlUsername = postgresqlUsername;
             this.ProducerEncryptionKey = producerEncryptionKey;
+            this.RevocationStatement = revocationStatement;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessDbSchema = secureAccessDbSchema;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessWeb = secureAccessWeb;
+            this.Ssl = ssl;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -155,6 +159,13 @@ namespace akeyless.Model
         public string ProducerEncryptionKey { get; set; }
 
         /// <summary>
+        /// PostgreSQL Revocation statements
+        /// </summary>
+        /// <value>PostgreSQL Revocation statements</value>
+        [DataMember(Name = "revocation-statement", EmitDefaultValue = false)]
+        public string RevocationStatement { get; set; }
+
+        /// <summary>
         /// Gets or Sets SecureAccessBastionIssuer
         /// </summary>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
@@ -183,6 +194,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
+        /// SSL connection mode
+        /// </summary>
+        /// <value>SSL connection mode</value>
+        [DataMember(Name = "ssl", EmitDefaultValue = true)]
+        public bool Ssl { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
@@ -243,11 +261,13 @@ namespace akeyless.Model
             sb.Append("  PostgresqlPort: ").Append(PostgresqlPort).Append("\n");
             sb.Append("  PostgresqlUsername: ").Append(PostgresqlUsername).Append("\n");
             sb.Append("  ProducerEncryptionKey: ").Append(ProducerEncryptionKey).Append("\n");
+            sb.Append("  RevocationStatement: ").Append(RevocationStatement).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -334,6 +354,11 @@ namespace akeyless.Model
                     this.ProducerEncryptionKey.Equals(input.ProducerEncryptionKey))
                 ) && 
                 (
+                    this.RevocationStatement == input.RevocationStatement ||
+                    (this.RevocationStatement != null &&
+                    this.RevocationStatement.Equals(input.RevocationStatement))
+                ) && 
+                (
                     this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
                     (this.SecureAccessBastionIssuer != null &&
                     this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
@@ -357,6 +382,10 @@ namespace akeyless.Model
                 (
                     this.SecureAccessWeb == input.SecureAccessWeb ||
                     this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
+                    this.Ssl == input.Ssl ||
+                    this.Ssl.Equals(input.Ssl)
                 ) && 
                 (
                     this.Tags == input.Tags ||
@@ -418,6 +447,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.PostgresqlUsername.GetHashCode();
                 if (this.ProducerEncryptionKey != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKey.GetHashCode();
+                if (this.RevocationStatement != null)
+                    hashCode = hashCode * 59 + this.RevocationStatement.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
                     hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
                 if (this.SecureAccessDbSchema != null)
@@ -427,6 +458,7 @@ namespace akeyless.Model
                 if (this.SecureAccessHost != null)
                     hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                hashCode = hashCode * 59 + this.Ssl.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)

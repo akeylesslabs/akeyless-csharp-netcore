@@ -473,17 +473,6 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/CustomerFullAddressTests.cs
-src/akeyless.Test/Model/GatewayUpdateK8SAuthConfigOutputTests.cs
-src/akeyless.Test/Model/GatewayUpdateK8SAuthConfigTests.cs
-src/akeyless.Test/Model/GetAccountSettingsCommandOutputTests.cs
-src/akeyless.Test/Model/GetAccountSettingsTests.cs
-src/akeyless.Test/Model/RevokeCredsTests.cs
-src/akeyless.Test/Model/SmInfoTests.cs
-src/akeyless.Test/Model/SraInfoTests.cs
-src/akeyless.Test/Model/SystemAccessCredsSettingsTests.cs
-src/akeyless.Test/Model/UpdateAccountSettingsOutputTests.cs
-src/akeyless.Test/Model/UpdateAccountSettingsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs

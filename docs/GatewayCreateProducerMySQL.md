@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | **string** |  | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
 **SecureAccessWeb** | **bool** |  | [optional] 
+**Ssl** | **bool** | SSL connection mode | [optional] 
+**SslCertificate** | **string** | SSL connection certificate | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

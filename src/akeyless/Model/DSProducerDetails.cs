@@ -147,6 +147,7 @@ namespace akeyless.Model
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="payload">payload.</param>
         /// <param name="postgresCreationStatements">postgresCreationStatements.</param>
+        /// <param name="postgresRevocationStatements">postgresRevocationStatements.</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
@@ -163,6 +164,8 @@ namespace akeyless.Model
         /// <param name="sfUserRole">generated  users info.</param>
         /// <param name="sfWarehouseName">sfWarehouseName.</param>
         /// <param name="shouldStop">TODO delete this after migration.</param>
+        /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
+        /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
         /// <param name="tags">tags.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
@@ -183,7 +186,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -297,6 +300,7 @@ namespace akeyless.Model
             this.PasswordPolicy = passwordPolicy;
             this.Payload = payload;
             this.PostgresCreationStatements = postgresCreationStatements;
+            this.PostgresRevocationStatements = postgresRevocationStatements;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
@@ -313,6 +317,8 @@ namespace akeyless.Model
             this.SfUserRole = sfUserRole;
             this.SfWarehouseName = sfWarehouseName;
             this.ShouldStop = shouldStop;
+            this.SslConnectionCertificate = sslConnectionCertificate;
+            this.SslConnectionMode = sslConnectionMode;
             this.Tags = tags;
             this.TimeoutSeconds = timeoutSeconds;
             this.UseGwCloudIdentity = useGwCloudIdentity;
@@ -1014,6 +1020,12 @@ namespace akeyless.Model
         public string PostgresCreationStatements { get; set; }
 
         /// <summary>
+        /// Gets or Sets PostgresRevocationStatements
+        /// </summary>
+        [DataMember(Name = "postgres_revocation_statements", EmitDefaultValue = false)]
+        public string PostgresRevocationStatements { get; set; }
+
+        /// <summary>
         /// Gets or Sets RabbitmqServerPassword
         /// </summary>
         [DataMember(Name = "rabbitmq_server_password", EmitDefaultValue = false)]
@@ -1110,6 +1122,20 @@ namespace akeyless.Model
         /// <value>TODO delete this after migration</value>
         [DataMember(Name = "should_stop", EmitDefaultValue = false)]
         public string ShouldStop { get; set; }
+
+        /// <summary>
+        /// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
+        /// </summary>
+        /// <value>(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field</value>
+        [DataMember(Name = "ssl_connection_certificate", EmitDefaultValue = false)]
+        public string SslConnectionCertificate { get; set; }
+
+        /// <summary>
+        /// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
+        /// </summary>
+        /// <value>(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB</value>
+        [DataMember(Name = "ssl_connection_mode", EmitDefaultValue = true)]
+        public bool SslConnectionMode { get; set; }
 
         /// <summary>
         /// Gets or Sets Tags
@@ -1351,6 +1377,7 @@ namespace akeyless.Model
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  PostgresCreationStatements: ").Append(PostgresCreationStatements).Append("\n");
+            sb.Append("  PostgresRevocationStatements: ").Append(PostgresRevocationStatements).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
@@ -1367,6 +1394,8 @@ namespace akeyless.Model
             sb.Append("  SfUserRole: ").Append(SfUserRole).Append("\n");
             sb.Append("  SfWarehouseName: ").Append(SfWarehouseName).Append("\n");
             sb.Append("  ShouldStop: ").Append(ShouldStop).Append("\n");
+            sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
+            sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
@@ -1971,6 +2000,11 @@ namespace akeyless.Model
                     this.PostgresCreationStatements.Equals(input.PostgresCreationStatements))
                 ) && 
                 (
+                    this.PostgresRevocationStatements == input.PostgresRevocationStatements ||
+                    (this.PostgresRevocationStatements != null &&
+                    this.PostgresRevocationStatements.Equals(input.PostgresRevocationStatements))
+                ) && 
+                (
                     this.RabbitmqServerPassword == input.RabbitmqServerPassword ||
                     (this.RabbitmqServerPassword != null &&
                     this.RabbitmqServerPassword.Equals(input.RabbitmqServerPassword))
@@ -2049,6 +2083,15 @@ namespace akeyless.Model
                     this.ShouldStop == input.ShouldStop ||
                     (this.ShouldStop != null &&
                     this.ShouldStop.Equals(input.ShouldStop))
+                ) && 
+                (
+                    this.SslConnectionCertificate == input.SslConnectionCertificate ||
+                    (this.SslConnectionCertificate != null &&
+                    this.SslConnectionCertificate.Equals(input.SslConnectionCertificate))
+                ) && 
+                (
+                    this.SslConnectionMode == input.SslConnectionMode ||
+                    this.SslConnectionMode.Equals(input.SslConnectionMode)
                 ) && 
                 (
                     this.Tags == input.Tags ||
@@ -2367,6 +2410,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Payload.GetHashCode();
                 if (this.PostgresCreationStatements != null)
                     hashCode = hashCode * 59 + this.PostgresCreationStatements.GetHashCode();
+                if (this.PostgresRevocationStatements != null)
+                    hashCode = hashCode * 59 + this.PostgresRevocationStatements.GetHashCode();
                 if (this.RabbitmqServerPassword != null)
                     hashCode = hashCode * 59 + this.RabbitmqServerPassword.GetHashCode();
                 if (this.RabbitmqServerUri != null)
@@ -2399,6 +2444,9 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SfWarehouseName.GetHashCode();
                 if (this.ShouldStop != null)
                     hashCode = hashCode * 59 + this.ShouldStop.GetHashCode();
+                if (this.SslConnectionCertificate != null)
+                    hashCode = hashCode * 59 + this.SslConnectionCertificate.GetHashCode();
+                hashCode = hashCode * 59 + this.SslConnectionMode.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 hashCode = hashCode * 59 + this.TimeoutSeconds.GetHashCode();

@@ -55,13 +55,15 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessHost">secureAccessHost.</param>
         /// <param name="secureAccessWeb">secureAccessWeb.</param>
+        /// <param name="ssl">SSL connection mode.</param>
+        /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -84,6 +86,8 @@ namespace akeyless.Model
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessWeb = secureAccessWeb;
+            this.Ssl = ssl;
+            this.SslCertificate = sslCertificate;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -195,6 +199,20 @@ namespace akeyless.Model
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
+        /// SSL connection mode
+        /// </summary>
+        /// <value>SSL connection mode</value>
+        [DataMember(Name = "ssl", EmitDefaultValue = true)]
+        public bool Ssl { get; set; }
+
+        /// <summary>
+        /// SSL connection certificate
+        /// </summary>
+        /// <value>SSL connection certificate</value>
+        [DataMember(Name = "ssl-certificate", EmitDefaultValue = false)]
+        public string SslCertificate { get; set; }
+
+        /// <summary>
         /// List of the tags attached to this secret
         /// </summary>
         /// <value>List of the tags attached to this secret</value>
@@ -259,6 +277,8 @@ namespace akeyless.Model
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  Ssl: ").Append(Ssl).Append("\n");
+            sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -375,6 +395,15 @@ namespace akeyless.Model
                     this.SecureAccessWeb.Equals(input.SecureAccessWeb)
                 ) && 
                 (
+                    this.Ssl == input.Ssl ||
+                    this.Ssl.Equals(input.Ssl)
+                ) && 
+                (
+                    this.SslCertificate == input.SslCertificate ||
+                    (this.SslCertificate != null &&
+                    this.SslCertificate.Equals(input.SslCertificate))
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -445,6 +474,9 @@ namespace akeyless.Model
                 if (this.SecureAccessHost != null)
                     hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                hashCode = hashCode * 59 + this.Ssl.GetHashCode();
+                if (this.SslCertificate != null)
+                    hashCode = hashCode * 59 + this.SslCertificate.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)
