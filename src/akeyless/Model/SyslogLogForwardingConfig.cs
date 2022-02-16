@@ -35,15 +35,23 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SyslogLogForwardingConfig" /> class.
         /// </summary>
+        /// <param name="syslogFormatter">syslogFormatter.</param>
         /// <param name="syslogHost">syslogHost.</param>
         /// <param name="syslogNetwork">syslogNetwork.</param>
         /// <param name="syslogTargetTag">syslogTargetTag.</param>
-        public SyslogLogForwardingConfig(string syslogHost = default(string), string syslogNetwork = default(string), string syslogTargetTag = default(string))
+        public SyslogLogForwardingConfig(string syslogFormatter = default(string), string syslogHost = default(string), string syslogNetwork = default(string), string syslogTargetTag = default(string))
         {
+            this.SyslogFormatter = syslogFormatter;
             this.SyslogHost = syslogHost;
             this.SyslogNetwork = syslogNetwork;
             this.SyslogTargetTag = syslogTargetTag;
         }
+
+        /// <summary>
+        /// Gets or Sets SyslogFormatter
+        /// </summary>
+        [DataMember(Name = "syslog_formatter", EmitDefaultValue = false)]
+        public string SyslogFormatter { get; set; }
 
         /// <summary>
         /// Gets or Sets SyslogHost
@@ -71,6 +79,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class SyslogLogForwardingConfig {\n");
+            sb.Append("  SyslogFormatter: ").Append(SyslogFormatter).Append("\n");
             sb.Append("  SyslogHost: ").Append(SyslogHost).Append("\n");
             sb.Append("  SyslogNetwork: ").Append(SyslogNetwork).Append("\n");
             sb.Append("  SyslogTargetTag: ").Append(SyslogTargetTag).Append("\n");
@@ -109,6 +118,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.SyslogFormatter == input.SyslogFormatter ||
+                    (this.SyslogFormatter != null &&
+                    this.SyslogFormatter.Equals(input.SyslogFormatter))
+                ) && 
+                (
                     this.SyslogHost == input.SyslogHost ||
                     (this.SyslogHost != null &&
                     this.SyslogHost.Equals(input.SyslogHost))
@@ -134,6 +148,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.SyslogFormatter != null)
+                    hashCode = hashCode * 59 + this.SyslogFormatter.GetHashCode();
                 if (this.SyslogHost != null)
                     hashCode = hashCode * 59 + this.SyslogHost.GetHashCode();
                 if (this.SyslogNetwork != null)

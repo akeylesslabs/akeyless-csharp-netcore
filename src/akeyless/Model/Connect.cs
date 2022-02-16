@@ -27,14 +27,15 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// connect is a command that performs secure remote access
+    /// Connect is a command that performs secure remote access
     /// </summary>
-    [DataContract(Name = "connect")]
+    [DataContract(Name = "Connect")]
     public partial class Connect : IEquatable<Connect>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Connect" /> class.
         /// </summary>
+        /// <param name="rcFileOverride">used to override .akeyless-connect.rc in tests.</param>
         /// <param name="bastionCtrlPath">The Bastion API path.</param>
         /// <param name="bastionCtrlPort">The Bastion API Port (default to &quot;9900&quot;).</param>
         /// <param name="bastionCtrlProto">The Bastion API protocol (default to &quot;http&quot;).</param>
@@ -49,8 +50,9 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), string name = default(string), string password = default(string), string sshExtraArgs = default(string), string target = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string viaBastion = default(string))
+        public Connect(string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), string name = default(string), string password = default(string), string sshExtraArgs = default(string), string target = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string viaBastion = default(string))
         {
+            this.RcFileOverride = rcFileOverride;
             this.BastionCtrlPath = bastionCtrlPath;
             // use default value if no "bastionCtrlPort" provided
             this.BastionCtrlPort = bastionCtrlPort ?? "9900";
@@ -68,6 +70,13 @@ namespace akeyless.Model
             this.Username = username;
             this.ViaBastion = viaBastion;
         }
+
+        /// <summary>
+        /// used to override .akeyless-connect.rc in tests
+        /// </summary>
+        /// <value>used to override .akeyless-connect.rc in tests</value>
+        [DataMember(Name = "RcFileOverride", EmitDefaultValue = false)]
+        public string RcFileOverride { get; set; }
 
         /// <summary>
         /// The Bastion API path
@@ -175,6 +184,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Connect {\n");
+            sb.Append("  RcFileOverride: ").Append(RcFileOverride).Append("\n");
             sb.Append("  BastionCtrlPath: ").Append(BastionCtrlPath).Append("\n");
             sb.Append("  BastionCtrlPort: ").Append(BastionCtrlPort).Append("\n");
             sb.Append("  BastionCtrlProto: ").Append(BastionCtrlProto).Append("\n");
@@ -223,6 +233,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.RcFileOverride == input.RcFileOverride ||
+                    (this.RcFileOverride != null &&
+                    this.RcFileOverride.Equals(input.RcFileOverride))
+                ) && 
                 (
                     this.BastionCtrlPath == input.BastionCtrlPath ||
                     (this.BastionCtrlPath != null &&
@@ -304,6 +319,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.RcFileOverride != null)
+                    hashCode = hashCode * 59 + this.RcFileOverride.GetHashCode();
                 if (this.BastionCtrlPath != null)
                     hashCode = hashCode * 59 + this.BastionCtrlPath.GetHashCode();
                 if (this.BastionCtrlPort != null)

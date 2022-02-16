@@ -103,6 +103,14 @@ namespace akeyless.Model
         /// <param name="gcpTokenLifetime">gcpTokenLifetime.</param>
         /// <param name="gcpTokenScope">gcpTokenScope.</param>
         /// <param name="gcpTokenType">gcpTokenType.</param>
+        /// <param name="githubAppId">githubAppId.</param>
+        /// <param name="githubAppPrivateKey">githubAppPrivateKey.</param>
+        /// <param name="githubBaseUrl">githubBaseUrl.</param>
+        /// <param name="githubInstallationId">githubInstallationId.</param>
+        /// <param name="githubInstallationTokenPermissions">githubInstallationTokenPermissions.</param>
+        /// <param name="githubInstallationTokenRepositories">githubInstallationTokenRepositories.</param>
+        /// <param name="githubInstallationTokenRepositoriesIds">githubInstallationTokenRepositoriesIds.</param>
+        /// <param name="githubRepositoryPath">githubRepositoryPath.</param>
         /// <param name="gkeClusterCaCertificate">gkeClusterCaCertificate.</param>
         /// <param name="gkeClusterEndpoint">gkeClusterEndpoint.</param>
         /// <param name="gkeClusterName">gkeClusterName.</param>
@@ -186,7 +194,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -256,6 +264,14 @@ namespace akeyless.Model
             this.GcpTokenLifetime = gcpTokenLifetime;
             this.GcpTokenScope = gcpTokenScope;
             this.GcpTokenType = gcpTokenType;
+            this.GithubAppId = githubAppId;
+            this.GithubAppPrivateKey = githubAppPrivateKey;
+            this.GithubBaseUrl = githubBaseUrl;
+            this.GithubInstallationId = githubInstallationId;
+            this.GithubInstallationTokenPermissions = githubInstallationTokenPermissions;
+            this.GithubInstallationTokenRepositories = githubInstallationTokenRepositories;
+            this.GithubInstallationTokenRepositoriesIds = githubInstallationTokenRepositoriesIds;
+            this.GithubRepositoryPath = githubRepositoryPath;
             this.GkeClusterCaCertificate = gkeClusterCaCertificate;
             this.GkeClusterEndpoint = gkeClusterEndpoint;
             this.GkeClusterName = gkeClusterName;
@@ -750,6 +766,54 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "gcp_token_type", EmitDefaultValue = false)]
         public string GcpTokenType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubAppId
+        /// </summary>
+        [DataMember(Name = "github_app_id", EmitDefaultValue = false)]
+        public long GithubAppId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubAppPrivateKey
+        /// </summary>
+        [DataMember(Name = "github_app_private_key", EmitDefaultValue = false)]
+        public string GithubAppPrivateKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubBaseUrl
+        /// </summary>
+        [DataMember(Name = "github_base_url", EmitDefaultValue = false)]
+        public string GithubBaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubInstallationId
+        /// </summary>
+        [DataMember(Name = "github_installation_id", EmitDefaultValue = false)]
+        public long GithubInstallationId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubInstallationTokenPermissions
+        /// </summary>
+        [DataMember(Name = "github_installation_token_permissions", EmitDefaultValue = false)]
+        public Dictionary<string, string> GithubInstallationTokenPermissions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubInstallationTokenRepositories
+        /// </summary>
+        [DataMember(Name = "github_installation_token_repositories", EmitDefaultValue = false)]
+        public List<string> GithubInstallationTokenRepositories { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubInstallationTokenRepositoriesIds
+        /// </summary>
+        [DataMember(Name = "github_installation_token_repositories_ids", EmitDefaultValue = false)]
+        public List<long> GithubInstallationTokenRepositoriesIds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GithubRepositoryPath
+        /// </summary>
+        [DataMember(Name = "github_repository_path", EmitDefaultValue = false)]
+        public string GithubRepositoryPath { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeClusterCaCertificate
@@ -1333,6 +1397,14 @@ namespace akeyless.Model
             sb.Append("  GcpTokenLifetime: ").Append(GcpTokenLifetime).Append("\n");
             sb.Append("  GcpTokenScope: ").Append(GcpTokenScope).Append("\n");
             sb.Append("  GcpTokenType: ").Append(GcpTokenType).Append("\n");
+            sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
+            sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
+            sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
+            sb.Append("  GithubInstallationId: ").Append(GithubInstallationId).Append("\n");
+            sb.Append("  GithubInstallationTokenPermissions: ").Append(GithubInstallationTokenPermissions).Append("\n");
+            sb.Append("  GithubInstallationTokenRepositories: ").Append(GithubInstallationTokenRepositories).Append("\n");
+            sb.Append("  GithubInstallationTokenRepositoriesIds: ").Append(GithubInstallationTokenRepositoriesIds).Append("\n");
+            sb.Append("  GithubRepositoryPath: ").Append(GithubRepositoryPath).Append("\n");
             sb.Append("  GkeClusterCaCertificate: ").Append(GkeClusterCaCertificate).Append("\n");
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
@@ -1780,6 +1852,47 @@ namespace akeyless.Model
                     this.GcpTokenType == input.GcpTokenType ||
                     (this.GcpTokenType != null &&
                     this.GcpTokenType.Equals(input.GcpTokenType))
+                ) && 
+                (
+                    this.GithubAppId == input.GithubAppId ||
+                    this.GithubAppId.Equals(input.GithubAppId)
+                ) && 
+                (
+                    this.GithubAppPrivateKey == input.GithubAppPrivateKey ||
+                    (this.GithubAppPrivateKey != null &&
+                    this.GithubAppPrivateKey.Equals(input.GithubAppPrivateKey))
+                ) && 
+                (
+                    this.GithubBaseUrl == input.GithubBaseUrl ||
+                    (this.GithubBaseUrl != null &&
+                    this.GithubBaseUrl.Equals(input.GithubBaseUrl))
+                ) && 
+                (
+                    this.GithubInstallationId == input.GithubInstallationId ||
+                    this.GithubInstallationId.Equals(input.GithubInstallationId)
+                ) && 
+                (
+                    this.GithubInstallationTokenPermissions == input.GithubInstallationTokenPermissions ||
+                    this.GithubInstallationTokenPermissions != null &&
+                    input.GithubInstallationTokenPermissions != null &&
+                    this.GithubInstallationTokenPermissions.SequenceEqual(input.GithubInstallationTokenPermissions)
+                ) && 
+                (
+                    this.GithubInstallationTokenRepositories == input.GithubInstallationTokenRepositories ||
+                    this.GithubInstallationTokenRepositories != null &&
+                    input.GithubInstallationTokenRepositories != null &&
+                    this.GithubInstallationTokenRepositories.SequenceEqual(input.GithubInstallationTokenRepositories)
+                ) && 
+                (
+                    this.GithubInstallationTokenRepositoriesIds == input.GithubInstallationTokenRepositoriesIds ||
+                    this.GithubInstallationTokenRepositoriesIds != null &&
+                    input.GithubInstallationTokenRepositoriesIds != null &&
+                    this.GithubInstallationTokenRepositoriesIds.SequenceEqual(input.GithubInstallationTokenRepositoriesIds)
+                ) && 
+                (
+                    this.GithubRepositoryPath == input.GithubRepositoryPath ||
+                    (this.GithubRepositoryPath != null &&
+                    this.GithubRepositoryPath.Equals(input.GithubRepositoryPath))
                 ) && 
                 (
                     this.GkeClusterCaCertificate == input.GkeClusterCaCertificate ||
@@ -2325,6 +2438,20 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GcpTokenScope.GetHashCode();
                 if (this.GcpTokenType != null)
                     hashCode = hashCode * 59 + this.GcpTokenType.GetHashCode();
+                hashCode = hashCode * 59 + this.GithubAppId.GetHashCode();
+                if (this.GithubAppPrivateKey != null)
+                    hashCode = hashCode * 59 + this.GithubAppPrivateKey.GetHashCode();
+                if (this.GithubBaseUrl != null)
+                    hashCode = hashCode * 59 + this.GithubBaseUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.GithubInstallationId.GetHashCode();
+                if (this.GithubInstallationTokenPermissions != null)
+                    hashCode = hashCode * 59 + this.GithubInstallationTokenPermissions.GetHashCode();
+                if (this.GithubInstallationTokenRepositories != null)
+                    hashCode = hashCode * 59 + this.GithubInstallationTokenRepositories.GetHashCode();
+                if (this.GithubInstallationTokenRepositoriesIds != null)
+                    hashCode = hashCode * 59 + this.GithubInstallationTokenRepositoriesIds.GetHashCode();
+                if (this.GithubRepositoryPath != null)
+                    hashCode = hashCode * 59 + this.GithubRepositoryPath.GetHashCode();
                 if (this.GkeClusterCaCertificate != null)
                     hashCode = hashCode * 59 + this.GkeClusterCaCertificate.GetHashCode();
                 if (this.GkeClusterEndpoint != null)

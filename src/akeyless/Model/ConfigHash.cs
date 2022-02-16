@@ -47,10 +47,11 @@ namespace akeyless.Model
         /// <param name="mQueue">mQueue.</param>
         /// <param name="migrations">migrations.</param>
         /// <param name="producers">producers.</param>
+        /// <param name="producersStatus">producersStatus.</param>
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="universalIdentity">universalIdentity.</param>
-        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrations = default(string), Object producers = default(Object), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
+        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.MQueue = mQueue;
             this.Migrations = migrations;
             this.Producers = producers;
+            this.ProducersStatus = producersStatus;
             this.Rotators = rotators;
             this.Saml = saml;
             this.UniversalIdentity = universalIdentity;
@@ -142,6 +144,12 @@ namespace akeyless.Model
         public Object Producers { get; set; }
 
         /// <summary>
+        /// Gets or Sets ProducersStatus
+        /// </summary>
+        [DataMember(Name = "producers_status", EmitDefaultValue = false)]
+        public string ProducersStatus { get; set; }
+
+        /// <summary>
         /// Gets or Sets Rotators
         /// </summary>
         [DataMember(Name = "rotators", EmitDefaultValue = false)]
@@ -179,6 +187,7 @@ namespace akeyless.Model
             sb.Append("  MQueue: ").Append(MQueue).Append("\n");
             sb.Append("  Migrations: ").Append(Migrations).Append("\n");
             sb.Append("  Producers: ").Append(Producers).Append("\n");
+            sb.Append("  ProducersStatus: ").Append(ProducersStatus).Append("\n");
             sb.Append("  Rotators: ").Append(Rotators).Append("\n");
             sb.Append("  Saml: ").Append(Saml).Append("\n");
             sb.Append("  UniversalIdentity: ").Append(UniversalIdentity).Append("\n");
@@ -277,6 +286,11 @@ namespace akeyless.Model
                     this.Producers.Equals(input.Producers))
                 ) && 
                 (
+                    this.ProducersStatus == input.ProducersStatus ||
+                    (this.ProducersStatus != null &&
+                    this.ProducersStatus.Equals(input.ProducersStatus))
+                ) && 
+                (
                     this.Rotators == input.Rotators ||
                     (this.Rotators != null &&
                     this.Rotators.Equals(input.Rotators))
@@ -326,6 +340,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Migrations.GetHashCode();
                 if (this.Producers != null)
                     hashCode = hashCode * 59 + this.Producers.GetHashCode();
+                if (this.ProducersStatus != null)
+                    hashCode = hashCode * 59 + this.ProducersStatus.GetHashCode();
                 if (this.Rotators != null)
                     hashCode = hashCode * 59 + this.Rotators.GetHashCode();
                 if (this.Saml != null)

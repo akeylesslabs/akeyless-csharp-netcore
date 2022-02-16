@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MQueue** | **string** |  | [optional] 
 **Migrations** | **string** |  | [optional] 
 **Producers** | **Object** |  | [optional] 
+**ProducersStatus** | **string** |  | [optional] 
 **Rotators** | **Object** |  | [optional] 
 **Saml** | **string** |  | [optional] 
 **UniversalIdentity** | **string** |  | [optional] 

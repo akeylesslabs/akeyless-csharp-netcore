@@ -27,53 +27,88 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// updateAssoc is a command that updates the sub-claims of an association between role and auth method.
+    /// CreateGithubTarget
     /// </summary>
-    [DataContract(Name = "updateAssoc")]
-    public partial class UpdateAssoc : IEquatable<UpdateAssoc>, IValidatableObject
+    [DataContract(Name = "createGithubTarget")]
+    public partial class CreateGithubTarget : IEquatable<CreateGithubTarget>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAssoc" /> class.
+        /// Initializes a new instance of the <see cref="CreateGithubTarget" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UpdateAssoc() { }
+        protected CreateGithubTarget() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAssoc" /> class.
+        /// Initializes a new instance of the <see cref="CreateGithubTarget" /> class.
         /// </summary>
-        /// <param name="assocId">The association id to be updated (required).</param>
-        /// <param name="caseSensitive">caseSensitive.</param>
+        /// <param name="comment">Comment about the target.</param>
+        /// <param name="githubAppId">Github app id.</param>
+        /// <param name="githubAppPrivateKey">App private key.</param>
+        /// <param name="githubBaseUrl">Base URL.</param>
+        /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="name">Target name (required).</param>
         /// <param name="password">Required only when the authentication process requires a username and password.</param>
-        /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAssoc(string assocId = default(string), string caseSensitive = default(string), string password = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateGithubTarget(string comment = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
-            // to ensure "assocId" is required (not null)
-            if (assocId == null) {
-                throw new ArgumentNullException("assocId is a required property for UpdateAssoc and cannot be null");
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for CreateGithubTarget and cannot be null");
             }
-            this.AssocId = assocId;
-            this.CaseSensitive = caseSensitive;
+            this.Name = name;
+            this.Comment = comment;
+            this.GithubAppId = githubAppId;
+            this.GithubAppPrivateKey = githubAppPrivateKey;
+            this.GithubBaseUrl = githubBaseUrl;
+            this.Key = key;
             this.Password = password;
-            this.SubClaims = subClaims;
             this.Token = token;
             this.UidToken = uidToken;
             this.Username = username;
         }
 
         /// <summary>
-        /// The association id to be updated
+        /// Comment about the target
         /// </summary>
-        /// <value>The association id to be updated</value>
-        [DataMember(Name = "assoc-id", IsRequired = true, EmitDefaultValue = false)]
-        public string AssocId { get; set; }
+        /// <value>Comment about the target</value>
+        [DataMember(Name = "comment", EmitDefaultValue = false)]
+        public string Comment { get; set; }
 
         /// <summary>
-        /// Gets or Sets CaseSensitive
+        /// Github app id
         /// </summary>
-        [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
-        public string CaseSensitive { get; set; }
+        /// <value>Github app id</value>
+        [DataMember(Name = "github-app-id", EmitDefaultValue = false)]
+        public long GithubAppId { get; set; }
+
+        /// <summary>
+        /// App private key
+        /// </summary>
+        /// <value>App private key</value>
+        [DataMember(Name = "github-app-private-key", EmitDefaultValue = false)]
+        public string GithubAppPrivateKey { get; set; }
+
+        /// <summary>
+        /// Base URL
+        /// </summary>
+        /// <value>Base URL</value>
+        [DataMember(Name = "github-base-url", EmitDefaultValue = false)]
+        public string GithubBaseUrl { get; set; }
+
+        /// <summary>
+        /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+        /// </summary>
+        /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
+        [DataMember(Name = "key", EmitDefaultValue = false)]
+        public string Key { get; set; }
+
+        /// <summary>
+        /// Target name
+        /// </summary>
+        /// <value>Target name</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Required only when the authentication process requires a username and password
@@ -81,13 +116,6 @@ namespace akeyless.Model
         /// <value>Required only when the authentication process requires a username and password</value>
         [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
-
-        /// <summary>
-        /// key/val of sub claims, e.g group&#x3D;admins,developers
-        /// </summary>
-        /// <value>key/val of sub claims, e.g group&#x3D;admins,developers</value>
-        [DataMember(Name = "sub-claims", EmitDefaultValue = false)]
-        public Dictionary<string, string> SubClaims { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -117,11 +145,14 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UpdateAssoc {\n");
-            sb.Append("  AssocId: ").Append(AssocId).Append("\n");
-            sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
+            sb.Append("class CreateGithubTarget {\n");
+            sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
+            sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
+            sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
@@ -145,40 +176,53 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UpdateAssoc);
+            return this.Equals(input as CreateGithubTarget);
         }
 
         /// <summary>
-        /// Returns true if UpdateAssoc instances are equal
+        /// Returns true if CreateGithubTarget instances are equal
         /// </summary>
-        /// <param name="input">Instance of UpdateAssoc to be compared</param>
+        /// <param name="input">Instance of CreateGithubTarget to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateAssoc input)
+        public bool Equals(CreateGithubTarget input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.AssocId == input.AssocId ||
-                    (this.AssocId != null &&
-                    this.AssocId.Equals(input.AssocId))
+                    this.Comment == input.Comment ||
+                    (this.Comment != null &&
+                    this.Comment.Equals(input.Comment))
                 ) && 
                 (
-                    this.CaseSensitive == input.CaseSensitive ||
-                    (this.CaseSensitive != null &&
-                    this.CaseSensitive.Equals(input.CaseSensitive))
+                    this.GithubAppId == input.GithubAppId ||
+                    this.GithubAppId.Equals(input.GithubAppId)
+                ) && 
+                (
+                    this.GithubAppPrivateKey == input.GithubAppPrivateKey ||
+                    (this.GithubAppPrivateKey != null &&
+                    this.GithubAppPrivateKey.Equals(input.GithubAppPrivateKey))
+                ) && 
+                (
+                    this.GithubBaseUrl == input.GithubBaseUrl ||
+                    (this.GithubBaseUrl != null &&
+                    this.GithubBaseUrl.Equals(input.GithubBaseUrl))
+                ) && 
+                (
+                    this.Key == input.Key ||
+                    (this.Key != null &&
+                    this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
-                ) && 
-                (
-                    this.SubClaims == input.SubClaims ||
-                    this.SubClaims != null &&
-                    input.SubClaims != null &&
-                    this.SubClaims.SequenceEqual(input.SubClaims)
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -206,14 +250,19 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AssocId != null)
-                    hashCode = hashCode * 59 + this.AssocId.GetHashCode();
-                if (this.CaseSensitive != null)
-                    hashCode = hashCode * 59 + this.CaseSensitive.GetHashCode();
+                if (this.Comment != null)
+                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.GithubAppId.GetHashCode();
+                if (this.GithubAppPrivateKey != null)
+                    hashCode = hashCode * 59 + this.GithubAppPrivateKey.GetHashCode();
+                if (this.GithubBaseUrl != null)
+                    hashCode = hashCode * 59 + this.GithubBaseUrl.GetHashCode();
+                if (this.Key != null)
+                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
-                if (this.SubClaims != null)
-                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -1,10 +1,11 @@
 # akeyless.Model.Connect
-connect is a command that performs secure remote access
+Connect is a command that performs secure remote access
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**RcFileOverride** | **string** | used to override .akeyless-connect.rc in tests | [optional] 
 **BastionCtrlPath** | **string** | The Bastion API path | [optional] 
 **BastionCtrlPort** | **string** | The Bastion API Port | [optional] [default to "9900"]
 **BastionCtrlProto** | **string** | The Bastion API protocol | [optional] [default to "http"]

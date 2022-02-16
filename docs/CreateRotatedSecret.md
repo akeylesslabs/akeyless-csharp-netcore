@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiId** | **string** |  | [optional] 
 **ApiKey** | **string** |  | [optional] 
+**ApplicationId** | **string** | ApplicationId (used in azure) | 
 **AuthenticationCredentials** | **string** |  | [optional] 
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | **string** |  | [optional] 

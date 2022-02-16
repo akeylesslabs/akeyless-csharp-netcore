@@ -1,13 +1,10 @@
-# akeyless.Model.SyslogLogForwardingConfig
+# akeyless.Model.UpdateGithubTargetOutput
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SyslogFormatter** | **string** |  | [optional] 
-**SyslogHost** | **string** |  | [optional] 
-**SyslogNetwork** | **string** |  | [optional] 
-**SyslogTargetTag** | **string** |  | [optional] 
+**TargetId** | **long** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

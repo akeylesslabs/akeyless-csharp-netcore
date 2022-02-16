@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**CreateEKSTarget**](V2Api.md#createekstarget) | **POST** /create-eks-target | 
 [**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target | 
 [**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target | 
+[**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target | 
 [**CreateKey**](V2Api.md#createkey) | **POST** /create-key | 
 [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target | 
 [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer | 
@@ -69,6 +70,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerCustom**](V2Api.md#gatewaycreateproducercustom) | **POST** /gateway-create-producer-custom | 
 [**GatewayCreateProducerEks**](V2Api.md#gatewaycreateproducereks) | **POST** /gateway-create-producer-eks | 
 [**GatewayCreateProducerGcp**](V2Api.md#gatewaycreateproducergcp) | **POST** /gateway-create-producer-gcp | 
+[**GatewayCreateProducerGithub**](V2Api.md#gatewaycreateproducergithub) | **POST** /gateway-create-producer-github | 
 [**GatewayCreateProducerGke**](V2Api.md#gatewaycreateproducergke) | **POST** /gateway-create-producer-gke | 
 [**GatewayCreateProducerLdap**](V2Api.md#gatewaycreateproducerldap) | **POST** /gateway-create-producer-ldap | 
 [**GatewayCreateProducerMSSQL**](V2Api.md#gatewaycreateproducermssql) | **POST** /gateway-create-producer-mssql | 
@@ -105,6 +107,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerCustom**](V2Api.md#gatewayupdateproducercustom) | **POST** /gateway-update-producer-custom | 
 [**GatewayUpdateProducerEks**](V2Api.md#gatewayupdateproducereks) | **POST** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#gatewayupdateproducergcp) | **POST** /gateway-update-producer-gcp | 
+[**GatewayUpdateProducerGithub**](V2Api.md#gatewayupdateproducergithub) | **POST** /gateway-update-producer-github | 
 [**GatewayUpdateProducerGke**](V2Api.md#gatewayupdateproducergke) | **POST** /gateway-update-producer-gke | 
 [**GatewayUpdateProducerLdap**](V2Api.md#gatewayupdateproducerldap) | **POST** /gateway-update-producer-ldap | 
 [**GatewayUpdateProducerMSSQL**](V2Api.md#gatewayupdateproducermssql) | **POST** /gateway-update-producer-mssql | 
@@ -186,6 +189,7 @@ Method | HTTP request | Description
 [**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target | 
 [**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target | 
+[**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target | 
 [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item | 
 [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target | 
 [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer | 
@@ -2001,6 +2005,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createGcpTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="creategithubtarget"></a>
+# **CreateGithubTarget**
+> CreateGithubTargetOutput CreateGithubTarget (CreateGithubTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateGithubTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateGithubTarget(); // CreateGithubTarget | 
+
+            try
+            {
+                CreateGithubTargetOutput result = apiInstance.CreateGithubTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateGithubTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGithubTarget**](CreateGithubTarget.md)|  | 
+
+### Return type
+
+[**CreateGithubTargetOutput**](CreateGithubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createGithubTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4696,6 +4769,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaycreateproducergithub"></a>
+# **GatewayCreateProducerGithub**
+> GatewayCreateProducerGithubOutput GatewayCreateProducerGithub (GatewayCreateProducerGithub body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateProducerGithubExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerGithub(); // GatewayCreateProducerGithub | 
+
+            try
+            {
+                GatewayCreateProducerGithubOutput result = apiInstance.GatewayCreateProducerGithub(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGithub: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerGithub**](GatewayCreateProducerGithub.md)|  | 
+
+### Return type
+
+[**GatewayCreateProducerGithubOutput**](GatewayCreateProducerGithubOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayCreateProducerGithubResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaycreateproducergke"></a>
 # **GatewayCreateProducerGke**
 > GatewayCreateProducerGkeOutput GatewayCreateProducerGke (GatewayCreateProducerGke body)
@@ -7175,6 +7317,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayUpdateProducerGcpResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducergithub"></a>
+# **GatewayUpdateProducerGithub**
+> GatewayUpdateProducerGithubOutput GatewayUpdateProducerGithub (GatewayUpdateProducerGithub body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerGithubExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerGithub(); // GatewayUpdateProducerGithub | 
+
+            try
+            {
+                GatewayUpdateProducerGithubOutput result = apiInstance.GatewayUpdateProducerGithub(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGithub: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerGithub**](GatewayUpdateProducerGithub.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerGithubOutput**](GatewayUpdateProducerGithubOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerGithubResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -12755,6 +12966,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateGcpTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updategithubtarget"></a>
+# **UpdateGithubTarget**
+> UpdateGithubTargetOutput UpdateGithubTarget (UpdateGithubTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateGithubTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateGithubTarget(); // UpdateGithubTarget | 
+
+            try
+            {
+                UpdateGithubTargetOutput result = apiInstance.UpdateGithubTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateGithubTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateGithubTarget**](UpdateGithubTarget.md)|  | 
+
+### Return type
+
+[**UpdateGithubTargetOutput**](UpdateGithubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateGithubTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

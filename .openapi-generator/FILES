@@ -74,6 +74,8 @@ docs/CreateGKETarget.md
 docs/CreateGKETargetOutput.md
 docs/CreateGcpTarget.md
 docs/CreateGcpTargetOutput.md
+docs/CreateGithubTarget.md
+docs/CreateGithubTargetOutput.md
 docs/CreateKey.md
 docs/CreateKeyOutput.md
 docs/CreateLdapTarget.md
@@ -164,6 +166,8 @@ docs/GatewayCreateProducerEks.md
 docs/GatewayCreateProducerEksOutput.md
 docs/GatewayCreateProducerGcp.md
 docs/GatewayCreateProducerGcpOutput.md
+docs/GatewayCreateProducerGithub.md
+docs/GatewayCreateProducerGithubOutput.md
 docs/GatewayCreateProducerGke.md
 docs/GatewayCreateProducerGkeOutput.md
 docs/GatewayCreateProducerLdap.md
@@ -232,6 +236,8 @@ docs/GatewayUpdateProducerEks.md
 docs/GatewayUpdateProducerEksOutput.md
 docs/GatewayUpdateProducerGcp.md
 docs/GatewayUpdateProducerGcpOutput.md
+docs/GatewayUpdateProducerGithub.md
+docs/GatewayUpdateProducerGithubOutput.md
 docs/GatewayUpdateProducerGke.md
 docs/GatewayUpdateProducerGkeOutput.md
 docs/GatewayUpdateProducerLdap.md
@@ -433,6 +439,8 @@ docs/UpdateGKETarget.md
 docs/UpdateGKETargetOutput.md
 docs/UpdateGcpTarget.md
 docs/UpdateGcpTargetOutput.md
+docs/UpdateGithubTarget.md
+docs/UpdateGithubTargetOutput.md
 docs/UpdateItem.md
 docs/UpdateItemOutput.md
 docs/UpdateNativeK8STarget.md
@@ -473,6 +481,14 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/CreateGithubTargetOutputTests.cs
+src/akeyless.Test/Model/CreateGithubTargetTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerGithubOutputTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerGithubTests.cs
+src/akeyless.Test/Model/GatewayUpdateProducerGithubOutputTests.cs
+src/akeyless.Test/Model/GatewayUpdateProducerGithubTests.cs
+src/akeyless.Test/Model/UpdateGithubTargetOutputTests.cs
+src/akeyless.Test/Model/UpdateGithubTargetTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -564,6 +580,8 @@ src/akeyless/Model/CreateGKETarget.cs
 src/akeyless/Model/CreateGKETargetOutput.cs
 src/akeyless/Model/CreateGcpTarget.cs
 src/akeyless/Model/CreateGcpTargetOutput.cs
+src/akeyless/Model/CreateGithubTarget.cs
+src/akeyless/Model/CreateGithubTargetOutput.cs
 src/akeyless/Model/CreateKey.cs
 src/akeyless/Model/CreateKeyOutput.cs
 src/akeyless/Model/CreateLdapTarget.cs
@@ -654,6 +672,8 @@ src/akeyless/Model/GatewayCreateProducerEks.cs
 src/akeyless/Model/GatewayCreateProducerEksOutput.cs
 src/akeyless/Model/GatewayCreateProducerGcp.cs
 src/akeyless/Model/GatewayCreateProducerGcpOutput.cs
+src/akeyless/Model/GatewayCreateProducerGithub.cs
+src/akeyless/Model/GatewayCreateProducerGithubOutput.cs
 src/akeyless/Model/GatewayCreateProducerGke.cs
 src/akeyless/Model/GatewayCreateProducerGkeOutput.cs
 src/akeyless/Model/GatewayCreateProducerLdap.cs
@@ -722,6 +742,8 @@ src/akeyless/Model/GatewayUpdateProducerEks.cs
 src/akeyless/Model/GatewayUpdateProducerEksOutput.cs
 src/akeyless/Model/GatewayUpdateProducerGcp.cs
 src/akeyless/Model/GatewayUpdateProducerGcpOutput.cs
+src/akeyless/Model/GatewayUpdateProducerGithub.cs
+src/akeyless/Model/GatewayUpdateProducerGithubOutput.cs
 src/akeyless/Model/GatewayUpdateProducerGke.cs
 src/akeyless/Model/GatewayUpdateProducerGkeOutput.cs
 src/akeyless/Model/GatewayUpdateProducerLdap.cs
@@ -923,6 +945,8 @@ src/akeyless/Model/UpdateGKETarget.cs
 src/akeyless/Model/UpdateGKETargetOutput.cs
 src/akeyless/Model/UpdateGcpTarget.cs
 src/akeyless/Model/UpdateGcpTargetOutput.cs
+src/akeyless/Model/UpdateGithubTarget.cs
+src/akeyless/Model/UpdateGithubTargetOutput.cs
 src/akeyless/Model/UpdateItem.cs
 src/akeyless/Model/UpdateItemOutput.cs
 src/akeyless/Model/UpdateNativeK8STarget.cs
