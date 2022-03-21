@@ -46,11 +46,9 @@ namespace akeyless.Model
         /// <param name="comment">Comment about the target.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateArtifactoryTarget(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string comment = default(string), string key = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateArtifactoryTarget(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string comment = default(string), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "artifactoryAdminName" is required (not null)
             if (artifactoryAdminName == null) {
@@ -74,10 +72,8 @@ namespace akeyless.Model
             this.Name = name;
             this.Comment = comment;
             this.Key = key;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -123,13 +119,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -142,13 +131,6 @@ namespace akeyless.Model
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
         [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -164,10 +146,8 @@ namespace akeyless.Model
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -233,11 +213,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -246,11 +221,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -275,14 +245,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

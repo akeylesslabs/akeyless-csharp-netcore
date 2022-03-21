@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Connect" /> class.
         /// </summary>
+        /// <param name="helper">helper.</param>
         /// <param name="rcFileOverride">used to override .akeyless-connect.rc in tests.</param>
         /// <param name="bastionCtrlPath">The Bastion API path.</param>
         /// <param name="bastionCtrlPort">The Bastion API Port (default to &quot;9900&quot;).</param>
@@ -43,15 +44,14 @@ namespace akeyless.Model
         /// <param name="certIssuerName">The Akeyless certificate issuer name.</param>
         /// <param name="identityFile">The file from which the identity (private key) for public key authentication is read.</param>
         /// <param name="name">The Secret name (for database and AWS producers - producer name).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="sshExtraArgs">The Use to add offical SSH arguments (except -i).</param>
         /// <param name="target">The target.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), string name = default(string), string password = default(string), string sshExtraArgs = default(string), string target = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string viaBastion = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), string name = default(string), string sshExtraArgs = default(string), string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
         {
+            this.Helper = helper;
             this.RcFileOverride = rcFileOverride;
             this.BastionCtrlPath = bastionCtrlPath;
             // use default value if no "bastionCtrlPort" provided
@@ -62,14 +62,18 @@ namespace akeyless.Model
             this.CertIssuerName = certIssuerName;
             this.IdentityFile = identityFile;
             this.Name = name;
-            this.Password = password;
             this.SshExtraArgs = sshExtraArgs;
             this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
             this.ViaBastion = viaBastion;
         }
+
+        /// <summary>
+        /// Gets or Sets Helper
+        /// </summary>
+        [DataMember(Name = "Helper", EmitDefaultValue = false)]
+        public Object Helper { get; set; }
 
         /// <summary>
         /// used to override .akeyless-connect.rc in tests
@@ -128,13 +132,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// The Use to add offical SSH arguments (except -i)
         /// </summary>
         /// <value>The Use to add offical SSH arguments (except -i)</value>
@@ -163,13 +160,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// The jump box server
         /// </summary>
         /// <value>The jump box server</value>
@@ -184,6 +174,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Connect {\n");
+            sb.Append("  Helper: ").Append(Helper).Append("\n");
             sb.Append("  RcFileOverride: ").Append(RcFileOverride).Append("\n");
             sb.Append("  BastionCtrlPath: ").Append(BastionCtrlPath).Append("\n");
             sb.Append("  BastionCtrlPort: ").Append(BastionCtrlPort).Append("\n");
@@ -192,12 +183,10 @@ namespace akeyless.Model
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  IdentityFile: ").Append(IdentityFile).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  SshExtraArgs: ").Append(SshExtraArgs).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  ViaBastion: ").Append(ViaBastion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -233,6 +222,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.Helper == input.Helper ||
+                    (this.Helper != null &&
+                    this.Helper.Equals(input.Helper))
+                ) && 
                 (
                     this.RcFileOverride == input.RcFileOverride ||
                     (this.RcFileOverride != null &&
@@ -274,11 +268,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.SshExtraArgs == input.SshExtraArgs ||
                     (this.SshExtraArgs != null &&
                     this.SshExtraArgs.Equals(input.SshExtraArgs))
@@ -299,11 +288,6 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
-                ) && 
-                (
                     this.ViaBastion == input.ViaBastion ||
                     (this.ViaBastion != null &&
                     this.ViaBastion.Equals(input.ViaBastion))
@@ -319,6 +303,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Helper != null)
+                    hashCode = hashCode * 59 + this.Helper.GetHashCode();
                 if (this.RcFileOverride != null)
                     hashCode = hashCode * 59 + this.RcFileOverride.GetHashCode();
                 if (this.BastionCtrlPath != null)
@@ -335,8 +321,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.IdentityFile.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.SshExtraArgs != null)
                     hashCode = hashCode * 59 + this.SshExtraArgs.GetHashCode();
                 if (this.Target != null)
@@ -345,8 +329,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.ViaBastion != null)
                     hashCode = hashCode * 59 + this.ViaBastion.GetHashCode();
                 return hashCode;

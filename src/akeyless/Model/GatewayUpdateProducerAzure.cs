@@ -44,13 +44,15 @@ namespace akeyless.Model
         /// <param name="azureClientId">Azure Client ID.</param>
         /// <param name="azureClientSecret">Azure Client Secret.</param>
         /// <param name="azureTenantId">Azure Tenant ID.</param>
+        /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
+        /// <param name="fixedUserOnly">Fixed user (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessWeb">secureAccessWeb.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
+        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -58,11 +60,10 @@ namespace akeyless.Model
         /// <param name="userGroupObjId">User Group Object Id.</param>
         /// <param name="userPortalAccess">Azure User portal access (default to false).</param>
         /// <param name="userPrincipalName">User Principal Name.</param>
-        /// <param name="userProgrammaticAccess">Azure User programmatic access (default to true).</param>
+        /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayUpdateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = true, string userRoleTemplateId = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayUpdateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -73,12 +74,15 @@ namespace akeyless.Model
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
             this.AzureTenantId = azureTenantId;
+            // use default value if no "fixedUserClaimKeyname" provided
+            this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? "false";
+            this.FixedUserOnly = fixedUserOnly;
             this.NewName = newName;
-            this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -90,7 +94,6 @@ namespace akeyless.Model
             this.UserRoleTemplateId = userRoleTemplateId;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
-            this.Username = username;
         }
 
         /// <summary>
@@ -122,6 +125,20 @@ namespace akeyless.Model
         public string AzureTenantId { get; set; }
 
         /// <summary>
+        /// FixedUserClaimKeyname
+        /// </summary>
+        /// <value>FixedUserClaimKeyname</value>
+        [DataMember(Name = "fixed-user-claim-keyname", EmitDefaultValue = false)]
+        public string FixedUserClaimKeyname { get; set; }
+
+        /// <summary>
+        /// Fixed user
+        /// </summary>
+        /// <value>Fixed user</value>
+        [DataMember(Name = "fixed-user-only", EmitDefaultValue = true)]
+        public bool FixedUserOnly { get; set; }
+
+        /// <summary>
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
@@ -134,13 +151,6 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -166,6 +176,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessWebProxy
+        /// </summary>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
@@ -238,13 +254,6 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -256,13 +265,15 @@ namespace akeyless.Model
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
+            sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -273,7 +284,6 @@ namespace akeyless.Model
             sb.Append("  UserProgrammaticAccess: ").Append(UserProgrammaticAccess).Append("\n");
             sb.Append("  UserRoleTemplateId: ").Append(UserRoleTemplateId).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -329,6 +339,15 @@ namespace akeyless.Model
                     this.AzureTenantId.Equals(input.AzureTenantId))
                 ) && 
                 (
+                    this.FixedUserClaimKeyname == input.FixedUserClaimKeyname ||
+                    (this.FixedUserClaimKeyname != null &&
+                    this.FixedUserClaimKeyname.Equals(input.FixedUserClaimKeyname))
+                ) && 
+                (
+                    this.FixedUserOnly == input.FixedUserOnly ||
+                    this.FixedUserOnly.Equals(input.FixedUserOnly)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -337,11 +356,6 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
-                ) && 
-                (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -360,6 +374,10 @@ namespace akeyless.Model
                 (
                     this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
+                    this.SecureAccessWebProxy == input.SecureAccessWebProxy ||
+                    this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
                 ) && 
                 (
                     this.Tags == input.Tags ||
@@ -409,11 +427,6 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -434,18 +447,20 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
                 if (this.AzureTenantId != null)
                     hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                if (this.FixedUserClaimKeyname != null)
+                    hashCode = hashCode * 59 + this.FixedUserClaimKeyname.GetHashCode();
+                hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.SecureAccessEnable != null)
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)
@@ -464,8 +479,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UserRoleTemplateId.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

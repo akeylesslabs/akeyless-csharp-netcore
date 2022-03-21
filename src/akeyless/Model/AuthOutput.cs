@@ -35,11 +35,19 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthOutput" /> class.
         /// </summary>
+        /// <param name="creds">creds.</param>
         /// <param name="token">token.</param>
-        public AuthOutput(string token = default(string))
+        public AuthOutput(SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string token = default(string))
         {
+            this.Creds = creds;
             this.Token = token;
         }
+
+        /// <summary>
+        /// Gets or Sets Creds
+        /// </summary>
+        [DataMember(Name = "creds", EmitDefaultValue = false)]
+        public SystemAccessCredentialsReplyObj Creds { get; set; }
 
         /// <summary>
         /// Gets or Sets Token
@@ -55,6 +63,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AuthOutput {\n");
+            sb.Append("  Creds: ").Append(Creds).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -91,6 +100,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Creds == input.Creds ||
+                    (this.Creds != null &&
+                    this.Creds.Equals(input.Creds))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -106,6 +120,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Creds != null)
+                    hashCode = hashCode * 59 + this.Creds.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 return hashCode;

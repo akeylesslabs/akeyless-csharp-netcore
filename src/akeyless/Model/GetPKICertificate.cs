@@ -44,12 +44,10 @@ namespace akeyless.Model
         /// <param name="certIssuerName">The name of the PKI certificate issuer (required).</param>
         /// <param name="commonName">The common name to be included in the PKI certificate.</param>
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string keyDataBase64 = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string), string username = default(string))
+        public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string keyDataBase64 = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null) {
@@ -59,11 +57,9 @@ namespace akeyless.Model
             this.AltNames = altNames;
             this.CommonName = commonName;
             this.KeyDataBase64 = keyDataBase64;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.UriSans = uriSans;
-            this.Username = username;
         }
 
         /// <summary>
@@ -95,13 +91,6 @@ namespace akeyless.Model
         public string KeyDataBase64 { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -123,13 +112,6 @@ namespace akeyless.Model
         public string UriSans { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -141,11 +123,9 @@ namespace akeyless.Model
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
             sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UriSans: ").Append(UriSans).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -201,11 +181,6 @@ namespace akeyless.Model
                     this.KeyDataBase64.Equals(input.KeyDataBase64))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -219,11 +194,6 @@ namespace akeyless.Model
                     this.UriSans == input.UriSans ||
                     (this.UriSans != null &&
                     this.UriSans.Equals(input.UriSans))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -244,16 +214,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CommonName.GetHashCode();
                 if (this.KeyDataBase64 != null)
                     hashCode = hashCode * 59 + this.KeyDataBase64.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UriSans != null)
                     hashCode = hashCode * 59 + this.UriSans.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

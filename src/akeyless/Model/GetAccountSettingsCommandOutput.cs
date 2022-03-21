@@ -39,16 +39,18 @@ namespace akeyless.Model
         /// <param name="address">address.</param>
         /// <param name="companyName">companyName.</param>
         /// <param name="email">email.</param>
+        /// <param name="objectVersionSettings">objectVersionSettings.</param>
         /// <param name="phone">phone.</param>
         /// <param name="secretManagement">secretManagement.</param>
         /// <param name="secureRemoteAccess">secureRemoteAccess.</param>
         /// <param name="systemAccessCredsSettings">systemAccessCredsSettings.</param>
-        public GetAccountSettingsCommandOutput(string accountId = default(string), CustomerFullAddress address = default(CustomerFullAddress), string companyName = default(string), string email = default(string), string phone = default(string), SmInfo secretManagement = default(SmInfo), SraInfo secureRemoteAccess = default(SraInfo), SystemAccessCredsSettings systemAccessCredsSettings = default(SystemAccessCredsSettings))
+        public GetAccountSettingsCommandOutput(string accountId = default(string), CustomerFullAddress address = default(CustomerFullAddress), string companyName = default(string), string email = default(string), AccountObjectVersionSettingsOutput objectVersionSettings = default(AccountObjectVersionSettingsOutput), string phone = default(string), SmInfo secretManagement = default(SmInfo), SraInfo secureRemoteAccess = default(SraInfo), SystemAccessCredsSettings systemAccessCredsSettings = default(SystemAccessCredsSettings))
         {
             this.AccountId = accountId;
             this.Address = address;
             this.CompanyName = companyName;
             this.Email = email;
+            this.ObjectVersionSettings = objectVersionSettings;
             this.Phone = phone;
             this.SecretManagement = secretManagement;
             this.SecureRemoteAccess = secureRemoteAccess;
@@ -78,6 +80,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ObjectVersionSettings
+        /// </summary>
+        [DataMember(Name = "object_version_settings", EmitDefaultValue = false)]
+        public AccountObjectVersionSettingsOutput ObjectVersionSettings { get; set; }
 
         /// <summary>
         /// Gets or Sets Phone
@@ -115,6 +123,7 @@ namespace akeyless.Model
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  ObjectVersionSettings: ").Append(ObjectVersionSettings).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  SecretManagement: ").Append(SecretManagement).Append("\n");
             sb.Append("  SecureRemoteAccess: ").Append(SecureRemoteAccess).Append("\n");
@@ -174,6 +183,11 @@ namespace akeyless.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
+                    this.ObjectVersionSettings == input.ObjectVersionSettings ||
+                    (this.ObjectVersionSettings != null &&
+                    this.ObjectVersionSettings.Equals(input.ObjectVersionSettings))
+                ) && 
+                (
                     this.Phone == input.Phone ||
                     (this.Phone != null &&
                     this.Phone.Equals(input.Phone))
@@ -212,6 +226,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.ObjectVersionSettings != null)
+                    hashCode = hashCode * 59 + this.ObjectVersionSettings.GetHashCode();
                 if (this.Phone != null)
                     hashCode = hashCode * 59 + this.Phone.GetHashCode();
                 if (this.SecretManagement != null)

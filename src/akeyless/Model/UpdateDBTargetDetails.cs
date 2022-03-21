@@ -42,19 +42,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbType">dbType.</param>
         /// <param name="hostName">hostName.</param>
+        /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="mongoDbName">mongoDbName.</param>
         /// <param name="mongoUri">mongoUri.</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="newVersion">Deprecated.</param>
         /// <param name="port">port.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="pwd">pwd.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), bool newVersion = false, string password = default(string), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string), string username = default(string))
+        public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), string keepPrevVersion = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), bool newVersion = default(bool), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -63,17 +62,16 @@ namespace akeyless.Model
             this.Name = name;
             this.DbType = dbType;
             this.HostName = hostName;
+            this.KeepPrevVersion = keepPrevVersion;
             this.MongoDbName = mongoDbName;
             this.MongoUri = mongoUri;
             this.NewVersion = newVersion;
-            this.Password = password;
             this.Port = port;
             this.ProtectionKey = protectionKey;
             this.Pwd = pwd;
             this.Token = token;
             this.UidToken = uidToken;
             this.UserName = userName;
-            this.Username = username;
         }
 
         /// <summary>
@@ -87,6 +85,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host_name", EmitDefaultValue = false)]
         public string HostName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets KeepPrevVersion
+        /// </summary>
+        [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
+        public string KeepPrevVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets MongoDbName
@@ -108,18 +112,11 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether to create a new version of not
+        /// Deprecated
         /// </summary>
-        /// <value>Whether to create a new version of not</value>
+        /// <value>Deprecated</value>
         [DataMember(Name = "new-version", EmitDefaultValue = true)]
         public bool NewVersion { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets Port
@@ -161,13 +158,6 @@ namespace akeyless.Model
         public string UserName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -177,18 +167,17 @@ namespace akeyless.Model
             sb.Append("class UpdateDBTargetDetails {\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
             sb.Append("  HostName: ").Append(HostName).Append("\n");
+            sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  MongoDbName: ").Append(MongoDbName).Append("\n");
             sb.Append("  MongoUri: ").Append(MongoUri).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -234,6 +223,11 @@ namespace akeyless.Model
                     this.HostName.Equals(input.HostName))
                 ) && 
                 (
+                    this.KeepPrevVersion == input.KeepPrevVersion ||
+                    (this.KeepPrevVersion != null &&
+                    this.KeepPrevVersion.Equals(input.KeepPrevVersion))
+                ) && 
+                (
                     this.MongoDbName == input.MongoDbName ||
                     (this.MongoDbName != null &&
                     this.MongoDbName.Equals(input.MongoDbName))
@@ -251,11 +245,6 @@ namespace akeyless.Model
                 (
                     this.NewVersion == input.NewVersion ||
                     this.NewVersion.Equals(input.NewVersion)
-                ) && 
-                (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.Port == input.Port ||
@@ -286,11 +275,6 @@ namespace akeyless.Model
                     this.UserName == input.UserName ||
                     (this.UserName != null &&
                     this.UserName.Equals(input.UserName))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -307,6 +291,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbType.GetHashCode();
                 if (this.HostName != null)
                     hashCode = hashCode * 59 + this.HostName.GetHashCode();
+                if (this.KeepPrevVersion != null)
+                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.MongoDbName != null)
                     hashCode = hashCode * 59 + this.MongoDbName.GetHashCode();
                 if (this.MongoUri != null)
@@ -314,8 +300,6 @@ namespace akeyless.Model
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
                 if (this.ProtectionKey != null)
@@ -328,8 +312,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserName != null)
                     hashCode = hashCode * 59 + this.UserName.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -47,14 +47,12 @@ namespace akeyless.Model
         /// <param name="installationRepository">Repository that the app installation has access to.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenPermissions">Optional - installation token&#39;s allowed permissions.</param>
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayUpdateProducerGithub(long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), string name = default(string), string newName = default(string), string password = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string), string username = default(string))
+        public GatewayUpdateProducerGithub(long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -67,13 +65,11 @@ namespace akeyless.Model
             this.InstallationId = installationId;
             this.InstallationRepository = installationRepository;
             this.NewName = newName;
-            this.Password = password;
             this.TargetName = targetName;
             this.Token = token;
             this.TokenPermissions = tokenPermissions;
             this.TokenRepositories = tokenRepositories;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -126,13 +122,6 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -168,13 +157,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -189,13 +171,11 @@ namespace akeyless.Model
             sb.Append("  InstallationRepository: ").Append(InstallationRepository).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenPermissions: ").Append(TokenPermissions).Append("\n");
             sb.Append("  TokenRepositories: ").Append(TokenRepositories).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -264,11 +244,6 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
@@ -294,11 +269,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -323,8 +293,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.Token != null)
@@ -335,8 +303,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.TokenRepositories.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

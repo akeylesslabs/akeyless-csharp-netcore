@@ -40,23 +40,19 @@ namespace akeyless.Model
         /// <param name="childDenyRotate">Deny from new child to rotate.</param>
         /// <param name="childTtl">New child token ttl.</param>
         /// <param name="comment">New Token comment.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uidTokenId">The ID of the uid-token, required only when uid-token is not provided.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string uidTokenId = default(string), string username = default(string))
+        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
         {
             this.AuthMethodName = authMethodName;
             this.ChildDenyInheritance = childDenyInheritance;
             this.ChildDenyRotate = childDenyRotate;
             this.ChildTtl = childTtl;
             this.Comment = comment;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.UidTokenId = uidTokenId;
-            this.Username = username;
         }
 
         /// <summary>
@@ -95,13 +91,6 @@ namespace akeyless.Model
         public string Comment { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -123,13 +112,6 @@ namespace akeyless.Model
         public string UidTokenId { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -142,11 +124,9 @@ namespace akeyless.Model
             sb.Append("  ChildDenyRotate: ").Append(ChildDenyRotate).Append("\n");
             sb.Append("  ChildTtl: ").Append(ChildTtl).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UidTokenId: ").Append(UidTokenId).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -204,11 +184,6 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -222,11 +197,6 @@ namespace akeyless.Model
                     this.UidTokenId == input.UidTokenId ||
                     (this.UidTokenId != null &&
                     this.UidTokenId.Equals(input.UidTokenId))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -246,16 +216,12 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ChildTtl.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UidTokenId != null)
                     hashCode = hashCode * 59 + this.UidTokenId.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

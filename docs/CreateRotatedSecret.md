@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 
-**Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **RotatedPassword** | **string** |  | [optional] 
 **RotatedUsername** | **string** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
@@ -29,7 +28,6 @@ Name | Type | Description | Notes
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserAttribute** | **string** | User Attribute | [optional] 
 **UserDn** | **string** | User DN | [optional] 
-**Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

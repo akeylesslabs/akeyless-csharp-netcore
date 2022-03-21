@@ -39,14 +39,16 @@ namespace akeyless.Model
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="clientId">Client ID.</param>
         /// <param name="clientSecret">Client Secret.</param>
+        /// <param name="isInternal">IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal&#x3D;true.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), string issuer = default(string), string uniqueIdentifier = default(string))
+        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), string uniqueIdentifier = default(string))
         {
             this.AllowedRedirectURIs = allowedRedirectURIs;
             this.BoundClaims = boundClaims;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
+            this.IsInternal = isInternal;
             this.Issuer = issuer;
             this.UniqueIdentifier = uniqueIdentifier;
         }
@@ -80,6 +82,13 @@ namespace akeyless.Model
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal&#x3D;true
+        /// </summary>
+        /// <value>IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal&#x3D;true</value>
+        [DataMember(Name = "is_internal", EmitDefaultValue = true)]
+        public bool IsInternal { get; set; }
+
+        /// <summary>
         /// Issuer URL
         /// </summary>
         /// <value>Issuer URL</value>
@@ -105,6 +114,7 @@ namespace akeyless.Model
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+            sb.Append("  IsInternal: ").Append(IsInternal).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
@@ -164,6 +174,10 @@ namespace akeyless.Model
                     this.ClientSecret.Equals(input.ClientSecret))
                 ) && 
                 (
+                    this.IsInternal == input.IsInternal ||
+                    this.IsInternal.Equals(input.IsInternal)
+                ) && 
+                (
                     this.Issuer == input.Issuer ||
                     (this.Issuer != null &&
                     this.Issuer.Equals(input.Issuer))
@@ -192,6 +206,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ClientId.GetHashCode();
                 if (this.ClientSecret != null)
                     hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
+                hashCode = hashCode * 59 + this.IsInternal.GetHashCode();
                 if (this.Issuer != null)
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
                 if (this.UniqueIdentifier != null)

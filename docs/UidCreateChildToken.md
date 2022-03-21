@@ -10,11 +10,9 @@ Name | Type | Description | Notes
 **ChildDenyRotate** | **bool** | Deny from new child to rotate | [optional] 
 **ChildTtl** | **int** | New child token ttl | [optional] 
 **Comment** | **string** | New Token comment | [optional] 
-**Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UidTokenId** | **string** | The ID of the uid-token, required only when uid-token is not provided | [optional] 
-**Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

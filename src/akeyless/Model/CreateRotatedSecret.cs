@@ -49,7 +49,6 @@ namespace akeyless.Model
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="name">Secret name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="rotatedPassword">rotatedPassword.</param>
         /// <param name="rotatedUsername">rotatedUsername.</param>
         /// <param name="rotationHour">rotationHour.</param>
@@ -65,8 +64,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string username = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "applicationId" is required (not null)
             if (applicationId == null) {
@@ -95,7 +93,6 @@ namespace akeyless.Model
             this.CustomPayload = customPayload;
             this.Key = key;
             this.Metadata = metadata;
-            this.Password = password;
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
             this.RotationHour = rotationHour;
@@ -109,7 +106,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UserAttribute = userAttribute;
             this.UserDn = userDn;
-            this.Username = username;
         }
 
         /// <summary>
@@ -170,13 +166,6 @@ namespace akeyless.Model
         /// <value>Secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatedPassword
@@ -279,13 +268,6 @@ namespace akeyless.Model
         public string UserDn { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -302,7 +284,6 @@ namespace akeyless.Model
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
@@ -318,7 +299,6 @@ namespace akeyless.Model
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserAttribute: ").Append(UserAttribute).Append("\n");
             sb.Append("  UserDn: ").Append(UserDn).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -399,11 +379,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.RotatedPassword == input.RotatedPassword ||
                     (this.RotatedPassword != null &&
                     this.RotatedPassword.Equals(input.RotatedPassword))
@@ -477,11 +452,6 @@ namespace akeyless.Model
                     this.UserDn == input.UserDn ||
                     (this.UserDn != null &&
                     this.UserDn.Equals(input.UserDn))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -512,8 +482,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RotatedPassword != null)
                     hashCode = hashCode * 59 + this.RotatedPassword.GetHashCode();
                 if (this.RotatedUsername != null)
@@ -543,8 +511,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UserAttribute.GetHashCode();
                 if (this.UserDn != null)
                     hashCode = hashCode * 59 + this.UserDn.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -50,9 +50,8 @@ namespace akeyless.Model
         /// <param name="producers">producers.</param>
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
-        /// <param name="uidentity">uidentity.</param>
         /// <param name="version">version.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), UIdentityConfigPart uidentity = default(UIdentityConfigPart), int version = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), int version = default(int))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -69,7 +68,6 @@ namespace akeyless.Model
             this.Producers = producers;
             this.Rotators = rotators;
             this.Saml = saml;
-            this.Uidentity = uidentity;
             this._Version = version;
         }
 
@@ -164,12 +162,6 @@ namespace akeyless.Model
         public DefaultConfigPart Saml { get; set; }
 
         /// <summary>
-        /// Gets or Sets Uidentity
-        /// </summary>
-        [DataMember(Name = "uidentity", EmitDefaultValue = false)]
-        public UIdentityConfigPart Uidentity { get; set; }
-
-        /// <summary>
         /// Gets or Sets _Version
         /// </summary>
         [DataMember(Name = "version", EmitDefaultValue = false)]
@@ -198,7 +190,6 @@ namespace akeyless.Model
             sb.Append("  Producers: ").Append(Producers).Append("\n");
             sb.Append("  Rotators: ").Append(Rotators).Append("\n");
             sb.Append("  Saml: ").Append(Saml).Append("\n");
-            sb.Append("  Uidentity: ").Append(Uidentity).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -310,11 +301,6 @@ namespace akeyless.Model
                     this.Saml.Equals(input.Saml))
                 ) && 
                 (
-                    this.Uidentity == input.Uidentity ||
-                    (this.Uidentity != null &&
-                    this.Uidentity.Equals(input.Uidentity))
-                ) && 
-                (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
                 );
@@ -359,8 +345,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Rotators.GetHashCode();
                 if (this.Saml != null)
                     hashCode = hashCode * 59 + this.Saml.GetHashCode();
-                if (this.Uidentity != null)
-                    hashCode = hashCode * 59 + this.Uidentity.GetHashCode();
                 hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }

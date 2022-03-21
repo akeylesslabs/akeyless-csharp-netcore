@@ -42,7 +42,6 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="rabbitmqAdminPwd">RabbitMQ Admin password.</param>
         /// <param name="rabbitmqAdminUser">RabbitMQ Admin User.</param>
@@ -55,13 +54,13 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessUrl">secureAccessUrl.</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
+        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayUpdateProducerRabbitMQ(string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayUpdateProducerRabbitMQ(string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -69,7 +68,6 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.NewName = newName;
-            this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RabbitmqAdminPwd = rabbitmqAdminPwd;
             this.RabbitmqAdminUser = rabbitmqAdminUser;
@@ -82,13 +80,13 @@ namespace akeyless.Model
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
-            this.Username = username;
         }
 
         /// <summary>
@@ -104,13 +102,6 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -194,6 +185,12 @@ namespace akeyless.Model
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessWebProxy
+        /// </summary>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
+
+        /// <summary>
         /// List of the tags attached to this secret
         /// </summary>
         /// <value>List of the tags attached to this secret</value>
@@ -229,13 +226,6 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -245,7 +235,6 @@ namespace akeyless.Model
             sb.Append("class GatewayUpdateProducerRabbitMQ {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RabbitmqAdminPwd: ").Append(RabbitmqAdminPwd).Append("\n");
             sb.Append("  RabbitmqAdminUser: ").Append(RabbitmqAdminUser).Append("\n");
@@ -258,12 +247,12 @@ namespace akeyless.Model
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -307,11 +296,6 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
-                ) && 
-                (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -373,6 +357,10 @@ namespace akeyless.Model
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
                 (
+                    this.SecureAccessWebProxy == input.SecureAccessWebProxy ||
+                    this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -397,11 +385,6 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -418,8 +401,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.RabbitmqAdminPwd != null)
@@ -443,6 +424,7 @@ namespace akeyless.Model
                 if (this.SecureAccessUrl != null)
                     hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)
@@ -453,8 +435,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

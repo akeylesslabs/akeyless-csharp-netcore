@@ -45,16 +45,14 @@ namespace akeyless.Model
         /// <param name="accountUsername">Database Username.</param>
         /// <param name="dbName">Database name.</param>
         /// <param name="name">Producer name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="role">User role.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string name = default(string), string password = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string username = default(string), string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -65,7 +63,6 @@ namespace akeyless.Model
             this.AccountPassword = accountPassword;
             this.AccountUsername = accountUsername;
             this.DbName = dbName;
-            this.Password = password;
             this.Role = role;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -73,7 +70,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "24h";
-            this.Username = username;
             this.Warehouse = warehouse;
         }
 
@@ -111,13 +107,6 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// User role
@@ -162,13 +151,6 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Warehouse name
         /// </summary>
         /// <value>Warehouse name</value>
@@ -188,14 +170,12 @@ namespace akeyless.Model
             sb.Append("  AccountUsername: ").Append(AccountUsername).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Warehouse: ").Append(Warehouse).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -257,11 +237,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Role == input.Role ||
                     (this.Role != null &&
                     this.Role.Equals(input.Role))
@@ -293,11 +268,6 @@ namespace akeyless.Model
                     this.UserTtl.Equals(input.UserTtl))
                 ) && 
                 (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
-                ) && 
-                (
                     this.Warehouse == input.Warehouse ||
                     (this.Warehouse != null &&
                     this.Warehouse.Equals(input.Warehouse))
@@ -323,8 +293,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbName.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Role != null)
                     hashCode = hashCode * 59 + this.Role.GetHashCode();
                 if (this.Tags != null)
@@ -337,8 +305,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.Warehouse != null)
                     hashCode = hashCode * 59 + this.Warehouse.GetHashCode();
                 return hashCode;

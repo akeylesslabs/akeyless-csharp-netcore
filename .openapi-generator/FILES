@@ -6,6 +6,7 @@ docs/APIKeyAccessRules.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
+docs/AccountObjectVersionSettingsOutput.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -67,6 +68,8 @@ docs/CreateDBTarget.md
 docs/CreateDBTargetOutput.md
 docs/CreateDFCKey.md
 docs/CreateDFCKeyOutput.md
+docs/CreateDockerhubTarget.md
+docs/CreateDockerhubTargetOutput.md
 docs/CreateDynamicSecret.md
 docs/CreateEKSTarget.md
 docs/CreateEKSTargetOutput.md
@@ -162,6 +165,8 @@ docs/GatewayCreateProducerChef.md
 docs/GatewayCreateProducerChefOutput.md
 docs/GatewayCreateProducerCustom.md
 docs/GatewayCreateProducerCustomOutput.md
+docs/GatewayCreateProducerDockerhub.md
+docs/GatewayCreateProducerDockerhubOutput.md
 docs/GatewayCreateProducerEks.md
 docs/GatewayCreateProducerEksOutput.md
 docs/GatewayCreateProducerGcp.md
@@ -232,6 +237,8 @@ docs/GatewayUpdateProducerChef.md
 docs/GatewayUpdateProducerChefOutput.md
 docs/GatewayUpdateProducerCustom.md
 docs/GatewayUpdateProducerCustomOutput.md
+docs/GatewayUpdateProducerDockerhub.md
+docs/GatewayUpdateProducerDockerhubOutput.md
 docs/GatewayUpdateProducerEks.md
 docs/GatewayUpdateProducerEksOutput.md
 docs/GatewayUpdateProducerGcp.md
@@ -349,7 +356,9 @@ docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
+docs/ObjectVersionSettingsOutput.md
 docs/PKICertificateIssueDetails.md
+docs/PasswordPolicyInfo.md
 docs/PathRule.md
 docs/Producer.md
 docs/ProducersConfigPart.md
@@ -388,6 +397,7 @@ docs/SplunkLogForwardingConfig.md
 docs/SraInfo.md
 docs/StaticCredsAuth.md
 docs/StaticCredsAuthOutput.md
+docs/StaticSecretDetailsInfo.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
@@ -397,7 +407,6 @@ docs/TargetItemVersion.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/UIDTokenDetails.md
-docs/UIdentityConfigPart.md
 docs/UidCreateChildToken.md
 docs/UidCreateChildTokenOutput.md
 docs/UidGenerateToken.md
@@ -409,6 +418,7 @@ docs/UidRotateTokenOutput.md
 docs/Unconfigure.md
 docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
+docs/Update.md
 docs/UpdateAWSTarget.md
 docs/UpdateAWSTargetDetails.md
 docs/UpdateAccountSettings.md
@@ -433,6 +443,8 @@ docs/UpdateAzureTargetOutput.md
 docs/UpdateDBTarget.md
 docs/UpdateDBTargetDetails.md
 docs/UpdateDBTargetOutput.md
+docs/UpdateDockerhubTarget.md
+docs/UpdateDockerhubTargetOutput.md
 docs/UpdateEKSTarget.md
 docs/UpdateEKSTargetOutput.md
 docs/UpdateGKETarget.md
@@ -481,14 +493,19 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/CreateGithubTargetOutputTests.cs
-src/akeyless.Test/Model/CreateGithubTargetTests.cs
-src/akeyless.Test/Model/GatewayCreateProducerGithubOutputTests.cs
-src/akeyless.Test/Model/GatewayCreateProducerGithubTests.cs
-src/akeyless.Test/Model/GatewayUpdateProducerGithubOutputTests.cs
-src/akeyless.Test/Model/GatewayUpdateProducerGithubTests.cs
-src/akeyless.Test/Model/UpdateGithubTargetOutputTests.cs
-src/akeyless.Test/Model/UpdateGithubTargetTests.cs
+src/akeyless.Test/Model/AccountObjectVersionSettingsOutputTests.cs
+src/akeyless.Test/Model/CreateDockerhubTargetOutputTests.cs
+src/akeyless.Test/Model/CreateDockerhubTargetTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerDockerhubOutputTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerDockerhubTests.cs
+src/akeyless.Test/Model/GatewayUpdateProducerDockerhubOutputTests.cs
+src/akeyless.Test/Model/GatewayUpdateProducerDockerhubTests.cs
+src/akeyless.Test/Model/ObjectVersionSettingsOutputTests.cs
+src/akeyless.Test/Model/PasswordPolicyInfoTests.cs
+src/akeyless.Test/Model/StaticSecretDetailsInfoTests.cs
+src/akeyless.Test/Model/UpdateDockerhubTargetOutputTests.cs
+src/akeyless.Test/Model/UpdateDockerhubTargetTests.cs
+src/akeyless.Test/Model/UpdateTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -512,6 +529,7 @@ src/akeyless/Model/AWSIAMAccessRules.cs
 src/akeyless/Model/AWSPayload.cs
 src/akeyless/Model/AWSSecretsMigration.cs
 src/akeyless/Model/AbstractOpenAPISchema.cs
+src/akeyless/Model/AccountObjectVersionSettingsOutput.cs
 src/akeyless/Model/AdminsConfigPart.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AllowedAccess.cs
@@ -573,6 +591,8 @@ src/akeyless/Model/CreateDBTarget.cs
 src/akeyless/Model/CreateDBTargetOutput.cs
 src/akeyless/Model/CreateDFCKey.cs
 src/akeyless/Model/CreateDFCKeyOutput.cs
+src/akeyless/Model/CreateDockerhubTarget.cs
+src/akeyless/Model/CreateDockerhubTargetOutput.cs
 src/akeyless/Model/CreateDynamicSecret.cs
 src/akeyless/Model/CreateEKSTarget.cs
 src/akeyless/Model/CreateEKSTargetOutput.cs
@@ -668,6 +688,8 @@ src/akeyless/Model/GatewayCreateProducerChef.cs
 src/akeyless/Model/GatewayCreateProducerChefOutput.cs
 src/akeyless/Model/GatewayCreateProducerCustom.cs
 src/akeyless/Model/GatewayCreateProducerCustomOutput.cs
+src/akeyless/Model/GatewayCreateProducerDockerhub.cs
+src/akeyless/Model/GatewayCreateProducerDockerhubOutput.cs
 src/akeyless/Model/GatewayCreateProducerEks.cs
 src/akeyless/Model/GatewayCreateProducerEksOutput.cs
 src/akeyless/Model/GatewayCreateProducerGcp.cs
@@ -738,6 +760,8 @@ src/akeyless/Model/GatewayUpdateProducerChef.cs
 src/akeyless/Model/GatewayUpdateProducerChefOutput.cs
 src/akeyless/Model/GatewayUpdateProducerCustom.cs
 src/akeyless/Model/GatewayUpdateProducerCustomOutput.cs
+src/akeyless/Model/GatewayUpdateProducerDockerhub.cs
+src/akeyless/Model/GatewayUpdateProducerDockerhubOutput.cs
 src/akeyless/Model/GatewayUpdateProducerEks.cs
 src/akeyless/Model/GatewayUpdateProducerEksOutput.cs
 src/akeyless/Model/GatewayUpdateProducerGcp.cs
@@ -855,7 +879,9 @@ src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OIDCAccessRules.cs
 src/akeyless/Model/OIDCCustomClaim.cs
+src/akeyless/Model/ObjectVersionSettingsOutput.cs
 src/akeyless/Model/PKICertificateIssueDetails.cs
+src/akeyless/Model/PasswordPolicyInfo.cs
 src/akeyless/Model/PathRule.cs
 src/akeyless/Model/Producer.cs
 src/akeyless/Model/ProducersConfigPart.cs
@@ -894,6 +920,7 @@ src/akeyless/Model/SplunkLogForwardingConfig.cs
 src/akeyless/Model/SraInfo.cs
 src/akeyless/Model/StaticCredsAuth.cs
 src/akeyless/Model/StaticCredsAuthOutput.cs
+src/akeyless/Model/StaticSecretDetailsInfo.cs
 src/akeyless/Model/SyslogLogForwardingConfig.cs
 src/akeyless/Model/SystemAccessCredentialsReplyObj.cs
 src/akeyless/Model/SystemAccessCredsSettings.cs
@@ -903,7 +930,6 @@ src/akeyless/Model/TargetItemVersion.cs
 src/akeyless/Model/TargetTypeDetailsInput.cs
 src/akeyless/Model/TmpUserData.cs
 src/akeyless/Model/UIDTokenDetails.cs
-src/akeyless/Model/UIdentityConfigPart.cs
 src/akeyless/Model/UidCreateChildToken.cs
 src/akeyless/Model/UidCreateChildTokenOutput.cs
 src/akeyless/Model/UidGenerateToken.cs
@@ -915,6 +941,7 @@ src/akeyless/Model/UidRotateTokenOutput.cs
 src/akeyless/Model/Unconfigure.cs
 src/akeyless/Model/UniversalIdentityAccessRules.cs
 src/akeyless/Model/UniversalIdentityDetails.cs
+src/akeyless/Model/Update.cs
 src/akeyless/Model/UpdateAWSTarget.cs
 src/akeyless/Model/UpdateAWSTargetDetails.cs
 src/akeyless/Model/UpdateAccountSettings.cs
@@ -939,6 +966,8 @@ src/akeyless/Model/UpdateAzureTargetOutput.cs
 src/akeyless/Model/UpdateDBTarget.cs
 src/akeyless/Model/UpdateDBTargetDetails.cs
 src/akeyless/Model/UpdateDBTargetOutput.cs
+src/akeyless/Model/UpdateDockerhubTarget.cs
+src/akeyless/Model/UpdateDockerhubTargetOutput.cs
 src/akeyless/Model/UpdateEKSTarget.cs
 src/akeyless/Model/UpdateEKSTargetOutput.cs
 src/akeyless/Model/UpdateGKETarget.cs

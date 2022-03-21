@@ -41,9 +41,9 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateSSHTargetDetails" /> class.
         /// </summary>
         /// <param name="host">host.</param>
+        /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="newVersion">Deprecated.</param>
         /// <param name="port">port.</param>
         /// <param name="privateKey">privateKey.</param>
         /// <param name="privateKeyPassword">privateKeyPassword.</param>
@@ -52,8 +52,7 @@ namespace akeyless.Model
         /// <param name="sshUsername">sshUsername.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateSSHTargetDetails(string host = default(string), string name = default(string), bool newVersion = false, string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string protectionKey = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateSSHTargetDetails(string host = default(string), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string protectionKey = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -61,8 +60,8 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Host = host;
+            this.KeepPrevVersion = keepPrevVersion;
             this.NewVersion = newVersion;
-            this.Password = password;
             this.Port = port;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassword = privateKeyPassword;
@@ -71,7 +70,6 @@ namespace akeyless.Model
             this.SshUsername = sshUsername;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -81,6 +79,12 @@ namespace akeyless.Model
         public string Host { get; set; }
 
         /// <summary>
+        /// Gets or Sets KeepPrevVersion
+        /// </summary>
+        [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
+        public string KeepPrevVersion { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -88,18 +92,11 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether to create a new version of not
+        /// Deprecated
         /// </summary>
-        /// <value>Whether to create a new version of not</value>
+        /// <value>Deprecated</value>
         [DataMember(Name = "new-version", EmitDefaultValue = true)]
         public bool NewVersion { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets Port
@@ -153,13 +150,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -168,9 +158,9 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateSSHTargetDetails {\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
@@ -179,7 +169,6 @@ namespace akeyless.Model
             sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -220,6 +209,11 @@ namespace akeyless.Model
                     this.Host.Equals(input.Host))
                 ) && 
                 (
+                    this.KeepPrevVersion == input.KeepPrevVersion ||
+                    (this.KeepPrevVersion != null &&
+                    this.KeepPrevVersion.Equals(input.KeepPrevVersion))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -227,11 +221,6 @@ namespace akeyless.Model
                 (
                     this.NewVersion == input.NewVersion ||
                     this.NewVersion.Equals(input.NewVersion)
-                ) && 
-                (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.Port == input.Port ||
@@ -272,11 +261,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -291,11 +275,11 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                if (this.KeepPrevVersion != null)
+                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
                 if (this.PrivateKey != null)
@@ -312,8 +296,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

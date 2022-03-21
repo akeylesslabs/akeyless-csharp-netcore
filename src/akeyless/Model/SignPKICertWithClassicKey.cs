@@ -48,7 +48,6 @@ namespace akeyless.Model
         /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="postalCode">A comma-separated list of the postal code that will be set in the issued certificate.</param>
         /// <param name="province">A comma-separated list of the province that will be set in the issued certificate.</param>
         /// <param name="publicKeyPemData">PublicKey using for signing in a PEM format..</param>
@@ -58,9 +57,8 @@ namespace akeyless.Model
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="version">classic key version (required).</param>
-        public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), string username = default(string), int version = default(int))
+        public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null) {
@@ -82,7 +80,6 @@ namespace akeyless.Model
             this.Locality = locality;
             this.OrganizationalUnits = organizationalUnits;
             this.Organizations = organizations;
-            this.Password = password;
             this.PostalCode = postalCode;
             this.Province = province;
             this.PublicKeyPemData = publicKeyPemData;
@@ -90,7 +87,6 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
             this.UriSans = uriSans;
-            this.Username = username;
         }
 
         /// <summary>
@@ -148,13 +144,6 @@ namespace akeyless.Model
         /// <value>A comma-separated list of organizations (O) that will be set in the issued certificate</value>
         [DataMember(Name = "organizations", EmitDefaultValue = false)]
         public string Organizations { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// A comma-separated list of the postal code that will be set in the issued certificate
@@ -220,13 +209,6 @@ namespace akeyless.Model
         public string UriSans { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
@@ -249,7 +231,6 @@ namespace akeyless.Model
             sb.Append("  Locality: ").Append(Locality).Append("\n");
             sb.Append("  OrganizationalUnits: ").Append(OrganizationalUnits).Append("\n");
             sb.Append("  Organizations: ").Append(Organizations).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
             sb.Append("  PublicKeyPemData: ").Append(PublicKeyPemData).Append("\n");
@@ -259,7 +240,6 @@ namespace akeyless.Model
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UriSans: ").Append(UriSans).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -336,11 +316,6 @@ namespace akeyless.Model
                     this.Organizations.Equals(input.Organizations))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.PostalCode == input.PostalCode ||
                     (this.PostalCode != null &&
                     this.PostalCode.Equals(input.PostalCode))
@@ -385,11 +360,6 @@ namespace akeyless.Model
                     this.UriSans.Equals(input.UriSans))
                 ) && 
                 (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
-                ) && 
-                (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
                 );
@@ -420,8 +390,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.OrganizationalUnits.GetHashCode();
                 if (this.Organizations != null)
                     hashCode = hashCode * 59 + this.Organizations.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.PostalCode != null)
                     hashCode = hashCode * 59 + this.PostalCode.GetHashCode();
                 if (this.Province != null)
@@ -439,8 +407,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UriSans != null)
                     hashCode = hashCode * 59 + this.UriSans.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }

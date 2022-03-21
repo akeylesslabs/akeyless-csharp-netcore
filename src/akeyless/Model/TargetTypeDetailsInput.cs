@@ -108,6 +108,7 @@ namespace akeyless.Model
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
         /// <param name="url">url.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
+        /// <param name="userName">userName.</param>
         /// <param name="username">username.</param>
         /// <param name="venafiApiKey">venafiApiKey.</param>
         /// <param name="venafiBaseUrl">venafiBaseUrl.</param>
@@ -115,7 +116,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string url = default(string), bool useGwCloudIdentity = default(bool), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -190,6 +191,7 @@ namespace akeyless.Model
             this.SslConnectionMode = sslConnectionMode;
             this.Url = url;
             this.UseGwCloudIdentity = useGwCloudIdentity;
+            this.UserName = userName;
             this.Username = username;
             this.VenafiApiKey = venafiApiKey;
             this.VenafiBaseUrl = venafiBaseUrl;
@@ -645,6 +647,12 @@ namespace akeyless.Model
         public bool UseGwCloudIdentity { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserName
+        /// </summary>
+        [DataMember(Name = "user_name", EmitDefaultValue = false)]
+        public string UserName { get; set; }
+
+        /// <summary>
         /// Gets or Sets Username
         /// </summary>
         [DataMember(Name = "username", EmitDefaultValue = false)]
@@ -767,6 +775,7 @@ namespace akeyless.Model
             sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
+            sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  VenafiApiKey: ").Append(VenafiApiKey).Append("\n");
             sb.Append("  VenafiBaseUrl: ").Append(VenafiBaseUrl).Append("\n");
@@ -1169,6 +1178,11 @@ namespace akeyless.Model
                     this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
                 ) && 
                 (
+                    this.UserName == input.UserName ||
+                    (this.UserName != null &&
+                    this.UserName.Equals(input.UserName))
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -1354,6 +1368,8 @@ namespace akeyless.Model
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
                 hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
+                if (this.UserName != null)
+                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.VenafiApiKey != null)

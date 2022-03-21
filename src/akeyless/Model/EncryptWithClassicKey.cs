@@ -41,13 +41,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="EncryptWithClassicKey" /> class.
         /// </summary>
         /// <param name="displayId">The name of the key to use in the encryption process (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="plaintext">Data to be encrypted (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="version">classic key version (required).</param>
-        public EncryptWithClassicKey(string displayId = default(string), string password = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = default(int))
+        public EncryptWithClassicKey(string displayId = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null) {
@@ -60,10 +58,8 @@ namespace akeyless.Model
             }
             this.Plaintext = plaintext;
             this._Version = version;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -72,13 +68,6 @@ namespace akeyless.Model
         /// <value>The name of the key to use in the encryption process</value>
         [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
         public string DisplayId { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Data to be encrypted
@@ -102,13 +91,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
@@ -124,11 +106,9 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class EncryptWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -170,11 +150,6 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Plaintext == input.Plaintext ||
                     (this.Plaintext != null &&
                     this.Plaintext.Equals(input.Plaintext))
@@ -188,11 +163,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 ) && 
                 (
                     this._Version == input._Version ||
@@ -211,16 +181,12 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Plaintext != null)
                     hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }

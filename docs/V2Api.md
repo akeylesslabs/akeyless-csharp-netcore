@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**CreateClassicKey**](V2Api.md#createclassickey) | **POST** /create-classic-key | 
 [**CreateDBTarget**](V2Api.md#createdbtarget) | **POST** /create-db-target | 
 [**CreateDFCKey**](V2Api.md#createdfckey) | **POST** /create-dfc-key | 
+[**CreateDockerhubTarget**](V2Api.md#createdockerhubtarget) | **POST** /create-dockerhub-target | 
 [**CreateDynamicSecret**](V2Api.md#createdynamicsecret) | **POST** /create-dynamic-secret | 
 [**CreateEKSTarget**](V2Api.md#createekstarget) | **POST** /create-eks-target | 
 [**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target | 
@@ -68,6 +69,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerCassandra**](V2Api.md#gatewaycreateproducercassandra) | **POST** /gateway-create-producer-cassandra | 
 [**GatewayCreateProducerCertificateAutomation**](V2Api.md#gatewaycreateproducercertificateautomation) | **POST** /gateway-create-producer-certificate-automation | 
 [**GatewayCreateProducerCustom**](V2Api.md#gatewaycreateproducercustom) | **POST** /gateway-create-producer-custom | 
+[**GatewayCreateProducerDockerhub**](V2Api.md#gatewaycreateproducerdockerhub) | **POST** /gateway-create-producer-dockerhub | 
 [**GatewayCreateProducerEks**](V2Api.md#gatewaycreateproducereks) | **POST** /gateway-create-producer-eks | 
 [**GatewayCreateProducerGcp**](V2Api.md#gatewaycreateproducergcp) | **POST** /gateway-create-producer-gcp | 
 [**GatewayCreateProducerGithub**](V2Api.md#gatewaycreateproducergithub) | **POST** /gateway-create-producer-github | 
@@ -105,6 +107,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerCassandra**](V2Api.md#gatewayupdateproducercassandra) | **POST** /gateway-update-producer-cassandra | 
 [**GatewayUpdateProducerCertificateAutomation**](V2Api.md#gatewayupdateproducercertificateautomation) | **POST** /gateway-update-producer-certificate-automation | 
 [**GatewayUpdateProducerCustom**](V2Api.md#gatewayupdateproducercustom) | **POST** /gateway-update-producer-custom | 
+[**GatewayUpdateProducerDockerhub**](V2Api.md#gatewayupdateproducerdockerhub) | **POST** /gateway-update-producer-dockerhub | 
 [**GatewayUpdateProducerEks**](V2Api.md#gatewayupdateproducereks) | **POST** /gateway-update-producer-eks | 
 [**GatewayUpdateProducerGcp**](V2Api.md#gatewayupdateproducergcp) | **POST** /gateway-update-producer-gcp | 
 [**GatewayUpdateProducerGithub**](V2Api.md#gatewayupdateproducergithub) | **POST** /gateway-update-producer-github | 
@@ -186,6 +189,7 @@ Method | HTTP request | Description
 [**UpdateAzureTarget**](V2Api.md#updateazuretarget) | **POST** /update-azure-target | 
 [**UpdateDBTarget**](V2Api.md#updatedbtarget) | **POST** /update-db-target | 
 [**UpdateDBTargetDetails**](V2Api.md#updatedbtargetdetails) | **POST** /update-db-target-details | 
+[**UpdateDockerhubTarget**](V2Api.md#updatedockerhubtarget) | **POST** /update-dockerhub-target | 
 [**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target | 
 [**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target | 
@@ -1729,6 +1733,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createDFCKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createdockerhubtarget"></a>
+# **CreateDockerhubTarget**
+> CreateDockerhubTargetOutput CreateDockerhubTarget (CreateDockerhubTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateDockerhubTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateDockerhubTarget(); // CreateDockerhubTarget | 
+
+            try
+            {
+                CreateDockerhubTargetOutput result = apiInstance.CreateDockerhubTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateDockerhubTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateDockerhubTarget**](CreateDockerhubTarget.md)|  | 
+
+### Return type
+
+[**CreateDockerhubTargetOutput**](CreateDockerhubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createDockerhubTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4631,6 +4704,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaycreateproducerdockerhub"></a>
+# **GatewayCreateProducerDockerhub**
+> GatewayCreateProducerDockerhubOutput GatewayCreateProducerDockerhub (GatewayCreateProducerDockerhub body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateProducerDockerhubExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerDockerhub(); // GatewayCreateProducerDockerhub | 
+
+            try
+            {
+                GatewayCreateProducerDockerhubOutput result = apiInstance.GatewayCreateProducerDockerhub(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerDockerhub: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerDockerhub**](GatewayCreateProducerDockerhub.md)|  | 
+
+### Return type
+
+[**GatewayCreateProducerDockerhubOutput**](GatewayCreateProducerDockerhubOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayCreateProducerDockerhubResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaycreateproducereks"></a>
 # **GatewayCreateProducerEks**
 > GatewayCreateProducerEksOutput GatewayCreateProducerEks (GatewayCreateProducerEks body)
@@ -7179,6 +7321,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayUpdateProducerCustomResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerdockerhub"></a>
+# **GatewayUpdateProducerDockerhub**
+> GatewayUpdateProducerDockerhubOutput GatewayUpdateProducerDockerhub (GatewayUpdateProducerDockerhub body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerDockerhubExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerDockerhub(); // GatewayUpdateProducerDockerhub | 
+
+            try
+            {
+                GatewayUpdateProducerDockerhubOutput result = apiInstance.GatewayUpdateProducerDockerhub(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerDockerhub: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateProducerDockerhub**](GatewayUpdateProducerDockerhub.md)|  | 
+
+### Return type
+
+[**GatewayUpdateProducerDockerhubOutput**](GatewayUpdateProducerDockerhubOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerDockerhubResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -12759,6 +12970,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatedockerhubtarget"></a>
+# **UpdateDockerhubTarget**
+> UpdateDockerhubTargetOutput UpdateDockerhubTarget (UpdateDockerhubTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateDockerhubTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateDockerhubTarget(); // UpdateDockerhubTarget | 
+
+            try
+            {
+                UpdateDockerhubTargetOutput result = apiInstance.UpdateDockerhubTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateDockerhubTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateDockerhubTarget**](UpdateDockerhubTarget.md)|  | 
+
+### Return type
+
+[**UpdateDockerhubTargetOutput**](UpdateDockerhubTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateDockerhubTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

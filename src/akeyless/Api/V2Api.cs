@@ -428,6 +428,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateDockerhubTargetOutput</returns>
+        CreateDockerhubTargetOutput CreateDockerhubTarget(CreateDockerhubTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateDockerhubTargetOutput</returns>
+        ApiResponse<CreateDockerhubTargetOutput> CreateDockerhubTargetWithHttpInfo(CreateDockerhubTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Object</returns>
         Object CreateDynamicSecret(CreateDynamicSecret body);
 
@@ -1184,6 +1202,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerDockerhubOutput</returns>
+        GatewayCreateProducerDockerhubOutput GatewayCreateProducerDockerhub(GatewayCreateProducerDockerhub body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerDockerhubOutput</returns>
+        ApiResponse<GatewayCreateProducerDockerhubOutput> GatewayCreateProducerDockerhubWithHttpInfo(GatewayCreateProducerDockerhub body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerEksOutput</returns>
         GatewayCreateProducerEksOutput GatewayCreateProducerEks(GatewayCreateProducerEks body);
 
@@ -1845,6 +1881,24 @@ namespace akeyless.Api
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of GatewayUpdateProducerCustomOutput</returns>
         ApiResponse<GatewayUpdateProducerCustomOutput> GatewayUpdateProducerCustomWithHttpInfo(GatewayUpdateProducerCustom body = default(GatewayUpdateProducerCustom));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerDockerhubOutput</returns>
+        GatewayUpdateProducerDockerhubOutput GatewayUpdateProducerDockerhub(GatewayUpdateProducerDockerhub body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerDockerhubOutput</returns>
+        ApiResponse<GatewayUpdateProducerDockerhubOutput> GatewayUpdateProducerDockerhubWithHttpInfo(GatewayUpdateProducerDockerhub body);
         /// <summary>
         /// 
         /// </summary>
@@ -3304,6 +3358,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>UpdateDockerhubTargetOutput</returns>
+        UpdateDockerhubTargetOutput UpdateDockerhubTarget(UpdateDockerhubTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateDockerhubTargetOutput</returns>
+        ApiResponse<UpdateDockerhubTargetOutput> UpdateDockerhubTargetWithHttpInfo(UpdateDockerhubTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>UpdateEKSTargetOutput</returns>
         UpdateEKSTargetOutput UpdateEKSTarget(UpdateEKSTarget body);
 
@@ -4289,6 +4361,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDockerhubTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateDockerhubTargetOutput> CreateDockerhubTargetAsync(CreateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDockerhubTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDockerhubTargetOutput>> CreateDockerhubTargetWithHttpInfoAsync(CreateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Object</returns>
         System.Threading.Tasks.Task<Object> CreateDynamicSecretAsync(CreateDynamicSecret body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -5255,6 +5350,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayCreateProducerDockerhubOutput</returns>
+        System.Threading.Tasks.Task<GatewayCreateProducerDockerhubOutput> GatewayCreateProducerDockerhubAsync(GatewayCreateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerDockerhubOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayCreateProducerDockerhubOutput>> GatewayCreateProducerDockerhubWithHttpInfoAsync(GatewayCreateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayCreateProducerEksOutput</returns>
         System.Threading.Tasks.Task<GatewayCreateProducerEksOutput> GatewayCreateProducerEksAsync(GatewayCreateProducerEks body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -6097,6 +6215,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayUpdateProducerCustomOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerCustomOutput>> GatewayUpdateProducerCustomWithHttpInfoAsync(GatewayUpdateProducerCustom body = default(GatewayUpdateProducerCustom), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateProducerDockerhubOutput</returns>
+        System.Threading.Tasks.Task<GatewayUpdateProducerDockerhubOutput> GatewayUpdateProducerDockerhubAsync(GatewayUpdateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerDockerhubOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerDockerhubOutput>> GatewayUpdateProducerDockerhubWithHttpInfoAsync(GatewayUpdateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -7956,6 +8097,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTargetOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateTargetOutput>> UpdateDBTargetDetailsWithHttpInfoAsync(UpdateDBTargetDetails body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDockerhubTargetOutput</returns>
+        System.Threading.Tasks.Task<UpdateDockerhubTargetOutput> UpdateDockerhubTargetAsync(UpdateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDockerhubTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateDockerhubTargetOutput>> UpdateDockerhubTargetWithHttpInfoAsync(UpdateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -11240,6 +11404,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDFCKey", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>CreateDockerhubTargetOutput</returns>
+        public CreateDockerhubTargetOutput CreateDockerhubTarget(CreateDockerhubTarget body)
+        {
+            akeyless.Client.ApiResponse<CreateDockerhubTargetOutput> localVarResponse = CreateDockerhubTargetWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateDockerhubTargetOutput</returns>
+        public akeyless.Client.ApiResponse<CreateDockerhubTargetOutput> CreateDockerhubTargetWithHttpInfo(CreateDockerhubTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateDockerhubTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateDockerhubTargetOutput>("/create-dockerhub-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDockerhubTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDockerhubTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateDockerhubTargetOutput> CreateDockerhubTargetAsync(CreateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<CreateDockerhubTargetOutput> localVarResponse = await CreateDockerhubTargetWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDockerhubTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateDockerhubTargetOutput>> CreateDockerhubTargetWithHttpInfoAsync(CreateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateDockerhubTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDockerhubTargetOutput>("/create-dockerhub-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDockerhubTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -16157,6 +16438,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayCreateProducerDockerhubOutput</returns>
+        public GatewayCreateProducerDockerhubOutput GatewayCreateProducerDockerhub(GatewayCreateProducerDockerhub body)
+        {
+            akeyless.Client.ApiResponse<GatewayCreateProducerDockerhubOutput> localVarResponse = GatewayCreateProducerDockerhubWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayCreateProducerDockerhubOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayCreateProducerDockerhubOutput> GatewayCreateProducerDockerhubWithHttpInfo(GatewayCreateProducerDockerhub body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerDockerhub");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayCreateProducerDockerhubOutput>("/gateway-create-producer-dockerhub", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerDockerhub", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayCreateProducerDockerhubOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayCreateProducerDockerhubOutput> GatewayCreateProducerDockerhubAsync(GatewayCreateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayCreateProducerDockerhubOutput> localVarResponse = await GatewayCreateProducerDockerhubWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayCreateProducerDockerhubOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayCreateProducerDockerhubOutput>> GatewayCreateProducerDockerhubWithHttpInfoAsync(GatewayCreateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateProducerDockerhub");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayCreateProducerDockerhubOutput>("/gateway-create-producer-dockerhub", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateProducerDockerhub", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayCreateProducerEksOutput</returns>
         public GatewayCreateProducerEksOutput GatewayCreateProducerEks(GatewayCreateProducerEks body)
         {
@@ -20465,6 +20863,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayUpdateProducerCustom", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerDockerhubOutput</returns>
+        public GatewayUpdateProducerDockerhubOutput GatewayUpdateProducerDockerhub(GatewayUpdateProducerDockerhub body)
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateProducerDockerhubOutput> localVarResponse = GatewayUpdateProducerDockerhubWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerDockerhubOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayUpdateProducerDockerhubOutput> GatewayUpdateProducerDockerhubWithHttpInfo(GatewayUpdateProducerDockerhub body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerDockerhub");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayUpdateProducerDockerhubOutput>("/gateway-update-producer-dockerhub", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerDockerhub", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateProducerDockerhubOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayUpdateProducerDockerhubOutput> GatewayUpdateProducerDockerhubAsync(GatewayUpdateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateProducerDockerhubOutput> localVarResponse = await GatewayUpdateProducerDockerhubWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerDockerhubOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayUpdateProducerDockerhubOutput>> GatewayUpdateProducerDockerhubWithHttpInfoAsync(GatewayUpdateProducerDockerhub body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerDockerhub");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateProducerDockerhubOutput>("/gateway-update-producer-dockerhub", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerDockerhub", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -29812,6 +30327,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateDBTargetDetails", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>UpdateDockerhubTargetOutput</returns>
+        public UpdateDockerhubTargetOutput UpdateDockerhubTarget(UpdateDockerhubTarget body)
+        {
+            akeyless.Client.ApiResponse<UpdateDockerhubTargetOutput> localVarResponse = UpdateDockerhubTargetWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateDockerhubTargetOutput</returns>
+        public akeyless.Client.ApiResponse<UpdateDockerhubTargetOutput> UpdateDockerhubTargetWithHttpInfo(UpdateDockerhubTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateDockerhubTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpdateDockerhubTargetOutput>("/update-dockerhub-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDockerhubTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDockerhubTargetOutput</returns>
+        public async System.Threading.Tasks.Task<UpdateDockerhubTargetOutput> UpdateDockerhubTargetAsync(UpdateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<UpdateDockerhubTargetOutput> localVarResponse = await UpdateDockerhubTargetWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDockerhubTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<UpdateDockerhubTargetOutput>> UpdateDockerhubTargetWithHttpInfoAsync(UpdateDockerhubTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateDockerhubTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateDockerhubTargetOutput>("/update-dockerhub-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDockerhubTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

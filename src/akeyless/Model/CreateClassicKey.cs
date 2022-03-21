@@ -45,14 +45,12 @@ namespace akeyless.Model
         /// <param name="keyData">Base64-encoded classic key value.</param>
         /// <param name="metadata">Metadata about the classic key.</param>
         /// <param name="name">ClassicKey name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="protectionKeyName">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="tags">List of the tags attached to this classic key.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string password = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -67,13 +65,11 @@ namespace akeyless.Model
             this.CertFileData = certFileData;
             this.KeyData = keyData;
             this.Metadata = metadata;
-            this.Password = password;
             this.ProtectionKeyName = protectionKeyName;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -112,13 +108,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
         /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
@@ -154,13 +143,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -173,13 +155,11 @@ namespace akeyless.Model
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -240,11 +220,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.ProtectionKeyName == input.ProtectionKeyName ||
                     (this.ProtectionKeyName != null &&
                     this.ProtectionKeyName.Equals(input.ProtectionKeyName))
@@ -269,11 +244,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -296,8 +266,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProtectionKeyName != null)
                     hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
                 if (this.Tags != null)
@@ -308,8 +276,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

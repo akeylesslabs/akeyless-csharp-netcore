@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AdminEmail** | **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **CloudId** | **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
+**Debug** | **bool** |  | [optional] 
 **GcpAudience** | **string** | GCP JWT audience | [optional] 
 **Jwt** | **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **K8sAuthConfigName** | **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 

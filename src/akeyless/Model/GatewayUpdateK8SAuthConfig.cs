@@ -47,14 +47,12 @@ namespace akeyless.Model
         /// <param name="k8sIssuer">The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer..</param>
         /// <param name="name">K8S Auth config name (required).</param>
         /// <param name="newName">K8S Auth config new name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="signingKey">The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token.</param>
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string newName = default(string), string password = default(string), string signingKey = default(string), string token = default(string), long tokenExp = default(long), string tokenReviewerJwt = default(string), string uidToken = default(string), string username = default(string))
+        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string newName = default(string), string signingKey = default(string), string token = default(string), long tokenExp = default(long), string tokenReviewerJwt = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null) {
@@ -84,12 +82,10 @@ namespace akeyless.Model
             this.ConfigEncryptionKeyName = configEncryptionKeyName;
             this.K8sCaCert = k8sCaCert;
             this.K8sIssuer = k8sIssuer;
-            this.Password = password;
             this.Token = token;
             this.TokenExp = tokenExp;
             this.TokenReviewerJwt = tokenReviewerJwt;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -142,13 +138,6 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
         /// </summary>
         /// <value>The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth</value>
@@ -184,13 +173,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -205,13 +187,11 @@ namespace akeyless.Model
             sb.Append("  K8sIssuer: ").Append(K8sIssuer).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  SigningKey: ").Append(SigningKey).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExp: ").Append(TokenExp).Append("\n");
             sb.Append("  TokenReviewerJwt: ").Append(TokenReviewerJwt).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -282,11 +262,6 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.SigningKey == input.SigningKey ||
                     (this.SigningKey != null &&
                     this.SigningKey.Equals(input.SigningKey))
@@ -309,11 +284,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -340,8 +310,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.SigningKey != null)
                     hashCode = hashCode * 59 + this.SigningKey.GetHashCode();
                 if (this.Token != null)
@@ -351,8 +319,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.TokenReviewerJwt.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

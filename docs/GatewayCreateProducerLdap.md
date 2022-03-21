@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | [optional] 
 **Name** | **string** | Producer name | 
-**Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
@@ -21,7 +20,6 @@ Name | Type | Description | Notes
 **UserAttribute** | **string** | User Attribute | [optional] 
 **UserDn** | **string** | User DN | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]
-**Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

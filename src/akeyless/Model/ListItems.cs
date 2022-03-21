@@ -37,24 +37,20 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="filter">Filter by item name or part of it.</param>
         /// <param name="paginationToken">Next page reference.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="path">Path to folder.</param>
         /// <param name="tag">Filter by item tag.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public ListItems(string filter = default(string), string paginationToken = default(string), string password = default(string), string path = default(string), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string), string username = default(string))
+        public ListItems(string filter = default(string), string paginationToken = default(string), string path = default(string), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.Filter = filter;
             this.PaginationToken = paginationToken;
-            this.Password = password;
             this.Path = path;
             this.Tag = tag;
             this.Token = token;
             this.Type = type;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -70,13 +66,6 @@ namespace akeyless.Model
         /// <value>Next page reference</value>
         [DataMember(Name = "pagination-token", EmitDefaultValue = false)]
         public string PaginationToken { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Path to folder
@@ -114,13 +103,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -130,13 +112,11 @@ namespace akeyless.Model
             sb.Append("class ListItems {\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -182,11 +162,6 @@ namespace akeyless.Model
                     this.PaginationToken.Equals(input.PaginationToken))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -211,11 +186,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -232,8 +202,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Filter.GetHashCode();
                 if (this.PaginationToken != null)
                     hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.Tag != null)
@@ -244,8 +212,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

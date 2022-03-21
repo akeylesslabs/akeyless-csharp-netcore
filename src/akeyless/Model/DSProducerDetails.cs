@@ -57,6 +57,8 @@ namespace akeyless.Model
         /// <param name="azureAppObjectId">azureAppObjectId.</param>
         /// <param name="azureClientId">azureClientId.</param>
         /// <param name="azureClientSecret">azureClientSecret.</param>
+        /// <param name="azureFixedUserNameSubClaimKey">azureFixedUserNameSubClaimKey.</param>
+        /// <param name="azureFixedUserOnly">azureFixedUserOnly.</param>
         /// <param name="azureTenantId">azureTenantId.</param>
         /// <param name="azureUserGroupsObjId">azureUserGroupsObjId.</param>
         /// <param name="azureUserPortalAccess">azureUserPortalAccess.</param>
@@ -151,6 +153,7 @@ namespace akeyless.Model
         /// <param name="mssqlRevocationStatements">mssqlRevocationStatements.</param>
         /// <param name="mysqlCreationStatements">mysqlCreationStatements.</param>
         /// <param name="oracleCreationStatements">oracleCreationStatements.</param>
+        /// <param name="password">password.</param>
         /// <param name="passwordLength">passwordLength.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="payload">payload.</param>
@@ -167,6 +170,7 @@ namespace akeyless.Model
         /// <param name="redshiftCreationStatements">redshiftCreationStatements.</param>
         /// <param name="revokeSyncUrl">revokeSyncUrl.</param>
         /// <param name="rotateSyncUrl">rotateSyncUrl.</param>
+        /// <param name="scopes">scopes.</param>
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sfUserRole">generated  users info.</param>
@@ -177,6 +181,7 @@ namespace akeyless.Model
         /// <param name="tags">tags.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
+        /// <param name="userName">userName.</param>
         /// <param name="userPrincipalName">userPrincipalName.</param>
         /// <param name="userTtl">userTtl.</param>
         /// <param name="usernameLength">usernameLength.</param>
@@ -194,7 +199,8 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        /// <param name="warnBeforeUserExpirationMin">warnBeforeUserExpirationMin.</param>
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hostName = default(string), string hostPort = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -218,6 +224,8 @@ namespace akeyless.Model
             this.AzureAppObjectId = azureAppObjectId;
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
+            this.AzureFixedUserNameSubClaimKey = azureFixedUserNameSubClaimKey;
+            this.AzureFixedUserOnly = azureFixedUserOnly;
             this.AzureTenantId = azureTenantId;
             this.AzureUserGroupsObjId = azureUserGroupsObjId;
             this.AzureUserPortalAccess = azureUserPortalAccess;
@@ -312,6 +320,7 @@ namespace akeyless.Model
             this.MssqlRevocationStatements = mssqlRevocationStatements;
             this.MysqlCreationStatements = mysqlCreationStatements;
             this.OracleCreationStatements = oracleCreationStatements;
+            this.Password = password;
             this.PasswordLength = passwordLength;
             this.PasswordPolicy = passwordPolicy;
             this.Payload = payload;
@@ -328,6 +337,7 @@ namespace akeyless.Model
             this.RedshiftCreationStatements = redshiftCreationStatements;
             this.RevokeSyncUrl = revokeSyncUrl;
             this.RotateSyncUrl = rotateSyncUrl;
+            this.Scopes = scopes;
             this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
             this.SfAccount = sfAccount;
             this.SfUserRole = sfUserRole;
@@ -338,6 +348,7 @@ namespace akeyless.Model
             this.Tags = tags;
             this.TimeoutSeconds = timeoutSeconds;
             this.UseGwCloudIdentity = useGwCloudIdentity;
+            this.UserName = userName;
             this.UserPrincipalName = userPrincipalName;
             this.UserTtl = userTtl;
             this.UsernameLength = usernameLength;
@@ -355,6 +366,7 @@ namespace akeyless.Model
             this.VenafiTppUsername = venafiTppUsername;
             this.VenafiUseTpp = venafiUseTpp;
             this.VenafiZone = venafiZone;
+            this.WarnBeforeUserExpirationMin = warnBeforeUserExpirationMin;
         }
 
         /// <summary>
@@ -488,6 +500,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure_client_secret", EmitDefaultValue = false)]
         public string AzureClientSecret { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureFixedUserNameSubClaimKey
+        /// </summary>
+        [DataMember(Name = "azure_fixed_user_name_sub_claim_key", EmitDefaultValue = false)]
+        public string AzureFixedUserNameSubClaimKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureFixedUserOnly
+        /// </summary>
+        [DataMember(Name = "azure_fixed_user_only", EmitDefaultValue = true)]
+        public bool AzureFixedUserOnly { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureTenantId
@@ -1060,6 +1084,12 @@ namespace akeyless.Model
         public string OracleCreationStatements { get; set; }
 
         /// <summary>
+        /// Gets or Sets Password
+        /// </summary>
+        [DataMember(Name = "password", EmitDefaultValue = false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// Gets or Sets PasswordLength
         /// </summary>
         [DataMember(Name = "password_length", EmitDefaultValue = false)]
@@ -1156,6 +1186,12 @@ namespace akeyless.Model
         public string RotateSyncUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets Scopes
+        /// </summary>
+        [DataMember(Name = "scopes", EmitDefaultValue = false)]
+        public List<string> Scopes { get; set; }
+
+        /// <summary>
         /// Gets or Sets SecureRemoteAccessDetails
         /// </summary>
         [DataMember(Name = "secure_remote_access_details", EmitDefaultValue = false)]
@@ -1218,6 +1254,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
         public bool UseGwCloudIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UserName
+        /// </summary>
+        [DataMember(Name = "user_name", EmitDefaultValue = false)]
+        public string UserName { get; set; }
 
         /// <summary>
         /// Gets or Sets UserPrincipalName
@@ -1322,6 +1364,12 @@ namespace akeyless.Model
         public string VenafiZone { get; set; }
 
         /// <summary>
+        /// Gets or Sets WarnBeforeUserExpirationMin
+        /// </summary>
+        [DataMember(Name = "warn_before_user_expiration_min", EmitDefaultValue = false)]
+        public long WarnBeforeUserExpirationMin { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -1351,6 +1399,8 @@ namespace akeyless.Model
             sb.Append("  AzureAppObjectId: ").Append(AzureAppObjectId).Append("\n");
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
+            sb.Append("  AzureFixedUserNameSubClaimKey: ").Append(AzureFixedUserNameSubClaimKey).Append("\n");
+            sb.Append("  AzureFixedUserOnly: ").Append(AzureFixedUserOnly).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
             sb.Append("  AzureUserGroupsObjId: ").Append(AzureUserGroupsObjId).Append("\n");
             sb.Append("  AzureUserPortalAccess: ").Append(AzureUserPortalAccess).Append("\n");
@@ -1445,6 +1495,7 @@ namespace akeyless.Model
             sb.Append("  MssqlRevocationStatements: ").Append(MssqlRevocationStatements).Append("\n");
             sb.Append("  MysqlCreationStatements: ").Append(MysqlCreationStatements).Append("\n");
             sb.Append("  OracleCreationStatements: ").Append(OracleCreationStatements).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
@@ -1461,6 +1512,7 @@ namespace akeyless.Model
             sb.Append("  RedshiftCreationStatements: ").Append(RedshiftCreationStatements).Append("\n");
             sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
             sb.Append("  RotateSyncUrl: ").Append(RotateSyncUrl).Append("\n");
+            sb.Append("  Scopes: ").Append(Scopes).Append("\n");
             sb.Append("  SecureRemoteAccessDetails: ").Append(SecureRemoteAccessDetails).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
             sb.Append("  SfUserRole: ").Append(SfUserRole).Append("\n");
@@ -1471,6 +1523,7 @@ namespace akeyless.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
+            sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("  UserPrincipalName: ").Append(UserPrincipalName).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("  UsernameLength: ").Append(UsernameLength).Append("\n");
@@ -1488,6 +1541,7 @@ namespace akeyless.Model
             sb.Append("  VenafiTppUsername: ").Append(VenafiTppUsername).Append("\n");
             sb.Append("  VenafiUseTpp: ").Append(VenafiUseTpp).Append("\n");
             sb.Append("  VenafiZone: ").Append(VenafiZone).Append("\n");
+            sb.Append("  WarnBeforeUserExpirationMin: ").Append(WarnBeforeUserExpirationMin).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -1627,6 +1681,15 @@ namespace akeyless.Model
                     this.AzureClientSecret == input.AzureClientSecret ||
                     (this.AzureClientSecret != null &&
                     this.AzureClientSecret.Equals(input.AzureClientSecret))
+                ) && 
+                (
+                    this.AzureFixedUserNameSubClaimKey == input.AzureFixedUserNameSubClaimKey ||
+                    (this.AzureFixedUserNameSubClaimKey != null &&
+                    this.AzureFixedUserNameSubClaimKey.Equals(input.AzureFixedUserNameSubClaimKey))
+                ) && 
+                (
+                    this.AzureFixedUserOnly == input.AzureFixedUserOnly ||
+                    this.AzureFixedUserOnly.Equals(input.AzureFixedUserOnly)
                 ) && 
                 (
                     this.AzureTenantId == input.AzureTenantId ||
@@ -2094,6 +2157,11 @@ namespace akeyless.Model
                     this.OracleCreationStatements.Equals(input.OracleCreationStatements))
                 ) && 
                 (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
                     this.PasswordLength == input.PasswordLength ||
                     this.PasswordLength.Equals(input.PasswordLength)
                 ) && 
@@ -2173,6 +2241,12 @@ namespace akeyless.Model
                     this.RotateSyncUrl.Equals(input.RotateSyncUrl))
                 ) && 
                 (
+                    this.Scopes == input.Scopes ||
+                    this.Scopes != null &&
+                    input.Scopes != null &&
+                    this.Scopes.SequenceEqual(input.Scopes)
+                ) && 
+                (
                     this.SecureRemoteAccessDetails == input.SecureRemoteAccessDetails ||
                     (this.SecureRemoteAccessDetails != null &&
                     this.SecureRemoteAccessDetails.Equals(input.SecureRemoteAccessDetails))
@@ -2219,6 +2293,11 @@ namespace akeyless.Model
                 (
                     this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
                     this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
+                ) && 
+                (
+                    this.UserName == input.UserName ||
+                    (this.UserName != null &&
+                    this.UserName.Equals(input.UserName))
                 ) && 
                 (
                     this.UserPrincipalName == input.UserPrincipalName ||
@@ -2299,6 +2378,10 @@ namespace akeyless.Model
                     this.VenafiZone == input.VenafiZone ||
                     (this.VenafiZone != null &&
                     this.VenafiZone.Equals(input.VenafiZone))
+                ) && 
+                (
+                    this.WarnBeforeUserExpirationMin == input.WarnBeforeUserExpirationMin ||
+                    this.WarnBeforeUserExpirationMin.Equals(input.WarnBeforeUserExpirationMin)
                 );
         }
 
@@ -2351,6 +2434,9 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureClientId.GetHashCode();
                 if (this.AzureClientSecret != null)
                     hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
+                if (this.AzureFixedUserNameSubClaimKey != null)
+                    hashCode = hashCode * 59 + this.AzureFixedUserNameSubClaimKey.GetHashCode();
+                hashCode = hashCode * 59 + this.AzureFixedUserOnly.GetHashCode();
                 if (this.AzureTenantId != null)
                     hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
                 if (this.AzureUserGroupsObjId != null)
@@ -2530,6 +2616,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MysqlCreationStatements.GetHashCode();
                 if (this.OracleCreationStatements != null)
                     hashCode = hashCode * 59 + this.OracleCreationStatements.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 hashCode = hashCode * 59 + this.PasswordLength.GetHashCode();
                 if (this.PasswordPolicy != null)
                     hashCode = hashCode * 59 + this.PasswordPolicy.GetHashCode();
@@ -2561,6 +2649,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RevokeSyncUrl.GetHashCode();
                 if (this.RotateSyncUrl != null)
                     hashCode = hashCode * 59 + this.RotateSyncUrl.GetHashCode();
+                if (this.Scopes != null)
+                    hashCode = hashCode * 59 + this.Scopes.GetHashCode();
                 if (this.SecureRemoteAccessDetails != null)
                     hashCode = hashCode * 59 + this.SecureRemoteAccessDetails.GetHashCode();
                 if (this.SfAccount != null)
@@ -2578,6 +2668,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 hashCode = hashCode * 59 + this.TimeoutSeconds.GetHashCode();
                 hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
+                if (this.UserName != null)
+                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
                 if (this.UserPrincipalName != null)
                     hashCode = hashCode * 59 + this.UserPrincipalName.GetHashCode();
                 if (this.UserTtl != null)
@@ -2606,6 +2698,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.VenafiUseTpp.GetHashCode();
                 if (this.VenafiZone != null)
                     hashCode = hashCode * 59 + this.VenafiZone.GetHashCode();
+                hashCode = hashCode * 59 + this.WarnBeforeUserExpirationMin.GetHashCode();
                 return hashCode;
             }
         }

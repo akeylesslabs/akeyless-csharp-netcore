@@ -45,14 +45,12 @@ namespace akeyless.Model
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="metadata">A metadata about the key.</param>
         /// <param name="name">Name of key to be created (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="rsaFileData">RSA private key data, base64 encoded.</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (default to 2).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string metadata = default(string), string name = default(string), string password = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string metadata = default(string), string name = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -67,13 +65,11 @@ namespace akeyless.Model
             this.CertFileData = certFileData;
             this.CustomerFrgId = customerFrgId;
             this.Metadata = metadata;
-            this.Password = password;
             this.RsaFileData = rsaFileData;
             this.SplitLevel = splitLevel;
             this.Tag = tag;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -112,13 +108,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// RSA private key data, base64 encoded
         /// </summary>
         /// <value>RSA private key data, base64 encoded</value>
@@ -154,13 +143,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -173,13 +155,11 @@ namespace akeyless.Model
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RsaFileData: ").Append(RsaFileData).Append("\n");
             sb.Append("  SplitLevel: ").Append(SplitLevel).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -240,11 +220,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.RsaFileData == input.RsaFileData ||
                     (this.RsaFileData != null &&
                     this.RsaFileData.Equals(input.RsaFileData))
@@ -268,11 +243,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -295,8 +265,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RsaFileData != null)
                     hashCode = hashCode * 59 + this.RsaFileData.GetHashCode();
                 hashCode = hashCode * 59 + this.SplitLevel.GetHashCode();
@@ -306,8 +274,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

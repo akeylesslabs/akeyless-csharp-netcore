@@ -35,40 +35,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Decrypt" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Decrypt() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Decrypt" /> class.
-        /// </summary>
-        /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format (required).</param>
+        /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format.</param>
         /// <param name="displayId">The display id of the key to use in the decryption process.</param>
         /// <param name="encryptionContext">The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail.</param>
         /// <param name="keyName">The name of the key to use in the decryption process.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public Decrypt(string ciphertext = default(string), string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public Decrypt(string ciphertext = default(string), string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string token = default(string), string uidToken = default(string))
         {
-            // to ensure "ciphertext" is required (not null)
-            if (ciphertext == null) {
-                throw new ArgumentNullException("ciphertext is a required property for Decrypt and cannot be null");
-            }
             this.Ciphertext = ciphertext;
             this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
             this.KeyName = keyName;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
         /// Ciphertext to be decrypted in base64 encoded format
         /// </summary>
         /// <value>Ciphertext to be decrypted in base64 encoded format</value>
-        [DataMember(Name = "ciphertext", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ciphertext", EmitDefaultValue = false)]
         public string Ciphertext { get; set; }
 
         /// <summary>
@@ -93,13 +80,6 @@ namespace akeyless.Model
         public string KeyName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -114,13 +94,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -132,10 +105,8 @@ namespace akeyless.Model
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -192,11 +163,6 @@ namespace akeyless.Model
                     this.KeyName.Equals(input.KeyName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -205,11 +171,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -230,14 +191,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

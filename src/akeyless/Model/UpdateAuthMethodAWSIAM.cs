@@ -53,12 +53,10 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="stsUrl">sts URL (default to &quot;https://sts.amazonaws.com&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string newName = default(string), string password = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string newName = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null) {
@@ -81,12 +79,10 @@ namespace akeyless.Model
             this.ForceSubClaims = forceSubClaims;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
-            this.Password = password;
             // use default value if no "stsUrl" provided
             this.StsUrl = stsUrl ?? "https://sts.amazonaws.com";
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -181,13 +177,6 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// sts URL
         /// </summary>
         /// <value>sts URL</value>
@@ -207,13 +196,6 @@ namespace akeyless.Model
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
         [DataMember(Name = "uid-token", EmitDefaultValue = false)]
         public string UidToken { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -236,11 +218,9 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  StsUrl: ").Append(StsUrl).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -346,11 +326,6 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.StsUrl == input.StsUrl ||
                     (this.StsUrl != null &&
                     this.StsUrl.Equals(input.StsUrl))
@@ -364,11 +339,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -404,16 +374,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.StsUrl != null)
                     hashCode = hashCode * 59 + this.StsUrl.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

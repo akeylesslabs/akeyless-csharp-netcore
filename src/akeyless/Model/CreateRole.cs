@@ -40,25 +40,43 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRole" /> class.
         /// </summary>
+        /// <param name="analyticsAccess">Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
+        /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="comment">Comment about the role.</param>
+        /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="name">Role name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateRole(string comment = default(string), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string gwAnalyticsAccess = default(string), string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for CreateRole and cannot be null");
             }
             this.Name = name;
+            this.AnalyticsAccess = analyticsAccess;
+            this.AuditAccess = auditAccess;
             this.Comment = comment;
-            this.Password = password;
+            this.GwAnalyticsAccess = gwAnalyticsAccess;
+            this.SraReportsAccess = sraReportsAccess;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
+
+        /// <summary>
+        /// Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+        /// </summary>
+        /// <value>Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
+        [DataMember(Name = "analytics-access", EmitDefaultValue = false)]
+        public string AnalyticsAccess { get; set; }
+
+        /// <summary>
+        /// Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
+        /// </summary>
+        /// <value>Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.</value>
+        [DataMember(Name = "audit-access", EmitDefaultValue = false)]
+        public string AuditAccess { get; set; }
 
         /// <summary>
         /// Comment about the role
@@ -68,6 +86,13 @@ namespace akeyless.Model
         public string Comment { get; set; }
 
         /// <summary>
+        /// Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+        /// </summary>
+        /// <value>Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
+        [DataMember(Name = "gw-analytics-access", EmitDefaultValue = false)]
+        public string GwAnalyticsAccess { get; set; }
+
+        /// <summary>
         /// Role name
         /// </summary>
         /// <value>Role name</value>
@@ -75,11 +100,11 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
+        /// Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.
         /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
+        /// <value>Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.</value>
+        [DataMember(Name = "sra-reports-access", EmitDefaultValue = false)]
+        public string SraReportsAccess { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -96,13 +121,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,12 +128,14 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateRole {\n");
+            sb.Append("  AnalyticsAccess: ").Append(AnalyticsAccess).Append("\n");
+            sb.Append("  AuditAccess: ").Append(AuditAccess).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  GwAnalyticsAccess: ").Append(GwAnalyticsAccess).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  SraReportsAccess: ").Append(SraReportsAccess).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,9 +171,24 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AnalyticsAccess == input.AnalyticsAccess ||
+                    (this.AnalyticsAccess != null &&
+                    this.AnalyticsAccess.Equals(input.AnalyticsAccess))
+                ) && 
+                (
+                    this.AuditAccess == input.AuditAccess ||
+                    (this.AuditAccess != null &&
+                    this.AuditAccess.Equals(input.AuditAccess))
+                ) && 
+                (
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.GwAnalyticsAccess == input.GwAnalyticsAccess ||
+                    (this.GwAnalyticsAccess != null &&
+                    this.GwAnalyticsAccess.Equals(input.GwAnalyticsAccess))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -161,9 +196,9 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
+                    this.SraReportsAccess == input.SraReportsAccess ||
+                    (this.SraReportsAccess != null &&
+                    this.SraReportsAccess.Equals(input.SraReportsAccess))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -174,11 +209,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -191,18 +221,22 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AnalyticsAccess != null)
+                    hashCode = hashCode * 59 + this.AnalyticsAccess.GetHashCode();
+                if (this.AuditAccess != null)
+                    hashCode = hashCode * 59 + this.AuditAccess.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                if (this.GwAnalyticsAccess != null)
+                    hashCode = hashCode * 59 + this.GwAnalyticsAccess.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.SraReportsAccess != null)
+                    hashCode = hashCode * 59 + this.SraReportsAccess.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="dbType">dbType (required).</param>
         /// <param name="host">host.</param>
+        /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="mongodbAtlas">mongodbAtlas.</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
@@ -56,16 +57,14 @@ namespace akeyless.Model
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="oracleServiceName">oracleServiceName.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
         /// <param name="snowflakeAccount">snowflakeAccount.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="updateVersion">Create new version for the target (default to false).</param>
+        /// <param name="updateVersion">Deprecated.</param>
         /// <param name="userName">userName.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string password = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, string userName = default(string), string username = default(string))
+        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
             if (dbType == null) {
@@ -82,6 +81,7 @@ namespace akeyless.Model
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             this.Host = host;
+            this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.MongodbAtlas = mongodbAtlas;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
@@ -91,7 +91,6 @@ namespace akeyless.Model
             this.MongodbUriOptions = mongodbUriOptions;
             this.NewName = newName;
             this.OracleServiceName = oracleServiceName;
-            this.Password = password;
             this.Port = port;
             this.Pwd = pwd;
             this.SnowflakeAccount = snowflakeAccount;
@@ -99,7 +98,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
             this.UserName = userName;
-            this.Username = username;
         }
 
         /// <summary>
@@ -140,6 +138,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
+
+        /// <summary>
+        /// Gets or Sets KeepPrevVersion
+        /// </summary>
+        [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
+        public string KeepPrevVersion { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -210,13 +214,6 @@ namespace akeyless.Model
         public string OracleServiceName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name = "port", EmitDefaultValue = false)]
@@ -249,9 +246,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Create new version for the target
+        /// Deprecated
         /// </summary>
-        /// <value>Create new version for the target</value>
+        /// <value>Deprecated</value>
         [DataMember(Name = "update-version", EmitDefaultValue = true)]
         public bool UpdateVersion { get; set; }
 
@@ -260,13 +257,6 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "user-name", EmitDefaultValue = false)]
         public string UserName { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -282,6 +272,7 @@ namespace akeyless.Model
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  MongodbAtlas: ").Append(MongodbAtlas).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
@@ -292,7 +283,6 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
             sb.Append("  SnowflakeAccount: ").Append(SnowflakeAccount).Append("\n");
@@ -300,7 +290,6 @@ namespace akeyless.Model
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -366,6 +355,11 @@ namespace akeyless.Model
                     this.Host.Equals(input.Host))
                 ) && 
                 (
+                    this.KeepPrevVersion == input.KeepPrevVersion ||
+                    (this.KeepPrevVersion != null &&
+                    this.KeepPrevVersion.Equals(input.KeepPrevVersion))
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -415,11 +409,6 @@ namespace akeyless.Model
                     this.OracleServiceName.Equals(input.OracleServiceName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Port == input.Port ||
                     (this.Port != null &&
                     this.Port.Equals(input.Port))
@@ -452,11 +441,6 @@ namespace akeyless.Model
                     this.UserName == input.UserName ||
                     (this.UserName != null &&
                     this.UserName.Equals(input.UserName))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -481,6 +465,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbType.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                if (this.KeepPrevVersion != null)
+                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 hashCode = hashCode * 59 + this.MongodbAtlas.GetHashCode();
@@ -500,8 +486,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
                 if (this.OracleServiceName != null)
                     hashCode = hashCode * 59 + this.OracleServiceName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
                 if (this.Pwd != null)
@@ -515,8 +499,6 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
                 if (this.UserName != null)
                     hashCode = hashCode * 59 + this.UserName.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

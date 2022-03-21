@@ -48,7 +48,6 @@ namespace akeyless.Model
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="eksSecretAccessKey">Secret Access Key.</param>
         /// <param name="name">Producer name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
         /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
@@ -60,8 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string password = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -76,7 +74,6 @@ namespace akeyless.Model
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? "us-east-2";
             this.EksSecretAccessKey = eksSecretAccessKey;
-            this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -89,7 +86,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
-            this.Username = username;
         }
 
         /// <summary>
@@ -147,13 +143,6 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -228,13 +217,6 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -250,7 +232,6 @@ namespace akeyless.Model
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
@@ -262,7 +243,6 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -338,11 +318,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
                     (this.ProducerEncryptionKeyName != null &&
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
@@ -395,11 +370,6 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -428,8 +398,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.EksSecretAccessKey.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
@@ -450,8 +418,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

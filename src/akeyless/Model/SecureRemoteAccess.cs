@@ -61,7 +61,8 @@ namespace akeyless.Model
         /// <param name="sshUser">sshUser.</param>
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdpUser = default(string), string region = default(string), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool))
+        /// <param name="webProxy">webProxy.</param>
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdpUser = default(string), string region = default(string), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -89,6 +90,7 @@ namespace akeyless.Model
             this.SshUser = sshUser;
             this.Url = url;
             this.UseInternalBastion = useInternalBastion;
+            this.WebProxy = webProxy;
         }
 
         /// <summary>
@@ -248,6 +250,12 @@ namespace akeyless.Model
         public bool UseInternalBastion { get; set; }
 
         /// <summary>
+        /// Gets or Sets WebProxy
+        /// </summary>
+        [DataMember(Name = "web_proxy", EmitDefaultValue = true)]
+        public bool WebProxy { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -281,6 +289,7 @@ namespace akeyless.Model
             sb.Append("  SshUser: ").Append(SshUser).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  UseInternalBastion: ").Append(UseInternalBastion).Append("\n");
+            sb.Append("  WebProxy: ").Append(WebProxy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -434,6 +443,10 @@ namespace akeyless.Model
                 (
                     this.UseInternalBastion == input.UseInternalBastion ||
                     this.UseInternalBastion.Equals(input.UseInternalBastion)
+                ) && 
+                (
+                    this.WebProxy == input.WebProxy ||
+                    this.WebProxy.Equals(input.WebProxy)
                 );
         }
 
@@ -487,6 +500,7 @@ namespace akeyless.Model
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
                 hashCode = hashCode * 59 + this.UseInternalBastion.GetHashCode();
+                hashCode = hashCode * 59 + this.WebProxy.GetHashCode();
                 return hashCode;
             }
         }

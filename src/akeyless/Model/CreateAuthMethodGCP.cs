@@ -51,13 +51,11 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="serviceAccountCredsData">ServiceAccount credentials data instead of giving a file path, base64 encoded.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string password = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string username = default(string))
+        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "audience" is required (not null)
             if (audience == null) {
@@ -83,11 +81,9 @@ namespace akeyless.Model
             this.BoundZones = boundZones;
             this.ForceSubClaims = forceSubClaims;
             this.JwtTtl = jwtTtl;
-            this.Password = password;
             this.ServiceAccountCredsData = serviceAccountCredsData;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -168,13 +164,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// ServiceAccount credentials data instead of giving a file path, base64 encoded
         /// </summary>
         /// <value>ServiceAccount credentials data instead of giving a file path, base64 encoded</value>
@@ -203,13 +192,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -228,12 +210,10 @@ namespace akeyless.Model
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ServiceAccountCredsData: ").Append(ServiceAccountCredsData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -327,11 +307,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.ServiceAccountCredsData == input.ServiceAccountCredsData ||
                     (this.ServiceAccountCredsData != null &&
                     this.ServiceAccountCredsData.Equals(input.ServiceAccountCredsData))
@@ -350,11 +325,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -386,8 +356,6 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ServiceAccountCredsData != null)
                     hashCode = hashCode * 59 + this.ServiceAccountCredsData.GetHashCode();
                 if (this.Token != null)
@@ -396,8 +364,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

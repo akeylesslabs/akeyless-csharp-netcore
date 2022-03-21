@@ -46,7 +46,6 @@ namespace akeyless.Model
         /// <param name="metadata">A metadata about the issuer.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
         /// <param name="newName">New item name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="principals">Signed certificates with principal, e.g example_role1,example_role2.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="secureAccessBastionApi">secureAccessBastionApi.</param>
@@ -59,8 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string newName = default(string), string password = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
+        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null) {
@@ -82,7 +80,6 @@ namespace akeyless.Model
             this.Extensions = extensions;
             this.Metadata = metadata;
             this.NewName = newName;
-            this.Password = password;
             this.Principals = principals;
             this.RmTag = rmTag;
             this.SecureAccessBastionApi = secureAccessBastionApi;
@@ -93,7 +90,6 @@ namespace akeyless.Model
             this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -137,13 +133,6 @@ namespace akeyless.Model
         /// <value>New item name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Signed certificates with principal, e.g example_role1,example_role2
@@ -224,13 +213,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -244,7 +226,6 @@ namespace akeyless.Model
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Principals: ").Append(Principals).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  SecureAccessBastionApi: ").Append(SecureAccessBastionApi).Append("\n");
@@ -257,7 +238,6 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -325,11 +305,6 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Principals == input.Principals ||
                     (this.Principals != null &&
                     this.Principals.Equals(input.Principals))
@@ -388,11 +363,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -417,8 +387,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Principals != null)
                     hashCode = hashCode * 59 + this.Principals.GetHashCode();
                 if (this.RmTag != null)
@@ -441,8 +409,6 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

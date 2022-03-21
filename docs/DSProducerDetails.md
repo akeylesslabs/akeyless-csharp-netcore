@@ -26,6 +26,8 @@ Name | Type | Description | Notes
 **AzureAppObjectId** | **string** |  | [optional] 
 **AzureClientId** | **string** |  | [optional] 
 **AzureClientSecret** | **string** |  | [optional] 
+**AzureFixedUserNameSubClaimKey** | **string** |  | [optional] 
+**AzureFixedUserOnly** | **bool** |  | [optional] 
 **AzureTenantId** | **string** |  | [optional] 
 **AzureUserGroupsObjId** | **string** |  | [optional] 
 **AzureUserPortalAccess** | **bool** |  | [optional] 
@@ -120,6 +122,7 @@ Name | Type | Description | Notes
 **MssqlRevocationStatements** | **string** |  | [optional] 
 **MysqlCreationStatements** | **string** |  | [optional] 
 **OracleCreationStatements** | **string** |  | [optional] 
+**Password** | **string** |  | [optional] 
 **PasswordLength** | **long** |  | [optional] 
 **PasswordPolicy** | **string** |  | [optional] 
 **Payload** | **string** |  | [optional] 
@@ -136,6 +139,7 @@ Name | Type | Description | Notes
 **RedshiftCreationStatements** | **string** |  | [optional] 
 **RevokeSyncUrl** | **string** |  | [optional] 
 **RotateSyncUrl** | **string** |  | [optional] 
+**Scopes** | **List&lt;string&gt;** |  | [optional] 
 **SecureRemoteAccessDetails** | [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 **SfAccount** | **string** |  | [optional] 
 **SfUserRole** | **string** | generated  users info | [optional] 
@@ -146,6 +150,7 @@ Name | Type | Description | Notes
 **Tags** | **List&lt;string&gt;** |  | [optional] 
 **TimeoutSeconds** | **long** |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
+**UserName** | **string** |  | [optional] 
 **UserPrincipalName** | **string** |  | [optional] 
 **UserTtl** | **string** |  | [optional] 
 **UsernameLength** | **long** |  | [optional] 
@@ -163,6 +168,7 @@ Name | Type | Description | Notes
 **VenafiTppUsername** | **string** |  | [optional] 
 **VenafiUseTpp** | **bool** |  | [optional] 
 **VenafiZone** | **string** |  | [optional] 
+**WarnBeforeUserExpirationMin** | **long** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

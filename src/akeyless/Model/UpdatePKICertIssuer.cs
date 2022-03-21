@@ -57,7 +57,6 @@ namespace akeyless.Model
         /// <param name="notRequireCn">If set, clients can request certificates without a CN.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="postalCode">A comma-separated list of the postal code that will be set in the issued certificate.</param>
         /// <param name="province">A comma-separated list of the province that will be set in the issued certificate.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
@@ -67,8 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string password = default(string), string postalCode = default(string), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string username = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -98,7 +96,6 @@ namespace akeyless.Model
             this.NotRequireCn = notRequireCn;
             this.OrganizationalUnits = organizationalUnits;
             this.Organizations = organizations;
-            this.Password = password;
             this.PostalCode = postalCode;
             this.Province = province;
             this.RmTag = rmTag;
@@ -106,7 +103,6 @@ namespace akeyless.Model
             this.StreetAddress = streetAddress;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -229,13 +225,6 @@ namespace akeyless.Model
         public string Organizations { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// A comma-separated list of the postal code that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the postal code that will be set in the issued certificate</value>
@@ -299,13 +288,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -330,7 +312,6 @@ namespace akeyless.Model
             sb.Append("  NotRequireCn: ").Append(NotRequireCn).Append("\n");
             sb.Append("  OrganizationalUnits: ").Append(OrganizationalUnits).Append("\n");
             sb.Append("  Organizations: ").Append(Organizations).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
@@ -340,7 +321,6 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -456,11 +436,6 @@ namespace akeyless.Model
                     this.Organizations.Equals(input.Organizations))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.PostalCode == input.PostalCode ||
                     (this.PostalCode != null &&
                     this.PostalCode.Equals(input.PostalCode))
@@ -503,11 +478,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -548,8 +518,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.OrganizationalUnits.GetHashCode();
                 if (this.Organizations != null)
                     hashCode = hashCode * 59 + this.Organizations.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.PostalCode != null)
                     hashCode = hashCode * 59 + this.PostalCode.GetHashCode();
                 if (this.Province != null)
@@ -566,8 +534,6 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

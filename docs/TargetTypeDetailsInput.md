@@ -77,6 +77,7 @@ Name | Type | Description | Notes
 **SslConnectionMode** | **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **Url** | **string** |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
+**UserName** | **string** |  | [optional] 
 **Username** | **string** |  | [optional] 
 **VenafiApiKey** | **string** |  | [optional] 
 **VenafiBaseUrl** | **string** |  | [optional] 

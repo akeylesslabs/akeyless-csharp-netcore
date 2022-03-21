@@ -43,16 +43,15 @@ namespace akeyless.Model
         /// <param name="comment">Comment about the target.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpSaEmail">GCP service account email (required).</param>
+        /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="updateVersion">Create new version for the target (default to false).</param>
+        /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateGcpTarget(string comment = default(string), string gcpKey = default(string), string gcpSaEmail = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = false, bool useGwCloudIdentity = default(bool), string username = default(string))
+        public UpdateGcpTarget(string comment = default(string), string gcpKey = default(string), string gcpSaEmail = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "gcpSaEmail" is required (not null)
             if (gcpSaEmail == null) {
@@ -66,14 +65,13 @@ namespace akeyless.Model
             this.Name = name;
             this.Comment = comment;
             this.GcpKey = gcpKey;
+            this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
             this.UseGwCloudIdentity = useGwCloudIdentity;
-            this.Username = username;
         }
 
         /// <summary>
@@ -98,6 +96,12 @@ namespace akeyless.Model
         public string GcpSaEmail { get; set; }
 
         /// <summary>
+        /// Gets or Sets KeepPrevVersion
+        /// </summary>
+        [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
+        public string KeepPrevVersion { get; set; }
+
+        /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
@@ -119,13 +123,6 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -140,9 +137,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Create new version for the target
+        /// Deprecated
         /// </summary>
-        /// <value>Create new version for the target</value>
+        /// <value>Deprecated</value>
         [DataMember(Name = "update-version", EmitDefaultValue = true)]
         public bool UpdateVersion { get; set; }
 
@@ -151,13 +148,6 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "use-gw-cloud-identity", EmitDefaultValue = true)]
         public bool UseGwCloudIdentity { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -170,15 +160,14 @@ namespace akeyless.Model
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpSaEmail: ").Append(GcpSaEmail).Append("\n");
+            sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,6 +218,11 @@ namespace akeyless.Model
                     this.GcpSaEmail.Equals(input.GcpSaEmail))
                 ) && 
                 (
+                    this.KeepPrevVersion == input.KeepPrevVersion ||
+                    (this.KeepPrevVersion != null &&
+                    this.KeepPrevVersion.Equals(input.KeepPrevVersion))
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -242,11 +236,6 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
-                ) && 
-                (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -265,11 +254,6 @@ namespace akeyless.Model
                 (
                     this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
                     this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -288,22 +272,20 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GcpKey.GetHashCode();
                 if (this.GcpSaEmail != null)
                     hashCode = hashCode * 59 + this.GcpSaEmail.GetHashCode();
+                if (this.KeepPrevVersion != null)
+                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
                 hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

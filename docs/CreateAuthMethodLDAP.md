@@ -10,10 +10,9 @@ Name | Type | Description | Notes
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
-**Password** | **string** | Required only when the authentication process requires a username and password | [optional] 
+**PublicKeyData** | **string** | A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**Username** | **string** | Required only when the authentication process requires a username and password | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

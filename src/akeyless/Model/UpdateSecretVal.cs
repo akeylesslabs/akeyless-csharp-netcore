@@ -40,16 +40,15 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSecretVal" /> class.
         /// </summary>
+        /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="multiline">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
-        /// <param name="newVersion">Whether to create a new version of not (default to false).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="newVersion">Deprecated.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="value">The new secret value (required).</param>
-        public UpdateSecretVal(string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = false, string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
+        public UpdateSecretVal(string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string token = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -61,14 +60,19 @@ namespace akeyless.Model
                 throw new ArgumentNullException("value is a required property for UpdateSecretVal and cannot be null");
             }
             this.Value = value;
+            this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.Multiline = multiline;
             this.NewVersion = newVersion;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
+
+        /// <summary>
+        /// Gets or Sets KeepPrevVersion
+        /// </summary>
+        [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
+        public string KeepPrevVersion { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -92,18 +96,11 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether to create a new version of not
+        /// Deprecated
         /// </summary>
-        /// <value>Whether to create a new version of not</value>
+        /// <value>Deprecated</value>
         [DataMember(Name = "new-version", EmitDefaultValue = true)]
         public bool NewVersion { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -120,13 +117,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// The new secret value
         /// </summary>
         /// <value>The new secret value</value>
@@ -141,14 +131,13 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UpdateSecretVal {\n");
+            sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Multiline: ").Append(Multiline).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -185,6 +174,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.KeepPrevVersion == input.KeepPrevVersion ||
+                    (this.KeepPrevVersion != null &&
+                    this.KeepPrevVersion.Equals(input.KeepPrevVersion))
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -203,11 +197,6 @@ namespace akeyless.Model
                     this.NewVersion.Equals(input.NewVersion)
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -216,11 +205,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 ) && 
                 (
                     this.Value == input.Value ||
@@ -238,20 +222,18 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.KeepPrevVersion != null)
+                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 hashCode = hashCode * 59 + this.Multiline.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;

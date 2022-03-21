@@ -39,30 +39,32 @@ namespace akeyless.Model
         /// <param name="city">City.</param>
         /// <param name="companyName">Company name.</param>
         /// <param name="country">Country.</param>
+        /// <param name="defaultVersioning">Should create version by default.</param>
+        /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
+        /// <param name="maxVersions">Max versions.</param>
         /// <param name="phone">Phone number.</param>
         /// <param name="postalCode">Postal code.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string password = default(string), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string itemType = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string))
         {
             this.Address = address;
             this.City = city;
             this.CompanyName = companyName;
             this.Country = country;
+            this.DefaultVersioning = defaultVersioning;
+            this.ItemType = itemType;
             this.JwtTtlDefault = jwtTtlDefault;
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
-            this.Password = password;
+            this.MaxVersions = maxVersions;
             this.Phone = phone;
             this.PostalCode = postalCode;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -94,6 +96,20 @@ namespace akeyless.Model
         public string Country { get; set; }
 
         /// <summary>
+        /// Should create version by default
+        /// </summary>
+        /// <value>Should create version by default</value>
+        [DataMember(Name = "default-versioning", EmitDefaultValue = false)]
+        public string DefaultVersioning { get; set; }
+
+        /// <summary>
+        /// VersionSettingsObjectType defines object types for account version settings
+        /// </summary>
+        /// <value>VersionSettingsObjectType defines object types for account version settings</value>
+        [DataMember(Name = "item-type", EmitDefaultValue = false)]
+        public string ItemType { get; set; }
+
+        /// <summary>
         /// Default ttl
         /// </summary>
         /// <value>Default ttl</value>
@@ -115,11 +131,11 @@ namespace akeyless.Model
         public long JwtTtlMin { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
+        /// Max versions
         /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
+        /// <value>Max versions</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Phone number
@@ -150,13 +166,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -168,15 +177,16 @@ namespace akeyless.Model
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
+            sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -232,6 +242,16 @@ namespace akeyless.Model
                     this.Country.Equals(input.Country))
                 ) && 
                 (
+                    this.DefaultVersioning == input.DefaultVersioning ||
+                    (this.DefaultVersioning != null &&
+                    this.DefaultVersioning.Equals(input.DefaultVersioning))
+                ) && 
+                (
+                    this.ItemType == input.ItemType ||
+                    (this.ItemType != null &&
+                    this.ItemType.Equals(input.ItemType))
+                ) && 
+                (
                     this.JwtTtlDefault == input.JwtTtlDefault ||
                     this.JwtTtlDefault.Equals(input.JwtTtlDefault)
                 ) && 
@@ -244,9 +264,9 @@ namespace akeyless.Model
                     this.JwtTtlMin.Equals(input.JwtTtlMin)
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
                     this.Phone == input.Phone ||
@@ -267,11 +287,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -292,11 +307,15 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
                 if (this.Country != null)
                     hashCode = hashCode * 59 + this.Country.GetHashCode();
+                if (this.DefaultVersioning != null)
+                    hashCode = hashCode * 59 + this.DefaultVersioning.GetHashCode();
+                if (this.ItemType != null)
+                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlDefault.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlMax.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlMin.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.MaxVersions != null)
+                    hashCode = hashCode * 59 + this.MaxVersions.GetHashCode();
                 if (this.Phone != null)
                     hashCode = hashCode * 59 + this.Phone.GetHashCode();
                 if (this.PostalCode != null)
@@ -305,8 +324,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

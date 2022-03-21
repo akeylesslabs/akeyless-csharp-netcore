@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="itemName">itemName.</param>
         /// <param name="itemSize">itemSize.</param>
         /// <param name="itemState">ItemState defines the different states an Item can be in.</param>
+        /// <param name="itemSubType">itemSubType.</param>
         /// <param name="itemTags">itemTags.</param>
         /// <param name="itemTargetsAssoc">itemTargetsAssoc.</param>
         /// <param name="itemType">itemType.</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isEnabled = default(bool), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string publicValue = default(string), long rotationInterval = default(long), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
+        public Item(bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isEnabled = default(bool), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string publicValue = default(string), long rotationInterval = default(long), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AutoRotate = autoRotate;
             this.CertIssuerSignerKeyName = certIssuerSignerKeyName;
@@ -78,6 +79,7 @@ namespace akeyless.Model
             this.ItemName = itemName;
             this.ItemSize = itemSize;
             this.ItemState = itemState;
+            this.ItemSubType = itemSubType;
             this.ItemTags = itemTags;
             this.ItemTargetsAssoc = itemTargetsAssoc;
             this.ItemType = itemType;
@@ -183,6 +185,12 @@ namespace akeyless.Model
         public string ItemState { get; set; }
 
         /// <summary>
+        /// Gets or Sets ItemSubType
+        /// </summary>
+        [DataMember(Name = "item_sub_type", EmitDefaultValue = false)]
+        public string ItemSubType { get; set; }
+
+        /// <summary>
         /// Gets or Sets ItemTags
         /// </summary>
         [DataMember(Name = "item_tags", EmitDefaultValue = false)]
@@ -271,6 +279,7 @@ namespace akeyless.Model
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  ItemSize: ").Append(ItemSize).Append("\n");
             sb.Append("  ItemState: ").Append(ItemState).Append("\n");
+            sb.Append("  ItemSubType: ").Append(ItemSubType).Append("\n");
             sb.Append("  ItemTags: ").Append(ItemTags).Append("\n");
             sb.Append("  ItemTargetsAssoc: ").Append(ItemTargetsAssoc).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
@@ -389,6 +398,11 @@ namespace akeyless.Model
                     this.ItemState.Equals(input.ItemState))
                 ) && 
                 (
+                    this.ItemSubType == input.ItemSubType ||
+                    (this.ItemSubType != null &&
+                    this.ItemSubType.Equals(input.ItemSubType))
+                ) && 
+                (
                     this.ItemTags == input.ItemTags ||
                     this.ItemTags != null &&
                     input.ItemTags != null &&
@@ -481,6 +495,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ItemSize.GetHashCode();
                 if (this.ItemState != null)
                     hashCode = hashCode * 59 + this.ItemState.GetHashCode();
+                if (this.ItemSubType != null)
+                    hashCode = hashCode * 59 + this.ItemSubType.GetHashCode();
                 if (this.ItemTags != null)
                     hashCode = hashCode * 59 + this.ItemTags.GetHashCode();
                 if (this.ItemTargetsAssoc != null)

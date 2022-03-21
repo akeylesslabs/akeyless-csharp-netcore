@@ -40,30 +40,19 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipSetServerState" /> class.
         /// </summary>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="state">state (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public KmipSetServerState(string password = default(string), string state = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public KmipSetServerState(string state = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "state" is required (not null)
             if (state == null) {
                 throw new ArgumentNullException("state is a required property for KmipSetServerState and cannot be null");
             }
             this.State = state;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Gets or Sets State
@@ -86,13 +75,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,11 +82,9 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class KmipSetServerState {\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,11 +120,6 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -158,11 +133,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -175,16 +145,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

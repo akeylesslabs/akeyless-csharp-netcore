@@ -42,12 +42,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssuerName">The name of the SSH certificate issuer (required).</param>
         /// <param name="certUsername">The username to sign in the SSH certificate (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="publicKeyData">SSH public key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), string password = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null) {
@@ -59,11 +57,9 @@ namespace akeyless.Model
                 throw new ArgumentNullException("certUsername is a required property for GetSSHCertificate and cannot be null");
             }
             this.CertUsername = certUsername;
-            this.Password = password;
             this.PublicKeyData = publicKeyData;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -79,13 +75,6 @@ namespace akeyless.Model
         /// <value>The username to sign in the SSH certificate</value>
         [DataMember(Name = "cert-username", IsRequired = true, EmitDefaultValue = false)]
         public string CertUsername { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// SSH public key file contents. If this option is used, the certificate will be printed to stdout
@@ -109,13 +98,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -125,11 +107,9 @@ namespace akeyless.Model
             sb.Append("class GetSSHCertificate {\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CertUsername: ").Append(CertUsername).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PublicKeyData: ").Append(PublicKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -175,11 +155,6 @@ namespace akeyless.Model
                     this.CertUsername.Equals(input.CertUsername))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.PublicKeyData == input.PublicKeyData ||
                     (this.PublicKeyData != null &&
                     this.PublicKeyData.Equals(input.PublicKeyData))
@@ -193,11 +168,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -214,16 +184,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
                 if (this.CertUsername != null)
                     hashCode = hashCode * 59 + this.CertUsername.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.PublicKeyData != null)
                     hashCode = hashCode * 59 + this.PublicKeyData.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

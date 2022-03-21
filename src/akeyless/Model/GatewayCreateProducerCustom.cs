@@ -42,7 +42,6 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="createSyncUrl">URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create (required).</param>
         /// <param name="name">Producer name (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="payload">Secret payload to be sent with each create/revoke webhook request.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
@@ -52,8 +51,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayCreateProducerCustom(string createSyncUrl = default(string), string name = default(string), string password = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayCreateProducerCustom(string createSyncUrl = default(string), string name = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "createSyncUrl" is required (not null)
             if (createSyncUrl == null) {
@@ -70,7 +68,6 @@ namespace akeyless.Model
                 throw new ArgumentNullException("revokeSyncUrl is a required property for GatewayCreateProducerCustom and cannot be null");
             }
             this.RevokeSyncUrl = revokeSyncUrl;
-            this.Password = password;
             this.Payload = payload;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RotateSyncUrl = rotateSyncUrl;
@@ -80,7 +77,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
-            this.Username = username;
         }
 
         /// <summary>
@@ -96,13 +92,6 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// Secret payload to be sent with each create/revoke webhook request
@@ -168,13 +157,6 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -184,7 +166,6 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerCustom {\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
@@ -194,7 +175,6 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -240,11 +220,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.Payload == input.Payload ||
                     (this.Payload != null &&
                     this.Payload.Equals(input.Payload))
@@ -288,11 +263,6 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -309,8 +279,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CreateSyncUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.Payload != null)
                     hashCode = hashCode * 59 + this.Payload.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
@@ -328,8 +296,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

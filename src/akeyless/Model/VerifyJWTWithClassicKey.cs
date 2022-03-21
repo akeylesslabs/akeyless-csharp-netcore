@@ -42,13 +42,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The name of the key to use in the verify JWT process (required).</param>
         /// <param name="jwt">JWT (required).</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="requiredClaims">RequiredClaims (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
         /// <param name="version">classic key version (required).</param>
-        public VerifyJWTWithClassicKey(string displayId = default(string), string jwt = default(string), string password = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), string username = default(string), int version = default(int))
+        public VerifyJWTWithClassicKey(string displayId = default(string), string jwt = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null) {
@@ -66,10 +64,8 @@ namespace akeyless.Model
             }
             this.RequiredClaims = requiredClaims;
             this._Version = version;
-            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
         }
 
         /// <summary>
@@ -85,13 +81,6 @@ namespace akeyless.Model
         /// <value>JWT</value>
         [DataMember(Name = "jwt", IsRequired = true, EmitDefaultValue = false)]
         public string Jwt { get; set; }
-
-        /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
 
         /// <summary>
         /// RequiredClaims
@@ -115,13 +104,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
@@ -138,11 +120,9 @@ namespace akeyless.Model
             sb.Append("class VerifyJWTWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Jwt: ").Append(Jwt).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  RequiredClaims: ").Append(RequiredClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -189,11 +169,6 @@ namespace akeyless.Model
                     this.Jwt.Equals(input.Jwt))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.RequiredClaims == input.RequiredClaims ||
                     (this.RequiredClaims != null &&
                     this.RequiredClaims.Equals(input.RequiredClaims))
@@ -207,11 +182,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 ) && 
                 (
                     this._Version == input._Version ||
@@ -232,16 +202,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.Jwt != null)
                     hashCode = hashCode * 59 + this.Jwt.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.RequiredClaims != null)
                     hashCode = hashCode * 59 + this.RequiredClaims.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }

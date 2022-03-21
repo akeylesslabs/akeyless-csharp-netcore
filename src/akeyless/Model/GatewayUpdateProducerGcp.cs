@@ -47,15 +47,13 @@ namespace akeyless.Model
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
-        /// <param name="password">Required only when the authentication process requires a username and password.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        /// <param name="username">Required only when the authentication process requires a username and password.</param>
-        public GatewayUpdateProducerGcp(string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string newName = default(string), string password = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayUpdateProducerGcp(string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -68,7 +66,6 @@ namespace akeyless.Model
             this.GcpSaEmail = gcpSaEmail;
             this.GcpTokenScopes = gcpTokenScopes;
             this.NewName = newName;
-            this.Password = password;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -76,7 +73,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
-            this.Username = username;
         }
 
         /// <summary>
@@ -128,13 +124,6 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
         /// Dynamic producer encryption key
         /// </summary>
         /// <value>Dynamic producer encryption key</value>
@@ -177,13 +166,6 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
-        /// Required only when the authentication process requires a username and password
-        /// </summary>
-        /// <value>Required only when the authentication process requires a username and password</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -198,14 +180,12 @@ namespace akeyless.Model
             sb.Append("  GcpTokenScopes: ").Append(GcpTokenScopes).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -276,11 +256,6 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
                     (this.ProducerEncryptionKeyName != null &&
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
@@ -310,11 +285,6 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -341,8 +311,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
                 if (this.Tags != null)
@@ -355,8 +323,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }
