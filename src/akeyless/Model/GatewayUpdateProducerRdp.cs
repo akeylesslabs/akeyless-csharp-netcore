@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerRdp" /> class.
         /// </summary>
+        /// <param name="allowUserExtendSession">AllowUserExtendSession.</param>
         /// <param name="fixedUserOnly">Fixed user (default to &quot;false&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
@@ -59,13 +60,15 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerRdp(string fixedUserOnly = "false", string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        /// <param name="warnUserBeforeExpiration">WarnBeforeUserExpiration.</param>
+        public GatewayUpdateProducerRdp(long allowUserExtendSession = default(long), string fixedUserOnly = "false", string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", long warnUserBeforeExpiration = default(long))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerRdp and cannot be null");
             }
             this.Name = name;
+            this.AllowUserExtendSession = allowUserExtendSession;
             // use default value if no "fixedUserOnly" provided
             this.FixedUserOnly = fixedUserOnly ?? "false";
             this.NewName = newName;
@@ -87,7 +90,15 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
+            this.WarnUserBeforeExpiration = warnUserBeforeExpiration;
         }
+
+        /// <summary>
+        /// AllowUserExtendSession
+        /// </summary>
+        /// <value>AllowUserExtendSession</value>
+        [DataMember(Name = "allow-user-extend-session", EmitDefaultValue = false)]
+        public long AllowUserExtendSession { get; set; }
 
         /// <summary>
         /// Fixed user
@@ -218,6 +229,13 @@ namespace akeyless.Model
         public string UserTtl { get; set; }
 
         /// <summary>
+        /// WarnBeforeUserExpiration
+        /// </summary>
+        /// <value>WarnBeforeUserExpiration</value>
+        [DataMember(Name = "warn-user-before-expiration", EmitDefaultValue = false)]
+        public long WarnUserBeforeExpiration { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -225,6 +243,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerRdp {\n");
+            sb.Append("  AllowUserExtendSession: ").Append(AllowUserExtendSession).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -244,6 +263,7 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
+            sb.Append("  WarnUserBeforeExpiration: ").Append(WarnUserBeforeExpiration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -278,6 +298,10 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.AllowUserExtendSession == input.AllowUserExtendSession ||
+                    this.AllowUserExtendSession.Equals(input.AllowUserExtendSession)
+                ) && 
                 (
                     this.FixedUserOnly == input.FixedUserOnly ||
                     (this.FixedUserOnly != null &&
@@ -373,6 +397,10 @@ namespace akeyless.Model
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
+                ) && 
+                (
+                    this.WarnUserBeforeExpiration == input.WarnUserBeforeExpiration ||
+                    this.WarnUserBeforeExpiration.Equals(input.WarnUserBeforeExpiration)
                 );
         }
 
@@ -385,6 +413,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.AllowUserExtendSession.GetHashCode();
                 if (this.FixedUserOnly != null)
                     hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
                 if (this.Name != null)
@@ -422,6 +451,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UserTtl != null)
                     hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                hashCode = hashCode * 59 + this.WarnUserBeforeExpiration.GetHashCode();
                 return hashCode;
             }
         }

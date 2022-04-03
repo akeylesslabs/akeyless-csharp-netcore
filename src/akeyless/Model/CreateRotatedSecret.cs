@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiId">apiId.</param>
         /// <param name="apiKey">apiKey.</param>
-        /// <param name="applicationId">ApplicationId (used in azure) (required).</param>
+        /// <param name="applicationId">ApplicationId (used in azure).</param>
         /// <param name="authenticationCredentials">authenticationCredentials.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="customPayload">customPayload.</param>
@@ -66,11 +66,6 @@ namespace akeyless.Model
         /// <param name="userDn">User DN.</param>
         public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string sshPassword = default(string), string sshUsername = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
-            // to ensure "applicationId" is required (not null)
-            if (applicationId == null) {
-                throw new ArgumentNullException("applicationId is a required property for CreateRotatedSecret and cannot be null");
-            }
-            this.ApplicationId = applicationId;
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for CreateRotatedSecret and cannot be null");
@@ -88,6 +83,7 @@ namespace akeyless.Model
             this.TargetName = targetName;
             this.ApiId = apiId;
             this.ApiKey = apiKey;
+            this.ApplicationId = applicationId;
             this.AuthenticationCredentials = authenticationCredentials;
             this.AutoRotate = autoRotate;
             this.CustomPayload = customPayload;
@@ -124,7 +120,7 @@ namespace akeyless.Model
         /// ApplicationId (used in azure)
         /// </summary>
         /// <value>ApplicationId (used in azure)</value>
-        [DataMember(Name = "application-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "application-id", EmitDefaultValue = false)]
         public string ApplicationId { get; set; }
 
         /// <summary>

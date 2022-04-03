@@ -5,6 +5,7 @@ gatewayCreateProducerRdp is a command that creates rdp producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowUserExtendSession** | **long** | AllowUserExtendSession | [optional] 
 **FixedUserOnly** | **string** | Fixed user | [optional] [default to "false"]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]
+**WarnUserBeforeExpiration** | **long** | WarnBeforeUserExpiration | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

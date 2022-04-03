@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 
+**MongodbCustomData** | **string** | MongoDB custom data | [optional] 
 **MongodbDefaultAuthDb** | **string** | MongoDB server default authentication database | [optional] 
 **MongodbHostPort** | **string** | MongoDB server host and port | [optional] 
 **MongodbName** | **string** | MongoDB Name | [optional] 

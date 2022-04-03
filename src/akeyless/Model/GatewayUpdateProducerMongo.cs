@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
         /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
         /// <param name="mongodbAtlasProjectId">MongoDB Atlas project ID.</param>
+        /// <param name="mongodbCustomData">MongoDB custom data.</param>
         /// <param name="mongodbDefaultAuthDb">MongoDB server default authentication database.</param>
         /// <param name="mongodbHostPort">MongoDB server host and port.</param>
         /// <param name="mongodbName">MongoDB Name.</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
+            this.MongodbCustomData = mongodbCustomData;
             this.MongodbDefaultAuthDb = mongodbDefaultAuthDb;
             this.MongodbHostPort = mongodbHostPort;
             this.MongodbName = mongodbName;
@@ -116,6 +118,13 @@ namespace akeyless.Model
         /// <value>MongoDB Atlas project ID</value>
         [DataMember(Name = "mongodb-atlas-project-id", EmitDefaultValue = false)]
         public string MongodbAtlasProjectId { get; set; }
+
+        /// <summary>
+        /// MongoDB custom data
+        /// </summary>
+        /// <value>MongoDB custom data</value>
+        [DataMember(Name = "mongodb-custom-data", EmitDefaultValue = false)]
+        public string MongodbCustomData { get; set; }
 
         /// <summary>
         /// MongoDB server default authentication database
@@ -264,6 +273,7 @@ namespace akeyless.Model
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
+            sb.Append("  MongodbCustomData: ").Append(MongodbCustomData).Append("\n");
             sb.Append("  MongodbDefaultAuthDb: ").Append(MongodbDefaultAuthDb).Append("\n");
             sb.Append("  MongodbHostPort: ").Append(MongodbHostPort).Append("\n");
             sb.Append("  MongodbName: ").Append(MongodbName).Append("\n");
@@ -332,6 +342,11 @@ namespace akeyless.Model
                     this.MongodbAtlasProjectId == input.MongodbAtlasProjectId ||
                     (this.MongodbAtlasProjectId != null &&
                     this.MongodbAtlasProjectId.Equals(input.MongodbAtlasProjectId))
+                ) && 
+                (
+                    this.MongodbCustomData == input.MongodbCustomData ||
+                    (this.MongodbCustomData != null &&
+                    this.MongodbCustomData.Equals(input.MongodbCustomData))
                 ) && 
                 (
                     this.MongodbDefaultAuthDb == input.MongodbDefaultAuthDb ||
@@ -451,6 +466,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.MongodbAtlasApiPublicKey.GetHashCode();
                 if (this.MongodbAtlasProjectId != null)
                     hashCode = hashCode * 59 + this.MongodbAtlasProjectId.GetHashCode();
+                if (this.MongodbCustomData != null)
+                    hashCode = hashCode * 59 + this.MongodbCustomData.GetHashCode();
                 if (this.MongodbDefaultAuthDb != null)
                     hashCode = hashCode * 59 + this.MongodbDefaultAuthDb.GetHashCode();
                 if (this.MongodbHostPort != null)
