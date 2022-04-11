@@ -6,6 +6,7 @@ TargetItemAssociation includes details of an association between a target and an
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** |  | [optional] 
+**ClusterId** | **long** |  | [optional] 
 **ItemName** | **string** |  | [optional] 
 **ItemType** | **string** |  | [optional] 
 

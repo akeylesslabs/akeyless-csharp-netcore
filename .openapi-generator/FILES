@@ -498,11 +498,6 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/GatewayCreateProducerHanaDbOutputTests.cs
-src/akeyless.Test/Model/GatewayCreateProducerHanaDbTests.cs
-src/akeyless.Test/Model/GatewayUpdateProducerHanaDbOutputTests.cs
-src/akeyless.Test/Model/GatewayUpdateProducerHanaDbTests.cs
-src/akeyless.Test/Model/KMIPServerTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs

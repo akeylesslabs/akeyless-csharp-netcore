@@ -36,11 +36,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetItemAssociation" /> class.
         /// </summary>
         /// <param name="assocId">assocId.</param>
+        /// <param name="clusterId">clusterId.</param>
         /// <param name="itemName">itemName.</param>
         /// <param name="itemType">itemType.</param>
-        public TargetItemAssociation(string assocId = default(string), string itemName = default(string), string itemType = default(string))
+        public TargetItemAssociation(string assocId = default(string), long clusterId = default(long), string itemName = default(string), string itemType = default(string))
         {
             this.AssocId = assocId;
+            this.ClusterId = clusterId;
             this.ItemName = itemName;
             this.ItemType = itemType;
         }
@@ -50,6 +52,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "assoc_id", EmitDefaultValue = false)]
         public string AssocId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClusterId
+        /// </summary>
+        [DataMember(Name = "cluster_id", EmitDefaultValue = false)]
+        public long ClusterId { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemName
@@ -72,6 +80,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class TargetItemAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
+            sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("}\n");
@@ -114,6 +123,10 @@ namespace akeyless.Model
                     this.AssocId.Equals(input.AssocId))
                 ) && 
                 (
+                    this.ClusterId == input.ClusterId ||
+                    this.ClusterId.Equals(input.ClusterId)
+                ) && 
+                (
                     this.ItemName == input.ItemName ||
                     (this.ItemName != null &&
                     this.ItemName.Equals(input.ItemName))
@@ -136,6 +149,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                hashCode = hashCode * 59 + this.ClusterId.GetHashCode();
                 if (this.ItemName != null)
                     hashCode = hashCode * 59 + this.ItemName.GetHashCode();
                 if (this.ItemType != null)
