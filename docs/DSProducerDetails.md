@@ -88,6 +88,8 @@ Name | Type | Description | Notes
 **GkeServiceAccountKey** | **string** |  | [optional] 
 **GkeServiceAccountName** | **string** |  | [optional] 
 **Groups** | **string** |  | [optional] 
+**HanadbCreationStatements** | **string** |  | [optional] 
+**HanadbRevocationStatements** | **string** |  | [optional] 
 **HostName** | **string** |  | [optional] 
 **HostPort** | **string** |  | [optional] 
 **IsFixedUser** | **string** |  | [optional] 

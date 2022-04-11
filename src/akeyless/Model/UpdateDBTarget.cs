@@ -60,11 +60,13 @@ namespace akeyless.Model
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
         /// <param name="snowflakeAccount">snowflakeAccount.</param>
+        /// <param name="ssl">SSL connection mode.</param>
+        /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
+        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
             if (dbType == null) {
@@ -94,6 +96,8 @@ namespace akeyless.Model
             this.Port = port;
             this.Pwd = pwd;
             this.SnowflakeAccount = snowflakeAccount;
+            this.Ssl = ssl;
+            this.SslCertificate = sslCertificate;
             this.Token = token;
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
@@ -232,6 +236,20 @@ namespace akeyless.Model
         public string SnowflakeAccount { get; set; }
 
         /// <summary>
+        /// SSL connection mode
+        /// </summary>
+        /// <value>SSL connection mode</value>
+        [DataMember(Name = "ssl", EmitDefaultValue = true)]
+        public bool Ssl { get; set; }
+
+        /// <summary>
+        /// SSL connection certificate
+        /// </summary>
+        /// <value>SSL connection certificate</value>
+        [DataMember(Name = "ssl-certificate", EmitDefaultValue = false)]
+        public string SslCertificate { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -286,6 +304,8 @@ namespace akeyless.Model
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
             sb.Append("  SnowflakeAccount: ").Append(SnowflakeAccount).Append("\n");
+            sb.Append("  Ssl: ").Append(Ssl).Append("\n");
+            sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
@@ -424,6 +444,15 @@ namespace akeyless.Model
                     this.SnowflakeAccount.Equals(input.SnowflakeAccount))
                 ) && 
                 (
+                    this.Ssl == input.Ssl ||
+                    this.Ssl.Equals(input.Ssl)
+                ) && 
+                (
+                    this.SslCertificate == input.SslCertificate ||
+                    (this.SslCertificate != null &&
+                    this.SslCertificate.Equals(input.SslCertificate))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -492,6 +521,9 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Pwd.GetHashCode();
                 if (this.SnowflakeAccount != null)
                     hashCode = hashCode * 59 + this.SnowflakeAccount.GetHashCode();
+                hashCode = hashCode * 59 + this.Ssl.GetHashCode();
+                if (this.SslCertificate != null)
+                    hashCode = hashCode * 59 + this.SslCertificate.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -36,10 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="KMIPConfigPart" /> class.
         /// </summary>
         /// <param name="clients">clients.</param>
-        /// <param name="serverEnc">serverEnc.</param>
-        public KMIPConfigPart(Dictionary<string, KMIPClient> clients = default(Dictionary<string, KMIPClient>), List<int> serverEnc = default(List<int>))
+        /// <param name="keyEnc">Saves the private key of the cert issuer in encypted form.</param>
+        /// <param name="server">server.</param>
+        /// <param name="serverEnc">Saved for backward compatibility TODO: remove this after all clients upgrade.</param>
+        public KMIPConfigPart(Dictionary<string, KMIPClient> clients = default(Dictionary<string, KMIPClient>), List<int> keyEnc = default(List<int>), KMIPServer server = default(KMIPServer), List<int> serverEnc = default(List<int>))
         {
             this.Clients = clients;
+            this.KeyEnc = keyEnc;
+            this.Server = server;
             this.ServerEnc = serverEnc;
         }
 
@@ -50,8 +54,22 @@ namespace akeyless.Model
         public Dictionary<string, KMIPClient> Clients { get; set; }
 
         /// <summary>
-        /// Gets or Sets ServerEnc
+        /// Saves the private key of the cert issuer in encypted form
         /// </summary>
+        /// <value>Saves the private key of the cert issuer in encypted form</value>
+        [DataMember(Name = "key_enc", EmitDefaultValue = false)]
+        public List<int> KeyEnc { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Server
+        /// </summary>
+        [DataMember(Name = "server", EmitDefaultValue = false)]
+        public KMIPServer Server { get; set; }
+
+        /// <summary>
+        /// Saved for backward compatibility TODO: remove this after all clients upgrade
+        /// </summary>
+        /// <value>Saved for backward compatibility TODO: remove this after all clients upgrade</value>
         [DataMember(Name = "server_enc", EmitDefaultValue = false)]
         public List<int> ServerEnc { get; set; }
 
@@ -64,6 +82,8 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class KMIPConfigPart {\n");
             sb.Append("  Clients: ").Append(Clients).Append("\n");
+            sb.Append("  KeyEnc: ").Append(KeyEnc).Append("\n");
+            sb.Append("  Server: ").Append(Server).Append("\n");
             sb.Append("  ServerEnc: ").Append(ServerEnc).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -106,6 +126,17 @@ namespace akeyless.Model
                     this.Clients.SequenceEqual(input.Clients)
                 ) && 
                 (
+                    this.KeyEnc == input.KeyEnc ||
+                    this.KeyEnc != null &&
+                    input.KeyEnc != null &&
+                    this.KeyEnc.SequenceEqual(input.KeyEnc)
+                ) && 
+                (
+                    this.Server == input.Server ||
+                    (this.Server != null &&
+                    this.Server.Equals(input.Server))
+                ) && 
+                (
                     this.ServerEnc == input.ServerEnc ||
                     this.ServerEnc != null &&
                     input.ServerEnc != null &&
@@ -124,6 +155,10 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Clients != null)
                     hashCode = hashCode * 59 + this.Clients.GetHashCode();
+                if (this.KeyEnc != null)
+                    hashCode = hashCode * 59 + this.KeyEnc.GetHashCode();
+                if (this.Server != null)
+                    hashCode = hashCode * 59 + this.Server.GetHashCode();
                 if (this.ServerEnc != null)
                     hashCode = hashCode * 59 + this.ServerEnc.GetHashCode();
                 return hashCode;

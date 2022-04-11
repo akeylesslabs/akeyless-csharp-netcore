@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Leadership** | **string** |  | [optional] 
 **LogForwarding** | **string** |  | [optional] 
 **MQueue** | **string** |  | [optional] 
+**MigrationStatus** | **string** |  | [optional] 
 **Migrations** | **string** |  | [optional] 
 **Producers** | **Object** |  | [optional] 
 **ProducersStatus** | **string** |  | [optional] 

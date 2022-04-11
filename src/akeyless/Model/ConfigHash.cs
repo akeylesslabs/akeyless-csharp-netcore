@@ -45,13 +45,14 @@ namespace akeyless.Model
         /// <param name="leadership">leadership.</param>
         /// <param name="logForwarding">logForwarding.</param>
         /// <param name="mQueue">mQueue.</param>
+        /// <param name="migrationStatus">migrationStatus.</param>
         /// <param name="migrations">migrations.</param>
         /// <param name="producers">producers.</param>
         /// <param name="producersStatus">producersStatus.</param>
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="universalIdentity">universalIdentity.</param>
-        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
+        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrationStatus = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.Leadership = leadership;
             this.LogForwarding = logForwarding;
             this.MQueue = mQueue;
+            this.MigrationStatus = migrationStatus;
             this.Migrations = migrations;
             this.Producers = producers;
             this.ProducersStatus = producersStatus;
@@ -132,6 +134,12 @@ namespace akeyless.Model
         public string MQueue { get; set; }
 
         /// <summary>
+        /// Gets or Sets MigrationStatus
+        /// </summary>
+        [DataMember(Name = "migration_status", EmitDefaultValue = false)]
+        public string MigrationStatus { get; set; }
+
+        /// <summary>
         /// Gets or Sets Migrations
         /// </summary>
         [DataMember(Name = "migrations", EmitDefaultValue = false)]
@@ -185,6 +193,7 @@ namespace akeyless.Model
             sb.Append("  Leadership: ").Append(Leadership).Append("\n");
             sb.Append("  LogForwarding: ").Append(LogForwarding).Append("\n");
             sb.Append("  MQueue: ").Append(MQueue).Append("\n");
+            sb.Append("  MigrationStatus: ").Append(MigrationStatus).Append("\n");
             sb.Append("  Migrations: ").Append(Migrations).Append("\n");
             sb.Append("  Producers: ").Append(Producers).Append("\n");
             sb.Append("  ProducersStatus: ").Append(ProducersStatus).Append("\n");
@@ -276,6 +285,11 @@ namespace akeyless.Model
                     this.MQueue.Equals(input.MQueue))
                 ) && 
                 (
+                    this.MigrationStatus == input.MigrationStatus ||
+                    (this.MigrationStatus != null &&
+                    this.MigrationStatus.Equals(input.MigrationStatus))
+                ) && 
+                (
                     this.Migrations == input.Migrations ||
                     (this.Migrations != null &&
                     this.Migrations.Equals(input.Migrations))
@@ -336,6 +350,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LogForwarding.GetHashCode();
                 if (this.MQueue != null)
                     hashCode = hashCode * 59 + this.MQueue.GetHashCode();
+                if (this.MigrationStatus != null)
+                    hashCode = hashCode * 59 + this.MigrationStatus.GetHashCode();
                 if (this.Migrations != null)
                     hashCode = hashCode * 59 + this.Migrations.GetHashCode();
                 if (this.Producers != null)

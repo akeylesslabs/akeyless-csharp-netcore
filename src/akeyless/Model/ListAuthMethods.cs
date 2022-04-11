@@ -37,11 +37,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="type">The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListAuthMethods(string paginationToken = default(string), string token = default(string), string uidToken = default(string))
+        public ListAuthMethods(string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.PaginationToken = paginationToken;
             this.Token = token;
+            this.Type = type;
             this.UidToken = uidToken;
         }
 
@@ -60,6 +62,13 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
+        /// The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]
+        /// </summary>
+        /// <value>The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public List<string> Type { get; set; }
+
+        /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
@@ -76,6 +85,7 @@ namespace akeyless.Model
             sb.Append("class ListAuthMethods {\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -122,6 +132,12 @@ namespace akeyless.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    this.Type != null &&
+                    input.Type != null &&
+                    this.Type.SequenceEqual(input.Type)
+                ) && 
+                (
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
@@ -141,6 +157,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 return hashCode;

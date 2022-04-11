@@ -74,6 +74,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerGcp**](V2Api.md#gatewaycreateproducergcp) | **POST** /gateway-create-producer-gcp | 
 [**GatewayCreateProducerGithub**](V2Api.md#gatewaycreateproducergithub) | **POST** /gateway-create-producer-github | 
 [**GatewayCreateProducerGke**](V2Api.md#gatewaycreateproducergke) | **POST** /gateway-create-producer-gke | 
+[**GatewayCreateProducerHanaDb**](V2Api.md#gatewaycreateproducerhanadb) | **POST** /gateway-create-producer-hanadb | 
 [**GatewayCreateProducerLdap**](V2Api.md#gatewaycreateproducerldap) | **POST** /gateway-create-producer-ldap | 
 [**GatewayCreateProducerMSSQL**](V2Api.md#gatewaycreateproducermssql) | **POST** /gateway-create-producer-mssql | 
 [**GatewayCreateProducerMongo**](V2Api.md#gatewaycreateproducermongo) | **POST** /gateway-create-producer-mongo | 
@@ -5045,6 +5046,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayCreateProducerGkeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaycreateproducerhanadb"></a>
+# **GatewayCreateProducerHanaDb**
+> GatewayCreateProducerHanaDbOutput GatewayCreateProducerHanaDb (GatewayCreateProducerHanaDb body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateProducerHanaDbExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerHanaDb(); // GatewayCreateProducerHanaDb | 
+
+            try
+            {
+                GatewayCreateProducerHanaDbOutput result = apiInstance.GatewayCreateProducerHanaDb(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerHanaDb: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayCreateProducerHanaDb**](GatewayCreateProducerHanaDb.md)|  | 
+
+### Return type
+
+[**GatewayCreateProducerHanaDbOutput**](GatewayCreateProducerHanaDbOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayCreateProducerHanaDbResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
