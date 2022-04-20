@@ -51,12 +51,16 @@ namespace akeyless.Model
         /// <param name="oracleServiceName">Oracle DB Name.</param>
         /// <param name="oracleUsername">Oracle Username.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
+        /// <param name="secureAccessEnable">secureAccessEnable.</param>
+        /// <param name="secureAccessHost">secureAccessHost.</param>
+        /// <param name="secureAccessWeb">secureAccessWeb.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string name = default(string), string newName = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string name = default(string), string newName = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -75,6 +79,10 @@ namespace akeyless.Model
             this.OracleServiceName = oracleServiceName;
             this.OracleUsername = oracleUsername;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessWeb = secureAccessWeb;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -161,6 +169,30 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecureAccessBastionIssuer
+        /// </summary>
+        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessEnable
+        /// </summary>
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessHost
+        /// </summary>
+        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SecureAccessWeb
+        /// </summary>
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
         /// List of the tags attached to this secret
         /// </summary>
         /// <value>List of the tags attached to this secret</value>
@@ -214,6 +246,10 @@ namespace akeyless.Model
             sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
             sb.Append("  OracleUsername: ").Append(OracleUsername).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -309,6 +345,26 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessWeb == input.SecureAccessWeb ||
+                    this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -367,6 +423,13 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.OracleUsername.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)

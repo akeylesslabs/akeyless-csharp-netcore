@@ -37,19 +37,21 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access key (relevant only for access-type&#x3D;access_key).</param>
-        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert) (default to &quot;access_key&quot;).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
+        /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="k8sServiceAccountToken">The K8S service account token. (relevant only for access-type&#x3D;k8s).</param>
+        /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert).</param>
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string cloudId = default(string), bool debug = default(bool), string gcpAudience = default(string), string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gcpAudience = default(string), string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -57,12 +59,14 @@ namespace akeyless.Model
             this.AccessType = accessType ?? "access_key";
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
+            this.CertData = certData;
             this.CloudId = cloudId;
             this.Debug = debug;
             this.GcpAudience = gcpAudience;
             this.Jwt = jwt;
             this.K8sAuthConfigName = k8sAuthConfigName;
             this.K8sServiceAccountToken = k8sServiceAccountToken;
+            this.KeyData = keyData;
             this.LdapPassword = ldapPassword;
             this.LdapUsername = ldapUsername;
             this.UidToken = uidToken;
@@ -83,9 +87,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)
+        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)
         /// </summary>
-        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)</value>
+        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)</value>
         [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
 
@@ -102,6 +106,13 @@ namespace akeyless.Model
         /// <value>Password (relevant only for access-type&#x3D;password)</value>
         [DataMember(Name = "admin-password", EmitDefaultValue = false)]
         public string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert)
+        /// </summary>
+        /// <value>Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert)</value>
+        [DataMember(Name = "cert-data", EmitDefaultValue = false)]
+        public string CertData { get; set; }
 
         /// <summary>
         /// The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp)
@@ -145,6 +156,13 @@ namespace akeyless.Model
         public string K8sServiceAccountToken { get; set; }
 
         /// <summary>
+        /// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert)
+        /// </summary>
+        /// <value>Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert)</value>
+        [DataMember(Name = "key-data", EmitDefaultValue = false)]
+        public string KeyData { get; set; }
+
+        /// <summary>
         /// LDAP password (relevant only for access-type&#x3D;ldap)
         /// </summary>
         /// <value>LDAP password (relevant only for access-type&#x3D;ldap)</value>
@@ -178,12 +196,14 @@ namespace akeyless.Model
             sb.Append("  AccessType: ").Append(AccessType).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
+            sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  CloudId: ").Append(CloudId).Append("\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  Jwt: ").Append(Jwt).Append("\n");
             sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
             sb.Append("  K8sServiceAccountToken: ").Append(K8sServiceAccountToken).Append("\n");
+            sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  LdapPassword: ").Append(LdapPassword).Append("\n");
             sb.Append("  LdapUsername: ").Append(LdapUsername).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -247,6 +267,11 @@ namespace akeyless.Model
                     this.AdminPassword.Equals(input.AdminPassword))
                 ) && 
                 (
+                    this.CertData == input.CertData ||
+                    (this.CertData != null &&
+                    this.CertData.Equals(input.CertData))
+                ) && 
+                (
                     this.CloudId == input.CloudId ||
                     (this.CloudId != null &&
                     this.CloudId.Equals(input.CloudId))
@@ -274,6 +299,11 @@ namespace akeyless.Model
                     this.K8sServiceAccountToken == input.K8sServiceAccountToken ||
                     (this.K8sServiceAccountToken != null &&
                     this.K8sServiceAccountToken.Equals(input.K8sServiceAccountToken))
+                ) && 
+                (
+                    this.KeyData == input.KeyData ||
+                    (this.KeyData != null &&
+                    this.KeyData.Equals(input.KeyData))
                 ) && 
                 (
                     this.LdapPassword == input.LdapPassword ||
@@ -311,6 +341,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AdminEmail.GetHashCode();
                 if (this.AdminPassword != null)
                     hashCode = hashCode * 59 + this.AdminPassword.GetHashCode();
+                if (this.CertData != null)
+                    hashCode = hashCode * 59 + this.CertData.GetHashCode();
                 if (this.CloudId != null)
                     hashCode = hashCode * 59 + this.CloudId.GetHashCode();
                 hashCode = hashCode * 59 + this.Debug.GetHashCode();
@@ -322,6 +354,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.K8sAuthConfigName.GetHashCode();
                 if (this.K8sServiceAccountToken != null)
                     hashCode = hashCode * 59 + this.K8sServiceAccountToken.GetHashCode();
+                if (this.KeyData != null)
+                    hashCode = hashCode * 59 + this.KeyData.GetHashCode();
                 if (this.LdapPassword != null)
                     hashCode = hashCode * 59 + this.LdapPassword.GetHashCode();
                 if (this.LdapUsername != null)

@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
+        /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
         /// <param name="metadata">Metadata about the classic key.</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="protectionKeyName">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -50,7 +51,8 @@ namespace akeyless.Model
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string keyData = default(string), List<string> keyOperations = default(List<string>), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -64,12 +66,14 @@ namespace akeyless.Model
             this.Name = name;
             this.CertFileData = certFileData;
             this.KeyData = keyData;
+            this.KeyOperations = keyOperations;
             this.Metadata = metadata;
             this.ProtectionKeyName = protectionKeyName;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
+            this.VaultName = vaultName;
         }
 
         /// <summary>
@@ -92,6 +96,13 @@ namespace akeyless.Model
         /// <value>Base64-encoded classic key value</value>
         [DataMember(Name = "key-data", EmitDefaultValue = false)]
         public string KeyData { get; set; }
+
+        /// <summary>
+        /// A list of allowed operations for the key (required for azure targets)
+        /// </summary>
+        /// <value>A list of allowed operations for the key (required for azure targets)</value>
+        [DataMember(Name = "key-operations", EmitDefaultValue = false)]
+        public List<string> KeyOperations { get; set; }
 
         /// <summary>
         /// Metadata about the classic key
@@ -143,6 +154,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Name of the vault used (required for azure targets)
+        /// </summary>
+        /// <value>Name of the vault used (required for azure targets)</value>
+        [DataMember(Name = "vault-name", EmitDefaultValue = false)]
+        public string VaultName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -153,6 +171,7 @@ namespace akeyless.Model
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
+            sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
@@ -160,6 +179,7 @@ namespace akeyless.Model
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  VaultName: ").Append(VaultName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -210,6 +230,12 @@ namespace akeyless.Model
                     this.KeyData.Equals(input.KeyData))
                 ) && 
                 (
+                    this.KeyOperations == input.KeyOperations ||
+                    this.KeyOperations != null &&
+                    input.KeyOperations != null &&
+                    this.KeyOperations.SequenceEqual(input.KeyOperations)
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -244,6 +270,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.VaultName == input.VaultName ||
+                    (this.VaultName != null &&
+                    this.VaultName.Equals(input.VaultName))
                 );
         }
 
@@ -262,6 +293,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
                 if (this.KeyData != null)
                     hashCode = hashCode * 59 + this.KeyData.GetHashCode();
+                if (this.KeyOperations != null)
+                    hashCode = hashCode * 59 + this.KeyOperations.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)
@@ -276,6 +309,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.VaultName != null)
+                    hashCode = hashCode * 59 + this.VaultName.GetHashCode();
                 return hashCode;
             }
         }

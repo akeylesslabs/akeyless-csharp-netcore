@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | **bool** |  | [optional] 
 **CaCert** | **List&lt;int&gt;** |  | [optional] 
+**CertificateIssueDate** | **DateTime** |  | [optional] 
+**CertificateTtlInSeconds** | **long** |  | [optional] 
 **Hostname** | **string** |  | [optional] 
 **Root** | **string** |  | [optional] 
 

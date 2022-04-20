@@ -24,6 +24,7 @@ docs/AzureLogAnalyticsForwardingConfig.md
 docs/AzurePayload.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
+docs/CertAccessRules.md
 docs/CertificateIssueInfo.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -43,6 +44,8 @@ docs/CreateAuthMethodAWSIAM.md
 docs/CreateAuthMethodAWSIAMOutput.md
 docs/CreateAuthMethodAzureAD.md
 docs/CreateAuthMethodAzureADOutput.md
+docs/CreateAuthMethodCert.md
+docs/CreateAuthMethodCertOutput.md
 docs/CreateAuthMethodGCP.md
 docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
@@ -324,10 +327,13 @@ docs/KmipClientSetRule.md
 docs/KmipCreateClient.md
 docs/KmipCreateClientOutput.md
 docs/KmipDeleteClient.md
+docs/KmipDeleteServer.md
 docs/KmipDescribeClient.md
 docs/KmipDescribeServer.md
 docs/KmipDescribeServerOutput.md
 docs/KmipListClients.md
+docs/KmipMoveServer.md
+docs/KmipMoveServerOutput.md
 docs/KmipRenewClientCertificate.md
 docs/KmipRenewClientCertificateOutput.md
 docs/KmipRenewServerCertificate.md
@@ -434,6 +440,8 @@ docs/UpdateAssoc.md
 docs/UpdateAuthMethod.md
 docs/UpdateAuthMethodAWSIAM.md
 docs/UpdateAuthMethodAzureAD.md
+docs/UpdateAuthMethodCert.md
+docs/UpdateAuthMethodCertOutput.md
 docs/UpdateAuthMethodGCP.md
 docs/UpdateAuthMethodK8S.md
 docs/UpdateAuthMethodK8SOutput.md
@@ -498,6 +506,14 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/CertAccessRulesTests.cs
+src/akeyless.Test/Model/CreateAuthMethodCertOutputTests.cs
+src/akeyless.Test/Model/CreateAuthMethodCertTests.cs
+src/akeyless.Test/Model/KmipDeleteServerTests.cs
+src/akeyless.Test/Model/KmipMoveServerOutputTests.cs
+src/akeyless.Test/Model/KmipMoveServerTests.cs
+src/akeyless.Test/Model/UpdateAuthMethodCertOutputTests.cs
+src/akeyless.Test/Model/UpdateAuthMethodCertTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -539,6 +555,7 @@ src/akeyless/Model/AzureLogAnalyticsForwardingConfig.cs
 src/akeyless/Model/AzurePayload.cs
 src/akeyless/Model/CFConfigPart.cs
 src/akeyless/Model/CacheConfigPart.cs
+src/akeyless/Model/CertAccessRules.cs
 src/akeyless/Model/CertificateIssueInfo.cs
 src/akeyless/Model/ClassicKeyDetailsInfo.cs
 src/akeyless/Model/ClassicKeyStatusInfo.cs
@@ -558,6 +575,8 @@ src/akeyless/Model/CreateAuthMethodAWSIAM.cs
 src/akeyless/Model/CreateAuthMethodAWSIAMOutput.cs
 src/akeyless/Model/CreateAuthMethodAzureAD.cs
 src/akeyless/Model/CreateAuthMethodAzureADOutput.cs
+src/akeyless/Model/CreateAuthMethodCert.cs
+src/akeyless/Model/CreateAuthMethodCertOutput.cs
 src/akeyless/Model/CreateAuthMethodGCP.cs
 src/akeyless/Model/CreateAuthMethodGCPOutput.cs
 src/akeyless/Model/CreateAuthMethodHuawei.cs
@@ -839,10 +858,13 @@ src/akeyless/Model/KmipClientSetRule.cs
 src/akeyless/Model/KmipCreateClient.cs
 src/akeyless/Model/KmipCreateClientOutput.cs
 src/akeyless/Model/KmipDeleteClient.cs
+src/akeyless/Model/KmipDeleteServer.cs
 src/akeyless/Model/KmipDescribeClient.cs
 src/akeyless/Model/KmipDescribeServer.cs
 src/akeyless/Model/KmipDescribeServerOutput.cs
 src/akeyless/Model/KmipListClients.cs
+src/akeyless/Model/KmipMoveServer.cs
+src/akeyless/Model/KmipMoveServerOutput.cs
 src/akeyless/Model/KmipRenewClientCertificate.cs
 src/akeyless/Model/KmipRenewClientCertificateOutput.cs
 src/akeyless/Model/KmipRenewServerCertificate.cs
@@ -949,6 +971,8 @@ src/akeyless/Model/UpdateAssoc.cs
 src/akeyless/Model/UpdateAuthMethod.cs
 src/akeyless/Model/UpdateAuthMethodAWSIAM.cs
 src/akeyless/Model/UpdateAuthMethodAzureAD.cs
+src/akeyless/Model/UpdateAuthMethodCert.cs
+src/akeyless/Model/UpdateAuthMethodCertOutput.cs
 src/akeyless/Model/UpdateAuthMethodGCP.cs
 src/akeyless/Model/UpdateAuthMethodK8S.cs
 src/akeyless/Model/UpdateAuthMethodK8SOutput.cs

@@ -49,10 +49,12 @@ namespace akeyless.Model
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="requiredScopes">RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve.</param>
+        /// <param name="requiredScopesPrefix">RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), bool forceSubClaims = default(bool), string issuer = default(string), long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), bool forceSubClaims = default(bool), string issuer = default(string), long jwtTtl = 0, string name = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -72,6 +74,8 @@ namespace akeyless.Model
             this.ForceSubClaims = forceSubClaims;
             this.Issuer = issuer;
             this.JwtTtl = jwtTtl;
+            this.RequiredScopes = requiredScopes;
+            this.RequiredScopesPrefix = requiredScopesPrefix;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -140,6 +144,20 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve
+        /// </summary>
+        /// <value>RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve</value>
+        [DataMember(Name = "required-scopes", EmitDefaultValue = false)]
+        public List<string> RequiredScopes { get; set; }
+
+        /// <summary>
+        /// RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI)
+        /// </summary>
+        /// <value>RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI)</value>
+        [DataMember(Name = "required-scopes-prefix", EmitDefaultValue = false)]
+        public string RequiredScopesPrefix { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -177,6 +195,8 @@ namespace akeyless.Model
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RequiredScopes: ").Append(RequiredScopes).Append("\n");
+            sb.Append("  RequiredScopesPrefix: ").Append(RequiredScopesPrefix).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
@@ -259,6 +279,17 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.RequiredScopes == input.RequiredScopes ||
+                    this.RequiredScopes != null &&
+                    input.RequiredScopes != null &&
+                    this.RequiredScopes.SequenceEqual(input.RequiredScopes)
+                ) && 
+                (
+                    this.RequiredScopesPrefix == input.RequiredScopesPrefix ||
+                    (this.RequiredScopesPrefix != null &&
+                    this.RequiredScopesPrefix.Equals(input.RequiredScopesPrefix))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -299,6 +330,10 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.RequiredScopes != null)
+                    hashCode = hashCode * 59 + this.RequiredScopes.GetHashCode();
+                if (this.RequiredScopesPrefix != null)
+                    hashCode = hashCode * 59 + this.RequiredScopesPrefix.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

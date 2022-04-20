@@ -35,15 +35,24 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListRoles" /> class.
         /// </summary>
+        /// <param name="filter">Filter by item name or part of it.</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListRoles(string paginationToken = default(string), string token = default(string), string uidToken = default(string))
+        public ListRoles(string filter = default(string), string paginationToken = default(string), string token = default(string), string uidToken = default(string))
         {
+            this.Filter = filter;
             this.PaginationToken = paginationToken;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Filter by item name or part of it
+        /// </summary>
+        /// <value>Filter by item name or part of it</value>
+        [DataMember(Name = "filter", EmitDefaultValue = false)]
+        public string Filter { get; set; }
 
         /// <summary>
         /// Next page reference
@@ -74,6 +83,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ListRoles {\n");
+            sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -112,6 +122,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Filter == input.Filter ||
+                    (this.Filter != null &&
+                    this.Filter.Equals(input.Filter))
+                ) && 
+                (
                     this.PaginationToken == input.PaginationToken ||
                     (this.PaginationToken != null &&
                     this.PaginationToken.Equals(input.PaginationToken))
@@ -137,6 +152,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Filter != null)
+                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
                 if (this.PaginationToken != null)
                     hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
                 if (this.Token != null)

@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <param name="apiKeyAccessRules">apiKeyAccessRules.</param>
         /// <param name="awsIamAccessRules">awsIamAccessRules.</param>
         /// <param name="azureAdAccessRules">azureAdAccessRules.</param>
+        /// <param name="certAccessRules">certAccessRules.</param>
         /// <param name="cidrWhitelist">cidrWhitelist.</param>
         /// <param name="emailPassAccessRules">emailPassAccessRules.</param>
         /// <param name="forceSubClaims">if true the role associated with this auth method must include sub claims.</param>
@@ -53,13 +54,14 @@ namespace akeyless.Model
         /// <param name="rulesType">rulesType.</param>
         /// <param name="samlAccessRules">samlAccessRules.</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
             this.ApiKeyAccessRules = apiKeyAccessRules;
             this.AwsIamAccessRules = awsIamAccessRules;
             this.AzureAdAccessRules = azureAdAccessRules;
+            this.CertAccessRules = certAccessRules;
             this.CidrWhitelist = cidrWhitelist;
             this.EmailPassAccessRules = emailPassAccessRules;
             this.ForceSubClaims = forceSubClaims;
@@ -105,6 +107,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure_ad_access_rules", EmitDefaultValue = false)]
         public AzureADAccessRules AzureAdAccessRules { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertAccessRules
+        /// </summary>
+        [DataMember(Name = "cert_access_rules", EmitDefaultValue = false)]
+        public CertAccessRules CertAccessRules { get; set; }
 
         /// <summary>
         /// Gets or Sets CidrWhitelist
@@ -198,6 +206,7 @@ namespace akeyless.Model
             sb.Append("  ApiKeyAccessRules: ").Append(ApiKeyAccessRules).Append("\n");
             sb.Append("  AwsIamAccessRules: ").Append(AwsIamAccessRules).Append("\n");
             sb.Append("  AzureAdAccessRules: ").Append(AzureAdAccessRules).Append("\n");
+            sb.Append("  CertAccessRules: ").Append(CertAccessRules).Append("\n");
             sb.Append("  CidrWhitelist: ").Append(CidrWhitelist).Append("\n");
             sb.Append("  EmailPassAccessRules: ").Append(EmailPassAccessRules).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
@@ -268,6 +277,11 @@ namespace akeyless.Model
                     this.AzureAdAccessRules == input.AzureAdAccessRules ||
                     (this.AzureAdAccessRules != null &&
                     this.AzureAdAccessRules.Equals(input.AzureAdAccessRules))
+                ) && 
+                (
+                    this.CertAccessRules == input.CertAccessRules ||
+                    (this.CertAccessRules != null &&
+                    this.CertAccessRules.Equals(input.CertAccessRules))
                 ) && 
                 (
                     this.CidrWhitelist == input.CidrWhitelist ||
@@ -352,6 +366,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AwsIamAccessRules.GetHashCode();
                 if (this.AzureAdAccessRules != null)
                     hashCode = hashCode * 59 + this.AzureAdAccessRules.GetHashCode();
+                if (this.CertAccessRules != null)
+                    hashCode = hashCode * 59 + this.CertAccessRules.GetHashCode();
                 if (this.CidrWhitelist != null)
                     hashCode = hashCode * 59 + this.CidrWhitelist.GetHashCode();
                 if (this.EmailPassAccessRules != null)

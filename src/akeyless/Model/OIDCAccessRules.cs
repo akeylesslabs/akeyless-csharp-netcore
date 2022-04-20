@@ -41,8 +41,10 @@ namespace akeyless.Model
         /// <param name="clientSecret">Client Secret.</param>
         /// <param name="isInternal">IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal&#x3D;true.</param>
         /// <param name="issuer">Issuer URL.</param>
+        /// <param name="requiredScopes">A list of required scopes to request from the oidc provider, and to check on the token.</param>
+        /// <param name="requiredScopesPrefix">A prefix to add to the required scopes (for example, azures&#39; Application ID URI).</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), string uniqueIdentifier = default(string))
+        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string uniqueIdentifier = default(string))
         {
             this.AllowedRedirectURIs = allowedRedirectURIs;
             this.BoundClaims = boundClaims;
@@ -50,6 +52,8 @@ namespace akeyless.Model
             this.ClientSecret = clientSecret;
             this.IsInternal = isInternal;
             this.Issuer = issuer;
+            this.RequiredScopes = requiredScopes;
+            this.RequiredScopesPrefix = requiredScopesPrefix;
             this.UniqueIdentifier = uniqueIdentifier;
         }
 
@@ -96,6 +100,20 @@ namespace akeyless.Model
         public string Issuer { get; set; }
 
         /// <summary>
+        /// A list of required scopes to request from the oidc provider, and to check on the token
+        /// </summary>
+        /// <value>A list of required scopes to request from the oidc provider, and to check on the token</value>
+        [DataMember(Name = "required_scopes", EmitDefaultValue = false)]
+        public List<string> RequiredScopes { get; set; }
+
+        /// <summary>
+        /// A prefix to add to the required scopes (for example, azures&#39; Application ID URI)
+        /// </summary>
+        /// <value>A prefix to add to the required scopes (for example, azures&#39; Application ID URI)</value>
+        [DataMember(Name = "required_scopes_prefix", EmitDefaultValue = false)]
+        public string RequiredScopesPrefix { get; set; }
+
+        /// <summary>
         /// A unique identifier to distinguish different users
         /// </summary>
         /// <value>A unique identifier to distinguish different users</value>
@@ -116,6 +134,8 @@ namespace akeyless.Model
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  IsInternal: ").Append(IsInternal).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
+            sb.Append("  RequiredScopes: ").Append(RequiredScopes).Append("\n");
+            sb.Append("  RequiredScopesPrefix: ").Append(RequiredScopesPrefix).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -183,6 +203,17 @@ namespace akeyless.Model
                     this.Issuer.Equals(input.Issuer))
                 ) && 
                 (
+                    this.RequiredScopes == input.RequiredScopes ||
+                    this.RequiredScopes != null &&
+                    input.RequiredScopes != null &&
+                    this.RequiredScopes.SequenceEqual(input.RequiredScopes)
+                ) && 
+                (
+                    this.RequiredScopesPrefix == input.RequiredScopesPrefix ||
+                    (this.RequiredScopesPrefix != null &&
+                    this.RequiredScopesPrefix.Equals(input.RequiredScopesPrefix))
+                ) && 
+                (
                     this.UniqueIdentifier == input.UniqueIdentifier ||
                     (this.UniqueIdentifier != null &&
                     this.UniqueIdentifier.Equals(input.UniqueIdentifier))
@@ -209,6 +240,10 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.IsInternal.GetHashCode();
                 if (this.Issuer != null)
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
+                if (this.RequiredScopes != null)
+                    hashCode = hashCode * 59 + this.RequiredScopes.GetHashCode();
+                if (this.RequiredScopesPrefix != null)
+                    hashCode = hashCode * 59 + this.RequiredScopesPrefix.GetHashCode();
                 if (this.UniqueIdentifier != null)
                     hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
                 return hashCode;

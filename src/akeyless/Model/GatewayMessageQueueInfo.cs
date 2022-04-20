@@ -38,13 +38,11 @@ namespace akeyless.Model
         /// <param name="mqType">mqType.</param>
         /// <param name="queueName">queueName.</param>
         /// <param name="queueUrl">queueUrl.</param>
-        /// <param name="useNewQueue">useNewQueue.</param>
-        public GatewayMessageQueueInfo(string mqType = default(string), string queueName = default(string), string queueUrl = default(string), bool useNewQueue = default(bool))
+        public GatewayMessageQueueInfo(string mqType = default(string), string queueName = default(string), string queueUrl = default(string))
         {
             this.MqType = mqType;
             this.QueueName = queueName;
             this.QueueUrl = queueUrl;
-            this.UseNewQueue = useNewQueue;
         }
 
         /// <summary>
@@ -66,12 +64,6 @@ namespace akeyless.Model
         public string QueueUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets UseNewQueue
-        /// </summary>
-        [DataMember(Name = "use_new_queue", EmitDefaultValue = true)]
-        public bool UseNewQueue { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,7 +74,6 @@ namespace akeyless.Model
             sb.Append("  MqType: ").Append(MqType).Append("\n");
             sb.Append("  QueueName: ").Append(QueueName).Append("\n");
             sb.Append("  QueueUrl: ").Append(QueueUrl).Append("\n");
-            sb.Append("  UseNewQueue: ").Append(UseNewQueue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,10 +122,6 @@ namespace akeyless.Model
                     this.QueueUrl == input.QueueUrl ||
                     (this.QueueUrl != null &&
                     this.QueueUrl.Equals(input.QueueUrl))
-                ) && 
-                (
-                    this.UseNewQueue == input.UseNewQueue ||
-                    this.UseNewQueue.Equals(input.UseNewQueue)
                 );
         }
 
@@ -153,7 +140,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.QueueName.GetHashCode();
                 if (this.QueueUrl != null)
                     hashCode = hashCode * 59 + this.QueueUrl.GetHashCode();
-                hashCode = hashCode * 59 + this.UseNewQueue.GetHashCode();
                 return hashCode;
             }
         }

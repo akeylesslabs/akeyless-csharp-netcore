@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ApiKeyAccessRules** | [**APIKeyAccessRules**](APIKeyAccessRules.md) |  | [optional] 
 **AwsIamAccessRules** | [**AWSIAMAccessRules**](AWSIAMAccessRules.md) |  | [optional] 
 **AzureAdAccessRules** | [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] 
+**CertAccessRules** | [**CertAccessRules**](CertAccessRules.md) |  | [optional] 
 **CidrWhitelist** | **string** |  | [optional] 
 **EmailPassAccessRules** | [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] 
 **ForceSubClaims** | **bool** | if true the role associated with this auth method must include sub claims | [optional] 

@@ -49,7 +49,8 @@ namespace akeyless.Model
         /// <param name="publicKeyData">A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization..</param>
+        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.PublicKeyData = publicKeyData;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UniqueIdentifier = uniqueIdentifier;
         }
 
         /// <summary>
@@ -130,6 +132,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
+        /// </summary>
+        /// <value>A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.</value>
+        [DataMember(Name = "unique-identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -146,6 +155,7 @@ namespace akeyless.Model
             sb.Append("  PublicKeyData: ").Append(PublicKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -222,6 +232,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
                 );
         }
 
@@ -249,6 +264,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.UniqueIdentifier != null)
+                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
                 return hashCode;
             }
         }

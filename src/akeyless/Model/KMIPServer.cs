@@ -38,13 +38,17 @@ namespace akeyless.Model
         /// <param name="active">active.</param>
         /// <param name="ca">ca.</param>
         /// <param name="certificate">certificate.</param>
+        /// <param name="certificateIssueDate">certificateIssueDate.</param>
+        /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
         /// <param name="hostname">hostname.</param>
         /// <param name="root">root.</param>
-        public KMIPServer(bool active = default(bool), List<int> ca = default(List<int>), List<int> certificate = default(List<int>), string hostname = default(string), string root = default(string))
+        public KMIPServer(bool active = default(bool), List<int> ca = default(List<int>), List<int> certificate = default(List<int>), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), string hostname = default(string), string root = default(string))
         {
             this.Active = active;
             this.Ca = ca;
             this.Certificate = certificate;
+            this.CertificateIssueDate = certificateIssueDate;
+            this.CertificateTtlInSeconds = certificateTtlInSeconds;
             this.Hostname = hostname;
             this.Root = root;
         }
@@ -66,6 +70,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate", EmitDefaultValue = false)]
         public List<int> Certificate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateIssueDate
+        /// </summary>
+        [DataMember(Name = "certificate_issue_date", EmitDefaultValue = false)]
+        public DateTime CertificateIssueDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateTtlInSeconds
+        /// </summary>
+        [DataMember(Name = "certificate_ttl_in_seconds", EmitDefaultValue = false)]
+        public long CertificateTtlInSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets Hostname
@@ -90,6 +106,8 @@ namespace akeyless.Model
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  Ca: ").Append(Ca).Append("\n");
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
+            sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
+            sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");
             sb.Append("}\n");
@@ -143,6 +161,15 @@ namespace akeyless.Model
                     this.Certificate.SequenceEqual(input.Certificate)
                 ) && 
                 (
+                    this.CertificateIssueDate == input.CertificateIssueDate ||
+                    (this.CertificateIssueDate != null &&
+                    this.CertificateIssueDate.Equals(input.CertificateIssueDate))
+                ) && 
+                (
+                    this.CertificateTtlInSeconds == input.CertificateTtlInSeconds ||
+                    this.CertificateTtlInSeconds.Equals(input.CertificateTtlInSeconds)
+                ) && 
+                (
                     this.Hostname == input.Hostname ||
                     (this.Hostname != null &&
                     this.Hostname.Equals(input.Hostname))
@@ -168,6 +195,9 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Ca.GetHashCode();
                 if (this.Certificate != null)
                     hashCode = hashCode * 59 + this.Certificate.GetHashCode();
+                if (this.CertificateIssueDate != null)
+                    hashCode = hashCode * 59 + this.CertificateIssueDate.GetHashCode();
+                hashCode = hashCode * 59 + this.CertificateTtlInSeconds.GetHashCode();
                 if (this.Hostname != null)
                     hashCode = hashCode * 59 + this.Hostname.GetHashCode();
                 if (this.Root != null)

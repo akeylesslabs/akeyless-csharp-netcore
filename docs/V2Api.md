@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**CreateAuthMethod**](V2Api.md#createauthmethod) | **POST** /create-auth-method | 
 [**CreateAuthMethodAWSIAM**](V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam | 
 [**CreateAuthMethodAzureAD**](V2Api.md#createauthmethodazuread) | **POST** /create-auth-method-azure-ad | 
+[**CreateAuthMethodCert**](V2Api.md#createauthmethodcert) | **POST** /create-auth-method-cert | 
 [**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp | 
 [**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei | 
 [**CreateAuthMethodK8S**](V2Api.md#createauthmethodk8s) | **POST** /create-auth-method-k8s | 
@@ -143,9 +144,11 @@ Method | HTTP request | Description
 [**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule | 
 [**KmipCreateClient**](V2Api.md#kmipcreateclient) | **POST** /kmip-create-client | 
 [**KmipDeleteClient**](V2Api.md#kmipdeleteclient) | **POST** /kmip-delete-client | 
+[**KmipDeleteServer**](V2Api.md#kmipdeleteserver) | **DELETE** /kmip-delete-environment | 
 [**KmipDescribeClient**](V2Api.md#kmipdescribeclient) | **POST** /kmip-get-client | 
 [**KmipDescribeServer**](V2Api.md#kmipdescribeserver) | **POST** /kmip-get-environment | 
 [**KmipListClients**](V2Api.md#kmiplistclients) | **POST** /kmip-list-clients | 
+[**KmipMoveServer**](V2Api.md#kmipmoveserver) | **POST** /kmip-move-environment | 
 [**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client | 
 [**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment | 
 [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment | 
@@ -180,6 +183,7 @@ Method | HTTP request | Description
 [**UpdateAuthMethod**](V2Api.md#updateauthmethod) | **POST** /update-auth-method | 
 [**UpdateAuthMethodAWSIAM**](V2Api.md#updateauthmethodawsiam) | **POST** /update-auth-method-aws-iam | 
 [**UpdateAuthMethodAzureAD**](V2Api.md#updateauthmethodazuread) | **POST** /update-auth-method-azure-ad | 
+[**UpdateAuthMethodCert**](V2Api.md#updateauthmethodcert) | **POST** /update-auth-method-cert | 
 [**UpdateAuthMethodGCP**](V2Api.md#updateauthmethodgcp) | **POST** /update-auth-method-gcp | 
 [**UpdateAuthMethodK8S**](V2Api.md#updateauthmethodk8s) | **POST** /update-auth-method-k8s | 
 [**UpdateAuthMethodLDAP**](V2Api.md#updateauthmethodldap) | **POST** /update-auth-method-ldap | 
@@ -906,6 +910,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createAuthMethodAzureADResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodcert"></a>
+# **CreateAuthMethodCert**
+> CreateAuthMethodCertOutput CreateAuthMethodCert (CreateAuthMethodCert body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodCertExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodCert(); // CreateAuthMethodCert | 
+
+            try
+            {
+                CreateAuthMethodCertOutput result = apiInstance.CreateAuthMethodCert(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodCert: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAuthMethodCert**](CreateAuthMethodCert.md)|  | 
+
+### Return type
+
+[**CreateAuthMethodCertOutput**](CreateAuthMethodCertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodCertResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -9805,6 +9878,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="kmipdeleteserver"></a>
+# **KmipDeleteServer**
+> Object KmipDeleteServer (KmipDeleteServer body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipDeleteServerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipDeleteServer(); // KmipDeleteServer |  (optional) 
+
+            try
+            {
+                Object result = apiInstance.KmipDeleteServer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipDeleteServer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipDeleteServer**](KmipDeleteServer.md)|  | [optional] 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipDeleteServerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="kmipdescribeclient"></a>
 # **KmipDescribeClient**
 > KMIPClientGetResponse KmipDescribeClient (KmipDescribeClient body = null)
@@ -10008,6 +10150,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | kmipListClientsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="kmipmoveserver"></a>
+# **KmipMoveServer**
+> KmipMoveServerOutput KmipMoveServer (KmipMoveServer body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipMoveServerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new KmipMoveServer(); // KmipMoveServer |  (optional) 
+
+            try
+            {
+                KmipMoveServerOutput result = apiInstance.KmipMoveServer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipMoveServer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KmipMoveServer**](KmipMoveServer.md)|  | [optional] 
+
+### Return type
+
+[**KmipMoveServerOutput**](KmipMoveServerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipMoveServerResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -12350,6 +12561,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateAuthMethodAzureADResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodcert"></a>
+# **UpdateAuthMethodCert**
+> UpdateAuthMethodCertOutput UpdateAuthMethodCert (UpdateAuthMethodCert body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodCertExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodCert(); // UpdateAuthMethodCert | 
+
+            try
+            {
+                UpdateAuthMethodCertOutput result = apiInstance.UpdateAuthMethodCert(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodCert: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateAuthMethodCert**](UpdateAuthMethodCert.md)|  | 
+
+### Return type
+
+[**UpdateAuthMethodCertOutput**](UpdateAuthMethodCertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodCertResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

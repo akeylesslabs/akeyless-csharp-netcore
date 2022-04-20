@@ -35,13 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateOutput" /> class.
         /// </summary>
+        /// <param name="changelog">changelog.</param>
         /// <param name="latest">latest.</param>
         /// <param name="updated">updated.</param>
-        public UpdateOutput(string latest = default(string), bool updated = default(bool))
+        public UpdateOutput(string changelog = default(string), string latest = default(string), bool updated = default(bool))
         {
+            this.Changelog = changelog;
             this.Latest = latest;
             this.Updated = updated;
         }
+
+        /// <summary>
+        /// Gets or Sets Changelog
+        /// </summary>
+        [DataMember(Name = "changelog", EmitDefaultValue = false)]
+        public string Changelog { get; set; }
 
         /// <summary>
         /// Gets or Sets Latest
@@ -63,6 +71,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UpdateOutput {\n");
+            sb.Append("  Changelog: ").Append(Changelog).Append("\n");
             sb.Append("  Latest: ").Append(Latest).Append("\n");
             sb.Append("  Updated: ").Append(Updated).Append("\n");
             sb.Append("}\n");
@@ -100,6 +109,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Changelog == input.Changelog ||
+                    (this.Changelog != null &&
+                    this.Changelog.Equals(input.Changelog))
+                ) && 
+                (
                     this.Latest == input.Latest ||
                     (this.Latest != null &&
                     this.Latest.Equals(input.Latest))
@@ -119,6 +133,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Changelog != null)
+                    hashCode = hashCode * 59 + this.Changelog.GetHashCode();
                 if (this.Latest != null)
                     hashCode = hashCode * 59 + this.Latest.GetHashCode();
                 hashCode = hashCode * 59 + this.Updated.GetHashCode();

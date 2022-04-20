@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Changelog** | **string** |  | [optional] 
 **Latest** | **string** |  | [optional] 
 **Updated** | **bool** |  | [optional] 
 

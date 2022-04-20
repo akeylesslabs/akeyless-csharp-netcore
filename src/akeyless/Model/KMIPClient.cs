@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="KMIPClient" /> class.
         /// </summary>
         /// <param name="certificateIssueDate">certificateIssueDate.</param>
+        /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
         /// <param name="rules">rules.</param>
-        public KMIPClient(DateTime certificateIssueDate = default(DateTime), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        public KMIPClient(DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
         {
             this.CertificateIssueDate = certificateIssueDate;
+            this.CertificateTtlInSeconds = certificateTtlInSeconds;
             this.Id = id;
             this.Name = name;
             this.Rules = rules;
@@ -52,6 +54,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate_issue_date", EmitDefaultValue = false)]
         public DateTime CertificateIssueDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateTtlInSeconds
+        /// </summary>
+        [DataMember(Name = "certificate_ttl_in_seconds", EmitDefaultValue = false)]
+        public long CertificateTtlInSeconds { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -80,6 +88,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class KMIPClient {\n");
             sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
+            sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Rules: ").Append(Rules).Append("\n");
@@ -123,6 +132,10 @@ namespace akeyless.Model
                     this.CertificateIssueDate.Equals(input.CertificateIssueDate))
                 ) && 
                 (
+                    this.CertificateTtlInSeconds == input.CertificateTtlInSeconds ||
+                    this.CertificateTtlInSeconds.Equals(input.CertificateTtlInSeconds)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -151,6 +164,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.CertificateIssueDate != null)
                     hashCode = hashCode * 59 + this.CertificateIssueDate.GetHashCode();
+                hashCode = hashCode * 59 + this.CertificateTtlInSeconds.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
