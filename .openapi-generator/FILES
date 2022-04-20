@@ -506,14 +506,6 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/CertAccessRulesTests.cs
-src/akeyless.Test/Model/CreateAuthMethodCertOutputTests.cs
-src/akeyless.Test/Model/CreateAuthMethodCertTests.cs
-src/akeyless.Test/Model/KmipDeleteServerTests.cs
-src/akeyless.Test/Model/KmipMoveServerOutputTests.cs
-src/akeyless.Test/Model/KmipMoveServerTests.cs
-src/akeyless.Test/Model/UpdateAuthMethodCertOutputTests.cs
-src/akeyless.Test/Model/UpdateAuthMethodCertTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
