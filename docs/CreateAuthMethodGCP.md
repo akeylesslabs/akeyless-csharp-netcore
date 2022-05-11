@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **BoundServiceAccounts** | **List&lt;string&gt;** | List of service accounts the service account must be part of in order to be authenticated. | [optional] 
 **BoundZones** | **List&lt;string&gt;** | &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone. | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
-**JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
+**JwtTtl** | **long** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **ServiceAccountCredsData** | **string** | ServiceAccount credentials data instead of giving a file path, base64 encoded | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

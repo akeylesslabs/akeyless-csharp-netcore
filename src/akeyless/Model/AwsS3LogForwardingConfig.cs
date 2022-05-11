@@ -38,13 +38,15 @@ namespace akeyless.Model
         /// <param name="awsAccessId">awsAccessId.</param>
         /// <param name="awsAccessKey">awsAccessKey.</param>
         /// <param name="awsRegion">awsRegion.</param>
+        /// <param name="awsUseGatewayCloudIdentity">awsUseGatewayCloudIdentity.</param>
         /// <param name="bucketName">bucketName.</param>
         /// <param name="logFolder">logFolder.</param>
-        public AwsS3LogForwardingConfig(string awsAccessId = default(string), string awsAccessKey = default(string), string awsRegion = default(string), string bucketName = default(string), string logFolder = default(string))
+        public AwsS3LogForwardingConfig(string awsAccessId = default(string), string awsAccessKey = default(string), string awsRegion = default(string), bool awsUseGatewayCloudIdentity = default(bool), string bucketName = default(string), string logFolder = default(string))
         {
             this.AwsAccessId = awsAccessId;
             this.AwsAccessKey = awsAccessKey;
             this.AwsRegion = awsRegion;
+            this.AwsUseGatewayCloudIdentity = awsUseGatewayCloudIdentity;
             this.BucketName = bucketName;
             this.LogFolder = logFolder;
         }
@@ -66,6 +68,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "aws_region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AwsUseGatewayCloudIdentity
+        /// </summary>
+        [DataMember(Name = "aws_use_gateway_cloud_identity", EmitDefaultValue = true)]
+        public bool AwsUseGatewayCloudIdentity { get; set; }
 
         /// <summary>
         /// Gets or Sets BucketName
@@ -90,6 +98,7 @@ namespace akeyless.Model
             sb.Append("  AwsAccessId: ").Append(AwsAccessId).Append("\n");
             sb.Append("  AwsAccessKey: ").Append(AwsAccessKey).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
+            sb.Append("  AwsUseGatewayCloudIdentity: ").Append(AwsUseGatewayCloudIdentity).Append("\n");
             sb.Append("  BucketName: ").Append(BucketName).Append("\n");
             sb.Append("  LogFolder: ").Append(LogFolder).Append("\n");
             sb.Append("}\n");
@@ -142,6 +151,10 @@ namespace akeyless.Model
                     this.AwsRegion.Equals(input.AwsRegion))
                 ) && 
                 (
+                    this.AwsUseGatewayCloudIdentity == input.AwsUseGatewayCloudIdentity ||
+                    this.AwsUseGatewayCloudIdentity.Equals(input.AwsUseGatewayCloudIdentity)
+                ) && 
+                (
                     this.BucketName == input.BucketName ||
                     (this.BucketName != null &&
                     this.BucketName.Equals(input.BucketName))
@@ -168,6 +181,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AwsAccessKey.GetHashCode();
                 if (this.AwsRegion != null)
                     hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
+                hashCode = hashCode * 59 + this.AwsUseGatewayCloudIdentity.GetHashCode();
                 if (this.BucketName != null)
                     hashCode = hashCode * 59 + this.BucketName.GetHashCode();
                 if (this.LogFolder != null)

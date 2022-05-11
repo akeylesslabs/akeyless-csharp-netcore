@@ -41,16 +41,18 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetSecretValue" /> class.
         /// </summary>
         /// <param name="names">Secret name (required).</param>
+        /// <param name="prettyPrint">prettyPrint.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Secret version.</param>
-        public GetSecretValue(List<string> names = default(List<string>), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetSecretValue(List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
             if (names == null) {
                 throw new ArgumentNullException("names is a required property for GetSecretValue and cannot be null");
             }
             this.Names = names;
+            this.PrettyPrint = prettyPrint;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
@@ -62,6 +64,12 @@ namespace akeyless.Model
         /// <value>Secret name</value>
         [DataMember(Name = "names", IsRequired = true, EmitDefaultValue = false)]
         public List<string> Names { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrettyPrint
+        /// </summary>
+        [DataMember(Name = "pretty-print", EmitDefaultValue = true)]
+        public bool PrettyPrint { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -93,6 +101,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GetSecretValue {\n");
             sb.Append("  Names: ").Append(Names).Append("\n");
+            sb.Append("  PrettyPrint: ").Append(PrettyPrint).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
@@ -137,6 +146,10 @@ namespace akeyless.Model
                     this.Names.SequenceEqual(input.Names)
                 ) && 
                 (
+                    this.PrettyPrint == input.PrettyPrint ||
+                    this.PrettyPrint.Equals(input.PrettyPrint)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -163,6 +176,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Names != null)
                     hashCode = hashCode * 59 + this.Names.GetHashCode();
+                hashCode = hashCode * 59 + this.PrettyPrint.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

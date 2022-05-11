@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DenyInheritance** | **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | **bool** | Deny from the token to rotate | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
-**JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
+**JwtTtl** | **long** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

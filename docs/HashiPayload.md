@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ImportAsJson** | **bool** |  | [optional] 
 **Namespaces** | **List&lt;string&gt;** |  | [optional] 
 **Token** | **string** |  | [optional] 
 **Url** | **string** |  | [optional] 

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerHanaDb is a command that updates mssql producer
+    /// gatewayUpdateProducerHanaDb is a command that updates hanadb producer
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerHanaDb")]
     public partial class GatewayUpdateProducerHanaDb : IEquatable<GatewayUpdateProducerHanaDb>, IValidatableObject

@@ -45,12 +45,16 @@ namespace akeyless.Model
         /// <param name="azureClientId">azureClientId.</param>
         /// <param name="azureClientSecret">azureClientSecret.</param>
         /// <param name="azureTenantId">azureTenantId.</param>
+        /// <param name="caCertData">CACertData is the rsa 4096 certificate data in PEM format.</param>
+        /// <param name="caCertName">CACertName is the name of the certificate in SalesForce tenant.</param>
         /// <param name="chefServerHostName">chefServerHostName.</param>
         /// <param name="chefServerKey">chefServerKey.</param>
         /// <param name="chefServerPort">chefServerPort.</param>
         /// <param name="chefServerUrl">chefServerUrl.</param>
         /// <param name="chefServerUsername">chefServerUsername.</param>
         /// <param name="chefSkipSsl">chefSkipSsl.</param>
+        /// <param name="clientId">clientId.</param>
+        /// <param name="clientSecret">clientSecret.</param>
         /// <param name="dbHostName">dbHostName.</param>
         /// <param name="dbName">dbName.</param>
         /// <param name="dbPort">dbPort.</param>
@@ -103,9 +107,11 @@ namespace akeyless.Model
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
+        /// <param name="securityToken">securityToken.</param>
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
+        /// <param name="tenantUrl">tenantUrl.</param>
         /// <param name="url">url.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
         /// <param name="userName">userName.</param>
@@ -116,7 +122,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -128,12 +134,16 @@ namespace akeyless.Model
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
             this.AzureTenantId = azureTenantId;
+            this.CaCertData = caCertData;
+            this.CaCertName = caCertName;
             this.ChefServerHostName = chefServerHostName;
             this.ChefServerKey = chefServerKey;
             this.ChefServerPort = chefServerPort;
             this.ChefServerUrl = chefServerUrl;
             this.ChefServerUsername = chefServerUsername;
             this.ChefSkipSsl = chefSkipSsl;
+            this.ClientId = clientId;
+            this.ClientSecret = clientSecret;
             this.DbHostName = dbHostName;
             this.DbName = dbName;
             this.DbPort = dbPort;
@@ -186,9 +196,11 @@ namespace akeyless.Model
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
+            this.SecurityToken = securityToken;
             this.SfAccount = sfAccount;
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
+            this.TenantUrl = tenantUrl;
             this.Url = url;
             this.UseGwCloudIdentity = useGwCloudIdentity;
             this.UserName = userName;
@@ -262,6 +274,20 @@ namespace akeyless.Model
         public string AzureTenantId { get; set; }
 
         /// <summary>
+        /// CACertData is the rsa 4096 certificate data in PEM format
+        /// </summary>
+        /// <value>CACertData is the rsa 4096 certificate data in PEM format</value>
+        [DataMember(Name = "ca_cert_data", EmitDefaultValue = false)]
+        public List<int> CaCertData { get; set; }
+
+        /// <summary>
+        /// CACertName is the name of the certificate in SalesForce tenant
+        /// </summary>
+        /// <value>CACertName is the name of the certificate in SalesForce tenant</value>
+        [DataMember(Name = "ca_cert_name", EmitDefaultValue = false)]
+        public string CaCertName { get; set; }
+
+        /// <summary>
         /// Gets or Sets ChefServerHostName
         /// </summary>
         [DataMember(Name = "chef_server_host_name", EmitDefaultValue = false)]
@@ -296,6 +322,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "chef_skip_ssl", EmitDefaultValue = true)]
         public bool ChefSkipSsl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClientId
+        /// </summary>
+        [DataMember(Name = "client_id", EmitDefaultValue = false)]
+        public string ClientId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClientSecret
+        /// </summary>
+        [DataMember(Name = "client_secret", EmitDefaultValue = false)]
+        public string ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or Sets DbHostName
@@ -615,6 +653,12 @@ namespace akeyless.Model
         public string RabbitmqServerUser { get; set; }
 
         /// <summary>
+        /// Gets or Sets SecurityToken
+        /// </summary>
+        [DataMember(Name = "security_token", EmitDefaultValue = false)]
+        public string SecurityToken { get; set; }
+
+        /// <summary>
         /// Gets or Sets SfAccount
         /// </summary>
         [DataMember(Name = "sf_account", EmitDefaultValue = false)]
@@ -633,6 +677,12 @@ namespace akeyless.Model
         /// <value>(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB</value>
         [DataMember(Name = "ssl_connection_mode", EmitDefaultValue = true)]
         public bool SslConnectionMode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TenantUrl
+        /// </summary>
+        [DataMember(Name = "tenant_url", EmitDefaultValue = false)]
+        public string TenantUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
@@ -712,12 +762,16 @@ namespace akeyless.Model
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  CaCertData: ").Append(CaCertData).Append("\n");
+            sb.Append("  CaCertName: ").Append(CaCertName).Append("\n");
             sb.Append("  ChefServerHostName: ").Append(ChefServerHostName).Append("\n");
             sb.Append("  ChefServerKey: ").Append(ChefServerKey).Append("\n");
             sb.Append("  ChefServerPort: ").Append(ChefServerPort).Append("\n");
             sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
             sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
             sb.Append("  ChefSkipSsl: ").Append(ChefSkipSsl).Append("\n");
+            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  DbHostName: ").Append(DbHostName).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  DbPort: ").Append(DbPort).Append("\n");
@@ -770,9 +824,11 @@ namespace akeyless.Model
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
+            sb.Append("  SecurityToken: ").Append(SecurityToken).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
             sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
+            sb.Append("  TenantUrl: ").Append(TenantUrl).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
@@ -868,6 +924,17 @@ namespace akeyless.Model
                     this.AzureTenantId.Equals(input.AzureTenantId))
                 ) && 
                 (
+                    this.CaCertData == input.CaCertData ||
+                    this.CaCertData != null &&
+                    input.CaCertData != null &&
+                    this.CaCertData.SequenceEqual(input.CaCertData)
+                ) && 
+                (
+                    this.CaCertName == input.CaCertName ||
+                    (this.CaCertName != null &&
+                    this.CaCertName.Equals(input.CaCertName))
+                ) && 
+                (
                     this.ChefServerHostName == input.ChefServerHostName ||
                     (this.ChefServerHostName != null &&
                     this.ChefServerHostName.Equals(input.ChefServerHostName))
@@ -895,6 +962,16 @@ namespace akeyless.Model
                 (
                     this.ChefSkipSsl == input.ChefSkipSsl ||
                     this.ChefSkipSsl.Equals(input.ChefSkipSsl)
+                ) && 
+                (
+                    this.ClientId == input.ClientId ||
+                    (this.ClientId != null &&
+                    this.ClientId.Equals(input.ClientId))
+                ) && 
+                (
+                    this.ClientSecret == input.ClientSecret ||
+                    (this.ClientSecret != null &&
+                    this.ClientSecret.Equals(input.ClientSecret))
                 ) && 
                 (
                     this.DbHostName == input.DbHostName ||
@@ -1155,6 +1232,11 @@ namespace akeyless.Model
                     this.RabbitmqServerUser.Equals(input.RabbitmqServerUser))
                 ) && 
                 (
+                    this.SecurityToken == input.SecurityToken ||
+                    (this.SecurityToken != null &&
+                    this.SecurityToken.Equals(input.SecurityToken))
+                ) && 
+                (
                     this.SfAccount == input.SfAccount ||
                     (this.SfAccount != null &&
                     this.SfAccount.Equals(input.SfAccount))
@@ -1167,6 +1249,11 @@ namespace akeyless.Model
                 (
                     this.SslConnectionMode == input.SslConnectionMode ||
                     this.SslConnectionMode.Equals(input.SslConnectionMode)
+                ) && 
+                (
+                    this.TenantUrl == input.TenantUrl ||
+                    (this.TenantUrl != null &&
+                    this.TenantUrl.Equals(input.TenantUrl))
                 ) && 
                 (
                     this.Url == input.Url ||
@@ -1247,6 +1334,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
                 if (this.AzureTenantId != null)
                     hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                if (this.CaCertData != null)
+                    hashCode = hashCode * 59 + this.CaCertData.GetHashCode();
+                if (this.CaCertName != null)
+                    hashCode = hashCode * 59 + this.CaCertName.GetHashCode();
                 if (this.ChefServerHostName != null)
                     hashCode = hashCode * 59 + this.ChefServerHostName.GetHashCode();
                 if (this.ChefServerKey != null)
@@ -1258,6 +1349,10 @@ namespace akeyless.Model
                 if (this.ChefServerUsername != null)
                     hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
                 hashCode = hashCode * 59 + this.ChefSkipSsl.GetHashCode();
+                if (this.ClientId != null)
+                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
+                if (this.ClientSecret != null)
+                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
                 if (this.DbHostName != null)
                     hashCode = hashCode * 59 + this.DbHostName.GetHashCode();
                 if (this.DbName != null)
@@ -1360,11 +1455,15 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RabbitmqServerUri.GetHashCode();
                 if (this.RabbitmqServerUser != null)
                     hashCode = hashCode * 59 + this.RabbitmqServerUser.GetHashCode();
+                if (this.SecurityToken != null)
+                    hashCode = hashCode * 59 + this.SecurityToken.GetHashCode();
                 if (this.SfAccount != null)
                     hashCode = hashCode * 59 + this.SfAccount.GetHashCode();
                 if (this.SslConnectionCertificate != null)
                     hashCode = hashCode * 59 + this.SslConnectionCertificate.GetHashCode();
                 hashCode = hashCode * 59 + this.SslConnectionMode.GetHashCode();
+                if (this.TenantUrl != null)
+                    hashCode = hashCode * 59 + this.TenantUrl.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
                 hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();

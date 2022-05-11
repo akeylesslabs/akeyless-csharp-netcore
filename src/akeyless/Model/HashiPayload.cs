@@ -35,15 +35,23 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="HashiPayload" /> class.
         /// </summary>
+        /// <param name="importAsJson">importAsJson.</param>
         /// <param name="namespaces">namespaces.</param>
         /// <param name="token">token.</param>
         /// <param name="url">url.</param>
-        public HashiPayload(List<string> namespaces = default(List<string>), string token = default(string), string url = default(string))
+        public HashiPayload(bool importAsJson = default(bool), List<string> namespaces = default(List<string>), string token = default(string), string url = default(string))
         {
+            this.ImportAsJson = importAsJson;
             this.Namespaces = namespaces;
             this.Token = token;
             this.Url = url;
         }
+
+        /// <summary>
+        /// Gets or Sets ImportAsJson
+        /// </summary>
+        [DataMember(Name = "import_as_json", EmitDefaultValue = true)]
+        public bool ImportAsJson { get; set; }
 
         /// <summary>
         /// Gets or Sets Namespaces
@@ -71,6 +79,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class HashiPayload {\n");
+            sb.Append("  ImportAsJson: ").Append(ImportAsJson).Append("\n");
             sb.Append("  Namespaces: ").Append(Namespaces).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
@@ -109,6 +118,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.ImportAsJson == input.ImportAsJson ||
+                    this.ImportAsJson.Equals(input.ImportAsJson)
+                ) && 
+                (
                     this.Namespaces == input.Namespaces ||
                     this.Namespaces != null &&
                     input.Namespaces != null &&
@@ -135,6 +148,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.ImportAsJson.GetHashCode();
                 if (this.Namespaces != null)
                     hashCode = hashCode * 59 + this.Namespaces.GetHashCode();
                 if (this.Token != null)

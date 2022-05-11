@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="apiId">apiId.</param>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
+        /// <param name="awsRegion">Region (used in aws) (default to &quot;us-east-2&quot;).</param>
         /// <param name="customPayload">customPayload.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -58,11 +59,24 @@ namespace akeyless.Model
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorCustomCmd">rotatorCustomCmd.</param>
+        /// <param name="secureAccessAllowExternalUser">Secure Access Allow Providing External User (used in ssh) (default to false).</param>
+        /// <param name="secureAccessAwsAccountId">Secure Access Account Id (used in aws).</param>
+        /// <param name="secureAccessAwsNativeCli">Secure Access Aws Native Cli (used in aws).</param>
+        /// <param name="secureAccessBastionIssuer">Secure Access Bastion Issuer.</param>
+        /// <param name="secureAccessDbName">Secure Access DB Name (used in data bases).</param>
+        /// <param name="secureAccessDbSchema">Secure Access Schema (used in mssql, postgresql).</param>
+        /// <param name="secureAccessEnable">Secure Access Enabled.</param>
+        /// <param name="secureAccessHost">Secure Access Host.</param>
+        /// <param name="secureAccessRdpDomain">Secure Access Domain (used in ssh).</param>
+        /// <param name="secureAccessRdpUser">Secure Access Override User (used in ssh).</param>
+        /// <param name="secureAccessWeb">Secure Access Web (default to false).</param>
+        /// <param name="secureAccessWebBrowsing">Secure Access Isolated (used in aws, azure) (default to false).</param>
+        /// <param name="secureAccessWebProxy">Secure Access Web Proxy (used in aws, azure) (default to false).</param>
         /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -73,6 +87,8 @@ namespace akeyless.Model
             this.ApiId = apiId;
             this.ApiKey = apiKey;
             this.AutoRotate = autoRotate;
+            // use default value if no "awsRegion" provided
+            this.AwsRegion = awsRegion ?? "us-east-2";
             this.CustomPayload = customPayload;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -87,6 +103,19 @@ namespace akeyless.Model
             this.RotationInterval = rotationInterval;
             this.RotatorCredsType = rotatorCredsType;
             this.RotatorCustomCmd = rotatorCustomCmd;
+            this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
+            this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
+            this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessDbName = secureAccessDbName;
+            this.SecureAccessDbSchema = secureAccessDbSchema;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessRdpDomain = secureAccessRdpDomain;
+            this.SecureAccessRdpUser = secureAccessRdpUser;
+            this.SecureAccessWeb = secureAccessWeb;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.SshPassword = sshPassword;
             this.SshUsername = sshUsername;
             this.Token = token;
@@ -118,6 +147,13 @@ namespace akeyless.Model
         /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
         [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
         public string AutoRotate { get; set; }
+
+        /// <summary>
+        /// Region (used in aws)
+        /// </summary>
+        /// <value>Region (used in aws)</value>
+        [DataMember(Name = "aws-region", EmitDefaultValue = false)]
+        public string AwsRegion { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomPayload
@@ -211,6 +247,97 @@ namespace akeyless.Model
         public string RotatorCustomCmd { get; set; }
 
         /// <summary>
+        /// Secure Access Allow Providing External User (used in ssh)
+        /// </summary>
+        /// <value>Secure Access Allow Providing External User (used in ssh)</value>
+        [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = true)]
+        public bool SecureAccessAllowExternalUser { get; set; }
+
+        /// <summary>
+        /// Secure Access Account Id (used in aws)
+        /// </summary>
+        /// <value>Secure Access Account Id (used in aws)</value>
+        [DataMember(Name = "secure-access-aws-account-id", EmitDefaultValue = false)]
+        public string SecureAccessAwsAccountId { get; set; }
+
+        /// <summary>
+        /// Secure Access Aws Native Cli (used in aws)
+        /// </summary>
+        /// <value>Secure Access Aws Native Cli (used in aws)</value>
+        [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
+        public bool SecureAccessAwsNativeCli { get; set; }
+
+        /// <summary>
+        /// Secure Access Bastion Issuer
+        /// </summary>
+        /// <value>Secure Access Bastion Issuer</value>
+        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Secure Access DB Name (used in data bases)
+        /// </summary>
+        /// <value>Secure Access DB Name (used in data bases)</value>
+        [DataMember(Name = "secure-access-db-name", EmitDefaultValue = false)]
+        public string SecureAccessDbName { get; set; }
+
+        /// <summary>
+        /// Secure Access Schema (used in mssql, postgresql)
+        /// </summary>
+        /// <value>Secure Access Schema (used in mssql, postgresql)</value>
+        [DataMember(Name = "secure-access-db-schema", EmitDefaultValue = false)]
+        public string SecureAccessDbSchema { get; set; }
+
+        /// <summary>
+        /// Secure Access Enabled
+        /// </summary>
+        /// <value>Secure Access Enabled</value>
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Secure Access Host
+        /// </summary>
+        /// <value>Secure Access Host</value>
+        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// Secure Access Domain (used in ssh)
+        /// </summary>
+        /// <value>Secure Access Domain (used in ssh)</value>
+        [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
+        public string SecureAccessRdpDomain { get; set; }
+
+        /// <summary>
+        /// Secure Access Override User (used in ssh)
+        /// </summary>
+        /// <value>Secure Access Override User (used in ssh)</value>
+        [DataMember(Name = "secure-access-rdp-user", EmitDefaultValue = false)]
+        public string SecureAccessRdpUser { get; set; }
+
+        /// <summary>
+        /// Secure Access Web
+        /// </summary>
+        /// <value>Secure Access Web</value>
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
+        /// Secure Access Isolated (used in aws, azure)
+        /// </summary>
+        /// <value>Secure Access Isolated (used in aws, azure)</value>
+        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Secure Access Web Proxy (used in aws, azure)
+        /// </summary>
+        /// <value>Secure Access Web Proxy (used in aws, azure)</value>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
+
+        /// <summary>
         /// Deprecated: use RotatedPassword
         /// </summary>
         /// <value>Deprecated: use RotatedPassword</value>
@@ -250,6 +377,7 @@ namespace akeyless.Model
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
+            sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -264,6 +392,19 @@ namespace akeyless.Model
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
             sb.Append("  RotatorCustomCmd: ").Append(RotatorCustomCmd).Append("\n");
+            sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
+            sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
+            sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessDbName: ").Append(SecureAccessDbName).Append("\n");
+            sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
+            sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
             sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -322,6 +463,11 @@ namespace akeyless.Model
                     this.AutoRotate == input.AutoRotate ||
                     (this.AutoRotate != null &&
                     this.AutoRotate.Equals(input.AutoRotate))
+                ) && 
+                (
+                    this.AwsRegion == input.AwsRegion ||
+                    (this.AwsRegion != null &&
+                    this.AwsRegion.Equals(input.AwsRegion))
                 ) && 
                 (
                     this.CustomPayload == input.CustomPayload ||
@@ -393,6 +539,67 @@ namespace akeyless.Model
                     this.RotatorCustomCmd.Equals(input.RotatorCustomCmd))
                 ) && 
                 (
+                    this.SecureAccessAllowExternalUser == input.SecureAccessAllowExternalUser ||
+                    this.SecureAccessAllowExternalUser.Equals(input.SecureAccessAllowExternalUser)
+                ) && 
+                (
+                    this.SecureAccessAwsAccountId == input.SecureAccessAwsAccountId ||
+                    (this.SecureAccessAwsAccountId != null &&
+                    this.SecureAccessAwsAccountId.Equals(input.SecureAccessAwsAccountId))
+                ) && 
+                (
+                    this.SecureAccessAwsNativeCli == input.SecureAccessAwsNativeCli ||
+                    this.SecureAccessAwsNativeCli.Equals(input.SecureAccessAwsNativeCli)
+                ) && 
+                (
+                    this.SecureAccessBastionIssuer == input.SecureAccessBastionIssuer ||
+                    (this.SecureAccessBastionIssuer != null &&
+                    this.SecureAccessBastionIssuer.Equals(input.SecureAccessBastionIssuer))
+                ) && 
+                (
+                    this.SecureAccessDbName == input.SecureAccessDbName ||
+                    (this.SecureAccessDbName != null &&
+                    this.SecureAccessDbName.Equals(input.SecureAccessDbName))
+                ) && 
+                (
+                    this.SecureAccessDbSchema == input.SecureAccessDbSchema ||
+                    (this.SecureAccessDbSchema != null &&
+                    this.SecureAccessDbSchema.Equals(input.SecureAccessDbSchema))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessRdpDomain == input.SecureAccessRdpDomain ||
+                    (this.SecureAccessRdpDomain != null &&
+                    this.SecureAccessRdpDomain.Equals(input.SecureAccessRdpDomain))
+                ) && 
+                (
+                    this.SecureAccessRdpUser == input.SecureAccessRdpUser ||
+                    (this.SecureAccessRdpUser != null &&
+                    this.SecureAccessRdpUser.Equals(input.SecureAccessRdpUser))
+                ) && 
+                (
+                    this.SecureAccessWeb == input.SecureAccessWeb ||
+                    this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
+                    this.SecureAccessWebProxy == input.SecureAccessWebProxy ||
+                    this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
+                ) && 
+                (
                     this.SshPassword == input.SshPassword ||
                     (this.SshPassword != null &&
                     this.SshPassword.Equals(input.SshPassword))
@@ -431,6 +638,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ApiKey.GetHashCode();
                 if (this.AutoRotate != null)
                     hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
+                if (this.AwsRegion != null)
+                    hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
                 if (this.CustomPayload != null)
                     hashCode = hashCode * 59 + this.CustomPayload.GetHashCode();
                 if (this.KeepPrevVersion != null)
@@ -457,6 +666,27 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.RotatorCredsType.GetHashCode();
                 if (this.RotatorCustomCmd != null)
                     hashCode = hashCode * 59 + this.RotatorCustomCmd.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessAllowExternalUser.GetHashCode();
+                if (this.SecureAccessAwsAccountId != null)
+                    hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessAwsNativeCli.GetHashCode();
+                if (this.SecureAccessBastionIssuer != null)
+                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                if (this.SecureAccessDbName != null)
+                    hashCode = hashCode * 59 + this.SecureAccessDbName.GetHashCode();
+                if (this.SecureAccessDbSchema != null)
+                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                if (this.SecureAccessEnable != null)
+                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                if (this.SecureAccessHost != null)
+                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                if (this.SecureAccessRdpDomain != null)
+                    hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
+                if (this.SecureAccessRdpUser != null)
+                    hashCode = hashCode * 59 + this.SecureAccessRdpUser.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
                 if (this.SshPassword != null)
                     hashCode = hashCode * 59 + this.SshPassword.GetHashCode();
                 if (this.SshUsername != null)

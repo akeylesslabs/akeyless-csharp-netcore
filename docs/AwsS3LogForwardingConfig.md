@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AwsAccessId** | **string** |  | [optional] 
 **AwsAccessKey** | **string** |  | [optional] 
 **AwsRegion** | **string** |  | [optional] 
+**AwsUseGatewayCloudIdentity** | **bool** |  | [optional] 
 **BucketName** | **string** |  | [optional] 
 **LogFolder** | **string** |  | [optional] 
 

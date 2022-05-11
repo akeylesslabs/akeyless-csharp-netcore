@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **IdpMetadataUrl** | **string** | IDP metadata url | [optional] 
 **IdpMetadataXmlData** | **string** | IDP metadata xml data | [optional] 
-**JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
+**JwtTtl** | **long** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

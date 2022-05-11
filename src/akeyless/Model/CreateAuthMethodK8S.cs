@@ -48,12 +48,12 @@ namespace akeyless.Model
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="genKey">If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway) (default to &quot;true&quot;).</param>
-        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
+        /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="publicKey">Base64-encoded public key text for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", long jwtTtl = 0, string name = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", long jwtTtl = default(long), string name = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {

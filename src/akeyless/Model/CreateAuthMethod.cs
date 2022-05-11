@@ -43,11 +43,11 @@ namespace akeyless.Model
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
-        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
+        /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethod(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethod(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {

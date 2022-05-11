@@ -698,6 +698,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateSalesforceTargetOutput</returns>
+        CreateSalesforceTargetOutput CreateSalesforceTarget(CreateSalesforceTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateSalesforceTargetOutput</returns>
+        ApiResponse<CreateSalesforceTargetOutput> CreateSalesforceTargetWithHttpInfo(CreateSalesforceTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateSecretOutput</returns>
         CreateSecretOutput CreateSecret(CreateSecret body);
 
@@ -1107,6 +1125,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayCreateK8SAuthConfigOutput</returns>
         ApiResponse<GatewayCreateK8SAuthConfigOutput> GatewayCreateK8SAuthConfigWithHttpInfo(GatewayCreateK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayMigrationCreateOutput</returns>
+        GatewayMigrationCreateOutput GatewayCreateMigration(GatewayCreateMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationCreateOutput</returns>
+        ApiResponse<GatewayMigrationCreateOutput> GatewayCreateMigrationWithHttpInfo(GatewayCreateMigration body);
         /// <summary>
         /// 
         /// </summary>
@@ -1562,6 +1598,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayMigrationDeleteOutput</returns>
+        GatewayMigrationDeleteOutput GatewayDeleteMigration(GatewayDeleteMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationDeleteOutput</returns>
+        ApiResponse<GatewayMigrationDeleteOutput> GatewayDeleteMigrationWithHttpInfo(GatewayDeleteMigration body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayDeleteProducerOutput</returns>
         GatewayDeleteProducerOutput GatewayDeleteProducer(GatewayDeleteProducer body);
 
@@ -1611,6 +1665,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayGetK8SAuthConfigOutput</returns>
         ApiResponse<GatewayGetK8SAuthConfigOutput> GatewayGetK8SAuthConfigWithHttpInfo(GatewayGetK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayMigrationGetOutput</returns>
+        GatewayMigrationGetOutput GatewayGetMigration(GatewayGetMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationGetOutput</returns>
+        ApiResponse<GatewayMigrationGetOutput> GatewayGetMigrationWithHttpInfo(GatewayGetMigration body);
         /// <summary>
         /// 
         /// </summary>
@@ -1814,6 +1886,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayMigrationUpdateOutput</returns>
+        GatewayMigrationUpdateOutput GatewayUpdateMigration(GatewayUpdateMigration body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationUpdateOutput</returns>
+        ApiResponse<GatewayMigrationUpdateOutput> GatewayUpdateMigrationWithHttpInfo(GatewayUpdateMigration body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayUpdateProducerArtifactoryOutput</returns>
         GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(GatewayUpdateProducerArtifactory body);
 
@@ -2007,6 +2097,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayUpdateProducerGkeOutput</returns>
         ApiResponse<GatewayUpdateProducerGkeOutput> GatewayUpdateProducerGkeWithHttpInfo(GatewayUpdateProducerGke body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerHanaDbOutput</returns>
+        GatewayUpdateProducerHanaDbOutput GatewayUpdateProducerHanaDb(GatewayUpdateProducerHanaDb body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerHanaDbOutput</returns>
+        ApiResponse<GatewayUpdateProducerHanaDbOutput> GatewayUpdateProducerHanaDbWithHttpInfo(GatewayUpdateProducerHanaDb body);
         /// <summary>
         /// 
         /// </summary>
@@ -3752,6 +3860,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>UpdateSalesforceTargetOutput</returns>
+        UpdateSalesforceTargetOutput UpdateSalesforceTarget(UpdateSalesforceTarget body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateSalesforceTargetOutput</returns>
+        ApiResponse<UpdateSalesforceTargetOutput> UpdateSalesforceTargetWithHttpInfo(UpdateSalesforceTarget body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>UpdateSecretValOutput</returns>
         UpdateSecretValOutput UpdateSecretVal(UpdateSecretVal body);
 
@@ -4796,6 +4922,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateSalesforceTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateSalesforceTargetOutput> CreateSalesforceTargetAsync(CreateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateSalesforceTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateSalesforceTargetOutput>> CreateSalesforceTargetWithHttpInfoAsync(CreateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSecretOutput</returns>
         System.Threading.Tasks.Task<CreateSecretOutput> CreateSecretAsync(CreateSecret body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -5316,6 +5465,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayCreateK8SAuthConfigOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayCreateK8SAuthConfigOutput>> GatewayCreateK8SAuthConfigWithHttpInfoAsync(GatewayCreateK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationCreateOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigrationCreateOutput> GatewayCreateMigrationAsync(GatewayCreateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigrationCreateOutput>> GatewayCreateMigrationWithHttpInfoAsync(GatewayCreateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -5900,6 +6072,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationDeleteOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigrationDeleteOutput> GatewayDeleteMigrationAsync(GatewayDeleteMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationDeleteOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigrationDeleteOutput>> GatewayDeleteMigrationWithHttpInfoAsync(GatewayDeleteMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayDeleteProducerOutput</returns>
         System.Threading.Tasks.Task<GatewayDeleteProducerOutput> GatewayDeleteProducerAsync(GatewayDeleteProducer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -5960,6 +6155,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayGetK8SAuthConfigOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayGetK8SAuthConfigOutput>> GatewayGetK8SAuthConfigWithHttpInfoAsync(GatewayGetK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationGetOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigrationGetOutput> GatewayGetMigrationAsync(GatewayGetMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationGetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigrationGetOutput>> GatewayGetMigrationWithHttpInfoAsync(GatewayGetMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -6222,6 +6440,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationUpdateOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigrationUpdateOutput> GatewayUpdateMigrationAsync(GatewayUpdateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigrationUpdateOutput>> GatewayUpdateMigrationWithHttpInfoAsync(GatewayUpdateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayUpdateProducerArtifactoryOutput</returns>
         System.Threading.Tasks.Task<GatewayUpdateProducerArtifactoryOutput> GatewayUpdateProducerArtifactoryAsync(GatewayUpdateProducerArtifactory body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -6466,6 +6707,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayUpdateProducerGkeOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerGkeOutput>> GatewayUpdateProducerGkeWithHttpInfoAsync(GatewayUpdateProducerGke body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateProducerHanaDbOutput</returns>
+        System.Threading.Tasks.Task<GatewayUpdateProducerHanaDbOutput> GatewayUpdateProducerHanaDbAsync(GatewayUpdateProducerHanaDb body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerHanaDbOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayUpdateProducerHanaDbOutput>> GatewayUpdateProducerHanaDbWithHttpInfoAsync(GatewayUpdateProducerHanaDb body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8691,6 +8955,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTargetOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateTargetOutput>> UpdateSSHTargetDetailsWithHttpInfoAsync(UpdateSSHTargetDetails body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateSalesforceTargetOutput</returns>
+        System.Threading.Tasks.Task<UpdateSalesforceTargetOutput> UpdateSalesforceTargetAsync(UpdateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateSalesforceTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateSalesforceTargetOutput>> UpdateSalesforceTargetWithHttpInfoAsync(UpdateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -13375,6 +13662,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateSalesforceTargetOutput</returns>
+        public CreateSalesforceTargetOutput CreateSalesforceTarget(CreateSalesforceTarget body)
+        {
+            akeyless.Client.ApiResponse<CreateSalesforceTargetOutput> localVarResponse = CreateSalesforceTargetWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateSalesforceTargetOutput</returns>
+        public akeyless.Client.ApiResponse<CreateSalesforceTargetOutput> CreateSalesforceTargetWithHttpInfo(CreateSalesforceTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateSalesforceTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateSalesforceTargetOutput>("/create-salesforce-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateSalesforceTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateSalesforceTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateSalesforceTargetOutput> CreateSalesforceTargetAsync(CreateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<CreateSalesforceTargetOutput> localVarResponse = await CreateSalesforceTargetWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateSalesforceTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateSalesforceTargetOutput>> CreateSalesforceTargetWithHttpInfoAsync(CreateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateSalesforceTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateSalesforceTargetOutput>("/create-salesforce-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateSalesforceTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateSecretOutput</returns>
         public CreateSecretOutput CreateSecret(CreateSecret body)
         {
@@ -16055,6 +16459,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayCreateK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayMigrationCreateOutput</returns>
+        public GatewayMigrationCreateOutput GatewayCreateMigration(GatewayCreateMigration body)
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationCreateOutput> localVarResponse = GatewayCreateMigrationWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationCreateOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayMigrationCreateOutput> GatewayCreateMigrationWithHttpInfo(GatewayCreateMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateMigration");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayMigrationCreateOutput>("/gateway-create-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationCreateOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigrationCreateOutput> GatewayCreateMigrationAsync(GatewayCreateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationCreateOutput> localVarResponse = await GatewayCreateMigrationWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigrationCreateOutput>> GatewayCreateMigrationWithHttpInfoAsync(GatewayCreateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayCreateMigration");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigrationCreateOutput>("/gateway-create-migration", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayCreateMigration", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -18983,6 +19504,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayMigrationDeleteOutput</returns>
+        public GatewayMigrationDeleteOutput GatewayDeleteMigration(GatewayDeleteMigration body)
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationDeleteOutput> localVarResponse = GatewayDeleteMigrationWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationDeleteOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayMigrationDeleteOutput> GatewayDeleteMigrationWithHttpInfo(GatewayDeleteMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayDeleteMigration");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayMigrationDeleteOutput>("/gateway-delete-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayDeleteMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationDeleteOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigrationDeleteOutput> GatewayDeleteMigrationAsync(GatewayDeleteMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationDeleteOutput> localVarResponse = await GatewayDeleteMigrationWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationDeleteOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigrationDeleteOutput>> GatewayDeleteMigrationWithHttpInfoAsync(GatewayDeleteMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayDeleteMigration");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigrationDeleteOutput>("/gateway-delete-migration", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayDeleteMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayDeleteProducerOutput</returns>
         public GatewayDeleteProducerOutput GatewayDeleteProducer(GatewayDeleteProducer body)
         {
@@ -19323,6 +19961,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayGetK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayMigrationGetOutput</returns>
+        public GatewayMigrationGetOutput GatewayGetMigration(GatewayGetMigration body)
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationGetOutput> localVarResponse = GatewayGetMigrationWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationGetOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayMigrationGetOutput> GatewayGetMigrationWithHttpInfo(GatewayGetMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayGetMigration");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayMigrationGetOutput>("/gateway-get-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayGetMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationGetOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigrationGetOutput> GatewayGetMigrationAsync(GatewayGetMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationGetOutput> localVarResponse = await GatewayGetMigrationWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationGetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigrationGetOutput>> GatewayGetMigrationWithHttpInfoAsync(GatewayGetMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayGetMigration");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigrationGetOutput>("/gateway-get-migration", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayGetMigration", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -20619,6 +21374,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayMigrationUpdateOutput</returns>
+        public GatewayMigrationUpdateOutput GatewayUpdateMigration(GatewayUpdateMigration body)
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationUpdateOutput> localVarResponse = GatewayUpdateMigrationWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayMigrationUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayMigrationUpdateOutput> GatewayUpdateMigrationWithHttpInfo(GatewayUpdateMigration body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateMigration");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayMigrationUpdateOutput>("/gateway-update-migration", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigrationUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigrationUpdateOutput> GatewayUpdateMigrationAsync(GatewayUpdateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayMigrationUpdateOutput> localVarResponse = await GatewayUpdateMigrationWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigrationUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigrationUpdateOutput>> GatewayUpdateMigrationWithHttpInfoAsync(GatewayUpdateMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateMigration");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigrationUpdateOutput>("/gateway-update-migration", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateMigration", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayUpdateProducerArtifactoryOutput</returns>
         public GatewayUpdateProducerArtifactoryOutput GatewayUpdateProducerArtifactory(GatewayUpdateProducerArtifactory body)
         {
@@ -21887,6 +22759,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayUpdateProducerGke", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateProducerHanaDbOutput</returns>
+        public GatewayUpdateProducerHanaDbOutput GatewayUpdateProducerHanaDb(GatewayUpdateProducerHanaDb body)
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateProducerHanaDbOutput> localVarResponse = GatewayUpdateProducerHanaDbWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateProducerHanaDbOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayUpdateProducerHanaDbOutput> GatewayUpdateProducerHanaDbWithHttpInfo(GatewayUpdateProducerHanaDb body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerHanaDb");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayUpdateProducerHanaDbOutput>("/gateway-update-producer-hana", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerHanaDb", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateProducerHanaDbOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayUpdateProducerHanaDbOutput> GatewayUpdateProducerHanaDbAsync(GatewayUpdateProducerHanaDb body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateProducerHanaDbOutput> localVarResponse = await GatewayUpdateProducerHanaDbWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateProducerHanaDbOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayUpdateProducerHanaDbOutput>> GatewayUpdateProducerHanaDbWithHttpInfoAsync(GatewayUpdateProducerHanaDb body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateProducerHanaDb");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateProducerHanaDbOutput>("/gateway-update-producer-hana", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateProducerHanaDb", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -33074,6 +34063,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateSSHTargetDetails", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>UpdateSalesforceTargetOutput</returns>
+        public UpdateSalesforceTargetOutput UpdateSalesforceTarget(UpdateSalesforceTarget body)
+        {
+            akeyless.Client.ApiResponse<UpdateSalesforceTargetOutput> localVarResponse = UpdateSalesforceTargetWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateSalesforceTargetOutput</returns>
+        public akeyless.Client.ApiResponse<UpdateSalesforceTargetOutput> UpdateSalesforceTargetWithHttpInfo(UpdateSalesforceTarget body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateSalesforceTarget");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpdateSalesforceTargetOutput>("/update-salesforce-target", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateSalesforceTarget", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateSalesforceTargetOutput</returns>
+        public async System.Threading.Tasks.Task<UpdateSalesforceTargetOutput> UpdateSalesforceTargetAsync(UpdateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<UpdateSalesforceTargetOutput> localVarResponse = await UpdateSalesforceTargetWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateSalesforceTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<UpdateSalesforceTargetOutput>> UpdateSalesforceTargetWithHttpInfoAsync(UpdateSalesforceTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateSalesforceTarget");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateSalesforceTargetOutput>("/update-salesforce-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateSalesforceTarget", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

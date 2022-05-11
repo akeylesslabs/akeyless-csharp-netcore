@@ -46,12 +46,12 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
         /// <param name="idpMetadataXmlData">IDP metadata xml data.</param>
-        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
+        /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {

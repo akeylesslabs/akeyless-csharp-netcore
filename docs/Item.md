@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DeletionDate** | **DateTime** |  | [optional] 
 **DisplayId** | **string** |  | [optional] 
 **IsEnabled** | **bool** |  | [optional] 
+**ItemAccessibility** | **long** |  | [optional] 
 **ItemGeneralInfo** | [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
 **ItemId** | **long** |  | [optional] 
 **ItemMetadata** | **string** |  | [optional] 
