@@ -43,6 +43,7 @@ Method | HTTP request | Description
 [**CreateSSHTarget**](V2Api.md#createsshtarget) | **POST** /create-ssh-target | 
 [**CreateSalesforceTarget**](V2Api.md#createsalesforcetarget) | **POST** /create-salesforce-target | 
 [**CreateSecret**](V2Api.md#createsecret) | **POST** /create-secret | 
+[**CreateTokenizer**](V2Api.md#createtokenizer) | **POST** /create-tokenizer | 
 [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target | 
 [**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target | 
 [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt | 
@@ -61,6 +62,7 @@ Method | HTTP request | Description
 [**DeleteTargets**](V2Api.md#deletetargets) | **POST** /delete-targets | 
 [**DescribeItem**](V2Api.md#describeitem) | **POST** /describe-item | 
 [**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions | 
+[**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize | 
 [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#encryptpkcs1) | **POST** /encrypt-pkcs1 | 
 [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key | 
@@ -170,12 +172,14 @@ Method | HTTP request | Description
 [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds | 
 [**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret | 
 [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key | 
+[**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret | 
 [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state | 
 [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule | 
 [**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 | 
 [**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key | 
 [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth | 
+[**Tokenize**](V2Api.md#tokenize) | **POST** /tokenize | 
 [**UidCreateChildToken**](V2Api.md#uidcreatechildtoken) | **POST** /uid-create-child-token | 
 [**UidGenerateToken**](V2Api.md#uidgeneratetoken) | **POST** /uid-generate-token | 
 [**UidListChildren**](V2Api.md#uidlistchildren) | **POST** /uid-list-children | 
@@ -221,6 +225,7 @@ Method | HTTP request | Description
 [**UpdateSecretVal**](V2Api.md#updatesecretval) | **POST** /update-secret-val | 
 [**UpdateTarget**](V2Api.md#updatetarget) | **POST** /update-target | 
 [**UpdateTargetDetails**](V2Api.md#updatetargetdetails) | **POST** /update-target-details | 
+[**UpdateTokenizer**](V2Api.md#updatetokenizer) | **POST** /update-tokenizer | 
 [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa | 
@@ -2922,6 +2927,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createtokenizer"></a>
+# **CreateTokenizer**
+> CreateTokenizerOutput CreateTokenizer (CreateTokenizer body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateTokenizerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateTokenizer(); // CreateTokenizer | 
+
+            try
+            {
+                CreateTokenizerOutput result = apiInstance.CreateTokenizer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateTokenizer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateTokenizer**](CreateTokenizer.md)|  | 
+
+### Return type
+
+[**CreateTokenizerOutput**](CreateTokenizerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createTokenizerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createwebtarget"></a>
 # **CreateWebTarget**
 > CreateWebTargetOutput CreateWebTarget (CreateWebTarget body)
@@ -4160,6 +4234,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | DescribePermissionsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="detokenize"></a>
+# **Detokenize**
+> DetokenizeOutput Detokenize (Detokenize body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DetokenizeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new Detokenize(); // Detokenize | 
+
+            try
+            {
+                DetokenizeOutput result = apiInstance.Detokenize(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.Detokenize: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Detokenize**](Detokenize.md)|  | 
+
+### Return type
+
+[**DetokenizeOutput**](DetokenizeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | detokenizeResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -11675,6 +11818,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="rotatesecret"></a>
+# **RotateSecret**
+> RotatedSecretOutput RotateSecret (RotateSecret body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotateSecretExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new RotateSecret(); // RotateSecret | 
+
+            try
+            {
+                RotatedSecretOutput result = apiInstance.RotateSecret(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotateSecret: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**RotateSecret**](RotateSecret.md)|  | 
+
+### Return type
+
+[**RotatedSecretOutput**](RotatedSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotateSecretResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="setitemstate"></a>
 # **SetItemState**
 > Object SetItemState (SetItemState body)
@@ -12085,6 +12297,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | staticCredsAuthResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="tokenize"></a>
+# **Tokenize**
+> TokenizeOutput Tokenize (Tokenize body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TokenizeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new Tokenize(); // Tokenize | 
+
+            try
+            {
+                TokenizeOutput result = apiInstance.Tokenize(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.Tokenize: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Tokenize**](Tokenize.md)|  | 
+
+### Return type
+
+[**TokenizeOutput**](TokenizeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | tokenizeResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -15186,6 +15467,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatetokenizer"></a>
+# **UpdateTokenizer**
+> UpdateTokenizerOutput UpdateTokenizer (UpdateTokenizer body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateTokenizerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateTokenizer(); // UpdateTokenizer | 
+
+            try
+            {
+                UpdateTokenizerOutput result = apiInstance.UpdateTokenizer(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateTokenizer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateTokenizer**](UpdateTokenizer.md)|  | 
+
+### Return type
+
+[**UpdateTokenizerOutput**](UpdateTokenizerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateTokenizerResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

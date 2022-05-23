@@ -36,13 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Producer" /> class.
         /// </summary>
         /// <param name="active">active.</param>
+        /// <param name="failureMessage">failureMessage.</param>
         /// <param name="id">id.</param>
         /// <param name="init">init.</param>
         /// <param name="name">name.</param>
         /// <param name="type">type.</param>
-        public Producer(bool active = default(bool), long id = default(long), bool init = default(bool), string name = default(string), string type = default(string))
+        public Producer(bool active = default(bool), string failureMessage = default(string), long id = default(long), bool init = default(bool), string name = default(string), string type = default(string))
         {
             this.Active = active;
+            this.FailureMessage = failureMessage;
             this.Id = id;
             this.Init = init;
             this.Name = name;
@@ -54,6 +56,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "active", EmitDefaultValue = true)]
         public bool Active { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FailureMessage
+        /// </summary>
+        [DataMember(Name = "failure_message", EmitDefaultValue = false)]
+        public string FailureMessage { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -88,6 +96,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class Producer {\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
+            sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Init: ").Append(Init).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -131,6 +140,11 @@ namespace akeyless.Model
                     this.Active.Equals(input.Active)
                 ) && 
                 (
+                    this.FailureMessage == input.FailureMessage ||
+                    (this.FailureMessage != null &&
+                    this.FailureMessage.Equals(input.FailureMessage))
+                ) && 
+                (
                     this.Id == input.Id ||
                     this.Id.Equals(input.Id)
                 ) && 
@@ -160,6 +174,8 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.Active.GetHashCode();
+                if (this.FailureMessage != null)
+                    hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
                 hashCode = hashCode * 59 + this.Id.GetHashCode();
                 hashCode = hashCode * 59 + this.Init.GetHashCode();
                 if (this.Name != null)

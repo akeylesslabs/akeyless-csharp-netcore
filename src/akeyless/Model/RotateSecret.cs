@@ -27,41 +27,39 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ListTargets
+    /// RotateSecret
     /// </summary>
-    [DataContract(Name = "listTargets")]
-    public partial class ListTargets : IEquatable<ListTargets>, IValidatableObject
+    [DataContract(Name = "rotateSecret")]
+    public partial class RotateSecret : IEquatable<RotateSecret>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListTargets" /> class.
+        /// Initializes a new instance of the <see cref="RotateSecret" /> class.
         /// </summary>
-        /// <param name="filter">Filter by auth method name or part of it.</param>
-        /// <param name="paginationToken">Next page reference.</param>
+        [JsonConstructorAttribute]
+        protected RotateSecret() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RotateSecret" /> class.
+        /// </summary>
+        /// <param name="name">Rotated Secret name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListTargets(string filter = default(string), string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public RotateSecret(string name = default(string), string token = default(string), string uidToken = default(string))
         {
-            this.Filter = filter;
-            this.PaginationToken = paginationToken;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for RotateSecret and cannot be null");
+            }
+            this.Name = name;
             this.Token = token;
-            this.Type = type;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Filter by auth method name or part of it
+        /// Rotated Secret name
         /// </summary>
-        /// <value>Filter by auth method name or part of it</value>
-        [DataMember(Name = "filter", EmitDefaultValue = false)]
-        public string Filter { get; set; }
-
-        /// <summary>
-        /// Next page reference
-        /// </summary>
-        /// <value>Next page reference</value>
-        [DataMember(Name = "pagination-token", EmitDefaultValue = false)]
-        public string PaginationToken { get; set; }
+        /// <value>Rotated Secret name</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -69,13 +67,6 @@ namespace akeyless.Model
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
-
-        /// <summary>
-        /// The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]
-        /// </summary>
-        /// <value>The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public List<string> Type { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -91,11 +82,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ListTargets {\n");
-            sb.Append("  Filter: ").Append(Filter).Append("\n");
-            sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
+            sb.Append("class RotateSecret {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -117,40 +106,29 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ListTargets);
+            return this.Equals(input as RotateSecret);
         }
 
         /// <summary>
-        /// Returns true if ListTargets instances are equal
+        /// Returns true if RotateSecret instances are equal
         /// </summary>
-        /// <param name="input">Instance of ListTargets to be compared</param>
+        /// <param name="input">Instance of RotateSecret to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ListTargets input)
+        public bool Equals(RotateSecret input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Filter == input.Filter ||
-                    (this.Filter != null &&
-                    this.Filter.Equals(input.Filter))
-                ) && 
-                (
-                    this.PaginationToken == input.PaginationToken ||
-                    (this.PaginationToken != null &&
-                    this.PaginationToken.Equals(input.PaginationToken))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    this.Type != null &&
-                    input.Type != null &&
-                    this.Type.SequenceEqual(input.Type)
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -168,14 +146,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Filter != null)
-                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
-                if (this.PaginationToken != null)
-                    hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 return hashCode;

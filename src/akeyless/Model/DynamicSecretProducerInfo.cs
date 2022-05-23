@@ -35,19 +35,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretProducerInfo" /> class.
         /// </summary>
+        /// <param name="failureMessage">failureMessage.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="producerLastKeepAlive">producerLastKeepAlive.</param>
         /// <param name="producerMetadata">producerMetadata.</param>
         /// <param name="producerStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="producerType">producerType.</param>
-        public DynamicSecretProducerInfo(long gwClusterId = default(long), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
+        public DynamicSecretProducerInfo(string failureMessage = default(string), long gwClusterId = default(long), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
         {
+            this.FailureMessage = failureMessage;
             this.GwClusterId = gwClusterId;
             this.ProducerLastKeepAlive = producerLastKeepAlive;
             this.ProducerMetadata = producerMetadata;
             this.ProducerStatus = producerStatus;
             this.ProducerType = producerType;
         }
+
+        /// <summary>
+        /// Gets or Sets FailureMessage
+        /// </summary>
+        [DataMember(Name = "failure_message", EmitDefaultValue = false)]
+        public string FailureMessage { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterId
@@ -88,6 +96,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DynamicSecretProducerInfo {\n");
+            sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  ProducerLastKeepAlive: ").Append(ProducerLastKeepAlive).Append("\n");
             sb.Append("  ProducerMetadata: ").Append(ProducerMetadata).Append("\n");
@@ -128,6 +137,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.FailureMessage == input.FailureMessage ||
+                    (this.FailureMessage != null &&
+                    this.FailureMessage.Equals(input.FailureMessage))
+                ) && 
+                (
                     this.GwClusterId == input.GwClusterId ||
                     this.GwClusterId.Equals(input.GwClusterId)
                 ) && 
@@ -162,6 +176,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.FailureMessage != null)
+                    hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
                 hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
                 if (this.ProducerLastKeepAlive != null)
                     hashCode = hashCode * 59 + this.ProducerLastKeepAlive.GetHashCode();

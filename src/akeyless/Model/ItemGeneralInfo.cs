@@ -37,20 +37,24 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssueDetails">certIssueDetails.</param>
         /// <param name="classicKeyDetails">classicKeyDetails.</param>
+        /// <param name="displayMetadata">displayMetadata.</param>
         /// <param name="dynamicSecretProducerDetails">dynamicSecretProducerDetails.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="rotatedSecretDetails">rotatedSecretDetails.</param>
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo))
+        /// <param name="tokenizerInfo">tokenizerInfo.</param>
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
             this.CertIssueDetails = certIssueDetails;
             this.ClassicKeyDetails = classicKeyDetails;
+            this.DisplayMetadata = displayMetadata;
             this.DynamicSecretProducerDetails = dynamicSecretProducerDetails;
             this.PasswordPolicy = passwordPolicy;
             this.RotatedSecretDetails = rotatedSecretDetails;
             this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
             this.StaticSecretInfo = staticSecretInfo;
+            this.TokenizerInfo = tokenizerInfo;
         }
 
         /// <summary>
@@ -64,6 +68,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "classic_key_details", EmitDefaultValue = false)]
         public ClassicKeyDetailsInfo ClassicKeyDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DisplayMetadata
+        /// </summary>
+        [DataMember(Name = "display_metadata", EmitDefaultValue = false)]
+        public string DisplayMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets DynamicSecretProducerDetails
@@ -96,6 +106,12 @@ namespace akeyless.Model
         public StaticSecretDetailsInfo StaticSecretInfo { get; set; }
 
         /// <summary>
+        /// Gets or Sets TokenizerInfo
+        /// </summary>
+        [DataMember(Name = "tokenizer_info", EmitDefaultValue = false)]
+        public TokenizerInfo TokenizerInfo { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -105,11 +121,13 @@ namespace akeyless.Model
             sb.Append("class ItemGeneralInfo {\n");
             sb.Append("  CertIssueDetails: ").Append(CertIssueDetails).Append("\n");
             sb.Append("  ClassicKeyDetails: ").Append(ClassicKeyDetails).Append("\n");
+            sb.Append("  DisplayMetadata: ").Append(DisplayMetadata).Append("\n");
             sb.Append("  DynamicSecretProducerDetails: ").Append(DynamicSecretProducerDetails).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  RotatedSecretDetails: ").Append(RotatedSecretDetails).Append("\n");
             sb.Append("  SecureRemoteAccessDetails: ").Append(SecureRemoteAccessDetails).Append("\n");
             sb.Append("  StaticSecretInfo: ").Append(StaticSecretInfo).Append("\n");
+            sb.Append("  TokenizerInfo: ").Append(TokenizerInfo).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +173,11 @@ namespace akeyless.Model
                     this.ClassicKeyDetails.Equals(input.ClassicKeyDetails))
                 ) && 
                 (
+                    this.DisplayMetadata == input.DisplayMetadata ||
+                    (this.DisplayMetadata != null &&
+                    this.DisplayMetadata.Equals(input.DisplayMetadata))
+                ) && 
+                (
                     this.DynamicSecretProducerDetails == input.DynamicSecretProducerDetails ||
                     (this.DynamicSecretProducerDetails != null &&
                     this.DynamicSecretProducerDetails.Equals(input.DynamicSecretProducerDetails))
@@ -178,6 +201,11 @@ namespace akeyless.Model
                     this.StaticSecretInfo == input.StaticSecretInfo ||
                     (this.StaticSecretInfo != null &&
                     this.StaticSecretInfo.Equals(input.StaticSecretInfo))
+                ) && 
+                (
+                    this.TokenizerInfo == input.TokenizerInfo ||
+                    (this.TokenizerInfo != null &&
+                    this.TokenizerInfo.Equals(input.TokenizerInfo))
                 );
         }
 
@@ -194,6 +222,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssueDetails.GetHashCode();
                 if (this.ClassicKeyDetails != null)
                     hashCode = hashCode * 59 + this.ClassicKeyDetails.GetHashCode();
+                if (this.DisplayMetadata != null)
+                    hashCode = hashCode * 59 + this.DisplayMetadata.GetHashCode();
                 if (this.DynamicSecretProducerDetails != null)
                     hashCode = hashCode * 59 + this.DynamicSecretProducerDetails.GetHashCode();
                 if (this.PasswordPolicy != null)
@@ -204,6 +234,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureRemoteAccessDetails.GetHashCode();
                 if (this.StaticSecretInfo != null)
                     hashCode = hashCode * 59 + this.StaticSecretInfo.GetHashCode();
+                if (this.TokenizerInfo != null)
+                    hashCode = hashCode * 59 + this.TokenizerInfo.GetHashCode();
                 return hashCode;
             }
         }

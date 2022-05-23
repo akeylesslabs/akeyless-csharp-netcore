@@ -27,41 +27,47 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ListTargets
+    /// tokenize is a command that encrypts text with a tokenizer
     /// </summary>
-    [DataContract(Name = "listTargets")]
-    public partial class ListTargets : IEquatable<ListTargets>, IValidatableObject
+    [DataContract(Name = "tokenize")]
+    public partial class Tokenize : IEquatable<Tokenize>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListTargets" /> class.
+        /// Initializes a new instance of the <see cref="Tokenize" /> class.
         /// </summary>
-        /// <param name="filter">Filter by auth method name or part of it.</param>
-        /// <param name="paginationToken">Next page reference.</param>
+        [JsonConstructorAttribute]
+        protected Tokenize() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Tokenize" /> class.
+        /// </summary>
+        /// <param name="plaintext">Data to be encrypted (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres].</param>
+        /// <param name="tokenizerName">The name of the tokenizer to use in the encryption process (required).</param>
+        /// <param name="tweak">Base64 encoded tweak for vaultless encryption.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListTargets(string filter = default(string), string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public Tokenize(string plaintext = default(string), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
         {
-            this.Filter = filter;
-            this.PaginationToken = paginationToken;
+            // to ensure "plaintext" is required (not null)
+            if (plaintext == null) {
+                throw new ArgumentNullException("plaintext is a required property for Tokenize and cannot be null");
+            }
+            this.Plaintext = plaintext;
+            // to ensure "tokenizerName" is required (not null)
+            if (tokenizerName == null) {
+                throw new ArgumentNullException("tokenizerName is a required property for Tokenize and cannot be null");
+            }
+            this.TokenizerName = tokenizerName;
             this.Token = token;
-            this.Type = type;
+            this.Tweak = tweak;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Filter by auth method name or part of it
+        /// Data to be encrypted
         /// </summary>
-        /// <value>Filter by auth method name or part of it</value>
-        [DataMember(Name = "filter", EmitDefaultValue = false)]
-        public string Filter { get; set; }
-
-        /// <summary>
-        /// Next page reference
-        /// </summary>
-        /// <value>Next page reference</value>
-        [DataMember(Name = "pagination-token", EmitDefaultValue = false)]
-        public string PaginationToken { get; set; }
+        /// <value>Data to be encrypted</value>
+        [DataMember(Name = "plaintext", IsRequired = true, EmitDefaultValue = false)]
+        public string Plaintext { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -71,11 +77,18 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]
+        /// The name of the tokenizer to use in the encryption process
         /// </summary>
-        /// <value>The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public List<string> Type { get; set; }
+        /// <value>The name of the tokenizer to use in the encryption process</value>
+        [DataMember(Name = "tokenizer-name", IsRequired = true, EmitDefaultValue = false)]
+        public string TokenizerName { get; set; }
+
+        /// <summary>
+        /// Base64 encoded tweak for vaultless encryption
+        /// </summary>
+        /// <value>Base64 encoded tweak for vaultless encryption</value>
+        [DataMember(Name = "tweak", EmitDefaultValue = false)]
+        public string Tweak { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -91,11 +104,11 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ListTargets {\n");
-            sb.Append("  Filter: ").Append(Filter).Append("\n");
-            sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
+            sb.Append("class Tokenize {\n");
+            sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  TokenizerName: ").Append(TokenizerName).Append("\n");
+            sb.Append("  Tweak: ").Append(Tweak).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -117,29 +130,24 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ListTargets);
+            return this.Equals(input as Tokenize);
         }
 
         /// <summary>
-        /// Returns true if ListTargets instances are equal
+        /// Returns true if Tokenize instances are equal
         /// </summary>
-        /// <param name="input">Instance of ListTargets to be compared</param>
+        /// <param name="input">Instance of Tokenize to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ListTargets input)
+        public bool Equals(Tokenize input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Filter == input.Filter ||
-                    (this.Filter != null &&
-                    this.Filter.Equals(input.Filter))
-                ) && 
-                (
-                    this.PaginationToken == input.PaginationToken ||
-                    (this.PaginationToken != null &&
-                    this.PaginationToken.Equals(input.PaginationToken))
+                    this.Plaintext == input.Plaintext ||
+                    (this.Plaintext != null &&
+                    this.Plaintext.Equals(input.Plaintext))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -147,10 +155,14 @@ namespace akeyless.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    this.Type != null &&
-                    input.Type != null &&
-                    this.Type.SequenceEqual(input.Type)
+                    this.TokenizerName == input.TokenizerName ||
+                    (this.TokenizerName != null &&
+                    this.TokenizerName.Equals(input.TokenizerName))
+                ) && 
+                (
+                    this.Tweak == input.Tweak ||
+                    (this.Tweak != null &&
+                    this.Tweak.Equals(input.Tweak))
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -168,14 +180,14 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Filter != null)
-                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
-                if (this.PaginationToken != null)
-                    hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
+                if (this.Plaintext != null)
+                    hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.TokenizerName != null)
+                    hashCode = hashCode * 59 + this.TokenizerName.GetHashCode();
+                if (this.Tweak != null)
+                    hashCode = hashCode * 59 + this.Tweak.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 return hashCode;

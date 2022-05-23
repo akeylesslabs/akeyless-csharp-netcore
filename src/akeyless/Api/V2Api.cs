@@ -734,6 +734,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateTokenizerOutput</returns>
+        CreateTokenizerOutput CreateTokenizer(CreateTokenizer body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateTokenizerOutput</returns>
+        ApiResponse<CreateTokenizerOutput> CreateTokenizerWithHttpInfo(CreateTokenizer body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateWebTargetOutput</returns>
         CreateWebTargetOutput CreateWebTarget(CreateWebTarget body);
 
@@ -1053,6 +1071,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of DescribePermissionsOutput</returns>
         ApiResponse<DescribePermissionsOutput> DescribePermissionsWithHttpInfo(DescribePermissions body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>DetokenizeOutput</returns>
+        DetokenizeOutput Detokenize(Detokenize body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of DetokenizeOutput</returns>
+        ApiResponse<DetokenizeOutput> DetokenizeWithHttpInfo(Detokenize body);
         /// <summary>
         /// 
         /// </summary>
@@ -3016,6 +3052,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>RotatedSecretOutput</returns>
+        RotatedSecretOutput RotateSecret(RotateSecret body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of RotatedSecretOutput</returns>
+        ApiResponse<RotatedSecretOutput> RotateSecretWithHttpInfo(RotateSecret body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Object</returns>
         Object SetItemState(SetItemState body);
 
@@ -3119,6 +3173,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of StaticCredsAuthOutput</returns>
         ApiResponse<StaticCredsAuthOutput> StaticCredsAuthWithHttpInfo(StaticCredsAuth body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>TokenizeOutput</returns>
+        TokenizeOutput Tokenize(Tokenize body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of TokenizeOutput</returns>
+        ApiResponse<TokenizeOutput> TokenizeWithHttpInfo(Tokenize body);
         /// <summary>
         /// 
         /// </summary>
@@ -3927,6 +3999,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of UpdateTargetOutput</returns>
         ApiResponse<UpdateTargetOutput> UpdateTargetDetailsWithHttpInfo(Object body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>UpdateTokenizerOutput</returns>
+        UpdateTokenizerOutput UpdateTokenizer(UpdateTokenizer body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateTokenizerOutput</returns>
+        ApiResponse<UpdateTokenizerOutput> UpdateTokenizerWithHttpInfo(UpdateTokenizer body);
         /// <summary>
         /// 
         /// </summary>
@@ -4968,6 +5058,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateTokenizerOutput</returns>
+        System.Threading.Tasks.Task<CreateTokenizerOutput> CreateTokenizerAsync(CreateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateTokenizerOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateTokenizerOutput>> CreateTokenizerWithHttpInfoAsync(CreateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWebTargetOutput</returns>
         System.Threading.Tasks.Task<CreateWebTargetOutput> CreateWebTargetAsync(CreateWebTarget body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -5373,6 +5486,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DescribePermissionsOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<DescribePermissionsOutput>> DescribePermissionsWithHttpInfoAsync(DescribePermissions body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DetokenizeOutput</returns>
+        System.Threading.Tasks.Task<DetokenizeOutput> DetokenizeAsync(Detokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DetokenizeOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DetokenizeOutput>> DetokenizeWithHttpInfoAsync(Detokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -7885,6 +8021,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretOutput> RotateSecretAsync(RotateSecret body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretOutput>> RotateSecretWithHttpInfoAsync(RotateSecret body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Object</returns>
         System.Threading.Tasks.Task<Object> SetItemStateAsync(SetItemState body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -8014,6 +8173,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StaticCredsAuthOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<StaticCredsAuthOutput>> StaticCredsAuthWithHttpInfoAsync(StaticCredsAuth body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TokenizeOutput</returns>
+        System.Threading.Tasks.Task<TokenizeOutput> TokenizeAsync(Tokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TokenizeOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TokenizeOutput>> TokenizeWithHttpInfoAsync(Tokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -9047,6 +9229,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTargetOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateTargetOutput>> UpdateTargetDetailsWithHttpInfoAsync(Object body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateTokenizerOutput</returns>
+        System.Threading.Tasks.Task<UpdateTokenizerOutput> UpdateTokenizerAsync(UpdateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateTokenizerOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateTokenizerOutput>> UpdateTokenizerWithHttpInfoAsync(UpdateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -13896,6 +14101,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>CreateTokenizerOutput</returns>
+        public CreateTokenizerOutput CreateTokenizer(CreateTokenizer body)
+        {
+            akeyless.Client.ApiResponse<CreateTokenizerOutput> localVarResponse = CreateTokenizerWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of CreateTokenizerOutput</returns>
+        public akeyless.Client.ApiResponse<CreateTokenizerOutput> CreateTokenizerWithHttpInfo(CreateTokenizer body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateTokenizer");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateTokenizerOutput>("/create-tokenizer", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTokenizer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateTokenizerOutput</returns>
+        public async System.Threading.Tasks.Task<CreateTokenizerOutput> CreateTokenizerAsync(CreateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<CreateTokenizerOutput> localVarResponse = await CreateTokenizerWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateTokenizerOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateTokenizerOutput>> CreateTokenizerWithHttpInfoAsync(CreateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->CreateTokenizer");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTokenizerOutput>("/create-tokenizer", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTokenizer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>CreateWebTargetOutput</returns>
         public CreateWebTargetOutput CreateWebTarget(CreateWebTarget body)
         {
@@ -15991,6 +16313,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DescribePermissions", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>DetokenizeOutput</returns>
+        public DetokenizeOutput Detokenize(Detokenize body)
+        {
+            akeyless.Client.ApiResponse<DetokenizeOutput> localVarResponse = DetokenizeWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of DetokenizeOutput</returns>
+        public akeyless.Client.ApiResponse<DetokenizeOutput> DetokenizeWithHttpInfo(Detokenize body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->Detokenize");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DetokenizeOutput>("/detokenize", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Detokenize", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DetokenizeOutput</returns>
+        public async System.Threading.Tasks.Task<DetokenizeOutput> DetokenizeAsync(Detokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DetokenizeOutput> localVarResponse = await DetokenizeWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DetokenizeOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DetokenizeOutput>> DetokenizeWithHttpInfoAsync(Detokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->Detokenize");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DetokenizeOutput>("/detokenize", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Detokenize", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -28591,6 +29030,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>RotatedSecretOutput</returns>
+        public RotatedSecretOutput RotateSecret(RotateSecret body)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretOutput> localVarResponse = RotateSecretWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of RotatedSecretOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretOutput> RotateSecretWithHttpInfo(RotateSecret body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->RotateSecret");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretOutput>("/gateway-rotate-secret", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotateSecret", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretOutput> RotateSecretAsync(RotateSecret body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretOutput> localVarResponse = await RotateSecretWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretOutput>> RotateSecretWithHttpInfoAsync(RotateSecret body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->RotateSecret");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretOutput>("/gateway-rotate-secret", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotateSecret", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Object</returns>
         public Object SetItemState(SetItemState body)
         {
@@ -29282,6 +29838,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("StaticCredsAuth", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>TokenizeOutput</returns>
+        public TokenizeOutput Tokenize(Tokenize body)
+        {
+            akeyless.Client.ApiResponse<TokenizeOutput> localVarResponse = TokenizeWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of TokenizeOutput</returns>
+        public akeyless.Client.ApiResponse<TokenizeOutput> TokenizeWithHttpInfo(Tokenize body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->Tokenize");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TokenizeOutput>("/tokenize", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Tokenize", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TokenizeOutput</returns>
+        public async System.Threading.Tasks.Task<TokenizeOutput> TokenizeAsync(Tokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TokenizeOutput> localVarResponse = await TokenizeWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TokenizeOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TokenizeOutput>> TokenizeWithHttpInfoAsync(Tokenize body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->Tokenize");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TokenizeOutput>("/tokenize", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Tokenize", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -34531,6 +35204,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateTargetDetails", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>UpdateTokenizerOutput</returns>
+        public UpdateTokenizerOutput UpdateTokenizer(UpdateTokenizer body)
+        {
+            akeyless.Client.ApiResponse<UpdateTokenizerOutput> localVarResponse = UpdateTokenizerWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of UpdateTokenizerOutput</returns>
+        public akeyless.Client.ApiResponse<UpdateTokenizerOutput> UpdateTokenizerWithHttpInfo(UpdateTokenizer body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateTokenizer");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpdateTokenizerOutput>("/update-tokenizer", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateTokenizer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateTokenizerOutput</returns>
+        public async System.Threading.Tasks.Task<UpdateTokenizerOutput> UpdateTokenizerAsync(UpdateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<UpdateTokenizerOutput> localVarResponse = await UpdateTokenizerWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateTokenizerOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<UpdateTokenizerOutput>> UpdateTokenizerWithHttpInfoAsync(UpdateTokenizer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateTokenizer");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateTokenizerOutput>("/update-tokenizer", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateTokenizer", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

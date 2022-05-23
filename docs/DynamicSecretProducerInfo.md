@@ -5,6 +5,7 @@ DynamicSecretProducerInfo The dynamic secret producer info This parameter releva
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FailureMessage** | **string** |  | [optional] 
 **GwClusterId** | **long** |  | [optional] 
 **ProducerLastKeepAlive** | **string** |  | [optional] 
 **ProducerMetadata** | **string** |  | [optional] 

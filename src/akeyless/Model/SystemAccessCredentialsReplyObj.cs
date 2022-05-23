@@ -38,12 +38,14 @@ namespace akeyless.Model
         /// <param name="authCreds">Temporary credentials for accessing Auth.</param>
         /// <param name="expiry">Credentials expiration date.</param>
         /// <param name="kfmCreds">Temporary credentials for accessing the KFMs instances.</param>
+        /// <param name="token">Credentials tmp token.</param>
         /// <param name="uamCreds">Temporary credentials for accessing the UAM service.</param>
-        public SystemAccessCredentialsReplyObj(string authCreds = default(string), long expiry = default(long), string kfmCreds = default(string), string uamCreds = default(string))
+        public SystemAccessCredentialsReplyObj(string authCreds = default(string), long expiry = default(long), string kfmCreds = default(string), string token = default(string), string uamCreds = default(string))
         {
             this.AuthCreds = authCreds;
             this.Expiry = expiry;
             this.KfmCreds = kfmCreds;
+            this.Token = token;
             this.UamCreds = uamCreds;
         }
 
@@ -69,6 +71,13 @@ namespace akeyless.Model
         public string KfmCreds { get; set; }
 
         /// <summary>
+        /// Credentials tmp token
+        /// </summary>
+        /// <value>Credentials tmp token</value>
+        [DataMember(Name = "token", EmitDefaultValue = false)]
+        public string Token { get; set; }
+
+        /// <summary>
         /// Temporary credentials for accessing the UAM service
         /// </summary>
         /// <value>Temporary credentials for accessing the UAM service</value>
@@ -86,6 +95,7 @@ namespace akeyless.Model
             sb.Append("  AuthCreds: ").Append(AuthCreds).Append("\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
             sb.Append("  KfmCreds: ").Append(KfmCreds).Append("\n");
+            sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UamCreds: ").Append(UamCreds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -136,6 +146,11 @@ namespace akeyless.Model
                     this.KfmCreds.Equals(input.KfmCreds))
                 ) && 
                 (
+                    this.Token == input.Token ||
+                    (this.Token != null &&
+                    this.Token.Equals(input.Token))
+                ) && 
+                (
                     this.UamCreds == input.UamCreds ||
                     (this.UamCreds != null &&
                     this.UamCreds.Equals(input.UamCreds))
@@ -156,6 +171,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.Expiry.GetHashCode();
                 if (this.KfmCreds != null)
                     hashCode = hashCode * 59 + this.KfmCreds.GetHashCode();
+                if (this.Token != null)
+                    hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UamCreds != null)
                     hashCode = hashCode * 59 + this.UamCreds.GetHashCode();
                 return hashCode;
