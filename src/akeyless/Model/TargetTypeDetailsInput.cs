@@ -44,6 +44,9 @@ namespace akeyless.Model
         /// <param name="awsSessionToken">awsSessionToken.</param>
         /// <param name="azureClientId">azureClientId.</param>
         /// <param name="azureClientSecret">azureClientSecret.</param>
+        /// <param name="azureResourceGroupName">azureResourceGroupName.</param>
+        /// <param name="azureResourceName">azureResourceName.</param>
+        /// <param name="azureSubscriptionId">azureSubscriptionId.</param>
         /// <param name="azureTenantId">azureTenantId.</param>
         /// <param name="caCertData">CACertData is the rsa 4096 certificate data in PEM format.</param>
         /// <param name="caCertName">CACertName is the name of the certificate in SalesForce tenant.</param>
@@ -122,7 +125,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -133,6 +136,9 @@ namespace akeyless.Model
             this.AwsSessionToken = awsSessionToken;
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
+            this.AzureResourceGroupName = azureResourceGroupName;
+            this.AzureResourceName = azureResourceName;
+            this.AzureSubscriptionId = azureSubscriptionId;
             this.AzureTenantId = azureTenantId;
             this.CaCertData = caCertData;
             this.CaCertName = caCertName;
@@ -266,6 +272,24 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure_client_secret", EmitDefaultValue = false)]
         public string AzureClientSecret { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureResourceGroupName
+        /// </summary>
+        [DataMember(Name = "azure_resource_group_name", EmitDefaultValue = false)]
+        public string AzureResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureResourceName
+        /// </summary>
+        [DataMember(Name = "azure_resource_name", EmitDefaultValue = false)]
+        public string AzureResourceName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureSubscriptionId
+        /// </summary>
+        [DataMember(Name = "azure_subscription_id", EmitDefaultValue = false)]
+        public string AzureSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureTenantId
@@ -761,6 +785,9 @@ namespace akeyless.Model
             sb.Append("  AwsSessionToken: ").Append(AwsSessionToken).Append("\n");
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
+            sb.Append("  AzureResourceGroupName: ").Append(AzureResourceGroupName).Append("\n");
+            sb.Append("  AzureResourceName: ").Append(AzureResourceName).Append("\n");
+            sb.Append("  AzureSubscriptionId: ").Append(AzureSubscriptionId).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
             sb.Append("  CaCertData: ").Append(CaCertData).Append("\n");
             sb.Append("  CaCertName: ").Append(CaCertName).Append("\n");
@@ -917,6 +944,21 @@ namespace akeyless.Model
                     this.AzureClientSecret == input.AzureClientSecret ||
                     (this.AzureClientSecret != null &&
                     this.AzureClientSecret.Equals(input.AzureClientSecret))
+                ) && 
+                (
+                    this.AzureResourceGroupName == input.AzureResourceGroupName ||
+                    (this.AzureResourceGroupName != null &&
+                    this.AzureResourceGroupName.Equals(input.AzureResourceGroupName))
+                ) && 
+                (
+                    this.AzureResourceName == input.AzureResourceName ||
+                    (this.AzureResourceName != null &&
+                    this.AzureResourceName.Equals(input.AzureResourceName))
+                ) && 
+                (
+                    this.AzureSubscriptionId == input.AzureSubscriptionId ||
+                    (this.AzureSubscriptionId != null &&
+                    this.AzureSubscriptionId.Equals(input.AzureSubscriptionId))
                 ) && 
                 (
                     this.AzureTenantId == input.AzureTenantId ||
@@ -1332,6 +1374,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureClientId.GetHashCode();
                 if (this.AzureClientSecret != null)
                     hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
+                if (this.AzureResourceGroupName != null)
+                    hashCode = hashCode * 59 + this.AzureResourceGroupName.GetHashCode();
+                if (this.AzureResourceName != null)
+                    hashCode = hashCode * 59 + this.AzureResourceName.GetHashCode();
+                if (this.AzureSubscriptionId != null)
+                    hashCode = hashCode * 59 + this.AzureSubscriptionId.GetHashCode();
                 if (this.AzureTenantId != null)
                     hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
                 if (this.CaCertData != null)

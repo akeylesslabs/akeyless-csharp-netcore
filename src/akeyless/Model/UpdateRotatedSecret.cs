@@ -74,9 +74,10 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Secure Access Web Proxy (used in aws, azure) (default to false).</param>
         /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
+        /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -118,6 +119,7 @@ namespace akeyless.Model
             this.SecureAccessWebProxy = secureAccessWebProxy;
             this.SshPassword = sshPassword;
             this.SshUsername = sshUsername;
+            this.StorageAccountKeyName = storageAccountKeyName;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -352,6 +354,13 @@ namespace akeyless.Model
         public string SshUsername { get; set; }
 
         /// <summary>
+        /// The name of the storage account key to rotate [key1/key2/kerb1/kerb2]
+        /// </summary>
+        /// <value>The name of the storage account key to rotate [key1/key2/kerb1/kerb2]</value>
+        [DataMember(Name = "storage-account-key-name", EmitDefaultValue = false)]
+        public string StorageAccountKeyName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -407,6 +416,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
             sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
+            sb.Append("  StorageAccountKeyName: ").Append(StorageAccountKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -610,6 +620,11 @@ namespace akeyless.Model
                     this.SshUsername.Equals(input.SshUsername))
                 ) && 
                 (
+                    this.StorageAccountKeyName == input.StorageAccountKeyName ||
+                    (this.StorageAccountKeyName != null &&
+                    this.StorageAccountKeyName.Equals(input.StorageAccountKeyName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -691,6 +706,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SshPassword.GetHashCode();
                 if (this.SshUsername != null)
                     hashCode = hashCode * 59 + this.SshUsername.GetHashCode();
+                if (this.StorageAccountKeyName != null)
+                    hashCode = hashCode * 59 + this.StorageAccountKeyName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

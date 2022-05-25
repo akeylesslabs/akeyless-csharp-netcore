@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | **string** | Filter by item name or part of it | [optional] 
+**MinimalView** | **bool** |  | [optional] 
 **PaginationToken** | **string** | Next page reference | [optional] 
 **Path** | **string** | Path to folder | [optional] 
 **Tag** | **string** | Filter by item tag | [optional] 

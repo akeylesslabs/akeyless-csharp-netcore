@@ -27,68 +27,64 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateAzureTarget
+    /// UpdateLdapTarget
     /// </summary>
-    [DataContract(Name = "updateAzureTarget")]
-    public partial class UpdateAzureTarget : IEquatable<UpdateAzureTarget>, IValidatableObject
+    [DataContract(Name = "updateLdapTarget")]
+    public partial class UpdateLdapTarget : IEquatable<UpdateLdapTarget>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAzureTarget" /> class.
+        /// Initializes a new instance of the <see cref="UpdateLdapTarget" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UpdateAzureTarget() { }
+        protected UpdateLdapTarget() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAzureTarget" /> class.
+        /// Initializes a new instance of the <see cref="UpdateLdapTarget" /> class.
         /// </summary>
-        /// <param name="clientId">clientId.</param>
-        /// <param name="clientSecret">clientSecret.</param>
+        /// <param name="bindDn">bindDn.</param>
+        /// <param name="bindDnPassword">bindDnPassword.</param>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="ldapCaCert">ldapCaCert.</param>
+        /// <param name="ldapUrl">ldapUrl.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
-        /// <param name="resourceGroupName">The Resource Group name in your Azure subscription.</param>
-        /// <param name="resourceName">The name of the relevant Resource.</param>
-        /// <param name="subscriptionId">Azure Subscription Id.</param>
-        /// <param name="tenantId">tenantId.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="tokenExpiration">tokenExpiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public UpdateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
-                throw new ArgumentNullException("name is a required property for UpdateAzureTarget and cannot be null");
+                throw new ArgumentNullException("name is a required property for UpdateLdapTarget and cannot be null");
             }
             this.Name = name;
-            this.ClientId = clientId;
-            this.ClientSecret = clientSecret;
+            this.BindDn = bindDn;
+            this.BindDnPassword = bindDnPassword;
             this.Comment = comment;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LdapCaCert = ldapCaCert;
+            this.LdapUrl = ldapUrl;
             this.NewName = newName;
-            this.ResourceGroupName = resourceGroupName;
-            this.ResourceName = resourceName;
-            this.SubscriptionId = subscriptionId;
-            this.TenantId = tenantId;
             this.Token = token;
+            this.TokenExpiration = tokenExpiration;
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
-            this.UseGwCloudIdentity = useGwCloudIdentity;
         }
 
         /// <summary>
-        /// Gets or Sets ClientId
+        /// Gets or Sets BindDn
         /// </summary>
-        [DataMember(Name = "client-id", EmitDefaultValue = false)]
-        public string ClientId { get; set; }
+        [DataMember(Name = "bind-dn", EmitDefaultValue = false)]
+        public string BindDn { get; set; }
 
         /// <summary>
-        /// Gets or Sets ClientSecret
+        /// Gets or Sets BindDnPassword
         /// </summary>
-        [DataMember(Name = "client-secret", EmitDefaultValue = false)]
-        public string ClientSecret { get; set; }
+        [DataMember(Name = "bind-dn-password", EmitDefaultValue = false)]
+        public string BindDnPassword { get; set; }
 
         /// <summary>
         /// Comment about the target
@@ -111,6 +107,18 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Gets or Sets LdapCaCert
+        /// </summary>
+        [DataMember(Name = "ldap-ca-cert", EmitDefaultValue = false)]
+        public string LdapCaCert { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LdapUrl
+        /// </summary>
+        [DataMember(Name = "ldap-url", EmitDefaultValue = false)]
+        public string LdapUrl { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -125,38 +133,17 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// The Resource Group name in your Azure subscription
-        /// </summary>
-        /// <value>The Resource Group name in your Azure subscription</value>
-        [DataMember(Name = "resource-group-name", EmitDefaultValue = false)]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// The name of the relevant Resource
-        /// </summary>
-        /// <value>The name of the relevant Resource</value>
-        [DataMember(Name = "resource-name", EmitDefaultValue = false)]
-        public string ResourceName { get; set; }
-
-        /// <summary>
-        /// Azure Subscription Id
-        /// </summary>
-        /// <value>Azure Subscription Id</value>
-        [DataMember(Name = "subscription-id", EmitDefaultValue = false)]
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TenantId
-        /// </summary>
-        [DataMember(Name = "tenant-id", EmitDefaultValue = false)]
-        public string TenantId { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TokenExpiration
+        /// </summary>
+        [DataMember(Name = "token-expiration", EmitDefaultValue = false)]
+        public string TokenExpiration { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -173,34 +160,26 @@ namespace akeyless.Model
         public bool UpdateVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets UseGwCloudIdentity
-        /// </summary>
-        [DataMember(Name = "use-gw-cloud-identity", EmitDefaultValue = true)]
-        public bool UseGwCloudIdentity { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UpdateAzureTarget {\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+            sb.Append("class UpdateLdapTarget {\n");
+            sb.Append("  BindDn: ").Append(BindDn).Append("\n");
+            sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
+            sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
-            sb.Append("  ResourceGroupName: ").Append(ResourceGroupName).Append("\n");
-            sb.Append("  ResourceName: ").Append(ResourceName).Append("\n");
-            sb.Append("  SubscriptionId: ").Append(SubscriptionId).Append("\n");
-            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
-            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,29 +200,29 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UpdateAzureTarget);
+            return this.Equals(input as UpdateLdapTarget);
         }
 
         /// <summary>
-        /// Returns true if UpdateAzureTarget instances are equal
+        /// Returns true if UpdateLdapTarget instances are equal
         /// </summary>
-        /// <param name="input">Instance of UpdateAzureTarget to be compared</param>
+        /// <param name="input">Instance of UpdateLdapTarget to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateAzureTarget input)
+        public bool Equals(UpdateLdapTarget input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.ClientId == input.ClientId ||
-                    (this.ClientId != null &&
-                    this.ClientId.Equals(input.ClientId))
+                    this.BindDn == input.BindDn ||
+                    (this.BindDn != null &&
+                    this.BindDn.Equals(input.BindDn))
                 ) && 
                 (
-                    this.ClientSecret == input.ClientSecret ||
-                    (this.ClientSecret != null &&
-                    this.ClientSecret.Equals(input.ClientSecret))
+                    this.BindDnPassword == input.BindDnPassword ||
+                    (this.BindDnPassword != null &&
+                    this.BindDnPassword.Equals(input.BindDnPassword))
                 ) && 
                 (
                     this.Comment == input.Comment ||
@@ -261,6 +240,16 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.LdapCaCert == input.LdapCaCert ||
+                    (this.LdapCaCert != null &&
+                    this.LdapCaCert.Equals(input.LdapCaCert))
+                ) && 
+                (
+                    this.LdapUrl == input.LdapUrl ||
+                    (this.LdapUrl != null &&
+                    this.LdapUrl.Equals(input.LdapUrl))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -271,29 +260,14 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
-                    this.ResourceGroupName == input.ResourceGroupName ||
-                    (this.ResourceGroupName != null &&
-                    this.ResourceGroupName.Equals(input.ResourceGroupName))
-                ) && 
-                (
-                    this.ResourceName == input.ResourceName ||
-                    (this.ResourceName != null &&
-                    this.ResourceName.Equals(input.ResourceName))
-                ) && 
-                (
-                    this.SubscriptionId == input.SubscriptionId ||
-                    (this.SubscriptionId != null &&
-                    this.SubscriptionId.Equals(input.SubscriptionId))
-                ) && 
-                (
-                    this.TenantId == input.TenantId ||
-                    (this.TenantId != null &&
-                    this.TenantId.Equals(input.TenantId))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.TokenExpiration == input.TokenExpiration ||
+                    (this.TokenExpiration != null &&
+                    this.TokenExpiration.Equals(input.TokenExpiration))
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -303,10 +277,6 @@ namespace akeyless.Model
                 (
                     this.UpdateVersion == input.UpdateVersion ||
                     this.UpdateVersion.Equals(input.UpdateVersion)
-                ) && 
-                (
-                    this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
-                    this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
                 );
         }
 
@@ -319,34 +289,31 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
-                if (this.ClientSecret != null)
-                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
+                if (this.BindDn != null)
+                    hashCode = hashCode * 59 + this.BindDn.GetHashCode();
+                if (this.BindDnPassword != null)
+                    hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
+                if (this.LdapCaCert != null)
+                    hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
+                if (this.LdapUrl != null)
+                    hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                if (this.ResourceGroupName != null)
-                    hashCode = hashCode * 59 + this.ResourceGroupName.GetHashCode();
-                if (this.ResourceName != null)
-                    hashCode = hashCode * 59 + this.ResourceName.GetHashCode();
-                if (this.SubscriptionId != null)
-                    hashCode = hashCode * 59 + this.SubscriptionId.GetHashCode();
-                if (this.TenantId != null)
-                    hashCode = hashCode * 59 + this.TenantId.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.TokenExpiration != null)
+                    hashCode = hashCode * 59 + this.TokenExpiration.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
-                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
                 return hashCode;
             }
         }

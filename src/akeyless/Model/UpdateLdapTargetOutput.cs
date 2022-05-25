@@ -27,33 +27,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// GetRSAPublicOutput
+    /// UpdateLdapTargetOutput
     /// </summary>
-    [DataContract(Name = "getRSAPublicOutput")]
-    public partial class GetRSAPublicOutput : IEquatable<GetRSAPublicOutput>, IValidatableObject
+    [DataContract(Name = "updateLdapTargetOutput")]
+    public partial class UpdateLdapTargetOutput : IEquatable<UpdateLdapTargetOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetRSAPublicOutput" /> class.
+        /// Initializes a new instance of the <see cref="UpdateLdapTargetOutput" /> class.
         /// </summary>
-        /// <param name="raw">raw.</param>
-        /// <param name="ssh">ssh.</param>
-        public GetRSAPublicOutput(string raw = default(string), string ssh = default(string))
+        /// <param name="targetId">targetId.</param>
+        public UpdateLdapTargetOutput(long targetId = default(long))
         {
-            this.Raw = raw;
-            this.Ssh = ssh;
+            this.TargetId = targetId;
         }
 
         /// <summary>
-        /// Gets or Sets Raw
+        /// Gets or Sets TargetId
         /// </summary>
-        [DataMember(Name = "raw", EmitDefaultValue = false)]
-        public string Raw { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Ssh
-        /// </summary>
-        [DataMember(Name = "ssh", EmitDefaultValue = false)]
-        public string Ssh { get; set; }
+        [DataMember(Name = "target_id", EmitDefaultValue = false)]
+        public long TargetId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +54,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GetRSAPublicOutput {\n");
-            sb.Append("  Raw: ").Append(Raw).Append("\n");
-            sb.Append("  Ssh: ").Append(Ssh).Append("\n");
+            sb.Append("class UpdateLdapTargetOutput {\n");
+            sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,29 +76,23 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetRSAPublicOutput);
+            return this.Equals(input as UpdateLdapTargetOutput);
         }
 
         /// <summary>
-        /// Returns true if GetRSAPublicOutput instances are equal
+        /// Returns true if UpdateLdapTargetOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetRSAPublicOutput to be compared</param>
+        /// <param name="input">Instance of UpdateLdapTargetOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetRSAPublicOutput input)
+        public bool Equals(UpdateLdapTargetOutput input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Raw == input.Raw ||
-                    (this.Raw != null &&
-                    this.Raw.Equals(input.Raw))
-                ) && 
-                (
-                    this.Ssh == input.Ssh ||
-                    (this.Ssh != null &&
-                    this.Ssh.Equals(input.Ssh))
+                    this.TargetId == input.TargetId ||
+                    this.TargetId.Equals(input.TargetId)
                 );
         }
 
@@ -120,10 +105,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Raw != null)
-                    hashCode = hashCode * 59 + this.Raw.GetHashCode();
-                if (this.Ssh != null)
-                    hashCode = hashCode * 59 + this.Ssh.GetHashCode();
+                hashCode = hashCode * 59 + this.TargetId.GetHashCode();
                 return hashCode;
             }
         }

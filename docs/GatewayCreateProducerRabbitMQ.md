@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **RabbitmqUserWritePermission** | **string** | User write permission | [optional] 
 **SecureAccessEnable** | **string** |  | [optional] 
 **SecureAccessUrl** | **string** |  | [optional] 
+**SecureAccessWeb** | **bool** | Secure Access Web Category | [optional] [default to true]
 **SecureAccessWebBrowsing** | **bool** |  | [optional] 
 **SecureAccessWebProxy** | **bool** |  | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 

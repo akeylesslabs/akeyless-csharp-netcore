@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Target" /> class.
         /// </summary>
+        /// <param name="attributes">this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
         /// <param name="lastVersion">lastVersion.</param>
@@ -45,8 +46,9 @@ namespace akeyless.Model
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(List<string> clientPermissions = default(List<string>), string comment = default(string), int lastVersion = default(int), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), int lastVersion = default(int), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
+            this.Attributes = attributes;
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
             this.LastVersion = lastVersion;
@@ -58,6 +60,13 @@ namespace akeyless.Model
             this.TargetVersions = targetVersions;
             this.WithCustomerFragment = withCustomerFragment;
         }
+
+        /// <summary>
+        /// this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes
+        /// </summary>
+        /// <value>this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes</value>
+        [DataMember(Name = "attributes", EmitDefaultValue = false)]
+        public Dictionary<string, Object> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientPermissions
@@ -127,6 +136,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Target {\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
@@ -171,6 +181,12 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.Attributes == input.Attributes ||
+                    this.Attributes != null &&
+                    input.Attributes != null &&
+                    this.Attributes.SequenceEqual(input.Attributes)
+                ) && 
                 (
                     this.ClientPermissions == input.ClientPermissions ||
                     this.ClientPermissions != null &&
@@ -232,6 +248,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Attributes != null)
+                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 if (this.ClientPermissions != null)
                     hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
                 if (this.Comment != null)

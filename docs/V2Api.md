@@ -210,6 +210,8 @@ Method | HTTP request | Description
 [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target | 
 [**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target | 
 [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item | 
+[**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target | 
+[**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details | 
 [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target | 
 [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer | 
 [**UpdateRDPTargetDetails**](V2Api.md#updaterdptargetdetails) | **POST** /update-rdp-target-details | 
@@ -14436,6 +14438,144 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateItemResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateldaptarget"></a>
+# **UpdateLdapTarget**
+> UpdateLdapTargetOutput UpdateLdapTarget (UpdateLdapTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateLdapTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateLdapTarget(); // UpdateLdapTarget | 
+
+            try
+            {
+                UpdateLdapTargetOutput result = apiInstance.UpdateLdapTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateLdapTarget: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateLdapTarget**](UpdateLdapTarget.md)|  | 
+
+### Return type
+
+[**UpdateLdapTargetOutput**](UpdateLdapTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateLdapTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateldaptargetdetails"></a>
+# **UpdateLdapTargetDetails**
+> UpdateTargetOutput UpdateLdapTargetDetails (UpdateLdapTargetDetails body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateLdapTargetDetailsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateLdapTargetDetails(); // UpdateLdapTargetDetails | 
+
+            try
+            {
+                UpdateTargetOutput result = apiInstance.UpdateLdapTargetDetails(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateLdapTargetDetails: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateLdapTargetDetails**](UpdateLdapTargetDetails.md)|  | 
+
+### Return type
+
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

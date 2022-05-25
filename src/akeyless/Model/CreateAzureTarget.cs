@@ -45,11 +45,14 @@ namespace akeyless.Model
         /// <param name="comment">Comment about the target.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="resourceGroupName">The Resource Group name in your Azure subscription.</param>
+        /// <param name="resourceName">The name of the relevant Resource.</param>
+        /// <param name="subscriptionId">Azure Subscription Id.</param>
         /// <param name="tenantId">tenantId.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string key = default(string), string name = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public CreateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string key = default(string), string name = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -60,6 +63,9 @@ namespace akeyless.Model
             this.ClientSecret = clientSecret;
             this.Comment = comment;
             this.Key = key;
+            this.ResourceGroupName = resourceGroupName;
+            this.ResourceName = resourceName;
+            this.SubscriptionId = subscriptionId;
             this.TenantId = tenantId;
             this.Token = token;
             this.UidToken = uidToken;
@@ -100,6 +106,27 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// The Resource Group name in your Azure subscription
+        /// </summary>
+        /// <value>The Resource Group name in your Azure subscription</value>
+        [DataMember(Name = "resource-group-name", EmitDefaultValue = false)]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// The name of the relevant Resource
+        /// </summary>
+        /// <value>The name of the relevant Resource</value>
+        [DataMember(Name = "resource-name", EmitDefaultValue = false)]
+        public string ResourceName { get; set; }
+
+        /// <summary>
+        /// Azure Subscription Id
+        /// </summary>
+        /// <value>Azure Subscription Id</value>
+        [DataMember(Name = "subscription-id", EmitDefaultValue = false)]
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
         [DataMember(Name = "tenant-id", EmitDefaultValue = false)]
@@ -138,6 +165,9 @@ namespace akeyless.Model
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ResourceGroupName: ").Append(ResourceGroupName).Append("\n");
+            sb.Append("  ResourceName: ").Append(ResourceName).Append("\n");
+            sb.Append("  SubscriptionId: ").Append(SubscriptionId).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -202,6 +232,21 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ResourceGroupName == input.ResourceGroupName ||
+                    (this.ResourceGroupName != null &&
+                    this.ResourceGroupName.Equals(input.ResourceGroupName))
+                ) && 
+                (
+                    this.ResourceName == input.ResourceName ||
+                    (this.ResourceName != null &&
+                    this.ResourceName.Equals(input.ResourceName))
+                ) && 
+                (
+                    this.SubscriptionId == input.SubscriptionId ||
+                    (this.SubscriptionId != null &&
+                    this.SubscriptionId.Equals(input.SubscriptionId))
+                ) && 
+                (
                     this.TenantId == input.TenantId ||
                     (this.TenantId != null &&
                     this.TenantId.Equals(input.TenantId))
@@ -241,6 +286,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ResourceGroupName != null)
+                    hashCode = hashCode * 59 + this.ResourceGroupName.GetHashCode();
+                if (this.ResourceName != null)
+                    hashCode = hashCode * 59 + this.ResourceName.GetHashCode();
+                if (this.SubscriptionId != null)
+                    hashCode = hashCode * 59 + this.SubscriptionId.GetHashCode();
                 if (this.TenantId != null)
                     hashCode = hashCode * 59 + this.TenantId.GetHashCode();
                 if (this.Token != null)

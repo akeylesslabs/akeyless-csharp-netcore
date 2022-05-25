@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="rabbitmqUserWritePermission">User write permission.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
         /// <param name="secureAccessUrl">secureAccessUrl.</param>
+        /// <param name="secureAccessWeb">Secure Access Web Category (default to true).</param>
         /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
         /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerRabbitMQ(string name = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerRabbitMQ(string name = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.RabbitmqUserWritePermission = rabbitmqUserWritePermission;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Tags = tags;
@@ -170,6 +172,13 @@ namespace akeyless.Model
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
+        /// Secure Access Web Category
+        /// </summary>
+        /// <value>Secure Access Web Category</value>
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
         /// Gets or Sets SecureAccessWebBrowsing
         /// </summary>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
@@ -236,6 +245,7 @@ namespace akeyless.Model
             sb.Append("  RabbitmqUserWritePermission: ").Append(RabbitmqUserWritePermission).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -338,6 +348,10 @@ namespace akeyless.Model
                     this.SecureAccessUrl.Equals(input.SecureAccessUrl))
                 ) && 
                 (
+                    this.SecureAccessWeb == input.SecureAccessWeb ||
+                    this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
                     this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
                     this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
                 ) && 
@@ -406,6 +420,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
                 if (this.SecureAccessUrl != null)
                     hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
                 hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)

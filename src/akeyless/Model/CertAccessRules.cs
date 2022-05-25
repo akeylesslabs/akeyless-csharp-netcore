@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="certificate">Base64 encdoed PEM certificate.</param>
         /// <param name="revokedCertIds">A list of revoked cert ids.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public CertAccessRules(List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), List<int> certificate = default(List<int>), List<string> revokedCertIds = default(List<string>), string uniqueIdentifier = default(string))
+        public CertAccessRules(List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificate = default(string), List<string> revokedCertIds = default(List<string>), string uniqueIdentifier = default(string))
         {
             this.BoundCommonNames = boundCommonNames;
             this.BoundDnsSans = boundDnsSans;
@@ -104,7 +104,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Base64 encdoed PEM certificate</value>
         [DataMember(Name = "certificate", EmitDefaultValue = false)]
-        public List<int> Certificate { get; set; }
+        public string Certificate { get; set; }
 
         /// <summary>
         /// A list of revoked cert ids
@@ -209,9 +209,8 @@ namespace akeyless.Model
                 ) && 
                 (
                     this.Certificate == input.Certificate ||
-                    this.Certificate != null &&
-                    input.Certificate != null &&
-                    this.Certificate.SequenceEqual(input.Certificate)
+                    (this.Certificate != null &&
+                    this.Certificate.Equals(input.Certificate))
                 ) && 
                 (
                     this.RevokedCertIds == input.RevokedCertIds ||
