@@ -6,7 +6,7 @@ gatewaySyncMigration is a command that sync migration
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Migration name | 
-**StartSync** | **bool** |  | [optional] 
+**StartSync** | **bool** | true, for starting synchronization, false for stopping | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

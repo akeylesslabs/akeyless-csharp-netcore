@@ -40,24 +40,34 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateMigration" /> class.
         /// </summary>
-        /// <param name="awsKey">awsKey.</param>
-        /// <param name="awsKeyId">awsKeyId.</param>
-        /// <param name="awsRegion">awsRegion.</param>
-        /// <param name="azureClientId">azureClientId.</param>
-        /// <param name="azureKvName">azureKvName.</param>
-        /// <param name="azureSecret">azureSecret.</param>
-        /// <param name="azureTenantId">azureTenantId.</param>
-        /// <param name="hashiJson">hashiJson.</param>
-        /// <param name="hashiNs">hashiNs.</param>
-        /// <param name="hashiToken">hashiToken.</param>
-        /// <param name="hashiUrl">hashiUrl.</param>
+        /// <param name="awsKey">AWS Secret Access Key.</param>
+        /// <param name="awsKeyId">AWS Access Key ID.</param>
+        /// <param name="awsRegion">AWS region.</param>
+        /// <param name="azureClientId">Azure KV Access client ID.</param>
+        /// <param name="azureKvName">Azure Key Vault Name.</param>
+        /// <param name="azureSecret">Azure KV secret.</param>
+        /// <param name="azureTenantId">Azure KV Access tenant ID.</param>
+        /// <param name="gcpKey">Base64-encoded service account private key text.</param>
+        /// <param name="hashiJson">Import secret key as json value or independent secrets.</param>
+        /// <param name="hashiNs">Hashi namespaces.</param>
+        /// <param name="hashiToken">Hashi token.</param>
+        /// <param name="hashiUrl">Hashi url.</param>
+        /// <param name="k8sCaCertificate">For Certificate Authentication method K8s Cluster CA certificate.</param>
+        /// <param name="k8sClientCertificate">K8s Client certificate.</param>
+        /// <param name="k8sClientKey">K8s Client key.</param>
+        /// <param name="k8sNamespace">K8s Namespace.</param>
+        /// <param name="k8sPassword">K8s client password.</param>
+        /// <param name="k8sSkipSystem">K8s Skip Control Plane Secrets.</param>
+        /// <param name="k8sToken">For Token Authentication method K8s Bearer Token.</param>
+        /// <param name="k8sUrl">K8s Endpoint URL.</param>
+        /// <param name="k8sUsername">For Password Authentication method K8s client username.</param>
         /// <param name="name">Migration name (required).</param>
-        /// <param name="protectionKey">protectionKey.</param>
-        /// <param name="targetLocation">targetLocation.</param>
+        /// <param name="protectionKey">The name of the key that protects the classic key value (if empty, the account default key will be used).</param>
+        /// <param name="targetLocation">Target location in Akeyless for imported secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">type.</param>
+        /// <param name="type">Migration type, can be: hashi/aws/gcp/k8s/azure_kv.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateMigration(string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string name = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayCreateMigration(string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -71,10 +81,20 @@ namespace akeyless.Model
             this.AzureKvName = azureKvName;
             this.AzureSecret = azureSecret;
             this.AzureTenantId = azureTenantId;
+            this.GcpKey = gcpKey;
             this.HashiJson = hashiJson;
             this.HashiNs = hashiNs;
             this.HashiToken = hashiToken;
             this.HashiUrl = hashiUrl;
+            this.K8sCaCertificate = k8sCaCertificate;
+            this.K8sClientCertificate = k8sClientCertificate;
+            this.K8sClientKey = k8sClientKey;
+            this.K8sNamespace = k8sNamespace;
+            this.K8sPassword = k8sPassword;
+            this.K8sSkipSystem = k8sSkipSystem;
+            this.K8sToken = k8sToken;
+            this.K8sUrl = k8sUrl;
+            this.K8sUsername = k8sUsername;
             this.ProtectionKey = protectionKey;
             this.TargetLocation = targetLocation;
             this.Token = token;
@@ -83,70 +103,151 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets AwsKey
+        /// AWS Secret Access Key
         /// </summary>
+        /// <value>AWS Secret Access Key</value>
         [DataMember(Name = "aws-key", EmitDefaultValue = false)]
         public string AwsKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsKeyId
+        /// AWS Access Key ID
         /// </summary>
+        /// <value>AWS Access Key ID</value>
         [DataMember(Name = "aws-key-id", EmitDefaultValue = false)]
         public string AwsKeyId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsRegion
+        /// AWS region
         /// </summary>
+        /// <value>AWS region</value>
         [DataMember(Name = "aws-region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureClientId
+        /// Azure KV Access client ID
         /// </summary>
+        /// <value>Azure KV Access client ID</value>
         [DataMember(Name = "azure-client-id", EmitDefaultValue = false)]
         public string AzureClientId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureKvName
+        /// Azure Key Vault Name
         /// </summary>
+        /// <value>Azure Key Vault Name</value>
         [DataMember(Name = "azure-kv-name", EmitDefaultValue = false)]
         public string AzureKvName { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureSecret
+        /// Azure KV secret
         /// </summary>
+        /// <value>Azure KV secret</value>
         [DataMember(Name = "azure-secret", EmitDefaultValue = false)]
         public string AzureSecret { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureTenantId
+        /// Azure KV Access tenant ID
         /// </summary>
+        /// <value>Azure KV Access tenant ID</value>
         [DataMember(Name = "azure-tenant-id", EmitDefaultValue = false)]
         public string AzureTenantId { get; set; }
 
         /// <summary>
-        /// Gets or Sets HashiJson
+        /// Base64-encoded service account private key text
         /// </summary>
+        /// <value>Base64-encoded service account private key text</value>
+        [DataMember(Name = "gcp-key", EmitDefaultValue = false)]
+        public string GcpKey { get; set; }
+
+        /// <summary>
+        /// Import secret key as json value or independent secrets
+        /// </summary>
+        /// <value>Import secret key as json value or independent secrets</value>
         [DataMember(Name = "hashi-json", EmitDefaultValue = false)]
         public string HashiJson { get; set; }
 
         /// <summary>
-        /// Gets or Sets HashiNs
+        /// Hashi namespaces
         /// </summary>
+        /// <value>Hashi namespaces</value>
         [DataMember(Name = "hashi-ns", EmitDefaultValue = false)]
         public List<string> HashiNs { get; set; }
 
         /// <summary>
-        /// Gets or Sets HashiToken
+        /// Hashi token
         /// </summary>
+        /// <value>Hashi token</value>
         [DataMember(Name = "hashi-token", EmitDefaultValue = false)]
         public string HashiToken { get; set; }
 
         /// <summary>
-        /// Gets or Sets HashiUrl
+        /// Hashi url
         /// </summary>
+        /// <value>Hashi url</value>
         [DataMember(Name = "hashi-url", EmitDefaultValue = false)]
         public string HashiUrl { get; set; }
+
+        /// <summary>
+        /// For Certificate Authentication method K8s Cluster CA certificate
+        /// </summary>
+        /// <value>For Certificate Authentication method K8s Cluster CA certificate</value>
+        [DataMember(Name = "k8s-ca-certificate", EmitDefaultValue = false)]
+        public List<int> K8sCaCertificate { get; set; }
+
+        /// <summary>
+        /// K8s Client certificate
+        /// </summary>
+        /// <value>K8s Client certificate</value>
+        [DataMember(Name = "k8s-client-certificate", EmitDefaultValue = false)]
+        public List<int> K8sClientCertificate { get; set; }
+
+        /// <summary>
+        /// K8s Client key
+        /// </summary>
+        /// <value>K8s Client key</value>
+        [DataMember(Name = "k8s-client-key", EmitDefaultValue = false)]
+        public List<int> K8sClientKey { get; set; }
+
+        /// <summary>
+        /// K8s Namespace
+        /// </summary>
+        /// <value>K8s Namespace</value>
+        [DataMember(Name = "k8s-namespace", EmitDefaultValue = false)]
+        public string K8sNamespace { get; set; }
+
+        /// <summary>
+        /// K8s client password
+        /// </summary>
+        /// <value>K8s client password</value>
+        [DataMember(Name = "k8s-password", EmitDefaultValue = false)]
+        public string K8sPassword { get; set; }
+
+        /// <summary>
+        /// K8s Skip Control Plane Secrets
+        /// </summary>
+        /// <value>K8s Skip Control Plane Secrets</value>
+        [DataMember(Name = "k8s-skip-system", EmitDefaultValue = true)]
+        public bool K8sSkipSystem { get; set; }
+
+        /// <summary>
+        /// For Token Authentication method K8s Bearer Token
+        /// </summary>
+        /// <value>For Token Authentication method K8s Bearer Token</value>
+        [DataMember(Name = "k8s-token", EmitDefaultValue = false)]
+        public string K8sToken { get; set; }
+
+        /// <summary>
+        /// K8s Endpoint URL
+        /// </summary>
+        /// <value>K8s Endpoint URL</value>
+        [DataMember(Name = "k8s-url", EmitDefaultValue = false)]
+        public string K8sUrl { get; set; }
+
+        /// <summary>
+        /// For Password Authentication method K8s client username
+        /// </summary>
+        /// <value>For Password Authentication method K8s client username</value>
+        [DataMember(Name = "k8s-username", EmitDefaultValue = false)]
+        public string K8sUsername { get; set; }
 
         /// <summary>
         /// Migration name
@@ -156,14 +257,16 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets ProtectionKey
+        /// The name of the key that protects the classic key value (if empty, the account default key will be used)
         /// </summary>
+        /// <value>The name of the key that protects the classic key value (if empty, the account default key will be used)</value>
         [DataMember(Name = "protection-key", EmitDefaultValue = false)]
         public string ProtectionKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets TargetLocation
+        /// Target location in Akeyless for imported secrets
         /// </summary>
+        /// <value>Target location in Akeyless for imported secrets</value>
         [DataMember(Name = "target-location", EmitDefaultValue = false)]
         public string TargetLocation { get; set; }
 
@@ -175,8 +278,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Migration type, can be: hashi/aws/gcp/k8s/azure_kv
         /// </summary>
+        /// <value>Migration type, can be: hashi/aws/gcp/k8s/azure_kv</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
@@ -202,10 +306,20 @@ namespace akeyless.Model
             sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
             sb.Append("  AzureSecret: ").Append(AzureSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  HashiJson: ").Append(HashiJson).Append("\n");
             sb.Append("  HashiNs: ").Append(HashiNs).Append("\n");
             sb.Append("  HashiToken: ").Append(HashiToken).Append("\n");
             sb.Append("  HashiUrl: ").Append(HashiUrl).Append("\n");
+            sb.Append("  K8sCaCertificate: ").Append(K8sCaCertificate).Append("\n");
+            sb.Append("  K8sClientCertificate: ").Append(K8sClientCertificate).Append("\n");
+            sb.Append("  K8sClientKey: ").Append(K8sClientKey).Append("\n");
+            sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
+            sb.Append("  K8sPassword: ").Append(K8sPassword).Append("\n");
+            sb.Append("  K8sSkipSystem: ").Append(K8sSkipSystem).Append("\n");
+            sb.Append("  K8sToken: ").Append(K8sToken).Append("\n");
+            sb.Append("  K8sUrl: ").Append(K8sUrl).Append("\n");
+            sb.Append("  K8sUsername: ").Append(K8sUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  TargetLocation: ").Append(TargetLocation).Append("\n");
@@ -282,6 +396,11 @@ namespace akeyless.Model
                     this.AzureTenantId.Equals(input.AzureTenantId))
                 ) && 
                 (
+                    this.GcpKey == input.GcpKey ||
+                    (this.GcpKey != null &&
+                    this.GcpKey.Equals(input.GcpKey))
+                ) && 
+                (
                     this.HashiJson == input.HashiJson ||
                     (this.HashiJson != null &&
                     this.HashiJson.Equals(input.HashiJson))
@@ -301,6 +420,53 @@ namespace akeyless.Model
                     this.HashiUrl == input.HashiUrl ||
                     (this.HashiUrl != null &&
                     this.HashiUrl.Equals(input.HashiUrl))
+                ) && 
+                (
+                    this.K8sCaCertificate == input.K8sCaCertificate ||
+                    this.K8sCaCertificate != null &&
+                    input.K8sCaCertificate != null &&
+                    this.K8sCaCertificate.SequenceEqual(input.K8sCaCertificate)
+                ) && 
+                (
+                    this.K8sClientCertificate == input.K8sClientCertificate ||
+                    this.K8sClientCertificate != null &&
+                    input.K8sClientCertificate != null &&
+                    this.K8sClientCertificate.SequenceEqual(input.K8sClientCertificate)
+                ) && 
+                (
+                    this.K8sClientKey == input.K8sClientKey ||
+                    this.K8sClientKey != null &&
+                    input.K8sClientKey != null &&
+                    this.K8sClientKey.SequenceEqual(input.K8sClientKey)
+                ) && 
+                (
+                    this.K8sNamespace == input.K8sNamespace ||
+                    (this.K8sNamespace != null &&
+                    this.K8sNamespace.Equals(input.K8sNamespace))
+                ) && 
+                (
+                    this.K8sPassword == input.K8sPassword ||
+                    (this.K8sPassword != null &&
+                    this.K8sPassword.Equals(input.K8sPassword))
+                ) && 
+                (
+                    this.K8sSkipSystem == input.K8sSkipSystem ||
+                    this.K8sSkipSystem.Equals(input.K8sSkipSystem)
+                ) && 
+                (
+                    this.K8sToken == input.K8sToken ||
+                    (this.K8sToken != null &&
+                    this.K8sToken.Equals(input.K8sToken))
+                ) && 
+                (
+                    this.K8sUrl == input.K8sUrl ||
+                    (this.K8sUrl != null &&
+                    this.K8sUrl.Equals(input.K8sUrl))
+                ) && 
+                (
+                    this.K8sUsername == input.K8sUsername ||
+                    (this.K8sUsername != null &&
+                    this.K8sUsername.Equals(input.K8sUsername))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -357,6 +523,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureSecret.GetHashCode();
                 if (this.AzureTenantId != null)
                     hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                if (this.GcpKey != null)
+                    hashCode = hashCode * 59 + this.GcpKey.GetHashCode();
                 if (this.HashiJson != null)
                     hashCode = hashCode * 59 + this.HashiJson.GetHashCode();
                 if (this.HashiNs != null)
@@ -365,6 +533,23 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.HashiToken.GetHashCode();
                 if (this.HashiUrl != null)
                     hashCode = hashCode * 59 + this.HashiUrl.GetHashCode();
+                if (this.K8sCaCertificate != null)
+                    hashCode = hashCode * 59 + this.K8sCaCertificate.GetHashCode();
+                if (this.K8sClientCertificate != null)
+                    hashCode = hashCode * 59 + this.K8sClientCertificate.GetHashCode();
+                if (this.K8sClientKey != null)
+                    hashCode = hashCode * 59 + this.K8sClientKey.GetHashCode();
+                if (this.K8sNamespace != null)
+                    hashCode = hashCode * 59 + this.K8sNamespace.GetHashCode();
+                if (this.K8sPassword != null)
+                    hashCode = hashCode * 59 + this.K8sPassword.GetHashCode();
+                hashCode = hashCode * 59 + this.K8sSkipSystem.GetHashCode();
+                if (this.K8sToken != null)
+                    hashCode = hashCode * 59 + this.K8sToken.GetHashCode();
+                if (this.K8sUrl != null)
+                    hashCode = hashCode * 59 + this.K8sUrl.GetHashCode();
+                if (this.K8sUsername != null)
+                    hashCode = hashCode * 59 + this.K8sUsername.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProtectionKey != null)

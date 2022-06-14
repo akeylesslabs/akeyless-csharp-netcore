@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
+        /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization..</param>
-        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), long jwtTtl = default(long), string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.AccessExpires = accessExpires;
             this.BoundIps = boundIps;
             this.ForceSubClaims = forceSubClaims;
+            this.GwBoundIps = gwBoundIps;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.PublicKeyData = publicKeyData;
@@ -88,6 +90,13 @@ namespace akeyless.Model
         /// <value>if true: enforce role-association must include sub claims</value>
         [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
+
+        /// <summary>
+        /// A CIDR whitelist with the GW IPs that the access is restricted to
+        /// </summary>
+        /// <value>A CIDR whitelist with the GW IPs that the access is restricted to</value>
+        [DataMember(Name = "gw-bound-ips", EmitDefaultValue = false)]
+        public List<string> GwBoundIps { get; set; }
 
         /// <summary>
         /// Jwt TTL
@@ -149,6 +158,7 @@ namespace akeyless.Model
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
+            sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -205,6 +215,12 @@ namespace akeyless.Model
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
                 (
+                    this.GwBoundIps == input.GwBoundIps ||
+                    this.GwBoundIps != null &&
+                    input.GwBoundIps != null &&
+                    this.GwBoundIps.SequenceEqual(input.GwBoundIps)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -253,6 +269,8 @@ namespace akeyless.Model
                 if (this.BoundIps != null)
                     hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                if (this.GwBoundIps != null)
+                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

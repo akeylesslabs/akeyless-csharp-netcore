@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Alg** | **string** | Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] | 
 **CertFileData** | **string** | Certificate in a PEM format. | [optional] 
 **CustomerFrgId** | **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Metadata** | **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
 **RsaFileData** | **string** | RSA private key data, base64 encoded | [optional] 

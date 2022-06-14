@@ -35,13 +35,29 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateKeyOutput" /> class.
         /// </summary>
+        /// <param name="classicKeyGwUrl">classicKeyGwUrl.</param>
+        /// <param name="itemType">itemType.</param>
         /// <param name="newItemVersion">newItemVersion.</param>
         /// <param name="nextRotationDate">nextRotationDate.</param>
-        public RotateKeyOutput(int newItemVersion = default(int), DateTime nextRotationDate = default(DateTime))
+        public RotateKeyOutput(string classicKeyGwUrl = default(string), string itemType = default(string), int newItemVersion = default(int), DateTime nextRotationDate = default(DateTime))
         {
+            this.ClassicKeyGwUrl = classicKeyGwUrl;
+            this.ItemType = itemType;
             this.NewItemVersion = newItemVersion;
             this.NextRotationDate = nextRotationDate;
         }
+
+        /// <summary>
+        /// Gets or Sets ClassicKeyGwUrl
+        /// </summary>
+        [DataMember(Name = "classic_key_gw_url", EmitDefaultValue = false)]
+        public string ClassicKeyGwUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemType
+        /// </summary>
+        [DataMember(Name = "item_type", EmitDefaultValue = false)]
+        public string ItemType { get; set; }
 
         /// <summary>
         /// Gets or Sets NewItemVersion
@@ -63,6 +79,8 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RotateKeyOutput {\n");
+            sb.Append("  ClassicKeyGwUrl: ").Append(ClassicKeyGwUrl).Append("\n");
+            sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  NewItemVersion: ").Append(NewItemVersion).Append("\n");
             sb.Append("  NextRotationDate: ").Append(NextRotationDate).Append("\n");
             sb.Append("}\n");
@@ -100,6 +118,16 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.ClassicKeyGwUrl == input.ClassicKeyGwUrl ||
+                    (this.ClassicKeyGwUrl != null &&
+                    this.ClassicKeyGwUrl.Equals(input.ClassicKeyGwUrl))
+                ) && 
+                (
+                    this.ItemType == input.ItemType ||
+                    (this.ItemType != null &&
+                    this.ItemType.Equals(input.ItemType))
+                ) && 
+                (
                     this.NewItemVersion == input.NewItemVersion ||
                     this.NewItemVersion.Equals(input.NewItemVersion)
                 ) && 
@@ -119,6 +147,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ClassicKeyGwUrl != null)
+                    hashCode = hashCode * 59 + this.ClassicKeyGwUrl.GetHashCode();
+                if (this.ItemType != null)
+                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
                 hashCode = hashCode * 59 + this.NewItemVersion.GetHashCode();
                 if (this.NextRotationDate != null)
                     hashCode = hashCode * 59 + this.NextRotationDate.GetHashCode();

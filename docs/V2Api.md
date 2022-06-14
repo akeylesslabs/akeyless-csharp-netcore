@@ -97,6 +97,7 @@ Method | HTTP request | Description
 [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer | 
 [**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config | 
 [**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config | 
+[**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config | 
 [**GatewayGetMigration**](V2Api.md#gatewaygetmigration) | **POST** /gateway-get-migration | 
 [**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer | 
 [**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds | 
@@ -109,6 +110,7 @@ Method | HTTP request | Description
 [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item | 
 [**GatewayUpdateK8SAuthConfig**](V2Api.md#gatewayupdatek8sauthconfig) | **POST** /gateway-update-k8s-auth-config | 
+[**GatewayUpdateLdapAuthConfig**](V2Api.md#gatewayupdateldapauthconfig) | **POST** /gateway-update-ldap-auth-config | 
 [**GatewayUpdateMigration**](V2Api.md#gatewayupdatemigration) | **POST** /gateway-update-migration | 
 [**GatewayUpdateProducerArtifactory**](V2Api.md#gatewayupdateproducerartifactory) | **POST** /gateway-update-producer-artifactory | 
 [**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws | 
@@ -6655,6 +6657,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaygetldapauthconfig"></a>
+# **GatewayGetLdapAuthConfig**
+> GatewayGetLdapAuthConfigOutput GatewayGetLdapAuthConfig (GatewayGetLdapAuthConfig body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayGetLdapAuthConfigExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayGetLdapAuthConfig(); // GatewayGetLdapAuthConfig | 
+
+            try
+            {
+                GatewayGetLdapAuthConfigOutput result = apiInstance.GatewayGetLdapAuthConfig(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayGetLdapAuthConfig: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayGetLdapAuthConfig**](GatewayGetLdapAuthConfig.md)|  | 
+
+### Return type
+
+[**GatewayGetLdapAuthConfigOutput**](GatewayGetLdapAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayGetLdapAuthConfigResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaygetmigration"></a>
 # **GatewayGetMigration**
 > GatewayMigrationGetOutput GatewayGetMigration (GatewayGetMigration body)
@@ -7478,6 +7549,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayUpdateK8SAuthConfigResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateldapauthconfig"></a>
+# **GatewayUpdateLdapAuthConfig**
+> GatewayUpdateLdapAuthConfigOutput GatewayUpdateLdapAuthConfig (GatewayUpdateLdapAuthConfig body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLdapAuthConfigExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLdapAuthConfig(); // GatewayUpdateLdapAuthConfig | 
+
+            try
+            {
+                GatewayUpdateLdapAuthConfigOutput result = apiInstance.GatewayUpdateLdapAuthConfig(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLdapAuthConfig: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayUpdateLdapAuthConfig**](GatewayUpdateLdapAuthConfig.md)|  | 
+
+### Return type
+
+[**GatewayUpdateLdapAuthConfigOutput**](GatewayUpdateLdapAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | GatewayUpdateLdapAuthConfigResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="alg">Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="metadata">A metadata about the key.</param>
         /// <param name="name">Name of key to be created (required).</param>
         /// <param name="rsaFileData">RSA private key data, base64 encoded.</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string metadata = default(string), string name = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string metadata = default(string), string name = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.Name = name;
             this.CertFileData = certFileData;
             this.CustomerFrgId = customerFrgId;
+            this.DeleteProtection = deleteProtection;
             this.Metadata = metadata;
             this.RsaFileData = rsaFileData;
             this.SplitLevel = splitLevel;
@@ -92,6 +94,13 @@ namespace akeyless.Model
         /// <value>The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)</value>
         [DataMember(Name = "customer-frg-id", EmitDefaultValue = false)]
         public string CustomerFrgId { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// A metadata about the key
@@ -153,6 +162,7 @@ namespace akeyless.Model
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RsaFileData: ").Append(RsaFileData).Append("\n");
@@ -210,6 +220,11 @@ namespace akeyless.Model
                     this.CustomerFrgId.Equals(input.CustomerFrgId))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -261,6 +276,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
                 if (this.CustomerFrgId != null)
                     hashCode = hashCode * 59 + this.CustomerFrgId.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)

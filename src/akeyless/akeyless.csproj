@@ -12,7 +12,7 @@
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>akeyless</RootNamespace>
-    <Version>2.16.7</Version>
+    <Version>2.16.8</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\akeyless.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/akeylesslabs/akeyless-csharp-netcore.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

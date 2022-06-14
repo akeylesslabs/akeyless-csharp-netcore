@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Pem** | **string** |  | [optional] 
 **Raw** | **string** |  | [optional] 
 **Ssh** | **string** |  | [optional] 
 

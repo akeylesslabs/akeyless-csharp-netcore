@@ -1706,6 +1706,24 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayGetLdapAuthConfigOutput</returns>
+        GatewayGetLdapAuthConfigOutput GatewayGetLdapAuthConfig(GatewayGetLdapAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayGetLdapAuthConfigOutput</returns>
+        ApiResponse<GatewayGetLdapAuthConfigOutput> GatewayGetLdapAuthConfigWithHttpInfo(GatewayGetLdapAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayMigrationGetOutput</returns>
         GatewayMigrationGetOutput GatewayGetMigration(GatewayGetMigration body);
 
@@ -1917,6 +1935,24 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <returns>ApiResponse of GatewayUpdateK8SAuthConfigOutput</returns>
         ApiResponse<GatewayUpdateK8SAuthConfigOutput> GatewayUpdateK8SAuthConfigWithHttpInfo(GatewayUpdateK8SAuthConfig body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateLdapAuthConfigOutput</returns>
+        GatewayUpdateLdapAuthConfigOutput GatewayUpdateLdapAuthConfig(GatewayUpdateLdapAuthConfig body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateLdapAuthConfigOutput</returns>
+        ApiResponse<GatewayUpdateLdapAuthConfigOutput> GatewayUpdateLdapAuthConfigWithHttpInfo(GatewayUpdateLdapAuthConfig body);
         /// <summary>
         /// 
         /// </summary>
@@ -6336,6 +6372,29 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayGetLdapAuthConfigOutput</returns>
+        System.Threading.Tasks.Task<GatewayGetLdapAuthConfigOutput> GatewayGetLdapAuthConfigAsync(GatewayGetLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayGetLdapAuthConfigOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayGetLdapAuthConfigOutput>> GatewayGetLdapAuthConfigWithHttpInfoAsync(GatewayGetLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayMigrationGetOutput</returns>
         System.Threading.Tasks.Task<GatewayMigrationGetOutput> GatewayGetMigrationAsync(GatewayGetMigration body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -6603,6 +6662,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayUpdateK8SAuthConfigOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<GatewayUpdateK8SAuthConfigOutput>> GatewayUpdateK8SAuthConfigWithHttpInfoAsync(GatewayUpdateK8SAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateLdapAuthConfigOutput</returns>
+        System.Threading.Tasks.Task<GatewayUpdateLdapAuthConfigOutput> GatewayUpdateLdapAuthConfigAsync(GatewayUpdateLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateLdapAuthConfigOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayUpdateLdapAuthConfigOutput>> GatewayUpdateLdapAuthConfigWithHttpInfoAsync(GatewayUpdateLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -20493,6 +20575,123 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
+        /// <returns>GatewayGetLdapAuthConfigOutput</returns>
+        public GatewayGetLdapAuthConfigOutput GatewayGetLdapAuthConfig(GatewayGetLdapAuthConfig body)
+        {
+            akeyless.Client.ApiResponse<GatewayGetLdapAuthConfigOutput> localVarResponse = GatewayGetLdapAuthConfigWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayGetLdapAuthConfigOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayGetLdapAuthConfigOutput> GatewayGetLdapAuthConfigWithHttpInfo(GatewayGetLdapAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayGetLdapAuthConfig");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayGetLdapAuthConfigOutput>("/gateway-get-ldap-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayGetLdapAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayGetLdapAuthConfigOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayGetLdapAuthConfigOutput> GatewayGetLdapAuthConfigAsync(GatewayGetLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayGetLdapAuthConfigOutput> localVarResponse = await GatewayGetLdapAuthConfigWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayGetLdapAuthConfigOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayGetLdapAuthConfigOutput>> GatewayGetLdapAuthConfigWithHttpInfoAsync(GatewayGetLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayGetLdapAuthConfig");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayGetLdapAuthConfigOutput>("/gateway-get-ldap-auth-config", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayGetLdapAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>GatewayMigrationGetOutput</returns>
         public GatewayMigrationGetOutput GatewayGetMigration(GatewayGetMigration body)
         {
@@ -21884,6 +22083,123 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayUpdateK8SAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>GatewayUpdateLdapAuthConfigOutput</returns>
+        public GatewayUpdateLdapAuthConfigOutput GatewayUpdateLdapAuthConfig(GatewayUpdateLdapAuthConfig body)
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateLdapAuthConfigOutput> localVarResponse = GatewayUpdateLdapAuthConfigWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of GatewayUpdateLdapAuthConfigOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayUpdateLdapAuthConfigOutput> GatewayUpdateLdapAuthConfigWithHttpInfo(GatewayUpdateLdapAuthConfig body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateLdapAuthConfig");
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayUpdateLdapAuthConfigOutput>("/gateway-update-ldap-auth-config", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateLdapAuthConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayUpdateLdapAuthConfigOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayUpdateLdapAuthConfigOutput> GatewayUpdateLdapAuthConfigAsync(GatewayUpdateLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayUpdateLdapAuthConfigOutput> localVarResponse = await GatewayUpdateLdapAuthConfigWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayUpdateLdapAuthConfigOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayUpdateLdapAuthConfigOutput>> GatewayUpdateLdapAuthConfigWithHttpInfoAsync(GatewayUpdateLdapAuthConfig body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GatewayUpdateLdapAuthConfig");
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateLdapAuthConfigOutput>("/gateway-update-ldap-auth-config", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayUpdateLdapAuthConfig", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

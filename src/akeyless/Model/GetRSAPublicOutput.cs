@@ -35,13 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetRSAPublicOutput" /> class.
         /// </summary>
+        /// <param name="pem">pem.</param>
         /// <param name="raw">raw.</param>
         /// <param name="ssh">ssh.</param>
-        public GetRSAPublicOutput(string raw = default(string), string ssh = default(string))
+        public GetRSAPublicOutput(string pem = default(string), string raw = default(string), string ssh = default(string))
         {
+            this.Pem = pem;
             this.Raw = raw;
             this.Ssh = ssh;
         }
+
+        /// <summary>
+        /// Gets or Sets Pem
+        /// </summary>
+        [DataMember(Name = "pem", EmitDefaultValue = false)]
+        public string Pem { get; set; }
 
         /// <summary>
         /// Gets or Sets Raw
@@ -63,6 +71,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetRSAPublicOutput {\n");
+            sb.Append("  Pem: ").Append(Pem).Append("\n");
             sb.Append("  Raw: ").Append(Raw).Append("\n");
             sb.Append("  Ssh: ").Append(Ssh).Append("\n");
             sb.Append("}\n");
@@ -100,6 +109,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Pem == input.Pem ||
+                    (this.Pem != null &&
+                    this.Pem.Equals(input.Pem))
+                ) && 
+                (
                     this.Raw == input.Raw ||
                     (this.Raw != null &&
                     this.Raw.Equals(input.Raw))
@@ -120,6 +134,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Pem != null)
+                    hashCode = hashCode * 59 + this.Pem.GetHashCode();
                 if (this.Raw != null)
                     hashCode = hashCode * 59 + this.Raw.GetHashCode();
                 if (this.Ssh != null)

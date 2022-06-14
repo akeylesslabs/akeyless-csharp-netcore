@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateSSHCertIssuer" /> class.
         /// </summary>
         /// <param name="allowedUsers">Users allowed to fetch the certificate, e.g root,ubuntu (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
         /// <param name="metadata">A metadata about the issuer.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateSSHCertIssuer(string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public CreateSSHCertIssuer(string allowedUsers = default(string), string deleteProtection = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null) {
@@ -74,6 +75,7 @@ namespace akeyless.Model
             }
             this.SignerKeyName = signerKeyName;
             this.Ttl = ttl;
+            this.DeleteProtection = deleteProtection;
             this.Extensions = extensions;
             this.Metadata = metadata;
             this.Principals = principals;
@@ -94,6 +96,13 @@ namespace akeyless.Model
         /// <value>Users allowed to fetch the certificate, e.g root,ubuntu</value>
         [DataMember(Name = "allowed-users", IsRequired = true, EmitDefaultValue = false)]
         public string AllowedUsers { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;
@@ -203,6 +212,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateSSHCertIssuer {\n");
             sb.Append("  AllowedUsers: ").Append(AllowedUsers).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -256,6 +266,11 @@ namespace akeyless.Model
                     this.AllowedUsers == input.AllowedUsers ||
                     (this.AllowedUsers != null &&
                     this.AllowedUsers.Equals(input.AllowedUsers))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Extensions == input.Extensions ||
@@ -346,6 +361,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AllowedUsers != null)
                     hashCode = hashCode * 59 + this.AllowedUsers.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Extensions != null)
                     hashCode = hashCode * 59 + this.Extensions.GetHashCode();
                 if (this.Metadata != null)

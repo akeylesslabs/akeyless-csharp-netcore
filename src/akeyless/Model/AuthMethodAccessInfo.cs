@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="emailPassAccessRules">emailPassAccessRules.</param>
         /// <param name="forceSubClaims">if true the role associated with this auth method must include sub claims.</param>
         /// <param name="gcpAccessRules">gcpAccessRules.</param>
+        /// <param name="gwCidrWhitelist">gwCidrWhitelist.</param>
         /// <param name="huaweiAccessRules">huaweiAccessRules.</param>
         /// <param name="jwtTtl">jwtTtl.</param>
         /// <param name="k8sAccessRules">k8sAccessRules.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="rulesType">rulesType.</param>
         /// <param name="samlAccessRules">samlAccessRules.</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.EmailPassAccessRules = emailPassAccessRules;
             this.ForceSubClaims = forceSubClaims;
             this.GcpAccessRules = gcpAccessRules;
+            this.GwCidrWhitelist = gwCidrWhitelist;
             this.HuaweiAccessRules = huaweiAccessRules;
             this.JwtTtl = jwtTtl;
             this.K8sAccessRules = k8sAccessRules;
@@ -140,6 +142,12 @@ namespace akeyless.Model
         public GCPAccessRules GcpAccessRules { get; set; }
 
         /// <summary>
+        /// Gets or Sets GwCidrWhitelist
+        /// </summary>
+        [DataMember(Name = "gw_cidr_whitelist", EmitDefaultValue = false)]
+        public string GwCidrWhitelist { get; set; }
+
+        /// <summary>
         /// Gets or Sets HuaweiAccessRules
         /// </summary>
         [DataMember(Name = "huawei_access_rules", EmitDefaultValue = false)]
@@ -211,6 +219,7 @@ namespace akeyless.Model
             sb.Append("  EmailPassAccessRules: ").Append(EmailPassAccessRules).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GcpAccessRules: ").Append(GcpAccessRules).Append("\n");
+            sb.Append("  GwCidrWhitelist: ").Append(GwCidrWhitelist).Append("\n");
             sb.Append("  HuaweiAccessRules: ").Append(HuaweiAccessRules).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  K8sAccessRules: ").Append(K8sAccessRules).Append("\n");
@@ -303,6 +312,11 @@ namespace akeyless.Model
                     this.GcpAccessRules.Equals(input.GcpAccessRules))
                 ) && 
                 (
+                    this.GwCidrWhitelist == input.GwCidrWhitelist ||
+                    (this.GwCidrWhitelist != null &&
+                    this.GwCidrWhitelist.Equals(input.GwCidrWhitelist))
+                ) && 
+                (
                     this.HuaweiAccessRules == input.HuaweiAccessRules ||
                     (this.HuaweiAccessRules != null &&
                     this.HuaweiAccessRules.Equals(input.HuaweiAccessRules))
@@ -375,6 +389,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.GcpAccessRules != null)
                     hashCode = hashCode * 59 + this.GcpAccessRules.GetHashCode();
+                if (this.GwCidrWhitelist != null)
+                    hashCode = hashCode * 59 + this.GwCidrWhitelist.GetHashCode();
                 if (this.HuaweiAccessRules != null)
                     hashCode = hashCode * 59 + this.HuaweiAccessRules.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();

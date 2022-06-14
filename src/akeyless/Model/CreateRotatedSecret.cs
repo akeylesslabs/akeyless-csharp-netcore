@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="awsRegion">Region (used in aws) (default to &quot;us-east-2&quot;).</param>
         /// <param name="customPayload">customPayload.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="name">Secret name (required).</param>
@@ -79,7 +80,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string key = default(string), string metadata = default(string), string name = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string key = default(string), string metadata = default(string), string name = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -104,6 +105,7 @@ namespace akeyless.Model
             // use default value if no "awsRegion" provided
             this.AwsRegion = awsRegion ?? "us-east-2";
             this.CustomPayload = customPayload;
+            this.DeleteProtection = deleteProtection;
             this.Key = key;
             this.Metadata = metadata;
             this.RotatedPassword = rotatedPassword;
@@ -179,6 +181,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "custom-payload", EmitDefaultValue = false)]
         public string CustomPayload { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -414,6 +423,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -514,6 +524,11 @@ namespace akeyless.Model
                     this.CustomPayload == input.CustomPayload ||
                     (this.CustomPayload != null &&
                     this.CustomPayload.Equals(input.CustomPayload))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -696,6 +711,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
                 if (this.CustomPayload != null)
                     hashCode = hashCode * 59 + this.CustomPayload.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Metadata != null)

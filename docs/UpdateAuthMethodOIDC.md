@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ClientId** | **string** | Client ID | [optional] 
 **ClientSecret** | **string** | Client Secret | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] 
 **JwtTtl** | **long** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 

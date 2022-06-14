@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **BoundSubId** | **List&lt;string&gt;** | A list of subscription ids that the access is restricted to | [optional] 
 **BoundTenantId** | **string** | The Azure tenant id that the access is restricted to | 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] [default to "https://sts.windows.net/---bound_tenant_id---"]
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] [default to "https://login.microsoftonline.com/common/discovery/keys"]
 **JwtTtl** | **long** | Jwt TTL | [optional] 

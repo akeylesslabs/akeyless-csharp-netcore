@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="alphabet">Alphabet to use in regexp vaultless tokenization.</param>
         /// <param name="decryptionTemplate">The Decryption output template to use in regexp vaultless tokenization.</param>
+        /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="encryptionKeyName">AES key name to use in vaultless tokenization.</param>
         /// <param name="encryptionTemplate">The Encryption output template to use in regexp vaultless tokenization.</param>
         /// <param name="name">Current item name (required).</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="tokenizerType">Tokenizer type (required).</param>
         /// <param name="tweakType">The tweak type to use in vaultless tokenization [Supplied, Generated, Internal, Masking].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateTokenizer(List<string> addTag = default(List<string>), string alphabet = default(string), string decryptionTemplate = default(string), string encryptionKeyName = default(string), string encryptionTemplate = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string pattern = default(string), List<string> rmTag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
+        public UpdateTokenizer(List<string> addTag = default(List<string>), string alphabet = default(string), string decryptionTemplate = default(string), string deleteProtection = default(string), string encryptionKeyName = default(string), string encryptionTemplate = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), string pattern = default(string), List<string> rmTag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.AddTag = addTag;
             this.Alphabet = alphabet;
             this.DecryptionTemplate = decryptionTemplate;
+            this.DeleteProtection = deleteProtection;
             this.EncryptionKeyName = encryptionKeyName;
             this.EncryptionTemplate = encryptionTemplate;
             // use default value if no "newMetadata" provided
@@ -107,6 +109,12 @@ namespace akeyless.Model
         /// <value>The Decryption output template to use in regexp vaultless tokenization</value>
         [DataMember(Name = "decryption-template", EmitDefaultValue = false)]
         public string DecryptionTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeleteProtection
+        /// </summary>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// AES key name to use in vaultless tokenization
@@ -203,6 +211,7 @@ namespace akeyless.Model
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  Alphabet: ").Append(Alphabet).Append("\n");
             sb.Append("  DecryptionTemplate: ").Append(DecryptionTemplate).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  EncryptionKeyName: ").Append(EncryptionKeyName).Append("\n");
             sb.Append("  EncryptionTemplate: ").Append(EncryptionTemplate).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -264,6 +273,11 @@ namespace akeyless.Model
                     this.DecryptionTemplate == input.DecryptionTemplate ||
                     (this.DecryptionTemplate != null &&
                     this.DecryptionTemplate.Equals(input.DecryptionTemplate))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.EncryptionKeyName == input.EncryptionKeyName ||
@@ -343,6 +357,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Alphabet.GetHashCode();
                 if (this.DecryptionTemplate != null)
                     hashCode = hashCode * 59 + this.DecryptionTemplate.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.EncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.EncryptionKeyName.GetHashCode();
                 if (this.EncryptionTemplate != null)

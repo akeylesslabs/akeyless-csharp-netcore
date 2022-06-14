@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// rotateKey is a command that rotates an existing key, creating a new version. [Deprecated: Use command update-rotation-settings] of it.
+    /// of it.
     /// </summary>
     [DataContract(Name = "rotateKey")]
     public partial class RotateKey : IEquatable<RotateKey>, IValidatableObject
@@ -40,30 +40,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateKey" /> class.
         /// </summary>
-        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="name">Key name (required).</param>
-        /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
+        /// <param name="newKeyData">The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotateKey(string autoRotate = default(string), string name = default(string), string rotationInterval = default(string), string token = default(string), string uidToken = default(string))
+        public RotateKey(string name = default(string), string newKeyData = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for RotateKey and cannot be null");
             }
             this.Name = name;
-            this.AutoRotate = autoRotate;
-            this.RotationInterval = rotationInterval;
+            this.NewKeyData = newKeyData;
             this.Token = token;
             this.UidToken = uidToken;
         }
-
-        /// <summary>
-        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation
-        /// </summary>
-        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
-        [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
-        public string AutoRotate { get; set; }
 
         /// <summary>
         /// Key name
@@ -73,11 +64,11 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The number of days to wait between every automatic key rotation (7-365)
+        /// The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;)
         /// </summary>
-        /// <value>The number of days to wait between every automatic key rotation (7-365)</value>
-        [DataMember(Name = "rotation-interval", EmitDefaultValue = false)]
-        public string RotationInterval { get; set; }
+        /// <value>The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;)</value>
+        [DataMember(Name = "new-key-data", EmitDefaultValue = false)]
+        public string NewKeyData { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -101,9 +92,8 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RotateKey {\n");
-            sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
+            sb.Append("  NewKeyData: ").Append(NewKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -141,19 +131,14 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.AutoRotate == input.AutoRotate ||
-                    (this.AutoRotate != null &&
-                    this.AutoRotate.Equals(input.AutoRotate))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.RotationInterval == input.RotationInterval ||
-                    (this.RotationInterval != null &&
-                    this.RotationInterval.Equals(input.RotationInterval))
+                    this.NewKeyData == input.NewKeyData ||
+                    (this.NewKeyData != null &&
+                    this.NewKeyData.Equals(input.NewKeyData))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -176,12 +161,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AutoRotate != null)
-                    hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.RotationInterval != null)
-                    hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();
+                if (this.NewKeyData != null)
+                    hashCode = hashCode * 59 + this.NewKeyData.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

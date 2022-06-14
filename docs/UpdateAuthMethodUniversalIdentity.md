@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DenyInheritance** | **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | **bool** | Deny from the token to rotate | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **JwtTtl** | **long** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 

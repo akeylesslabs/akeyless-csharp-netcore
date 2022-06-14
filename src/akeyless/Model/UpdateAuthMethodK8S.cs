@@ -48,13 +48,14 @@ namespace akeyless.Model
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="genKey">If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway) (default to &quot;true&quot;).</param>
+        /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="publicKey">Base64-encoded public key text for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", long jwtTtl = default(long), string name = default(string), string newName = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", List<string> gwBoundIps = default(List<string>), long jwtTtl = default(long), string name = default(string), string newName = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -70,6 +71,7 @@ namespace akeyless.Model
             this.ForceSubClaims = forceSubClaims;
             // use default value if no "genKey" provided
             this.GenKey = genKey ?? "true";
+            this.GwBoundIps = gwBoundIps;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.PublicKey = publicKey;
@@ -134,6 +136,13 @@ namespace akeyless.Model
         public string GenKey { get; set; }
 
         /// <summary>
+        /// A CIDR whitelist with the GW IPs that the access is restricted to
+        /// </summary>
+        /// <value>A CIDR whitelist with the GW IPs that the access is restricted to</value>
+        [DataMember(Name = "gw-bound-ips", EmitDefaultValue = false)]
+        public List<string> GwBoundIps { get; set; }
+
+        /// <summary>
         /// Jwt TTL
         /// </summary>
         /// <value>Jwt TTL</value>
@@ -191,6 +200,7 @@ namespace akeyless.Model
             sb.Append("  BoundSaNames: ").Append(BoundSaNames).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GenKey: ").Append(GenKey).Append("\n");
+            sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -274,6 +284,12 @@ namespace akeyless.Model
                     this.GenKey.Equals(input.GenKey))
                 ) && 
                 (
+                    this.GwBoundIps == input.GwBoundIps ||
+                    this.GwBoundIps != null &&
+                    input.GwBoundIps != null &&
+                    this.GwBoundIps.SequenceEqual(input.GwBoundIps)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -327,6 +343,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.GenKey != null)
                     hashCode = hashCode * 59 + this.GenKey.GetHashCode();
+                if (this.GwBoundIps != null)
+                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

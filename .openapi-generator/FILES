@@ -158,6 +158,8 @@ docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
+docs/GCPPayload.md
+docs/GCPSecretsMigration.md
 docs/GatewayAddAllowedManagementAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
@@ -219,6 +221,8 @@ docs/GatewayDeleteProducerOutput.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
+docs/GatewayGetLdapAuthConfig.md
+docs/GatewayGetLdapAuthConfigOutput.md
 docs/GatewayGetMigration.md
 docs/GatewayGetProducer.md
 docs/GatewayGetTmpUsers.md
@@ -242,6 +246,8 @@ docs/GatewayUpdateItem.md
 docs/GatewayUpdateItemOutput.md
 docs/GatewayUpdateK8SAuthConfig.md
 docs/GatewayUpdateK8SAuthConfigOutput.md
+docs/GatewayUpdateLdapAuthConfig.md
+docs/GatewayUpdateLdapAuthConfigOutput.md
 docs/GatewayUpdateMigration.md
 docs/GatewayUpdateProducerArtifactory.md
 docs/GatewayUpdateProducerArtifactoryOutput.md
@@ -535,9 +541,12 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/UpdateLdapTargetDetailsTests.cs
-src/akeyless.Test/Model/UpdateLdapTargetOutputTests.cs
-src/akeyless.Test/Model/UpdateLdapTargetTests.cs
+src/akeyless.Test/Model/GCPPayloadTests.cs
+src/akeyless.Test/Model/GCPSecretsMigrationTests.cs
+src/akeyless.Test/Model/GatewayGetLdapAuthConfigOutputTests.cs
+src/akeyless.Test/Model/GatewayGetLdapAuthConfigTests.cs
+src/akeyless.Test/Model/GatewayUpdateLdapAuthConfigOutputTests.cs
+src/akeyless.Test/Model/GatewayUpdateLdapAuthConfigTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -713,6 +722,8 @@ src/akeyless/Model/EncryptWithClassicKey.cs
 src/akeyless/Model/EncryptWithClassicKeyOutput.cs
 src/akeyless/Model/ExternalKMSKeyId.cs
 src/akeyless/Model/GCPAccessRules.cs
+src/akeyless/Model/GCPPayload.cs
+src/akeyless/Model/GCPSecretsMigration.cs
 src/akeyless/Model/GatewayAddAllowedManagementAccess.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfig.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfigOutput.cs
@@ -774,6 +785,8 @@ src/akeyless/Model/GatewayDeleteProducerOutput.cs
 src/akeyless/Model/GatewayGetConfig.cs
 src/akeyless/Model/GatewayGetK8SAuthConfig.cs
 src/akeyless/Model/GatewayGetK8SAuthConfigOutput.cs
+src/akeyless/Model/GatewayGetLdapAuthConfig.cs
+src/akeyless/Model/GatewayGetLdapAuthConfigOutput.cs
 src/akeyless/Model/GatewayGetMigration.cs
 src/akeyless/Model/GatewayGetProducer.cs
 src/akeyless/Model/GatewayGetTmpUsers.cs
@@ -797,6 +810,8 @@ src/akeyless/Model/GatewayUpdateItem.cs
 src/akeyless/Model/GatewayUpdateItemOutput.cs
 src/akeyless/Model/GatewayUpdateK8SAuthConfig.cs
 src/akeyless/Model/GatewayUpdateK8SAuthConfigOutput.cs
+src/akeyless/Model/GatewayUpdateLdapAuthConfig.cs
+src/akeyless/Model/GatewayUpdateLdapAuthConfigOutput.cs
 src/akeyless/Model/GatewayUpdateMigration.cs
 src/akeyless/Model/GatewayUpdateProducerArtifactory.cs
 src/akeyless/Model/GatewayUpdateProducerArtifactoryOutput.cs

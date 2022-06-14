@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSecret" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The secret value (required).</param>
-        public CreateSecret(string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string), string value = default(string))
+        public CreateSecret(string deleteProtection = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -68,6 +69,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("value is a required property for CreateSecret and cannot be null");
             }
             this.Value = value;
+            this.DeleteProtection = deleteProtection;
             this.Metadata = metadata;
             this.MultilineValue = multilineValue;
             this.ProtectionKey = protectionKey;
@@ -83,6 +85,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Metadata about the secret
@@ -196,6 +205,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateSecret {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  MultilineValue: ").Append(MultilineValue).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -246,6 +256,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
@@ -336,6 +351,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 hashCode = hashCode * 59 + this.MultilineValue.GetHashCode();

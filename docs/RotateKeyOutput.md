@@ -5,6 +5,8 @@ RotateKeyOutput defines output of RotateKey operation
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassicKeyGwUrl** | **string** |  | [optional] 
+**ItemType** | **string** |  | [optional] 
 **NewItemVersion** | **int** |  | [optional] 
 **NextRotationDate** | **DateTime** |  | [optional] 
 

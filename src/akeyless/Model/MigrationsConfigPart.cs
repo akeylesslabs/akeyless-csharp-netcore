@@ -37,12 +37,14 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="awsSecretsMigrations">awsSecretsMigrations.</param>
         /// <param name="azureKvMigrations">azureKvMigrations.</param>
+        /// <param name="gcpSecretsMigrations">gcpSecretsMigrations.</param>
         /// <param name="hashiMigrations">hashiMigrations.</param>
         /// <param name="k8sMigrations">k8sMigrations.</param>
-        public MigrationsConfigPart(List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>))
+        public MigrationsConfigPart(List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>))
         {
             this.AwsSecretsMigrations = awsSecretsMigrations;
             this.AzureKvMigrations = azureKvMigrations;
+            this.GcpSecretsMigrations = gcpSecretsMigrations;
             this.HashiMigrations = hashiMigrations;
             this.K8sMigrations = k8sMigrations;
         }
@@ -58,6 +60,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure_kv_migrations", EmitDefaultValue = false)]
         public List<AzureKeyVaultMigration> AzureKvMigrations { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpSecretsMigrations
+        /// </summary>
+        [DataMember(Name = "gcp_secrets_migrations", EmitDefaultValue = false)]
+        public List<GCPSecretsMigration> GcpSecretsMigrations { get; set; }
 
         /// <summary>
         /// Gets or Sets HashiMigrations
@@ -81,6 +89,7 @@ namespace akeyless.Model
             sb.Append("class MigrationsConfigPart {\n");
             sb.Append("  AwsSecretsMigrations: ").Append(AwsSecretsMigrations).Append("\n");
             sb.Append("  AzureKvMigrations: ").Append(AzureKvMigrations).Append("\n");
+            sb.Append("  GcpSecretsMigrations: ").Append(GcpSecretsMigrations).Append("\n");
             sb.Append("  HashiMigrations: ").Append(HashiMigrations).Append("\n");
             sb.Append("  K8sMigrations: ").Append(K8sMigrations).Append("\n");
             sb.Append("}\n");
@@ -130,6 +139,12 @@ namespace akeyless.Model
                     this.AzureKvMigrations.SequenceEqual(input.AzureKvMigrations)
                 ) && 
                 (
+                    this.GcpSecretsMigrations == input.GcpSecretsMigrations ||
+                    this.GcpSecretsMigrations != null &&
+                    input.GcpSecretsMigrations != null &&
+                    this.GcpSecretsMigrations.SequenceEqual(input.GcpSecretsMigrations)
+                ) && 
+                (
                     this.HashiMigrations == input.HashiMigrations ||
                     this.HashiMigrations != null &&
                     input.HashiMigrations != null &&
@@ -156,6 +171,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AwsSecretsMigrations.GetHashCode();
                 if (this.AzureKvMigrations != null)
                     hashCode = hashCode * 59 + this.AzureKvMigrations.GetHashCode();
+                if (this.GcpSecretsMigrations != null)
+                    hashCode = hashCode * 59 + this.GcpSecretsMigrations.GetHashCode();
                 if (this.HashiMigrations != null)
                     hashCode = hashCode * 59 + this.HashiMigrations.GetHashCode();
                 if (this.K8sMigrations != null)

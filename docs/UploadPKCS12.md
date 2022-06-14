@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerFrgId** | **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **In** | **string** | PKCS#12 input file (private key and certificate only) | 
 **Metadata** | **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 

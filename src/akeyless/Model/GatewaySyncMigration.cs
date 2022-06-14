@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewaySyncMigration" /> class.
         /// </summary>
         /// <param name="name">Migration name (required).</param>
-        /// <param name="startSync">startSync.</param>
+        /// <param name="startSync">true, for starting synchronization, false for stopping.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GatewaySyncMigration(string name = default(string), bool startSync = default(bool), string token = default(string), string uidToken = default(string))
@@ -64,8 +64,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets StartSync
+        /// true, for starting synchronization, false for stopping
         /// </summary>
+        /// <value>true, for starting synchronization, false for stopping</value>
         [DataMember(Name = "start-sync", EmitDefaultValue = true)]
         public bool StartSync { get; set; }
 

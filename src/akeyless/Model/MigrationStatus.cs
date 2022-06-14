@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="MigrationStatus" /> class.
         /// </summary>
         /// <param name="lastMessages">lastMessages.</param>
+        /// <param name="lastReports">lastReports.</param>
         /// <param name="lastStatuses">lastStatuses.</param>
-        public MigrationStatus(Dictionary<string, string> lastMessages = default(Dictionary<string, string>), Dictionary<string, string> lastStatuses = default(Dictionary<string, string>))
+        public MigrationStatus(Dictionary<string, string> lastMessages = default(Dictionary<string, string>), Dictionary<string, string> lastReports = default(Dictionary<string, string>), Dictionary<string, string> lastStatuses = default(Dictionary<string, string>))
         {
             this.LastMessages = lastMessages;
+            this.LastReports = lastReports;
             this.LastStatuses = lastStatuses;
         }
 
@@ -48,6 +50,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "last_messages", EmitDefaultValue = false)]
         public Dictionary<string, string> LastMessages { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastReports
+        /// </summary>
+        [DataMember(Name = "last_reports", EmitDefaultValue = false)]
+        public Dictionary<string, string> LastReports { get; set; }
 
         /// <summary>
         /// Gets or Sets LastStatuses
@@ -64,6 +72,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class MigrationStatus {\n");
             sb.Append("  LastMessages: ").Append(LastMessages).Append("\n");
+            sb.Append("  LastReports: ").Append(LastReports).Append("\n");
             sb.Append("  LastStatuses: ").Append(LastStatuses).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -106,6 +115,12 @@ namespace akeyless.Model
                     this.LastMessages.SequenceEqual(input.LastMessages)
                 ) && 
                 (
+                    this.LastReports == input.LastReports ||
+                    this.LastReports != null &&
+                    input.LastReports != null &&
+                    this.LastReports.SequenceEqual(input.LastReports)
+                ) && 
+                (
                     this.LastStatuses == input.LastStatuses ||
                     this.LastStatuses != null &&
                     input.LastStatuses != null &&
@@ -124,6 +139,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.LastMessages != null)
                     hashCode = hashCode * 59 + this.LastMessages.GetHashCode();
+                if (this.LastReports != null)
+                    hashCode = hashCode * 59 + this.LastReports.GetHashCode();
                 if (this.LastStatuses != null)
                     hashCode = hashCode * 59 + this.LastStatuses.GetHashCode();
                 return hashCode;

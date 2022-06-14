@@ -50,11 +50,12 @@ namespace akeyless.Model
         /// <param name="boundUserId">A list of full user ids that the access is restricted to.</param>
         /// <param name="boundUserName">A list of full user-name that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
+        /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodHuawei(long accessExpires = 0, string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodHuawei(long accessExpires = 0, string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.BoundUserId = boundUserId;
             this.BoundUserName = boundUserName;
             this.ForceSubClaims = forceSubClaims;
+            this.GwBoundIps = gwBoundIps;
             this.JwtTtl = jwtTtl;
             this.Token = token;
             this.UidToken = uidToken;
@@ -148,6 +150,13 @@ namespace akeyless.Model
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
+        /// A CIDR whitelist with the GW IPs that the access is restricted to
+        /// </summary>
+        /// <value>A CIDR whitelist with the GW IPs that the access is restricted to</value>
+        [DataMember(Name = "gw-bound-ips", EmitDefaultValue = false)]
+        public List<string> GwBoundIps { get; set; }
+
+        /// <summary>
         /// Jwt TTL
         /// </summary>
         /// <value>Jwt TTL</value>
@@ -193,6 +202,7 @@ namespace akeyless.Model
             sb.Append("  BoundUserId: ").Append(BoundUserId).Append("\n");
             sb.Append("  BoundUserName: ").Append(BoundUserName).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
+            sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -287,6 +297,12 @@ namespace akeyless.Model
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
                 (
+                    this.GwBoundIps == input.GwBoundIps ||
+                    this.GwBoundIps != null &&
+                    input.GwBoundIps != null &&
+                    this.GwBoundIps.SequenceEqual(input.GwBoundIps)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -334,6 +350,8 @@ namespace akeyless.Model
                 if (this.BoundUserName != null)
                     hashCode = hashCode * 59 + this.BoundUserName.GetHashCode();
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                if (this.GwBoundIps != null)
+                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

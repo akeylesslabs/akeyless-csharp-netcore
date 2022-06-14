@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsSecretsMigrations** | [**List&lt;AWSSecretsMigration&gt;**](AWSSecretsMigration.md) |  | [optional] 
 **AzureKvMigrations** | [**List&lt;AzureKeyVaultMigration&gt;**](AzureKeyVaultMigration.md) |  | [optional] 
+**GcpSecretsMigrations** | [**List&lt;GCPSecretsMigration&gt;**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | [**List&lt;HashiMigration&gt;**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | [**List&lt;K8SMigration&gt;**](K8SMigration.md) |  | [optional] 
 

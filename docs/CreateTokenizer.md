@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alphabet** | **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
 **DecryptionTemplate** | **string** | The Decryption output template to use in regexp vaultless tokenization | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **EncryptionKeyName** | **string** | AES key name to use in vaultless tokenization | [optional] 
 **EncryptionTemplate** | **string** | The Encryption output template to use in regexp vaultless tokenization | [optional] 
 **Metadata** | **string** | A metadata about the tokenizer | [optional] 

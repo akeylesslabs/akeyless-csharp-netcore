@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
 **Alphabet** | **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
 **DecryptionTemplate** | **string** | The Decryption output template to use in regexp vaultless tokenization | [optional] 
+**DeleteProtection** | **string** |  | [optional] 
 **EncryptionKeyName** | **string** | AES key name to use in vaultless tokenization | [optional] 
 **EncryptionTemplate** | **string** | The Encryption output template to use in regexp vaultless tokenization | [optional] 
 **Name** | **string** | Current item name | 

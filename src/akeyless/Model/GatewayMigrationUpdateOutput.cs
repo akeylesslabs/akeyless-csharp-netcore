@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// GatewayMigrationUpdateOutput
     /// </summary>
-    [DataContract(Name = "gatewayMigrationUpdateOutput")]
+    [DataContract(Name = "GatewayMigrationUpdateOutput")]
     public partial class GatewayMigrationUpdateOutput : IEquatable<GatewayMigrationUpdateOutput>, IValidatableObject
     {
         /// <summary>

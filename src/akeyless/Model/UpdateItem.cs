@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateItem" /> class.
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
+        /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="newMetadata">New item metadata (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
@@ -71,7 +72,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(List<string> addTag = default(List<string>), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
+        public UpdateItem(List<string> addTag = default(List<string>), string deleteProtection = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -79,6 +80,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AddTag = addTag;
+            this.DeleteProtection = deleteProtection;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? "default_metadata";
             this.NewName = newName;
@@ -117,6 +119,12 @@ namespace akeyless.Model
         /// <value>List of the new tags that will be attached to this item</value>
         [DataMember(Name = "add-tag", EmitDefaultValue = false)]
         public List<string> AddTag { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeleteProtection
+        /// </summary>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Current item name
@@ -313,6 +321,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateItem {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -382,6 +391,11 @@ namespace akeyless.Model
                     this.AddTag != null &&
                     input.AddTag != null &&
                     this.AddTag.SequenceEqual(input.AddTag)
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -545,6 +559,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AddTag != null)
                     hashCode = hashCode * 59 + this.AddTag.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewMetadata != null)

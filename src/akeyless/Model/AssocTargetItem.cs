@@ -40,11 +40,19 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
+        /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
+        /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
+        /// <param name="kmsAlgorithm">Algorithm of the key in GCP KMS (required for gcp targets).</param>
+        /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
         /// <param name="name">The item to associate (required).</param>
+        /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
+        /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="targetName">The target to associate (required).</param>
+        /// <param name="tenantSecretType">The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AssocTargetItem(string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
+        public AssocTargetItem(List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string name = default(string), string projectId = default(string), string purpose = default(string), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -56,9 +64,45 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             }
             this.TargetName = targetName;
+            this.KeyOperations = keyOperations;
+            this.KeyringName = keyringName;
+            this.KmsAlgorithm = kmsAlgorithm;
+            this.LocationId = locationId;
+            this.ProjectId = projectId;
+            this.Purpose = purpose;
+            this.TenantSecretType = tenantSecretType;
             this.Token = token;
             this.UidToken = uidToken;
+            this.VaultName = vaultName;
         }
+
+        /// <summary>
+        /// A list of allowed operations for the key (required for azure targets)
+        /// </summary>
+        /// <value>A list of allowed operations for the key (required for azure targets)</value>
+        [DataMember(Name = "key-operations", EmitDefaultValue = false)]
+        public List<string> KeyOperations { get; set; }
+
+        /// <summary>
+        /// Keyring name of the GCP KMS (required for gcp targets)
+        /// </summary>
+        /// <value>Keyring name of the GCP KMS (required for gcp targets)</value>
+        [DataMember(Name = "keyring-name", EmitDefaultValue = false)]
+        public string KeyringName { get; set; }
+
+        /// <summary>
+        /// Algorithm of the key in GCP KMS (required for gcp targets)
+        /// </summary>
+        /// <value>Algorithm of the key in GCP KMS (required for gcp targets)</value>
+        [DataMember(Name = "kms-algorithm", EmitDefaultValue = false)]
+        public string KmsAlgorithm { get; set; }
+
+        /// <summary>
+        /// Location id of the GCP KMS (required for gcp targets)
+        /// </summary>
+        /// <value>Location id of the GCP KMS (required for gcp targets)</value>
+        [DataMember(Name = "location-id", EmitDefaultValue = false)]
+        public string LocationId { get; set; }
 
         /// <summary>
         /// The item to associate
@@ -68,11 +112,32 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Project id of the GCP KMS (required for gcp targets)
+        /// </summary>
+        /// <value>Project id of the GCP KMS (required for gcp targets)</value>
+        [DataMember(Name = "project-id", EmitDefaultValue = false)]
+        public string ProjectId { get; set; }
+
+        /// <summary>
+        /// Purpose of the key in GCP KMS (required for gcp targets)
+        /// </summary>
+        /// <value>Purpose of the key in GCP KMS (required for gcp targets)</value>
+        [DataMember(Name = "purpose", EmitDefaultValue = false)]
+        public string Purpose { get; set; }
+
+        /// <summary>
         /// The target to associate
         /// </summary>
         /// <value>The target to associate</value>
         [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = false)]
         public string TargetName { get; set; }
+
+        /// <summary>
+        /// The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)
+        /// </summary>
+        /// <value>The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)</value>
+        [DataMember(Name = "tenant-secret-type", EmitDefaultValue = false)]
+        public string TenantSecretType { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -89,6 +154,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Name of the vault used (required for azure targets)
+        /// </summary>
+        /// <value>Name of the vault used (required for azure targets)</value>
+        [DataMember(Name = "vault-name", EmitDefaultValue = false)]
+        public string VaultName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,10 +168,18 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
+            sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
+            sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
+            sb.Append("  KmsAlgorithm: ").Append(KmsAlgorithm).Append("\n");
+            sb.Append("  LocationId: ").Append(LocationId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
+            sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
+            sb.Append("  TenantSecretType: ").Append(TenantSecretType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  VaultName: ").Append(VaultName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -135,14 +215,50 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.KeyOperations == input.KeyOperations ||
+                    this.KeyOperations != null &&
+                    input.KeyOperations != null &&
+                    this.KeyOperations.SequenceEqual(input.KeyOperations)
+                ) && 
+                (
+                    this.KeyringName == input.KeyringName ||
+                    (this.KeyringName != null &&
+                    this.KeyringName.Equals(input.KeyringName))
+                ) && 
+                (
+                    this.KmsAlgorithm == input.KmsAlgorithm ||
+                    (this.KmsAlgorithm != null &&
+                    this.KmsAlgorithm.Equals(input.KmsAlgorithm))
+                ) && 
+                (
+                    this.LocationId == input.LocationId ||
+                    (this.LocationId != null &&
+                    this.LocationId.Equals(input.LocationId))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ProjectId == input.ProjectId ||
+                    (this.ProjectId != null &&
+                    this.ProjectId.Equals(input.ProjectId))
+                ) && 
+                (
+                    this.Purpose == input.Purpose ||
+                    (this.Purpose != null &&
+                    this.Purpose.Equals(input.Purpose))
+                ) && 
+                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
+                    this.TenantSecretType == input.TenantSecretType ||
+                    (this.TenantSecretType != null &&
+                    this.TenantSecretType.Equals(input.TenantSecretType))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -153,6 +269,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.VaultName == input.VaultName ||
+                    (this.VaultName != null &&
+                    this.VaultName.Equals(input.VaultName))
                 );
         }
 
@@ -165,14 +286,30 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.KeyOperations != null)
+                    hashCode = hashCode * 59 + this.KeyOperations.GetHashCode();
+                if (this.KeyringName != null)
+                    hashCode = hashCode * 59 + this.KeyringName.GetHashCode();
+                if (this.KmsAlgorithm != null)
+                    hashCode = hashCode * 59 + this.KmsAlgorithm.GetHashCode();
+                if (this.LocationId != null)
+                    hashCode = hashCode * 59 + this.LocationId.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ProjectId != null)
+                    hashCode = hashCode * 59 + this.ProjectId.GetHashCode();
+                if (this.Purpose != null)
+                    hashCode = hashCode * 59 + this.Purpose.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                if (this.TenantSecretType != null)
+                    hashCode = hashCode * 59 + this.TenantSecretType.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.VaultName != null)
+                    hashCode = hashCode * 59 + this.VaultName.GetHashCode();
                 return hashCode;
             }
         }

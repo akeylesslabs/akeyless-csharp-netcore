@@ -42,13 +42,14 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="metadata">Metadata about the DFC key.</param>
         /// <param name="name">DFCKey name (required).</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 2).</param>
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string customerFrgId = default(string), string metadata = default(string), string name = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string metadata = default(string), string name = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -61,6 +62,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.CustomerFrgId = customerFrgId;
+            this.DeleteProtection = deleteProtection;
             this.Metadata = metadata;
             this.SplitLevel = splitLevel;
             this.Tag = tag;
@@ -81,6 +83,13 @@ namespace akeyless.Model
         /// <value>The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)</value>
         [DataMember(Name = "customer-frg-id", EmitDefaultValue = false)]
         public string CustomerFrgId { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Metadata about the DFC key
@@ -134,6 +143,7 @@ namespace akeyless.Model
             sb.Append("class CreateDFCKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SplitLevel: ").Append(SplitLevel).Append("\n");
@@ -185,6 +195,11 @@ namespace akeyless.Model
                     this.CustomerFrgId.Equals(input.CustomerFrgId))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -229,6 +244,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Alg.GetHashCode();
                 if (this.CustomerFrgId != null)
                     hashCode = hashCode * 59 + this.CustomerFrgId.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)

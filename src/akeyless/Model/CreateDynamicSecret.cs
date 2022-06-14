@@ -40,19 +40,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDynamicSecret" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="key">The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Metadata about the dynamic secret (default to &quot;None&quot;).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDynamicSecret(string key = default(string), string metadata = "None", string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDynamicSecret(string deleteProtection = default(string), string key = default(string), string metadata = "None", string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for CreateDynamicSecret and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Key = key;
             // use default value if no "metadata" provided
             this.Metadata = metadata ?? "None";
@@ -60,6 +62,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used)
@@ -111,6 +120,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateDynamicSecret {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -151,6 +161,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.Key == input.Key ||
                     (this.Key != null &&
@@ -193,6 +208,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Metadata != null)

@@ -45,13 +45,14 @@ namespace akeyless.Model
         /// <param name="denyInheritance">Deny from root to create children.</param>
         /// <param name="denyRotate">Deny from the token to rotate.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
+        /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string token = default(string), int ttl = 60, string uidToken = default(string))
+        public UpdateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), long jwtTtl = default(long), string name = default(string), string newName = default(string), string token = default(string), int ttl = 60, string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.DenyInheritance = denyInheritance;
             this.DenyRotate = denyRotate;
             this.ForceSubClaims = forceSubClaims;
+            this.GwBoundIps = gwBoundIps;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.Token = token;
@@ -104,6 +106,13 @@ namespace akeyless.Model
         /// <value>if true: enforce role-association must include sub claims</value>
         [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
+
+        /// <summary>
+        /// A CIDR whitelist with the GW IPs that the access is restricted to
+        /// </summary>
+        /// <value>A CIDR whitelist with the GW IPs that the access is restricted to</value>
+        [DataMember(Name = "gw-bound-ips", EmitDefaultValue = false)]
+        public List<string> GwBoundIps { get; set; }
 
         /// <summary>
         /// Jwt TTL
@@ -160,6 +169,7 @@ namespace akeyless.Model
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
+            sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -223,6 +233,12 @@ namespace akeyless.Model
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
                 (
+                    this.GwBoundIps == input.GwBoundIps ||
+                    this.GwBoundIps != null &&
+                    input.GwBoundIps != null &&
+                    this.GwBoundIps.SequenceEqual(input.GwBoundIps)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -267,6 +283,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.DenyInheritance.GetHashCode();
                 hashCode = hashCode * 59 + this.DenyRotate.GetHashCode();
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                if (this.GwBoundIps != null)
+                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

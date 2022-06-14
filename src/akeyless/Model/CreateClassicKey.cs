@@ -42,23 +42,15 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
-        /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
-        /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
-        /// <param name="kmsAlgorithm">Algorithm of the key in GCP KMS (required for gcp targets).</param>
-        /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
         /// <param name="metadata">Metadata about the classic key.</param>
         /// <param name="name">ClassicKey name (required).</param>
-        /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="protectionKeyName">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="tags">List of the tags attached to this classic key.</param>
-        /// <param name="targetName">Target name.</param>
-        /// <param name="tenantSecretType">The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string keyData = default(string), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string metadata = default(string), string name = default(string), string projectId = default(string), string protectionKeyName = default(string), string purpose = default(string), List<string> tags = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -71,21 +63,13 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.CertFileData = certFileData;
+            this.DeleteProtection = deleteProtection;
             this.KeyData = keyData;
-            this.KeyOperations = keyOperations;
-            this.KeyringName = keyringName;
-            this.KmsAlgorithm = kmsAlgorithm;
-            this.LocationId = locationId;
             this.Metadata = metadata;
-            this.ProjectId = projectId;
             this.ProtectionKeyName = protectionKeyName;
-            this.Purpose = purpose;
             this.Tags = tags;
-            this.TargetName = targetName;
-            this.TenantSecretType = tenantSecretType;
             this.Token = token;
             this.UidToken = uidToken;
-            this.VaultName = vaultName;
         }
 
         /// <summary>
@@ -103,39 +87,18 @@ namespace akeyless.Model
         public string CertFileData { get; set; }
 
         /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
+
+        /// <summary>
         /// Base64-encoded classic key value
         /// </summary>
         /// <value>Base64-encoded classic key value</value>
         [DataMember(Name = "key-data", EmitDefaultValue = false)]
         public string KeyData { get; set; }
-
-        /// <summary>
-        /// A list of allowed operations for the key (required for azure targets)
-        /// </summary>
-        /// <value>A list of allowed operations for the key (required for azure targets)</value>
-        [DataMember(Name = "key-operations", EmitDefaultValue = false)]
-        public List<string> KeyOperations { get; set; }
-
-        /// <summary>
-        /// Keyring name of the GCP KMS (required for gcp targets)
-        /// </summary>
-        /// <value>Keyring name of the GCP KMS (required for gcp targets)</value>
-        [DataMember(Name = "keyring-name", EmitDefaultValue = false)]
-        public string KeyringName { get; set; }
-
-        /// <summary>
-        /// Algorithm of the key in GCP KMS (required for gcp targets)
-        /// </summary>
-        /// <value>Algorithm of the key in GCP KMS (required for gcp targets)</value>
-        [DataMember(Name = "kms-algorithm", EmitDefaultValue = false)]
-        public string KmsAlgorithm { get; set; }
-
-        /// <summary>
-        /// Location id of the GCP KMS (required for gcp targets)
-        /// </summary>
-        /// <value>Location id of the GCP KMS (required for gcp targets)</value>
-        [DataMember(Name = "location-id", EmitDefaultValue = false)]
-        public string LocationId { get; set; }
 
         /// <summary>
         /// Metadata about the classic key
@@ -152,13 +115,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Project id of the GCP KMS (required for gcp targets)
-        /// </summary>
-        /// <value>Project id of the GCP KMS (required for gcp targets)</value>
-        [DataMember(Name = "project-id", EmitDefaultValue = false)]
-        public string ProjectId { get; set; }
-
-        /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
         /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
@@ -166,32 +122,11 @@ namespace akeyless.Model
         public string ProtectionKeyName { get; set; }
 
         /// <summary>
-        /// Purpose of the key in GCP KMS (required for gcp targets)
-        /// </summary>
-        /// <value>Purpose of the key in GCP KMS (required for gcp targets)</value>
-        [DataMember(Name = "purpose", EmitDefaultValue = false)]
-        public string Purpose { get; set; }
-
-        /// <summary>
         /// List of the tags attached to this classic key
         /// </summary>
         /// <value>List of the tags attached to this classic key</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
-
-        /// <summary>
-        /// Target name
-        /// </summary>
-        /// <value>Target name</value>
-        [DataMember(Name = "target-name", EmitDefaultValue = false)]
-        public string TargetName { get; set; }
-
-        /// <summary>
-        /// The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)
-        /// </summary>
-        /// <value>The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)</value>
-        [DataMember(Name = "tenant-secret-type", EmitDefaultValue = false)]
-        public string TenantSecretType { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -208,13 +143,6 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Name of the vault used (required for azure targets)
-        /// </summary>
-        /// <value>Name of the vault used (required for azure targets)</value>
-        [DataMember(Name = "vault-name", EmitDefaultValue = false)]
-        public string VaultName { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -224,22 +152,14 @@ namespace akeyless.Model
             sb.Append("class CreateClassicKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
-            sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
-            sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
-            sb.Append("  KmsAlgorithm: ").Append(KmsAlgorithm).Append("\n");
-            sb.Append("  LocationId: ").Append(LocationId).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
-            sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
-            sb.Append("  TenantSecretType: ").Append(TenantSecretType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  VaultName: ").Append(VaultName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -285,30 +205,14 @@ namespace akeyless.Model
                     this.CertFileData.Equals(input.CertFileData))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.KeyData == input.KeyData ||
                     (this.KeyData != null &&
                     this.KeyData.Equals(input.KeyData))
-                ) && 
-                (
-                    this.KeyOperations == input.KeyOperations ||
-                    this.KeyOperations != null &&
-                    input.KeyOperations != null &&
-                    this.KeyOperations.SequenceEqual(input.KeyOperations)
-                ) && 
-                (
-                    this.KeyringName == input.KeyringName ||
-                    (this.KeyringName != null &&
-                    this.KeyringName.Equals(input.KeyringName))
-                ) && 
-                (
-                    this.KmsAlgorithm == input.KmsAlgorithm ||
-                    (this.KmsAlgorithm != null &&
-                    this.KmsAlgorithm.Equals(input.KmsAlgorithm))
-                ) && 
-                (
-                    this.LocationId == input.LocationId ||
-                    (this.LocationId != null &&
-                    this.LocationId.Equals(input.LocationId))
                 ) && 
                 (
                     this.Metadata == input.Metadata ||
@@ -321,35 +225,15 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.ProjectId == input.ProjectId ||
-                    (this.ProjectId != null &&
-                    this.ProjectId.Equals(input.ProjectId))
-                ) && 
-                (
                     this.ProtectionKeyName == input.ProtectionKeyName ||
                     (this.ProtectionKeyName != null &&
                     this.ProtectionKeyName.Equals(input.ProtectionKeyName))
-                ) && 
-                (
-                    this.Purpose == input.Purpose ||
-                    (this.Purpose != null &&
-                    this.Purpose.Equals(input.Purpose))
                 ) && 
                 (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
                     this.Tags.SequenceEqual(input.Tags)
-                ) && 
-                (
-                    this.TargetName == input.TargetName ||
-                    (this.TargetName != null &&
-                    this.TargetName.Equals(input.TargetName))
-                ) && 
-                (
-                    this.TenantSecretType == input.TenantSecretType ||
-                    (this.TenantSecretType != null &&
-                    this.TenantSecretType.Equals(input.TenantSecretType))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -360,11 +244,6 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
-                ) && 
-                (
-                    this.VaultName == input.VaultName ||
-                    (this.VaultName != null &&
-                    this.VaultName.Equals(input.VaultName))
                 );
         }
 
@@ -381,38 +260,22 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Alg.GetHashCode();
                 if (this.CertFileData != null)
                     hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.KeyData != null)
                     hashCode = hashCode * 59 + this.KeyData.GetHashCode();
-                if (this.KeyOperations != null)
-                    hashCode = hashCode * 59 + this.KeyOperations.GetHashCode();
-                if (this.KeyringName != null)
-                    hashCode = hashCode * 59 + this.KeyringName.GetHashCode();
-                if (this.KmsAlgorithm != null)
-                    hashCode = hashCode * 59 + this.KmsAlgorithm.GetHashCode();
-                if (this.LocationId != null)
-                    hashCode = hashCode * 59 + this.LocationId.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.ProjectId != null)
-                    hashCode = hashCode * 59 + this.ProjectId.GetHashCode();
                 if (this.ProtectionKeyName != null)
                     hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
-                if (this.Purpose != null)
-                    hashCode = hashCode * 59 + this.Purpose.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
-                if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
-                if (this.TenantSecretType != null)
-                    hashCode = hashCode * 59 + this.TenantSecretType.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.VaultName != null)
-                    hashCode = hashCode * 59 + this.VaultName.GetHashCode();
                 return hashCode;
             }
         }
