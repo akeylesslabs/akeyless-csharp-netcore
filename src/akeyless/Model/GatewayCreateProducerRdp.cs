@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerRdp" /> class.
         /// </summary>
         /// <param name="allowUserExtendSession">AllowUserExtendSession.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="fixedUserOnly">Fixed user (default to &quot;false&quot;).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="warnUserBeforeExpiration">WarnBeforeUserExpiration.</param>
-        public GatewayCreateProducerRdp(long allowUserExtendSession = default(long), string fixedUserOnly = "false", string name = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", long warnUserBeforeExpiration = default(long))
+        public GatewayCreateProducerRdp(long allowUserExtendSession = default(long), string deleteProtection = default(string), string fixedUserOnly = "false", string name = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", long warnUserBeforeExpiration = default(long))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -68,6 +69,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AllowUserExtendSession = allowUserExtendSession;
+            this.DeleteProtection = deleteProtection;
             // use default value if no "fixedUserOnly" provided
             this.FixedUserOnly = fixedUserOnly ?? "false";
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>AllowUserExtendSession</value>
         [DataMember(Name = "allow-user-extend-session", EmitDefaultValue = false)]
         public long AllowUserExtendSession { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Fixed user
@@ -235,6 +244,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerRdp {\n");
             sb.Append("  AllowUserExtendSession: ").Append(AllowUserExtendSession).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -291,6 +301,11 @@ namespace akeyless.Model
                 (
                     this.AllowUserExtendSession == input.AllowUserExtendSession ||
                     this.AllowUserExtendSession.Equals(input.AllowUserExtendSession)
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.FixedUserOnly == input.FixedUserOnly ||
@@ -399,6 +414,8 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.AllowUserExtendSession.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.FixedUserOnly != null)
                     hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
                 if (this.Name != null)

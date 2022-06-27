@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerRabbitMQ" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="rabbitmqAdminPwd">RabbitMQ Admin password.</param>
@@ -60,13 +61,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerRabbitMQ(string name = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerRabbitMQ(string deleteProtection = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerRabbitMQ and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RabbitmqAdminPwd = rabbitmqAdminPwd;
             this.RabbitmqAdminUser = rabbitmqAdminUser;
@@ -88,6 +90,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Producer name
@@ -233,6 +242,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerRabbitMQ {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RabbitmqAdminPwd: ").Append(RabbitmqAdminPwd).Append("\n");
@@ -287,6 +297,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
@@ -396,6 +411,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)

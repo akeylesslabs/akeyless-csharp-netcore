@@ -106,6 +106,7 @@ Method | HTTP request | Description
 [**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers | 
 [**GatewayRevokeTmpUsers**](V2Api.md#gatewayrevoketmpusers) | **POST** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer | 
+[**GatewayStatusMigration**](V2Api.md#gatewaystatusmigration) | **POST** /gateway-migration-status | 
 [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer | 
 [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration | 
 [**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item | 
@@ -7273,6 +7274,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayStartProducerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaystatusmigration"></a>
+# **GatewayStatusMigration**
+> MigrationStatusReplyObj GatewayStatusMigration (GatewayStatusMigration body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayStatusMigrationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayStatusMigration(); // GatewayStatusMigration | 
+
+            try
+            {
+                MigrationStatusReplyObj result = apiInstance.GatewayStatusMigration(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayStatusMigration: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayStatusMigration**](GatewayStatusMigration.md)|  | 
+
+### Return type
+
+[**MigrationStatusReplyObj**](MigrationStatusReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayMigrationStatusResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ChefServerKey** | **string** | Server key | [optional] 
 **ChefServerUrl** | **string** | Server URL | [optional] 
 **ChefServerUsername** | **string** | Server username | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

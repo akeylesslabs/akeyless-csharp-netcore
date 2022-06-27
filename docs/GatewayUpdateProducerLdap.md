@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | **string** | Bind DN | [optional] 
 **BindDnPassword** | **string** | Bind DN Password | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **ExternalUsername** | **string** | Fixed user | [optional] [default to "false"]
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | [optional] 

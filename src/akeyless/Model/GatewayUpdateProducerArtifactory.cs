@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="artifactoryTokenAudience">Token Audience (required).</param>
         /// <param name="artifactoryTokenScope">Token Scope (required).</param>
         /// <param name="baseUrl">Base URL.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string deleteProtection = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "artifactoryTokenAudience" is required (not null)
             if (artifactoryTokenAudience == null) {
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.ArtifactoryAdminName = artifactoryAdminName;
             this.ArtifactoryAdminPwd = artifactoryAdminPwd;
             this.BaseUrl = baseUrl;
+            this.DeleteProtection = deleteProtection;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Tags = tags;
@@ -117,6 +119,13 @@ namespace akeyless.Model
         /// <value>Base URL</value>
         [DataMember(Name = "base-url", EmitDefaultValue = false)]
         public string BaseUrl { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Producer name
@@ -187,6 +196,7 @@ namespace akeyless.Model
             sb.Append("  ArtifactoryTokenAudience: ").Append(ArtifactoryTokenAudience).Append("\n");
             sb.Append("  ArtifactoryTokenScope: ").Append(ArtifactoryTokenScope).Append("\n");
             sb.Append("  BaseUrl: ").Append(BaseUrl).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -255,6 +265,11 @@ namespace akeyless.Model
                     this.BaseUrl.Equals(input.BaseUrl))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -316,6 +331,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ArtifactoryTokenScope.GetHashCode();
                 if (this.BaseUrl != null)
                     hashCode = hashCode * 59 + this.BaseUrl.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerPostgreSQL" /> class.
         /// </summary>
         /// <param name="creationStatements">PostgreSQL Creation statements.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="postgresqlDbName">PostgreSQL DB Name.</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerPostgreSQL(string creationStatements = default(string), string name = default(string), string newName = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string revocationStatement = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerPostgreSQL(string creationStatements = default(string), string deleteProtection = default(string), string name = default(string), string newName = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string revocationStatement = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -69,6 +70,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.CreationStatements = creationStatements;
+            this.DeleteProtection = deleteProtection;
             this.NewName = newName;
             this.PostgresqlDbName = postgresqlDbName;
             // use default value if no "postgresqlHost" provided
@@ -99,6 +101,13 @@ namespace akeyless.Model
         /// <value>PostgreSQL Creation statements</value>
         [DataMember(Name = "creation-statements", EmitDefaultValue = false)]
         public string CreationStatements { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Producer name
@@ -244,6 +253,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerPostgreSQL {\n");
             sb.Append("  CreationStatements: ").Append(CreationStatements).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  PostgresqlDbName: ").Append(PostgresqlDbName).Append("\n");
@@ -302,6 +312,11 @@ namespace akeyless.Model
                     this.CreationStatements == input.CreationStatements ||
                     (this.CreationStatements != null &&
                     this.CreationStatements.Equals(input.CreationStatements))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -416,6 +431,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.CreationStatements != null)
                     hashCode = hashCode * 59 + this.CreationStatements.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

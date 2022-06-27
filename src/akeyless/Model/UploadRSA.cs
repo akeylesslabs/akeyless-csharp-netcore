@@ -46,12 +46,13 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="metadata">A metadata about the key.</param>
         /// <param name="name">Name of key to be created (required).</param>
+        /// <param name="overwrite">When the overwrite flag is set, this command will only update an existing key. [true, false].</param>
         /// <param name="rsaFileData">RSA private key data, base64 encoded.</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (default to 2).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string metadata = default(string), string name = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string metadata = default(string), string name = default(string), string overwrite = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -67,6 +68,7 @@ namespace akeyless.Model
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
             this.Metadata = metadata;
+            this.Overwrite = overwrite;
             this.RsaFileData = rsaFileData;
             this.SplitLevel = splitLevel;
             this.Tag = tag;
@@ -117,6 +119,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// When the overwrite flag is set, this command will only update an existing key. [true, false]
+        /// </summary>
+        /// <value>When the overwrite flag is set, this command will only update an existing key. [true, false]</value>
+        [DataMember(Name = "overwrite", EmitDefaultValue = false)]
+        public string Overwrite { get; set; }
+
+        /// <summary>
         /// RSA private key data, base64 encoded
         /// </summary>
         /// <value>RSA private key data, base64 encoded</value>
@@ -165,6 +174,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Overwrite: ").Append(Overwrite).Append("\n");
             sb.Append("  RsaFileData: ").Append(RsaFileData).Append("\n");
             sb.Append("  SplitLevel: ").Append(SplitLevel).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
@@ -235,6 +245,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Overwrite == input.Overwrite ||
+                    (this.Overwrite != null &&
+                    this.Overwrite.Equals(input.Overwrite))
+                ) && 
+                (
                     this.RsaFileData == input.RsaFileData ||
                     (this.RsaFileData != null &&
                     this.RsaFileData.Equals(input.RsaFileData))
@@ -282,6 +297,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Overwrite != null)
+                    hashCode = hashCode * 59 + this.Overwrite.GetHashCode();
                 if (this.RsaFileData != null)
                     hashCode = hashCode * 59 + this.RsaFileData.GetHashCode();
                 hashCode = hashCode * 59 + this.SplitLevel.GetHashCode();

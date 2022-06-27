@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssueDetails">certIssueDetails.</param>
         /// <param name="classicKeyDetails">classicKeyDetails.</param>
+        /// <param name="clusterGwUrl">clusterGwUrl.</param>
         /// <param name="displayMetadata">displayMetadata.</param>
         /// <param name="dynamicSecretProducerDetails">dynamicSecretProducerDetails.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
@@ -44,10 +45,11 @@ namespace akeyless.Model
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
         /// <param name="tokenizerInfo">tokenizerInfo.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
             this.CertIssueDetails = certIssueDetails;
             this.ClassicKeyDetails = classicKeyDetails;
+            this.ClusterGwUrl = clusterGwUrl;
             this.DisplayMetadata = displayMetadata;
             this.DynamicSecretProducerDetails = dynamicSecretProducerDetails;
             this.PasswordPolicy = passwordPolicy;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "classic_key_details", EmitDefaultValue = false)]
         public ClassicKeyDetailsInfo ClassicKeyDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClusterGwUrl
+        /// </summary>
+        [DataMember(Name = "cluster_gw_url", EmitDefaultValue = false)]
+        public string ClusterGwUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayMetadata
@@ -121,6 +129,7 @@ namespace akeyless.Model
             sb.Append("class ItemGeneralInfo {\n");
             sb.Append("  CertIssueDetails: ").Append(CertIssueDetails).Append("\n");
             sb.Append("  ClassicKeyDetails: ").Append(ClassicKeyDetails).Append("\n");
+            sb.Append("  ClusterGwUrl: ").Append(ClusterGwUrl).Append("\n");
             sb.Append("  DisplayMetadata: ").Append(DisplayMetadata).Append("\n");
             sb.Append("  DynamicSecretProducerDetails: ").Append(DynamicSecretProducerDetails).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
@@ -173,6 +182,11 @@ namespace akeyless.Model
                     this.ClassicKeyDetails.Equals(input.ClassicKeyDetails))
                 ) && 
                 (
+                    this.ClusterGwUrl == input.ClusterGwUrl ||
+                    (this.ClusterGwUrl != null &&
+                    this.ClusterGwUrl.Equals(input.ClusterGwUrl))
+                ) && 
+                (
                     this.DisplayMetadata == input.DisplayMetadata ||
                     (this.DisplayMetadata != null &&
                     this.DisplayMetadata.Equals(input.DisplayMetadata))
@@ -222,6 +236,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssueDetails.GetHashCode();
                 if (this.ClassicKeyDetails != null)
                     hashCode = hashCode * 59 + this.ClassicKeyDetails.GetHashCode();
+                if (this.ClusterGwUrl != null)
+                    hashCode = hashCode * 59 + this.ClusterGwUrl.GetHashCode();
                 if (this.DisplayMetadata != null)
                     hashCode = hashCode * 59 + this.DisplayMetadata.GetHashCode();
                 if (this.DynamicSecretProducerDetails != null)

@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerGcp" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="gcpCredType">gcpCredType.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
@@ -52,13 +53,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGcp(string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerGcp and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.GcpCredType = gcpCredType;
             this.GcpKey = gcpKey;
             this.GcpKeyAlgo = gcpKeyAlgo;
@@ -72,6 +74,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Gets or Sets GcpCredType
@@ -164,6 +173,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerGcp {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  GcpCredType: ").Append(GcpCredType).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
@@ -210,6 +220,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.GcpCredType == input.GcpCredType ||
                     (this.GcpCredType != null &&
@@ -282,6 +297,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.GcpCredType != null)
                     hashCode = hashCode * 59 + this.GcpCredType.GetHashCode();
                 if (this.GcpKey != null)

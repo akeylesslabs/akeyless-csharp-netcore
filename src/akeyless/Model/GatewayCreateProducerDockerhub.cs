@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerDockerhub" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="dockerhubPassword">DockerhubPassword is either the user&#39;s password access token to manage the repository.</param>
         /// <param name="dockerhubTokenScopes">Access token scopes list (comma seperated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;.</param>
         /// <param name="dockerhubUsername">DockerhubUsername is the name of the user in dockerhub.</param>
@@ -50,13 +51,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerDockerhub(string dockerhubPassword = default(string), string dockerhubTokenScopes = default(string), string dockerhubUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerDockerhub(string deleteProtection = default(string), string dockerhubPassword = default(string), string dockerhubTokenScopes = default(string), string dockerhubUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerDockerhub and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.DockerhubPassword = dockerhubPassword;
             this.DockerhubTokenScopes = dockerhubTokenScopes;
             this.DockerhubUsername = dockerhubUsername;
@@ -68,6 +70,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// DockerhubPassword is either the user&#39;s password access token to manage the repository
@@ -147,6 +156,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerDockerhub {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DockerhubPassword: ").Append(DockerhubPassword).Append("\n");
             sb.Append("  DockerhubTokenScopes: ").Append(DockerhubTokenScopes).Append("\n");
             sb.Append("  DockerhubUsername: ").Append(DockerhubUsername).Append("\n");
@@ -191,6 +201,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.DockerhubPassword == input.DockerhubPassword ||
                     (this.DockerhubPassword != null &&
@@ -253,6 +268,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.DockerhubPassword != null)
                     hashCode = hashCode * 59 + this.DockerhubPassword.GetHashCode();
                 if (this.DockerhubTokenScopes != null)

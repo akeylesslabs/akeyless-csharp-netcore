@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ApiKey** | **string** |  | [optional] 
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | [optional] 
 **CustomPayload** | **string** |  | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Item name | 

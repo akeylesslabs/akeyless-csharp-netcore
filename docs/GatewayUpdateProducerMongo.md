@@ -5,6 +5,7 @@ gatewayUpdateProducerMongo is a command that updates either mongodb  producer or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 

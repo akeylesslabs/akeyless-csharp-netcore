@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="awsUserGroups">AWS User groups.</param>
         /// <param name="awsUserPolicies">AWS User policies.</param>
         /// <param name="awsUserProgrammaticAccess">AWS User programmatic access (default to true).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, bool enableAdminRotation = false, string name = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, string name = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.AwsUserGroups = awsUserGroups;
             this.AwsUserPolicies = awsUserPolicies;
             this.AwsUserProgrammaticAccess = awsUserProgrammaticAccess;
+            this.DeleteProtection = deleteProtection;
             this.EnableAdminRotation = enableAdminRotation;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             // use default value if no "region" provided
@@ -161,6 +163,13 @@ namespace akeyless.Model
         /// <value>AWS User programmatic access</value>
         [DataMember(Name = "aws-user-programmatic-access", EmitDefaultValue = true)]
         public bool AwsUserProgrammaticAccess { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Automatic admin credentials rotation
@@ -284,6 +293,7 @@ namespace akeyless.Model
             sb.Append("  AwsUserGroups: ").Append(AwsUserGroups).Append("\n");
             sb.Append("  AwsUserPolicies: ").Append(AwsUserPolicies).Append("\n");
             sb.Append("  AwsUserProgrammaticAccess: ").Append(AwsUserProgrammaticAccess).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -375,6 +385,11 @@ namespace akeyless.Model
                 (
                     this.AwsUserProgrammaticAccess == input.AwsUserProgrammaticAccess ||
                     this.AwsUserProgrammaticAccess.Equals(input.AwsUserProgrammaticAccess)
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.EnableAdminRotation == input.EnableAdminRotation ||
@@ -478,6 +493,8 @@ namespace akeyless.Model
                 if (this.AwsUserPolicies != null)
                     hashCode = hashCode * 59 + this.AwsUserPolicies.GetHashCode();
                 hashCode = hashCode * 59 + this.AwsUserProgrammaticAccess.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 hashCode = hashCode * 59 + this.EnableAdminRotation.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

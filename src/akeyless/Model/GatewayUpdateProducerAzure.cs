@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="azureClientId">Azure Client ID.</param>
         /// <param name="azureClientSecret">Azure Client Secret.</param>
         /// <param name="azureTenantId">Azure Tenant ID.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
         /// <param name="name">Producer name (required).</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
             this.AzureTenantId = azureTenantId;
+            this.DeleteProtection = deleteProtection;
             // use default value if no "fixedUserClaimKeyname" provided
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? "false";
             this.FixedUserOnly = fixedUserOnly;
@@ -123,6 +125,13 @@ namespace akeyless.Model
         /// <value>Azure Tenant ID</value>
         [DataMember(Name = "azure-tenant-id", EmitDefaultValue = false)]
         public string AzureTenantId { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// FixedUserClaimKeyname
@@ -265,6 +274,7 @@ namespace akeyless.Model
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -337,6 +347,11 @@ namespace akeyless.Model
                     this.AzureTenantId == input.AzureTenantId ||
                     (this.AzureTenantId != null &&
                     this.AzureTenantId.Equals(input.AzureTenantId))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.FixedUserClaimKeyname == input.FixedUserClaimKeyname ||
@@ -447,6 +462,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
                 if (this.AzureTenantId != null)
                     hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.FixedUserClaimKeyname != null)
                     hashCode = hashCode * 59 + this.FixedUserClaimKeyname.GetHashCode();
                 hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();

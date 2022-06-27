@@ -37,12 +37,14 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
+        /// <param name="newName">newName.</param>
         /// <param name="prefix">prefix.</param>
         /// <param name="protectionKey">protectionKey.</param>
-        public MigrationGeneral(string id = default(string), string name = default(string), string prefix = default(string), string protectionKey = default(string))
+        public MigrationGeneral(string id = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string))
         {
             this.Id = id;
             this.Name = name;
+            this.NewName = newName;
             this.Prefix = prefix;
             this.ProtectionKey = protectionKey;
         }
@@ -58,6 +60,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NewName
+        /// </summary>
+        [DataMember(Name = "new_name", EmitDefaultValue = false)]
+        public string NewName { get; set; }
 
         /// <summary>
         /// Gets or Sets Prefix
@@ -81,6 +89,7 @@ namespace akeyless.Model
             sb.Append("class MigrationGeneral {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Prefix: ").Append(Prefix).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("}\n");
@@ -128,6 +137,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.NewName == input.NewName ||
+                    (this.NewName != null &&
+                    this.NewName.Equals(input.NewName))
+                ) && 
+                (
                     this.Prefix == input.Prefix ||
                     (this.Prefix != null &&
                     this.Prefix.Equals(input.Prefix))
@@ -152,6 +166,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.NewName != null)
+                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
                 if (this.Prefix != null)
                     hashCode = hashCode * 59 + this.Prefix.GetHashCode();
                 if (this.ProtectionKey != null)

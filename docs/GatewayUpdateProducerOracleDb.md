@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **OracleHost** | **string** | Oracle Host | [optional] [default to "127.0.0.1"]

@@ -5,6 +5,7 @@ gatewayCreateProducerNativeK8S is a command that creates k8s producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **K8sClusterCaCert** | **string** | K8S cluster CA certificate | [optional] 
 **K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | [optional] 
 **K8sClusterToken** | **string** | K8S cluster Bearer token | [optional] 

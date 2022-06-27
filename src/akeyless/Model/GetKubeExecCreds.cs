@@ -43,11 +43,13 @@ namespace akeyless.Model
         /// <param name="altNames">The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
         /// <param name="certIssuerName">The name of the PKI certificate issuer (required).</param>
         /// <param name="commonName">The common name to be included in the PKI certificate.</param>
+        /// <param name="extendedKeyUsage">A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;..</param>
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
-        public GetKubeExecCreds(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string keyDataBase64 = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        public GetKubeExecCreds(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string extendedKeyUsage = default(string), string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null) {
@@ -56,8 +58,10 @@ namespace akeyless.Model
             this.CertIssuerName = certIssuerName;
             this.AltNames = altNames;
             this.CommonName = commonName;
+            this.ExtendedKeyUsage = extendedKeyUsage;
             this.KeyDataBase64 = keyDataBase64;
             this.Token = token;
+            this.Ttl = ttl;
             this.UidToken = uidToken;
             this.UriSans = uriSans;
         }
@@ -84,6 +88,13 @@ namespace akeyless.Model
         public string CommonName { get; set; }
 
         /// <summary>
+        /// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;.
+        /// </summary>
+        /// <value>A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;.</value>
+        [DataMember(Name = "extended-key-usage", EmitDefaultValue = false)]
+        public string ExtendedKeyUsage { get; set; }
+
+        /// <summary>
         /// PKI key file contents. If this option is used, the certificate will be printed to stdout
         /// </summary>
         /// <value>PKI key file contents. If this option is used, the certificate will be printed to stdout</value>
@@ -96,6 +107,13 @@ namespace akeyless.Model
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+        /// </summary>
+        /// <value>Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)</value>
+        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        public long Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -122,8 +140,10 @@ namespace akeyless.Model
             sb.Append("  AltNames: ").Append(AltNames).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
+            sb.Append("  ExtendedKeyUsage: ").Append(ExtendedKeyUsage).Append("\n");
             sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UriSans: ").Append(UriSans).Append("\n");
             sb.Append("}\n");
@@ -176,6 +196,11 @@ namespace akeyless.Model
                     this.CommonName.Equals(input.CommonName))
                 ) && 
                 (
+                    this.ExtendedKeyUsage == input.ExtendedKeyUsage ||
+                    (this.ExtendedKeyUsage != null &&
+                    this.ExtendedKeyUsage.Equals(input.ExtendedKeyUsage))
+                ) && 
+                (
                     this.KeyDataBase64 == input.KeyDataBase64 ||
                     (this.KeyDataBase64 != null &&
                     this.KeyDataBase64.Equals(input.KeyDataBase64))
@@ -184,6 +209,10 @@ namespace akeyless.Model
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.Ttl == input.Ttl ||
+                    this.Ttl.Equals(input.Ttl)
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -212,10 +241,13 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
                 if (this.CommonName != null)
                     hashCode = hashCode * 59 + this.CommonName.GetHashCode();
+                if (this.ExtendedKeyUsage != null)
+                    hashCode = hashCode * 59 + this.ExtendedKeyUsage.GetHashCode();
                 if (this.KeyDataBase64 != null)
                     hashCode = hashCode * 59 + this.KeyDataBase64.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 if (this.UriSans != null)

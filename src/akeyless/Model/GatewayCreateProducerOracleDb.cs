@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="oracleHost">Oracle Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="oraclePassword">Oracle Password.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -68,6 +69,7 @@ namespace akeyless.Model
             this.Name = name;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
+            this.DeleteProtection = deleteProtection;
             // use default value if no "oracleHost" provided
             this.OracleHost = oracleHost ?? "127.0.0.1";
             this.OraclePassword = oraclePassword;
@@ -102,6 +104,13 @@ namespace akeyless.Model
         /// <value>(Optional) Server name for certificate verification</value>
         [DataMember(Name = "db-server-name", EmitDefaultValue = false)]
         public string DbServerName { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Producer name
@@ -228,6 +237,7 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerOracleDb {\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OracleHost: ").Append(OracleHost).Append("\n");
             sb.Append("  OraclePassword: ").Append(OraclePassword).Append("\n");
@@ -288,6 +298,11 @@ namespace akeyless.Model
                     this.DbServerName == input.DbServerName ||
                     (this.DbServerName != null &&
                     this.DbServerName.Equals(input.DbServerName))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -390,6 +405,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
                 if (this.DbServerName != null)
                     hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.OracleHost != null)

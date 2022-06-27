@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerGke" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
         /// <param name="gkeClusterCert">GKE cluster CA certificate.</param>
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
@@ -57,13 +58,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGke(string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerGke and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.GkeAccountKey = gkeAccountKey;
             this.GkeClusterCert = gkeClusterCert;
             this.GkeClusterEndpoint = gkeClusterEndpoint;
@@ -82,6 +84,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// GKE Service Account key file path
@@ -205,6 +214,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerGke {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
             sb.Append("  GkeClusterCert: ").Append(GkeClusterCert).Append("\n");
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
@@ -256,6 +266,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.GkeAccountKey == input.GkeAccountKey ||
                     (this.GkeAccountKey != null &&
@@ -351,6 +366,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.GkeAccountKey != null)
                     hashCode = hashCode * 59 + this.GkeAccountKey.GetHashCode();
                 if (this.GkeClusterCert != null)

@@ -40,32 +40,32 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateMigration" /> class.
         /// </summary>
-        /// <param name="awsKey">AWS Secret Access Key.</param>
-        /// <param name="awsKeyId">AWS Access Key ID.</param>
-        /// <param name="awsRegion">AWS region.</param>
-        /// <param name="azureClientId">Azure KV Access client ID.</param>
-        /// <param name="azureKvName">Azure Key Vault Name.</param>
-        /// <param name="azureSecret">Azure KV secret.</param>
-        /// <param name="azureTenantId">Azure KV Access tenant ID.</param>
-        /// <param name="gcpKey">Base64-encoded service account private key text.</param>
-        /// <param name="hashiJson">Import secret key as json value or independent secrets.</param>
-        /// <param name="hashiNs">Hashi namespaces.</param>
-        /// <param name="hashiToken">Hashi token.</param>
-        /// <param name="hashiUrl">Hashi url.</param>
-        /// <param name="k8sCaCertificate">For Certificate Authentication method K8s Cluster CA certificate.</param>
-        /// <param name="k8sClientCertificate">K8s Client certificate.</param>
-        /// <param name="k8sClientKey">K8s Client key.</param>
-        /// <param name="k8sNamespace">K8s Namespace.</param>
-        /// <param name="k8sPassword">K8s client password.</param>
-        /// <param name="k8sSkipSystem">K8s Skip Control Plane Secrets.</param>
-        /// <param name="k8sToken">For Token Authentication method K8s Bearer Token.</param>
-        /// <param name="k8sUrl">K8s Endpoint URL.</param>
-        /// <param name="k8sUsername">For Password Authentication method K8s client username.</param>
+        /// <param name="awsKey">AWS Secret Access Key (relevant only for AWS migration).</param>
+        /// <param name="awsKeyId">AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration).</param>
+        /// <param name="awsRegion">AWS region of the required Secrets Manager (relevant only for AWS migration).</param>
+        /// <param name="azureClientId">Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration).</param>
+        /// <param name="azureKvName">Azure Key Vault Name (relevant only for Azure Key Vault migration).</param>
+        /// <param name="azureSecret">Azure Key Vault secret (relevant only for Azure Key Vault migration).</param>
+        /// <param name="azureTenantId">Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration).</param>
+        /// <param name="gcpKey">Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration).</param>
+        /// <param name="hashiJson">Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration).</param>
+        /// <param name="hashiNs">HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration).</param>
+        /// <param name="hashiToken">HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration).</param>
+        /// <param name="hashiUrl">HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration).</param>
+        /// <param name="k8sCaCertificate">For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method).</param>
+        /// <param name="k8sClientCertificate">K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method).</param>
+        /// <param name="k8sClientKey">K8s Client key (relevant only for K8s migration with Certificate Authentication method).</param>
+        /// <param name="k8sNamespace">K8s Namespace, Use this field to import secrets from a particular namespace only. By default, the secrets are imported from all namespaces (relevant only for K8s migration).</param>
+        /// <param name="k8sPassword">K8s Client password (relevant only for K8s migration with Password Authentication method).</param>
+        /// <param name="k8sSkipSystem">K8s Skip Control Plane Secrets, This option allows to avoid importing secrets from system namespaces (relevant only for K8s migration).</param>
+        /// <param name="k8sToken">For Token Authentication method K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method).</param>
+        /// <param name="k8sUrl">K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration).</param>
+        /// <param name="k8sUsername">For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method).</param>
         /// <param name="name">Migration name (required).</param>
         /// <param name="protectionKey">The name of the key that protects the classic key value (if empty, the account default key will be used).</param>
         /// <param name="targetLocation">Target location in Akeyless for imported secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">Migration type, can be: hashi/aws/gcp/k8s/azure_kv.</param>
+        /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GatewayCreateMigration(string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
@@ -103,149 +103,149 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// AWS Secret Access Key
+        /// AWS Secret Access Key (relevant only for AWS migration)
         /// </summary>
-        /// <value>AWS Secret Access Key</value>
+        /// <value>AWS Secret Access Key (relevant only for AWS migration)</value>
         [DataMember(Name = "aws-key", EmitDefaultValue = false)]
         public string AwsKey { get; set; }
 
         /// <summary>
-        /// AWS Access Key ID
+        /// AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration)
         /// </summary>
-        /// <value>AWS Access Key ID</value>
+        /// <value>AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration)</value>
         [DataMember(Name = "aws-key-id", EmitDefaultValue = false)]
         public string AwsKeyId { get; set; }
 
         /// <summary>
-        /// AWS region
+        /// AWS region of the required Secrets Manager (relevant only for AWS migration)
         /// </summary>
-        /// <value>AWS region</value>
+        /// <value>AWS region of the required Secrets Manager (relevant only for AWS migration)</value>
         [DataMember(Name = "aws-region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
         /// <summary>
-        /// Azure KV Access client ID
+        /// Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration)
         /// </summary>
-        /// <value>Azure KV Access client ID</value>
+        /// <value>Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration)</value>
         [DataMember(Name = "azure-client-id", EmitDefaultValue = false)]
         public string AzureClientId { get; set; }
 
         /// <summary>
-        /// Azure Key Vault Name
+        /// Azure Key Vault Name (relevant only for Azure Key Vault migration)
         /// </summary>
-        /// <value>Azure Key Vault Name</value>
+        /// <value>Azure Key Vault Name (relevant only for Azure Key Vault migration)</value>
         [DataMember(Name = "azure-kv-name", EmitDefaultValue = false)]
         public string AzureKvName { get; set; }
 
         /// <summary>
-        /// Azure KV secret
+        /// Azure Key Vault secret (relevant only for Azure Key Vault migration)
         /// </summary>
-        /// <value>Azure KV secret</value>
+        /// <value>Azure Key Vault secret (relevant only for Azure Key Vault migration)</value>
         [DataMember(Name = "azure-secret", EmitDefaultValue = false)]
         public string AzureSecret { get; set; }
 
         /// <summary>
-        /// Azure KV Access tenant ID
+        /// Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)
         /// </summary>
-        /// <value>Azure KV Access tenant ID</value>
+        /// <value>Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)</value>
         [DataMember(Name = "azure-tenant-id", EmitDefaultValue = false)]
         public string AzureTenantId { get; set; }
 
         /// <summary>
-        /// Base64-encoded service account private key text
+        /// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration)
         /// </summary>
-        /// <value>Base64-encoded service account private key text</value>
+        /// <value>Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration)</value>
         [DataMember(Name = "gcp-key", EmitDefaultValue = false)]
         public string GcpKey { get; set; }
 
         /// <summary>
-        /// Import secret key as json value or independent secrets
+        /// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
         /// </summary>
-        /// <value>Import secret key as json value or independent secrets</value>
+        /// <value>Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)</value>
         [DataMember(Name = "hashi-json", EmitDefaultValue = false)]
         public string HashiJson { get; set; }
 
         /// <summary>
-        /// Hashi namespaces
+        /// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
         /// </summary>
-        /// <value>Hashi namespaces</value>
+        /// <value>HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)</value>
         [DataMember(Name = "hashi-ns", EmitDefaultValue = false)]
         public List<string> HashiNs { get; set; }
 
         /// <summary>
-        /// Hashi token
+        /// HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration)
         /// </summary>
-        /// <value>Hashi token</value>
+        /// <value>HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration)</value>
         [DataMember(Name = "hashi-token", EmitDefaultValue = false)]
         public string HashiToken { get; set; }
 
         /// <summary>
-        /// Hashi url
+        /// HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)
         /// </summary>
-        /// <value>Hashi url</value>
+        /// <value>HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)</value>
         [DataMember(Name = "hashi-url", EmitDefaultValue = false)]
         public string HashiUrl { get; set; }
 
         /// <summary>
-        /// For Certificate Authentication method K8s Cluster CA certificate
+        /// For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
         /// </summary>
-        /// <value>For Certificate Authentication method K8s Cluster CA certificate</value>
+        /// <value>For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)</value>
         [DataMember(Name = "k8s-ca-certificate", EmitDefaultValue = false)]
         public List<int> K8sCaCertificate { get; set; }
 
         /// <summary>
-        /// K8s Client certificate
+        /// K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method)
         /// </summary>
-        /// <value>K8s Client certificate</value>
+        /// <value>K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method)</value>
         [DataMember(Name = "k8s-client-certificate", EmitDefaultValue = false)]
         public List<int> K8sClientCertificate { get; set; }
 
         /// <summary>
-        /// K8s Client key
+        /// K8s Client key (relevant only for K8s migration with Certificate Authentication method)
         /// </summary>
-        /// <value>K8s Client key</value>
+        /// <value>K8s Client key (relevant only for K8s migration with Certificate Authentication method)</value>
         [DataMember(Name = "k8s-client-key", EmitDefaultValue = false)]
         public List<int> K8sClientKey { get; set; }
 
         /// <summary>
-        /// K8s Namespace
+        /// K8s Namespace, Use this field to import secrets from a particular namespace only. By default, the secrets are imported from all namespaces (relevant only for K8s migration)
         /// </summary>
-        /// <value>K8s Namespace</value>
+        /// <value>K8s Namespace, Use this field to import secrets from a particular namespace only. By default, the secrets are imported from all namespaces (relevant only for K8s migration)</value>
         [DataMember(Name = "k8s-namespace", EmitDefaultValue = false)]
         public string K8sNamespace { get; set; }
 
         /// <summary>
-        /// K8s client password
+        /// K8s Client password (relevant only for K8s migration with Password Authentication method)
         /// </summary>
-        /// <value>K8s client password</value>
+        /// <value>K8s Client password (relevant only for K8s migration with Password Authentication method)</value>
         [DataMember(Name = "k8s-password", EmitDefaultValue = false)]
         public string K8sPassword { get; set; }
 
         /// <summary>
-        /// K8s Skip Control Plane Secrets
+        /// K8s Skip Control Plane Secrets, This option allows to avoid importing secrets from system namespaces (relevant only for K8s migration)
         /// </summary>
-        /// <value>K8s Skip Control Plane Secrets</value>
+        /// <value>K8s Skip Control Plane Secrets, This option allows to avoid importing secrets from system namespaces (relevant only for K8s migration)</value>
         [DataMember(Name = "k8s-skip-system", EmitDefaultValue = true)]
         public bool K8sSkipSystem { get; set; }
 
         /// <summary>
-        /// For Token Authentication method K8s Bearer Token
+        /// For Token Authentication method K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method)
         /// </summary>
-        /// <value>For Token Authentication method K8s Bearer Token</value>
+        /// <value>For Token Authentication method K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method)</value>
         [DataMember(Name = "k8s-token", EmitDefaultValue = false)]
         public string K8sToken { get; set; }
 
         /// <summary>
-        /// K8s Endpoint URL
+        /// K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration)
         /// </summary>
-        /// <value>K8s Endpoint URL</value>
+        /// <value>K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration)</value>
         [DataMember(Name = "k8s-url", EmitDefaultValue = false)]
         public string K8sUrl { get; set; }
 
         /// <summary>
-        /// For Password Authentication method K8s client username
+        /// For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method)
         /// </summary>
-        /// <value>For Password Authentication method K8s client username</value>
+        /// <value>For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method)</value>
         [DataMember(Name = "k8s-username", EmitDefaultValue = false)]
         public string K8sUsername { get; set; }
 
@@ -278,9 +278,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Migration type, can be: hashi/aws/gcp/k8s/azure_kv
+        /// Migration type (hashi/aws/gcp/k8s/azure_kv)
         /// </summary>
-        /// <value>Migration type, can be: hashi/aws/gcp/k8s/azure_kv</value>
+        /// <value>Migration type (hashi/aws/gcp/k8s/azure_kv)</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 

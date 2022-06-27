@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerGithub" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="githubAppId">Github app id.</param>
         /// <param name="githubAppPrivateKey">App private key.</param>
         /// <param name="githubBaseUrl">Base URL.</param>
@@ -51,13 +52,14 @@ namespace akeyless.Model
         /// <param name="tokenPermissions">Optional - installation token&#39;s allowed permissions.</param>
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateProducerGithub(long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), string name = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
+        public GatewayCreateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), string name = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerGithub and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.GithubAppId = githubAppId;
             this.GithubAppPrivateKey = githubAppPrivateKey;
             this.GithubBaseUrl = githubBaseUrl;
@@ -69,6 +71,13 @@ namespace akeyless.Model
             this.TokenRepositories = tokenRepositories;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Github app id
@@ -155,6 +164,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerGithub {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
             sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
             sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
@@ -200,6 +210,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.GithubAppId == input.GithubAppId ||
                     this.GithubAppId.Equals(input.GithubAppId)
@@ -266,6 +281,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 hashCode = hashCode * 59 + this.GithubAppId.GetHashCode();
                 if (this.GithubAppPrivateKey != null)
                     hashCode = hashCode * 59 + this.GithubAppPrivateKey.GetHashCode();

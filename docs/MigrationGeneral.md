@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
+**NewName** | **string** |  | [optional] 
 **Prefix** | **string** |  | [optional] 
 **ProtectionKey** | **string** |  | [optional] 
 

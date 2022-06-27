@@ -35,7 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayGetMigration" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
+        /// <param name="name">Migration name to display.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GatewayGetMigration(string name = default(string), string token = default(string), string uidToken = default(string))
@@ -46,8 +46,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Migration name to display
         /// </summary>
+        /// <value>Migration name to display</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 

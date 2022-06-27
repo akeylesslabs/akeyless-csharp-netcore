@@ -5,6 +5,7 @@ gatewayCreateProducerGcp is a command that creates a GCP producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **GcpCredType** | **string** |  | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GcpKeyAlgo** | **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 

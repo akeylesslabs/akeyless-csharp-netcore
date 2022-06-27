@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerEks" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="eksAccessKeyId">Access Key ID.</param>
         /// <param name="eksAssumeRole">IAM assume role.</param>
         /// <param name="eksClusterCaCert">EKS cluster CA certificate.</param>
@@ -59,13 +60,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerEks(string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerEks(string deleteProtection = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerEks and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.EksAccessKeyId = eksAccessKeyId;
             this.EksAssumeRole = eksAssumeRole;
             this.EksClusterCaCert = eksClusterCaCert;
@@ -87,6 +89,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Access Key ID
@@ -224,6 +233,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerEks {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
             sb.Append("  EksAssumeRole: ").Append(EksAssumeRole).Append("\n");
             sb.Append("  EksClusterCaCert: ").Append(EksClusterCaCert).Append("\n");
@@ -277,6 +287,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.EksAccessKeyId == input.EksAccessKeyId ||
                     (this.EksAccessKeyId != null &&
@@ -382,6 +397,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.EksAccessKeyId != null)
                     hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
                 if (this.EksAssumeRole != null)

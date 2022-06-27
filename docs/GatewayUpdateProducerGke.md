@@ -5,6 +5,7 @@ gatewayUpdateProducerGke is a command that updates gke producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **GkeAccountKey** | **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | [optional] 

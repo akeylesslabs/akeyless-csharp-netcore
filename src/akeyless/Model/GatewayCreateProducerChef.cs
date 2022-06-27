@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="chefServerKey">Server key.</param>
         /// <param name="chefServerUrl">Server URL.</param>
         /// <param name="chefServerUsername">Server username.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="skipSsl">Skip SSL (default to true).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string deleteProtection = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.ChefServerKey = chefServerKey;
             this.ChefServerUrl = chefServerUrl;
             this.ChefServerUsername = chefServerUsername;
+            this.DeleteProtection = deleteProtection;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SkipSsl = skipSsl;
             this.Tags = tags;
@@ -100,6 +102,13 @@ namespace akeyless.Model
         /// <value>Server username</value>
         [DataMember(Name = "chef-server-username", EmitDefaultValue = false)]
         public string ChefServerUsername { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Producer name
@@ -169,6 +178,7 @@ namespace akeyless.Model
             sb.Append("  ChefServerKey: ").Append(ChefServerKey).Append("\n");
             sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
             sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SkipSsl: ").Append(SkipSsl).Append("\n");
@@ -232,6 +242,11 @@ namespace akeyless.Model
                     this.ChefServerUsername.Equals(input.ChefServerUsername))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -290,6 +305,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ChefServerUrl.GetHashCode();
                 if (this.ChefServerUsername != null)
                     hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)

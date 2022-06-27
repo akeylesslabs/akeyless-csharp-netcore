@@ -40,7 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayDeleteMigration" /> class.
         /// </summary>
-        /// <param name="id">Migration name (required).</param>
+        /// <param name="id">Migration ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GatewayDeleteMigration(string id = default(string), string token = default(string), string uidToken = default(string))
@@ -55,9 +55,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Migration name
+        /// Migration ID
         /// </summary>
-        /// <value>Migration name</value>
+        /// <value>Migration ID</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 

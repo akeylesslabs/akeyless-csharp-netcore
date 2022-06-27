@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **LastVersion** | **int** |  | [optional] 
 **NextRotationDate** | **DateTime** |  | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
+**ProtectionKeyType** | **string** |  | [optional] 
 **PublicValue** | **string** |  | [optional] 
 **RotationInterval** | **long** |  | [optional] 
 **TargetVersions** | [**List&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] 

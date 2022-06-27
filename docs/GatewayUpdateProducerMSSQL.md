@@ -5,6 +5,7 @@ gatewayUpdateProducerMSSQL is a command that updates mssql producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **MssqlCreateStatements** | **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | **string** | MSSQL Name | [optional] 
 **MssqlHost** | **string** | MSSQL Host | [optional] [default to "127.0.0.1"]

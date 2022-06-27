@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccountPassword** | **string** | Database Password | [optional] 
 **AccountUsername** | **string** | Database Username | [optional] 
 **DbName** | **string** | Database name | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **Role** | **string** | User role | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 

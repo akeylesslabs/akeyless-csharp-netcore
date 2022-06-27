@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerHanaDb" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="hanaDbname">HanaDb Name.</param>
         /// <param name="hanadbCreateStatements">HanaDb Creation statements.</param>
         /// <param name="hanadbHost">HanaDb Host (default to &quot;127.0.0.1&quot;).</param>
@@ -59,13 +60,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerHanaDb(string hanaDbname = default(string), string hanadbCreateStatements = default(string), string hanadbHost = "127.0.0.1", string hanadbPassword = default(string), string hanadbPort = "443", string hanadbRevocationStatements = default(string), string hanadbUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerHanaDb(string deleteProtection = default(string), string hanaDbname = default(string), string hanadbCreateStatements = default(string), string hanadbHost = "127.0.0.1", string hanadbPassword = default(string), string hanadbPort = "443", string hanadbRevocationStatements = default(string), string hanadbUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerHanaDb and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.HanaDbname = hanaDbname;
             this.HanadbCreateStatements = hanadbCreateStatements;
             // use default value if no "hanadbHost" provided
@@ -88,6 +90,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// HanaDb Name
@@ -225,6 +234,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerHanaDb {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  HanaDbname: ").Append(HanaDbname).Append("\n");
             sb.Append("  HanadbCreateStatements: ").Append(HanadbCreateStatements).Append("\n");
             sb.Append("  HanadbHost: ").Append(HanadbHost).Append("\n");
@@ -278,6 +288,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.HanaDbname == input.HanaDbname ||
                     (this.HanaDbname != null &&
@@ -385,6 +400,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.HanaDbname != null)
                     hashCode = hashCode * 59 + this.HanaDbname.GetHashCode();
                 if (this.HanadbCreateStatements != null)

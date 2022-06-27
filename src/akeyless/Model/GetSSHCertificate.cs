@@ -42,10 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssuerName">The name of the SSH certificate issuer (required).</param>
         /// <param name="certUsername">The username to sign in the SSH certificate (required).</param>
+        /// <param name="legacySigningAlgName">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate..</param>
         /// <param name="publicKeyData">SSH public key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string))
+        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), bool legacySigningAlgName = default(bool), string publicKeyData = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null) {
@@ -57,8 +59,10 @@ namespace akeyless.Model
                 throw new ArgumentNullException("certUsername is a required property for GetSSHCertificate and cannot be null");
             }
             this.CertUsername = certUsername;
+            this.LegacySigningAlgName = legacySigningAlgName;
             this.PublicKeyData = publicKeyData;
             this.Token = token;
+            this.Ttl = ttl;
             this.UidToken = uidToken;
         }
 
@@ -77,6 +81,13 @@ namespace akeyless.Model
         public string CertUsername { get; set; }
 
         /// <summary>
+        /// Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate.
+        /// </summary>
+        /// <value>Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate.</value>
+        [DataMember(Name = "legacy-signing-alg-name", EmitDefaultValue = true)]
+        public bool LegacySigningAlgName { get; set; }
+
+        /// <summary>
         /// SSH public key file contents. If this option is used, the certificate will be printed to stdout
         /// </summary>
         /// <value>SSH public key file contents. If this option is used, the certificate will be printed to stdout</value>
@@ -89,6 +100,13 @@ namespace akeyless.Model
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+        /// </summary>
+        /// <value>Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)</value>
+        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        public long Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -107,8 +125,10 @@ namespace akeyless.Model
             sb.Append("class GetSSHCertificate {\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CertUsername: ").Append(CertUsername).Append("\n");
+            sb.Append("  LegacySigningAlgName: ").Append(LegacySigningAlgName).Append("\n");
             sb.Append("  PublicKeyData: ").Append(PublicKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -155,6 +175,10 @@ namespace akeyless.Model
                     this.CertUsername.Equals(input.CertUsername))
                 ) && 
                 (
+                    this.LegacySigningAlgName == input.LegacySigningAlgName ||
+                    this.LegacySigningAlgName.Equals(input.LegacySigningAlgName)
+                ) && 
+                (
                     this.PublicKeyData == input.PublicKeyData ||
                     (this.PublicKeyData != null &&
                     this.PublicKeyData.Equals(input.PublicKeyData))
@@ -163,6 +187,10 @@ namespace akeyless.Model
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.Ttl == input.Ttl ||
+                    this.Ttl.Equals(input.Ttl)
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -184,10 +212,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
                 if (this.CertUsername != null)
                     hashCode = hashCode * 59 + this.CertUsername.GetHashCode();
+                hashCode = hashCode * 59 + this.LegacySigningAlgName.GetHashCode();
                 if (this.PublicKeyData != null)
                     hashCode = hashCode * 59 + this.PublicKeyData.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
                 return hashCode;

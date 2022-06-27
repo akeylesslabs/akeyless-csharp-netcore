@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="mysqlDbname">MySQL DB Name.</param>
         /// <param name="mysqlHost">MySQL Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="mysqlPassword">MySQL Password.</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.Name = name;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
+            this.DeleteProtection = deleteProtection;
             this.MysqlDbname = mysqlDbname;
             // use default value if no "mysqlHost" provided
             this.MysqlHost = mysqlHost ?? "127.0.0.1";
@@ -108,6 +110,13 @@ namespace akeyless.Model
         /// <value>(Optional) Server name for certificate verification</value>
         [DataMember(Name = "db-server-name", EmitDefaultValue = false)]
         public string DbServerName { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// MySQL DB Name
@@ -255,6 +264,7 @@ namespace akeyless.Model
             sb.Append("class GatewayUpdateProducerMySQL {\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  MysqlDbname: ").Append(MysqlDbname).Append("\n");
             sb.Append("  MysqlHost: ").Append(MysqlHost).Append("\n");
             sb.Append("  MysqlPassword: ").Append(MysqlPassword).Append("\n");
@@ -318,6 +328,11 @@ namespace akeyless.Model
                     this.DbServerName == input.DbServerName ||
                     (this.DbServerName != null &&
                     this.DbServerName.Equals(input.DbServerName))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.MysqlDbname == input.MysqlDbname ||
@@ -434,6 +449,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
                 if (this.DbServerName != null)
                     hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.MysqlDbname != null)
                     hashCode = hashCode * 59 + this.MysqlDbname.GetHashCode();
                 if (this.MysqlHost != null)

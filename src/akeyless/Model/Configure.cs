@@ -41,9 +41,11 @@ namespace akeyless.Model
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
+        /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context).</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string gcpAudience = default(string), string k8sAuthConfigName = default(string))
+        /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context).</param>
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = default(string), string k8sAuthConfigName = default(string), string keyData = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -52,8 +54,10 @@ namespace akeyless.Model
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
             this.AzureAdObjectId = azureAdObjectId;
+            this.CertData = certData;
             this.GcpAudience = gcpAudience;
             this.K8sAuthConfigName = k8sAuthConfigName;
+            this.KeyData = keyData;
         }
 
         /// <summary>
@@ -99,6 +103,13 @@ namespace akeyless.Model
         public string AzureAdObjectId { get; set; }
 
         /// <summary>
+        /// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context)
+        /// </summary>
+        /// <value>Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context)</value>
+        [DataMember(Name = "cert-data", EmitDefaultValue = false)]
+        public string CertData { get; set; }
+
+        /// <summary>
         /// GCP JWT audience
         /// </summary>
         /// <value>GCP JWT audience</value>
@@ -111,6 +122,13 @@ namespace akeyless.Model
         /// <value>The K8S Auth config name (relevant only for access-type&#x3D;k8s)</value>
         [DataMember(Name = "k8s-auth-config-name", EmitDefaultValue = false)]
         public string K8sAuthConfigName { get; set; }
+
+        /// <summary>
+        /// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context)
+        /// </summary>
+        /// <value>Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context)</value>
+        [DataMember(Name = "key-data", EmitDefaultValue = false)]
+        public string KeyData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -126,8 +144,10 @@ namespace akeyless.Model
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
+            sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
+            sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -193,6 +213,11 @@ namespace akeyless.Model
                     this.AzureAdObjectId.Equals(input.AzureAdObjectId))
                 ) && 
                 (
+                    this.CertData == input.CertData ||
+                    (this.CertData != null &&
+                    this.CertData.Equals(input.CertData))
+                ) && 
+                (
                     this.GcpAudience == input.GcpAudience ||
                     (this.GcpAudience != null &&
                     this.GcpAudience.Equals(input.GcpAudience))
@@ -201,6 +226,11 @@ namespace akeyless.Model
                     this.K8sAuthConfigName == input.K8sAuthConfigName ||
                     (this.K8sAuthConfigName != null &&
                     this.K8sAuthConfigName.Equals(input.K8sAuthConfigName))
+                ) && 
+                (
+                    this.KeyData == input.KeyData ||
+                    (this.KeyData != null &&
+                    this.KeyData.Equals(input.KeyData))
                 );
         }
 
@@ -225,10 +255,14 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AdminPassword.GetHashCode();
                 if (this.AzureAdObjectId != null)
                     hashCode = hashCode * 59 + this.AzureAdObjectId.GetHashCode();
+                if (this.CertData != null)
+                    hashCode = hashCode * 59 + this.CertData.GetHashCode();
                 if (this.GcpAudience != null)
                     hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
                 if (this.K8sAuthConfigName != null)
                     hashCode = hashCode * 59 + this.K8sAuthConfigName.GetHashCode();
+                if (this.KeyData != null)
+                    hashCode = hashCode * 59 + this.KeyData.GetHashCode();
                 return hashCode;
             }
         }

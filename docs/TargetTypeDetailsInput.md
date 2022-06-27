@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ArtifactoryAdminApikey** | **string** |  | [optional] 
 **ArtifactoryAdminUsername** | **string** |  | [optional] 
 **ArtifactoryBaseUrl** | **string** |  | [optional] 
+**AuthFlow** | **string** |  | [optional] 
 **AwsAccessKeyId** | **string** |  | [optional] 
 **AwsRegion** | **string** |  | [optional] 
 **AwsSecretAccessKey** | **string** |  | [optional] 

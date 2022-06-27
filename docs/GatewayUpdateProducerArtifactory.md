@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | **string** | Base URL | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

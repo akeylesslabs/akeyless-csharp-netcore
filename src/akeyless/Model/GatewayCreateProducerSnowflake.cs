@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="accountPassword">Database Password.</param>
         /// <param name="accountUsername">Database Username.</param>
         /// <param name="dbName">Database name.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="role">User role.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.AccountPassword = accountPassword;
             this.AccountUsername = accountUsername;
             this.DbName = dbName;
+            this.DeleteProtection = deleteProtection;
             this.Role = role;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -100,6 +102,13 @@ namespace akeyless.Model
         /// <value>Database name</value>
         [DataMember(Name = "db-name", EmitDefaultValue = false)]
         public string DbName { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Producer name
@@ -169,6 +178,7 @@ namespace akeyless.Model
             sb.Append("  AccountPassword: ").Append(AccountPassword).Append("\n");
             sb.Append("  AccountUsername: ").Append(AccountUsername).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -232,6 +242,11 @@ namespace akeyless.Model
                     this.DbName.Equals(input.DbName))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -291,6 +306,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AccountUsername.GetHashCode();
                 if (this.DbName != null)
                     hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Role != null)

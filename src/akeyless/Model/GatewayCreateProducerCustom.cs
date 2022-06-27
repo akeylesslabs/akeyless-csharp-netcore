@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="adminRotationIntervalDays">Define rotation interval in days.</param>
         /// <param name="createSyncUrl">URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="enableAdminRotation">Should admin credentials be rotated (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="payload">Secret payload to be sent with each create/revoke webhook request.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerCustom(long adminRotationIntervalDays = default(long), string createSyncUrl = default(string), bool enableAdminRotation = false, string name = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerCustom(long adminRotationIntervalDays = default(long), string createSyncUrl = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, string name = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "createSyncUrl" is required (not null)
             if (createSyncUrl == null) {
@@ -71,6 +72,7 @@ namespace akeyless.Model
             }
             this.RevokeSyncUrl = revokeSyncUrl;
             this.AdminRotationIntervalDays = adminRotationIntervalDays;
+            this.DeleteProtection = deleteProtection;
             this.EnableAdminRotation = enableAdminRotation;
             this.Payload = payload;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -96,6 +98,13 @@ namespace akeyless.Model
         /// <value>URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create</value>
         [DataMember(Name = "create-sync-url", IsRequired = true, EmitDefaultValue = false)]
         public string CreateSyncUrl { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Should admin credentials be rotated
@@ -184,6 +193,7 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerCustom {\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
@@ -237,6 +247,11 @@ namespace akeyless.Model
                     this.CreateSyncUrl == input.CreateSyncUrl ||
                     (this.CreateSyncUrl != null &&
                     this.CreateSyncUrl.Equals(input.CreateSyncUrl))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.EnableAdminRotation == input.EnableAdminRotation ||
@@ -306,6 +321,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.AdminRotationIntervalDays.GetHashCode();
                 if (this.CreateSyncUrl != null)
                     hashCode = hashCode * 59 + this.CreateSyncUrl.GetHashCode();
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 hashCode = hashCode * 59 + this.EnableAdminRotation.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

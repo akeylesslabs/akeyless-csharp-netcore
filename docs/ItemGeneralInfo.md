@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **ClassicKeyDetails** | [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
+**ClusterGwUrl** | **string** |  | [optional] 
 **DisplayMetadata** | **string** |  | [optional] 
 **DynamicSecretProducerDetails** | [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
 **PasswordPolicy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 

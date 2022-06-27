@@ -5,6 +5,7 @@ gatewayCreateProducerDockerhub is a command that creates a DOCKERHUB producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **DockerhubPassword** | **string** | DockerhubPassword is either the user&#39;s password access token to manage the repository | [optional] 
 **DockerhubTokenScopes** | **string** | Access token scopes list (comma seperated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot; | [optional] 
 **DockerhubUsername** | **string** | DockerhubUsername is the name of the user in dockerhub | [optional] 

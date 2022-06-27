@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerMongo" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
         /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
         /// <param name="mongodbAtlasProjectId">MongoDB Atlas project ID.</param>
@@ -64,13 +65,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerMongo(string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerMongo(string deleteProtection = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerMongo and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
@@ -97,6 +99,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// MongoDB Atlas private key
@@ -270,6 +279,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerMongo {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
@@ -328,6 +338,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
                 (
                     this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
                     (this.MongodbAtlasApiPrivateKey != null &&
@@ -460,6 +475,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DeleteProtection != null)
+                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)
                     hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
                 if (this.MongodbAtlasApiPublicKey != null)

@@ -239,6 +239,7 @@ docs/GatewayMigrationUpdateOutput.md
 docs/GatewayRevokeTmpUsers.md
 docs/GatewayStartProducer.md
 docs/GatewayStartProducerOutput.md
+docs/GatewayStatusMigration.md
 docs/GatewayStopProducer.md
 docs/GatewayStopProducerOutput.md
 docs/GatewaySyncMigration.md
@@ -380,7 +381,9 @@ docs/LogForwardingConfigPart.md
 docs/LogstashLogForwardingConfig.md
 docs/LogzIoLogForwardingConfig.md
 docs/MigrationGeneral.md
+docs/MigrationItems.md
 docs/MigrationStatus.md
+docs/MigrationStatusReplyObj.md
 docs/MigrationsConfigLastChange.md
 docs/MigrationsConfigPart.md
 docs/MoveObjects.md
@@ -541,12 +544,9 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/GCPPayloadTests.cs
-src/akeyless.Test/Model/GCPSecretsMigrationTests.cs
-src/akeyless.Test/Model/GatewayGetLdapAuthConfigOutputTests.cs
-src/akeyless.Test/Model/GatewayGetLdapAuthConfigTests.cs
-src/akeyless.Test/Model/GatewayUpdateLdapAuthConfigOutputTests.cs
-src/akeyless.Test/Model/GatewayUpdateLdapAuthConfigTests.cs
+src/akeyless.Test/Model/GatewayStatusMigrationTests.cs
+src/akeyless.Test/Model/MigrationItemsTests.cs
+src/akeyless.Test/Model/MigrationStatusReplyObjTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -803,6 +803,7 @@ src/akeyless/Model/GatewayMigrationUpdateOutput.cs
 src/akeyless/Model/GatewayRevokeTmpUsers.cs
 src/akeyless/Model/GatewayStartProducer.cs
 src/akeyless/Model/GatewayStartProducerOutput.cs
+src/akeyless/Model/GatewayStatusMigration.cs
 src/akeyless/Model/GatewayStopProducer.cs
 src/akeyless/Model/GatewayStopProducerOutput.cs
 src/akeyless/Model/GatewaySyncMigration.cs
@@ -944,7 +945,9 @@ src/akeyless/Model/LogForwardingConfigPart.cs
 src/akeyless/Model/LogstashLogForwardingConfig.cs
 src/akeyless/Model/LogzIoLogForwardingConfig.cs
 src/akeyless/Model/MigrationGeneral.cs
+src/akeyless/Model/MigrationItems.cs
 src/akeyless/Model/MigrationStatus.cs
+src/akeyless/Model/MigrationStatusReplyObj.cs
 src/akeyless/Model/MigrationsConfigLastChange.cs
 src/akeyless/Model/MigrationsConfigPart.cs
 src/akeyless/Model/MoveObjects.cs
