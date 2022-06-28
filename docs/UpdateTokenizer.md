@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
 **Alphabet** | **string** | Alphabet to use in regexp vaultless tokenization | [optional] 
-**DecryptionTemplate** | **string** | The Decryption output template to use in regexp vaultless tokenization | [optional] 
+**DecodingTemplate** | **string** | The Decoding output template to use in regexp vaultless tokenization | [optional] 
 **DeleteProtection** | **string** |  | [optional] 
+**EncodingTemplate** | **string** | The Encoding output template to use in regexp vaultless tokenization | [optional] 
 **EncryptionKeyName** | **string** | AES key name to use in vaultless tokenization | [optional] 
-**EncryptionTemplate** | **string** | The Encryption output template to use in regexp vaultless tokenization | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | **string** | New item metadata | [optional] [default to "default_metadata"]
 **NewName** | **string** | New item name | [optional] 

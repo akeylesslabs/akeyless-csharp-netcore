@@ -36,14 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="RegexpTokenizerInfo" /> class.
         /// </summary>
         /// <param name="alphabet">The Alphabet used for the tokenization.</param>
-        /// <param name="decryptionTemplate">Transformation to perform on the decrypted data.</param>
-        /// <param name="encryptionTemplate">Transformation to perform on the encrypted data, if the required output template doesn&#39;t match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted..</param>
+        /// <param name="decodingTemplate">Transformation to perform on the decrypted data.</param>
+        /// <param name="encodingTemplate">Transformation to perform on the encrypted data, if the required output template doesn&#39;t match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted..</param>
         /// <param name="pattern">Regexp pattern to extract and deposit the text/encdata.</param>
-        public RegexpTokenizerInfo(string alphabet = default(string), string decryptionTemplate = default(string), string encryptionTemplate = default(string), string pattern = default(string))
+        public RegexpTokenizerInfo(string alphabet = default(string), string decodingTemplate = default(string), string encodingTemplate = default(string), string pattern = default(string))
         {
             this.Alphabet = alphabet;
-            this.DecryptionTemplate = decryptionTemplate;
-            this.EncryptionTemplate = encryptionTemplate;
+            this.DecodingTemplate = decodingTemplate;
+            this.EncodingTemplate = encodingTemplate;
             this.Pattern = pattern;
         }
 
@@ -58,15 +58,15 @@ namespace akeyless.Model
         /// Transformation to perform on the decrypted data
         /// </summary>
         /// <value>Transformation to perform on the decrypted data</value>
-        [DataMember(Name = "decryption_template", EmitDefaultValue = false)]
-        public string DecryptionTemplate { get; set; }
+        [DataMember(Name = "decoding_template", EmitDefaultValue = false)]
+        public string DecodingTemplate { get; set; }
 
         /// <summary>
         /// Transformation to perform on the encrypted data, if the required output template doesn&#39;t match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted.
         /// </summary>
         /// <value>Transformation to perform on the encrypted data, if the required output template doesn&#39;t match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted.</value>
-        [DataMember(Name = "encryption_template", EmitDefaultValue = false)]
-        public string EncryptionTemplate { get; set; }
+        [DataMember(Name = "encoding_template", EmitDefaultValue = false)]
+        public string EncodingTemplate { get; set; }
 
         /// <summary>
         /// Regexp pattern to extract and deposit the text/encdata
@@ -84,8 +84,8 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class RegexpTokenizerInfo {\n");
             sb.Append("  Alphabet: ").Append(Alphabet).Append("\n");
-            sb.Append("  DecryptionTemplate: ").Append(DecryptionTemplate).Append("\n");
-            sb.Append("  EncryptionTemplate: ").Append(EncryptionTemplate).Append("\n");
+            sb.Append("  DecodingTemplate: ").Append(DecodingTemplate).Append("\n");
+            sb.Append("  EncodingTemplate: ").Append(EncodingTemplate).Append("\n");
             sb.Append("  Pattern: ").Append(Pattern).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -127,14 +127,14 @@ namespace akeyless.Model
                     this.Alphabet.Equals(input.Alphabet))
                 ) && 
                 (
-                    this.DecryptionTemplate == input.DecryptionTemplate ||
-                    (this.DecryptionTemplate != null &&
-                    this.DecryptionTemplate.Equals(input.DecryptionTemplate))
+                    this.DecodingTemplate == input.DecodingTemplate ||
+                    (this.DecodingTemplate != null &&
+                    this.DecodingTemplate.Equals(input.DecodingTemplate))
                 ) && 
                 (
-                    this.EncryptionTemplate == input.EncryptionTemplate ||
-                    (this.EncryptionTemplate != null &&
-                    this.EncryptionTemplate.Equals(input.EncryptionTemplate))
+                    this.EncodingTemplate == input.EncodingTemplate ||
+                    (this.EncodingTemplate != null &&
+                    this.EncodingTemplate.Equals(input.EncodingTemplate))
                 ) && 
                 (
                     this.Pattern == input.Pattern ||
@@ -154,10 +154,10 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Alphabet != null)
                     hashCode = hashCode * 59 + this.Alphabet.GetHashCode();
-                if (this.DecryptionTemplate != null)
-                    hashCode = hashCode * 59 + this.DecryptionTemplate.GetHashCode();
-                if (this.EncryptionTemplate != null)
-                    hashCode = hashCode * 59 + this.EncryptionTemplate.GetHashCode();
+                if (this.DecodingTemplate != null)
+                    hashCode = hashCode * 59 + this.DecodingTemplate.GetHashCode();
+                if (this.EncodingTemplate != null)
+                    hashCode = hashCode * 59 + this.EncodingTemplate.GetHashCode();
                 if (this.Pattern != null)
                     hashCode = hashCode * 59 + this.Pattern.GetHashCode();
                 return hashCode;

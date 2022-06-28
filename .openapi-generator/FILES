@@ -544,9 +544,6 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/GatewayStatusMigrationTests.cs
-src/akeyless.Test/Model/MigrationItemsTests.cs
-src/akeyless.Test/Model/MigrationStatusReplyObjTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
