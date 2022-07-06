@@ -78,8 +78,8 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="userAttribute">User Attribute.</param>
-        /// <param name="userDn">User DN.</param>
+        /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot;.</param>
+        /// <param name="userDn">LDAP User Base DN.</param>
         public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string key = default(string), string metadata = default(string), string name = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
@@ -395,16 +395,16 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// User Attribute
+        /// LDAP User Attribute, Default value \&quot;cn\&quot;
         /// </summary>
-        /// <value>User Attribute</value>
+        /// <value>LDAP User Attribute, Default value \&quot;cn\&quot;</value>
         [DataMember(Name = "user-attribute", EmitDefaultValue = false)]
         public string UserAttribute { get; set; }
 
         /// <summary>
-        /// User DN
+        /// LDAP User Base DN
         /// </summary>
-        /// <value>User DN</value>
+        /// <value>LDAP User Base DN</value>
         [DataMember(Name = "user-dn", EmitDefaultValue = false)]
         public string UserDn { get; set; }
 

@@ -40,23 +40,32 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSecretValue" /> class.
         /// </summary>
+        /// <param name="itemAccessibility">for personal password manager.</param>
         /// <param name="names">Secret name (required).</param>
         /// <param name="prettyPrint">prettyPrint.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Secret version.</param>
-        public GetSecretValue(List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetSecretValue(string itemAccessibility = default(string), List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
             if (names == null) {
                 throw new ArgumentNullException("names is a required property for GetSecretValue and cannot be null");
             }
             this.Names = names;
+            this.ItemAccessibility = itemAccessibility;
             this.PrettyPrint = prettyPrint;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "item-accessibility", EmitDefaultValue = false)]
+        public string ItemAccessibility { get; set; }
 
         /// <summary>
         /// Secret name
@@ -100,6 +109,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetSecretValue {\n");
+            sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  Names: ").Append(Names).Append("\n");
             sb.Append("  PrettyPrint: ").Append(PrettyPrint).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -140,6 +150,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.ItemAccessibility == input.ItemAccessibility ||
+                    (this.ItemAccessibility != null &&
+                    this.ItemAccessibility.Equals(input.ItemAccessibility))
+                ) && 
+                (
                     this.Names == input.Names ||
                     this.Names != null &&
                     input.Names != null &&
@@ -174,6 +189,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ItemAccessibility != null)
+                    hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
                 if (this.Names != null)
                     hashCode = hashCode * 59 + this.Names.GetHashCode();
                 hashCode = hashCode * 59 + this.PrettyPrint.GetHashCode();

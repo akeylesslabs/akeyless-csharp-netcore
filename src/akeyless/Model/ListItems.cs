@@ -36,19 +36,23 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ListItems" /> class.
         /// </summary>
         /// <param name="filter">Filter by item name or part of it.</param>
+        /// <param name="itemAccessibility">for personal password manager.</param>
         /// <param name="minimalView">minimalView.</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="path">Path to folder.</param>
+        /// <param name="subTypes">subTypes.</param>
         /// <param name="tag">Filter by item tag.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string filter = default(string), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string filter = default(string), string itemAccessibility = default(string), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.Filter = filter;
+            this.ItemAccessibility = itemAccessibility;
             this.MinimalView = minimalView;
             this.PaginationToken = paginationToken;
             this.Path = path;
+            this.SubTypes = subTypes;
             this.Tag = tag;
             this.Token = token;
             this.Type = type;
@@ -61,6 +65,13 @@ namespace akeyless.Model
         /// <value>Filter by item name or part of it</value>
         [DataMember(Name = "filter", EmitDefaultValue = false)]
         public string Filter { get; set; }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "item-accessibility", EmitDefaultValue = false)]
+        public string ItemAccessibility { get; set; }
 
         /// <summary>
         /// Gets or Sets MinimalView
@@ -81,6 +92,12 @@ namespace akeyless.Model
         /// <value>Path to folder</value>
         [DataMember(Name = "path", EmitDefaultValue = false)]
         public string Path { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SubTypes
+        /// </summary>
+        [DataMember(Name = "sub_types", EmitDefaultValue = false)]
+        public List<string> SubTypes { get; set; }
 
         /// <summary>
         /// Filter by item tag
@@ -119,9 +136,11 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class ListItems {\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
+            sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  MinimalView: ").Append(MinimalView).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("  SubTypes: ").Append(SubTypes).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -166,6 +185,11 @@ namespace akeyless.Model
                     this.Filter.Equals(input.Filter))
                 ) && 
                 (
+                    this.ItemAccessibility == input.ItemAccessibility ||
+                    (this.ItemAccessibility != null &&
+                    this.ItemAccessibility.Equals(input.ItemAccessibility))
+                ) && 
+                (
                     this.MinimalView == input.MinimalView ||
                     this.MinimalView.Equals(input.MinimalView)
                 ) && 
@@ -178,6 +202,12 @@ namespace akeyless.Model
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
+                ) && 
+                (
+                    this.SubTypes == input.SubTypes ||
+                    this.SubTypes != null &&
+                    input.SubTypes != null &&
+                    this.SubTypes.SequenceEqual(input.SubTypes)
                 ) && 
                 (
                     this.Tag == input.Tag ||
@@ -213,11 +243,15 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Filter != null)
                     hashCode = hashCode * 59 + this.Filter.GetHashCode();
+                if (this.ItemAccessibility != null)
+                    hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
                 hashCode = hashCode * 59 + this.MinimalView.GetHashCode();
                 if (this.PaginationToken != null)
                     hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
+                if (this.SubTypes != null)
+                    hashCode = hashCode * 59 + this.SubTypes.GetHashCode();
                 if (this.Tag != null)
                     hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Token != null)

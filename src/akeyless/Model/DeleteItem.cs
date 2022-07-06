@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="deleteImmediately">When delete-in-days&#x3D;-1, must be set (default to false).</param>
         /// <param name="deleteInDays">The number of days to wait before deleting the item (relevant for keys only) (default to 7).</param>
+        /// <param name="itemAccessibility">for personal password manager.</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default) (default to -1).</param>
-        public DeleteItem(bool deleteImmediately = false, long deleteInDays = 7, string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
+        public DeleteItem(bool deleteImmediately = false, long deleteInDays = 7, string itemAccessibility = default(string), string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.Name = name;
             this.DeleteImmediately = deleteImmediately;
             this.DeleteInDays = deleteInDays;
+            this.ItemAccessibility = itemAccessibility;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
@@ -73,6 +75,13 @@ namespace akeyless.Model
         /// <value>The number of days to wait before deleting the item (relevant for keys only)</value>
         [DataMember(Name = "delete-in-days", EmitDefaultValue = false)]
         public long DeleteInDays { get; set; }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "item-accessibility", EmitDefaultValue = false)]
+        public string ItemAccessibility { get; set; }
 
         /// <summary>
         /// Item name
@@ -112,6 +121,7 @@ namespace akeyless.Model
             sb.Append("class DeleteItem {\n");
             sb.Append("  DeleteImmediately: ").Append(DeleteImmediately).Append("\n");
             sb.Append("  DeleteInDays: ").Append(DeleteInDays).Append("\n");
+            sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -159,6 +169,11 @@ namespace akeyless.Model
                     this.DeleteInDays.Equals(input.DeleteInDays)
                 ) && 
                 (
+                    this.ItemAccessibility == input.ItemAccessibility ||
+                    (this.ItemAccessibility != null &&
+                    this.ItemAccessibility.Equals(input.ItemAccessibility))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -190,6 +205,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.DeleteImmediately.GetHashCode();
                 hashCode = hashCode * 59 + this.DeleteInDays.GetHashCode();
+                if (this.ItemAccessibility != null)
+                    hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Token != null)

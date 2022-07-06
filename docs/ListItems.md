@@ -5,9 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | **string** | Filter by item name or part of it | [optional] 
+**ItemAccessibility** | **string** | for personal password manager | [optional] 
 **MinimalView** | **bool** |  | [optional] 
 **PaginationToken** | **string** | Next page reference | [optional] 
 **Path** | **string** | Path to folder | [optional] 
+**SubTypes** | **List&lt;string&gt;** |  | [optional] 
 **Tag** | **string** | Filter by item tag | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **List&lt;string&gt;** | The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret] | [optional] 

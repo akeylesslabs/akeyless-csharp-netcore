@@ -40,6 +40,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSecretVal" /> class.
         /// </summary>
+        /// <param name="customFields">For Password Management use, additional fields.</param>
+        /// <param name="itemAccessibility">for personal password manager.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="multiline">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
@@ -47,8 +49,10 @@ namespace akeyless.Model
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="username">For Password Management use.</param>
         /// <param name="value">The new secret value (required).</param>
-        public UpdateSecretVal(string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string token = default(string), string uidToken = default(string), string value = default(string))
+        /// <param name="website">For Password Management use, reflect the website context.</param>
+        public UpdateSecretVal(Dictionary<string, string> customFields = default(Dictionary<string, string>), string itemAccessibility = default(string), string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string), string website = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -60,13 +64,31 @@ namespace akeyless.Model
                 throw new ArgumentNullException("value is a required property for UpdateSecretVal and cannot be null");
             }
             this.Value = value;
+            this.CustomFields = customFields;
+            this.ItemAccessibility = itemAccessibility;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.Multiline = multiline;
             this.NewVersion = newVersion;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
+            this.Website = website;
         }
+
+        /// <summary>
+        /// For Password Management use, additional fields
+        /// </summary>
+        /// <value>For Password Management use, additional fields</value>
+        [DataMember(Name = "custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> CustomFields { get; set; }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "item-accessibility", EmitDefaultValue = false)]
+        public string ItemAccessibility { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -117,11 +139,25 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// For Password Management use
+        /// </summary>
+        /// <value>For Password Management use</value>
+        [DataMember(Name = "username", EmitDefaultValue = false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// The new secret value
         /// </summary>
         /// <value>The new secret value</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = false)]
         public string Value { get; set; }
+
+        /// <summary>
+        /// For Password Management use, reflect the website context
+        /// </summary>
+        /// <value>For Password Management use, reflect the website context</value>
+        [DataMember(Name = "website", EmitDefaultValue = false)]
+        public string Website { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -131,6 +167,8 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UpdateSecretVal {\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
+            sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Multiline: ").Append(Multiline).Append("\n");
@@ -138,7 +176,9 @@ namespace akeyless.Model
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Website: ").Append(Website).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -174,6 +214,17 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.CustomFields == input.CustomFields ||
+                    this.CustomFields != null &&
+                    input.CustomFields != null &&
+                    this.CustomFields.SequenceEqual(input.CustomFields)
+                ) && 
+                (
+                    this.ItemAccessibility == input.ItemAccessibility ||
+                    (this.ItemAccessibility != null &&
+                    this.ItemAccessibility.Equals(input.ItemAccessibility))
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -207,9 +258,19 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
+                ) && 
+                (
+                    this.Website == input.Website ||
+                    (this.Website != null &&
+                    this.Website.Equals(input.Website))
                 );
         }
 
@@ -222,6 +283,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CustomFields != null)
+                    hashCode = hashCode * 59 + this.CustomFields.GetHashCode();
+                if (this.ItemAccessibility != null)
+                    hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)
@@ -234,8 +299,12 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if (this.Website != null)
+                    hashCode = hashCode * 59 + this.Website.GetHashCode();
                 return hashCode;
             }
         }

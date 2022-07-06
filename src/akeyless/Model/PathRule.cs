@@ -37,11 +37,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="capabilities">The approved/denied capabilities in the path.</param>
         /// <param name="path">The path the rule refers to.</param>
+        /// <param name="ttl">ttl.</param>
         /// <param name="type">type.</param>
-        public PathRule(List<string> capabilities = default(List<string>), string path = default(string), string type = default(string))
+        public PathRule(List<string> capabilities = default(List<string>), string path = default(string), long ttl = default(long), string type = default(string))
         {
             this.Capabilities = capabilities;
             this.Path = path;
+            this.Ttl = ttl;
             this.Type = type;
         }
 
@@ -60,6 +62,12 @@ namespace akeyless.Model
         public string Path { get; set; }
 
         /// <summary>
+        /// Gets or Sets Ttl
+        /// </summary>
+        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        public long Ttl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", EmitDefaultValue = false)]
@@ -75,6 +83,7 @@ namespace akeyless.Model
             sb.Append("class PathRule {\n");
             sb.Append("  Capabilities: ").Append(Capabilities).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -122,6 +131,10 @@ namespace akeyless.Model
                     this.Path.Equals(input.Path))
                 ) && 
                 (
+                    this.Ttl == input.Ttl ||
+                    this.Ttl.Equals(input.Ttl)
+                ) && 
+                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
@@ -141,6 +154,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Capabilities.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
+                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
