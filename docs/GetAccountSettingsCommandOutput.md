@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Address** | [**CustomerFullAddress**](CustomerFullAddress.md) |  | [optional] 
 **CompanyName** | **string** |  | [optional] 
 **Email** | **string** |  | [optional] 
+**GeneralSettings** | [**AccountGeneralSettings**](AccountGeneralSettings.md) |  | [optional] 
 **ObjectVersionSettings** | [**AccountObjectVersionSettingsOutput**](AccountObjectVersionSettingsOutput.md) |  | [optional] 
 **Phone** | **string** |  | [optional] 
 **SecretManagement** | [**SmInfo**](SmInfo.md) |  | [optional] 

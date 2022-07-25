@@ -39,17 +39,19 @@ namespace akeyless.Model
         /// <param name="address">address.</param>
         /// <param name="companyName">companyName.</param>
         /// <param name="email">email.</param>
+        /// <param name="generalSettings">generalSettings.</param>
         /// <param name="objectVersionSettings">objectVersionSettings.</param>
         /// <param name="phone">phone.</param>
         /// <param name="secretManagement">secretManagement.</param>
         /// <param name="secureRemoteAccess">secureRemoteAccess.</param>
         /// <param name="systemAccessCredsSettings">systemAccessCredsSettings.</param>
-        public GetAccountSettingsCommandOutput(string accountId = default(string), CustomerFullAddress address = default(CustomerFullAddress), string companyName = default(string), string email = default(string), AccountObjectVersionSettingsOutput objectVersionSettings = default(AccountObjectVersionSettingsOutput), string phone = default(string), SmInfo secretManagement = default(SmInfo), SraInfo secureRemoteAccess = default(SraInfo), SystemAccessCredsSettings systemAccessCredsSettings = default(SystemAccessCredsSettings))
+        public GetAccountSettingsCommandOutput(string accountId = default(string), CustomerFullAddress address = default(CustomerFullAddress), string companyName = default(string), string email = default(string), AccountGeneralSettings generalSettings = default(AccountGeneralSettings), AccountObjectVersionSettingsOutput objectVersionSettings = default(AccountObjectVersionSettingsOutput), string phone = default(string), SmInfo secretManagement = default(SmInfo), SraInfo secureRemoteAccess = default(SraInfo), SystemAccessCredsSettings systemAccessCredsSettings = default(SystemAccessCredsSettings))
         {
             this.AccountId = accountId;
             this.Address = address;
             this.CompanyName = companyName;
             this.Email = email;
+            this.GeneralSettings = generalSettings;
             this.ObjectVersionSettings = objectVersionSettings;
             this.Phone = phone;
             this.SecretManagement = secretManagement;
@@ -80,6 +82,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GeneralSettings
+        /// </summary>
+        [DataMember(Name = "general_settings", EmitDefaultValue = false)]
+        public AccountGeneralSettings GeneralSettings { get; set; }
 
         /// <summary>
         /// Gets or Sets ObjectVersionSettings
@@ -123,6 +131,7 @@ namespace akeyless.Model
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  GeneralSettings: ").Append(GeneralSettings).Append("\n");
             sb.Append("  ObjectVersionSettings: ").Append(ObjectVersionSettings).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  SecretManagement: ").Append(SecretManagement).Append("\n");
@@ -183,6 +192,11 @@ namespace akeyless.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
+                    this.GeneralSettings == input.GeneralSettings ||
+                    (this.GeneralSettings != null &&
+                    this.GeneralSettings.Equals(input.GeneralSettings))
+                ) && 
+                (
                     this.ObjectVersionSettings == input.ObjectVersionSettings ||
                     (this.ObjectVersionSettings != null &&
                     this.ObjectVersionSettings.Equals(input.ObjectVersionSettings))
@@ -226,6 +240,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.GeneralSettings != null)
+                    hashCode = hashCode * 59 + this.GeneralSettings.GetHashCode();
                 if (this.ObjectVersionSettings != null)
                     hashCode = hashCode * 59 + this.ObjectVersionSettings.GetHashCode();
                 if (this.Phone != null)

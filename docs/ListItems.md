@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | **string** | for personal password manager | [optional] 
 **Filter** | **string** | Filter by item name or part of it | [optional] 
-**ItemAccessibility** | **string** | for personal password manager | [optional] 
 **MinimalView** | **bool** |  | [optional] 
 **PaginationToken** | **string** | Next page reference | [optional] 
 **Path** | **string** | Path to folder | [optional] 

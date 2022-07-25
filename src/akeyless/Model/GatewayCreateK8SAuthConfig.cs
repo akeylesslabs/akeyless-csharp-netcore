@@ -48,10 +48,10 @@ namespace akeyless.Model
         /// <param name="name">K8S Auth config name (required).</param>
         /// <param name="signingKey">The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token.</param>
+        /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token (default to 300).</param>
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateK8SAuthConfig(string accessId = default(string), string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string signingKey = default(string), string token = default(string), long tokenExp = default(long), string tokenReviewerJwt = default(string), string uidToken = default(string))
+        public GatewayCreateK8SAuthConfig(string accessId = default(string), string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null) {

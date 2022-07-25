@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="azureAnalyticsConfig">azureAnalyticsConfig.</param>
         /// <param name="datadogConfig">datadogConfig.</param>
         /// <param name="elasticsearchConfig">elasticsearchConfig.</param>
+        /// <param name="jsonOutput">jsonOutput.</param>
         /// <param name="loganEnable">loganEnable.</param>
         /// <param name="loganUrl">loganUrl.</param>
         /// <param name="logstashConfig">logstashConfig.</param>
@@ -47,12 +48,13 @@ namespace akeyless.Model
         /// <param name="splunkConfig">splunkConfig.</param>
         /// <param name="syslogConfig">syslogConfig.</param>
         /// <param name="targetLogType">targetLogType.</param>
-        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
+        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool jsonOutput = default(bool), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
         {
             this.AwsS3Config = awsS3Config;
             this.AzureAnalyticsConfig = azureAnalyticsConfig;
             this.DatadogConfig = datadogConfig;
             this.ElasticsearchConfig = elasticsearchConfig;
+            this.JsonOutput = jsonOutput;
             this.LoganEnable = loganEnable;
             this.LoganUrl = loganUrl;
             this.LogstashConfig = logstashConfig;
@@ -86,6 +88,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "elasticsearch_config", EmitDefaultValue = false)]
         public ElasticsearchLogForwardingConfig ElasticsearchConfig { get; set; }
+
+        /// <summary>
+        /// Gets or Sets JsonOutput
+        /// </summary>
+        [DataMember(Name = "json_output", EmitDefaultValue = true)]
+        public bool JsonOutput { get; set; }
 
         /// <summary>
         /// Gets or Sets LoganEnable
@@ -147,6 +155,7 @@ namespace akeyless.Model
             sb.Append("  AzureAnalyticsConfig: ").Append(AzureAnalyticsConfig).Append("\n");
             sb.Append("  DatadogConfig: ").Append(DatadogConfig).Append("\n");
             sb.Append("  ElasticsearchConfig: ").Append(ElasticsearchConfig).Append("\n");
+            sb.Append("  JsonOutput: ").Append(JsonOutput).Append("\n");
             sb.Append("  LoganEnable: ").Append(LoganEnable).Append("\n");
             sb.Append("  LoganUrl: ").Append(LoganUrl).Append("\n");
             sb.Append("  LogstashConfig: ").Append(LogstashConfig).Append("\n");
@@ -210,6 +219,10 @@ namespace akeyless.Model
                     this.ElasticsearchConfig.Equals(input.ElasticsearchConfig))
                 ) && 
                 (
+                    this.JsonOutput == input.JsonOutput ||
+                    this.JsonOutput.Equals(input.JsonOutput)
+                ) && 
+                (
                     this.LoganEnable == input.LoganEnable ||
                     this.LoganEnable.Equals(input.LoganEnable)
                 ) && 
@@ -267,6 +280,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DatadogConfig.GetHashCode();
                 if (this.ElasticsearchConfig != null)
                     hashCode = hashCode * 59 + this.ElasticsearchConfig.GetHashCode();
+                hashCode = hashCode * 59 + this.JsonOutput.GetHashCode();
                 hashCode = hashCode * 59 + this.LoganEnable.GetHashCode();
                 if (this.LoganUrl != null)
                     hashCode = hashCode * 59 + this.LoganUrl.GetHashCode();

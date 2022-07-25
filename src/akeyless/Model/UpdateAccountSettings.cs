@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <param name="companyName">Company name.</param>
         /// <param name="country">Country.</param>
         /// <param name="defaultVersioning">Should create version by default.</param>
+        /// <param name="dpEnableClassicKeyProtection">Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;].</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
@@ -49,13 +50,14 @@ namespace akeyless.Model
         /// <param name="postalCode">Postal code.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string itemType = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string))
         {
             this.Address = address;
             this.City = city;
             this.CompanyName = companyName;
             this.Country = country;
             this.DefaultVersioning = defaultVersioning;
+            this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
             this.ItemType = itemType;
             this.JwtTtlDefault = jwtTtlDefault;
             this.JwtTtlMax = jwtTtlMax;
@@ -101,6 +103,13 @@ namespace akeyless.Model
         /// <value>Should create version by default</value>
         [DataMember(Name = "default-versioning", EmitDefaultValue = false)]
         public string DefaultVersioning { get; set; }
+
+        /// <summary>
+        /// Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;]
+        /// </summary>
+        /// <value>Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;]</value>
+        [DataMember(Name = "dp-enable-classic-key-protection", EmitDefaultValue = false)]
+        public string DpEnableClassicKeyProtection { get; set; }
 
         /// <summary>
         /// VersionSettingsObjectType defines object types for account version settings
@@ -178,6 +187,7 @@ namespace akeyless.Model
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
+            sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
@@ -247,6 +257,11 @@ namespace akeyless.Model
                     this.DefaultVersioning.Equals(input.DefaultVersioning))
                 ) && 
                 (
+                    this.DpEnableClassicKeyProtection == input.DpEnableClassicKeyProtection ||
+                    (this.DpEnableClassicKeyProtection != null &&
+                    this.DpEnableClassicKeyProtection.Equals(input.DpEnableClassicKeyProtection))
+                ) && 
+                (
                     this.ItemType == input.ItemType ||
                     (this.ItemType != null &&
                     this.ItemType.Equals(input.ItemType))
@@ -309,6 +324,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Country.GetHashCode();
                 if (this.DefaultVersioning != null)
                     hashCode = hashCode * 59 + this.DefaultVersioning.GetHashCode();
+                if (this.DpEnableClassicKeyProtection != null)
+                    hashCode = hashCode * 59 + this.DpEnableClassicKeyProtection.GetHashCode();
                 if (this.ItemType != null)
                     hashCode = hashCode * 59 + this.ItemType.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlDefault.GetHashCode();

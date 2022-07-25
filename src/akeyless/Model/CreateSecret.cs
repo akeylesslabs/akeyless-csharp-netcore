@@ -40,13 +40,15 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSecret" /> class.
         /// </summary>
-        /// <param name="customFields">For Password Management use, additional fields.</param>
+        /// <param name="accessibility">for personal password manager.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
-        /// <param name="itemAccessibility">for personal password manager.</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
-        /// <param name="passwordLength">For PasswordPolicy use.</param>
+        /// <param name="passwordManagerCustomField">For Password Management use, additional fields.</param>
+        /// <param name="passwordManagerInjectUrl">For Password Management use, reflect the website context.</param>
+        /// <param name="passwordManagerPassword">For Password Management use, additional fields.</param>
+        /// <param name="passwordManagerUsername">For Password Management use.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
@@ -60,14 +62,8 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">For Password Management use, reflect the website context.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="useLowerLetters">For PasswordPolicy use.</param>
-        /// <param name="useNumbers">For PasswordPolicy use.</param>
-        /// <param name="useSpecialCharacters">For PasswordPolicy use.</param>
-        /// <param name="useCapitalLetters">For PasswordPolicy use.</param>
-        /// <param name="username">For Password Management use.</param>
         /// <param name="value">The secret value (required).</param>
-        /// <param name="website">For Password Management use, reflect the website context.</param>
-        public CreateSecret(Dictionary<string, string> customFields = default(Dictionary<string, string>), string deleteProtection = default(string), string itemAccessibility = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), long passwordLength = default(long), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string), string username = default(string), string value = default(string), string website = default(string))
+        public CreateSecret(string accessibility = default(string), string deleteProtection = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), string passwordManagerInjectUrl = default(string), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -79,12 +75,14 @@ namespace akeyless.Model
                 throw new ArgumentNullException("value is a required property for CreateSecret and cannot be null");
             }
             this.Value = value;
-            this.CustomFields = customFields;
+            this.Accessibility = accessibility;
             this.DeleteProtection = deleteProtection;
-            this.ItemAccessibility = itemAccessibility;
             this.Metadata = metadata;
             this.MultilineValue = multilineValue;
-            this.PasswordLength = passwordLength;
+            this.PasswordManagerCustomField = passwordManagerCustomField;
+            this.PasswordManagerInjectUrl = passwordManagerInjectUrl;
+            this.PasswordManagerPassword = passwordManagerPassword;
+            this.PasswordManagerUsername = passwordManagerUsername;
             this.ProtectionKey = protectionKey;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessEnable = secureAccessEnable;
@@ -98,20 +96,14 @@ namespace akeyless.Model
             this.Token = token;
             this.Type = type;
             this.UidToken = uidToken;
-            this.UseLowerLetters = useLowerLetters;
-            this.UseNumbers = useNumbers;
-            this.UseSpecialCharacters = useSpecialCharacters;
-            this.UseCapitalLetters = useCapitalLetters;
-            this.Username = username;
-            this.Website = website;
         }
 
         /// <summary>
-        /// For Password Management use, additional fields
+        /// for personal password manager
         /// </summary>
-        /// <value>For Password Management use, additional fields</value>
-        [DataMember(Name = "custom-fields", EmitDefaultValue = false)]
-        public Dictionary<string, string> CustomFields { get; set; }
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "accessibility", EmitDefaultValue = false)]
+        public string Accessibility { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this item
@@ -119,13 +111,6 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
-
-        /// <summary>
-        /// for personal password manager
-        /// </summary>
-        /// <value>for personal password manager</value>
-        [DataMember(Name = "item-accessibility", EmitDefaultValue = false)]
-        public string ItemAccessibility { get; set; }
 
         /// <summary>
         /// Metadata about the secret
@@ -149,11 +134,32 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
+        /// For Password Management use, additional fields
         /// </summary>
-        /// <value>For PasswordPolicy use</value>
-        [DataMember(Name = "password-length", EmitDefaultValue = false)]
-        public long PasswordLength { get; set; }
+        /// <value>For Password Management use, additional fields</value>
+        [DataMember(Name = "password-manager-custom-field", EmitDefaultValue = false)]
+        public Dictionary<string, string> PasswordManagerCustomField { get; set; }
+
+        /// <summary>
+        /// For Password Management use, reflect the website context
+        /// </summary>
+        /// <value>For Password Management use, reflect the website context</value>
+        [DataMember(Name = "password-manager-inject-url", EmitDefaultValue = false)]
+        public string PasswordManagerInjectUrl { get; set; }
+
+        /// <summary>
+        /// For Password Management use, additional fields
+        /// </summary>
+        /// <value>For Password Management use, additional fields</value>
+        [DataMember(Name = "password-manager-password", EmitDefaultValue = false)]
+        public string PasswordManagerPassword { get; set; }
+
+        /// <summary>
+        /// For Password Management use
+        /// </summary>
+        /// <value>For Password Management use</value>
+        [DataMember(Name = "password-manager-username", EmitDefaultValue = false)]
+        public string PasswordManagerUsername { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -239,53 +245,11 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
-        /// </summary>
-        /// <value>For PasswordPolicy use</value>
-        [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
-        public string UseLowerLetters { get; set; }
-
-        /// <summary>
-        /// For PasswordPolicy use
-        /// </summary>
-        /// <value>For PasswordPolicy use</value>
-        [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
-        public string UseNumbers { get; set; }
-
-        /// <summary>
-        /// For PasswordPolicy use
-        /// </summary>
-        /// <value>For PasswordPolicy use</value>
-        [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
-        public string UseSpecialCharacters { get; set; }
-
-        /// <summary>
-        /// For PasswordPolicy use
-        /// </summary>
-        /// <value>For PasswordPolicy use</value>
-        [DataMember(Name = "use_capital-letters", EmitDefaultValue = false)]
-        public string UseCapitalLetters { get; set; }
-
-        /// <summary>
-        /// For Password Management use
-        /// </summary>
-        /// <value>For Password Management use</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// The secret value
         /// </summary>
         /// <value>The secret value</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = false)]
         public string Value { get; set; }
-
-        /// <summary>
-        /// For Password Management use, reflect the website context
-        /// </summary>
-        /// <value>For Password Management use, reflect the website context</value>
-        [DataMember(Name = "website", EmitDefaultValue = false)]
-        public string Website { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -295,13 +259,15 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateSecret {\n");
-            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
+            sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
-            sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  MultilineValue: ").Append(MultilineValue).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
+            sb.Append("  PasswordManagerCustomField: ").Append(PasswordManagerCustomField).Append("\n");
+            sb.Append("  PasswordManagerInjectUrl: ").Append(PasswordManagerInjectUrl).Append("\n");
+            sb.Append("  PasswordManagerPassword: ").Append(PasswordManagerPassword).Append("\n");
+            sb.Append("  PasswordManagerUsername: ").Append(PasswordManagerUsername).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
@@ -315,13 +281,7 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  UseLowerLetters: ").Append(UseLowerLetters).Append("\n");
-            sb.Append("  UseNumbers: ").Append(UseNumbers).Append("\n");
-            sb.Append("  UseSpecialCharacters: ").Append(UseSpecialCharacters).Append("\n");
-            sb.Append("  UseCapitalLetters: ").Append(UseCapitalLetters).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  Website: ").Append(Website).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -357,20 +317,14 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.CustomFields == input.CustomFields ||
-                    this.CustomFields != null &&
-                    input.CustomFields != null &&
-                    this.CustomFields.SequenceEqual(input.CustomFields)
+                    this.Accessibility == input.Accessibility ||
+                    (this.Accessibility != null &&
+                    this.Accessibility.Equals(input.Accessibility))
                 ) && 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
-                ) && 
-                (
-                    this.ItemAccessibility == input.ItemAccessibility ||
-                    (this.ItemAccessibility != null &&
-                    this.ItemAccessibility.Equals(input.ItemAccessibility))
                 ) && 
                 (
                     this.Metadata == input.Metadata ||
@@ -387,8 +341,25 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.PasswordLength == input.PasswordLength ||
-                    this.PasswordLength.Equals(input.PasswordLength)
+                    this.PasswordManagerCustomField == input.PasswordManagerCustomField ||
+                    this.PasswordManagerCustomField != null &&
+                    input.PasswordManagerCustomField != null &&
+                    this.PasswordManagerCustomField.SequenceEqual(input.PasswordManagerCustomField)
+                ) && 
+                (
+                    this.PasswordManagerInjectUrl == input.PasswordManagerInjectUrl ||
+                    (this.PasswordManagerInjectUrl != null &&
+                    this.PasswordManagerInjectUrl.Equals(input.PasswordManagerInjectUrl))
+                ) && 
+                (
+                    this.PasswordManagerPassword == input.PasswordManagerPassword ||
+                    (this.PasswordManagerPassword != null &&
+                    this.PasswordManagerPassword.Equals(input.PasswordManagerPassword))
+                ) && 
+                (
+                    this.PasswordManagerUsername == input.PasswordManagerUsername ||
+                    (this.PasswordManagerUsername != null &&
+                    this.PasswordManagerUsername.Equals(input.PasswordManagerUsername))
                 ) && 
                 (
                     this.ProtectionKey == input.ProtectionKey ||
@@ -456,39 +427,9 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
-                    this.UseLowerLetters == input.UseLowerLetters ||
-                    (this.UseLowerLetters != null &&
-                    this.UseLowerLetters.Equals(input.UseLowerLetters))
-                ) && 
-                (
-                    this.UseNumbers == input.UseNumbers ||
-                    (this.UseNumbers != null &&
-                    this.UseNumbers.Equals(input.UseNumbers))
-                ) && 
-                (
-                    this.UseSpecialCharacters == input.UseSpecialCharacters ||
-                    (this.UseSpecialCharacters != null &&
-                    this.UseSpecialCharacters.Equals(input.UseSpecialCharacters))
-                ) && 
-                (
-                    this.UseCapitalLetters == input.UseCapitalLetters ||
-                    (this.UseCapitalLetters != null &&
-                    this.UseCapitalLetters.Equals(input.UseCapitalLetters))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
-                ) && 
-                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
-                ) && 
-                (
-                    this.Website == input.Website ||
-                    (this.Website != null &&
-                    this.Website.Equals(input.Website))
                 );
         }
 
@@ -501,18 +442,23 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CustomFields != null)
-                    hashCode = hashCode * 59 + this.CustomFields.GetHashCode();
+                if (this.Accessibility != null)
+                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                if (this.ItemAccessibility != null)
-                    hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 hashCode = hashCode * 59 + this.MultilineValue.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.PasswordLength.GetHashCode();
+                if (this.PasswordManagerCustomField != null)
+                    hashCode = hashCode * 59 + this.PasswordManagerCustomField.GetHashCode();
+                if (this.PasswordManagerInjectUrl != null)
+                    hashCode = hashCode * 59 + this.PasswordManagerInjectUrl.GetHashCode();
+                if (this.PasswordManagerPassword != null)
+                    hashCode = hashCode * 59 + this.PasswordManagerPassword.GetHashCode();
+                if (this.PasswordManagerUsername != null)
+                    hashCode = hashCode * 59 + this.PasswordManagerUsername.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
@@ -537,20 +483,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                if (this.UseLowerLetters != null)
-                    hashCode = hashCode * 59 + this.UseLowerLetters.GetHashCode();
-                if (this.UseNumbers != null)
-                    hashCode = hashCode * 59 + this.UseNumbers.GetHashCode();
-                if (this.UseSpecialCharacters != null)
-                    hashCode = hashCode * 59 + this.UseSpecialCharacters.GetHashCode();
-                if (this.UseCapitalLetters != null)
-                    hashCode = hashCode * 59 + this.UseCapitalLetters.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
-                if (this.Website != null)
-                    hashCode = hashCode * 59 + this.Website.GetHashCode();
                 return hashCode;
             }
         }

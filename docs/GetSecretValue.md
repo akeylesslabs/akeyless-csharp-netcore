@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemAccessibility** | **string** | for personal password manager | [optional] 
+**Accessibility** | **string** | for personal password manager | [optional] 
 **Names** | **List&lt;string&gt;** | Secret name | 
 **PrettyPrint** | **bool** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

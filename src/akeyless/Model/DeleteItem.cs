@@ -40,27 +40,34 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteItem" /> class.
         /// </summary>
+        /// <param name="accessibility">for personal password manager.</param>
         /// <param name="deleteImmediately">When delete-in-days&#x3D;-1, must be set (default to false).</param>
         /// <param name="deleteInDays">The number of days to wait before deleting the item (relevant for keys only) (default to 7).</param>
-        /// <param name="itemAccessibility">for personal password manager.</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default) (default to -1).</param>
-        public DeleteItem(bool deleteImmediately = false, long deleteInDays = 7, string itemAccessibility = default(string), string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
+        public DeleteItem(string accessibility = default(string), bool deleteImmediately = false, long deleteInDays = 7, string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for DeleteItem and cannot be null");
             }
             this.Name = name;
+            this.Accessibility = accessibility;
             this.DeleteImmediately = deleteImmediately;
             this.DeleteInDays = deleteInDays;
-            this.ItemAccessibility = itemAccessibility;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "accessibility", EmitDefaultValue = false)]
+        public string Accessibility { get; set; }
 
         /// <summary>
         /// When delete-in-days&#x3D;-1, must be set
@@ -75,13 +82,6 @@ namespace akeyless.Model
         /// <value>The number of days to wait before deleting the item (relevant for keys only)</value>
         [DataMember(Name = "delete-in-days", EmitDefaultValue = false)]
         public long DeleteInDays { get; set; }
-
-        /// <summary>
-        /// for personal password manager
-        /// </summary>
-        /// <value>for personal password manager</value>
-        [DataMember(Name = "item-accessibility", EmitDefaultValue = false)]
-        public string ItemAccessibility { get; set; }
 
         /// <summary>
         /// Item name
@@ -119,9 +119,9 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DeleteItem {\n");
+            sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  DeleteImmediately: ").Append(DeleteImmediately).Append("\n");
             sb.Append("  DeleteInDays: ").Append(DeleteInDays).Append("\n");
-            sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -161,17 +161,17 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Accessibility == input.Accessibility ||
+                    (this.Accessibility != null &&
+                    this.Accessibility.Equals(input.Accessibility))
+                ) && 
+                (
                     this.DeleteImmediately == input.DeleteImmediately ||
                     this.DeleteImmediately.Equals(input.DeleteImmediately)
                 ) && 
                 (
                     this.DeleteInDays == input.DeleteInDays ||
                     this.DeleteInDays.Equals(input.DeleteInDays)
-                ) && 
-                (
-                    this.ItemAccessibility == input.ItemAccessibility ||
-                    (this.ItemAccessibility != null &&
-                    this.ItemAccessibility.Equals(input.ItemAccessibility))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -203,10 +203,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Accessibility != null)
+                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
                 hashCode = hashCode * 59 + this.DeleteImmediately.GetHashCode();
                 hashCode = hashCode * 59 + this.DeleteInDays.GetHashCode();
-                if (this.ItemAccessibility != null)
-                    hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Token != null)

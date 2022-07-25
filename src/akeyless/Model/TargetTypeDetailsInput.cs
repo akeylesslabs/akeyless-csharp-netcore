@@ -83,6 +83,7 @@ namespace akeyless.Model
         /// <param name="gkeServiceAccountKey">gkeServiceAccountKey.</param>
         /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
         /// <param name="host">host.</param>
+        /// <param name="implementationType">implementationType.</param>
         /// <param name="k8sBearerToken">k8sBearerToken.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
         /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
@@ -126,7 +127,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -176,6 +177,7 @@ namespace akeyless.Model
             this.GkeServiceAccountKey = gkeServiceAccountKey;
             this.GkeServiceAccountName = gkeServiceAccountName;
             this.Host = host;
+            this.ImplementationType = implementationType;
             this.K8sBearerToken = k8sBearerToken;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
@@ -514,6 +516,12 @@ namespace akeyless.Model
         public string Host { get; set; }
 
         /// <summary>
+        /// Gets or Sets ImplementationType
+        /// </summary>
+        [DataMember(Name = "implementation_type", EmitDefaultValue = false)]
+        public string ImplementationType { get; set; }
+
+        /// <summary>
         /// Gets or Sets K8sBearerToken
         /// </summary>
         [DataMember(Name = "k8s_bearer_token", EmitDefaultValue = false)]
@@ -832,6 +840,7 @@ namespace akeyless.Model
             sb.Append("  GkeServiceAccountKey: ").Append(GkeServiceAccountKey).Append("\n");
             sb.Append("  GkeServiceAccountName: ").Append(GkeServiceAccountName).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  ImplementationType: ").Append(ImplementationType).Append("\n");
             sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
@@ -1149,6 +1158,11 @@ namespace akeyless.Model
                     this.Host.Equals(input.Host))
                 ) && 
                 (
+                    this.ImplementationType == input.ImplementationType ||
+                    (this.ImplementationType != null &&
+                    this.ImplementationType.Equals(input.ImplementationType))
+                ) && 
+                (
                     this.K8sBearerToken == input.K8sBearerToken ||
                     (this.K8sBearerToken != null &&
                     this.K8sBearerToken.Equals(input.K8sBearerToken))
@@ -1464,6 +1478,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GkeServiceAccountName.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                if (this.ImplementationType != null)
+                    hashCode = hashCode * 59 + this.ImplementationType.GetHashCode();
                 if (this.K8sBearerToken != null)
                     hashCode = hashCode * 59 + this.K8sBearerToken.GetHashCode();
                 if (this.K8sClusterCaCertificate != null)

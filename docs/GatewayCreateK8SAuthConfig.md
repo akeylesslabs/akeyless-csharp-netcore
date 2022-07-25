@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Name** | **string** | K8S Auth config name | 
 **SigningKey** | **string** | The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**TokenExp** | **long** | Time in seconds of expiration of the Akeyless Kube Auth Method token | [optional] 
+**TokenExp** | **long** | Time in seconds of expiration of the Akeyless Kube Auth Method token | [optional] [default to 300]
 **TokenReviewerJwt** | **string** | A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API. | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

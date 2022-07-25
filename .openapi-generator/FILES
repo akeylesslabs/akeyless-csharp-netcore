@@ -6,6 +6,7 @@ docs/APIKeyAccessRules.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
+docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
@@ -113,6 +114,7 @@ docs/CustomerFragment.md
 docs/CustomerFragmentsJson.md
 docs/CustomerFullAddress.md
 docs/DSProducerDetails.md
+docs/DataProtectionSection.md
 docs/DatadogForwardingConfig.md
 docs/Decrypt.md
 docs/DecryptFile.md
@@ -544,6 +546,8 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/AccountGeneralSettingsTests.cs
+src/akeyless.Test/Model/DataProtectionSectionTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -567,6 +571,7 @@ src/akeyless/Model/AWSIAMAccessRules.cs
 src/akeyless/Model/AWSPayload.cs
 src/akeyless/Model/AWSSecretsMigration.cs
 src/akeyless/Model/AbstractOpenAPISchema.cs
+src/akeyless/Model/AccountGeneralSettings.cs
 src/akeyless/Model/AccountObjectVersionSettingsOutput.cs
 src/akeyless/Model/AdminsConfigPart.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
@@ -674,6 +679,7 @@ src/akeyless/Model/CustomerFragment.cs
 src/akeyless/Model/CustomerFragmentsJson.cs
 src/akeyless/Model/CustomerFullAddress.cs
 src/akeyless/Model/DSProducerDetails.cs
+src/akeyless/Model/DataProtectionSection.cs
 src/akeyless/Model/DatadogForwardingConfig.cs
 src/akeyless/Model/Decrypt.cs
 src/akeyless/Model/DecryptFile.cs

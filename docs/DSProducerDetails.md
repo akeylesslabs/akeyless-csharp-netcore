@@ -96,6 +96,7 @@ Name | Type | Description | Notes
 **HanadbRevocationStatements** | **string** |  | [optional] 
 **HostName** | **string** |  | [optional] 
 **HostPort** | **string** |  | [optional] 
+**ImplementationType** | **string** |  | [optional] 
 **IsFixedUser** | **string** |  | [optional] 
 **ItemTargetsAssoc** | [**List&lt;ItemTargetAssociation&gt;**](ItemTargetAssociation.md) |  | [optional] 
 **K8sBearerToken** | **string** |  | [optional] 
