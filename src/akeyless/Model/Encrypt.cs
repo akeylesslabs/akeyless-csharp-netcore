@@ -35,17 +35,28 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Encrypt" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected Encrypt() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Encrypt" /> class.
+        /// </summary>
         /// <param name="displayId">The display id of the key to use in the encryption process.</param>
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
-        /// <param name="keyName">The name of the key to use in the encryption process.</param>
+        /// <param name="itemId">The item id of the key to use in the encryption process.</param>
+        /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="plaintext">Data to be encrypted.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string))
+        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), long itemId = default(long), string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string))
         {
+            // to ensure "keyName" is required (not null)
+            if (keyName == null) {
+                throw new ArgumentNullException("keyName is a required property for Encrypt and cannot be null");
+            }
+            this.KeyName = keyName;
             this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
-            this.KeyName = keyName;
+            this.ItemId = itemId;
             this.Plaintext = plaintext;
             this.Token = token;
             this.UidToken = uidToken;
@@ -66,10 +77,17 @@ namespace akeyless.Model
         public Dictionary<string, string> EncryptionContext { get; set; }
 
         /// <summary>
+        /// The item id of the key to use in the encryption process
+        /// </summary>
+        /// <value>The item id of the key to use in the encryption process</value>
+        [DataMember(Name = "item-id", EmitDefaultValue = false)]
+        public long ItemId { get; set; }
+
+        /// <summary>
         /// The name of the key to use in the encryption process
         /// </summary>
         /// <value>The name of the key to use in the encryption process</value>
-        [DataMember(Name = "key-name", EmitDefaultValue = false)]
+        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
         public string KeyName { get; set; }
 
         /// <summary>
@@ -103,6 +121,7 @@ namespace akeyless.Model
             sb.Append("class Encrypt {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -153,6 +172,10 @@ namespace akeyless.Model
                     this.EncryptionContext.SequenceEqual(input.EncryptionContext)
                 ) && 
                 (
+                    this.ItemId == input.ItemId ||
+                    this.ItemId.Equals(input.ItemId)
+                ) && 
+                (
                     this.KeyName == input.KeyName ||
                     (this.KeyName != null &&
                     this.KeyName.Equals(input.KeyName))
@@ -187,6 +210,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.EncryptionContext != null)
                     hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
+                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Plaintext != null)

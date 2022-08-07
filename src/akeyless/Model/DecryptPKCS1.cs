@@ -41,10 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DecryptPKCS1" /> class.
         /// </summary>
         /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format (required).</param>
-        /// <param name="keyName">The name of the RSA key to use in the decryption process (required).</param>
+        /// <param name="displayId">The display id of the key to use in the decryption process.</param>
+        /// <param name="itemId">The item id of the key to use in the decryption process.</param>
+        /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptPKCS1(string ciphertext = default(string), string keyName = default(string), string token = default(string), string uidToken = default(string))
+        public DecryptPKCS1(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), string keyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null) {
@@ -56,6 +58,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("keyName is a required property for DecryptPKCS1 and cannot be null");
             }
             this.KeyName = keyName;
+            this.DisplayId = displayId;
+            this.ItemId = itemId;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -68,9 +72,23 @@ namespace akeyless.Model
         public string Ciphertext { get; set; }
 
         /// <summary>
-        /// The name of the RSA key to use in the decryption process
+        /// The display id of the key to use in the decryption process
         /// </summary>
-        /// <value>The name of the RSA key to use in the decryption process</value>
+        /// <value>The display id of the key to use in the decryption process</value>
+        [DataMember(Name = "display-id", EmitDefaultValue = false)]
+        public string DisplayId { get; set; }
+
+        /// <summary>
+        /// The item id of the key to use in the decryption process
+        /// </summary>
+        /// <value>The item id of the key to use in the decryption process</value>
+        [DataMember(Name = "item-id", EmitDefaultValue = false)]
+        public long ItemId { get; set; }
+
+        /// <summary>
+        /// The name of the key to use in the decryption process
+        /// </summary>
+        /// <value>The name of the key to use in the decryption process</value>
         [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
         public string KeyName { get; set; }
 
@@ -97,6 +115,8 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class DecryptPKCS1 {\n");
             sb.Append("  Ciphertext: ").Append(Ciphertext).Append("\n");
+            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -140,6 +160,15 @@ namespace akeyless.Model
                     this.Ciphertext.Equals(input.Ciphertext))
                 ) && 
                 (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.ItemId == input.ItemId ||
+                    this.ItemId.Equals(input.ItemId)
+                ) && 
+                (
                     this.KeyName == input.KeyName ||
                     (this.KeyName != null &&
                     this.KeyName.Equals(input.KeyName))
@@ -167,6 +196,9 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Ciphertext != null)
                     hashCode = hashCode * 59 + this.Ciphertext.GetHashCode();
+                if (this.DisplayId != null)
+                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Token != null)

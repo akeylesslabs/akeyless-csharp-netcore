@@ -41,18 +41,21 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateK8SAuthConfig" /> class.
         /// </summary>
         /// <param name="accessId">The access ID of the Kubernetes auth method (required).</param>
+        /// <param name="clusterApiType">Cluster access type. options: [native_k8s, rancher] (default to &quot;native_k8s&quot;).</param>
         /// <param name="configEncryptionKeyName">Config encryption key.</param>
         /// <param name="k8sCaCert">The CA Cert (in PEM format) to use to call into the kubernetes API server.</param>
         /// <param name="k8sHost">The URL of the kubernetes API server (required).</param>
         /// <param name="k8sIssuer">The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer..</param>
         /// <param name="name">K8S Auth config name (required).</param>
         /// <param name="newName">K8S Auth config new name (required).</param>
+        /// <param name="rancherApiKey">The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only).</param>
+        /// <param name="rancherClusterId">The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only).</param>
         /// <param name="signingKey">The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token (default to 300).</param>
-        /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
+        /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string newName = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
+        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string newName = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null) {
@@ -79,9 +82,13 @@ namespace akeyless.Model
                 throw new ArgumentNullException("signingKey is a required property for GatewayUpdateK8SAuthConfig and cannot be null");
             }
             this.SigningKey = signingKey;
+            // use default value if no "clusterApiType" provided
+            this.ClusterApiType = clusterApiType ?? "native_k8s";
             this.ConfigEncryptionKeyName = configEncryptionKeyName;
             this.K8sCaCert = k8sCaCert;
             this.K8sIssuer = k8sIssuer;
+            this.RancherApiKey = rancherApiKey;
+            this.RancherClusterId = rancherClusterId;
             this.Token = token;
             this.TokenExp = tokenExp;
             this.TokenReviewerJwt = tokenReviewerJwt;
@@ -94,6 +101,13 @@ namespace akeyless.Model
         /// <value>The access ID of the Kubernetes auth method</value>
         [DataMember(Name = "access-id", IsRequired = true, EmitDefaultValue = false)]
         public string AccessId { get; set; }
+
+        /// <summary>
+        /// Cluster access type. options: [native_k8s, rancher]
+        /// </summary>
+        /// <value>Cluster access type. options: [native_k8s, rancher]</value>
+        [DataMember(Name = "cluster-api-type", EmitDefaultValue = false)]
+        public string ClusterApiType { get; set; }
 
         /// <summary>
         /// Config encryption key
@@ -138,6 +152,20 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only)
+        /// </summary>
+        /// <value>The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only)</value>
+        [DataMember(Name = "rancher-api-key", EmitDefaultValue = false)]
+        public string RancherApiKey { get; set; }
+
+        /// <summary>
+        /// The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only)
+        /// </summary>
+        /// <value>The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only)</value>
+        [DataMember(Name = "rancher-cluster-id", EmitDefaultValue = false)]
+        public string RancherClusterId { get; set; }
+
+        /// <summary>
         /// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
         /// </summary>
         /// <value>The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth</value>
@@ -159,9 +187,9 @@ namespace akeyless.Model
         public long TokenExp { get; set; }
 
         /// <summary>
-        /// A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
+        /// A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
         /// </summary>
-        /// <value>A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.</value>
+        /// <value>A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.</value>
         [DataMember(Name = "token-reviewer-jwt", EmitDefaultValue = false)]
         public string TokenReviewerJwt { get; set; }
 
@@ -181,12 +209,15 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayUpdateK8SAuthConfig {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("  ClusterApiType: ").Append(ClusterApiType).Append("\n");
             sb.Append("  ConfigEncryptionKeyName: ").Append(ConfigEncryptionKeyName).Append("\n");
             sb.Append("  K8sCaCert: ").Append(K8sCaCert).Append("\n");
             sb.Append("  K8sHost: ").Append(K8sHost).Append("\n");
             sb.Append("  K8sIssuer: ").Append(K8sIssuer).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  RancherApiKey: ").Append(RancherApiKey).Append("\n");
+            sb.Append("  RancherClusterId: ").Append(RancherClusterId).Append("\n");
             sb.Append("  SigningKey: ").Append(SigningKey).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExp: ").Append(TokenExp).Append("\n");
@@ -232,6 +263,11 @@ namespace akeyless.Model
                     this.AccessId.Equals(input.AccessId))
                 ) && 
                 (
+                    this.ClusterApiType == input.ClusterApiType ||
+                    (this.ClusterApiType != null &&
+                    this.ClusterApiType.Equals(input.ClusterApiType))
+                ) && 
+                (
                     this.ConfigEncryptionKeyName == input.ConfigEncryptionKeyName ||
                     (this.ConfigEncryptionKeyName != null &&
                     this.ConfigEncryptionKeyName.Equals(input.ConfigEncryptionKeyName))
@@ -260,6 +296,16 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
+                ) && 
+                (
+                    this.RancherApiKey == input.RancherApiKey ||
+                    (this.RancherApiKey != null &&
+                    this.RancherApiKey.Equals(input.RancherApiKey))
+                ) && 
+                (
+                    this.RancherClusterId == input.RancherClusterId ||
+                    (this.RancherClusterId != null &&
+                    this.RancherClusterId.Equals(input.RancherClusterId))
                 ) && 
                 (
                     this.SigningKey == input.SigningKey ||
@@ -298,6 +344,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AccessId != null)
                     hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                if (this.ClusterApiType != null)
+                    hashCode = hashCode * 59 + this.ClusterApiType.GetHashCode();
                 if (this.ConfigEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ConfigEncryptionKeyName.GetHashCode();
                 if (this.K8sCaCert != null)
@@ -310,6 +358,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                if (this.RancherApiKey != null)
+                    hashCode = hashCode * 59 + this.RancherApiKey.GetHashCode();
+                if (this.RancherClusterId != null)
+                    hashCode = hashCode * 59 + this.RancherClusterId.GetHashCode();
                 if (this.SigningKey != null)
                     hashCode = hashCode * 59 + this.SigningKey.GetHashCode();
                 if (this.Token != null)

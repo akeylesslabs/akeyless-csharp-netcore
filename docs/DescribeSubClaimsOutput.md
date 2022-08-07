@@ -1,12 +1,10 @@
-# akeyless.Model.CreateKeyOutput
+# akeyless.Model.DescribeSubClaimsOutput
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DisplayId** | **string** |  | [optional] 
-**FragmentResults** | **List&lt;long&gt;** |  | [optional] 
-**ItemId** | **long** |  | [optional] 
+**SubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

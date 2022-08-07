@@ -27,66 +27,21 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DescribeItem
+    /// describe-sub-claims Get the sub-claims associated with the provided token or authentication profile
     /// </summary>
-    [DataContract(Name = "describeItem")]
-    public partial class DescribeItem : IEquatable<DescribeItem>, IValidatableObject
+    [DataContract(Name = "describeSubClaims")]
+    public partial class DescribeSubClaims : IEquatable<DescribeSubClaims>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DescribeItem" /> class.
+        /// Initializes a new instance of the <see cref="DescribeSubClaims" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected DescribeItem() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DescribeItem" /> class.
-        /// </summary>
-        /// <param name="displayId">The display id of the item.</param>
-        /// <param name="itemId">Item id of the item.</param>
-        /// <param name="name">Item name (required).</param>
-        /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string displayId = default(string), long itemId = default(long), string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeSubClaims(string token = default(string), string uidToken = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for DescribeItem and cannot be null");
-            }
-            this.Name = name;
-            this.DisplayId = displayId;
-            this.ItemId = itemId;
-            this.ShowVersions = showVersions;
             this.Token = token;
             this.UidToken = uidToken;
         }
-
-        /// <summary>
-        /// The display id of the item
-        /// </summary>
-        /// <value>The display id of the item</value>
-        [DataMember(Name = "display-id", EmitDefaultValue = false)]
-        public string DisplayId { get; set; }
-
-        /// <summary>
-        /// Item id of the item
-        /// </summary>
-        /// <value>Item id of the item</value>
-        [DataMember(Name = "item-id", EmitDefaultValue = false)]
-        public long ItemId { get; set; }
-
-        /// <summary>
-        /// Item name
-        /// </summary>
-        /// <value>Item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Include all item versions in reply
-        /// </summary>
-        /// <value>Include all item versions in reply</value>
-        [DataMember(Name = "show-versions", EmitDefaultValue = true)]
-        public bool ShowVersions { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -109,11 +64,7 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DescribeItem {\n");
-            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
-            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ShowVersions: ").Append(ShowVersions).Append("\n");
+            sb.Append("class DescribeSubClaims {\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -136,38 +87,20 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DescribeItem);
+            return this.Equals(input as DescribeSubClaims);
         }
 
         /// <summary>
-        /// Returns true if DescribeItem instances are equal
+        /// Returns true if DescribeSubClaims instances are equal
         /// </summary>
-        /// <param name="input">Instance of DescribeItem to be compared</param>
+        /// <param name="input">Instance of DescribeSubClaims to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DescribeItem input)
+        public bool Equals(DescribeSubClaims input)
         {
             if (input == null)
                 return false;
 
             return 
-                (
-                    this.DisplayId == input.DisplayId ||
-                    (this.DisplayId != null &&
-                    this.DisplayId.Equals(input.DisplayId))
-                ) && 
-                (
-                    this.ItemId == input.ItemId ||
-                    this.ItemId.Equals(input.ItemId)
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.ShowVersions == input.ShowVersions ||
-                    this.ShowVersions.Equals(input.ShowVersions)
-                ) && 
                 (
                     this.Token == input.Token ||
                     (this.Token != null &&
@@ -189,12 +122,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.ShowVersions.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

@@ -144,6 +144,8 @@ docs/DeleteTargets.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
+docs/DescribeSubClaims.md
+docs/DescribeSubClaimsOutput.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
@@ -529,8 +531,6 @@ docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
-docs/UpdateTokenizer.md
-docs/UpdateTokenizerOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
@@ -546,8 +546,8 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/AccountGeneralSettingsTests.cs
-src/akeyless.Test/Model/DataProtectionSectionTests.cs
+src/akeyless.Test/Model/DescribeSubClaimsOutputTests.cs
+src/akeyless.Test/Model/DescribeSubClaimsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -709,6 +709,8 @@ src/akeyless/Model/DeleteTargets.cs
 src/akeyless/Model/DescribeItem.cs
 src/akeyless/Model/DescribePermissions.cs
 src/akeyless/Model/DescribePermissionsOutput.cs
+src/akeyless/Model/DescribeSubClaims.cs
+src/akeyless/Model/DescribeSubClaimsOutput.cs
 src/akeyless/Model/Detokenize.cs
 src/akeyless/Model/DetokenizeOutput.cs
 src/akeyless/Model/DynamicSecretProducerInfo.cs
@@ -1094,8 +1096,6 @@ src/akeyless/Model/UpdateSecretValOutput.cs
 src/akeyless/Model/UpdateTarget.cs
 src/akeyless/Model/UpdateTargetDetailsOutput.cs
 src/akeyless/Model/UpdateTargetOutput.cs
-src/akeyless/Model/UpdateTokenizer.cs
-src/akeyless/Model/UpdateTokenizerOutput.cs
 src/akeyless/Model/UpdateWebTarget.cs
 src/akeyless/Model/UpdateWebTargetDetails.cs
 src/akeyless/Model/UpdateWebTargetOutput.cs

@@ -35,13 +35,49 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DecryptFile" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected DecryptFile() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DecryptFile" /> class.
+        /// </summary>
+        /// <param name="displayId">The display id of the key to use in the decryption process.</param>
+        /// <param name="itemId">The item id of the key to use in the decryption process.</param>
+        /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptFile(string token = default(string), string uidToken = default(string))
+        public DecryptFile(string displayId = default(string), long itemId = default(long), string keyName = default(string), string token = default(string), string uidToken = default(string))
         {
+            // to ensure "keyName" is required (not null)
+            if (keyName == null) {
+                throw new ArgumentNullException("keyName is a required property for DecryptFile and cannot be null");
+            }
+            this.KeyName = keyName;
+            this.DisplayId = displayId;
+            this.ItemId = itemId;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// The display id of the key to use in the decryption process
+        /// </summary>
+        /// <value>The display id of the key to use in the decryption process</value>
+        [DataMember(Name = "display-id", EmitDefaultValue = false)]
+        public string DisplayId { get; set; }
+
+        /// <summary>
+        /// The item id of the key to use in the decryption process
+        /// </summary>
+        /// <value>The item id of the key to use in the decryption process</value>
+        [DataMember(Name = "item-id", EmitDefaultValue = false)]
+        public long ItemId { get; set; }
+
+        /// <summary>
+        /// The name of the key to use in the decryption process
+        /// </summary>
+        /// <value>The name of the key to use in the decryption process</value>
+        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
+        public string KeyName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -65,6 +101,9 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DecryptFile {\n");
+            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
+            sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -102,6 +141,20 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.ItemId == input.ItemId ||
+                    this.ItemId.Equals(input.ItemId)
+                ) && 
+                (
+                    this.KeyName == input.KeyName ||
+                    (this.KeyName != null &&
+                    this.KeyName.Equals(input.KeyName))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -122,6 +175,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DisplayId != null)
+                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                if (this.KeyName != null)
+                    hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

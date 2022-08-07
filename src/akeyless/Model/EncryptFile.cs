@@ -40,13 +40,15 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EncryptFile" /> class.
         /// </summary>
+        /// <param name="displayId">The display id of the key to use in the encryption process.</param>
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
         /// <param name="_in">Path to the file to be encrypted. If not provided, the content will be taken from stdin (required).</param>
+        /// <param name="itemId">The item id of the key to use in the encryption process.</param>
         /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="_out">Path to the output file. If not provided, the output will be sent to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EncryptFile(Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
+        public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null) {
@@ -58,11 +60,20 @@ namespace akeyless.Model
                 throw new ArgumentNullException("keyName is a required property for EncryptFile and cannot be null");
             }
             this.KeyName = keyName;
+            this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
+            this.ItemId = itemId;
             this.Out = _out;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// The display id of the key to use in the encryption process
+        /// </summary>
+        /// <value>The display id of the key to use in the encryption process</value>
+        [DataMember(Name = "display-id", EmitDefaultValue = false)]
+        public string DisplayId { get; set; }
 
         /// <summary>
         /// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
@@ -77,6 +88,13 @@ namespace akeyless.Model
         /// <value>Path to the file to be encrypted. If not provided, the content will be taken from stdin</value>
         [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = false)]
         public string In { get; set; }
+
+        /// <summary>
+        /// The item id of the key to use in the encryption process
+        /// </summary>
+        /// <value>The item id of the key to use in the encryption process</value>
+        [DataMember(Name = "item-id", EmitDefaultValue = false)]
+        public long ItemId { get; set; }
 
         /// <summary>
         /// The name of the key to use in the encryption process
@@ -114,8 +132,10 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class EncryptFile {\n");
+            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
             sb.Append("  In: ").Append(In).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Out: ").Append(Out).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -155,6 +175,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
                     this.EncryptionContext == input.EncryptionContext ||
                     this.EncryptionContext != null &&
                     input.EncryptionContext != null &&
@@ -164,6 +189,10 @@ namespace akeyless.Model
                     this.In == input.In ||
                     (this.In != null &&
                     this.In.Equals(input.In))
+                ) && 
+                (
+                    this.ItemId == input.ItemId ||
+                    this.ItemId.Equals(input.ItemId)
                 ) && 
                 (
                     this.KeyName == input.KeyName ||
@@ -196,10 +225,13 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DisplayId != null)
+                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.EncryptionContext != null)
                     hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
                 if (this.In != null)
                     hashCode = hashCode * 59 + this.In.GetHashCode();
+                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Out != null)

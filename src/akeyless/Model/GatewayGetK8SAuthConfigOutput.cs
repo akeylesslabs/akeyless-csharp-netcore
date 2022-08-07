@@ -38,21 +38,25 @@ namespace akeyless.Model
         /// <param name="amTokenExpiration">AuthMethodTokenExpiration is time in seconds of expiration of the Akeyless Kube Auth Method token.</param>
         /// <param name="authMethodAccessId">AuthMethodAccessId of the Kubernetes auth method.</param>
         /// <param name="authMethodPrvKeyPem">AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method.</param>
+        /// <param name="clusterApiType">ClusterApiType defines types of API access to cluster.</param>
         /// <param name="disableIssValidation">DisableISSValidation is optional parameter to disable ISS validation.</param>
         /// <param name="id">id.</param>
         /// <param name="k8sCaCert">K8SCACert is the CA Cert to use to call into the kubernetes API.</param>
         /// <param name="k8sHost">K8SHost is the url string for the kubernetes API.</param>
         /// <param name="k8sIssuer">K8SIssuer is the claim that specifies who issued the Kubernetes token.</param>
         /// <param name="k8sPubKeysPem">K8SPublicKeysPEM is the list of public key in PEM format.</param>
-        /// <param name="k8sTokenReviewerJwt">K8STokenReviewerJW\&quot;K8S Auth config %v successfully created\\n\&quot;, clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call.</param>
+        /// <param name="k8sTokenReviewerJwt">K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call.</param>
         /// <param name="name">name.</param>
         /// <param name="protectionKey">protectionKey.</param>
+        /// <param name="rancherApiKey">RancherApiKey the bear token for clusterApiTypeRancher.</param>
+        /// <param name="rancherClusterId">RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher).</param>
         /// <param name="useLocalCaJwt">UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod.</param>
-        public GatewayGetK8SAuthConfigOutput(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string protectionKey = default(string), bool useLocalCaJwt = default(bool))
+        public GatewayGetK8SAuthConfigOutput(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), string clusterApiType = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string protectionKey = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), bool useLocalCaJwt = default(bool))
         {
             this.AmTokenExpiration = amTokenExpiration;
             this.AuthMethodAccessId = authMethodAccessId;
             this.AuthMethodPrvKeyPem = authMethodPrvKeyPem;
+            this.ClusterApiType = clusterApiType;
             this.DisableIssValidation = disableIssValidation;
             this.Id = id;
             this.K8sCaCert = k8sCaCert;
@@ -62,6 +66,8 @@ namespace akeyless.Model
             this.K8sTokenReviewerJwt = k8sTokenReviewerJwt;
             this.Name = name;
             this.ProtectionKey = protectionKey;
+            this.RancherApiKey = rancherApiKey;
+            this.RancherClusterId = rancherClusterId;
             this.UseLocalCaJwt = useLocalCaJwt;
         }
 
@@ -85,6 +91,13 @@ namespace akeyless.Model
         /// <value>AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method</value>
         [DataMember(Name = "auth_method_prv_key_pem", EmitDefaultValue = false)]
         public string AuthMethodPrvKeyPem { get; set; }
+
+        /// <summary>
+        /// ClusterApiType defines types of API access to cluster
+        /// </summary>
+        /// <value>ClusterApiType defines types of API access to cluster</value>
+        [DataMember(Name = "cluster_api_type", EmitDefaultValue = false)]
+        public string ClusterApiType { get; set; }
 
         /// <summary>
         /// DisableISSValidation is optional parameter to disable ISS validation
@@ -128,9 +141,9 @@ namespace akeyless.Model
         public List<string> K8sPubKeysPem { get; set; }
 
         /// <summary>
-        /// K8STokenReviewerJW\&quot;K8S Auth config %v successfully created\\n\&quot;, clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call
+        /// K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call
         /// </summary>
-        /// <value>K8STokenReviewerJW\&quot;K8S Auth config %v successfully created\\n\&quot;, clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call</value>
+        /// <value>K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call</value>
         [DataMember(Name = "k8s_token_reviewer_jwt", EmitDefaultValue = false)]
         public string K8sTokenReviewerJwt { get; set; }
 
@@ -145,6 +158,20 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "protection_key", EmitDefaultValue = false)]
         public string ProtectionKey { get; set; }
+
+        /// <summary>
+        /// RancherApiKey the bear token for clusterApiTypeRancher
+        /// </summary>
+        /// <value>RancherApiKey the bear token for clusterApiTypeRancher</value>
+        [DataMember(Name = "rancher_api_key", EmitDefaultValue = false)]
+        public string RancherApiKey { get; set; }
+
+        /// <summary>
+        /// RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
+        /// </summary>
+        /// <value>RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)</value>
+        [DataMember(Name = "rancher_cluster_id", EmitDefaultValue = false)]
+        public string RancherClusterId { get; set; }
 
         /// <summary>
         /// UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
@@ -164,6 +191,7 @@ namespace akeyless.Model
             sb.Append("  AmTokenExpiration: ").Append(AmTokenExpiration).Append("\n");
             sb.Append("  AuthMethodAccessId: ").Append(AuthMethodAccessId).Append("\n");
             sb.Append("  AuthMethodPrvKeyPem: ").Append(AuthMethodPrvKeyPem).Append("\n");
+            sb.Append("  ClusterApiType: ").Append(ClusterApiType).Append("\n");
             sb.Append("  DisableIssValidation: ").Append(DisableIssValidation).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  K8sCaCert: ").Append(K8sCaCert).Append("\n");
@@ -173,6 +201,8 @@ namespace akeyless.Model
             sb.Append("  K8sTokenReviewerJwt: ").Append(K8sTokenReviewerJwt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
+            sb.Append("  RancherApiKey: ").Append(RancherApiKey).Append("\n");
+            sb.Append("  RancherClusterId: ").Append(RancherClusterId).Append("\n");
             sb.Append("  UseLocalCaJwt: ").Append(UseLocalCaJwt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -223,6 +253,11 @@ namespace akeyless.Model
                     this.AuthMethodPrvKeyPem.Equals(input.AuthMethodPrvKeyPem))
                 ) && 
                 (
+                    this.ClusterApiType == input.ClusterApiType ||
+                    (this.ClusterApiType != null &&
+                    this.ClusterApiType.Equals(input.ClusterApiType))
+                ) && 
+                (
                     this.DisableIssValidation == input.DisableIssValidation ||
                     this.DisableIssValidation.Equals(input.DisableIssValidation)
                 ) && 
@@ -268,6 +303,16 @@ namespace akeyless.Model
                     this.ProtectionKey.Equals(input.ProtectionKey))
                 ) && 
                 (
+                    this.RancherApiKey == input.RancherApiKey ||
+                    (this.RancherApiKey != null &&
+                    this.RancherApiKey.Equals(input.RancherApiKey))
+                ) && 
+                (
+                    this.RancherClusterId == input.RancherClusterId ||
+                    (this.RancherClusterId != null &&
+                    this.RancherClusterId.Equals(input.RancherClusterId))
+                ) && 
+                (
                     this.UseLocalCaJwt == input.UseLocalCaJwt ||
                     this.UseLocalCaJwt.Equals(input.UseLocalCaJwt)
                 );
@@ -287,6 +332,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AuthMethodAccessId.GetHashCode();
                 if (this.AuthMethodPrvKeyPem != null)
                     hashCode = hashCode * 59 + this.AuthMethodPrvKeyPem.GetHashCode();
+                if (this.ClusterApiType != null)
+                    hashCode = hashCode * 59 + this.ClusterApiType.GetHashCode();
                 hashCode = hashCode * 59 + this.DisableIssValidation.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
@@ -304,6 +351,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                if (this.RancherApiKey != null)
+                    hashCode = hashCode * 59 + this.RancherApiKey.GetHashCode();
+                if (this.RancherClusterId != null)
+                    hashCode = hashCode * 59 + this.RancherClusterId.GetHashCode();
                 hashCode = hashCode * 59 + this.UseLocalCaJwt.GetHashCode();
                 return hashCode;
             }

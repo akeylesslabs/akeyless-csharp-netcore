@@ -40,31 +40,33 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSalesforceTarget" /> class.
         /// </summary>
+        /// <param name="appPrivateKeyData">Base64 encoded PEM of the connected app private key (relevant for JWT auth only).</param>
+        /// <param name="authFlow">type of the auth flow (&#39;jwt&#39; / &#39;user-password&#39;) (required).</param>
         /// <param name="caCertData">Base64 encoded PEM cert to use when uploading a new key to Salesforce.</param>
         /// <param name="caCertName">name of the certificate in Salesforce tenant to use when uploading new key.</param>
         /// <param name="clientId">Client ID of the oauth2 app to use for connecting to Salesforce (required).</param>
-        /// <param name="clientSecret">Client secret of the oauth2 app to use for connecting to Salesforce (required).</param>
+        /// <param name="clientSecret">Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow).</param>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="email">The email of the user attached to the oauth2 app used for connecting to Salesforce (required).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="password">The password of the user attached to the oauth2 app used for connecting to Salesforce (required).</param>
-        /// <param name="securityToken">The security token of the user attached to the oauth2 app used for connecting to Salesforce (required).</param>
+        /// <param name="password">The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow).</param>
+        /// <param name="securityToken">The security token of the user attached to the oauth2 app used for connecting to Salesforce  (required for user-password flow).</param>
         /// <param name="tenantUrl">Url of the Salesforce tenant (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateSalesforceTarget(string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string email = default(string), string key = default(string), string name = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string))
+        public CreateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string email = default(string), string key = default(string), string name = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string))
         {
+            // to ensure "authFlow" is required (not null)
+            if (authFlow == null) {
+                throw new ArgumentNullException("authFlow is a required property for CreateSalesforceTarget and cannot be null");
+            }
+            this.AuthFlow = authFlow;
             // to ensure "clientId" is required (not null)
             if (clientId == null) {
                 throw new ArgumentNullException("clientId is a required property for CreateSalesforceTarget and cannot be null");
             }
             this.ClientId = clientId;
-            // to ensure "clientSecret" is required (not null)
-            if (clientSecret == null) {
-                throw new ArgumentNullException("clientSecret is a required property for CreateSalesforceTarget and cannot be null");
-            }
-            this.ClientSecret = clientSecret;
             // to ensure "email" is required (not null)
             if (email == null) {
                 throw new ArgumentNullException("email is a required property for CreateSalesforceTarget and cannot be null");
@@ -75,28 +77,36 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for CreateSalesforceTarget and cannot be null");
             }
             this.Name = name;
-            // to ensure "password" is required (not null)
-            if (password == null) {
-                throw new ArgumentNullException("password is a required property for CreateSalesforceTarget and cannot be null");
-            }
-            this.Password = password;
-            // to ensure "securityToken" is required (not null)
-            if (securityToken == null) {
-                throw new ArgumentNullException("securityToken is a required property for CreateSalesforceTarget and cannot be null");
-            }
-            this.SecurityToken = securityToken;
             // to ensure "tenantUrl" is required (not null)
             if (tenantUrl == null) {
                 throw new ArgumentNullException("tenantUrl is a required property for CreateSalesforceTarget and cannot be null");
             }
             this.TenantUrl = tenantUrl;
+            this.AppPrivateKeyData = appPrivateKeyData;
             this.CaCertData = caCertData;
             this.CaCertName = caCertName;
+            this.ClientSecret = clientSecret;
             this.Comment = comment;
             this.Key = key;
+            this.Password = password;
+            this.SecurityToken = securityToken;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Base64 encoded PEM of the connected app private key (relevant for JWT auth only)
+        /// </summary>
+        /// <value>Base64 encoded PEM of the connected app private key (relevant for JWT auth only)</value>
+        [DataMember(Name = "app-private-key-data", EmitDefaultValue = false)]
+        public string AppPrivateKeyData { get; set; }
+
+        /// <summary>
+        /// type of the auth flow (&#39;jwt&#39; / &#39;user-password&#39;)
+        /// </summary>
+        /// <value>type of the auth flow (&#39;jwt&#39; / &#39;user-password&#39;)</value>
+        [DataMember(Name = "auth-flow", IsRequired = true, EmitDefaultValue = false)]
+        public string AuthFlow { get; set; }
 
         /// <summary>
         /// Base64 encoded PEM cert to use when uploading a new key to Salesforce
@@ -120,10 +130,10 @@ namespace akeyless.Model
         public string ClientId { get; set; }
 
         /// <summary>
-        /// Client secret of the oauth2 app to use for connecting to Salesforce
+        /// Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)
         /// </summary>
-        /// <value>Client secret of the oauth2 app to use for connecting to Salesforce</value>
-        [DataMember(Name = "client-secret", IsRequired = true, EmitDefaultValue = false)]
+        /// <value>Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)</value>
+        [DataMember(Name = "client-secret", EmitDefaultValue = false)]
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -155,17 +165,17 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The password of the user attached to the oauth2 app used for connecting to Salesforce
+        /// The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow)
         /// </summary>
-        /// <value>The password of the user attached to the oauth2 app used for connecting to Salesforce</value>
-        [DataMember(Name = "password", IsRequired = true, EmitDefaultValue = false)]
+        /// <value>The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow)</value>
+        [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
 
         /// <summary>
-        /// The security token of the user attached to the oauth2 app used for connecting to Salesforce
+        /// The security token of the user attached to the oauth2 app used for connecting to Salesforce  (required for user-password flow)
         /// </summary>
-        /// <value>The security token of the user attached to the oauth2 app used for connecting to Salesforce</value>
-        [DataMember(Name = "security-token", IsRequired = true, EmitDefaultValue = false)]
+        /// <value>The security token of the user attached to the oauth2 app used for connecting to Salesforce  (required for user-password flow)</value>
+        [DataMember(Name = "security-token", EmitDefaultValue = false)]
         public string SecurityToken { get; set; }
 
         /// <summary>
@@ -197,6 +207,8 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateSalesforceTarget {\n");
+            sb.Append("  AppPrivateKeyData: ").Append(AppPrivateKeyData).Append("\n");
+            sb.Append("  AuthFlow: ").Append(AuthFlow).Append("\n");
             sb.Append("  CaCertData: ").Append(CaCertData).Append("\n");
             sb.Append("  CaCertName: ").Append(CaCertName).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
@@ -244,6 +256,16 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.AppPrivateKeyData == input.AppPrivateKeyData ||
+                    (this.AppPrivateKeyData != null &&
+                    this.AppPrivateKeyData.Equals(input.AppPrivateKeyData))
+                ) && 
+                (
+                    this.AuthFlow == input.AuthFlow ||
+                    (this.AuthFlow != null &&
+                    this.AuthFlow.Equals(input.AuthFlow))
+                ) && 
                 (
                     this.CaCertData == input.CaCertData ||
                     (this.CaCertData != null &&
@@ -320,6 +342,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AppPrivateKeyData != null)
+                    hashCode = hashCode * 59 + this.AppPrivateKeyData.GetHashCode();
+                if (this.AuthFlow != null)
+                    hashCode = hashCode * 59 + this.AuthFlow.GetHashCode();
                 if (this.CaCertData != null)
                     hashCode = hashCode * 59 + this.CaCertData.GetHashCode();
                 if (this.CaCertName != null)

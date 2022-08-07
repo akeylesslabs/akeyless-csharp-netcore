@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="dockerhubPassword">DockerhubPassword is either the user&#39;s password access token to manage the repository.</param>
-        /// <param name="dockerhubTokenScopes">Access token scopes list (comma seperated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;.</param>
+        /// <param name="dockerhubTokenScopes">Access token scopes list (comma-separated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;.</param>
         /// <param name="dockerhubUsername">DockerhubUsername is the name of the user in dockerhub.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -86,9 +86,9 @@ namespace akeyless.Model
         public string DockerhubPassword { get; set; }
 
         /// <summary>
-        /// Access token scopes list (comma seperated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;
+        /// Access token scopes list (comma-separated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;
         /// </summary>
-        /// <value>Access token scopes list (comma seperated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;</value>
+        /// <value>Access token scopes list (comma-separated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;</value>
         [DataMember(Name = "dockerhub-token-scopes", EmitDefaultValue = false)]
         public string DockerhubTokenScopes { get; set; }
 

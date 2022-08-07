@@ -27,41 +27,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateKeyOutput
+    /// DescribeSubClaimsOutput
     /// </summary>
-    [DataContract(Name = "createKeyOutput")]
-    public partial class CreateKeyOutput : IEquatable<CreateKeyOutput>, IValidatableObject
+    [DataContract(Name = "describeSubClaimsOutput")]
+    public partial class DescribeSubClaimsOutput : IEquatable<DescribeSubClaimsOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateKeyOutput" /> class.
+        /// Initializes a new instance of the <see cref="DescribeSubClaimsOutput" /> class.
         /// </summary>
-        /// <param name="displayId">displayId.</param>
-        /// <param name="fragmentResults">fragmentResults.</param>
-        /// <param name="itemId">itemId.</param>
-        public CreateKeyOutput(string displayId = default(string), List<long> fragmentResults = default(List<long>), long itemId = default(long))
+        /// <param name="subClaims">subClaims.</param>
+        public DescribeSubClaimsOutput(Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
         {
-            this.DisplayId = displayId;
-            this.FragmentResults = fragmentResults;
-            this.ItemId = itemId;
+            this.SubClaims = subClaims;
         }
 
         /// <summary>
-        /// Gets or Sets DisplayId
+        /// Gets or Sets SubClaims
         /// </summary>
-        [DataMember(Name = "display_id", EmitDefaultValue = false)]
-        public string DisplayId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FragmentResults
-        /// </summary>
-        [DataMember(Name = "fragment_results", EmitDefaultValue = false)]
-        public List<long> FragmentResults { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ItemId
-        /// </summary>
-        [DataMember(Name = "item_id", EmitDefaultValue = false)]
-        public long ItemId { get; set; }
+        [DataMember(Name = "sub_claims", EmitDefaultValue = false)]
+        public Dictionary<string, List<string>> SubClaims { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +54,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateKeyOutput {\n");
-            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
-            sb.Append("  FragmentResults: ").Append(FragmentResults).Append("\n");
-            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
+            sb.Append("class DescribeSubClaimsOutput {\n");
+            sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,34 +76,25 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateKeyOutput);
+            return this.Equals(input as DescribeSubClaimsOutput);
         }
 
         /// <summary>
-        /// Returns true if CreateKeyOutput instances are equal
+        /// Returns true if DescribeSubClaimsOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateKeyOutput to be compared</param>
+        /// <param name="input">Instance of DescribeSubClaimsOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateKeyOutput input)
+        public bool Equals(DescribeSubClaimsOutput input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.DisplayId == input.DisplayId ||
-                    (this.DisplayId != null &&
-                    this.DisplayId.Equals(input.DisplayId))
-                ) && 
-                (
-                    this.FragmentResults == input.FragmentResults ||
-                    this.FragmentResults != null &&
-                    input.FragmentResults != null &&
-                    this.FragmentResults.SequenceEqual(input.FragmentResults)
-                ) && 
-                (
-                    this.ItemId == input.ItemId ||
-                    this.ItemId.Equals(input.ItemId)
+                    this.SubClaims == input.SubClaims ||
+                    this.SubClaims != null &&
+                    input.SubClaims != null &&
+                    this.SubClaims.SequenceEqual(input.SubClaims)
                 );
         }
 
@@ -134,11 +107,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                if (this.FragmentResults != null)
-                    hashCode = hashCode * 59 + this.FragmentResults.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                if (this.SubClaims != null)
+                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
                 return hashCode;
             }
         }

@@ -62,6 +62,7 @@ Method | HTTP request | Description
 [**DeleteTargets**](V2Api.md#deletetargets) | **POST** /delete-targets | 
 [**DescribeItem**](V2Api.md#describeitem) | **POST** /describe-item | 
 [**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions | 
+[**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize | 
 [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
 [**EncryptPKCS1**](V2Api.md#encryptpkcs1) | **POST** /encrypt-pkcs1 | 
@@ -84,7 +85,7 @@ Method | HTTP request | Description
 [**GatewayCreateProducerMSSQL**](V2Api.md#gatewaycreateproducermssql) | **POST** /gateway-create-producer-mssql | 
 [**GatewayCreateProducerMongo**](V2Api.md#gatewaycreateproducermongo) | **POST** /gateway-create-producer-mongo | 
 [**GatewayCreateProducerMySQL**](V2Api.md#gatewaycreateproducermysql) | **POST** /gateway-create-producer-mysql | 
-[**GatewayCreateProducerNativeK8S**](V2Api.md#gatewaycreateproducernativek8s) | **POST** /gateway-create-producer-k8s-native | 
+[**GatewayCreateProducerNativeK8S**](V2Api.md#gatewaycreateproducernativek8s) | **POST** /gateway-create-producer-k8s | 
 [**GatewayCreateProducerOracleDb**](V2Api.md#gatewaycreateproduceroracledb) | **POST** /gateway-create-producer-oracle | 
 [**GatewayCreateProducerPostgreSQL**](V2Api.md#gatewaycreateproducerpostgresql) | **POST** /gateway-create-producer-postgresql | 
 [**GatewayCreateProducerRabbitMQ**](V2Api.md#gatewaycreateproducerrabbitmq) | **POST** /gateway-create-producer-rabbitmq | 
@@ -230,7 +231,6 @@ Method | HTTP request | Description
 [**UpdateSecretVal**](V2Api.md#updatesecretval) | **POST** /update-secret-val | 
 [**UpdateTarget**](V2Api.md#updatetarget) | **POST** /update-target | 
 [**UpdateTargetDetails**](V2Api.md#updatetargetdetails) | **POST** /update-target-details | 
-[**UpdateTokenizer**](V2Api.md#updatetokenizer) | **POST** /update-tokenizer | 
 [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target | 
 [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details | 
 [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa | 
@@ -4239,6 +4239,76 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | DescribePermissionsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="describesubclaims"></a>
+# **DescribeSubClaims**
+> DescribeSubClaimsOutput DescribeSubClaims (DescribeSubClaims body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DescribeSubClaimsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DescribeSubClaims(); // DescribeSubClaims | 
+
+            try
+            {
+                DescribeSubClaimsOutput result = apiInstance.DescribeSubClaims(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DescribeSubClaims: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DescribeSubClaims**](DescribeSubClaims.md)|  | 
+
+### Return type
+
+[**DescribeSubClaimsOutput**](DescribeSubClaimsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | describeSubClaimsResponse wraps response body. |  -  |
+| **401** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -15817,75 +15887,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateTargetResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="updatetokenizer"></a>
-# **UpdateTokenizer**
-> UpdateTokenizerOutput UpdateTokenizer (UpdateTokenizer body)
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class UpdateTokenizerExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-            var body = new UpdateTokenizer(); // UpdateTokenizer | 
-
-            try
-            {
-                UpdateTokenizerOutput result = apiInstance.UpdateTokenizer(body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.UpdateTokenizer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateTokenizer**](UpdateTokenizer.md)|  | 
-
-### Return type
-
-[**UpdateTokenizerOutput**](UpdateTokenizerOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | updateTokenizerResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

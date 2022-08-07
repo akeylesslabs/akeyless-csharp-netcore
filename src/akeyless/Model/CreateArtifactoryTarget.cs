@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="artifactoryAdminPwd">Artifactory Admin password (required).</param>
         /// <param name="baseUrl">Base URL (required).</param>
         /// <param name="comment">Comment about the target.</param>
-        /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="key">The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -105,9 +105,9 @@ namespace akeyless.Model
         public string Comment { get; set; }
 
         /// <summary>
-        /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+        /// The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
-        /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
+        /// <value>The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
 

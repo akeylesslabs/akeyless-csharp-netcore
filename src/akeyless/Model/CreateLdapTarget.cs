@@ -47,10 +47,11 @@ namespace akeyless.Model
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL (required).</param>
         /// <param name="name">Target name (required).</param>
+        /// <param name="serverType">Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]. Default is OpenLDAP (default to &quot;OpenLDAP&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
+        public CreateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string serverType = "OpenLDAP", string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
         {
             // to ensure "bindDn" is required (not null)
             if (bindDn == null) {
@@ -75,6 +76,8 @@ namespace akeyless.Model
             this.Comment = comment;
             this.Key = key;
             this.LdapCaCert = ldapCaCert;
+            // use default value if no "serverType" provided
+            this.ServerType = serverType ?? "OpenLDAP";
             this.Token = token;
             this.TokenExpiration = tokenExpiration;
             this.UidToken = uidToken;
@@ -130,6 +133,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]. Default is OpenLDAP
+        /// </summary>
+        /// <value>Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]. Default is OpenLDAP</value>
+        [DataMember(Name = "server-type", EmitDefaultValue = false)]
+        public string ServerType { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -165,6 +175,7 @@ namespace akeyless.Model
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ServerType: ").Append(ServerType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -238,6 +249,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ServerType == input.ServerType ||
+                    (this.ServerType != null &&
+                    this.ServerType.Equals(input.ServerType))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -277,6 +293,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ServerType != null)
+                    hashCode = hashCode * 59 + this.ServerType.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.TokenExpiration != null)
