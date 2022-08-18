@@ -40,14 +40,16 @@ namespace akeyless.Model
         /// <param name="boundNamespaces">A list of namespaces that the authentication is restricted to..</param>
         /// <param name="boundPodNames">A list of pods names that the authentication is restricted to..</param>
         /// <param name="boundServiceAccountNames">A list of service account names that the authentication is restricted to..</param>
+        /// <param name="genKeyPair">Generate public/private key (the private key is required for the K8S Auth Config in the Akeyless Gateway).</param>
         /// <param name="pubKey">The public key value of the Kubernetes auth method configuration in the Akeyless Gateway..</param>
-        public KubernetesAccessRules(string alg = default(string), string audience = default(string), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundServiceAccountNames = default(List<string>), string pubKey = default(string))
+        public KubernetesAccessRules(string alg = default(string), string audience = default(string), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundServiceAccountNames = default(List<string>), string genKeyPair = default(string), string pubKey = default(string))
         {
             this.Alg = alg;
             this.Audience = audience;
             this.BoundNamespaces = boundNamespaces;
             this.BoundPodNames = boundPodNames;
             this.BoundServiceAccountNames = boundServiceAccountNames;
+            this.GenKeyPair = genKeyPair;
             this.PubKey = pubKey;
         }
 
@@ -86,6 +88,13 @@ namespace akeyless.Model
         public List<string> BoundServiceAccountNames { get; set; }
 
         /// <summary>
+        /// Generate public/private key (the private key is required for the K8S Auth Config in the Akeyless Gateway)
+        /// </summary>
+        /// <value>Generate public/private key (the private key is required for the K8S Auth Config in the Akeyless Gateway)</value>
+        [DataMember(Name = "gen_key_pair", EmitDefaultValue = false)]
+        public string GenKeyPair { get; set; }
+
+        /// <summary>
         /// The public key value of the Kubernetes auth method configuration in the Akeyless Gateway.
         /// </summary>
         /// <value>The public key value of the Kubernetes auth method configuration in the Akeyless Gateway.</value>
@@ -105,6 +114,7 @@ namespace akeyless.Model
             sb.Append("  BoundNamespaces: ").Append(BoundNamespaces).Append("\n");
             sb.Append("  BoundPodNames: ").Append(BoundPodNames).Append("\n");
             sb.Append("  BoundServiceAccountNames: ").Append(BoundServiceAccountNames).Append("\n");
+            sb.Append("  GenKeyPair: ").Append(GenKeyPair).Append("\n");
             sb.Append("  PubKey: ").Append(PubKey).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -169,6 +179,11 @@ namespace akeyless.Model
                     this.BoundServiceAccountNames.SequenceEqual(input.BoundServiceAccountNames)
                 ) && 
                 (
+                    this.GenKeyPair == input.GenKeyPair ||
+                    (this.GenKeyPair != null &&
+                    this.GenKeyPair.Equals(input.GenKeyPair))
+                ) && 
+                (
                     this.PubKey == input.PubKey ||
                     (this.PubKey != null &&
                     this.PubKey.Equals(input.PubKey))
@@ -194,6 +209,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.BoundPodNames.GetHashCode();
                 if (this.BoundServiceAccountNames != null)
                     hashCode = hashCode * 59 + this.BoundServiceAccountNames.GetHashCode();
+                if (this.GenKeyPair != null)
+                    hashCode = hashCode * 59 + this.GenKeyPair.GetHashCode();
                 if (this.PubKey != null)
                     hashCode = hashCode * 59 + this.PubKey.GetHashCode();
                 return hashCode;

@@ -46,11 +46,16 @@ namespace akeyless.Model
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
         /// <param name="maxVersions">Max versions.</param>
+        /// <param name="passwordLength">For PasswordPolicy use.</param>
         /// <param name="phone">Phone number.</param>
         /// <param name="postalCode">Postal code.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="useLowerLetters">For PasswordPolicy use.</param>
+        /// <param name="useNumbers">For PasswordPolicy use.</param>
+        /// <param name="useSpecialCharacters">For PasswordPolicy use.</param>
+        /// <param name="useCapitalLetters">For PasswordPolicy use.</param>
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -63,10 +68,15 @@ namespace akeyless.Model
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
             this.MaxVersions = maxVersions;
+            this.PasswordLength = passwordLength;
             this.Phone = phone;
             this.PostalCode = postalCode;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseLowerLetters = useLowerLetters;
+            this.UseNumbers = useNumbers;
+            this.UseSpecialCharacters = useSpecialCharacters;
+            this.UseCapitalLetters = useCapitalLetters;
         }
 
         /// <summary>
@@ -147,6 +157,13 @@ namespace akeyless.Model
         public string MaxVersions { get; set; }
 
         /// <summary>
+        /// For PasswordPolicy use
+        /// </summary>
+        /// <value>For PasswordPolicy use</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public long PasswordLength { get; set; }
+
+        /// <summary>
         /// Phone number
         /// </summary>
         /// <value>Phone number</value>
@@ -175,6 +192,34 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// For PasswordPolicy use
+        /// </summary>
+        /// <value>For PasswordPolicy use</value>
+        [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
+        public string UseLowerLetters { get; set; }
+
+        /// <summary>
+        /// For PasswordPolicy use
+        /// </summary>
+        /// <value>For PasswordPolicy use</value>
+        [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
+        public string UseNumbers { get; set; }
+
+        /// <summary>
+        /// For PasswordPolicy use
+        /// </summary>
+        /// <value>For PasswordPolicy use</value>
+        [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
+        public string UseSpecialCharacters { get; set; }
+
+        /// <summary>
+        /// For PasswordPolicy use
+        /// </summary>
+        /// <value>For PasswordPolicy use</value>
+        [DataMember(Name = "use_capital-letters", EmitDefaultValue = false)]
+        public string UseCapitalLetters { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -193,10 +238,15 @@ namespace akeyless.Model
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseLowerLetters: ").Append(UseLowerLetters).Append("\n");
+            sb.Append("  UseNumbers: ").Append(UseNumbers).Append("\n");
+            sb.Append("  UseSpecialCharacters: ").Append(UseSpecialCharacters).Append("\n");
+            sb.Append("  UseCapitalLetters: ").Append(UseCapitalLetters).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -284,6 +334,10 @@ namespace akeyless.Model
                     this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
+                    this.PasswordLength == input.PasswordLength ||
+                    this.PasswordLength.Equals(input.PasswordLength)
+                ) && 
+                (
                     this.Phone == input.Phone ||
                     (this.Phone != null &&
                     this.Phone.Equals(input.Phone))
@@ -302,6 +356,26 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UseLowerLetters == input.UseLowerLetters ||
+                    (this.UseLowerLetters != null &&
+                    this.UseLowerLetters.Equals(input.UseLowerLetters))
+                ) && 
+                (
+                    this.UseNumbers == input.UseNumbers ||
+                    (this.UseNumbers != null &&
+                    this.UseNumbers.Equals(input.UseNumbers))
+                ) && 
+                (
+                    this.UseSpecialCharacters == input.UseSpecialCharacters ||
+                    (this.UseSpecialCharacters != null &&
+                    this.UseSpecialCharacters.Equals(input.UseSpecialCharacters))
+                ) && 
+                (
+                    this.UseCapitalLetters == input.UseCapitalLetters ||
+                    (this.UseCapitalLetters != null &&
+                    this.UseCapitalLetters.Equals(input.UseCapitalLetters))
                 );
         }
 
@@ -333,6 +407,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.JwtTtlMin.GetHashCode();
                 if (this.MaxVersions != null)
                     hashCode = hashCode * 59 + this.MaxVersions.GetHashCode();
+                hashCode = hashCode * 59 + this.PasswordLength.GetHashCode();
                 if (this.Phone != null)
                     hashCode = hashCode * 59 + this.Phone.GetHashCode();
                 if (this.PostalCode != null)
@@ -341,6 +416,14 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                if (this.UseLowerLetters != null)
+                    hashCode = hashCode * 59 + this.UseLowerLetters.GetHashCode();
+                if (this.UseNumbers != null)
+                    hashCode = hashCode * 59 + this.UseNumbers.GetHashCode();
+                if (this.UseSpecialCharacters != null)
+                    hashCode = hashCode * 59 + this.UseSpecialCharacters.GetHashCode();
+                if (this.UseCapitalLetters != null)
+                    hashCode = hashCode * 59 + this.UseCapitalLetters.GetHashCode();
                 return hashCode;
             }
         }

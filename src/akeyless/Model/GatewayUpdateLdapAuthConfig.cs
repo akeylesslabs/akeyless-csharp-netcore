@@ -41,11 +41,11 @@ namespace akeyless.Model
         /// <param name="groupAttr">Group Attr.</param>
         /// <param name="groupDn">Group Dn.</param>
         /// <param name="groupFilter">Group Filter.</param>
-        /// <param name="ldapCaCert">The CA Cert (in PEM format) to use to call into the ldap API server.</param>
+        /// <param name="ldapCaCert">LDAP CA Certificate (base64 encoded).</param>
         /// <param name="ldapEnable">Enable Ldap.</param>
         /// <param name="ldapUrl">LDAP Server URL, e.g. ldap://planetexpress.com:389.</param>
         /// <param name="ldapAnonymousSearch">Ldap Anonymous Search.</param>
-        /// <param name="signingKeyData">The private key (in PEM format) associated with the public key defined in the Ldap auth.</param>
+        /// <param name="signingKeyData">The private key (base64 encoded), associated with the public key defined in the Ldap auth.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">User Attribute.</param>
@@ -112,9 +112,9 @@ namespace akeyless.Model
         public string GroupFilter { get; set; }
 
         /// <summary>
-        /// The CA Cert (in PEM format) to use to call into the ldap API server
+        /// LDAP CA Certificate (base64 encoded)
         /// </summary>
-        /// <value>The CA Cert (in PEM format) to use to call into the ldap API server</value>
+        /// <value>LDAP CA Certificate (base64 encoded)</value>
         [DataMember(Name = "ldap-ca-cert", EmitDefaultValue = false)]
         public string LdapCaCert { get; set; }
 
@@ -140,9 +140,9 @@ namespace akeyless.Model
         public bool LdapAnonymousSearch { get; set; }
 
         /// <summary>
-        /// The private key (in PEM format) associated with the public key defined in the Ldap auth
+        /// The private key (base64 encoded), associated with the public key defined in the Ldap auth
         /// </summary>
-        /// <value>The private key (in PEM format) associated with the public key defined in the Ldap auth</value>
+        /// <value>The private key (base64 encoded), associated with the public key defined in the Ldap auth</value>
         [DataMember(Name = "signing-key-data", EmitDefaultValue = false)]
         public string SigningKeyData { get; set; }
 

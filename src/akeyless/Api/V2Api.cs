@@ -1130,24 +1130,6 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>EncryptPKCS1Output</returns>
-        EncryptPKCS1Output EncryptPKCS1(EncryptPKCS1 body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of EncryptPKCS1Output</returns>
-        ApiResponse<EncryptPKCS1Output> EncryptPKCS1WithHttpInfo(EncryptPKCS1 body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
         /// <returns>EncryptOutput</returns>
         EncryptOutput EncryptWithClassicKey(EncryptWithClassicKey body);
 
@@ -3556,8 +3538,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Object</returns>
-        Object UpdateAuthMethodLDAP(UpdateAuthMethodLDAP body);
+        /// <returns>UpdateAuthMethodLDAPOutput</returns>
+        UpdateAuthMethodLDAPOutput UpdateAuthMethodLDAP(UpdateAuthMethodLDAP body);
 
         /// <summary>
         /// 
@@ -3567,8 +3549,8 @@ namespace akeyless.Api
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> UpdateAuthMethodLDAPWithHttpInfo(UpdateAuthMethodLDAP body);
+        /// <returns>ApiResponse of UpdateAuthMethodLDAPOutput</returns>
+        ApiResponse<UpdateAuthMethodLDAPOutput> UpdateAuthMethodLDAPWithHttpInfo(UpdateAuthMethodLDAP body);
         /// <summary>
         /// 
         /// </summary>
@@ -5645,29 +5627,6 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EncryptOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<EncryptOutput>> EncryptWithHttpInfoAsync(Encrypt body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of EncryptPKCS1Output</returns>
-        System.Threading.Tasks.Task<EncryptPKCS1Output> EncryptPKCS1Async(EncryptPKCS1 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (EncryptPKCS1Output)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EncryptPKCS1Output>> EncryptPKCS1WithHttpInfoAsync(EncryptPKCS1 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8755,8 +8714,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> UpdateAuthMethodLDAPAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateAuthMethodLDAPOutput</returns>
+        System.Threading.Tasks.Task<UpdateAuthMethodLDAPOutput> UpdateAuthMethodLDAPAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -8767,8 +8726,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAuthMethodLDAPWithHttpInfoAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdateAuthMethodLDAPOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateAuthMethodLDAPOutput>> UpdateAuthMethodLDAPWithHttpInfoAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -16869,123 +16828,6 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Encrypt", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>EncryptPKCS1Output</returns>
-        public EncryptPKCS1Output EncryptPKCS1(EncryptPKCS1 body)
-        {
-            akeyless.Client.ApiResponse<EncryptPKCS1Output> localVarResponse = EncryptPKCS1WithHttpInfo(body);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <returns>ApiResponse of EncryptPKCS1Output</returns>
-        public akeyless.Client.ApiResponse<EncryptPKCS1Output> EncryptPKCS1WithHttpInfo(EncryptPKCS1 body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EncryptPKCS1");
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<EncryptPKCS1Output>("/encrypt-pkcs1", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("EncryptPKCS1", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of EncryptPKCS1Output</returns>
-        public async System.Threading.Tasks.Task<EncryptPKCS1Output> EncryptPKCS1Async(EncryptPKCS1 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            akeyless.Client.ApiResponse<EncryptPKCS1Output> localVarResponse = await EncryptPKCS1WithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (EncryptPKCS1Output)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EncryptPKCS1Output>> EncryptPKCS1WithHttpInfoAsync(EncryptPKCS1 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EncryptPKCS1");
-
-
-            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = body;
-
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<EncryptPKCS1Output>("/encrypt-pkcs1", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("EncryptPKCS1", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -32511,10 +32353,10 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Object</returns>
-        public Object UpdateAuthMethodLDAP(UpdateAuthMethodLDAP body)
+        /// <returns>UpdateAuthMethodLDAPOutput</returns>
+        public UpdateAuthMethodLDAPOutput UpdateAuthMethodLDAP(UpdateAuthMethodLDAP body)
         {
-            akeyless.Client.ApiResponse<Object> localVarResponse = UpdateAuthMethodLDAPWithHttpInfo(body);
+            akeyless.Client.ApiResponse<UpdateAuthMethodLDAPOutput> localVarResponse = UpdateAuthMethodLDAPWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -32523,8 +32365,8 @@ namespace akeyless.Api
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object</returns>
-        public akeyless.Client.ApiResponse<Object> UpdateAuthMethodLDAPWithHttpInfo(UpdateAuthMethodLDAP body)
+        /// <returns>ApiResponse of UpdateAuthMethodLDAPOutput</returns>
+        public akeyless.Client.ApiResponse<UpdateAuthMethodLDAPOutput> UpdateAuthMethodLDAPWithHttpInfo(UpdateAuthMethodLDAP body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -32551,7 +32393,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/update-auth-method-ldap", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpdateAuthMethodLDAPOutput>("/update-auth-method-ldap", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -32568,10 +32410,10 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> UpdateAuthMethodLDAPAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateAuthMethodLDAPOutput</returns>
+        public async System.Threading.Tasks.Task<UpdateAuthMethodLDAPOutput> UpdateAuthMethodLDAPAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<Object> localVarResponse = await UpdateAuthMethodLDAPWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<UpdateAuthMethodLDAPOutput> localVarResponse = await UpdateAuthMethodLDAPWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -32581,8 +32423,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> UpdateAuthMethodLDAPWithHttpInfoAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateAuthMethodLDAPOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<UpdateAuthMethodLDAPOutput>> UpdateAuthMethodLDAPWithHttpInfoAsync(UpdateAuthMethodLDAP body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -32612,7 +32454,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/update-auth-method-ldap", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateAuthMethodLDAPOutput>("/update-auth-method-ldap", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

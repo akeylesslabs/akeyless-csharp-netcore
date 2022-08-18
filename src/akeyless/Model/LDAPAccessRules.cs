@@ -36,11 +36,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="LDAPAccessRules" /> class.
         /// </summary>
         /// <param name="alg">alg.</param>
+        /// <param name="genKeyPair">Generate public/private key (the private key is required for the LDAP Auth Config in the Akeyless Gateway).</param>
         /// <param name="key">The public key value of LDAP..</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public LDAPAccessRules(string alg = default(string), string key = default(string), string uniqueIdentifier = default(string))
+        public LDAPAccessRules(string alg = default(string), string genKeyPair = default(string), string key = default(string), string uniqueIdentifier = default(string))
         {
             this.Alg = alg;
+            this.GenKeyPair = genKeyPair;
             this.Key = key;
             this.UniqueIdentifier = uniqueIdentifier;
         }
@@ -50,6 +52,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "alg", EmitDefaultValue = false)]
         public string Alg { get; set; }
+
+        /// <summary>
+        /// Generate public/private key (the private key is required for the LDAP Auth Config in the Akeyless Gateway)
+        /// </summary>
+        /// <value>Generate public/private key (the private key is required for the LDAP Auth Config in the Akeyless Gateway)</value>
+        [DataMember(Name = "gen_key_pair", EmitDefaultValue = false)]
+        public string GenKeyPair { get; set; }
 
         /// <summary>
         /// The public key value of LDAP.
@@ -74,6 +83,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class LDAPAccessRules {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
+            sb.Append("  GenKeyPair: ").Append(GenKeyPair).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
@@ -116,6 +126,11 @@ namespace akeyless.Model
                     this.Alg.Equals(input.Alg))
                 ) && 
                 (
+                    this.GenKeyPair == input.GenKeyPair ||
+                    (this.GenKeyPair != null &&
+                    this.GenKeyPair.Equals(input.GenKeyPair))
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -138,6 +153,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Alg != null)
                     hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                if (this.GenKeyPair != null)
+                    hashCode = hashCode * 59 + this.GenKeyPair.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.UniqueIdentifier != null)

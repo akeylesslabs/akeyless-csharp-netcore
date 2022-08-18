@@ -46,21 +46,21 @@ namespace akeyless.Model
         /// <param name="allowedUriSans">A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list).</param>
         /// <param name="clientFlag">If set, certificates will be flagged for client auth use.</param>
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
-        /// <param name="country">A comma-separated list of the country that will be set in the issued certificate.</param>
+        /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
-        /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
+        /// <param name="locality">A comma-separated list of localities that will be set in the issued certificate.</param>
         /// <param name="metadata">A metadata about the issuer.</param>
         /// <param name="name">PKI certificate issuer name (required).</param>
         /// <param name="notEnforceHostnames">If set, any names are allowed for CN and SANs in the certificate and not only a valid host name.</param>
         /// <param name="notRequireCn">If set, clients can request certificates without a CN.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
-        /// <param name="postalCode">A comma-separated list of the postal code that will be set in the issued certificate.</param>
-        /// <param name="province">A comma-separated list of the province that will be set in the issued certificate.</param>
+        /// <param name="postalCode">A comma-separated list of postal codes that will be set in the issued certificate.</param>
+        /// <param name="province">A comma-separated list of provinces that will be set in the issued certificate.</param>
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
-        /// <param name="streetAddress">A comma-separated list of the street address that will be set in the issued certificate.</param>
+        /// <param name="streetAddress">A comma-separated list of street addresses that will be set in the issued certificate.</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
@@ -146,9 +146,9 @@ namespace akeyless.Model
         public bool CodeSigningFlag { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the country that will be set in the issued certificate
+        /// A comma-separated list of countries that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the country that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of countries that will be set in the issued certificate</value>
         [DataMember(Name = "country", EmitDefaultValue = false)]
         public string Country { get; set; }
 
@@ -167,9 +167,9 @@ namespace akeyless.Model
         public string KeyUsage { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the locality that will be set in the issued certificate
+        /// A comma-separated list of localities that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the locality that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of localities that will be set in the issued certificate</value>
         [DataMember(Name = "locality", EmitDefaultValue = false)]
         public string Locality { get; set; }
 
@@ -216,16 +216,16 @@ namespace akeyless.Model
         public string Organizations { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the postal code that will be set in the issued certificate
+        /// A comma-separated list of postal codes that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the postal code that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of postal codes that will be set in the issued certificate</value>
         [DataMember(Name = "postal-code", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the province that will be set in the issued certificate
+        /// A comma-separated list of provinces that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the province that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of provinces that will be set in the issued certificate</value>
         [DataMember(Name = "province", EmitDefaultValue = false)]
         public string Province { get; set; }
 
@@ -244,9 +244,9 @@ namespace akeyless.Model
         public string SignerKeyName { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the street address that will be set in the issued certificate
+        /// A comma-separated list of street addresses that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the street address that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of street addresses that will be set in the issued certificate</value>
         [DataMember(Name = "street-address", EmitDefaultValue = false)]
         public string StreetAddress { get; set; }
 

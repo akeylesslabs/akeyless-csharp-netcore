@@ -27,27 +27,19 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateAuthMethodLDAPOutput
+    /// UpdateAuthMethodLDAPOutput
     /// </summary>
-    [DataContract(Name = "createAuthMethodLDAPOutput")]
-    public partial class CreateAuthMethodLDAPOutput : IEquatable<CreateAuthMethodLDAPOutput>, IValidatableObject
+    [DataContract(Name = "updateAuthMethodLDAPOutput")]
+    public partial class UpdateAuthMethodLDAPOutput : IEquatable<UpdateAuthMethodLDAPOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAuthMethodLDAPOutput" /> class.
+        /// Initializes a new instance of the <see cref="UpdateAuthMethodLDAPOutput" /> class.
         /// </summary>
-        /// <param name="accessId">accessId.</param>
         /// <param name="prvKey">prvKey.</param>
-        public CreateAuthMethodLDAPOutput(string accessId = default(string), string prvKey = default(string))
+        public UpdateAuthMethodLDAPOutput(string prvKey = default(string))
         {
-            this.AccessId = accessId;
             this.PrvKey = prvKey;
         }
-
-        /// <summary>
-        /// Gets or Sets AccessId
-        /// </summary>
-        [DataMember(Name = "access_id", EmitDefaultValue = false)]
-        public string AccessId { get; set; }
 
         /// <summary>
         /// Gets or Sets PrvKey
@@ -62,8 +54,7 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateAuthMethodLDAPOutput {\n");
-            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("class UpdateAuthMethodLDAPOutput {\n");
             sb.Append("  PrvKey: ").Append(PrvKey).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -85,25 +76,20 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateAuthMethodLDAPOutput);
+            return this.Equals(input as UpdateAuthMethodLDAPOutput);
         }
 
         /// <summary>
-        /// Returns true if CreateAuthMethodLDAPOutput instances are equal
+        /// Returns true if UpdateAuthMethodLDAPOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateAuthMethodLDAPOutput to be compared</param>
+        /// <param name="input">Instance of UpdateAuthMethodLDAPOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateAuthMethodLDAPOutput input)
+        public bool Equals(UpdateAuthMethodLDAPOutput input)
         {
             if (input == null)
                 return false;
 
             return 
-                (
-                    this.AccessId == input.AccessId ||
-                    (this.AccessId != null &&
-                    this.AccessId.Equals(input.AccessId))
-                ) && 
                 (
                     this.PrvKey == input.PrvKey ||
                     (this.PrvKey != null &&
@@ -120,8 +106,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
                 if (this.PrvKey != null)
                     hashCode = hashCode * 59 + this.PrvKey.GetHashCode();
                 return hashCode;

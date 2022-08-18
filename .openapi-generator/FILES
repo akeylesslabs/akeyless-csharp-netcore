@@ -156,8 +156,6 @@ docs/Encrypt.md
 docs/EncryptFile.md
 docs/EncryptFileOutput.md
 docs/EncryptOutput.md
-docs/EncryptPKCS1.md
-docs/EncryptPKCS1Output.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
@@ -421,6 +419,7 @@ docs/RotatedSecretDetailsInfo.md
 docs/RotatedSecretOutput.md
 docs/Rotator.md
 docs/RotatorsConfigPart.md
+docs/RuleAssigner.md
 docs/Rules.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
@@ -480,6 +479,7 @@ docs/UpdateAuthMethodGCP.md
 docs/UpdateAuthMethodK8S.md
 docs/UpdateAuthMethodK8SOutput.md
 docs/UpdateAuthMethodLDAP.md
+docs/UpdateAuthMethodLDAPOutput.md
 docs/UpdateAuthMethodOAuth2.md
 docs/UpdateAuthMethodOIDC.md
 docs/UpdateAuthMethodOutput.md
@@ -546,8 +546,8 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/DescribeSubClaimsOutputTests.cs
-src/akeyless.Test/Model/DescribeSubClaimsTests.cs
+src/akeyless.Test/Model/RuleAssignerTests.cs
+src/akeyless.Test/Model/UpdateAuthMethodLDAPOutputTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -721,8 +721,6 @@ src/akeyless/Model/Encrypt.cs
 src/akeyless/Model/EncryptFile.cs
 src/akeyless/Model/EncryptFileOutput.cs
 src/akeyless/Model/EncryptOutput.cs
-src/akeyless/Model/EncryptPKCS1.cs
-src/akeyless/Model/EncryptPKCS1Output.cs
 src/akeyless/Model/EncryptWithClassicKey.cs
 src/akeyless/Model/EncryptWithClassicKeyOutput.cs
 src/akeyless/Model/ExternalKMSKeyId.cs
@@ -986,6 +984,7 @@ src/akeyless/Model/RotatedSecretDetailsInfo.cs
 src/akeyless/Model/RotatedSecretOutput.cs
 src/akeyless/Model/Rotator.cs
 src/akeyless/Model/RotatorsConfigPart.cs
+src/akeyless/Model/RuleAssigner.cs
 src/akeyless/Model/Rules.cs
 src/akeyless/Model/SAMLAccessRules.cs
 src/akeyless/Model/SAMLAttribute.cs
@@ -1045,6 +1044,7 @@ src/akeyless/Model/UpdateAuthMethodGCP.cs
 src/akeyless/Model/UpdateAuthMethodK8S.cs
 src/akeyless/Model/UpdateAuthMethodK8SOutput.cs
 src/akeyless/Model/UpdateAuthMethodLDAP.cs
+src/akeyless/Model/UpdateAuthMethodLDAPOutput.cs
 src/akeyless/Model/UpdateAuthMethodOAuth2.cs
 src/akeyless/Model/UpdateAuthMethodOIDC.cs
 src/akeyless/Model/UpdateAuthMethodOutput.cs

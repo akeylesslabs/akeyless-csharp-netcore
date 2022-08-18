@@ -55,7 +55,7 @@ namespace akeyless.Model
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
+        /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public CreateSSHCertIssuer(string allowedUsers = default(string), string deleteProtection = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
@@ -190,9 +190,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// he requested Time To Live for the certificate, in seconds
+        /// The requested Time To Live for the certificate, in seconds
         /// </summary>
-        /// <value>he requested Time To Live for the certificate, in seconds</value>
+        /// <value>The requested Time To Live for the certificate, in seconds</value>
         [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
         public long Ttl { get; set; }
 

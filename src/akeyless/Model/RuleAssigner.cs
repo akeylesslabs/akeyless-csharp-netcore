@@ -27,20 +27,20 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateAuthMethodLDAPOutput
+    /// RuleAssigner
     /// </summary>
-    [DataContract(Name = "createAuthMethodLDAPOutput")]
-    public partial class CreateAuthMethodLDAPOutput : IEquatable<CreateAuthMethodLDAPOutput>, IValidatableObject
+    [DataContract(Name = "RuleAssigner")]
+    public partial class RuleAssigner : IEquatable<RuleAssigner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAuthMethodLDAPOutput" /> class.
+        /// Initializes a new instance of the <see cref="RuleAssigner" /> class.
         /// </summary>
         /// <param name="accessId">accessId.</param>
-        /// <param name="prvKey">prvKey.</param>
-        public CreateAuthMethodLDAPOutput(string accessId = default(string), string prvKey = default(string))
+        /// <param name="uniqueId">uniqueId.</param>
+        public RuleAssigner(string accessId = default(string), string uniqueId = default(string))
         {
             this.AccessId = accessId;
-            this.PrvKey = prvKey;
+            this.UniqueId = uniqueId;
         }
 
         /// <summary>
@@ -50,10 +50,10 @@ namespace akeyless.Model
         public string AccessId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PrvKey
+        /// Gets or Sets UniqueId
         /// </summary>
-        [DataMember(Name = "prv_key", EmitDefaultValue = false)]
-        public string PrvKey { get; set; }
+        [DataMember(Name = "unique_id", EmitDefaultValue = false)]
+        public string UniqueId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +62,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateAuthMethodLDAPOutput {\n");
+            sb.Append("class RuleAssigner {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
-            sb.Append("  PrvKey: ").Append(PrvKey).Append("\n");
+            sb.Append("  UniqueId: ").Append(UniqueId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,15 +85,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateAuthMethodLDAPOutput);
+            return this.Equals(input as RuleAssigner);
         }
 
         /// <summary>
-        /// Returns true if CreateAuthMethodLDAPOutput instances are equal
+        /// Returns true if RuleAssigner instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateAuthMethodLDAPOutput to be compared</param>
+        /// <param name="input">Instance of RuleAssigner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateAuthMethodLDAPOutput input)
+        public bool Equals(RuleAssigner input)
         {
             if (input == null)
                 return false;
@@ -105,9 +105,9 @@ namespace akeyless.Model
                     this.AccessId.Equals(input.AccessId))
                 ) && 
                 (
-                    this.PrvKey == input.PrvKey ||
-                    (this.PrvKey != null &&
-                    this.PrvKey.Equals(input.PrvKey))
+                    this.UniqueId == input.UniqueId ||
+                    (this.UniqueId != null &&
+                    this.UniqueId.Equals(input.UniqueId))
                 );
         }
 
@@ -122,8 +122,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AccessId != null)
                     hashCode = hashCode * 59 + this.AccessId.GetHashCode();
-                if (this.PrvKey != null)
-                    hashCode = hashCode * 59 + this.PrvKey.GetHashCode();
+                if (this.UniqueId != null)
+                    hashCode = hashCode * 59 + this.UniqueId.GetHashCode();
                 return hashCode;
             }
         }

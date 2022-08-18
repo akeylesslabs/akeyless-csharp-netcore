@@ -65,7 +65,6 @@ Method | HTTP request | Description
 [**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize | 
 [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
-[**EncryptPKCS1**](V2Api.md#encryptpkcs1) | **POST** /encrypt-pkcs1 | 
 [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration | 
@@ -4447,75 +4446,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | encryptResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="encryptpkcs1"></a>
-# **EncryptPKCS1**
-> EncryptPKCS1Output EncryptPKCS1 (EncryptPKCS1 body)
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class EncryptPKCS1Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-            var body = new EncryptPKCS1(); // EncryptPKCS1 | 
-
-            try
-            {
-                EncryptPKCS1Output result = apiInstance.EncryptPKCS1(body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.EncryptPKCS1: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**EncryptPKCS1**](EncryptPKCS1.md)|  | 
-
-### Return type
-
-[**EncryptPKCS1Output**](EncryptPKCS1Output.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | encryptPKCS1Response wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -13758,7 +13688,7 @@ No authorization required
 
 <a name="updateauthmethodldap"></a>
 # **UpdateAuthMethodLDAP**
-> Object UpdateAuthMethodLDAP (UpdateAuthMethodLDAP body)
+> UpdateAuthMethodLDAPOutput UpdateAuthMethodLDAP (UpdateAuthMethodLDAP body)
 
 
 
@@ -13783,7 +13713,7 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.UpdateAuthMethodLDAP(body);
+                UpdateAuthMethodLDAPOutput result = apiInstance.UpdateAuthMethodLDAP(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -13805,7 +13735,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**UpdateAuthMethodLDAPOutput**](UpdateAuthMethodLDAPOutput.md)
 
 ### Authorization
 

@@ -40,13 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayRevokeTmpUsers" /> class.
         /// </summary>
-        /// <param name="host">Host.</param>
+        /// <param name="host">Deprecated: has no effect.</param>
         /// <param name="name">Producer Name (required).</param>
+        /// <param name="revokeAll">Revoke All Temp Creds.</param>
         /// <param name="softDelete">Soft Delete.</param>
-        /// <param name="tmpCredsId">Tmp Creds ID (required).</param>
+        /// <param name="tmpCredsId">Tmp Creds ID (required) (default to &quot;demo_default_tmp_creds_id_for_sdk_bc&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayRevokeTmpUsers(string host = default(string), string name = default(string), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayRevokeTmpUsers(string host = default(string), string name = default(string), bool revokeAll = default(bool), bool softDelete = default(bool), string tmpCredsId = "demo_default_tmp_creds_id_for_sdk_bc", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -59,15 +60,16 @@ namespace akeyless.Model
             }
             this.TmpCredsId = tmpCredsId;
             this.Host = host;
+            this.RevokeAll = revokeAll;
             this.SoftDelete = softDelete;
             this.Token = token;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Host
+        /// Deprecated: has no effect
         /// </summary>
-        /// <value>Host</value>
+        /// <value>Deprecated: has no effect</value>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
 
@@ -77,6 +79,13 @@ namespace akeyless.Model
         /// <value>Producer Name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Revoke All Temp Creds
+        /// </summary>
+        /// <value>Revoke All Temp Creds</value>
+        [DataMember(Name = "revoke-all", EmitDefaultValue = true)]
+        public bool RevokeAll { get; set; }
 
         /// <summary>
         /// Soft Delete
@@ -116,6 +125,7 @@ namespace akeyless.Model
             sb.Append("class GatewayRevokeTmpUsers {\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RevokeAll: ").Append(RevokeAll).Append("\n");
             sb.Append("  SoftDelete: ").Append(SoftDelete).Append("\n");
             sb.Append("  TmpCredsId: ").Append(TmpCredsId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -165,6 +175,10 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.RevokeAll == input.RevokeAll ||
+                    this.RevokeAll.Equals(input.RevokeAll)
+                ) && 
+                (
                     this.SoftDelete == input.SoftDelete ||
                     this.SoftDelete.Equals(input.SoftDelete)
                 ) && 
@@ -198,6 +212,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                hashCode = hashCode * 59 + this.RevokeAll.GetHashCode();
                 hashCode = hashCode * 59 + this.SoftDelete.GetHashCode();
                 if (this.TmpCredsId != null)
                     hashCode = hashCode * 59 + this.TmpCredsId.GetHashCode();

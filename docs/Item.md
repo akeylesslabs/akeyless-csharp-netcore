@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **ProtectionKeyType** | **string** |  | [optional] 
 **PublicValue** | **string** |  | [optional] 
 **RotationInterval** | **long** |  | [optional] 
+**SharedBy** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | [**List&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 

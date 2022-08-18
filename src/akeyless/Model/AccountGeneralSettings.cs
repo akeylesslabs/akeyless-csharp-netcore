@@ -36,9 +36,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AccountGeneralSettings" /> class.
         /// </summary>
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
-        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection))
+        /// <param name="passwordPolicy">passwordPolicy.</param>
+        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo))
         {
             this.DataProtectionSection = dataProtectionSection;
+            this.PasswordPolicy = passwordPolicy;
         }
 
         /// <summary>
@@ -46,6 +48,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "data_protection_section", EmitDefaultValue = false)]
         public DataProtectionSection DataProtectionSection { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PasswordPolicy
+        /// </summary>
+        [DataMember(Name = "password_policy", EmitDefaultValue = false)]
+        public PasswordPolicyInfo PasswordPolicy { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,6 +64,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class AccountGeneralSettings {\n");
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
+            sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,6 +103,11 @@ namespace akeyless.Model
                     this.DataProtectionSection == input.DataProtectionSection ||
                     (this.DataProtectionSection != null &&
                     this.DataProtectionSection.Equals(input.DataProtectionSection))
+                ) && 
+                (
+                    this.PasswordPolicy == input.PasswordPolicy ||
+                    (this.PasswordPolicy != null &&
+                    this.PasswordPolicy.Equals(input.PasswordPolicy))
                 );
         }
 
@@ -108,6 +122,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DataProtectionSection != null)
                     hashCode = hashCode * 59 + this.DataProtectionSection.GetHashCode();
+                if (this.PasswordPolicy != null)
+                    hashCode = hashCode * 59 + this.PasswordPolicy.GetHashCode();
                 return hashCode;
             }
         }

@@ -43,13 +43,13 @@ namespace akeyless.Model
         /// <param name="accessId">The access ID of the Kubernetes auth method (required).</param>
         /// <param name="clusterApiType">Cluster access type. options: [native_k8s, rancher] (default to &quot;native_k8s&quot;).</param>
         /// <param name="configEncryptionKeyName">Config encryption key.</param>
-        /// <param name="k8sCaCert">The CA Cert (in PEM format) to use to call into the kubernetes API server.</param>
+        /// <param name="k8sCaCert">The CA Certificate (base64 encoded) to use to call into the kubernetes API server.</param>
         /// <param name="k8sHost">The URL of the kubernetes API server (required).</param>
         /// <param name="k8sIssuer">The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer..</param>
         /// <param name="name">K8S Auth config name (required).</param>
         /// <param name="rancherApiKey">The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only).</param>
         /// <param name="rancherClusterId">The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only).</param>
-        /// <param name="signingKey">The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth (required).</param>
+        /// <param name="signingKey">The private key (base64 encoded) associated with the public key defined in the Kubernetes auth (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token (default to 300).</param>
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
@@ -111,9 +111,9 @@ namespace akeyless.Model
         public string ConfigEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// The CA Cert (in PEM format) to use to call into the kubernetes API server
+        /// The CA Certificate (base64 encoded) to use to call into the kubernetes API server
         /// </summary>
-        /// <value>The CA Cert (in PEM format) to use to call into the kubernetes API server</value>
+        /// <value>The CA Certificate (base64 encoded) to use to call into the kubernetes API server</value>
         [DataMember(Name = "k8s-ca-cert", EmitDefaultValue = false)]
         public string K8sCaCert { get; set; }
 
@@ -153,9 +153,9 @@ namespace akeyless.Model
         public string RancherClusterId { get; set; }
 
         /// <summary>
-        /// The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
+        /// The private key (base64 encoded) associated with the public key defined in the Kubernetes auth
         /// </summary>
-        /// <value>The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth</value>
+        /// <value>The private key (base64 encoded) associated with the public key defined in the Kubernetes auth</value>
         [DataMember(Name = "signing-key", IsRequired = true, EmitDefaultValue = false)]
         public string SigningKey { get; set; }
 
