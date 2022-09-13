@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateTtl** | **long** |  | [optional] 
 **Hostname** | **string** | Hostname | 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Root** | **string** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

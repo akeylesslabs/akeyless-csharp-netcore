@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CertificateIssueDetails** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **Certificates** | **string** |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
+**CreationDate** | **DateTime** |  | [optional] 
 **CustomerFragmentId** | **string** |  | [optional] 
 **DeleteProtection** | **bool** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **ItemType** | **string** |  | [optional] 
 **ItemVersions** | [**List&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] 
 **LastVersion** | **int** |  | [optional] 
+**ModificationDate** | **DateTime** |  | [optional] 
 **NextRotationDate** | **DateTime** |  | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
 **ProtectionKeyType** | **string** |  | [optional] 
@@ -34,6 +36,7 @@ Name | Type | Description | Notes
 **RotationInterval** | **long** |  | [optional] 
 **SharedBy** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | [**List&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] 
+**UsageDate** | **DateTime** |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

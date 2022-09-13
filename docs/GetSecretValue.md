@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | **string** | for personal password manager | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Names** | **List&lt;string&gt;** | Secret name | 
 **PrettyPrint** | **bool** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

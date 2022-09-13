@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
 **CertFileData** | **string** | Certificate in a PEM format. | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeyData** | **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | **string** | Metadata about the classic key | [optional] 
 **Name** | **string** | ClassicKey name | 

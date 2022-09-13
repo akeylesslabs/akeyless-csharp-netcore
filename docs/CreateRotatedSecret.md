@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AwsRegion** | **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | **string** |  | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | **string** | Metadata about the secret | [optional] 
 **Name** | **string** | Secret name | 

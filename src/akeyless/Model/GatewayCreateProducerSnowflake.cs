@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="accountUsername">Database Username.</param>
         /// <param name="dbName">Database name.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="role">User role.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.AccountUsername = accountUsername;
             this.DbName = dbName;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.Role = role;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -109,6 +111,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -179,6 +188,7 @@ namespace akeyless.Model
             sb.Append("  AccountUsername: ").Append(AccountUsername).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -247,6 +257,10 @@ namespace akeyless.Model
                     this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -308,6 +322,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbName.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Role != null)

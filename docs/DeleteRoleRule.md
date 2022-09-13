@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Path** | **string** | The path the rule refers to | 
 **RoleName** | **string** | The role name to be updated | 
 **RuleType** | **string** | item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule | [optional] [default to "item-rule"]

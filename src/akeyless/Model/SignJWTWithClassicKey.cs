@@ -41,12 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SignJWTWithClassicKey" /> class.
         /// </summary>
         /// <param name="displayId">The name of the key to use in the sign JWT process (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwtClaims">JWTClaims (required).</param>
         /// <param name="signingMethod">SigningMethod (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public SignJWTWithClassicKey(string displayId = default(string), string jwtClaims = default(string), string signingMethod = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public SignJWTWithClassicKey(string displayId = default(string), bool json = default(bool), string jwtClaims = default(string), string signingMethod = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null) {
@@ -64,6 +65,7 @@ namespace akeyless.Model
             }
             this.SigningMethod = signingMethod;
             this._Version = version;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -74,6 +76,13 @@ namespace akeyless.Model
         /// <value>The name of the key to use in the sign JWT process</value>
         [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// JWTClaims
@@ -119,6 +128,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class SignJWTWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtClaims: ").Append(JwtClaims).Append("\n");
             sb.Append("  SigningMethod: ").Append(SigningMethod).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -164,6 +174,10 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.JwtClaims == input.JwtClaims ||
                     (this.JwtClaims != null &&
                     this.JwtClaims.Equals(input.JwtClaims))
@@ -200,6 +214,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.JwtClaims != null)
                     hashCode = hashCode * 59 + this.JwtClaims.GetHashCode();
                 if (this.SigningMethod != null)

@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the key to use in the signing process.</param>
         /// <param name="itemId">The item id of the key to use in the signing process.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyName">The name of the RSA key to use in the signing process.</param>
         /// <param name="message">The message to be signed (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public SignPKCS1(string displayId = default(string), long itemId = default(long), string keyName = default(string), string message = default(string), string token = default(string), string uidToken = default(string))
+        public SignPKCS1(string displayId = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string message = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "message" is required (not null)
             if (message == null) {
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.Message = message;
             this.DisplayId = displayId;
             this.ItemId = itemId;
+            this.Json = json;
             this.KeyName = keyName;
             this.Token = token;
             this.UidToken = uidToken;
@@ -73,6 +75,13 @@ namespace akeyless.Model
         /// <value>The item id of the key to use in the signing process</value>
         [DataMember(Name = "item-id", EmitDefaultValue = false)]
         public long ItemId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of the RSA key to use in the signing process
@@ -112,6 +121,7 @@ namespace akeyless.Model
             sb.Append("class SignPKCS1 {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -160,6 +170,10 @@ namespace akeyless.Model
                     this.ItemId.Equals(input.ItemId)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeyName == input.KeyName ||
                     (this.KeyName != null &&
                     this.KeyName.Equals(input.KeyName))
@@ -193,6 +207,7 @@ namespace akeyless.Model
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Message != null)

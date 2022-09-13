@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="bindDnPassword">Bind DN Password.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="externalUsername">Fixed user (default to &quot;false&quot;).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL.</param>
         /// <param name="name">Producer name (required).</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerLdap(string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string externalUsername = "false", string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerLdap(string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string externalUsername = "false", bool json = default(bool), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -69,6 +70,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             // use default value if no "externalUsername" provided
             this.ExternalUsername = externalUsername ?? "false";
+            this.Json = json;
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
             this.NewName = newName;
@@ -111,6 +113,13 @@ namespace akeyless.Model
         /// <value>Fixed user</value>
         [DataMember(Name = "external-username", EmitDefaultValue = false)]
         public string ExternalUsername { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// CA Certificate File Content
@@ -215,6 +224,7 @@ namespace akeyless.Model
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  ExternalUsername: ").Append(ExternalUsername).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -281,6 +291,10 @@ namespace akeyless.Model
                     this.ExternalUsername == input.ExternalUsername ||
                     (this.ExternalUsername != null &&
                     this.ExternalUsername.Equals(input.ExternalUsername))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.LdapCaCert == input.LdapCaCert ||
@@ -367,6 +381,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.ExternalUsername != null)
                     hashCode = hashCode * 59 + this.ExternalUsername.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.LdapCaCert != null)
                     hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
                 if (this.LdapUrl != null)

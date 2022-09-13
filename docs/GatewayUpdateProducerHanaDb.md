@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **HanadbPort** | **string** | HanaDb Port | [optional] [default to "443"]
 **HanadbRevocationStatements** | **string** | HanaDb Revocation statements | [optional] 
 **HanadbUsername** | **string** | HanaDb Username | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

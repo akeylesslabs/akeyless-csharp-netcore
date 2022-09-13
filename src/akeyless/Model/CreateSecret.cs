@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessibility">for personal password manager.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">Metadata about the secret.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="type">For Password Management use, reflect the website context.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The secret value (required).</param>
-        public CreateSecret(string accessibility = default(string), string deleteProtection = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), string passwordManagerInjectUrl = default(string), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string value = default(string))
+        public CreateSecret(string accessibility = default(string), string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.Value = value;
             this.Accessibility = accessibility;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.Metadata = metadata;
             this.MultilineValue = multilineValue;
             this.PasswordManagerCustomField = passwordManagerCustomField;
@@ -113,6 +115,13 @@ namespace akeyless.Model
         public string DeleteProtection { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// Metadata about the secret
         /// </summary>
         /// <value>Metadata about the secret</value>
@@ -145,7 +154,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>For Password Management use, reflect the website context</value>
         [DataMember(Name = "password-manager-inject-url", EmitDefaultValue = false)]
-        public string PasswordManagerInjectUrl { get; set; }
+        public List<string> PasswordManagerInjectUrl { get; set; }
 
         /// <summary>
         /// For Password Management use, additional fields
@@ -261,6 +270,7 @@ namespace akeyless.Model
             sb.Append("class CreateSecret {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  MultilineValue: ").Append(MultilineValue).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -327,6 +337,10 @@ namespace akeyless.Model
                     this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -348,8 +362,9 @@ namespace akeyless.Model
                 ) && 
                 (
                     this.PasswordManagerInjectUrl == input.PasswordManagerInjectUrl ||
-                    (this.PasswordManagerInjectUrl != null &&
-                    this.PasswordManagerInjectUrl.Equals(input.PasswordManagerInjectUrl))
+                    this.PasswordManagerInjectUrl != null &&
+                    input.PasswordManagerInjectUrl != null &&
+                    this.PasswordManagerInjectUrl.SequenceEqual(input.PasswordManagerInjectUrl)
                 ) && 
                 (
                     this.PasswordManagerPassword == input.PasswordManagerPassword ||
@@ -446,6 +461,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 hashCode = hashCode * 59 + this.MultilineValue.GetHashCode();

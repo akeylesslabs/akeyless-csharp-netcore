@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClientId** | **string** |  | [optional] 
 **ClientSecret** | **string** |  | [optional] 
 **Comment** | **string** | Comment about the target | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **ResourceGroupName** | **string** | The Resource Group name in your Azure subscription | [optional] 

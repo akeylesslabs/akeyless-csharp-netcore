@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// <param name="defaultVersioning">Should create version by default.</param>
         /// <param name="dpEnableClassicKeyProtection">Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;].</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">For PasswordPolicy use.</param>
         /// <param name="useSpecialCharacters">For PasswordPolicy use.</param>
         /// <param name="useCapitalLetters">For PasswordPolicy use.</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), bool json = default(bool), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.DefaultVersioning = defaultVersioning;
             this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
             this.ItemType = itemType;
+            this.Json = json;
             this.JwtTtlDefault = jwtTtlDefault;
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
@@ -127,6 +129,13 @@ namespace akeyless.Model
         /// <value>VersionSettingsObjectType defines object types for account version settings</value>
         [DataMember(Name = "item-type", EmitDefaultValue = false)]
         public string ItemType { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Default ttl
@@ -234,6 +243,7 @@ namespace akeyless.Model
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
             sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
@@ -315,6 +325,10 @@ namespace akeyless.Model
                     this.ItemType == input.ItemType ||
                     (this.ItemType != null &&
                     this.ItemType.Equals(input.ItemType))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.JwtTtlDefault == input.JwtTtlDefault ||
@@ -402,6 +416,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DpEnableClassicKeyProtection.GetHashCode();
                 if (this.ItemType != null)
                     hashCode = hashCode * 59 + this.ItemType.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlDefault.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlMax.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtlMin.GetHashCode();

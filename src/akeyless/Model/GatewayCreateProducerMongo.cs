@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerMongo" /> class.
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
         /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
         /// <param name="mongodbAtlasProjectId">MongoDB Atlas project ID.</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerMongo(string deleteProtection = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerMongo(string deleteProtection = default(string), bool json = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = "[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -72,6 +73,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
             this.MongodbAtlasProjectId = mongodbAtlasProjectId;
@@ -104,6 +106,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// MongoDB Atlas private key
@@ -271,6 +280,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerMongo {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
             sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
@@ -332,6 +342,10 @@ namespace akeyless.Model
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
@@ -462,6 +476,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)
                     hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
                 if (this.MongodbAtlasApiPublicKey != null)

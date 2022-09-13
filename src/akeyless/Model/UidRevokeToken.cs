@@ -41,11 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UidRevokeToken" /> class.
         /// </summary>
         /// <param name="authMethodName">The universal identity auth method name.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="revokeToken">the universal identity token/token-id to revoke (required).</param>
         /// <param name="revokeType">revokeSelf/revokeAll (delete only this token/this token and his children) (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UidRevokeToken(string authMethodName = default(string), string revokeToken = default(string), string revokeType = default(string), string token = default(string), string uidToken = default(string))
+        public UidRevokeToken(string authMethodName = default(string), bool json = default(bool), string revokeToken = default(string), string revokeType = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "revokeToken" is required (not null)
             if (revokeToken == null) {
@@ -58,6 +59,7 @@ namespace akeyless.Model
             }
             this.RevokeType = revokeType;
             this.AuthMethodName = authMethodName;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -68,6 +70,13 @@ namespace akeyless.Model
         /// <value>The universal identity auth method name</value>
         [DataMember(Name = "auth-method-name", EmitDefaultValue = false)]
         public string AuthMethodName { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// the universal identity token/token-id to revoke
@@ -106,6 +115,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UidRevokeToken {\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  RevokeToken: ").Append(RevokeToken).Append("\n");
             sb.Append("  RevokeType: ").Append(RevokeType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -150,6 +160,10 @@ namespace akeyless.Model
                     this.AuthMethodName.Equals(input.AuthMethodName))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.RevokeToken == input.RevokeToken ||
                     (this.RevokeToken != null &&
                     this.RevokeToken.Equals(input.RevokeToken))
@@ -182,6 +196,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AuthMethodName != null)
                     hashCode = hashCode * 59 + this.AuthMethodName.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.RevokeToken != null)
                     hashCode = hashCode * 59 + this.RevokeToken.GetHashCode();
                 if (this.RevokeType != null)

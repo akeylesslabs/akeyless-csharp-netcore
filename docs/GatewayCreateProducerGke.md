@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | **string** | GKE service account email | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | **bool** |  | [optional] 

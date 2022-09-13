@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="_in">PKCS#12 input file (private key and certificate only) (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">A metadata about the key.</param>
         /// <param name="name">Name of key to be created (required).</param>
         /// <param name="passphrase">Passphrase to unlock the pkcs#12 bundle (required).</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string _in = default(string), string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string _in = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null) {
@@ -69,6 +70,7 @@ namespace akeyless.Model
             this.Passphrase = passphrase;
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.Metadata = metadata;
             this.SplitLevel = splitLevel;
             this.Tag = tag;
@@ -96,6 +98,13 @@ namespace akeyless.Model
         /// <value>PKCS#12 input file (private key and certificate only)</value>
         [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = false)]
         public string In { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// A metadata about the key
@@ -157,6 +166,7 @@ namespace akeyless.Model
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  In: ").Append(In).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Passphrase: ").Append(Passphrase).Append("\n");
@@ -214,6 +224,10 @@ namespace akeyless.Model
                     this.In.Equals(input.In))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -265,6 +279,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
                 if (this.In != null)
                     hashCode = hashCode * 59 + this.In.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)

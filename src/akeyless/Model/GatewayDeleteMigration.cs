@@ -41,15 +41,17 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayDeleteMigration" /> class.
         /// </summary>
         /// <param name="id">Migration ID (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayDeleteMigration(string id = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayDeleteMigration(string id = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GatewayDeleteMigration and cannot be null");
             }
             this.Id = id;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -60,6 +62,13 @@ namespace akeyless.Model
         /// <value>Migration ID</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -84,6 +93,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayDeleteMigration {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -126,6 +136,10 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -148,6 +162,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

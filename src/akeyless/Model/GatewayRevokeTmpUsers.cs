@@ -41,13 +41,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayRevokeTmpUsers" /> class.
         /// </summary>
         /// <param name="host">Deprecated: has no effect.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer Name (required).</param>
         /// <param name="revokeAll">Revoke All Temp Creds.</param>
         /// <param name="softDelete">Soft Delete.</param>
         /// <param name="tmpCredsId">Tmp Creds ID (required) (default to &quot;demo_default_tmp_creds_id_for_sdk_bc&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayRevokeTmpUsers(string host = default(string), string name = default(string), bool revokeAll = default(bool), bool softDelete = default(bool), string tmpCredsId = "demo_default_tmp_creds_id_for_sdk_bc", string token = default(string), string uidToken = default(string))
+        public GatewayRevokeTmpUsers(string host = default(string), bool json = default(bool), string name = default(string), bool revokeAll = default(bool), bool softDelete = default(bool), string tmpCredsId = "demo_default_tmp_creds_id_for_sdk_bc", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -60,6 +61,7 @@ namespace akeyless.Model
             }
             this.TmpCredsId = tmpCredsId;
             this.Host = host;
+            this.Json = json;
             this.RevokeAll = revokeAll;
             this.SoftDelete = softDelete;
             this.Token = token;
@@ -72,6 +74,13 @@ namespace akeyless.Model
         /// <value>Deprecated: has no effect</value>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer Name
@@ -124,6 +133,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GatewayRevokeTmpUsers {\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RevokeAll: ").Append(RevokeAll).Append("\n");
             sb.Append("  SoftDelete: ").Append(SoftDelete).Append("\n");
@@ -170,6 +180,10 @@ namespace akeyless.Model
                     this.Host.Equals(input.Host))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -210,6 +224,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.RevokeAll.GetHashCode();

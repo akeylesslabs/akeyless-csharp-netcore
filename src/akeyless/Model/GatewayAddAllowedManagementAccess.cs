@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="allowGwApi">allowGwApi.</param>
         /// <param name="allowGwLogin">allowGwLogin.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="subAdminAccessId">SubAdmins to add (required).</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayAddAllowedManagementAccess(bool allowGwApi = default(bool), bool allowGwLogin = default(bool), string subAdminAccessId = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public GatewayAddAllowedManagementAccess(bool allowGwApi = default(bool), bool allowGwLogin = default(bool), bool json = default(bool), string subAdminAccessId = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "subAdminAccessId" is required (not null)
             if (subAdminAccessId == null) {
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.SubAdminAccessId = subAdminAccessId;
             this.AllowGwApi = allowGwApi;
             this.AllowGwLogin = allowGwLogin;
+            this.Json = json;
             this.SubClaims = subClaims;
             this.Token = token;
             this.UidToken = uidToken;
@@ -71,6 +73,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "allow-gw-login", EmitDefaultValue = true)]
         public bool AllowGwLogin { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// SubAdmins to add
@@ -110,6 +119,7 @@ namespace akeyless.Model
             sb.Append("class GatewayAddAllowedManagementAccess {\n");
             sb.Append("  AllowGwApi: ").Append(AllowGwApi).Append("\n");
             sb.Append("  AllowGwLogin: ").Append(AllowGwLogin).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  SubAdminAccessId: ").Append(SubAdminAccessId).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -157,6 +167,10 @@ namespace akeyless.Model
                     this.AllowGwLogin.Equals(input.AllowGwLogin)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.SubAdminAccessId == input.SubAdminAccessId ||
                     (this.SubAdminAccessId != null &&
                     this.SubAdminAccessId.Equals(input.SubAdminAccessId))
@@ -190,6 +204,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.AllowGwApi.GetHashCode();
                 hashCode = hashCode * 59 + this.AllowGwLogin.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.SubAdminAccessId != null)
                     hashCode = hashCode * 59 + this.SubAdminAccessId.GetHashCode();
                 if (this.SubClaims != null)

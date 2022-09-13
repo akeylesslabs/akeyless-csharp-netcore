@@ -23,6 +23,8 @@ docs/AzureADAccessRules.md
 docs/AzureKeyVaultMigration.md
 docs/AzureLogAnalyticsForwardingConfig.md
 docs/AzurePayload.md
+docs/BastionListEntry.md
+docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -301,6 +303,7 @@ docs/GatewayUpdateProducerRedshiftOutput.md
 docs/GatewayUpdateProducerSnowflake.md
 docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateTmpUsers.md
+docs/GatewaysListResponse.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
 docs/GetAccountSettings.md
@@ -326,6 +329,7 @@ docs/GetTags.md
 docs/GetTarget.md
 docs/GetTargetDetails.md
 docs/GetTargetDetailsOutput.md
+docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
@@ -373,10 +377,12 @@ docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
+docs/ListGateways.md
 docs/ListItems.md
 docs/ListItemsInPathOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
+docs/ListSRABastions.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -394,6 +400,8 @@ docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
+docs/OnePasswordMigration.md
+docs/OnePasswordPayload.md
 docs/PKICertificateIssueDetails.md
 docs/PasswordPolicyInfo.md
 docs/PathRule.md
@@ -445,6 +453,7 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
+docs/TargetObjectAssociation.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -529,6 +538,7 @@ docs/UpdateSalesforceTargetOutput.md
 docs/UpdateSecretVal.md
 docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
+docs/UpdateTargetDetails.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
 docs/UpdateWebTarget.md
@@ -546,8 +556,16 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/RuleAssignerTests.cs
-src/akeyless.Test/Model/UpdateAuthMethodLDAPOutputTests.cs
+src/akeyless.Test/Model/BastionListEntryTests.cs
+src/akeyless.Test/Model/BastionsListTests.cs
+src/akeyless.Test/Model/GatewaysListResponseTests.cs
+src/akeyless.Test/Model/GwClusterIdentityTests.cs
+src/akeyless.Test/Model/ListGatewaysTests.cs
+src/akeyless.Test/Model/ListSRABastionsTests.cs
+src/akeyless.Test/Model/OnePasswordMigrationTests.cs
+src/akeyless.Test/Model/OnePasswordPayloadTests.cs
+src/akeyless.Test/Model/TargetObjectAssociationTests.cs
+src/akeyless.Test/Model/UpdateTargetDetailsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -588,6 +606,8 @@ src/akeyless/Model/AzureADAccessRules.cs
 src/akeyless/Model/AzureKeyVaultMigration.cs
 src/akeyless/Model/AzureLogAnalyticsForwardingConfig.cs
 src/akeyless/Model/AzurePayload.cs
+src/akeyless/Model/BastionListEntry.cs
+src/akeyless/Model/BastionsList.cs
 src/akeyless/Model/CFConfigPart.cs
 src/akeyless/Model/CacheConfigPart.cs
 src/akeyless/Model/CertAccessRules.cs
@@ -866,6 +886,7 @@ src/akeyless/Model/GatewayUpdateProducerRedshiftOutput.cs
 src/akeyless/Model/GatewayUpdateProducerSnowflake.cs
 src/akeyless/Model/GatewayUpdateProducerSnowflakeOutput.cs
 src/akeyless/Model/GatewayUpdateTmpUsers.cs
+src/akeyless/Model/GatewaysListResponse.cs
 src/akeyless/Model/GenCustomerFragment.cs
 src/akeyless/Model/GeneralConfigPart.cs
 src/akeyless/Model/GetAccountSettings.cs
@@ -891,6 +912,7 @@ src/akeyless/Model/GetTags.cs
 src/akeyless/Model/GetTarget.cs
 src/akeyless/Model/GetTargetDetails.cs
 src/akeyless/Model/GetTargetDetailsOutput.cs
+src/akeyless/Model/GwClusterIdentity.cs
 src/akeyless/Model/HashiMigration.cs
 src/akeyless/Model/HashiPayload.cs
 src/akeyless/Model/HuaweiAccessRules.cs
@@ -938,10 +960,12 @@ src/akeyless/Model/LdapConfigPart.cs
 src/akeyless/Model/LeadershipConfigPart.cs
 src/akeyless/Model/ListAuthMethods.cs
 src/akeyless/Model/ListAuthMethodsOutput.cs
+src/akeyless/Model/ListGateways.cs
 src/akeyless/Model/ListItems.cs
 src/akeyless/Model/ListItemsInPathOutput.cs
 src/akeyless/Model/ListRoles.cs
 src/akeyless/Model/ListRolesOutput.cs
+src/akeyless/Model/ListSRABastions.cs
 src/akeyless/Model/ListTargets.cs
 src/akeyless/Model/ListTargetsOutput.cs
 src/akeyless/Model/LogForwardingConfigPart.cs
@@ -959,6 +983,8 @@ src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OIDCAccessRules.cs
 src/akeyless/Model/OIDCCustomClaim.cs
 src/akeyless/Model/ObjectVersionSettingsOutput.cs
+src/akeyless/Model/OnePasswordMigration.cs
+src/akeyless/Model/OnePasswordPayload.cs
 src/akeyless/Model/PKICertificateIssueDetails.cs
 src/akeyless/Model/PasswordPolicyInfo.cs
 src/akeyless/Model/PathRule.cs
@@ -1010,6 +1036,7 @@ src/akeyless/Model/SystemAccessCredsSettings.cs
 src/akeyless/Model/Target.cs
 src/akeyless/Model/TargetItemAssociation.cs
 src/akeyless/Model/TargetItemVersion.cs
+src/akeyless/Model/TargetObjectAssociation.cs
 src/akeyless/Model/TargetTypeDetailsInput.cs
 src/akeyless/Model/TmpUserData.cs
 src/akeyless/Model/Tokenize.cs
@@ -1094,6 +1121,7 @@ src/akeyless/Model/UpdateSalesforceTargetOutput.cs
 src/akeyless/Model/UpdateSecretVal.cs
 src/akeyless/Model/UpdateSecretValOutput.cs
 src/akeyless/Model/UpdateTarget.cs
+src/akeyless/Model/UpdateTargetDetails.cs
 src/akeyless/Model/UpdateTargetDetailsOutput.cs
 src/akeyless/Model/UpdateTargetOutput.cs
 src/akeyless/Model/UpdateWebTarget.cs

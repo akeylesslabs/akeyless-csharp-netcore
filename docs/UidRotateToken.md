@@ -6,6 +6,7 @@ uidRotateToken is a command that rotates an Akeyless Universal Identity token.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fork** | **bool** | Create a new child token with default parameters | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **SendManualAckToken** | **string** | The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token) | [optional] 
 **UidToken** | **string** | The Universal identity token | [optional] 
 **WithManualAck** | **bool** | Disable automatic ack | [optional] 

@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="hanadbPort">HanaDb Port (default to &quot;443&quot;).</param>
         /// <param name="hanadbRevocationStatements">HanaDb Revocation statements.</param>
         /// <param name="hanadbUsername">HanaDb Username.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerHanaDb(string deleteProtection = default(string), string hanaDbname = default(string), string hanadbCreateStatements = default(string), string hanadbHost = "127.0.0.1", string hanadbPassword = default(string), string hanadbPort = "443", string hanadbRevocationStatements = default(string), string hanadbUsername = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerHanaDb(string deleteProtection = default(string), string hanaDbname = default(string), string hanadbCreateStatements = default(string), string hanadbHost = "127.0.0.1", string hanadbPassword = default(string), string hanadbPort = "443", string hanadbRevocationStatements = default(string), string hanadbUsername = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -78,6 +79,7 @@ namespace akeyless.Model
             this.HanadbPort = hanadbPort ?? "443";
             this.HanadbRevocationStatements = hanadbRevocationStatements;
             this.HanadbUsername = hanadbUsername;
+            this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -148,6 +150,13 @@ namespace akeyless.Model
         /// <value>HanaDb Username</value>
         [DataMember(Name = "hanadb-username", EmitDefaultValue = false)]
         public string HanadbUsername { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -251,6 +260,7 @@ namespace akeyless.Model
             sb.Append("  HanadbPort: ").Append(HanadbPort).Append("\n");
             sb.Append("  HanadbRevocationStatements: ").Append(HanadbRevocationStatements).Append("\n");
             sb.Append("  HanadbUsername: ").Append(HanadbUsername).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -337,6 +347,10 @@ namespace akeyless.Model
                     this.HanadbUsername == input.HanadbUsername ||
                     (this.HanadbUsername != null &&
                     this.HanadbUsername.Equals(input.HanadbUsername))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -431,6 +445,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.HanadbRevocationStatements.GetHashCode();
                 if (this.HanadbUsername != null)
                     hashCode = hashCode * 59 + this.HanadbUsername.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

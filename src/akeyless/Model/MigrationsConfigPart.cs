@@ -40,13 +40,15 @@ namespace akeyless.Model
         /// <param name="gcpSecretsMigrations">gcpSecretsMigrations.</param>
         /// <param name="hashiMigrations">hashiMigrations.</param>
         /// <param name="k8sMigrations">k8sMigrations.</param>
-        public MigrationsConfigPart(List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>))
+        /// <param name="onePasswordMigrations">onePasswordMigrations.</param>
+        public MigrationsConfigPart(List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>))
         {
             this.AwsSecretsMigrations = awsSecretsMigrations;
             this.AzureKvMigrations = azureKvMigrations;
             this.GcpSecretsMigrations = gcpSecretsMigrations;
             this.HashiMigrations = hashiMigrations;
             this.K8sMigrations = k8sMigrations;
+            this.OnePasswordMigrations = onePasswordMigrations;
         }
 
         /// <summary>
@@ -80,6 +82,12 @@ namespace akeyless.Model
         public List<K8SMigration> K8sMigrations { get; set; }
 
         /// <summary>
+        /// Gets or Sets OnePasswordMigrations
+        /// </summary>
+        [DataMember(Name = "one_password_migrations", EmitDefaultValue = false)]
+        public List<OnePasswordMigration> OnePasswordMigrations { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -92,6 +100,7 @@ namespace akeyless.Model
             sb.Append("  GcpSecretsMigrations: ").Append(GcpSecretsMigrations).Append("\n");
             sb.Append("  HashiMigrations: ").Append(HashiMigrations).Append("\n");
             sb.Append("  K8sMigrations: ").Append(K8sMigrations).Append("\n");
+            sb.Append("  OnePasswordMigrations: ").Append(OnePasswordMigrations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +164,12 @@ namespace akeyless.Model
                     this.K8sMigrations != null &&
                     input.K8sMigrations != null &&
                     this.K8sMigrations.SequenceEqual(input.K8sMigrations)
+                ) && 
+                (
+                    this.OnePasswordMigrations == input.OnePasswordMigrations ||
+                    this.OnePasswordMigrations != null &&
+                    input.OnePasswordMigrations != null &&
+                    this.OnePasswordMigrations.SequenceEqual(input.OnePasswordMigrations)
                 );
         }
 
@@ -177,6 +192,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.HashiMigrations.GetHashCode();
                 if (this.K8sMigrations != null)
                     hashCode = hashCode * 59 + this.K8sMigrations.GetHashCode();
+                if (this.OnePasswordMigrations != null)
+                    hashCode = hashCode * 59 + this.OnePasswordMigrations.GetHashCode();
                 return hashCode;
             }
         }

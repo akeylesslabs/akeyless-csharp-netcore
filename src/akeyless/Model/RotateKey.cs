@@ -40,21 +40,30 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateKey" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Key name (required).</param>
         /// <param name="newKeyData">The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotateKey(string name = default(string), string newKeyData = default(string), string token = default(string), string uidToken = default(string))
+        public RotateKey(bool json = default(bool), string name = default(string), string newKeyData = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for RotateKey and cannot be null");
             }
             this.Name = name;
+            this.Json = json;
             this.NewKeyData = newKeyData;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Key name
@@ -92,6 +101,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RotateKey {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewKeyData: ").Append(NewKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -131,6 +141,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -161,6 +175,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewKeyData != null)

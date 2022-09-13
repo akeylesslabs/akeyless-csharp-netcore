@@ -43,12 +43,13 @@ namespace akeyless.Model
         /// <param name="comment">Comment about the target.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpSaEmail">GCP service account email.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateGcpTarget(string comment = default(string), string gcpKey = default(string), string gcpSaEmail = default(string), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public CreateGcpTarget(string comment = default(string), string gcpKey = default(string), string gcpSaEmail = default(string), bool json = default(bool), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -58,6 +59,7 @@ namespace akeyless.Model
             this.Comment = comment;
             this.GcpKey = gcpKey;
             this.GcpSaEmail = gcpSaEmail;
+            this.Json = json;
             this.Key = key;
             this.Token = token;
             this.UidToken = uidToken;
@@ -84,6 +86,13 @@ namespace akeyless.Model
         /// <value>GCP service account email</value>
         [DataMember(Name = "gcp-sa-email", EmitDefaultValue = false)]
         public string GcpSaEmail { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -130,6 +139,7 @@ namespace akeyless.Model
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpSaEmail: ").Append(GcpSaEmail).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -185,6 +195,10 @@ namespace akeyless.Model
                     this.GcpSaEmail.Equals(input.GcpSaEmail))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -225,6 +239,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GcpKey.GetHashCode();
                 if (this.GcpSaEmail != null)
                     hashCode = hashCode * 59 + this.GcpSaEmail.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)

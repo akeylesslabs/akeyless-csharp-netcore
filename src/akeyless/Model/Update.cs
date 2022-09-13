@@ -35,11 +35,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Update" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="version">Version.</param>
-        public Update(string version = default(string))
+        public Update(bool json = default(bool), string version = default(string))
         {
+            this.Json = json;
             this._Version = version;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Version
@@ -56,6 +65,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Update {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -92,6 +102,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this._Version == input._Version ||
                     (this._Version != null &&
                     this._Version.Equals(input._Version))
@@ -107,6 +121,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this._Version != null)
                     hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **OracleHost** | **string** | Oracle Host | [optional] [default to "127.0.0.1"]
 **OraclePassword** | **string** | Oracle Password | [optional] 

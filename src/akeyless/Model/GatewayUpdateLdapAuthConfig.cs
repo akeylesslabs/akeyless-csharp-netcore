@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="groupAttr">Group Attr.</param>
         /// <param name="groupDn">Group Dn.</param>
         /// <param name="groupFilter">Group Filter.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="ldapCaCert">LDAP CA Certificate (base64 encoded).</param>
         /// <param name="ldapEnable">Enable Ldap.</param>
         /// <param name="ldapUrl">LDAP Server URL, e.g. ldap://planetexpress.com:389.</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
-        public GatewayUpdateLdapAuthConfig(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), string ldapCaCert = default(string), string ldapEnable = default(string), string ldapUrl = default(string), bool ldapAnonymousSearch = default(bool), string signingKeyData = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public GatewayUpdateLdapAuthConfig(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), bool json = default(bool), string ldapCaCert = default(string), string ldapEnable = default(string), string ldapUrl = default(string), bool ldapAnonymousSearch = default(bool), string signingKeyData = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             this.AccessId = accessId;
             this.BindDn = bindDn;
@@ -58,6 +59,7 @@ namespace akeyless.Model
             this.GroupAttr = groupAttr;
             this.GroupDn = groupDn;
             this.GroupFilter = groupFilter;
+            this.Json = json;
             this.LdapCaCert = ldapCaCert;
             this.LdapEnable = ldapEnable;
             this.LdapUrl = ldapUrl;
@@ -110,6 +112,13 @@ namespace akeyless.Model
         /// <value>Group Filter</value>
         [DataMember(Name = "group-filter", EmitDefaultValue = false)]
         public string GroupFilter { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// LDAP CA Certificate (base64 encoded)
@@ -188,6 +197,7 @@ namespace akeyless.Model
             sb.Append("  GroupAttr: ").Append(GroupAttr).Append("\n");
             sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
             sb.Append("  GroupFilter: ").Append(GroupFilter).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapEnable: ").Append(LdapEnable).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
@@ -262,6 +272,10 @@ namespace akeyless.Model
                     this.GroupFilter.Equals(input.GroupFilter))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.LdapCaCert == input.LdapCaCert ||
                     (this.LdapCaCert != null &&
                     this.LdapCaCert.Equals(input.LdapCaCert))
@@ -328,6 +342,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GroupDn.GetHashCode();
                 if (this.GroupFilter != null)
                     hashCode = hashCode * 59 + this.GroupFilter.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.LdapCaCert != null)
                     hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
                 if (this.LdapEnable != null)

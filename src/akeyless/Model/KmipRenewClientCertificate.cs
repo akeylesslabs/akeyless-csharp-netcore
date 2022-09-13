@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="KmipRenewClientCertificate" /> class.
         /// </summary>
         /// <param name="clientId">clientId.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipRenewClientCertificate(string clientId = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        public KmipRenewClientCertificate(string clientId = default(string), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             this.ClientId = clientId;
+            this.Json = json;
             this.Name = name;
             this.Token = token;
             this.UidToken = uidToken;
@@ -52,6 +54,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "client-id", EmitDefaultValue = false)]
         public string ClientId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -82,6 +91,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class KmipRenewClientCertificate {\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -125,6 +135,10 @@ namespace akeyless.Model
                     this.ClientId.Equals(input.ClientId))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -152,6 +166,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.ClientId != null)
                     hashCode = hashCode * 59 + this.ClientId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Token != null)

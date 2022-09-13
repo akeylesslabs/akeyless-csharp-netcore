@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Comment** | **string** | Comment about the target | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GcpSaEmail** | **string** | GCP service account email | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="hashiToken">HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration).</param>
         /// <param name="hashiUrl">HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration).</param>
         /// <param name="id">Migration ID (Can be retrieved with gateway-list-migration command).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="k8sCaCertificate">For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method).</param>
         /// <param name="k8sClientCertificate">K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method).</param>
         /// <param name="k8sClientKey">K8s Client key (relevant only for K8s migration with Certificate Authentication method).</param>
@@ -59,11 +60,16 @@ namespace akeyless.Model
         /// <param name="k8sUsername">For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method).</param>
         /// <param name="name">Migration name.</param>
         /// <param name="newName">New migration name.</param>
+        /// <param name="opEmail">1Password user email to connect to the API.</param>
+        /// <param name="opPassword">1Password user password to connect to the API.</param>
+        /// <param name="opSecretKey">1Password user secret key to connect to the API.</param>
+        /// <param name="opUrl">1Password api container url.</param>
+        /// <param name="opVaults">1Password list of vault to get the items from.</param>
         /// <param name="protectionKey">The name of the key that protects the classic key value (if empty, the account default key will be used).</param>
         /// <param name="targetLocation">Target location in Akeyless for imported secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateMigration(string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = default(bool), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string opEmail = default(string), string opPassword = default(string), string opSecretKey = default(string), string opUrl = default(string), List<string> opVaults = default(List<string>), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             this.AwsKey = awsKey;
             this.AwsKeyId = awsKeyId;
@@ -78,6 +84,7 @@ namespace akeyless.Model
             this.HashiToken = hashiToken;
             this.HashiUrl = hashiUrl;
             this.Id = id;
+            this.Json = json;
             this.K8sCaCertificate = k8sCaCertificate;
             this.K8sClientCertificate = k8sClientCertificate;
             this.K8sClientKey = k8sClientKey;
@@ -89,6 +96,11 @@ namespace akeyless.Model
             this.K8sUsername = k8sUsername;
             this.Name = name;
             this.NewName = newName;
+            this.OpEmail = opEmail;
+            this.OpPassword = opPassword;
+            this.OpSecretKey = opSecretKey;
+            this.OpUrl = opUrl;
+            this.OpVaults = opVaults;
             this.ProtectionKey = protectionKey;
             this.TargetLocation = targetLocation;
             this.Token = token;
@@ -187,6 +199,13 @@ namespace akeyless.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
         /// </summary>
         /// <value>For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)</value>
@@ -264,6 +283,41 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// 1Password user email to connect to the API
+        /// </summary>
+        /// <value>1Password user email to connect to the API</value>
+        [DataMember(Name = "op-email", EmitDefaultValue = false)]
+        public string OpEmail { get; set; }
+
+        /// <summary>
+        /// 1Password user password to connect to the API
+        /// </summary>
+        /// <value>1Password user password to connect to the API</value>
+        [DataMember(Name = "op-password", EmitDefaultValue = false)]
+        public string OpPassword { get; set; }
+
+        /// <summary>
+        /// 1Password user secret key to connect to the API
+        /// </summary>
+        /// <value>1Password user secret key to connect to the API</value>
+        [DataMember(Name = "op-secret-key", EmitDefaultValue = false)]
+        public string OpSecretKey { get; set; }
+
+        /// <summary>
+        /// 1Password api container url
+        /// </summary>
+        /// <value>1Password api container url</value>
+        [DataMember(Name = "op-url", EmitDefaultValue = false)]
+        public string OpUrl { get; set; }
+
+        /// <summary>
+        /// 1Password list of vault to get the items from
+        /// </summary>
+        /// <value>1Password list of vault to get the items from</value>
+        [DataMember(Name = "op-vaults", EmitDefaultValue = false)]
+        public List<string> OpVaults { get; set; }
+
+        /// <summary>
         /// The name of the key that protects the classic key value (if empty, the account default key will be used)
         /// </summary>
         /// <value>The name of the key that protects the classic key value (if empty, the account default key will be used)</value>
@@ -312,6 +366,7 @@ namespace akeyless.Model
             sb.Append("  HashiToken: ").Append(HashiToken).Append("\n");
             sb.Append("  HashiUrl: ").Append(HashiUrl).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sCaCertificate: ").Append(K8sCaCertificate).Append("\n");
             sb.Append("  K8sClientCertificate: ").Append(K8sClientCertificate).Append("\n");
             sb.Append("  K8sClientKey: ").Append(K8sClientKey).Append("\n");
@@ -323,6 +378,11 @@ namespace akeyless.Model
             sb.Append("  K8sUsername: ").Append(K8sUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  OpEmail: ").Append(OpEmail).Append("\n");
+            sb.Append("  OpPassword: ").Append(OpPassword).Append("\n");
+            sb.Append("  OpSecretKey: ").Append(OpSecretKey).Append("\n");
+            sb.Append("  OpUrl: ").Append(OpUrl).Append("\n");
+            sb.Append("  OpVaults: ").Append(OpVaults).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  TargetLocation: ").Append(TargetLocation).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -428,6 +488,10 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.K8sCaCertificate == input.K8sCaCertificate ||
                     this.K8sCaCertificate != null &&
                     input.K8sCaCertificate != null &&
@@ -483,6 +547,32 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
+                ) && 
+                (
+                    this.OpEmail == input.OpEmail ||
+                    (this.OpEmail != null &&
+                    this.OpEmail.Equals(input.OpEmail))
+                ) && 
+                (
+                    this.OpPassword == input.OpPassword ||
+                    (this.OpPassword != null &&
+                    this.OpPassword.Equals(input.OpPassword))
+                ) && 
+                (
+                    this.OpSecretKey == input.OpSecretKey ||
+                    (this.OpSecretKey != null &&
+                    this.OpSecretKey.Equals(input.OpSecretKey))
+                ) && 
+                (
+                    this.OpUrl == input.OpUrl ||
+                    (this.OpUrl != null &&
+                    this.OpUrl.Equals(input.OpUrl))
+                ) && 
+                (
+                    this.OpVaults == input.OpVaults ||
+                    this.OpVaults != null &&
+                    input.OpVaults != null &&
+                    this.OpVaults.SequenceEqual(input.OpVaults)
                 ) && 
                 (
                     this.ProtectionKey == input.ProtectionKey ||
@@ -541,6 +631,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.HashiUrl.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.K8sCaCertificate != null)
                     hashCode = hashCode * 59 + this.K8sCaCertificate.GetHashCode();
                 if (this.K8sClientCertificate != null)
@@ -562,6 +653,16 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)
                     hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                if (this.OpEmail != null)
+                    hashCode = hashCode * 59 + this.OpEmail.GetHashCode();
+                if (this.OpPassword != null)
+                    hashCode = hashCode * 59 + this.OpPassword.GetHashCode();
+                if (this.OpSecretKey != null)
+                    hashCode = hashCode * 59 + this.OpSecretKey.GetHashCode();
+                if (this.OpUrl != null)
+                    hashCode = hashCode * 59 + this.OpUrl.GetHashCode();
+                if (this.OpVaults != null)
+                    hashCode = hashCode * 59 + this.OpVaults.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
                 if (this.TargetLocation != null)

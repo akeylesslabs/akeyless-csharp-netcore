@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
         /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
         /// <param name="kmsAlgorithm">Algorithm of the key in GCP KMS (required for gcp targets).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string name = default(string), string projectId = default(string), string purpose = default(string), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string name = default(string), string projectId = default(string), string purpose = default(string), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -64,6 +65,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             }
             this.TargetName = targetName;
+            this.Json = json;
             this.KeyOperations = keyOperations;
             this.KeyringName = keyringName;
             this.KmsAlgorithm = kmsAlgorithm;
@@ -75,6 +77,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.VaultName = vaultName;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// A list of allowed operations for the key (required for azure targets)
@@ -168,6 +177,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
             sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
             sb.Append("  KmsAlgorithm: ").Append(KmsAlgorithm).Append("\n");
@@ -214,6 +224,10 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
                 (
                     this.KeyOperations == input.KeyOperations ||
                     this.KeyOperations != null &&
@@ -286,6 +300,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyOperations != null)
                     hashCode = hashCode * 59 + this.KeyOperations.GetHashCode();
                 if (this.KeyringName != null)

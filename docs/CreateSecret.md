@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | **string** | for personal password manager | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Metadata** | **string** | Metadata about the secret | [optional] 
 **MultilineValue** | **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
 **PasswordManagerCustomField** | **Dictionary&lt;string, string&gt;** | For Password Management use, additional fields | [optional] 
-**PasswordManagerInjectUrl** | **string** | For Password Management use, reflect the website context | [optional] 
+**PasswordManagerInjectUrl** | **List&lt;string&gt;** | For Password Management use, reflect the website context | [optional] 
 **PasswordManagerPassword** | **string** | For Password Management use, additional fields | [optional] 
 **PasswordManagerUsername** | **string** | For Password Management use | [optional] 
 **ProtectionKey** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 

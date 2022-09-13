@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **EksClusterName** | **string** | EKS cluster name | 
 **EksRegion** | **string** | Region | [optional] [default to "us-east-2"]
 **EksSecretAccessKey** | **string** | Secret Access Key | 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

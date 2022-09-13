@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **FixedUserClaimKeyname** | **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | **bool** | Fixed user | [optional] [default to false]
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessEnable** | **string** |  | [optional] 

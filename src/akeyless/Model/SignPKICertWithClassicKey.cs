@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="country">A comma-separated list of the country that will be set in the issued certificate.</param>
         /// <param name="displayId">The name of the key to use in the sign PKI Cert process (required).</param>
         /// <param name="dnsNames">DNS Names to be included in the PKI certificate (in a comma-delimited list).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
         /// <param name="version">classic key version (required).</param>
-        public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), int version = default(int))
+        public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null) {
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.CommonName = commonName;
             this.Country = country;
             this.DnsNames = dnsNames;
+            this.Json = json;
             // use default value if no "keyUsage" provided
             this.KeyUsage = keyUsage ?? "DigitalSignature,KeyAgreement,KeyEncipherment";
             this.Locality = locality;
@@ -116,6 +118,13 @@ namespace akeyless.Model
         /// <value>DNS Names to be included in the PKI certificate (in a comma-delimited list)</value>
         [DataMember(Name = "dns-names", EmitDefaultValue = false)]
         public string DnsNames { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// key-usage
@@ -227,6 +236,7 @@ namespace akeyless.Model
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  DnsNames: ").Append(DnsNames).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
             sb.Append("  OrganizationalUnits: ").Append(OrganizationalUnits).Append("\n");
@@ -294,6 +304,10 @@ namespace akeyless.Model
                     this.DnsNames == input.DnsNames ||
                     (this.DnsNames != null &&
                     this.DnsNames.Equals(input.DnsNames))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeyUsage == input.KeyUsage ||
@@ -382,6 +396,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.DnsNames != null)
                     hashCode = hashCode * 59 + this.DnsNames.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyUsage != null)
                     hashCode = hashCode * 59 + this.KeyUsage.GetHashCode();
                 if (this.Locality != null)

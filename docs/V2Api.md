@@ -66,6 +66,7 @@ Method | HTTP request | Description
 [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize | 
 [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
 [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key | 
+[**GatewayAddAllowedManagementAccess**](V2Api.md#gatewayaddallowedmanagementaccess) | **POST** /gateway-add-allow-management-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration | 
 [**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory | 
@@ -165,8 +166,10 @@ Method | HTTP request | Description
 [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment | 
 [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state | 
 [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods | 
+[**ListGateways**](V2Api.md#listgateways) | **POST** /list-gateways | 
 [**ListItems**](V2Api.md#listitems) | **POST** /list-items | 
 [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles | 
+[**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions | 
 [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets | 
 [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects | 
 [**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds | 
@@ -4515,6 +4518,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | encryptResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayaddallowedmanagementaccess"></a>
+# **GatewayAddAllowedManagementAccess**
+> Object GatewayAddAllowedManagementAccess (GatewayAddAllowedManagementAccess body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayAddAllowedManagementAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayAddAllowedManagementAccess(); // GatewayAddAllowedManagementAccess | 
+
+            try
+            {
+                Object result = apiInstance.GatewayAddAllowedManagementAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayAddAllowedManagementAccess: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md)|  | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayAddSubAdminsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -11344,6 +11416,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="listgateways"></a>
+# **ListGateways**
+> GatewaysListResponse ListGateways (ListGateways body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ListGatewaysExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ListGateways(); // ListGateways | 
+
+            try
+            {
+                GatewaysListResponse result = apiInstance.ListGateways(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ListGateways: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListGateways**](ListGateways.md)|  | 
+
+### Return type
+
+[**GatewaysListResponse**](GatewaysListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | listGatewaysResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="listitems"></a>
 # **ListItems**
 > ListItemsInPathOutput ListItems (ListItems body)
@@ -11478,6 +11619,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | listRolesResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="listsrabastions"></a>
+# **ListSRABastions**
+> BastionsList ListSRABastions (ListSRABastions body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ListSRABastionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ListSRABastions(); // ListSRABastions | 
+
+            try
+            {
+                BastionsList result = apiInstance.ListSRABastions(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ListSRABastions: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ListSRABastions**](ListSRABastions.md)|  | 
+
+### Return type
+
+[**BastionsList**](BastionsList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | listSRABastionsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -14792,7 +15002,7 @@ No authorization required
 
 <a name="updatenativek8starget"></a>
 # **UpdateNativeK8STarget**
-> UpdateNativeK8STarget UpdateNativeK8STarget (UpdateNativeK8STarget body)
+> UpdateNativeK8STargetOutput UpdateNativeK8STarget (UpdateNativeK8STarget body)
 
 
 
@@ -14817,7 +15027,7 @@ namespace Example
 
             try
             {
-                UpdateNativeK8STarget result = apiInstance.UpdateNativeK8STarget(body);
+                UpdateNativeK8STargetOutput result = apiInstance.UpdateNativeK8STarget(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -14839,7 +15049,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateNativeK8STarget**](UpdateNativeK8STarget.md)
+[**UpdateNativeK8STargetOutput**](UpdateNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -14854,7 +15064,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | updateNativeK8STarget |  -  |
+| **200** | updateNativeK8STargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -15754,7 +15964,7 @@ No authorization required
 
 <a name="updatetargetdetails"></a>
 # **UpdateTargetDetails**
-> UpdateTargetOutput UpdateTargetDetails (Object body)
+> UpdateTargetOutput UpdateTargetDetails (UpdateTargetDetails body)
 
 
 
@@ -15775,7 +15985,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = ;  // Object | 
+            var body = new UpdateTargetDetails(); // UpdateTargetDetails | 
 
             try
             {
@@ -15797,7 +16007,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Object**|  | 
+ **body** | [**UpdateTargetDetails**](UpdateTargetDetails.md)|  | 
 
 ### Return type
 

@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
         /// <param name="metadata">Metadata about the classic key.</param>
         /// <param name="name">ClassicKey name (required).</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="tags">List of the tags attached to this classic key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), bool json = default(bool), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.Name = name;
             this.CertFileData = certFileData;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.KeyData = keyData;
             this.Metadata = metadata;
             this.ProtectionKeyName = protectionKeyName;
@@ -92,6 +94,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Base64-encoded classic key value
@@ -153,6 +162,7 @@ namespace akeyless.Model
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -210,6 +220,10 @@ namespace akeyless.Model
                     this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeyData == input.KeyData ||
                     (this.KeyData != null &&
                     this.KeyData.Equals(input.KeyData))
@@ -262,6 +276,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyData != null)
                     hashCode = hashCode * 59 + this.KeyData.GetHashCode();
                 if (this.Metadata != null)

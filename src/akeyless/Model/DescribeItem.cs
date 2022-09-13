@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the item.</param>
         /// <param name="itemId">Item id of the item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string displayId = default(string), long itemId = default(long), string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(string displayId = default(string), long itemId = default(long), bool json = default(bool), string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.Name = name;
             this.DisplayId = displayId;
             this.ItemId = itemId;
+            this.Json = json;
             this.ShowVersions = showVersions;
             this.Token = token;
             this.UidToken = uidToken;
@@ -73,6 +75,13 @@ namespace akeyless.Model
         /// <value>Item id of the item</value>
         [DataMember(Name = "item-id", EmitDefaultValue = false)]
         public long ItemId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Item name
@@ -112,6 +121,7 @@ namespace akeyless.Model
             sb.Append("class DescribeItem {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ShowVersions: ").Append(ShowVersions).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -160,6 +170,10 @@ namespace akeyless.Model
                     this.ItemId.Equals(input.ItemId)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -192,6 +206,7 @@ namespace akeyless.Model
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.ShowVersions.GetHashCode();

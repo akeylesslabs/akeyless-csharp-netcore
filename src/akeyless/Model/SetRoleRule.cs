@@ -41,12 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SetRoleRule" /> class.
         /// </summary>
         /// <param name="capability">List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny] (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="path">The path the rule refers to (required).</param>
         /// <param name="roleName">The role name to be updated (required).</param>
         /// <param name="ruleType">item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule (default to &quot;item-rule&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public SetRoleRule(List<string> capability = default(List<string>), string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), string uidToken = default(string))
+        public SetRoleRule(List<string> capability = default(List<string>), bool json = default(bool), string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
             if (capability == null) {
@@ -63,6 +64,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("roleName is a required property for SetRoleRule and cannot be null");
             }
             this.RoleName = roleName;
+            this.Json = json;
             // use default value if no "ruleType" provided
             this.RuleType = ruleType ?? "item-rule";
             this.Token = token;
@@ -75,6 +77,13 @@ namespace akeyless.Model
         /// <value>List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]</value>
         [DataMember(Name = "capability", IsRequired = true, EmitDefaultValue = false)]
         public List<string> Capability { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The path the rule refers to
@@ -120,6 +129,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class SetRoleRule {\n");
             sb.Append("  Capability: ").Append(Capability).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  RuleType: ").Append(RuleType).Append("\n");
@@ -166,6 +176,10 @@ namespace akeyless.Model
                     this.Capability.SequenceEqual(input.Capability)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -203,6 +217,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Capability != null)
                     hashCode = hashCode * 59 + this.Capability.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.RoleName != null)

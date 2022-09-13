@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ListRoles" /> class.
         /// </summary>
         /// <param name="filter">Filter by item name or part of it.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListRoles(string filter = default(string), string paginationToken = default(string), string token = default(string), string uidToken = default(string))
+        public ListRoles(string filter = default(string), bool json = default(bool), string paginationToken = default(string), string token = default(string), string uidToken = default(string))
         {
             this.Filter = filter;
+            this.Json = json;
             this.PaginationToken = paginationToken;
             this.Token = token;
             this.UidToken = uidToken;
@@ -53,6 +55,13 @@ namespace akeyless.Model
         /// <value>Filter by item name or part of it</value>
         [DataMember(Name = "filter", EmitDefaultValue = false)]
         public string Filter { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Next page reference
@@ -84,6 +93,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class ListRoles {\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -127,6 +137,10 @@ namespace akeyless.Model
                     this.Filter.Equals(input.Filter))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.PaginationToken == input.PaginationToken ||
                     (this.PaginationToken != null &&
                     this.PaginationToken.Equals(input.PaginationToken))
@@ -154,6 +168,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Filter != null)
                     hashCode = hashCode * 59 + this.Filter.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.PaginationToken != null)
                     hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
                 if (this.Token != null)

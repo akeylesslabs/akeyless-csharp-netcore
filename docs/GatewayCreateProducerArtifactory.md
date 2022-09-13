@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | **string** | Base URL | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 

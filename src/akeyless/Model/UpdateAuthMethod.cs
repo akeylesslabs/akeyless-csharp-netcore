@@ -44,12 +44,13 @@ namespace akeyless.Model
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethod(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), long jwtTtl = default(long), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethod(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.BoundIps = boundIps;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
+            this.Json = json;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.Token = token;
@@ -93,6 +95,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the GW IPs that the access is restricted to</value>
         [DataMember(Name = "gw-bound-ips", EmitDefaultValue = false)]
         public List<string> GwBoundIps { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Jwt TTL
@@ -141,6 +150,7 @@ namespace akeyless.Model
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -201,6 +211,10 @@ namespace akeyless.Model
                     this.GwBoundIps.SequenceEqual(input.GwBoundIps)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -241,6 +255,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)
                     hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

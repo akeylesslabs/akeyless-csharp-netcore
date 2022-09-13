@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="cassandraPort">Cassandra port (default to &quot;9042&quot;).</param>
         /// <param name="cassandraUsername">Cassandra superuser username.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -68,6 +69,7 @@ namespace akeyless.Model
             this.CassandraPort = cassandraPort ?? "9042";
             this.CassandraUsername = cassandraUsername;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Tags = tags;
@@ -119,6 +121,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -190,6 +199,7 @@ namespace akeyless.Model
             sb.Append("  CassandraPort: ").Append(CassandraPort).Append("\n");
             sb.Append("  CassandraUsername: ").Append(CassandraUsername).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -263,6 +273,10 @@ namespace akeyless.Model
                     this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -326,6 +340,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CassandraUsername.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

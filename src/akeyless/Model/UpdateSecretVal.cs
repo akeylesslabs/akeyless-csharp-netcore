@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateSecretVal" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="multiline">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The new secret value (required).</param>
-        public UpdateSecretVal(string accessibility = default(string), string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), string passwordManagerInjectUrl = default(string), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string token = default(string), string uidToken = default(string), string value = default(string))
+        public UpdateSecretVal(string accessibility = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string token = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -66,6 +67,7 @@ namespace akeyless.Model
             }
             this.Value = value;
             this.Accessibility = accessibility;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.Multiline = multiline;
@@ -84,6 +86,13 @@ namespace akeyless.Model
         /// <value>for personal password manager</value>
         [DataMember(Name = "accessibility", EmitDefaultValue = false)]
         public string Accessibility { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -131,7 +140,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>For Password Management use, reflect the website context</value>
         [DataMember(Name = "password-manager-inject-url", EmitDefaultValue = false)]
-        public string PasswordManagerInjectUrl { get; set; }
+        public List<string> PasswordManagerInjectUrl { get; set; }
 
         /// <summary>
         /// For Password Management use, additional fields
@@ -177,6 +186,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateSecretVal {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Multiline: ").Append(Multiline).Append("\n");
@@ -229,6 +239,10 @@ namespace akeyless.Model
                     this.Accessibility.Equals(input.Accessibility))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -259,8 +273,9 @@ namespace akeyless.Model
                 ) && 
                 (
                     this.PasswordManagerInjectUrl == input.PasswordManagerInjectUrl ||
-                    (this.PasswordManagerInjectUrl != null &&
-                    this.PasswordManagerInjectUrl.Equals(input.PasswordManagerInjectUrl))
+                    this.PasswordManagerInjectUrl != null &&
+                    input.PasswordManagerInjectUrl != null &&
+                    this.PasswordManagerInjectUrl.SequenceEqual(input.PasswordManagerInjectUrl)
                 ) && 
                 (
                     this.PasswordManagerPassword == input.PasswordManagerPassword ||
@@ -300,6 +315,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Accessibility != null)
                     hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

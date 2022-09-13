@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="artifactoryAdminPwd">Artifactory Admin password (required).</param>
         /// <param name="baseUrl">Base URL (required).</param>
         /// <param name="comment">Comment about the target.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateArtifactoryTarget(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string comment = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateArtifactoryTarget(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string comment = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "artifactoryAdminName" is required (not null)
             if (artifactoryAdminName == null) {
@@ -74,6 +75,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Comment = comment;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -109,6 +111,13 @@ namespace akeyless.Model
         /// <value>Comment about the target</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -170,6 +179,7 @@ namespace akeyless.Model
             sb.Append("  ArtifactoryAdminPwd: ").Append(ArtifactoryAdminPwd).Append("\n");
             sb.Append("  BaseUrl: ").Append(BaseUrl).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -232,6 +242,10 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -284,6 +298,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.BaseUrl.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

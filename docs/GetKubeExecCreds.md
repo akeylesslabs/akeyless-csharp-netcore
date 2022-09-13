@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CertIssuerName** | **string** | The name of the PKI certificate issuer | 
 **CommonName** | **string** | The common name to be included in the PKI certificate | [optional] 
 **ExtendedKeyUsage** | **string** | A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeyDataBase64** | **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **long** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 

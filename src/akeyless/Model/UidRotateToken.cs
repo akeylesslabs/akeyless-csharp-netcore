@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UidRotateToken" /> class.
         /// </summary>
         /// <param name="fork">Create a new child token with default parameters.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="sendManualAckToken">The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token).</param>
         /// <param name="uidToken">The Universal identity token.</param>
         /// <param name="withManualAck">Disable automatic ack.</param>
-        public UidRotateToken(bool fork = default(bool), string sendManualAckToken = default(string), string uidToken = default(string), bool withManualAck = default(bool))
+        public UidRotateToken(bool fork = default(bool), bool json = default(bool), string sendManualAckToken = default(string), string uidToken = default(string), bool withManualAck = default(bool))
         {
             this.Fork = fork;
+            this.Json = json;
             this.SendManualAckToken = sendManualAckToken;
             this.UidToken = uidToken;
             this.WithManualAck = withManualAck;
@@ -53,6 +55,13 @@ namespace akeyless.Model
         /// <value>Create a new child token with default parameters</value>
         [DataMember(Name = "fork", EmitDefaultValue = true)]
         public bool Fork { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token)
@@ -84,6 +93,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UidRotateToken {\n");
             sb.Append("  Fork: ").Append(Fork).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  SendManualAckToken: ").Append(SendManualAckToken).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  WithManualAck: ").Append(WithManualAck).Append("\n");
@@ -126,6 +136,10 @@ namespace akeyless.Model
                     this.Fork.Equals(input.Fork)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.SendManualAckToken == input.SendManualAckToken ||
                     (this.SendManualAckToken != null &&
                     this.SendManualAckToken.Equals(input.SendManualAckToken))
@@ -151,6 +165,7 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.Fork.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.SendManualAckToken != null)
                     hashCode = hashCode * 59 + this.SendManualAckToken.GetHashCode();
                 if (this.UidToken != null)

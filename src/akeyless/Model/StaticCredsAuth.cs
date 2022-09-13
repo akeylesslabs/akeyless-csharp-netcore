@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="accessId">Akeyless JWT token.</param>
         /// <param name="adminEmail">Akeyless JWT token.</param>
         /// <param name="creds">Akeyless JWT token.</param>
-        public StaticCredsAuth(string accessId = default(string), string adminEmail = default(string), string creds = default(string))
+        /// <param name="json">Set output format to JSON.</param>
+        public StaticCredsAuth(string accessId = default(string), string adminEmail = default(string), string creds = default(string), bool json = default(bool))
         {
             this.AccessId = accessId;
             this.AdminEmail = adminEmail;
             this.Creds = creds;
+            this.Json = json;
         }
 
         /// <summary>
@@ -67,6 +69,13 @@ namespace akeyless.Model
         public string Creds { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -77,6 +86,7 @@ namespace akeyless.Model
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  Creds: ").Append(Creds).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -125,6 +135,10 @@ namespace akeyless.Model
                     this.Creds == input.Creds ||
                     (this.Creds != null &&
                     this.Creds.Equals(input.Creds))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 );
         }
 
@@ -143,6 +157,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AdminEmail.GetHashCode();
                 if (this.Creds != null)
                     hashCode = hashCode * 59 + this.Creds.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 return hashCode;
             }
         }

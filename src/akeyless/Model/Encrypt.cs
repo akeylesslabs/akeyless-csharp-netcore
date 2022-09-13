@@ -42,12 +42,14 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the key to use in the encryption process.</param>
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
+        /// <param name="inputFormat">If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64].</param>
         /// <param name="itemId">The item id of the key to use in the encryption process.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="plaintext">Data to be encrypted.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), long itemId = default(long), string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string))
+        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string inputFormat = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "keyName" is required (not null)
             if (keyName == null) {
@@ -56,7 +58,9 @@ namespace akeyless.Model
             this.KeyName = keyName;
             this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
+            this.InputFormat = inputFormat;
             this.ItemId = itemId;
+            this.Json = json;
             this.Plaintext = plaintext;
             this.Token = token;
             this.UidToken = uidToken;
@@ -77,11 +81,25 @@ namespace akeyless.Model
         public Dictionary<string, string> EncryptionContext { get; set; }
 
         /// <summary>
+        /// If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64]
+        /// </summary>
+        /// <value>If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64]</value>
+        [DataMember(Name = "input-format", EmitDefaultValue = false)]
+        public string InputFormat { get; set; }
+
+        /// <summary>
         /// The item id of the key to use in the encryption process
         /// </summary>
         /// <value>The item id of the key to use in the encryption process</value>
         [DataMember(Name = "item-id", EmitDefaultValue = false)]
         public long ItemId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of the key to use in the encryption process
@@ -121,7 +139,9 @@ namespace akeyless.Model
             sb.Append("class Encrypt {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
+            sb.Append("  InputFormat: ").Append(InputFormat).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -172,8 +192,17 @@ namespace akeyless.Model
                     this.EncryptionContext.SequenceEqual(input.EncryptionContext)
                 ) && 
                 (
+                    this.InputFormat == input.InputFormat ||
+                    (this.InputFormat != null &&
+                    this.InputFormat.Equals(input.InputFormat))
+                ) && 
+                (
                     this.ItemId == input.ItemId ||
                     this.ItemId.Equals(input.ItemId)
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeyName == input.KeyName ||
@@ -210,7 +239,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
                 if (this.EncryptionContext != null)
                     hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
+                if (this.InputFormat != null)
+                    hashCode = hashCode * 59 + this.InputFormat.GetHashCode();
                 hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Plaintext != null)

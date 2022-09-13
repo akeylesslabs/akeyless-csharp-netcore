@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="eksClusterName">EKS cluster name (required).</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="eksSecretAccessKey">Secret Access Key (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public UpdateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             if (eksAccessKeyId == null) {
@@ -90,6 +91,7 @@ namespace akeyless.Model
             this.Comment = comment;
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? "us-east-2";
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -147,6 +149,13 @@ namespace akeyless.Model
         /// <value>Secret Access Key</value>
         [DataMember(Name = "eks-secret-access-key", IsRequired = true, EmitDefaultValue = false)]
         public string EksSecretAccessKey { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -217,6 +226,7 @@ namespace akeyless.Model
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -295,6 +305,10 @@ namespace akeyless.Model
                     this.EksSecretAccessKey.Equals(input.EksSecretAccessKey))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -357,6 +371,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.EksRegion.GetHashCode();
                 if (this.EksSecretAccessKey != null)
                     hashCode = hashCode * 59 + this.EksSecretAccessKey.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

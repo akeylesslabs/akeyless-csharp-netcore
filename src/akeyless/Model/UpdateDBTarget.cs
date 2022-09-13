@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="dbType">dbType (required).</param>
         /// <param name="host">host.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="mongodbAtlas">mongodbAtlas.</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
+        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
             if (dbType == null) {
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             this.Host = host;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.MongodbAtlas = mongodbAtlas;
@@ -142,6 +144,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -290,6 +299,7 @@ namespace akeyless.Model
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  MongodbAtlas: ").Append(MongodbAtlas).Append("\n");
@@ -373,6 +383,10 @@ namespace akeyless.Model
                     this.Host == input.Host ||
                     (this.Host != null &&
                     this.Host.Equals(input.Host))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
@@ -494,6 +508,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbType.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

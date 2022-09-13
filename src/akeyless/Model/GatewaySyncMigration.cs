@@ -40,21 +40,30 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewaySyncMigration" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Migration name (required).</param>
         /// <param name="startSync">true, for starting synchronization, false for stopping.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewaySyncMigration(string name = default(string), bool startSync = default(bool), string token = default(string), string uidToken = default(string))
+        public GatewaySyncMigration(bool json = default(bool), string name = default(string), bool startSync = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewaySyncMigration and cannot be null");
             }
             this.Name = name;
+            this.Json = json;
             this.StartSync = startSync;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Migration name
@@ -92,6 +101,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewaySyncMigration {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  StartSync: ").Append(StartSync).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -131,6 +141,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -160,6 +174,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.StartSync.GetHashCode();

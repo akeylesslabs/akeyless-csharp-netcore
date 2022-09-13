@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **GithubBaseUrl** | **string** | Base URL | [optional] 
 **InstallationId** | **long** | Github app installation id | [optional] 
 **InstallationRepository** | **string** | Repository that the app installation has access to | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

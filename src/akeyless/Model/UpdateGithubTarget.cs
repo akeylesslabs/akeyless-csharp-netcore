@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="githubAppId">Github app id.</param>
         /// <param name="githubAppPrivateKey">App private key.</param>
         /// <param name="githubBaseUrl">Base URL.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateGithubTarget(string comment = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateGithubTarget(string comment = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.GithubAppId = githubAppId;
             this.GithubAppPrivateKey = githubAppPrivateKey;
             this.GithubBaseUrl = githubBaseUrl;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>Base URL</value>
         [DataMember(Name = "github-base-url", EmitDefaultValue = false)]
         public string GithubBaseUrl { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -158,6 +167,7 @@ namespace akeyless.Model
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
             sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
             sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -219,6 +229,10 @@ namespace akeyless.Model
                     this.GithubBaseUrl.Equals(input.GithubBaseUrl))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -270,6 +284,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GithubAppPrivateKey.GetHashCode();
                 if (this.GithubBaseUrl != null)
                     hashCode = hashCode * 59 + this.GithubBaseUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

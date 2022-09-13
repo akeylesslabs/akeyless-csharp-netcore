@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateRabbitMQTarget" /> class.
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
@@ -48,7 +49,7 @@ namespace akeyless.Model
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateRabbitMQTarget(string comment = default(string), string key = default(string), string name = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string token = default(string), string uidToken = default(string))
+        public CreateRabbitMQTarget(string comment = default(string), bool json = default(bool), string key = default(string), string name = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -56,6 +57,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Comment = comment;
+            this.Json = json;
             this.Key = key;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
@@ -70,6 +72,13 @@ namespace akeyless.Model
         /// <value>Comment about the target</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -126,6 +135,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateRabbitMQTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
@@ -171,6 +181,10 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -220,6 +234,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)

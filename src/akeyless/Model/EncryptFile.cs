@@ -44,11 +44,12 @@ namespace akeyless.Model
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
         /// <param name="_in">Path to the file to be encrypted. If not provided, the content will be taken from stdin (required).</param>
         /// <param name="itemId">The item id of the key to use in the encryption process.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="_out">Path to the output file. If not provided, the output will be sent to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
+        public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null) {
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.DisplayId = displayId;
             this.EncryptionContext = encryptionContext;
             this.ItemId = itemId;
+            this.Json = json;
             this.Out = _out;
             this.Token = token;
             this.UidToken = uidToken;
@@ -95,6 +97,13 @@ namespace akeyless.Model
         /// <value>The item id of the key to use in the encryption process</value>
         [DataMember(Name = "item-id", EmitDefaultValue = false)]
         public long ItemId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of the key to use in the encryption process
@@ -136,6 +145,7 @@ namespace akeyless.Model
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
             sb.Append("  In: ").Append(In).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Out: ").Append(Out).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -195,6 +205,10 @@ namespace akeyless.Model
                     this.ItemId.Equals(input.ItemId)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeyName == input.KeyName ||
                     (this.KeyName != null &&
                     this.KeyName.Equals(input.KeyName))
@@ -232,6 +246,7 @@ namespace akeyless.Model
                 if (this.In != null)
                     hashCode = hashCode * 59 + this.In.GetHashCode();
                 hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyName != null)
                     hashCode = hashCode * 59 + this.KeyName.GetHashCode();
                 if (this.Out != null)

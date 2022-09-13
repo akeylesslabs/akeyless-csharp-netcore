@@ -40,12 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MoveObjects" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="objectsType">The objects type to move (item/auth_method/role) (default to &quot;item&quot;).</param>
         /// <param name="source">Source path to move the objects from (required).</param>
         /// <param name="target">Target path to move the objects to (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public MoveObjects(string objectsType = "item", string source = default(string), string target = default(string), string token = default(string), string uidToken = default(string))
+        public MoveObjects(bool json = default(bool), string objectsType = "item", string source = default(string), string target = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "source" is required (not null)
             if (source == null) {
@@ -57,11 +58,19 @@ namespace akeyless.Model
                 throw new ArgumentNullException("target is a required property for MoveObjects and cannot be null");
             }
             this.Target = target;
+            this.Json = json;
             // use default value if no "objectsType" provided
             this.ObjectsType = objectsType ?? "item";
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The objects type to move (item/auth_method/role)
@@ -106,6 +115,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class MoveObjects {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  ObjectsType: ").Append(ObjectsType).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
@@ -146,6 +156,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.ObjectsType == input.ObjectsType ||
                     (this.ObjectsType != null &&
                     this.ObjectsType.Equals(input.ObjectsType))
@@ -181,6 +195,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.ObjectsType != null)
                     hashCode = hashCode * 59 + this.ObjectsType.GetHashCode();
                 if (this.Source != null)

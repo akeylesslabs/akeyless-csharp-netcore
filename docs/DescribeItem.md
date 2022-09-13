@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | **string** | The display id of the item | [optional] 
 **ItemId** | **long** | Item id of the item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Item name | 
 **ShowVersions** | **bool** | Include all item versions in reply | [optional] [default to false]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

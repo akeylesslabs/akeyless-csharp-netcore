@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GenKey** | **string** | Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided | [optional] [default to "true"]
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **JwtTtl** | **long** | Jwt TTL | [optional] 
 **Name** | **string** | Auth Method name | 
 **PublicKey** | **string** | Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048] | [optional] 

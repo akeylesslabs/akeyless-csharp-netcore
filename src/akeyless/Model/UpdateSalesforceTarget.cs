@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="clientSecret">Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow).</param>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="email">The email of the user attached to the oauth2 app used for connecting to Salesforce (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string email = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string email = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "authFlow" is required (not null)
             if (authFlow == null) {
@@ -90,6 +91,7 @@ namespace akeyless.Model
             this.CaCertName = caCertName;
             this.ClientSecret = clientSecret;
             this.Comment = comment;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -155,6 +157,13 @@ namespace akeyless.Model
         /// <value>The email of the user attached to the oauth2 app used for connecting to Salesforce</value>
         [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -241,6 +250,7 @@ namespace akeyless.Model
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -326,6 +336,10 @@ namespace akeyless.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -401,6 +415,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

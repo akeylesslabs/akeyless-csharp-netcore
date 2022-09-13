@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbType** | **string** |  | [optional] 
 **HostName** | **string** |  | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **MongoDbName** | **string** |  | [optional] 
 **MongoUri** | **string** |  | [optional] 

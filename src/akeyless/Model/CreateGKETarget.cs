@@ -46,12 +46,13 @@ namespace akeyless.Model
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
         /// <param name="gkeClusterName">GKE cluster name.</param>
         /// <param name="gkeServiceAccountEmail">GKE service account email.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public CreateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.GkeClusterEndpoint = gkeClusterEndpoint;
             this.GkeClusterName = gkeClusterName;
             this.GkeServiceAccountEmail = gkeServiceAccountEmail;
+            this.Json = json;
             this.Key = key;
             this.Token = token;
             this.UidToken = uidToken;
@@ -113,6 +115,13 @@ namespace akeyless.Model
         public string GkeServiceAccountEmail { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
         /// </summary>
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
@@ -160,6 +169,7 @@ namespace akeyless.Model
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountEmail: ").Append(GkeServiceAccountEmail).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -230,6 +240,10 @@ namespace akeyless.Model
                     this.GkeServiceAccountEmail.Equals(input.GkeServiceAccountEmail))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -276,6 +290,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
                 if (this.GkeServiceAccountEmail != null)
                     hashCode = hashCode * 59 + this.GkeServiceAccountEmail.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)

@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
         /// <param name="host">host.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="port">port.</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="sshUsername">sshUsername.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateSSHTarget(string comment = default(string), string host = default(string), string key = default(string), string name = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
+        public CreateSSHTarget(string comment = default(string), string host = default(string), bool json = default(bool), string key = default(string), string name = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.Name = name;
             this.Comment = comment;
             this.Host = host;
+            this.Json = json;
             this.Key = key;
             this.Port = port;
             this.PrivateKey = privateKey;
@@ -82,6 +84,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
@@ -151,6 +160,7 @@ namespace akeyless.Model
             sb.Append("class CreateSSHTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
@@ -203,6 +213,10 @@ namespace akeyless.Model
                     this.Host == input.Host ||
                     (this.Host != null &&
                     this.Host.Equals(input.Host))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -264,6 +278,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Name != null)

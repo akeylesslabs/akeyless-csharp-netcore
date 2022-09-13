@@ -40,23 +40,32 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTargetDetails" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="showVersions">Include all target versions in reply (default to false).</param>
         /// <param name="targetVersion">Target version.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetTargetDetails(string name = default(string), bool showVersions = false, int targetVersion = default(int), string token = default(string), string uidToken = default(string))
+        public GetTargetDetails(bool json = default(bool), string name = default(string), bool showVersions = false, int targetVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GetTargetDetails and cannot be null");
             }
             this.Name = name;
+            this.Json = json;
             this.ShowVersions = showVersions;
             this.TargetVersion = targetVersion;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Target name
@@ -101,6 +110,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetTargetDetails {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ShowVersions: ").Append(ShowVersions).Append("\n");
             sb.Append("  TargetVersion: ").Append(TargetVersion).Append("\n");
@@ -141,6 +151,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -174,6 +188,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.ShowVersions.GetHashCode();

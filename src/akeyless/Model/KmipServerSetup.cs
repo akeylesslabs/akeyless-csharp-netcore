@@ -42,10 +42,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificateTtl">certificateTtl.</param>
         /// <param name="hostname">Hostname (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="root">root.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipServerSetup(long certificateTtl = default(long), string hostname = default(string), string root = default(string), string token = default(string), string uidToken = default(string))
+        public KmipServerSetup(long certificateTtl = default(long), string hostname = default(string), bool json = default(bool), string root = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null) {
@@ -53,6 +54,7 @@ namespace akeyless.Model
             }
             this.Hostname = hostname;
             this.CertificateTtl = certificateTtl;
+            this.Json = json;
             this.Root = root;
             this.Token = token;
             this.UidToken = uidToken;
@@ -70,6 +72,13 @@ namespace akeyless.Model
         /// <value>Hostname</value>
         [DataMember(Name = "hostname", IsRequired = true, EmitDefaultValue = false)]
         public string Hostname { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets Root
@@ -101,6 +110,7 @@ namespace akeyless.Model
             sb.Append("class KmipServerSetup {\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -148,6 +158,10 @@ namespace akeyless.Model
                     this.Hostname.Equals(input.Hostname))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Root == input.Root ||
                     (this.Root != null &&
                     this.Root.Equals(input.Root))
@@ -176,6 +190,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.CertificateTtl.GetHashCode();
                 if (this.Hostname != null)
                     hashCode = hashCode * 59 + this.Hostname.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Root != null)
                     hashCode = hashCode * 59 + this.Root.GetHashCode();
                 if (this.Token != null)

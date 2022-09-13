@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
         /// <param name="gcpSaEmail">GCP service account email.</param>
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.GcpKeyAlgo = gcpKeyAlgo;
             this.GcpSaEmail = gcpSaEmail;
             this.GcpTokenScopes = gcpTokenScopes;
+            this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -115,6 +117,13 @@ namespace akeyless.Model
         /// <value>Access token scopes list, e.g. scope1,scope2</value>
         [DataMember(Name = "gcp-token-scopes", EmitDefaultValue = false)]
         public string GcpTokenScopes { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -179,6 +188,7 @@ namespace akeyless.Model
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
             sb.Append("  GcpSaEmail: ").Append(GcpSaEmail).Append("\n");
             sb.Append("  GcpTokenScopes: ").Append(GcpTokenScopes).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -251,6 +261,10 @@ namespace akeyless.Model
                     this.GcpTokenScopes.Equals(input.GcpTokenScopes))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -309,6 +323,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GcpSaEmail.GetHashCode();
                 if (this.GcpTokenScopes != null)
                     hashCode = hashCode * 59 + this.GcpTokenScopes.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)

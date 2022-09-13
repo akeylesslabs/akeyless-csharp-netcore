@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateWebTargetDetails" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
@@ -47,13 +48,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="url">url.</param>
-        public UpdateWebTargetDetails(string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string), string url = default(string))
+        public UpdateWebTargetDetails(bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string), string url = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for UpdateWebTargetDetails and cannot be null");
             }
             this.Name = name;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.NewVersion = newVersion;
             this.ProtectionKey = protectionKey;
@@ -61,6 +63,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.Url = url;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -117,6 +126,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UpdateWebTargetDetails {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
@@ -158,6 +168,10 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
                 (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
@@ -203,6 +217,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Name != null)

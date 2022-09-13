@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="bastionCtrlSubdomain">The Bastion API prefix.</param>
         /// <param name="certIssuerName">The Akeyless certificate issuer name.</param>
         /// <param name="identityFile">The file from which the identity (private key) for public key authentication is read.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">The Secret name (for database and AWS producers - producer name).</param>
         /// <param name="sshExtraArgs">The Use to add offical SSH arguments (except -i).</param>
         /// <param name="sshLegacySigningAlg">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate..</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), string name = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = default(bool), string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = default(bool), string name = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = default(bool), string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
         {
             this.Helper = helper;
             this.RcFileOverride = rcFileOverride;
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.BastionCtrlSubdomain = bastionCtrlSubdomain;
             this.CertIssuerName = certIssuerName;
             this.IdentityFile = identityFile;
+            this.Json = json;
             this.Name = name;
             this.SshExtraArgs = sshExtraArgs;
             this.SshLegacySigningAlg = sshLegacySigningAlg;
@@ -125,6 +127,13 @@ namespace akeyless.Model
         /// <value>The file from which the identity (private key) for public key authentication is read</value>
         [DataMember(Name = "identity-file", EmitDefaultValue = false)]
         public string IdentityFile { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The Secret name (for database and AWS producers - producer name)
@@ -191,6 +200,7 @@ namespace akeyless.Model
             sb.Append("  BastionCtrlSubdomain: ").Append(BastionCtrlSubdomain).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  IdentityFile: ").Append(IdentityFile).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SshExtraArgs: ").Append(SshExtraArgs).Append("\n");
             sb.Append("  SshLegacySigningAlg: ").Append(SshLegacySigningAlg).Append("\n");
@@ -273,6 +283,10 @@ namespace akeyless.Model
                     this.IdentityFile.Equals(input.IdentityFile))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -333,6 +347,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
                 if (this.IdentityFile != null)
                     hashCode = hashCode * 59 + this.IdentityFile.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.SshExtraArgs != null)

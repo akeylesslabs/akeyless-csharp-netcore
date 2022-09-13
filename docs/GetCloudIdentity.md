@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AzureAdObjectId** | **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
 **Debug** | **bool** |  | [optional] 
 **GcpAudience** | **string** | GCP JWT audience | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **UrlSafe** | **bool** | Escapes the token so it can be safely placed inside a URL query | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

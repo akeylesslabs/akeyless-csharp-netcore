@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ArtifactoryAdminPwd** | **string** | Artifactory Admin password | 
 **BaseUrl** | **string** | Base URL | 
 **Comment** | **string** | Comment about the target | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Key** | **string** | The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

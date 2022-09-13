@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="certFileData">PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates..</param>
         /// <param name="deleteProtection">deleteProtection.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="newMetadata">New item metadata (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
@@ -74,7 +75,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string accessibility = default(string), List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
+        public UpdateItem(string accessibility = default(string), List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.AddTag = addTag;
             this.CertFileData = certFileData;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? "default_metadata";
             this.NewName = newName;
@@ -143,6 +145,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Current item name
@@ -342,6 +351,7 @@ namespace akeyless.Model
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -426,6 +436,10 @@ namespace akeyless.Model
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -595,6 +609,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewMetadata != null)

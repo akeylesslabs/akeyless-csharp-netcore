@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessibility">for personal password manager.</param>
         /// <param name="filter">Filter by item name or part of it.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="minimalView">minimalView.</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="path">Path to folder.</param>
@@ -45,10 +46,11 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string accessibility = default(string), string filter = default(string), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string accessibility = default(string), string filter = default(string), bool json = default(bool), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.Accessibility = accessibility;
             this.Filter = filter;
+            this.Json = json;
             this.MinimalView = minimalView;
             this.PaginationToken = paginationToken;
             this.Path = path;
@@ -72,6 +74,13 @@ namespace akeyless.Model
         /// <value>Filter by item name or part of it</value>
         [DataMember(Name = "filter", EmitDefaultValue = false)]
         public string Filter { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets MinimalView
@@ -137,6 +146,7 @@ namespace akeyless.Model
             sb.Append("class ListItems {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  MinimalView: ").Append(MinimalView).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
@@ -188,6 +198,10 @@ namespace akeyless.Model
                     this.Filter == input.Filter ||
                     (this.Filter != null &&
                     this.Filter.Equals(input.Filter))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.MinimalView == input.MinimalView ||
@@ -245,6 +259,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
                 if (this.Filter != null)
                     hashCode = hashCode * 59 + this.Filter.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.MinimalView.GetHashCode();
                 if (this.PaginationToken != null)
                     hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();

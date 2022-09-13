@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="assocId">assocId.</param>
         /// <param name="targetId">targetId.</param>
         /// <param name="targetName">targetName.</param>
-        public ItemTargetAssociation(string assocId = default(string), long targetId = default(long), string targetName = default(string))
+        /// <param name="targetType">targetType.</param>
+        public ItemTargetAssociation(string assocId = default(string), long targetId = default(long), string targetName = default(string), string targetType = default(string))
         {
             this.AssocId = assocId;
             this.TargetId = targetId;
             this.TargetName = targetName;
+            this.TargetType = targetType;
         }
 
         /// <summary>
@@ -64,6 +66,12 @@ namespace akeyless.Model
         public string TargetName { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetType
+        /// </summary>
+        [DataMember(Name = "target_type", EmitDefaultValue = false)]
+        public string TargetType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,6 +82,7 @@ namespace akeyless.Model
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
+            sb.Append("  TargetType: ").Append(TargetType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,6 +130,11 @@ namespace akeyless.Model
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
+                ) && 
+                (
+                    this.TargetType == input.TargetType ||
+                    (this.TargetType != null &&
+                    this.TargetType.Equals(input.TargetType))
                 );
         }
 
@@ -138,6 +152,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.TargetId.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                if (this.TargetType != null)
+                    hashCode = hashCode * 59 + this.TargetType.GetHashCode();
                 return hashCode;
             }
         }

@@ -42,12 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="args">Optional arguments as key&#x3D;value pairs or JSON strings, e.g - \\\&quot;- -args&#x3D;csr&#x3D;base64_encoded_csr - -args&#x3D;common_name&#x3D;bar\\\&quot; or args&#x3D;&#39;{\\\&quot;csr\\\&quot;:\\\&quot;base64_encoded_csr\\\&quot;}. It is possible to combine both formats.&#39;.</param>
         /// <param name="host">Host.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="target">Target Name.</param>
         /// <param name="timeout">Timeout in seconds (default to 15).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetDynamicSecretValue(List<string> args = default(List<string>), string host = default(string), string name = default(string), string target = default(string), long timeout = 15, string token = default(string), string uidToken = default(string))
+        public GetDynamicSecretValue(List<string> args = default(List<string>), string host = default(string), bool json = default(bool), string name = default(string), string target = default(string), long timeout = 15, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -56,6 +57,7 @@ namespace akeyless.Model
             this.Name = name;
             this.Args = args;
             this.Host = host;
+            this.Json = json;
             this.Target = target;
             this.Timeout = timeout;
             this.Token = token;
@@ -75,6 +77,13 @@ namespace akeyless.Model
         /// <value>Host</value>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Dynamic secret name
@@ -121,6 +130,7 @@ namespace akeyless.Model
             sb.Append("class GetDynamicSecretValue {\n");
             sb.Append("  Args: ").Append(Args).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Timeout: ").Append(Timeout).Append("\n");
@@ -172,6 +182,10 @@ namespace akeyless.Model
                     this.Host.Equals(input.Host))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -210,6 +224,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Args.GetHashCode();
                 if (this.Host != null)
                     hashCode = hashCode * 59 + this.Host.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Target != null)

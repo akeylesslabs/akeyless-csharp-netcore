@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **GcpSecretsMigrations** | [**List&lt;GCPSecretsMigration&gt;**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | [**List&lt;HashiMigration&gt;**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | [**List&lt;K8SMigration&gt;**](K8SMigration.md) |  | [optional] 
+**OnePasswordMigrations** | [**List&lt;OnePasswordMigration&gt;**](OnePasswordMigration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ClientSecret** | **string** | Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow) | [optional] 
 **Comment** | **string** | Comment about the target | [optional] 
 **Email** | **string** | The email of the user attached to the oauth2 app used for connecting to Salesforce | 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 

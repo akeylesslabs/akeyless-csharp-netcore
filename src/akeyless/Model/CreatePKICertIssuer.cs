@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
         /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of localities that will be set in the issued certificate.</param>
         /// <param name="metadata">A metadata about the issuer.</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -86,6 +87,7 @@ namespace akeyless.Model
             this.CodeSigningFlag = codeSigningFlag;
             this.Country = country;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             // use default value if no "keyUsage" provided
             this.KeyUsage = keyUsage ?? "DigitalSignature,KeyAgreement,KeyEncipherment";
             this.Locality = locality;
@@ -158,6 +160,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// key-usage
@@ -294,6 +303,7 @@ namespace akeyless.Model
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -380,6 +390,10 @@ namespace akeyless.Model
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeyUsage == input.KeyUsage ||
@@ -486,6 +500,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Country.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeyUsage != null)
                     hashCode = hashCode * 59 + this.KeyUsage.GetHashCode();
                 if (this.Locality != null)

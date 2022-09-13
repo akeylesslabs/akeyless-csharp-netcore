@@ -36,9 +36,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GenCustomerFragment" /> class.
         /// </summary>
         /// <param name="description">The Customer Fragment Description.</param>
-        public GenCustomerFragment(string description = default(string))
+        /// <param name="json">Set output format to JSON.</param>
+        public GenCustomerFragment(string description = default(string), bool json = default(bool))
         {
             this.Description = description;
+            this.Json = json;
         }
 
         /// <summary>
@@ -49,6 +51,13 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -57,6 +66,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class GenCustomerFragment {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -95,6 +105,10 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 );
         }
 
@@ -109,6 +123,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 return hashCode;
             }
         }

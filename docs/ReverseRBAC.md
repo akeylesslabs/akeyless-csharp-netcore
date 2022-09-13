@@ -5,6 +5,7 @@ reverseRBAC is a command that shows which auth methods have access to a particul
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Path** | **string** | Path to an object | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **string** | Type of object (item, am, role) | 

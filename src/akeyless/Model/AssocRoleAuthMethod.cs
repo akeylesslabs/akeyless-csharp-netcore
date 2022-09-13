@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="amName">The auth method to associate (required).</param>
         /// <param name="caseSensitive">caseSensitive.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="roleName">The role to associate (required).</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AssocRoleAuthMethod(string amName = default(string), string caseSensitive = default(string), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public AssocRoleAuthMethod(string amName = default(string), string caseSensitive = default(string), bool json = default(bool), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "amName" is required (not null)
             if (amName == null) {
@@ -59,6 +60,7 @@ namespace akeyless.Model
             }
             this.RoleName = roleName;
             this.CaseSensitive = caseSensitive;
+            this.Json = json;
             this.SubClaims = subClaims;
             this.Token = token;
             this.UidToken = uidToken;
@@ -76,6 +78,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
         public string CaseSensitive { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The role to associate
@@ -115,6 +124,7 @@ namespace akeyless.Model
             sb.Append("class AssocRoleAuthMethod {\n");
             sb.Append("  AmName: ").Append(AmName).Append("\n");
             sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -164,6 +174,10 @@ namespace akeyless.Model
                     this.CaseSensitive.Equals(input.CaseSensitive))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.RoleName == input.RoleName ||
                     (this.RoleName != null &&
                     this.RoleName.Equals(input.RoleName))
@@ -199,6 +213,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AmName.GetHashCode();
                 if (this.CaseSensitive != null)
                     hashCode = hashCode * 59 + this.CaseSensitive.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.RoleName != null)
                     hashCode = hashCode * 59 + this.RoleName.GetHashCode();
                 if (this.SubClaims != null)

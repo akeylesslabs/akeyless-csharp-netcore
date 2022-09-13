@@ -40,19 +40,28 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayDeleteAllowedManagementAccess" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="subAdminId">SubAdminID to be removed (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayDeleteAllowedManagementAccess(string subAdminId = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayDeleteAllowedManagementAccess(bool json = default(bool), string subAdminId = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "subAdminId" is required (not null)
             if (subAdminId == null) {
                 throw new ArgumentNullException("subAdminId is a required property for GatewayDeleteAllowedManagementAccess and cannot be null");
             }
             this.SubAdminId = subAdminId;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// SubAdminID to be removed
@@ -83,6 +92,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GatewayDeleteAllowedManagementAccess {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  SubAdminId: ").Append(SubAdminId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -121,6 +131,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.SubAdminId == input.SubAdminId ||
                     (this.SubAdminId != null &&
                     this.SubAdminId.Equals(input.SubAdminId))
@@ -146,6 +160,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.SubAdminId != null)
                     hashCode = hashCode * 59 + this.SubAdminId.GetHashCode();
                 if (this.Token != null)

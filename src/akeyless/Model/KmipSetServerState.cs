@@ -40,19 +40,28 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipSetServerState" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="state">state (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipSetServerState(string state = default(string), string token = default(string), string uidToken = default(string))
+        public KmipSetServerState(bool json = default(bool), string state = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "state" is required (not null)
             if (state == null) {
                 throw new ArgumentNullException("state is a required property for KmipSetServerState and cannot be null");
             }
             this.State = state;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets State
@@ -82,6 +91,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class KmipSetServerState {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -120,6 +130,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -145,6 +159,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Token != null)

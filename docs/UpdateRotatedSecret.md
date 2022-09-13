@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | [optional] 
 **AwsRegion** | **string** | Region (used in aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | **string** |  | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Secret name | 

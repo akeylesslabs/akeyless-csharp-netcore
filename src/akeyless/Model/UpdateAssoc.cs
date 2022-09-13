@@ -42,10 +42,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="assocId">The association id to be updated (required).</param>
         /// <param name="caseSensitive">caseSensitive.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAssoc(string assocId = default(string), string caseSensitive = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public UpdateAssoc(string assocId = default(string), string caseSensitive = default(string), bool json = default(bool), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "assocId" is required (not null)
             if (assocId == null) {
@@ -53,6 +54,7 @@ namespace akeyless.Model
             }
             this.AssocId = assocId;
             this.CaseSensitive = caseSensitive;
+            this.Json = json;
             this.SubClaims = subClaims;
             this.Token = token;
             this.UidToken = uidToken;
@@ -70,6 +72,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
         public string CaseSensitive { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// key/val of sub claims, e.g group&#x3D;admins,developers
@@ -102,6 +111,7 @@ namespace akeyless.Model
             sb.Append("class UpdateAssoc {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -150,6 +160,10 @@ namespace akeyless.Model
                     this.CaseSensitive.Equals(input.CaseSensitive))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.SubClaims == input.SubClaims ||
                     this.SubClaims != null &&
                     input.SubClaims != null &&
@@ -180,6 +194,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
                 if (this.CaseSensitive != null)
                     hashCode = hashCode * 59 + this.CaseSensitive.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.SubClaims != null)
                     hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
                 if (this.Token != null)

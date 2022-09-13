@@ -35,11 +35,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateToken" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="token">Token.</param>
-        public ValidateToken(string token = default(string))
+        public ValidateToken(bool json = default(bool), string token = default(string))
         {
+            this.Json = json;
             this.Token = token;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Token
@@ -56,6 +65,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ValidateToken {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -92,6 +102,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -107,6 +121,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 return hashCode;

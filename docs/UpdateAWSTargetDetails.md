@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessKey** | **string** |  | [optional] 
 **AccessKeyId** | **string** |  | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Name** | **string** | Target name | 
 **NewVersion** | **bool** | Deprecated | [optional] 

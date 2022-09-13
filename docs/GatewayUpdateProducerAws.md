@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **AwsUserProgrammaticAccess** | **bool** | AWS User programmatic access | [optional] [default to true]
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **EnableAdminRotation** | **bool** | Automatic admin credentials rotation | [optional] [default to false]
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

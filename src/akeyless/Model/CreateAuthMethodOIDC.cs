@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="requiredScopes">RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), long jwtTtl = default(long), string name = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = default(bool), long jwtTtl = default(long), string name = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
             this.Issuer = issuer;
+            this.Json = json;
             this.JwtTtl = jwtTtl;
             this.RequiredScopes = requiredScopes;
             this.RequiredScopesPrefix = requiredScopesPrefix;
@@ -137,6 +139,13 @@ namespace akeyless.Model
         /// <value>Issuer URL</value>
         [DataMember(Name = "issuer", EmitDefaultValue = false)]
         public string Issuer { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Jwt TTL
@@ -203,6 +212,7 @@ namespace akeyless.Model
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RequiredScopes: ").Append(RequiredScopes).Append("\n");
@@ -286,6 +296,10 @@ namespace akeyless.Model
                     this.Issuer.Equals(input.Issuer))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -345,6 +359,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
                 if (this.Issuer != null)
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

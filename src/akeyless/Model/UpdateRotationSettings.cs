@@ -41,11 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateRotationSettings" /> class.
         /// </summary>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Key name (required).</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotationSettings(bool autoRotate = default(bool), string name = default(string), long rotationInterval = default(long), string token = default(string), string uidToken = default(string))
+        public UpdateRotationSettings(bool autoRotate = default(bool), bool json = default(bool), string name = default(string), long rotationInterval = default(long), string token = default(string), string uidToken = default(string))
         {
             this.AutoRotate = autoRotate;
             // to ensure "name" is required (not null)
@@ -53,6 +54,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateRotationSettings and cannot be null");
             }
             this.Name = name;
+            this.Json = json;
             this.RotationInterval = rotationInterval;
             this.Token = token;
             this.UidToken = uidToken;
@@ -64,6 +66,13 @@ namespace akeyless.Model
         /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
         [DataMember(Name = "auto-rotate", IsRequired = true, EmitDefaultValue = true)]
         public bool AutoRotate { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Key name
@@ -102,6 +111,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateRotationSettings {\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -145,6 +155,10 @@ namespace akeyless.Model
                     this.AutoRotate.Equals(input.AutoRotate)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -175,6 +189,7 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();

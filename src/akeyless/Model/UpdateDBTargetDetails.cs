@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbType">dbType.</param>
         /// <param name="hostName">hostName.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="mongoDbName">mongoDbName.</param>
         /// <param name="mongoUri">mongoUri.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), string keepPrevVersion = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), bool newVersion = default(bool), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public UpdateDBTargetDetails(string dbType = default(string), string hostName = default(string), bool json = default(bool), string keepPrevVersion = default(string), string mongoDbName = default(string), string mongoUri = default(string), string name = default(string), bool newVersion = default(bool), string port = default(string), string protectionKey = default(string), string pwd = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.Name = name;
             this.DbType = dbType;
             this.HostName = hostName;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.MongoDbName = mongoDbName;
             this.MongoUri = mongoUri;
@@ -85,6 +87,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host_name", EmitDefaultValue = false)]
         public string HostName { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -167,6 +176,7 @@ namespace akeyless.Model
             sb.Append("class UpdateDBTargetDetails {\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
             sb.Append("  HostName: ").Append(HostName).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  MongoDbName: ").Append(MongoDbName).Append("\n");
             sb.Append("  MongoUri: ").Append(MongoUri).Append("\n");
@@ -221,6 +231,10 @@ namespace akeyless.Model
                     this.HostName == input.HostName ||
                     (this.HostName != null &&
                     this.HostName.Equals(input.HostName))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
@@ -291,6 +305,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DbType.GetHashCode();
                 if (this.HostName != null)
                     hashCode = hashCode * 59 + this.HostName.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.MongoDbName != null)

@@ -41,11 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DeleteTargetAssociation" /> class.
         /// </summary>
         /// <param name="assocId">The association id to be deleted.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="targetName">The target to associate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteTargetAssociation(string assocId = default(string), string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteTargetAssociation(string assocId = default(string), bool json = default(bool), string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -53,6 +54,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AssocId = assocId;
+            this.Json = json;
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
@@ -64,6 +66,13 @@ namespace akeyless.Model
         /// <value>The association id to be deleted</value>
         [DataMember(Name = "assoc-id", EmitDefaultValue = false)]
         public string AssocId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Item name
@@ -102,6 +111,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class DeleteTargetAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -146,6 +156,10 @@ namespace akeyless.Model
                     this.AssocId.Equals(input.AssocId))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -178,6 +192,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.TargetName != null)

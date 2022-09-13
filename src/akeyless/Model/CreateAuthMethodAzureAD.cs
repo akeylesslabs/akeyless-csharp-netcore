@@ -55,12 +55,13 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL (default to &quot;https://sts.windows.net/---bound_tenant_id---&quot;).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (default to &quot;https://login.microsoftonline.com/common/discovery/keys&quot;).</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = default(bool), string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null) {
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             // use default value if no "issuer" provided
             this.Issuer = issuer ?? "https://sts.windows.net/---bound_tenant_id---";
+            this.Json = json;
             // use default value if no "jwksUri" provided
             this.JwksUri = jwksUri ?? "https://login.microsoftonline.com/common/discovery/keys";
             this.JwtTtl = jwtTtl;
@@ -201,6 +203,13 @@ namespace akeyless.Model
         public string Issuer { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
@@ -258,6 +267,7 @@ namespace akeyless.Model
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -381,6 +391,10 @@ namespace akeyless.Model
                     this.Issuer.Equals(input.Issuer))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.JwksUri == input.JwksUri ||
                     (this.JwksUri != null &&
                     this.JwksUri.Equals(input.JwksUri))
@@ -443,6 +457,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
                 if (this.Issuer != null)
                     hashCode = hashCode * 59 + this.Issuer.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.JwksUri != null)
                     hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();

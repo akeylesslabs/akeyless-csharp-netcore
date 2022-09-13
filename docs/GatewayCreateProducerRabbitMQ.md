@@ -6,6 +6,7 @@ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RabbitmqAdminPwd** | **string** | RabbitMQ Admin password | [optional] 

@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="githubBaseUrl">Base URL.</param>
         /// <param name="installationId">Github app installation id.</param>
         /// <param name="installationRepository">Repository that the app installation has access to.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="targetName">Target name.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="tokenPermissions">Optional - installation token&#39;s allowed permissions.</param>
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
+        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.GithubBaseUrl = githubBaseUrl;
             this.InstallationId = installationId;
             this.InstallationRepository = installationRepository;
+            this.Json = json;
             this.NewName = newName;
             this.TargetName = targetName;
             this.Token = token;
@@ -115,6 +117,13 @@ namespace akeyless.Model
         /// <value>Repository that the app installation has access to</value>
         [DataMember(Name = "installation-repository", EmitDefaultValue = false)]
         public string InstallationRepository { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -179,6 +188,7 @@ namespace akeyless.Model
             sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
             sb.Append("  InstallationId: ").Append(InstallationId).Append("\n");
             sb.Append("  InstallationRepository: ").Append(InstallationRepository).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
@@ -249,6 +259,10 @@ namespace akeyless.Model
                     this.InstallationRepository.Equals(input.InstallationRepository))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -306,6 +320,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.InstallationId.GetHashCode();
                 if (this.InstallationRepository != null)
                     hashCode = hashCode * 59 + this.InstallationRepository.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NewName != null)

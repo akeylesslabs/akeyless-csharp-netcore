@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="bindDn">bindDn.</param>
         /// <param name="bindDnPassword">bindDnPassword.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">key.</param>
         /// <param name="ldapCaCert">ldapCaCert.</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">tokenExpiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateLdapTargetDetails(string bindDn = default(string), string bindDnPassword = default(string), string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
+        public UpdateLdapTargetDetails(string bindDn = default(string), string bindDnPassword = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.Name = name;
             this.BindDn = bindDn;
             this.BindDnPassword = bindDnPassword;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.LdapCaCert = ldapCaCert;
@@ -83,6 +85,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "bind-dn-password", EmitDefaultValue = false)]
         public string BindDnPassword { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -159,6 +168,7 @@ namespace akeyless.Model
             sb.Append("class UpdateLdapTargetDetails {\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
@@ -212,6 +222,10 @@ namespace akeyless.Model
                     this.BindDnPassword == input.BindDnPassword ||
                     (this.BindDnPassword != null &&
                     this.BindDnPassword.Equals(input.BindDnPassword))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
@@ -277,6 +291,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.BindDn.GetHashCode();
                 if (this.BindDnPassword != null)
                     hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

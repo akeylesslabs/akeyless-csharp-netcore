@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Secret name | 
 **OldVersion** | **int** | Old secret version to rollback to | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

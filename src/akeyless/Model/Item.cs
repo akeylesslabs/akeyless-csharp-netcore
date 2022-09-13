@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <param name="certificateIssueDetails">certificateIssueDetails.</param>
         /// <param name="certificates">certificates.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
+        /// <param name="creationDate">creationDate.</param>
         /// <param name="customerFragmentId">customerFragmentId.</param>
         /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="deletionDate">deletionDate.</param>
@@ -58,6 +59,7 @@ namespace akeyless.Model
         /// <param name="itemType">itemType.</param>
         /// <param name="itemVersions">itemVersions.</param>
         /// <param name="lastVersion">lastVersion.</param>
+        /// <param name="modificationDate">modificationDate.</param>
         /// <param name="nextRotationDate">nextRotationDate.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="protectionKeyType">protectionKeyType.</param>
@@ -65,14 +67,16 @@ namespace akeyless.Model
         /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="sharedBy">sharedBy.</param>
         /// <param name="targetVersions">targetVersions.</param>
+        /// <param name="usageDate">usageDate.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
+        public Item(bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), DateTime usageDate = default(DateTime), bool withCustomerFragment = default(bool))
         {
             this.AutoRotate = autoRotate;
             this.CertIssuerSignerKeyName = certIssuerSignerKeyName;
             this.CertificateIssueDetails = certificateIssueDetails;
             this.Certificates = certificates;
             this.ClientPermissions = clientPermissions;
+            this.CreationDate = creationDate;
             this.CustomerFragmentId = customerFragmentId;
             this.DeleteProtection = deleteProtection;
             this.DeletionDate = deletionDate;
@@ -91,6 +95,7 @@ namespace akeyless.Model
             this.ItemType = itemType;
             this.ItemVersions = itemVersions;
             this.LastVersion = lastVersion;
+            this.ModificationDate = modificationDate;
             this.NextRotationDate = nextRotationDate;
             this.ProtectionKeyName = protectionKeyName;
             this.ProtectionKeyType = protectionKeyType;
@@ -98,6 +103,7 @@ namespace akeyless.Model
             this.RotationInterval = rotationInterval;
             this.SharedBy = sharedBy;
             this.TargetVersions = targetVersions;
+            this.UsageDate = usageDate;
             this.WithCustomerFragment = withCustomerFragment;
         }
 
@@ -130,6 +136,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "client_permissions", EmitDefaultValue = false)]
         public List<string> ClientPermissions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreationDate
+        /// </summary>
+        [DataMember(Name = "creation_date", EmitDefaultValue = false)]
+        public DateTime CreationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomerFragmentId
@@ -241,6 +253,12 @@ namespace akeyless.Model
         public int LastVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets ModificationDate
+        /// </summary>
+        [DataMember(Name = "modification_date", EmitDefaultValue = false)]
+        public DateTime ModificationDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets NextRotationDate
         /// </summary>
         [DataMember(Name = "next_rotation_date", EmitDefaultValue = false)]
@@ -283,6 +301,12 @@ namespace akeyless.Model
         public List<TargetItemVersion> TargetVersions { get; set; }
 
         /// <summary>
+        /// Gets or Sets UsageDate
+        /// </summary>
+        [DataMember(Name = "usage_date", EmitDefaultValue = false)]
+        public DateTime UsageDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets WithCustomerFragment
         /// </summary>
         [DataMember(Name = "with_customer_fragment", EmitDefaultValue = true)]
@@ -301,6 +325,7 @@ namespace akeyless.Model
             sb.Append("  CertificateIssueDetails: ").Append(CertificateIssueDetails).Append("\n");
             sb.Append("  Certificates: ").Append(Certificates).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
+            sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  CustomerFragmentId: ").Append(CustomerFragmentId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
@@ -319,6 +344,7 @@ namespace akeyless.Model
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemVersions: ").Append(ItemVersions).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
+            sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  NextRotationDate: ").Append(NextRotationDate).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
             sb.Append("  ProtectionKeyType: ").Append(ProtectionKeyType).Append("\n");
@@ -326,6 +352,7 @@ namespace akeyless.Model
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  SharedBy: ").Append(SharedBy).Append("\n");
             sb.Append("  TargetVersions: ").Append(TargetVersions).Append("\n");
+            sb.Append("  UsageDate: ").Append(UsageDate).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -385,6 +412,11 @@ namespace akeyless.Model
                     this.ClientPermissions != null &&
                     input.ClientPermissions != null &&
                     this.ClientPermissions.SequenceEqual(input.ClientPermissions)
+                ) && 
+                (
+                    this.CreationDate == input.CreationDate ||
+                    (this.CreationDate != null &&
+                    this.CreationDate.Equals(input.CreationDate))
                 ) && 
                 (
                     this.CustomerFragmentId == input.CustomerFragmentId ||
@@ -474,6 +506,11 @@ namespace akeyless.Model
                     this.LastVersion.Equals(input.LastVersion)
                 ) && 
                 (
+                    this.ModificationDate == input.ModificationDate ||
+                    (this.ModificationDate != null &&
+                    this.ModificationDate.Equals(input.ModificationDate))
+                ) && 
+                (
                     this.NextRotationDate == input.NextRotationDate ||
                     (this.NextRotationDate != null &&
                     this.NextRotationDate.Equals(input.NextRotationDate))
@@ -509,6 +546,11 @@ namespace akeyless.Model
                     this.TargetVersions.SequenceEqual(input.TargetVersions)
                 ) && 
                 (
+                    this.UsageDate == input.UsageDate ||
+                    (this.UsageDate != null &&
+                    this.UsageDate.Equals(input.UsageDate))
+                ) && 
+                (
                     this.WithCustomerFragment == input.WithCustomerFragment ||
                     this.WithCustomerFragment.Equals(input.WithCustomerFragment)
                 );
@@ -532,6 +574,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Certificates.GetHashCode();
                 if (this.ClientPermissions != null)
                     hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
+                if (this.CreationDate != null)
+                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
                 if (this.CustomerFragmentId != null)
                     hashCode = hashCode * 59 + this.CustomerFragmentId.GetHashCode();
                 hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
@@ -562,6 +606,8 @@ namespace akeyless.Model
                 if (this.ItemVersions != null)
                     hashCode = hashCode * 59 + this.ItemVersions.GetHashCode();
                 hashCode = hashCode * 59 + this.LastVersion.GetHashCode();
+                if (this.ModificationDate != null)
+                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
                 if (this.NextRotationDate != null)
                     hashCode = hashCode * 59 + this.NextRotationDate.GetHashCode();
                 if (this.ProtectionKeyName != null)
@@ -575,6 +621,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.SharedBy.GetHashCode();
                 if (this.TargetVersions != null)
                     hashCode = hashCode * 59 + this.TargetVersions.GetHashCode();
+                if (this.UsageDate != null)
+                    hashCode = hashCode * 59 + this.UsageDate.GetHashCode();
                 hashCode = hashCode * 59 + this.WithCustomerFragment.GetHashCode();
                 return hashCode;
             }

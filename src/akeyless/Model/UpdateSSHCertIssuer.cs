@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="allowedUsers">Users allowed to fetch the certificate, e.g root,ubuntu (required).</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">A metadata about the issuer.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
         /// <param name="newName">New item name.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = default(bool), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null) {
@@ -78,6 +79,7 @@ namespace akeyless.Model
             this.Ttl = ttl;
             this.AddTag = addTag;
             this.Extensions = extensions;
+            this.Json = json;
             this.Metadata = metadata;
             this.NewName = newName;
             this.Principals = principals;
@@ -112,6 +114,13 @@ namespace akeyless.Model
         /// <value>Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;</value>
         [DataMember(Name = "extensions", EmitDefaultValue = false)]
         public Dictionary<string, string> Extensions { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// A metadata about the issuer
@@ -223,6 +232,7 @@ namespace akeyless.Model
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  AllowedUsers: ").Append(AllowedUsers).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -288,6 +298,10 @@ namespace akeyless.Model
                     this.Extensions != null &&
                     input.Extensions != null &&
                     this.Extensions.SequenceEqual(input.Extensions)
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Metadata == input.Metadata ||
@@ -381,6 +395,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AllowedUsers.GetHashCode();
                 if (this.Extensions != null)
                     hashCode = hashCode * 59 + this.Extensions.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)

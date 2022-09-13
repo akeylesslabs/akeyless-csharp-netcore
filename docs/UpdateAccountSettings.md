@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **DefaultVersioning** | **string** | Should create version by default | [optional] 
 **DpEnableClassicKeyProtection** | **string** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] 
 **ItemType** | **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **JwtTtlDefault** | **long** | Default ttl | [optional] 
 **JwtTtlMax** | **long** | Maximum ttl | [optional] 
 **JwtTtlMin** | **long** | Minimum ttl | [optional] 

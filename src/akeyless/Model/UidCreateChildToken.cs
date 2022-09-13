@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// <param name="childDenyRotate">Deny from new child to rotate.</param>
         /// <param name="childTtl">New child token ttl.</param>
         /// <param name="comment">New Token comment.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uidTokenId">The ID of the uid-token, required only when uid-token is not provided.</param>
-        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
+        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
         {
             this.AuthMethodName = authMethodName;
             this.ChildDenyInheritance = childDenyInheritance;
             this.ChildDenyRotate = childDenyRotate;
             this.ChildTtl = childTtl;
             this.Comment = comment;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
             this.UidTokenId = uidTokenId;
@@ -91,6 +93,13 @@ namespace akeyless.Model
         public string Comment { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -124,6 +133,7 @@ namespace akeyless.Model
             sb.Append("  ChildDenyRotate: ").Append(ChildDenyRotate).Append("\n");
             sb.Append("  ChildTtl: ").Append(ChildTtl).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UidTokenId: ").Append(UidTokenId).Append("\n");
@@ -184,6 +194,10 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -216,6 +230,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.ChildTtl.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)

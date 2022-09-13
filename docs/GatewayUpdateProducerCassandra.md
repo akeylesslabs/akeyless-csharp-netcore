@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **CassandraPort** | **string** | Cassandra port | [optional] [default to "9042"]
 **CassandraUsername** | **string** | Cassandra superuser username | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

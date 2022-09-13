@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | **string** |  | [optional] 
 **BindDnPassword** | **string** |  | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Key** | **string** |  | [optional] 
 **LdapCaCert** | **string** |  | [optional] 

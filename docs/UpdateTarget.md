@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Target name | 
 **NewComment** | **string** | New comment about the target | [optional] [default to "default_comment"]
 **NewName** | **string** | New Target name | [optional] 

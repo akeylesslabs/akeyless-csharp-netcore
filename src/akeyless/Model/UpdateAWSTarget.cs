@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="accessKey">accessKey.</param>
         /// <param name="accessKeyId">accessKeyId.</param>
         /// <param name="comment">Comment about the target.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public UpdateAWSTarget(string accessKey = default(string), string accessKeyId = default(string), string comment = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string region = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateAWSTarget(string accessKey = default(string), string accessKeyId = default(string), string comment = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string region = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.AccessKey = accessKey;
             this.AccessKeyId = accessKeyId;
             this.Comment = comment;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -92,6 +94,13 @@ namespace akeyless.Model
         /// <value>Comment about the target</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -170,6 +179,7 @@ namespace akeyless.Model
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
             sb.Append("  AccessKeyId: ").Append(AccessKeyId).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -228,6 +238,10 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
@@ -294,6 +308,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AccessKeyId.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

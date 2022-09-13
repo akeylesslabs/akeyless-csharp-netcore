@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **HashiNs** | **List&lt;string&gt;** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiToken** | **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiUrl** | **string** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **K8sCaCertificate** | **List&lt;int&gt;** | For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientCertificate** | **List&lt;int&gt;** | K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientKey** | **List&lt;int&gt;** | K8s Client key (relevant only for K8s migration with Certificate Authentication method) | [optional] 
@@ -27,10 +28,15 @@ Name | Type | Description | Notes
 **K8sUrl** | **string** | K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration) | [optional] 
 **K8sUsername** | **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | **string** | Migration name | 
+**OpEmail** | **string** | 1Password user email to connect to the API | [optional] 
+**OpPassword** | **string** | 1Password user password to connect to the API | [optional] 
+**OpSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
+**OpUrl** | **string** | 1Password api container url | [optional] 
+**OpVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
 **ProtectionKey** | **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv) | [optional] 
+**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/1password) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

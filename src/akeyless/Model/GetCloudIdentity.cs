@@ -38,12 +38,14 @@ namespace akeyless.Model
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
         /// <param name="debug">debug.</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="urlSafe">Escapes the token so it can be safely placed inside a URL query.</param>
-        public GetCloudIdentity(string azureAdObjectId = default(string), bool debug = default(bool), string gcpAudience = default(string), bool urlSafe = default(bool))
+        public GetCloudIdentity(string azureAdObjectId = default(string), bool debug = default(bool), string gcpAudience = default(string), bool json = default(bool), bool urlSafe = default(bool))
         {
             this.AzureAdObjectId = azureAdObjectId;
             this.Debug = debug;
             this.GcpAudience = gcpAudience;
+            this.Json = json;
             this.UrlSafe = urlSafe;
         }
 
@@ -68,6 +70,13 @@ namespace akeyless.Model
         public string GcpAudience { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// Escapes the token so it can be safely placed inside a URL query
         /// </summary>
         /// <value>Escapes the token so it can be safely placed inside a URL query</value>
@@ -85,6 +94,7 @@ namespace akeyless.Model
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  UrlSafe: ").Append(UrlSafe).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,6 +145,10 @@ namespace akeyless.Model
                     this.GcpAudience.Equals(input.GcpAudience))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.UrlSafe == input.UrlSafe ||
                     this.UrlSafe.Equals(input.UrlSafe)
                 );
@@ -154,6 +168,7 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.Debug.GetHashCode();
                 if (this.GcpAudience != null)
                     hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.UrlSafe.GetHashCode();
                 return hashCode;
             }

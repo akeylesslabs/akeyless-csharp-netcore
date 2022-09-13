@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
         /// <param name="gkeClusterName">GKE cluster name.</param>
         /// <param name="gkeServiceAccountEmail">GKE service account email.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.GkeClusterEndpoint = gkeClusterEndpoint;
             this.GkeClusterName = gkeClusterName;
             this.GkeServiceAccountEmail = gkeServiceAccountEmail;
+            this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -126,6 +128,13 @@ namespace akeyless.Model
         /// <value>GKE service account email</value>
         [DataMember(Name = "gke-service-account-email", EmitDefaultValue = false)]
         public string GkeServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -220,6 +229,7 @@ namespace akeyless.Model
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountEmail: ").Append(GkeServiceAccountEmail).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
@@ -295,6 +305,10 @@ namespace akeyless.Model
                     this.GkeServiceAccountEmail == input.GkeServiceAccountEmail ||
                     (this.GkeServiceAccountEmail != null &&
                     this.GkeServiceAccountEmail.Equals(input.GkeServiceAccountEmail))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -378,6 +392,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
                 if (this.GkeServiceAccountEmail != null)
                     hashCode = hashCode * 59 + this.GkeServiceAccountEmail.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)

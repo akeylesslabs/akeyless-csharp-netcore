@@ -41,13 +41,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateDynamicSecret" /> class.
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Metadata about the dynamic secret (default to &quot;None&quot;).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDynamicSecret(string deleteProtection = default(string), string key = default(string), string metadata = "None", string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDynamicSecret(string deleteProtection = default(string), bool json = default(bool), string key = default(string), string metadata = "None", string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -55,6 +56,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.Key = key;
             // use default value if no "metadata" provided
             this.Metadata = metadata ?? "None";
@@ -69,6 +71,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used)
@@ -121,6 +130,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class CreateDynamicSecret {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -167,6 +177,10 @@ namespace akeyless.Model
                     this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -210,6 +224,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
                 if (this.Metadata != null)

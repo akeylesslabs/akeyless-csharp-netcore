@@ -40,19 +40,28 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteAuthMethods" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="path">Path to delete the auth methods from (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteAuthMethods(string path = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteAuthMethods(bool json = default(bool), string path = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
             if (path == null) {
                 throw new ArgumentNullException("path is a required property for DeleteAuthMethods and cannot be null");
             }
             this.Path = path;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Path to delete the auth methods from
@@ -83,6 +92,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DeleteAuthMethods {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -121,6 +131,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -146,6 +160,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.Token != null)

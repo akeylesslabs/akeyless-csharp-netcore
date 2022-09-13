@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | **string** | The display id of the key to use in the signing process | [optional] 
 **ItemId** | **long** | The item id of the key to use in the signing process | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeyName** | **string** | The name of the RSA key to use in the signing process | [optional] 
 **Message** | **string** | The message to be signed | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

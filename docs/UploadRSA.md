@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CertFileData** | **string** | Certificate in a PEM format. | [optional] 
 **CustomerFrgId** | **string** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Metadata** | **string** | A metadata about the key | [optional] 
 **Name** | **string** | Name of key to be created | 
 **Overwrite** | **string** | When the overwrite flag is set, this command will only update an existing key. [true, false] | [optional] 

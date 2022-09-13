@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="encodingTemplate">The Encoding output template to use in regexp vaultless tokenization.</param>
         /// <param name="encryptionKeyName">AES key name to use in vaultless tokenization.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">A metadata about the tokenizer.</param>
         /// <param name="name">Tokenizer name (required).</param>
         /// <param name="pattern">Pattern to use in regexp vaultless tokenization.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="tokenizerType">Tokenizer type (required).</param>
         /// <param name="tweakType">The tweak type to use in vaultless tokenization [Supplied, Generated, Internal, Masking].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
+        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.EncodingTemplate = encodingTemplate;
             this.EncryptionKeyName = encryptionKeyName;
+            this.Json = json;
             this.Metadata = metadata;
             this.Pattern = pattern;
             this.Tag = tag;
@@ -118,6 +120,13 @@ namespace akeyless.Model
         /// <value>AES key name to use in vaultless tokenization</value>
         [DataMember(Name = "encryption-key-name", EmitDefaultValue = false)]
         public string EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// A metadata about the tokenizer
@@ -195,6 +204,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  EncodingTemplate: ").Append(EncodingTemplate).Append("\n");
             sb.Append("  EncryptionKeyName: ").Append(EncryptionKeyName).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Pattern: ").Append(Pattern).Append("\n");
@@ -264,6 +274,10 @@ namespace akeyless.Model
                     this.EncryptionKeyName.Equals(input.EncryptionKeyName))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -330,6 +344,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.EncodingTemplate.GetHashCode();
                 if (this.EncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.EncryptionKeyName.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)

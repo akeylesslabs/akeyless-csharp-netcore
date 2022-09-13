@@ -36,11 +36,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="StaticSecretDetailsInfo" /> class.
         /// </summary>
         /// <param name="username">username.</param>
-        /// <param name="website">website.</param>
-        public StaticSecretDetailsInfo(string username = default(string), string website = default(string))
+        /// <param name="website">deprecated.</param>
+        /// <param name="websites">websites.</param>
+        public StaticSecretDetailsInfo(string username = default(string), string website = default(string), List<string> websites = default(List<string>))
         {
             this.Username = username;
             this.Website = website;
+            this.Websites = websites;
         }
 
         /// <summary>
@@ -50,10 +52,17 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// Gets or Sets Website
+        /// deprecated
         /// </summary>
+        /// <value>deprecated</value>
         [DataMember(Name = "website", EmitDefaultValue = false)]
         public string Website { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Websites
+        /// </summary>
+        [DataMember(Name = "websites", EmitDefaultValue = false)]
+        public List<string> Websites { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,6 +74,7 @@ namespace akeyless.Model
             sb.Append("class StaticSecretDetailsInfo {\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
+            sb.Append("  Websites: ").Append(Websites).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,6 +118,12 @@ namespace akeyless.Model
                     this.Website == input.Website ||
                     (this.Website != null &&
                     this.Website.Equals(input.Website))
+                ) && 
+                (
+                    this.Websites == input.Websites ||
+                    this.Websites != null &&
+                    input.Websites != null &&
+                    this.Websites.SequenceEqual(input.Websites)
                 );
         }
 
@@ -124,6 +140,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.Website != null)
                     hashCode = hashCode * 59 + this.Website.GetHashCode();
+                if (this.Websites != null)
+                    hashCode = hashCode * 59 + this.Websites.GetHashCode();
                 return hashCode;
             }
         }

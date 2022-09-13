@@ -44,13 +44,14 @@ namespace akeyless.Model
         /// <param name="adminPwd">adminPwd.</param>
         /// <param name="hostName">hostName.</param>
         /// <param name="hostPort">hostPort.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRDPTargetDetails(string adminName = default(string), string adminPwd = default(string), string hostName = default(string), string hostPort = default(string), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRDPTargetDetails(string adminName = default(string), string adminPwd = default(string), string hostName = default(string), string hostPort = default(string), bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.AdminPwd = adminPwd;
             this.HostName = hostName;
             this.HostPort = hostPort;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.NewVersion = newVersion;
             this.ProtectionKey = protectionKey;
@@ -91,6 +93,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host_port", EmitDefaultValue = false)]
         public string HostPort { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -145,6 +154,7 @@ namespace akeyless.Model
             sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
             sb.Append("  HostName: ").Append(HostName).Append("\n");
             sb.Append("  HostPort: ").Append(HostPort).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
@@ -206,6 +216,10 @@ namespace akeyless.Model
                     this.HostPort.Equals(input.HostPort))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -253,6 +267,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.HostName.GetHashCode();
                 if (this.HostPort != null)
                     hashCode = hashCode * 59 + this.HostPort.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Name != null)

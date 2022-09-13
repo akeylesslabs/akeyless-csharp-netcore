@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeyUsage** | **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
 **Metadata** | **string** | A metadata about the issuer | [optional] 

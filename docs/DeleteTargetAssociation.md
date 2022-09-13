@@ -6,6 +6,7 @@ deleteTargetAssociation is a command that deletes an association between target 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** | The association id to be deleted | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Item name | 
 **TargetName** | **string** | The target to associate | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

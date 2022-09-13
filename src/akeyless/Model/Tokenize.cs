@@ -40,12 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Tokenize" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="plaintext">Data to be encrypted (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenizerName">The name of the tokenizer to use in the encryption process (required).</param>
         /// <param name="tweak">Base64 encoded tweak for vaultless encryption.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Tokenize(string plaintext = default(string), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
+        public Tokenize(bool json = default(bool), string plaintext = default(string), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
         {
             // to ensure "plaintext" is required (not null)
             if (plaintext == null) {
@@ -57,10 +58,18 @@ namespace akeyless.Model
                 throw new ArgumentNullException("tokenizerName is a required property for Tokenize and cannot be null");
             }
             this.TokenizerName = tokenizerName;
+            this.Json = json;
             this.Token = token;
             this.Tweak = tweak;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Data to be encrypted
@@ -105,6 +114,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Tokenize {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenizerName: ").Append(TokenizerName).Append("\n");
@@ -145,6 +155,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Plaintext == input.Plaintext ||
                     (this.Plaintext != null &&
                     this.Plaintext.Equals(input.Plaintext))
@@ -180,6 +194,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Plaintext != null)
                     hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
                 if (this.Token != null)

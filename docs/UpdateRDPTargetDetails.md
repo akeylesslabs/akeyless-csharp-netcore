@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AdminPwd** | **string** |  | [optional] 
 **HostName** | **string** |  | [optional] 
 **HostPort** | **string** |  | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Name** | **string** | Target name | 
 **NewVersion** | **bool** | Deprecated | [optional] 

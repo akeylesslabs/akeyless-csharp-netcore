@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssuerName** | **string** | The name of the SSH certificate issuer | 
 **CertUsername** | **string** | The username to sign in the SSH certificate | 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **LegacySigningAlgName** | **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate. | [optional] 
 **PublicKeyData** | **string** | SSH public key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessEnable">secureAccessEnable.</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
+        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -78,6 +79,7 @@ namespace akeyless.Model
             // use default value if no "fixedUserClaimKeyname" provided
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? "false";
             this.FixedUserOnly = fixedUserOnly;
+            this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessWeb = secureAccessWeb;
@@ -144,6 +146,13 @@ namespace akeyless.Model
         /// <value>Fixed user</value>
         [DataMember(Name = "fixed-user-only", EmitDefaultValue = true)]
         public bool FixedUserOnly { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Producer name
@@ -268,6 +277,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
@@ -351,6 +361,10 @@ namespace akeyless.Model
                 (
                     this.FixedUserOnly == input.FixedUserOnly ||
                     this.FixedUserOnly.Equals(input.FixedUserOnly)
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -452,6 +466,7 @@ namespace akeyless.Model
                 if (this.FixedUserClaimKeyname != null)
                     hashCode = hashCode * 59 + this.FixedUserClaimKeyname.GetHashCode();
                 hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)

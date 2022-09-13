@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">A metadata about the key.</param>
         /// <param name="name">Name of key to be created (required).</param>
         /// <param name="overwrite">When the overwrite flag is set, this command will only update an existing key. [true, false].</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string metadata = default(string), string name = default(string), string overwrite = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string overwrite = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {
@@ -67,6 +68,7 @@ namespace akeyless.Model
             this.CertFileData = certFileData;
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
+            this.Json = json;
             this.Metadata = metadata;
             this.Overwrite = overwrite;
             this.RsaFileData = rsaFileData;
@@ -103,6 +105,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// A metadata about the key
@@ -172,6 +181,7 @@ namespace akeyless.Model
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Overwrite: ").Append(Overwrite).Append("\n");
@@ -235,6 +245,10 @@ namespace akeyless.Model
                     this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -293,6 +307,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CustomerFrgId.GetHashCode();
                 if (this.DeleteProtection != null)
                     hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Name != null)

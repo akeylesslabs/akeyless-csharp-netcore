@@ -41,11 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SetItemState" /> class.
         /// </summary>
         /// <param name="desiredState">Desired item state (Enabled, Disabled) (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">The specific version you want to update: 0&#x3D;item level state (default) (default to 0).</param>
-        public SetItemState(string desiredState = default(string), string name = default(string), string token = default(string), string uidToken = default(string), int version = 0)
+        public SetItemState(string desiredState = default(string), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = 0)
         {
             // to ensure "desiredState" is required (not null)
             if (desiredState == null) {
@@ -57,6 +58,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for SetItemState and cannot be null");
             }
             this.Name = name;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
@@ -68,6 +70,13 @@ namespace akeyless.Model
         /// <value>Desired item state (Enabled, Disabled)</value>
         [DataMember(Name = "desired-state", IsRequired = true, EmitDefaultValue = false)]
         public string DesiredState { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Current item name
@@ -106,6 +115,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class SetItemState {\n");
             sb.Append("  DesiredState: ").Append(DesiredState).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -150,6 +160,10 @@ namespace akeyless.Model
                     this.DesiredState.Equals(input.DesiredState))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -181,6 +195,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DesiredState != null)
                     hashCode = hashCode * 59 + this.DesiredState.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Token != null)

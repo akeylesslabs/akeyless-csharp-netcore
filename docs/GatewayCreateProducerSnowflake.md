@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AccountUsername** | **string** | Database Username | [optional] 
 **DbName** | **string** | Database name | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **Role** | **string** | User role | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 

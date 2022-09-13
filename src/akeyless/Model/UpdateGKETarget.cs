@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
         /// <param name="gkeClusterName">GKE cluster name.</param>
         /// <param name="gkeServiceAccountEmail">GKE service account email.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public UpdateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -67,6 +68,7 @@ namespace akeyless.Model
             this.GkeClusterEndpoint = gkeClusterEndpoint;
             this.GkeClusterName = gkeClusterName;
             this.GkeServiceAccountEmail = gkeServiceAccountEmail;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -117,6 +119,13 @@ namespace akeyless.Model
         /// <value>GKE service account email</value>
         [DataMember(Name = "gke-service-account-email", EmitDefaultValue = false)]
         public string GkeServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Gets or Sets KeepPrevVersion
@@ -186,6 +195,7 @@ namespace akeyless.Model
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountEmail: ").Append(GkeServiceAccountEmail).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -259,6 +269,10 @@ namespace akeyless.Model
                     this.GkeServiceAccountEmail.Equals(input.GkeServiceAccountEmail))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.KeepPrevVersion == input.KeepPrevVersion ||
                     (this.KeepPrevVersion != null &&
                     this.KeepPrevVersion.Equals(input.KeepPrevVersion))
@@ -319,6 +333,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
                 if (this.GkeServiceAccountEmail != null)
                     hashCode = hashCode * 59 + this.GkeServiceAccountEmail.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                     hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
                 if (this.Key != null)

@@ -41,10 +41,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DeleteTargets" /> class.
         /// </summary>
         /// <param name="forceDeletion">Enforce deletion (default to false).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="path">Path to delete the targets from (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteTargets(bool forceDeletion = false, string path = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteTargets(bool forceDeletion = false, bool json = default(bool), string path = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
             if (path == null) {
@@ -52,6 +53,7 @@ namespace akeyless.Model
             }
             this.Path = path;
             this.ForceDeletion = forceDeletion;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -62,6 +64,13 @@ namespace akeyless.Model
         /// <value>Enforce deletion</value>
         [DataMember(Name = "force-deletion", EmitDefaultValue = true)]
         public bool ForceDeletion { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Path to delete the targets from
@@ -93,6 +102,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class DeleteTargets {\n");
             sb.Append("  ForceDeletion: ").Append(ForceDeletion).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -135,6 +145,10 @@ namespace akeyless.Model
                     this.ForceDeletion.Equals(input.ForceDeletion)
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -161,6 +175,7 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = hashCode * 59 + this.ForceDeletion.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.Token != null)

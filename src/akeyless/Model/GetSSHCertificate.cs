@@ -42,12 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssuerName">The name of the SSH certificate issuer (required).</param>
         /// <param name="certUsername">The username to sign in the SSH certificate (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="legacySigningAlgName">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate..</param>
         /// <param name="publicKeyData">SSH public key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), bool legacySigningAlgName = default(bool), string publicKeyData = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), bool json = default(bool), bool legacySigningAlgName = default(bool), string publicKeyData = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null) {
@@ -59,6 +60,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("certUsername is a required property for GetSSHCertificate and cannot be null");
             }
             this.CertUsername = certUsername;
+            this.Json = json;
             this.LegacySigningAlgName = legacySigningAlgName;
             this.PublicKeyData = publicKeyData;
             this.Token = token;
@@ -79,6 +81,13 @@ namespace akeyless.Model
         /// <value>The username to sign in the SSH certificate</value>
         [DataMember(Name = "cert-username", IsRequired = true, EmitDefaultValue = false)]
         public string CertUsername { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate.
@@ -125,6 +134,7 @@ namespace akeyless.Model
             sb.Append("class GetSSHCertificate {\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CertUsername: ").Append(CertUsername).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  LegacySigningAlgName: ").Append(LegacySigningAlgName).Append("\n");
             sb.Append("  PublicKeyData: ").Append(PublicKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -175,6 +185,10 @@ namespace akeyless.Model
                     this.CertUsername.Equals(input.CertUsername))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.LegacySigningAlgName == input.LegacySigningAlgName ||
                     this.LegacySigningAlgName.Equals(input.LegacySigningAlgName)
                 ) && 
@@ -212,6 +226,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
                 if (this.CertUsername != null)
                     hashCode = hashCode * 59 + this.CertUsername.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.LegacySigningAlgName.GetHashCode();
                 if (this.PublicKeyData != null)
                     hashCode = hashCode * 59 + this.PublicKeyData.GetHashCode();

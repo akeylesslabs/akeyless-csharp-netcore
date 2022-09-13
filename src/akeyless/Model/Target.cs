@@ -43,10 +43,11 @@ namespace akeyless.Model
         /// <param name="targetId">targetId.</param>
         /// <param name="targetItemsAssoc">targetItemsAssoc.</param>
         /// <param name="targetName">targetName.</param>
+        /// <param name="targetObjectsAssoc">targetObjectsAssoc.</param>
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), int lastVersion = default(int), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), int lastVersion = default(int), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), List<TargetObjectAssociation> targetObjectsAssoc = default(List<TargetObjectAssociation>), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.Attributes = attributes;
             this.ClientPermissions = clientPermissions;
@@ -56,6 +57,7 @@ namespace akeyless.Model
             this.TargetId = targetId;
             this.TargetItemsAssoc = targetItemsAssoc;
             this.TargetName = targetName;
+            this.TargetObjectsAssoc = targetObjectsAssoc;
             this.TargetType = targetType;
             this.TargetVersions = targetVersions;
             this.WithCustomerFragment = withCustomerFragment;
@@ -111,6 +113,12 @@ namespace akeyless.Model
         public string TargetName { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetObjectsAssoc
+        /// </summary>
+        [DataMember(Name = "target_objects_assoc", EmitDefaultValue = false)]
+        public List<TargetObjectAssociation> TargetObjectsAssoc { get; set; }
+
+        /// <summary>
         /// Gets or Sets TargetType
         /// </summary>
         [DataMember(Name = "target_type", EmitDefaultValue = false)]
@@ -144,6 +152,7 @@ namespace akeyless.Model
             sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetItemsAssoc: ").Append(TargetItemsAssoc).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
+            sb.Append("  TargetObjectsAssoc: ").Append(TargetObjectsAssoc).Append("\n");
             sb.Append("  TargetType: ").Append(TargetType).Append("\n");
             sb.Append("  TargetVersions: ").Append(TargetVersions).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
@@ -223,6 +232,12 @@ namespace akeyless.Model
                     this.TargetName.Equals(input.TargetName))
                 ) && 
                 (
+                    this.TargetObjectsAssoc == input.TargetObjectsAssoc ||
+                    this.TargetObjectsAssoc != null &&
+                    input.TargetObjectsAssoc != null &&
+                    this.TargetObjectsAssoc.SequenceEqual(input.TargetObjectsAssoc)
+                ) && 
+                (
                     this.TargetType == input.TargetType ||
                     (this.TargetType != null &&
                     this.TargetType.Equals(input.TargetType))
@@ -262,6 +277,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.TargetItemsAssoc.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                if (this.TargetObjectsAssoc != null)
+                    hashCode = hashCode * 59 + this.TargetObjectsAssoc.GetHashCode();
                 if (this.TargetType != null)
                     hashCode = hashCode * 59 + this.TargetType.GetHashCode();
                 if (this.TargetVersions != null)

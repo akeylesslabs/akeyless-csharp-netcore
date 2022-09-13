@@ -41,11 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="EncryptWithClassicKey" /> class.
         /// </summary>
         /// <param name="displayId">The name of the key to use in the encryption process (required).</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="plaintext">Data to be encrypted (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public EncryptWithClassicKey(string displayId = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public EncryptWithClassicKey(string displayId = default(string), bool json = default(bool), string plaintext = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null) {
@@ -58,6 +59,7 @@ namespace akeyless.Model
             }
             this.Plaintext = plaintext;
             this._Version = version;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -68,6 +70,13 @@ namespace akeyless.Model
         /// <value>The name of the key to use in the encryption process</value>
         [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// Data to be encrypted
@@ -106,6 +115,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class EncryptWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -150,6 +160,10 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Plaintext == input.Plaintext ||
                     (this.Plaintext != null &&
                     this.Plaintext.Equals(input.Plaintext))
@@ -181,6 +195,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Plaintext != null)
                     hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
                 if (this.Token != null)

@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateNativeK8STarget" /> class.
         /// </summary>
         /// <param name="comment">Comment about the target.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required).</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required).</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token (required).</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateNativeK8STarget(string comment = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateNativeK8STarget(string comment = default(string), bool json = default(bool), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
             if (k8sClusterCaCert == null) {
@@ -74,6 +75,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Comment = comment;
+            this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -88,6 +90,13 @@ namespace akeyless.Model
         /// <value>Comment about the target</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// K8S cluster CA certificate
@@ -167,6 +176,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class UpdateNativeK8STarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sClusterCaCert: ").Append(K8sClusterCaCert).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
             sb.Append("  K8sClusterToken: ").Append(K8sClusterToken).Append("\n");
@@ -215,6 +225,10 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
                 ) && 
                 (
                     this.K8sClusterCaCert == input.K8sClusterCaCert ||
@@ -278,6 +292,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.K8sClusterCaCert != null)
                     hashCode = hashCode * 59 + this.K8sClusterCaCert.GetHashCode();
                 if (this.K8sClusterEndpoint != null)

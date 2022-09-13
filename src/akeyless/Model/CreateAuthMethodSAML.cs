@@ -47,12 +47,13 @@ namespace akeyless.Model
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
         /// <param name="idpMetadataXmlData">IDP metadata xml data.</param>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwtTtl">Jwt TTL.</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.IdpMetadataUrl = idpMetadataUrl;
             this.IdpMetadataXmlData = idpMetadataXmlData;
+            this.Json = json;
             this.JwtTtl = jwtTtl;
             this.Token = token;
             this.UidToken = uidToken;
@@ -126,6 +128,13 @@ namespace akeyless.Model
         public string IdpMetadataXmlData { get; set; }
 
         /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
+
+        /// <summary>
         /// Jwt TTL
         /// </summary>
         /// <value>Jwt TTL</value>
@@ -175,6 +184,7 @@ namespace akeyless.Model
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
             sb.Append("  IdpMetadataXmlData: ").Append(IdpMetadataXmlData).Append("\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -251,6 +261,10 @@ namespace akeyless.Model
                     this.IdpMetadataXmlData.Equals(input.IdpMetadataXmlData))
                 ) && 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.JwtTtl == input.JwtTtl ||
                     this.JwtTtl.Equals(input.JwtTtl)
                 ) && 
@@ -297,6 +311,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.IdpMetadataUrl.GetHashCode();
                 if (this.IdpMetadataXmlData != null)
                     hashCode = hashCode * 59 + this.IdpMetadataXmlData.GetHashCode();
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

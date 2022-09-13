@@ -35,12 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Unconfigure" /> class.
         /// </summary>
+        /// <param name="json">Set output format to JSON.</param>
         /// <param name="profile">The profile name to be removed (default to &quot;default&quot;).</param>
-        public Unconfigure(string profile = "default")
+        public Unconfigure(bool json = default(bool), string profile = "default")
         {
+            this.Json = json;
             // use default value if no "profile" provided
             this.Profile = profile ?? "default";
         }
+
+        /// <summary>
+        /// Set output format to JSON
+        /// </summary>
+        /// <value>Set output format to JSON</value>
+        [DataMember(Name = "json", EmitDefaultValue = true)]
+        public bool Json { get; set; }
 
         /// <summary>
         /// The profile name to be removed
@@ -57,6 +66,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Unconfigure {\n");
+            sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Profile: ").Append(Profile).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -93,6 +103,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Json == input.Json ||
+                    this.Json.Equals(input.Json)
+                ) && 
+                (
                     this.Profile == input.Profile ||
                     (this.Profile != null &&
                     this.Profile.Equals(input.Profile))
@@ -108,6 +122,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Profile != null)
                     hashCode = hashCode * 59 + this.Profile.GetHashCode();
                 return hashCode;
