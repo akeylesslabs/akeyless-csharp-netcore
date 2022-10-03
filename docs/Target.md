@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | **DateTime** |  | [optional] 
 **Attributes** | **Dictionary&lt;string, Object&gt;** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **Comment** | **string** |  | [optional] 
+**CreationDate** | **DateTime** |  | [optional] 
+**CredentialsLess** | **bool** |  | [optional] 
 **LastVersion** | **int** |  | [optional] 
+**ModificationDate** | **DateTime** |  | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
 **TargetId** | **long** |  | [optional] 
 **TargetItemsAssoc** | [**List&lt;TargetItemAssociation&gt;**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | **string** |  | [optional] 
-**TargetObjectsAssoc** | [**List&lt;TargetObjectAssociation&gt;**](TargetObjectAssociation.md) |  | [optional] 
 **TargetType** | **string** |  | [optional] 
 **TargetVersions** | [**List&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 

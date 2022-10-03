@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | **DateTime** |  | [optional] 
 **AutoRotate** | **bool** |  | [optional] 
 **CertIssuerSignerKeyName** | **string** |  | [optional] 
 **CertificateIssueDetails** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
@@ -36,7 +37,6 @@ Name | Type | Description | Notes
 **RotationInterval** | **long** |  | [optional] 
 **SharedBy** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | [**List&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] 
-**UsageDate** | **DateTime** |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

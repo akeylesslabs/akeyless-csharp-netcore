@@ -105,6 +105,7 @@ Method | HTTP request | Description
 [**GatewayListAllowedManagementAccess**](V2Api.md#gatewaylistallowedmanagementaccess) | **POST** /gateway-list-allowed-management-access | 
 [**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration | 
 [**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers | 
+[**GatewayMigratePersonalItems**](V2Api.md#gatewaymigratepersonalitems) | **POST** /gateway-migrate-personal-items | 
 [**GatewayRevokeTmpUsers**](V2Api.md#gatewayrevoketmpusers) | **POST** /gateway-revoke-producer-tmp-creds | 
 [**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer | 
 [**GatewayStatusMigration**](V2Api.md#gatewaystatusmigration) | **POST** /gateway-migration-status | 
@@ -7209,6 +7210,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayListProducersResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaymigratepersonalitems"></a>
+# **GatewayMigratePersonalItems**
+> GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems (GatewayMigratePersonalItems body = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayMigratePersonalItemsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayMigratePersonalItems(); // GatewayMigratePersonalItems |  (optional) 
+
+            try
+            {
+                GatewayMigratePersonalItemsOutput result = apiInstance.GatewayMigratePersonalItems(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayMigratePersonalItems: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GatewayMigratePersonalItems**](GatewayMigratePersonalItems.md)|  | [optional] 
+
+### Return type
+
+[**GatewayMigratePersonalItemsOutput**](GatewayMigratePersonalItemsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayMigratePersonalItemsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

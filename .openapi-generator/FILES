@@ -8,6 +8,8 @@ docs/AWSPayload.md
 docs/AWSSecretsMigration.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
+docs/ActiveDirectoryMigration.md
+docs/ActiveDirectoryPayload.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -234,6 +236,8 @@ docs/GatewayListAllowedManagementAccess.md
 docs/GatewayListMigration.md
 docs/GatewayListProducers.md
 docs/GatewayMessageQueueInfo.md
+docs/GatewayMigratePersonalItems.md
+docs/GatewayMigratePersonalItemsOutput.md
 docs/GatewayMigrationCreateOutput.md
 docs/GatewayMigrationDeleteOutput.md
 docs/GatewayMigrationGetOutput.md
@@ -453,7 +457,6 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
-docs/TargetObjectAssociation.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -556,16 +559,10 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/BastionListEntryTests.cs
-src/akeyless.Test/Model/BastionsListTests.cs
-src/akeyless.Test/Model/GatewaysListResponseTests.cs
-src/akeyless.Test/Model/GwClusterIdentityTests.cs
-src/akeyless.Test/Model/ListGatewaysTests.cs
-src/akeyless.Test/Model/ListSRABastionsTests.cs
-src/akeyless.Test/Model/OnePasswordMigrationTests.cs
-src/akeyless.Test/Model/OnePasswordPayloadTests.cs
-src/akeyless.Test/Model/TargetObjectAssociationTests.cs
-src/akeyless.Test/Model/UpdateTargetDetailsTests.cs
+src/akeyless.Test/Model/ActiveDirectoryMigrationTests.cs
+src/akeyless.Test/Model/ActiveDirectoryPayloadTests.cs
+src/akeyless.Test/Model/GatewayMigratePersonalItemsOutputTests.cs
+src/akeyless.Test/Model/GatewayMigratePersonalItemsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -591,6 +588,8 @@ src/akeyless/Model/AWSSecretsMigration.cs
 src/akeyless/Model/AbstractOpenAPISchema.cs
 src/akeyless/Model/AccountGeneralSettings.cs
 src/akeyless/Model/AccountObjectVersionSettingsOutput.cs
+src/akeyless/Model/ActiveDirectoryMigration.cs
+src/akeyless/Model/ActiveDirectoryPayload.cs
 src/akeyless/Model/AdminsConfigPart.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AllowedAccess.cs
@@ -817,6 +816,8 @@ src/akeyless/Model/GatewayListAllowedManagementAccess.cs
 src/akeyless/Model/GatewayListMigration.cs
 src/akeyless/Model/GatewayListProducers.cs
 src/akeyless/Model/GatewayMessageQueueInfo.cs
+src/akeyless/Model/GatewayMigratePersonalItems.cs
+src/akeyless/Model/GatewayMigratePersonalItemsOutput.cs
 src/akeyless/Model/GatewayMigrationCreateOutput.cs
 src/akeyless/Model/GatewayMigrationDeleteOutput.cs
 src/akeyless/Model/GatewayMigrationGetOutput.cs
@@ -1036,7 +1037,6 @@ src/akeyless/Model/SystemAccessCredsSettings.cs
 src/akeyless/Model/Target.cs
 src/akeyless/Model/TargetItemAssociation.cs
 src/akeyless/Model/TargetItemVersion.cs
-src/akeyless/Model/TargetObjectAssociation.cs
 src/akeyless/Model/TargetTypeDetailsInput.cs
 src/akeyless/Model/TmpUserData.cs
 src/akeyless/Model/Tokenize.cs

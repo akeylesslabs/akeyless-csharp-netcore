@@ -1849,6 +1849,24 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>GatewayMigratePersonalItemsOutput</returns>
+        GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of GatewayMigratePersonalItemsOutput</returns>
+        ApiResponse<GatewayMigratePersonalItemsOutput> GatewayMigratePersonalItemsWithHttpInfo(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <returns></returns>
         void GatewayRevokeTmpUsers(GatewayRevokeTmpUsers body);
@@ -6601,6 +6619,29 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetProducersListReplyObj)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetProducersListReplyObj>> GatewayListProducersWithHttpInfoAsync(GatewayListProducers body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigratePersonalItemsOutput</returns>
+        System.Threading.Tasks.Task<GatewayMigratePersonalItemsOutput> GatewayMigratePersonalItemsAsync(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigratePersonalItemsOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GatewayMigratePersonalItemsOutput>> GatewayMigratePersonalItemsWithHttpInfoAsync(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -21623,6 +21664,115 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GatewayListProducers", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>GatewayMigratePersonalItemsOutput</returns>
+        public GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems))
+        {
+            akeyless.Client.ApiResponse<GatewayMigratePersonalItemsOutput> localVarResponse = GatewayMigratePersonalItemsWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of GatewayMigratePersonalItemsOutput</returns>
+        public akeyless.Client.ApiResponse<GatewayMigratePersonalItemsOutput> GatewayMigratePersonalItemsWithHttpInfo(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems))
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GatewayMigratePersonalItemsOutput>("/gateway-migrate-personal-items", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayMigratePersonalItems", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GatewayMigratePersonalItemsOutput</returns>
+        public async System.Threading.Tasks.Task<GatewayMigratePersonalItemsOutput> GatewayMigratePersonalItemsAsync(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GatewayMigratePersonalItemsOutput> localVarResponse = await GatewayMigratePersonalItemsWithHttpInfoAsync(body, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GatewayMigratePersonalItemsOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayMigratePersonalItemsOutput>> GatewayMigratePersonalItemsWithHttpInfoAsync(GatewayMigratePersonalItems body = default(GatewayMigratePersonalItems), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = body;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayMigratePersonalItemsOutput>("/gateway-migrate-personal-items", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GatewayMigratePersonalItems", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

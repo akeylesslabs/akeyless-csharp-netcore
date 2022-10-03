@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | **DateTime** |  | [optional] 
 **AccessInfo** | [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] 
 **AccountId** | **string** |  | [optional] 
 **AuthMethodAccessId** | **string** |  | [optional] 
@@ -12,7 +13,6 @@ Name | Type | Description | Notes
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
-**UsageDate** | **DateTime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

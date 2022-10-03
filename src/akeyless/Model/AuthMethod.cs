@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthMethod" /> class.
         /// </summary>
+        /// <param name="accessDate">accessDate.</param>
         /// <param name="accessInfo">accessInfo.</param>
         /// <param name="accountId">accountId.</param>
         /// <param name="authMethodAccessId">authMethodAccessId.</param>
@@ -43,9 +44,9 @@ namespace akeyless.Model
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="modificationDate">modificationDate.</param>
-        /// <param name="usageDate">usageDate.</param>
-        public AuthMethod(AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime), DateTime usageDate = default(DateTime))
+        public AuthMethod(DateTime accessDate = default(DateTime), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime))
         {
+            this.AccessDate = accessDate;
             this.AccessInfo = accessInfo;
             this.AccountId = accountId;
             this.AuthMethodAccessId = authMethodAccessId;
@@ -54,8 +55,13 @@ namespace akeyless.Model
             this.ClientPermissions = clientPermissions;
             this.CreationDate = creationDate;
             this.ModificationDate = modificationDate;
-            this.UsageDate = usageDate;
         }
+
+        /// <summary>
+        /// Gets or Sets AccessDate
+        /// </summary>
+        [DataMember(Name = "access_date", EmitDefaultValue = false)]
+        public DateTime AccessDate { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessInfo
@@ -106,12 +112,6 @@ namespace akeyless.Model
         public DateTime ModificationDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets UsageDate
-        /// </summary>
-        [DataMember(Name = "usage_date", EmitDefaultValue = false)]
-        public DateTime UsageDate { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -119,6 +119,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AuthMethod {\n");
+            sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  AccessInfo: ").Append(AccessInfo).Append("\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AuthMethodAccessId: ").Append(AuthMethodAccessId).Append("\n");
@@ -127,7 +128,6 @@ namespace akeyless.Model
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
-            sb.Append("  UsageDate: ").Append(UsageDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -162,6 +162,11 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.AccessDate == input.AccessDate ||
+                    (this.AccessDate != null &&
+                    this.AccessDate.Equals(input.AccessDate))
+                ) && 
                 (
                     this.AccessInfo == input.AccessInfo ||
                     (this.AccessInfo != null &&
@@ -203,11 +208,6 @@ namespace akeyless.Model
                     this.ModificationDate == input.ModificationDate ||
                     (this.ModificationDate != null &&
                     this.ModificationDate.Equals(input.ModificationDate))
-                ) && 
-                (
-                    this.UsageDate == input.UsageDate ||
-                    (this.UsageDate != null &&
-                    this.UsageDate.Equals(input.UsageDate))
                 );
         }
 
@@ -220,6 +220,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AccessDate != null)
+                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
                 if (this.AccessInfo != null)
                     hashCode = hashCode * 59 + this.AccessInfo.GetHashCode();
                 if (this.AccountId != null)
@@ -236,8 +238,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
                 if (this.ModificationDate != null)
                     hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
-                if (this.UsageDate != null)
-                    hashCode = hashCode * 59 + this.UsageDate.GetHashCode();
                 return hashCode;
             }
         }

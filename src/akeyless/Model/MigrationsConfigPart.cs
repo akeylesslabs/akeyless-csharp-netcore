@@ -35,14 +35,16 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MigrationsConfigPart" /> class.
         /// </summary>
+        /// <param name="activeDirectoryMigrations">activeDirectoryMigrations.</param>
         /// <param name="awsSecretsMigrations">awsSecretsMigrations.</param>
         /// <param name="azureKvMigrations">azureKvMigrations.</param>
         /// <param name="gcpSecretsMigrations">gcpSecretsMigrations.</param>
         /// <param name="hashiMigrations">hashiMigrations.</param>
         /// <param name="k8sMigrations">k8sMigrations.</param>
         /// <param name="onePasswordMigrations">onePasswordMigrations.</param>
-        public MigrationsConfigPart(List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>))
+        public MigrationsConfigPart(List<ActiveDirectoryMigration> activeDirectoryMigrations = default(List<ActiveDirectoryMigration>), List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>))
         {
+            this.ActiveDirectoryMigrations = activeDirectoryMigrations;
             this.AwsSecretsMigrations = awsSecretsMigrations;
             this.AzureKvMigrations = azureKvMigrations;
             this.GcpSecretsMigrations = gcpSecretsMigrations;
@@ -50,6 +52,12 @@ namespace akeyless.Model
             this.K8sMigrations = k8sMigrations;
             this.OnePasswordMigrations = onePasswordMigrations;
         }
+
+        /// <summary>
+        /// Gets or Sets ActiveDirectoryMigrations
+        /// </summary>
+        [DataMember(Name = "active_directory_migrations", EmitDefaultValue = false)]
+        public List<ActiveDirectoryMigration> ActiveDirectoryMigrations { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsSecretsMigrations
@@ -95,6 +103,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class MigrationsConfigPart {\n");
+            sb.Append("  ActiveDirectoryMigrations: ").Append(ActiveDirectoryMigrations).Append("\n");
             sb.Append("  AwsSecretsMigrations: ").Append(AwsSecretsMigrations).Append("\n");
             sb.Append("  AzureKvMigrations: ").Append(AzureKvMigrations).Append("\n");
             sb.Append("  GcpSecretsMigrations: ").Append(GcpSecretsMigrations).Append("\n");
@@ -135,6 +144,12 @@ namespace akeyless.Model
                 return false;
 
             return 
+                (
+                    this.ActiveDirectoryMigrations == input.ActiveDirectoryMigrations ||
+                    this.ActiveDirectoryMigrations != null &&
+                    input.ActiveDirectoryMigrations != null &&
+                    this.ActiveDirectoryMigrations.SequenceEqual(input.ActiveDirectoryMigrations)
+                ) && 
                 (
                     this.AwsSecretsMigrations == input.AwsSecretsMigrations ||
                     this.AwsSecretsMigrations != null &&
@@ -182,6 +197,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ActiveDirectoryMigrations != null)
+                    hashCode = hashCode * 59 + this.ActiveDirectoryMigrations.GetHashCode();
                 if (this.AwsSecretsMigrations != null)
                     hashCode = hashCode * 59 + this.AwsSecretsMigrations.GetHashCode();
                 if (this.AzureKvMigrations != null)

@@ -5,6 +5,30 @@ gatewayCreateMigration is a command that create migration
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**_1passwordEmail** | **string** | 1Password user email to connect to the API | [optional] 
+**_1passwordPassword** | **string** | 1Password user password to connect to the API | [optional] 
+**_1passwordSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
+**_1passwordUrl** | **string** | 1Password api container url | [optional] 
+**_1passwordVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
+**AdAutoRotateBoolean** | **bool** |  | [optional] 
+**AdDiscoverLocalUsersBoolean** | **bool** |  | [optional] 
+**AdLocalUsersIgnoreList** | **Dictionary&lt;string, bool&gt;** |  | [optional] 
+**AdSRAEnableRDPBoolean** | **bool** |  | [optional] 
+**AdAutoRotate** | **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
+**AdComputerBaseDn** | **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
+**AdDiscoverLocalUsers** | **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] 
+**AdDomainName** | **string** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] 
+**AdDomainUsersPathTemplate** | **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdLocalUsersIgnore** | **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] 
+**AdLocalUsersPathTemplate** | **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdRotationHour** | **int** | The hour of the scheduled rotation in UTC (Relevant only for Active Directory migration) | [optional] 
+**AdRotationInterval** | **int** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] 
+**AdSraEnableRdp** | **string** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] 
+**AdTargetName** | **string** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] 
+**AdTargetsPathTemplate** | **string** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdUserBaseDn** | **string** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
+**AdUserGroups** | **string** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] 
+**AsSshPort** | **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] 
 **AwsKey** | **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
 **AwsRegion** | **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] 
@@ -28,15 +52,10 @@ Name | Type | Description | Notes
 **K8sUrl** | **string** | K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration) | [optional] 
 **K8sUsername** | **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | **string** | Migration name | 
-**OpEmail** | **string** | 1Password user email to connect to the API | [optional] 
-**OpPassword** | **string** | 1Password user password to connect to the API | [optional] 
-**OpSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
-**OpUrl** | **string** | 1Password api container url | [optional] 
-**OpVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
 **ProtectionKey** | **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
-**TargetLocation** | **string** | Target location in Akeyless for imported secrets | [optional] 
+**TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/1password) | [optional] 
+**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

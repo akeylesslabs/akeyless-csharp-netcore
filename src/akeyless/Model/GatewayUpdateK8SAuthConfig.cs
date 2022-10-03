@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="accessId">The access ID of the Kubernetes auth method (required).</param>
         /// <param name="clusterApiType">Cluster access type. options: [native_k8s, rancher] (default to &quot;native_k8s&quot;).</param>
         /// <param name="configEncryptionKeyName">Config encryption key.</param>
+        /// <param name="disableIssuerValidation">Disable issuer validation.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="k8sCaCert">The CA Certificate (base64 encoded) to use to call into the kubernetes API server.</param>
         /// <param name="k8sHost">The URL of the kubernetes API server (required).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token (default to 300).</param>
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), bool json = default(bool), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string newName = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
+        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = default(bool), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string newName = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null) {
@@ -86,6 +87,7 @@ namespace akeyless.Model
             // use default value if no "clusterApiType" provided
             this.ClusterApiType = clusterApiType ?? "native_k8s";
             this.ConfigEncryptionKeyName = configEncryptionKeyName;
+            this.DisableIssuerValidation = disableIssuerValidation;
             this.Json = json;
             this.K8sCaCert = k8sCaCert;
             this.K8sIssuer = k8sIssuer;
@@ -117,6 +119,13 @@ namespace akeyless.Model
         /// <value>Config encryption key</value>
         [DataMember(Name = "config-encryption-key-name", EmitDefaultValue = false)]
         public string ConfigEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Disable issuer validation
+        /// </summary>
+        /// <value>Disable issuer validation</value>
+        [DataMember(Name = "disable-issuer-validation", EmitDefaultValue = false)]
+        public string DisableIssuerValidation { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -220,6 +229,7 @@ namespace akeyless.Model
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  ClusterApiType: ").Append(ClusterApiType).Append("\n");
             sb.Append("  ConfigEncryptionKeyName: ").Append(ConfigEncryptionKeyName).Append("\n");
+            sb.Append("  DisableIssuerValidation: ").Append(DisableIssuerValidation).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sCaCert: ").Append(K8sCaCert).Append("\n");
             sb.Append("  K8sHost: ").Append(K8sHost).Append("\n");
@@ -281,6 +291,11 @@ namespace akeyless.Model
                     this.ConfigEncryptionKeyName == input.ConfigEncryptionKeyName ||
                     (this.ConfigEncryptionKeyName != null &&
                     this.ConfigEncryptionKeyName.Equals(input.ConfigEncryptionKeyName))
+                ) && 
+                (
+                    this.DisableIssuerValidation == input.DisableIssuerValidation ||
+                    (this.DisableIssuerValidation != null &&
+                    this.DisableIssuerValidation.Equals(input.DisableIssuerValidation))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -362,6 +377,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.ClusterApiType.GetHashCode();
                 if (this.ConfigEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ConfigEncryptionKeyName.GetHashCode();
+                if (this.DisableIssuerValidation != null)
+                    hashCode = hashCode * 59 + this.DisableIssuerValidation.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.K8sCaCert != null)
                     hashCode = hashCode * 59 + this.K8sCaCert.GetHashCode();

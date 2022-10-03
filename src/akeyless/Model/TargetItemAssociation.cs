@@ -36,15 +36,19 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetItemAssociation" /> class.
         /// </summary>
         /// <param name="assocId">assocId.</param>
+        /// <param name="attributes">attributes.</param>
         /// <param name="clusterId">clusterId.</param>
         /// <param name="itemName">itemName.</param>
         /// <param name="itemType">itemType.</param>
-        public TargetItemAssociation(string assocId = default(string), long clusterId = default(long), string itemName = default(string), string itemType = default(string))
+        /// <param name="relationship">relationship.</param>
+        public TargetItemAssociation(string assocId = default(string), Dictionary<string, string> attributes = default(Dictionary<string, string>), long clusterId = default(long), string itemName = default(string), string itemType = default(string), string relationship = default(string))
         {
             this.AssocId = assocId;
+            this.Attributes = attributes;
             this.ClusterId = clusterId;
             this.ItemName = itemName;
             this.ItemType = itemType;
+            this.Relationship = relationship;
         }
 
         /// <summary>
@@ -52,6 +56,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "assoc_id", EmitDefaultValue = false)]
         public string AssocId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Attributes
+        /// </summary>
+        [DataMember(Name = "attributes", EmitDefaultValue = false)]
+        public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets ClusterId
@@ -72,6 +82,12 @@ namespace akeyless.Model
         public string ItemType { get; set; }
 
         /// <summary>
+        /// Gets or Sets Relationship
+        /// </summary>
+        [DataMember(Name = "relationship", EmitDefaultValue = false)]
+        public string Relationship { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,9 +96,11 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class TargetItemAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
+            sb.Append("  Relationship: ").Append(Relationship).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +141,12 @@ namespace akeyless.Model
                     this.AssocId.Equals(input.AssocId))
                 ) && 
                 (
+                    this.Attributes == input.Attributes ||
+                    this.Attributes != null &&
+                    input.Attributes != null &&
+                    this.Attributes.SequenceEqual(input.Attributes)
+                ) && 
+                (
                     this.ClusterId == input.ClusterId ||
                     this.ClusterId.Equals(input.ClusterId)
                 ) && 
@@ -135,6 +159,11 @@ namespace akeyless.Model
                     this.ItemType == input.ItemType ||
                     (this.ItemType != null &&
                     this.ItemType.Equals(input.ItemType))
+                ) && 
+                (
+                    this.Relationship == input.Relationship ||
+                    (this.Relationship != null &&
+                    this.Relationship.Equals(input.Relationship))
                 );
         }
 
@@ -149,11 +178,15 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                if (this.Attributes != null)
+                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 hashCode = hashCode * 59 + this.ClusterId.GetHashCode();
                 if (this.ItemName != null)
                     hashCode = hashCode * 59 + this.ItemName.GetHashCode();
                 if (this.ItemType != null)
                     hashCode = hashCode * 59 + this.ItemType.GetHashCode();
+                if (this.Relationship != null)
+                    hashCode = hashCode * 59 + this.Relationship.GetHashCode();
                 return hashCode;
             }
         }
