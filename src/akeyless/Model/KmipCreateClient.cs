@@ -40,23 +40,31 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipCreateClient" /> class.
         /// </summary>
+        /// <param name="activateKeysOnCreation">activateKeysOnCreation.</param>
         /// <param name="certificateTtl">certificateTtl.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Client name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipCreateClient(long certificateTtl = default(long), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
+        public KmipCreateClient(string activateKeysOnCreation = default(string), long certificateTtl = default(long), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for KmipCreateClient and cannot be null");
             }
             this.Name = name;
+            this.ActivateKeysOnCreation = activateKeysOnCreation;
             this.CertificateTtl = certificateTtl;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Gets or Sets ActivateKeysOnCreation
+        /// </summary>
+        [DataMember(Name = "activate-keys-on-creation", EmitDefaultValue = false)]
+        public string ActivateKeysOnCreation { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificateTtl
@@ -100,6 +108,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class KmipCreateClient {\n");
+            sb.Append("  ActivateKeysOnCreation: ").Append(ActivateKeysOnCreation).Append("\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -140,6 +149,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.ActivateKeysOnCreation == input.ActivateKeysOnCreation ||
+                    (this.ActivateKeysOnCreation != null &&
+                    this.ActivateKeysOnCreation.Equals(input.ActivateKeysOnCreation))
+                ) && 
+                (
                     this.CertificateTtl == input.CertificateTtl ||
                     this.CertificateTtl.Equals(input.CertificateTtl)
                 ) && 
@@ -173,6 +187,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ActivateKeysOnCreation != null)
+                    hashCode = hashCode * 59 + this.ActivateKeysOnCreation.GetHashCode();
                 hashCode = hashCode * 59 + this.CertificateTtl.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)

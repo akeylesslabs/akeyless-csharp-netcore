@@ -104,8 +104,11 @@ namespace akeyless.Model
         /// <param name="failureMessage">failureMessage.</param>
         /// <param name="fixedUserOnly">fixedUserOnly.</param>
         /// <param name="gcpKeyAlgo">gcpKeyAlgo.</param>
-        /// <param name="gcpServiceAccountEmail">gcpServiceAccountEmail.</param>
+        /// <param name="gcpRoleBindings">gcpRoleBindings.</param>
+        /// <param name="gcpServiceAccountEmail">GCPServiceAccountEmail overrides the deprecated field from the target.</param>
         /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
+        /// <param name="gcpServiceAccountType">gcpServiceAccountType.</param>
+        /// <param name="gcpTmpServiceAccountName">gcpTmpServiceAccountName.</param>
         /// <param name="gcpTokenLifetime">gcpTokenLifetime.</param>
         /// <param name="gcpTokenScope">gcpTokenScope.</param>
         /// <param name="gcpTokenType">gcpTokenType.</param>
@@ -210,7 +213,7 @@ namespace akeyless.Model
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
         /// <param name="warnBeforeUserExpirationMin">warnBeforeUserExpirationMin.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
+        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
         {
             this.Active = active;
             this.AdminName = adminName;
@@ -281,8 +284,11 @@ namespace akeyless.Model
             this.FailureMessage = failureMessage;
             this.FixedUserOnly = fixedUserOnly;
             this.GcpKeyAlgo = gcpKeyAlgo;
+            this.GcpRoleBindings = gcpRoleBindings;
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKey = gcpServiceAccountKey;
+            this.GcpServiceAccountType = gcpServiceAccountType;
+            this.GcpTmpServiceAccountName = gcpTmpServiceAccountName;
             this.GcpTokenLifetime = gcpTokenLifetime;
             this.GcpTokenScope = gcpTokenScope;
             this.GcpTokenType = gcpTokenType;
@@ -806,8 +812,15 @@ namespace akeyless.Model
         public string GcpKeyAlgo { get; set; }
 
         /// <summary>
-        /// Gets or Sets GcpServiceAccountEmail
+        /// Gets or Sets GcpRoleBindings
         /// </summary>
+        [DataMember(Name = "gcp_role_bindings", EmitDefaultValue = false)]
+        public Dictionary<string, List<string>> GcpRoleBindings { get; set; }
+
+        /// <summary>
+        /// GCPServiceAccountEmail overrides the deprecated field from the target
+        /// </summary>
+        /// <value>GCPServiceAccountEmail overrides the deprecated field from the target</value>
         [DataMember(Name = "gcp_service_account_email", EmitDefaultValue = false)]
         public string GcpServiceAccountEmail { get; set; }
 
@@ -816,6 +829,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "gcp_service_account_key", EmitDefaultValue = false)]
         public string GcpServiceAccountKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpServiceAccountType
+        /// </summary>
+        [DataMember(Name = "gcp_service_account_type", EmitDefaultValue = false)]
+        public string GcpServiceAccountType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpTmpServiceAccountName
+        /// </summary>
+        [DataMember(Name = "gcp_tmp_service_account_name", EmitDefaultValue = false)]
+        public string GcpTmpServiceAccountName { get; set; }
 
         /// <summary>
         /// Gets or Sets GcpTokenLifetime
@@ -1526,8 +1551,11 @@ namespace akeyless.Model
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
+            sb.Append("  GcpRoleBindings: ").Append(GcpRoleBindings).Append("\n");
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKey: ").Append(GcpServiceAccountKey).Append("\n");
+            sb.Append("  GcpServiceAccountType: ").Append(GcpServiceAccountType).Append("\n");
+            sb.Append("  GcpTmpServiceAccountName: ").Append(GcpTmpServiceAccountName).Append("\n");
             sb.Append("  GcpTokenLifetime: ").Append(GcpTokenLifetime).Append("\n");
             sb.Append("  GcpTokenScope: ").Append(GcpTokenScope).Append("\n");
             sb.Append("  GcpTokenType: ").Append(GcpTokenType).Append("\n");
@@ -2001,6 +2029,12 @@ namespace akeyless.Model
                     this.GcpKeyAlgo.Equals(input.GcpKeyAlgo))
                 ) && 
                 (
+                    this.GcpRoleBindings == input.GcpRoleBindings ||
+                    this.GcpRoleBindings != null &&
+                    input.GcpRoleBindings != null &&
+                    this.GcpRoleBindings.SequenceEqual(input.GcpRoleBindings)
+                ) && 
+                (
                     this.GcpServiceAccountEmail == input.GcpServiceAccountEmail ||
                     (this.GcpServiceAccountEmail != null &&
                     this.GcpServiceAccountEmail.Equals(input.GcpServiceAccountEmail))
@@ -2009,6 +2043,16 @@ namespace akeyless.Model
                     this.GcpServiceAccountKey == input.GcpServiceAccountKey ||
                     (this.GcpServiceAccountKey != null &&
                     this.GcpServiceAccountKey.Equals(input.GcpServiceAccountKey))
+                ) && 
+                (
+                    this.GcpServiceAccountType == input.GcpServiceAccountType ||
+                    (this.GcpServiceAccountType != null &&
+                    this.GcpServiceAccountType.Equals(input.GcpServiceAccountType))
+                ) && 
+                (
+                    this.GcpTmpServiceAccountName == input.GcpTmpServiceAccountName ||
+                    (this.GcpTmpServiceAccountName != null &&
+                    this.GcpTmpServiceAccountName.Equals(input.GcpTmpServiceAccountName))
                 ) && 
                 (
                     this.GcpTokenLifetime == input.GcpTokenLifetime ||
@@ -2659,10 +2703,16 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
                 if (this.GcpKeyAlgo != null)
                     hashCode = hashCode * 59 + this.GcpKeyAlgo.GetHashCode();
+                if (this.GcpRoleBindings != null)
+                    hashCode = hashCode * 59 + this.GcpRoleBindings.GetHashCode();
                 if (this.GcpServiceAccountEmail != null)
                     hashCode = hashCode * 59 + this.GcpServiceAccountEmail.GetHashCode();
                 if (this.GcpServiceAccountKey != null)
                     hashCode = hashCode * 59 + this.GcpServiceAccountKey.GetHashCode();
+                if (this.GcpServiceAccountType != null)
+                    hashCode = hashCode * 59 + this.GcpServiceAccountType.GetHashCode();
+                if (this.GcpTmpServiceAccountName != null)
+                    hashCode = hashCode * 59 + this.GcpTmpServiceAccountName.GetHashCode();
                 if (this.GcpTokenLifetime != null)
                     hashCode = hashCode * 59 + this.GcpTokenLifetime.GetHashCode();
                 if (this.GcpTokenScope != null)

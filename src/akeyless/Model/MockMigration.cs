@@ -27,33 +27,33 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// AuthOutput
+    /// MockMigration
     /// </summary>
-    [DataContract(Name = "AuthOutput")]
-    public partial class AuthOutput : IEquatable<AuthOutput>, IValidatableObject
+    [DataContract(Name = "MockMigration")]
+    public partial class MockMigration : IEquatable<MockMigration>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthOutput" /> class.
+        /// Initializes a new instance of the <see cref="MockMigration" /> class.
         /// </summary>
-        /// <param name="creds">creds.</param>
-        /// <param name="token">token.</param>
-        public AuthOutput(SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string token = default(string))
+        /// <param name="general">general.</param>
+        /// <param name="payload">payload.</param>
+        public MockMigration(MigrationGeneral general = default(MigrationGeneral), MockPayload payload = default(MockPayload))
         {
-            this.Creds = creds;
-            this.Token = token;
+            this.General = general;
+            this.Payload = payload;
         }
 
         /// <summary>
-        /// Gets or Sets Creds
+        /// Gets or Sets General
         /// </summary>
-        [DataMember(Name = "creds", EmitDefaultValue = false)]
-        public SystemAccessCredentialsReplyObj Creds { get; set; }
+        [DataMember(Name = "general", EmitDefaultValue = false)]
+        public MigrationGeneral General { get; set; }
 
         /// <summary>
-        /// Gets or Sets Token
+        /// Gets or Sets Payload
         /// </summary>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
-        public string Token { get; set; }
+        [DataMember(Name = "payload", EmitDefaultValue = false)]
+        public MockPayload Payload { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +62,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AuthOutput {\n");
-            sb.Append("  Creds: ").Append(Creds).Append("\n");
-            sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("class MockMigration {\n");
+            sb.Append("  General: ").Append(General).Append("\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,29 +85,29 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AuthOutput);
+            return this.Equals(input as MockMigration);
         }
 
         /// <summary>
-        /// Returns true if AuthOutput instances are equal
+        /// Returns true if MockMigration instances are equal
         /// </summary>
-        /// <param name="input">Instance of AuthOutput to be compared</param>
+        /// <param name="input">Instance of MockMigration to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AuthOutput input)
+        public bool Equals(MockMigration input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Creds == input.Creds ||
-                    (this.Creds != null &&
-                    this.Creds.Equals(input.Creds))
+                    this.General == input.General ||
+                    (this.General != null &&
+                    this.General.Equals(input.General))
                 ) && 
                 (
-                    this.Token == input.Token ||
-                    (this.Token != null &&
-                    this.Token.Equals(input.Token))
+                    this.Payload == input.Payload ||
+                    (this.Payload != null &&
+                    this.Payload.Equals(input.Payload))
                 );
         }
 
@@ -120,10 +120,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Creds != null)
-                    hashCode = hashCode * 59 + this.Creds.GetHashCode();
-                if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.General != null)
+                    hashCode = hashCode * 59 + this.General.GetHashCode();
+                if (this.Payload != null)
+                    hashCode = hashCode * 59 + this.Payload.GetHashCode();
                 return hashCode;
             }
         }

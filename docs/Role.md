@@ -4,8 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | **DateTime** |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **Comment** | **string** |  | [optional] 
+**CreationDate** | **DateTime** |  | [optional] 
+**ModificationDate** | **DateTime** |  | [optional] 
 **RoleAuthMethodsAssoc** | [**List&lt;RoleAuthMethodAssociation&gt;**](RoleAuthMethodAssociation.md) |  | [optional] 
 **RoleName** | **string** |  | [optional] 
 **Rules** | [**Rules**](Rules.md) |  | [optional] 

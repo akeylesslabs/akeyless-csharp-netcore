@@ -35,23 +35,33 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemVersion" /> class.
         /// </summary>
+        /// <param name="accessDate">accessDate.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="customerFragmentId">customerFragmentId.</param>
         /// <param name="deletionDate">deletionDate.</param>
         /// <param name="itemVersionState">ItemState defines the different states an Item can be in.</param>
+        /// <param name="modificationDate">modificationDate.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="version">version.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public ItemVersion(DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
+        public ItemVersion(DateTime accessDate = default(DateTime), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
         {
+            this.AccessDate = accessDate;
             this.CreationDate = creationDate;
             this.CustomerFragmentId = customerFragmentId;
             this.DeletionDate = deletionDate;
             this.ItemVersionState = itemVersionState;
+            this.ModificationDate = modificationDate;
             this.ProtectionKeyName = protectionKeyName;
             this._Version = version;
             this.WithCustomerFragment = withCustomerFragment;
         }
+
+        /// <summary>
+        /// Gets or Sets AccessDate
+        /// </summary>
+        [DataMember(Name = "access_date", EmitDefaultValue = false)]
+        public DateTime AccessDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CreationDate
@@ -79,6 +89,12 @@ namespace akeyless.Model
         public string ItemVersionState { get; set; }
 
         /// <summary>
+        /// Gets or Sets ModificationDate
+        /// </summary>
+        [DataMember(Name = "modification_date", EmitDefaultValue = false)]
+        public DateTime ModificationDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets ProtectionKeyName
         /// </summary>
         [DataMember(Name = "protection_key_name", EmitDefaultValue = false)]
@@ -104,10 +120,12 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ItemVersion {\n");
+            sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  CustomerFragmentId: ").Append(CustomerFragmentId).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  ItemVersionState: ").Append(ItemVersionState).Append("\n");
+            sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
@@ -146,6 +164,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AccessDate == input.AccessDate ||
+                    (this.AccessDate != null &&
+                    this.AccessDate.Equals(input.AccessDate))
+                ) && 
+                (
                     this.CreationDate == input.CreationDate ||
                     (this.CreationDate != null &&
                     this.CreationDate.Equals(input.CreationDate))
@@ -164,6 +187,11 @@ namespace akeyless.Model
                     this.ItemVersionState == input.ItemVersionState ||
                     (this.ItemVersionState != null &&
                     this.ItemVersionState.Equals(input.ItemVersionState))
+                ) && 
+                (
+                    this.ModificationDate == input.ModificationDate ||
+                    (this.ModificationDate != null &&
+                    this.ModificationDate.Equals(input.ModificationDate))
                 ) && 
                 (
                     this.ProtectionKeyName == input.ProtectionKeyName ||
@@ -189,6 +217,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AccessDate != null)
+                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
                 if (this.CreationDate != null)
                     hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
                 if (this.CustomerFragmentId != null)
@@ -197,6 +227,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
                 if (this.ItemVersionState != null)
                     hashCode = hashCode * 59 + this.ItemVersionState.GetHashCode();
+                if (this.ModificationDate != null)
+                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
                 if (this.ProtectionKeyName != null)
                     hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
                 hashCode = hashCode * 59 + this._Version.GetHashCode();

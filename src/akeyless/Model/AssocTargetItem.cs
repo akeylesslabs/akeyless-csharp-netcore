@@ -45,15 +45,17 @@ namespace akeyless.Model
         /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
         /// <param name="kmsAlgorithm">Algorithm of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
+        /// <param name="multiRegion">Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
+        /// <param name="regions">The list of regions to create a copy of the key in (relevant for aws targets).</param>
         /// <param name="targetName">The target to associate (required).</param>
         /// <param name="tenantSecretType">The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string name = default(string), string projectId = default(string), string purpose = default(string), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -70,8 +72,11 @@ namespace akeyless.Model
             this.KeyringName = keyringName;
             this.KmsAlgorithm = kmsAlgorithm;
             this.LocationId = locationId;
+            // use default value if no "multiRegion" provided
+            this.MultiRegion = multiRegion ?? "false";
             this.ProjectId = projectId;
             this.Purpose = purpose;
+            this.Regions = regions;
             this.TenantSecretType = tenantSecretType;
             this.Token = token;
             this.UidToken = uidToken;
@@ -114,6 +119,13 @@ namespace akeyless.Model
         public string LocationId { get; set; }
 
         /// <summary>
+        /// Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets)
+        /// </summary>
+        /// <value>Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets)</value>
+        [DataMember(Name = "multi-region", EmitDefaultValue = false)]
+        public string MultiRegion { get; set; }
+
+        /// <summary>
         /// The item to associate
         /// </summary>
         /// <value>The item to associate</value>
@@ -133,6 +145,13 @@ namespace akeyless.Model
         /// <value>Purpose of the key in GCP KMS (required for gcp targets)</value>
         [DataMember(Name = "purpose", EmitDefaultValue = false)]
         public string Purpose { get; set; }
+
+        /// <summary>
+        /// The list of regions to create a copy of the key in (relevant for aws targets)
+        /// </summary>
+        /// <value>The list of regions to create a copy of the key in (relevant for aws targets)</value>
+        [DataMember(Name = "regions", EmitDefaultValue = false)]
+        public List<string> Regions { get; set; }
 
         /// <summary>
         /// The target to associate
@@ -182,9 +201,11 @@ namespace akeyless.Model
             sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
             sb.Append("  KmsAlgorithm: ").Append(KmsAlgorithm).Append("\n");
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
+            sb.Append("  MultiRegion: ").Append(MultiRegion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
+            sb.Append("  Regions: ").Append(Regions).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  TenantSecretType: ").Append(TenantSecretType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -250,6 +271,11 @@ namespace akeyless.Model
                     this.LocationId.Equals(input.LocationId))
                 ) && 
                 (
+                    this.MultiRegion == input.MultiRegion ||
+                    (this.MultiRegion != null &&
+                    this.MultiRegion.Equals(input.MultiRegion))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -263,6 +289,12 @@ namespace akeyless.Model
                     this.Purpose == input.Purpose ||
                     (this.Purpose != null &&
                     this.Purpose.Equals(input.Purpose))
+                ) && 
+                (
+                    this.Regions == input.Regions ||
+                    this.Regions != null &&
+                    input.Regions != null &&
+                    this.Regions.SequenceEqual(input.Regions)
                 ) && 
                 (
                     this.TargetName == input.TargetName ||
@@ -309,12 +341,16 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.KmsAlgorithm.GetHashCode();
                 if (this.LocationId != null)
                     hashCode = hashCode * 59 + this.LocationId.GetHashCode();
+                if (this.MultiRegion != null)
+                    hashCode = hashCode * 59 + this.MultiRegion.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProjectId != null)
                     hashCode = hashCode * 59 + this.ProjectId.GetHashCode();
                 if (this.Purpose != null)
                     hashCode = hashCode * 59 + this.Purpose.GetHashCode();
+                if (this.Regions != null)
+                    hashCode = hashCode * 59 + this.Regions.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();
                 if (this.TenantSecretType != null)

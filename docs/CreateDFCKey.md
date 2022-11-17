@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Metadata** | **string** | Metadata about the DFC key | [optional] 
 **Name** | **string** | DFCKey name | 
-**SplitLevel** | **long** | The number of fragments that the item will be split into (not includes customer fragment) | [optional] [default to 2]
+**SplitLevel** | **long** | The number of fragments that the item will be split into (not includes customer fragment) | [optional] [default to 3]
 **Tag** | **List&lt;string&gt;** | List of the tags attached to this DFC key | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

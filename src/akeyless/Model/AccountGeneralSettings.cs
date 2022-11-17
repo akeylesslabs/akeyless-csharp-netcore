@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AccountGeneralSettings" /> class.
         /// </summary>
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
+        /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
-        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo))
+        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo))
         {
             this.DataProtectionSection = dataProtectionSection;
+            this.EnableRequestForAccess = enableRequestForAccess;
             this.PasswordPolicy = passwordPolicy;
         }
 
@@ -48,6 +50,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "data_protection_section", EmitDefaultValue = false)]
         public DataProtectionSection DataProtectionSection { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EnableRequestForAccess
+        /// </summary>
+        [DataMember(Name = "enable_request_for_access", EmitDefaultValue = true)]
+        public bool EnableRequestForAccess { get; set; }
 
         /// <summary>
         /// Gets or Sets PasswordPolicy
@@ -64,6 +72,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class AccountGeneralSettings {\n");
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
+            sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -105,6 +114,10 @@ namespace akeyless.Model
                     this.DataProtectionSection.Equals(input.DataProtectionSection))
                 ) && 
                 (
+                    this.EnableRequestForAccess == input.EnableRequestForAccess ||
+                    this.EnableRequestForAccess.Equals(input.EnableRequestForAccess)
+                ) && 
+                (
                     this.PasswordPolicy == input.PasswordPolicy ||
                     (this.PasswordPolicy != null &&
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
@@ -122,6 +135,7 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.DataProtectionSection != null)
                     hashCode = hashCode * 59 + this.DataProtectionSection.GetHashCode();
+                hashCode = hashCode * 59 + this.EnableRequestForAccess.GetHashCode();
                 if (this.PasswordPolicy != null)
                     hashCode = hashCode * 59 + this.PasswordPolicy.GetHashCode();
                 return hashCode;

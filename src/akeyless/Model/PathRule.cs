@@ -35,17 +35,33 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PathRule" /> class.
         /// </summary>
+        /// <param name="assigners">assigners.</param>
         /// <param name="capabilities">The approved/denied capabilities in the path.</param>
+        /// <param name="isLimitAccess">flag that indicate that this rule is allowed to be access RemainingAccess of times..</param>
+        /// <param name="numberOfAccessUsed">numberOfAccessUsed.</param>
+        /// <param name="numberOfAllowedAccess">numberOfAllowedAccess.</param>
         /// <param name="path">The path the rule refers to.</param>
+        /// <param name="startTime">startTime.</param>
         /// <param name="ttl">ttl.</param>
         /// <param name="type">type.</param>
-        public PathRule(List<string> capabilities = default(List<string>), string path = default(string), long ttl = default(long), string type = default(string))
+        public PathRule(List<RuleAssigner> assigners = default(List<RuleAssigner>), List<string> capabilities = default(List<string>), bool isLimitAccess = default(bool), long numberOfAccessUsed = default(long), long numberOfAllowedAccess = default(long), string path = default(string), long startTime = default(long), long ttl = default(long), string type = default(string))
         {
+            this.Assigners = assigners;
             this.Capabilities = capabilities;
+            this.IsLimitAccess = isLimitAccess;
+            this.NumberOfAccessUsed = numberOfAccessUsed;
+            this.NumberOfAllowedAccess = numberOfAllowedAccess;
             this.Path = path;
+            this.StartTime = startTime;
             this.Ttl = ttl;
             this.Type = type;
         }
+
+        /// <summary>
+        /// Gets or Sets Assigners
+        /// </summary>
+        [DataMember(Name = "assigners", EmitDefaultValue = false)]
+        public List<RuleAssigner> Assigners { get; set; }
 
         /// <summary>
         /// The approved/denied capabilities in the path
@@ -55,11 +71,36 @@ namespace akeyless.Model
         public List<string> Capabilities { get; set; }
 
         /// <summary>
+        /// flag that indicate that this rule is allowed to be access RemainingAccess of times.
+        /// </summary>
+        /// <value>flag that indicate that this rule is allowed to be access RemainingAccess of times.</value>
+        [DataMember(Name = "is_limit_access", EmitDefaultValue = true)]
+        public bool IsLimitAccess { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NumberOfAccessUsed
+        /// </summary>
+        [DataMember(Name = "number_of_access_used", EmitDefaultValue = false)]
+        public long NumberOfAccessUsed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NumberOfAllowedAccess
+        /// </summary>
+        [DataMember(Name = "number_of_allowed_access", EmitDefaultValue = false)]
+        public long NumberOfAllowedAccess { get; set; }
+
+        /// <summary>
         /// The path the rule refers to
         /// </summary>
         /// <value>The path the rule refers to</value>
         [DataMember(Name = "path", EmitDefaultValue = false)]
         public string Path { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StartTime
+        /// </summary>
+        [DataMember(Name = "start_time", EmitDefaultValue = false)]
+        public long StartTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Ttl
@@ -81,8 +122,13 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PathRule {\n");
+            sb.Append("  Assigners: ").Append(Assigners).Append("\n");
             sb.Append("  Capabilities: ").Append(Capabilities).Append("\n");
+            sb.Append("  IsLimitAccess: ").Append(IsLimitAccess).Append("\n");
+            sb.Append("  NumberOfAccessUsed: ").Append(NumberOfAccessUsed).Append("\n");
+            sb.Append("  NumberOfAllowedAccess: ").Append(NumberOfAllowedAccess).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -120,15 +166,37 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.Assigners == input.Assigners ||
+                    this.Assigners != null &&
+                    input.Assigners != null &&
+                    this.Assigners.SequenceEqual(input.Assigners)
+                ) && 
+                (
                     this.Capabilities == input.Capabilities ||
                     this.Capabilities != null &&
                     input.Capabilities != null &&
                     this.Capabilities.SequenceEqual(input.Capabilities)
                 ) && 
                 (
+                    this.IsLimitAccess == input.IsLimitAccess ||
+                    this.IsLimitAccess.Equals(input.IsLimitAccess)
+                ) && 
+                (
+                    this.NumberOfAccessUsed == input.NumberOfAccessUsed ||
+                    this.NumberOfAccessUsed.Equals(input.NumberOfAccessUsed)
+                ) && 
+                (
+                    this.NumberOfAllowedAccess == input.NumberOfAllowedAccess ||
+                    this.NumberOfAllowedAccess.Equals(input.NumberOfAllowedAccess)
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
+                ) && 
+                (
+                    this.StartTime == input.StartTime ||
+                    this.StartTime.Equals(input.StartTime)
                 ) && 
                 (
                     this.Ttl == input.Ttl ||
@@ -150,10 +218,16 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Assigners != null)
+                    hashCode = hashCode * 59 + this.Assigners.GetHashCode();
                 if (this.Capabilities != null)
                     hashCode = hashCode * 59 + this.Capabilities.GetHashCode();
+                hashCode = hashCode * 59 + this.IsLimitAccess.GetHashCode();
+                hashCode = hashCode * 59 + this.NumberOfAccessUsed.GetHashCode();
+                hashCode = hashCode * 59 + this.NumberOfAllowedAccess.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
+                hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();

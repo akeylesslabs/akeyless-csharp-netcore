@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ItemTargetAssociation" /> class.
         /// </summary>
         /// <param name="assocId">assocId.</param>
+        /// <param name="attributes">attributes.</param>
         /// <param name="targetId">targetId.</param>
         /// <param name="targetName">targetName.</param>
         /// <param name="targetType">targetType.</param>
-        public ItemTargetAssociation(string assocId = default(string), long targetId = default(long), string targetName = default(string), string targetType = default(string))
+        public ItemTargetAssociation(string assocId = default(string), Dictionary<string, string> attributes = default(Dictionary<string, string>), long targetId = default(long), string targetName = default(string), string targetType = default(string))
         {
             this.AssocId = assocId;
+            this.Attributes = attributes;
             this.TargetId = targetId;
             this.TargetName = targetName;
             this.TargetType = targetType;
@@ -52,6 +54,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "assoc_id", EmitDefaultValue = false)]
         public string AssocId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Attributes
+        /// </summary>
+        [DataMember(Name = "attributes", EmitDefaultValue = false)]
+        public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetId
@@ -80,6 +88,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class ItemTargetAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  TargetType: ").Append(TargetType).Append("\n");
@@ -123,6 +132,12 @@ namespace akeyless.Model
                     this.AssocId.Equals(input.AssocId))
                 ) && 
                 (
+                    this.Attributes == input.Attributes ||
+                    this.Attributes != null &&
+                    input.Attributes != null &&
+                    this.Attributes.SequenceEqual(input.Attributes)
+                ) && 
+                (
                     this.TargetId == input.TargetId ||
                     this.TargetId.Equals(input.TargetId)
                 ) && 
@@ -149,6 +164,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                if (this.Attributes != null)
+                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 hashCode = hashCode * 59 + this.TargetId.GetHashCode();
                 if (this.TargetName != null)
                     hashCode = hashCode * 59 + this.TargetName.GetHashCode();

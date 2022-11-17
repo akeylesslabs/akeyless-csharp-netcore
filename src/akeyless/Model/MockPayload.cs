@@ -27,33 +27,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// AuthOutput
+    /// MockPayload
     /// </summary>
-    [DataContract(Name = "AuthOutput")]
-    public partial class AuthOutput : IEquatable<AuthOutput>, IValidatableObject
+    [DataContract(Name = "MockPayload")]
+    public partial class MockPayload : IEquatable<MockPayload>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthOutput" /> class.
+        /// Initializes a new instance of the <see cref="MockPayload" /> class.
         /// </summary>
-        /// <param name="creds">creds.</param>
-        /// <param name="token">token.</param>
-        public AuthOutput(SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string token = default(string))
+        /// <param name="vaults">vaults.</param>
+        public MockPayload(List<string> vaults = default(List<string>))
         {
-            this.Creds = creds;
-            this.Token = token;
+            this.Vaults = vaults;
         }
 
         /// <summary>
-        /// Gets or Sets Creds
+        /// Gets or Sets Vaults
         /// </summary>
-        [DataMember(Name = "creds", EmitDefaultValue = false)]
-        public SystemAccessCredentialsReplyObj Creds { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Token
-        /// </summary>
-        [DataMember(Name = "token", EmitDefaultValue = false)]
-        public string Token { get; set; }
+        [DataMember(Name = "vaults", EmitDefaultValue = false)]
+        public List<string> Vaults { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +54,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AuthOutput {\n");
-            sb.Append("  Creds: ").Append(Creds).Append("\n");
-            sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("class MockPayload {\n");
+            sb.Append("  Vaults: ").Append(Vaults).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,29 +76,25 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AuthOutput);
+            return this.Equals(input as MockPayload);
         }
 
         /// <summary>
-        /// Returns true if AuthOutput instances are equal
+        /// Returns true if MockPayload instances are equal
         /// </summary>
-        /// <param name="input">Instance of AuthOutput to be compared</param>
+        /// <param name="input">Instance of MockPayload to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AuthOutput input)
+        public bool Equals(MockPayload input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Creds == input.Creds ||
-                    (this.Creds != null &&
-                    this.Creds.Equals(input.Creds))
-                ) && 
-                (
-                    this.Token == input.Token ||
-                    (this.Token != null &&
-                    this.Token.Equals(input.Token))
+                    this.Vaults == input.Vaults ||
+                    this.Vaults != null &&
+                    input.Vaults != null &&
+                    this.Vaults.SequenceEqual(input.Vaults)
                 );
         }
 
@@ -120,10 +107,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Creds != null)
-                    hashCode = hashCode * 59 + this.Creds.GetHashCode();
-                if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.Vaults != null)
+                    hashCode = hashCode * 59 + this.Vaults.GetHashCode();
                 return hashCode;
             }
         }

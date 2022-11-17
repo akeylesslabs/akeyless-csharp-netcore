@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
+        /// <param name="gatewayUrl">Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="gcpAudience">GCP JWT audience.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gcpAudience = default(string), bool json = default(bool), string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = default(string), bool json = default(bool), string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.CertData = certData;
             this.CloudId = cloudId;
             this.Debug = debug;
+            this.GatewayUrl = gatewayUrl;
             this.GcpAudience = gcpAudience;
             this.Json = json;
             this.Jwt = jwt;
@@ -128,6 +130,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "debug", EmitDefaultValue = true)]
         public bool Debug { get; set; }
+
+        /// <summary>
+        /// Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s)
+        /// </summary>
+        /// <value>Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s)</value>
+        [DataMember(Name = "gateway-url", EmitDefaultValue = false)]
+        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// GCP JWT audience
@@ -208,6 +217,7 @@ namespace akeyless.Model
             sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  CloudId: ").Append(CloudId).Append("\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
+            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Jwt: ").Append(Jwt).Append("\n");
@@ -291,6 +301,11 @@ namespace akeyless.Model
                     this.Debug.Equals(input.Debug)
                 ) && 
                 (
+                    this.GatewayUrl == input.GatewayUrl ||
+                    (this.GatewayUrl != null &&
+                    this.GatewayUrl.Equals(input.GatewayUrl))
+                ) && 
+                (
                     this.GcpAudience == input.GcpAudience ||
                     (this.GcpAudience != null &&
                     this.GcpAudience.Equals(input.GcpAudience))
@@ -360,6 +375,8 @@ namespace akeyless.Model
                 if (this.CloudId != null)
                     hashCode = hashCode * 59 + this.CloudId.GetHashCode();
                 hashCode = hashCode * 59 + this.Debug.GetHashCode();
+                if (this.GatewayUrl != null)
+                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
                 if (this.GcpAudience != null)
                     hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();

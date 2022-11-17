@@ -398,6 +398,8 @@ docs/MigrationStatus.md
 docs/MigrationStatusReplyObj.md
 docs/MigrationsConfigLastChange.md
 docs/MigrationsConfigPart.md
+docs/MockMigration.md
+docs/MockPayload.md
 docs/MoveObjects.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
@@ -559,10 +561,8 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/ActiveDirectoryMigrationTests.cs
-src/akeyless.Test/Model/ActiveDirectoryPayloadTests.cs
-src/akeyless.Test/Model/GatewayMigratePersonalItemsOutputTests.cs
-src/akeyless.Test/Model/GatewayMigratePersonalItemsTests.cs
+src/akeyless.Test/Model/MockMigrationTests.cs
+src/akeyless.Test/Model/MockPayloadTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -978,6 +978,8 @@ src/akeyless/Model/MigrationStatus.cs
 src/akeyless/Model/MigrationStatusReplyObj.cs
 src/akeyless/Model/MigrationsConfigLastChange.cs
 src/akeyless/Model/MigrationsConfigPart.cs
+src/akeyless/Model/MockMigration.cs
+src/akeyless/Model/MockPayload.cs
 src/akeyless/Model/MoveObjects.cs
 src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs

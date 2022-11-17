@@ -24739,7 +24739,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<GatewayUpdateProducerNativeK8SOutput>("/gateway-update-producer-k8s-native", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<GatewayUpdateProducerNativeK8SOutput>("/gateway-update-producer-k8s", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -24800,7 +24800,7 @@ namespace akeyless.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateProducerNativeK8SOutput>("/gateway-update-producer-k8s-native", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GatewayUpdateProducerNativeK8SOutput>("/gateway-update-producer-k8s", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

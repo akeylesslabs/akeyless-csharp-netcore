@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// GetSecretValue
     /// </summary>
-    [DataContract(Name = "getSecretValue")]
+    [DataContract(Name = "GetSecretValue")]
     public partial class GetSecretValue : IEquatable<GetSecretValue>, IValidatableObject
     {
         /// <summary>
@@ -40,21 +40,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSecretValue" /> class.
         /// </summary>
+        /// <param name="ignoreCacheBoolean">ignoreCacheBoolean.</param>
         /// <param name="accessibility">for personal password manager.</param>
+        /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="names">Secret name (required).</param>
-        /// <param name="prettyPrint">prettyPrint.</param>
+        /// <param name="prettyPrint">Print the secret value with json-pretty-print (not relevent to SDK).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Secret version.</param>
-        public GetSecretValue(string accessibility = default(string), bool json = default(bool), List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetSecretValue(bool ignoreCacheBoolean = default(bool), string accessibility = default(string), string ignoreCache = default(string), bool json = default(bool), List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
             if (names == null) {
                 throw new ArgumentNullException("names is a required property for GetSecretValue and cannot be null");
             }
             this.Names = names;
+            this.IgnoreCacheBoolean = ignoreCacheBoolean;
             this.Accessibility = accessibility;
+            this.IgnoreCache = ignoreCache;
             this.Json = json;
             this.PrettyPrint = prettyPrint;
             this.Token = token;
@@ -63,11 +67,24 @@ namespace akeyless.Model
         }
 
         /// <summary>
+        /// Gets or Sets IgnoreCacheBoolean
+        /// </summary>
+        [DataMember(Name = "IgnoreCacheBoolean", EmitDefaultValue = true)]
+        public bool IgnoreCacheBoolean { get; set; }
+
+        /// <summary>
         /// for personal password manager
         /// </summary>
         /// <value>for personal password manager</value>
         [DataMember(Name = "accessibility", EmitDefaultValue = false)]
         public string Accessibility { get; set; }
+
+        /// <summary>
+        /// Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI
+        /// </summary>
+        /// <value>Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI</value>
+        [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
+        public string IgnoreCache { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -84,8 +101,9 @@ namespace akeyless.Model
         public List<string> Names { get; set; }
 
         /// <summary>
-        /// Gets or Sets PrettyPrint
+        /// Print the secret value with json-pretty-print (not relevent to SDK)
         /// </summary>
+        /// <value>Print the secret value with json-pretty-print (not relevent to SDK)</value>
         [DataMember(Name = "pretty-print", EmitDefaultValue = true)]
         public bool PrettyPrint { get; set; }
 
@@ -118,7 +136,9 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetSecretValue {\n");
+            sb.Append("  IgnoreCacheBoolean: ").Append(IgnoreCacheBoolean).Append("\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
+            sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Names: ").Append(Names).Append("\n");
             sb.Append("  PrettyPrint: ").Append(PrettyPrint).Append("\n");
@@ -160,9 +180,18 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.IgnoreCacheBoolean == input.IgnoreCacheBoolean ||
+                    this.IgnoreCacheBoolean.Equals(input.IgnoreCacheBoolean)
+                ) && 
+                (
                     this.Accessibility == input.Accessibility ||
                     (this.Accessibility != null &&
                     this.Accessibility.Equals(input.Accessibility))
+                ) && 
+                (
+                    this.IgnoreCache == input.IgnoreCache ||
+                    (this.IgnoreCache != null &&
+                    this.IgnoreCache.Equals(input.IgnoreCache))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -203,8 +232,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.IgnoreCacheBoolean.GetHashCode();
                 if (this.Accessibility != null)
                     hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
+                if (this.IgnoreCache != null)
+                    hashCode = hashCode * 59 + this.IgnoreCache.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Names != null)
                     hashCode = hashCode * 59 + this.Names.GetHashCode();

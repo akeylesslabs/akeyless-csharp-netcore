@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// CreateSecretOutput
     /// </summary>
-    [DataContract(Name = "createSecretOutput")]
+    [DataContract(Name = "CreateSecretOutput")]
     public partial class CreateSecretOutput : IEquatable<CreateSecretOutput>, IValidatableObject
     {
         /// <summary>

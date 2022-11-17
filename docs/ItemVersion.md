@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessDate** | **DateTime** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
 **CustomerFragmentId** | **string** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 
 **ItemVersionState** | **string** | ItemState defines the different states an Item can be in | [optional] 
+**ModificationDate** | **DateTime** |  | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
 **_Version** | **int** |  | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 

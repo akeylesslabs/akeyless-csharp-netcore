@@ -35,19 +35,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KMIPClient" /> class.
         /// </summary>
+        /// <param name="activateKeysOnCreation">activateKeysOnCreation.</param>
         /// <param name="certificateIssueDate">certificateIssueDate.</param>
         /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
         /// <param name="rules">rules.</param>
-        public KMIPClient(DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        public KMIPClient(bool activateKeysOnCreation = default(bool), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
         {
+            this.ActivateKeysOnCreation = activateKeysOnCreation;
             this.CertificateIssueDate = certificateIssueDate;
             this.CertificateTtlInSeconds = certificateTtlInSeconds;
             this.Id = id;
             this.Name = name;
             this.Rules = rules;
         }
+
+        /// <summary>
+        /// Gets or Sets ActivateKeysOnCreation
+        /// </summary>
+        [DataMember(Name = "activate_keys_on_creation", EmitDefaultValue = true)]
+        public bool ActivateKeysOnCreation { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificateIssueDate
@@ -87,6 +95,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class KMIPClient {\n");
+            sb.Append("  ActivateKeysOnCreation: ").Append(ActivateKeysOnCreation).Append("\n");
             sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
             sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -127,6 +136,10 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.ActivateKeysOnCreation == input.ActivateKeysOnCreation ||
+                    this.ActivateKeysOnCreation.Equals(input.ActivateKeysOnCreation)
+                ) && 
+                (
                     this.CertificateIssueDate == input.CertificateIssueDate ||
                     (this.CertificateIssueDate != null &&
                     this.CertificateIssueDate.Equals(input.CertificateIssueDate))
@@ -162,6 +175,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = hashCode * 59 + this.ActivateKeysOnCreation.GetHashCode();
                 if (this.CertificateIssueDate != null)
                     hashCode = hashCode * 59 + this.CertificateIssueDate.GetHashCode();
                 hashCode = hashCode * 59 + this.CertificateTtlInSeconds.GetHashCode();

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivateKeysOnCreation** | **bool** |  | [optional] 
 **CertificateIssueDate** | **DateTime** |  | [optional] 
 **CertificateTtlInSeconds** | **long** |  | [optional] 
 **Id** | **string** |  | [optional] 

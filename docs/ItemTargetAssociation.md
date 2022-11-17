@@ -6,6 +6,7 @@ ItemTargetAssociation includes details of an association between an item and a t
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** |  | [optional] 
+**Attributes** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **TargetId** | **long** |  | [optional] 
 **TargetName** | **string** |  | [optional] 
 **TargetType** | **string** |  | [optional] 

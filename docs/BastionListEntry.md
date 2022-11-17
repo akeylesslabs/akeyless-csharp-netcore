@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessId** | **string** |  | [optional] 
 **AllowedAccessIds** | **List&lt;string&gt;** |  | [optional] 
 **AllowedUrls** | **List&lt;string&gt;** |  | [optional] 
+**AllowedUrlsPerInstance** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **ClusterName** | **string** |  | [optional] 
 **DisplayName** | **string** |  | [optional] 
 **LastReport** | **DateTime** |  | [optional] 

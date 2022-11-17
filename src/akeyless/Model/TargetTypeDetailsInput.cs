@@ -73,7 +73,7 @@ namespace akeyless.Model
         /// <param name="eksClusterName">eksClusterName.</param>
         /// <param name="eksRegion">eksRegion.</param>
         /// <param name="eksSecretAccessKey">eksSecretAccessKey.</param>
-        /// <param name="gcpServiceAccountEmail">gcpServiceAccountEmail.</param>
+        /// <param name="gcpServiceAccountEmail">deprecated.</param>
         /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
         /// <param name="githubAppId">githubAppId.</param>
         /// <param name="githubAppPrivateKey">githubAppPrivateKey.</param>
@@ -460,8 +460,9 @@ namespace akeyless.Model
         public string EksSecretAccessKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets GcpServiceAccountEmail
+        /// deprecated
         /// </summary>
+        /// <value>deprecated</value>
         [DataMember(Name = "gcp_service_account_email", EmitDefaultValue = false)]
         public string GcpServiceAccountEmail { get; set; }
 

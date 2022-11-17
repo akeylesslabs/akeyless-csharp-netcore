@@ -35,19 +35,31 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Role" /> class.
         /// </summary>
+        /// <param name="accessDate">accessDate.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
+        /// <param name="creationDate">creationDate.</param>
+        /// <param name="modificationDate">modificationDate.</param>
         /// <param name="roleAuthMethodsAssoc">roleAuthMethodsAssoc.</param>
         /// <param name="roleName">roleName.</param>
         /// <param name="rules">rules.</param>
-        public Role(List<string> clientPermissions = default(List<string>), string comment = default(string), List<RoleAuthMethodAssociation> roleAuthMethodsAssoc = default(List<RoleAuthMethodAssociation>), string roleName = default(string), Rules rules = default(Rules))
+        public Role(DateTime accessDate = default(DateTime), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime), List<RoleAuthMethodAssociation> roleAuthMethodsAssoc = default(List<RoleAuthMethodAssociation>), string roleName = default(string), Rules rules = default(Rules))
         {
+            this.AccessDate = accessDate;
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
+            this.CreationDate = creationDate;
+            this.ModificationDate = modificationDate;
             this.RoleAuthMethodsAssoc = roleAuthMethodsAssoc;
             this.RoleName = roleName;
             this.Rules = rules;
         }
+
+        /// <summary>
+        /// Gets or Sets AccessDate
+        /// </summary>
+        [DataMember(Name = "access_date", EmitDefaultValue = false)]
+        public DateTime AccessDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientPermissions
@@ -60,6 +72,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreationDate
+        /// </summary>
+        [DataMember(Name = "creation_date", EmitDefaultValue = false)]
+        public DateTime CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ModificationDate
+        /// </summary>
+        [DataMember(Name = "modification_date", EmitDefaultValue = false)]
+        public DateTime ModificationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets RoleAuthMethodsAssoc
@@ -87,8 +111,11 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Role {\n");
+            sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  RoleAuthMethodsAssoc: ").Append(RoleAuthMethodsAssoc).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  Rules: ").Append(Rules).Append("\n");
@@ -127,6 +154,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AccessDate == input.AccessDate ||
+                    (this.AccessDate != null &&
+                    this.AccessDate.Equals(input.AccessDate))
+                ) && 
+                (
                     this.ClientPermissions == input.ClientPermissions ||
                     this.ClientPermissions != null &&
                     input.ClientPermissions != null &&
@@ -136,6 +168,16 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.CreationDate == input.CreationDate ||
+                    (this.CreationDate != null &&
+                    this.CreationDate.Equals(input.CreationDate))
+                ) && 
+                (
+                    this.ModificationDate == input.ModificationDate ||
+                    (this.ModificationDate != null &&
+                    this.ModificationDate.Equals(input.ModificationDate))
                 ) && 
                 (
                     this.RoleAuthMethodsAssoc == input.RoleAuthMethodsAssoc ||
@@ -164,10 +206,16 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AccessDate != null)
+                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
                 if (this.ClientPermissions != null)
                     hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                if (this.CreationDate != null)
+                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
+                if (this.ModificationDate != null)
+                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
                 if (this.RoleAuthMethodsAssoc != null)
                     hashCode = hashCode * 59 + this.RoleAuthMethodsAssoc.GetHashCode();
                 if (this.RoleName != null)

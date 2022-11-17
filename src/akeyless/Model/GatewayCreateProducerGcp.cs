@@ -44,23 +44,30 @@ namespace akeyless.Model
         /// <param name="gcpCredType">gcpCredType.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
-        /// <param name="gcpSaEmail">GCP service account email.</param>
+        /// <param name="gcpSaEmail">The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed).</param>
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="roleBinding">Role binding definitions in json format.</param>
+        /// <param name="serviceAccountType">The type of the gcp dynamic secret. Options[fixed, dynamic] (required) (default to &quot;fixed&quot;).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = "fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerGcp and cannot be null");
             }
             this.Name = name;
+            // to ensure "serviceAccountType" is required (not null)
+            if (serviceAccountType == null) {
+                throw new ArgumentNullException("serviceAccountType is a required property for GatewayCreateProducerGcp and cannot be null");
+            }
+            this.ServiceAccountType = serviceAccountType;
             this.DeleteProtection = deleteProtection;
             this.GcpCredType = gcpCredType;
             this.GcpKey = gcpKey;
@@ -69,6 +76,7 @@ namespace akeyless.Model
             this.GcpTokenScopes = gcpTokenScopes;
             this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.RoleBinding = roleBinding;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -105,9 +113,9 @@ namespace akeyless.Model
         public string GcpKeyAlgo { get; set; }
 
         /// <summary>
-        /// GCP service account email
+        /// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)
         /// </summary>
-        /// <value>GCP service account email</value>
+        /// <value>The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)</value>
         [DataMember(Name = "gcp-sa-email", EmitDefaultValue = false)]
         public string GcpSaEmail { get; set; }
 
@@ -138,6 +146,20 @@ namespace akeyless.Model
         /// <value>Dynamic producer encryption key</value>
         [DataMember(Name = "producer-encryption-key-name", EmitDefaultValue = false)]
         public string ProducerEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Role binding definitions in json format
+        /// </summary>
+        /// <value>Role binding definitions in json format</value>
+        [DataMember(Name = "role-binding", EmitDefaultValue = false)]
+        public string RoleBinding { get; set; }
+
+        /// <summary>
+        /// The type of the gcp dynamic secret. Options[fixed, dynamic]
+        /// </summary>
+        /// <value>The type of the gcp dynamic secret. Options[fixed, dynamic]</value>
+        [DataMember(Name = "service-account-type", IsRequired = true, EmitDefaultValue = false)]
+        public string ServiceAccountType { get; set; }
 
         /// <summary>
         /// List of the tags attached to this secret
@@ -191,6 +213,8 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  RoleBinding: ").Append(RoleBinding).Append("\n");
+            sb.Append("  ServiceAccountType: ").Append(ServiceAccountType).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -275,6 +299,16 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.RoleBinding == input.RoleBinding ||
+                    (this.RoleBinding != null &&
+                    this.RoleBinding.Equals(input.RoleBinding))
+                ) && 
+                (
+                    this.ServiceAccountType == input.ServiceAccountType ||
+                    (this.ServiceAccountType != null &&
+                    this.ServiceAccountType.Equals(input.ServiceAccountType))
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -328,6 +362,10 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProducerEncryptionKeyName != null)
                     hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                if (this.RoleBinding != null)
+                    hashCode = hashCode * 59 + this.RoleBinding.GetHashCode();
+                if (this.ServiceAccountType != null)
+                    hashCode = hashCode * 59 + this.ServiceAccountType.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.TargetName != null)

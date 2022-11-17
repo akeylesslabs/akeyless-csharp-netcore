@@ -46,11 +46,11 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">Metadata about the DFC key.</param>
         /// <param name="name">DFCKey name (required).</param>
-        /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 2).</param>
+        /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 3).</param>
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string customerFrgId = default(string), string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string customerFrgId = default(string), string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null) {

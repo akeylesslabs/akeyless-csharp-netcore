@@ -10,9 +10,11 @@ Name | Type | Description | Notes
 **KeyringName** | **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
 **KmsAlgorithm** | **string** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] 
 **LocationId** | **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
+**MultiRegion** | **string** | Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
 **ProjectId** | **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **Purpose** | **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
+**Regions** | **List&lt;string&gt;** | The list of regions to create a copy of the key in (relevant for aws targets) | [optional] 
 **TargetName** | **string** | The target to associate | 
 **TenantSecretType** | **string** | The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets) | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

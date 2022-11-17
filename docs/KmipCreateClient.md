@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivateKeysOnCreation** | **string** |  | [optional] 
 **CertificateTtl** | **long** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Client name | 

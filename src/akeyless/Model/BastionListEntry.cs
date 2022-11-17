@@ -38,14 +38,16 @@ namespace akeyless.Model
         /// <param name="accessId">accessId.</param>
         /// <param name="allowedAccessIds">allowedAccessIds.</param>
         /// <param name="allowedUrls">allowedUrls.</param>
+        /// <param name="allowedUrlsPerInstance">allowedUrlsPerInstance.</param>
         /// <param name="clusterName">clusterName.</param>
         /// <param name="displayName">displayName.</param>
         /// <param name="lastReport">lastReport.</param>
-        public BastionListEntry(string accessId = default(string), List<string> allowedAccessIds = default(List<string>), List<string> allowedUrls = default(List<string>), string clusterName = default(string), string displayName = default(string), DateTime lastReport = default(DateTime))
+        public BastionListEntry(string accessId = default(string), List<string> allowedAccessIds = default(List<string>), List<string> allowedUrls = default(List<string>), Dictionary<string, List<string>> allowedUrlsPerInstance = default(Dictionary<string, List<string>>), string clusterName = default(string), string displayName = default(string), DateTime lastReport = default(DateTime))
         {
             this.AccessId = accessId;
             this.AllowedAccessIds = allowedAccessIds;
             this.AllowedUrls = allowedUrls;
+            this.AllowedUrlsPerInstance = allowedUrlsPerInstance;
             this.ClusterName = clusterName;
             this.DisplayName = displayName;
             this.LastReport = lastReport;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "allowed_urls", EmitDefaultValue = false)]
         public List<string> AllowedUrls { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedUrlsPerInstance
+        /// </summary>
+        [DataMember(Name = "allowed_urls_per_instance", EmitDefaultValue = false)]
+        public Dictionary<string, List<string>> AllowedUrlsPerInstance { get; set; }
 
         /// <summary>
         /// Gets or Sets ClusterName
@@ -98,6 +106,7 @@ namespace akeyless.Model
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AllowedAccessIds: ").Append(AllowedAccessIds).Append("\n");
             sb.Append("  AllowedUrls: ").Append(AllowedUrls).Append("\n");
+            sb.Append("  AllowedUrlsPerInstance: ").Append(AllowedUrlsPerInstance).Append("\n");
             sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  LastReport: ").Append(LastReport).Append("\n");
@@ -153,6 +162,12 @@ namespace akeyless.Model
                     this.AllowedUrls.SequenceEqual(input.AllowedUrls)
                 ) && 
                 (
+                    this.AllowedUrlsPerInstance == input.AllowedUrlsPerInstance ||
+                    this.AllowedUrlsPerInstance != null &&
+                    input.AllowedUrlsPerInstance != null &&
+                    this.AllowedUrlsPerInstance.SequenceEqual(input.AllowedUrlsPerInstance)
+                ) && 
+                (
                     this.ClusterName == input.ClusterName ||
                     (this.ClusterName != null &&
                     this.ClusterName.Equals(input.ClusterName))
@@ -184,6 +199,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.AllowedAccessIds.GetHashCode();
                 if (this.AllowedUrls != null)
                     hashCode = hashCode * 59 + this.AllowedUrls.GetHashCode();
+                if (this.AllowedUrlsPerInstance != null)
+                    hashCode = hashCode * 59 + this.AllowedUrlsPerInstance.GetHashCode();
                 if (this.ClusterName != null)
                     hashCode = hashCode * 59 + this.ClusterName.GetHashCode();
                 if (this.DisplayName != null)

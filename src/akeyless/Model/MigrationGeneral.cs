@@ -40,13 +40,15 @@ namespace akeyless.Model
         /// <param name="newName">newName.</param>
         /// <param name="prefix">prefix.</param>
         /// <param name="protectionKey">protectionKey.</param>
-        public MigrationGeneral(string id = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string))
+        /// <param name="status">status.</param>
+        public MigrationGeneral(string id = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string), string status = default(string))
         {
             this.Id = id;
             this.Name = name;
             this.NewName = newName;
             this.Prefix = prefix;
             this.ProtectionKey = protectionKey;
+            this.Status = status;
         }
 
         /// <summary>
@@ -80,6 +82,12 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -92,6 +100,7 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Prefix: ").Append(Prefix).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -150,6 +159,11 @@ namespace akeyless.Model
                     this.ProtectionKey == input.ProtectionKey ||
                     (this.ProtectionKey != null &&
                     this.ProtectionKey.Equals(input.ProtectionKey))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -172,6 +186,8 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Prefix.GetHashCode();
                 if (this.ProtectionKey != null)
                     hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }

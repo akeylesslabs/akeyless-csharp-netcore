@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CertData** | **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
 **CloudId** | **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
 **Debug** | **bool** |  | [optional] 
+**GatewayUrl** | **string** | Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s) | [optional] 
 **GcpAudience** | **string** | GCP JWT audience | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Jwt** | **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
