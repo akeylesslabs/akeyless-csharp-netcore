@@ -40,8 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSecretValue" /> class.
         /// </summary>
-        /// <param name="ignoreCacheBoolean">ignoreCacheBoolean.</param>
-        /// <param name="accessibility">for personal password manager.</param>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="names">Secret name (required).</param>
@@ -49,15 +48,15 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Secret version.</param>
-        public GetSecretValue(bool ignoreCacheBoolean = default(bool), string accessibility = default(string), string ignoreCache = default(string), bool json = default(bool), List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetSecretValue(string accessibility = "regular", string ignoreCache = default(string), bool json = default(bool), List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
             if (names == null) {
                 throw new ArgumentNullException("names is a required property for GetSecretValue and cannot be null");
             }
             this.Names = names;
-            this.IgnoreCacheBoolean = ignoreCacheBoolean;
-            this.Accessibility = accessibility;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.IgnoreCache = ignoreCache;
             this.Json = json;
             this.PrettyPrint = prettyPrint;
@@ -65,12 +64,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this._Version = version;
         }
-
-        /// <summary>
-        /// Gets or Sets IgnoreCacheBoolean
-        /// </summary>
-        [DataMember(Name = "IgnoreCacheBoolean", EmitDefaultValue = true)]
-        public bool IgnoreCacheBoolean { get; set; }
 
         /// <summary>
         /// for personal password manager
@@ -136,7 +129,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetSecretValue {\n");
-            sb.Append("  IgnoreCacheBoolean: ").Append(IgnoreCacheBoolean).Append("\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -179,10 +171,6 @@ namespace akeyless.Model
                 return false;
 
             return 
-                (
-                    this.IgnoreCacheBoolean == input.IgnoreCacheBoolean ||
-                    this.IgnoreCacheBoolean.Equals(input.IgnoreCacheBoolean)
-                ) && 
                 (
                     this.Accessibility == input.Accessibility ||
                     (this.Accessibility != null &&
@@ -232,7 +220,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.IgnoreCacheBoolean.GetHashCode();
                 if (this.Accessibility != null)
                     hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
                 if (this.IgnoreCache != null)

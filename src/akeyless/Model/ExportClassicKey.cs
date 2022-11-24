@@ -27,33 +27,35 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// RotateSecret
+    /// ExportClassicKey is a command that returns the classic key material
     /// </summary>
-    [DataContract(Name = "rotateSecret")]
-    public partial class RotateSecret : IEquatable<RotateSecret>, IValidatableObject
+    [DataContract(Name = "ExportClassicKey")]
+    public partial class ExportClassicKey : IEquatable<ExportClassicKey>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RotateSecret" /> class.
+        /// Initializes a new instance of the <see cref="ExportClassicKey" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RotateSecret() { }
+        protected ExportClassicKey() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RotateSecret" /> class.
+        /// Initializes a new instance of the <see cref="ExportClassicKey" /> class.
         /// </summary>
         /// <param name="json">Set output format to JSON.</param>
-        /// <param name="name">Secret name (Rotated Secret or Custom Dynamic Secret) (required).</param>
+        /// <param name="name">ClassicKey name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotateSecret(bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="version">Classic key version.</param>
+        public ExportClassicKey(bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
-                throw new ArgumentNullException("name is a required property for RotateSecret and cannot be null");
+                throw new ArgumentNullException("name is a required property for ExportClassicKey and cannot be null");
             }
             this.Name = name;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
+            this._Version = version;
         }
 
         /// <summary>
@@ -64,9 +66,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Secret name (Rotated Secret or Custom Dynamic Secret)
+        /// ClassicKey name
         /// </summary>
-        /// <value>Secret name (Rotated Secret or Custom Dynamic Secret)</value>
+        /// <value>ClassicKey name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
@@ -85,17 +87,25 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Classic key version
+        /// </summary>
+        /// <value>Classic key version</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class RotateSecret {\n");
+            sb.Append("class ExportClassicKey {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,15 +126,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RotateSecret);
+            return this.Equals(input as ExportClassicKey);
         }
 
         /// <summary>
-        /// Returns true if RotateSecret instances are equal
+        /// Returns true if ExportClassicKey instances are equal
         /// </summary>
-        /// <param name="input">Instance of RotateSecret to be compared</param>
+        /// <param name="input">Instance of ExportClassicKey to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RotateSecret input)
+        public bool Equals(ExportClassicKey input)
         {
             if (input == null)
                 return false;
@@ -148,6 +158,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -167,6 +181,7 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                hashCode = hashCode * 59 + this._Version.GetHashCode();
                 return hashCode;
             }
         }

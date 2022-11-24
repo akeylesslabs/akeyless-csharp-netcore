@@ -66,6 +66,7 @@ Method | HTTP request | Description
 [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize | 
 [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
 [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key | 
+[**ExportClassicKey**](V2Api.md#exportclassickey) | **GET** /export-classic-key | 
 [**GatewayAddAllowedManagementAccess**](V2Api.md#gatewayaddallowedmanagementaccess) | **POST** /gateway-add-allow-management-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config | 
 [**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration | 
@@ -182,6 +183,7 @@ Method | HTTP request | Description
 [**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret | 
 [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state | 
 [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule | 
+[**ShareItem**](V2Api.md#shareitem) | **POST** /share-item | 
 [**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key | 
 [**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 | 
 [**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key | 
@@ -4519,6 +4521,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | encryptResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="exportclassickey"></a>
+# **ExportClassicKey**
+> ExportClassicKeyOutput ExportClassicKey (ExportClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ExportClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ExportClassicKey(); // ExportClassicKey | 
+
+            try
+            {
+                ExportClassicKeyOutput result = apiInstance.ExportClassicKey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ExportClassicKey: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ExportClassicKey**](ExportClassicKey.md)|  | 
+
+### Return type
+
+[**ExportClassicKeyOutput**](ExportClassicKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | ExportClassicKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -12513,6 +12584,74 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | setRoleRuleResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="shareitem"></a>
+# **ShareItem**
+> void ShareItem (ShareItem body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ShareItemExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ShareItem(); // ShareItem | 
+
+            try
+            {
+                apiInstance.ShareItem(body);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ShareItem: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ShareItem**](ShareItem.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="OIDCAccessRules" /> class.
         /// </summary>
         /// <param name="allowedRedirectURIs">Allowed redirect URIs after the authentication.</param>
+        /// <param name="audience">Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application.</param>
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="clientId">Client ID.</param>
         /// <param name="clientSecret">Client Secret.</param>
@@ -44,9 +45,10 @@ namespace akeyless.Model
         /// <param name="requiredScopes">A list of required scopes to request from the oidc provider, and to check on the token.</param>
         /// <param name="requiredScopesPrefix">A prefix to add to the required scopes (for example, azures&#39; Application ID URI).</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string uniqueIdentifier = default(string))
+        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), string audience = default(string), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string uniqueIdentifier = default(string))
         {
             this.AllowedRedirectURIs = allowedRedirectURIs;
+            this.Audience = audience;
             this.BoundClaims = boundClaims;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
@@ -63,6 +65,13 @@ namespace akeyless.Model
         /// <value>Allowed redirect URIs after the authentication</value>
         [DataMember(Name = "allowed_redirect_URIs", EmitDefaultValue = false)]
         public List<string> AllowedRedirectURIs { get; set; }
+
+        /// <summary>
+        /// Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application
+        /// </summary>
+        /// <value>Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application</value>
+        [DataMember(Name = "audience", EmitDefaultValue = false)]
+        public string Audience { get; set; }
 
         /// <summary>
         /// The claims that login is restricted to.
@@ -129,6 +138,7 @@ namespace akeyless.Model
             var sb = new StringBuilder();
             sb.Append("class OIDCAccessRules {\n");
             sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
+            sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
@@ -176,6 +186,11 @@ namespace akeyless.Model
                     this.AllowedRedirectURIs != null &&
                     input.AllowedRedirectURIs != null &&
                     this.AllowedRedirectURIs.SequenceEqual(input.AllowedRedirectURIs)
+                ) && 
+                (
+                    this.Audience == input.Audience ||
+                    (this.Audience != null &&
+                    this.Audience.Equals(input.Audience))
                 ) && 
                 (
                     this.BoundClaims == input.BoundClaims ||
@@ -231,6 +246,8 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.AllowedRedirectURIs != null)
                     hashCode = hashCode * 59 + this.AllowedRedirectURIs.GetHashCode();
+                if (this.Audience != null)
+                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
                 if (this.BoundClaims != null)
                     hashCode = hashCode * 59 + this.BoundClaims.GetHashCode();
                 if (this.ClientId != null)

@@ -35,21 +35,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ReverseRBACClient" /> class.
         /// </summary>
-        /// <param name="allowedOps">allowedOps.</param>
         /// <param name="assocs">assocs.</param>
         /// <param name="authMethodName">authMethodName.</param>
-        public ReverseRBACClient(List<string> allowedOps = default(List<string>), List<AuthMethodRoleAssociation> assocs = default(List<AuthMethodRoleAssociation>), string authMethodName = default(string))
+        public ReverseRBACClient(List<AuthMethodRoleAssociation> assocs = default(List<AuthMethodRoleAssociation>), string authMethodName = default(string))
         {
-            this.AllowedOps = allowedOps;
             this.Assocs = assocs;
             this.AuthMethodName = authMethodName;
         }
-
-        /// <summary>
-        /// Gets or Sets AllowedOps
-        /// </summary>
-        [DataMember(Name = "allowed_ops", EmitDefaultValue = false)]
-        public List<string> AllowedOps { get; set; }
 
         /// <summary>
         /// Gets or Sets Assocs
@@ -71,7 +63,6 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ReverseRBACClient {\n");
-            sb.Append("  AllowedOps: ").Append(AllowedOps).Append("\n");
             sb.Append("  Assocs: ").Append(Assocs).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("}\n");
@@ -109,12 +100,6 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.AllowedOps == input.AllowedOps ||
-                    this.AllowedOps != null &&
-                    input.AllowedOps != null &&
-                    this.AllowedOps.SequenceEqual(input.AllowedOps)
-                ) && 
-                (
                     this.Assocs == input.Assocs ||
                     this.Assocs != null &&
                     input.Assocs != null &&
@@ -136,8 +121,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AllowedOps != null)
-                    hashCode = hashCode * 59 + this.AllowedOps.GetHashCode();
                 if (this.Assocs != null)
                     hashCode = hashCode * 59 + this.Assocs.GetHashCode();
                 if (this.AuthMethodName != null)

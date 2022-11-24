@@ -40,7 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSecret" /> class.
         /// </summary>
-        /// <param name="accessibility">for personal password manager.</param>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="metadata">Metadata about the secret.</param>
@@ -64,7 +64,7 @@ namespace akeyless.Model
         /// <param name="type">For Password Management use, reflect the website context.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The secret value (required).</param>
-        public CreateSecret(string accessibility = default(string), string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string value = default(string))
+        public CreateSecret(string accessibility = "regular", string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -76,7 +76,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("value is a required property for CreateSecret and cannot be null");
             }
             this.Value = value;
-            this.Accessibility = accessibility;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.DeleteProtection = deleteProtection;
             this.Json = json;
             this.Metadata = metadata;

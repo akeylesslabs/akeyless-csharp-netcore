@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accessibility** | **string** | for personal password manager | [optional] 
+**Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Metadata** | **string** | Metadata about the secret | [optional] 

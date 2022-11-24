@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **AllowedRedirectUri** | **List&lt;string&gt;** | Allowed redirect URIs after the authentication | [optional] 
+**Audience** | **string** | Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application | [optional] 
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **ClientId** | **string** | Client ID | [optional] 
 **ClientSecret** | **string** | Client Secret | [optional] 

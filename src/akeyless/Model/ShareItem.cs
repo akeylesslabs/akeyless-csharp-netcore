@@ -27,42 +27,48 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteItem
+    /// ShareItem
     /// </summary>
-    [DataContract(Name = "deleteItem")]
-    public partial class DeleteItem : IEquatable<DeleteItem>, IValidatableObject
+    [DataContract(Name = "shareItem")]
+    public partial class ShareItem : IEquatable<ShareItem>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteItem" /> class.
+        /// Initializes a new instance of the <see cref="ShareItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DeleteItem() { }
+        protected ShareItem() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteItem" /> class.
+        /// Initializes a new instance of the <see cref="ShareItem" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
-        /// <param name="deleteImmediately">When delete-in-days&#x3D;-1, must be set (default to false).</param>
-        /// <param name="deleteInDays">The number of days to wait before deleting the item (relevant for keys only) (default to 7).</param>
+        /// <param name="action">Action to be performed on the item [start/stop/describe] (required).</param>
+        /// <param name="emails">For Password Management use, reflect the website context.</param>
+        /// <param name="itemName">Item name (required).</param>
         /// <param name="json">Set output format to JSON.</param>
-        /// <param name="name">Item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="ttl">TTL of the Availability of the shared secret in seconds.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="version">The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default) (default to -1).</param>
-        public DeleteItem(string accessibility = "regular", bool deleteImmediately = false, long deleteInDays = 7, bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
+        /// <param name="viewOnce">ViewOnlyOnce Shared secrets can only be viewed once [true/false] (default to false).</param>
+        public ShareItem(string accessibility = "regular", string action = default(string), List<string> emails = default(List<string>), string itemName = default(string), bool json = default(bool), string token = default(string), int ttl = default(int), string uidToken = default(string), bool viewOnce = false)
         {
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for DeleteItem and cannot be null");
+            // to ensure "action" is required (not null)
+            if (action == null) {
+                throw new ArgumentNullException("action is a required property for ShareItem and cannot be null");
             }
-            this.Name = name;
+            this.Action = action;
+            // to ensure "itemName" is required (not null)
+            if (itemName == null) {
+                throw new ArgumentNullException("itemName is a required property for ShareItem and cannot be null");
+            }
+            this.ItemName = itemName;
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
-            this.DeleteImmediately = deleteImmediately;
-            this.DeleteInDays = deleteInDays;
+            this.Emails = emails;
             this.Json = json;
             this.Token = token;
+            this.Ttl = ttl;
             this.UidToken = uidToken;
-            this._Version = version;
+            this.ViewOnce = viewOnce;
         }
 
         /// <summary>
@@ -73,18 +79,25 @@ namespace akeyless.Model
         public string Accessibility { get; set; }
 
         /// <summary>
-        /// When delete-in-days&#x3D;-1, must be set
+        /// Action to be performed on the item [start/stop/describe]
         /// </summary>
-        /// <value>When delete-in-days&#x3D;-1, must be set</value>
-        [DataMember(Name = "delete-immediately", EmitDefaultValue = true)]
-        public bool DeleteImmediately { get; set; }
+        /// <value>Action to be performed on the item [start/stop/describe]</value>
+        [DataMember(Name = "action", IsRequired = true, EmitDefaultValue = false)]
+        public string Action { get; set; }
 
         /// <summary>
-        /// The number of days to wait before deleting the item (relevant for keys only)
+        /// For Password Management use, reflect the website context
         /// </summary>
-        /// <value>The number of days to wait before deleting the item (relevant for keys only)</value>
-        [DataMember(Name = "delete-in-days", EmitDefaultValue = false)]
-        public long DeleteInDays { get; set; }
+        /// <value>For Password Management use, reflect the website context</value>
+        [DataMember(Name = "emails", EmitDefaultValue = false)]
+        public List<string> Emails { get; set; }
+
+        /// <summary>
+        /// Item name
+        /// </summary>
+        /// <value>Item name</value>
+        [DataMember(Name = "item-name", IsRequired = true, EmitDefaultValue = false)]
+        public string ItemName { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -94,18 +107,18 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Item name
-        /// </summary>
-        /// <value>Item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// TTL of the Availability of the shared secret in seconds
+        /// </summary>
+        /// <value>TTL of the Availability of the shared secret in seconds</value>
+        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        public int Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -115,11 +128,11 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default)
+        /// ViewOnlyOnce Shared secrets can only be viewed once [true/false]
         /// </summary>
-        /// <value>The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default)</value>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public int _Version { get; set; }
+        /// <value>ViewOnlyOnce Shared secrets can only be viewed once [true/false]</value>
+        [DataMember(Name = "view-once", EmitDefaultValue = true)]
+        public bool ViewOnce { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,15 +141,16 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DeleteItem {\n");
+            sb.Append("class ShareItem {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
-            sb.Append("  DeleteImmediately: ").Append(DeleteImmediately).Append("\n");
-            sb.Append("  DeleteInDays: ").Append(DeleteInDays).Append("\n");
+            sb.Append("  Action: ").Append(Action).Append("\n");
+            sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  ViewOnce: ").Append(ViewOnce).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -157,15 +171,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DeleteItem);
+            return this.Equals(input as ShareItem);
         }
 
         /// <summary>
-        /// Returns true if DeleteItem instances are equal
+        /// Returns true if ShareItem instances are equal
         /// </summary>
-        /// <param name="input">Instance of DeleteItem to be compared</param>
+        /// <param name="input">Instance of ShareItem to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DeleteItem input)
+        public bool Equals(ShareItem input)
         {
             if (input == null)
                 return false;
@@ -177,21 +191,24 @@ namespace akeyless.Model
                     this.Accessibility.Equals(input.Accessibility))
                 ) && 
                 (
-                    this.DeleteImmediately == input.DeleteImmediately ||
-                    this.DeleteImmediately.Equals(input.DeleteImmediately)
+                    this.Action == input.Action ||
+                    (this.Action != null &&
+                    this.Action.Equals(input.Action))
                 ) && 
                 (
-                    this.DeleteInDays == input.DeleteInDays ||
-                    this.DeleteInDays.Equals(input.DeleteInDays)
+                    this.Emails == input.Emails ||
+                    this.Emails != null &&
+                    input.Emails != null &&
+                    this.Emails.SequenceEqual(input.Emails)
+                ) && 
+                (
+                    this.ItemName == input.ItemName ||
+                    (this.ItemName != null &&
+                    this.ItemName.Equals(input.ItemName))
                 ) && 
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -199,13 +216,17 @@ namespace akeyless.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
+                    this.Ttl == input.Ttl ||
+                    this.Ttl.Equals(input.Ttl)
+                ) && 
+                (
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    this._Version.Equals(input._Version)
+                    this.ViewOnce == input.ViewOnce ||
+                    this.ViewOnce.Equals(input.ViewOnce)
                 );
         }
 
@@ -220,16 +241,19 @@ namespace akeyless.Model
                 int hashCode = 41;
                 if (this.Accessibility != null)
                     hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
-                hashCode = hashCode * 59 + this.DeleteImmediately.GetHashCode();
-                hashCode = hashCode * 59 + this.DeleteInDays.GetHashCode();
+                if (this.Action != null)
+                    hashCode = hashCode * 59 + this.Action.GetHashCode();
+                if (this.Emails != null)
+                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.ItemName != null)
+                    hashCode = hashCode * 59 + this.ItemName.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
                     hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                hashCode = hashCode * 59 + this.ViewOnce.GetHashCode();
                 return hashCode;
             }
         }

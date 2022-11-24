@@ -40,7 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateItem" /> class.
         /// </summary>
-        /// <param name="accessibility">for personal password manager.</param>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="certFileData">PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates..</param>
         /// <param name="deleteProtection">deleteProtection.</param>
@@ -75,14 +75,15 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string accessibility = default(string), List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
+        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
             }
             this.Name = name;
-            this.Accessibility = accessibility;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.AddTag = addTag;
             this.CertFileData = certFileData;
             this.DeleteProtection = deleteProtection;

@@ -35,17 +35,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthMethodRoleAssociation" /> class.
         /// </summary>
+        /// <param name="allowedOps">allowedOps.</param>
         /// <param name="assocId">assocId.</param>
         /// <param name="authMethodSubClaims">authMethodSubClaims.</param>
         /// <param name="roleName">roleName.</param>
         /// <param name="rules">rules.</param>
-        public AuthMethodRoleAssociation(string assocId = default(string), Dictionary<string, List<string>> authMethodSubClaims = default(Dictionary<string, List<string>>), string roleName = default(string), Rules rules = default(Rules))
+        public AuthMethodRoleAssociation(List<string> allowedOps = default(List<string>), string assocId = default(string), Dictionary<string, List<string>> authMethodSubClaims = default(Dictionary<string, List<string>>), string roleName = default(string), Rules rules = default(Rules))
         {
+            this.AllowedOps = allowedOps;
             this.AssocId = assocId;
             this.AuthMethodSubClaims = authMethodSubClaims;
             this.RoleName = roleName;
             this.Rules = rules;
         }
+
+        /// <summary>
+        /// Gets or Sets AllowedOps
+        /// </summary>
+        [DataMember(Name = "allowed_ops", EmitDefaultValue = false)]
+        public List<string> AllowedOps { get; set; }
 
         /// <summary>
         /// Gets or Sets AssocId
@@ -79,6 +87,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AuthMethodRoleAssociation {\n");
+            sb.Append("  AllowedOps: ").Append(AllowedOps).Append("\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  AuthMethodSubClaims: ").Append(AuthMethodSubClaims).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
@@ -118,6 +127,12 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.AllowedOps == input.AllowedOps ||
+                    this.AllowedOps != null &&
+                    input.AllowedOps != null &&
+                    this.AllowedOps.SequenceEqual(input.AllowedOps)
+                ) && 
+                (
                     this.AssocId == input.AssocId ||
                     (this.AssocId != null &&
                     this.AssocId.Equals(input.AssocId))
@@ -149,6 +164,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AllowedOps != null)
+                    hashCode = hashCode * 59 + this.AllowedOps.GetHashCode();
                 if (this.AssocId != null)
                     hashCode = hashCode * 59 + this.AssocId.GetHashCode();
                 if (this.AuthMethodSubClaims != null)

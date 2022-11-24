@@ -162,6 +162,8 @@ docs/EncryptFileOutput.md
 docs/EncryptOutput.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
+docs/ExportClassicKey.md
+docs/ExportClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
@@ -313,8 +315,6 @@ docs/GeneralConfigPart.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
-docs/GetCloudIdentity.md
-docs/GetCloudIdentityOutput.md
 docs/GetDynamicSecretValue.md
 docs/GetKubeExecCreds.md
 docs/GetKubeExecCredsOutput.md
@@ -441,6 +441,7 @@ docs/SSHCertificateIssueDetails.md
 docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
+docs/ShareItem.md
 docs/SignJWTOutput.md
 docs/SignJWTWithClassicKey.md
 docs/SignPKCS1.md
@@ -561,8 +562,9 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/MockMigrationTests.cs
-src/akeyless.Test/Model/MockPayloadTests.cs
+src/akeyless.Test/Model/ExportClassicKeyOutputTests.cs
+src/akeyless.Test/Model/ExportClassicKeyTests.cs
+src/akeyless.Test/Model/ShareItemTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -742,6 +744,8 @@ src/akeyless/Model/EncryptFileOutput.cs
 src/akeyless/Model/EncryptOutput.cs
 src/akeyless/Model/EncryptWithClassicKey.cs
 src/akeyless/Model/EncryptWithClassicKeyOutput.cs
+src/akeyless/Model/ExportClassicKey.cs
+src/akeyless/Model/ExportClassicKeyOutput.cs
 src/akeyless/Model/ExternalKMSKeyId.cs
 src/akeyless/Model/GCPAccessRules.cs
 src/akeyless/Model/GCPPayload.cs
@@ -893,8 +897,6 @@ src/akeyless/Model/GeneralConfigPart.cs
 src/akeyless/Model/GetAccountSettings.cs
 src/akeyless/Model/GetAccountSettingsCommandOutput.cs
 src/akeyless/Model/GetAuthMethod.cs
-src/akeyless/Model/GetCloudIdentity.cs
-src/akeyless/Model/GetCloudIdentityOutput.cs
 src/akeyless/Model/GetDynamicSecretValue.cs
 src/akeyless/Model/GetKubeExecCreds.cs
 src/akeyless/Model/GetKubeExecCredsOutput.cs
@@ -1021,6 +1023,7 @@ src/akeyless/Model/SSHCertificateIssueDetails.cs
 src/akeyless/Model/SecureRemoteAccess.cs
 src/akeyless/Model/SetItemState.cs
 src/akeyless/Model/SetRoleRule.cs
+src/akeyless/Model/ShareItem.cs
 src/akeyless/Model/SignJWTOutput.cs
 src/akeyless/Model/SignJWTWithClassicKey.cs
 src/akeyless/Model/SignPKCS1.cs

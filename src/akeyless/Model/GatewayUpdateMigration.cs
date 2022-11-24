@@ -45,10 +45,6 @@ namespace akeyless.Model
         /// <param name="_1passwordSecretKey">1Password user secret key to connect to the API.</param>
         /// <param name="_1passwordUrl">1Password api container url.</param>
         /// <param name="_1passwordVaults">1Password list of vault to get the items from.</param>
-        /// <param name="adAutoRotateBoolean">adAutoRotateBoolean.</param>
-        /// <param name="adDiscoverLocalUsersBoolean">adDiscoverLocalUsersBoolean.</param>
-        /// <param name="adLocalUsersIgnoreList">adLocalUsersIgnoreList.</param>
-        /// <param name="adSRAEnableRDPBoolean">adSRAEnableRDPBoolean.</param>
         /// <param name="adAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration).</param>
         /// <param name="adComputerBaseDn">Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
         /// <param name="adDiscoverLocalUsers">Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration).</param>
@@ -93,7 +89,7 @@ namespace akeyless.Model
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), bool adAutoRotateBoolean = default(bool), bool adDiscoverLocalUsersBoolean = default(bool), Dictionary<string, bool> adLocalUsersIgnoreList = default(Dictionary<string, bool>), bool adSRAEnableRDPBoolean = default(bool), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string asSshPort = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = default(bool), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string asSshPort = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = default(bool), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "targetLocation" is required (not null)
             if (targetLocation == null) {
@@ -105,10 +101,6 @@ namespace akeyless.Model
             this._1passwordSecretKey = _1passwordSecretKey;
             this._1passwordUrl = _1passwordUrl;
             this._1passwordVaults = _1passwordVaults;
-            this.AdAutoRotateBoolean = adAutoRotateBoolean;
-            this.AdDiscoverLocalUsersBoolean = adDiscoverLocalUsersBoolean;
-            this.AdLocalUsersIgnoreList = adLocalUsersIgnoreList;
-            this.AdSRAEnableRDPBoolean = adSRAEnableRDPBoolean;
             this.AdAutoRotate = adAutoRotate;
             this.AdComputerBaseDn = adComputerBaseDn;
             this.AdDiscoverLocalUsers = adDiscoverLocalUsers;
@@ -188,30 +180,6 @@ namespace akeyless.Model
         /// <value>1Password list of vault to get the items from</value>
         [DataMember(Name = "1password-vaults", EmitDefaultValue = false)]
         public List<string> _1passwordVaults { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdAutoRotateBoolean
-        /// </summary>
-        [DataMember(Name = "AdAutoRotateBoolean", EmitDefaultValue = true)]
-        public bool AdAutoRotateBoolean { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdDiscoverLocalUsersBoolean
-        /// </summary>
-        [DataMember(Name = "AdDiscoverLocalUsersBoolean", EmitDefaultValue = true)]
-        public bool AdDiscoverLocalUsersBoolean { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdLocalUsersIgnoreList
-        /// </summary>
-        [DataMember(Name = "AdLocalUsersIgnoreList", EmitDefaultValue = false)]
-        public Dictionary<string, bool> AdLocalUsersIgnoreList { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdSRAEnableRDPBoolean
-        /// </summary>
-        [DataMember(Name = "AdSRAEnableRDPBoolean", EmitDefaultValue = true)]
-        public bool AdSRAEnableRDPBoolean { get; set; }
 
         /// <summary>
         /// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration)
@@ -534,10 +502,6 @@ namespace akeyless.Model
             sb.Append("  _1passwordSecretKey: ").Append(_1passwordSecretKey).Append("\n");
             sb.Append("  _1passwordUrl: ").Append(_1passwordUrl).Append("\n");
             sb.Append("  _1passwordVaults: ").Append(_1passwordVaults).Append("\n");
-            sb.Append("  AdAutoRotateBoolean: ").Append(AdAutoRotateBoolean).Append("\n");
-            sb.Append("  AdDiscoverLocalUsersBoolean: ").Append(AdDiscoverLocalUsersBoolean).Append("\n");
-            sb.Append("  AdLocalUsersIgnoreList: ").Append(AdLocalUsersIgnoreList).Append("\n");
-            sb.Append("  AdSRAEnableRDPBoolean: ").Append(AdSRAEnableRDPBoolean).Append("\n");
             sb.Append("  AdAutoRotate: ").Append(AdAutoRotate).Append("\n");
             sb.Append("  AdComputerBaseDn: ").Append(AdComputerBaseDn).Append("\n");
             sb.Append("  AdDiscoverLocalUsers: ").Append(AdDiscoverLocalUsers).Append("\n");
@@ -641,24 +605,6 @@ namespace akeyless.Model
                     this._1passwordVaults != null &&
                     input._1passwordVaults != null &&
                     this._1passwordVaults.SequenceEqual(input._1passwordVaults)
-                ) && 
-                (
-                    this.AdAutoRotateBoolean == input.AdAutoRotateBoolean ||
-                    this.AdAutoRotateBoolean.Equals(input.AdAutoRotateBoolean)
-                ) && 
-                (
-                    this.AdDiscoverLocalUsersBoolean == input.AdDiscoverLocalUsersBoolean ||
-                    this.AdDiscoverLocalUsersBoolean.Equals(input.AdDiscoverLocalUsersBoolean)
-                ) && 
-                (
-                    this.AdLocalUsersIgnoreList == input.AdLocalUsersIgnoreList ||
-                    this.AdLocalUsersIgnoreList != null &&
-                    input.AdLocalUsersIgnoreList != null &&
-                    this.AdLocalUsersIgnoreList.SequenceEqual(input.AdLocalUsersIgnoreList)
-                ) && 
-                (
-                    this.AdSRAEnableRDPBoolean == input.AdSRAEnableRDPBoolean ||
-                    this.AdSRAEnableRDPBoolean.Equals(input.AdSRAEnableRDPBoolean)
                 ) && 
                 (
                     this.AdAutoRotate == input.AdAutoRotate ||
@@ -901,11 +847,6 @@ namespace akeyless.Model
                     hashCode = hashCode * 59 + this._1passwordUrl.GetHashCode();
                 if (this._1passwordVaults != null)
                     hashCode = hashCode * 59 + this._1passwordVaults.GetHashCode();
-                hashCode = hashCode * 59 + this.AdAutoRotateBoolean.GetHashCode();
-                hashCode = hashCode * 59 + this.AdDiscoverLocalUsersBoolean.GetHashCode();
-                if (this.AdLocalUsersIgnoreList != null)
-                    hashCode = hashCode * 59 + this.AdLocalUsersIgnoreList.GetHashCode();
-                hashCode = hashCode * 59 + this.AdSRAEnableRDPBoolean.GetHashCode();
                 if (this.AdAutoRotate != null)
                     hashCode = hashCode * 59 + this.AdAutoRotate.GetHashCode();
                 if (this.AdComputerBaseDn != null)

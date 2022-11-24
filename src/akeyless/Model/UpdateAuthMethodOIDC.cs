@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
+        /// <param name="audience">Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="clientId">Client ID.</param>
         /// <param name="clientSecret">Client Secret.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.UniqueIdentifier = uniqueIdentifier;
             this.AccessExpires = accessExpires;
             this.AllowedRedirectUri = allowedRedirectUri;
+            this.Audience = audience;
             this.BoundIps = boundIps;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
@@ -99,6 +101,13 @@ namespace akeyless.Model
         /// <value>Allowed redirect URIs after the authentication</value>
         [DataMember(Name = "allowed-redirect-uri", EmitDefaultValue = false)]
         public List<string> AllowedRedirectUri { get; set; }
+
+        /// <summary>
+        /// Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application
+        /// </summary>
+        /// <value>Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application</value>
+        [DataMember(Name = "audience", EmitDefaultValue = false)]
+        public string Audience { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
@@ -215,6 +224,7 @@ namespace akeyless.Model
             sb.Append("class UpdateAuthMethodOIDC {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
+            sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
@@ -273,6 +283,11 @@ namespace akeyless.Model
                     this.AllowedRedirectUri != null &&
                     input.AllowedRedirectUri != null &&
                     this.AllowedRedirectUri.SequenceEqual(input.AllowedRedirectUri)
+                ) && 
+                (
+                    this.Audience == input.Audience ||
+                    (this.Audience != null &&
+                    this.Audience.Equals(input.Audience))
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -363,6 +378,8 @@ namespace akeyless.Model
                 hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
                 if (this.AllowedRedirectUri != null)
                     hashCode = hashCode * 59 + this.AllowedRedirectUri.GetHashCode();
+                if (this.Audience != null)
+                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
                 if (this.BoundIps != null)
                     hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
                 if (this.ClientId != null)

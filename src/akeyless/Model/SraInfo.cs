@@ -35,25 +35,26 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SraInfo" /> class.
         /// </summary>
-        /// <param name="package">package.</param>
-        /// <param name="tier">tier.</param>
+        /// <param name="sla">sla.</param>
+        /// <param name="tier">Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources.</param>
         /// <param name="userType">userType.</param>
-        public SraInfo(string package = default(string), string tier = default(string), string userType = default(string))
+        public SraInfo(string sla = default(string), string tier = default(string), string userType = default(string))
         {
-            this.Package = package;
+            this.Sla = sla;
             this.Tier = tier;
             this.UserType = userType;
         }
 
         /// <summary>
-        /// Gets or Sets Package
+        /// Gets or Sets Sla
         /// </summary>
-        [DataMember(Name = "package", EmitDefaultValue = false)]
-        public string Package { get; set; }
+        [DataMember(Name = "sla", EmitDefaultValue = false)]
+        public string Sla { get; set; }
 
         /// <summary>
-        /// Gets or Sets Tier
+        /// Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
         /// </summary>
+        /// <value>Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources</value>
         [DataMember(Name = "tier", EmitDefaultValue = false)]
         public string Tier { get; set; }
 
@@ -71,7 +72,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class SraInfo {\n");
-            sb.Append("  Package: ").Append(Package).Append("\n");
+            sb.Append("  Sla: ").Append(Sla).Append("\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
             sb.Append("  UserType: ").Append(UserType).Append("\n");
             sb.Append("}\n");
@@ -109,9 +110,9 @@ namespace akeyless.Model
 
             return 
                 (
-                    this.Package == input.Package ||
-                    (this.Package != null &&
-                    this.Package.Equals(input.Package))
+                    this.Sla == input.Sla ||
+                    (this.Sla != null &&
+                    this.Sla.Equals(input.Sla))
                 ) && 
                 (
                     this.Tier == input.Tier ||
@@ -134,8 +135,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Package != null)
-                    hashCode = hashCode * 59 + this.Package.GetHashCode();
+                if (this.Sla != null)
+                    hashCode = hashCode * 59 + this.Sla.GetHashCode();
                 if (this.Tier != null)
                     hashCode = hashCode * 59 + this.Tier.GetHashCode();
                 if (this.UserType != null)

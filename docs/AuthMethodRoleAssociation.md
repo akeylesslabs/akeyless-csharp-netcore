@@ -5,6 +5,7 @@ AuthMethodRoleAssociation includes details of an association between an auth met
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedOps** | **List&lt;string&gt;** |  | [optional] 
 **AssocId** | **string** |  | [optional] 
 **AuthMethodSubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **RoleName** | **string** |  | [optional] 

@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// <param name="templateType">templateType.</param>
         /// <param name="tweak">Tweak used in the case of internal tweak type.</param>
         /// <param name="tweakType">tweakType.</param>
-        public VaultlessTokenizerInfo(EmailTokenizerInfo emailTokenizerInfo = default(EmailTokenizerInfo), string keyName = default(string), RegexpTokenizerInfo regexpTokenizerInfo = default(RegexpTokenizerInfo), string templateType = default(string), List<int> tweak = default(List<int>), string tweakType = default(string))
+        public VaultlessTokenizerInfo(EmailTokenizerInfo emailTokenizerInfo = default(EmailTokenizerInfo), string keyName = default(string), RegexpTokenizerInfo regexpTokenizerInfo = default(RegexpTokenizerInfo), string templateType = default(string), string tweak = default(string), string tweakType = default(string))
         {
             this.EmailTokenizerInfo = emailTokenizerInfo;
             this.KeyName = keyName;
@@ -80,7 +80,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Tweak used in the case of internal tweak type</value>
         [DataMember(Name = "tweak", EmitDefaultValue = false)]
-        public List<int> Tweak { get; set; }
+        public string Tweak { get; set; }
 
         /// <summary>
         /// Gets or Sets TweakType
@@ -158,9 +158,8 @@ namespace akeyless.Model
                 ) && 
                 (
                     this.Tweak == input.Tweak ||
-                    this.Tweak != null &&
-                    input.Tweak != null &&
-                    this.Tweak.SequenceEqual(input.Tweak)
+                    (this.Tweak != null &&
+                    this.Tweak.Equals(input.Tweak))
                 ) && 
                 (
                     this.TweakType == input.TweakType ||

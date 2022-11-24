@@ -35,7 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListItems" /> class.
         /// </summary>
-        /// <param name="accessibility">for personal password manager.</param>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="filter">Filter by item name or part of it.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="minimalView">minimalView.</param>
@@ -46,9 +46,10 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string accessibility = default(string), string filter = default(string), bool json = default(bool), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string accessibility = "regular", string filter = default(string), bool json = default(bool), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
-            this.Accessibility = accessibility;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.Filter = filter;
             this.Json = json;
             this.MinimalView = minimalView;

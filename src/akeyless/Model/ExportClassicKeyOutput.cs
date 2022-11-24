@@ -27,34 +27,33 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// SmInfo
+    /// ExportClassicKeyOutput
     /// </summary>
-    [DataContract(Name = "SmInfo")]
-    public partial class SmInfo : IEquatable<SmInfo>, IValidatableObject
+    [DataContract(Name = "ExportClassicKeyOutput")]
+    public partial class ExportClassicKeyOutput : IEquatable<ExportClassicKeyOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SmInfo" /> class.
+        /// Initializes a new instance of the <see cref="ExportClassicKeyOutput" /> class.
         /// </summary>
-        /// <param name="sla">sla.</param>
-        /// <param name="tier">Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources.</param>
-        public SmInfo(string sla = default(string), string tier = default(string))
+        /// <param name="certificatePem">certificatePem.</param>
+        /// <param name="key">key.</param>
+        public ExportClassicKeyOutput(string certificatePem = default(string), string key = default(string))
         {
-            this.Sla = sla;
-            this.Tier = tier;
+            this.CertificatePem = certificatePem;
+            this.Key = key;
         }
 
         /// <summary>
-        /// Gets or Sets Sla
+        /// Gets or Sets CertificatePem
         /// </summary>
-        [DataMember(Name = "sla", EmitDefaultValue = false)]
-        public string Sla { get; set; }
+        [DataMember(Name = "certificatePem", EmitDefaultValue = false)]
+        public string CertificatePem { get; set; }
 
         /// <summary>
-        /// Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
+        /// Gets or Sets Key
         /// </summary>
-        /// <value>Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources</value>
-        [DataMember(Name = "tier", EmitDefaultValue = false)]
-        public string Tier { get; set; }
+        [DataMember(Name = "key", EmitDefaultValue = false)]
+        public string Key { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +62,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SmInfo {\n");
-            sb.Append("  Sla: ").Append(Sla).Append("\n");
-            sb.Append("  Tier: ").Append(Tier).Append("\n");
+            sb.Append("class ExportClassicKeyOutput {\n");
+            sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -86,29 +85,29 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SmInfo);
+            return this.Equals(input as ExportClassicKeyOutput);
         }
 
         /// <summary>
-        /// Returns true if SmInfo instances are equal
+        /// Returns true if ExportClassicKeyOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of SmInfo to be compared</param>
+        /// <param name="input">Instance of ExportClassicKeyOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SmInfo input)
+        public bool Equals(ExportClassicKeyOutput input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Sla == input.Sla ||
-                    (this.Sla != null &&
-                    this.Sla.Equals(input.Sla))
+                    this.CertificatePem == input.CertificatePem ||
+                    (this.CertificatePem != null &&
+                    this.CertificatePem.Equals(input.CertificatePem))
                 ) && 
                 (
-                    this.Tier == input.Tier ||
-                    (this.Tier != null &&
-                    this.Tier.Equals(input.Tier))
+                    this.Key == input.Key ||
+                    (this.Key != null &&
+                    this.Key.Equals(input.Key))
                 );
         }
 
@@ -121,10 +120,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Sla != null)
-                    hashCode = hashCode * 59 + this.Sla.GetHashCode();
-                if (this.Tier != null)
-                    hashCode = hashCode * 59 + this.Tier.GetHashCode();
+                if (this.CertificatePem != null)
+                    hashCode = hashCode * 59 + this.CertificatePem.GetHashCode();
+                if (this.Key != null)
+                    hashCode = hashCode * 59 + this.Key.GetHashCode();
                 return hashCode;
             }
         }
