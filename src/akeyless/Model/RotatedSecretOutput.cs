@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// RotatedSecretOutput
     /// </summary>
-    [DataContract(Name = "rotatedSecretOutput")]
+    [DataContract(Name = "RotatedSecretOutput")]
     public partial class RotatedSecretOutput : IEquatable<RotatedSecretOutput>, IValidatableObject
     {
         /// <summary>

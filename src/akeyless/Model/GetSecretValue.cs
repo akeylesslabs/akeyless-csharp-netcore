@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetSecretValue" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
-        /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI.</param>
+        /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="names">Secret name (required).</param>
         /// <param name="prettyPrint">Print the secret value with json-pretty-print (not relevent to SDK).</param>
@@ -73,9 +73,9 @@ namespace akeyless.Model
         public string Accessibility { get; set; }
 
         /// <summary>
-        /// Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI
+        /// Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
         /// </summary>
-        /// <value>Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI</value>
+        /// <value>Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI</value>
         [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
         public string IgnoreCache { get; set; }
 

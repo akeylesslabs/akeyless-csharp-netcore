@@ -40,23 +40,32 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetRotatedSecretValue" /> class.
         /// </summary>
+        /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="names">Secret name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Secret version.</param>
-        public GetRotatedSecretValue(bool json = default(bool), string names = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetRotatedSecretValue(string ignoreCache = default(string), bool json = default(bool), string names = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
             if (names == null) {
                 throw new ArgumentNullException("names is a required property for GetRotatedSecretValue and cannot be null");
             }
             this.Names = names;
+            this.IgnoreCache = ignoreCache;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
+        /// </summary>
+        /// <value>Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI</value>
+        [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
+        public string IgnoreCache { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -101,6 +110,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetRotatedSecretValue {\n");
+            sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Names: ").Append(Names).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -141,6 +151,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.IgnoreCache == input.IgnoreCache ||
+                    (this.IgnoreCache != null &&
+                    this.IgnoreCache.Equals(input.IgnoreCache))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -174,6 +189,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.IgnoreCache != null)
+                    hashCode = hashCode * 59 + this.IgnoreCache.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Names != null)
                     hashCode = hashCode * 59 + this.Names.GetHashCode();

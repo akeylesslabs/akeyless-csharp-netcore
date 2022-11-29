@@ -40,23 +40,33 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExportClassicKey" /> class.
         /// </summary>
+        /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Classic key version.</param>
-        public ExportClassicKey(bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public ExportClassicKey(string ignoreCache = "false", bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for ExportClassicKey and cannot be null");
             }
             this.Name = name;
+            // use default value if no "ignoreCache" provided
+            this.IgnoreCache = ignoreCache ?? "false";
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI
+        /// </summary>
+        /// <value>Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI</value>
+        [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
+        public string IgnoreCache { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -101,6 +111,7 @@ namespace akeyless.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ExportClassicKey {\n");
+            sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -141,6 +152,11 @@ namespace akeyless.Model
 
             return 
                 (
+                    this.IgnoreCache == input.IgnoreCache ||
+                    (this.IgnoreCache != null &&
+                    this.IgnoreCache.Equals(input.IgnoreCache))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -174,6 +190,8 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.IgnoreCache != null)
+                    hashCode = hashCode * 59 + this.IgnoreCache.GetHashCode();
                 hashCode = hashCode * 59 + this.Json.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();

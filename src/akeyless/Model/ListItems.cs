@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="subTypes">subTypes.</param>
         /// <param name="tag">Filter by item tag.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret].</param>
+        /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public ListItems(string accessibility = "regular", string filter = default(string), bool json = default(bool), bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
@@ -124,9 +124,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret]
+        /// The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key]
         /// </summary>
-        /// <value>The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret]</value>
+        /// <value>The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key]</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public List<string> Type { get; set; }
 
