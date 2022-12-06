@@ -117,7 +117,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AuthMethod {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  AccessInfo: ").Append(AccessInfo).Append("\n");
@@ -159,8 +159,9 @@ namespace akeyless.Model
         public bool Equals(AuthMethod input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessDate == input.AccessDate ||
@@ -221,23 +222,41 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessDate != null)
-                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
                 if (this.AccessInfo != null)
-                    hashCode = hashCode * 59 + this.AccessInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessInfo.GetHashCode();
+                }
                 if (this.AccountId != null)
-                    hashCode = hashCode * 59 + this.AccountId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
+                }
                 if (this.AuthMethodAccessId != null)
-                    hashCode = hashCode * 59 + this.AuthMethodAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodAccessId.GetHashCode();
+                }
                 if (this.AuthMethodName != null)
-                    hashCode = hashCode * 59 + this.AuthMethodName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodName.GetHashCode();
+                }
                 if (this.AuthMethodRolesAssoc != null)
-                    hashCode = hashCode * 59 + this.AuthMethodRolesAssoc.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodRolesAssoc.GetHashCode();
+                }
                 if (this.ClientPermissions != null)
-                    hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientPermissions.GetHashCode();
+                }
                 if (this.CreationDate != null)
-                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
                 if (this.ModificationDate != null)
-                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();
+                }
                 return hashCode;
             }
         }

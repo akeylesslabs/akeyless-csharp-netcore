@@ -65,7 +65,8 @@ namespace akeyless.Model
         public GatewayUpdateProducerHanaDb(string deleteProtection = default(string), string hanaDbname = default(string), string hanadbCreateStatements = default(string), string hanadbHost = "127.0.0.1", string hanadbPassword = default(string), string hanadbPort = "443", string hanadbRevocationStatements = default(string), string hanadbUsername = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerHanaDb and cannot be null");
             }
             this.Name = name;
@@ -162,7 +163,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -250,7 +251,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerHanaDb {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  HanaDbname: ").Append(HanaDbname).Append("\n");
@@ -305,8 +306,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerHanaDb input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -430,47 +432,87 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.HanaDbname != null)
-                    hashCode = hashCode * 59 + this.HanaDbname.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanaDbname.GetHashCode();
+                }
                 if (this.HanadbCreateStatements != null)
-                    hashCode = hashCode * 59 + this.HanadbCreateStatements.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanadbCreateStatements.GetHashCode();
+                }
                 if (this.HanadbHost != null)
-                    hashCode = hashCode * 59 + this.HanadbHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanadbHost.GetHashCode();
+                }
                 if (this.HanadbPassword != null)
-                    hashCode = hashCode * 59 + this.HanadbPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanadbPassword.GetHashCode();
+                }
                 if (this.HanadbPort != null)
-                    hashCode = hashCode * 59 + this.HanadbPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanadbPort.GetHashCode();
+                }
                 if (this.HanadbRevocationStatements != null)
-                    hashCode = hashCode * 59 + this.HanadbRevocationStatements.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanadbRevocationStatements.GetHashCode();
+                }
                 if (this.HanadbUsername != null)
-                    hashCode = hashCode * 59 + this.HanadbUsername.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HanadbUsername.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessDbSchema != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDbSchema.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

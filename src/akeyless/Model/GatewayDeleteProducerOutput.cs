@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayDeleteProducerOutput {\n");
             sb.Append("  ProducerName: ").Append(ProducerName).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(GatewayDeleteProducerOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ProducerName == input.ProducerName ||
@@ -107,7 +108,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ProducerName != null)
-                    hashCode = hashCode * 59 + this.ProducerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerName.GetHashCode();
+                }
                 return hashCode;
             }
         }

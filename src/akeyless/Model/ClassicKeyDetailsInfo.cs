@@ -134,7 +134,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ClassicKeyDetailsInfo {\n");
             sb.Append("  ClassicKeyAttributes: ").Append(ClassicKeyAttributes).Append("\n");
             sb.Append("  ClassicKeyId: ").Append(ClassicKeyId).Append("\n");
@@ -178,8 +178,9 @@ namespace akeyless.Model
         public bool Equals(ClassicKeyDetailsInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClassicKeyAttributes == input.ClassicKeyAttributes ||
@@ -248,24 +249,40 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClassicKeyAttributes != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyAttributes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyAttributes.GetHashCode();
+                }
                 if (this.ClassicKeyId != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyId.GetHashCode();
-                hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
-                hashCode = hashCode * 59 + this.IsProvidedByUser.GetHashCode();
-                hashCode = hashCode * 59 + this.IsUnexportable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsProvidedByUser.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsUnexportable.GetHashCode();
                 if (this.KeyState != null)
-                    hashCode = hashCode * 59 + this.KeyState.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyState.GetHashCode();
+                }
                 if (this.KeyType != null)
-                    hashCode = hashCode * 59 + this.KeyType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyType.GetHashCode();
+                }
                 if (this.LastError != null)
-                    hashCode = hashCode * 59 + this.LastError.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
+                }
                 if (this.TargetAliasHelper != null)
-                    hashCode = hashCode * 59 + this.TargetAliasHelper.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetAliasHelper.GetHashCode();
+                }
                 if (this.TargetTypes != null)
-                    hashCode = hashCode * 59 + this.TargetTypes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetTypes.GetHashCode();
+                }
                 if (this.Targets != null)
-                    hashCode = hashCode * 59 + this.Targets.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Targets.GetHashCode();
+                }
                 return hashCode;
             }
         }

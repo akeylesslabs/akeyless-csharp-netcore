@@ -234,7 +234,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAccountSettings {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
@@ -288,8 +288,9 @@ namespace akeyless.Model
         public bool Equals(UpdateAccountSettings input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Address == input.Address ||
@@ -403,42 +404,74 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Address != null)
-                    hashCode = hashCode * 59 + this.Address.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Address.GetHashCode();
+                }
                 if (this.City != null)
-                    hashCode = hashCode * 59 + this.City.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                }
                 if (this.CompanyName != null)
-                    hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CompanyName.GetHashCode();
+                }
                 if (this.Country != null)
-                    hashCode = hashCode * 59 + this.Country.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
                 if (this.DefaultVersioning != null)
-                    hashCode = hashCode * 59 + this.DefaultVersioning.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DefaultVersioning.GetHashCode();
+                }
                 if (this.DpEnableClassicKeyProtection != null)
-                    hashCode = hashCode * 59 + this.DpEnableClassicKeyProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DpEnableClassicKeyProtection.GetHashCode();
+                }
                 if (this.ItemType != null)
-                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtlDefault.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtlMax.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtlMin.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemType.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtlDefault.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtlMax.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtlMin.GetHashCode();
                 if (this.MaxVersions != null)
-                    hashCode = hashCode * 59 + this.MaxVersions.GetHashCode();
-                hashCode = hashCode * 59 + this.PasswordLength.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 if (this.Phone != null)
-                    hashCode = hashCode * 59 + this.Phone.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Phone.GetHashCode();
+                }
                 if (this.PostalCode != null)
-                    hashCode = hashCode * 59 + this.PostalCode.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UseLowerLetters != null)
-                    hashCode = hashCode * 59 + this.UseLowerLetters.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UseLowerLetters.GetHashCode();
+                }
                 if (this.UseNumbers != null)
-                    hashCode = hashCode * 59 + this.UseNumbers.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UseNumbers.GetHashCode();
+                }
                 if (this.UseSpecialCharacters != null)
-                    hashCode = hashCode * 59 + this.UseSpecialCharacters.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UseSpecialCharacters.GetHashCode();
+                }
                 if (this.UseCapitalLetters != null)
-                    hashCode = hashCode * 59 + this.UseCapitalLetters.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UseCapitalLetters.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RollbackSecretOutput {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(RollbackSecretOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Name == input.Name ||
@@ -120,8 +121,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

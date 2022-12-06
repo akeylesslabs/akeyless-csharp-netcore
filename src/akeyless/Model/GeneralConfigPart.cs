@@ -134,7 +134,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GeneralConfigPart {\n");
             sb.Append("  AkeylessUrl: ").Append(AkeylessUrl).Append("\n");
             sb.Append("  ApiTokenTtl: ").Append(ApiTokenTtl).Append("\n");
@@ -178,8 +178,9 @@ namespace akeyless.Model
         public bool Equals(GeneralConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AkeylessUrl == input.AkeylessUrl ||
@@ -244,23 +245,37 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AkeylessUrl != null)
-                    hashCode = hashCode * 59 + this.AkeylessUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AkeylessUrl.GetHashCode();
+                }
                 if (this.ApiTokenTtl != null)
-                    hashCode = hashCode * 59 + this.ApiTokenTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiTokenTtl.GetHashCode();
+                }
                 if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableTls.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableTlsConfigure.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableTlsCurl.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableTlsHvp.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EnableTls.GetHashCode();
+                hashCode = (hashCode * 59) + this.EnableTlsConfigure.GetHashCode();
+                hashCode = (hashCode * 59) + this.EnableTlsCurl.GetHashCode();
+                hashCode = (hashCode * 59) + this.EnableTlsHvp.GetHashCode();
                 if (this.GwClusterUrl != null)
-                    hashCode = hashCode * 59 + this.GwClusterUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwClusterUrl.GetHashCode();
+                }
                 if (this.TcpPort != null)
-                    hashCode = hashCode * 59 + this.TcpPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TcpPort.GetHashCode();
+                }
                 if (this.TlsCert != null)
-                    hashCode = hashCode * 59 + this.TlsCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TlsCert.GetHashCode();
+                }
                 if (this.TlsKey != null)
-                    hashCode = hashCode * 59 + this.TlsKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TlsKey.GetHashCode();
+                }
                 return hashCode;
             }
         }

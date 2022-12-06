@@ -78,7 +78,8 @@ namespace akeyless.Model
         public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
             }
             this.Name = name;
@@ -158,7 +159,7 @@ namespace akeyless.Model
         /// Current item name
         /// </summary>
         /// <value>Current item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -346,7 +347,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateItem {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
@@ -414,8 +415,9 @@ namespace akeyless.Model
         public bool Equals(UpdateItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Accessibility == input.Accessibility ||
@@ -603,69 +605,127 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Accessibility != null)
-                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 if (this.AddTag != null)
-                    hashCode = hashCode * 59 + this.AddTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
+                }
                 if (this.CertFileData != null)
-                    hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewMetadata != null)
-                    hashCode = hashCode * 59 + this.NewMetadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewMetadata.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.RmTag != null)
-                    hashCode = hashCode * 59 + this.RmTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
+                }
                 if (this.SecureAccessAddHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessAddHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessAddHost.GetHashCode();
+                }
                 if (this.SecureAccessAllowExternalUser != null)
-                    hashCode = hashCode * 59 + this.SecureAccessAllowExternalUser.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessAllowExternalUser.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAllowPortForwading.GetHashCode();
                 if (this.SecureAccessAwsAccountId != null)
-                    hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAwsNativeCli.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessAwsAccountId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAwsNativeCli.GetHashCode();
                 if (this.SecureAccessAwsRegion != null)
-                    hashCode = hashCode * 59 + this.SecureAccessAwsRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessAwsRegion.GetHashCode();
+                }
                 if (this.SecureAccessBastionApi != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionApi.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionApi.GetHashCode();
+                }
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessBastionSsh != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionSsh.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionSsh.GetHashCode();
+                }
                 if (this.SecureAccessClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.SecureAccessClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessClusterEndpoint.GetHashCode();
+                }
                 if (this.SecureAccessDashboardUrl != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDashboardUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDashboardUrl.GetHashCode();
+                }
                 if (this.SecureAccessDbName != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDbName.GetHashCode();
+                }
                 if (this.SecureAccessDbSchema != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDbSchema.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
                 if (this.SecureAccessRdpDomain != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpDomain.GetHashCode();
+                }
                 if (this.SecureAccessRdpUser != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRdpUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpUser.GetHashCode();
+                }
                 if (this.SecureAccessRmHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRmHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRmHost.GetHashCode();
+                }
                 if (this.SecureAccessSshCreds != null)
-                    hashCode = hashCode * 59 + this.SecureAccessSshCreds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessSshCreds.GetHashCode();
+                }
                 if (this.SecureAccessSshCredsUser != null)
-                    hashCode = hashCode * 59 + this.SecureAccessSshCredsUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessSshCredsUser.GetHashCode();
+                }
                 if (this.SecureAccessUrl != null)
-                    hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessUseInternalBastion.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessUseInternalBastion.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

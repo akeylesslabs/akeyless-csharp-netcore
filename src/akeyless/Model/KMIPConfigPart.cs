@@ -79,7 +79,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KMIPConfigPart {\n");
             sb.Append("  Clients: ").Append(Clients).Append("\n");
             sb.Append("  KeyEnc: ").Append(KeyEnc).Append("\n");
@@ -116,8 +116,9 @@ namespace akeyless.Model
         public bool Equals(KMIPConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Clients == input.Clients ||
@@ -154,13 +155,21 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Clients != null)
-                    hashCode = hashCode * 59 + this.Clients.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Clients.GetHashCode();
+                }
                 if (this.KeyEnc != null)
-                    hashCode = hashCode * 59 + this.KeyEnc.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyEnc.GetHashCode();
+                }
                 if (this.Server != null)
-                    hashCode = hashCode * 59 + this.Server.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Server.GetHashCode();
+                }
                 if (this.ServerEnc != null)
-                    hashCode = hashCode * 59 + this.ServerEnc.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ServerEnc.GetHashCode();
+                }
                 return hashCode;
             }
         }

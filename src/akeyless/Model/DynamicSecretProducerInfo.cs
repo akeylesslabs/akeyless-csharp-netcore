@@ -94,7 +94,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretProducerInfo {\n");
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
@@ -133,8 +133,9 @@ namespace akeyless.Model
         public bool Equals(DynamicSecretProducerInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.FailureMessage == input.FailureMessage ||
@@ -177,16 +178,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.FailureMessage != null)
-                    hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
-                hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.FailureMessage.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
                 if (this.ProducerLastKeepAlive != null)
-                    hashCode = hashCode * 59 + this.ProducerLastKeepAlive.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerLastKeepAlive.GetHashCode();
+                }
                 if (this.ProducerMetadata != null)
-                    hashCode = hashCode * 59 + this.ProducerMetadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerMetadata.GetHashCode();
+                }
                 if (this.ProducerStatus != null)
-                    hashCode = hashCode * 59 + this.ProducerStatus.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerStatus.GetHashCode();
+                }
                 if (this.ProducerType != null)
-                    hashCode = hashCode * 59 + this.ProducerType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerType.GetHashCode();
+                }
                 return hashCode;
             }
         }

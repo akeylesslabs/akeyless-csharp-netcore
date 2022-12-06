@@ -141,7 +141,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GwClusterIdentity {\n");
             sb.Append("  Allowed: ").Append(Allowed).Append("\n");
             sb.Append("  AllowedAccessIds: ").Append(AllowedAccessIds).Append("\n");
@@ -186,8 +186,9 @@ namespace akeyless.Model
         public bool Equals(GwClusterIdentity input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Allowed == input.Allowed ||
@@ -258,26 +259,42 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Allowed.GetHashCode();
+                hashCode = (hashCode * 59) + this.Allowed.GetHashCode();
                 if (this.AllowedAccessIds != null)
-                    hashCode = hashCode * 59 + this.AllowedAccessIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedAccessIds.GetHashCode();
+                }
                 if (this.ClusterName != null)
-                    hashCode = hashCode * 59 + this.ClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterName.GetHashCode();
+                }
                 if (this.ClusterUrl != null)
-                    hashCode = hashCode * 59 + this.ClusterUrl.GetHashCode();
-                hashCode = hashCode * 59 + this.CurrentGw.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CurrentGw.GetHashCode();
                 if (this.CustomerFragmentIds != null)
-                    hashCode = hashCode * 59 + this.CustomerFragmentIds.GetHashCode();
-                hashCode = hashCode * 59 + this.DefaultProtectionKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFragmentIds.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DefaultProtectionKeyId.GetHashCode();
                 if (this.DefaultSecretLocation != null)
-                    hashCode = hashCode * 59 + this.DefaultSecretLocation.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DefaultSecretLocation.GetHashCode();
+                }
                 if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
-                hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
                 if (this.StatusDescription != null)
-                    hashCode = hashCode * 59 + this.StatusDescription.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StatusDescription.GetHashCode();
+                }
                 return hashCode;
             }
         }

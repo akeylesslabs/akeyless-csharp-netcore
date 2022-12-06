@@ -54,12 +54,14 @@ namespace akeyless.Model
         public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), bool json = default(bool), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
-            if (alg == null) {
+            if (alg == null)
+            {
                 throw new ArgumentNullException("alg is a required property for CreateClassicKey and cannot be null");
             }
             this.Alg = alg;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateClassicKey and cannot be null");
             }
             this.Name = name;
@@ -78,7 +80,7 @@ namespace akeyless.Model
         /// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]
         /// </summary>
         /// <value>Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]</value>
-        [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = true)]
         public string Alg { get; set; }
 
         /// <summary>
@@ -120,7 +122,7 @@ namespace akeyless.Model
         /// ClassicKey name
         /// </summary>
         /// <value>ClassicKey name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -157,7 +159,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateClassicKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
@@ -201,8 +203,9 @@ namespace akeyless.Model
         public bool Equals(CreateClassicKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alg == input.Alg ||
@@ -271,26 +274,46 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alg != null)
-                    hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alg.GetHashCode();
+                }
                 if (this.CertFileData != null)
-                    hashCode = hashCode * 59 + this.CertFileData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyData != null)
-                    hashCode = hashCode * 59 + this.KeyData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
+                }
                 if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProtectionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKeyName.GetHashCode();
+                }
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

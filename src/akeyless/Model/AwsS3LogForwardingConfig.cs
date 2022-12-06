@@ -93,7 +93,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AwsS3LogForwardingConfig {\n");
             sb.Append("  AwsAccessId: ").Append(AwsAccessId).Append("\n");
             sb.Append("  AwsAccessKey: ").Append(AwsAccessKey).Append("\n");
@@ -132,8 +132,9 @@ namespace akeyless.Model
         public bool Equals(AwsS3LogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AwsAccessId == input.AwsAccessId ||
@@ -176,16 +177,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AwsAccessId != null)
-                    hashCode = hashCode * 59 + this.AwsAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsAccessId.GetHashCode();
+                }
                 if (this.AwsAccessKey != null)
-                    hashCode = hashCode * 59 + this.AwsAccessKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsAccessKey.GetHashCode();
+                }
                 if (this.AwsRegion != null)
-                    hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
-                hashCode = hashCode * 59 + this.AwsUseGatewayCloudIdentity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsRegion.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AwsUseGatewayCloudIdentity.GetHashCode();
                 if (this.BucketName != null)
-                    hashCode = hashCode * 59 + this.BucketName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BucketName.GetHashCode();
+                }
                 if (this.LogFolder != null)
-                    hashCode = hashCode * 59 + this.LogFolder.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LogFolder.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -109,7 +109,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationsConfigPart {\n");
             sb.Append("  ActiveDirectoryMigrations: ").Append(ActiveDirectoryMigrations).Append("\n");
             sb.Append("  AwsSecretsMigrations: ").Append(AwsSecretsMigrations).Append("\n");
@@ -150,8 +150,9 @@ namespace akeyless.Model
         public bool Equals(MigrationsConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ActiveDirectoryMigrations == input.ActiveDirectoryMigrations ||
@@ -213,21 +214,37 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ActiveDirectoryMigrations != null)
-                    hashCode = hashCode * 59 + this.ActiveDirectoryMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ActiveDirectoryMigrations.GetHashCode();
+                }
                 if (this.AwsSecretsMigrations != null)
-                    hashCode = hashCode * 59 + this.AwsSecretsMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsSecretsMigrations.GetHashCode();
+                }
                 if (this.AzureKvMigrations != null)
-                    hashCode = hashCode * 59 + this.AzureKvMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureKvMigrations.GetHashCode();
+                }
                 if (this.GcpSecretsMigrations != null)
-                    hashCode = hashCode * 59 + this.GcpSecretsMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpSecretsMigrations.GetHashCode();
+                }
                 if (this.HashiMigrations != null)
-                    hashCode = hashCode * 59 + this.HashiMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HashiMigrations.GetHashCode();
+                }
                 if (this.K8sMigrations != null)
-                    hashCode = hashCode * 59 + this.K8sMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sMigrations.GetHashCode();
+                }
                 if (this.MockMigrations != null)
-                    hashCode = hashCode * 59 + this.MockMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MockMigrations.GetHashCode();
+                }
                 if (this.OnePasswordMigrations != null)
-                    hashCode = hashCode * 59 + this.OnePasswordMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OnePasswordMigrations.GetHashCode();
+                }
                 return hashCode;
             }
         }

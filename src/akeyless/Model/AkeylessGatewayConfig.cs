@@ -173,7 +173,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AkeylessGatewayConfig {\n");
             sb.Append("  Admins: ").Append(Admins).Append("\n");
             sb.Append("  Cache: ").Append(Cache).Append("\n");
@@ -222,8 +222,9 @@ namespace akeyless.Model
         public bool Equals(AkeylessGatewayConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Admins == input.Admins ||
@@ -316,36 +317,66 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Admins != null)
-                    hashCode = hashCode * 59 + this.Admins.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Admins.GetHashCode();
+                }
                 if (this.Cache != null)
-                    hashCode = hashCode * 59 + this.Cache.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Cache.GetHashCode();
+                }
                 if (this.Cf != null)
-                    hashCode = hashCode * 59 + this.Cf.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Cf.GetHashCode();
+                }
                 if (this.ConfigProtectionKeyName != null)
-                    hashCode = hashCode * 59 + this.ConfigProtectionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ConfigProtectionKeyName.GetHashCode();
+                }
                 if (this.General != null)
-                    hashCode = hashCode * 59 + this.General.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.General.GetHashCode();
+                }
                 if (this.K8sAuths != null)
-                    hashCode = hashCode * 59 + this.K8sAuths.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuths.GetHashCode();
+                }
                 if (this.KmipClients != null)
-                    hashCode = hashCode * 59 + this.KmipClients.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KmipClients.GetHashCode();
+                }
                 if (this.Ldap != null)
-                    hashCode = hashCode * 59 + this.Ldap.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Ldap.GetHashCode();
+                }
                 if (this.Leadership != null)
-                    hashCode = hashCode * 59 + this.Leadership.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Leadership.GetHashCode();
+                }
                 if (this.LogForwarding != null)
-                    hashCode = hashCode * 59 + this.LogForwarding.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LogForwarding.GetHashCode();
+                }
                 if (this.MessageQueueInfo != null)
-                    hashCode = hashCode * 59 + this.MessageQueueInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MessageQueueInfo.GetHashCode();
+                }
                 if (this.Migrations != null)
-                    hashCode = hashCode * 59 + this.Migrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Migrations.GetHashCode();
+                }
                 if (this.Producers != null)
-                    hashCode = hashCode * 59 + this.Producers.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Producers.GetHashCode();
+                }
                 if (this.Rotators != null)
-                    hashCode = hashCode * 59 + this.Rotators.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Rotators.GetHashCode();
+                }
                 if (this.Saml != null)
-                    hashCode = hashCode * 59 + this.Saml.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Saml.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

@@ -165,7 +165,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ActiveDirectoryPayload {\n");
             sb.Append("  ActiveDirectoryTargetId: ").Append(ActiveDirectoryTargetId).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
@@ -213,8 +213,9 @@ namespace akeyless.Model
         public bool Equals(ActiveDirectoryPayload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ActiveDirectoryTargetId == input.ActiveDirectoryTargetId ||
@@ -298,30 +299,48 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.ActiveDirectoryTargetId.GetHashCode();
-                hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
-                hashCode = hashCode * 59 + this.AutoRotateIntervalInDays.GetHashCode();
-                hashCode = hashCode * 59 + this.AutoRotateRotationHour.GetHashCode();
+                hashCode = (hashCode * 59) + this.ActiveDirectoryTargetId.GetHashCode();
+                hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
+                hashCode = (hashCode * 59) + this.AutoRotateIntervalInDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.AutoRotateRotationHour.GetHashCode();
                 if (this.ComputerBaseDn != null)
-                    hashCode = hashCode * 59 + this.ComputerBaseDn.GetHashCode();
-                hashCode = hashCode * 59 + this.DiscoverLocalUsers.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ComputerBaseDn.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DiscoverLocalUsers.GetHashCode();
                 if (this.DomainName != null)
-                    hashCode = hashCode * 59 + this.DomainName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DomainName.GetHashCode();
+                }
                 if (this.DomainServerTargetsPathTemplate != null)
-                    hashCode = hashCode * 59 + this.DomainServerTargetsPathTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DomainServerTargetsPathTemplate.GetHashCode();
+                }
                 if (this.DomainUsersRotatedSecretsPathTemplate != null)
-                    hashCode = hashCode * 59 + this.DomainUsersRotatedSecretsPathTemplate.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableRdpSra.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DomainUsersRotatedSecretsPathTemplate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EnableRdpSra.GetHashCode();
                 if (this.LocalUsersIgnoreList != null)
-                    hashCode = hashCode * 59 + this.LocalUsersIgnoreList.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LocalUsersIgnoreList.GetHashCode();
+                }
                 if (this.LocalUsersRotatedSecretsPathTemplate != null)
-                    hashCode = hashCode * 59 + this.LocalUsersRotatedSecretsPathTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LocalUsersRotatedSecretsPathTemplate.GetHashCode();
+                }
                 if (this.SshPort != null)
-                    hashCode = hashCode * 59 + this.SshPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshPort.GetHashCode();
+                }
                 if (this.UserBaseDn != null)
-                    hashCode = hashCode * 59 + this.UserBaseDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserBaseDn.GetHashCode();
+                }
                 if (this.UserGroups != null)
-                    hashCode = hashCode * 59 + this.UserGroups.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserGroups.GetHashCode();
+                }
                 return hashCode;
             }
         }

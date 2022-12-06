@@ -70,7 +70,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SraInfo {\n");
             sb.Append("  Sla: ").Append(Sla).Append("\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
@@ -106,8 +106,9 @@ namespace akeyless.Model
         public bool Equals(SraInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Sla == input.Sla ||
@@ -136,11 +137,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Sla != null)
-                    hashCode = hashCode * 59 + this.Sla.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Sla.GetHashCode();
+                }
                 if (this.Tier != null)
-                    hashCode = hashCode * 59 + this.Tier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tier.GetHashCode();
+                }
                 if (this.UserType != null)
-                    hashCode = hashCode * 59 + this.UserType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserType.GetHashCode();
+                }
                 return hashCode;
             }
         }

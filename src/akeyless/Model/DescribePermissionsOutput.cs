@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DescribePermissionsOutput {\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(DescribePermissionsOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClientPermissions == input.ClientPermissions ||
@@ -108,7 +109,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClientPermissions != null)
-                    hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientPermissions.GetHashCode();
+                }
                 return hashCode;
             }
         }

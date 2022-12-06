@@ -93,7 +93,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Producer {\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
@@ -132,8 +132,9 @@ namespace akeyless.Model
         public bool Equals(Producer input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Active == input.Active ||
@@ -173,15 +174,21 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Active.GetHashCode();
+                hashCode = (hashCode * 59) + this.Active.GetHashCode();
                 if (this.FailureMessage != null)
-                    hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
-                hashCode = hashCode * 59 + this.Id.GetHashCode();
-                hashCode = hashCode * 59 + this.Init.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.FailureMessage.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                hashCode = (hashCode * 59) + this.Init.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 return hashCode;
             }
         }

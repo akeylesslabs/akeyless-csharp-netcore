@@ -126,7 +126,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretDetailsInfo {\n");
             sb.Append("  DeletePreviousVersionInDays: ").Append(DeletePreviousVersionInDays).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
@@ -169,8 +169,9 @@ namespace akeyless.Model
         public bool Equals(RotatedSecretDetailsInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeletePreviousVersionInDays == input.DeletePreviousVersionInDays ||
@@ -228,21 +229,31 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.DeletePreviousVersionInDays.GetHashCode();
-                hashCode = hashCode * 59 + this.GwClusterId.GetHashCode();
+                hashCode = (hashCode * 59) + this.DeletePreviousVersionInDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
                 if (this.LastRotationError != null)
-                    hashCode = hashCode * 59 + this.LastRotationError.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfVersionsToSave.GetHashCode();
-                hashCode = hashCode * 59 + this.RotationHour.GetHashCode();
-                hashCode = hashCode * 59 + this.RotationIntervalMin.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastRotationError.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NumberOfVersionsToSave.GetHashCode();
+                hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
+                hashCode = (hashCode * 59) + this.RotationIntervalMin.GetHashCode();
                 if (this.RotationStatement != null)
-                    hashCode = hashCode * 59 + this.RotationStatement.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotationStatement.GetHashCode();
+                }
                 if (this.RotatorCredsType != null)
-                    hashCode = hashCode * 59 + this.RotatorCredsType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatorCredsType.GetHashCode();
+                }
                 if (this.RotatorStatus != null)
-                    hashCode = hashCode * 59 + this.RotatorStatus.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatorStatus.GetHashCode();
+                }
                 if (this.RotatorType != null)
-                    hashCode = hashCode * 59 + this.RotatorType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatorType.GetHashCode();
+                }
                 return hashCode;
             }
         }

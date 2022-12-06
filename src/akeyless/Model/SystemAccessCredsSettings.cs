@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SystemAccessCredsSettings {\n");
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMaximum: ").Append(JwtTtlMaximum).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(SystemAccessCredsSettings input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.JwtTtlDefault == input.JwtTtlDefault ||
@@ -131,9 +132,9 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.JwtTtlDefault.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtlMaximum.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtlMinimum.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtlDefault.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtlMaximum.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtlMinimum.GetHashCode();
                 return hashCode;
             }
         }

@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipMoveServerOutput {\n");
             sb.Append("  NewRoot: ").Append(NewRoot).Append("\n");
             sb.Append("  OldRoot: ").Append(OldRoot).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(KmipMoveServerOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.NewRoot == input.NewRoot ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.NewRoot != null)
-                    hashCode = hashCode * 59 + this.NewRoot.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewRoot.GetHashCode();
+                }
                 if (this.OldRoot != null)
-                    hashCode = hashCode * 59 + this.OldRoot.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OldRoot.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -120,7 +120,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PathRule {\n");
             sb.Append("  Assigners: ").Append(Assigners).Append("\n");
             sb.Append("  Capabilities: ").Append(Capabilities).Append("\n");
@@ -162,8 +162,9 @@ namespace akeyless.Model
         public bool Equals(PathRule input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Assigners == input.Assigners ||
@@ -219,18 +220,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Assigners != null)
-                    hashCode = hashCode * 59 + this.Assigners.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Assigners.GetHashCode();
+                }
                 if (this.Capabilities != null)
-                    hashCode = hashCode * 59 + this.Capabilities.GetHashCode();
-                hashCode = hashCode * 59 + this.IsLimitAccess.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfAccessUsed.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfAllowedAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Capabilities.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsLimitAccess.GetHashCode();
+                hashCode = (hashCode * 59) + this.NumberOfAccessUsed.GetHashCode();
+                hashCode = (hashCode * 59) + this.NumberOfAllowedAccess.GetHashCode();
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
-                hashCode = hashCode * 59 + this.StartTime.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.StartTime.GetHashCode();
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 return hashCode;
             }
         }

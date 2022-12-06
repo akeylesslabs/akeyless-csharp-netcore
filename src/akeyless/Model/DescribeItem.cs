@@ -50,7 +50,8 @@ namespace akeyless.Model
         public DescribeItem(string displayId = default(string), long itemId = default(long), bool json = default(bool), string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for DescribeItem and cannot be null");
             }
             this.Name = name;
@@ -87,7 +88,7 @@ namespace akeyless.Model
         /// Item name
         /// </summary>
         /// <value>Item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DescribeItem {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
@@ -157,8 +158,9 @@ namespace akeyless.Model
         public bool Equals(DescribeItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -204,16 +206,24 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.ShowVersions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ShowVersions.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

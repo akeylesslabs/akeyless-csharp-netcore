@@ -57,7 +57,8 @@ namespace akeyless.Model
         public GatewayCreateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerCassandra and cannot be null");
             }
             this.Name = name;
@@ -131,7 +132,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -182,7 +183,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerCassandra {\n");
             sb.Append("  CassandraCreationStatements: ").Append(CassandraCreationStatements).Append("\n");
             sb.Append("  CassandraHosts: ").Append(CassandraHosts).Append("\n");
@@ -229,8 +230,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerCassandra input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CassandraCreationStatements == input.CassandraCreationStatements ||
@@ -314,32 +316,58 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CassandraCreationStatements != null)
-                    hashCode = hashCode * 59 + this.CassandraCreationStatements.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CassandraCreationStatements.GetHashCode();
+                }
                 if (this.CassandraHosts != null)
-                    hashCode = hashCode * 59 + this.CassandraHosts.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CassandraHosts.GetHashCode();
+                }
                 if (this.CassandraPassword != null)
-                    hashCode = hashCode * 59 + this.CassandraPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CassandraPassword.GetHashCode();
+                }
                 if (this.CassandraPort != null)
-                    hashCode = hashCode * 59 + this.CassandraPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CassandraPort.GetHashCode();
+                }
                 if (this.CassandraUsername != null)
-                    hashCode = hashCode * 59 + this.CassandraUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CassandraUsername.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

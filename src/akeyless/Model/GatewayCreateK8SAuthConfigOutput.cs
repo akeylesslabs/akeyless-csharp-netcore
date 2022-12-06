@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateK8SAuthConfigOutput {\n");
             sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
             sb.Append("  PartsChange: ").Append(PartsChange).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateK8SAuthConfigOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClusterId == input.ClusterId ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClusterId != null)
-                    hashCode = hashCode * 59 + this.ClusterId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterId.GetHashCode();
+                }
                 if (this.PartsChange != null)
-                    hashCode = hashCode * 59 + this.PartsChange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PartsChange.GetHashCode();
+                }
                 if (this.TotalHash != null)
-                    hashCode = hashCode * 59 + this.TotalHash.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TotalHash.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -109,7 +109,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Role {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
@@ -150,8 +150,9 @@ namespace akeyless.Model
         public bool Equals(Role input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessDate == input.AccessDate ||
@@ -207,21 +208,37 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessDate != null)
-                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
                 if (this.ClientPermissions != null)
-                    hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientPermissions.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.CreationDate != null)
-                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
                 if (this.ModificationDate != null)
-                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();
+                }
                 if (this.RoleAuthMethodsAssoc != null)
-                    hashCode = hashCode * 59 + this.RoleAuthMethodsAssoc.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleAuthMethodsAssoc.GetHashCode();
+                }
                 if (this.RoleName != null)
-                    hashCode = hashCode * 59 + this.RoleName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleName.GetHashCode();
+                }
                 if (this.Rules != null)
-                    hashCode = hashCode * 59 + this.Rules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Rules.GetHashCode();
+                }
                 return hashCode;
             }
         }

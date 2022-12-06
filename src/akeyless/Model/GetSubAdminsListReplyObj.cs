@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetSubAdminsListReplyObj {\n");
             sb.Append("  AllowedAccess: ").Append(AllowedAccess).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(GetSubAdminsListReplyObj input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowedAccess == input.AllowedAccess ||
@@ -108,7 +109,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AllowedAccess != null)
-                    hashCode = hashCode * 59 + this.AllowedAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedAccess.GetHashCode();
+                }
                 return hashCode;
             }
         }

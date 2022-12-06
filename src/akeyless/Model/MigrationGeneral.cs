@@ -101,7 +101,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationGeneral {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -141,8 +141,9 @@ namespace akeyless.Model
         public bool Equals(MigrationGeneral input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Id == input.Id ||
@@ -191,19 +192,33 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Prefix != null)
-                    hashCode = hashCode * 59 + this.Prefix.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Prefix.GetHashCode();
+                }
                 if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
                 if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 return hashCode;
             }
         }

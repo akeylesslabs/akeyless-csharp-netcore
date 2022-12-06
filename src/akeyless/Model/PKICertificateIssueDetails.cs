@@ -222,7 +222,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PKICertificateIssueDetails {\n");
             sb.Append("  AllowAnyName: ").Append(AllowAnyName).Append("\n");
             sb.Append("  AllowSubdomains: ").Append(AllowSubdomains).Append("\n");
@@ -277,8 +277,9 @@ namespace akeyless.Model
         public bool Equals(PKICertificateIssueDetails input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowAnyName == input.AllowAnyName ||
@@ -400,39 +401,61 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AllowAnyName.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowSubdomains.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowAnyName.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowSubdomains.GetHashCode();
                 if (this.AllowedDomainsList != null)
-                    hashCode = hashCode * 59 + this.AllowedDomainsList.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedDomainsList.GetHashCode();
+                }
                 if (this.AllowedUriSans != null)
-                    hashCode = hashCode * 59 + this.AllowedUriSans.GetHashCode();
-                hashCode = hashCode * 59 + this.BasicConstraintsValidForNonCa.GetHashCode();
-                hashCode = hashCode * 59 + this.ClientFlag.GetHashCode();
-                hashCode = hashCode * 59 + this.CodeSigningFlag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUriSans.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.BasicConstraintsValidForNonCa.GetHashCode();
+                hashCode = (hashCode * 59) + this.ClientFlag.GetHashCode();
+                hashCode = (hashCode * 59) + this.CodeSigningFlag.GetHashCode();
                 if (this.Country != null)
-                    hashCode = hashCode * 59 + this.Country.GetHashCode();
-                hashCode = hashCode * 59 + this.EnforceHostnames.GetHashCode();
-                hashCode = hashCode * 59 + this.IsCa.GetHashCode();
-                hashCode = hashCode * 59 + this.KeyBits.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EnforceHostnames.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsCa.GetHashCode();
+                hashCode = (hashCode * 59) + this.KeyBits.GetHashCode();
                 if (this.KeyType != null)
-                    hashCode = hashCode * 59 + this.KeyType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyType.GetHashCode();
+                }
                 if (this.KeyUsageList != null)
-                    hashCode = hashCode * 59 + this.KeyUsageList.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyUsageList.GetHashCode();
+                }
                 if (this.Locality != null)
-                    hashCode = hashCode * 59 + this.Locality.GetHashCode();
-                hashCode = hashCode * 59 + this.NotBeforeDuration.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Locality.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NotBeforeDuration.GetHashCode();
                 if (this.OrganizationList != null)
-                    hashCode = hashCode * 59 + this.OrganizationList.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OrganizationList.GetHashCode();
+                }
                 if (this.OrganizationUnitList != null)
-                    hashCode = hashCode * 59 + this.OrganizationUnitList.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OrganizationUnitList.GetHashCode();
+                }
                 if (this.PostalCode != null)
-                    hashCode = hashCode * 59 + this.PostalCode.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                }
                 if (this.Province != null)
-                    hashCode = hashCode * 59 + this.Province.GetHashCode();
-                hashCode = hashCode * 59 + this.RequireCn.GetHashCode();
-                hashCode = hashCode * 59 + this.ServerFlag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Province.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RequireCn.GetHashCode();
+                hashCode = (hashCode * 59) + this.ServerFlag.GetHashCode();
                 if (this.StreetAddress != null)
-                    hashCode = hashCode * 59 + this.StreetAddress.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StreetAddress.GetHashCode();
+                }
                 return hashCode;
             }
         }

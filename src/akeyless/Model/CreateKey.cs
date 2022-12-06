@@ -53,12 +53,14 @@ namespace akeyless.Model
         public CreateKey(string alg = default(string), string customerFrgId = default(string), string deleteProtection = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
-            if (alg == null) {
+            if (alg == null)
+            {
                 throw new ArgumentNullException("alg is a required property for CreateKey and cannot be null");
             }
             this.Alg = alg;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateKey and cannot be null");
             }
             this.Name = name;
@@ -76,7 +78,7 @@ namespace akeyless.Model
         /// Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]
         /// </summary>
         /// <value>Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]</value>
-        [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = true)]
         public string Alg { get; set; }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace akeyless.Model
         /// Key name
         /// </summary>
         /// <value>Key name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -148,7 +150,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
@@ -191,8 +193,9 @@ namespace akeyless.Model
         public bool Equals(CreateKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alg == input.Alg ||
@@ -255,23 +258,39 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alg != null)
-                    hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alg.GetHashCode();
+                }
                 if (this.CustomerFrgId != null)
-                    hashCode = hashCode * 59 + this.CustomerFrgId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFrgId.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.SplitLevel.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SplitLevel.GetHashCode();
                 if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tag.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

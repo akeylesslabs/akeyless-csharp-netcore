@@ -88,7 +88,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipDescribeClient {\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -126,8 +126,9 @@ namespace akeyless.Model
         public bool Equals(KmipDescribeClient input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClientId == input.ClientId ||
@@ -165,14 +166,22 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

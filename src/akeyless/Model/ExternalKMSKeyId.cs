@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ExternalKMSKeyId {\n");
             sb.Append("  KeyId: ").Append(KeyId).Append("\n");
             sb.Append("  KeyReference: ").Append(KeyReference).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(ExternalKMSKeyId input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.KeyId == input.KeyId ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.KeyId != null)
-                    hashCode = hashCode * 59 + this.KeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyId.GetHashCode();
+                }
                 if (this.KeyReference != null)
-                    hashCode = hashCode * 59 + this.KeyReference.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyReference.GetHashCode();
+                }
                 return hashCode;
             }
         }

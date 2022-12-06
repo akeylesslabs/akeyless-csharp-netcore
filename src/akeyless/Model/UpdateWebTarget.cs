@@ -53,7 +53,8 @@ namespace akeyless.Model
         public UpdateWebTarget(string comment = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string url = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateWebTarget and cannot be null");
             }
             this.Name = name;
@@ -99,7 +100,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateWebTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -186,8 +187,9 @@ namespace akeyless.Model
         public bool Equals(UpdateWebTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Comment == input.Comment ||
@@ -249,23 +251,39 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
                 if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                }
                 return hashCode;
             }
         }

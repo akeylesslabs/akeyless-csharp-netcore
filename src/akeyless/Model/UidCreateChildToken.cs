@@ -126,7 +126,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UidCreateChildToken {\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("  ChildDenyInheritance: ").Append(ChildDenyInheritance).Append("\n");
@@ -168,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(UidCreateChildToken input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AuthMethodName == input.AuthMethodName ||
@@ -224,19 +225,29 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AuthMethodName != null)
-                    hashCode = hashCode * 59 + this.AuthMethodName.GetHashCode();
-                hashCode = hashCode * 59 + this.ChildDenyInheritance.GetHashCode();
-                hashCode = hashCode * 59 + this.ChildDenyRotate.GetHashCode();
-                hashCode = hashCode * 59 + this.ChildTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ChildDenyInheritance.GetHashCode();
+                hashCode = (hashCode * 59) + this.ChildDenyRotate.GetHashCode();
+                hashCode = (hashCode * 59) + this.ChildTtl.GetHashCode();
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UidTokenId != null)
-                    hashCode = hashCode * 59 + this.UidTokenId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidTokenId.GetHashCode();
+                }
                 return hashCode;
             }
         }

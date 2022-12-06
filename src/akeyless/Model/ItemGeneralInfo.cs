@@ -125,7 +125,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ItemGeneralInfo {\n");
             sb.Append("  CertIssueDetails: ").Append(CertIssueDetails).Append("\n");
             sb.Append("  ClassicKeyDetails: ").Append(ClassicKeyDetails).Append("\n");
@@ -168,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(ItemGeneralInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CertIssueDetails == input.CertIssueDetails ||
@@ -233,25 +234,45 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CertIssueDetails != null)
-                    hashCode = hashCode * 59 + this.CertIssueDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertIssueDetails.GetHashCode();
+                }
                 if (this.ClassicKeyDetails != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyDetails.GetHashCode();
+                }
                 if (this.ClusterGwUrl != null)
-                    hashCode = hashCode * 59 + this.ClusterGwUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterGwUrl.GetHashCode();
+                }
                 if (this.DisplayMetadata != null)
-                    hashCode = hashCode * 59 + this.DisplayMetadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayMetadata.GetHashCode();
+                }
                 if (this.DynamicSecretProducerDetails != null)
-                    hashCode = hashCode * 59 + this.DynamicSecretProducerDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DynamicSecretProducerDetails.GetHashCode();
+                }
                 if (this.PasswordPolicy != null)
-                    hashCode = hashCode * 59 + this.PasswordPolicy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();
+                }
                 if (this.RotatedSecretDetails != null)
-                    hashCode = hashCode * 59 + this.RotatedSecretDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatedSecretDetails.GetHashCode();
+                }
                 if (this.SecureRemoteAccessDetails != null)
-                    hashCode = hashCode * 59 + this.SecureRemoteAccessDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureRemoteAccessDetails.GetHashCode();
+                }
                 if (this.StaticSecretInfo != null)
-                    hashCode = hashCode * 59 + this.StaticSecretInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StaticSecretInfo.GetHashCode();
+                }
                 if (this.TokenizerInfo != null)
-                    hashCode = hashCode * 59 + this.TokenizerInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenizerInfo.GetHashCode();
+                }
                 return hashCode;
             }
         }

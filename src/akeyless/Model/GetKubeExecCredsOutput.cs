@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetKubeExecCredsOutput {\n");
             sb.Append("  ApiVersion: ").Append(ApiVersion).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(GetKubeExecCredsOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ApiVersion == input.ApiVersion ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ApiVersion != null)
-                    hashCode = hashCode * 59 + this.ApiVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiVersion.GetHashCode();
+                }
                 if (this.Kind != null)
-                    hashCode = hashCode * 59 + this.Kind.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
                 if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
                 return hashCode;
             }
         }

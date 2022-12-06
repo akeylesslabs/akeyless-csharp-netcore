@@ -47,7 +47,8 @@ namespace akeyless.Model
         public KmipSetServerState(bool json = default(bool), string state = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "state" is required (not null)
-            if (state == null) {
+            if (state == null)
+            {
                 throw new ArgumentNullException("state is a required property for KmipSetServerState and cannot be null");
             }
             this.State = state;
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
         public string State { get; set; }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipSetServerState {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
@@ -126,8 +127,9 @@ namespace akeyless.Model
         public bool Equals(KmipSetServerState input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -159,13 +161,19 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -61,12 +61,14 @@ namespace akeyless.Model
         public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
-            if (boundAwsAccountId == null) {
+            if (boundAwsAccountId == null)
+            {
                 throw new ArgumentNullException("boundAwsAccountId is a required property for UpdateAuthMethodAWSIAM and cannot be null");
             }
             this.BoundAwsAccountId = boundAwsAccountId;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateAuthMethodAWSIAM and cannot be null");
             }
             this.Name = name;
@@ -107,7 +109,7 @@ namespace akeyless.Model
         /// A list of AWS account-IDs that the access is restricted to
         /// </summary>
         /// <value>A list of AWS account-IDs that the access is restricted to</value>
-        [DataMember(Name = "bound-aws-account-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "bound-aws-account-id", IsRequired = true, EmitDefaultValue = true)]
         public List<string> BoundAwsAccountId { get; set; }
 
         /// <summary>
@@ -184,7 +186,7 @@ namespace akeyless.Model
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -221,7 +223,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAuthMethodAWSIAM {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  BoundArn: ").Append(BoundArn).Append("\n");
@@ -272,8 +274,9 @@ namespace akeyless.Model
         public bool Equals(UpdateAuthMethodAWSIAM input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessExpires == input.AccessExpires ||
@@ -381,38 +384,66 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
                 if (this.BoundArn != null)
-                    hashCode = hashCode * 59 + this.BoundArn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundArn.GetHashCode();
+                }
                 if (this.BoundAwsAccountId != null)
-                    hashCode = hashCode * 59 + this.BoundAwsAccountId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundAwsAccountId.GetHashCode();
+                }
                 if (this.BoundIps != null)
-                    hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
                 if (this.BoundResourceId != null)
-                    hashCode = hashCode * 59 + this.BoundResourceId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceId.GetHashCode();
+                }
                 if (this.BoundRoleId != null)
-                    hashCode = hashCode * 59 + this.BoundRoleId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundRoleId.GetHashCode();
+                }
                 if (this.BoundRoleName != null)
-                    hashCode = hashCode * 59 + this.BoundRoleName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundRoleName.GetHashCode();
+                }
                 if (this.BoundUserId != null)
-                    hashCode = hashCode * 59 + this.BoundUserId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundUserId.GetHashCode();
+                }
                 if (this.BoundUserName != null)
-                    hashCode = hashCode * 59 + this.BoundUserName.GetHashCode();
-                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundUserName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)
-                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.StsUrl != null)
-                    hashCode = hashCode * 59 + this.StsUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StsUrl.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

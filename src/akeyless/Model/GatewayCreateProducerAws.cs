@@ -70,7 +70,8 @@ namespace akeyless.Model
         public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerAws and cannot be null");
             }
             this.Name = name;
@@ -191,7 +192,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -291,7 +292,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerAws {\n");
             sb.Append("  AccessMode: ").Append(AccessMode).Append("\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
@@ -351,8 +352,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerAws input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessMode == input.AccessMode ||
@@ -493,50 +495,86 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessMode != null)
-                    hashCode = hashCode * 59 + this.AccessMode.GetHashCode();
-                hashCode = hashCode * 59 + this.AdminRotationIntervalDays.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessMode.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AdminRotationIntervalDays.GetHashCode();
                 if (this.AwsAccessKeyId != null)
-                    hashCode = hashCode * 59 + this.AwsAccessKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsAccessKeyId.GetHashCode();
+                }
                 if (this.AwsAccessSecretKey != null)
-                    hashCode = hashCode * 59 + this.AwsAccessSecretKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsAccessSecretKey.GetHashCode();
+                }
                 if (this.AwsRoleArns != null)
-                    hashCode = hashCode * 59 + this.AwsRoleArns.GetHashCode();
-                hashCode = hashCode * 59 + this.AwsUserConsoleAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsRoleArns.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AwsUserConsoleAccess.GetHashCode();
                 if (this.AwsUserGroups != null)
-                    hashCode = hashCode * 59 + this.AwsUserGroups.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsUserGroups.GetHashCode();
+                }
                 if (this.AwsUserPolicies != null)
-                    hashCode = hashCode * 59 + this.AwsUserPolicies.GetHashCode();
-                hashCode = hashCode * 59 + this.AwsUserProgrammaticAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsUserPolicies.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AwsUserProgrammaticAccess.GetHashCode();
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableAdminRotation.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EnableAdminRotation.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.Region != null)
-                    hashCode = hashCode * 59 + this.Region.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Region.GetHashCode();
+                }
                 if (this.SecureAccessAwsAccountId != null)
-                    hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAwsNativeCli.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessAwsAccountId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAwsNativeCli.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

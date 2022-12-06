@@ -58,7 +58,8 @@ namespace akeyless.Model
         public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateLdapTarget and cannot be null");
             }
             this.Name = name;
@@ -133,7 +134,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -183,7 +184,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateLdapTarget {\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
@@ -231,8 +232,9 @@ namespace akeyless.Model
         public bool Equals(UpdateLdapTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.BindDn == input.BindDn ||
@@ -319,33 +321,59 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.BindDn != null)
-                    hashCode = hashCode * 59 + this.BindDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BindDn.GetHashCode();
+                }
                 if (this.BindDnPassword != null)
-                    hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BindDnPassword.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.LdapCaCert != null)
-                    hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapCaCert.GetHashCode();
+                }
                 if (this.LdapUrl != null)
-                    hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ServerType != null)
-                    hashCode = hashCode * 59 + this.ServerType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ServerType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.TokenExpiration != null)
-                    hashCode = hashCode * 59 + this.TokenExpiration.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenExpiration.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
                 return hashCode;
             }
         }

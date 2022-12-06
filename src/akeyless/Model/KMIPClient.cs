@@ -93,7 +93,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KMIPClient {\n");
             sb.Append("  ActivateKeysOnCreation: ").Append(ActivateKeysOnCreation).Append("\n");
             sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
@@ -132,8 +132,9 @@ namespace akeyless.Model
         public bool Equals(KMIPClient input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ActivateKeysOnCreation == input.ActivateKeysOnCreation ||
@@ -175,16 +176,24 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.ActivateKeysOnCreation.GetHashCode();
+                hashCode = (hashCode * 59) + this.ActivateKeysOnCreation.GetHashCode();
                 if (this.CertificateIssueDate != null)
-                    hashCode = hashCode * 59 + this.CertificateIssueDate.GetHashCode();
-                hashCode = hashCode * 59 + this.CertificateTtlInSeconds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertificateIssueDate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CertificateTtlInSeconds.GetHashCode();
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Rules != null)
-                    hashCode = hashCode * 59 + this.Rules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Rules.GetHashCode();
+                }
                 return hashCode;
             }
         }

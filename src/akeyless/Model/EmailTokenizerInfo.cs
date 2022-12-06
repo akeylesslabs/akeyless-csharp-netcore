@@ -72,7 +72,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class EmailTokenizerInfo {\n");
             sb.Append("  DomainSuffixLength: ").Append(DomainSuffixLength).Append("\n");
             sb.Append("  FixedDomainSuffix: ").Append(FixedDomainSuffix).Append("\n");
@@ -108,8 +108,9 @@ namespace akeyless.Model
         public bool Equals(EmailTokenizerInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DomainSuffixLength == input.DomainSuffixLength ||
@@ -135,10 +136,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.DomainSuffixLength.GetHashCode();
+                hashCode = (hashCode * 59) + this.DomainSuffixLength.GetHashCode();
                 if (this.FixedDomainSuffix != null)
-                    hashCode = hashCode * 59 + this.FixedDomainSuffix.GetHashCode();
-                hashCode = hashCode * 59 + this.KeepPrefixLength.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.FixedDomainSuffix.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.KeepPrefixLength.GetHashCode();
                 return hashCode;
             }
         }

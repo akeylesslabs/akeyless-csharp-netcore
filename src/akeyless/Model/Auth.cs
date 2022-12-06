@@ -207,7 +207,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Auth {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
@@ -258,8 +258,9 @@ namespace akeyless.Model
         public bool Equals(Auth input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -361,39 +362,71 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.AccessKey != null)
-                    hashCode = hashCode * 59 + this.AccessKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessKey.GetHashCode();
+                }
                 if (this.AccessType != null)
-                    hashCode = hashCode * 59 + this.AccessType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessType.GetHashCode();
+                }
                 if (this.AdminEmail != null)
-                    hashCode = hashCode * 59 + this.AdminEmail.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdminEmail.GetHashCode();
+                }
                 if (this.AdminPassword != null)
-                    hashCode = hashCode * 59 + this.AdminPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdminPassword.GetHashCode();
+                }
                 if (this.CertData != null)
-                    hashCode = hashCode * 59 + this.CertData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertData.GetHashCode();
+                }
                 if (this.CloudId != null)
-                    hashCode = hashCode * 59 + this.CloudId.GetHashCode();
-                hashCode = hashCode * 59 + this.Debug.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CloudId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Debug.GetHashCode();
                 if (this.GatewayUrl != null)
-                    hashCode = hashCode * 59 + this.GatewayUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GatewayUrl.GetHashCode();
+                }
                 if (this.GcpAudience != null)
-                    hashCode = hashCode * 59 + this.GcpAudience.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpAudience.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Jwt != null)
-                    hashCode = hashCode * 59 + this.Jwt.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Jwt.GetHashCode();
+                }
                 if (this.K8sAuthConfigName != null)
-                    hashCode = hashCode * 59 + this.K8sAuthConfigName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuthConfigName.GetHashCode();
+                }
                 if (this.K8sServiceAccountToken != null)
-                    hashCode = hashCode * 59 + this.K8sServiceAccountToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sServiceAccountToken.GetHashCode();
+                }
                 if (this.KeyData != null)
-                    hashCode = hashCode * 59 + this.KeyData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
+                }
                 if (this.LdapPassword != null)
-                    hashCode = hashCode * 59 + this.LdapPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapPassword.GetHashCode();
+                }
                 if (this.LdapUsername != null)
-                    hashCode = hashCode * 59 + this.LdapUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUsername.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

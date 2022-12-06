@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RuleAssigner {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  UniqueId: ").Append(UniqueId).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(RuleAssigner input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.UniqueId != null)
-                    hashCode = hashCode * 59 + this.UniqueId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueId.GetHashCode();
+                }
                 return hashCode;
             }
         }

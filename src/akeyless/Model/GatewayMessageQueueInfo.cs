@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayMessageQueueInfo {\n");
             sb.Append("  MqType: ").Append(MqType).Append("\n");
             sb.Append("  QueueName: ").Append(QueueName).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(GatewayMessageQueueInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.MqType == input.MqType ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.MqType != null)
-                    hashCode = hashCode * 59 + this.MqType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MqType.GetHashCode();
+                }
                 if (this.QueueName != null)
-                    hashCode = hashCode * 59 + this.QueueName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.QueueName.GetHashCode();
+                }
                 if (this.QueueUrl != null)
-                    hashCode = hashCode * 59 + this.QueueUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.QueueUrl.GetHashCode();
+                }
                 return hashCode;
             }
         }

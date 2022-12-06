@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SplunkLogForwardingConfig {\n");
             sb.Append("  SplunkIndex: ").Append(SplunkIndex).Append("\n");
             sb.Append("  SplunkSource: ").Append(SplunkSource).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(SplunkLogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.SplunkIndex == input.SplunkIndex ||
@@ -163,15 +164,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.SplunkIndex != null)
-                    hashCode = hashCode * 59 + this.SplunkIndex.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SplunkIndex.GetHashCode();
+                }
                 if (this.SplunkSource != null)
-                    hashCode = hashCode * 59 + this.SplunkSource.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SplunkSource.GetHashCode();
+                }
                 if (this.SplunkSourcetype != null)
-                    hashCode = hashCode * 59 + this.SplunkSourcetype.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SplunkSourcetype.GetHashCode();
+                }
                 if (this.SplunkToken != null)
-                    hashCode = hashCode * 59 + this.SplunkToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SplunkToken.GetHashCode();
+                }
                 if (this.SplunkUrl != null)
-                    hashCode = hashCode * 59 + this.SplunkUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SplunkUrl.GetHashCode();
+                }
                 return hashCode;
             }
         }

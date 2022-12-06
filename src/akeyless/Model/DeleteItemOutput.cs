@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteItemOutput {\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(DeleteItemOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeletionDate == input.DeletionDate ||
@@ -147,11 +148,15 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeletionDate != null)
-                    hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeletionDate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 if (this.ItemName != null)
-                    hashCode = hashCode * 59 + this.ItemName.GetHashCode();
-                hashCode = hashCode * 59 + this.VersionDeleted.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.VersionDeleted.GetHashCode();
                 return hashCode;
             }
         }

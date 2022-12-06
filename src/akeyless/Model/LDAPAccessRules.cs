@@ -80,7 +80,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class LDAPAccessRules {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  GenKeyPair: ").Append(GenKeyPair).Append("\n");
@@ -117,8 +117,9 @@ namespace akeyless.Model
         public bool Equals(LDAPAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alg == input.Alg ||
@@ -152,13 +153,21 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alg != null)
-                    hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alg.GetHashCode();
+                }
                 if (this.GenKeyPair != null)
-                    hashCode = hashCode * 59 + this.GenKeyPair.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GenKeyPair.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

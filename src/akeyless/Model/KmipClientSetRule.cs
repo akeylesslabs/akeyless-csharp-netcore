@@ -50,12 +50,14 @@ namespace akeyless.Model
         public KmipClientSetRule(List<string> capability = default(List<string>), string clientId = default(string), bool json = default(bool), string name = default(string), string path = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
-            if (capability == null) {
+            if (capability == null)
+            {
                 throw new ArgumentNullException("capability is a required property for KmipClientSetRule and cannot be null");
             }
             this.Capability = capability;
             // to ensure "path" is required (not null)
-            if (path == null) {
+            if (path == null)
+            {
                 throw new ArgumentNullException("path is a required property for KmipClientSetRule and cannot be null");
             }
             this.Path = path;
@@ -70,7 +72,7 @@ namespace akeyless.Model
         /// Access capabilities
         /// </summary>
         /// <value>Access capabilities</value>
-        [DataMember(Name = "capability", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "capability", IsRequired = true, EmitDefaultValue = true)]
         public List<string> Capability { get; set; }
 
         /// <summary>
@@ -96,7 +98,7 @@ namespace akeyless.Model
         /// Access path
         /// </summary>
         /// <value>Access path</value>
-        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
@@ -119,7 +121,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipClientSetRule {\n");
             sb.Append("  Capability: ").Append(Capability).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
@@ -159,8 +161,9 @@ namespace akeyless.Model
         public bool Equals(KmipClientSetRule input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Capability == input.Capability ||
@@ -209,18 +212,30 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Capability != null)
-                    hashCode = hashCode * 59 + this.Capability.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Capability.GetHashCode();
+                }
                 if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetTargetDetailsOutput {\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(GetTargetDetailsOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Target == input.Target ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Target != null)
-                    hashCode = hashCode * 59 + this.Target.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
+                }
                 if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                }
                 return hashCode;
             }
         }

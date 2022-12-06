@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetProducersListReplyObj {\n");
             sb.Append("  Producers: ").Append(Producers).Append("\n");
             sb.Append("  ProducersErrors: ").Append(ProducersErrors).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(GetProducersListReplyObj input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Producers == input.Producers ||
@@ -122,9 +123,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Producers != null)
-                    hashCode = hashCode * 59 + this.Producers.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Producers.GetHashCode();
+                }
                 if (this.ProducersErrors != null)
-                    hashCode = hashCode * 59 + this.ProducersErrors.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducersErrors.GetHashCode();
+                }
                 return hashCode;
             }
         }

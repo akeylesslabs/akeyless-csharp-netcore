@@ -64,7 +64,8 @@ namespace akeyless.Model
         public GatewayCreateProducerEks(string deleteProtection = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerEks and cannot be null");
             }
             this.Name = name;
@@ -159,7 +160,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -240,7 +241,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerEks {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
@@ -294,8 +295,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerEks input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -412,44 +414,80 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.EksAccessKeyId != null)
-                    hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksAccessKeyId.GetHashCode();
+                }
                 if (this.EksAssumeRole != null)
-                    hashCode = hashCode * 59 + this.EksAssumeRole.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksAssumeRole.GetHashCode();
+                }
                 if (this.EksClusterCaCert != null)
-                    hashCode = hashCode * 59 + this.EksClusterCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterCaCert.GetHashCode();
+                }
                 if (this.EksClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.EksClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterEndpoint.GetHashCode();
+                }
                 if (this.EksClusterName != null)
-                    hashCode = hashCode * 59 + this.EksClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterName.GetHashCode();
+                }
                 if (this.EksRegion != null)
-                    hashCode = hashCode * 59 + this.EksRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksRegion.GetHashCode();
+                }
                 if (this.EksSecretAccessKey != null)
-                    hashCode = hashCode * 59 + this.EksSecretAccessKey.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksSecretAccessKey.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAllowPortForwading.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.SecureAccessClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessClusterEndpoint.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

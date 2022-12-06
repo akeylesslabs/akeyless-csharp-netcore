@@ -63,7 +63,8 @@ namespace akeyless.Model
         public GatewayUpdateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerGke and cannot be null");
             }
             this.Name = name;
@@ -142,7 +143,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -230,7 +231,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerGke {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
@@ -283,8 +284,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerGke input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -396,42 +398,76 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.GkeAccountKey != null)
-                    hashCode = hashCode * 59 + this.GkeAccountKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeAccountKey.GetHashCode();
+                }
                 if (this.GkeClusterCert != null)
-                    hashCode = hashCode * 59 + this.GkeClusterCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterCert.GetHashCode();
+                }
                 if (this.GkeClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.GkeClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterEndpoint.GetHashCode();
+                }
                 if (this.GkeClusterName != null)
-                    hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterName.GetHashCode();
+                }
                 if (this.GkeServiceAccountEmail != null)
-                    hashCode = hashCode * 59 + this.GkeServiceAccountEmail.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeServiceAccountEmail.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAllowPortForwading.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.SecureAccessClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessClusterEndpoint.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

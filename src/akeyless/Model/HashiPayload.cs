@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class HashiPayload {\n");
             sb.Append("  ImportAsJson: ").Append(ImportAsJson).Append("\n");
             sb.Append("  Namespaces: ").Append(Namespaces).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(HashiPayload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ImportAsJson == input.ImportAsJson ||
@@ -148,13 +149,19 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.ImportAsJson.GetHashCode();
+                hashCode = (hashCode * 59) + this.ImportAsJson.GetHashCode();
                 if (this.Namespaces != null)
-                    hashCode = hashCode * 59 + this.Namespaces.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Namespaces.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                }
                 return hashCode;
             }
         }

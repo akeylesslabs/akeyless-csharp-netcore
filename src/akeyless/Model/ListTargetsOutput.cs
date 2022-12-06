@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ListTargetsOutput {\n");
             sb.Append("  NextPage: ").Append(NextPage).Append("\n");
             sb.Append("  Targets: ").Append(Targets).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(ListTargetsOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.NextPage == input.NextPage ||
@@ -122,9 +123,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.NextPage != null)
-                    hashCode = hashCode * 59 + this.NextPage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NextPage.GetHashCode();
+                }
                 if (this.Targets != null)
-                    hashCode = hashCode * 59 + this.Targets.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Targets.GetHashCode();
+                }
                 return hashCode;
             }
         }

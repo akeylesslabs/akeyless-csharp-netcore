@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class LastStatusInfo {\n");
             sb.Append("  MigrationsStatus: ").Append(MigrationsStatus).Append("\n");
             sb.Append("  ProducersErrors: ").Append(ProducersErrors).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(LastStatusInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.MigrationsStatus == input.MigrationsStatus ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.MigrationsStatus != null)
-                    hashCode = hashCode * 59 + this.MigrationsStatus.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationsStatus.GetHashCode();
+                }
                 if (this.ProducersErrors != null)
-                    hashCode = hashCode * 59 + this.ProducersErrors.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducersErrors.GetHashCode();
+                }
                 return hashCode;
             }
         }

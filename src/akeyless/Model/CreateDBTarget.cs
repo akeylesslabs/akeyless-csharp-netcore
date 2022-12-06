@@ -67,12 +67,14 @@ namespace akeyless.Model
         public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), bool json = default(bool), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
-            if (dbType == null) {
+            if (dbType == null)
+            {
                 throw new ArgumentNullException("dbType is a required property for CreateDBTarget and cannot be null");
             }
             this.DbType = dbType;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateDBTarget and cannot be null");
             }
             this.Name = name;
@@ -130,7 +132,7 @@ namespace akeyless.Model
         /// <summary>
         /// Gets or Sets DbType
         /// </summary>
-        [DataMember(Name = "db-type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "db-type", IsRequired = true, EmitDefaultValue = true)]
         public string DbType { get; set; }
 
         /// <summary>
@@ -198,7 +200,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -265,7 +267,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateDBTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
@@ -322,8 +324,9 @@ namespace akeyless.Model
         public bool Equals(CreateDBTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Comment == input.Comment ||
@@ -454,50 +457,92 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.DbName != null)
-                    hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbName.GetHashCode();
+                }
                 if (this.DbServerCertificates != null)
-                    hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbServerCertificates.GetHashCode();
+                }
                 if (this.DbServerName != null)
-                    hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbServerName.GetHashCode();
+                }
                 if (this.DbType != null)
-                    hashCode = hashCode * 59 + this.DbType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbType.GetHashCode();
+                }
                 if (this.Host != null)
-                    hashCode = hashCode * 59 + this.Host.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
-                hashCode = hashCode * 59 + this.MongodbAtlas.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MongodbAtlas.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)
-                    hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbAtlasApiPrivateKey.GetHashCode();
+                }
                 if (this.MongodbAtlasApiPublicKey != null)
-                    hashCode = hashCode * 59 + this.MongodbAtlasApiPublicKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbAtlasApiPublicKey.GetHashCode();
+                }
                 if (this.MongodbAtlasProjectId != null)
-                    hashCode = hashCode * 59 + this.MongodbAtlasProjectId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbAtlasProjectId.GetHashCode();
+                }
                 if (this.MongodbDefaultAuthDb != null)
-                    hashCode = hashCode * 59 + this.MongodbDefaultAuthDb.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbDefaultAuthDb.GetHashCode();
+                }
                 if (this.MongodbUriOptions != null)
-                    hashCode = hashCode * 59 + this.MongodbUriOptions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbUriOptions.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.OracleServiceName != null)
-                    hashCode = hashCode * 59 + this.OracleServiceName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OracleServiceName.GetHashCode();
+                }
                 if (this.Port != null)
-                    hashCode = hashCode * 59 + this.Port.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
+                }
                 if (this.Pwd != null)
-                    hashCode = hashCode * 59 + this.Pwd.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Pwd.GetHashCode();
+                }
                 if (this.SnowflakeAccount != null)
-                    hashCode = hashCode * 59 + this.SnowflakeAccount.GetHashCode();
-                hashCode = hashCode * 59 + this.Ssl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SnowflakeAccount.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ssl.GetHashCode();
                 if (this.SslCertificate != null)
-                    hashCode = hashCode * 59 + this.SslCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SslCertificate.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserName != null)
-                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserName.GetHashCode();
+                }
                 return hashCode;
             }
         }

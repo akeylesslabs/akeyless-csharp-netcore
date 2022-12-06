@@ -49,12 +49,14 @@ namespace akeyless.Model
         public EncryptWithClassicKey(string displayId = default(string), bool json = default(bool), string plaintext = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            if (displayId == null) {
+            if (displayId == null)
+            {
                 throw new ArgumentNullException("displayId is a required property for EncryptWithClassicKey and cannot be null");
             }
             this.DisplayId = displayId;
             // to ensure "plaintext" is required (not null)
-            if (plaintext == null) {
+            if (plaintext == null)
+            {
                 throw new ArgumentNullException("plaintext is a required property for EncryptWithClassicKey and cannot be null");
             }
             this.Plaintext = plaintext;
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// The name of the key to use in the encryption process
         /// </summary>
         /// <value>The name of the key to use in the encryption process</value>
-        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = true)]
         public string DisplayId { get; set; }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace akeyless.Model
         /// Data to be encrypted
         /// </summary>
         /// <value>Data to be encrypted</value>
-        [DataMember(Name = "plaintext", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "plaintext", IsRequired = true, EmitDefaultValue = true)]
         public string Plaintext { get; set; }
 
         /// <summary>
@@ -103,7 +105,7 @@ namespace akeyless.Model
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
         public int _Version { get; set; }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class EncryptWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -151,8 +153,9 @@ namespace akeyless.Model
         public bool Equals(EncryptWithClassicKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -194,15 +197,23 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Plaintext != null)
-                    hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Plaintext.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

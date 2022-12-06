@@ -125,7 +125,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UIDTokenDetails {\n");
             sb.Append("  Children: ").Append(Children).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
@@ -168,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(UIDTokenDetails input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Children == input.Children ||
@@ -229,20 +230,30 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Children != null)
-                    hashCode = hashCode * 59 + this.Children.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Children.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.DenyInheritance.GetHashCode();
-                hashCode = hashCode * 59 + this.DenyRotate.GetHashCode();
-                hashCode = hashCode * 59 + this.Depth.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DenyInheritance.GetHashCode();
+                hashCode = (hashCode * 59) + this.DenyRotate.GetHashCode();
+                hashCode = (hashCode * 59) + this.Depth.GetHashCode();
                 if (this.ExpiredDate != null)
-                    hashCode = hashCode * 59 + this.ExpiredDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExpiredDate.GetHashCode();
+                }
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.LastRotate != null)
-                    hashCode = hashCode * 59 + this.LastRotate.GetHashCode();
-                hashCode = hashCode * 59 + this.Revoked.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastRotate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Revoked.GetHashCode();
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 return hashCode;
             }
         }

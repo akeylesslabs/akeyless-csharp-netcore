@@ -135,7 +135,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class OIDCAccessRules {\n");
             sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
@@ -178,8 +178,9 @@ namespace akeyless.Model
         public bool Equals(OIDCAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowedRedirectURIs == input.AllowedRedirectURIs ||
@@ -245,24 +246,42 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AllowedRedirectURIs != null)
-                    hashCode = hashCode * 59 + this.AllowedRedirectURIs.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedRedirectURIs.GetHashCode();
+                }
                 if (this.Audience != null)
-                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
                 if (this.BoundClaims != null)
-                    hashCode = hashCode * 59 + this.BoundClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundClaims.GetHashCode();
+                }
                 if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
                 if (this.ClientSecret != null)
-                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
-                hashCode = hashCode * 59 + this.IsInternal.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsInternal.GetHashCode();
                 if (this.Issuer != null)
-                    hashCode = hashCode * 59 + this.Issuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
+                }
                 if (this.RequiredScopes != null)
-                    hashCode = hashCode * 59 + this.RequiredScopes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RequiredScopes.GetHashCode();
+                }
                 if (this.RequiredScopesPrefix != null)
-                    hashCode = hashCode * 59 + this.RequiredScopesPrefix.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RequiredScopesPrefix.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

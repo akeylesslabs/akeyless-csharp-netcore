@@ -49,7 +49,8 @@ namespace akeyless.Model
         public DeleteTarget(bool forceDeletion = false, bool json = default(bool), string name = default(string), int targetVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for DeleteTarget and cannot be null");
             }
             this.Name = name;
@@ -78,7 +79,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -108,7 +109,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteTarget {\n");
             sb.Append("  ForceDeletion: ").Append(ForceDeletion).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -147,8 +148,9 @@ namespace akeyless.Model
         public bool Equals(DeleteTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ForceDeletion == input.ForceDeletion ||
@@ -188,15 +190,21 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.ForceDeletion.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.ForceDeletion.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.TargetVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TargetVersion.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -55,7 +55,8 @@ namespace akeyless.Model
         public CreateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateGKETarget and cannot be null");
             }
             this.Name = name;
@@ -132,7 +133,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateGKETarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
@@ -206,8 +207,9 @@ namespace akeyless.Model
         public bool Equals(CreateGKETarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Comment == input.Comment ||
@@ -279,27 +281,47 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.GkeAccountKey != null)
-                    hashCode = hashCode * 59 + this.GkeAccountKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeAccountKey.GetHashCode();
+                }
                 if (this.GkeClusterCert != null)
-                    hashCode = hashCode * 59 + this.GkeClusterCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterCert.GetHashCode();
+                }
                 if (this.GkeClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.GkeClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterEndpoint.GetHashCode();
+                }
                 if (this.GkeClusterName != null)
-                    hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterName.GetHashCode();
+                }
                 if (this.GkeServiceAccountEmail != null)
-                    hashCode = hashCode * 59 + this.GkeServiceAccountEmail.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeServiceAccountEmail.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
                 return hashCode;
             }
         }

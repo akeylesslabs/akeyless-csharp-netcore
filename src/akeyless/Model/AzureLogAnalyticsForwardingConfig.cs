@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AzureLogAnalyticsForwardingConfig {\n");
             sb.Append("  AzureWorkspaceId: ").Append(AzureWorkspaceId).Append("\n");
             sb.Append("  AzureWorkspaceKey: ").Append(AzureWorkspaceKey).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(AzureLogAnalyticsForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AzureWorkspaceId == input.AzureWorkspaceId ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AzureWorkspaceId != null)
-                    hashCode = hashCode * 59 + this.AzureWorkspaceId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureWorkspaceId.GetHashCode();
+                }
                 if (this.AzureWorkspaceKey != null)
-                    hashCode = hashCode * 59 + this.AzureWorkspaceKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureWorkspaceKey.GetHashCode();
+                }
                 return hashCode;
             }
         }

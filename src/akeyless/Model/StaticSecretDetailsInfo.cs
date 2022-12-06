@@ -70,7 +70,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretDetailsInfo {\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
@@ -106,8 +106,9 @@ namespace akeyless.Model
         public bool Equals(StaticSecretDetailsInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Username == input.Username ||
@@ -137,11 +138,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
                 if (this.Website != null)
-                    hashCode = hashCode * 59 + this.Website.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Website.GetHashCode();
+                }
                 if (this.Websites != null)
-                    hashCode = hashCode * 59 + this.Websites.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Websites.GetHashCode();
+                }
                 return hashCode;
             }
         }

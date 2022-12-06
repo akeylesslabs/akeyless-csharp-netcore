@@ -48,7 +48,8 @@ namespace akeyless.Model
         public RollbackSecret(bool json = default(bool), string name = default(string), int oldVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for RollbackSecret and cannot be null");
             }
             this.Name = name;
@@ -69,14 +70,14 @@ namespace akeyless.Model
         /// Secret name
         /// </summary>
         /// <value>Secret name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Old secret version to rollback to
         /// </summary>
         /// <value>Old secret version to rollback to</value>
-        [DataMember(Name = "old-version", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "old-version", IsRequired = true, EmitDefaultValue = true)]
         public int OldVersion { get; set; }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RollbackSecret {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -137,8 +138,9 @@ namespace akeyless.Model
         public bool Equals(RollbackSecret input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -174,14 +176,20 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.OldVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.OldVersion.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

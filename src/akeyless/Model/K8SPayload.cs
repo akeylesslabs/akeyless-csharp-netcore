@@ -117,7 +117,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class K8SPayload {\n");
             sb.Append("  Ca: ").Append(Ca).Append("\n");
             sb.Append("  ClientCert: ").Append(ClientCert).Append("\n");
@@ -159,8 +159,9 @@ namespace akeyless.Model
         public bool Equals(K8SPayload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Ca == input.Ca ||
@@ -221,22 +222,38 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Ca != null)
-                    hashCode = hashCode * 59 + this.Ca.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Ca.GetHashCode();
+                }
                 if (this.ClientCert != null)
-                    hashCode = hashCode * 59 + this.ClientCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientCert.GetHashCode();
+                }
                 if (this.ClientKey != null)
-                    hashCode = hashCode * 59 + this.ClientKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientKey.GetHashCode();
+                }
                 if (this.Namespace != null)
-                    hashCode = hashCode * 59 + this.Namespace.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Namespace.GetHashCode();
+                }
                 if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Password.GetHashCode();
+                }
                 if (this.Server != null)
-                    hashCode = hashCode * 59 + this.Server.GetHashCode();
-                hashCode = hashCode * 59 + this.SkipSystem.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Server.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SkipSystem.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
                 return hashCode;
             }
         }

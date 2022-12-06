@@ -101,7 +101,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TmpUserData {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
@@ -141,8 +141,9 @@ namespace akeyless.Model
         public bool Equals(TmpUserData input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -191,18 +192,30 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.CreationDate != null)
-                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
-                hashCode = hashCode * 59 + this.CustomTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CustomTtl.GetHashCode();
                 if (this.DynamicSecretType != null)
-                    hashCode = hashCode * 59 + this.DynamicSecretType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DynamicSecretType.GetHashCode();
+                }
                 if (this.Host != null)
-                    hashCode = hashCode * 59 + this.Host.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.SubClaims != null)
-                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
+                }
                 return hashCode;
             }
         }

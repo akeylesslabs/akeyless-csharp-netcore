@@ -49,7 +49,8 @@ namespace akeyless.Model
         public KmipServerSetup(long certificateTtl = default(long), string hostname = default(string), bool json = default(bool), string root = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "hostname" is required (not null)
-            if (hostname == null) {
+            if (hostname == null)
+            {
                 throw new ArgumentNullException("hostname is a required property for KmipServerSetup and cannot be null");
             }
             this.Hostname = hostname;
@@ -70,7 +71,7 @@ namespace akeyless.Model
         /// Hostname
         /// </summary>
         /// <value>Hostname</value>
-        [DataMember(Name = "hostname", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "hostname", IsRequired = true, EmitDefaultValue = true)]
         public string Hostname { get; set; }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipServerSetup {\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
@@ -145,8 +146,9 @@ namespace akeyless.Model
         public bool Equals(KmipServerSetup input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CertificateTtl == input.CertificateTtl ||
@@ -187,16 +189,24 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.CertificateTtl.GetHashCode();
+                hashCode = (hashCode * 59) + this.CertificateTtl.GetHashCode();
                 if (this.Hostname != null)
-                    hashCode = hashCode * 59 + this.Hostname.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Hostname.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Root != null)
-                    hashCode = hashCode * 59 + this.Root.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Root.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

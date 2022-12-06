@@ -117,7 +117,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AllowedAccess {\n");
             sb.Append("  AccId: ").Append(AccId).Append("\n");
             sb.Append("  AccessRulesType: ").Append(AccessRulesType).Append("\n");
@@ -159,8 +159,9 @@ namespace akeyless.Model
         public bool Equals(AllowedAccess input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccId == input.AccId ||
@@ -217,20 +218,32 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccId != null)
-                    hashCode = hashCode * 59 + this.AccId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccId.GetHashCode();
+                }
                 if (this.AccessRulesType != null)
-                    hashCode = hashCode * 59 + this.AccessRulesType.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowedApi.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowedsLogin.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessRulesType.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AllowedApi.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowedsLogin.GetHashCode();
                 if (this.ErrMsg != null)
-                    hashCode = hashCode * 59 + this.ErrMsg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ErrMsg.GetHashCode();
+                }
                 if (this.Hash != null)
-                    hashCode = hashCode * 59 + this.Hash.GetHashCode();
-                hashCode = hashCode * 59 + this.IsValid.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Hash.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsValid.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.SubClaims != null)
-                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
+                }
                 return hashCode;
             }
         }

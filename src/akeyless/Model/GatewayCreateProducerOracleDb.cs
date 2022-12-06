@@ -64,7 +64,8 @@ namespace akeyless.Model
         public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerOracleDb and cannot be null");
             }
             this.Name = name;
@@ -125,7 +126,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -242,7 +243,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerOracleDb {\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
@@ -296,8 +297,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerOracleDb input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DbServerCertificates == input.DbServerCertificates ||
@@ -416,45 +418,83 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DbServerCertificates != null)
-                    hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbServerCertificates.GetHashCode();
+                }
                 if (this.DbServerName != null)
-                    hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbServerName.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.OracleHost != null)
-                    hashCode = hashCode * 59 + this.OracleHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OracleHost.GetHashCode();
+                }
                 if (this.OraclePassword != null)
-                    hashCode = hashCode * 59 + this.OraclePassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OraclePassword.GetHashCode();
+                }
                 if (this.OraclePort != null)
-                    hashCode = hashCode * 59 + this.OraclePort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OraclePort.GetHashCode();
+                }
                 if (this.OracleScreationStatements != null)
-                    hashCode = hashCode * 59 + this.OracleScreationStatements.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OracleScreationStatements.GetHashCode();
+                }
                 if (this.OracleServiceName != null)
-                    hashCode = hashCode * 59 + this.OracleServiceName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OracleServiceName.GetHashCode();
+                }
                 if (this.OracleUsername != null)
-                    hashCode = hashCode * 59 + this.OracleUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OracleUsername.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

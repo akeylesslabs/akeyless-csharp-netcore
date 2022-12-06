@@ -51,7 +51,8 @@ namespace akeyless.Model
         public DeleteItem(string accessibility = "regular", bool deleteImmediately = false, long deleteInDays = 7, bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for DeleteItem and cannot be null");
             }
             this.Name = name;
@@ -97,7 +98,7 @@ namespace akeyless.Model
         /// Item name
         /// </summary>
         /// <value>Item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteItem {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  DeleteImmediately: ").Append(DeleteImmediately).Append("\n");
@@ -168,8 +169,9 @@ namespace akeyless.Model
         public bool Equals(DeleteItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Accessibility == input.Accessibility ||
@@ -219,17 +221,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Accessibility != null)
-                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
-                hashCode = hashCode * 59 + this.DeleteImmediately.GetHashCode();
-                hashCode = hashCode * 59 + this.DeleteInDays.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DeleteImmediately.GetHashCode();
+                hashCode = (hashCode * 59) + this.DeleteInDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

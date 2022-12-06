@@ -71,7 +71,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class EmailPassAccessRules {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -107,8 +107,9 @@ namespace akeyless.Model
         public bool Equals(EmailPassAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alg == input.Alg ||
@@ -137,11 +138,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alg != null)
-                    hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alg.GetHashCode();
+                }
                 if (this.Email != null)
-                    hashCode = hashCode * 59 + this.Email.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                }
                 if (this.HashPass != null)
-                    hashCode = hashCode * 59 + this.HashPass.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HashPass.GetHashCode();
+                }
                 return hashCode;
             }
         }

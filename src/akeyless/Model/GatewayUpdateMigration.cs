@@ -92,7 +92,8 @@ namespace akeyless.Model
         public GatewayUpdateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string asSshPort = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = default(bool), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "targetLocation" is required (not null)
-            if (targetLocation == null) {
+            if (targetLocation == null)
+            {
                 throw new ArgumentNullException("targetLocation is a required property for GatewayUpdateMigration and cannot be null");
             }
             this.TargetLocation = targetLocation;
@@ -472,7 +473,7 @@ namespace akeyless.Model
         /// Target location in Akeyless for imported secrets
         /// </summary>
         /// <value>Target location in Akeyless for imported secrets</value>
-        [DataMember(Name = "target-location", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "target-location", IsRequired = true, EmitDefaultValue = true)]
         public string TargetLocation { get; set; }
 
         /// <summary>
@@ -495,7 +496,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateMigration {\n");
             sb.Append("  _1passwordEmail: ").Append(_1passwordEmail).Append("\n");
             sb.Append("  _1passwordPassword: ").Append(_1passwordPassword).Append("\n");
@@ -577,8 +578,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateMigration input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this._1passwordEmail == input._1passwordEmail ||
@@ -838,99 +840,189 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this._1passwordEmail != null)
-                    hashCode = hashCode * 59 + this._1passwordEmail.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordEmail.GetHashCode();
+                }
                 if (this._1passwordPassword != null)
-                    hashCode = hashCode * 59 + this._1passwordPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordPassword.GetHashCode();
+                }
                 if (this._1passwordSecretKey != null)
-                    hashCode = hashCode * 59 + this._1passwordSecretKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordSecretKey.GetHashCode();
+                }
                 if (this._1passwordUrl != null)
-                    hashCode = hashCode * 59 + this._1passwordUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordUrl.GetHashCode();
+                }
                 if (this._1passwordVaults != null)
-                    hashCode = hashCode * 59 + this._1passwordVaults.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordVaults.GetHashCode();
+                }
                 if (this.AdAutoRotate != null)
-                    hashCode = hashCode * 59 + this.AdAutoRotate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdAutoRotate.GetHashCode();
+                }
                 if (this.AdComputerBaseDn != null)
-                    hashCode = hashCode * 59 + this.AdComputerBaseDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdComputerBaseDn.GetHashCode();
+                }
                 if (this.AdDiscoverLocalUsers != null)
-                    hashCode = hashCode * 59 + this.AdDiscoverLocalUsers.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdDiscoverLocalUsers.GetHashCode();
+                }
                 if (this.AdDomainName != null)
-                    hashCode = hashCode * 59 + this.AdDomainName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdDomainName.GetHashCode();
+                }
                 if (this.AdDomainUsersPathTemplate != null)
-                    hashCode = hashCode * 59 + this.AdDomainUsersPathTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdDomainUsersPathTemplate.GetHashCode();
+                }
                 if (this.AdLocalUsersIgnore != null)
-                    hashCode = hashCode * 59 + this.AdLocalUsersIgnore.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdLocalUsersIgnore.GetHashCode();
+                }
                 if (this.AdLocalUsersPathTemplate != null)
-                    hashCode = hashCode * 59 + this.AdLocalUsersPathTemplate.GetHashCode();
-                hashCode = hashCode * 59 + this.AdRotationHour.GetHashCode();
-                hashCode = hashCode * 59 + this.AdRotationInterval.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdLocalUsersPathTemplate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AdRotationHour.GetHashCode();
+                hashCode = (hashCode * 59) + this.AdRotationInterval.GetHashCode();
                 if (this.AdSraEnableRdp != null)
-                    hashCode = hashCode * 59 + this.AdSraEnableRdp.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdSraEnableRdp.GetHashCode();
+                }
                 if (this.AdTargetName != null)
-                    hashCode = hashCode * 59 + this.AdTargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdTargetName.GetHashCode();
+                }
                 if (this.AdTargetsPathTemplate != null)
-                    hashCode = hashCode * 59 + this.AdTargetsPathTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdTargetsPathTemplate.GetHashCode();
+                }
                 if (this.AdUserBaseDn != null)
-                    hashCode = hashCode * 59 + this.AdUserBaseDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdUserBaseDn.GetHashCode();
+                }
                 if (this.AdUserGroups != null)
-                    hashCode = hashCode * 59 + this.AdUserGroups.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdUserGroups.GetHashCode();
+                }
                 if (this.AsSshPort != null)
-                    hashCode = hashCode * 59 + this.AsSshPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AsSshPort.GetHashCode();
+                }
                 if (this.AwsKey != null)
-                    hashCode = hashCode * 59 + this.AwsKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsKey.GetHashCode();
+                }
                 if (this.AwsKeyId != null)
-                    hashCode = hashCode * 59 + this.AwsKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsKeyId.GetHashCode();
+                }
                 if (this.AwsRegion != null)
-                    hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsRegion.GetHashCode();
+                }
                 if (this.AzureClientId != null)
-                    hashCode = hashCode * 59 + this.AzureClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientId.GetHashCode();
+                }
                 if (this.AzureKvName != null)
-                    hashCode = hashCode * 59 + this.AzureKvName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureKvName.GetHashCode();
+                }
                 if (this.AzureSecret != null)
-                    hashCode = hashCode * 59 + this.AzureSecret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureSecret.GetHashCode();
+                }
                 if (this.AzureTenantId != null)
-                    hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureTenantId.GetHashCode();
+                }
                 if (this.GcpKey != null)
-                    hashCode = hashCode * 59 + this.GcpKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
+                }
                 if (this.HashiJson != null)
-                    hashCode = hashCode * 59 + this.HashiJson.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HashiJson.GetHashCode();
+                }
                 if (this.HashiNs != null)
-                    hashCode = hashCode * 59 + this.HashiNs.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HashiNs.GetHashCode();
+                }
                 if (this.HashiToken != null)
-                    hashCode = hashCode * 59 + this.HashiToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HashiToken.GetHashCode();
+                }
                 if (this.HashiUrl != null)
-                    hashCode = hashCode * 59 + this.HashiUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HashiUrl.GetHashCode();
+                }
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.K8sCaCertificate != null)
-                    hashCode = hashCode * 59 + this.K8sCaCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sCaCertificate.GetHashCode();
+                }
                 if (this.K8sClientCertificate != null)
-                    hashCode = hashCode * 59 + this.K8sClientCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientCertificate.GetHashCode();
+                }
                 if (this.K8sClientKey != null)
-                    hashCode = hashCode * 59 + this.K8sClientKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientKey.GetHashCode();
+                }
                 if (this.K8sNamespace != null)
-                    hashCode = hashCode * 59 + this.K8sNamespace.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sNamespace.GetHashCode();
+                }
                 if (this.K8sPassword != null)
-                    hashCode = hashCode * 59 + this.K8sPassword.GetHashCode();
-                hashCode = hashCode * 59 + this.K8sSkipSystem.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sPassword.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.K8sSkipSystem.GetHashCode();
                 if (this.K8sToken != null)
-                    hashCode = hashCode * 59 + this.K8sToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sToken.GetHashCode();
+                }
                 if (this.K8sUrl != null)
-                    hashCode = hashCode * 59 + this.K8sUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sUrl.GetHashCode();
+                }
                 if (this.K8sUsername != null)
-                    hashCode = hashCode * 59 + this.K8sUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sUsername.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
                 if (this.TargetLocation != null)
-                    hashCode = hashCode * 59 + this.TargetLocation.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetLocation.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

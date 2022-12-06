@@ -318,7 +318,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Item {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
@@ -385,8 +385,9 @@ namespace akeyless.Model
         public bool Equals(Item input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessDate == input.AccessDate ||
@@ -566,64 +567,114 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessDate != null)
-                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
-                hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
                 if (this.CertIssuerSignerKeyName != null)
-                    hashCode = hashCode * 59 + this.CertIssuerSignerKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerSignerKeyName.GetHashCode();
+                }
                 if (this.CertificateIssueDetails != null)
-                    hashCode = hashCode * 59 + this.CertificateIssueDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertificateIssueDetails.GetHashCode();
+                }
                 if (this.Certificates != null)
-                    hashCode = hashCode * 59 + this.Certificates.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Certificates.GetHashCode();
+                }
                 if (this.ClientPermissions != null)
-                    hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientPermissions.GetHashCode();
+                }
                 if (this.CreationDate != null)
-                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
                 if (this.CustomerFragmentId != null)
-                    hashCode = hashCode * 59 + this.CustomerFragmentId.GetHashCode();
-                hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFragmentId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 if (this.DeletionDate != null)
-                    hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeletionDate.GetHashCode();
+                }
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.IsEnabled.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemAccessibility.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsEnabled.GetHashCode();
+                hashCode = (hashCode * 59) + this.ItemAccessibility.GetHashCode();
                 if (this.ItemGeneralInfo != null)
-                    hashCode = hashCode * 59 + this.ItemGeneralInfo.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemGeneralInfo.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 if (this.ItemMetadata != null)
-                    hashCode = hashCode * 59 + this.ItemMetadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemMetadata.GetHashCode();
+                }
                 if (this.ItemName != null)
-                    hashCode = hashCode * 59 + this.ItemName.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemSize.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemSize.GetHashCode();
                 if (this.ItemState != null)
-                    hashCode = hashCode * 59 + this.ItemState.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemState.GetHashCode();
+                }
                 if (this.ItemSubType != null)
-                    hashCode = hashCode * 59 + this.ItemSubType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemSubType.GetHashCode();
+                }
                 if (this.ItemTags != null)
-                    hashCode = hashCode * 59 + this.ItemTags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemTags.GetHashCode();
+                }
                 if (this.ItemTargetsAssoc != null)
-                    hashCode = hashCode * 59 + this.ItemTargetsAssoc.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemTargetsAssoc.GetHashCode();
+                }
                 if (this.ItemType != null)
-                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemType.GetHashCode();
+                }
                 if (this.ItemVersions != null)
-                    hashCode = hashCode * 59 + this.ItemVersions.GetHashCode();
-                hashCode = hashCode * 59 + this.LastVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemVersions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.LastVersion.GetHashCode();
                 if (this.ModificationDate != null)
-                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();
+                }
                 if (this.NextRotationDate != null)
-                    hashCode = hashCode * 59 + this.NextRotationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NextRotationDate.GetHashCode();
+                }
                 if (this.ProtectionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKeyName.GetHashCode();
+                }
                 if (this.ProtectionKeyType != null)
-                    hashCode = hashCode * 59 + this.ProtectionKeyType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKeyType.GetHashCode();
+                }
                 if (this.PublicValue != null)
-                    hashCode = hashCode * 59 + this.PublicValue.GetHashCode();
-                hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PublicValue.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
                 if (this.SharedBy != null)
-                    hashCode = hashCode * 59 + this.SharedBy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SharedBy.GetHashCode();
+                }
                 if (this.TargetVersions != null)
-                    hashCode = hashCode * 59 + this.TargetVersions.GetHashCode();
-                hashCode = hashCode * 59 + this.WithCustomerFragment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetVersions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WithCustomerFragment.GetHashCode();
                 return hashCode;
             }
         }

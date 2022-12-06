@@ -47,7 +47,8 @@ namespace akeyless.Model
         public GatewayDeleteMigration(string id = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "id" is required (not null)
-            if (id == null) {
+            if (id == null)
+            {
                 throw new ArgumentNullException("id is a required property for GatewayDeleteMigration and cannot be null");
             }
             this.Id = id;
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// Migration ID
         /// </summary>
         /// <value>Migration ID</value>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayDeleteMigration {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -127,8 +128,9 @@ namespace akeyless.Model
         public bool Equals(GatewayDeleteMigration input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Id == input.Id ||
@@ -161,12 +163,18 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

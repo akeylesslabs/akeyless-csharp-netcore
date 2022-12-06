@@ -50,12 +50,14 @@ namespace akeyless.Model
         public AssocRoleAuthMethod(string amName = default(string), string caseSensitive = default(string), bool json = default(bool), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "amName" is required (not null)
-            if (amName == null) {
+            if (amName == null)
+            {
                 throw new ArgumentNullException("amName is a required property for AssocRoleAuthMethod and cannot be null");
             }
             this.AmName = amName;
             // to ensure "roleName" is required (not null)
-            if (roleName == null) {
+            if (roleName == null)
+            {
                 throw new ArgumentNullException("roleName is a required property for AssocRoleAuthMethod and cannot be null");
             }
             this.RoleName = roleName;
@@ -70,7 +72,7 @@ namespace akeyless.Model
         /// The auth method to associate
         /// </summary>
         /// <value>The auth method to associate</value>
-        [DataMember(Name = "am-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "am-name", IsRequired = true, EmitDefaultValue = true)]
         public string AmName { get; set; }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace akeyless.Model
         /// The role to associate
         /// </summary>
         /// <value>The role to associate</value>
-        [DataMember(Name = "role-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "role-name", IsRequired = true, EmitDefaultValue = true)]
         public string RoleName { get; set; }
 
         /// <summary>
@@ -120,7 +122,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AssocRoleAuthMethod {\n");
             sb.Append("  AmName: ").Append(AmName).Append("\n");
             sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
@@ -160,8 +162,9 @@ namespace akeyless.Model
         public bool Equals(AssocRoleAuthMethod input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AmName == input.AmName ||
@@ -210,18 +213,30 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AmName != null)
-                    hashCode = hashCode * 59 + this.AmName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AmName.GetHashCode();
+                }
                 if (this.CaseSensitive != null)
-                    hashCode = hashCode * 59 + this.CaseSensitive.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CaseSensitive.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.RoleName != null)
-                    hashCode = hashCode * 59 + this.RoleName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleName.GetHashCode();
+                }
                 if (this.SubClaims != null)
-                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

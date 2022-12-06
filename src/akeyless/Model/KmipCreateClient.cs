@@ -49,7 +49,8 @@ namespace akeyless.Model
         public KmipCreateClient(string activateKeysOnCreation = default(string), long certificateTtl = default(long), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for KmipCreateClient and cannot be null");
             }
             this.Name = name;
@@ -83,7 +84,7 @@ namespace akeyless.Model
         /// Client name
         /// </summary>
         /// <value>Client name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipCreateClient {\n");
             sb.Append("  ActivateKeysOnCreation: ").Append(ActivateKeysOnCreation).Append("\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
@@ -145,8 +146,9 @@ namespace akeyless.Model
         public bool Equals(KmipCreateClient input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ActivateKeysOnCreation == input.ActivateKeysOnCreation ||
@@ -188,15 +190,23 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ActivateKeysOnCreation != null)
-                    hashCode = hashCode * 59 + this.ActivateKeysOnCreation.GetHashCode();
-                hashCode = hashCode * 59 + this.CertificateTtl.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ActivateKeysOnCreation.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CertificateTtl.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

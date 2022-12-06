@@ -54,17 +54,20 @@ namespace akeyless.Model
         public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string _in = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
-            if (_in == null) {
+            if (_in == null)
+            {
                 throw new ArgumentNullException("_in is a required property for UploadPKCS12 and cannot be null");
             }
             this.In = _in;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UploadPKCS12 and cannot be null");
             }
             this.Name = name;
             // to ensure "passphrase" is required (not null)
-            if (passphrase == null) {
+            if (passphrase == null)
+            {
                 throw new ArgumentNullException("passphrase is a required property for UploadPKCS12 and cannot be null");
             }
             this.Passphrase = passphrase;
@@ -96,7 +99,7 @@ namespace akeyless.Model
         /// PKCS#12 input file (private key and certificate only)
         /// </summary>
         /// <value>PKCS#12 input file (private key and certificate only)</value>
-        [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = true)]
         public string In { get; set; }
 
         /// <summary>
@@ -117,14 +120,14 @@ namespace akeyless.Model
         /// Name of key to be created
         /// </summary>
         /// <value>Name of key to be created</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Passphrase to unlock the pkcs#12 bundle
         /// </summary>
         /// <value>Passphrase to unlock the pkcs#12 bundle</value>
-        [DataMember(Name = "passphrase", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "passphrase", IsRequired = true, EmitDefaultValue = true)]
         public string Passphrase { get; set; }
 
         /// <summary>
@@ -161,7 +164,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UploadPKCS12 {\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -205,8 +208,9 @@ namespace akeyless.Model
         public bool Equals(UploadPKCS12 input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CustomerFrgId == input.CustomerFrgId ||
@@ -274,25 +278,43 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CustomerFrgId != null)
-                    hashCode = hashCode * 59 + this.CustomerFrgId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFrgId.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.In != null)
-                    hashCode = hashCode * 59 + this.In.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.In.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Passphrase != null)
-                    hashCode = hashCode * 59 + this.Passphrase.GetHashCode();
-                hashCode = hashCode * 59 + this.SplitLevel.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Passphrase.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SplitLevel.GetHashCode();
                 if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tag.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

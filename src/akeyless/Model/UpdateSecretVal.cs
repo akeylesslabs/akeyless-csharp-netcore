@@ -57,12 +57,14 @@ namespace akeyless.Model
         public UpdateSecretVal(string accessibility = "regular", bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string token = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateSecretVal and cannot be null");
             }
             this.Name = name;
             // to ensure "value" is required (not null)
-            if (value == null) {
+            if (value == null)
+            {
                 throw new ArgumentNullException("value is a required property for UpdateSecretVal and cannot be null");
             }
             this.Value = value;
@@ -119,7 +121,7 @@ namespace akeyless.Model
         /// Secret name
         /// </summary>
         /// <value>Secret name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -175,7 +177,7 @@ namespace akeyless.Model
         /// The new secret value
         /// </summary>
         /// <value>The new secret value</value>
-        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 
         /// <summary>
@@ -184,7 +186,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateSecretVal {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -231,8 +233,9 @@ namespace akeyless.Model
         public bool Equals(UpdateSecretVal input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Accessibility == input.Accessibility ||
@@ -315,30 +318,52 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Accessibility != null)
-                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
-                hashCode = hashCode * 59 + this.Multiline.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Multiline.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NewVersion.GetHashCode();
                 if (this.PasswordManagerCustomField != null)
-                    hashCode = hashCode * 59 + this.PasswordManagerCustomField.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PasswordManagerCustomField.GetHashCode();
+                }
                 if (this.PasswordManagerInjectUrl != null)
-                    hashCode = hashCode * 59 + this.PasswordManagerInjectUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PasswordManagerInjectUrl.GetHashCode();
+                }
                 if (this.PasswordManagerPassword != null)
-                    hashCode = hashCode * 59 + this.PasswordManagerPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PasswordManagerPassword.GetHashCode();
+                }
                 if (this.PasswordManagerUsername != null)
-                    hashCode = hashCode * 59 + this.PasswordManagerUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PasswordManagerUsername.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -50,17 +50,20 @@ namespace akeyless.Model
         public VerifyJWTWithClassicKey(string displayId = default(string), bool json = default(bool), string jwt = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            if (displayId == null) {
+            if (displayId == null)
+            {
                 throw new ArgumentNullException("displayId is a required property for VerifyJWTWithClassicKey and cannot be null");
             }
             this.DisplayId = displayId;
             // to ensure "jwt" is required (not null)
-            if (jwt == null) {
+            if (jwt == null)
+            {
                 throw new ArgumentNullException("jwt is a required property for VerifyJWTWithClassicKey and cannot be null");
             }
             this.Jwt = jwt;
             // to ensure "requiredClaims" is required (not null)
-            if (requiredClaims == null) {
+            if (requiredClaims == null)
+            {
                 throw new ArgumentNullException("requiredClaims is a required property for VerifyJWTWithClassicKey and cannot be null");
             }
             this.RequiredClaims = requiredClaims;
@@ -74,7 +77,7 @@ namespace akeyless.Model
         /// The name of the key to use in the verify JWT process
         /// </summary>
         /// <value>The name of the key to use in the verify JWT process</value>
-        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = true)]
         public string DisplayId { get; set; }
 
         /// <summary>
@@ -88,14 +91,14 @@ namespace akeyless.Model
         /// JWT
         /// </summary>
         /// <value>JWT</value>
-        [DataMember(Name = "jwt", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "jwt", IsRequired = true, EmitDefaultValue = true)]
         public string Jwt { get; set; }
 
         /// <summary>
         /// RequiredClaims
         /// </summary>
         /// <value>RequiredClaims</value>
-        [DataMember(Name = "required-claims", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "required-claims", IsRequired = true, EmitDefaultValue = true)]
         public string RequiredClaims { get; set; }
 
         /// <summary>
@@ -116,7 +119,7 @@ namespace akeyless.Model
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
         public int _Version { get; set; }
 
         /// <summary>
@@ -125,7 +128,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class VerifyJWTWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -165,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(VerifyJWTWithClassicKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -213,17 +217,27 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Jwt != null)
-                    hashCode = hashCode * 59 + this.Jwt.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Jwt.GetHashCode();
+                }
                 if (this.RequiredClaims != null)
-                    hashCode = hashCode * 59 + this.RequiredClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RequiredClaims.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

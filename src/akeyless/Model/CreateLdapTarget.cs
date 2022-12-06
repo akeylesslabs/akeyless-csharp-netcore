@@ -55,22 +55,26 @@ namespace akeyless.Model
         public CreateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), bool json = default(bool), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string serverType = "OpenLDAP", string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
         {
             // to ensure "bindDn" is required (not null)
-            if (bindDn == null) {
+            if (bindDn == null)
+            {
                 throw new ArgumentNullException("bindDn is a required property for CreateLdapTarget and cannot be null");
             }
             this.BindDn = bindDn;
             // to ensure "bindDnPassword" is required (not null)
-            if (bindDnPassword == null) {
+            if (bindDnPassword == null)
+            {
                 throw new ArgumentNullException("bindDnPassword is a required property for CreateLdapTarget and cannot be null");
             }
             this.BindDnPassword = bindDnPassword;
             // to ensure "ldapUrl" is required (not null)
-            if (ldapUrl == null) {
+            if (ldapUrl == null)
+            {
                 throw new ArgumentNullException("ldapUrl is a required property for CreateLdapTarget and cannot be null");
             }
             this.LdapUrl = ldapUrl;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateLdapTarget and cannot be null");
             }
             this.Name = name;
@@ -89,14 +93,14 @@ namespace akeyless.Model
         /// Bind DN
         /// </summary>
         /// <value>Bind DN</value>
-        [DataMember(Name = "bind-dn", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "bind-dn", IsRequired = true, EmitDefaultValue = true)]
         public string BindDn { get; set; }
 
         /// <summary>
         /// Bind DN Password
         /// </summary>
         /// <value>Bind DN Password</value>
-        [DataMember(Name = "bind-dn-password", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "bind-dn-password", IsRequired = true, EmitDefaultValue = true)]
         public string BindDnPassword { get; set; }
 
         /// <summary>
@@ -131,14 +135,14 @@ namespace akeyless.Model
         /// LDAP Server URL
         /// </summary>
         /// <value>LDAP Server URL</value>
-        [DataMember(Name = "ldap-url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ldap-url", IsRequired = true, EmitDefaultValue = true)]
         public string LdapUrl { get; set; }
 
         /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -175,7 +179,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateLdapTarget {\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
@@ -220,8 +224,9 @@ namespace akeyless.Model
         public bool Equals(CreateLdapTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.BindDn == input.BindDn ||
@@ -294,28 +299,50 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.BindDn != null)
-                    hashCode = hashCode * 59 + this.BindDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BindDn.GetHashCode();
+                }
                 if (this.BindDnPassword != null)
-                    hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BindDnPassword.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.LdapCaCert != null)
-                    hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapCaCert.GetHashCode();
+                }
                 if (this.LdapUrl != null)
-                    hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ServerType != null)
-                    hashCode = hashCode * 59 + this.ServerType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ServerType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.TokenExpiration != null)
-                    hashCode = hashCode * 59 + this.TokenExpiration.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenExpiration.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

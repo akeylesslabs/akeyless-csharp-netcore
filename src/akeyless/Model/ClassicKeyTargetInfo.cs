@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ClassicKeyTargetInfo {\n");
             sb.Append("  ExternalKmsId: ").Append(ExternalKmsId).Append("\n");
             sb.Append("  KeyPurpose: ").Append(KeyPurpose).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(ClassicKeyTargetInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ExternalKmsId == input.ExternalKmsId ||
@@ -164,15 +165,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ExternalKmsId != null)
-                    hashCode = hashCode * 59 + this.ExternalKmsId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExternalKmsId.GetHashCode();
+                }
                 if (this.KeyPurpose != null)
-                    hashCode = hashCode * 59 + this.KeyPurpose.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyPurpose.GetHashCode();
+                }
                 if (this.KeyStatus != null)
-                    hashCode = hashCode * 59 + this.KeyStatus.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyStatus.GetHashCode();
+                }
                 if (this.TargetAssocId != null)
-                    hashCode = hashCode * 59 + this.TargetAssocId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetAssocId.GetHashCode();
+                }
                 if (this.TargetType != null)
-                    hashCode = hashCode * 59 + this.TargetType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetType.GetHashCode();
+                }
                 return hashCode;
             }
         }

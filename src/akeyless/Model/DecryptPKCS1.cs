@@ -50,12 +50,14 @@ namespace akeyless.Model
         public DecryptPKCS1(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "ciphertext" is required (not null)
-            if (ciphertext == null) {
+            if (ciphertext == null)
+            {
                 throw new ArgumentNullException("ciphertext is a required property for DecryptPKCS1 and cannot be null");
             }
             this.Ciphertext = ciphertext;
             // to ensure "keyName" is required (not null)
-            if (keyName == null) {
+            if (keyName == null)
+            {
                 throw new ArgumentNullException("keyName is a required property for DecryptPKCS1 and cannot be null");
             }
             this.KeyName = keyName;
@@ -70,7 +72,7 @@ namespace akeyless.Model
         /// Ciphertext to be decrypted in base64 encoded format
         /// </summary>
         /// <value>Ciphertext to be decrypted in base64 encoded format</value>
-        [DataMember(Name = "ciphertext", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ciphertext", IsRequired = true, EmitDefaultValue = true)]
         public string Ciphertext { get; set; }
 
         /// <summary>
@@ -98,7 +100,7 @@ namespace akeyless.Model
         /// The name of the key to use in the decryption process
         /// </summary>
         /// <value>The name of the key to use in the decryption process</value>
-        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = true)]
         public string KeyName { get; set; }
 
         /// <summary>
@@ -121,7 +123,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DecryptPKCS1 {\n");
             sb.Append("  Ciphertext: ").Append(Ciphertext).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
@@ -161,8 +163,9 @@ namespace akeyless.Model
         public bool Equals(DecryptPKCS1 input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Ciphertext == input.Ciphertext ||
@@ -209,17 +212,27 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Ciphertext != null)
-                    hashCode = hashCode * 59 + this.Ciphertext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Ciphertext.GetHashCode();
+                }
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyName != null)
-                    hashCode = hashCode * 59 + this.KeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

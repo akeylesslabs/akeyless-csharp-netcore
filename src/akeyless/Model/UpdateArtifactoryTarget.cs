@@ -55,22 +55,26 @@ namespace akeyless.Model
         public UpdateArtifactoryTarget(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string comment = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "artifactoryAdminName" is required (not null)
-            if (artifactoryAdminName == null) {
+            if (artifactoryAdminName == null)
+            {
                 throw new ArgumentNullException("artifactoryAdminName is a required property for UpdateArtifactoryTarget and cannot be null");
             }
             this.ArtifactoryAdminName = artifactoryAdminName;
             // to ensure "artifactoryAdminPwd" is required (not null)
-            if (artifactoryAdminPwd == null) {
+            if (artifactoryAdminPwd == null)
+            {
                 throw new ArgumentNullException("artifactoryAdminPwd is a required property for UpdateArtifactoryTarget and cannot be null");
             }
             this.ArtifactoryAdminPwd = artifactoryAdminPwd;
             // to ensure "baseUrl" is required (not null)
-            if (baseUrl == null) {
+            if (baseUrl == null)
+            {
                 throw new ArgumentNullException("baseUrl is a required property for UpdateArtifactoryTarget and cannot be null");
             }
             this.BaseUrl = baseUrl;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateArtifactoryTarget and cannot be null");
             }
             this.Name = name;
@@ -88,21 +92,21 @@ namespace akeyless.Model
         /// Artifactory Admin Name
         /// </summary>
         /// <value>Artifactory Admin Name</value>
-        [DataMember(Name = "artifactory-admin-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "artifactory-admin-name", IsRequired = true, EmitDefaultValue = true)]
         public string ArtifactoryAdminName { get; set; }
 
         /// <summary>
         /// Artifactory Admin password
         /// </summary>
         /// <value>Artifactory Admin password</value>
-        [DataMember(Name = "artifactory-admin-pwd", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "artifactory-admin-pwd", IsRequired = true, EmitDefaultValue = true)]
         public string ArtifactoryAdminPwd { get; set; }
 
         /// <summary>
         /// Base URL
         /// </summary>
         /// <value>Base URL</value>
-        [DataMember(Name = "base-url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "base-url", IsRequired = true, EmitDefaultValue = true)]
         public string BaseUrl { get; set; }
 
         /// <summary>
@@ -136,7 +140,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -173,7 +177,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateArtifactoryTarget {\n");
             sb.Append("  ArtifactoryAdminName: ").Append(ArtifactoryAdminName).Append("\n");
             sb.Append("  ArtifactoryAdminPwd: ").Append(ArtifactoryAdminPwd).Append("\n");
@@ -218,8 +222,9 @@ namespace akeyless.Model
         public bool Equals(UpdateArtifactoryTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ArtifactoryAdminName == input.ArtifactoryAdminName ||
@@ -291,27 +296,47 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ArtifactoryAdminName != null)
-                    hashCode = hashCode * 59 + this.ArtifactoryAdminName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ArtifactoryAdminName.GetHashCode();
+                }
                 if (this.ArtifactoryAdminPwd != null)
-                    hashCode = hashCode * 59 + this.ArtifactoryAdminPwd.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ArtifactoryAdminPwd.GetHashCode();
+                }
                 if (this.BaseUrl != null)
-                    hashCode = hashCode * 59 + this.BaseUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BaseUrl.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
                 return hashCode;
             }
         }

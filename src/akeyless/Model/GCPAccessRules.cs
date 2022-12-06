@@ -117,7 +117,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GCPAccessRules {\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  BoundLabels: ").Append(BoundLabels).Append("\n");
@@ -158,8 +158,9 @@ namespace akeyless.Model
         public bool Equals(GCPAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Audience == input.Audience ||
@@ -218,21 +219,37 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Audience != null)
-                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
                 if (this.BoundLabels != null)
-                    hashCode = hashCode * 59 + this.BoundLabels.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundLabels.GetHashCode();
+                }
                 if (this.BoundProjects != null)
-                    hashCode = hashCode * 59 + this.BoundProjects.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundProjects.GetHashCode();
+                }
                 if (this.BoundRegions != null)
-                    hashCode = hashCode * 59 + this.BoundRegions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundRegions.GetHashCode();
+                }
                 if (this.BoundServiceAccounts != null)
-                    hashCode = hashCode * 59 + this.BoundServiceAccounts.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundServiceAccounts.GetHashCode();
+                }
                 if (this.BoundZones != null)
-                    hashCode = hashCode * 59 + this.BoundZones.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundZones.GetHashCode();
+                }
                 if (this.ServiceAccount != null)
-                    hashCode = hashCode * 59 + this.ServiceAccount.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ServiceAccount.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 return hashCode;
             }
         }

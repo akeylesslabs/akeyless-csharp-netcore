@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SyslogLogForwardingConfig {\n");
             sb.Append("  SyslogFormatter: ").Append(SyslogFormatter).Append("\n");
             sb.Append("  SyslogHost: ").Append(SyslogHost).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(SyslogLogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.SyslogFormatter == input.SyslogFormatter ||
@@ -149,13 +150,21 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.SyslogFormatter != null)
-                    hashCode = hashCode * 59 + this.SyslogFormatter.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SyslogFormatter.GetHashCode();
+                }
                 if (this.SyslogHost != null)
-                    hashCode = hashCode * 59 + this.SyslogHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SyslogHost.GetHashCode();
+                }
                 if (this.SyslogNetwork != null)
-                    hashCode = hashCode * 59 + this.SyslogNetwork.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SyslogNetwork.GetHashCode();
+                }
                 if (this.SyslogTargetTag != null)
-                    hashCode = hashCode * 59 + this.SyslogTargetTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SyslogTargetTag.GetHashCode();
+                }
                 return hashCode;
             }
         }

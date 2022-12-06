@@ -57,7 +57,8 @@ namespace akeyless.Model
         public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerSnowflake and cannot be null");
             }
             this.Name = name;
@@ -123,7 +124,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -181,7 +182,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerSnowflake {\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  AccountPassword: ").Append(AccountPassword).Append("\n");
@@ -228,8 +229,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerSnowflake input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Account == input.Account ||
@@ -313,32 +315,58 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Account != null)
-                    hashCode = hashCode * 59 + this.Account.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Account.GetHashCode();
+                }
                 if (this.AccountPassword != null)
-                    hashCode = hashCode * 59 + this.AccountPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccountPassword.GetHashCode();
+                }
                 if (this.AccountUsername != null)
-                    hashCode = hashCode * 59 + this.AccountUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccountUsername.GetHashCode();
+                }
                 if (this.DbName != null)
-                    hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbName.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Role != null)
-                    hashCode = hashCode * 59 + this.Role.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Role.GetHashCode();
+                }
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 if (this.Warehouse != null)
-                    hashCode = hashCode * 59 + this.Warehouse.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Warehouse.GetHashCode();
+                }
                 return hashCode;
             }
         }

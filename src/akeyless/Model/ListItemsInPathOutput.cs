@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ListItemsInPathOutput {\n");
             sb.Append("  Folders: ").Append(Folders).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(ListItemsInPathOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Folders == input.Folders ||
@@ -137,11 +138,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Folders != null)
-                    hashCode = hashCode * 59 + this.Folders.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Folders.GetHashCode();
+                }
                 if (this.Items != null)
-                    hashCode = hashCode * 59 + this.Items.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Items.GetHashCode();
+                }
                 if (this.NextPage != null)
-                    hashCode = hashCode * 59 + this.NextPage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NextPage.GetHashCode();
+                }
                 return hashCode;
             }
         }

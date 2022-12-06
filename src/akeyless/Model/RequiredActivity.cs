@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RequiredActivity {\n");
             sb.Append("  MigrationsRequiredActivity: ").Append(MigrationsRequiredActivity).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(RequiredActivity input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.MigrationsRequiredActivity == input.MigrationsRequiredActivity ||
@@ -108,7 +109,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.MigrationsRequiredActivity != null)
-                    hashCode = hashCode * 59 + this.MigrationsRequiredActivity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationsRequiredActivity.GetHashCode();
+                }
                 return hashCode;
             }
         }

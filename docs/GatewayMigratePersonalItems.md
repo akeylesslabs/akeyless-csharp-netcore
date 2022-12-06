@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **_1passwordVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **ProtectionKey** | **string** | The name of a key that used to encrypt the secret value | [optional] 
-**TargetLocation** | **string** | Target location in Akeyless for migrated secrets | [optional] 
+**TargetLocation** | **string** | Target location in your Akeyless personal folder for migrated secrets | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **string** | Migration type for now only 1password. | [optional] [default to "1password"]
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ListAuthMethodsOutput {\n");
             sb.Append("  AuthMethods: ").Append(AuthMethods).Append("\n");
             sb.Append("  NextPage: ").Append(NextPage).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(ListAuthMethodsOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AuthMethods == input.AuthMethods ||
@@ -122,9 +123,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AuthMethods != null)
-                    hashCode = hashCode * 59 + this.AuthMethods.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethods.GetHashCode();
+                }
                 if (this.NextPage != null)
-                    hashCode = hashCode * 59 + this.NextPage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NextPage.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -53,7 +53,8 @@ namespace akeyless.Model
         public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string extendedKeyUsage = default(string), bool json = default(bool), string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
-            if (certIssuerName == null) {
+            if (certIssuerName == null)
+            {
                 throw new ArgumentNullException("certIssuerName is a required property for GetPKICertificate and cannot be null");
             }
             this.CertIssuerName = certIssuerName;
@@ -79,7 +80,7 @@ namespace akeyless.Model
         /// The name of the PKI certificate issuer
         /// </summary>
         /// <value>The name of the PKI certificate issuer</value>
-        [DataMember(Name = "cert-issuer-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "cert-issuer-name", IsRequired = true, EmitDefaultValue = true)]
         public string CertIssuerName { get; set; }
 
         /// <summary>
@@ -144,7 +145,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetPKICertificate {\n");
             sb.Append("  AltNames: ").Append(AltNames).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
@@ -187,8 +188,9 @@ namespace akeyless.Model
         public bool Equals(GetPKICertificate input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AltNames == input.AltNames ||
@@ -250,23 +252,39 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AltNames != null)
-                    hashCode = hashCode * 59 + this.AltNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AltNames.GetHashCode();
+                }
                 if (this.CertIssuerName != null)
-                    hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
                 if (this.CommonName != null)
-                    hashCode = hashCode * 59 + this.CommonName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CommonName.GetHashCode();
+                }
                 if (this.ExtendedKeyUsage != null)
-                    hashCode = hashCode * 59 + this.ExtendedKeyUsage.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ExtendedKeyUsage.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyDataBase64 != null)
-                    hashCode = hashCode * 59 + this.KeyDataBase64.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyDataBase64.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UriSans != null)
-                    hashCode = hashCode * 59 + this.UriSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UriSans.GetHashCode();
+                }
                 return hashCode;
             }
         }

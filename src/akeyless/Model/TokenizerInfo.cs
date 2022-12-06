@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TokenizerInfo {\n");
             sb.Append("  VaultlessTokenizerInfo: ").Append(VaultlessTokenizerInfo).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(TokenizerInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.VaultlessTokenizerInfo == input.VaultlessTokenizerInfo ||
@@ -107,7 +108,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.VaultlessTokenizerInfo != null)
-                    hashCode = hashCode * 59 + this.VaultlessTokenizerInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VaultlessTokenizerInfo.GetHashCode();
+                }
                 return hashCode;
             }
         }

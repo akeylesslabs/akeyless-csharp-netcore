@@ -52,12 +52,14 @@ namespace akeyless.Model
         public ShareItem(string accessibility = "regular", string action = default(string), List<string> emails = default(List<string>), string itemName = default(string), bool json = default(bool), string token = default(string), int ttl = default(int), string uidToken = default(string), bool viewOnce = false)
         {
             // to ensure "action" is required (not null)
-            if (action == null) {
+            if (action == null)
+            {
                 throw new ArgumentNullException("action is a required property for ShareItem and cannot be null");
             }
             this.Action = action;
             // to ensure "itemName" is required (not null)
-            if (itemName == null) {
+            if (itemName == null)
+            {
                 throw new ArgumentNullException("itemName is a required property for ShareItem and cannot be null");
             }
             this.ItemName = itemName;
@@ -82,7 +84,7 @@ namespace akeyless.Model
         /// Action to be performed on the item [start/stop/describe]
         /// </summary>
         /// <value>Action to be performed on the item [start/stop/describe]</value>
-        [DataMember(Name = "action", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "action", IsRequired = true, EmitDefaultValue = true)]
         public string Action { get; set; }
 
         /// <summary>
@@ -96,7 +98,7 @@ namespace akeyless.Model
         /// Item name
         /// </summary>
         /// <value>Item name</value>
-        [DataMember(Name = "item-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "item-name", IsRequired = true, EmitDefaultValue = true)]
         public string ItemName { get; set; }
 
         /// <summary>
@@ -140,7 +142,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ShareItem {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  Action: ").Append(Action).Append("\n");
@@ -182,8 +184,9 @@ namespace akeyless.Model
         public bool Equals(ShareItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Accessibility == input.Accessibility ||
@@ -240,20 +243,32 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Accessibility != null)
-                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 if (this.Action != null)
-                    hashCode = hashCode * 59 + this.Action.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Action.GetHashCode();
+                }
                 if (this.Emails != null)
-                    hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Emails.GetHashCode();
+                }
                 if (this.ItemName != null)
-                    hashCode = hashCode * 59 + this.ItemName.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.ViewOnce.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ViewOnce.GetHashCode();
                 return hashCode;
             }
         }

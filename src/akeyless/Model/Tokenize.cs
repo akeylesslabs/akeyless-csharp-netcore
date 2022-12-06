@@ -49,12 +49,14 @@ namespace akeyless.Model
         public Tokenize(bool json = default(bool), string plaintext = default(string), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
         {
             // to ensure "plaintext" is required (not null)
-            if (plaintext == null) {
+            if (plaintext == null)
+            {
                 throw new ArgumentNullException("plaintext is a required property for Tokenize and cannot be null");
             }
             this.Plaintext = plaintext;
             // to ensure "tokenizerName" is required (not null)
-            if (tokenizerName == null) {
+            if (tokenizerName == null)
+            {
                 throw new ArgumentNullException("tokenizerName is a required property for Tokenize and cannot be null");
             }
             this.TokenizerName = tokenizerName;
@@ -75,7 +77,7 @@ namespace akeyless.Model
         /// Data to be encrypted
         /// </summary>
         /// <value>Data to be encrypted</value>
-        [DataMember(Name = "plaintext", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "plaintext", IsRequired = true, EmitDefaultValue = true)]
         public string Plaintext { get; set; }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace akeyless.Model
         /// The name of the tokenizer to use in the encryption process
         /// </summary>
         /// <value>The name of the tokenizer to use in the encryption process</value>
-        [DataMember(Name = "tokenizer-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "tokenizer-name", IsRequired = true, EmitDefaultValue = true)]
         public string TokenizerName { get; set; }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Tokenize {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
@@ -151,8 +153,9 @@ namespace akeyless.Model
         public bool Equals(Tokenize input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -194,17 +197,27 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Plaintext != null)
-                    hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Plaintext.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.TokenizerName != null)
-                    hashCode = hashCode * 59 + this.TokenizerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenizerName.GetHashCode();
+                }
                 if (this.Tweak != null)
-                    hashCode = hashCode * 59 + this.Tweak.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tweak.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

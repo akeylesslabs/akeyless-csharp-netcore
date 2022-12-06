@@ -109,7 +109,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ElasticsearchLogForwardingConfig {\n");
             sb.Append("  ElasticsearchApiKey: ").Append(ElasticsearchApiKey).Append("\n");
             sb.Append("  ElasticsearchAuthType: ").Append(ElasticsearchAuthType).Append("\n");
@@ -150,8 +150,9 @@ namespace akeyless.Model
         public bool Equals(ElasticsearchLogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ElasticsearchApiKey == input.ElasticsearchApiKey ||
@@ -205,21 +206,37 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ElasticsearchApiKey != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchApiKey.GetHashCode();
+                }
                 if (this.ElasticsearchAuthType != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchAuthType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchAuthType.GetHashCode();
+                }
                 if (this.ElasticsearchCloudId != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchCloudId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchCloudId.GetHashCode();
+                }
                 if (this.ElasticsearchIndex != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchIndex.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchIndex.GetHashCode();
+                }
                 if (this.ElasticsearchNodes != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchNodes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchNodes.GetHashCode();
+                }
                 if (this.ElasticsearchPassword != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchPassword.GetHashCode();
+                }
                 if (this.ElasticsearchServerType != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchServerType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchServerType.GetHashCode();
+                }
                 if (this.ElasticsearchUserName != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchUserName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchUserName.GetHashCode();
+                }
                 return hashCode;
             }
         }

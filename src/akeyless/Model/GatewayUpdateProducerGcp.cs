@@ -60,12 +60,14 @@ namespace akeyless.Model
         public GatewayUpdateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = "fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerGcp and cannot be null");
             }
             this.Name = name;
             // to ensure "serviceAccountType" is required (not null)
-            if (serviceAccountType == null) {
+            if (serviceAccountType == null)
+            {
                 throw new ArgumentNullException("serviceAccountType is a required property for GatewayUpdateProducerGcp and cannot be null");
             }
             this.ServiceAccountType = serviceAccountType;
@@ -139,7 +141,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -167,7 +169,7 @@ namespace akeyless.Model
         /// The type of the gcp dynamic secret. Options[fixed, dynamic]
         /// </summary>
         /// <value>The type of the gcp dynamic secret. Options[fixed, dynamic]</value>
-        [DataMember(Name = "service-account-type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "service-account-type", IsRequired = true, EmitDefaultValue = true)]
         public string ServiceAccountType { get; set; }
 
         /// <summary>
@@ -211,7 +213,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerGcp {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  GcpCredType: ").Append(GcpCredType).Append("\n");
@@ -261,8 +263,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerGcp input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -361,38 +364,70 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.GcpCredType != null)
-                    hashCode = hashCode * 59 + this.GcpCredType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpCredType.GetHashCode();
+                }
                 if (this.GcpKey != null)
-                    hashCode = hashCode * 59 + this.GcpKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
+                }
                 if (this.GcpKeyAlgo != null)
-                    hashCode = hashCode * 59 + this.GcpKeyAlgo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpKeyAlgo.GetHashCode();
+                }
                 if (this.GcpSaEmail != null)
-                    hashCode = hashCode * 59 + this.GcpSaEmail.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpSaEmail.GetHashCode();
+                }
                 if (this.GcpTokenScopes != null)
-                    hashCode = hashCode * 59 + this.GcpTokenScopes.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpTokenScopes.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.RoleBinding != null)
-                    hashCode = hashCode * 59 + this.RoleBinding.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleBinding.GetHashCode();
+                }
                 if (this.ServiceAccountType != null)
-                    hashCode = hashCode * 59 + this.ServiceAccountType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ServiceAccountType.GetHashCode();
+                }
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

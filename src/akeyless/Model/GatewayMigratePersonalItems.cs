@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// <param name="_1passwordVaults">1Password list of vault to get the items from.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value.</param>
-        /// <param name="targetLocation">Target location in Akeyless for migrated secrets.</param>
+        /// <param name="targetLocation">Target location in your Akeyless personal folder for migrated secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Migration type for now only 1password. (default to &quot;1password&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -112,9 +112,9 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
-        /// Target location in Akeyless for migrated secrets
+        /// Target location in your Akeyless personal folder for migrated secrets
         /// </summary>
-        /// <value>Target location in Akeyless for migrated secrets</value>
+        /// <value>Target location in your Akeyless personal folder for migrated secrets</value>
         [DataMember(Name = "target-location", EmitDefaultValue = false)]
         public string TargetLocation { get; set; }
 
@@ -145,7 +145,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayMigratePersonalItems {\n");
             sb.Append("  _1passwordEmail: ").Append(_1passwordEmail).Append("\n");
             sb.Append("  _1passwordPassword: ").Append(_1passwordPassword).Append("\n");
@@ -189,8 +189,9 @@ namespace akeyless.Model
         public bool Equals(GatewayMigratePersonalItems input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this._1passwordEmail == input._1passwordEmail ||
@@ -259,26 +260,46 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this._1passwordEmail != null)
-                    hashCode = hashCode * 59 + this._1passwordEmail.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordEmail.GetHashCode();
+                }
                 if (this._1passwordPassword != null)
-                    hashCode = hashCode * 59 + this._1passwordPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordPassword.GetHashCode();
+                }
                 if (this._1passwordSecretKey != null)
-                    hashCode = hashCode * 59 + this._1passwordSecretKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordSecretKey.GetHashCode();
+                }
                 if (this._1passwordUrl != null)
-                    hashCode = hashCode * 59 + this._1passwordUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordUrl.GetHashCode();
+                }
                 if (this._1passwordVaults != null)
-                    hashCode = hashCode * 59 + this._1passwordVaults.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._1passwordVaults.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
                 if (this.TargetLocation != null)
-                    hashCode = hashCode * 59 + this.TargetLocation.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetLocation.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

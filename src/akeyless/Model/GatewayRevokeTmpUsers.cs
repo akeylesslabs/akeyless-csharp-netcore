@@ -51,12 +51,14 @@ namespace akeyless.Model
         public GatewayRevokeTmpUsers(string host = default(string), bool json = default(bool), string name = default(string), bool revokeAll = default(bool), bool softDelete = default(bool), string tmpCredsId = "demo_default_tmp_creds_id_for_sdk_bc", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayRevokeTmpUsers and cannot be null");
             }
             this.Name = name;
             // to ensure "tmpCredsId" is required (not null)
-            if (tmpCredsId == null) {
+            if (tmpCredsId == null)
+            {
                 throw new ArgumentNullException("tmpCredsId is a required property for GatewayRevokeTmpUsers and cannot be null");
             }
             this.TmpCredsId = tmpCredsId;
@@ -86,7 +88,7 @@ namespace akeyless.Model
         /// Producer Name
         /// </summary>
         /// <value>Producer Name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -107,7 +109,7 @@ namespace akeyless.Model
         /// Tmp Creds ID
         /// </summary>
         /// <value>Tmp Creds ID</value>
-        [DataMember(Name = "tmp-creds-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "tmp-creds-id", IsRequired = true, EmitDefaultValue = true)]
         public string TmpCredsId { get; set; }
 
         /// <summary>
@@ -130,7 +132,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayRevokeTmpUsers {\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -171,8 +173,9 @@ namespace akeyless.Model
         public bool Equals(GatewayRevokeTmpUsers input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Host == input.Host ||
@@ -223,18 +226,28 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Host != null)
-                    hashCode = hashCode * 59 + this.Host.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.RevokeAll.GetHashCode();
-                hashCode = hashCode * 59 + this.SoftDelete.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RevokeAll.GetHashCode();
+                hashCode = (hashCode * 59) + this.SoftDelete.GetHashCode();
                 if (this.TmpCredsId != null)
-                    hashCode = hashCode * 59 + this.TmpCredsId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TmpCredsId.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

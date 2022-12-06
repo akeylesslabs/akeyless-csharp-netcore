@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteRoleRuleOutput {\n");
             sb.Append("  Deleted: ").Append(Deleted).Append("\n");
             sb.Append("  Result: ").Append(Result).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(DeleteRoleRuleOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Deleted == input.Deleted ||
@@ -119,9 +120,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Deleted.GetHashCode();
+                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
                 if (this.Result != null)
-                    hashCode = hashCode * 59 + this.Result.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Result.GetHashCode();
+                }
                 return hashCode;
             }
         }

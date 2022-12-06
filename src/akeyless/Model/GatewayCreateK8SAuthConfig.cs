@@ -59,22 +59,26 @@ namespace akeyless.Model
         public GatewayCreateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = default(bool), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
-            if (accessId == null) {
+            if (accessId == null)
+            {
                 throw new ArgumentNullException("accessId is a required property for GatewayCreateK8SAuthConfig and cannot be null");
             }
             this.AccessId = accessId;
             // to ensure "k8sHost" is required (not null)
-            if (k8sHost == null) {
+            if (k8sHost == null)
+            {
                 throw new ArgumentNullException("k8sHost is a required property for GatewayCreateK8SAuthConfig and cannot be null");
             }
             this.K8sHost = k8sHost;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateK8SAuthConfig and cannot be null");
             }
             this.Name = name;
             // to ensure "signingKey" is required (not null)
-            if (signingKey == null) {
+            if (signingKey == null)
+            {
                 throw new ArgumentNullException("signingKey is a required property for GatewayCreateK8SAuthConfig and cannot be null");
             }
             this.SigningKey = signingKey;
@@ -97,7 +101,7 @@ namespace akeyless.Model
         /// The access ID of the Kubernetes auth method
         /// </summary>
         /// <value>The access ID of the Kubernetes auth method</value>
-        [DataMember(Name = "access-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "access-id", IsRequired = true, EmitDefaultValue = true)]
         public string AccessId { get; set; }
 
         /// <summary>
@@ -139,7 +143,7 @@ namespace akeyless.Model
         /// The URL of the kubernetes API server
         /// </summary>
         /// <value>The URL of the kubernetes API server</value>
-        [DataMember(Name = "k8s-host", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "k8s-host", IsRequired = true, EmitDefaultValue = true)]
         public string K8sHost { get; set; }
 
         /// <summary>
@@ -153,7 +157,7 @@ namespace akeyless.Model
         /// K8S Auth config name
         /// </summary>
         /// <value>K8S Auth config name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -174,7 +178,7 @@ namespace akeyless.Model
         /// The private key (base64 encoded) associated with the public key defined in the Kubernetes auth
         /// </summary>
         /// <value>The private key (base64 encoded) associated with the public key defined in the Kubernetes auth</value>
-        [DataMember(Name = "signing-key", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "signing-key", IsRequired = true, EmitDefaultValue = true)]
         public string SigningKey { get; set; }
 
         /// <summary>
@@ -211,7 +215,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateK8SAuthConfig {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  ClusterApiType: ").Append(ClusterApiType).Append("\n");
@@ -260,8 +264,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateK8SAuthConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -353,35 +358,63 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.ClusterApiType != null)
-                    hashCode = hashCode * 59 + this.ClusterApiType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterApiType.GetHashCode();
+                }
                 if (this.ConfigEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ConfigEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ConfigEncryptionKeyName.GetHashCode();
+                }
                 if (this.DisableIssuerValidation != null)
-                    hashCode = hashCode * 59 + this.DisableIssuerValidation.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisableIssuerValidation.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.K8sCaCert != null)
-                    hashCode = hashCode * 59 + this.K8sCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sCaCert.GetHashCode();
+                }
                 if (this.K8sHost != null)
-                    hashCode = hashCode * 59 + this.K8sHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sHost.GetHashCode();
+                }
                 if (this.K8sIssuer != null)
-                    hashCode = hashCode * 59 + this.K8sIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sIssuer.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.RancherApiKey != null)
-                    hashCode = hashCode * 59 + this.RancherApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RancherApiKey.GetHashCode();
+                }
                 if (this.RancherClusterId != null)
-                    hashCode = hashCode * 59 + this.RancherClusterId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RancherClusterId.GetHashCode();
+                }
                 if (this.SigningKey != null)
-                    hashCode = hashCode * 59 + this.SigningKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SigningKey.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.TokenExp.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TokenExp.GetHashCode();
                 if (this.TokenReviewerJwt != null)
-                    hashCode = hashCode * 59 + this.TokenReviewerJwt.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenReviewerJwt.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

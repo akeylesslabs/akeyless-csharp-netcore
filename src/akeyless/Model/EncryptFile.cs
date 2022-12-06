@@ -52,12 +52,14 @@ namespace akeyless.Model
         public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
-            if (_in == null) {
+            if (_in == null)
+            {
                 throw new ArgumentNullException("_in is a required property for EncryptFile and cannot be null");
             }
             this.In = _in;
             // to ensure "keyName" is required (not null)
-            if (keyName == null) {
+            if (keyName == null)
+            {
                 throw new ArgumentNullException("keyName is a required property for EncryptFile and cannot be null");
             }
             this.KeyName = keyName;
@@ -88,7 +90,7 @@ namespace akeyless.Model
         /// Path to the file to be encrypted. If not provided, the content will be taken from stdin
         /// </summary>
         /// <value>Path to the file to be encrypted. If not provided, the content will be taken from stdin</value>
-        [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = true)]
         public string In { get; set; }
 
         /// <summary>
@@ -109,7 +111,7 @@ namespace akeyless.Model
         /// The name of the key to use in the encryption process
         /// </summary>
         /// <value>The name of the key to use in the encryption process</value>
-        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = true)]
         public string KeyName { get; set; }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class EncryptFile {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
@@ -181,8 +183,9 @@ namespace akeyless.Model
         public bool Equals(EncryptFile input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -240,21 +243,35 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
                 if (this.EncryptionContext != null)
-                    hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EncryptionContext.GetHashCode();
+                }
                 if (this.In != null)
-                    hashCode = hashCode * 59 + this.In.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.In.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyName != null)
-                    hashCode = hashCode * 59 + this.KeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                }
                 if (this.Out != null)
-                    hashCode = hashCode * 59 + this.Out.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Out.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

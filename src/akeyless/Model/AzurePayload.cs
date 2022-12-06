@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AzurePayload {\n");
             sb.Append("  _Client: ").Append(_Client).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(AzurePayload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this._Client == input._Client ||
@@ -149,13 +150,21 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this._Client != null)
-                    hashCode = hashCode * 59 + this._Client.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this._Client.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Secret != null)
-                    hashCode = hashCode * 59 + this.Secret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Secret.GetHashCode();
+                }
                 if (this.Tenant != null)
-                    hashCode = hashCode * 59 + this.Tenant.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tenant.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -58,17 +58,20 @@ namespace akeyless.Model
         public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateTokenizer and cannot be null");
             }
             this.Name = name;
             // to ensure "templateType" is required (not null)
-            if (templateType == null) {
+            if (templateType == null)
+            {
                 throw new ArgumentNullException("templateType is a required property for CreateTokenizer and cannot be null");
             }
             this.TemplateType = templateType;
             // to ensure "tokenizerType" is required (not null)
-            if (tokenizerType == null) {
+            if (tokenizerType == null)
+            {
                 throw new ArgumentNullException("tokenizerType is a required property for CreateTokenizer and cannot be null");
             }
             this.TokenizerType = tokenizerType;
@@ -139,7 +142,7 @@ namespace akeyless.Model
         /// Tokenizer name
         /// </summary>
         /// <value>Tokenizer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -160,7 +163,7 @@ namespace akeyless.Model
         /// Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp]
         /// </summary>
         /// <value>Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp]</value>
-        [DataMember(Name = "template-type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "template-type", IsRequired = true, EmitDefaultValue = true)]
         public string TemplateType { get; set; }
 
         /// <summary>
@@ -174,7 +177,7 @@ namespace akeyless.Model
         /// Tokenizer type
         /// </summary>
         /// <value>Tokenizer type</value>
-        [DataMember(Name = "tokenizer-type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "tokenizer-type", IsRequired = true, EmitDefaultValue = true)]
         public string TokenizerType { get; set; }
 
         /// <summary>
@@ -197,7 +200,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateTokenizer {\n");
             sb.Append("  Alphabet: ").Append(Alphabet).Append("\n");
             sb.Append("  DecodingTemplate: ").Append(DecodingTemplate).Append("\n");
@@ -245,8 +248,9 @@ namespace akeyless.Model
         public bool Equals(CreateTokenizer input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alphabet == input.Alphabet ||
@@ -335,34 +339,62 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alphabet != null)
-                    hashCode = hashCode * 59 + this.Alphabet.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alphabet.GetHashCode();
+                }
                 if (this.DecodingTemplate != null)
-                    hashCode = hashCode * 59 + this.DecodingTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DecodingTemplate.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.EncodingTemplate != null)
-                    hashCode = hashCode * 59 + this.EncodingTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EncodingTemplate.GetHashCode();
+                }
                 if (this.EncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.EncryptionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EncryptionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Pattern != null)
-                    hashCode = hashCode * 59 + this.Pattern.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Pattern.GetHashCode();
+                }
                 if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tag.GetHashCode();
+                }
                 if (this.TemplateType != null)
-                    hashCode = hashCode * 59 + this.TemplateType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TemplateType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.TokenizerType != null)
-                    hashCode = hashCode * 59 + this.TokenizerType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenizerType.GetHashCode();
+                }
                 if (this.TweakType != null)
-                    hashCode = hashCode * 59 + this.TweakType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TweakType.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

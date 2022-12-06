@@ -126,7 +126,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CertAccessRules {\n");
             sb.Append("  BoundCommonNames: ").Append(BoundCommonNames).Append("\n");
             sb.Append("  BoundDnsSans: ").Append(BoundDnsSans).Append("\n");
@@ -168,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(CertAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.BoundCommonNames == input.BoundCommonNames ||
@@ -235,23 +236,41 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.BoundCommonNames != null)
-                    hashCode = hashCode * 59 + this.BoundCommonNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundCommonNames.GetHashCode();
+                }
                 if (this.BoundDnsSans != null)
-                    hashCode = hashCode * 59 + this.BoundDnsSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundDnsSans.GetHashCode();
+                }
                 if (this.BoundEmailSans != null)
-                    hashCode = hashCode * 59 + this.BoundEmailSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundEmailSans.GetHashCode();
+                }
                 if (this.BoundExtensions != null)
-                    hashCode = hashCode * 59 + this.BoundExtensions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundExtensions.GetHashCode();
+                }
                 if (this.BoundOrganizationalUnits != null)
-                    hashCode = hashCode * 59 + this.BoundOrganizationalUnits.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundOrganizationalUnits.GetHashCode();
+                }
                 if (this.BoundUriSans != null)
-                    hashCode = hashCode * 59 + this.BoundUriSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundUriSans.GetHashCode();
+                }
                 if (this.Certificate != null)
-                    hashCode = hashCode * 59 + this.Certificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Certificate.GetHashCode();
+                }
                 if (this.RevokedCertIds != null)
-                    hashCode = hashCode * 59 + this.RevokedCertIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RevokedCertIds.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

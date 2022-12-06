@@ -49,7 +49,8 @@ namespace akeyless.Model
         public ExportClassicKey(string ignoreCache = "false", bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for ExportClassicKey and cannot be null");
             }
             this.Name = name;
@@ -79,7 +80,7 @@ namespace akeyless.Model
         /// ClassicKey name
         /// </summary>
         /// <value>ClassicKey name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -109,7 +110,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ExportClassicKey {\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -148,8 +149,9 @@ namespace akeyless.Model
         public bool Equals(ExportClassicKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.IgnoreCache == input.IgnoreCache ||
@@ -191,15 +193,23 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.IgnoreCache != null)
-                    hashCode = hashCode * 59 + this.IgnoreCache.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IgnoreCache.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

@@ -63,7 +63,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Rules {\n");
             sb.Append("  Admin: ").Append(Admin).Append("\n");
             sb.Append("  PathRules: ").Append(PathRules).Append("\n");
@@ -98,8 +98,9 @@ namespace akeyless.Model
         public bool Equals(Rules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Admin == input.Admin ||
@@ -122,9 +123,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Admin.GetHashCode();
+                hashCode = (hashCode * 59) + this.Admin.GetHashCode();
                 if (this.PathRules != null)
-                    hashCode = hashCode * 59 + this.PathRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PathRules.GetHashCode();
+                }
                 return hashCode;
             }
         }

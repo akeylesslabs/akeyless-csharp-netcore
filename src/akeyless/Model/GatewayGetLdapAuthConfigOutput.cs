@@ -157,7 +157,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayGetLdapAuthConfigOutput {\n");
             sb.Append("  LdapAccessId: ").Append(LdapAccessId).Append("\n");
             sb.Append("  LdapAnonymousSearch: ").Append(LdapAnonymousSearch).Append("\n");
@@ -204,8 +204,9 @@ namespace akeyless.Model
         public bool Equals(GatewayGetLdapAuthConfigOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.LdapAccessId == input.LdapAccessId ||
@@ -287,31 +288,55 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.LdapAccessId != null)
-                    hashCode = hashCode * 59 + this.LdapAccessId.GetHashCode();
-                hashCode = hashCode * 59 + this.LdapAnonymousSearch.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapAccessId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.LdapAnonymousSearch.GetHashCode();
                 if (this.LdapBindDn != null)
-                    hashCode = hashCode * 59 + this.LdapBindDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapBindDn.GetHashCode();
+                }
                 if (this.LdapBindPassword != null)
-                    hashCode = hashCode * 59 + this.LdapBindPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapBindPassword.GetHashCode();
+                }
                 if (this.LdapCert != null)
-                    hashCode = hashCode * 59 + this.LdapCert.GetHashCode();
-                hashCode = hashCode * 59 + this.LdapEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapCert.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.LdapEnable.GetHashCode();
                 if (this.LdapGroupAttr != null)
-                    hashCode = hashCode * 59 + this.LdapGroupAttr.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapGroupAttr.GetHashCode();
+                }
                 if (this.LdapGroupDn != null)
-                    hashCode = hashCode * 59 + this.LdapGroupDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapGroupDn.GetHashCode();
+                }
                 if (this.LdapGroupFilter != null)
-                    hashCode = hashCode * 59 + this.LdapGroupFilter.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapGroupFilter.GetHashCode();
+                }
                 if (this.LdapPrivateKey != null)
-                    hashCode = hashCode * 59 + this.LdapPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapPrivateKey.GetHashCode();
+                }
                 if (this.LdapTokenExpiration != null)
-                    hashCode = hashCode * 59 + this.LdapTokenExpiration.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapTokenExpiration.GetHashCode();
+                }
                 if (this.LdapUrl != null)
-                    hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
+                }
                 if (this.LdapUserAttr != null)
-                    hashCode = hashCode * 59 + this.LdapUserAttr.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUserAttr.GetHashCode();
+                }
                 if (this.LdapUserDn != null)
-                    hashCode = hashCode * 59 + this.LdapUserDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUserDn.GetHashCode();
+                }
                 return hashCode;
             }
         }

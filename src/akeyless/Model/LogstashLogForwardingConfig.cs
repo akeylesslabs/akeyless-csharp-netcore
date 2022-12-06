@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class LogstashLogForwardingConfig {\n");
             sb.Append("  LogstashDns: ").Append(LogstashDns).Append("\n");
             sb.Append("  LogstashProtocol: ").Append(LogstashProtocol).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(LogstashLogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.LogstashDns == input.LogstashDns ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.LogstashDns != null)
-                    hashCode = hashCode * 59 + this.LogstashDns.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LogstashDns.GetHashCode();
+                }
                 if (this.LogstashProtocol != null)
-                    hashCode = hashCode * 59 + this.LogstashProtocol.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LogstashProtocol.GetHashCode();
+                }
                 return hashCode;
             }
         }

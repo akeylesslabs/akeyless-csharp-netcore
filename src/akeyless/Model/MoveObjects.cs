@@ -49,12 +49,14 @@ namespace akeyless.Model
         public MoveObjects(bool json = default(bool), string objectsType = "item", string source = default(string), string target = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "source" is required (not null)
-            if (source == null) {
+            if (source == null)
+            {
                 throw new ArgumentNullException("source is a required property for MoveObjects and cannot be null");
             }
             this.Source = source;
             // to ensure "target" is required (not null)
-            if (target == null) {
+            if (target == null)
+            {
                 throw new ArgumentNullException("target is a required property for MoveObjects and cannot be null");
             }
             this.Target = target;
@@ -83,14 +85,14 @@ namespace akeyless.Model
         /// Source path to move the objects from
         /// </summary>
         /// <value>Source path to move the objects from</value>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = true)]
         public string Source { get; set; }
 
         /// <summary>
         /// Target path to move the objects to
         /// </summary>
         /// <value>Target path to move the objects to</value>
-        [DataMember(Name = "target", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "target", IsRequired = true, EmitDefaultValue = true)]
         public string Target { get; set; }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MoveObjects {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  ObjectsType: ").Append(ObjectsType).Append("\n");
@@ -152,8 +154,9 @@ namespace akeyless.Model
         public bool Equals(MoveObjects input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -195,17 +198,27 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.ObjectsType != null)
-                    hashCode = hashCode * 59 + this.ObjectsType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ObjectsType.GetHashCode();
+                }
                 if (this.Source != null)
-                    hashCode = hashCode * 59 + this.Source.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
                 if (this.Target != null)
-                    hashCode = hashCode * 59 + this.Target.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

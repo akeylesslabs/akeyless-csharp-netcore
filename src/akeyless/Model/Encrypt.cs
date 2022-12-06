@@ -52,7 +52,8 @@ namespace akeyless.Model
         public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string inputFormat = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "keyName" is required (not null)
-            if (keyName == null) {
+            if (keyName == null)
+            {
                 throw new ArgumentNullException("keyName is a required property for Encrypt and cannot be null");
             }
             this.KeyName = keyName;
@@ -105,7 +106,7 @@ namespace akeyless.Model
         /// The name of the key to use in the encryption process
         /// </summary>
         /// <value>The name of the key to use in the encryption process</value>
-        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = true)]
         public string KeyName { get; set; }
 
         /// <summary>
@@ -135,7 +136,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Encrypt {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
@@ -177,8 +178,9 @@ namespace akeyless.Model
         public bool Equals(Encrypt input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -236,21 +238,35 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
                 if (this.EncryptionContext != null)
-                    hashCode = hashCode * 59 + this.EncryptionContext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EncryptionContext.GetHashCode();
+                }
                 if (this.InputFormat != null)
-                    hashCode = hashCode * 59 + this.InputFormat.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.InputFormat.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyName != null)
-                    hashCode = hashCode * 59 + this.KeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                }
                 if (this.Plaintext != null)
-                    hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Plaintext.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

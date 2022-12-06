@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CFConfigPart {\n");
             sb.Append("  CustomerFragements: ").Append(CustomerFragements).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(CFConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CustomerFragements == input.CustomerFragements ||
@@ -108,7 +109,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CustomerFragements != null)
-                    hashCode = hashCode * 59 + this.CustomerFragements.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFragements.GetHashCode();
+                }
                 return hashCode;
             }
         }

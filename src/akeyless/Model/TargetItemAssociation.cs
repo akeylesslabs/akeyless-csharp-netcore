@@ -93,7 +93,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TargetItemAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -132,8 +132,9 @@ namespace akeyless.Model
         public bool Equals(TargetItemAssociation input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AssocId == input.AssocId ||
@@ -177,16 +178,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AssocId != null)
-                    hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssocId.GetHashCode();
+                }
                 if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
-                hashCode = hashCode * 59 + this.ClusterId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Attributes.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ClusterId.GetHashCode();
                 if (this.ItemName != null)
-                    hashCode = hashCode * 59 + this.ItemName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemName.GetHashCode();
+                }
                 if (this.ItemType != null)
-                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemType.GetHashCode();
+                }
                 if (this.Relationship != null)
-                    hashCode = hashCode * 59 + this.Relationship.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Relationship.GetHashCode();
+                }
                 return hashCode;
             }
         }

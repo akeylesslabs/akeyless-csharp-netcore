@@ -62,12 +62,14 @@ namespace akeyless.Model
         public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            if (displayId == null) {
+            if (displayId == null)
+            {
                 throw new ArgumentNullException("displayId is a required property for SignPKICertWithClassicKey and cannot be null");
             }
             this.DisplayId = displayId;
             // to ensure "signingMethod" is required (not null)
-            if (signingMethod == null) {
+            if (signingMethod == null)
+            {
                 throw new ArgumentNullException("signingMethod is a required property for SignPKICertWithClassicKey and cannot be null");
             }
             this.SigningMethod = signingMethod;
@@ -109,7 +111,7 @@ namespace akeyless.Model
         /// The name of the key to use in the sign PKI Cert process
         /// </summary>
         /// <value>The name of the key to use in the sign PKI Cert process</value>
-        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = true)]
         public string DisplayId { get; set; }
 
         /// <summary>
@@ -179,7 +181,7 @@ namespace akeyless.Model
         /// SigningMethod
         /// </summary>
         /// <value>SigningMethod</value>
-        [DataMember(Name = "signing-method", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "signing-method", IsRequired = true, EmitDefaultValue = true)]
         public string SigningMethod { get; set; }
 
         /// <summary>
@@ -200,7 +202,7 @@ namespace akeyless.Model
         /// he requested Time To Live for the certificate, in seconds
         /// </summary>
         /// <value>he requested Time To Live for the certificate, in seconds</value>
-        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = true)]
         public long Ttl { get; set; }
 
         /// <summary>
@@ -221,7 +223,7 @@ namespace akeyless.Model
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
         public int _Version { get; set; }
 
         /// <summary>
@@ -230,7 +232,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SignPKICertWithClassicKey {\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
@@ -282,8 +284,9 @@ namespace akeyless.Model
         public bool Equals(SignPKICertWithClassicKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CommonName == input.CommonName ||
@@ -389,40 +392,72 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CommonName != null)
-                    hashCode = hashCode * 59 + this.CommonName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CommonName.GetHashCode();
+                }
                 if (this.Country != null)
-                    hashCode = hashCode * 59 + this.Country.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
                 if (this.DnsNames != null)
-                    hashCode = hashCode * 59 + this.DnsNames.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DnsNames.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyUsage != null)
-                    hashCode = hashCode * 59 + this.KeyUsage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyUsage.GetHashCode();
+                }
                 if (this.Locality != null)
-                    hashCode = hashCode * 59 + this.Locality.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Locality.GetHashCode();
+                }
                 if (this.OrganizationalUnits != null)
-                    hashCode = hashCode * 59 + this.OrganizationalUnits.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OrganizationalUnits.GetHashCode();
+                }
                 if (this.Organizations != null)
-                    hashCode = hashCode * 59 + this.Organizations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Organizations.GetHashCode();
+                }
                 if (this.PostalCode != null)
-                    hashCode = hashCode * 59 + this.PostalCode.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                }
                 if (this.Province != null)
-                    hashCode = hashCode * 59 + this.Province.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Province.GetHashCode();
+                }
                 if (this.PublicKeyPemData != null)
-                    hashCode = hashCode * 59 + this.PublicKeyPemData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PublicKeyPemData.GetHashCode();
+                }
                 if (this.SigningMethod != null)
-                    hashCode = hashCode * 59 + this.SigningMethod.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SigningMethod.GetHashCode();
+                }
                 if (this.StreetAddress != null)
-                    hashCode = hashCode * 59 + this.StreetAddress.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StreetAddress.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UriSans != null)
-                    hashCode = hashCode * 59 + this.UriSans.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UriSans.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

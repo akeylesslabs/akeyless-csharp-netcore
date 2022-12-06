@@ -65,7 +65,8 @@ namespace akeyless.Model
         public GatewayCreateProducerPostgreSQL(string creationStatements = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string postgresqlDbName = default(string), string postgresqlHost = "127.0.0.1", string postgresqlPassword = default(string), string postgresqlPort = "5432", string postgresqlUsername = default(string), string producerEncryptionKey = default(string), string revocationStatement = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerPostgreSQL and cannot be null");
             }
             this.Name = name;
@@ -120,7 +121,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -250,7 +251,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerPostgreSQL {\n");
             sb.Append("  CreationStatements: ").Append(CreationStatements).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -305,8 +306,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerPostgreSQL input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CreationStatements == input.CreationStatements ||
@@ -429,46 +431,84 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CreationStatements != null)
-                    hashCode = hashCode * 59 + this.CreationStatements.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationStatements.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.PostgresqlDbName != null)
-                    hashCode = hashCode * 59 + this.PostgresqlDbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostgresqlDbName.GetHashCode();
+                }
                 if (this.PostgresqlHost != null)
-                    hashCode = hashCode * 59 + this.PostgresqlHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostgresqlHost.GetHashCode();
+                }
                 if (this.PostgresqlPassword != null)
-                    hashCode = hashCode * 59 + this.PostgresqlPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostgresqlPassword.GetHashCode();
+                }
                 if (this.PostgresqlPort != null)
-                    hashCode = hashCode * 59 + this.PostgresqlPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostgresqlPort.GetHashCode();
+                }
                 if (this.PostgresqlUsername != null)
-                    hashCode = hashCode * 59 + this.PostgresqlUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostgresqlUsername.GetHashCode();
+                }
                 if (this.ProducerEncryptionKey != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKey.GetHashCode();
+                }
                 if (this.RevocationStatement != null)
-                    hashCode = hashCode * 59 + this.RevocationStatement.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RevocationStatement.GetHashCode();
+                }
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessDbSchema != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDbSchema.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.Ssl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.Ssl.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

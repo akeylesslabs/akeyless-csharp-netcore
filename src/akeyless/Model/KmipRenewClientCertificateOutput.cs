@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KmipRenewClientCertificateOutput {\n");
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(KmipRenewClientCertificateOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Certificate == input.Certificate ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Certificate != null)
-                    hashCode = hashCode * 59 + this.Certificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Certificate.GetHashCode();
+                }
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -49,12 +49,14 @@ namespace akeyless.Model
         public DeleteRoleRule(bool json = default(bool), string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
-            if (path == null) {
+            if (path == null)
+            {
                 throw new ArgumentNullException("path is a required property for DeleteRoleRule and cannot be null");
             }
             this.Path = path;
             // to ensure "roleName" is required (not null)
-            if (roleName == null) {
+            if (roleName == null)
+            {
                 throw new ArgumentNullException("roleName is a required property for DeleteRoleRule and cannot be null");
             }
             this.RoleName = roleName;
@@ -76,14 +78,14 @@ namespace akeyless.Model
         /// The path the rule refers to
         /// </summary>
         /// <value>The path the rule refers to</value>
-        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
         /// The role name to be updated
         /// </summary>
         /// <value>The role name to be updated</value>
-        [DataMember(Name = "role-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "role-name", IsRequired = true, EmitDefaultValue = true)]
         public string RoleName { get; set; }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteRoleRule {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
@@ -152,8 +154,9 @@ namespace akeyless.Model
         public bool Equals(DeleteRoleRule input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -195,17 +198,27 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.RoleName != null)
-                    hashCode = hashCode * 59 + this.RoleName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleName.GetHashCode();
+                }
                 if (this.RuleType != null)
-                    hashCode = hashCode * 59 + this.RuleType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RuleType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

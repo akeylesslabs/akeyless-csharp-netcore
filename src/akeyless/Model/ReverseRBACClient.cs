@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ReverseRBACClient {\n");
             sb.Append("  Assocs: ").Append(Assocs).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(ReverseRBACClient input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Assocs == input.Assocs ||
@@ -122,9 +123,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Assocs != null)
-                    hashCode = hashCode * 59 + this.Assocs.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Assocs.GetHashCode();
+                }
                 if (this.AuthMethodName != null)
-                    hashCode = hashCode * 59 + this.AuthMethodName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodName.GetHashCode();
+                }
                 return hashCode;
             }
         }

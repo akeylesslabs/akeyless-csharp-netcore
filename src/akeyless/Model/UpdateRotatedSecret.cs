@@ -81,7 +81,8 @@ namespace akeyless.Model
         public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateRotatedSecret and cannot be null");
             }
             this.Name = name;
@@ -189,7 +190,7 @@ namespace akeyless.Model
         /// Secret name
         /// </summary>
         /// <value>Secret name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -389,7 +390,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateRotatedSecret {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
@@ -460,8 +461,9 @@ namespace akeyless.Model
         public bool Equals(UpdateRotatedSecret input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AddTag == input.AddTag ||
@@ -660,73 +662,133 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AddTag != null)
-                    hashCode = hashCode * 59 + this.AddTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
+                }
                 if (this.ApiId != null)
-                    hashCode = hashCode * 59 + this.ApiId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiId.GetHashCode();
+                }
                 if (this.ApiKey != null)
-                    hashCode = hashCode * 59 + this.ApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiKey.GetHashCode();
+                }
                 if (this.AutoRotate != null)
-                    hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
+                }
                 if (this.AwsRegion != null)
-                    hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsRegion.GetHashCode();
+                }
                 if (this.CustomPayload != null)
-                    hashCode = hashCode * 59 + this.CustomPayload.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomPayload.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewMetadata != null)
-                    hashCode = hashCode * 59 + this.NewMetadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewMetadata.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NewVersion.GetHashCode();
                 if (this.RmTag != null)
-                    hashCode = hashCode * 59 + this.RmTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
+                }
                 if (this.RotatedPassword != null)
-                    hashCode = hashCode * 59 + this.RotatedPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatedPassword.GetHashCode();
+                }
                 if (this.RotatedUsername != null)
-                    hashCode = hashCode * 59 + this.RotatedUsername.GetHashCode();
-                hashCode = hashCode * 59 + this.RotationHour.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatedUsername.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)
-                    hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
+                }
                 if (this.RotatorCredsType != null)
-                    hashCode = hashCode * 59 + this.RotatorCredsType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatorCredsType.GetHashCode();
+                }
                 if (this.RotatorCustomCmd != null)
-                    hashCode = hashCode * 59 + this.RotatorCustomCmd.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAllowExternalUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatorCustomCmd.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAllowExternalUser.GetHashCode();
                 if (this.SecureAccessAwsAccountId != null)
-                    hashCode = hashCode * 59 + this.SecureAccessAwsAccountId.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAwsNativeCli.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessAwsAccountId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAwsNativeCli.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessDbName != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDbName.GetHashCode();
+                }
                 if (this.SecureAccessDbSchema != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDbSchema.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDbSchema.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
                 if (this.SecureAccessRdpDomain != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpDomain.GetHashCode();
+                }
                 if (this.SecureAccessRdpUser != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRdpUser.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpUser.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.SshPassword != null)
-                    hashCode = hashCode * 59 + this.SshPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshPassword.GetHashCode();
+                }
                 if (this.SshUsername != null)
-                    hashCode = hashCode * 59 + this.SshUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshUsername.GetHashCode();
+                }
                 if (this.StorageAccountKeyName != null)
-                    hashCode = hashCode * 59 + this.StorageAccountKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StorageAccountKeyName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -107,7 +107,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KubernetesAccessRules {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
@@ -147,8 +147,9 @@ namespace akeyless.Model
         public bool Equals(KubernetesAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alg == input.Alg ||
@@ -200,19 +201,33 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alg != null)
-                    hashCode = hashCode * 59 + this.Alg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alg.GetHashCode();
+                }
                 if (this.Audience != null)
-                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
                 if (this.BoundNamespaces != null)
-                    hashCode = hashCode * 59 + this.BoundNamespaces.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundNamespaces.GetHashCode();
+                }
                 if (this.BoundPodNames != null)
-                    hashCode = hashCode * 59 + this.BoundPodNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundPodNames.GetHashCode();
+                }
                 if (this.BoundServiceAccountNames != null)
-                    hashCode = hashCode * 59 + this.BoundServiceAccountNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundServiceAccountNames.GetHashCode();
+                }
                 if (this.GenKeyPair != null)
-                    hashCode = hashCode * 59 + this.GenKeyPair.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GenKeyPair.GetHashCode();
+                }
                 if (this.PubKey != null)
-                    hashCode = hashCode * 59 + this.PubKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PubKey.GetHashCode();
+                }
                 return hashCode;
             }
         }

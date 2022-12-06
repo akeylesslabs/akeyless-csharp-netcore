@@ -55,22 +55,26 @@ namespace akeyless.Model
         public UpdateNativeK8STarget(string comment = default(string), bool json = default(bool), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
-            if (k8sClusterCaCert == null) {
+            if (k8sClusterCaCert == null)
+            {
                 throw new ArgumentNullException("k8sClusterCaCert is a required property for UpdateNativeK8STarget and cannot be null");
             }
             this.K8sClusterCaCert = k8sClusterCaCert;
             // to ensure "k8sClusterEndpoint" is required (not null)
-            if (k8sClusterEndpoint == null) {
+            if (k8sClusterEndpoint == null)
+            {
                 throw new ArgumentNullException("k8sClusterEndpoint is a required property for UpdateNativeK8STarget and cannot be null");
             }
             this.K8sClusterEndpoint = k8sClusterEndpoint;
             // to ensure "k8sClusterToken" is required (not null)
-            if (k8sClusterToken == null) {
+            if (k8sClusterToken == null)
+            {
                 throw new ArgumentNullException("k8sClusterToken is a required property for UpdateNativeK8STarget and cannot be null");
             }
             this.K8sClusterToken = k8sClusterToken;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateNativeK8STarget and cannot be null");
             }
             this.Name = name;
@@ -102,21 +106,21 @@ namespace akeyless.Model
         /// K8S cluster CA certificate
         /// </summary>
         /// <value>K8S cluster CA certificate</value>
-        [DataMember(Name = "k8s-cluster-ca-cert", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "k8s-cluster-ca-cert", IsRequired = true, EmitDefaultValue = true)]
         public string K8sClusterCaCert { get; set; }
 
         /// <summary>
         /// K8S cluster URL endpoint
         /// </summary>
         /// <value>K8S cluster URL endpoint</value>
-        [DataMember(Name = "k8s-cluster-endpoint", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "k8s-cluster-endpoint", IsRequired = true, EmitDefaultValue = true)]
         public string K8sClusterEndpoint { get; set; }
 
         /// <summary>
         /// K8S cluster Bearer token
         /// </summary>
         /// <value>K8S cluster Bearer token</value>
-        [DataMember(Name = "k8s-cluster-token", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "k8s-cluster-token", IsRequired = true, EmitDefaultValue = true)]
         public string K8sClusterToken { get; set; }
 
         /// <summary>
@@ -136,7 +140,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -173,7 +177,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateNativeK8STarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -218,8 +222,9 @@ namespace akeyless.Model
         public bool Equals(UpdateNativeK8STarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Comment == input.Comment ||
@@ -291,27 +296,47 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.K8sClusterCaCert != null)
-                    hashCode = hashCode * 59 + this.K8sClusterCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterCaCert.GetHashCode();
+                }
                 if (this.K8sClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.K8sClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
                 if (this.K8sClusterToken != null)
-                    hashCode = hashCode * 59 + this.K8sClusterToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterToken.GetHashCode();
+                }
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
                 return hashCode;
             }
         }

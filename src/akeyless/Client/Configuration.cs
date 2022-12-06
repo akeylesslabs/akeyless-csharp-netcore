@@ -18,6 +18,7 @@ using System.Net;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Net.Http;
 
 namespace akeyless.Client
 {
@@ -32,7 +33,7 @@ namespace akeyless.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.20.3";
+        public const string Version = "3.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -56,6 +57,11 @@ namespace akeyless.Client
                 return new ApiException(status,
                     string.Format("Error calling {0}: {1}", methodName, response.RawContent),
                     response.RawContent, response.Headers);
+            }
+            if (status == 0)
+            {
+                return new ApiException(status,
+                    string.Format("Error calling {0}: {1}", methodName, response.ErrorText), response.ErrorText);
             }
             return null;
         };
@@ -91,6 +97,13 @@ namespace akeyless.Client
         /// </summary>
         /// <value>The servers</value>
         private IList<IReadOnlyDictionary<string, object>> _servers;
+
+        /// <summary>
+        /// Gets or sets the operation servers defined in the OpenAPI spec.
+        /// </summary>
+        /// <value>The operation servers</value>
+        private IReadOnlyDictionary<string, List<IReadOnlyDictionary<string, object>>> _operationServers;
+
         #endregion Private Members
 
         #region Constructors
@@ -102,7 +115,7 @@ namespace akeyless.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "OpenAPI-Generator/2.20.3/csharp";
+            UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/3.0.0/csharp");
             BasePath = "https://api.akeyless.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -115,6 +128,9 @@ namespace akeyless.Client
                         {"description", "No description provided"},
                     }
                 }
+            };
+            OperationServers = new Dictionary<string, List<IReadOnlyDictionary<string, object>>>()
+            {
             };
 
             // Setting Timeout has side effects (forces ApiClient creation).
@@ -376,6 +392,23 @@ namespace akeyless.Client
         }
 
         /// <summary>
+        /// Gets or sets the operation servers.
+        /// </summary>
+        /// <value>The operation servers.</value>
+        public virtual IReadOnlyDictionary<string, List<IReadOnlyDictionary<string, object>>> OperationServers
+        {
+            get { return _operationServers; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Operation servers may not be null.");
+                }
+                _operationServers = value;
+            }
+        }
+
+        /// <summary>
         /// Returns URL based on server settings without providing values
         /// for the variables
         /// </summary>
@@ -383,7 +416,7 @@ namespace akeyless.Client
         /// <return>The server URL.</return>
         public string GetServerUrl(int index)
         {
-            return GetServerUrl(index, null);
+            return GetServerUrl(Servers, index, null);
         }
 
         /// <summary>
@@ -394,9 +427,49 @@ namespace akeyless.Client
         /// <return>The server URL.</return>
         public string GetServerUrl(int index, Dictionary<string, string> inputVariables)
         {
-            if (index < 0 || index >= Servers.Count)
+            return GetServerUrl(Servers, index, inputVariables);
+        }
+
+        /// <summary>
+        /// Returns URL based on operation server settings.
+        /// </summary>
+        /// <param name="operation">Operation associated with the request path.</param>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <return>The operation server URL.</return>
+        public string GetOperationServerUrl(string operation, int index)
+        {
+            return GetOperationServerUrl(operation, index, null);
+        }
+
+        /// <summary>
+        /// Returns URL based on operation server settings.
+        /// </summary>
+        /// <param name="operation">Operation associated with the request path.</param>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <param name="inputVariables">Dictionary of the variables and the corresponding values.</param>
+        /// <return>The operation server URL.</return>
+        public string GetOperationServerUrl(string operation, int index, Dictionary<string, string> inputVariables)
+        {
+            if (OperationServers.TryGetValue(operation, out var operationServer))
             {
-                throw new InvalidOperationException($"Invalid index {index} when selecting the server. Must be less than {Servers.Count}.");
+                return GetServerUrl(operationServer, index, inputVariables);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Returns URL based on server settings.
+        /// </summary>
+        /// <param name="servers">Dictionary of server settings.</param>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <param name="inputVariables">Dictionary of the variables and the corresponding values.</param>
+        /// <return>The server URL.</return>
+        private string GetServerUrl(IList<IReadOnlyDictionary<string, object>> servers, int index, Dictionary<string, string> inputVariables)
+        {
+            if (index < 0 || index >= servers.Count)
+            {
+                throw new InvalidOperationException($"Invalid index {index} when selecting the server. Must be less than {servers.Count}.");
             }
 
             if (inputVariables == null)
@@ -404,30 +477,33 @@ namespace akeyless.Client
                 inputVariables = new Dictionary<string, string>();
             }
 
-            IReadOnlyDictionary<string, object> server = Servers[index];
+            IReadOnlyDictionary<string, object> server = servers[index];
             string url = (string)server["url"];
 
-            // go through variable and assign a value
-            foreach (KeyValuePair<string, object> variable in (IReadOnlyDictionary<string, object>)server["variables"])
+            if (server.ContainsKey("variables"))
             {
-
-                IReadOnlyDictionary<string, object> serverVariables = (IReadOnlyDictionary<string, object>)(variable.Value);
-
-                if (inputVariables.ContainsKey(variable.Key))
+                // go through each variable and assign a value
+                foreach (KeyValuePair<string, object> variable in (IReadOnlyDictionary<string, object>)server["variables"])
                 {
-                    if (((List<string>)serverVariables["enum_values"]).Contains(inputVariables[variable.Key]))
+
+                    IReadOnlyDictionary<string, object> serverVariables = (IReadOnlyDictionary<string, object>)(variable.Value);
+
+                    if (inputVariables.ContainsKey(variable.Key))
                     {
-                        url = url.Replace("{" + variable.Key + "}", inputVariables[variable.Key]);
+                        if (((List<string>)serverVariables["enum_values"]).Contains(inputVariables[variable.Key]))
+                        {
+                            url = url.Replace("{" + variable.Key + "}", inputVariables[variable.Key]);
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException($"The variable `{variable.Key}` in the server URL has invalid value #{inputVariables[variable.Key]}. Must be {(List<string>)serverVariables["enum_values"]}");
+                        }
                     }
                     else
                     {
-                        throw new InvalidOperationException($"The variable `{variable.Key}` in the server URL has invalid value #{inputVariables[variable.Key]}. Must be {(List<string>)serverVariables["enum_values"]}");
+                        // use default value
+                        url = url.Replace("{" + variable.Key + "}", (string)serverVariables["default_value"]);
                     }
-                }
-                else
-                {
-                    // use default value
-                    url = url.Replace("{" + variable.Key + "}", (string)serverVariables["default_value"]);
                 }
             }
 
@@ -447,7 +523,7 @@ namespace akeyless.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2.0\n";
-            report += "    SDK Package Version: 2.20.3\n";
+            report += "    SDK Package Version: 3.0.0\n";
 
             return report;
         }
@@ -507,7 +583,8 @@ namespace akeyless.Client
                 Password = second.Password ?? first.Password,
                 AccessToken = second.AccessToken ?? first.AccessToken,
                 TempFolderPath = second.TempFolderPath ?? first.TempFolderPath,
-                DateTimeFormat = second.DateTimeFormat ?? first.DateTimeFormat
+                DateTimeFormat = second.DateTimeFormat ?? first.DateTimeFormat,
+                ClientCertificates = second.ClientCertificates ?? first.ClientCertificates,
             };
             return config;
         }

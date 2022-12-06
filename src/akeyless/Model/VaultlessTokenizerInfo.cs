@@ -94,7 +94,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class VaultlessTokenizerInfo {\n");
             sb.Append("  EmailTokenizerInfo: ").Append(EmailTokenizerInfo).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
@@ -133,8 +133,9 @@ namespace akeyless.Model
         public bool Equals(VaultlessTokenizerInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.EmailTokenizerInfo == input.EmailTokenizerInfo ||
@@ -178,17 +179,29 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.EmailTokenizerInfo != null)
-                    hashCode = hashCode * 59 + this.EmailTokenizerInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EmailTokenizerInfo.GetHashCode();
+                }
                 if (this.KeyName != null)
-                    hashCode = hashCode * 59 + this.KeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                }
                 if (this.RegexpTokenizerInfo != null)
-                    hashCode = hashCode * 59 + this.RegexpTokenizerInfo.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RegexpTokenizerInfo.GetHashCode();
+                }
                 if (this.TemplateType != null)
-                    hashCode = hashCode * 59 + this.TemplateType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TemplateType.GetHashCode();
+                }
                 if (this.Tweak != null)
-                    hashCode = hashCode * 59 + this.Tweak.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tweak.GetHashCode();
+                }
                 if (this.TweakType != null)
-                    hashCode = hashCode * 59 + this.TweakType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TweakType.GetHashCode();
+                }
                 return hashCode;
             }
         }

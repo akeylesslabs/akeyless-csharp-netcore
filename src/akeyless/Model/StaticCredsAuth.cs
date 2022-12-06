@@ -81,7 +81,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class StaticCredsAuth {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
@@ -118,8 +118,9 @@ namespace akeyless.Model
         public bool Equals(StaticCredsAuth input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -152,12 +153,18 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.AdminEmail != null)
-                    hashCode = hashCode * 59 + this.AdminEmail.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdminEmail.GetHashCode();
+                }
                 if (this.Creds != null)
-                    hashCode = hashCode * 59 + this.Creds.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Creds.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 return hashCode;
             }
         }

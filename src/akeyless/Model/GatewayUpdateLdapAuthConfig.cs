@@ -189,7 +189,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateLdapAuthConfig {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
@@ -238,8 +238,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateLdapAuthConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -331,35 +332,63 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.BindDn != null)
-                    hashCode = hashCode * 59 + this.BindDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BindDn.GetHashCode();
+                }
                 if (this.BindDnPassword != null)
-                    hashCode = hashCode * 59 + this.BindDnPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BindDnPassword.GetHashCode();
+                }
                 if (this.GroupAttr != null)
-                    hashCode = hashCode * 59 + this.GroupAttr.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GroupAttr.GetHashCode();
+                }
                 if (this.GroupDn != null)
-                    hashCode = hashCode * 59 + this.GroupDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GroupDn.GetHashCode();
+                }
                 if (this.GroupFilter != null)
-                    hashCode = hashCode * 59 + this.GroupFilter.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GroupFilter.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.LdapCaCert != null)
-                    hashCode = hashCode * 59 + this.LdapCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapCaCert.GetHashCode();
+                }
                 if (this.LdapEnable != null)
-                    hashCode = hashCode * 59 + this.LdapEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapEnable.GetHashCode();
+                }
                 if (this.LdapUrl != null)
-                    hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
-                hashCode = hashCode * 59 + this.LdapAnonymousSearch.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.LdapAnonymousSearch.GetHashCode();
                 if (this.SigningKeyData != null)
-                    hashCode = hashCode * 59 + this.SigningKeyData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SigningKeyData.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserAttribute != null)
-                    hashCode = hashCode * 59 + this.UserAttribute.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserAttribute.GetHashCode();
+                }
                 if (this.UserDn != null)
-                    hashCode = hashCode * 59 + this.UserDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserDn.GetHashCode();
+                }
                 return hashCode;
             }
         }

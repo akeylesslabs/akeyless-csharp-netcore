@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DataProtectionSection {\n");
             sb.Append("  EnableClassicKeyProtection: ").Append(EnableClassicKeyProtection).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(DataProtectionSection input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.EnableClassicKeyProtection == input.EnableClassicKeyProtection ||
@@ -105,7 +106,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.EnableClassicKeyProtection.GetHashCode();
+                hashCode = (hashCode * 59) + this.EnableClassicKeyProtection.GetHashCode();
                 return hashCode;
             }
         }

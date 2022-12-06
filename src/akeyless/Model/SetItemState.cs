@@ -49,12 +49,14 @@ namespace akeyless.Model
         public SetItemState(string desiredState = default(string), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = 0)
         {
             // to ensure "desiredState" is required (not null)
-            if (desiredState == null) {
+            if (desiredState == null)
+            {
                 throw new ArgumentNullException("desiredState is a required property for SetItemState and cannot be null");
             }
             this.DesiredState = desiredState;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for SetItemState and cannot be null");
             }
             this.Name = name;
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// Desired item state (Enabled, Disabled)
         /// </summary>
         /// <value>Desired item state (Enabled, Disabled)</value>
-        [DataMember(Name = "desired-state", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "desired-state", IsRequired = true, EmitDefaultValue = true)]
         public string DesiredState { get; set; }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace akeyless.Model
         /// Current item name
         /// </summary>
         /// <value>Current item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SetItemState {\n");
             sb.Append("  DesiredState: ").Append(DesiredState).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -151,8 +153,9 @@ namespace akeyless.Model
         public bool Equals(SetItemState input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DesiredState == input.DesiredState ||
@@ -194,15 +197,23 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DesiredState != null)
-                    hashCode = hashCode * 59 + this.DesiredState.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DesiredState.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

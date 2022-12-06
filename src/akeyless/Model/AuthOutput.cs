@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AuthOutput {\n");
             sb.Append("  Creds: ").Append(Creds).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(AuthOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Creds == input.Creds ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Creds != null)
-                    hashCode = hashCode * 59 + this.Creds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Creds.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 return hashCode;
             }
         }

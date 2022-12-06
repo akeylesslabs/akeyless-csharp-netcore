@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ClientData {\n");
             sb.Append("  ClientCertificateData: ").Append(ClientCertificateData).Append("\n");
             sb.Append("  ClientKeyData: ").Append(ClientKeyData).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(ClientData input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClientCertificateData == input.ClientCertificateData ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClientCertificateData != null)
-                    hashCode = hashCode * 59 + this.ClientCertificateData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientCertificateData.GetHashCode();
+                }
                 if (this.ClientKeyData != null)
-                    hashCode = hashCode * 59 + this.ClientKeyData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientKeyData.GetHashCode();
+                }
                 if (this.ParentCertificateData != null)
-                    hashCode = hashCode * 59 + this.ParentCertificateData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ParentCertificateData.GetHashCode();
+                }
                 return hashCode;
             }
         }

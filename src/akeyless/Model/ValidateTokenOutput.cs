@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ValidateTokenOutput {\n");
             sb.Append("  Expiration: ").Append(Expiration).Append("\n");
             sb.Append("  IsValid: ").Append(IsValid).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(ValidateTokenOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Expiration == input.Expiration ||
@@ -134,10 +135,14 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Expiration != null)
-                    hashCode = hashCode * 59 + this.Expiration.GetHashCode();
-                hashCode = hashCode * 59 + this.IsValid.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Expiration.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsValid.GetHashCode();
                 if (this.Reason != null)
-                    hashCode = hashCode * 59 + this.Reason.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Reason.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -51,12 +51,14 @@ namespace akeyless.Model
         public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), bool json = default(bool), bool legacySigningAlgName = default(bool), string publicKeyData = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
-            if (certIssuerName == null) {
+            if (certIssuerName == null)
+            {
                 throw new ArgumentNullException("certIssuerName is a required property for GetSSHCertificate and cannot be null");
             }
             this.CertIssuerName = certIssuerName;
             // to ensure "certUsername" is required (not null)
-            if (certUsername == null) {
+            if (certUsername == null)
+            {
                 throw new ArgumentNullException("certUsername is a required property for GetSSHCertificate and cannot be null");
             }
             this.CertUsername = certUsername;
@@ -72,14 +74,14 @@ namespace akeyless.Model
         /// The name of the SSH certificate issuer
         /// </summary>
         /// <value>The name of the SSH certificate issuer</value>
-        [DataMember(Name = "cert-issuer-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "cert-issuer-name", IsRequired = true, EmitDefaultValue = true)]
         public string CertIssuerName { get; set; }
 
         /// <summary>
         /// The username to sign in the SSH certificate
         /// </summary>
         /// <value>The username to sign in the SSH certificate</value>
-        [DataMember(Name = "cert-username", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "cert-username", IsRequired = true, EmitDefaultValue = true)]
         public string CertUsername { get; set; }
 
         /// <summary>
@@ -130,7 +132,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetSSHCertificate {\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CertUsername: ").Append(CertUsername).Append("\n");
@@ -171,8 +173,9 @@ namespace akeyless.Model
         public bool Equals(GetSSHCertificate input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CertIssuerName == input.CertIssuerName ||
@@ -223,18 +226,28 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CertIssuerName != null)
-                    hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
                 if (this.CertUsername != null)
-                    hashCode = hashCode * 59 + this.CertUsername.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.LegacySigningAlgName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertUsername.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.LegacySigningAlgName.GetHashCode();
                 if (this.PublicKeyData != null)
-                    hashCode = hashCode * 59 + this.PublicKeyData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PublicKeyData.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

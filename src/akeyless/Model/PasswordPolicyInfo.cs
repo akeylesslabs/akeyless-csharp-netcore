@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PasswordPolicyInfo {\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  UseCapitalLetters: ").Append(UseCapitalLetters).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(PasswordPolicyInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.PasswordLength == input.PasswordLength ||
@@ -157,11 +158,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.PasswordLength.GetHashCode();
-                hashCode = hashCode * 59 + this.UseCapitalLetters.GetHashCode();
-                hashCode = hashCode * 59 + this.UseLowerLetters.GetHashCode();
-                hashCode = hashCode * 59 + this.UseNumbers.GetHashCode();
-                hashCode = hashCode * 59 + this.UseSpecialCharacters.GetHashCode();
+                hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
+                hashCode = (hashCode * 59) + this.UseCapitalLetters.GetHashCode();
+                hashCode = (hashCode * 59) + this.UseLowerLetters.GetHashCode();
+                hashCode = (hashCode * 59) + this.UseNumbers.GetHashCode();
+                hashCode = (hashCode * 59) + this.UseSpecialCharacters.GetHashCode();
                 return hashCode;
             }
         }

@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UniversalIdentityDetails {\n");
             sb.Append("  MaxDepth: ").Append(MaxDepth).Append("\n");
             sb.Append("  NumberOfTokens: ").Append(NumberOfTokens).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(UniversalIdentityDetails input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.MaxDepth == input.MaxDepth ||
@@ -132,10 +133,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.MaxDepth.GetHashCode();
-                hashCode = hashCode * 59 + this.NumberOfTokens.GetHashCode();
+                hashCode = (hashCode * 59) + this.MaxDepth.GetHashCode();
+                hashCode = (hashCode * 59) + this.NumberOfTokens.GetHashCode();
                 if (this.Root != null)
-                    hashCode = hashCode * 59 + this.Root.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Root.GetHashCode();
+                }
                 return hashCode;
             }
         }

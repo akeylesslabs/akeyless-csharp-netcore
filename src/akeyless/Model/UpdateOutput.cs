@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateOutput {\n");
             sb.Append("  Changelog: ").Append(Changelog).Append("\n");
             sb.Append("  Latest: ").Append(Latest).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(UpdateOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Changelog == input.Changelog ||
@@ -134,10 +135,14 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Changelog != null)
-                    hashCode = hashCode * 59 + this.Changelog.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Changelog.GetHashCode();
+                }
                 if (this.Latest != null)
-                    hashCode = hashCode * 59 + this.Latest.GetHashCode();
-                hashCode = hashCode * 59 + this.Updated.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Latest.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Updated.GetHashCode();
                 return hashCode;
             }
         }

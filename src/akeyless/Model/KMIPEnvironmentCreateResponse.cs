@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KMIPEnvironmentCreateResponse {\n");
             sb.Append("  CaCert: ").Append(CaCert).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(KMIPEnvironmentCreateResponse input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CaCert == input.CaCert ||
@@ -122,9 +123,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CaCert != null)
-                    hashCode = hashCode * 59 + this.CaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CaCert.GetHashCode();
+                }
                 if (this.Root != null)
-                    hashCode = hashCode * 59 + this.Root.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Root.GetHashCode();
+                }
                 return hashCode;
             }
         }

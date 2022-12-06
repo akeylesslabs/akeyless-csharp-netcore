@@ -58,12 +58,14 @@ namespace akeyless.Model
         public AssocTargetItem(bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for AssocTargetItem and cannot be null");
             }
             this.Name = name;
             // to ensure "targetName" is required (not null)
-            if (targetName == null) {
+            if (targetName == null)
+            {
                 throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             }
             this.TargetName = targetName;
@@ -129,7 +131,7 @@ namespace akeyless.Model
         /// The item to associate
         /// </summary>
         /// <value>The item to associate</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -157,7 +159,7 @@ namespace akeyless.Model
         /// The target to associate
         /// </summary>
         /// <value>The target to associate</value>
-        [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = true)]
         public string TargetName { get; set; }
 
         /// <summary>
@@ -194,7 +196,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
@@ -242,8 +244,9 @@ namespace akeyless.Model
         public bool Equals(AssocTargetItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -332,35 +335,63 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyOperations != null)
-                    hashCode = hashCode * 59 + this.KeyOperations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyOperations.GetHashCode();
+                }
                 if (this.KeyringName != null)
-                    hashCode = hashCode * 59 + this.KeyringName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyringName.GetHashCode();
+                }
                 if (this.KmsAlgorithm != null)
-                    hashCode = hashCode * 59 + this.KmsAlgorithm.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KmsAlgorithm.GetHashCode();
+                }
                 if (this.LocationId != null)
-                    hashCode = hashCode * 59 + this.LocationId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LocationId.GetHashCode();
+                }
                 if (this.MultiRegion != null)
-                    hashCode = hashCode * 59 + this.MultiRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MultiRegion.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProjectId != null)
-                    hashCode = hashCode * 59 + this.ProjectId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProjectId.GetHashCode();
+                }
                 if (this.Purpose != null)
-                    hashCode = hashCode * 59 + this.Purpose.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Purpose.GetHashCode();
+                }
                 if (this.Regions != null)
-                    hashCode = hashCode * 59 + this.Regions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Regions.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.TenantSecretType != null)
-                    hashCode = hashCode * 59 + this.TenantSecretType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TenantSecretType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.VaultName != null)
-                    hashCode = hashCode * 59 + this.VaultName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VaultName.GetHashCode();
+                }
                 return hashCode;
             }
         }

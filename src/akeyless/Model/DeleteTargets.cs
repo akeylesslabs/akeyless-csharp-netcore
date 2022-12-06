@@ -48,7 +48,8 @@ namespace akeyless.Model
         public DeleteTargets(bool forceDeletion = false, bool json = default(bool), string path = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
-            if (path == null) {
+            if (path == null)
+            {
                 throw new ArgumentNullException("path is a required property for DeleteTargets and cannot be null");
             }
             this.Path = path;
@@ -76,7 +77,7 @@ namespace akeyless.Model
         /// Path to delete the targets from
         /// </summary>
         /// <value>Path to delete the targets from</value>
-        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteTargets {\n");
             sb.Append("  ForceDeletion: ").Append(ForceDeletion).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -137,8 +138,9 @@ namespace akeyless.Model
         public bool Equals(DeleteTargets input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ForceDeletion == input.ForceDeletion ||
@@ -174,14 +176,20 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.ForceDeletion.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.ForceDeletion.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

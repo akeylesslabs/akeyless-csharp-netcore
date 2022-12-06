@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DatadogForwardingConfig {\n");
             sb.Append("  DatadogApiKey: ").Append(DatadogApiKey).Append("\n");
             sb.Append("  DatadogHost: ").Append(DatadogHost).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(DatadogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DatadogApiKey == input.DatadogApiKey ||
@@ -163,15 +164,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DatadogApiKey != null)
-                    hashCode = hashCode * 59 + this.DatadogApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DatadogApiKey.GetHashCode();
+                }
                 if (this.DatadogHost != null)
-                    hashCode = hashCode * 59 + this.DatadogHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DatadogHost.GetHashCode();
+                }
                 if (this.DatadogLogService != null)
-                    hashCode = hashCode * 59 + this.DatadogLogService.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DatadogLogService.GetHashCode();
+                }
                 if (this.DatadogLogSource != null)
-                    hashCode = hashCode * 59 + this.DatadogLogSource.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DatadogLogSource.GetHashCode();
+                }
                 if (this.DatadogLogTags != null)
-                    hashCode = hashCode * 59 + this.DatadogLogTags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DatadogLogTags.GetHashCode();
+                }
                 return hashCode;
             }
         }

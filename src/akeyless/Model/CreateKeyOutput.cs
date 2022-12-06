@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateKeyOutput {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  FragmentResults: ").Append(FragmentResults).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(CreateKeyOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -135,10 +136,14 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
                 if (this.FragmentResults != null)
-                    hashCode = hashCode * 59 + this.FragmentResults.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.FragmentResults.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 return hashCode;
             }
         }

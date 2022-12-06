@@ -50,7 +50,8 @@ namespace akeyless.Model
         public GatewayAddAllowedManagementAccess(bool allowGwApi = default(bool), bool allowGwLogin = default(bool), bool json = default(bool), string subAdminAccessId = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "subAdminAccessId" is required (not null)
-            if (subAdminAccessId == null) {
+            if (subAdminAccessId == null)
+            {
                 throw new ArgumentNullException("subAdminAccessId is a required property for GatewayAddAllowedManagementAccess and cannot be null");
             }
             this.SubAdminAccessId = subAdminAccessId;
@@ -85,7 +86,7 @@ namespace akeyless.Model
         /// SubAdmins to add
         /// </summary>
         /// <value>SubAdmins to add</value>
-        [DataMember(Name = "sub-admin-access-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "sub-admin-access-id", IsRequired = true, EmitDefaultValue = true)]
         public string SubAdminAccessId { get; set; }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayAddAllowedManagementAccess {\n");
             sb.Append("  AllowGwApi: ").Append(AllowGwApi).Append("\n");
             sb.Append("  AllowGwLogin: ").Append(AllowGwLogin).Append("\n");
@@ -155,8 +156,9 @@ namespace akeyless.Model
         public bool Equals(GatewayAddAllowedManagementAccess input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowGwApi == input.AllowGwApi ||
@@ -202,17 +204,25 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AllowGwApi.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowGwLogin.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowGwApi.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowGwLogin.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.SubAdminAccessId != null)
-                    hashCode = hashCode * 59 + this.SubAdminAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubAdminAccessId.GetHashCode();
+                }
                 if (this.SubClaims != null)
-                    hashCode = hashCode * 59 + this.SubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -207,7 +207,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AuthMethodAccessInfo {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AccessIdAlias: ").Append(AccessIdAlias).Append("\n");
@@ -260,8 +260,9 @@ namespace akeyless.Model
         public bool Equals(AuthMethodAccessInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessExpires == input.AccessExpires ||
@@ -371,43 +372,77 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
                 if (this.AccessIdAlias != null)
-                    hashCode = hashCode * 59 + this.AccessIdAlias.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessIdAlias.GetHashCode();
+                }
                 if (this.ApiKeyAccessRules != null)
-                    hashCode = hashCode * 59 + this.ApiKeyAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiKeyAccessRules.GetHashCode();
+                }
                 if (this.AwsIamAccessRules != null)
-                    hashCode = hashCode * 59 + this.AwsIamAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsIamAccessRules.GetHashCode();
+                }
                 if (this.AzureAdAccessRules != null)
-                    hashCode = hashCode * 59 + this.AzureAdAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureAdAccessRules.GetHashCode();
+                }
                 if (this.CertAccessRules != null)
-                    hashCode = hashCode * 59 + this.CertAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertAccessRules.GetHashCode();
+                }
                 if (this.CidrWhitelist != null)
-                    hashCode = hashCode * 59 + this.CidrWhitelist.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CidrWhitelist.GetHashCode();
+                }
                 if (this.EmailPassAccessRules != null)
-                    hashCode = hashCode * 59 + this.EmailPassAccessRules.GetHashCode();
-                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EmailPassAccessRules.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GcpAccessRules != null)
-                    hashCode = hashCode * 59 + this.GcpAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpAccessRules.GetHashCode();
+                }
                 if (this.GwCidrWhitelist != null)
-                    hashCode = hashCode * 59 + this.GwCidrWhitelist.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwCidrWhitelist.GetHashCode();
+                }
                 if (this.HuaweiAccessRules != null)
-                    hashCode = hashCode * 59 + this.HuaweiAccessRules.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HuaweiAccessRules.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.JwtTtl.GetHashCode();
                 if (this.K8sAccessRules != null)
-                    hashCode = hashCode * 59 + this.K8sAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sAccessRules.GetHashCode();
+                }
                 if (this.LdapAccessRules != null)
-                    hashCode = hashCode * 59 + this.LdapAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapAccessRules.GetHashCode();
+                }
                 if (this.Oauth2AccessRules != null)
-                    hashCode = hashCode * 59 + this.Oauth2AccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Oauth2AccessRules.GetHashCode();
+                }
                 if (this.OidcAccessRules != null)
-                    hashCode = hashCode * 59 + this.OidcAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OidcAccessRules.GetHashCode();
+                }
                 if (this.RulesType != null)
-                    hashCode = hashCode * 59 + this.RulesType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RulesType.GetHashCode();
+                }
                 if (this.SamlAccessRules != null)
-                    hashCode = hashCode * 59 + this.SamlAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SamlAccessRules.GetHashCode();
+                }
                 if (this.UniversalIdentityAccessRules != null)
-                    hashCode = hashCode * 59 + this.UniversalIdentityAccessRules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniversalIdentityAccessRules.GetHashCode();
+                }
                 return hashCode;
             }
         }

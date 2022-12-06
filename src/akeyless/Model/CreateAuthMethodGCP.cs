@@ -60,17 +60,20 @@ namespace akeyless.Model
         public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "audience" is required (not null)
-            if (audience == null) {
+            if (audience == null)
+            {
                 throw new ArgumentNullException("audience is a required property for CreateAuthMethodGCP and cannot be null");
             }
             this.Audience = audience;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateAuthMethodGCP and cannot be null");
             }
             this.Name = name;
             // to ensure "type" is required (not null)
-            if (type == null) {
+            if (type == null)
+            {
                 throw new ArgumentNullException("type is a required property for CreateAuthMethodGCP and cannot be null");
             }
             this.Type = type;
@@ -101,7 +104,7 @@ namespace akeyless.Model
         /// The audience to verify in the JWT received by the client
         /// </summary>
         /// <value>The audience to verify in the JWT received by the client</value>
-        [DataMember(Name = "audience", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "audience", IsRequired = true, EmitDefaultValue = true)]
         public string Audience { get; set; }
 
         /// <summary>
@@ -178,7 +181,7 @@ namespace akeyless.Model
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -199,7 +202,7 @@ namespace akeyless.Model
         /// Type of the GCP Access Rules
         /// </summary>
         /// <value>Type of the GCP Access Rules</value>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
@@ -215,7 +218,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodGCP {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
@@ -265,8 +268,9 @@ namespace akeyless.Model
         public bool Equals(CreateAuthMethodGCP input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessExpires == input.AccessExpires ||
@@ -367,36 +371,62 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
                 if (this.Audience != null)
-                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
                 if (this.BoundIps != null)
-                    hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
                 if (this.BoundLabels != null)
-                    hashCode = hashCode * 59 + this.BoundLabels.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundLabels.GetHashCode();
+                }
                 if (this.BoundProjects != null)
-                    hashCode = hashCode * 59 + this.BoundProjects.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundProjects.GetHashCode();
+                }
                 if (this.BoundRegions != null)
-                    hashCode = hashCode * 59 + this.BoundRegions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundRegions.GetHashCode();
+                }
                 if (this.BoundServiceAccounts != null)
-                    hashCode = hashCode * 59 + this.BoundServiceAccounts.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundServiceAccounts.GetHashCode();
+                }
                 if (this.BoundZones != null)
-                    hashCode = hashCode * 59 + this.BoundZones.GetHashCode();
-                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundZones.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)
-                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ServiceAccountCredsData != null)
-                    hashCode = hashCode * 59 + this.ServiceAccountCredsData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ServiceAccountCredsData.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

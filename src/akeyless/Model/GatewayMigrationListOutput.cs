@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayMigrationListOutput {\n");
             sb.Append("  Body: ").Append(Body).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(GatewayMigrationListOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Body == input.Body ||
@@ -107,7 +108,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Body != null)
-                    hashCode = hashCode * 59 + this.Body.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Body.GetHashCode();
+                }
                 return hashCode;
             }
         }

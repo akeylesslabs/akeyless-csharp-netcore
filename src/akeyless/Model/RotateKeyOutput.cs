@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RotateKeyOutput {\n");
             sb.Append("  ClassicKeyGwUrl: ").Append(ClassicKeyGwUrl).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(RotateKeyOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClassicKeyGwUrl == input.ClassicKeyGwUrl ||
@@ -148,12 +149,18 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClassicKeyGwUrl != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyGwUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyGwUrl.GetHashCode();
+                }
                 if (this.ItemType != null)
-                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
-                hashCode = hashCode * 59 + this.NewItemVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemType.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NewItemVersion.GetHashCode();
                 if (this.NextRotationDate != null)
-                    hashCode = hashCode * 59 + this.NextRotationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NextRotationDate.GetHashCode();
+                }
                 return hashCode;
             }
         }

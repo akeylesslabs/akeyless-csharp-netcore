@@ -186,7 +186,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayGetK8SAuthConfigOutput {\n");
             sb.Append("  AmTokenExpiration: ").Append(AmTokenExpiration).Append("\n");
             sb.Append("  AuthMethodAccessId: ").Append(AuthMethodAccessId).Append("\n");
@@ -235,8 +235,9 @@ namespace akeyless.Model
         public bool Equals(GatewayGetK8SAuthConfigOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AmTokenExpiration == input.AmTokenExpiration ||
@@ -327,35 +328,61 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AmTokenExpiration.GetHashCode();
+                hashCode = (hashCode * 59) + this.AmTokenExpiration.GetHashCode();
                 if (this.AuthMethodAccessId != null)
-                    hashCode = hashCode * 59 + this.AuthMethodAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodAccessId.GetHashCode();
+                }
                 if (this.AuthMethodPrvKeyPem != null)
-                    hashCode = hashCode * 59 + this.AuthMethodPrvKeyPem.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodPrvKeyPem.GetHashCode();
+                }
                 if (this.ClusterApiType != null)
-                    hashCode = hashCode * 59 + this.ClusterApiType.GetHashCode();
-                hashCode = hashCode * 59 + this.DisableIssValidation.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterApiType.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DisableIssValidation.GetHashCode();
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.K8sCaCert != null)
-                    hashCode = hashCode * 59 + this.K8sCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sCaCert.GetHashCode();
+                }
                 if (this.K8sHost != null)
-                    hashCode = hashCode * 59 + this.K8sHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sHost.GetHashCode();
+                }
                 if (this.K8sIssuer != null)
-                    hashCode = hashCode * 59 + this.K8sIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sIssuer.GetHashCode();
+                }
                 if (this.K8sPubKeysPem != null)
-                    hashCode = hashCode * 59 + this.K8sPubKeysPem.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sPubKeysPem.GetHashCode();
+                }
                 if (this.K8sTokenReviewerJwt != null)
-                    hashCode = hashCode * 59 + this.K8sTokenReviewerJwt.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sTokenReviewerJwt.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
                 if (this.RancherApiKey != null)
-                    hashCode = hashCode * 59 + this.RancherApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RancherApiKey.GetHashCode();
+                }
                 if (this.RancherClusterId != null)
-                    hashCode = hashCode * 59 + this.RancherClusterId.GetHashCode();
-                hashCode = hashCode * 59 + this.UseLocalCaJwt.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RancherClusterId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UseLocalCaJwt.GetHashCode();
                 return hashCode;
             }
         }

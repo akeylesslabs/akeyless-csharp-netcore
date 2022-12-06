@@ -125,7 +125,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetAccountSettingsCommandOutput {\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
@@ -168,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(GetAccountSettingsCommandOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccountId == input.AccountId ||
@@ -233,25 +234,45 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccountId != null)
-                    hashCode = hashCode * 59 + this.AccountId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
+                }
                 if (this.Address != null)
-                    hashCode = hashCode * 59 + this.Address.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Address.GetHashCode();
+                }
                 if (this.CompanyName != null)
-                    hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CompanyName.GetHashCode();
+                }
                 if (this.Email != null)
-                    hashCode = hashCode * 59 + this.Email.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                }
                 if (this.GeneralSettings != null)
-                    hashCode = hashCode * 59 + this.GeneralSettings.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GeneralSettings.GetHashCode();
+                }
                 if (this.ObjectVersionSettings != null)
-                    hashCode = hashCode * 59 + this.ObjectVersionSettings.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ObjectVersionSettings.GetHashCode();
+                }
                 if (this.Phone != null)
-                    hashCode = hashCode * 59 + this.Phone.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Phone.GetHashCode();
+                }
                 if (this.SecretManagement != null)
-                    hashCode = hashCode * 59 + this.SecretManagement.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecretManagement.GetHashCode();
+                }
                 if (this.SecureRemoteAccess != null)
-                    hashCode = hashCode * 59 + this.SecureRemoteAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureRemoteAccess.GetHashCode();
+                }
                 if (this.SystemAccessCredsSettings != null)
-                    hashCode = hashCode * 59 + this.SystemAccessCredsSettings.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SystemAccessCredsSettings.GetHashCode();
+                }
                 return hashCode;
             }
         }

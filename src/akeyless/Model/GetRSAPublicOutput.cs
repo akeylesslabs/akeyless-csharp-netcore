@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetRSAPublicOutput {\n");
             sb.Append("  Pem: ").Append(Pem).Append("\n");
             sb.Append("  Raw: ").Append(Raw).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(GetRSAPublicOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Pem == input.Pem ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Pem != null)
-                    hashCode = hashCode * 59 + this.Pem.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Pem.GetHashCode();
+                }
                 if (this.Raw != null)
-                    hashCode = hashCode * 59 + this.Raw.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Raw.GetHashCode();
+                }
                 if (this.Ssh != null)
-                    hashCode = hashCode * 59 + this.Ssh.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Ssh.GetHashCode();
+                }
                 return hashCode;
             }
         }

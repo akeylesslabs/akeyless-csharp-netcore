@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ExportClassicKeyOutput {\n");
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(ExportClassicKeyOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CertificatePem == input.CertificatePem ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CertificatePem != null)
-                    hashCode = hashCode * 59 + this.CertificatePem.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertificatePem.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 return hashCode;
             }
         }

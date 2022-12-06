@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationsConfigLastChange {\n");
             sb.Append("  ChangedMigrations: ").Append(ChangedMigrations).Append("\n");
             sb.Append("  CreatedMigrations: ").Append(CreatedMigrations).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(MigrationsConfigLastChange input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ChangedMigrations == input.ChangedMigrations ||
@@ -138,11 +139,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ChangedMigrations != null)
-                    hashCode = hashCode * 59 + this.ChangedMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChangedMigrations.GetHashCode();
+                }
                 if (this.CreatedMigrations != null)
-                    hashCode = hashCode * 59 + this.CreatedMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreatedMigrations.GetHashCode();
+                }
                 if (this.DeletedMigrations != null)
-                    hashCode = hashCode * 59 + this.DeletedMigrations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeletedMigrations.GetHashCode();
+                }
                 return hashCode;
             }
         }

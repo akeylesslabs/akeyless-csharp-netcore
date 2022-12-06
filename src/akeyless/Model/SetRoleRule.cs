@@ -46,21 +46,25 @@ namespace akeyless.Model
         /// <param name="roleName">The role name to be updated (required).</param>
         /// <param name="ruleType">item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule (default to &quot;item-rule&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="ttl">RoleRule ttl.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public SetRoleRule(List<string> capability = default(List<string>), bool json = default(bool), string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), string uidToken = default(string))
+        public SetRoleRule(List<string> capability = default(List<string>), bool json = default(bool), string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), int ttl = default(int), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
-            if (capability == null) {
+            if (capability == null)
+            {
                 throw new ArgumentNullException("capability is a required property for SetRoleRule and cannot be null");
             }
             this.Capability = capability;
             // to ensure "path" is required (not null)
-            if (path == null) {
+            if (path == null)
+            {
                 throw new ArgumentNullException("path is a required property for SetRoleRule and cannot be null");
             }
             this.Path = path;
             // to ensure "roleName" is required (not null)
-            if (roleName == null) {
+            if (roleName == null)
+            {
                 throw new ArgumentNullException("roleName is a required property for SetRoleRule and cannot be null");
             }
             this.RoleName = roleName;
@@ -68,6 +72,7 @@ namespace akeyless.Model
             // use default value if no "ruleType" provided
             this.RuleType = ruleType ?? "item-rule";
             this.Token = token;
+            this.Ttl = ttl;
             this.UidToken = uidToken;
         }
 
@@ -75,7 +80,7 @@ namespace akeyless.Model
         /// List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]
         /// </summary>
         /// <value>List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny]</value>
-        [DataMember(Name = "capability", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "capability", IsRequired = true, EmitDefaultValue = true)]
         public List<string> Capability { get; set; }
 
         /// <summary>
@@ -89,14 +94,14 @@ namespace akeyless.Model
         /// The path the rule refers to
         /// </summary>
         /// <value>The path the rule refers to</value>
-        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
         /// The role name to be updated
         /// </summary>
         /// <value>The role name to be updated</value>
-        [DataMember(Name = "role-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "role-name", IsRequired = true, EmitDefaultValue = true)]
         public string RoleName { get; set; }
 
         /// <summary>
@@ -114,6 +119,13 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
+        /// RoleRule ttl
+        /// </summary>
+        /// <value>RoleRule ttl</value>
+        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        public int Ttl { get; set; }
+
+        /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
@@ -126,7 +138,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SetRoleRule {\n");
             sb.Append("  Capability: ").Append(Capability).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -134,6 +146,7 @@ namespace akeyless.Model
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  RuleType: ").Append(RuleType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -166,8 +179,9 @@ namespace akeyless.Model
         public bool Equals(SetRoleRule input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Capability == input.Capability ||
@@ -200,6 +214,10 @@ namespace akeyless.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
+                    this.Ttl == input.Ttl ||
+                    this.Ttl.Equals(input.Ttl)
+                ) && 
+                (
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
@@ -216,18 +234,31 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Capability != null)
-                    hashCode = hashCode * 59 + this.Capability.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Capability.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.RoleName != null)
-                    hashCode = hashCode * 59 + this.RoleName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleName.GetHashCode();
+                }
                 if (this.RuleType != null)
-                    hashCode = hashCode * 59 + this.RuleType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RuleType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class LogzIoLogForwardingConfig {\n");
             sb.Append("  TargetLogzIoProtocol: ").Append(TargetLogzIoProtocol).Append("\n");
             sb.Append("  TargetLogzIoToken: ").Append(TargetLogzIoToken).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(LogzIoLogForwardingConfig input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.TargetLogzIoProtocol == input.TargetLogzIoProtocol ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.TargetLogzIoProtocol != null)
-                    hashCode = hashCode * 59 + this.TargetLogzIoProtocol.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetLogzIoProtocol.GetHashCode();
+                }
                 if (this.TargetLogzIoToken != null)
-                    hashCode = hashCode * 59 + this.TargetLogzIoToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetLogzIoToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

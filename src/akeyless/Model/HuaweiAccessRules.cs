@@ -108,7 +108,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class HuaweiAccessRules {\n");
             sb.Append("  AuthEndpoint: ").Append(AuthEndpoint).Append("\n");
             sb.Append("  DomainId: ").Append(DomainId).Append("\n");
@@ -148,8 +148,9 @@ namespace akeyless.Model
         public bool Equals(HuaweiAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AuthEndpoint == input.AuthEndpoint ||
@@ -204,19 +205,33 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AuthEndpoint != null)
-                    hashCode = hashCode * 59 + this.AuthEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthEndpoint.GetHashCode();
+                }
                 if (this.DomainId != null)
-                    hashCode = hashCode * 59 + this.DomainId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DomainId.GetHashCode();
+                }
                 if (this.DomainName != null)
-                    hashCode = hashCode * 59 + this.DomainName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DomainName.GetHashCode();
+                }
                 if (this.TenantId != null)
-                    hashCode = hashCode * 59 + this.TenantId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TenantId.GetHashCode();
+                }
                 if (this.TenantName != null)
-                    hashCode = hashCode * 59 + this.TenantName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TenantName.GetHashCode();
+                }
                 if (this.UserId != null)
-                    hashCode = hashCode * 59 + this.UserId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
                 if (this.UserName != null)
-                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserName.GetHashCode();
+                }
                 return hashCode;
             }
         }

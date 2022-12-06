@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CertificateIssueInfo {\n");
             sb.Append("  CertIssuerType: ").Append(CertIssuerType).Append("\n");
             sb.Append("  MaxTtl: ").Append(MaxTtl).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(CertificateIssueInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CertIssuerType == input.CertIssuerType ||
@@ -148,12 +149,18 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.CertIssuerType != null)
-                    hashCode = hashCode * 59 + this.CertIssuerType.GetHashCode();
-                hashCode = hashCode * 59 + this.MaxTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerType.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MaxTtl.GetHashCode();
                 if (this.PkiCertIssuerDetails != null)
-                    hashCode = hashCode * 59 + this.PkiCertIssuerDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PkiCertIssuerDetails.GetHashCode();
+                }
                 if (this.SshCertIssuerDetails != null)
-                    hashCode = hashCode * 59 + this.SshCertIssuerDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshCertIssuerDetails.GetHashCode();
+                }
                 return hashCode;
             }
         }

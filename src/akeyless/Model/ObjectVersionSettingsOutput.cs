@@ -62,7 +62,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ObjectVersionSettingsOutput {\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
@@ -97,8 +97,9 @@ namespace akeyless.Model
         public bool Equals(ObjectVersionSettingsOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ItemType == input.ItemType ||
@@ -122,9 +123,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ItemType != null)
-                    hashCode = hashCode * 59 + this.ItemType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemType.GetHashCode();
+                }
                 if (this.MaxVersions != null)
-                    hashCode = hashCode * 59 + this.MaxVersions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
                 return hashCode;
             }
         }

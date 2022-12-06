@@ -51,7 +51,8 @@ namespace akeyless.Model
         public GetSecretValue(string accessibility = "regular", string ignoreCache = default(string), bool json = default(bool), List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
-            if (names == null) {
+            if (names == null)
+            {
                 throw new ArgumentNullException("names is a required property for GetSecretValue and cannot be null");
             }
             this.Names = names;
@@ -90,7 +91,7 @@ namespace akeyless.Model
         /// Secret name
         /// </summary>
         /// <value>Secret name</value>
-        [DataMember(Name = "names", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "names", IsRequired = true, EmitDefaultValue = true)]
         public List<string> Names { get; set; }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GetSecretValue {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
@@ -168,8 +169,9 @@ namespace akeyless.Model
         public bool Equals(GetSecretValue input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Accessibility == input.Accessibility ||
@@ -221,18 +223,28 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Accessibility != null)
-                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 if (this.IgnoreCache != null)
-                    hashCode = hashCode * 59 + this.IgnoreCache.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IgnoreCache.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Names != null)
-                    hashCode = hashCode * 59 + this.Names.GetHashCode();
-                hashCode = hashCode * 59 + this.PrettyPrint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Names.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.PrettyPrint.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

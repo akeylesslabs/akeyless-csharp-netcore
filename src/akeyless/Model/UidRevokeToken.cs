@@ -49,12 +49,14 @@ namespace akeyless.Model
         public UidRevokeToken(string authMethodName = default(string), bool json = default(bool), string revokeToken = default(string), string revokeType = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "revokeToken" is required (not null)
-            if (revokeToken == null) {
+            if (revokeToken == null)
+            {
                 throw new ArgumentNullException("revokeToken is a required property for UidRevokeToken and cannot be null");
             }
             this.RevokeToken = revokeToken;
             // to ensure "revokeType" is required (not null)
-            if (revokeType == null) {
+            if (revokeType == null)
+            {
                 throw new ArgumentNullException("revokeType is a required property for UidRevokeToken and cannot be null");
             }
             this.RevokeType = revokeType;
@@ -82,14 +84,14 @@ namespace akeyless.Model
         /// the universal identity token/token-id to revoke
         /// </summary>
         /// <value>the universal identity token/token-id to revoke</value>
-        [DataMember(Name = "revoke-token", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "revoke-token", IsRequired = true, EmitDefaultValue = true)]
         public string RevokeToken { get; set; }
 
         /// <summary>
         /// revokeSelf/revokeAll (delete only this token/this token and his children)
         /// </summary>
         /// <value>revokeSelf/revokeAll (delete only this token/this token and his children)</value>
-        [DataMember(Name = "revoke-type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "revoke-type", IsRequired = true, EmitDefaultValue = true)]
         public string RevokeType { get; set; }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UidRevokeToken {\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -151,8 +153,9 @@ namespace akeyless.Model
         public bool Equals(UidRevokeToken input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AuthMethodName == input.AuthMethodName ||
@@ -195,16 +198,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AuthMethodName != null)
-                    hashCode = hashCode * 59 + this.AuthMethodName.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.RevokeToken != null)
-                    hashCode = hashCode * 59 + this.RevokeToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RevokeToken.GetHashCode();
+                }
                 if (this.RevokeType != null)
-                    hashCode = hashCode * 59 + this.RevokeType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RevokeType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

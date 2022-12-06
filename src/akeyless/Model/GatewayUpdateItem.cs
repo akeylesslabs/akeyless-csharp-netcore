@@ -65,12 +65,14 @@ namespace akeyless.Model
         public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateItem and cannot be null");
             }
             this.Name = name;
             // to ensure "type" is required (not null)
-            if (type == null) {
+            if (type == null)
+            {
                 throw new ArgumentNullException("type is a required property for GatewayUpdateItem and cannot be null");
             }
             this.Type = type;
@@ -160,7 +162,7 @@ namespace akeyless.Model
         /// Item name
         /// </summary>
         /// <value>Item name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -235,7 +237,7 @@ namespace akeyless.Model
         /// Item type
         /// </summary>
         /// <value>Item type</value>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
@@ -251,7 +253,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateItem {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
@@ -306,8 +308,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateItem input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AddTag == input.AddTag ||
@@ -430,46 +433,84 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AddTag != null)
-                    hashCode = hashCode * 59 + this.AddTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
+                }
                 if (this.ApiId != null)
-                    hashCode = hashCode * 59 + this.ApiId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiId.GetHashCode();
+                }
                 if (this.ApiKey != null)
-                    hashCode = hashCode * 59 + this.ApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ApiKey.GetHashCode();
+                }
                 if (this.AutoRotate != null)
-                    hashCode = hashCode * 59 + this.AutoRotate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
+                }
                 if (this.CustomPayload != null)
-                    hashCode = hashCode * 59 + this.CustomPayload.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomPayload.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewMetadata != null)
-                    hashCode = hashCode * 59 + this.NewMetadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewMetadata.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
-                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NewVersion.GetHashCode();
                 if (this.RmTag != null)
-                    hashCode = hashCode * 59 + this.RmTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
+                }
                 if (this.RotatedPassword != null)
-                    hashCode = hashCode * 59 + this.RotatedPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatedPassword.GetHashCode();
+                }
                 if (this.RotatedUsername != null)
-                    hashCode = hashCode * 59 + this.RotatedUsername.GetHashCode();
-                hashCode = hashCode * 59 + this.RotationHour.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatedUsername.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)
-                    hashCode = hashCode * 59 + this.RotationInterval.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
+                }
                 if (this.RotatorCredsType != null)
-                    hashCode = hashCode * 59 + this.RotatorCredsType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotatorCredsType.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

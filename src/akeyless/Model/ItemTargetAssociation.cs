@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ItemTargetAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(ItemTargetAssociation input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AssocId == input.AssocId ||
@@ -163,14 +164,22 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AssocId != null)
-                    hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssocId.GetHashCode();
+                }
                 if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
-                hashCode = hashCode * 59 + this.TargetId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Attributes.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TargetId.GetHashCode();
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.TargetType != null)
-                    hashCode = hashCode * 59 + this.TargetType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetType.GetHashCode();
+                }
                 return hashCode;
             }
         }

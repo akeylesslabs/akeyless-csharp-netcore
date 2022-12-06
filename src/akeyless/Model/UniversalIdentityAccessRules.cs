@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UniversalIdentityAccessRules {\n");
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(UniversalIdentityAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DenyInheritance == input.DenyInheritance ||
@@ -131,9 +132,9 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.DenyInheritance.GetHashCode();
-                hashCode = hashCode * 59 + this.DenyRotate.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                hashCode = (hashCode * 59) + this.DenyInheritance.GetHashCode();
+                hashCode = (hashCode * 59) + this.DenyRotate.GetHashCode();
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 return hashCode;
             }
         }

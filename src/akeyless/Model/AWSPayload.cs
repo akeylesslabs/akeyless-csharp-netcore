@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AWSPayload {\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(AWSPayload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Key == input.Key ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Region != null)
-                    hashCode = hashCode * 59 + this.Region.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Region.GetHashCode();
+                }
                 if (this.Secret != null)
-                    hashCode = hashCode * 59 + this.Secret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Secret.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class K8SAuthsConfigLastChange {\n");
             sb.Append("  ChangedK8sAuthsIds: ").Append(ChangedK8sAuthsIds).Append("\n");
             sb.Append("  CreatedK8sAuthsIds: ").Append(CreatedK8sAuthsIds).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(K8SAuthsConfigLastChange input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ChangedK8sAuthsIds == input.ChangedK8sAuthsIds ||
@@ -138,11 +139,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ChangedK8sAuthsIds != null)
-                    hashCode = hashCode * 59 + this.ChangedK8sAuthsIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChangedK8sAuthsIds.GetHashCode();
+                }
                 if (this.CreatedK8sAuthsIds != null)
-                    hashCode = hashCode * 59 + this.CreatedK8sAuthsIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreatedK8sAuthsIds.GetHashCode();
+                }
                 if (this.DeletedK8sAuthsIds != null)
-                    hashCode = hashCode * 59 + this.DeletedK8sAuthsIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeletedK8sAuthsIds.GetHashCode();
+                }
                 return hashCode;
             }
         }

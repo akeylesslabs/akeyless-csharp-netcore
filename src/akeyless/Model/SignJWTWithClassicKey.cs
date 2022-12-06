@@ -50,17 +50,20 @@ namespace akeyless.Model
         public SignJWTWithClassicKey(string displayId = default(string), bool json = default(bool), string jwtClaims = default(string), string signingMethod = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
-            if (displayId == null) {
+            if (displayId == null)
+            {
                 throw new ArgumentNullException("displayId is a required property for SignJWTWithClassicKey and cannot be null");
             }
             this.DisplayId = displayId;
             // to ensure "jwtClaims" is required (not null)
-            if (jwtClaims == null) {
+            if (jwtClaims == null)
+            {
                 throw new ArgumentNullException("jwtClaims is a required property for SignJWTWithClassicKey and cannot be null");
             }
             this.JwtClaims = jwtClaims;
             // to ensure "signingMethod" is required (not null)
-            if (signingMethod == null) {
+            if (signingMethod == null)
+            {
                 throw new ArgumentNullException("signingMethod is a required property for SignJWTWithClassicKey and cannot be null");
             }
             this.SigningMethod = signingMethod;
@@ -74,7 +77,7 @@ namespace akeyless.Model
         /// The name of the key to use in the sign JWT process
         /// </summary>
         /// <value>The name of the key to use in the sign JWT process</value>
-        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "display-id", IsRequired = true, EmitDefaultValue = true)]
         public string DisplayId { get; set; }
 
         /// <summary>
@@ -88,14 +91,14 @@ namespace akeyless.Model
         /// JWTClaims
         /// </summary>
         /// <value>JWTClaims</value>
-        [DataMember(Name = "jwt-claims", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "jwt-claims", IsRequired = true, EmitDefaultValue = true)]
         public string JwtClaims { get; set; }
 
         /// <summary>
         /// SigningMethod
         /// </summary>
         /// <value>SigningMethod</value>
-        [DataMember(Name = "signing-method", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "signing-method", IsRequired = true, EmitDefaultValue = true)]
         public string SigningMethod { get; set; }
 
         /// <summary>
@@ -116,7 +119,7 @@ namespace akeyless.Model
         /// classic key version
         /// </summary>
         /// <value>classic key version</value>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
         public int _Version { get; set; }
 
         /// <summary>
@@ -125,7 +128,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SignJWTWithClassicKey {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -165,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(SignJWTWithClassicKey input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -213,17 +217,27 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.JwtClaims != null)
-                    hashCode = hashCode * 59 + this.JwtClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.JwtClaims.GetHashCode();
+                }
                 if (this.SigningMethod != null)
-                    hashCode = hashCode * 59 + this.SigningMethod.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SigningMethod.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

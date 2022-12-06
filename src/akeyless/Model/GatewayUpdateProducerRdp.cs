@@ -66,7 +66,8 @@ namespace akeyless.Model
         public GatewayUpdateProducerRdp(long allowUserExtendSession = default(long), string deleteProtection = default(string), string fixedUserOnly = "false", bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = "22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", long warnUserBeforeExpiration = default(long))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerRdp and cannot be null");
             }
             this.Name = name;
@@ -129,7 +130,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -259,7 +260,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerRdp {\n");
             sb.Append("  AllowUserExtendSession: ").Append(AllowUserExtendSession).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -315,8 +316,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerRdp input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowUserExtendSession == input.AllowUserExtendSession ||
@@ -442,48 +444,86 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AllowUserExtendSession.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowUserExtendSession.GetHashCode();
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.FixedUserOnly != null)
-                    hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.FixedUserOnly.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.RdpAdminName != null)
-                    hashCode = hashCode * 59 + this.RdpAdminName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RdpAdminName.GetHashCode();
+                }
                 if (this.RdpAdminPwd != null)
-                    hashCode = hashCode * 59 + this.RdpAdminPwd.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RdpAdminPwd.GetHashCode();
+                }
                 if (this.RdpHostName != null)
-                    hashCode = hashCode * 59 + this.RdpHostName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RdpHostName.GetHashCode();
+                }
                 if (this.RdpHostPort != null)
-                    hashCode = hashCode * 59 + this.RdpHostPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RdpHostPort.GetHashCode();
+                }
                 if (this.RdpUserGroups != null)
-                    hashCode = hashCode * 59 + this.RdpUserGroups.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAllowExternalUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RdpUserGroups.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAllowExternalUser.GetHashCode();
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
                 if (this.SecureAccessRdpDomain != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRdpDomain.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpDomain.GetHashCode();
+                }
                 if (this.SecureAccessRdpUser != null)
-                    hashCode = hashCode * 59 + this.SecureAccessRdpUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpUser.GetHashCode();
+                }
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
-                hashCode = hashCode * 59 + this.WarnUserBeforeExpiration.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WarnUserBeforeExpiration.GetHashCode();
                 return hashCode;
             }
         }

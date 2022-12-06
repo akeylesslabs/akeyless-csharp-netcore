@@ -801,7 +801,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TargetTypeDetailsInput {\n");
             sb.Append("  AppPrivateKey: ").Append(AppPrivateKey).Append("\n");
             sb.Append("  ArtifactoryAdminApikey: ").Append(ArtifactoryAdminApikey).Append("\n");
@@ -927,8 +927,9 @@ namespace akeyless.Model
         public bool Equals(TargetTypeDetailsInput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AppPrivateKey == input.AppPrivateKey ||
@@ -1403,185 +1404,359 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AppPrivateKey != null)
-                    hashCode = hashCode * 59 + this.AppPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AppPrivateKey.GetHashCode();
+                }
                 if (this.ArtifactoryAdminApikey != null)
-                    hashCode = hashCode * 59 + this.ArtifactoryAdminApikey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ArtifactoryAdminApikey.GetHashCode();
+                }
                 if (this.ArtifactoryAdminUsername != null)
-                    hashCode = hashCode * 59 + this.ArtifactoryAdminUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ArtifactoryAdminUsername.GetHashCode();
+                }
                 if (this.ArtifactoryBaseUrl != null)
-                    hashCode = hashCode * 59 + this.ArtifactoryBaseUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ArtifactoryBaseUrl.GetHashCode();
+                }
                 if (this.AuthFlow != null)
-                    hashCode = hashCode * 59 + this.AuthFlow.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthFlow.GetHashCode();
+                }
                 if (this.AwsAccessKeyId != null)
-                    hashCode = hashCode * 59 + this.AwsAccessKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsAccessKeyId.GetHashCode();
+                }
                 if (this.AwsRegion != null)
-                    hashCode = hashCode * 59 + this.AwsRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsRegion.GetHashCode();
+                }
                 if (this.AwsSecretAccessKey != null)
-                    hashCode = hashCode * 59 + this.AwsSecretAccessKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsSecretAccessKey.GetHashCode();
+                }
                 if (this.AwsSessionToken != null)
-                    hashCode = hashCode * 59 + this.AwsSessionToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsSessionToken.GetHashCode();
+                }
                 if (this.AzureClientId != null)
-                    hashCode = hashCode * 59 + this.AzureClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientId.GetHashCode();
+                }
                 if (this.AzureClientSecret != null)
-                    hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientSecret.GetHashCode();
+                }
                 if (this.AzureResourceGroupName != null)
-                    hashCode = hashCode * 59 + this.AzureResourceGroupName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureResourceGroupName.GetHashCode();
+                }
                 if (this.AzureResourceName != null)
-                    hashCode = hashCode * 59 + this.AzureResourceName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureResourceName.GetHashCode();
+                }
                 if (this.AzureSubscriptionId != null)
-                    hashCode = hashCode * 59 + this.AzureSubscriptionId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureSubscriptionId.GetHashCode();
+                }
                 if (this.AzureTenantId != null)
-                    hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureTenantId.GetHashCode();
+                }
                 if (this.CaCertData != null)
-                    hashCode = hashCode * 59 + this.CaCertData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CaCertData.GetHashCode();
+                }
                 if (this.CaCertName != null)
-                    hashCode = hashCode * 59 + this.CaCertName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CaCertName.GetHashCode();
+                }
                 if (this.ChefServerHostName != null)
-                    hashCode = hashCode * 59 + this.ChefServerHostName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerHostName.GetHashCode();
+                }
                 if (this.ChefServerKey != null)
-                    hashCode = hashCode * 59 + this.ChefServerKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerKey.GetHashCode();
+                }
                 if (this.ChefServerPort != null)
-                    hashCode = hashCode * 59 + this.ChefServerPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerPort.GetHashCode();
+                }
                 if (this.ChefServerUrl != null)
-                    hashCode = hashCode * 59 + this.ChefServerUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerUrl.GetHashCode();
+                }
                 if (this.ChefServerUsername != null)
-                    hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
-                hashCode = hashCode * 59 + this.ChefSkipSsl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerUsername.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ChefSkipSsl.GetHashCode();
                 if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
                 if (this.ClientSecret != null)
-                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
                 if (this.DbHostName != null)
-                    hashCode = hashCode * 59 + this.DbHostName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbHostName.GetHashCode();
+                }
                 if (this.DbName != null)
-                    hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbName.GetHashCode();
+                }
                 if (this.DbPort != null)
-                    hashCode = hashCode * 59 + this.DbPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbPort.GetHashCode();
+                }
                 if (this.DbPwd != null)
-                    hashCode = hashCode * 59 + this.DbPwd.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbPwd.GetHashCode();
+                }
                 if (this.DbServerCertificates != null)
-                    hashCode = hashCode * 59 + this.DbServerCertificates.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbServerCertificates.GetHashCode();
+                }
                 if (this.DbServerName != null)
-                    hashCode = hashCode * 59 + this.DbServerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbServerName.GetHashCode();
+                }
                 if (this.DbUserName != null)
-                    hashCode = hashCode * 59 + this.DbUserName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbUserName.GetHashCode();
+                }
                 if (this.EksAccessKeyId != null)
-                    hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksAccessKeyId.GetHashCode();
+                }
                 if (this.EksClusterCaCertificate != null)
-                    hashCode = hashCode * 59 + this.EksClusterCaCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterCaCertificate.GetHashCode();
+                }
                 if (this.EksClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.EksClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterEndpoint.GetHashCode();
+                }
                 if (this.EksClusterName != null)
-                    hashCode = hashCode * 59 + this.EksClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterName.GetHashCode();
+                }
                 if (this.EksRegion != null)
-                    hashCode = hashCode * 59 + this.EksRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksRegion.GetHashCode();
+                }
                 if (this.EksSecretAccessKey != null)
-                    hashCode = hashCode * 59 + this.EksSecretAccessKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksSecretAccessKey.GetHashCode();
+                }
                 if (this.GcpServiceAccountEmail != null)
-                    hashCode = hashCode * 59 + this.GcpServiceAccountEmail.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpServiceAccountEmail.GetHashCode();
+                }
                 if (this.GcpServiceAccountKey != null)
-                    hashCode = hashCode * 59 + this.GcpServiceAccountKey.GetHashCode();
-                hashCode = hashCode * 59 + this.GithubAppId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GcpServiceAccountKey.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.GithubAppId.GetHashCode();
                 if (this.GithubAppPrivateKey != null)
-                    hashCode = hashCode * 59 + this.GithubAppPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GithubAppPrivateKey.GetHashCode();
+                }
                 if (this.GithubBaseUrl != null)
-                    hashCode = hashCode * 59 + this.GithubBaseUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GithubBaseUrl.GetHashCode();
+                }
                 if (this.GkeClusterCaCertificate != null)
-                    hashCode = hashCode * 59 + this.GkeClusterCaCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterCaCertificate.GetHashCode();
+                }
                 if (this.GkeClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.GkeClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterEndpoint.GetHashCode();
+                }
                 if (this.GkeClusterName != null)
-                    hashCode = hashCode * 59 + this.GkeClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeClusterName.GetHashCode();
+                }
                 if (this.GkeServiceAccountKey != null)
-                    hashCode = hashCode * 59 + this.GkeServiceAccountKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeServiceAccountKey.GetHashCode();
+                }
                 if (this.GkeServiceAccountName != null)
-                    hashCode = hashCode * 59 + this.GkeServiceAccountName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GkeServiceAccountName.GetHashCode();
+                }
                 if (this.Host != null)
-                    hashCode = hashCode * 59 + this.Host.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
                 if (this.ImplementationType != null)
-                    hashCode = hashCode * 59 + this.ImplementationType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ImplementationType.GetHashCode();
+                }
                 if (this.K8sBearerToken != null)
-                    hashCode = hashCode * 59 + this.K8sBearerToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sBearerToken.GetHashCode();
+                }
                 if (this.K8sClusterCaCertificate != null)
-                    hashCode = hashCode * 59 + this.K8sClusterCaCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterCaCertificate.GetHashCode();
+                }
                 if (this.K8sClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.K8sClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
                 if (this.LdapAudience != null)
-                    hashCode = hashCode * 59 + this.LdapAudience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapAudience.GetHashCode();
+                }
                 if (this.LdapBindDn != null)
-                    hashCode = hashCode * 59 + this.LdapBindDn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapBindDn.GetHashCode();
+                }
                 if (this.LdapBindPassword != null)
-                    hashCode = hashCode * 59 + this.LdapBindPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapBindPassword.GetHashCode();
+                }
                 if (this.LdapCertificate != null)
-                    hashCode = hashCode * 59 + this.LdapCertificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapCertificate.GetHashCode();
+                }
                 if (this.LdapTokenExpiration != null)
-                    hashCode = hashCode * 59 + this.LdapTokenExpiration.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapTokenExpiration.GetHashCode();
+                }
                 if (this.LdapUrl != null)
-                    hashCode = hashCode * 59 + this.LdapUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
+                }
                 if (this.MongodbAtlasApiPrivateKey != null)
-                    hashCode = hashCode * 59 + this.MongodbAtlasApiPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbAtlasApiPrivateKey.GetHashCode();
+                }
                 if (this.MongodbAtlasApiPublicKey != null)
-                    hashCode = hashCode * 59 + this.MongodbAtlasApiPublicKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbAtlasApiPublicKey.GetHashCode();
+                }
                 if (this.MongodbAtlasProjectId != null)
-                    hashCode = hashCode * 59 + this.MongodbAtlasProjectId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbAtlasProjectId.GetHashCode();
+                }
                 if (this.MongodbDbName != null)
-                    hashCode = hashCode * 59 + this.MongodbDbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbDbName.GetHashCode();
+                }
                 if (this.MongodbDefaultAuthDb != null)
-                    hashCode = hashCode * 59 + this.MongodbDefaultAuthDb.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbDefaultAuthDb.GetHashCode();
+                }
                 if (this.MongodbHostPort != null)
-                    hashCode = hashCode * 59 + this.MongodbHostPort.GetHashCode();
-                hashCode = hashCode * 59 + this.MongodbIsAtlas.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbHostPort.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MongodbIsAtlas.GetHashCode();
                 if (this.MongodbPassword != null)
-                    hashCode = hashCode * 59 + this.MongodbPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbPassword.GetHashCode();
+                }
                 if (this.MongodbUriConnection != null)
-                    hashCode = hashCode * 59 + this.MongodbUriConnection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbUriConnection.GetHashCode();
+                }
                 if (this.MongodbUriOptions != null)
-                    hashCode = hashCode * 59 + this.MongodbUriOptions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbUriOptions.GetHashCode();
+                }
                 if (this.MongodbUsername != null)
-                    hashCode = hashCode * 59 + this.MongodbUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MongodbUsername.GetHashCode();
+                }
                 if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Password.GetHashCode();
+                }
                 if (this.Payload != null)
-                    hashCode = hashCode * 59 + this.Payload.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Payload.GetHashCode();
+                }
                 if (this.Port != null)
-                    hashCode = hashCode * 59 + this.Port.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
+                }
                 if (this.PrivateKey != null)
-                    hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKey.GetHashCode();
+                }
                 if (this.PrivateKeyPassword != null)
-                    hashCode = hashCode * 59 + this.PrivateKeyPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKeyPassword.GetHashCode();
+                }
                 if (this.RabbitmqServerPassword != null)
-                    hashCode = hashCode * 59 + this.RabbitmqServerPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqServerPassword.GetHashCode();
+                }
                 if (this.RabbitmqServerUri != null)
-                    hashCode = hashCode * 59 + this.RabbitmqServerUri.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqServerUri.GetHashCode();
+                }
                 if (this.RabbitmqServerUser != null)
-                    hashCode = hashCode * 59 + this.RabbitmqServerUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqServerUser.GetHashCode();
+                }
                 if (this.SecurityToken != null)
-                    hashCode = hashCode * 59 + this.SecurityToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecurityToken.GetHashCode();
+                }
                 if (this.SfAccount != null)
-                    hashCode = hashCode * 59 + this.SfAccount.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SfAccount.GetHashCode();
+                }
                 if (this.SslConnectionCertificate != null)
-                    hashCode = hashCode * 59 + this.SslConnectionCertificate.GetHashCode();
-                hashCode = hashCode * 59 + this.SslConnectionMode.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SslConnectionCertificate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SslConnectionMode.GetHashCode();
                 if (this.TenantUrl != null)
-                    hashCode = hashCode * 59 + this.TenantUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TenantUrl.GetHashCode();
+                }
                 if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
-                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
                 if (this.UserName != null)
-                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserName.GetHashCode();
+                }
                 if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
                 if (this.VenafiApiKey != null)
-                    hashCode = hashCode * 59 + this.VenafiApiKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VenafiApiKey.GetHashCode();
+                }
                 if (this.VenafiBaseUrl != null)
-                    hashCode = hashCode * 59 + this.VenafiBaseUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VenafiBaseUrl.GetHashCode();
+                }
                 if (this.VenafiTppPassword != null)
-                    hashCode = hashCode * 59 + this.VenafiTppPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VenafiTppPassword.GetHashCode();
+                }
                 if (this.VenafiTppUsername != null)
-                    hashCode = hashCode * 59 + this.VenafiTppUsername.GetHashCode();
-                hashCode = hashCode * 59 + this.VenafiUseTpp.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VenafiTppUsername.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.VenafiUseTpp.GetHashCode();
                 if (this.VenafiZone != null)
-                    hashCode = hashCode * 59 + this.VenafiZone.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.VenafiZone.GetHashCode();
+                }
                 return hashCode;
             }
         }

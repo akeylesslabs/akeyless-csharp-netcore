@@ -62,17 +62,20 @@ namespace akeyless.Model
         public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = default(bool), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
-            if (allowedUsers == null) {
+            if (allowedUsers == null)
+            {
                 throw new ArgumentNullException("allowedUsers is a required property for UpdateSSHCertIssuer and cannot be null");
             }
             this.AllowedUsers = allowedUsers;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateSSHCertIssuer and cannot be null");
             }
             this.Name = name;
             // to ensure "signerKeyName" is required (not null)
-            if (signerKeyName == null) {
+            if (signerKeyName == null)
+            {
                 throw new ArgumentNullException("signerKeyName is a required property for UpdateSSHCertIssuer and cannot be null");
             }
             this.SignerKeyName = signerKeyName;
@@ -105,7 +108,7 @@ namespace akeyless.Model
         /// Users allowed to fetch the certificate, e.g root,ubuntu
         /// </summary>
         /// <value>Users allowed to fetch the certificate, e.g root,ubuntu</value>
-        [DataMember(Name = "allowed-users", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "allowed-users", IsRequired = true, EmitDefaultValue = true)]
         public string AllowedUsers { get; set; }
 
         /// <summary>
@@ -133,7 +136,7 @@ namespace akeyless.Model
         /// SSH certificate issuer name
         /// </summary>
         /// <value>SSH certificate issuer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -197,7 +200,7 @@ namespace akeyless.Model
         /// A key to sign the certificate with
         /// </summary>
         /// <value>A key to sign the certificate with</value>
-        [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = true)]
         public string SignerKeyName { get; set; }
 
         /// <summary>
@@ -211,7 +214,7 @@ namespace akeyless.Model
         /// he requested Time To Live for the certificate, in seconds
         /// </summary>
         /// <value>he requested Time To Live for the certificate, in seconds</value>
-        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = true)]
         public long Ttl { get; set; }
 
         /// <summary>
@@ -227,7 +230,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateSSHCertIssuer {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  AllowedUsers: ").Append(AllowedUsers).Append("\n");
@@ -279,8 +282,9 @@ namespace akeyless.Model
         public bool Equals(UpdateSSHCertIssuer input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AddTag == input.AddTag ||
@@ -390,40 +394,72 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AddTag != null)
-                    hashCode = hashCode * 59 + this.AddTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
+                }
                 if (this.AllowedUsers != null)
-                    hashCode = hashCode * 59 + this.AllowedUsers.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUsers.GetHashCode();
+                }
                 if (this.Extensions != null)
-                    hashCode = hashCode * 59 + this.Extensions.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Extensions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Principals != null)
-                    hashCode = hashCode * 59 + this.Principals.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Principals.GetHashCode();
+                }
                 if (this.RmTag != null)
-                    hashCode = hashCode * 59 + this.RmTag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
+                }
                 if (this.SecureAccessBastionApi != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionApi.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionApi.GetHashCode();
+                }
                 if (this.SecureAccessBastionSsh != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionSsh.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionSsh.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessHost != null)
-                    hashCode = hashCode * 59 + this.SecureAccessHost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
                 if (this.SecureAccessSshCredsUser != null)
-                    hashCode = hashCode * 59 + this.SecureAccessSshCredsUser.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessUseInternalBastion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessSshCredsUser.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessUseInternalBastion.GetHashCode();
                 if (this.SignerKeyName != null)
-                    hashCode = hashCode * 59 + this.SignerKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SignerKeyName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

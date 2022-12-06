@@ -112,7 +112,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SSHCertificateIssueDetails {\n");
             sb.Append("  AllowedDomains: ").Append(AllowedDomains).Append("\n");
             sb.Append("  AllowedUserKeyLengths: ").Append(AllowedUserKeyLengths).Append("\n");
@@ -153,8 +153,9 @@ namespace akeyless.Model
         public bool Equals(SSHCertificateIssueDetails input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowedDomains == input.AllowedDomains ||
@@ -213,20 +214,34 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AllowedDomains != null)
-                    hashCode = hashCode * 59 + this.AllowedDomains.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedDomains.GetHashCode();
+                }
                 if (this.AllowedUserKeyLengths != null)
-                    hashCode = hashCode * 59 + this.AllowedUserKeyLengths.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUserKeyLengths.GetHashCode();
+                }
                 if (this.AllowedUsers != null)
-                    hashCode = hashCode * 59 + this.AllowedUsers.GetHashCode();
-                hashCode = hashCode * 59 + this.CertType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUsers.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CertType.GetHashCode();
                 if (this.CriticalOptions != null)
-                    hashCode = hashCode * 59 + this.CriticalOptions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CriticalOptions.GetHashCode();
+                }
                 if (this.Extensions != null)
-                    hashCode = hashCode * 59 + this.Extensions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Extensions.GetHashCode();
+                }
                 if (this.Principals != null)
-                    hashCode = hashCode * 59 + this.Principals.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Principals.GetHashCode();
+                }
                 if (this.StaticKeyId != null)
-                    hashCode = hashCode * 59 + this.StaticKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StaticKeyId.GetHashCode();
+                }
                 return hashCode;
             }
         }

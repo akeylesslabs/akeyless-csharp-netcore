@@ -153,7 +153,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AzureADAccessRules {\n");
             sb.Append("  AdEndpoint: ").Append(AdEndpoint).Append("\n");
             sb.Append("  BoundGroupIds: ").Append(BoundGroupIds).Append("\n");
@@ -198,8 +198,9 @@ namespace akeyless.Model
         public bool Equals(AzureADAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AdEndpoint == input.AdEndpoint ||
@@ -281,29 +282,53 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AdEndpoint != null)
-                    hashCode = hashCode * 59 + this.AdEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdEndpoint.GetHashCode();
+                }
                 if (this.BoundGroupIds != null)
-                    hashCode = hashCode * 59 + this.BoundGroupIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundGroupIds.GetHashCode();
+                }
                 if (this.BoundResourceGroups != null)
-                    hashCode = hashCode * 59 + this.BoundResourceGroups.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceGroups.GetHashCode();
+                }
                 if (this.BoundResourceIds != null)
-                    hashCode = hashCode * 59 + this.BoundResourceIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceIds.GetHashCode();
+                }
                 if (this.BoundResourceNames != null)
-                    hashCode = hashCode * 59 + this.BoundResourceNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceNames.GetHashCode();
+                }
                 if (this.BoundResourceProviders != null)
-                    hashCode = hashCode * 59 + this.BoundResourceProviders.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceProviders.GetHashCode();
+                }
                 if (this.BoundResourceTypes != null)
-                    hashCode = hashCode * 59 + this.BoundResourceTypes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceTypes.GetHashCode();
+                }
                 if (this.BoundServicePrincipalIds != null)
-                    hashCode = hashCode * 59 + this.BoundServicePrincipalIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundServicePrincipalIds.GetHashCode();
+                }
                 if (this.BoundSubscriptionIds != null)
-                    hashCode = hashCode * 59 + this.BoundSubscriptionIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundSubscriptionIds.GetHashCode();
+                }
                 if (this.BoundTenantId != null)
-                    hashCode = hashCode * 59 + this.BoundTenantId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundTenantId.GetHashCode();
+                }
                 if (this.Issuer != null)
-                    hashCode = hashCode * 59 + this.Issuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
+                }
                 if (this.JwksUri != null)
-                    hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.JwksUri.GetHashCode();
+                }
                 return hashCode;
             }
         }

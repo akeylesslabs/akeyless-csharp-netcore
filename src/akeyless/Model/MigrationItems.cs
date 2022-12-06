@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationItems {\n");
             sb.Append("  Failed: ").Append(Failed).Append("\n");
             sb.Append("  Migrated: ").Append(Migrated).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(MigrationItems input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Failed == input.Failed ||
@@ -144,10 +145,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Failed.GetHashCode();
-                hashCode = hashCode * 59 + this.Migrated.GetHashCode();
-                hashCode = hashCode * 59 + this.Skipped.GetHashCode();
-                hashCode = hashCode * 59 + this.Total.GetHashCode();
+                hashCode = (hashCode * 59) + this.Failed.GetHashCode();
+                hashCode = (hashCode * 59) + this.Migrated.GetHashCode();
+                hashCode = (hashCode * 59) + this.Skipped.GetHashCode();
+                hashCode = (hashCode * 59) + this.Total.GetHashCode();
                 return hashCode;
             }
         }

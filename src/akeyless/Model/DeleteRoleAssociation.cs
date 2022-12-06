@@ -47,7 +47,8 @@ namespace akeyless.Model
         public DeleteRoleAssociation(string assocId = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "assocId" is required (not null)
-            if (assocId == null) {
+            if (assocId == null)
+            {
                 throw new ArgumentNullException("assocId is a required property for DeleteRoleAssociation and cannot be null");
             }
             this.AssocId = assocId;
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// The association id to be deleted
         /// </summary>
         /// <value>The association id to be deleted</value>
-        [DataMember(Name = "assoc-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "assoc-id", IsRequired = true, EmitDefaultValue = true)]
         public string AssocId { get; set; }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteRoleAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -127,8 +128,9 @@ namespace akeyless.Model
         public bool Equals(DeleteRoleAssociation input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AssocId == input.AssocId ||
@@ -161,12 +163,18 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AssocId != null)
-                    hashCode = hashCode * 59 + this.AssocId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssocId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

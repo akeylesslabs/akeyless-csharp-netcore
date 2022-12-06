@@ -59,32 +59,38 @@ namespace akeyless.Model
         public UpdateEKSTarget(string comment = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "eksAccessKeyId" is required (not null)
-            if (eksAccessKeyId == null) {
+            if (eksAccessKeyId == null)
+            {
                 throw new ArgumentNullException("eksAccessKeyId is a required property for UpdateEKSTarget and cannot be null");
             }
             this.EksAccessKeyId = eksAccessKeyId;
             // to ensure "eksClusterCaCert" is required (not null)
-            if (eksClusterCaCert == null) {
+            if (eksClusterCaCert == null)
+            {
                 throw new ArgumentNullException("eksClusterCaCert is a required property for UpdateEKSTarget and cannot be null");
             }
             this.EksClusterCaCert = eksClusterCaCert;
             // to ensure "eksClusterEndpoint" is required (not null)
-            if (eksClusterEndpoint == null) {
+            if (eksClusterEndpoint == null)
+            {
                 throw new ArgumentNullException("eksClusterEndpoint is a required property for UpdateEKSTarget and cannot be null");
             }
             this.EksClusterEndpoint = eksClusterEndpoint;
             // to ensure "eksClusterName" is required (not null)
-            if (eksClusterName == null) {
+            if (eksClusterName == null)
+            {
                 throw new ArgumentNullException("eksClusterName is a required property for UpdateEKSTarget and cannot be null");
             }
             this.EksClusterName = eksClusterName;
             // to ensure "eksSecretAccessKey" is required (not null)
-            if (eksSecretAccessKey == null) {
+            if (eksSecretAccessKey == null)
+            {
                 throw new ArgumentNullException("eksSecretAccessKey is a required property for UpdateEKSTarget and cannot be null");
             }
             this.EksSecretAccessKey = eksSecretAccessKey;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateEKSTarget and cannot be null");
             }
             this.Name = name;
@@ -112,28 +118,28 @@ namespace akeyless.Model
         /// Access Key ID
         /// </summary>
         /// <value>Access Key ID</value>
-        [DataMember(Name = "eks-access-key-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "eks-access-key-id", IsRequired = true, EmitDefaultValue = true)]
         public string EksAccessKeyId { get; set; }
 
         /// <summary>
         /// EKS cluster CA certificate
         /// </summary>
         /// <value>EKS cluster CA certificate</value>
-        [DataMember(Name = "eks-cluster-ca-cert", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "eks-cluster-ca-cert", IsRequired = true, EmitDefaultValue = true)]
         public string EksClusterCaCert { get; set; }
 
         /// <summary>
         /// EKS cluster URL endpoint
         /// </summary>
         /// <value>EKS cluster URL endpoint</value>
-        [DataMember(Name = "eks-cluster-endpoint", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "eks-cluster-endpoint", IsRequired = true, EmitDefaultValue = true)]
         public string EksClusterEndpoint { get; set; }
 
         /// <summary>
         /// EKS cluster name
         /// </summary>
         /// <value>EKS cluster name</value>
-        [DataMember(Name = "eks-cluster-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "eks-cluster-name", IsRequired = true, EmitDefaultValue = true)]
         public string EksClusterName { get; set; }
 
         /// <summary>
@@ -147,7 +153,7 @@ namespace akeyless.Model
         /// Secret Access Key
         /// </summary>
         /// <value>Secret Access Key</value>
-        [DataMember(Name = "eks-secret-access-key", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "eks-secret-access-key", IsRequired = true, EmitDefaultValue = true)]
         public string EksSecretAccessKey { get; set; }
 
         /// <summary>
@@ -174,7 +180,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -217,7 +223,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateEKSTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
@@ -266,8 +272,9 @@ namespace akeyless.Model
         public bool Equals(UpdateEKSTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Comment == input.Comment ||
@@ -358,34 +365,60 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.EksAccessKeyId != null)
-                    hashCode = hashCode * 59 + this.EksAccessKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksAccessKeyId.GetHashCode();
+                }
                 if (this.EksClusterCaCert != null)
-                    hashCode = hashCode * 59 + this.EksClusterCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterCaCert.GetHashCode();
+                }
                 if (this.EksClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.EksClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterEndpoint.GetHashCode();
+                }
                 if (this.EksClusterName != null)
-                    hashCode = hashCode * 59 + this.EksClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksClusterName.GetHashCode();
+                }
                 if (this.EksRegion != null)
-                    hashCode = hashCode * 59 + this.EksRegion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksRegion.GetHashCode();
+                }
                 if (this.EksSecretAccessKey != null)
-                    hashCode = hashCode * 59 + this.EksSecretAccessKey.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EksSecretAccessKey.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
-                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
+                hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
                 return hashCode;
             }
         }

@@ -63,7 +63,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GenCustomerFragment {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -98,8 +98,9 @@ namespace akeyless.Model
         public bool Equals(GenCustomerFragment input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Description == input.Description ||
@@ -122,8 +123,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 return hashCode;
             }
         }

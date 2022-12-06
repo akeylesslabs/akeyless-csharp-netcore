@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class LastConfigChange {\n");
             sb.Append("  LastK8sAuthsChange: ").Append(LastK8sAuthsChange).Append("\n");
             sb.Append("  LastMigrationsChange: ").Append(LastMigrationsChange).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(LastConfigChange input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.LastK8sAuthsChange == input.LastK8sAuthsChange ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.LastK8sAuthsChange != null)
-                    hashCode = hashCode * 59 + this.LastK8sAuthsChange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastK8sAuthsChange.GetHashCode();
+                }
                 if (this.LastMigrationsChange != null)
-                    hashCode = hashCode * 59 + this.LastMigrationsChange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastMigrationsChange.GetHashCode();
+                }
                 return hashCode;
             }
         }

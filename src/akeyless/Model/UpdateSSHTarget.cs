@@ -58,7 +58,8 @@ namespace akeyless.Model
         public UpdateSSHTarget(string comment = default(string), string host = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateSSHTarget and cannot be null");
             }
             this.Name = name;
@@ -115,7 +116,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -182,7 +183,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateSSHTarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
@@ -230,8 +231,9 @@ namespace akeyless.Model
         public bool Equals(UpdateSSHTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Comment == input.Comment ||
@@ -318,33 +320,59 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.Host != null)
-                    hashCode = hashCode * 59 + this.Host.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Port != null)
-                    hashCode = hashCode * 59 + this.Port.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
+                }
                 if (this.PrivateKey != null)
-                    hashCode = hashCode * 59 + this.PrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKey.GetHashCode();
+                }
                 if (this.PrivateKeyPassword != null)
-                    hashCode = hashCode * 59 + this.PrivateKeyPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKeyPassword.GetHashCode();
+                }
                 if (this.SshPassword != null)
-                    hashCode = hashCode * 59 + this.SshPassword.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshPassword.GetHashCode();
+                }
                 if (this.SshUsername != null)
-                    hashCode = hashCode * 59 + this.SshUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshUsername.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
                 return hashCode;
             }
         }

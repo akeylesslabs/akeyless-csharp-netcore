@@ -90,7 +90,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SystemAccessCredentialsReplyObj {\n");
             sb.Append("  AuthCreds: ").Append(AuthCreds).Append("\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
@@ -128,8 +128,9 @@ namespace akeyless.Model
         public bool Equals(SystemAccessCredentialsReplyObj input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AuthCreds == input.AuthCreds ||
@@ -167,14 +168,22 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AuthCreds != null)
-                    hashCode = hashCode * 59 + this.AuthCreds.GetHashCode();
-                hashCode = hashCode * 59 + this.Expiry.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthCreds.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Expiry.GetHashCode();
                 if (this.KfmCreds != null)
-                    hashCode = hashCode * 59 + this.KfmCreds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KfmCreds.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UamCreds != null)
-                    hashCode = hashCode * 59 + this.UamCreds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UamCreds.GetHashCode();
+                }
                 return hashCode;
             }
         }

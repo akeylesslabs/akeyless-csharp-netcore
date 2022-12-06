@@ -54,7 +54,8 @@ namespace akeyless.Model
         public UpdateRDPTargetDetails(string adminName = default(string), string adminPwd = default(string), string hostName = default(string), string hostPort = default(string), bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateRDPTargetDetails and cannot be null");
             }
             this.Name = name;
@@ -111,7 +112,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateRDPTargetDetails {\n");
             sb.Append("  AdminName: ").Append(AdminName).Append("\n");
             sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
@@ -192,8 +193,9 @@ namespace akeyless.Model
         public bool Equals(UpdateRDPTargetDetails input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AdminName == input.AdminName ||
@@ -260,25 +262,43 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AdminName != null)
-                    hashCode = hashCode * 59 + this.AdminName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdminName.GetHashCode();
+                }
                 if (this.AdminPwd != null)
-                    hashCode = hashCode * 59 + this.AdminPwd.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AdminPwd.GetHashCode();
+                }
                 if (this.HostName != null)
-                    hashCode = hashCode * 59 + this.HostName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HostName.GetHashCode();
+                }
                 if (this.HostPort != null)
-                    hashCode = hashCode * 59 + this.HostPort.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.HostPort.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NewVersion.GetHashCode();
                 if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

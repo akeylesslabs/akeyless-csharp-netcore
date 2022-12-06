@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ConfigChange {\n");
             sb.Append("  ConfigHash: ").Append(ConfigHash).Append("\n");
             sb.Append("  LastChange: ").Append(LastChange).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(ConfigChange input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ConfigHash == input.ConfigHash ||
@@ -162,14 +163,22 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ConfigHash != null)
-                    hashCode = hashCode * 59 + this.ConfigHash.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ConfigHash.GetHashCode();
+                }
                 if (this.LastChange != null)
-                    hashCode = hashCode * 59 + this.LastChange.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastChange.GetHashCode();
+                }
                 if (this.LastStatus != null)
-                    hashCode = hashCode * 59 + this.LastStatus.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastStatus.GetHashCode();
+                }
                 if (this.RequiredActivity != null)
-                    hashCode = hashCode * 59 + this.RequiredActivity.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateStamp.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RequiredActivity.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateStamp.GetHashCode();
                 return hashCode;
             }
         }

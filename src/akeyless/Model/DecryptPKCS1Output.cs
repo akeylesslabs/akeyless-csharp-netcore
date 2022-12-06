@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DecryptPKCS1Output {\n");
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(DecryptPKCS1Output input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Plaintext == input.Plaintext ||
@@ -107,7 +108,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Plaintext != null)
-                    hashCode = hashCode * 59 + this.Plaintext.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Plaintext.GetHashCode();
+                }
                 return hashCode;
             }
         }

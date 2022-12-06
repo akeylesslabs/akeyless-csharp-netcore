@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DecryptFileOutput {\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  PlainText: ").Append(PlainText).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(DecryptFileOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Path == input.Path ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.PlainText != null)
-                    hashCode = hashCode * 59 + this.PlainText.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PlainText.GetHashCode();
+                }
                 return hashCode;
             }
         }

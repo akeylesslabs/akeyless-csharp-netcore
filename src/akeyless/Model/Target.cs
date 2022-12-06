@@ -166,7 +166,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Target {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -214,8 +214,9 @@ namespace akeyless.Model
         public bool Equals(Target input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessDate == input.AccessDate ||
@@ -304,31 +305,53 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessDate != null)
-                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
                 if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Attributes.GetHashCode();
+                }
                 if (this.ClientPermissions != null)
-                    hashCode = hashCode * 59 + this.ClientPermissions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientPermissions.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.CreationDate != null)
-                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
-                hashCode = hashCode * 59 + this.CredentialsLess.GetHashCode();
-                hashCode = hashCode * 59 + this.LastVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CredentialsLess.GetHashCode();
+                hashCode = (hashCode * 59) + this.LastVersion.GetHashCode();
                 if (this.ModificationDate != null)
-                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();
+                }
                 if (this.ProtectionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this.TargetId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TargetId.GetHashCode();
                 if (this.TargetItemsAssoc != null)
-                    hashCode = hashCode * 59 + this.TargetItemsAssoc.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetItemsAssoc.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.TargetType != null)
-                    hashCode = hashCode * 59 + this.TargetType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetType.GetHashCode();
+                }
                 if (this.TargetVersions != null)
-                    hashCode = hashCode * 59 + this.TargetVersions.GetHashCode();
-                hashCode = hashCode * 59 + this.WithCustomerFragment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetVersions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WithCustomerFragment.GetHashCode();
                 return hashCode;
             }
         }

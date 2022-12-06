@@ -90,7 +90,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SAMLAccessRules {\n");
             sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
             sb.Append("  BoundAttributes: ").Append(BoundAttributes).Append("\n");
@@ -128,8 +128,9 @@ namespace akeyless.Model
         public bool Equals(SAMLAccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowedRedirectURIs == input.AllowedRedirectURIs ||
@@ -170,15 +171,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AllowedRedirectURIs != null)
-                    hashCode = hashCode * 59 + this.AllowedRedirectURIs.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedRedirectURIs.GetHashCode();
+                }
                 if (this.BoundAttributes != null)
-                    hashCode = hashCode * 59 + this.BoundAttributes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundAttributes.GetHashCode();
+                }
                 if (this.IdpMetadataUrl != null)
-                    hashCode = hashCode * 59 + this.IdpMetadataUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IdpMetadataUrl.GetHashCode();
+                }
                 if (this.IdpMetadataXml != null)
-                    hashCode = hashCode * 59 + this.IdpMetadataXml.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IdpMetadataXml.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

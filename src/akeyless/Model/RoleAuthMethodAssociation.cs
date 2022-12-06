@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RoleAuthMethodAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  AuthMethodAccessId: ").Append(AuthMethodAccessId).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(RoleAuthMethodAssociation input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AssocId == input.AssocId ||
@@ -163,14 +164,22 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AssocId != null)
-                    hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssocId.GetHashCode();
+                }
                 if (this.AuthMethodAccessId != null)
-                    hashCode = hashCode * 59 + this.AuthMethodAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodAccessId.GetHashCode();
+                }
                 if (this.AuthMethodName != null)
-                    hashCode = hashCode * 59 + this.AuthMethodName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodName.GetHashCode();
+                }
                 if (this.AuthMethodSubClaims != null)
-                    hashCode = hashCode * 59 + this.AuthMethodSubClaims.GetHashCode();
-                hashCode = hashCode * 59 + this.SubClaimsCaseSensitive.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodSubClaims.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SubClaimsCaseSensitive.GetHashCode();
                 return hashCode;
             }
         }

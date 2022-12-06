@@ -81,7 +81,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RegexpTokenizerInfo {\n");
             sb.Append("  Alphabet: ").Append(Alphabet).Append("\n");
             sb.Append("  DecodingTemplate: ").Append(DecodingTemplate).Append("\n");
@@ -118,8 +118,9 @@ namespace akeyless.Model
         public bool Equals(RegexpTokenizerInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Alphabet == input.Alphabet ||
@@ -153,13 +154,21 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Alphabet != null)
-                    hashCode = hashCode * 59 + this.Alphabet.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Alphabet.GetHashCode();
+                }
                 if (this.DecodingTemplate != null)
-                    hashCode = hashCode * 59 + this.DecodingTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DecodingTemplate.GetHashCode();
+                }
                 if (this.EncodingTemplate != null)
-                    hashCode = hashCode * 59 + this.EncodingTemplate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.EncodingTemplate.GetHashCode();
+                }
                 if (this.Pattern != null)
-                    hashCode = hashCode * 59 + this.Pattern.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Pattern.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -101,7 +101,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class KMIPServer {\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  Ca: ").Append(Ca).Append("\n");
@@ -141,8 +141,9 @@ namespace akeyless.Model
         public bool Equals(KMIPServer input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Active == input.Active ||
@@ -190,18 +191,28 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Active.GetHashCode();
+                hashCode = (hashCode * 59) + this.Active.GetHashCode();
                 if (this.Ca != null)
-                    hashCode = hashCode * 59 + this.Ca.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Ca.GetHashCode();
+                }
                 if (this.Certificate != null)
-                    hashCode = hashCode * 59 + this.Certificate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Certificate.GetHashCode();
+                }
                 if (this.CertificateIssueDate != null)
-                    hashCode = hashCode * 59 + this.CertificateIssueDate.GetHashCode();
-                hashCode = hashCode * 59 + this.CertificateTtlInSeconds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertificateIssueDate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CertificateTtlInSeconds.GetHashCode();
                 if (this.Hostname != null)
-                    hashCode = hashCode * 59 + this.Hostname.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Hostname.GetHashCode();
+                }
                 if (this.Root != null)
-                    hashCode = hashCode * 59 + this.Root.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Root.GetHashCode();
+                }
                 return hashCode;
             }
         }

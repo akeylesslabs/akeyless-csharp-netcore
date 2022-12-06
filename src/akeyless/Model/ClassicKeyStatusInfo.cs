@@ -78,7 +78,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ClassicKeyStatusInfo {\n");
             sb.Append("  ErrorDate: ").Append(ErrorDate).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
@@ -115,8 +115,9 @@ namespace akeyless.Model
         public bool Equals(ClassicKeyStatusInfo input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ErrorDate == input.ErrorDate ||
@@ -149,12 +150,18 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ErrorDate != null)
-                    hashCode = hashCode * 59 + this.ErrorDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ErrorDate.GetHashCode();
+                }
                 if (this.LastError != null)
-                    hashCode = hashCode * 59 + this.LastError.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
+                }
                 if (this.LastStatus != null)
-                    hashCode = hashCode * 59 + this.LastStatus.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastStatus.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

@@ -56,7 +56,8 @@ namespace akeyless.Model
         public CreateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), bool json = default(bool), string key = default(string), string name = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateAzureTarget and cannot be null");
             }
             this.Name = name;
@@ -111,7 +112,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -167,7 +168,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAzureTarget {\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
@@ -213,8 +214,9 @@ namespace akeyless.Model
         public bool Equals(CreateAzureTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClientId == input.ClientId ||
@@ -291,29 +293,51 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
                 if (this.ClientSecret != null)
-                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ResourceGroupName != null)
-                    hashCode = hashCode * 59 + this.ResourceGroupName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ResourceGroupName.GetHashCode();
+                }
                 if (this.ResourceName != null)
-                    hashCode = hashCode * 59 + this.ResourceName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ResourceName.GetHashCode();
+                }
                 if (this.SubscriptionId != null)
-                    hashCode = hashCode * 59 + this.SubscriptionId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubscriptionId.GetHashCode();
+                }
                 if (this.TenantId != null)
-                    hashCode = hashCode * 59 + this.TenantId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TenantId.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UseGwCloudIdentity.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
                 return hashCode;
             }
         }

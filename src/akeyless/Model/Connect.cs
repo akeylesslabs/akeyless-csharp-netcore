@@ -190,7 +190,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Connect {\n");
             sb.Append("  Helper: ").Append(Helper).Append("\n");
             sb.Append("  RcFileOverride: ").Append(RcFileOverride).Append("\n");
@@ -239,8 +239,9 @@ namespace akeyless.Model
         public bool Equals(Connect input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Helper == input.Helper ||
@@ -332,35 +333,63 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Helper != null)
-                    hashCode = hashCode * 59 + this.Helper.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Helper.GetHashCode();
+                }
                 if (this.RcFileOverride != null)
-                    hashCode = hashCode * 59 + this.RcFileOverride.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RcFileOverride.GetHashCode();
+                }
                 if (this.BastionCtrlPath != null)
-                    hashCode = hashCode * 59 + this.BastionCtrlPath.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionCtrlPath.GetHashCode();
+                }
                 if (this.BastionCtrlPort != null)
-                    hashCode = hashCode * 59 + this.BastionCtrlPort.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionCtrlPort.GetHashCode();
+                }
                 if (this.BastionCtrlProto != null)
-                    hashCode = hashCode * 59 + this.BastionCtrlProto.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionCtrlProto.GetHashCode();
+                }
                 if (this.BastionCtrlSubdomain != null)
-                    hashCode = hashCode * 59 + this.BastionCtrlSubdomain.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionCtrlSubdomain.GetHashCode();
+                }
                 if (this.CertIssuerName != null)
-                    hashCode = hashCode * 59 + this.CertIssuerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
                 if (this.IdentityFile != null)
-                    hashCode = hashCode * 59 + this.IdentityFile.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IdentityFile.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.SshExtraArgs != null)
-                    hashCode = hashCode * 59 + this.SshExtraArgs.GetHashCode();
-                hashCode = hashCode * 59 + this.SshLegacySigningAlg.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshExtraArgs.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SshLegacySigningAlg.GetHashCode();
                 if (this.Target != null)
-                    hashCode = hashCode * 59 + this.Target.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.ViaBastion != null)
-                    hashCode = hashCode * 59 + this.ViaBastion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ViaBastion.GetHashCode();
+                }
                 return hashCode;
             }
         }

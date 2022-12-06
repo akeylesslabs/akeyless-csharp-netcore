@@ -99,7 +99,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class OAuth2AccessRules {\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
@@ -138,8 +138,9 @@ namespace akeyless.Model
         public bool Equals(OAuth2AccessRules input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Audience == input.Audience ||
@@ -185,17 +186,29 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Audience != null)
-                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
                 if (this.BoundClaims != null)
-                    hashCode = hashCode * 59 + this.BoundClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundClaims.GetHashCode();
+                }
                 if (this.BoundClientsId != null)
-                    hashCode = hashCode * 59 + this.BoundClientsId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundClientsId.GetHashCode();
+                }
                 if (this.Issuer != null)
-                    hashCode = hashCode * 59 + this.Issuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
+                }
                 if (this.JwksUri != null)
-                    hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.JwksUri.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -49,12 +49,14 @@ namespace akeyless.Model
         public Detokenize(string ciphertext = default(string), bool json = default(bool), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
         {
             // to ensure "ciphertext" is required (not null)
-            if (ciphertext == null) {
+            if (ciphertext == null)
+            {
                 throw new ArgumentNullException("ciphertext is a required property for Detokenize and cannot be null");
             }
             this.Ciphertext = ciphertext;
             // to ensure "tokenizerName" is required (not null)
-            if (tokenizerName == null) {
+            if (tokenizerName == null)
+            {
                 throw new ArgumentNullException("tokenizerName is a required property for Detokenize and cannot be null");
             }
             this.TokenizerName = tokenizerName;
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// Data to be decrypted
         /// </summary>
         /// <value>Data to be decrypted</value>
-        [DataMember(Name = "ciphertext", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ciphertext", IsRequired = true, EmitDefaultValue = true)]
         public string Ciphertext { get; set; }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace akeyless.Model
         /// The name of the tokenizer to use in the decryption process
         /// </summary>
         /// <value>The name of the tokenizer to use in the decryption process</value>
-        [DataMember(Name = "tokenizer-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "tokenizer-name", IsRequired = true, EmitDefaultValue = true)]
         public string TokenizerName { get; set; }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Detokenize {\n");
             sb.Append("  Ciphertext: ").Append(Ciphertext).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -151,8 +153,9 @@ namespace akeyless.Model
         public bool Equals(Detokenize input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Ciphertext == input.Ciphertext ||
@@ -195,16 +198,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Ciphertext != null)
-                    hashCode = hashCode * 59 + this.Ciphertext.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Ciphertext.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.TokenizerName != null)
-                    hashCode = hashCode * 59 + this.TokenizerName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenizerName.GetHashCode();
+                }
                 if (this.Tweak != null)
-                    hashCode = hashCode * 59 + this.Tweak.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tweak.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

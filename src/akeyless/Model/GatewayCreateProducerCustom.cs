@@ -58,17 +58,20 @@ namespace akeyless.Model
         public GatewayCreateProducerCustom(long adminRotationIntervalDays = default(long), string createSyncUrl = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, bool json = default(bool), string name = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "createSyncUrl" is required (not null)
-            if (createSyncUrl == null) {
+            if (createSyncUrl == null)
+            {
                 throw new ArgumentNullException("createSyncUrl is a required property for GatewayCreateProducerCustom and cannot be null");
             }
             this.CreateSyncUrl = createSyncUrl;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerCustom and cannot be null");
             }
             this.Name = name;
             // to ensure "revokeSyncUrl" is required (not null)
-            if (revokeSyncUrl == null) {
+            if (revokeSyncUrl == null)
+            {
                 throw new ArgumentNullException("revokeSyncUrl is a required property for GatewayCreateProducerCustom and cannot be null");
             }
             this.RevokeSyncUrl = revokeSyncUrl;
@@ -98,7 +101,7 @@ namespace akeyless.Model
         /// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
         /// </summary>
         /// <value>URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create</value>
-        [DataMember(Name = "create-sync-url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "create-sync-url", IsRequired = true, EmitDefaultValue = true)]
         public string CreateSyncUrl { get; set; }
 
         /// <summary>
@@ -126,7 +129,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -147,7 +150,7 @@ namespace akeyless.Model
         /// URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke
         /// </summary>
         /// <value>URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke</value>
-        [DataMember(Name = "revoke-sync-url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "revoke-sync-url", IsRequired = true, EmitDefaultValue = true)]
         public string RevokeSyncUrl { get; set; }
 
         /// <summary>
@@ -198,7 +201,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerCustom {\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
@@ -246,8 +249,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerCustom input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AdminRotationIntervalDays == input.AdminRotationIntervalDays ||
@@ -332,32 +336,54 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AdminRotationIntervalDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.AdminRotationIntervalDays.GetHashCode();
                 if (this.CreateSyncUrl != null)
-                    hashCode = hashCode * 59 + this.CreateSyncUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreateSyncUrl.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableAdminRotation.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EnableAdminRotation.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Payload != null)
-                    hashCode = hashCode * 59 + this.Payload.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Payload.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.RevokeSyncUrl != null)
-                    hashCode = hashCode * 59 + this.RevokeSyncUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RevokeSyncUrl.GetHashCode();
+                }
                 if (this.RotateSyncUrl != null)
-                    hashCode = hashCode * 59 + this.RotateSyncUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RotateSyncUrl.GetHashCode();
+                }
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
-                hashCode = hashCode * 59 + this.TimeoutSec.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TimeoutSec.GetHashCode();
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

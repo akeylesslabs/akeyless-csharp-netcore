@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AccountGeneralSettings {\n");
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(AccountGeneralSettings input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DataProtectionSection == input.DataProtectionSection ||
@@ -134,10 +135,14 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DataProtectionSection != null)
-                    hashCode = hashCode * 59 + this.DataProtectionSection.GetHashCode();
-                hashCode = hashCode * 59 + this.EnableRequestForAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DataProtectionSection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EnableRequestForAccess.GetHashCode();
                 if (this.PasswordPolicy != null)
-                    hashCode = hashCode * 59 + this.PasswordPolicy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();
+                }
                 return hashCode;
             }
         }

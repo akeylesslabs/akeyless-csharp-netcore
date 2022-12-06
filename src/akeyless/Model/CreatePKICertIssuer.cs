@@ -69,12 +69,14 @@ namespace akeyless.Model
         public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreatePKICertIssuer and cannot be null");
             }
             this.Name = name;
             // to ensure "signerKeyName" is required (not null)
-            if (signerKeyName == null) {
+            if (signerKeyName == null)
+            {
                 throw new ArgumentNullException("signerKeyName is a required property for CreatePKICertIssuer and cannot be null");
             }
             this.SignerKeyName = signerKeyName;
@@ -193,7 +195,7 @@ namespace akeyless.Model
         /// PKI certificate issuer name
         /// </summary>
         /// <value>PKI certificate issuer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -249,7 +251,7 @@ namespace akeyless.Model
         /// A key to sign the certificate with
         /// </summary>
         /// <value>A key to sign the certificate with</value>
-        [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = true)]
         public string SignerKeyName { get; set; }
 
         /// <summary>
@@ -277,7 +279,7 @@ namespace akeyless.Model
         /// he requested Time To Live for the certificate, in seconds
         /// </summary>
         /// <value>he requested Time To Live for the certificate, in seconds</value>
-        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = true)]
         public long Ttl { get; set; }
 
         /// <summary>
@@ -293,7 +295,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreatePKICertIssuer {\n");
             sb.Append("  AllowAnyName: ").Append(AllowAnyName).Append("\n");
             sb.Append("  AllowSubdomains: ").Append(AllowSubdomains).Append("\n");
@@ -352,8 +354,9 @@ namespace akeyless.Model
         public bool Equals(CreatePKICertIssuer input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowAnyName == input.AllowAnyName ||
@@ -488,49 +491,83 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AllowAnyName.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowSubdomains.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowAnyName.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowSubdomains.GetHashCode();
                 if (this.AllowedDomains != null)
-                    hashCode = hashCode * 59 + this.AllowedDomains.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedDomains.GetHashCode();
+                }
                 if (this.AllowedUriSans != null)
-                    hashCode = hashCode * 59 + this.AllowedUriSans.GetHashCode();
-                hashCode = hashCode * 59 + this.ClientFlag.GetHashCode();
-                hashCode = hashCode * 59 + this.CodeSigningFlag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUriSans.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ClientFlag.GetHashCode();
+                hashCode = (hashCode * 59) + this.CodeSigningFlag.GetHashCode();
                 if (this.Country != null)
-                    hashCode = hashCode * 59 + this.Country.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyUsage != null)
-                    hashCode = hashCode * 59 + this.KeyUsage.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyUsage.GetHashCode();
+                }
                 if (this.Locality != null)
-                    hashCode = hashCode * 59 + this.Locality.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Locality.GetHashCode();
+                }
                 if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.NotEnforceHostnames.GetHashCode();
-                hashCode = hashCode * 59 + this.NotRequireCn.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NotEnforceHostnames.GetHashCode();
+                hashCode = (hashCode * 59) + this.NotRequireCn.GetHashCode();
                 if (this.OrganizationalUnits != null)
-                    hashCode = hashCode * 59 + this.OrganizationalUnits.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OrganizationalUnits.GetHashCode();
+                }
                 if (this.Organizations != null)
-                    hashCode = hashCode * 59 + this.Organizations.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Organizations.GetHashCode();
+                }
                 if (this.PostalCode != null)
-                    hashCode = hashCode * 59 + this.PostalCode.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                }
                 if (this.Province != null)
-                    hashCode = hashCode * 59 + this.Province.GetHashCode();
-                hashCode = hashCode * 59 + this.ServerFlag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Province.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ServerFlag.GetHashCode();
                 if (this.SignerKeyName != null)
-                    hashCode = hashCode * 59 + this.SignerKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SignerKeyName.GetHashCode();
+                }
                 if (this.StreetAddress != null)
-                    hashCode = hashCode * 59 + this.StreetAddress.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StreetAddress.GetHashCode();
+                }
                 if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tag.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                hashCode = hashCode * 59 + this.Ttl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

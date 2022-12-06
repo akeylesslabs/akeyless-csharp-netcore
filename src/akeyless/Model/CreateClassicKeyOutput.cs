@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateClassicKeyOutput {\n");
             sb.Append("  ClassicKeyId: ").Append(ClassicKeyId).Append("\n");
             sb.Append("  ClassicKeyName: ").Append(ClassicKeyName).Append("\n");
@@ -105,8 +105,9 @@ namespace akeyless.Model
         public bool Equals(CreateClassicKeyOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ClassicKeyId == input.ClassicKeyId ||
@@ -135,11 +136,17 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ClassicKeyId != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyId.GetHashCode();
+                }
                 if (this.ClassicKeyName != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyName.GetHashCode();
+                }
                 if (this.ClassicKeyType != null)
-                    hashCode = hashCode * 59 + this.ClassicKeyType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClassicKeyType.GetHashCode();
+                }
                 return hashCode;
             }
         }

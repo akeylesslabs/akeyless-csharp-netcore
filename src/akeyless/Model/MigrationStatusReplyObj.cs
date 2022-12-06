@@ -125,7 +125,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationStatusReplyObj {\n");
             sb.Append("  DurationTime: ").Append(DurationTime).Append("\n");
             sb.Append("  LastStatusMessage: ").Append(LastStatusMessage).Append("\n");
@@ -168,8 +168,9 @@ namespace akeyless.Model
         public bool Equals(MigrationStatusReplyObj input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DurationTime == input.DurationTime ||
@@ -231,23 +232,39 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DurationTime != null)
-                    hashCode = hashCode * 59 + this.DurationTime.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DurationTime.GetHashCode();
+                }
                 if (this.LastStatusMessage != null)
-                    hashCode = hashCode * 59 + this.LastStatusMessage.GetHashCode();
-                hashCode = hashCode * 59 + this.MaxNameLength.GetHashCode();
-                hashCode = hashCode * 59 + this.MaxValueLength.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastStatusMessage.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MaxNameLength.GetHashCode();
+                hashCode = (hashCode * 59) + this.MaxValueLength.GetHashCode();
                 if (this.MigrationId != null)
-                    hashCode = hashCode * 59 + this.MigrationId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationId.GetHashCode();
+                }
                 if (this.MigrationItems != null)
-                    hashCode = hashCode * 59 + this.MigrationItems.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationItems.GetHashCode();
+                }
                 if (this.MigrationName != null)
-                    hashCode = hashCode * 59 + this.MigrationName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationName.GetHashCode();
+                }
                 if (this.MigrationState != null)
-                    hashCode = hashCode * 59 + this.MigrationState.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationState.GetHashCode();
+                }
                 if (this.MigrationType != null)
-                    hashCode = hashCode * 59 + this.MigrationType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.MigrationType.GetHashCode();
+                }
                 if (this.StartTime != null)
-                    hashCode = hashCode * 59 + this.StartTime.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.StartTime.GetHashCode();
+                }
                 return hashCode;
             }
         }

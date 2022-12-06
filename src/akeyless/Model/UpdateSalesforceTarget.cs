@@ -62,27 +62,32 @@ namespace akeyless.Model
         public UpdateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string email = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "authFlow" is required (not null)
-            if (authFlow == null) {
+            if (authFlow == null)
+            {
                 throw new ArgumentNullException("authFlow is a required property for UpdateSalesforceTarget and cannot be null");
             }
             this.AuthFlow = authFlow;
             // to ensure "clientId" is required (not null)
-            if (clientId == null) {
+            if (clientId == null)
+            {
                 throw new ArgumentNullException("clientId is a required property for UpdateSalesforceTarget and cannot be null");
             }
             this.ClientId = clientId;
             // to ensure "email" is required (not null)
-            if (email == null) {
+            if (email == null)
+            {
                 throw new ArgumentNullException("email is a required property for UpdateSalesforceTarget and cannot be null");
             }
             this.Email = email;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateSalesforceTarget and cannot be null");
             }
             this.Name = name;
             // to ensure "tenantUrl" is required (not null)
-            if (tenantUrl == null) {
+            if (tenantUrl == null)
+            {
                 throw new ArgumentNullException("tenantUrl is a required property for UpdateSalesforceTarget and cannot be null");
             }
             this.TenantUrl = tenantUrl;
@@ -113,7 +118,7 @@ namespace akeyless.Model
         /// type of the auth flow (&#39;jwt&#39; / &#39;user-password&#39;)
         /// </summary>
         /// <value>type of the auth flow (&#39;jwt&#39; / &#39;user-password&#39;)</value>
-        [DataMember(Name = "auth-flow", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "auth-flow", IsRequired = true, EmitDefaultValue = true)]
         public string AuthFlow { get; set; }
 
         /// <summary>
@@ -134,7 +139,7 @@ namespace akeyless.Model
         /// Client ID of the oauth2 app to use for connecting to Salesforce
         /// </summary>
         /// <value>Client ID of the oauth2 app to use for connecting to Salesforce</value>
-        [DataMember(Name = "client-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "client-id", IsRequired = true, EmitDefaultValue = true)]
         public string ClientId { get; set; }
 
         /// <summary>
@@ -155,7 +160,7 @@ namespace akeyless.Model
         /// The email of the user attached to the oauth2 app used for connecting to Salesforce
         /// </summary>
         /// <value>The email of the user attached to the oauth2 app used for connecting to Salesforce</value>
-        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
@@ -182,7 +187,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -210,7 +215,7 @@ namespace akeyless.Model
         /// Url of the Salesforce tenant
         /// </summary>
         /// <value>Url of the Salesforce tenant</value>
-        [DataMember(Name = "tenant-url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "tenant-url", IsRequired = true, EmitDefaultValue = true)]
         public string TenantUrl { get; set; }
 
         /// <summary>
@@ -240,7 +245,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateSalesforceTarget {\n");
             sb.Append("  AppPrivateKeyData: ").Append(AppPrivateKeyData).Append("\n");
             sb.Append("  AuthFlow: ").Append(AuthFlow).Append("\n");
@@ -292,8 +297,9 @@ namespace akeyless.Model
         public bool Equals(UpdateSalesforceTarget input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AppPrivateKeyData == input.AppPrivateKeyData ||
@@ -400,41 +406,75 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AppPrivateKeyData != null)
-                    hashCode = hashCode * 59 + this.AppPrivateKeyData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AppPrivateKeyData.GetHashCode();
+                }
                 if (this.AuthFlow != null)
-                    hashCode = hashCode * 59 + this.AuthFlow.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthFlow.GetHashCode();
+                }
                 if (this.CaCertData != null)
-                    hashCode = hashCode * 59 + this.CaCertData.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CaCertData.GetHashCode();
+                }
                 if (this.CaCertName != null)
-                    hashCode = hashCode * 59 + this.CaCertName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CaCertName.GetHashCode();
+                }
                 if (this.ClientId != null)
-                    hashCode = hashCode * 59 + this.ClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
                 if (this.ClientSecret != null)
-                    hashCode = hashCode * 59 + this.ClientSecret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
                 if (this.Comment != null)
-                    hashCode = hashCode * 59 + this.Comment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
                 if (this.Email != null)
-                    hashCode = hashCode * 59 + this.Email.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Password.GetHashCode();
+                }
                 if (this.SecurityToken != null)
-                    hashCode = hashCode * 59 + this.SecurityToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecurityToken.GetHashCode();
+                }
                 if (this.TenantUrl != null)
-                    hashCode = hashCode * 59 + this.TenantUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TenantUrl.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.UpdateVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UpdateVersion.GetHashCode();
                 return hashCode;
             }
         }

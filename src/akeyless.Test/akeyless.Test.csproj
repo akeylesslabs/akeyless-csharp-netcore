@@ -3,8 +3,9 @@
   <PropertyGroup>
     <AssemblyName>akeyless.Test</AssemblyName>
     <RootNamespace>akeyless.Test</RootNamespace>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

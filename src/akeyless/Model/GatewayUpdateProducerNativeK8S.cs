@@ -66,7 +66,8 @@ namespace akeyless.Model
         public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = default(bool), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerNativeK8S and cannot be null");
             }
             this.Name = name;
@@ -148,7 +149,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -254,7 +255,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerNativeK8S {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -310,8 +311,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerNativeK8S input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -436,46 +438,82 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.K8sClusterCaCert != null)
-                    hashCode = hashCode * 59 + this.K8sClusterCaCert.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterCaCert.GetHashCode();
+                }
                 if (this.K8sClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.K8sClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
                 if (this.K8sClusterToken != null)
-                    hashCode = hashCode * 59 + this.K8sClusterToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterToken.GetHashCode();
+                }
                 if (this.K8sNamespace != null)
-                    hashCode = hashCode * 59 + this.K8sNamespace.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sNamespace.GetHashCode();
+                }
                 if (this.K8sServiceAccount != null)
-                    hashCode = hashCode * 59 + this.K8sServiceAccount.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sServiceAccount.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessAllowPortForwading.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessAllowPortForwading.GetHashCode();
                 if (this.SecureAccessBastionIssuer != null)
-                    hashCode = hashCode * 59 + this.SecureAccessBastionIssuer.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessBastionIssuer.GetHashCode();
+                }
                 if (this.SecureAccessClusterEndpoint != null)
-                    hashCode = hashCode * 59 + this.SecureAccessClusterEndpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessClusterEndpoint.GetHashCode();
+                }
                 if (this.SecureAccessDashboardUrl != null)
-                    hashCode = hashCode * 59 + this.SecureAccessDashboardUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessDashboardUrl.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

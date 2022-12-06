@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerDockerhubOutput {\n");
             sb.Append("  ProducerDetails: ").Append(ProducerDetails).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerDockerhubOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ProducerDetails == input.ProducerDetails ||
@@ -107,7 +108,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ProducerDetails != null)
-                    hashCode = hashCode * 59 + this.ProducerDetails.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerDetails.GetHashCode();
+                }
                 return hashCode;
             }
         }

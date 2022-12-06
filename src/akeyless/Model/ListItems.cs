@@ -143,7 +143,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ListItems {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
@@ -187,8 +187,9 @@ namespace akeyless.Model
         public bool Equals(ListItems input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Accessibility == input.Accessibility ||
@@ -257,25 +258,43 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Accessibility != null)
-                    hashCode = hashCode * 59 + this.Accessibility.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 if (this.Filter != null)
-                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.MinimalView.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Filter.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.MinimalView.GetHashCode();
                 if (this.PaginationToken != null)
-                    hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PaginationToken.GetHashCode();
+                }
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.SubTypes != null)
-                    hashCode = hashCode * 59 + this.SubTypes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SubTypes.GetHashCode();
+                }
                 if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tag.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

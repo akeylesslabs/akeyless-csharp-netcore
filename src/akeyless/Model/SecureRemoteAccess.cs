@@ -261,7 +261,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SecureRemoteAccess {\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AllowPortForwarding: ").Append(AllowPortForwarding).Append("\n");
@@ -321,8 +321,9 @@ namespace akeyless.Model
         public bool Equals(SecureRemoteAccess input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccountId == input.AccountId ||
@@ -460,47 +461,77 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccountId != null)
-                    hashCode = hashCode * 59 + this.AccountId.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowPortForwarding.GetHashCode();
-                hashCode = hashCode * 59 + this.AllowProvidingExternalUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.AllowPortForwarding.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowProvidingExternalUsername.GetHashCode();
                 if (this.BastionApi != null)
-                    hashCode = hashCode * 59 + this.BastionApi.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionApi.GetHashCode();
+                }
                 if (this.BastionIssuer != null)
-                    hashCode = hashCode * 59 + this.BastionIssuer.GetHashCode();
-                hashCode = hashCode * 59 + this.BastionIssuerId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionIssuer.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.BastionIssuerId.GetHashCode();
                 if (this.BastionSsh != null)
-                    hashCode = hashCode * 59 + this.BastionSsh.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BastionSsh.GetHashCode();
+                }
                 if (this.Category != null)
-                    hashCode = hashCode * 59 + this.Category.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Category.GetHashCode();
+                }
                 if (this.DashboardUrl != null)
-                    hashCode = hashCode * 59 + this.DashboardUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DashboardUrl.GetHashCode();
+                }
                 if (this.DbName != null)
-                    hashCode = hashCode * 59 + this.DbName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DbName.GetHashCode();
+                }
                 if (this.Domain != null)
-                    hashCode = hashCode * 59 + this.Domain.GetHashCode();
-                hashCode = hashCode * 59 + this.Enable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Domain.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Enable.GetHashCode();
                 if (this.Endpoint != null)
-                    hashCode = hashCode * 59 + this.Endpoint.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Endpoint.GetHashCode();
+                }
                 if (this.Host != null)
-                    hashCode = hashCode * 59 + this.Host.GetHashCode();
-                hashCode = hashCode * 59 + this.IsCli.GetHashCode();
-                hashCode = hashCode * 59 + this.IsWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.Isolated.GetHashCode();
-                hashCode = hashCode * 59 + this.Native.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsCli.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.Isolated.GetHashCode();
+                hashCode = (hashCode * 59) + this.Native.GetHashCode();
                 if (this.RdpUser != null)
-                    hashCode = hashCode * 59 + this.RdpUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RdpUser.GetHashCode();
+                }
                 if (this.Region != null)
-                    hashCode = hashCode * 59 + this.Region.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Region.GetHashCode();
+                }
                 if (this.Schema != null)
-                    hashCode = hashCode * 59 + this.Schema.GetHashCode();
-                hashCode = hashCode * 59 + this.SshPassword.GetHashCode();
-                hashCode = hashCode * 59 + this.SshPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Schema.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SshPassword.GetHashCode();
+                hashCode = (hashCode * 59) + this.SshPrivateKey.GetHashCode();
                 if (this.SshUser != null)
-                    hashCode = hashCode * 59 + this.SshUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SshUser.GetHashCode();
+                }
                 if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
-                hashCode = hashCode * 59 + this.UseInternalBastion.GetHashCode();
-                hashCode = hashCode * 59 + this.WebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UseInternalBastion.GetHashCode();
+                hashCode = (hashCode * 59) + this.WebProxy.GetHashCode();
                 return hashCode;
             }
         }

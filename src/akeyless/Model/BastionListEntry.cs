@@ -101,7 +101,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class BastionListEntry {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AllowedAccessIds: ").Append(AllowedAccessIds).Append("\n");
@@ -141,8 +141,9 @@ namespace akeyless.Model
         public bool Equals(BastionListEntry input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessId == input.AccessId ||
@@ -194,19 +195,33 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessId != null)
-                    hashCode = hashCode * 59 + this.AccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
                 if (this.AllowedAccessIds != null)
-                    hashCode = hashCode * 59 + this.AllowedAccessIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedAccessIds.GetHashCode();
+                }
                 if (this.AllowedUrls != null)
-                    hashCode = hashCode * 59 + this.AllowedUrls.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUrls.GetHashCode();
+                }
                 if (this.AllowedUrlsPerInstance != null)
-                    hashCode = hashCode * 59 + this.AllowedUrlsPerInstance.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedUrlsPerInstance.GetHashCode();
+                }
                 if (this.ClusterName != null)
-                    hashCode = hashCode * 59 + this.ClusterName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ClusterName.GetHashCode();
+                }
                 if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
+                }
                 if (this.LastReport != null)
-                    hashCode = hashCode * 59 + this.LastReport.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LastReport.GetHashCode();
+                }
                 return hashCode;
             }
         }

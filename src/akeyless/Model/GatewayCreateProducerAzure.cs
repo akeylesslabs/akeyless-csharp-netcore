@@ -67,7 +67,8 @@ namespace akeyless.Model
         public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerAzure and cannot be null");
             }
             this.Name = name;
@@ -158,7 +159,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -268,7 +269,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerAzure {\n");
             sb.Append("  AppObjId: ").Append(AppObjId).Append("\n");
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
@@ -325,8 +326,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerAzure input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AppObjId == input.AppObjId ||
@@ -454,46 +456,80 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AppObjId != null)
-                    hashCode = hashCode * 59 + this.AppObjId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AppObjId.GetHashCode();
+                }
                 if (this.AzureClientId != null)
-                    hashCode = hashCode * 59 + this.AzureClientId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientId.GetHashCode();
+                }
                 if (this.AzureClientSecret != null)
-                    hashCode = hashCode * 59 + this.AzureClientSecret.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientSecret.GetHashCode();
+                }
                 if (this.AzureTenantId != null)
-                    hashCode = hashCode * 59 + this.AzureTenantId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureTenantId.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
                 if (this.FixedUserClaimKeyname != null)
-                    hashCode = hashCode * 59 + this.FixedUserClaimKeyname.GetHashCode();
-                hashCode = hashCode * 59 + this.FixedUserOnly.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.FixedUserClaimKeyname.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.FixedUserOnly.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserGroupObjId != null)
-                    hashCode = hashCode * 59 + this.UserGroupObjId.GetHashCode();
-                hashCode = hashCode * 59 + this.UserPortalAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserGroupObjId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UserPortalAccess.GetHashCode();
                 if (this.UserPrincipalName != null)
-                    hashCode = hashCode * 59 + this.UserPrincipalName.GetHashCode();
-                hashCode = hashCode * 59 + this.UserProgrammaticAccess.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserPrincipalName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UserProgrammaticAccess.GetHashCode();
                 if (this.UserRoleTemplateId != null)
-                    hashCode = hashCode * 59 + this.UserRoleTemplateId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserRoleTemplateId.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

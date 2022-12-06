@@ -66,7 +66,8 @@ namespace akeyless.Model
         public GatewayUpdateProducerRabbitMQ(string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerRabbitMQ and cannot be null");
             }
             this.Name = name;
@@ -113,7 +114,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -258,7 +259,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerRabbitMQ {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -314,8 +315,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerRabbitMQ input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -441,47 +443,85 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
                 if (this.RabbitmqAdminPwd != null)
-                    hashCode = hashCode * 59 + this.RabbitmqAdminPwd.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqAdminPwd.GetHashCode();
+                }
                 if (this.RabbitmqAdminUser != null)
-                    hashCode = hashCode * 59 + this.RabbitmqAdminUser.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqAdminUser.GetHashCode();
+                }
                 if (this.RabbitmqServerUri != null)
-                    hashCode = hashCode * 59 + this.RabbitmqServerUri.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqServerUri.GetHashCode();
+                }
                 if (this.RabbitmqUserConfPermission != null)
-                    hashCode = hashCode * 59 + this.RabbitmqUserConfPermission.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqUserConfPermission.GetHashCode();
+                }
                 if (this.RabbitmqUserReadPermission != null)
-                    hashCode = hashCode * 59 + this.RabbitmqUserReadPermission.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqUserReadPermission.GetHashCode();
+                }
                 if (this.RabbitmqUserTags != null)
-                    hashCode = hashCode * 59 + this.RabbitmqUserTags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqUserTags.GetHashCode();
+                }
                 if (this.RabbitmqUserVhost != null)
-                    hashCode = hashCode * 59 + this.RabbitmqUserVhost.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqUserVhost.GetHashCode();
+                }
                 if (this.RabbitmqUserWritePermission != null)
-                    hashCode = hashCode * 59 + this.RabbitmqUserWritePermission.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RabbitmqUserWritePermission.GetHashCode();
+                }
                 if (this.SecureAccessEnable != null)
-                    hashCode = hashCode * 59 + this.SecureAccessEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
                 if (this.SecureAccessUrl != null)
-                    hashCode = hashCode * 59 + this.SecureAccessUrl.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWeb.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebBrowsing.GetHashCode();
-                hashCode = hashCode * 59 + this.SecureAccessWebProxy.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

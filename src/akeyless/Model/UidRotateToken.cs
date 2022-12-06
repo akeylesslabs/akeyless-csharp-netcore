@@ -90,7 +90,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UidRotateToken {\n");
             sb.Append("  Fork: ").Append(Fork).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -128,8 +128,9 @@ namespace akeyless.Model
         public bool Equals(UidRotateToken input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Fork == input.Fork ||
@@ -164,13 +165,17 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Fork.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Fork.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.SendManualAckToken != null)
-                    hashCode = hashCode * 59 + this.SendManualAckToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SendManualAckToken.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
-                hashCode = hashCode * 59 + this.WithManualAck.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WithManualAck.GetHashCode();
                 return hashCode;
             }
         }

@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DefaultConfigPart {\n");
             sb.Append("  DefaultProtectionKeyId: ").Append(DefaultProtectionKeyId).Append("\n");
             sb.Append("  DefaultSecretLocation: ").Append(DefaultSecretLocation).Append("\n");
@@ -114,8 +114,9 @@ namespace akeyless.Model
         public bool Equals(DefaultConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DefaultProtectionKeyId == input.DefaultProtectionKeyId ||
@@ -147,13 +148,19 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.DefaultProtectionKeyId.GetHashCode();
+                hashCode = (hashCode * 59) + this.DefaultProtectionKeyId.GetHashCode();
                 if (this.DefaultSecretLocation != null)
-                    hashCode = hashCode * 59 + this.DefaultSecretLocation.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DefaultSecretLocation.GetHashCode();
+                }
                 if (this.OidcAccessId != null)
-                    hashCode = hashCode * 59 + this.OidcAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.OidcAccessId.GetHashCode();
+                }
                 if (this.SamlAccessId != null)
-                    hashCode = hashCode * 59 + this.SamlAccessId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SamlAccessId.GetHashCode();
+                }
                 return hashCode;
             }
         }

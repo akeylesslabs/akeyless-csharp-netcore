@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class OnePasswordPayload {\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(OnePasswordPayload input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Email == input.Email ||
@@ -164,15 +165,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Email != null)
-                    hashCode = hashCode * 59 + this.Email.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                }
                 if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Password.GetHashCode();
+                }
                 if (this.SecretKey != null)
-                    hashCode = hashCode * 59 + this.SecretKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SecretKey.GetHashCode();
+                }
                 if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                }
                 if (this.Vaults != null)
-                    hashCode = hashCode * 59 + this.Vaults.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Vaults.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -54,7 +54,8 @@ namespace akeyless.Model
         public UpdateAWSTargetDetails(string accessKey = default(string), string accessKeyId = default(string), bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string region = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for UpdateAWSTargetDetails and cannot be null");
             }
             this.Name = name;
@@ -99,7 +100,7 @@ namespace akeyless.Model
         /// Target name
         /// </summary>
         /// <value>Target name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAWSTargetDetails {\n");
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
             sb.Append("  AccessKeyId: ").Append(AccessKeyId).Append("\n");
@@ -192,8 +193,9 @@ namespace akeyless.Model
         public bool Equals(UpdateAWSTargetDetails input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessKey == input.AccessKey ||
@@ -260,25 +262,43 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessKey != null)
-                    hashCode = hashCode * 59 + this.AccessKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessKey.GetHashCode();
+                }
                 if (this.AccessKeyId != null)
-                    hashCode = hashCode * 59 + this.AccessKeyId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessKeyId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
-                    hashCode = hashCode * 59 + this.KeepPrevVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.NewVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NewVersion.GetHashCode();
                 if (this.ProtectionKey != null)
-                    hashCode = hashCode * 59 + this.ProtectionKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
                 if (this.Region != null)
-                    hashCode = hashCode * 59 + this.Region.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Region.GetHashCode();
+                }
                 if (this.SessionToken != null)
-                    hashCode = hashCode * 59 + this.SessionToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SessionToken.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

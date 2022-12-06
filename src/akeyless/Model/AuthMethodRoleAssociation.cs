@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AuthMethodRoleAssociation {\n");
             sb.Append("  AllowedOps: ").Append(AllowedOps).Append("\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(AuthMethodRoleAssociation input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AllowedOps == input.AllowedOps ||
@@ -165,15 +166,25 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AllowedOps != null)
-                    hashCode = hashCode * 59 + this.AllowedOps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedOps.GetHashCode();
+                }
                 if (this.AssocId != null)
-                    hashCode = hashCode * 59 + this.AssocId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AssocId.GetHashCode();
+                }
                 if (this.AuthMethodSubClaims != null)
-                    hashCode = hashCode * 59 + this.AuthMethodSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodSubClaims.GetHashCode();
+                }
                 if (this.RoleName != null)
-                    hashCode = hashCode * 59 + this.RoleName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RoleName.GetHashCode();
+                }
                 if (this.Rules != null)
-                    hashCode = hashCode * 59 + this.Rules.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Rules.GetHashCode();
+                }
                 return hashCode;
             }
         }

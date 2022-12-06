@@ -56,12 +56,14 @@ namespace akeyless.Model
         public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateAuthMethodSAML and cannot be null");
             }
             this.Name = name;
             // to ensure "uniqueIdentifier" is required (not null)
-            if (uniqueIdentifier == null) {
+            if (uniqueIdentifier == null)
+            {
                 throw new ArgumentNullException("uniqueIdentifier is a required property for CreateAuthMethodSAML and cannot be null");
             }
             this.UniqueIdentifier = uniqueIdentifier;
@@ -145,7 +147,7 @@ namespace akeyless.Model
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -166,7 +168,7 @@ namespace akeyless.Model
         /// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
         /// </summary>
         /// <value>A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.</value>
-        [DataMember(Name = "unique-identifier", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "unique-identifier", IsRequired = true, EmitDefaultValue = true)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
@@ -175,7 +177,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodSAML {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
@@ -221,8 +223,9 @@ namespace akeyless.Model
         public bool Equals(CreateAuthMethodSAML input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessExpires == input.AccessExpires ||
@@ -299,28 +302,46 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
                 if (this.AllowedRedirectUri != null)
-                    hashCode = hashCode * 59 + this.AllowedRedirectUri.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AllowedRedirectUri.GetHashCode();
+                }
                 if (this.BoundIps != null)
-                    hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
-                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)
-                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
+                }
                 if (this.IdpMetadataUrl != null)
-                    hashCode = hashCode * 59 + this.IdpMetadataUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IdpMetadataUrl.GetHashCode();
+                }
                 if (this.IdpMetadataXmlData != null)
-                    hashCode = hashCode * 59 + this.IdpMetadataXmlData.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.IdpMetadataXmlData.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -99,7 +99,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ListTargets {\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -138,8 +138,9 @@ namespace akeyless.Model
         public bool Equals(ListTargets input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Filter == input.Filter ||
@@ -183,16 +184,26 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Filter != null)
-                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Filter.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.PaginationToken != null)
-                    hashCode = hashCode * 59 + this.PaginationToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PaginationToken.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

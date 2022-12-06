@@ -57,7 +57,8 @@ namespace akeyless.Model
         public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerChef and cannot be null");
             }
             this.Name = name;
@@ -123,7 +124,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -181,7 +182,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerChef {\n");
             sb.Append("  ChefOrgs: ").Append(ChefOrgs).Append("\n");
             sb.Append("  ChefServerKey: ").Append(ChefServerKey).Append("\n");
@@ -228,8 +229,9 @@ namespace akeyless.Model
         public bool Equals(GatewayCreateProducerChef input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.ChefOrgs == input.ChefOrgs ||
@@ -312,31 +314,55 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.ChefOrgs != null)
-                    hashCode = hashCode * 59 + this.ChefOrgs.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefOrgs.GetHashCode();
+                }
                 if (this.ChefServerKey != null)
-                    hashCode = hashCode * 59 + this.ChefServerKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerKey.GetHashCode();
+                }
                 if (this.ChefServerUrl != null)
-                    hashCode = hashCode * 59 + this.ChefServerUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerUrl.GetHashCode();
+                }
                 if (this.ChefServerUsername != null)
-                    hashCode = hashCode * 59 + this.ChefServerUsername.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ChefServerUsername.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.ProducerEncryptionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProducerEncryptionKeyName.GetHashCode();
-                hashCode = hashCode * 59 + this.SkipSsl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SkipSsl.GetHashCode();
                 if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UserTtl != null)
-                    hashCode = hashCode * 59 + this.UserTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
+                }
                 return hashCode;
             }
         }

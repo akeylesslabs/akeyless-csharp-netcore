@@ -64,12 +64,14 @@ namespace akeyless.Model
         public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = default(bool), string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
-            if (boundTenantId == null) {
+            if (boundTenantId == null)
+            {
                 throw new ArgumentNullException("boundTenantId is a required property for CreateAuthMethodAzureAD and cannot be null");
             }
             this.BoundTenantId = boundTenantId;
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateAuthMethodAzureAD and cannot be null");
             }
             this.Name = name;
@@ -178,7 +180,7 @@ namespace akeyless.Model
         /// The Azure tenant id that the access is restricted to
         /// </summary>
         /// <value>The Azure tenant id that the access is restricted to</value>
-        [DataMember(Name = "bound-tenant-id", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "bound-tenant-id", IsRequired = true, EmitDefaultValue = true)]
         public string BoundTenantId { get; set; }
 
         /// <summary>
@@ -227,7 +229,7 @@ namespace akeyless.Model
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -250,7 +252,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodAzureAD {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
@@ -304,8 +306,9 @@ namespace akeyless.Model
         public bool Equals(CreateAuthMethodAzureAD input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessExpires == input.AccessExpires ||
@@ -429,44 +432,78 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
                 if (this.Audience != null)
-                    hashCode = hashCode * 59 + this.Audience.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
                 if (this.BoundGroupId != null)
-                    hashCode = hashCode * 59 + this.BoundGroupId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundGroupId.GetHashCode();
+                }
                 if (this.BoundIps != null)
-                    hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
                 if (this.BoundProviders != null)
-                    hashCode = hashCode * 59 + this.BoundProviders.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundProviders.GetHashCode();
+                }
                 if (this.BoundResourceId != null)
-                    hashCode = hashCode * 59 + this.BoundResourceId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceId.GetHashCode();
+                }
                 if (this.BoundResourceNames != null)
-                    hashCode = hashCode * 59 + this.BoundResourceNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceNames.GetHashCode();
+                }
                 if (this.BoundResourceTypes != null)
-                    hashCode = hashCode * 59 + this.BoundResourceTypes.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundResourceTypes.GetHashCode();
+                }
                 if (this.BoundRgId != null)
-                    hashCode = hashCode * 59 + this.BoundRgId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundRgId.GetHashCode();
+                }
                 if (this.BoundSpid != null)
-                    hashCode = hashCode * 59 + this.BoundSpid.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundSpid.GetHashCode();
+                }
                 if (this.BoundSubId != null)
-                    hashCode = hashCode * 59 + this.BoundSubId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundSubId.GetHashCode();
+                }
                 if (this.BoundTenantId != null)
-                    hashCode = hashCode * 59 + this.BoundTenantId.GetHashCode();
-                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundTenantId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)
-                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
+                }
                 if (this.Issuer != null)
-                    hashCode = hashCode * 59 + this.Issuer.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.JwksUri != null)
-                    hashCode = hashCode * 59 + this.JwksUri.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.JwksUri.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

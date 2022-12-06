@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class K8SAuthsConfigPart {\n");
             sb.Append("  K8sAuths: ").Append(K8sAuths).Append("\n");
             sb.Append("}\n");
@@ -87,8 +87,9 @@ namespace akeyless.Model
         public bool Equals(K8SAuthsConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.K8sAuths == input.K8sAuths ||
@@ -108,7 +109,9 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.K8sAuths != null)
-                    hashCode = hashCode * 59 + this.K8sAuths.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuths.GetHashCode();
+                }
                 return hashCode;
             }
         }

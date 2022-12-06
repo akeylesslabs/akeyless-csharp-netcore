@@ -2,248 +2,247 @@
 
 All URIs are relative to *https://api.akeyless.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**AssocRoleAuthMethod**](V2Api.md#assocroleauthmethod) | **POST** /assoc-role-am | 
-[**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item | 
-[**Auth**](V2Api.md#auth) | **POST** /auth | 
-[**Configure**](V2Api.md#configure) | **POST** /configure | 
-[**Connect**](V2Api.md#connect) | **POST** /connect | 
-[**CreateAWSTarget**](V2Api.md#createawstarget) | **POST** /create-aws-target | 
-[**CreateArtifactoryTarget**](V2Api.md#createartifactorytarget) | **POST** /create-artifactory-target | 
-[**CreateAuthMethod**](V2Api.md#createauthmethod) | **POST** /create-auth-method | 
-[**CreateAuthMethodAWSIAM**](V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam | 
-[**CreateAuthMethodAzureAD**](V2Api.md#createauthmethodazuread) | **POST** /create-auth-method-azure-ad | 
-[**CreateAuthMethodCert**](V2Api.md#createauthmethodcert) | **POST** /create-auth-method-cert | 
-[**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp | 
-[**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei | 
-[**CreateAuthMethodK8S**](V2Api.md#createauthmethodk8s) | **POST** /create-auth-method-k8s | 
-[**CreateAuthMethodLDAP**](V2Api.md#createauthmethodldap) | **POST** /create-auth-method-ldap | 
-[**CreateAuthMethodOAuth2**](V2Api.md#createauthmethodoauth2) | **POST** /create-auth-method-oauth2 | 
-[**CreateAuthMethodOIDC**](V2Api.md#createauthmethodoidc) | **POST** /create-auth-method-oidc | 
-[**CreateAuthMethodSAML**](V2Api.md#createauthmethodsaml) | **POST** /create-auth-method-saml | 
-[**CreateAuthMethodUniversalIdentity**](V2Api.md#createauthmethoduniversalidentity) | **POST** /create-auth-method-universal-identity | 
-[**CreateAzureTarget**](V2Api.md#createazuretarget) | **POST** /create-azure-target | 
-[**CreateClassicKey**](V2Api.md#createclassickey) | **POST** /create-classic-key | 
-[**CreateDBTarget**](V2Api.md#createdbtarget) | **POST** /create-db-target | 
-[**CreateDFCKey**](V2Api.md#createdfckey) | **POST** /create-dfc-key | 
-[**CreateDockerhubTarget**](V2Api.md#createdockerhubtarget) | **POST** /create-dockerhub-target | 
-[**CreateDynamicSecret**](V2Api.md#createdynamicsecret) | **POST** /create-dynamic-secret | 
-[**CreateEKSTarget**](V2Api.md#createekstarget) | **POST** /create-eks-target | 
-[**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target | 
-[**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target | 
-[**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target | 
-[**CreateKey**](V2Api.md#createkey) | **POST** /create-key | 
-[**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target | 
-[**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer | 
-[**CreateRabbitMQTarget**](V2Api.md#createrabbitmqtarget) | **POST** /create-rabbitmq-target | 
-[**CreateRole**](V2Api.md#createrole) | **POST** /create-role | 
-[**CreateRotatedSecret**](V2Api.md#createrotatedsecret) | **POST** /create-rotated-secret | 
-[**CreateSSHCertIssuer**](V2Api.md#createsshcertissuer) | **POST** /create-ssh-cert-issuer | 
-[**CreateSSHTarget**](V2Api.md#createsshtarget) | **POST** /create-ssh-target | 
-[**CreateSalesforceTarget**](V2Api.md#createsalesforcetarget) | **POST** /create-salesforce-target | 
-[**CreateSecret**](V2Api.md#createsecret) | **POST** /create-secret | 
-[**CreateTokenizer**](V2Api.md#createtokenizer) | **POST** /create-tokenizer | 
-[**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target | 
-[**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target | 
-[**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt | 
-[**DecryptPKCS1**](V2Api.md#decryptpkcs1) | **POST** /decrypt-pkcs1 | 
-[**DecryptWithClassicKey**](V2Api.md#decryptwithclassickey) | **POST** /decrypt-with-classic-key | 
-[**DeleteAuthMethod**](V2Api.md#deleteauthmethod) | **POST** /delete-auth-method | 
-[**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods | 
-[**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item | 
-[**DeleteItems**](V2Api.md#deleteitems) | **POST** /delete-items | 
-[**DeleteRole**](V2Api.md#deleterole) | **POST** /delete-role | 
-[**DeleteRoleAssociation**](V2Api.md#deleteroleassociation) | **POST** /delete-assoc | 
-[**DeleteRoleRule**](V2Api.md#deleterolerule) | **POST** /delete-role-rule | 
-[**DeleteRoles**](V2Api.md#deleteroles) | **POST** /delete-roles | 
-[**DeleteTarget**](V2Api.md#deletetarget) | **POST** /delete-target | 
-[**DeleteTargetAssociation**](V2Api.md#deletetargetassociation) | **POST** /delete-assoc-target-item | 
-[**DeleteTargets**](V2Api.md#deletetargets) | **POST** /delete-targets | 
-[**DescribeItem**](V2Api.md#describeitem) | **POST** /describe-item | 
-[**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions | 
-[**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims | 
-[**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize | 
-[**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt | 
-[**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key | 
-[**ExportClassicKey**](V2Api.md#exportclassickey) | **GET** /export-classic-key | 
-[**GatewayAddAllowedManagementAccess**](V2Api.md#gatewayaddallowedmanagementaccess) | **POST** /gateway-add-allow-management-access | 
-[**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config | 
-[**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration | 
-[**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory | 
-[**GatewayCreateProducerAws**](V2Api.md#gatewaycreateproduceraws) | **POST** /gateway-create-producer-aws | 
-[**GatewayCreateProducerAzure**](V2Api.md#gatewaycreateproducerazure) | **POST** /gateway-create-producer-azure | 
-[**GatewayCreateProducerCassandra**](V2Api.md#gatewaycreateproducercassandra) | **POST** /gateway-create-producer-cassandra | 
-[**GatewayCreateProducerCertificateAutomation**](V2Api.md#gatewaycreateproducercertificateautomation) | **POST** /gateway-create-producer-certificate-automation | 
-[**GatewayCreateProducerCustom**](V2Api.md#gatewaycreateproducercustom) | **POST** /gateway-create-producer-custom | 
-[**GatewayCreateProducerDockerhub**](V2Api.md#gatewaycreateproducerdockerhub) | **POST** /gateway-create-producer-dockerhub | 
-[**GatewayCreateProducerEks**](V2Api.md#gatewaycreateproducereks) | **POST** /gateway-create-producer-eks | 
-[**GatewayCreateProducerGcp**](V2Api.md#gatewaycreateproducergcp) | **POST** /gateway-create-producer-gcp | 
-[**GatewayCreateProducerGithub**](V2Api.md#gatewaycreateproducergithub) | **POST** /gateway-create-producer-github | 
-[**GatewayCreateProducerGke**](V2Api.md#gatewaycreateproducergke) | **POST** /gateway-create-producer-gke | 
-[**GatewayCreateProducerHanaDb**](V2Api.md#gatewaycreateproducerhanadb) | **POST** /gateway-create-producer-hanadb | 
-[**GatewayCreateProducerLdap**](V2Api.md#gatewaycreateproducerldap) | **POST** /gateway-create-producer-ldap | 
-[**GatewayCreateProducerMSSQL**](V2Api.md#gatewaycreateproducermssql) | **POST** /gateway-create-producer-mssql | 
-[**GatewayCreateProducerMongo**](V2Api.md#gatewaycreateproducermongo) | **POST** /gateway-create-producer-mongo | 
-[**GatewayCreateProducerMySQL**](V2Api.md#gatewaycreateproducermysql) | **POST** /gateway-create-producer-mysql | 
-[**GatewayCreateProducerNativeK8S**](V2Api.md#gatewaycreateproducernativek8s) | **POST** /gateway-create-producer-k8s | 
-[**GatewayCreateProducerOracleDb**](V2Api.md#gatewaycreateproduceroracledb) | **POST** /gateway-create-producer-oracle | 
-[**GatewayCreateProducerPostgreSQL**](V2Api.md#gatewaycreateproducerpostgresql) | **POST** /gateway-create-producer-postgresql | 
-[**GatewayCreateProducerRabbitMQ**](V2Api.md#gatewaycreateproducerrabbitmq) | **POST** /gateway-create-producer-rabbitmq | 
-[**GatewayCreateProducerRdp**](V2Api.md#gatewaycreateproducerrdp) | **POST** /gateway-create-producer-rdp | 
-[**GatewayCreateProducerRedshift**](V2Api.md#gatewaycreateproducerredshift) | **POST** /gateway-create-producer-redshift | 
-[**GatewayCreateProducerSnowflake**](V2Api.md#gatewaycreateproducersnowflake) | **POST** /gateway-create-producer-snowflake | 
-[**GatewayDeleteAllowedManagementAccess**](V2Api.md#gatewaydeleteallowedmanagementaccess) | **POST** /gateway-delete-allowed-management-access | 
-[**GatewayDeleteK8SAuthConfig**](V2Api.md#gatewaydeletek8sauthconfig) | **POST** /gateway-delete-k8s-auth-config | 
-[**GatewayDeleteMigration**](V2Api.md#gatewaydeletemigration) | **POST** /gateway-delete-migration | 
-[**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer | 
-[**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config | 
-[**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config | 
-[**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config | 
-[**GatewayGetMigration**](V2Api.md#gatewaygetmigration) | **POST** /gateway-get-migration | 
-[**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer | 
-[**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds | 
-[**GatewayListAllowedManagementAccess**](V2Api.md#gatewaylistallowedmanagementaccess) | **POST** /gateway-list-allowed-management-access | 
-[**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration | 
-[**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers | 
-[**GatewayMigratePersonalItems**](V2Api.md#gatewaymigratepersonalitems) | **POST** /gateway-migrate-personal-items | 
-[**GatewayRevokeTmpUsers**](V2Api.md#gatewayrevoketmpusers) | **POST** /gateway-revoke-producer-tmp-creds | 
-[**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer | 
-[**GatewayStatusMigration**](V2Api.md#gatewaystatusmigration) | **POST** /gateway-migration-status | 
-[**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer | 
-[**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration | 
-[**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item | 
-[**GatewayUpdateK8SAuthConfig**](V2Api.md#gatewayupdatek8sauthconfig) | **POST** /gateway-update-k8s-auth-config | 
-[**GatewayUpdateLdapAuthConfig**](V2Api.md#gatewayupdateldapauthconfig) | **POST** /gateway-update-ldap-auth-config | 
-[**GatewayUpdateMigration**](V2Api.md#gatewayupdatemigration) | **POST** /gateway-update-migration | 
-[**GatewayUpdateProducerArtifactory**](V2Api.md#gatewayupdateproducerartifactory) | **POST** /gateway-update-producer-artifactory | 
-[**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws | 
-[**GatewayUpdateProducerAzure**](V2Api.md#gatewayupdateproducerazure) | **POST** /gateway-update-producer-azure | 
-[**GatewayUpdateProducerCassandra**](V2Api.md#gatewayupdateproducercassandra) | **POST** /gateway-update-producer-cassandra | 
-[**GatewayUpdateProducerCertificateAutomation**](V2Api.md#gatewayupdateproducercertificateautomation) | **POST** /gateway-update-producer-certificate-automation | 
-[**GatewayUpdateProducerCustom**](V2Api.md#gatewayupdateproducercustom) | **POST** /gateway-update-producer-custom | 
-[**GatewayUpdateProducerDockerhub**](V2Api.md#gatewayupdateproducerdockerhub) | **POST** /gateway-update-producer-dockerhub | 
-[**GatewayUpdateProducerEks**](V2Api.md#gatewayupdateproducereks) | **POST** /gateway-update-producer-eks | 
-[**GatewayUpdateProducerGcp**](V2Api.md#gatewayupdateproducergcp) | **POST** /gateway-update-producer-gcp | 
-[**GatewayUpdateProducerGithub**](V2Api.md#gatewayupdateproducergithub) | **POST** /gateway-update-producer-github | 
-[**GatewayUpdateProducerGke**](V2Api.md#gatewayupdateproducergke) | **POST** /gateway-update-producer-gke | 
-[**GatewayUpdateProducerHanaDb**](V2Api.md#gatewayupdateproducerhanadb) | **POST** /gateway-update-producer-hana | 
-[**GatewayUpdateProducerLdap**](V2Api.md#gatewayupdateproducerldap) | **POST** /gateway-update-producer-ldap | 
-[**GatewayUpdateProducerMSSQL**](V2Api.md#gatewayupdateproducermssql) | **POST** /gateway-update-producer-mssql | 
-[**GatewayUpdateProducerMongo**](V2Api.md#gatewayupdateproducermongo) | **POST** /gateway-update-producer-mongo | 
-[**GatewayUpdateProducerMySQL**](V2Api.md#gatewayupdateproducermysql) | **POST** /gateway-update-producer-mysql | 
-[**GatewayUpdateProducerNativeK8S**](V2Api.md#gatewayupdateproducernativek8s) | **POST** /gateway-update-producer-k8s | 
-[**GatewayUpdateProducerOracleDb**](V2Api.md#gatewayupdateproduceroracledb) | **POST** /gateway-update-producer-oracle | 
-[**GatewayUpdateProducerPostgreSQL**](V2Api.md#gatewayupdateproducerpostgresql) | **POST** /gateway-update-producer-postgresql | 
-[**GatewayUpdateProducerRabbitMQ**](V2Api.md#gatewayupdateproducerrabbitmq) | **POST** /gateway-update-producer-rabbitmq | 
-[**GatewayUpdateProducerRdp**](V2Api.md#gatewayupdateproducerrdp) | **POST** /gateway-update-producer-rdp | 
-[**GatewayUpdateProducerRedshift**](V2Api.md#gatewayupdateproducerredshift) | **POST** /gateway-update-producer-redshift | 
-[**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake | 
-[**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds | 
-[**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo | 
-[**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings | 
-[**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method | 
-[**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value | 
-[**GetKubeExecCreds**](V2Api.md#getkubeexeccreds) | **POST** /get-kube-exec-creds | 
-[**GetPKICertificate**](V2Api.md#getpkicertificate) | **POST** /get-pki-certificate | 
-[**GetRSAPublic**](V2Api.md#getrsapublic) | **POST** /get-rsa-public | 
-[**GetRole**](V2Api.md#getrole) | **POST** /get-role | 
-[**GetRotatedSecretValue**](V2Api.md#getrotatedsecretvalue) | **POST** /get-rotated-secret-value | 
-[**GetSSHCertificate**](V2Api.md#getsshcertificate) | **POST** /get-ssh-certificate | 
-[**GetSecretValue**](V2Api.md#getsecretvalue) | **POST** /get-secret-value | 
-[**GetTags**](V2Api.md#gettags) | **POST** /get-tags | 
-[**GetTarget**](V2Api.md#gettarget) | **POST** /get-target | 
-[**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details | 
-[**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule | 
-[**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule | 
-[**KmipCreateClient**](V2Api.md#kmipcreateclient) | **POST** /kmip-create-client | 
-[**KmipDeleteClient**](V2Api.md#kmipdeleteclient) | **POST** /kmip-delete-client | 
-[**KmipDeleteServer**](V2Api.md#kmipdeleteserver) | **DELETE** /kmip-delete-environment | 
-[**KmipDescribeClient**](V2Api.md#kmipdescribeclient) | **POST** /kmip-get-client | 
-[**KmipDescribeServer**](V2Api.md#kmipdescribeserver) | **POST** /kmip-get-environment | 
-[**KmipListClients**](V2Api.md#kmiplistclients) | **POST** /kmip-list-clients | 
-[**KmipMoveServer**](V2Api.md#kmipmoveserver) | **POST** /kmip-move-environment | 
-[**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client | 
-[**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment | 
-[**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment | 
-[**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state | 
-[**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods | 
-[**ListGateways**](V2Api.md#listgateways) | **POST** /list-gateways | 
-[**ListItems**](V2Api.md#listitems) | **POST** /list-items | 
-[**ListRoles**](V2Api.md#listroles) | **POST** /list-roles | 
-[**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions | 
-[**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets | 
-[**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects | 
-[**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds | 
-[**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key | 
-[**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac | 
-[**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds | 
-[**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret | 
-[**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key | 
-[**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret | 
-[**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state | 
-[**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule | 
-[**ShareItem**](V2Api.md#shareitem) | **POST** /share-item | 
-[**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key | 
-[**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 | 
-[**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key | 
-[**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth | 
-[**Tokenize**](V2Api.md#tokenize) | **POST** /tokenize | 
-[**UidCreateChildToken**](V2Api.md#uidcreatechildtoken) | **POST** /uid-create-child-token | 
-[**UidGenerateToken**](V2Api.md#uidgeneratetoken) | **POST** /uid-generate-token | 
-[**UidListChildren**](V2Api.md#uidlistchildren) | **POST** /uid-list-children | 
-[**UidRevokeToken**](V2Api.md#uidrevoketoken) | **POST** /uid-revoke-token | 
-[**UidRotateToken**](V2Api.md#uidrotatetoken) | **POST** /uid-rotate-token | 
-[**UpdateAWSTarget**](V2Api.md#updateawstarget) | **POST** /update-aws-target | 
-[**UpdateAWSTargetDetails**](V2Api.md#updateawstargetdetails) | **POST** /update-aws-target-details | 
-[**UpdateAccountSettings**](V2Api.md#updateaccountsettings) | **POST** /update-account-settings | 
-[**UpdateArtifactoryTarget**](V2Api.md#updateartifactorytarget) | **POST** /update-artifactory-target | 
-[**UpdateAssoc**](V2Api.md#updateassoc) | **POST** /update-assoc | 
-[**UpdateAuthMethod**](V2Api.md#updateauthmethod) | **POST** /update-auth-method | 
-[**UpdateAuthMethodAWSIAM**](V2Api.md#updateauthmethodawsiam) | **POST** /update-auth-method-aws-iam | 
-[**UpdateAuthMethodAzureAD**](V2Api.md#updateauthmethodazuread) | **POST** /update-auth-method-azure-ad | 
-[**UpdateAuthMethodCert**](V2Api.md#updateauthmethodcert) | **POST** /update-auth-method-cert | 
-[**UpdateAuthMethodGCP**](V2Api.md#updateauthmethodgcp) | **POST** /update-auth-method-gcp | 
-[**UpdateAuthMethodK8S**](V2Api.md#updateauthmethodk8s) | **POST** /update-auth-method-k8s | 
-[**UpdateAuthMethodLDAP**](V2Api.md#updateauthmethodldap) | **POST** /update-auth-method-ldap | 
-[**UpdateAuthMethodOAuth2**](V2Api.md#updateauthmethodoauth2) | **POST** /update-auth-method-oauth2 | 
-[**UpdateAuthMethodOIDC**](V2Api.md#updateauthmethodoidc) | **POST** /update-auth-method-oidc | 
-[**UpdateAuthMethodSAML**](V2Api.md#updateauthmethodsaml) | **POST** /update-auth-method-saml | 
-[**UpdateAuthMethodUniversalIdentity**](V2Api.md#updateauthmethoduniversalidentity) | **POST** /update-auth-method-universal-identity | 
-[**UpdateAzureTarget**](V2Api.md#updateazuretarget) | **POST** /update-azure-target | 
-[**UpdateDBTarget**](V2Api.md#updatedbtarget) | **POST** /update-db-target | 
-[**UpdateDBTargetDetails**](V2Api.md#updatedbtargetdetails) | **POST** /update-db-target-details | 
-[**UpdateDockerhubTarget**](V2Api.md#updatedockerhubtarget) | **POST** /update-dockerhub-target | 
-[**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target | 
-[**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target | 
-[**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target | 
-[**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target | 
-[**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item | 
-[**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target | 
-[**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details | 
-[**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target | 
-[**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer | 
-[**UpdateRDPTargetDetails**](V2Api.md#updaterdptargetdetails) | **POST** /update-rdp-target-details | 
-[**UpdateRabbitMQTarget**](V2Api.md#updaterabbitmqtarget) | **POST** /update-rabbitmq-target | 
-[**UpdateRabbitMQTargetDetails**](V2Api.md#updaterabbitmqtargetdetails) | **POST** /update-rabbitmq-target-details | 
-[**UpdateRole**](V2Api.md#updaterole) | **POST** /update-role | 
-[**UpdateRotatedSecret**](V2Api.md#updaterotatedsecret) | **POST** /update-rotated-secret | 
-[**UpdateRotationSettings**](V2Api.md#updaterotationsettings) | **POST** /update-rotation-settingsrotate-key | 
-[**UpdateSSHCertIssuer**](V2Api.md#updatesshcertissuer) | **POST** /update-ssh-cert-issuer | 
-[**UpdateSSHTarget**](V2Api.md#updatesshtarget) | **POST** /update-ssh-target | 
-[**UpdateSSHTargetDetails**](V2Api.md#updatesshtargetdetails) | **POST** /update-ssh-target-details | 
-[**UpdateSalesforceTarget**](V2Api.md#updatesalesforcetarget) | **POST** /update-salesforce-target | 
-[**UpdateSecretVal**](V2Api.md#updatesecretval) | **POST** /update-secret-val | 
-[**UpdateTarget**](V2Api.md#updatetarget) | **POST** /update-target | 
-[**UpdateTargetDetails**](V2Api.md#updatetargetdetails) | **POST** /update-target-details | 
-[**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target | 
-[**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details | 
-[**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa | 
-[**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token | 
-[**VerifyJWTWithClassicKey**](V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key | 
-[**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 | 
-[**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key | 
-
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**AssocRoleAuthMethod**](V2Api.md#assocroleauthmethod) | **POST** /assoc-role-am |  |
+| [**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item |  |
+| [**Auth**](V2Api.md#auth) | **POST** /auth |  |
+| [**Configure**](V2Api.md#configure) | **POST** /configure |  |
+| [**Connect**](V2Api.md#connect) | **POST** /connect |  |
+| [**CreateAWSTarget**](V2Api.md#createawstarget) | **POST** /create-aws-target |  |
+| [**CreateArtifactoryTarget**](V2Api.md#createartifactorytarget) | **POST** /create-artifactory-target |  |
+| [**CreateAuthMethod**](V2Api.md#createauthmethod) | **POST** /create-auth-method |  |
+| [**CreateAuthMethodAWSIAM**](V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam |  |
+| [**CreateAuthMethodAzureAD**](V2Api.md#createauthmethodazuread) | **POST** /create-auth-method-azure-ad |  |
+| [**CreateAuthMethodCert**](V2Api.md#createauthmethodcert) | **POST** /create-auth-method-cert |  |
+| [**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp |  |
+| [**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei |  |
+| [**CreateAuthMethodK8S**](V2Api.md#createauthmethodk8s) | **POST** /create-auth-method-k8s |  |
+| [**CreateAuthMethodLDAP**](V2Api.md#createauthmethodldap) | **POST** /create-auth-method-ldap |  |
+| [**CreateAuthMethodOAuth2**](V2Api.md#createauthmethodoauth2) | **POST** /create-auth-method-oauth2 |  |
+| [**CreateAuthMethodOIDC**](V2Api.md#createauthmethodoidc) | **POST** /create-auth-method-oidc |  |
+| [**CreateAuthMethodSAML**](V2Api.md#createauthmethodsaml) | **POST** /create-auth-method-saml |  |
+| [**CreateAuthMethodUniversalIdentity**](V2Api.md#createauthmethoduniversalidentity) | **POST** /create-auth-method-universal-identity |  |
+| [**CreateAzureTarget**](V2Api.md#createazuretarget) | **POST** /create-azure-target |  |
+| [**CreateClassicKey**](V2Api.md#createclassickey) | **POST** /create-classic-key |  |
+| [**CreateDBTarget**](V2Api.md#createdbtarget) | **POST** /create-db-target |  |
+| [**CreateDFCKey**](V2Api.md#createdfckey) | **POST** /create-dfc-key |  |
+| [**CreateDockerhubTarget**](V2Api.md#createdockerhubtarget) | **POST** /create-dockerhub-target |  |
+| [**CreateDynamicSecret**](V2Api.md#createdynamicsecret) | **POST** /create-dynamic-secret |  |
+| [**CreateEKSTarget**](V2Api.md#createekstarget) | **POST** /create-eks-target |  |
+| [**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target |  |
+| [**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target |  |
+| [**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target |  |
+| [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
+| [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
+| [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer |  |
+| [**CreateRabbitMQTarget**](V2Api.md#createrabbitmqtarget) | **POST** /create-rabbitmq-target |  |
+| [**CreateRole**](V2Api.md#createrole) | **POST** /create-role |  |
+| [**CreateRotatedSecret**](V2Api.md#createrotatedsecret) | **POST** /create-rotated-secret |  |
+| [**CreateSSHCertIssuer**](V2Api.md#createsshcertissuer) | **POST** /create-ssh-cert-issuer |  |
+| [**CreateSSHTarget**](V2Api.md#createsshtarget) | **POST** /create-ssh-target |  |
+| [**CreateSalesforceTarget**](V2Api.md#createsalesforcetarget) | **POST** /create-salesforce-target |  |
+| [**CreateSecret**](V2Api.md#createsecret) | **POST** /create-secret |  |
+| [**CreateTokenizer**](V2Api.md#createtokenizer) | **POST** /create-tokenizer |  |
+| [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target |  |
+| [**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target |  |
+| [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
+| [**DecryptPKCS1**](V2Api.md#decryptpkcs1) | **POST** /decrypt-pkcs1 |  |
+| [**DecryptWithClassicKey**](V2Api.md#decryptwithclassickey) | **POST** /decrypt-with-classic-key |  |
+| [**DeleteAuthMethod**](V2Api.md#deleteauthmethod) | **POST** /delete-auth-method |  |
+| [**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods |  |
+| [**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item |  |
+| [**DeleteItems**](V2Api.md#deleteitems) | **POST** /delete-items |  |
+| [**DeleteRole**](V2Api.md#deleterole) | **POST** /delete-role |  |
+| [**DeleteRoleAssociation**](V2Api.md#deleteroleassociation) | **POST** /delete-assoc |  |
+| [**DeleteRoleRule**](V2Api.md#deleterolerule) | **POST** /delete-role-rule |  |
+| [**DeleteRoles**](V2Api.md#deleteroles) | **POST** /delete-roles |  |
+| [**DeleteTarget**](V2Api.md#deletetarget) | **POST** /delete-target |  |
+| [**DeleteTargetAssociation**](V2Api.md#deletetargetassociation) | **POST** /delete-assoc-target-item |  |
+| [**DeleteTargets**](V2Api.md#deletetargets) | **POST** /delete-targets |  |
+| [**DescribeItem**](V2Api.md#describeitem) | **POST** /describe-item |  |
+| [**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions |  |
+| [**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims |  |
+| [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
+| [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
+| [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key |  |
+| [**ExportClassicKey**](V2Api.md#exportclassickey) | **POST** /export-classic-key |  |
+| [**GatewayAddAllowedManagementAccess**](V2Api.md#gatewayaddallowedmanagementaccess) | **POST** /gateway-add-allow-management-access |  |
+| [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config |  |
+| [**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration |  |
+| [**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory |  |
+| [**GatewayCreateProducerAws**](V2Api.md#gatewaycreateproduceraws) | **POST** /gateway-create-producer-aws |  |
+| [**GatewayCreateProducerAzure**](V2Api.md#gatewaycreateproducerazure) | **POST** /gateway-create-producer-azure |  |
+| [**GatewayCreateProducerCassandra**](V2Api.md#gatewaycreateproducercassandra) | **POST** /gateway-create-producer-cassandra |  |
+| [**GatewayCreateProducerCertificateAutomation**](V2Api.md#gatewaycreateproducercertificateautomation) | **POST** /gateway-create-producer-certificate-automation |  |
+| [**GatewayCreateProducerCustom**](V2Api.md#gatewaycreateproducercustom) | **POST** /gateway-create-producer-custom |  |
+| [**GatewayCreateProducerDockerhub**](V2Api.md#gatewaycreateproducerdockerhub) | **POST** /gateway-create-producer-dockerhub |  |
+| [**GatewayCreateProducerEks**](V2Api.md#gatewaycreateproducereks) | **POST** /gateway-create-producer-eks |  |
+| [**GatewayCreateProducerGcp**](V2Api.md#gatewaycreateproducergcp) | **POST** /gateway-create-producer-gcp |  |
+| [**GatewayCreateProducerGithub**](V2Api.md#gatewaycreateproducergithub) | **POST** /gateway-create-producer-github |  |
+| [**GatewayCreateProducerGke**](V2Api.md#gatewaycreateproducergke) | **POST** /gateway-create-producer-gke |  |
+| [**GatewayCreateProducerHanaDb**](V2Api.md#gatewaycreateproducerhanadb) | **POST** /gateway-create-producer-hanadb |  |
+| [**GatewayCreateProducerLdap**](V2Api.md#gatewaycreateproducerldap) | **POST** /gateway-create-producer-ldap |  |
+| [**GatewayCreateProducerMSSQL**](V2Api.md#gatewaycreateproducermssql) | **POST** /gateway-create-producer-mssql |  |
+| [**GatewayCreateProducerMongo**](V2Api.md#gatewaycreateproducermongo) | **POST** /gateway-create-producer-mongo |  |
+| [**GatewayCreateProducerMySQL**](V2Api.md#gatewaycreateproducermysql) | **POST** /gateway-create-producer-mysql |  |
+| [**GatewayCreateProducerNativeK8S**](V2Api.md#gatewaycreateproducernativek8s) | **POST** /gateway-create-producer-k8s |  |
+| [**GatewayCreateProducerOracleDb**](V2Api.md#gatewaycreateproduceroracledb) | **POST** /gateway-create-producer-oracle |  |
+| [**GatewayCreateProducerPostgreSQL**](V2Api.md#gatewaycreateproducerpostgresql) | **POST** /gateway-create-producer-postgresql |  |
+| [**GatewayCreateProducerRabbitMQ**](V2Api.md#gatewaycreateproducerrabbitmq) | **POST** /gateway-create-producer-rabbitmq |  |
+| [**GatewayCreateProducerRdp**](V2Api.md#gatewaycreateproducerrdp) | **POST** /gateway-create-producer-rdp |  |
+| [**GatewayCreateProducerRedshift**](V2Api.md#gatewaycreateproducerredshift) | **POST** /gateway-create-producer-redshift |  |
+| [**GatewayCreateProducerSnowflake**](V2Api.md#gatewaycreateproducersnowflake) | **POST** /gateway-create-producer-snowflake |  |
+| [**GatewayDeleteAllowedManagementAccess**](V2Api.md#gatewaydeleteallowedmanagementaccess) | **POST** /gateway-delete-allowed-management-access |  |
+| [**GatewayDeleteK8SAuthConfig**](V2Api.md#gatewaydeletek8sauthconfig) | **POST** /gateway-delete-k8s-auth-config |  |
+| [**GatewayDeleteMigration**](V2Api.md#gatewaydeletemigration) | **POST** /gateway-delete-migration |  |
+| [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer |  |
+| [**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config |  |
+| [**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config |  |
+| [**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config |  |
+| [**GatewayGetMigration**](V2Api.md#gatewaygetmigration) | **POST** /gateway-get-migration |  |
+| [**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer |  |
+| [**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds |  |
+| [**GatewayListAllowedManagementAccess**](V2Api.md#gatewaylistallowedmanagementaccess) | **POST** /gateway-list-allowed-management-access |  |
+| [**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration |  |
+| [**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers |  |
+| [**GatewayMigratePersonalItems**](V2Api.md#gatewaymigratepersonalitems) | **POST** /gateway-migrate-personal-items |  |
+| [**GatewayRevokeTmpUsers**](V2Api.md#gatewayrevoketmpusers) | **POST** /gateway-revoke-producer-tmp-creds |  |
+| [**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer |  |
+| [**GatewayStatusMigration**](V2Api.md#gatewaystatusmigration) | **POST** /gateway-migration-status |  |
+| [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer |  |
+| [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration |  |
+| [**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item |  |
+| [**GatewayUpdateK8SAuthConfig**](V2Api.md#gatewayupdatek8sauthconfig) | **POST** /gateway-update-k8s-auth-config |  |
+| [**GatewayUpdateLdapAuthConfig**](V2Api.md#gatewayupdateldapauthconfig) | **POST** /gateway-update-ldap-auth-config |  |
+| [**GatewayUpdateMigration**](V2Api.md#gatewayupdatemigration) | **POST** /gateway-update-migration |  |
+| [**GatewayUpdateProducerArtifactory**](V2Api.md#gatewayupdateproducerartifactory) | **POST** /gateway-update-producer-artifactory |  |
+| [**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws |  |
+| [**GatewayUpdateProducerAzure**](V2Api.md#gatewayupdateproducerazure) | **POST** /gateway-update-producer-azure |  |
+| [**GatewayUpdateProducerCassandra**](V2Api.md#gatewayupdateproducercassandra) | **POST** /gateway-update-producer-cassandra |  |
+| [**GatewayUpdateProducerCertificateAutomation**](V2Api.md#gatewayupdateproducercertificateautomation) | **POST** /gateway-update-producer-certificate-automation |  |
+| [**GatewayUpdateProducerCustom**](V2Api.md#gatewayupdateproducercustom) | **POST** /gateway-update-producer-custom |  |
+| [**GatewayUpdateProducerDockerhub**](V2Api.md#gatewayupdateproducerdockerhub) | **POST** /gateway-update-producer-dockerhub |  |
+| [**GatewayUpdateProducerEks**](V2Api.md#gatewayupdateproducereks) | **POST** /gateway-update-producer-eks |  |
+| [**GatewayUpdateProducerGcp**](V2Api.md#gatewayupdateproducergcp) | **POST** /gateway-update-producer-gcp |  |
+| [**GatewayUpdateProducerGithub**](V2Api.md#gatewayupdateproducergithub) | **POST** /gateway-update-producer-github |  |
+| [**GatewayUpdateProducerGke**](V2Api.md#gatewayupdateproducergke) | **POST** /gateway-update-producer-gke |  |
+| [**GatewayUpdateProducerHanaDb**](V2Api.md#gatewayupdateproducerhanadb) | **POST** /gateway-update-producer-hana |  |
+| [**GatewayUpdateProducerLdap**](V2Api.md#gatewayupdateproducerldap) | **POST** /gateway-update-producer-ldap |  |
+| [**GatewayUpdateProducerMSSQL**](V2Api.md#gatewayupdateproducermssql) | **POST** /gateway-update-producer-mssql |  |
+| [**GatewayUpdateProducerMongo**](V2Api.md#gatewayupdateproducermongo) | **POST** /gateway-update-producer-mongo |  |
+| [**GatewayUpdateProducerMySQL**](V2Api.md#gatewayupdateproducermysql) | **POST** /gateway-update-producer-mysql |  |
+| [**GatewayUpdateProducerNativeK8S**](V2Api.md#gatewayupdateproducernativek8s) | **POST** /gateway-update-producer-k8s |  |
+| [**GatewayUpdateProducerOracleDb**](V2Api.md#gatewayupdateproduceroracledb) | **POST** /gateway-update-producer-oracle |  |
+| [**GatewayUpdateProducerPostgreSQL**](V2Api.md#gatewayupdateproducerpostgresql) | **POST** /gateway-update-producer-postgresql |  |
+| [**GatewayUpdateProducerRabbitMQ**](V2Api.md#gatewayupdateproducerrabbitmq) | **POST** /gateway-update-producer-rabbitmq |  |
+| [**GatewayUpdateProducerRdp**](V2Api.md#gatewayupdateproducerrdp) | **POST** /gateway-update-producer-rdp |  |
+| [**GatewayUpdateProducerRedshift**](V2Api.md#gatewayupdateproducerredshift) | **POST** /gateway-update-producer-redshift |  |
+| [**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake |  |
+| [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds |  |
+| [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo |  |
+| [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
+| [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method |  |
+| [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value |  |
+| [**GetKubeExecCreds**](V2Api.md#getkubeexeccreds) | **POST** /get-kube-exec-creds |  |
+| [**GetPKICertificate**](V2Api.md#getpkicertificate) | **POST** /get-pki-certificate |  |
+| [**GetRSAPublic**](V2Api.md#getrsapublic) | **POST** /get-rsa-public |  |
+| [**GetRole**](V2Api.md#getrole) | **POST** /get-role |  |
+| [**GetRotatedSecretValue**](V2Api.md#getrotatedsecretvalue) | **POST** /get-rotated-secret-value |  |
+| [**GetSSHCertificate**](V2Api.md#getsshcertificate) | **POST** /get-ssh-certificate |  |
+| [**GetSecretValue**](V2Api.md#getsecretvalue) | **POST** /get-secret-value |  |
+| [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
+| [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
+| [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details |  |
+| [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
+| [**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule |  |
+| [**KmipCreateClient**](V2Api.md#kmipcreateclient) | **POST** /kmip-create-client |  |
+| [**KmipDeleteClient**](V2Api.md#kmipdeleteclient) | **POST** /kmip-delete-client |  |
+| [**KmipDeleteServer**](V2Api.md#kmipdeleteserver) | **DELETE** /kmip-delete-environment |  |
+| [**KmipDescribeClient**](V2Api.md#kmipdescribeclient) | **POST** /kmip-get-client |  |
+| [**KmipDescribeServer**](V2Api.md#kmipdescribeserver) | **POST** /kmip-get-environment |  |
+| [**KmipListClients**](V2Api.md#kmiplistclients) | **POST** /kmip-list-clients |  |
+| [**KmipMoveServer**](V2Api.md#kmipmoveserver) | **POST** /kmip-move-environment |  |
+| [**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client |  |
+| [**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment |  |
+| [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment |  |
+| [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state |  |
+| [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods |  |
+| [**ListGateways**](V2Api.md#listgateways) | **POST** /list-gateways |  |
+| [**ListItems**](V2Api.md#listitems) | **POST** /list-items |  |
+| [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles |  |
+| [**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions |  |
+| [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
+| [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects |  |
+| [**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds |  |
+| [**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key |  |
+| [**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac |  |
+| [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds |  |
+| [**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret |  |
+| [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key |  |
+| [**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret |  |
+| [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state |  |
+| [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule |  |
+| [**ShareItem**](V2Api.md#shareitem) | **POST** /share-item |  |
+| [**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key |  |
+| [**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 |  |
+| [**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key |  |
+| [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth |  |
+| [**Tokenize**](V2Api.md#tokenize) | **POST** /tokenize |  |
+| [**UidCreateChildToken**](V2Api.md#uidcreatechildtoken) | **POST** /uid-create-child-token |  |
+| [**UidGenerateToken**](V2Api.md#uidgeneratetoken) | **POST** /uid-generate-token |  |
+| [**UidListChildren**](V2Api.md#uidlistchildren) | **POST** /uid-list-children |  |
+| [**UidRevokeToken**](V2Api.md#uidrevoketoken) | **POST** /uid-revoke-token |  |
+| [**UidRotateToken**](V2Api.md#uidrotatetoken) | **POST** /uid-rotate-token |  |
+| [**UpdateAWSTarget**](V2Api.md#updateawstarget) | **POST** /update-aws-target |  |
+| [**UpdateAWSTargetDetails**](V2Api.md#updateawstargetdetails) | **POST** /update-aws-target-details |  |
+| [**UpdateAccountSettings**](V2Api.md#updateaccountsettings) | **POST** /update-account-settings |  |
+| [**UpdateArtifactoryTarget**](V2Api.md#updateartifactorytarget) | **POST** /update-artifactory-target |  |
+| [**UpdateAssoc**](V2Api.md#updateassoc) | **POST** /update-assoc |  |
+| [**UpdateAuthMethod**](V2Api.md#updateauthmethod) | **POST** /update-auth-method |  |
+| [**UpdateAuthMethodAWSIAM**](V2Api.md#updateauthmethodawsiam) | **POST** /update-auth-method-aws-iam |  |
+| [**UpdateAuthMethodAzureAD**](V2Api.md#updateauthmethodazuread) | **POST** /update-auth-method-azure-ad |  |
+| [**UpdateAuthMethodCert**](V2Api.md#updateauthmethodcert) | **POST** /update-auth-method-cert |  |
+| [**UpdateAuthMethodGCP**](V2Api.md#updateauthmethodgcp) | **POST** /update-auth-method-gcp |  |
+| [**UpdateAuthMethodK8S**](V2Api.md#updateauthmethodk8s) | **POST** /update-auth-method-k8s |  |
+| [**UpdateAuthMethodLDAP**](V2Api.md#updateauthmethodldap) | **POST** /update-auth-method-ldap |  |
+| [**UpdateAuthMethodOAuth2**](V2Api.md#updateauthmethodoauth2) | **POST** /update-auth-method-oauth2 |  |
+| [**UpdateAuthMethodOIDC**](V2Api.md#updateauthmethodoidc) | **POST** /update-auth-method-oidc |  |
+| [**UpdateAuthMethodSAML**](V2Api.md#updateauthmethodsaml) | **POST** /update-auth-method-saml |  |
+| [**UpdateAuthMethodUniversalIdentity**](V2Api.md#updateauthmethoduniversalidentity) | **POST** /update-auth-method-universal-identity |  |
+| [**UpdateAzureTarget**](V2Api.md#updateazuretarget) | **POST** /update-azure-target |  |
+| [**UpdateDBTarget**](V2Api.md#updatedbtarget) | **POST** /update-db-target |  |
+| [**UpdateDBTargetDetails**](V2Api.md#updatedbtargetdetails) | **POST** /update-db-target-details |  |
+| [**UpdateDockerhubTarget**](V2Api.md#updatedockerhubtarget) | **POST** /update-dockerhub-target |  |
+| [**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target |  |
+| [**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target |  |
+| [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target |  |
+| [**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target |  |
+| [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item |  |
+| [**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target |  |
+| [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
+| [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target |  |
+| [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer |  |
+| [**UpdateRDPTargetDetails**](V2Api.md#updaterdptargetdetails) | **POST** /update-rdp-target-details |  |
+| [**UpdateRabbitMQTarget**](V2Api.md#updaterabbitmqtarget) | **POST** /update-rabbitmq-target |  |
+| [**UpdateRabbitMQTargetDetails**](V2Api.md#updaterabbitmqtargetdetails) | **POST** /update-rabbitmq-target-details |  |
+| [**UpdateRole**](V2Api.md#updaterole) | **POST** /update-role |  |
+| [**UpdateRotatedSecret**](V2Api.md#updaterotatedsecret) | **POST** /update-rotated-secret |  |
+| [**UpdateRotationSettings**](V2Api.md#updaterotationsettings) | **POST** /update-rotation-settingsrotate-key |  |
+| [**UpdateSSHCertIssuer**](V2Api.md#updatesshcertissuer) | **POST** /update-ssh-cert-issuer |  |
+| [**UpdateSSHTarget**](V2Api.md#updatesshtarget) | **POST** /update-ssh-target |  |
+| [**UpdateSSHTargetDetails**](V2Api.md#updatesshtargetdetails) | **POST** /update-ssh-target-details |  |
+| [**UpdateSalesforceTarget**](V2Api.md#updatesalesforcetarget) | **POST** /update-salesforce-target |  |
+| [**UpdateSecretVal**](V2Api.md#updatesecretval) | **POST** /update-secret-val |  |
+| [**UpdateTarget**](V2Api.md#updatetarget) | **POST** /update-target |  |
+| [**UpdateTargetDetails**](V2Api.md#updatetargetdetails) | **POST** /update-target-details |  |
+| [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target |  |
+| [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details |  |
+| [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa |  |
+| [**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token |  |
+| [**VerifyJWTWithClassicKey**](V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key |  |
+| [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 |  |
+| [**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key |  |
 
 <a name="assocroleauthmethod"></a>
 # **AssocRoleAuthMethod**
@@ -277,8 +276,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.AssocRoleAuthMethod: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.AssocRoleAuthMethod: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -286,11 +285,30 @@ namespace Example
 }
 ```
 
+#### Using the AssocRoleAuthMethodWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateRoleAuthMethodAssocOutput> response = apiInstance.AssocRoleAuthMethodWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AssocRoleAuthMethodWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**AssocRoleAuthMethod**](AssocRoleAuthMethod.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AssocRoleAuthMethod**](AssocRoleAuthMethod.md) |  |  |
 
 ### Return type
 
@@ -346,8 +364,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.AssocTargetItem: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.AssocTargetItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -355,11 +373,30 @@ namespace Example
 }
 ```
 
+#### Using the AssocTargetItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateTargetItemAssocOutput> response = apiInstance.AssocTargetItemWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AssocTargetItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**AssocTargetItem**](AssocTargetItem.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AssocTargetItem**](AssocTargetItem.md) |  |  |
 
 ### Return type
 
@@ -415,8 +452,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Auth: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Auth: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -424,11 +461,30 @@ namespace Example
 }
 ```
 
+#### Using the AuthWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AuthOutput> response = apiInstance.AuthWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AuthWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Auth**](Auth.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Auth**](Auth.md) |  |  |
 
 ### Return type
 
@@ -485,8 +541,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Configure: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Configure: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -494,11 +550,30 @@ namespace Example
 }
 ```
 
+#### Using the ConfigureWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ConfigureOutput> response = apiInstance.ConfigureWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ConfigureWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Configure**](Configure.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Configure**](Configure.md) |  |  |
 
 ### Return type
 
@@ -554,8 +629,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Connect: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Connect: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -563,11 +638,30 @@ namespace Example
 }
 ```
 
+#### Using the ConnectWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.ConnectWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ConnectWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Connect**](Connect.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Connect**](Connect.md) |  |  |
 
 ### Return type
 
@@ -623,8 +717,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAWSTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAWSTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -632,11 +726,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAWSTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAWSTargetOutput> response = apiInstance.CreateAWSTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAWSTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAWSTarget**](CreateAWSTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAWSTarget**](CreateAWSTarget.md) |  |  |
 
 ### Return type
 
@@ -692,8 +805,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateArtifactoryTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateArtifactoryTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -701,11 +814,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateArtifactoryTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateArtifactoryTargetOutput> response = apiInstance.CreateArtifactoryTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateArtifactoryTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateArtifactoryTarget**](CreateArtifactoryTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateArtifactoryTarget**](CreateArtifactoryTarget.md) |  |  |
 
 ### Return type
 
@@ -761,8 +893,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethod: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethod: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -770,11 +902,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodOutput> response = apiInstance.CreateAuthMethodWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethod**](CreateAuthMethod.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethod**](CreateAuthMethod.md) |  |  |
 
 ### Return type
 
@@ -830,8 +981,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodAWSIAM: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodAWSIAM: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -839,11 +990,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodAWSIAMWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodAWSIAMOutput> response = apiInstance.CreateAuthMethodAWSIAMWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodAWSIAMWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodAWSIAM**](CreateAuthMethodAWSIAM.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodAWSIAM**](CreateAuthMethodAWSIAM.md) |  |  |
 
 ### Return type
 
@@ -899,8 +1069,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodAzureAD: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodAzureAD: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -908,11 +1078,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodAzureADWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodAzureADOutput> response = apiInstance.CreateAuthMethodAzureADWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodAzureADWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodAzureAD**](CreateAuthMethodAzureAD.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodAzureAD**](CreateAuthMethodAzureAD.md) |  |  |
 
 ### Return type
 
@@ -968,8 +1157,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodCert: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodCert: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -977,11 +1166,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodCertWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodCertOutput> response = apiInstance.CreateAuthMethodCertWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodCertWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodCert**](CreateAuthMethodCert.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodCert**](CreateAuthMethodCert.md) |  |  |
 
 ### Return type
 
@@ -1037,8 +1245,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodGCP: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodGCP: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1046,11 +1254,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodGCPWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodGCPOutput> response = apiInstance.CreateAuthMethodGCPWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodGCPWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodGCP**](CreateAuthMethodGCP.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodGCP**](CreateAuthMethodGCP.md) |  |  |
 
 ### Return type
 
@@ -1106,8 +1333,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodHuawei: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodHuawei: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1115,11 +1342,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodHuaweiWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodHuaweiOutput> response = apiInstance.CreateAuthMethodHuaweiWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodHuaweiWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodHuawei**](CreateAuthMethodHuawei.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodHuawei**](CreateAuthMethodHuawei.md) |  |  |
 
 ### Return type
 
@@ -1175,8 +1421,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodK8S: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodK8S: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1184,11 +1430,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodK8SWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodK8SOutput> response = apiInstance.CreateAuthMethodK8SWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodK8SWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodK8S**](CreateAuthMethodK8S.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodK8S**](CreateAuthMethodK8S.md) |  |  |
 
 ### Return type
 
@@ -1244,8 +1509,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodLDAP: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodLDAP: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1253,11 +1518,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodLDAPWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodLDAPOutput> response = apiInstance.CreateAuthMethodLDAPWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodLDAPWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodLDAP**](CreateAuthMethodLDAP.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodLDAP**](CreateAuthMethodLDAP.md) |  |  |
 
 ### Return type
 
@@ -1313,8 +1597,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodOAuth2: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodOAuth2: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1322,11 +1606,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodOAuth2WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodOAuth2Output> response = apiInstance.CreateAuthMethodOAuth2WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodOAuth2WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodOAuth2**](CreateAuthMethodOAuth2.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodOAuth2**](CreateAuthMethodOAuth2.md) |  |  |
 
 ### Return type
 
@@ -1382,8 +1685,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodOIDC: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodOIDC: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1391,11 +1694,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodOIDCWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodOIDCOutput> response = apiInstance.CreateAuthMethodOIDCWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodOIDCWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodOIDC**](CreateAuthMethodOIDC.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodOIDC**](CreateAuthMethodOIDC.md) |  |  |
 
 ### Return type
 
@@ -1451,8 +1773,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodSAML: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodSAML: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1460,11 +1782,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodSAMLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodSAMLOutput> response = apiInstance.CreateAuthMethodSAMLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodSAMLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodSAML**](CreateAuthMethodSAML.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodSAML**](CreateAuthMethodSAML.md) |  |  |
 
 ### Return type
 
@@ -1520,8 +1861,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAuthMethodUniversalIdentity: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodUniversalIdentity: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1529,11 +1870,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAuthMethodUniversalIdentityWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodUniversalIdentityOutput> response = apiInstance.CreateAuthMethodUniversalIdentityWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodUniversalIdentityWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAuthMethodUniversalIdentity**](CreateAuthMethodUniversalIdentity.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodUniversalIdentity**](CreateAuthMethodUniversalIdentity.md) |  |  |
 
 ### Return type
 
@@ -1589,8 +1949,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateAzureTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateAzureTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1598,11 +1958,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateAzureTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAzureTargetOutput> response = apiInstance.CreateAzureTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAzureTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateAzureTarget**](CreateAzureTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAzureTarget**](CreateAzureTarget.md) |  |  |
 
 ### Return type
 
@@ -1658,8 +2037,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1667,11 +2046,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateClassicKeyOutput> response = apiInstance.CreateClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateClassicKey**](CreateClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateClassicKey**](CreateClassicKey.md) |  |  |
 
 ### Return type
 
@@ -1727,8 +2125,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateDBTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateDBTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1736,11 +2134,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateDBTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateDBTargetOutput> response = apiInstance.CreateDBTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateDBTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateDBTarget**](CreateDBTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateDBTarget**](CreateDBTarget.md) |  |  |
 
 ### Return type
 
@@ -1796,8 +2213,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateDFCKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateDFCKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1805,11 +2222,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateDFCKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateDFCKeyOutput> response = apiInstance.CreateDFCKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateDFCKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateDFCKey**](CreateDFCKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateDFCKey**](CreateDFCKey.md) |  |  |
 
 ### Return type
 
@@ -1865,8 +2301,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateDockerhubTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateDockerhubTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1874,11 +2310,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateDockerhubTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateDockerhubTargetOutput> response = apiInstance.CreateDockerhubTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateDockerhubTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateDockerhubTarget**](CreateDockerhubTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateDockerhubTarget**](CreateDockerhubTarget.md) |  |  |
 
 ### Return type
 
@@ -1934,8 +2389,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateDynamicSecret: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateDynamicSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1943,11 +2398,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateDynamicSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.CreateDynamicSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateDynamicSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateDynamicSecret**](CreateDynamicSecret.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateDynamicSecret**](CreateDynamicSecret.md) |  |  |
 
 ### Return type
 
@@ -2003,8 +2477,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateEKSTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateEKSTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2012,11 +2486,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateEKSTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateEKSTargetOutput> response = apiInstance.CreateEKSTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateEKSTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateEKSTarget**](CreateEKSTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateEKSTarget**](CreateEKSTarget.md) |  |  |
 
 ### Return type
 
@@ -2072,8 +2565,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateGKETarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateGKETarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2081,11 +2574,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateGKETargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateGKETargetOutput> response = apiInstance.CreateGKETargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateGKETargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateGKETarget**](CreateGKETarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateGKETarget**](CreateGKETarget.md) |  |  |
 
 ### Return type
 
@@ -2141,8 +2653,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateGcpTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateGcpTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2150,11 +2662,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateGcpTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateGcpTargetOutput> response = apiInstance.CreateGcpTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateGcpTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateGcpTarget**](CreateGcpTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateGcpTarget**](CreateGcpTarget.md) |  |  |
 
 ### Return type
 
@@ -2210,8 +2741,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateGithubTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateGithubTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2219,11 +2750,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateGithubTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateGithubTargetOutput> response = apiInstance.CreateGithubTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateGithubTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateGithubTarget**](CreateGithubTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateGithubTarget**](CreateGithubTarget.md) |  |  |
 
 ### Return type
 
@@ -2279,8 +2829,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2288,11 +2838,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateKeyOutput> response = apiInstance.CreateKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateKey**](CreateKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateKey**](CreateKey.md) |  |  |
 
 ### Return type
 
@@ -2348,8 +2917,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateNativeK8STarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateNativeK8STarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2357,11 +2926,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateNativeK8STargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateNativeK8STargetOutput> response = apiInstance.CreateNativeK8STargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateNativeK8STargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateNativeK8STarget**](CreateNativeK8STarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateNativeK8STarget**](CreateNativeK8STarget.md) |  |  |
 
 ### Return type
 
@@ -2417,8 +3005,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreatePKICertIssuer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreatePKICertIssuer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2426,11 +3014,30 @@ namespace Example
 }
 ```
 
+#### Using the CreatePKICertIssuerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreatePKICertIssuerOutput> response = apiInstance.CreatePKICertIssuerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreatePKICertIssuerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreatePKICertIssuer**](CreatePKICertIssuer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreatePKICertIssuer**](CreatePKICertIssuer.md) |  |  |
 
 ### Return type
 
@@ -2486,8 +3093,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateRabbitMQTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateRabbitMQTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2495,11 +3102,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateRabbitMQTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateRabbitMQTargetOutput> response = apiInstance.CreateRabbitMQTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateRabbitMQTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateRabbitMQTarget**](CreateRabbitMQTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateRabbitMQTarget**](CreateRabbitMQTarget.md) |  |  |
 
 ### Return type
 
@@ -2555,8 +3181,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateRole: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateRole: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2564,11 +3190,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateRoleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.CreateRoleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateRoleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateRole**](CreateRole.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateRole**](CreateRole.md) |  |  |
 
 ### Return type
 
@@ -2624,8 +3269,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateRotatedSecret: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateRotatedSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2633,11 +3278,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateRotatedSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateRotatedSecretOutput> response = apiInstance.CreateRotatedSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateRotatedSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateRotatedSecret**](CreateRotatedSecret.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateRotatedSecret**](CreateRotatedSecret.md) |  |  |
 
 ### Return type
 
@@ -2693,8 +3357,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateSSHCertIssuer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateSSHCertIssuer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2702,11 +3366,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateSSHCertIssuerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSSHCertIssuerOutput> response = apiInstance.CreateSSHCertIssuerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateSSHCertIssuerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateSSHCertIssuer**](CreateSSHCertIssuer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateSSHCertIssuer**](CreateSSHCertIssuer.md) |  |  |
 
 ### Return type
 
@@ -2762,8 +3445,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateSSHTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateSSHTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2771,11 +3454,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateSSHTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSSHTargetOutput> response = apiInstance.CreateSSHTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateSSHTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateSSHTarget**](CreateSSHTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateSSHTarget**](CreateSSHTarget.md) |  |  |
 
 ### Return type
 
@@ -2831,8 +3533,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateSalesforceTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateSalesforceTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2840,11 +3542,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateSalesforceTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSalesforceTargetOutput> response = apiInstance.CreateSalesforceTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateSalesforceTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateSalesforceTarget**](CreateSalesforceTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateSalesforceTarget**](CreateSalesforceTarget.md) |  |  |
 
 ### Return type
 
@@ -2900,8 +3621,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateSecret: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2909,11 +3630,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSecretOutput> response = apiInstance.CreateSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateSecret**](CreateSecret.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateSecret**](CreateSecret.md) |  |  |
 
 ### Return type
 
@@ -2969,8 +3709,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateTokenizer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateTokenizer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -2978,11 +3718,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateTokenizerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateTokenizerOutput> response = apiInstance.CreateTokenizerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateTokenizerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateTokenizer**](CreateTokenizer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateTokenizer**](CreateTokenizer.md) |  |  |
 
 ### Return type
 
@@ -3038,8 +3797,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateWebTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateWebTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3047,11 +3806,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateWebTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateWebTargetOutput> response = apiInstance.CreateWebTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateWebTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateWebTarget**](CreateWebTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateWebTarget**](CreateWebTarget.md) |  |  |
 
 ### Return type
 
@@ -3107,8 +3885,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.CreateldapTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.CreateldapTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3116,11 +3894,30 @@ namespace Example
 }
 ```
 
+#### Using the CreateldapTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateLdapTargetOutput> response = apiInstance.CreateldapTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateldapTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**CreateLdapTarget**](CreateLdapTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateLdapTarget**](CreateLdapTarget.md) |  |  |
 
 ### Return type
 
@@ -3176,8 +3973,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Decrypt: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Decrypt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3185,11 +3982,30 @@ namespace Example
 }
 ```
 
+#### Using the DecryptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DecryptOutput> response = apiInstance.DecryptWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DecryptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Decrypt**](Decrypt.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Decrypt**](Decrypt.md) |  |  |
 
 ### Return type
 
@@ -3245,8 +4061,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DecryptPKCS1: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DecryptPKCS1: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3254,11 +4070,30 @@ namespace Example
 }
 ```
 
+#### Using the DecryptPKCS1WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DecryptPKCS1Output> response = apiInstance.DecryptPKCS1WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DecryptPKCS1WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DecryptPKCS1**](DecryptPKCS1.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DecryptPKCS1**](DecryptPKCS1.md) |  |  |
 
 ### Return type
 
@@ -3314,8 +4149,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DecryptWithClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DecryptWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3323,11 +4158,30 @@ namespace Example
 }
 ```
 
+#### Using the DecryptWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DecryptWithClassicKeyOutput> response = apiInstance.DecryptWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DecryptWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DecryptWithClassicKey**](DecryptWithClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DecryptWithClassicKey**](DecryptWithClassicKey.md) |  |  |
 
 ### Return type
 
@@ -3383,8 +4237,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteAuthMethod: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteAuthMethod: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3392,11 +4246,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteAuthMethodWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DeleteAuthMethodOutput> response = apiInstance.DeleteAuthMethodWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteAuthMethodWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteAuthMethod**](DeleteAuthMethod.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteAuthMethod**](DeleteAuthMethod.md) |  |  |
 
 ### Return type
 
@@ -3452,8 +4325,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteAuthMethods: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteAuthMethods: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3461,11 +4334,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteAuthMethodsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DeleteAuthMethodsOutput> response = apiInstance.DeleteAuthMethodsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteAuthMethodsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteAuthMethods**](DeleteAuthMethods.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteAuthMethods**](DeleteAuthMethods.md) |  |  |
 
 ### Return type
 
@@ -3521,8 +4413,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteItem: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3530,11 +4422,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DeleteItemOutput> response = apiInstance.DeleteItemWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteItem**](DeleteItem.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteItem**](DeleteItem.md) |  |  |
 
 ### Return type
 
@@ -3590,8 +4501,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteItems: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteItems: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3599,11 +4510,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteItemsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DeleteItemsOutput> response = apiInstance.DeleteItemsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteItemsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteItems**](DeleteItems.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteItems**](DeleteItems.md) |  |  |
 
 ### Return type
 
@@ -3659,8 +4589,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteRole: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteRole: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3668,11 +4598,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteRoleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteRoleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteRoleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteRole**](DeleteRole.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteRole**](DeleteRole.md) |  |  |
 
 ### Return type
 
@@ -3728,8 +4677,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteRoleAssociation: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteRoleAssociation: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3737,11 +4686,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteRoleAssociationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteRoleAssociationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteRoleAssociationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteRoleAssociation**](DeleteRoleAssociation.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteRoleAssociation**](DeleteRoleAssociation.md) |  |  |
 
 ### Return type
 
@@ -3797,8 +4765,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteRoleRule: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteRoleRule: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3806,11 +4774,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteRoleRuleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DeleteRoleRuleOutput> response = apiInstance.DeleteRoleRuleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteRoleRuleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteRoleRule**](DeleteRoleRule.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteRoleRule**](DeleteRoleRule.md) |  |  |
 
 ### Return type
 
@@ -3866,8 +4853,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteRoles: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteRoles: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3875,11 +4862,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteRolesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteRolesWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteRolesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteRoles**](DeleteRoles.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteRoles**](DeleteRoles.md) |  |  |
 
 ### Return type
 
@@ -3935,8 +4941,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -3944,11 +4950,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteTarget**](DeleteTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteTarget**](DeleteTarget.md) |  |  |
 
 ### Return type
 
@@ -4004,8 +5029,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteTargetAssociation: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteTargetAssociation: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4013,11 +5038,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteTargetAssociationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteTargetAssociationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteTargetAssociationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteTargetAssociation**](DeleteTargetAssociation.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteTargetAssociation**](DeleteTargetAssociation.md) |  |  |
 
 ### Return type
 
@@ -4073,8 +5117,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DeleteTargets: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DeleteTargets: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4082,11 +5126,30 @@ namespace Example
 }
 ```
 
+#### Using the DeleteTargetsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteTargetsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteTargetsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DeleteTargets**](DeleteTargets.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteTargets**](DeleteTargets.md) |  |  |
 
 ### Return type
 
@@ -4142,8 +5205,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DescribeItem: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DescribeItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4151,11 +5214,30 @@ namespace Example
 }
 ```
 
+#### Using the DescribeItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Item> response = apiInstance.DescribeItemWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DescribeItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DescribeItem**](DescribeItem.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DescribeItem**](DescribeItem.md) |  |  |
 
 ### Return type
 
@@ -4211,8 +5293,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DescribePermissions: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DescribePermissions: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4220,11 +5302,30 @@ namespace Example
 }
 ```
 
+#### Using the DescribePermissionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DescribePermissionsOutput> response = apiInstance.DescribePermissionsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DescribePermissionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DescribePermissions**](DescribePermissions.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DescribePermissions**](DescribePermissions.md) |  |  |
 
 ### Return type
 
@@ -4280,8 +5381,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.DescribeSubClaims: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.DescribeSubClaims: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4289,11 +5390,30 @@ namespace Example
 }
 ```
 
+#### Using the DescribeSubClaimsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DescribeSubClaimsOutput> response = apiInstance.DescribeSubClaimsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DescribeSubClaimsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**DescribeSubClaims**](DescribeSubClaims.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DescribeSubClaims**](DescribeSubClaims.md) |  |  |
 
 ### Return type
 
@@ -4350,8 +5470,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Detokenize: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Detokenize: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4359,11 +5479,30 @@ namespace Example
 }
 ```
 
+#### Using the DetokenizeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DetokenizeOutput> response = apiInstance.DetokenizeWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DetokenizeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Detokenize**](Detokenize.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Detokenize**](Detokenize.md) |  |  |
 
 ### Return type
 
@@ -4419,8 +5558,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Encrypt: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Encrypt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4428,11 +5567,30 @@ namespace Example
 }
 ```
 
+#### Using the EncryptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EncryptOutput> response = apiInstance.EncryptWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EncryptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Encrypt**](Encrypt.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Encrypt**](Encrypt.md) |  |  |
 
 ### Return type
 
@@ -4488,8 +5646,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.EncryptWithClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.EncryptWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4497,11 +5655,30 @@ namespace Example
 }
 ```
 
+#### Using the EncryptWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EncryptOutput> response = apiInstance.EncryptWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EncryptWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**EncryptWithClassicKey**](EncryptWithClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**EncryptWithClassicKey**](EncryptWithClassicKey.md) |  |  |
 
 ### Return type
 
@@ -4557,8 +5734,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ExportClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ExportClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4566,11 +5743,30 @@ namespace Example
 }
 ```
 
+#### Using the ExportClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ExportClassicKeyOutput> response = apiInstance.ExportClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ExportClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ExportClassicKey**](ExportClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ExportClassicKey**](ExportClassicKey.md) |  |  |
 
 ### Return type
 
@@ -4626,8 +5822,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayAddAllowedManagementAccess: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayAddAllowedManagementAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4635,11 +5831,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayAddAllowedManagementAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.GatewayAddAllowedManagementAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayAddAllowedManagementAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md) |  |  |
 
 ### Return type
 
@@ -4695,8 +5910,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateK8SAuthConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateK8SAuthConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4704,11 +5919,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateK8SAuthConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateK8SAuthConfigOutput> response = apiInstance.GatewayCreateK8SAuthConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateK8SAuthConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateK8SAuthConfig**](GatewayCreateK8SAuthConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateK8SAuthConfig**](GatewayCreateK8SAuthConfig.md) |  |  |
 
 ### Return type
 
@@ -4764,8 +5998,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4773,11 +6007,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigrationCreateOutput> response = apiInstance.GatewayCreateMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateMigration**](GatewayCreateMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateMigration**](GatewayCreateMigration.md) |  |  |
 
 ### Return type
 
@@ -4833,8 +6086,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerArtifactory: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerArtifactory: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4842,11 +6095,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerArtifactoryWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerArtifactoryOutput> response = apiInstance.GatewayCreateProducerArtifactoryWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerArtifactoryWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerArtifactory**](GatewayCreateProducerArtifactory.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerArtifactory**](GatewayCreateProducerArtifactory.md) |  |  |
 
 ### Return type
 
@@ -4902,8 +6174,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerAws: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerAws: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4911,11 +6183,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerAwsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerAwsOutput> response = apiInstance.GatewayCreateProducerAwsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerAwsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerAws**](GatewayCreateProducerAws.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerAws**](GatewayCreateProducerAws.md) |  |  |
 
 ### Return type
 
@@ -4971,8 +6262,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerAzure: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerAzure: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -4980,11 +6271,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerAzureWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerAzureOutput> response = apiInstance.GatewayCreateProducerAzureWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerAzureWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerAzure**](GatewayCreateProducerAzure.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerAzure**](GatewayCreateProducerAzure.md) |  |  |
 
 ### Return type
 
@@ -5040,8 +6350,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCassandra: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCassandra: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5049,11 +6359,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerCassandraWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerCassandraOutput> response = apiInstance.GatewayCreateProducerCassandraWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerCassandraWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerCassandra**](GatewayCreateProducerCassandra.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerCassandra**](GatewayCreateProducerCassandra.md) |  |  |
 
 ### Return type
 
@@ -5109,8 +6438,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCertificateAutomation: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCertificateAutomation: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5118,11 +6447,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerCertificateAutomationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerCertificateAutomationOutput> response = apiInstance.GatewayCreateProducerCertificateAutomationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerCertificateAutomationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerCertificateAutomation**](GatewayCreateProducerCertificateAutomation.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerCertificateAutomation**](GatewayCreateProducerCertificateAutomation.md) |  |  |
 
 ### Return type
 
@@ -5148,7 +6496,7 @@ No authorization required
 
 <a name="gatewaycreateproducercustom"></a>
 # **GatewayCreateProducerCustom**
-> GatewayCreateProducerCustomOutput GatewayCreateProducerCustom (GatewayCreateProducerCustom body = null)
+> GatewayCreateProducerCustomOutput GatewayCreateProducerCustom (GatewayCreateProducerCustom? body = null)
 
 
 
@@ -5169,7 +6517,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new GatewayCreateProducerCustom(); // GatewayCreateProducerCustom |  (optional) 
+            var body = new GatewayCreateProducerCustom?(); // GatewayCreateProducerCustom? |  (optional) 
 
             try
             {
@@ -5178,8 +6526,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCustom: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerCustom: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5187,11 +6535,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerCustomWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerCustomOutput> response = apiInstance.GatewayCreateProducerCustomWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerCustomWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerCustom**](GatewayCreateProducerCustom.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerCustom?**](GatewayCreateProducerCustom?.md) |  | [optional]  |
 
 ### Return type
 
@@ -5247,8 +6614,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerDockerhub: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerDockerhub: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5256,11 +6623,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerDockerhubWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerDockerhubOutput> response = apiInstance.GatewayCreateProducerDockerhubWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerDockerhubWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerDockerhub**](GatewayCreateProducerDockerhub.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerDockerhub**](GatewayCreateProducerDockerhub.md) |  |  |
 
 ### Return type
 
@@ -5316,8 +6702,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerEks: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerEks: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5325,11 +6711,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerEksWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerEksOutput> response = apiInstance.GatewayCreateProducerEksWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerEksWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerEks**](GatewayCreateProducerEks.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerEks**](GatewayCreateProducerEks.md) |  |  |
 
 ### Return type
 
@@ -5385,8 +6790,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGcp: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGcp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5394,11 +6799,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerGcpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerGcpOutput> response = apiInstance.GatewayCreateProducerGcpWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerGcpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerGcp**](GatewayCreateProducerGcp.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerGcp**](GatewayCreateProducerGcp.md) |  |  |
 
 ### Return type
 
@@ -5454,8 +6878,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGithub: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGithub: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5463,11 +6887,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerGithubWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerGithubOutput> response = apiInstance.GatewayCreateProducerGithubWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerGithubWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerGithub**](GatewayCreateProducerGithub.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerGithub**](GatewayCreateProducerGithub.md) |  |  |
 
 ### Return type
 
@@ -5523,8 +6966,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGke: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerGke: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5532,11 +6975,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerGkeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerGkeOutput> response = apiInstance.GatewayCreateProducerGkeWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerGkeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerGke**](GatewayCreateProducerGke.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerGke**](GatewayCreateProducerGke.md) |  |  |
 
 ### Return type
 
@@ -5592,8 +7054,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerHanaDb: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerHanaDb: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5601,11 +7063,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerHanaDbWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerHanaDbOutput> response = apiInstance.GatewayCreateProducerHanaDbWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerHanaDbWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerHanaDb**](GatewayCreateProducerHanaDb.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerHanaDb**](GatewayCreateProducerHanaDb.md) |  |  |
 
 ### Return type
 
@@ -5661,8 +7142,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerLdap: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerLdap: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5670,11 +7151,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerLdapWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerLdapOutput> response = apiInstance.GatewayCreateProducerLdapWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerLdapWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerLdap**](GatewayCreateProducerLdap.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerLdap**](GatewayCreateProducerLdap.md) |  |  |
 
 ### Return type
 
@@ -5730,8 +7230,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerMSSQL: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerMSSQL: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5739,11 +7239,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerMSSQLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerMSSQLOutput> response = apiInstance.GatewayCreateProducerMSSQLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerMSSQLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerMSSQL**](GatewayCreateProducerMSSQL.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerMSSQL**](GatewayCreateProducerMSSQL.md) |  |  |
 
 ### Return type
 
@@ -5799,8 +7318,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerMongo: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerMongo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5808,11 +7327,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerMongoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerMongoOutput> response = apiInstance.GatewayCreateProducerMongoWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerMongoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerMongo**](GatewayCreateProducerMongo.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerMongo**](GatewayCreateProducerMongo.md) |  |  |
 
 ### Return type
 
@@ -5868,8 +7406,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerMySQL: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerMySQL: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5877,11 +7415,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerMySQLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerMySQLOutput> response = apiInstance.GatewayCreateProducerMySQLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerMySQLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerMySQL**](GatewayCreateProducerMySQL.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerMySQL**](GatewayCreateProducerMySQL.md) |  |  |
 
 ### Return type
 
@@ -5937,8 +7494,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerNativeK8S: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerNativeK8S: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -5946,11 +7503,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerNativeK8SWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerNativeK8SOutput> response = apiInstance.GatewayCreateProducerNativeK8SWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerNativeK8SWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerNativeK8S**](GatewayCreateProducerNativeK8S.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerNativeK8S**](GatewayCreateProducerNativeK8S.md) |  |  |
 
 ### Return type
 
@@ -6006,8 +7582,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerOracleDb: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerOracleDb: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6015,11 +7591,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerOracleDbWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerOracleDbOutput> response = apiInstance.GatewayCreateProducerOracleDbWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerOracleDbWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerOracleDb**](GatewayCreateProducerOracleDb.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerOracleDb**](GatewayCreateProducerOracleDb.md) |  |  |
 
 ### Return type
 
@@ -6075,8 +7670,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerPostgreSQL: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerPostgreSQL: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6084,11 +7679,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerPostgreSQLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerPostgreSQLOutput> response = apiInstance.GatewayCreateProducerPostgreSQLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerPostgreSQLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerPostgreSQL**](GatewayCreateProducerPostgreSQL.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerPostgreSQL**](GatewayCreateProducerPostgreSQL.md) |  |  |
 
 ### Return type
 
@@ -6144,8 +7758,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRabbitMQ: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRabbitMQ: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6153,11 +7767,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerRabbitMQWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerRabbitMQOutput> response = apiInstance.GatewayCreateProducerRabbitMQWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerRabbitMQWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerRabbitMQ**](GatewayCreateProducerRabbitMQ.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerRabbitMQ**](GatewayCreateProducerRabbitMQ.md) |  |  |
 
 ### Return type
 
@@ -6213,8 +7846,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRdp: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRdp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6222,11 +7855,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerRdpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerRdpOutput> response = apiInstance.GatewayCreateProducerRdpWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerRdpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerRdp**](GatewayCreateProducerRdp.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerRdp**](GatewayCreateProducerRdp.md) |  |  |
 
 ### Return type
 
@@ -6282,8 +7934,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRedshift: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerRedshift: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6291,11 +7943,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerRedshiftWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerRedshiftOutput> response = apiInstance.GatewayCreateProducerRedshiftWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerRedshiftWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerRedshift**](GatewayCreateProducerRedshift.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerRedshift**](GatewayCreateProducerRedshift.md) |  |  |
 
 ### Return type
 
@@ -6351,8 +8022,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayCreateProducerSnowflake: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerSnowflake: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6360,11 +8031,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayCreateProducerSnowflakeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerSnowflakeOutput> response = apiInstance.GatewayCreateProducerSnowflakeWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerSnowflakeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayCreateProducerSnowflake**](GatewayCreateProducerSnowflake.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerSnowflake**](GatewayCreateProducerSnowflake.md) |  |  |
 
 ### Return type
 
@@ -6420,8 +8110,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedManagementAccess: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedManagementAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6429,11 +8119,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayDeleteAllowedManagementAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.GatewayDeleteAllowedManagementAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedManagementAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayDeleteAllowedManagementAccess**](GatewayDeleteAllowedManagementAccess.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayDeleteAllowedManagementAccess**](GatewayDeleteAllowedManagementAccess.md) |  |  |
 
 ### Return type
 
@@ -6489,8 +8198,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayDeleteK8SAuthConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayDeleteK8SAuthConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6498,11 +8207,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayDeleteK8SAuthConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayDeleteK8SAuthConfigOutput> response = apiInstance.GatewayDeleteK8SAuthConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayDeleteK8SAuthConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayDeleteK8SAuthConfig**](GatewayDeleteK8SAuthConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayDeleteK8SAuthConfig**](GatewayDeleteK8SAuthConfig.md) |  |  |
 
 ### Return type
 
@@ -6558,8 +8286,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayDeleteMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayDeleteMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6567,11 +8295,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayDeleteMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigrationDeleteOutput> response = apiInstance.GatewayDeleteMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayDeleteMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayDeleteMigration**](GatewayDeleteMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayDeleteMigration**](GatewayDeleteMigration.md) |  |  |
 
 ### Return type
 
@@ -6627,8 +8374,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayDeleteProducer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayDeleteProducer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6636,11 +8383,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayDeleteProducerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayDeleteProducerOutput> response = apiInstance.GatewayDeleteProducerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayDeleteProducerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayDeleteProducer**](GatewayDeleteProducer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayDeleteProducer**](GatewayDeleteProducer.md) |  |  |
 
 ### Return type
 
@@ -6696,8 +8462,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayGetConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayGetConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6705,11 +8471,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayGetConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AkeylessGatewayConfig> response = apiInstance.GatewayGetConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayGetConfig**](GatewayGetConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetConfig**](GatewayGetConfig.md) |  |  |
 
 ### Return type
 
@@ -6765,8 +8550,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayGetK8SAuthConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayGetK8SAuthConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6774,11 +8559,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayGetK8SAuthConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayGetK8SAuthConfigOutput> response = apiInstance.GatewayGetK8SAuthConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetK8SAuthConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayGetK8SAuthConfig**](GatewayGetK8SAuthConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetK8SAuthConfig**](GatewayGetK8SAuthConfig.md) |  |  |
 
 ### Return type
 
@@ -6834,8 +8638,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayGetLdapAuthConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayGetLdapAuthConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6843,11 +8647,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayGetLdapAuthConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayGetLdapAuthConfigOutput> response = apiInstance.GatewayGetLdapAuthConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetLdapAuthConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayGetLdapAuthConfig**](GatewayGetLdapAuthConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetLdapAuthConfig**](GatewayGetLdapAuthConfig.md) |  |  |
 
 ### Return type
 
@@ -6903,8 +8726,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayGetMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayGetMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6912,11 +8735,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayGetMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigrationGetOutput> response = apiInstance.GatewayGetMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayGetMigration**](GatewayGetMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetMigration**](GatewayGetMigration.md) |  |  |
 
 ### Return type
 
@@ -6972,8 +8814,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayGetProducer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayGetProducer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -6981,11 +8823,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayGetProducerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DSProducerDetails> response = apiInstance.GatewayGetProducerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetProducerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayGetProducer**](GatewayGetProducer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetProducer**](GatewayGetProducer.md) |  |  |
 
 ### Return type
 
@@ -7041,8 +8902,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayGetTmpUsers: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayGetTmpUsers: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7050,11 +8911,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayGetTmpUsersWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<List<TmpUserData>> response = apiInstance.GatewayGetTmpUsersWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetTmpUsersWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayGetTmpUsers**](GatewayGetTmpUsers.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetTmpUsers**](GatewayGetTmpUsers.md) |  |  |
 
 ### Return type
 
@@ -7110,8 +8990,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayListAllowedManagementAccess: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayListAllowedManagementAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7119,11 +8999,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayListAllowedManagementAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetSubAdminsListReplyObj> response = apiInstance.GatewayListAllowedManagementAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayListAllowedManagementAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayListAllowedManagementAccess**](GatewayListAllowedManagementAccess.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayListAllowedManagementAccess**](GatewayListAllowedManagementAccess.md) |  |  |
 
 ### Return type
 
@@ -7179,8 +9078,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayListMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayListMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7188,11 +9087,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayListMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigrationListOutput> response = apiInstance.GatewayListMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayListMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayListMigration**](GatewayListMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayListMigration**](GatewayListMigration.md) |  |  |
 
 ### Return type
 
@@ -7248,8 +9166,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayListProducers: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayListProducers: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7257,11 +9175,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayListProducersWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetProducersListReplyObj> response = apiInstance.GatewayListProducersWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayListProducersWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayListProducers**](GatewayListProducers.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayListProducers**](GatewayListProducers.md) |  |  |
 
 ### Return type
 
@@ -7287,7 +9224,7 @@ No authorization required
 
 <a name="gatewaymigratepersonalitems"></a>
 # **GatewayMigratePersonalItems**
-> GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems (GatewayMigratePersonalItems body = null)
+> GatewayMigratePersonalItemsOutput GatewayMigratePersonalItems (GatewayMigratePersonalItems? body = null)
 
 
 
@@ -7308,7 +9245,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new GatewayMigratePersonalItems(); // GatewayMigratePersonalItems |  (optional) 
+            var body = new GatewayMigratePersonalItems?(); // GatewayMigratePersonalItems? |  (optional) 
 
             try
             {
@@ -7317,8 +9254,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayMigratePersonalItems: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayMigratePersonalItems: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7326,11 +9263,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayMigratePersonalItemsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigratePersonalItemsOutput> response = apiInstance.GatewayMigratePersonalItemsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayMigratePersonalItemsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayMigratePersonalItems**](GatewayMigratePersonalItems.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayMigratePersonalItems?**](GatewayMigratePersonalItems?.md) |  | [optional]  |
 
 ### Return type
 
@@ -7385,8 +9341,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayRevokeTmpUsers: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayRevokeTmpUsers: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7394,11 +9350,27 @@ namespace Example
 }
 ```
 
+#### Using the GatewayRevokeTmpUsersWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.GatewayRevokeTmpUsersWithHttpInfo(body);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayRevokeTmpUsersWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayRevokeTmpUsers**](GatewayRevokeTmpUsers.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayRevokeTmpUsers**](GatewayRevokeTmpUsers.md) |  |  |
 
 ### Return type
 
@@ -7454,8 +9426,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayStartProducer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayStartProducer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7463,11 +9435,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayStartProducerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayStartProducerOutput> response = apiInstance.GatewayStartProducerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayStartProducerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayStartProducer**](GatewayStartProducer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayStartProducer**](GatewayStartProducer.md) |  |  |
 
 ### Return type
 
@@ -7523,8 +9514,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayStatusMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayStatusMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7532,11 +9523,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayStatusMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<MigrationStatusReplyObj> response = apiInstance.GatewayStatusMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayStatusMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayStatusMigration**](GatewayStatusMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayStatusMigration**](GatewayStatusMigration.md) |  |  |
 
 ### Return type
 
@@ -7592,8 +9602,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayStopProducer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayStopProducer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7601,11 +9611,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayStopProducerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayStopProducerOutput> response = apiInstance.GatewayStopProducerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayStopProducerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayStopProducer**](GatewayStopProducer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayStopProducer**](GatewayStopProducer.md) |  |  |
 
 ### Return type
 
@@ -7661,8 +9690,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewaySyncMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewaySyncMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7670,11 +9699,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewaySyncMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigrationSyncOutput> response = apiInstance.GatewaySyncMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewaySyncMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewaySyncMigration**](GatewaySyncMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewaySyncMigration**](GatewaySyncMigration.md) |  |  |
 
 ### Return type
 
@@ -7730,8 +9778,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateItem: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7739,11 +9787,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateItemOutput> response = apiInstance.GatewayUpdateItemWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateItem**](GatewayUpdateItem.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateItem**](GatewayUpdateItem.md) |  |  |
 
 ### Return type
 
@@ -7799,8 +9866,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateK8SAuthConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateK8SAuthConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7808,11 +9875,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateK8SAuthConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateK8SAuthConfigOutput> response = apiInstance.GatewayUpdateK8SAuthConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateK8SAuthConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateK8SAuthConfig**](GatewayUpdateK8SAuthConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateK8SAuthConfig**](GatewayUpdateK8SAuthConfig.md) |  |  |
 
 ### Return type
 
@@ -7868,8 +9954,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateLdapAuthConfig: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLdapAuthConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7877,11 +9963,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateLdapAuthConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLdapAuthConfigOutput> response = apiInstance.GatewayUpdateLdapAuthConfigWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLdapAuthConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateLdapAuthConfig**](GatewayUpdateLdapAuthConfig.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLdapAuthConfig**](GatewayUpdateLdapAuthConfig.md) |  |  |
 
 ### Return type
 
@@ -7937,8 +10042,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateMigration: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateMigration: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -7946,11 +10051,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateMigrationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayMigrationUpdateOutput> response = apiInstance.GatewayUpdateMigrationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateMigrationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateMigration**](GatewayUpdateMigration.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateMigration**](GatewayUpdateMigration.md) |  |  |
 
 ### Return type
 
@@ -8006,8 +10130,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerArtifactory: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerArtifactory: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8015,11 +10139,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerArtifactoryWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerArtifactoryOutput> response = apiInstance.GatewayUpdateProducerArtifactoryWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerArtifactoryWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerArtifactory**](GatewayUpdateProducerArtifactory.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerArtifactory**](GatewayUpdateProducerArtifactory.md) |  |  |
 
 ### Return type
 
@@ -8075,8 +10218,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAws: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAws: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8084,11 +10227,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerAwsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerAwsOutput> response = apiInstance.GatewayUpdateProducerAwsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAwsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerAws**](GatewayUpdateProducerAws.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerAws**](GatewayUpdateProducerAws.md) |  |  |
 
 ### Return type
 
@@ -8144,8 +10306,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAzure: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAzure: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8153,11 +10315,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerAzureWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerAzureOutput> response = apiInstance.GatewayUpdateProducerAzureWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerAzureWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerAzure**](GatewayUpdateProducerAzure.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerAzure**](GatewayUpdateProducerAzure.md) |  |  |
 
 ### Return type
 
@@ -8213,8 +10394,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCassandra: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCassandra: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8222,11 +10403,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerCassandraWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerCassandraOutput> response = apiInstance.GatewayUpdateProducerCassandraWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCassandraWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerCassandra**](GatewayUpdateProducerCassandra.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerCassandra**](GatewayUpdateProducerCassandra.md) |  |  |
 
 ### Return type
 
@@ -8282,8 +10482,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCertificateAutomation: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCertificateAutomation: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8291,11 +10491,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerCertificateAutomationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerCertificateAutomationOutput> response = apiInstance.GatewayUpdateProducerCertificateAutomationWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCertificateAutomationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerCertificateAutomation**](GatewayUpdateProducerCertificateAutomation.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerCertificateAutomation**](GatewayUpdateProducerCertificateAutomation.md) |  |  |
 
 ### Return type
 
@@ -8321,7 +10540,7 @@ No authorization required
 
 <a name="gatewayupdateproducercustom"></a>
 # **GatewayUpdateProducerCustom**
-> GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom (GatewayUpdateProducerCustom body = null)
+> GatewayUpdateProducerCustomOutput GatewayUpdateProducerCustom (GatewayUpdateProducerCustom? body = null)
 
 
 
@@ -8342,7 +10561,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new GatewayUpdateProducerCustom(); // GatewayUpdateProducerCustom |  (optional) 
+            var body = new GatewayUpdateProducerCustom?(); // GatewayUpdateProducerCustom? |  (optional) 
 
             try
             {
@@ -8351,8 +10570,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCustom: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCustom: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8360,11 +10579,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerCustomWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerCustomOutput> response = apiInstance.GatewayUpdateProducerCustomWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerCustomWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerCustom**](GatewayUpdateProducerCustom.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerCustom?**](GatewayUpdateProducerCustom?.md) |  | [optional]  |
 
 ### Return type
 
@@ -8420,8 +10658,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerDockerhub: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerDockerhub: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8429,11 +10667,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerDockerhubWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerDockerhubOutput> response = apiInstance.GatewayUpdateProducerDockerhubWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerDockerhubWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerDockerhub**](GatewayUpdateProducerDockerhub.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerDockerhub**](GatewayUpdateProducerDockerhub.md) |  |  |
 
 ### Return type
 
@@ -8489,8 +10746,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerEks: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerEks: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8498,11 +10755,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerEksWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerEksOutput> response = apiInstance.GatewayUpdateProducerEksWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerEksWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerEks**](GatewayUpdateProducerEks.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerEks**](GatewayUpdateProducerEks.md) |  |  |
 
 ### Return type
 
@@ -8558,8 +10834,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGcp: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGcp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8567,11 +10843,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerGcpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerGcpOutput> response = apiInstance.GatewayUpdateProducerGcpWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGcpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerGcp**](GatewayUpdateProducerGcp.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerGcp**](GatewayUpdateProducerGcp.md) |  |  |
 
 ### Return type
 
@@ -8627,8 +10922,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGithub: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGithub: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8636,11 +10931,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerGithubWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerGithubOutput> response = apiInstance.GatewayUpdateProducerGithubWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGithubWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerGithub**](GatewayUpdateProducerGithub.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerGithub**](GatewayUpdateProducerGithub.md) |  |  |
 
 ### Return type
 
@@ -8696,8 +11010,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGke: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGke: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8705,11 +11019,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerGkeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerGkeOutput> response = apiInstance.GatewayUpdateProducerGkeWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerGkeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerGke**](GatewayUpdateProducerGke.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerGke**](GatewayUpdateProducerGke.md) |  |  |
 
 ### Return type
 
@@ -8765,8 +11098,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerHanaDb: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerHanaDb: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8774,11 +11107,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerHanaDbWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerHanaDbOutput> response = apiInstance.GatewayUpdateProducerHanaDbWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerHanaDbWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerHanaDb**](GatewayUpdateProducerHanaDb.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerHanaDb**](GatewayUpdateProducerHanaDb.md) |  |  |
 
 ### Return type
 
@@ -8834,8 +11186,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerLdap: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerLdap: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8843,11 +11195,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerLdapWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerLdapOutput> response = apiInstance.GatewayUpdateProducerLdapWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerLdapWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerLdap**](GatewayUpdateProducerLdap.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerLdap**](GatewayUpdateProducerLdap.md) |  |  |
 
 ### Return type
 
@@ -8903,8 +11274,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMSSQL: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMSSQL: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8912,11 +11283,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerMSSQLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerMSSQLOutput> response = apiInstance.GatewayUpdateProducerMSSQLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMSSQLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerMSSQL**](GatewayUpdateProducerMSSQL.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerMSSQL**](GatewayUpdateProducerMSSQL.md) |  |  |
 
 ### Return type
 
@@ -8972,8 +11362,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMongo: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMongo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -8981,11 +11371,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerMongoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerMongoOutput> response = apiInstance.GatewayUpdateProducerMongoWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMongoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerMongo**](GatewayUpdateProducerMongo.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerMongo**](GatewayUpdateProducerMongo.md) |  |  |
 
 ### Return type
 
@@ -9041,8 +11450,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMySQL: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMySQL: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9050,11 +11459,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerMySQLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerMySQLOutput> response = apiInstance.GatewayUpdateProducerMySQLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerMySQLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerMySQL**](GatewayUpdateProducerMySQL.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerMySQL**](GatewayUpdateProducerMySQL.md) |  |  |
 
 ### Return type
 
@@ -9110,8 +11538,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerNativeK8S: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerNativeK8S: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9119,11 +11547,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerNativeK8SWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerNativeK8SOutput> response = apiInstance.GatewayUpdateProducerNativeK8SWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerNativeK8SWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerNativeK8S**](GatewayUpdateProducerNativeK8S.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerNativeK8S**](GatewayUpdateProducerNativeK8S.md) |  |  |
 
 ### Return type
 
@@ -9179,8 +11626,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerOracleDb: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerOracleDb: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9188,11 +11635,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerOracleDbWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerOracleDbOutput> response = apiInstance.GatewayUpdateProducerOracleDbWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerOracleDbWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerOracleDb**](GatewayUpdateProducerOracleDb.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerOracleDb**](GatewayUpdateProducerOracleDb.md) |  |  |
 
 ### Return type
 
@@ -9248,8 +11714,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerPostgreSQL: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerPostgreSQL: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9257,11 +11723,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerPostgreSQLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerPostgreSQLOutput> response = apiInstance.GatewayUpdateProducerPostgreSQLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerPostgreSQLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerPostgreSQL**](GatewayUpdateProducerPostgreSQL.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerPostgreSQL**](GatewayUpdateProducerPostgreSQL.md) |  |  |
 
 ### Return type
 
@@ -9317,8 +11802,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRabbitMQ: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRabbitMQ: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9326,11 +11811,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerRabbitMQWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerRabbitMQOutput> response = apiInstance.GatewayUpdateProducerRabbitMQWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRabbitMQWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerRabbitMQ**](GatewayUpdateProducerRabbitMQ.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerRabbitMQ**](GatewayUpdateProducerRabbitMQ.md) |  |  |
 
 ### Return type
 
@@ -9386,8 +11890,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRdp: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRdp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9395,11 +11899,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerRdpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerRdpOutput> response = apiInstance.GatewayUpdateProducerRdpWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRdpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerRdp**](GatewayUpdateProducerRdp.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerRdp**](GatewayUpdateProducerRdp.md) |  |  |
 
 ### Return type
 
@@ -9455,8 +11978,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRedshift: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRedshift: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9464,11 +11987,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerRedshiftWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerRedshiftOutput> response = apiInstance.GatewayUpdateProducerRedshiftWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerRedshiftWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerRedshift**](GatewayUpdateProducerRedshift.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerRedshift**](GatewayUpdateProducerRedshift.md) |  |  |
 
 ### Return type
 
@@ -9524,8 +12066,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerSnowflake: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerSnowflake: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9533,11 +12075,30 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateProducerSnowflakeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerSnowflakeOutput> response = apiInstance.GatewayUpdateProducerSnowflakeWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerSnowflakeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateProducerSnowflake**](GatewayUpdateProducerSnowflake.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerSnowflake**](GatewayUpdateProducerSnowflake.md) |  |  |
 
 ### Return type
 
@@ -9592,8 +12153,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GatewayUpdateTmpUsers: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GatewayUpdateTmpUsers: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9601,11 +12162,27 @@ namespace Example
 }
 ```
 
+#### Using the GatewayUpdateTmpUsersWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.GatewayUpdateTmpUsersWithHttpInfo(body);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateTmpUsersWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GatewayUpdateTmpUsers**](GatewayUpdateTmpUsers.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateTmpUsers**](GatewayUpdateTmpUsers.md) |  |  |
 
 ### Return type
 
@@ -9660,8 +12237,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetAccountLogo: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetAccountLogo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9669,9 +12246,27 @@ namespace Example
 }
 ```
 
+#### Using the GetAccountLogoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Dictionary<string, string>> response = apiInstance.GetAccountLogoWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetAccountLogoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 **Dictionary<string, string>**
@@ -9726,8 +12321,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetAccountSettings: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetAccountSettings: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9735,11 +12330,30 @@ namespace Example
 }
 ```
 
+#### Using the GetAccountSettingsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetAccountSettingsCommandOutput> response = apiInstance.GetAccountSettingsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetAccountSettingsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetAccountSettings**](GetAccountSettings.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetAccountSettings**](GetAccountSettings.md) |  |  |
 
 ### Return type
 
@@ -9795,8 +12409,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetAuthMethod: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetAuthMethod: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9804,11 +12418,30 @@ namespace Example
 }
 ```
 
+#### Using the GetAuthMethodWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AuthMethod> response = apiInstance.GetAuthMethodWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetAuthMethodWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetAuthMethod**](GetAuthMethod.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetAuthMethod**](GetAuthMethod.md) |  |  |
 
 ### Return type
 
@@ -9864,8 +12497,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetDynamicSecretValue: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetDynamicSecretValue: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9873,11 +12506,30 @@ namespace Example
 }
 ```
 
+#### Using the GetDynamicSecretValueWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Dictionary<string, string>> response = apiInstance.GetDynamicSecretValueWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetDynamicSecretValueWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetDynamicSecretValue**](GetDynamicSecretValue.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetDynamicSecretValue**](GetDynamicSecretValue.md) |  |  |
 
 ### Return type
 
@@ -9933,8 +12585,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetKubeExecCreds: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetKubeExecCreds: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -9942,11 +12594,30 @@ namespace Example
 }
 ```
 
+#### Using the GetKubeExecCredsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetKubeExecCredsOutput> response = apiInstance.GetKubeExecCredsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetKubeExecCredsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetKubeExecCreds**](GetKubeExecCreds.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetKubeExecCreds**](GetKubeExecCreds.md) |  |  |
 
 ### Return type
 
@@ -10002,8 +12673,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetPKICertificate: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetPKICertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10011,11 +12682,30 @@ namespace Example
 }
 ```
 
+#### Using the GetPKICertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetPKICertificateOutput> response = apiInstance.GetPKICertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetPKICertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetPKICertificate**](GetPKICertificate.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetPKICertificate**](GetPKICertificate.md) |  |  |
 
 ### Return type
 
@@ -10071,8 +12761,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetRSAPublic: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetRSAPublic: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10080,11 +12770,30 @@ namespace Example
 }
 ```
 
+#### Using the GetRSAPublicWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetRSAPublicOutput> response = apiInstance.GetRSAPublicWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetRSAPublicWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetRSAPublic**](GetRSAPublic.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetRSAPublic**](GetRSAPublic.md) |  |  |
 
 ### Return type
 
@@ -10140,8 +12849,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetRole: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetRole: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10149,11 +12858,30 @@ namespace Example
 }
 ```
 
+#### Using the GetRoleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Role> response = apiInstance.GetRoleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetRoleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetRole**](GetRole.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetRole**](GetRole.md) |  |  |
 
 ### Return type
 
@@ -10209,8 +12937,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetRotatedSecretValue: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetRotatedSecretValue: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10218,11 +12946,30 @@ namespace Example
 }
 ```
 
+#### Using the GetRotatedSecretValueWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Dictionary<string, Object>> response = apiInstance.GetRotatedSecretValueWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetRotatedSecretValueWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetRotatedSecretValue**](GetRotatedSecretValue.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetRotatedSecretValue**](GetRotatedSecretValue.md) |  |  |
 
 ### Return type
 
@@ -10278,8 +13025,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetSSHCertificate: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetSSHCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10287,11 +13034,30 @@ namespace Example
 }
 ```
 
+#### Using the GetSSHCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetSSHCertificateOutput> response = apiInstance.GetSSHCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetSSHCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetSSHCertificate**](GetSSHCertificate.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetSSHCertificate**](GetSSHCertificate.md) |  |  |
 
 ### Return type
 
@@ -10347,8 +13113,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetSecretValue: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetSecretValue: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10356,11 +13122,30 @@ namespace Example
 }
 ```
 
+#### Using the GetSecretValueWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Dictionary<string, string>> response = apiInstance.GetSecretValueWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetSecretValueWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetSecretValue**](GetSecretValue.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetSecretValue**](GetSecretValue.md) |  |  |
 
 ### Return type
 
@@ -10416,8 +13201,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetTags: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetTags: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10425,11 +13210,30 @@ namespace Example
 }
 ```
 
+#### Using the GetTagsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<List<string>> response = apiInstance.GetTagsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetTagsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetTags**](GetTags.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetTags**](GetTags.md) |  |  |
 
 ### Return type
 
@@ -10485,8 +13289,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10494,11 +13298,30 @@ namespace Example
 }
 ```
 
+#### Using the GetTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Target> response = apiInstance.GetTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetTarget**](GetTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetTarget**](GetTarget.md) |  |  |
 
 ### Return type
 
@@ -10554,8 +13377,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.GetTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.GetTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10563,11 +13386,30 @@ namespace Example
 }
 ```
 
+#### Using the GetTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetTargetDetailsOutput> response = apiInstance.GetTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**GetTargetDetails**](GetTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetTargetDetails**](GetTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -10593,7 +13435,7 @@ No authorization required
 
 <a name="kmipclientdeleterule"></a>
 # **KmipClientDeleteRule**
-> KMIPClientUpdateResponse KmipClientDeleteRule (KmipClientDeleteRule body = null)
+> KMIPClientUpdateResponse KmipClientDeleteRule (KmipClientDeleteRule? body = null)
 
 
 
@@ -10614,7 +13456,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipClientDeleteRule(); // KmipClientDeleteRule |  (optional) 
+            var body = new KmipClientDeleteRule?(); // KmipClientDeleteRule? |  (optional) 
 
             try
             {
@@ -10623,8 +13465,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipClientDeleteRule: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipClientDeleteRule: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10632,11 +13474,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipClientDeleteRuleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KMIPClientUpdateResponse> response = apiInstance.KmipClientDeleteRuleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipClientDeleteRuleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipClientDeleteRule**](KmipClientDeleteRule.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipClientDeleteRule?**](KmipClientDeleteRule?.md) |  | [optional]  |
 
 ### Return type
 
@@ -10662,7 +13523,7 @@ No authorization required
 
 <a name="kmipclientsetrule"></a>
 # **KmipClientSetRule**
-> KMIPClientUpdateResponse KmipClientSetRule (KmipClientSetRule body = null)
+> KMIPClientUpdateResponse KmipClientSetRule (KmipClientSetRule? body = null)
 
 
 
@@ -10683,7 +13544,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipClientSetRule(); // KmipClientSetRule |  (optional) 
+            var body = new KmipClientSetRule?(); // KmipClientSetRule? |  (optional) 
 
             try
             {
@@ -10692,8 +13553,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipClientSetRule: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipClientSetRule: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10701,11 +13562,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipClientSetRuleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KMIPClientUpdateResponse> response = apiInstance.KmipClientSetRuleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipClientSetRuleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipClientSetRule**](KmipClientSetRule.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipClientSetRule?**](KmipClientSetRule?.md) |  | [optional]  |
 
 ### Return type
 
@@ -10731,7 +13611,7 @@ No authorization required
 
 <a name="kmipcreateclient"></a>
 # **KmipCreateClient**
-> KmipCreateClientOutput KmipCreateClient (KmipCreateClient body = null)
+> KmipCreateClientOutput KmipCreateClient (KmipCreateClient? body = null)
 
 
 
@@ -10752,7 +13632,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipCreateClient(); // KmipCreateClient |  (optional) 
+            var body = new KmipCreateClient?(); // KmipCreateClient? |  (optional) 
 
             try
             {
@@ -10761,8 +13641,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipCreateClient: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipCreateClient: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10770,11 +13650,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipCreateClientWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipCreateClientOutput> response = apiInstance.KmipCreateClientWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipCreateClientWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipCreateClient**](KmipCreateClient.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipCreateClient?**](KmipCreateClient?.md) |  | [optional]  |
 
 ### Return type
 
@@ -10800,7 +13699,7 @@ No authorization required
 
 <a name="kmipdeleteclient"></a>
 # **KmipDeleteClient**
-> Object KmipDeleteClient (KmipDeleteClient body = null)
+> Object KmipDeleteClient (KmipDeleteClient? body = null)
 
 
 
@@ -10821,7 +13720,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipDeleteClient(); // KmipDeleteClient |  (optional) 
+            var body = new KmipDeleteClient?(); // KmipDeleteClient? |  (optional) 
 
             try
             {
@@ -10830,8 +13729,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipDeleteClient: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipDeleteClient: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10839,11 +13738,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipDeleteClientWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.KmipDeleteClientWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipDeleteClientWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipDeleteClient**](KmipDeleteClient.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipDeleteClient?**](KmipDeleteClient?.md) |  | [optional]  |
 
 ### Return type
 
@@ -10869,7 +13787,7 @@ No authorization required
 
 <a name="kmipdeleteserver"></a>
 # **KmipDeleteServer**
-> Object KmipDeleteServer (KmipDeleteServer body = null)
+> Object KmipDeleteServer (KmipDeleteServer? body = null)
 
 
 
@@ -10890,7 +13808,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipDeleteServer(); // KmipDeleteServer |  (optional) 
+            var body = new KmipDeleteServer?(); // KmipDeleteServer? |  (optional) 
 
             try
             {
@@ -10899,8 +13817,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipDeleteServer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipDeleteServer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10908,11 +13826,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipDeleteServerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.KmipDeleteServerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipDeleteServerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipDeleteServer**](KmipDeleteServer.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipDeleteServer?**](KmipDeleteServer?.md) |  | [optional]  |
 
 ### Return type
 
@@ -10938,7 +13875,7 @@ No authorization required
 
 <a name="kmipdescribeclient"></a>
 # **KmipDescribeClient**
-> KMIPClientGetResponse KmipDescribeClient (KmipDescribeClient body = null)
+> KMIPClientGetResponse KmipDescribeClient (KmipDescribeClient? body = null)
 
 
 
@@ -10959,7 +13896,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipDescribeClient(); // KmipDescribeClient |  (optional) 
+            var body = new KmipDescribeClient?(); // KmipDescribeClient? |  (optional) 
 
             try
             {
@@ -10968,8 +13905,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipDescribeClient: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipDescribeClient: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -10977,11 +13914,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipDescribeClientWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KMIPClientGetResponse> response = apiInstance.KmipDescribeClientWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipDescribeClientWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipDescribeClient**](KmipDescribeClient.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipDescribeClient?**](KmipDescribeClient?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11007,7 +13963,7 @@ No authorization required
 
 <a name="kmipdescribeserver"></a>
 # **KmipDescribeServer**
-> KmipDescribeServerOutput KmipDescribeServer (KmipDescribeServer body = null)
+> KmipDescribeServerOutput KmipDescribeServer (KmipDescribeServer? body = null)
 
 
 
@@ -11028,7 +13984,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipDescribeServer(); // KmipDescribeServer |  (optional) 
+            var body = new KmipDescribeServer?(); // KmipDescribeServer? |  (optional) 
 
             try
             {
@@ -11037,8 +13993,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipDescribeServer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipDescribeServer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11046,11 +14002,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipDescribeServerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipDescribeServerOutput> response = apiInstance.KmipDescribeServerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipDescribeServerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipDescribeServer**](KmipDescribeServer.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipDescribeServer?**](KmipDescribeServer?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11076,7 +14051,7 @@ No authorization required
 
 <a name="kmiplistclients"></a>
 # **KmipListClients**
-> KMIPClientListResponse KmipListClients (KmipListClients body = null)
+> KMIPClientListResponse KmipListClients (KmipListClients? body = null)
 
 
 
@@ -11097,7 +14072,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipListClients(); // KmipListClients |  (optional) 
+            var body = new KmipListClients?(); // KmipListClients? |  (optional) 
 
             try
             {
@@ -11106,8 +14081,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipListClients: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipListClients: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11115,11 +14090,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipListClientsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KMIPClientListResponse> response = apiInstance.KmipListClientsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipListClientsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipListClients**](KmipListClients.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipListClients?**](KmipListClients?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11145,7 +14139,7 @@ No authorization required
 
 <a name="kmipmoveserver"></a>
 # **KmipMoveServer**
-> KmipMoveServerOutput KmipMoveServer (KmipMoveServer body = null)
+> KmipMoveServerOutput KmipMoveServer (KmipMoveServer? body = null)
 
 
 
@@ -11166,7 +14160,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipMoveServer(); // KmipMoveServer |  (optional) 
+            var body = new KmipMoveServer?(); // KmipMoveServer? |  (optional) 
 
             try
             {
@@ -11175,8 +14169,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipMoveServer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipMoveServer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11184,11 +14178,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipMoveServerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipMoveServerOutput> response = apiInstance.KmipMoveServerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipMoveServerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipMoveServer**](KmipMoveServer.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipMoveServer?**](KmipMoveServer?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11214,7 +14227,7 @@ No authorization required
 
 <a name="kmiprenewclientcertificate"></a>
 # **KmipRenewClientCertificate**
-> KmipRenewClientCertificateOutput KmipRenewClientCertificate (KmipRenewClientCertificate body = null)
+> KmipRenewClientCertificateOutput KmipRenewClientCertificate (KmipRenewClientCertificate? body = null)
 
 
 
@@ -11235,7 +14248,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipRenewClientCertificate(); // KmipRenewClientCertificate |  (optional) 
+            var body = new KmipRenewClientCertificate?(); // KmipRenewClientCertificate? |  (optional) 
 
             try
             {
@@ -11244,8 +14257,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipRenewClientCertificate: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipRenewClientCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11253,11 +14266,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipRenewClientCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipRenewClientCertificateOutput> response = apiInstance.KmipRenewClientCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipRenewClientCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipRenewClientCertificate**](KmipRenewClientCertificate.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipRenewClientCertificate?**](KmipRenewClientCertificate?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11283,7 +14315,7 @@ No authorization required
 
 <a name="kmiprenewservercertificate"></a>
 # **KmipRenewServerCertificate**
-> KmipRenewServerCertificateOutput KmipRenewServerCertificate (KmipRenewServerCertificate body = null)
+> KmipRenewServerCertificateOutput KmipRenewServerCertificate (KmipRenewServerCertificate? body = null)
 
 
 
@@ -11304,7 +14336,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipRenewServerCertificate(); // KmipRenewServerCertificate |  (optional) 
+            var body = new KmipRenewServerCertificate?(); // KmipRenewServerCertificate? |  (optional) 
 
             try
             {
@@ -11313,8 +14345,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipRenewServerCertificate: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipRenewServerCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11322,11 +14354,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipRenewServerCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipRenewServerCertificateOutput> response = apiInstance.KmipRenewServerCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipRenewServerCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipRenewServerCertificate**](KmipRenewServerCertificate.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipRenewServerCertificate?**](KmipRenewServerCertificate?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11352,7 +14403,7 @@ No authorization required
 
 <a name="kmipserversetup"></a>
 # **KmipServerSetup**
-> KMIPEnvironmentCreateResponse KmipServerSetup (KmipServerSetup body = null)
+> KMIPEnvironmentCreateResponse KmipServerSetup (KmipServerSetup? body = null)
 
 
 
@@ -11373,7 +14424,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipServerSetup(); // KmipServerSetup |  (optional) 
+            var body = new KmipServerSetup?(); // KmipServerSetup? |  (optional) 
 
             try
             {
@@ -11382,8 +14433,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipServerSetup: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipServerSetup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11391,11 +14442,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipServerSetupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KMIPEnvironmentCreateResponse> response = apiInstance.KmipServerSetupWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipServerSetupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipServerSetup**](KmipServerSetup.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipServerSetup?**](KmipServerSetup?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11421,7 +14491,7 @@ No authorization required
 
 <a name="kmipsetserverstate"></a>
 # **KmipSetServerState**
-> KmipSetServerStateOutput KmipSetServerState (KmipSetServerState body = null)
+> KmipSetServerStateOutput KmipSetServerState (KmipSetServerState? body = null)
 
 
 
@@ -11442,7 +14512,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new KmipSetServerState(); // KmipSetServerState |  (optional) 
+            var body = new KmipSetServerState?(); // KmipSetServerState? |  (optional) 
 
             try
             {
@@ -11451,8 +14521,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.KmipSetServerState: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.KmipSetServerState: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11460,11 +14530,30 @@ namespace Example
 }
 ```
 
+#### Using the KmipSetServerStateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipSetServerStateOutput> response = apiInstance.KmipSetServerStateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipSetServerStateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KmipSetServerState**](KmipSetServerState.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**KmipSetServerState?**](KmipSetServerState?.md) |  | [optional]  |
 
 ### Return type
 
@@ -11520,8 +14609,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ListAuthMethods: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ListAuthMethods: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11529,11 +14618,30 @@ namespace Example
 }
 ```
 
+#### Using the ListAuthMethodsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListAuthMethodsOutput> response = apiInstance.ListAuthMethodsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListAuthMethodsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ListAuthMethods**](ListAuthMethods.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListAuthMethods**](ListAuthMethods.md) |  |  |
 
 ### Return type
 
@@ -11589,8 +14697,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ListGateways: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ListGateways: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11598,11 +14706,30 @@ namespace Example
 }
 ```
 
+#### Using the ListGatewaysWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewaysListResponse> response = apiInstance.ListGatewaysWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListGatewaysWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ListGateways**](ListGateways.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListGateways**](ListGateways.md) |  |  |
 
 ### Return type
 
@@ -11658,8 +14785,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ListItems: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ListItems: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11667,11 +14794,30 @@ namespace Example
 }
 ```
 
+#### Using the ListItemsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListItemsInPathOutput> response = apiInstance.ListItemsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListItemsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ListItems**](ListItems.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListItems**](ListItems.md) |  |  |
 
 ### Return type
 
@@ -11727,8 +14873,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ListRoles: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ListRoles: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11736,11 +14882,30 @@ namespace Example
 }
 ```
 
+#### Using the ListRolesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListRolesOutput> response = apiInstance.ListRolesWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListRolesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ListRoles**](ListRoles.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListRoles**](ListRoles.md) |  |  |
 
 ### Return type
 
@@ -11796,8 +14961,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ListSRABastions: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ListSRABastions: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11805,11 +14970,30 @@ namespace Example
 }
 ```
 
+#### Using the ListSRABastionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<BastionsList> response = apiInstance.ListSRABastionsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListSRABastionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ListSRABastions**](ListSRABastions.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListSRABastions**](ListSRABastions.md) |  |  |
 
 ### Return type
 
@@ -11865,8 +15049,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ListTargets: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ListTargets: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11874,11 +15058,30 @@ namespace Example
 }
 ```
 
+#### Using the ListTargetsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListTargetsOutput> response = apiInstance.ListTargetsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListTargetsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ListTargets**](ListTargets.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListTargets**](ListTargets.md) |  |  |
 
 ### Return type
 
@@ -11934,8 +15137,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.MoveObjects: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.MoveObjects: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -11943,11 +15146,30 @@ namespace Example
 }
 ```
 
+#### Using the MoveObjectsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.MoveObjectsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.MoveObjectsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MoveObjects**](MoveObjects.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**MoveObjects**](MoveObjects.md) |  |  |
 
 ### Return type
 
@@ -11973,7 +15195,7 @@ No authorization required
 
 <a name="rawcreds"></a>
 # **RawCreds**
-> SystemAccessCredentialsReplyObj RawCreds (RawCreds body = null)
+> SystemAccessCredentialsReplyObj RawCreds (RawCreds? body = null)
 
 
 
@@ -11994,7 +15216,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new RawCreds(); // RawCreds |  (optional) 
+            var body = new RawCreds?(); // RawCreds? |  (optional) 
 
             try
             {
@@ -12003,8 +15225,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.RawCreds: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.RawCreds: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12012,11 +15234,30 @@ namespace Example
 }
 ```
 
+#### Using the RawCredsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SystemAccessCredentialsReplyObj> response = apiInstance.RawCredsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RawCredsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**RawCreds**](RawCreds.md)|  | [optional] 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RawCreds?**](RawCreds?.md) |  | [optional]  |
 
 ### Return type
 
@@ -12072,8 +15313,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.RefreshKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.RefreshKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12081,11 +15322,30 @@ namespace Example
 }
 ```
 
+#### Using the RefreshKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RefreshKeyOutput> response = apiInstance.RefreshKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RefreshKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**RefreshKey**](RefreshKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RefreshKey**](RefreshKey.md) |  |  |
 
 ### Return type
 
@@ -12141,8 +15401,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ReverseRBAC: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ReverseRBAC: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12150,11 +15410,30 @@ namespace Example
 }
 ```
 
+#### Using the ReverseRBACWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ReverseRBACOutput> response = apiInstance.ReverseRBACWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ReverseRBACWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ReverseRBAC**](ReverseRBAC.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ReverseRBAC**](ReverseRBAC.md) |  |  |
 
 ### Return type
 
@@ -12209,8 +15488,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.RevokeCreds: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.RevokeCreds: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12218,9 +15497,27 @@ namespace Example
 }
 ```
 
+#### Using the RevokeCredsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.RevokeCredsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RevokeCredsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 **Object**
@@ -12275,8 +15572,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.RollbackSecret: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.RollbackSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12284,11 +15581,30 @@ namespace Example
 }
 ```
 
+#### Using the RollbackSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RollbackSecretOutput> response = apiInstance.RollbackSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RollbackSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**RollbackSecret**](RollbackSecret.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RollbackSecret**](RollbackSecret.md) |  |  |
 
 ### Return type
 
@@ -12344,8 +15660,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.RotateKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.RotateKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12353,11 +15669,30 @@ namespace Example
 }
 ```
 
+#### Using the RotateKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotateKeyOutput> response = apiInstance.RotateKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotateKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateRotationSettings**](UpdateRotationSettings.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRotationSettings**](UpdateRotationSettings.md) |  |  |
 
 ### Return type
 
@@ -12413,8 +15748,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.RotateSecret: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.RotateSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12422,11 +15757,30 @@ namespace Example
 }
 ```
 
+#### Using the RotateSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretOutput> response = apiInstance.RotateSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotateSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**RotateSecret**](RotateSecret.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RotateSecret**](RotateSecret.md) |  |  |
 
 ### Return type
 
@@ -12482,8 +15836,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.SetItemState: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.SetItemState: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12491,11 +15845,30 @@ namespace Example
 }
 ```
 
+#### Using the SetItemStateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.SetItemStateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SetItemStateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**SetItemState**](SetItemState.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SetItemState**](SetItemState.md) |  |  |
 
 ### Return type
 
@@ -12551,8 +15924,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.SetRoleRule: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.SetRoleRule: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12560,11 +15933,30 @@ namespace Example
 }
 ```
 
+#### Using the SetRoleRuleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.SetRoleRuleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SetRoleRuleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**SetRoleRule**](SetRoleRule.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SetRoleRule**](SetRoleRule.md) |  |  |
 
 ### Return type
 
@@ -12619,8 +16011,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ShareItem: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ShareItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12628,11 +16020,27 @@ namespace Example
 }
 ```
 
+#### Using the ShareItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.ShareItemWithHttpInfo(body);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ShareItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ShareItem**](ShareItem.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ShareItem**](ShareItem.md) |  |  |
 
 ### Return type
 
@@ -12688,8 +16096,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.SignJWTWithClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.SignJWTWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12697,11 +16105,30 @@ namespace Example
 }
 ```
 
+#### Using the SignJWTWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SignJWTOutput> response = apiInstance.SignJWTWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SignJWTWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**SignJWTWithClassicKey**](SignJWTWithClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SignJWTWithClassicKey**](SignJWTWithClassicKey.md) |  |  |
 
 ### Return type
 
@@ -12757,8 +16184,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.SignPKCS1: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.SignPKCS1: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12766,11 +16193,30 @@ namespace Example
 }
 ```
 
+#### Using the SignPKCS1WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SignPKCS1Output> response = apiInstance.SignPKCS1WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SignPKCS1WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**SignPKCS1**](SignPKCS1.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SignPKCS1**](SignPKCS1.md) |  |  |
 
 ### Return type
 
@@ -12826,8 +16272,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.SignPKICertWithClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.SignPKICertWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12835,11 +16281,30 @@ namespace Example
 }
 ```
 
+#### Using the SignPKICertWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SignPKICertOutput> response = apiInstance.SignPKICertWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SignPKICertWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**SignPKICertWithClassicKey**](SignPKICertWithClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SignPKICertWithClassicKey**](SignPKICertWithClassicKey.md) |  |  |
 
 ### Return type
 
@@ -12895,8 +16360,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.StaticCredsAuth: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.StaticCredsAuth: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12904,11 +16369,30 @@ namespace Example
 }
 ```
 
+#### Using the StaticCredsAuthWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<StaticCredsAuthOutput> response = apiInstance.StaticCredsAuthWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.StaticCredsAuthWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**StaticCredsAuth**](StaticCredsAuth.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**StaticCredsAuth**](StaticCredsAuth.md) |  |  |
 
 ### Return type
 
@@ -12964,8 +16448,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.Tokenize: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.Tokenize: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -12973,11 +16457,30 @@ namespace Example
 }
 ```
 
+#### Using the TokenizeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TokenizeOutput> response = apiInstance.TokenizeWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TokenizeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Tokenize**](Tokenize.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Tokenize**](Tokenize.md) |  |  |
 
 ### Return type
 
@@ -13033,8 +16536,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UidCreateChildToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UidCreateChildToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13042,11 +16545,30 @@ namespace Example
 }
 ```
 
+#### Using the UidCreateChildTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UidCreateChildTokenOutput> response = apiInstance.UidCreateChildTokenWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UidCreateChildTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UidCreateChildToken**](UidCreateChildToken.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UidCreateChildToken**](UidCreateChildToken.md) |  |  |
 
 ### Return type
 
@@ -13102,8 +16624,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UidGenerateToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UidGenerateToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13111,11 +16633,30 @@ namespace Example
 }
 ```
 
+#### Using the UidGenerateTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UidGenerateTokenOutput> response = apiInstance.UidGenerateTokenWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UidGenerateTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UidGenerateToken**](UidGenerateToken.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UidGenerateToken**](UidGenerateToken.md) |  |  |
 
 ### Return type
 
@@ -13171,8 +16712,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UidListChildren: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UidListChildren: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13180,11 +16721,30 @@ namespace Example
 }
 ```
 
+#### Using the UidListChildrenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UniversalIdentityDetails> response = apiInstance.UidListChildrenWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UidListChildrenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UidListChildren**](UidListChildren.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UidListChildren**](UidListChildren.md) |  |  |
 
 ### Return type
 
@@ -13240,8 +16800,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UidRevokeToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UidRevokeToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13249,11 +16809,30 @@ namespace Example
 }
 ```
 
+#### Using the UidRevokeTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UidRevokeTokenWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UidRevokeTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UidRevokeToken**](UidRevokeToken.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UidRevokeToken**](UidRevokeToken.md) |  |  |
 
 ### Return type
 
@@ -13309,8 +16888,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UidRotateToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UidRotateToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13318,11 +16897,30 @@ namespace Example
 }
 ```
 
+#### Using the UidRotateTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UidRotateTokenOutput> response = apiInstance.UidRotateTokenWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UidRotateTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UidRotateToken**](UidRotateToken.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UidRotateToken**](UidRotateToken.md) |  |  |
 
 ### Return type
 
@@ -13378,8 +16976,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAWSTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAWSTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13387,11 +16985,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAWSTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAWSTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAWSTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAWSTarget**](UpdateAWSTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAWSTarget**](UpdateAWSTarget.md) |  |  |
 
 ### Return type
 
@@ -13447,8 +17064,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAWSTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAWSTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13456,11 +17073,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAWSTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateAWSTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAWSTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAWSTargetDetails**](UpdateAWSTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAWSTargetDetails**](UpdateAWSTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -13516,8 +17152,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAccountSettings: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAccountSettings: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13525,11 +17161,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAccountSettingsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAccountSettingsOutput> response = apiInstance.UpdateAccountSettingsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAccountSettingsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAccountSettings**](UpdateAccountSettings.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAccountSettings**](UpdateAccountSettings.md) |  |  |
 
 ### Return type
 
@@ -13585,8 +17240,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateArtifactoryTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateArtifactoryTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13594,11 +17249,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateArtifactoryTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateArtifactoryTargetOutput> response = apiInstance.UpdateArtifactoryTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateArtifactoryTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateArtifactoryTarget**](UpdateArtifactoryTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateArtifactoryTarget**](UpdateArtifactoryTarget.md) |  |  |
 
 ### Return type
 
@@ -13654,8 +17328,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAssoc: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAssoc: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13663,11 +17337,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAssocWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAssocWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAssocWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAssoc**](UpdateAssoc.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAssoc**](UpdateAssoc.md) |  |  |
 
 ### Return type
 
@@ -13723,8 +17416,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethod: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethod: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13732,11 +17425,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAuthMethodOutput> response = apiInstance.UpdateAuthMethodWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethod**](UpdateAuthMethod.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethod**](UpdateAuthMethod.md) |  |  |
 
 ### Return type
 
@@ -13792,8 +17504,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodAWSIAM: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodAWSIAM: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13801,11 +17513,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodAWSIAMWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodAWSIAMWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodAWSIAMWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodAWSIAM**](UpdateAuthMethodAWSIAM.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodAWSIAM**](UpdateAuthMethodAWSIAM.md) |  |  |
 
 ### Return type
 
@@ -13861,8 +17592,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodAzureAD: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodAzureAD: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13870,11 +17601,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodAzureADWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodAzureADWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodAzureADWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodAzureAD**](UpdateAuthMethodAzureAD.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodAzureAD**](UpdateAuthMethodAzureAD.md) |  |  |
 
 ### Return type
 
@@ -13930,8 +17680,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodCert: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodCert: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -13939,11 +17689,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodCertWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAuthMethodCertOutput> response = apiInstance.UpdateAuthMethodCertWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodCertWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodCert**](UpdateAuthMethodCert.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodCert**](UpdateAuthMethodCert.md) |  |  |
 
 ### Return type
 
@@ -13999,8 +17768,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodGCP: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodGCP: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14008,11 +17777,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodGCPWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodGCPWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodGCPWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodGCP**](UpdateAuthMethodGCP.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodGCP**](UpdateAuthMethodGCP.md) |  |  |
 
 ### Return type
 
@@ -14068,8 +17856,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodK8S: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodK8S: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14077,11 +17865,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodK8SWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAuthMethodK8SOutput> response = apiInstance.UpdateAuthMethodK8SWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodK8SWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodK8S**](UpdateAuthMethodK8S.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodK8S**](UpdateAuthMethodK8S.md) |  |  |
 
 ### Return type
 
@@ -14137,8 +17944,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodLDAP: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodLDAP: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14146,11 +17953,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodLDAPWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAuthMethodLDAPOutput> response = apiInstance.UpdateAuthMethodLDAPWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodLDAPWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodLDAP**](UpdateAuthMethodLDAP.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodLDAP**](UpdateAuthMethodLDAP.md) |  |  |
 
 ### Return type
 
@@ -14206,8 +18032,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOAuth2: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOAuth2: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14215,11 +18041,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodOAuth2WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodOAuth2WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodOAuth2WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodOAuth2**](UpdateAuthMethodOAuth2.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodOAuth2**](UpdateAuthMethodOAuth2.md) |  |  |
 
 ### Return type
 
@@ -14275,8 +18120,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOIDC: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOIDC: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14284,11 +18129,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodOIDCWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodOIDCWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodOIDCWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodOIDC**](UpdateAuthMethodOIDC.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodOIDC**](UpdateAuthMethodOIDC.md) |  |  |
 
 ### Return type
 
@@ -14344,8 +18208,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodSAML: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodSAML: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14353,11 +18217,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodSAMLWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodSAMLWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodSAMLWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodSAML**](UpdateAuthMethodSAML.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodSAML**](UpdateAuthMethodSAML.md) |  |  |
 
 ### Return type
 
@@ -14413,8 +18296,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAuthMethodUniversalIdentity: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodUniversalIdentity: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14422,11 +18305,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAuthMethodUniversalIdentityWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateAuthMethodUniversalIdentityWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodUniversalIdentityWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAuthMethodUniversalIdentity**](UpdateAuthMethodUniversalIdentity.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodUniversalIdentity**](UpdateAuthMethodUniversalIdentity.md) |  |  |
 
 ### Return type
 
@@ -14482,8 +18384,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateAzureTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateAzureTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14491,11 +18393,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateAzureTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAzureTargetOutput> response = apiInstance.UpdateAzureTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAzureTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateAzureTarget**](UpdateAzureTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAzureTarget**](UpdateAzureTarget.md) |  |  |
 
 ### Return type
 
@@ -14551,8 +18472,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateDBTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateDBTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14560,11 +18481,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateDBTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateDBTargetOutput> response = apiInstance.UpdateDBTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateDBTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateDBTarget**](UpdateDBTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateDBTarget**](UpdateDBTarget.md) |  |  |
 
 ### Return type
 
@@ -14620,8 +18560,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateDBTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateDBTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14629,11 +18569,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateDBTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateDBTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateDBTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateDBTargetDetails**](UpdateDBTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateDBTargetDetails**](UpdateDBTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -14689,8 +18648,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateDockerhubTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateDockerhubTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14698,11 +18657,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateDockerhubTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateDockerhubTargetOutput> response = apiInstance.UpdateDockerhubTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateDockerhubTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateDockerhubTarget**](UpdateDockerhubTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateDockerhubTarget**](UpdateDockerhubTarget.md) |  |  |
 
 ### Return type
 
@@ -14758,8 +18736,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateEKSTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateEKSTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14767,11 +18745,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateEKSTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateEKSTargetOutput> response = apiInstance.UpdateEKSTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateEKSTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateEKSTarget**](UpdateEKSTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateEKSTarget**](UpdateEKSTarget.md) |  |  |
 
 ### Return type
 
@@ -14827,8 +18824,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateGKETarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateGKETarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14836,11 +18833,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateGKETargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateGKETargetOutput> response = apiInstance.UpdateGKETargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateGKETargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateGKETarget**](UpdateGKETarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateGKETarget**](UpdateGKETarget.md) |  |  |
 
 ### Return type
 
@@ -14896,8 +18912,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateGcpTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateGcpTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14905,11 +18921,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateGcpTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateGcpTargetOutput> response = apiInstance.UpdateGcpTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateGcpTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateGcpTarget**](UpdateGcpTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateGcpTarget**](UpdateGcpTarget.md) |  |  |
 
 ### Return type
 
@@ -14965,8 +19000,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateGithubTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateGithubTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -14974,11 +19009,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateGithubTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateGithubTargetOutput> response = apiInstance.UpdateGithubTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateGithubTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateGithubTarget**](UpdateGithubTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateGithubTarget**](UpdateGithubTarget.md) |  |  |
 
 ### Return type
 
@@ -15034,8 +19088,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateItem: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15043,11 +19097,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateItemOutput> response = apiInstance.UpdateItemWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateItem**](UpdateItem.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateItem**](UpdateItem.md) |  |  |
 
 ### Return type
 
@@ -15103,8 +19176,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateLdapTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateLdapTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15112,11 +19185,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateLdapTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateLdapTargetOutput> response = apiInstance.UpdateLdapTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateLdapTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateLdapTarget**](UpdateLdapTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateLdapTarget**](UpdateLdapTarget.md) |  |  |
 
 ### Return type
 
@@ -15172,8 +19264,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateLdapTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateLdapTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15181,11 +19273,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateLdapTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateLdapTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateLdapTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateLdapTargetDetails**](UpdateLdapTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateLdapTargetDetails**](UpdateLdapTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -15241,8 +19352,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateNativeK8STarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateNativeK8STarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15250,11 +19361,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateNativeK8STargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateNativeK8STargetOutput> response = apiInstance.UpdateNativeK8STargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateNativeK8STargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateNativeK8STarget**](UpdateNativeK8STarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateNativeK8STarget**](UpdateNativeK8STarget.md) |  |  |
 
 ### Return type
 
@@ -15310,8 +19440,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdatePKICertIssuer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdatePKICertIssuer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15319,11 +19449,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdatePKICertIssuerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdatePKICertIssuerOutput> response = apiInstance.UpdatePKICertIssuerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdatePKICertIssuerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdatePKICertIssuer**](UpdatePKICertIssuer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdatePKICertIssuer**](UpdatePKICertIssuer.md) |  |  |
 
 ### Return type
 
@@ -15379,8 +19528,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateRDPTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateRDPTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15388,11 +19537,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateRDPTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateRDPTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateRDPTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateRDPTargetDetails**](UpdateRDPTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRDPTargetDetails**](UpdateRDPTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -15448,8 +19616,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateRabbitMQTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateRabbitMQTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15457,11 +19625,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateRabbitMQTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateRabbitMQTargetOutput> response = apiInstance.UpdateRabbitMQTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateRabbitMQTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateRabbitMQTarget**](UpdateRabbitMQTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRabbitMQTarget**](UpdateRabbitMQTarget.md) |  |  |
 
 ### Return type
 
@@ -15517,8 +19704,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateRabbitMQTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateRabbitMQTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15526,11 +19713,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateRabbitMQTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateRabbitMQTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateRabbitMQTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateRabbitMQTargetDetails**](UpdateRabbitMQTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRabbitMQTargetDetails**](UpdateRabbitMQTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -15586,8 +19792,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateRole: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateRole: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15595,11 +19801,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateRoleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateRoleOutput> response = apiInstance.UpdateRoleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateRoleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateRole**](UpdateRole.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRole**](UpdateRole.md) |  |  |
 
 ### Return type
 
@@ -15655,8 +19880,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateRotatedSecret: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateRotatedSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15664,11 +19889,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateRotatedSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateRotatedSecretOutput> response = apiInstance.UpdateRotatedSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateRotatedSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateRotatedSecret**](UpdateRotatedSecret.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRotatedSecret**](UpdateRotatedSecret.md) |  |  |
 
 ### Return type
 
@@ -15723,8 +19967,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateRotationSettings: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateRotationSettings: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15732,9 +19976,27 @@ namespace Example
 }
 ```
 
+#### Using the UpdateRotationSettingsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotateKeyOutput> response = apiInstance.UpdateRotationSettingsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateRotationSettingsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 This endpoint does not need any parameter.
-
 ### Return type
 
 [**RotateKeyOutput**](RotateKeyOutput.md)
@@ -15789,8 +20051,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateSSHCertIssuer: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateSSHCertIssuer: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15798,11 +20060,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateSSHCertIssuerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSSHCertIssuerOutput> response = apiInstance.UpdateSSHCertIssuerWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateSSHCertIssuerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateSSHCertIssuer**](UpdateSSHCertIssuer.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateSSHCertIssuer**](UpdateSSHCertIssuer.md) |  |  |
 
 ### Return type
 
@@ -15858,8 +20139,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateSSHTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateSSHTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15867,11 +20148,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateSSHTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSSHTargetOutput> response = apiInstance.UpdateSSHTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateSSHTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateSSHTarget**](UpdateSSHTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateSSHTarget**](UpdateSSHTarget.md) |  |  |
 
 ### Return type
 
@@ -15927,8 +20227,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateSSHTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateSSHTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -15936,11 +20236,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateSSHTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateSSHTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateSSHTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateSSHTargetDetails**](UpdateSSHTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateSSHTargetDetails**](UpdateSSHTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -15996,8 +20315,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateSalesforceTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateSalesforceTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16005,11 +20324,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateSalesforceTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSalesforceTargetOutput> response = apiInstance.UpdateSalesforceTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateSalesforceTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateSalesforceTarget**](UpdateSalesforceTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateSalesforceTarget**](UpdateSalesforceTarget.md) |  |  |
 
 ### Return type
 
@@ -16065,8 +20403,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateSecretVal: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateSecretVal: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16074,11 +20412,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateSecretValWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSecretValOutput> response = apiInstance.UpdateSecretValWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateSecretValWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateSecretVal**](UpdateSecretVal.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateSecretVal**](UpdateSecretVal.md) |  |  |
 
 ### Return type
 
@@ -16134,8 +20491,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16143,11 +20500,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateTarget**](UpdateTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateTarget**](UpdateTarget.md) |  |  |
 
 ### Return type
 
@@ -16203,8 +20579,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16212,11 +20588,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateTargetDetails**](UpdateTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateTargetDetails**](UpdateTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -16272,8 +20667,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateWebTarget: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateWebTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16281,11 +20676,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateWebTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateWebTargetOutput> response = apiInstance.UpdateWebTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateWebTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateWebTarget**](UpdateWebTarget.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateWebTarget**](UpdateWebTarget.md) |  |  |
 
 ### Return type
 
@@ -16341,8 +20755,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UpdateWebTargetDetails: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UpdateWebTargetDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16350,11 +20764,30 @@ namespace Example
 }
 ```
 
+#### Using the UpdateWebTargetDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateTargetOutput> response = apiInstance.UpdateWebTargetDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateWebTargetDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UpdateWebTargetDetails**](UpdateWebTargetDetails.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateWebTargetDetails**](UpdateWebTargetDetails.md) |  |  |
 
 ### Return type
 
@@ -16410,8 +20843,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.UploadRSA: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.UploadRSA: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16419,11 +20852,30 @@ namespace Example
 }
 ```
 
+#### Using the UploadRSAWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UploadRSAWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UploadRSAWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**UploadRSA**](UploadRSA.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UploadRSA**](UploadRSA.md) |  |  |
 
 ### Return type
 
@@ -16479,8 +20931,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.ValidateToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.ValidateToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16488,11 +20940,30 @@ namespace Example
 }
 ```
 
+#### Using the ValidateTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ValidateTokenOutput> response = apiInstance.ValidateTokenWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ValidateTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**ValidateToken**](ValidateToken.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ValidateToken**](ValidateToken.md) |  |  |
 
 ### Return type
 
@@ -16549,8 +21020,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.VerifyJWTWithClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.VerifyJWTWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16558,11 +21029,30 @@ namespace Example
 }
 ```
 
+#### Using the VerifyJWTWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<VerifyJWTOutput> response = apiInstance.VerifyJWTWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VerifyJWTWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**VerifyJWTWithClassicKey**](VerifyJWTWithClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**VerifyJWTWithClassicKey**](VerifyJWTWithClassicKey.md) |  |  |
 
 ### Return type
 
@@ -16618,8 +21108,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.VerifyPKCS1: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.VerifyPKCS1: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16627,11 +21117,30 @@ namespace Example
 }
 ```
 
+#### Using the VerifyPKCS1WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.VerifyPKCS1WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VerifyPKCS1WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**VerifyPKCS1**](VerifyPKCS1.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**VerifyPKCS1**](VerifyPKCS1.md) |  |  |
 
 ### Return type
 
@@ -16687,8 +21196,8 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling V2Api.VerifyPKICertWithClassicKey: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling V2Api.VerifyPKICertWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -16696,11 +21205,30 @@ namespace Example
 }
 ```
 
+#### Using the VerifyPKICertWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<VerifyPKICertOutput> response = apiInstance.VerifyPKICertWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VerifyPKICertWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**VerifyPKICertWithClassicKey**](VerifyPKICertWithClassicKey.md)|  | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**VerifyPKICertWithClassicKey**](VerifyPKICertWithClassicKey.md) |  |  |
 
 ### Return type
 

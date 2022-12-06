@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TokenizeOutput {\n");
             sb.Append("  Result: ").Append(Result).Append("\n");
             sb.Append("  Tweak: ").Append(Tweak).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(TokenizeOutput input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Result == input.Result ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.Result != null)
-                    hashCode = hashCode * 59 + this.Result.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Result.GetHashCode();
+                }
                 if (this.Tweak != null)
-                    hashCode = hashCode * 59 + this.Tweak.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Tweak.GetHashCode();
+                }
                 return hashCode;
             }
         }

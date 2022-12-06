@@ -61,12 +61,14 @@ namespace akeyless.Model
         public CreateAuthMethodCert(long accessExpires = 0, List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for CreateAuthMethodCert and cannot be null");
             }
             this.Name = name;
             // to ensure "uniqueIdentifier" is required (not null)
-            if (uniqueIdentifier == null) {
+            if (uniqueIdentifier == null)
+            {
                 throw new ArgumentNullException("uniqueIdentifier is a required property for CreateAuthMethodCert and cannot be null");
             }
             this.UniqueIdentifier = uniqueIdentifier;
@@ -183,7 +185,7 @@ namespace akeyless.Model
         /// Auth Method name
         /// </summary>
         /// <value>Auth Method name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -211,7 +213,7 @@ namespace akeyless.Model
         /// A unique identifier (ID) value should be configured, such as common_name or organizational_unit Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
         /// </summary>
         /// <value>A unique identifier (ID) value should be configured, such as common_name or organizational_unit Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.</value>
-        [DataMember(Name = "unique-identifier", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "unique-identifier", IsRequired = true, EmitDefaultValue = true)]
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
@@ -220,7 +222,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodCert {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  BoundCommonNames: ").Append(BoundCommonNames).Append("\n");
@@ -271,8 +273,9 @@ namespace akeyless.Model
         public bool Equals(CreateAuthMethodCert input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessExpires == input.AccessExpires ||
@@ -380,38 +383,66 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.AccessExpires.GetHashCode();
+                hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
                 if (this.BoundCommonNames != null)
-                    hashCode = hashCode * 59 + this.BoundCommonNames.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundCommonNames.GetHashCode();
+                }
                 if (this.BoundDnsSans != null)
-                    hashCode = hashCode * 59 + this.BoundDnsSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundDnsSans.GetHashCode();
+                }
                 if (this.BoundEmailSans != null)
-                    hashCode = hashCode * 59 + this.BoundEmailSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundEmailSans.GetHashCode();
+                }
                 if (this.BoundExtensions != null)
-                    hashCode = hashCode * 59 + this.BoundExtensions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundExtensions.GetHashCode();
+                }
                 if (this.BoundIps != null)
-                    hashCode = hashCode * 59 + this.BoundIps.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
                 if (this.BoundOrganizationalUnits != null)
-                    hashCode = hashCode * 59 + this.BoundOrganizationalUnits.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundOrganizationalUnits.GetHashCode();
+                }
                 if (this.BoundUriSans != null)
-                    hashCode = hashCode * 59 + this.BoundUriSans.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.BoundUriSans.GetHashCode();
+                }
                 if (this.CertificateData != null)
-                    hashCode = hashCode * 59 + this.CertificateData.GetHashCode();
-                hashCode = hashCode * 59 + this.ForceSubClaims.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CertificateData.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)
-                    hashCode = hashCode * 59 + this.GwBoundIps.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
-                hashCode = hashCode * 59 + this.JwtTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.JwtTtl.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.RevokedCertIds != null)
-                    hashCode = hashCode * 59 + this.RevokedCertIds.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.RevokedCertIds.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 if (this.UniqueIdentifier != null)
-                    hashCode = hashCode * 59 + this.UniqueIdentifier.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
+                }
                 return hashCode;
             }
         }

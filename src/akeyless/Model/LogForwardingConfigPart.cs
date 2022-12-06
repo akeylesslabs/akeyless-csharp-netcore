@@ -149,7 +149,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class LogForwardingConfigPart {\n");
             sb.Append("  AwsS3Config: ").Append(AwsS3Config).Append("\n");
             sb.Append("  AzureAnalyticsConfig: ").Append(AzureAnalyticsConfig).Append("\n");
@@ -195,8 +195,9 @@ namespace akeyless.Model
         public bool Equals(LogForwardingConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AwsS3Config == input.AwsS3Config ||
@@ -273,29 +274,51 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AwsS3Config != null)
-                    hashCode = hashCode * 59 + this.AwsS3Config.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AwsS3Config.GetHashCode();
+                }
                 if (this.AzureAnalyticsConfig != null)
-                    hashCode = hashCode * 59 + this.AzureAnalyticsConfig.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AzureAnalyticsConfig.GetHashCode();
+                }
                 if (this.DatadogConfig != null)
-                    hashCode = hashCode * 59 + this.DatadogConfig.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DatadogConfig.GetHashCode();
+                }
                 if (this.ElasticsearchConfig != null)
-                    hashCode = hashCode * 59 + this.ElasticsearchConfig.GetHashCode();
-                hashCode = hashCode * 59 + this.JsonOutput.GetHashCode();
-                hashCode = hashCode * 59 + this.LoganEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchConfig.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.JsonOutput.GetHashCode();
+                hashCode = (hashCode * 59) + this.LoganEnable.GetHashCode();
                 if (this.LoganUrl != null)
-                    hashCode = hashCode * 59 + this.LoganUrl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LoganUrl.GetHashCode();
+                }
                 if (this.LogstashConfig != null)
-                    hashCode = hashCode * 59 + this.LogstashConfig.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LogstashConfig.GetHashCode();
+                }
                 if (this.LogzIoConfig != null)
-                    hashCode = hashCode * 59 + this.LogzIoConfig.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.LogzIoConfig.GetHashCode();
+                }
                 if (this.PullIntervalSec != null)
-                    hashCode = hashCode * 59 + this.PullIntervalSec.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.PullIntervalSec.GetHashCode();
+                }
                 if (this.SplunkConfig != null)
-                    hashCode = hashCode * 59 + this.SplunkConfig.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SplunkConfig.GetHashCode();
+                }
                 if (this.SyslogConfig != null)
-                    hashCode = hashCode * 59 + this.SyslogConfig.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.SyslogConfig.GetHashCode();
+                }
                 if (this.TargetLogType != null)
-                    hashCode = hashCode * 59 + this.TargetLogType.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetLogType.GetHashCode();
+                }
                 return hashCode;
             }
         }

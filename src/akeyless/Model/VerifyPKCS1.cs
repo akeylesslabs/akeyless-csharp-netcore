@@ -51,17 +51,20 @@ namespace akeyless.Model
         public VerifyPKCS1(string displayId = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string message = default(string), string signature = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "keyName" is required (not null)
-            if (keyName == null) {
+            if (keyName == null)
+            {
                 throw new ArgumentNullException("keyName is a required property for VerifyPKCS1 and cannot be null");
             }
             this.KeyName = keyName;
             // to ensure "message" is required (not null)
-            if (message == null) {
+            if (message == null)
+            {
                 throw new ArgumentNullException("message is a required property for VerifyPKCS1 and cannot be null");
             }
             this.Message = message;
             // to ensure "signature" is required (not null)
-            if (signature == null) {
+            if (signature == null)
+            {
                 throw new ArgumentNullException("signature is a required property for VerifyPKCS1 and cannot be null");
             }
             this.Signature = signature;
@@ -97,21 +100,21 @@ namespace akeyless.Model
         /// The name of the RSA key to use in the verification process
         /// </summary>
         /// <value>The name of the RSA key to use in the verification process</value>
-        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = true)]
         public string KeyName { get; set; }
 
         /// <summary>
         /// The message to be verified
         /// </summary>
         /// <value>The message to be verified</value>
-        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
         public string Message { get; set; }
 
         /// <summary>
         /// The message&#39;s signature
         /// </summary>
         /// <value>The message&#39;s signature</value>
-        [DataMember(Name = "signature", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "signature", IsRequired = true, EmitDefaultValue = true)]
         public string Signature { get; set; }
 
         /// <summary>
@@ -134,7 +137,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class VerifyPKCS1 {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
@@ -175,8 +178,9 @@ namespace akeyless.Model
         public bool Equals(VerifyPKCS1 input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -228,19 +232,31 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DisplayId != null)
-                    hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                hashCode = hashCode * 59 + this.ItemId.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyName != null)
-                    hashCode = hashCode * 59 + this.KeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                }
                 if (this.Message != null)
-                    hashCode = hashCode * 59 + this.Message.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                }
                 if (this.Signature != null)
-                    hashCode = hashCode * 59 + this.Signature.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Signature.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

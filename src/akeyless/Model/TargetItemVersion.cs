@@ -134,7 +134,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TargetItemVersion {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
@@ -178,8 +178,9 @@ namespace akeyless.Model
         public bool Equals(TargetItemVersion input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.AccessDate == input.AccessDate ||
@@ -245,24 +246,40 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.AccessDate != null)
-                    hashCode = hashCode * 59 + this.AccessDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
                 if (this.CreationDate != null)
-                    hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
                 if (this.CustomerFragmentId != null)
-                    hashCode = hashCode * 59 + this.CustomerFragmentId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFragmentId.GetHashCode();
+                }
                 if (this.DeletionDate != null)
-                    hashCode = hashCode * 59 + this.DeletionDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeletionDate.GetHashCode();
+                }
                 if (this.ItemVersionState != null)
-                    hashCode = hashCode * 59 + this.ItemVersionState.GetHashCode();
-                hashCode = hashCode * 59 + this.LatestVersion.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ItemVersionState.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.LatestVersion.GetHashCode();
                 if (this.ModificationDate != null)
-                    hashCode = hashCode * 59 + this.ModificationDate.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();
+                }
                 if (this.ProtectionKeyName != null)
-                    hashCode = hashCode * 59 + this.ProtectionKeyName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionKeyName.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
-                hashCode = hashCode * 59 + this._Version.GetHashCode();
-                hashCode = hashCode * 59 + this.WithCustomerFragment.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
+                hashCode = (hashCode * 59) + this.WithCustomerFragment.GetHashCode();
                 return hashCode;
             }
         }

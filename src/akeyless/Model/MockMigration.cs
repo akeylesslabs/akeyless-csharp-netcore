@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class MockMigration {\n");
             sb.Append("  General: ").Append(General).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
@@ -96,8 +96,9 @@ namespace akeyless.Model
         public bool Equals(MockMigration input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.General == input.General ||
@@ -121,9 +122,13 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.General != null)
-                    hashCode = hashCode * 59 + this.General.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.General.GetHashCode();
+                }
                 if (this.Payload != null)
-                    hashCode = hashCode * 59 + this.Payload.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Payload.GetHashCode();
+                }
                 return hashCode;
             }
         }

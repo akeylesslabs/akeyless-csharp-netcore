@@ -48,12 +48,14 @@ namespace akeyless.Model
         public DescribePermissions(bool json = default(bool), string path = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
-            if (path == null) {
+            if (path == null)
+            {
                 throw new ArgumentNullException("path is a required property for DescribePermissions and cannot be null");
             }
             this.Path = path;
             // to ensure "type" is required (not null)
-            if (type == null) {
+            if (type == null)
+            {
                 throw new ArgumentNullException("type is a required property for DescribePermissions and cannot be null");
             }
             this.Type = type;
@@ -73,7 +75,7 @@ namespace akeyless.Model
         /// Path to an object
         /// </summary>
         /// <value>Path to an object</value>
-        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "path", IsRequired = true, EmitDefaultValue = true)]
         public string Path { get; set; }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace akeyless.Model
         /// Type of object (item, am, role, target)
         /// </summary>
         /// <value>Type of object (item, am, role, target)</value>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
@@ -103,7 +105,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DescribePermissions {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
@@ -141,8 +143,9 @@ namespace akeyless.Model
         public bool Equals(DescribePermissions input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.Json == input.Json ||
@@ -179,15 +182,23 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CacheConfigPart {\n");
             sb.Append("  CacheEnable: ").Append(CacheEnable).Append("\n");
             sb.Append("  CacheTtl: ").Append(CacheTtl).Append("\n");
@@ -123,8 +123,9 @@ namespace akeyless.Model
         public bool Equals(CacheConfigPart input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.CacheEnable == input.CacheEnable ||
@@ -160,14 +161,20 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.CacheEnable.GetHashCode();
+                hashCode = (hashCode * 59) + this.CacheEnable.GetHashCode();
                 if (this.CacheTtl != null)
-                    hashCode = hashCode * 59 + this.CacheTtl.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.CacheTtl.GetHashCode();
+                }
                 if (this.ProactiveCacheDumpInterval != null)
-                    hashCode = hashCode * 59 + this.ProactiveCacheDumpInterval.GetHashCode();
-                hashCode = hashCode * 59 + this.ProactiveCacheEnable.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProactiveCacheDumpInterval.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ProactiveCacheEnable.GetHashCode();
                 if (this.ProactiveCacheMinimumFetchingTime != null)
-                    hashCode = hashCode * 59 + this.ProactiveCacheMinimumFetchingTime.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.ProactiveCacheMinimumFetchingTime.GetHashCode();
+                }
                 return hashCode;
             }
         }

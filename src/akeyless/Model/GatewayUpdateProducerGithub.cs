@@ -57,7 +57,8 @@ namespace akeyless.Model
         public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
-            if (name == null) {
+            if (name == null)
+            {
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerGithub and cannot be null");
             }
             this.Name = name;
@@ -129,7 +130,7 @@ namespace akeyless.Model
         /// Producer name
         /// </summary>
         /// <value>Producer name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace akeyless.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerGithub {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
@@ -227,8 +228,9 @@ namespace akeyless.Model
         public bool Equals(GatewayUpdateProducerGithub input)
         {
             if (input == null)
+            {
                 return false;
-
+            }
             return 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -311,30 +313,52 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 if (this.DeleteProtection != null)
-                    hashCode = hashCode * 59 + this.DeleteProtection.GetHashCode();
-                hashCode = hashCode * 59 + this.GithubAppId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.GithubAppId.GetHashCode();
                 if (this.GithubAppPrivateKey != null)
-                    hashCode = hashCode * 59 + this.GithubAppPrivateKey.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GithubAppPrivateKey.GetHashCode();
+                }
                 if (this.GithubBaseUrl != null)
-                    hashCode = hashCode * 59 + this.GithubBaseUrl.GetHashCode();
-                hashCode = hashCode * 59 + this.InstallationId.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.GithubBaseUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.InstallationId.GetHashCode();
                 if (this.InstallationRepository != null)
-                    hashCode = hashCode * 59 + this.InstallationRepository.GetHashCode();
-                hashCode = hashCode * 59 + this.Json.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.InstallationRepository.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.NewName != null)
-                    hashCode = hashCode * 59 + this.NewName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
                 if (this.TargetName != null)
-                    hashCode = hashCode * 59 + this.TargetName.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
+                }
                 if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
                 if (this.TokenPermissions != null)
-                    hashCode = hashCode * 59 + this.TokenPermissions.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenPermissions.GetHashCode();
+                }
                 if (this.TokenRepositories != null)
-                    hashCode = hashCode * 59 + this.TokenRepositories.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.TokenRepositories.GetHashCode();
+                }
                 if (this.UidToken != null)
-                    hashCode = hashCode * 59 + this.UidToken.GetHashCode();
+                {
+                    hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
                 return hashCode;
             }
         }
