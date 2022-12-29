@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssueDetails** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
+**CertificateChainInfo** | [**CertificateChainInfo**](CertificateChainInfo.md) |  | [optional] 
 **ClassicKeyDetails** | [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] 
 **ClusterGwUrl** | **string** |  | [optional] 
 **DisplayMetadata** | **string** |  | [optional] 

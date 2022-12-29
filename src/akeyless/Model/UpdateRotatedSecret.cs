@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="awsRegion">Region (used in aws) (default to &quot;us-east-2&quot;).</param>
         /// <param name="customPayload">customPayload.</param>
+        /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -78,7 +79,7 @@ namespace akeyless.Model
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string gcpKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -93,6 +94,7 @@ namespace akeyless.Model
             // use default value if no "awsRegion" provided
             this.AwsRegion = awsRegion ?? "us-east-2";
             this.CustomPayload = customPayload;
+            this.GcpKey = gcpKey;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -165,6 +167,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "custom-payload", EmitDefaultValue = false)]
         public string CustomPayload { get; set; }
+
+        /// <summary>
+        /// Base64-encoded service account private key text
+        /// </summary>
+        /// <value>Base64-encoded service account private key text</value>
+        [DataMember(Name = "gcp-key", EmitDefaultValue = false)]
+        public string GcpKey { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -398,6 +407,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
+            sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -495,6 +505,11 @@ namespace akeyless.Model
                     this.CustomPayload == input.CustomPayload ||
                     (this.CustomPayload != null &&
                     this.CustomPayload.Equals(input.CustomPayload))
+                ) && 
+                (
+                    this.GcpKey == input.GcpKey ||
+                    (this.GcpKey != null &&
+                    this.GcpKey.Equals(input.GcpKey))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -684,6 +699,10 @@ namespace akeyless.Model
                 if (this.CustomPayload != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomPayload.GetHashCode();
+                }
+                if (this.GcpKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)

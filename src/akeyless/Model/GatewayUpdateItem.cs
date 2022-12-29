@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
         /// <param name="customPayload">customPayload.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string gcpKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.AutoRotate = autoRotate;
             this.CustomPayload = customPayload;
             this.DeleteProtection = deleteProtection;
+            this.GcpKey = gcpKey;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -137,6 +139,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Base64-encoded service account private key text
+        /// </summary>
+        /// <value>Base64-encoded service account private key text</value>
+        [DataMember(Name = "gcp-key", EmitDefaultValue = false)]
+        public string GcpKey { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -261,6 +270,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -342,6 +352,11 @@ namespace akeyless.Model
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.GcpKey == input.GcpKey ||
+                    (this.GcpKey != null &&
+                    this.GcpKey.Equals(input.GcpKey))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -455,6 +470,10 @@ namespace akeyless.Model
                 if (this.DeleteProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                if (this.GcpKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)

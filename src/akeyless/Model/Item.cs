@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Item" /> class.
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
+        /// <param name="accessRequestStatus">accessRequestStatus.</param>
         /// <param name="autoRotate">autoRotate.</param>
         /// <param name="certIssuerSignerKeyName">certIssuerSignerKeyName.</param>
         /// <param name="certificateIssueDetails">certificateIssueDetails.</param>
@@ -46,6 +47,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="deletionDate">deletionDate.</param>
         /// <param name="displayId">displayId.</param>
+        /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="isEnabled">isEnabled.</param>
         /// <param name="itemAccessibility">itemAccessibility.</param>
         /// <param name="itemGeneralInfo">itemGeneralInfo.</param>
@@ -69,9 +71,10 @@ namespace akeyless.Model
         /// <param name="sharedBy">sharedBy.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(DateTime accessDate = default(DateTime), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
+        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
+            this.AccessRequestStatus = accessRequestStatus;
             this.AutoRotate = autoRotate;
             this.CertIssuerSignerKeyName = certIssuerSignerKeyName;
             this.CertificateIssueDetails = certificateIssueDetails;
@@ -82,6 +85,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.DeletionDate = deletionDate;
             this.DisplayId = displayId;
+            this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.IsEnabled = isEnabled;
             this.ItemAccessibility = itemAccessibility;
             this.ItemGeneralInfo = itemGeneralInfo;
@@ -112,6 +116,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date", EmitDefaultValue = false)]
         public DateTime AccessDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessRequestStatus
+        /// </summary>
+        [DataMember(Name = "access_request_status", EmitDefaultValue = false)]
+        public string AccessRequestStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets AutoRotate
@@ -172,6 +182,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "display_id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsAccessRequestEnabled
+        /// </summary>
+        [DataMember(Name = "is_access_request_enabled", EmitDefaultValue = true)]
+        public bool IsAccessRequestEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets IsEnabled
@@ -321,6 +337,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Item {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
+            sb.Append("  AccessRequestStatus: ").Append(AccessRequestStatus).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  CertIssuerSignerKeyName: ").Append(CertIssuerSignerKeyName).Append("\n");
             sb.Append("  CertificateIssueDetails: ").Append(CertificateIssueDetails).Append("\n");
@@ -331,6 +348,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");
             sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
             sb.Append("  ItemGeneralInfo: ").Append(ItemGeneralInfo).Append("\n");
@@ -395,6 +413,11 @@ namespace akeyless.Model
                     this.AccessDate.Equals(input.AccessDate))
                 ) && 
                 (
+                    this.AccessRequestStatus == input.AccessRequestStatus ||
+                    (this.AccessRequestStatus != null &&
+                    this.AccessRequestStatus.Equals(input.AccessRequestStatus))
+                ) && 
+                (
                     this.AutoRotate == input.AutoRotate ||
                     this.AutoRotate.Equals(input.AutoRotate)
                 ) && 
@@ -442,6 +465,10 @@ namespace akeyless.Model
                     this.DisplayId == input.DisplayId ||
                     (this.DisplayId != null &&
                     this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.IsAccessRequestEnabled == input.IsAccessRequestEnabled ||
+                    this.IsAccessRequestEnabled.Equals(input.IsAccessRequestEnabled)
                 ) && 
                 (
                     this.IsEnabled == input.IsEnabled ||
@@ -570,6 +597,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
                 }
+                if (this.AccessRequestStatus != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessRequestStatus.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
                 if (this.CertIssuerSignerKeyName != null)
                 {
@@ -604,6 +635,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsAccessRequestEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.IsEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemAccessibility.GetHashCode();
                 if (this.ItemGeneralInfo != null)

@@ -30,6 +30,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateDockerhubTarget**](V2Api.md#createdockerhubtarget) | **POST** /create-dockerhub-target |  |
 | [**CreateDynamicSecret**](V2Api.md#createdynamicsecret) | **POST** /create-dynamic-secret |  |
 | [**CreateEKSTarget**](V2Api.md#createekstarget) | **POST** /create-eks-target |  |
+| [**CreateEventForwarder**](V2Api.md#createeventforwarder) | **POST** /create-event-forwarder |  |
 | [**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target |  |
 | [**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target |  |
 | [**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target |  |
@@ -51,6 +52,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DecryptWithClassicKey**](V2Api.md#decryptwithclassickey) | **POST** /decrypt-with-classic-key |  |
 | [**DeleteAuthMethod**](V2Api.md#deleteauthmethod) | **POST** /delete-auth-method |  |
 | [**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods |  |
+| [**DeleteEventForwarder**](V2Api.md#deleteeventforwarder) | **POST** /delete-event-forwarder |  |
 | [**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item |  |
 | [**DeleteItems**](V2Api.md#deleteitems) | **POST** /delete-items |  |
 | [**DeleteRole**](V2Api.md#deleterole) | **POST** /delete-role |  |
@@ -67,7 +69,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key |  |
 | [**ExportClassicKey**](V2Api.md#exportclassickey) | **POST** /export-classic-key |  |
-| [**GatewayAddAllowedManagementAccess**](V2Api.md#gatewayaddallowedmanagementaccess) | **POST** /gateway-add-allow-management-access |  |
 | [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config |  |
 | [**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration |  |
 | [**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory |  |
@@ -144,6 +145,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
 | [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method |  |
 | [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value |  |
+| [**GetEventForwarder**](V2Api.md#geteventforwarder) | **POST** /get-event-forwarder |  |
 | [**GetKubeExecCreds**](V2Api.md#getkubeexeccreds) | **POST** /get-kube-exec-creds |  |
 | [**GetPKICertificate**](V2Api.md#getpkicertificate) | **POST** /get-pki-certificate |  |
 | [**GetRSAPublic**](V2Api.md#getrsapublic) | **POST** /get-rsa-public |  |
@@ -172,10 +174,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ListItems**](V2Api.md#listitems) | **POST** /list-items |  |
 | [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles |  |
 | [**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions |  |
+| [**ListSharedItems**](V2Api.md#listshareditems) | **POST** /list-shared-items |  |
 | [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
 | [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects |  |
 | [**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds |  |
 | [**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key |  |
+| [**RequestAccess**](V2Api.md#requestaccess) | **POST** /request-access |  |
 | [**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac |  |
 | [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds |  |
 | [**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret |  |
@@ -215,6 +219,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateDBTargetDetails**](V2Api.md#updatedbtargetdetails) | **POST** /update-db-target-details |  |
 | [**UpdateDockerhubTarget**](V2Api.md#updatedockerhubtarget) | **POST** /update-dockerhub-target |  |
 | [**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target |  |
+| [**UpdateEventForwarder**](V2Api.md#updateeventforwarder) | **POST** /update-event-forwarder |  |
 | [**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target |  |
 | [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target |  |
 | [**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target |  |
@@ -2533,6 +2538,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createeventforwarder"></a>
+# **CreateEventForwarder**
+> CreateEventForwarderOutput CreateEventForwarder (CreateEventForwarder body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateEventForwarderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateEventForwarder(); // CreateEventForwarder | 
+
+            try
+            {
+                CreateEventForwarderOutput result = apiInstance.CreateEventForwarder(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateEventForwarder: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateEventForwarderWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateEventForwarderOutput> response = apiInstance.CreateEventForwarderWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateEventForwarderWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateEventForwarder**](CreateEventForwarder.md) |  |  |
+
+### Return type
+
+[**CreateEventForwarderOutput**](CreateEventForwarderOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createEventForwarderResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="creategketarget"></a>
 # **CreateGKETarget**
 > CreateGKETargetOutput CreateGKETarget (CreateGKETarget body)
@@ -4381,6 +4474,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="deleteeventforwarder"></a>
+# **DeleteEventForwarder**
+> Object DeleteEventForwarder (DeleteEventForwarder body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DeleteEventForwarderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DeleteEventForwarder(); // DeleteEventForwarder | 
+
+            try
+            {
+                Object result = apiInstance.DeleteEventForwarder(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DeleteEventForwarder: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteEventForwarderWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteEventForwarderWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteEventForwarderWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteEventForwarder**](DeleteEventForwarder.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | deleteEventForwarderResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deleteitem"></a>
 # **DeleteItem**
 > DeleteItemOutput DeleteItem (DeleteItem body)
@@ -5786,94 +5967,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | ExportClassicKeyResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="gatewayaddallowedmanagementaccess"></a>
-# **GatewayAddAllowedManagementAccess**
-> Object GatewayAddAllowedManagementAccess (GatewayAddAllowedManagementAccess body)
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class GatewayAddAllowedManagementAccessExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-            var body = new GatewayAddAllowedManagementAccess(); // GatewayAddAllowedManagementAccess | 
-
-            try
-            {
-                Object result = apiInstance.GatewayAddAllowedManagementAccess(body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.GatewayAddAllowedManagementAccess: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GatewayAddAllowedManagementAccessWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<Object> response = apiInstance.GatewayAddAllowedManagementAccessWithHttpInfo(body);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling V2Api.GatewayAddAllowedManagementAccessWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md) |  |  |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | gatewayAddSubAdminsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -12553,6 +12646,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="geteventforwarder"></a>
+# **GetEventForwarder**
+> GetEventForwarderOutput GetEventForwarder (GetEventForwarder body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetEventForwarderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GetEventForwarder(); // GetEventForwarder | 
+
+            try
+            {
+                GetEventForwarderOutput result = apiInstance.GetEventForwarder(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetEventForwarder: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetEventForwarderWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetEventForwarderOutput> response = apiInstance.GetEventForwarderWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetEventForwarderWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetEventForwarder**](GetEventForwarder.md) |  |  |
+
+### Return type
+
+[**GetEventForwarderOutput**](GetEventForwarderOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getEventForwarderResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getkubeexeccreds"></a>
 # **GetKubeExecCreds**
 > GetKubeExecCredsOutput GetKubeExecCreds (GetKubeExecCreds body)
@@ -15017,6 +15198,90 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="listshareditems"></a>
+# **ListSharedItems**
+> void ListSharedItems (ListSharedItems body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ListSharedItemsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ListSharedItems(); // ListSharedItems | 
+
+            try
+            {
+                apiInstance.ListSharedItems(body);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ListSharedItems: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListSharedItemsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.ListSharedItemsWithHttpInfo(body);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListSharedItemsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListSharedItems**](ListSharedItems.md) |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="listtargets"></a>
 # **ListTargets**
 > ListTargetsOutput ListTargets (ListTargets body)
@@ -15365,6 +15630,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | refreshKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="requestaccess"></a>
+# **RequestAccess**
+> RequestAccessOutput RequestAccess (RequestAccess body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RequestAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new RequestAccess(); // RequestAccess | 
+
+            try
+            {
+                RequestAccessOutput result = apiInstance.RequestAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RequestAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RequestAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RequestAccessOutput> response = apiInstance.RequestAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RequestAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RequestAccess**](RequestAccess.md) |  |  |
+
+### Return type
+
+[**RequestAccessOutput**](RequestAccessOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | requestAccessResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -18788,6 +19141,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateEKSTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateeventforwarder"></a>
+# **UpdateEventForwarder**
+> Object UpdateEventForwarder (UpdateEventForwarder body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateEventForwarderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateEventForwarder(); // UpdateEventForwarder | 
+
+            try
+            {
+                Object result = apiInstance.UpdateEventForwarder(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateEventForwarder: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateEventForwarderWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateEventForwarderWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateEventForwarderWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateEventForwarder**](UpdateEventForwarder.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateEventForwarderResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

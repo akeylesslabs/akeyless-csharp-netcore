@@ -36,11 +36,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Target" /> class.
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
+        /// <param name="accessRequestStatus">accessRequestStatus.</param>
         /// <param name="attributes">this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="credentialsLess">credentialsLess.</param>
+        /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="lastVersion">lastVersion.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
@@ -50,14 +52,16 @@ namespace akeyless.Model
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(DateTime accessDate = default(DateTime), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool credentialsLess = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool credentialsLess = default(bool), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
+            this.AccessRequestStatus = accessRequestStatus;
             this.Attributes = attributes;
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
             this.CreationDate = creationDate;
             this.CredentialsLess = credentialsLess;
+            this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.LastVersion = lastVersion;
             this.ModificationDate = modificationDate;
             this.ProtectionKeyName = protectionKeyName;
@@ -74,6 +78,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date", EmitDefaultValue = false)]
         public DateTime AccessDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessRequestStatus
+        /// </summary>
+        [DataMember(Name = "access_request_status", EmitDefaultValue = false)]
+        public string AccessRequestStatus { get; set; }
 
         /// <summary>
         /// this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes
@@ -105,6 +115,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "credentials_less", EmitDefaultValue = true)]
         public bool CredentialsLess { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsAccessRequestEnabled
+        /// </summary>
+        [DataMember(Name = "is_access_request_enabled", EmitDefaultValue = true)]
+        public bool IsAccessRequestEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets LastVersion
@@ -169,11 +185,13 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Target {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
+            sb.Append("  AccessRequestStatus: ").Append(AccessRequestStatus).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  CredentialsLess: ").Append(CredentialsLess).Append("\n");
+            sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
@@ -224,6 +242,11 @@ namespace akeyless.Model
                     this.AccessDate.Equals(input.AccessDate))
                 ) && 
                 (
+                    this.AccessRequestStatus == input.AccessRequestStatus ||
+                    (this.AccessRequestStatus != null &&
+                    this.AccessRequestStatus.Equals(input.AccessRequestStatus))
+                ) && 
+                (
                     this.Attributes == input.Attributes ||
                     this.Attributes != null &&
                     input.Attributes != null &&
@@ -248,6 +271,10 @@ namespace akeyless.Model
                 (
                     this.CredentialsLess == input.CredentialsLess ||
                     this.CredentialsLess.Equals(input.CredentialsLess)
+                ) && 
+                (
+                    this.IsAccessRequestEnabled == input.IsAccessRequestEnabled ||
+                    this.IsAccessRequestEnabled.Equals(input.IsAccessRequestEnabled)
                 ) && 
                 (
                     this.LastVersion == input.LastVersion ||
@@ -308,6 +335,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
                 }
+                if (this.AccessRequestStatus != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessRequestStatus.GetHashCode();
+                }
                 if (this.Attributes != null)
                 {
                     hashCode = (hashCode * 59) + this.Attributes.GetHashCode();
@@ -325,6 +356,7 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.CredentialsLess.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsAccessRequestEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.LastVersion.GetHashCode();
                 if (this.ModificationDate != null)
                 {

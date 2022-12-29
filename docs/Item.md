@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
+**AccessRequestStatus** | **string** |  | [optional] 
 **AutoRotate** | **bool** |  | [optional] 
 **CertIssuerSignerKeyName** | **string** |  | [optional] 
 **CertificateIssueDetails** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **bool** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 
 **DisplayId** | **string** |  | [optional] 
+**IsAccessRequestEnabled** | **bool** |  | [optional] 
 **IsEnabled** | **bool** |  | [optional] 
 **ItemAccessibility** | **long** |  | [optional] 
 **ItemGeneralInfo** | [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 

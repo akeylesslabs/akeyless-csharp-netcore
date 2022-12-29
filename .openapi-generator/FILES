@@ -15,6 +15,7 @@ docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
+docs/AttributeTypeAndValue.md
 docs/Auth.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
@@ -30,6 +31,9 @@ docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
+docs/CertificateChainInfo.md
+docs/CertificateExpirationEvent.md
+docs/CertificateInfo.md
 docs/CertificateIssueInfo.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -81,6 +85,8 @@ docs/CreateDockerhubTargetOutput.md
 docs/CreateDynamicSecret.md
 docs/CreateEKSTarget.md
 docs/CreateEKSTargetOutput.md
+docs/CreateEventForwarder.md
+docs/CreateEventForwarderOutput.md
 docs/CreateGKETarget.md
 docs/CreateGKETargetOutput.md
 docs/CreateGcpTarget.md
@@ -133,6 +139,7 @@ docs/DeleteAuthMethod.md
 docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
+docs/DeleteEventForwarder.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -154,6 +161,7 @@ docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
 docs/ElasticsearchLogForwardingConfig.md
+docs/EmailEntry.md
 docs/EmailPassAccessRules.md
 docs/EmailTokenizerInfo.md
 docs/Encrypt.md
@@ -164,11 +172,11 @@ docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
+docs/Extension.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
-docs/GatewayAddAllowedManagementAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -316,6 +324,8 @@ docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
 docs/GetDynamicSecretValue.md
+docs/GetEventForwarder.md
+docs/GetEventForwarderOutput.md
 docs/GetKubeExecCreds.md
 docs/GetKubeExecCredsOutput.md
 docs/GetPKICertificate.md
@@ -387,6 +397,7 @@ docs/ListItemsInPathOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
 docs/ListSRABastions.md
+docs/ListSharedItems.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -401,6 +412,8 @@ docs/MigrationsConfigPart.md
 docs/MockMigration.md
 docs/MockPayload.md
 docs/MoveObjects.md
+docs/Name.md
+docs/NotiForwarder.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
@@ -417,6 +430,8 @@ docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
 docs/RegexpTokenizerInfo.md
+docs/RequestAccess.md
+docs/RequestAccessOutput.md
 docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
@@ -509,6 +524,7 @@ docs/UpdateDockerhubTarget.md
 docs/UpdateDockerhubTargetOutput.md
 docs/UpdateEKSTarget.md
 docs/UpdateEKSTargetOutput.md
+docs/UpdateEventForwarder.md
 docs/UpdateGKETarget.md
 docs/UpdateGKETargetOutput.md
 docs/UpdateGcpTarget.md
@@ -562,6 +578,23 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/AttributeTypeAndValueTests.cs
+src/akeyless.Test/Model/CertificateChainInfoTests.cs
+src/akeyless.Test/Model/CertificateExpirationEventTests.cs
+src/akeyless.Test/Model/CertificateInfoTests.cs
+src/akeyless.Test/Model/CreateEventForwarderOutputTests.cs
+src/akeyless.Test/Model/CreateEventForwarderTests.cs
+src/akeyless.Test/Model/DeleteEventForwarderTests.cs
+src/akeyless.Test/Model/EmailEntryTests.cs
+src/akeyless.Test/Model/ExtensionTests.cs
+src/akeyless.Test/Model/GetEventForwarderOutputTests.cs
+src/akeyless.Test/Model/GetEventForwarderTests.cs
+src/akeyless.Test/Model/ListSharedItemsTests.cs
+src/akeyless.Test/Model/NameTests.cs
+src/akeyless.Test/Model/NotiForwarderTests.cs
+src/akeyless.Test/Model/RequestAccessOutputTests.cs
+src/akeyless.Test/Model/RequestAccessTests.cs
+src/akeyless.Test/Model/UpdateEventForwarderTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -594,6 +627,7 @@ src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AllowedAccess.cs
 src/akeyless/Model/AssocRoleAuthMethod.cs
 src/akeyless/Model/AssocTargetItem.cs
+src/akeyless/Model/AttributeTypeAndValue.cs
 src/akeyless/Model/Auth.cs
 src/akeyless/Model/AuthMethod.cs
 src/akeyless/Model/AuthMethodAccessInfo.cs
@@ -609,6 +643,9 @@ src/akeyless/Model/BastionsList.cs
 src/akeyless/Model/CFConfigPart.cs
 src/akeyless/Model/CacheConfigPart.cs
 src/akeyless/Model/CertAccessRules.cs
+src/akeyless/Model/CertificateChainInfo.cs
+src/akeyless/Model/CertificateExpirationEvent.cs
+src/akeyless/Model/CertificateInfo.cs
 src/akeyless/Model/CertificateIssueInfo.cs
 src/akeyless/Model/ClassicKeyDetailsInfo.cs
 src/akeyless/Model/ClassicKeyStatusInfo.cs
@@ -660,6 +697,8 @@ src/akeyless/Model/CreateDockerhubTargetOutput.cs
 src/akeyless/Model/CreateDynamicSecret.cs
 src/akeyless/Model/CreateEKSTarget.cs
 src/akeyless/Model/CreateEKSTargetOutput.cs
+src/akeyless/Model/CreateEventForwarder.cs
+src/akeyless/Model/CreateEventForwarderOutput.cs
 src/akeyless/Model/CreateGKETarget.cs
 src/akeyless/Model/CreateGKETargetOutput.cs
 src/akeyless/Model/CreateGcpTarget.cs
@@ -712,6 +751,7 @@ src/akeyless/Model/DeleteAuthMethod.cs
 src/akeyless/Model/DeleteAuthMethodOutput.cs
 src/akeyless/Model/DeleteAuthMethods.cs
 src/akeyless/Model/DeleteAuthMethodsOutput.cs
+src/akeyless/Model/DeleteEventForwarder.cs
 src/akeyless/Model/DeleteItem.cs
 src/akeyless/Model/DeleteItemOutput.cs
 src/akeyless/Model/DeleteItems.cs
@@ -733,6 +773,7 @@ src/akeyless/Model/Detokenize.cs
 src/akeyless/Model/DetokenizeOutput.cs
 src/akeyless/Model/DynamicSecretProducerInfo.cs
 src/akeyless/Model/ElasticsearchLogForwardingConfig.cs
+src/akeyless/Model/EmailEntry.cs
 src/akeyless/Model/EmailPassAccessRules.cs
 src/akeyless/Model/EmailTokenizerInfo.cs
 src/akeyless/Model/Encrypt.cs
@@ -743,11 +784,11 @@ src/akeyless/Model/EncryptWithClassicKey.cs
 src/akeyless/Model/EncryptWithClassicKeyOutput.cs
 src/akeyless/Model/ExportClassicKey.cs
 src/akeyless/Model/ExportClassicKeyOutput.cs
+src/akeyless/Model/Extension.cs
 src/akeyless/Model/ExternalKMSKeyId.cs
 src/akeyless/Model/GCPAccessRules.cs
 src/akeyless/Model/GCPPayload.cs
 src/akeyless/Model/GCPSecretsMigration.cs
-src/akeyless/Model/GatewayAddAllowedManagementAccess.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfig.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayCreateMigration.cs
@@ -895,6 +936,8 @@ src/akeyless/Model/GetAccountSettings.cs
 src/akeyless/Model/GetAccountSettingsCommandOutput.cs
 src/akeyless/Model/GetAuthMethod.cs
 src/akeyless/Model/GetDynamicSecretValue.cs
+src/akeyless/Model/GetEventForwarder.cs
+src/akeyless/Model/GetEventForwarderOutput.cs
 src/akeyless/Model/GetKubeExecCreds.cs
 src/akeyless/Model/GetKubeExecCredsOutput.cs
 src/akeyless/Model/GetPKICertificate.cs
@@ -966,6 +1009,7 @@ src/akeyless/Model/ListItemsInPathOutput.cs
 src/akeyless/Model/ListRoles.cs
 src/akeyless/Model/ListRolesOutput.cs
 src/akeyless/Model/ListSRABastions.cs
+src/akeyless/Model/ListSharedItems.cs
 src/akeyless/Model/ListTargets.cs
 src/akeyless/Model/ListTargetsOutput.cs
 src/akeyless/Model/LogForwardingConfigPart.cs
@@ -980,6 +1024,8 @@ src/akeyless/Model/MigrationsConfigPart.cs
 src/akeyless/Model/MockMigration.cs
 src/akeyless/Model/MockPayload.cs
 src/akeyless/Model/MoveObjects.cs
+src/akeyless/Model/Name.cs
+src/akeyless/Model/NotiForwarder.cs
 src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OIDCAccessRules.cs
@@ -996,6 +1042,8 @@ src/akeyless/Model/RawCreds.cs
 src/akeyless/Model/RefreshKey.cs
 src/akeyless/Model/RefreshKeyOutput.cs
 src/akeyless/Model/RegexpTokenizerInfo.cs
+src/akeyless/Model/RequestAccess.cs
+src/akeyless/Model/RequestAccessOutput.cs
 src/akeyless/Model/RequiredActivity.cs
 src/akeyless/Model/ReverseRBAC.cs
 src/akeyless/Model/ReverseRBACClient.cs
@@ -1088,6 +1136,7 @@ src/akeyless/Model/UpdateDockerhubTarget.cs
 src/akeyless/Model/UpdateDockerhubTargetOutput.cs
 src/akeyless/Model/UpdateEKSTarget.cs
 src/akeyless/Model/UpdateEKSTargetOutput.cs
+src/akeyless/Model/UpdateEventForwarder.cs
 src/akeyless/Model/UpdateGKETarget.cs
 src/akeyless/Model/UpdateGKETargetOutput.cs
 src/akeyless/Model/UpdateGcpTarget.cs

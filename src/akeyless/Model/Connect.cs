@@ -45,13 +45,14 @@ namespace akeyless.Model
         /// <param name="identityFile">The file from which the identity (private key) for public key authentication is read.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">The Secret name (for database and AWS producers - producer name).</param>
+        /// <param name="sshCommand">Path to SSH executable. e.g. /usr/bin/ssh.</param>
         /// <param name="sshExtraArgs">The Use to add offical SSH arguments (except -i).</param>
         /// <param name="sshLegacySigningAlg">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate..</param>
         /// <param name="target">The target.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = default(bool), string name = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = default(bool), string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = default(bool), string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = default(bool), string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
         {
             this.Helper = helper;
             this.RcFileOverride = rcFileOverride;
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.IdentityFile = identityFile;
             this.Json = json;
             this.Name = name;
+            this.SshCommand = sshCommand;
             this.SshExtraArgs = sshExtraArgs;
             this.SshLegacySigningAlg = sshLegacySigningAlg;
             this.Target = target;
@@ -143,6 +145,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Path to SSH executable. e.g. /usr/bin/ssh
+        /// </summary>
+        /// <value>Path to SSH executable. e.g. /usr/bin/ssh</value>
+        [DataMember(Name = "ssh-command", EmitDefaultValue = false)]
+        public string SshCommand { get; set; }
+
+        /// <summary>
         /// The Use to add offical SSH arguments (except -i)
         /// </summary>
         /// <value>The Use to add offical SSH arguments (except -i)</value>
@@ -202,6 +211,7 @@ namespace akeyless.Model
             sb.Append("  IdentityFile: ").Append(IdentityFile).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  SshCommand: ").Append(SshCommand).Append("\n");
             sb.Append("  SshExtraArgs: ").Append(SshExtraArgs).Append("\n");
             sb.Append("  SshLegacySigningAlg: ").Append(SshLegacySigningAlg).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
@@ -293,6 +303,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.SshCommand == input.SshCommand ||
+                    (this.SshCommand != null &&
+                    this.SshCommand.Equals(input.SshCommand))
+                ) && 
+                (
                     this.SshExtraArgs == input.SshExtraArgs ||
                     (this.SshExtraArgs != null &&
                     this.SshExtraArgs.Equals(input.SshExtraArgs))
@@ -368,6 +383,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.SshCommand != null)
+                {
+                    hashCode = (hashCode * 59) + this.SshCommand.GetHashCode();
                 }
                 if (this.SshExtraArgs != null)
                 {
