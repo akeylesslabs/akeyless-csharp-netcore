@@ -27,31 +27,37 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ListSRABastions
+    /// GetCertificateValue
     /// </summary>
-    [DataContract(Name = "listSRABastions")]
-    public partial class ListSRABastions : IEquatable<ListSRABastions>, IValidatableObject
+    [DataContract(Name = "getCertificateValue")]
+    public partial class GetCertificateValue : IEquatable<GetCertificateValue>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListSRABastions" /> class.
+        /// Initializes a new instance of the <see cref="GetCertificateValue" /> class.
         /// </summary>
-        /// <param name="allowedUrlsOnly">allowedUrlsOnly.</param>
+        [JsonConstructorAttribute]
+        protected GetCertificateValue() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetCertificateValue" /> class.
+        /// </summary>
         /// <param name="json">Set output format to JSON.</param>
+        /// <param name="name">Certificate name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListSRABastions(bool allowedUrlsOnly = default(bool), bool json = default(bool), string token = default(string), string uidToken = default(string))
+        /// <param name="version">Certificate version.</param>
+        public GetCertificateValue(bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
-            this.AllowedUrlsOnly = allowedUrlsOnly;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for GetCertificateValue and cannot be null");
+            }
+            this.Name = name;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
+            this._Version = version;
         }
-
-        /// <summary>
-        /// Gets or Sets AllowedUrlsOnly
-        /// </summary>
-        [DataMember(Name = "allowed-urls-only", EmitDefaultValue = true)]
-        public bool AllowedUrlsOnly { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -59,6 +65,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Certificate name
+        /// </summary>
+        /// <value>Certificate name</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -75,17 +88,25 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Certificate version
+        /// </summary>
+        /// <value>Certificate version</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListSRABastions {\n");
-            sb.Append("  AllowedUrlsOnly: ").Append(AllowedUrlsOnly).Append("\n");
+            sb.Append("class GetCertificateValue {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,15 +127,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ListSRABastions);
+            return this.Equals(input as GetCertificateValue);
         }
 
         /// <summary>
-        /// Returns true if ListSRABastions instances are equal
+        /// Returns true if GetCertificateValue instances are equal
         /// </summary>
-        /// <param name="input">Instance of ListSRABastions to be compared</param>
+        /// <param name="input">Instance of GetCertificateValue to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ListSRABastions input)
+        public bool Equals(GetCertificateValue input)
         {
             if (input == null)
             {
@@ -122,12 +143,13 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.AllowedUrlsOnly == input.AllowedUrlsOnly ||
-                    this.AllowedUrlsOnly.Equals(input.AllowedUrlsOnly)
-                ) && 
-                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -138,6 +160,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -150,8 +176,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.AllowedUrlsOnly.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
@@ -160,6 +189,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

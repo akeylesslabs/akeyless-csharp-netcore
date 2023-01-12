@@ -27,31 +27,34 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ListSRABastions
+    /// gatewayUpdateTlsCert is a command that updates Gateway TLS certificate
     /// </summary>
-    [DataContract(Name = "listSRABastions")]
-    public partial class ListSRABastions : IEquatable<ListSRABastions>, IValidatableObject
+    [DataContract(Name = "GatewayUpdateTlsCert")]
+    public partial class GatewayUpdateTlsCert : IEquatable<GatewayUpdateTlsCert>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListSRABastions" /> class.
+        /// Initializes a new instance of the <see cref="GatewayUpdateTlsCert" /> class.
         /// </summary>
-        /// <param name="allowedUrlsOnly">allowedUrlsOnly.</param>
+        /// <param name="certData">TLS Certificate (base64 encoded).</param>
         /// <param name="json">Set output format to JSON.</param>
+        /// <param name="keyData">TLS Private Key (base64 encoded).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListSRABastions(bool allowedUrlsOnly = default(bool), bool json = default(bool), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateTlsCert(string certData = default(string), bool json = default(bool), string keyData = default(string), string token = default(string), string uidToken = default(string))
         {
-            this.AllowedUrlsOnly = allowedUrlsOnly;
+            this.CertData = certData;
             this.Json = json;
+            this.KeyData = keyData;
             this.Token = token;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Gets or Sets AllowedUrlsOnly
+        /// TLS Certificate (base64 encoded)
         /// </summary>
-        [DataMember(Name = "allowed-urls-only", EmitDefaultValue = true)]
-        public bool AllowedUrlsOnly { get; set; }
+        /// <value>TLS Certificate (base64 encoded)</value>
+        [DataMember(Name = "cert-data", EmitDefaultValue = false)]
+        public string CertData { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -59,6 +62,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// TLS Private Key (base64 encoded)
+        /// </summary>
+        /// <value>TLS Private Key (base64 encoded)</value>
+        [DataMember(Name = "key-data", EmitDefaultValue = false)]
+        public string KeyData { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -81,9 +91,10 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListSRABastions {\n");
-            sb.Append("  AllowedUrlsOnly: ").Append(AllowedUrlsOnly).Append("\n");
+            sb.Append("class GatewayUpdateTlsCert {\n");
+            sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -106,15 +117,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ListSRABastions);
+            return this.Equals(input as GatewayUpdateTlsCert);
         }
 
         /// <summary>
-        /// Returns true if ListSRABastions instances are equal
+        /// Returns true if GatewayUpdateTlsCert instances are equal
         /// </summary>
-        /// <param name="input">Instance of ListSRABastions to be compared</param>
+        /// <param name="input">Instance of GatewayUpdateTlsCert to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ListSRABastions input)
+        public bool Equals(GatewayUpdateTlsCert input)
         {
             if (input == null)
             {
@@ -122,12 +133,18 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.AllowedUrlsOnly == input.AllowedUrlsOnly ||
-                    this.AllowedUrlsOnly.Equals(input.AllowedUrlsOnly)
+                    this.CertData == input.CertData ||
+                    (this.CertData != null &&
+                    this.CertData.Equals(input.CertData))
                 ) && 
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.KeyData == input.KeyData ||
+                    (this.KeyData != null &&
+                    this.KeyData.Equals(input.KeyData))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -150,8 +167,15 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.AllowedUrlsOnly.GetHashCode();
+                if (this.CertData != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertData.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.KeyData != null)
+                {
+                    hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
+                }
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();

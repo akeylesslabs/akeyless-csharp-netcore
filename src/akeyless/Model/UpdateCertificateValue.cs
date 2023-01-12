@@ -27,39 +27,57 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// of it.
+    /// UpdateCertificateValue
     /// </summary>
-    [DataContract(Name = "rotateKey")]
-    public partial class RotateKey : IEquatable<RotateKey>, IValidatableObject
+    [DataContract(Name = "updateCertificateValue")]
+    public partial class UpdateCertificateValue : IEquatable<UpdateCertificateValue>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RotateKey" /> class.
+        /// Initializes a new instance of the <see cref="UpdateCertificateValue" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RotateKey() { }
+        protected UpdateCertificateValue() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RotateKey" /> class.
+        /// Initializes a new instance of the <see cref="UpdateCertificateValue" /> class.
         /// </summary>
+        /// <param name="certificateData">Content of the certificate PEM in a Base64 format..</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="json">Set output format to JSON.</param>
-        /// <param name="name">Key name (required).</param>
-        /// <param name="newCertPemData">The new pem encoded certificate for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;).</param>
-        /// <param name="newKeyData">The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;).</param>
+        /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="keyData">Content of the certificate&#39;s private key PEM in a Base64 format..</param>
+        /// <param name="name">Certificate name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotateKey(bool json = default(bool), string name = default(string), string newCertPemData = default(string), string newKeyData = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateCertificateValue(string certificateData = default(string), List<string> expirationEventIn = default(List<string>), bool json = default(bool), string key = default(string), string keyData = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for RotateKey and cannot be null");
+                throw new ArgumentNullException("name is a required property for UpdateCertificateValue and cannot be null");
             }
             this.Name = name;
+            this.CertificateData = certificateData;
+            this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
-            this.NewCertPemData = newCertPemData;
-            this.NewKeyData = newKeyData;
+            this.Key = key;
+            this.KeyData = keyData;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Content of the certificate PEM in a Base64 format.
+        /// </summary>
+        /// <value>Content of the certificate PEM in a Base64 format.</value>
+        [DataMember(Name = "certificate-data", EmitDefaultValue = false)]
+        public string CertificateData { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -69,25 +87,25 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Key name
+        /// The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used)
         /// </summary>
-        /// <value>Key name</value>
+        /// <value>The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used)</value>
+        [DataMember(Name = "key", EmitDefaultValue = false)]
+        public string Key { get; set; }
+
+        /// <summary>
+        /// Content of the certificate&#39;s private key PEM in a Base64 format.
+        /// </summary>
+        /// <value>Content of the certificate&#39;s private key PEM in a Base64 format.</value>
+        [DataMember(Name = "key-data", EmitDefaultValue = false)]
+        public string KeyData { get; set; }
+
+        /// <summary>
+        /// Certificate name
+        /// </summary>
+        /// <value>Certificate name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// The new pem encoded certificate for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;)
-        /// </summary>
-        /// <value>The new pem encoded certificate for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;)</value>
-        [DataMember(Name = "new-cert-pem-data", EmitDefaultValue = false)]
-        public string NewCertPemData { get; set; }
-
-        /// <summary>
-        /// The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;)
-        /// </summary>
-        /// <value>The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;)</value>
-        [DataMember(Name = "new-key-data", EmitDefaultValue = false)]
-        public string NewKeyData { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -110,11 +128,13 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RotateKey {\n");
+            sb.Append("class UpdateCertificateValue {\n");
+            sb.Append("  CertificateData: ").Append(CertificateData).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  NewCertPemData: ").Append(NewCertPemData).Append("\n");
-            sb.Append("  NewKeyData: ").Append(NewKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -137,15 +157,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RotateKey);
+            return this.Equals(input as UpdateCertificateValue);
         }
 
         /// <summary>
-        /// Returns true if RotateKey instances are equal
+        /// Returns true if UpdateCertificateValue instances are equal
         /// </summary>
-        /// <param name="input">Instance of RotateKey to be compared</param>
+        /// <param name="input">Instance of UpdateCertificateValue to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RotateKey input)
+        public bool Equals(UpdateCertificateValue input)
         {
             if (input == null)
             {
@@ -153,23 +173,34 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CertificateData == input.CertificateData ||
+                    (this.CertificateData != null &&
+                    this.CertificateData.Equals(input.CertificateData))
+                ) && 
+                (
+                    this.ExpirationEventIn == input.ExpirationEventIn ||
+                    this.ExpirationEventIn != null &&
+                    input.ExpirationEventIn != null &&
+                    this.ExpirationEventIn.SequenceEqual(input.ExpirationEventIn)
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.Key == input.Key ||
+                    (this.Key != null &&
+                    this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.KeyData == input.KeyData ||
+                    (this.KeyData != null &&
+                    this.KeyData.Equals(input.KeyData))
                 ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.NewCertPemData == input.NewCertPemData ||
-                    (this.NewCertPemData != null &&
-                    this.NewCertPemData.Equals(input.NewCertPemData))
-                ) && 
-                (
-                    this.NewKeyData == input.NewKeyData ||
-                    (this.NewKeyData != null &&
-                    this.NewKeyData.Equals(input.NewKeyData))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -192,18 +223,26 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertificateData != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateData.GetHashCode();
+                }
+                if (this.ExpirationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.Key != null)
+                {
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.KeyData != null)
+                {
+                    hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                }
-                if (this.NewCertPemData != null)
-                {
-                    hashCode = (hashCode * 59) + this.NewCertPemData.GetHashCode();
-                }
-                if (this.NewKeyData != null)
-                {
-                    hashCode = (hashCode * 59) + this.NewKeyData.GetHashCode();
                 }
                 if (this.Token != null)
                 {
