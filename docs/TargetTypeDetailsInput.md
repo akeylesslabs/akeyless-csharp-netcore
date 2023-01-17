@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **DbHostName** | **string** |  | [optional] 
 **DbName** | **string** |  | [optional] 
 **DbPort** | **string** |  | [optional] 
+**DbPrivateKey** | **string** | (Optional) Private Key in PEM format | [optional] 
+**DbPrivateKeyPassphrase** | **string** |  | [optional] 
 **DbPwd** | **string** |  | [optional] 
 **DbServerCertificates** | **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 

@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
-**Metadata** | **string** | Metadata about the secret | [optional] 
+**Metadata** | **string** | Deprecated - use description | [optional] 
 **MultilineValue** | **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
 **PasswordManagerCustomField** | **Dictionary&lt;string, string&gt;** | For Password Management use, additional fields | [optional] 

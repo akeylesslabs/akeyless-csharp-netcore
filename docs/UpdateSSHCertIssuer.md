@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
+**Description** | **string** | Description of the object | [optional] 
 **Extensions** | **Dictionary&lt;string, string&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
-**Metadata** | **string** | A metadata about the issuer | [optional] 
+**Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
 **NewName** | **string** | New item name | [optional] 
 **Principals** | **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 

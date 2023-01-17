@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
+        /// <param name="disablePreviousKeyVersion">Automatically disable previous key version (required for azure targets).</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
         /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(bool disablePreviousKeyVersion = default(bool), bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -69,6 +70,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             }
             this.TargetName = targetName;
+            this.DisablePreviousKeyVersion = disablePreviousKeyVersion;
             this.Json = json;
             this.KeyOperations = keyOperations;
             this.KeyringName = keyringName;
@@ -84,6 +86,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.VaultName = vaultName;
         }
+
+        /// <summary>
+        /// Automatically disable previous key version (required for azure targets)
+        /// </summary>
+        /// <value>Automatically disable previous key version (required for azure targets)</value>
+        [DataMember(Name = "disable-previous-key-version", EmitDefaultValue = true)]
+        public bool DisablePreviousKeyVersion { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -198,6 +207,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
+            sb.Append("  DisablePreviousKeyVersion: ").Append(DisablePreviousKeyVersion).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
             sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
@@ -248,6 +258,10 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.DisablePreviousKeyVersion == input.DisablePreviousKeyVersion ||
+                    this.DisablePreviousKeyVersion.Equals(input.DisablePreviousKeyVersion)
+                ) && 
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
@@ -335,6 +349,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.DisablePreviousKeyVersion.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyOperations != null)
                 {

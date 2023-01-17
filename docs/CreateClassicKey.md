@@ -5,12 +5,14 @@ CreateClassicKey is a command that creates classic key
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] | 
+**Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] | 
 **CertFileData** | **string** | Certificate in a PEM format. | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | **string** | Description of the object | [optional] 
+**GpgAlg** | **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **KeyData** | **string** | Base64-encoded classic key value | [optional] 
-**Metadata** | **string** | Metadata about the classic key | [optional] 
+**Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | ClassicKey name | 
 **ProtectionKeyName** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this classic key | [optional] 

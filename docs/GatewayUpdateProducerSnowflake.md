@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerSnowflake
-gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
+GatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
 
 ## Properties
 
@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
+**PrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 
+**PrivateKeyPassphrase** | **string** | The Private key passphrase | [optional] 
 **Role** | **string** | User role | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 

@@ -43,10 +43,11 @@ namespace akeyless.Model
         /// <param name="alphabet">Alphabet to use in regexp vaultless tokenization.</param>
         /// <param name="decodingTemplate">The Decoding output template to use in regexp vaultless tokenization.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="encodingTemplate">The Encoding output template to use in regexp vaultless tokenization.</param>
         /// <param name="encryptionKeyName">AES key name to use in vaultless tokenization.</param>
         /// <param name="json">Set output format to JSON.</param>
-        /// <param name="metadata">A metadata about the tokenizer.</param>
+        /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Tokenizer name (required).</param>
         /// <param name="pattern">Pattern to use in regexp vaultless tokenization.</param>
         /// <param name="tag">List of the tags attached to this key.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="tokenizerType">Tokenizer type (required).</param>
         /// <param name="tweakType">The tweak type to use in vaultless tokenization [Supplied, Generated, Internal, Masking].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
+        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string description = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -78,6 +79,7 @@ namespace akeyless.Model
             this.Alphabet = alphabet;
             this.DecodingTemplate = decodingTemplate;
             this.DeleteProtection = deleteProtection;
+            this.Description = description;
             this.EncodingTemplate = encodingTemplate;
             this.EncryptionKeyName = encryptionKeyName;
             this.Json = json;
@@ -111,6 +113,13 @@ namespace akeyless.Model
         public string DeleteProtection { get; set; }
 
         /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// The Encoding output template to use in regexp vaultless tokenization
         /// </summary>
         /// <value>The Encoding output template to use in regexp vaultless tokenization</value>
@@ -132,9 +141,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// A metadata about the tokenizer
+        /// Deprecated - use description
         /// </summary>
-        /// <value>A metadata about the tokenizer</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
@@ -205,6 +214,7 @@ namespace akeyless.Model
             sb.Append("  Alphabet: ").Append(Alphabet).Append("\n");
             sb.Append("  DecodingTemplate: ").Append(DecodingTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EncodingTemplate: ").Append(EncodingTemplate).Append("\n");
             sb.Append("  EncryptionKeyName: ").Append(EncryptionKeyName).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -266,6 +276,11 @@ namespace akeyless.Model
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.EncodingTemplate == input.EncodingTemplate ||
@@ -349,6 +364,10 @@ namespace akeyless.Model
                 if (this.DeleteProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.EncodingTemplate != null)
                 {

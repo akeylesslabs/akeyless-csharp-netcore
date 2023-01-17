@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerSnowflake
-gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
 
 ## Properties
 
@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Producer name | 
+**PrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 
+**PrivateKeyPassphrase** | **string** | The Private key passphrase | [optional] 
 **Role** | **string** | User role | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 

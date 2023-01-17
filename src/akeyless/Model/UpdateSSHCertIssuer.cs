@@ -42,9 +42,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="allowedUsers">Users allowed to fetch the certificate, e.g root,ubuntu (required).</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
         /// <param name="json">Set output format to JSON.</param>
-        /// <param name="metadata">A metadata about the issuer.</param>
+        /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="principals">Signed certificates with principal, e.g example_role1,example_role2.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = default(bool), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = default(bool), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.SignerKeyName = signerKeyName;
             this.Ttl = ttl;
             this.AddTag = addTag;
+            this.Description = description;
             this.Extensions = extensions;
             this.Json = json;
             this.Metadata = metadata;
@@ -112,6 +114,13 @@ namespace akeyless.Model
         public string AllowedUsers { get; set; }
 
         /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;
         /// </summary>
         /// <value>Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;</value>
@@ -126,9 +135,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// A metadata about the issuer
+        /// Deprecated - use description
         /// </summary>
-        /// <value>A metadata about the issuer</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
@@ -234,6 +243,7 @@ namespace akeyless.Model
             sb.Append("class UpdateSSHCertIssuer {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  AllowedUsers: ").Append(AllowedUsers).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -296,6 +306,11 @@ namespace akeyless.Model
                     this.AllowedUsers == input.AllowedUsers ||
                     (this.AllowedUsers != null &&
                     this.AllowedUsers.Equals(input.AllowedUsers))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Extensions == input.Extensions ||
@@ -400,6 +415,10 @@ namespace akeyless.Model
                 if (this.AllowedUsers != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedUsers.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.Extensions != null)
                 {

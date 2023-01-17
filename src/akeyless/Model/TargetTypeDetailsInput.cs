@@ -63,6 +63,8 @@ namespace akeyless.Model
         /// <param name="dbHostName">dbHostName.</param>
         /// <param name="dbName">dbName.</param>
         /// <param name="dbPort">dbPort.</param>
+        /// <param name="dbPrivateKey">(Optional) Private Key in PEM format.</param>
+        /// <param name="dbPrivateKeyPassphrase">dbPrivateKeyPassphrase.</param>
         /// <param name="dbPwd">dbPwd.</param>
         /// <param name="dbServerCertificates">(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set..</param>
         /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
@@ -128,7 +130,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.AppPrivateKey = appPrivateKey;
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
@@ -158,6 +160,8 @@ namespace akeyless.Model
             this.DbHostName = dbHostName;
             this.DbName = dbName;
             this.DbPort = dbPort;
+            this.DbPrivateKey = dbPrivateKey;
+            this.DbPrivateKeyPassphrase = dbPrivateKeyPassphrase;
             this.DbPwd = dbPwd;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
@@ -396,6 +400,19 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "db_port", EmitDefaultValue = false)]
         public string DbPort { get; set; }
+
+        /// <summary>
+        /// (Optional) Private Key in PEM format
+        /// </summary>
+        /// <value>(Optional) Private Key in PEM format</value>
+        [DataMember(Name = "db_private_key", EmitDefaultValue = false)]
+        public string DbPrivateKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DbPrivateKeyPassphrase
+        /// </summary>
+        [DataMember(Name = "db_private_key_passphrase", EmitDefaultValue = false)]
+        public string DbPrivateKeyPassphrase { get; set; }
 
         /// <summary>
         /// Gets or Sets DbPwd
@@ -831,6 +848,8 @@ namespace akeyless.Model
             sb.Append("  DbHostName: ").Append(DbHostName).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  DbPort: ").Append(DbPort).Append("\n");
+            sb.Append("  DbPrivateKey: ").Append(DbPrivateKey).Append("\n");
+            sb.Append("  DbPrivateKeyPassphrase: ").Append(DbPrivateKeyPassphrase).Append("\n");
             sb.Append("  DbPwd: ").Append(DbPwd).Append("\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
@@ -1071,6 +1090,16 @@ namespace akeyless.Model
                     this.DbPort == input.DbPort ||
                     (this.DbPort != null &&
                     this.DbPort.Equals(input.DbPort))
+                ) && 
+                (
+                    this.DbPrivateKey == input.DbPrivateKey ||
+                    (this.DbPrivateKey != null &&
+                    this.DbPrivateKey.Equals(input.DbPrivateKey))
+                ) && 
+                (
+                    this.DbPrivateKeyPassphrase == input.DbPrivateKeyPassphrase ||
+                    (this.DbPrivateKeyPassphrase != null &&
+                    this.DbPrivateKeyPassphrase.Equals(input.DbPrivateKeyPassphrase))
                 ) && 
                 (
                     this.DbPwd == input.DbPwd ||
@@ -1511,6 +1540,14 @@ namespace akeyless.Model
                 if (this.DbPort != null)
                 {
                     hashCode = (hashCode * 59) + this.DbPort.GetHashCode();
+                }
+                if (this.DbPrivateKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.DbPrivateKey.GetHashCode();
+                }
+                if (this.DbPrivateKeyPassphrase != null)
+                {
+                    hashCode = (hashCode * 59) + this.DbPrivateKeyPassphrase.GetHashCode();
                 }
                 if (this.DbPwd != null)
                 {

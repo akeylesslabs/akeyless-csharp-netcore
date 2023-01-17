@@ -61,13 +61,15 @@ namespace akeyless.Model
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
         /// <param name="snowflakeAccount">snowflakeAccount.</param>
+        /// <param name="snowflakeApiPrivateKey">RSA Private key (base64 encoded).</param>
+        /// <param name="snowflakeApiPrivateKeyPassword">The Private key passphrase.</param>
         /// <param name="ssl">SSL connection mode.</param>
         /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
+        public UpdateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
             if (dbType == null)
@@ -100,6 +102,8 @@ namespace akeyless.Model
             this.Port = port;
             this.Pwd = pwd;
             this.SnowflakeAccount = snowflakeAccount;
+            this.SnowflakeApiPrivateKey = snowflakeApiPrivateKey;
+            this.SnowflakeApiPrivateKeyPassword = snowflakeApiPrivateKeyPassword;
             this.Ssl = ssl;
             this.SslCertificate = sslCertificate;
             this.Token = token;
@@ -247,6 +251,20 @@ namespace akeyless.Model
         public string SnowflakeAccount { get; set; }
 
         /// <summary>
+        /// RSA Private key (base64 encoded)
+        /// </summary>
+        /// <value>RSA Private key (base64 encoded)</value>
+        [DataMember(Name = "snowflake-api-private-key", EmitDefaultValue = false)]
+        public string SnowflakeApiPrivateKey { get; set; }
+
+        /// <summary>
+        /// The Private key passphrase
+        /// </summary>
+        /// <value>The Private key passphrase</value>
+        [DataMember(Name = "snowflake-api-private-key-password", EmitDefaultValue = false)]
+        public string SnowflakeApiPrivateKeyPassword { get; set; }
+
+        /// <summary>
         /// SSL connection mode
         /// </summary>
         /// <value>SSL connection mode</value>
@@ -316,6 +334,8 @@ namespace akeyless.Model
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
             sb.Append("  SnowflakeAccount: ").Append(SnowflakeAccount).Append("\n");
+            sb.Append("  SnowflakeApiPrivateKey: ").Append(SnowflakeApiPrivateKey).Append("\n");
+            sb.Append("  SnowflakeApiPrivateKeyPassword: ").Append(SnowflakeApiPrivateKeyPassword).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -461,6 +481,16 @@ namespace akeyless.Model
                     this.SnowflakeAccount.Equals(input.SnowflakeAccount))
                 ) && 
                 (
+                    this.SnowflakeApiPrivateKey == input.SnowflakeApiPrivateKey ||
+                    (this.SnowflakeApiPrivateKey != null &&
+                    this.SnowflakeApiPrivateKey.Equals(input.SnowflakeApiPrivateKey))
+                ) && 
+                (
+                    this.SnowflakeApiPrivateKeyPassword == input.SnowflakeApiPrivateKeyPassword ||
+                    (this.SnowflakeApiPrivateKeyPassword != null &&
+                    this.SnowflakeApiPrivateKeyPassword.Equals(input.SnowflakeApiPrivateKeyPassword))
+                ) && 
+                (
                     this.Ssl == input.Ssl ||
                     this.Ssl.Equals(input.Ssl)
                 ) && 
@@ -576,6 +606,14 @@ namespace akeyless.Model
                 if (this.SnowflakeAccount != null)
                 {
                     hashCode = (hashCode * 59) + this.SnowflakeAccount.GetHashCode();
+                }
+                if (this.SnowflakeApiPrivateKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.SnowflakeApiPrivateKey.GetHashCode();
+                }
+                if (this.SnowflakeApiPrivateKeyPassword != null)
+                {
+                    hashCode = (hashCode * 59) + this.SnowflakeApiPrivateKeyPassword.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Ssl.GetHashCode();
                 if (this.SslCertificate != null)

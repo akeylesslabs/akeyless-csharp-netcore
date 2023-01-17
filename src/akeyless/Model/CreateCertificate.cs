@@ -42,16 +42,17 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificateData">Content of the certificate PEM in a Base64 format..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Content of the certificate&#39;s private key PEM in a Base64 format..</param>
-        /// <param name="metadata">Metadata about the certificate.</param>
+        /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Certificate name (required).</param>
         /// <param name="tags">List of the tags attached to this certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), List<string> expirationEventIn = default(List<string>), bool json = default(bool), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool json = default(bool), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.Name = name;
             this.CertificateData = certificateData;
             this.DeleteProtection = deleteProtection;
+            this.Description = description;
             this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
             this.Key = key;
@@ -84,6 +86,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this item</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
@@ -114,9 +123,9 @@ namespace akeyless.Model
         public string KeyData { get; set; }
 
         /// <summary>
-        /// Metadata about the certificate
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Metadata about the certificate</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
@@ -158,6 +167,7 @@ namespace akeyless.Model
             sb.Append("class CreateCertificate {\n");
             sb.Append("  CertificateData: ").Append(CertificateData).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -211,6 +221,11 @@ namespace akeyless.Model
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ExpirationEventIn == input.ExpirationEventIn ||
@@ -276,6 +291,10 @@ namespace akeyless.Model
                 if (this.DeleteProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.ExpirationEventIn != null)
                 {

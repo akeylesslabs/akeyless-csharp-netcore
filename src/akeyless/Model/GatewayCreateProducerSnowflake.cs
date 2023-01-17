@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+    /// GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerSnowflake")]
     public partial class GatewayCreateProducerSnowflake : IEquatable<GatewayCreateProducerSnowflake>, IValidatableObject
@@ -47,6 +47,8 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Producer name (required).</param>
+        /// <param name="privateKey">RSA Private key (base64 encoded).</param>
+        /// <param name="privateKeyPassphrase">The Private key passphrase.</param>
         /// <param name="role">User role.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
@@ -54,7 +56,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,6 +70,8 @@ namespace akeyless.Model
             this.DbName = dbName;
             this.DeleteProtection = deleteProtection;
             this.Json = json;
+            this.PrivateKey = privateKey;
+            this.PrivateKeyPassphrase = privateKeyPassphrase;
             this.Role = role;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -126,6 +130,20 @@ namespace akeyless.Model
         /// <value>Producer name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// RSA Private key (base64 encoded)
+        /// </summary>
+        /// <value>RSA Private key (base64 encoded)</value>
+        [DataMember(Name = "private-key", EmitDefaultValue = false)]
+        public string PrivateKey { get; set; }
+
+        /// <summary>
+        /// The Private key passphrase
+        /// </summary>
+        /// <value>The Private key passphrase</value>
+        [DataMember(Name = "private-key-passphrase", EmitDefaultValue = false)]
+        public string PrivateKeyPassphrase { get; set; }
 
         /// <summary>
         /// User role
@@ -191,6 +209,8 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
+            sb.Append("  PrivateKeyPassphrase: ").Append(PrivateKeyPassphrase).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
@@ -268,6 +288,16 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.PrivateKey == input.PrivateKey ||
+                    (this.PrivateKey != null &&
+                    this.PrivateKey.Equals(input.PrivateKey))
+                ) && 
+                (
+                    this.PrivateKeyPassphrase == input.PrivateKeyPassphrase ||
+                    (this.PrivateKeyPassphrase != null &&
+                    this.PrivateKeyPassphrase.Equals(input.PrivateKeyPassphrase))
+                ) && 
+                (
                     this.Role == input.Role ||
                     (this.Role != null &&
                     this.Role.Equals(input.Role))
@@ -338,6 +368,14 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PrivateKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKey.GetHashCode();
+                }
+                if (this.PrivateKeyPassphrase != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKeyPassphrase.GetHashCode();
                 }
                 if (this.Role != null)
                 {

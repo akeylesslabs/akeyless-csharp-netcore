@@ -35,18 +35,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GenCustomerFragment" /> class.
         /// </summary>
-        /// <param name="description">The Customer Fragment Description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON.</param>
-        public GenCustomerFragment(string description = default(string), bool json = default(bool))
+        /// <param name="metadata">Deprecated - use description.</param>
+        public GenCustomerFragment(string description = default(string), bool json = default(bool), string metadata = default(string))
         {
             this.Description = description;
             this.Json = json;
+            this.Metadata = metadata;
         }
 
         /// <summary>
-        /// The Customer Fragment Description
+        /// Description of the object
         /// </summary>
-        /// <value>The Customer Fragment Description</value>
+        /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
@@ -58,6 +60,13 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// Deprecated - use description
+        /// </summary>
+        /// <value>Deprecated - use description</value>
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
+        public string Metadata { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -67,6 +76,7 @@ namespace akeyless.Model
             sb.Append("class GenCustomerFragment {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,6 +120,11 @@ namespace akeyless.Model
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    (this.Metadata != null &&
+                    this.Metadata.Equals(input.Metadata))
                 );
         }
 
@@ -127,6 +142,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.Metadata != null)
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 return hashCode;
             }
         }

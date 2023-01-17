@@ -12,10 +12,11 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **KeyUsage** | **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
-**Metadata** | **string** | A metadata about the issuer | [optional] 
+**Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NotEnforceHostnames** | **bool** | If set, any names are allowed for CN and SANs in the certificate and not only a valid host name | [optional] 
 **NotRequireCn** | **bool** | If set, clients can request certificates without a CN | [optional] 
