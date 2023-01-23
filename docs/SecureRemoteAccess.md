@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Native** | **bool** |  | [optional] 
 **RdpUser** | **string** |  | [optional] 
 **Region** | **string** |  | [optional] 
+**RotateAfterDisconnect** | **bool** |  | [optional] 
 **Schema** | **string** |  | [optional] 
 **SshPassword** | **bool** |  | [optional] 
 **SshPrivateKey** | **bool** |  | [optional] 

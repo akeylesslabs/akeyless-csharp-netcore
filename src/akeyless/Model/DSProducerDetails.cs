@@ -35,15 +35,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DSProducerDetails" /> class.
         /// </summary>
+        /// <param name="accessTokenManagerId">accessTokenManagerId.</param>
         /// <param name="active">active.</param>
         /// <param name="adminName">adminName.</param>
         /// <param name="adminPwd">adminPwd.</param>
         /// <param name="adminRotationIntervalDays">adminRotationIntervalDays.</param>
+        /// <param name="administrativePort">administrativePort.</param>
         /// <param name="artifactoryAdminApikey">artifactoryAdminApikey.</param>
         /// <param name="artifactoryAdminUsername">artifactoryAdminUsername.</param>
         /// <param name="artifactoryBaseUrl">artifactoryBaseUrl.</param>
         /// <param name="artifactoryTokenAudience">artifactoryTokenAudience.</param>
         /// <param name="artifactoryTokenScope">artifactoryTokenScope.</param>
+        /// <param name="authorizationPort">authorizationPort.</param>
         /// <param name="awsAccessKeyId">awsAccessKeyId.</param>
         /// <param name="awsAccessMode">awsAccessMode.</param>
         /// <param name="awsRegion">awsRegion.</param>
@@ -76,6 +79,7 @@ namespace akeyless.Model
         /// <param name="chefServerUrl">chefServerUrl.</param>
         /// <param name="chefServerUsername">chefServerUsername.</param>
         /// <param name="chefSkipSsl">chefSkipSsl.</param>
+        /// <param name="clientAuthenticationType">clientAuthenticationType.</param>
         /// <param name="createSyncUrl">createSyncUrl.</param>
         /// <param name="dbHostName">dbHostName.</param>
         /// <param name="dbIsolationLevel">dbIsolationLevel.</param>
@@ -102,6 +106,7 @@ namespace akeyless.Model
         /// <param name="eksRegion">eksRegion.</param>
         /// <param name="eksSecretAccessKey">eksSecretAccessKey.</param>
         /// <param name="enableAdminRotation">enableAdminRotation.</param>
+        /// <param name="enforceReplayPrevention">relevant for PRIVATE_KEY_JWT client authentication type.</param>
         /// <param name="externallyProvidedUser">externallyProvidedUser.</param>
         /// <param name="failureMessage">failureMessage.</param>
         /// <param name="fixedUserOnly">fixedUserOnly.</param>
@@ -127,6 +132,7 @@ namespace akeyless.Model
         /// <param name="gkeClusterName">gkeClusterName.</param>
         /// <param name="gkeServiceAccountKey">gkeServiceAccountKey.</param>
         /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
+        /// <param name="grantTypes">grantTypes.</param>
         /// <param name="groups">groups.</param>
         /// <param name="hanadbCreationStatements">hanadbCreationStatements.</param>
         /// <param name="hanadbRevocationStatements">hanadbRevocationStatements.</param>
@@ -134,14 +140,21 @@ namespace akeyless.Model
         /// <param name="hostPort">hostPort.</param>
         /// <param name="implementationType">implementationType.</param>
         /// <param name="isFixedUser">isFixedUser.</param>
+        /// <param name="issuer">relevant for CLIENT_TLS_CERTIFICATE client authentication type.</param>
         /// <param name="itemTargetsAssoc">itemTargetsAssoc.</param>
+        /// <param name="jwks">jwks.</param>
+        /// <param name="jwksUrl">jwksUrl.</param>
         /// <param name="k8sAllowedNamespaces">comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed.</param>
         /// <param name="k8sBearerToken">k8sBearerToken.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
         /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
         /// <param name="k8sDynamicMode">when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before.</param>
         /// <param name="k8sNamespace">k8sNamespace.</param>
+        /// <param name="k8sRoleName">Name of the pre-existing Role or ClusterRole to bind a generated service account to..</param>
+        /// <param name="k8sRoleType">k8sRoleType.</param>
         /// <param name="k8sServiceAccount">k8sServiceAccount.</param>
+        /// <param name="k8sTempRoleBindingDefinition">Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field.</param>
+        /// <param name="k8sTempRoleDefinition">Yaml/Json definition of temporary role that will be created and deleted when TTL is due.</param>
         /// <param name="lastAdminRotation">lastAdminRotation.</param>
         /// <param name="ldapAudience">ldapAudience.</param>
         /// <param name="ldapBindDn">ldapBindDn.</param>
@@ -173,8 +186,10 @@ namespace akeyless.Model
         /// <param name="passwordLength">passwordLength.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="payload">payload.</param>
+        /// <param name="pingUrl">pingUrl.</param>
         /// <param name="postgresCreationStatements">postgresCreationStatements.</param>
         /// <param name="postgresRevocationStatements">postgresRevocationStatements.</param>
+        /// <param name="privilegedUser">privilegedUser.</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
@@ -183,7 +198,9 @@ namespace akeyless.Model
         /// <param name="rabbitmqUserTags">rabbitmqUserTags.</param>
         /// <param name="rabbitmqUserVhost">rabbitmqUserVhost.</param>
         /// <param name="rabbitmqUserWritePermission">rabbitmqUserWritePermission.</param>
+        /// <param name="redirectUris">redirectUris.</param>
         /// <param name="redshiftCreationStatements">redshiftCreationStatements.</param>
+        /// <param name="restrictedScopes">restrictedScopes.</param>
         /// <param name="revokeSyncUrl">revokeSyncUrl.</param>
         /// <param name="rotateSyncUrl">rotateSyncUrl.</param>
         /// <param name="scopes">scopes.</param>
@@ -193,12 +210,15 @@ namespace akeyless.Model
         /// <param name="sfUserRole">generated  users info.</param>
         /// <param name="sfWarehouseName">sfWarehouseName.</param>
         /// <param name="shouldStop">TODO delete this after migration.</param>
+        /// <param name="signingAlgorithm">signingAlgorithm.</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
+        /// <param name="subjectDn">subjectDn.</param>
         /// <param name="tags">tags.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
         /// <param name="userName">userName.</param>
+        /// <param name="userPassword">userPassword.</param>
         /// <param name="userPrincipalName">userPrincipalName.</param>
         /// <param name="userTtl">userTtl.</param>
         /// <param name="usernameLength">usernameLength.</param>
@@ -217,17 +237,20 @@ namespace akeyless.Model
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
         /// <param name="warnBeforeUserExpirationMin">warnBeforeUserExpirationMin.</param>
-        public DSProducerDetails(bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string groups = default(string), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string k8sAllowedNamespaces = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), bool k8sDynamicMode = default(bool), string k8sNamespace = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string redshiftCreationStatements = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
+        public DSProducerDetails(string accessTokenManagerId = default(string), bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string administrativePort = default(string), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientAuthenticationType = default(string), string createSyncUrl = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), bool enforceReplayPrevention = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), List<string> grantTypes = default(List<string>), string groups = default(string), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), string issuer = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string jwks = default(string), string jwksUrl = default(string), string k8sAllowedNamespaces = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), bool k8sDynamicMode = default(bool), string k8sNamespace = default(string), string k8sRoleName = default(string), string k8sRoleType = default(string), string k8sServiceAccount = default(string), List<int> k8sTempRoleBindingDefinition = default(List<int>), List<int> k8sTempRoleDefinition = default(List<int>), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string oracleCreationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string pingUrl = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), List<string> redirectUris = default(List<string>), string redshiftCreationStatements = default(string), List<string> restrictedScopes = default(List<string>), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string signingAlgorithm = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string subjectDn = default(string), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPassword = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
         {
+            this.AccessTokenManagerId = accessTokenManagerId;
             this.Active = active;
             this.AdminName = adminName;
             this.AdminPwd = adminPwd;
             this.AdminRotationIntervalDays = adminRotationIntervalDays;
+            this.AdministrativePort = administrativePort;
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
             this.ArtifactoryBaseUrl = artifactoryBaseUrl;
             this.ArtifactoryTokenAudience = artifactoryTokenAudience;
             this.ArtifactoryTokenScope = artifactoryTokenScope;
+            this.AuthorizationPort = authorizationPort;
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsAccessMode = awsAccessMode;
             this.AwsRegion = awsRegion;
@@ -260,6 +283,7 @@ namespace akeyless.Model
             this.ChefServerUrl = chefServerUrl;
             this.ChefServerUsername = chefServerUsername;
             this.ChefSkipSsl = chefSkipSsl;
+            this.ClientAuthenticationType = clientAuthenticationType;
             this.CreateSyncUrl = createSyncUrl;
             this.DbHostName = dbHostName;
             this.DbIsolationLevel = dbIsolationLevel;
@@ -286,6 +310,7 @@ namespace akeyless.Model
             this.EksRegion = eksRegion;
             this.EksSecretAccessKey = eksSecretAccessKey;
             this.EnableAdminRotation = enableAdminRotation;
+            this.EnforceReplayPrevention = enforceReplayPrevention;
             this.ExternallyProvidedUser = externallyProvidedUser;
             this.FailureMessage = failureMessage;
             this.FixedUserOnly = fixedUserOnly;
@@ -311,6 +336,7 @@ namespace akeyless.Model
             this.GkeClusterName = gkeClusterName;
             this.GkeServiceAccountKey = gkeServiceAccountKey;
             this.GkeServiceAccountName = gkeServiceAccountName;
+            this.GrantTypes = grantTypes;
             this.Groups = groups;
             this.HanadbCreationStatements = hanadbCreationStatements;
             this.HanadbRevocationStatements = hanadbRevocationStatements;
@@ -318,14 +344,21 @@ namespace akeyless.Model
             this.HostPort = hostPort;
             this.ImplementationType = implementationType;
             this.IsFixedUser = isFixedUser;
+            this.Issuer = issuer;
             this.ItemTargetsAssoc = itemTargetsAssoc;
+            this.Jwks = jwks;
+            this.JwksUrl = jwksUrl;
             this.K8sAllowedNamespaces = k8sAllowedNamespaces;
             this.K8sBearerToken = k8sBearerToken;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
             this.K8sDynamicMode = k8sDynamicMode;
             this.K8sNamespace = k8sNamespace;
+            this.K8sRoleName = k8sRoleName;
+            this.K8sRoleType = k8sRoleType;
             this.K8sServiceAccount = k8sServiceAccount;
+            this.K8sTempRoleBindingDefinition = k8sTempRoleBindingDefinition;
+            this.K8sTempRoleDefinition = k8sTempRoleDefinition;
             this.LastAdminRotation = lastAdminRotation;
             this.LdapAudience = ldapAudience;
             this.LdapBindDn = ldapBindDn;
@@ -357,8 +390,10 @@ namespace akeyless.Model
             this.PasswordLength = passwordLength;
             this.PasswordPolicy = passwordPolicy;
             this.Payload = payload;
+            this.PingUrl = pingUrl;
             this.PostgresCreationStatements = postgresCreationStatements;
             this.PostgresRevocationStatements = postgresRevocationStatements;
+            this.PrivilegedUser = privilegedUser;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
@@ -367,7 +402,9 @@ namespace akeyless.Model
             this.RabbitmqUserTags = rabbitmqUserTags;
             this.RabbitmqUserVhost = rabbitmqUserVhost;
             this.RabbitmqUserWritePermission = rabbitmqUserWritePermission;
+            this.RedirectUris = redirectUris;
             this.RedshiftCreationStatements = redshiftCreationStatements;
+            this.RestrictedScopes = restrictedScopes;
             this.RevokeSyncUrl = revokeSyncUrl;
             this.RotateSyncUrl = rotateSyncUrl;
             this.Scopes = scopes;
@@ -377,12 +414,15 @@ namespace akeyless.Model
             this.SfUserRole = sfUserRole;
             this.SfWarehouseName = sfWarehouseName;
             this.ShouldStop = shouldStop;
+            this.SigningAlgorithm = signingAlgorithm;
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
+            this.SubjectDn = subjectDn;
             this.Tags = tags;
             this.TimeoutSeconds = timeoutSeconds;
             this.UseGwCloudIdentity = useGwCloudIdentity;
             this.UserName = userName;
+            this.UserPassword = userPassword;
             this.UserPrincipalName = userPrincipalName;
             this.UserTtl = userTtl;
             this.UsernameLength = usernameLength;
@@ -402,6 +442,12 @@ namespace akeyless.Model
             this.VenafiZone = venafiZone;
             this.WarnBeforeUserExpirationMin = warnBeforeUserExpirationMin;
         }
+
+        /// <summary>
+        /// Gets or Sets AccessTokenManagerId
+        /// </summary>
+        [DataMember(Name = "access_token_manager_id", EmitDefaultValue = false)]
+        public string AccessTokenManagerId { get; set; }
 
         /// <summary>
         /// Gets or Sets Active
@@ -426,6 +472,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "admin_rotation_interval_days", EmitDefaultValue = false)]
         public long AdminRotationIntervalDays { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AdministrativePort
+        /// </summary>
+        [DataMember(Name = "administrative_port", EmitDefaultValue = false)]
+        public string AdministrativePort { get; set; }
 
         /// <summary>
         /// Gets or Sets ArtifactoryAdminApikey
@@ -456,6 +508,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "artifactory_token_scope", EmitDefaultValue = false)]
         public string ArtifactoryTokenScope { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AuthorizationPort
+        /// </summary>
+        [DataMember(Name = "authorization_port", EmitDefaultValue = false)]
+        public string AuthorizationPort { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsAccessKeyId
@@ -650,6 +708,12 @@ namespace akeyless.Model
         public bool ChefSkipSsl { get; set; }
 
         /// <summary>
+        /// Gets or Sets ClientAuthenticationType
+        /// </summary>
+        [DataMember(Name = "client_authentication_type", EmitDefaultValue = false)]
+        public string ClientAuthenticationType { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreateSyncUrl
         /// </summary>
         [DataMember(Name = "create_sync_url", EmitDefaultValue = false)]
@@ -809,6 +873,13 @@ namespace akeyless.Model
         public bool EnableAdminRotation { get; set; }
 
         /// <summary>
+        /// relevant for PRIVATE_KEY_JWT client authentication type
+        /// </summary>
+        /// <value>relevant for PRIVATE_KEY_JWT client authentication type</value>
+        [DataMember(Name = "enforce_replay_prevention", EmitDefaultValue = true)]
+        public bool EnforceReplayPrevention { get; set; }
+
+        /// <summary>
         /// Gets or Sets ExternallyProvidedUser
         /// </summary>
         [DataMember(Name = "externally_provided_user", EmitDefaultValue = false)]
@@ -960,6 +1031,12 @@ namespace akeyless.Model
         public string GkeServiceAccountName { get; set; }
 
         /// <summary>
+        /// Gets or Sets GrantTypes
+        /// </summary>
+        [DataMember(Name = "grant_types", EmitDefaultValue = false)]
+        public List<string> GrantTypes { get; set; }
+
+        /// <summary>
         /// Gets or Sets Groups
         /// </summary>
         [DataMember(Name = "groups", EmitDefaultValue = false)]
@@ -1002,10 +1079,29 @@ namespace akeyless.Model
         public string IsFixedUser { get; set; }
 
         /// <summary>
+        /// relevant for CLIENT_TLS_CERTIFICATE client authentication type
+        /// </summary>
+        /// <value>relevant for CLIENT_TLS_CERTIFICATE client authentication type</value>
+        [DataMember(Name = "issuer", EmitDefaultValue = false)]
+        public string Issuer { get; set; }
+
+        /// <summary>
         /// Gets or Sets ItemTargetsAssoc
         /// </summary>
         [DataMember(Name = "item_targets_assoc", EmitDefaultValue = false)]
         public List<ItemTargetAssociation> ItemTargetsAssoc { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Jwks
+        /// </summary>
+        [DataMember(Name = "jwks", EmitDefaultValue = false)]
+        public string Jwks { get; set; }
+
+        /// <summary>
+        /// Gets or Sets JwksUrl
+        /// </summary>
+        [DataMember(Name = "jwks_url", EmitDefaultValue = false)]
+        public string JwksUrl { get; set; }
 
         /// <summary>
         /// comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed
@@ -1046,10 +1142,37 @@ namespace akeyless.Model
         public string K8sNamespace { get; set; }
 
         /// <summary>
+        /// Name of the pre-existing Role or ClusterRole to bind a generated service account to.
+        /// </summary>
+        /// <value>Name of the pre-existing Role or ClusterRole to bind a generated service account to.</value>
+        [DataMember(Name = "k8s_role_name", EmitDefaultValue = false)]
+        public string K8sRoleName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets K8sRoleType
+        /// </summary>
+        [DataMember(Name = "k8s_role_type", EmitDefaultValue = false)]
+        public string K8sRoleType { get; set; }
+
+        /// <summary>
         /// Gets or Sets K8sServiceAccount
         /// </summary>
         [DataMember(Name = "k8s_service_account", EmitDefaultValue = false)]
         public string K8sServiceAccount { get; set; }
+
+        /// <summary>
+        /// Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field
+        /// </summary>
+        /// <value>Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field</value>
+        [DataMember(Name = "k8s_temp_role_binding_definition", EmitDefaultValue = false)]
+        public List<int> K8sTempRoleBindingDefinition { get; set; }
+
+        /// <summary>
+        /// Yaml/Json definition of temporary role that will be created and deleted when TTL is due
+        /// </summary>
+        /// <value>Yaml/Json definition of temporary role that will be created and deleted when TTL is due</value>
+        [DataMember(Name = "k8s_temp_role_definition", EmitDefaultValue = false)]
+        public List<int> K8sTempRoleDefinition { get; set; }
 
         /// <summary>
         /// Gets or Sets LastAdminRotation
@@ -1242,6 +1365,12 @@ namespace akeyless.Model
         public string Payload { get; set; }
 
         /// <summary>
+        /// Gets or Sets PingUrl
+        /// </summary>
+        [DataMember(Name = "ping_url", EmitDefaultValue = false)]
+        public string PingUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets PostgresCreationStatements
         /// </summary>
         [DataMember(Name = "postgres_creation_statements", EmitDefaultValue = false)]
@@ -1252,6 +1381,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "postgres_revocation_statements", EmitDefaultValue = false)]
         public string PostgresRevocationStatements { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivilegedUser
+        /// </summary>
+        [DataMember(Name = "privileged_user", EmitDefaultValue = false)]
+        public string PrivilegedUser { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerPassword
@@ -1302,10 +1437,22 @@ namespace akeyless.Model
         public string RabbitmqUserWritePermission { get; set; }
 
         /// <summary>
+        /// Gets or Sets RedirectUris
+        /// </summary>
+        [DataMember(Name = "redirect_uris", EmitDefaultValue = false)]
+        public List<string> RedirectUris { get; set; }
+
+        /// <summary>
         /// Gets or Sets RedshiftCreationStatements
         /// </summary>
         [DataMember(Name = "redshift_creation_statements", EmitDefaultValue = false)]
         public string RedshiftCreationStatements { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RestrictedScopes
+        /// </summary>
+        [DataMember(Name = "restricted_scopes", EmitDefaultValue = false)]
+        public List<string> RestrictedScopes { get; set; }
 
         /// <summary>
         /// Gets or Sets RevokeSyncUrl
@@ -1364,6 +1511,12 @@ namespace akeyless.Model
         public string ShouldStop { get; set; }
 
         /// <summary>
+        /// Gets or Sets SigningAlgorithm
+        /// </summary>
+        [DataMember(Name = "signing_algorithm", EmitDefaultValue = false)]
+        public string SigningAlgorithm { get; set; }
+
+        /// <summary>
         /// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
         /// </summary>
         /// <value>(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field</value>
@@ -1376,6 +1529,12 @@ namespace akeyless.Model
         /// <value>(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB</value>
         [DataMember(Name = "ssl_connection_mode", EmitDefaultValue = true)]
         public bool SslConnectionMode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SubjectDn
+        /// </summary>
+        [DataMember(Name = "subject_dn", EmitDefaultValue = false)]
+        public string SubjectDn { get; set; }
 
         /// <summary>
         /// Gets or Sets Tags
@@ -1400,6 +1559,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "user_name", EmitDefaultValue = false)]
         public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UserPassword
+        /// </summary>
+        [DataMember(Name = "user_password", EmitDefaultValue = false)]
+        public string UserPassword { get; set; }
 
         /// <summary>
         /// Gets or Sets UserPrincipalName
@@ -1517,15 +1682,18 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DSProducerDetails {\n");
+            sb.Append("  AccessTokenManagerId: ").Append(AccessTokenManagerId).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  AdminName: ").Append(AdminName).Append("\n");
             sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
+            sb.Append("  AdministrativePort: ").Append(AdministrativePort).Append("\n");
             sb.Append("  ArtifactoryAdminApikey: ").Append(ArtifactoryAdminApikey).Append("\n");
             sb.Append("  ArtifactoryAdminUsername: ").Append(ArtifactoryAdminUsername).Append("\n");
             sb.Append("  ArtifactoryBaseUrl: ").Append(ArtifactoryBaseUrl).Append("\n");
             sb.Append("  ArtifactoryTokenAudience: ").Append(ArtifactoryTokenAudience).Append("\n");
             sb.Append("  ArtifactoryTokenScope: ").Append(ArtifactoryTokenScope).Append("\n");
+            sb.Append("  AuthorizationPort: ").Append(AuthorizationPort).Append("\n");
             sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
             sb.Append("  AwsAccessMode: ").Append(AwsAccessMode).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
@@ -1558,6 +1726,7 @@ namespace akeyless.Model
             sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
             sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
             sb.Append("  ChefSkipSsl: ").Append(ChefSkipSsl).Append("\n");
+            sb.Append("  ClientAuthenticationType: ").Append(ClientAuthenticationType).Append("\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
             sb.Append("  DbHostName: ").Append(DbHostName).Append("\n");
             sb.Append("  DbIsolationLevel: ").Append(DbIsolationLevel).Append("\n");
@@ -1584,6 +1753,7 @@ namespace akeyless.Model
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
             sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
+            sb.Append("  EnforceReplayPrevention: ").Append(EnforceReplayPrevention).Append("\n");
             sb.Append("  ExternallyProvidedUser: ").Append(ExternallyProvidedUser).Append("\n");
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
@@ -1609,6 +1779,7 @@ namespace akeyless.Model
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountKey: ").Append(GkeServiceAccountKey).Append("\n");
             sb.Append("  GkeServiceAccountName: ").Append(GkeServiceAccountName).Append("\n");
+            sb.Append("  GrantTypes: ").Append(GrantTypes).Append("\n");
             sb.Append("  Groups: ").Append(Groups).Append("\n");
             sb.Append("  HanadbCreationStatements: ").Append(HanadbCreationStatements).Append("\n");
             sb.Append("  HanadbRevocationStatements: ").Append(HanadbRevocationStatements).Append("\n");
@@ -1616,14 +1787,21 @@ namespace akeyless.Model
             sb.Append("  HostPort: ").Append(HostPort).Append("\n");
             sb.Append("  ImplementationType: ").Append(ImplementationType).Append("\n");
             sb.Append("  IsFixedUser: ").Append(IsFixedUser).Append("\n");
+            sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  ItemTargetsAssoc: ").Append(ItemTargetsAssoc).Append("\n");
+            sb.Append("  Jwks: ").Append(Jwks).Append("\n");
+            sb.Append("  JwksUrl: ").Append(JwksUrl).Append("\n");
             sb.Append("  K8sAllowedNamespaces: ").Append(K8sAllowedNamespaces).Append("\n");
             sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
             sb.Append("  K8sDynamicMode: ").Append(K8sDynamicMode).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
+            sb.Append("  K8sRoleName: ").Append(K8sRoleName).Append("\n");
+            sb.Append("  K8sRoleType: ").Append(K8sRoleType).Append("\n");
             sb.Append("  K8sServiceAccount: ").Append(K8sServiceAccount).Append("\n");
+            sb.Append("  K8sTempRoleBindingDefinition: ").Append(K8sTempRoleBindingDefinition).Append("\n");
+            sb.Append("  K8sTempRoleDefinition: ").Append(K8sTempRoleDefinition).Append("\n");
             sb.Append("  LastAdminRotation: ").Append(LastAdminRotation).Append("\n");
             sb.Append("  LdapAudience: ").Append(LdapAudience).Append("\n");
             sb.Append("  LdapBindDn: ").Append(LdapBindDn).Append("\n");
@@ -1655,8 +1833,10 @@ namespace akeyless.Model
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  PingUrl: ").Append(PingUrl).Append("\n");
             sb.Append("  PostgresCreationStatements: ").Append(PostgresCreationStatements).Append("\n");
             sb.Append("  PostgresRevocationStatements: ").Append(PostgresRevocationStatements).Append("\n");
+            sb.Append("  PrivilegedUser: ").Append(PrivilegedUser).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
@@ -1665,7 +1845,9 @@ namespace akeyless.Model
             sb.Append("  RabbitmqUserTags: ").Append(RabbitmqUserTags).Append("\n");
             sb.Append("  RabbitmqUserVhost: ").Append(RabbitmqUserVhost).Append("\n");
             sb.Append("  RabbitmqUserWritePermission: ").Append(RabbitmqUserWritePermission).Append("\n");
+            sb.Append("  RedirectUris: ").Append(RedirectUris).Append("\n");
             sb.Append("  RedshiftCreationStatements: ").Append(RedshiftCreationStatements).Append("\n");
+            sb.Append("  RestrictedScopes: ").Append(RestrictedScopes).Append("\n");
             sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
             sb.Append("  RotateSyncUrl: ").Append(RotateSyncUrl).Append("\n");
             sb.Append("  Scopes: ").Append(Scopes).Append("\n");
@@ -1675,12 +1857,15 @@ namespace akeyless.Model
             sb.Append("  SfUserRole: ").Append(SfUserRole).Append("\n");
             sb.Append("  SfWarehouseName: ").Append(SfWarehouseName).Append("\n");
             sb.Append("  ShouldStop: ").Append(ShouldStop).Append("\n");
+            sb.Append("  SigningAlgorithm: ").Append(SigningAlgorithm).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
             sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
+            sb.Append("  SubjectDn: ").Append(SubjectDn).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
+            sb.Append("  UserPassword: ").Append(UserPassword).Append("\n");
             sb.Append("  UserPrincipalName: ").Append(UserPrincipalName).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("  UsernameLength: ").Append(UsernameLength).Append("\n");
@@ -1735,6 +1920,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.AccessTokenManagerId == input.AccessTokenManagerId ||
+                    (this.AccessTokenManagerId != null &&
+                    this.AccessTokenManagerId.Equals(input.AccessTokenManagerId))
+                ) && 
+                (
                     this.Active == input.Active ||
                     this.Active.Equals(input.Active)
                 ) && 
@@ -1751,6 +1941,11 @@ namespace akeyless.Model
                 (
                     this.AdminRotationIntervalDays == input.AdminRotationIntervalDays ||
                     this.AdminRotationIntervalDays.Equals(input.AdminRotationIntervalDays)
+                ) && 
+                (
+                    this.AdministrativePort == input.AdministrativePort ||
+                    (this.AdministrativePort != null &&
+                    this.AdministrativePort.Equals(input.AdministrativePort))
                 ) && 
                 (
                     this.ArtifactoryAdminApikey == input.ArtifactoryAdminApikey ||
@@ -1776,6 +1971,11 @@ namespace akeyless.Model
                     this.ArtifactoryTokenScope == input.ArtifactoryTokenScope ||
                     (this.ArtifactoryTokenScope != null &&
                     this.ArtifactoryTokenScope.Equals(input.ArtifactoryTokenScope))
+                ) && 
+                (
+                    this.AuthorizationPort == input.AuthorizationPort ||
+                    (this.AuthorizationPort != null &&
+                    this.AuthorizationPort.Equals(input.AuthorizationPort))
                 ) && 
                 (
                     this.AwsAccessKeyId == input.AwsAccessKeyId ||
@@ -1932,6 +2132,11 @@ namespace akeyless.Model
                     this.ChefSkipSsl.Equals(input.ChefSkipSsl)
                 ) && 
                 (
+                    this.ClientAuthenticationType == input.ClientAuthenticationType ||
+                    (this.ClientAuthenticationType != null &&
+                    this.ClientAuthenticationType.Equals(input.ClientAuthenticationType))
+                ) && 
+                (
                     this.CreateSyncUrl == input.CreateSyncUrl ||
                     (this.CreateSyncUrl != null &&
                     this.CreateSyncUrl.Equals(input.CreateSyncUrl))
@@ -2057,6 +2262,10 @@ namespace akeyless.Model
                 (
                     this.EnableAdminRotation == input.EnableAdminRotation ||
                     this.EnableAdminRotation.Equals(input.EnableAdminRotation)
+                ) && 
+                (
+                    this.EnforceReplayPrevention == input.EnforceReplayPrevention ||
+                    this.EnforceReplayPrevention.Equals(input.EnforceReplayPrevention)
                 ) && 
                 (
                     this.ExternallyProvidedUser == input.ExternallyProvidedUser ||
@@ -2186,6 +2395,12 @@ namespace akeyless.Model
                     this.GkeServiceAccountName.Equals(input.GkeServiceAccountName))
                 ) && 
                 (
+                    this.GrantTypes == input.GrantTypes ||
+                    this.GrantTypes != null &&
+                    input.GrantTypes != null &&
+                    this.GrantTypes.SequenceEqual(input.GrantTypes)
+                ) && 
+                (
                     this.Groups == input.Groups ||
                     (this.Groups != null &&
                     this.Groups.Equals(input.Groups))
@@ -2221,10 +2436,25 @@ namespace akeyless.Model
                     this.IsFixedUser.Equals(input.IsFixedUser))
                 ) && 
                 (
+                    this.Issuer == input.Issuer ||
+                    (this.Issuer != null &&
+                    this.Issuer.Equals(input.Issuer))
+                ) && 
+                (
                     this.ItemTargetsAssoc == input.ItemTargetsAssoc ||
                     this.ItemTargetsAssoc != null &&
                     input.ItemTargetsAssoc != null &&
                     this.ItemTargetsAssoc.SequenceEqual(input.ItemTargetsAssoc)
+                ) && 
+                (
+                    this.Jwks == input.Jwks ||
+                    (this.Jwks != null &&
+                    this.Jwks.Equals(input.Jwks))
+                ) && 
+                (
+                    this.JwksUrl == input.JwksUrl ||
+                    (this.JwksUrl != null &&
+                    this.JwksUrl.Equals(input.JwksUrl))
                 ) && 
                 (
                     this.K8sAllowedNamespaces == input.K8sAllowedNamespaces ||
@@ -2256,9 +2486,31 @@ namespace akeyless.Model
                     this.K8sNamespace.Equals(input.K8sNamespace))
                 ) && 
                 (
+                    this.K8sRoleName == input.K8sRoleName ||
+                    (this.K8sRoleName != null &&
+                    this.K8sRoleName.Equals(input.K8sRoleName))
+                ) && 
+                (
+                    this.K8sRoleType == input.K8sRoleType ||
+                    (this.K8sRoleType != null &&
+                    this.K8sRoleType.Equals(input.K8sRoleType))
+                ) && 
+                (
                     this.K8sServiceAccount == input.K8sServiceAccount ||
                     (this.K8sServiceAccount != null &&
                     this.K8sServiceAccount.Equals(input.K8sServiceAccount))
+                ) && 
+                (
+                    this.K8sTempRoleBindingDefinition == input.K8sTempRoleBindingDefinition ||
+                    this.K8sTempRoleBindingDefinition != null &&
+                    input.K8sTempRoleBindingDefinition != null &&
+                    this.K8sTempRoleBindingDefinition.SequenceEqual(input.K8sTempRoleBindingDefinition)
+                ) && 
+                (
+                    this.K8sTempRoleDefinition == input.K8sTempRoleDefinition ||
+                    this.K8sTempRoleDefinition != null &&
+                    input.K8sTempRoleDefinition != null &&
+                    this.K8sTempRoleDefinition.SequenceEqual(input.K8sTempRoleDefinition)
                 ) && 
                 (
                     this.LastAdminRotation == input.LastAdminRotation ||
@@ -2413,6 +2665,11 @@ namespace akeyless.Model
                     this.Payload.Equals(input.Payload))
                 ) && 
                 (
+                    this.PingUrl == input.PingUrl ||
+                    (this.PingUrl != null &&
+                    this.PingUrl.Equals(input.PingUrl))
+                ) && 
+                (
                     this.PostgresCreationStatements == input.PostgresCreationStatements ||
                     (this.PostgresCreationStatements != null &&
                     this.PostgresCreationStatements.Equals(input.PostgresCreationStatements))
@@ -2421,6 +2678,11 @@ namespace akeyless.Model
                     this.PostgresRevocationStatements == input.PostgresRevocationStatements ||
                     (this.PostgresRevocationStatements != null &&
                     this.PostgresRevocationStatements.Equals(input.PostgresRevocationStatements))
+                ) && 
+                (
+                    this.PrivilegedUser == input.PrivilegedUser ||
+                    (this.PrivilegedUser != null &&
+                    this.PrivilegedUser.Equals(input.PrivilegedUser))
                 ) && 
                 (
                     this.RabbitmqServerPassword == input.RabbitmqServerPassword ||
@@ -2463,9 +2725,21 @@ namespace akeyless.Model
                     this.RabbitmqUserWritePermission.Equals(input.RabbitmqUserWritePermission))
                 ) && 
                 (
+                    this.RedirectUris == input.RedirectUris ||
+                    this.RedirectUris != null &&
+                    input.RedirectUris != null &&
+                    this.RedirectUris.SequenceEqual(input.RedirectUris)
+                ) && 
+                (
                     this.RedshiftCreationStatements == input.RedshiftCreationStatements ||
                     (this.RedshiftCreationStatements != null &&
                     this.RedshiftCreationStatements.Equals(input.RedshiftCreationStatements))
+                ) && 
+                (
+                    this.RestrictedScopes == input.RestrictedScopes ||
+                    this.RestrictedScopes != null &&
+                    input.RestrictedScopes != null &&
+                    this.RestrictedScopes.SequenceEqual(input.RestrictedScopes)
                 ) && 
                 (
                     this.RevokeSyncUrl == input.RevokeSyncUrl ||
@@ -2513,6 +2787,11 @@ namespace akeyless.Model
                     this.ShouldStop.Equals(input.ShouldStop))
                 ) && 
                 (
+                    this.SigningAlgorithm == input.SigningAlgorithm ||
+                    (this.SigningAlgorithm != null &&
+                    this.SigningAlgorithm.Equals(input.SigningAlgorithm))
+                ) && 
+                (
                     this.SslConnectionCertificate == input.SslConnectionCertificate ||
                     (this.SslConnectionCertificate != null &&
                     this.SslConnectionCertificate.Equals(input.SslConnectionCertificate))
@@ -2520,6 +2799,11 @@ namespace akeyless.Model
                 (
                     this.SslConnectionMode == input.SslConnectionMode ||
                     this.SslConnectionMode.Equals(input.SslConnectionMode)
+                ) && 
+                (
+                    this.SubjectDn == input.SubjectDn ||
+                    (this.SubjectDn != null &&
+                    this.SubjectDn.Equals(input.SubjectDn))
                 ) && 
                 (
                     this.Tags == input.Tags ||
@@ -2539,6 +2823,11 @@ namespace akeyless.Model
                     this.UserName == input.UserName ||
                     (this.UserName != null &&
                     this.UserName.Equals(input.UserName))
+                ) && 
+                (
+                    this.UserPassword == input.UserPassword ||
+                    (this.UserPassword != null &&
+                    this.UserPassword.Equals(input.UserPassword))
                 ) && 
                 (
                     this.UserPrincipalName == input.UserPrincipalName ||
@@ -2635,6 +2924,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AccessTokenManagerId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessTokenManagerId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Active.GetHashCode();
                 if (this.AdminName != null)
                 {
@@ -2645,6 +2938,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.AdminPwd.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AdminRotationIntervalDays.GetHashCode();
+                if (this.AdministrativePort != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdministrativePort.GetHashCode();
+                }
                 if (this.ArtifactoryAdminApikey != null)
                 {
                     hashCode = (hashCode * 59) + this.ArtifactoryAdminApikey.GetHashCode();
@@ -2664,6 +2961,10 @@ namespace akeyless.Model
                 if (this.ArtifactoryTokenScope != null)
                 {
                     hashCode = (hashCode * 59) + this.ArtifactoryTokenScope.GetHashCode();
+                }
+                if (this.AuthorizationPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthorizationPort.GetHashCode();
                 }
                 if (this.AwsAccessKeyId != null)
                 {
@@ -2775,6 +3076,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.ChefServerUsername.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ChefSkipSsl.GetHashCode();
+                if (this.ClientAuthenticationType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientAuthenticationType.GetHashCode();
+                }
                 if (this.CreateSyncUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.CreateSyncUrl.GetHashCode();
@@ -2870,6 +3175,7 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.EksSecretAccessKey.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.EnableAdminRotation.GetHashCode();
+                hashCode = (hashCode * 59) + this.EnforceReplayPrevention.GetHashCode();
                 if (this.ExternallyProvidedUser != null)
                 {
                     hashCode = (hashCode * 59) + this.ExternallyProvidedUser.GetHashCode();
@@ -2964,6 +3270,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GkeServiceAccountName.GetHashCode();
                 }
+                if (this.GrantTypes != null)
+                {
+                    hashCode = (hashCode * 59) + this.GrantTypes.GetHashCode();
+                }
                 if (this.Groups != null)
                 {
                     hashCode = (hashCode * 59) + this.Groups.GetHashCode();
@@ -2992,9 +3302,21 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.IsFixedUser.GetHashCode();
                 }
+                if (this.Issuer != null)
+                {
+                    hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
+                }
                 if (this.ItemTargetsAssoc != null)
                 {
                     hashCode = (hashCode * 59) + this.ItemTargetsAssoc.GetHashCode();
+                }
+                if (this.Jwks != null)
+                {
+                    hashCode = (hashCode * 59) + this.Jwks.GetHashCode();
+                }
+                if (this.JwksUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.JwksUrl.GetHashCode();
                 }
                 if (this.K8sAllowedNamespaces != null)
                 {
@@ -3017,9 +3339,25 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.K8sNamespace.GetHashCode();
                 }
+                if (this.K8sRoleName != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sRoleName.GetHashCode();
+                }
+                if (this.K8sRoleType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sRoleType.GetHashCode();
+                }
                 if (this.K8sServiceAccount != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sServiceAccount.GetHashCode();
+                }
+                if (this.K8sTempRoleBindingDefinition != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sTempRoleBindingDefinition.GetHashCode();
+                }
+                if (this.K8sTempRoleDefinition != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sTempRoleDefinition.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.LastAdminRotation.GetHashCode();
                 if (this.LdapAudience != null)
@@ -3136,6 +3474,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Payload.GetHashCode();
                 }
+                if (this.PingUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.PingUrl.GetHashCode();
+                }
                 if (this.PostgresCreationStatements != null)
                 {
                     hashCode = (hashCode * 59) + this.PostgresCreationStatements.GetHashCode();
@@ -3143,6 +3485,10 @@ namespace akeyless.Model
                 if (this.PostgresRevocationStatements != null)
                 {
                     hashCode = (hashCode * 59) + this.PostgresRevocationStatements.GetHashCode();
+                }
+                if (this.PrivilegedUser != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivilegedUser.GetHashCode();
                 }
                 if (this.RabbitmqServerPassword != null)
                 {
@@ -3176,9 +3522,17 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.RabbitmqUserWritePermission.GetHashCode();
                 }
+                if (this.RedirectUris != null)
+                {
+                    hashCode = (hashCode * 59) + this.RedirectUris.GetHashCode();
+                }
                 if (this.RedshiftCreationStatements != null)
                 {
                     hashCode = (hashCode * 59) + this.RedshiftCreationStatements.GetHashCode();
+                }
+                if (this.RestrictedScopes != null)
+                {
+                    hashCode = (hashCode * 59) + this.RestrictedScopes.GetHashCode();
                 }
                 if (this.RevokeSyncUrl != null)
                 {
@@ -3213,11 +3567,19 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ShouldStop.GetHashCode();
                 }
+                if (this.SigningAlgorithm != null)
+                {
+                    hashCode = (hashCode * 59) + this.SigningAlgorithm.GetHashCode();
+                }
                 if (this.SslConnectionCertificate != null)
                 {
                     hashCode = (hashCode * 59) + this.SslConnectionCertificate.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SslConnectionMode.GetHashCode();
+                if (this.SubjectDn != null)
+                {
+                    hashCode = (hashCode * 59) + this.SubjectDn.GetHashCode();
+                }
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
@@ -3227,6 +3589,10 @@ namespace akeyless.Model
                 if (this.UserName != null)
                 {
                     hashCode = (hashCode * 59) + this.UserName.GetHashCode();
+                }
+                if (this.UserPassword != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserPassword.GetHashCode();
                 }
                 if (this.UserPrincipalName != null)
                 {

@@ -103,6 +103,8 @@ docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
 docs/CreatePKICertIssuerOutput.md
+docs/CreatePingTarget.md
+docs/CreatePingTargetOutput.md
 docs/CreateRabbitMQTarget.md
 docs/CreateRabbitMQTargetOutput.md
 docs/CreateRole.md
@@ -224,6 +226,8 @@ docs/GatewayCreateProducerNativeK8S.md
 docs/GatewayCreateProducerNativeK8SOutput.md
 docs/GatewayCreateProducerOracleDb.md
 docs/GatewayCreateProducerOracleDbOutput.md
+docs/GatewayCreateProducerPing.md
+docs/GatewayCreateProducerPingOutput.md
 docs/GatewayCreateProducerPostgreSQL.md
 docs/GatewayCreateProducerPostgreSQLOutput.md
 docs/GatewayCreateProducerRabbitMQ.md
@@ -312,6 +316,8 @@ docs/GatewayUpdateProducerNativeK8S.md
 docs/GatewayUpdateProducerNativeK8SOutput.md
 docs/GatewayUpdateProducerOracleDb.md
 docs/GatewayUpdateProducerOracleDbOutput.md
+docs/GatewayUpdateProducerPing.md
+docs/GatewayUpdateProducerPingOutput.md
 docs/GatewayUpdateProducerPostgreSQL.md
 docs/GatewayUpdateProducerPostgreSQLOutput.md
 docs/GatewayUpdateProducerRabbitMQ.md
@@ -555,6 +561,7 @@ docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
 docs/UpdatePKICertIssuer.md
 docs/UpdatePKICertIssuerOutput.md
+docs/UpdatePingTarget.md
 docs/UpdateRDPTargetDetails.md
 docs/UpdateRabbitMQTarget.md
 docs/UpdateRabbitMQTargetDetails.md
@@ -593,13 +600,13 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/DecryptGPGOutputTests.cs
-src/akeyless.Test/Model/DecryptGPGTests.cs
-src/akeyless.Test/Model/EncryptGPGOutputTests.cs
-src/akeyless.Test/Model/EncryptGPGTests.cs
-src/akeyless.Test/Model/SignGPGOutputTests.cs
-src/akeyless.Test/Model/SignGPGTests.cs
-src/akeyless.Test/Model/VerifyGPGTests.cs
+src/akeyless.Test/Model/CreatePingTargetOutputTests.cs
+src/akeyless.Test/Model/CreatePingTargetTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerPingOutputTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerPingTests.cs
+src/akeyless.Test/Model/GatewayUpdateProducerPingOutputTests.cs
+src/akeyless.Test/Model/GatewayUpdateProducerPingTests.cs
+src/akeyless.Test/Model/UpdatePingTargetTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -720,6 +727,8 @@ src/akeyless/Model/CreateNativeK8STarget.cs
 src/akeyless/Model/CreateNativeK8STargetOutput.cs
 src/akeyless/Model/CreatePKICertIssuer.cs
 src/akeyless/Model/CreatePKICertIssuerOutput.cs
+src/akeyless/Model/CreatePingTarget.cs
+src/akeyless/Model/CreatePingTargetOutput.cs
 src/akeyless/Model/CreateRabbitMQTarget.cs
 src/akeyless/Model/CreateRabbitMQTargetOutput.cs
 src/akeyless/Model/CreateRole.cs
@@ -841,6 +850,8 @@ src/akeyless/Model/GatewayCreateProducerNativeK8S.cs
 src/akeyless/Model/GatewayCreateProducerNativeK8SOutput.cs
 src/akeyless/Model/GatewayCreateProducerOracleDb.cs
 src/akeyless/Model/GatewayCreateProducerOracleDbOutput.cs
+src/akeyless/Model/GatewayCreateProducerPing.cs
+src/akeyless/Model/GatewayCreateProducerPingOutput.cs
 src/akeyless/Model/GatewayCreateProducerPostgreSQL.cs
 src/akeyless/Model/GatewayCreateProducerPostgreSQLOutput.cs
 src/akeyless/Model/GatewayCreateProducerRabbitMQ.cs
@@ -929,6 +940,8 @@ src/akeyless/Model/GatewayUpdateProducerNativeK8S.cs
 src/akeyless/Model/GatewayUpdateProducerNativeK8SOutput.cs
 src/akeyless/Model/GatewayUpdateProducerOracleDb.cs
 src/akeyless/Model/GatewayUpdateProducerOracleDbOutput.cs
+src/akeyless/Model/GatewayUpdateProducerPing.cs
+src/akeyless/Model/GatewayUpdateProducerPingOutput.cs
 src/akeyless/Model/GatewayUpdateProducerPostgreSQL.cs
 src/akeyless/Model/GatewayUpdateProducerPostgreSQLOutput.cs
 src/akeyless/Model/GatewayUpdateProducerRabbitMQ.cs
@@ -1172,6 +1185,7 @@ src/akeyless/Model/UpdateNativeK8STargetOutput.cs
 src/akeyless/Model/UpdateOutput.cs
 src/akeyless/Model/UpdatePKICertIssuer.cs
 src/akeyless/Model/UpdatePKICertIssuerOutput.cs
+src/akeyless/Model/UpdatePingTarget.cs
 src/akeyless/Model/UpdateRDPTargetDetails.cs
 src/akeyless/Model/UpdateRabbitMQTarget.cs
 src/akeyless/Model/UpdateRabbitMQTargetDetails.cs

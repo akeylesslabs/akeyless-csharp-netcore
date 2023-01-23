@@ -56,6 +56,7 @@ namespace akeyless.Model
         /// <param name="newName">New item name.</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
+        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends (default to &quot;false&quot;).</param>
         /// <param name="rotatedPassword">rotatedPassword.</param>
         /// <param name="rotatedUsername">rotatedUsername.</param>
         /// <param name="rotationHour">rotationHour.</param>
@@ -80,7 +81,7 @@ namespace akeyless.Model
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -106,6 +107,8 @@ namespace akeyless.Model
             this.NewName = newName;
             this.NewVersion = newVersion;
             this.RmTag = rmTag;
+            // use default value if no "rotateAfterDisconnect" provided
+            this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
             this.RotationHour = rotationHour;
@@ -239,6 +242,13 @@ namespace akeyless.Model
         /// <value>List of the existent tags that will be removed from this item</value>
         [DataMember(Name = "rm-tag", EmitDefaultValue = false)]
         public List<string> RmTag { get; set; }
+
+        /// <summary>
+        /// Rotate the value of the secret after SRA session ends
+        /// </summary>
+        /// <value>Rotate the value of the secret after SRA session ends</value>
+        [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
+        public string RotateAfterDisconnect { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatedPassword
@@ -427,6 +437,7 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
+            sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
@@ -565,6 +576,11 @@ namespace akeyless.Model
                     this.RmTag != null &&
                     input.RmTag != null &&
                     this.RmTag.SequenceEqual(input.RmTag)
+                ) && 
+                (
+                    this.RotateAfterDisconnect == input.RotateAfterDisconnect ||
+                    (this.RotateAfterDisconnect != null &&
+                    this.RotateAfterDisconnect.Equals(input.RotateAfterDisconnect))
                 ) && 
                 (
                     this.RotatedPassword == input.RotatedPassword ||
@@ -749,6 +765,10 @@ namespace akeyless.Model
                 if (this.RmTag != null)
                 {
                     hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
+                }
+                if (this.RotateAfterDisconnect != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotateAfterDisconnect.GetHashCode();
                 }
                 if (this.RotatedPassword != null)
                 {

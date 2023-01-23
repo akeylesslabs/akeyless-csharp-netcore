@@ -38,6 +38,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
 | [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer |  |
+| [**CreatePingTarget**](V2Api.md#createpingtarget) | **POST** /create-ping-target |  |
 | [**CreateRabbitMQTarget**](V2Api.md#createrabbitmqtarget) | **POST** /create-rabbitmq-target |  |
 | [**CreateRole**](V2Api.md#createrole) | **POST** /create-role |  |
 | [**CreateRotatedSecret**](V2Api.md#createrotatedsecret) | **POST** /create-rotated-secret |  |
@@ -92,6 +93,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayCreateProducerMySQL**](V2Api.md#gatewaycreateproducermysql) | **POST** /gateway-create-producer-mysql |  |
 | [**GatewayCreateProducerNativeK8S**](V2Api.md#gatewaycreateproducernativek8s) | **POST** /gateway-create-producer-k8s |  |
 | [**GatewayCreateProducerOracleDb**](V2Api.md#gatewaycreateproduceroracledb) | **POST** /gateway-create-producer-oracle |  |
+| [**GatewayCreateProducerPing**](V2Api.md#gatewaycreateproducerping) | **POST** /gateway-create-producer-ping |  |
 | [**GatewayCreateProducerPostgreSQL**](V2Api.md#gatewaycreateproducerpostgresql) | **POST** /gateway-create-producer-postgresql |  |
 | [**GatewayCreateProducerRabbitMQ**](V2Api.md#gatewaycreateproducerrabbitmq) | **POST** /gateway-create-producer-rabbitmq |  |
 | [**GatewayCreateProducerRdp**](V2Api.md#gatewaycreateproducerrdp) | **POST** /gateway-create-producer-rdp |  |
@@ -138,6 +140,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayUpdateProducerMySQL**](V2Api.md#gatewayupdateproducermysql) | **POST** /gateway-update-producer-mysql |  |
 | [**GatewayUpdateProducerNativeK8S**](V2Api.md#gatewayupdateproducernativek8s) | **POST** /gateway-update-producer-k8s |  |
 | [**GatewayUpdateProducerOracleDb**](V2Api.md#gatewayupdateproduceroracledb) | **POST** /gateway-update-producer-oracle |  |
+| [**GatewayUpdateProducerPing**](V2Api.md#gatewayupdateproducerping) | **POST** /gateway-update-producer-ping |  |
 | [**GatewayUpdateProducerPostgreSQL**](V2Api.md#gatewayupdateproducerpostgresql) | **POST** /gateway-update-producer-postgresql |  |
 | [**GatewayUpdateProducerRabbitMQ**](V2Api.md#gatewayupdateproducerrabbitmq) | **POST** /gateway-update-producer-rabbitmq |  |
 | [**GatewayUpdateProducerRdp**](V2Api.md#gatewayupdateproducerrdp) | **POST** /gateway-update-producer-rdp |  |
@@ -235,6 +238,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
 | [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target |  |
 | [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer |  |
+| [**UpdatePingTarget**](V2Api.md#updatepingtarget) | **POST** /update-ping-target |  |
 | [**UpdateRDPTargetDetails**](V2Api.md#updaterdptargetdetails) | **POST** /update-rdp-target-details |  |
 | [**UpdateRabbitMQTarget**](V2Api.md#updaterabbitmqtarget) | **POST** /update-rabbitmq-target |  |
 | [**UpdateRabbitMQTargetDetails**](V2Api.md#updaterabbitmqtargetdetails) | **POST** /update-rabbitmq-target-details |  |
@@ -3246,6 +3250,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createPKICertIssuerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createpingtarget"></a>
+# **CreatePingTarget**
+> CreatePingTargetOutput CreatePingTarget (CreatePingTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreatePingTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreatePingTarget(); // CreatePingTarget | 
+
+            try
+            {
+                CreatePingTargetOutput result = apiInstance.CreatePingTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreatePingTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreatePingTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreatePingTargetOutput> response = apiInstance.CreatePingTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreatePingTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreatePingTarget**](CreatePingTarget.md) |  |  |
+
+### Return type
+
+[**CreatePingTargetOutput**](CreatePingTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createPingTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -8003,6 +8095,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaycreateproducerping"></a>
+# **GatewayCreateProducerPing**
+> GatewayCreateProducerPingOutput GatewayCreateProducerPing (GatewayCreateProducerPing body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateProducerPingExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayCreateProducerPing(); // GatewayCreateProducerPing | 
+
+            try
+            {
+                GatewayCreateProducerPingOutput result = apiInstance.GatewayCreateProducerPing(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateProducerPing: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayCreateProducerPingWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayCreateProducerPingOutput> response = apiInstance.GatewayCreateProducerPingWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateProducerPingWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayCreateProducerPing**](GatewayCreateProducerPing.md) |  |  |
+
+### Return type
+
+[**GatewayCreateProducerPingOutput**](GatewayCreateProducerPingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayCreateProducerPingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaycreateproducerpostgresql"></a>
 # **GatewayCreateProducerPostgreSQL**
 > GatewayCreateProducerPostgreSQLOutput GatewayCreateProducerPostgreSQL (GatewayCreateProducerPostgreSQL body)
@@ -12043,6 +12223,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayUpdateProducerOracleDbResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateproducerping"></a>
+# **GatewayUpdateProducerPing**
+> GatewayUpdateProducerPingOutput GatewayUpdateProducerPing (GatewayUpdateProducerPing body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateProducerPingExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateProducerPing(); // GatewayUpdateProducerPing | 
+
+            try
+            {
+                GatewayUpdateProducerPingOutput result = apiInstance.GatewayUpdateProducerPing(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateProducerPing: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateProducerPingWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateProducerPingOutput> response = apiInstance.GatewayUpdateProducerPingWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateProducerPingWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateProducerPing**](GatewayUpdateProducerPing.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateProducerPingOutput**](GatewayUpdateProducerPingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateProducerPingResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -20557,6 +20825,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updatePKICertIssuerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatepingtarget"></a>
+# **UpdatePingTarget**
+> Object UpdatePingTarget (UpdatePingTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdatePingTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdatePingTarget(); // UpdatePingTarget | 
+
+            try
+            {
+                Object result = apiInstance.UpdatePingTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdatePingTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdatePingTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdatePingTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdatePingTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdatePingTarget**](UpdatePingTarget.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updatePingTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

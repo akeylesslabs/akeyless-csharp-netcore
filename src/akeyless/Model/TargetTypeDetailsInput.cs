@@ -35,11 +35,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetTypeDetailsInput" /> class.
         /// </summary>
+        /// <param name="administrativePort">administrativePort.</param>
         /// <param name="appPrivateKey">params needed for jwt auth AppPrivateKey is the rsa private key in PEM format.</param>
         /// <param name="artifactoryAdminApikey">artifactoryAdminApikey.</param>
         /// <param name="artifactoryAdminUsername">artifactoryAdminUsername.</param>
         /// <param name="artifactoryBaseUrl">artifactoryBaseUrl.</param>
         /// <param name="authFlow">authFlow.</param>
+        /// <param name="authorizationPort">authorizationPort.</param>
         /// <param name="awsAccessKeyId">awsAccessKeyId.</param>
         /// <param name="awsRegion">awsRegion.</param>
         /// <param name="awsSecretAccessKey">awsSecretAccessKey.</param>
@@ -109,9 +111,11 @@ namespace akeyless.Model
         /// <param name="mongodbUsername">mongodbUsername.</param>
         /// <param name="password">password.</param>
         /// <param name="payload">payload.</param>
+        /// <param name="pingUrl">pingUrl.</param>
         /// <param name="port">port.</param>
         /// <param name="privateKey">privateKey.</param>
         /// <param name="privateKeyPassword">privateKeyPassword.</param>
+        /// <param name="privilegedUser">privilegedUser.</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
@@ -123,6 +127,7 @@ namespace akeyless.Model
         /// <param name="url">url.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
         /// <param name="userName">userName.</param>
+        /// <param name="userPassword">userPassword.</param>
         /// <param name="username">username.</param>
         /// <param name="venafiApiKey">venafiApiKey.</param>
         /// <param name="venafiBaseUrl">venafiBaseUrl.</param>
@@ -130,13 +135,15 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string administrativePort = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
+            this.AdministrativePort = administrativePort;
             this.AppPrivateKey = appPrivateKey;
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
             this.ArtifactoryBaseUrl = artifactoryBaseUrl;
             this.AuthFlow = authFlow;
+            this.AuthorizationPort = authorizationPort;
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsRegion = awsRegion;
             this.AwsSecretAccessKey = awsSecretAccessKey;
@@ -206,9 +213,11 @@ namespace akeyless.Model
             this.MongodbUsername = mongodbUsername;
             this.Password = password;
             this.Payload = payload;
+            this.PingUrl = pingUrl;
             this.Port = port;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassword = privateKeyPassword;
+            this.PrivilegedUser = privilegedUser;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
@@ -220,6 +229,7 @@ namespace akeyless.Model
             this.Url = url;
             this.UseGwCloudIdentity = useGwCloudIdentity;
             this.UserName = userName;
+            this.UserPassword = userPassword;
             this.Username = username;
             this.VenafiApiKey = venafiApiKey;
             this.VenafiBaseUrl = venafiBaseUrl;
@@ -228,6 +238,12 @@ namespace akeyless.Model
             this.VenafiUseTpp = venafiUseTpp;
             this.VenafiZone = venafiZone;
         }
+
+        /// <summary>
+        /// Gets or Sets AdministrativePort
+        /// </summary>
+        [DataMember(Name = "administrative_port", EmitDefaultValue = false)]
+        public string AdministrativePort { get; set; }
 
         /// <summary>
         /// params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
@@ -259,6 +275,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "auth_flow", EmitDefaultValue = false)]
         public string AuthFlow { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AuthorizationPort
+        /// </summary>
+        [DataMember(Name = "authorization_port", EmitDefaultValue = false)]
+        public string AuthorizationPort { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsAccessKeyId
@@ -685,6 +707,12 @@ namespace akeyless.Model
         public string Payload { get; set; }
 
         /// <summary>
+        /// Gets or Sets PingUrl
+        /// </summary>
+        [DataMember(Name = "ping_url", EmitDefaultValue = false)]
+        public string PingUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name = "port", EmitDefaultValue = false)]
@@ -701,6 +729,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "private_key_password", EmitDefaultValue = false)]
         public string PrivateKeyPassword { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivilegedUser
+        /// </summary>
+        [DataMember(Name = "privileged_user", EmitDefaultValue = false)]
+        public string PrivilegedUser { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerPassword
@@ -771,6 +805,12 @@ namespace akeyless.Model
         public string UserName { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserPassword
+        /// </summary>
+        [DataMember(Name = "user_password", EmitDefaultValue = false)]
+        public string UserPassword { get; set; }
+
+        /// <summary>
         /// Gets or Sets Username
         /// </summary>
         [DataMember(Name = "username", EmitDefaultValue = false)]
@@ -820,11 +860,13 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetTypeDetailsInput {\n");
+            sb.Append("  AdministrativePort: ").Append(AdministrativePort).Append("\n");
             sb.Append("  AppPrivateKey: ").Append(AppPrivateKey).Append("\n");
             sb.Append("  ArtifactoryAdminApikey: ").Append(ArtifactoryAdminApikey).Append("\n");
             sb.Append("  ArtifactoryAdminUsername: ").Append(ArtifactoryAdminUsername).Append("\n");
             sb.Append("  ArtifactoryBaseUrl: ").Append(ArtifactoryBaseUrl).Append("\n");
             sb.Append("  AuthFlow: ").Append(AuthFlow).Append("\n");
+            sb.Append("  AuthorizationPort: ").Append(AuthorizationPort).Append("\n");
             sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
             sb.Append("  AwsSecretAccessKey: ").Append(AwsSecretAccessKey).Append("\n");
@@ -894,9 +936,11 @@ namespace akeyless.Model
             sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  PingUrl: ").Append(PingUrl).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
+            sb.Append("  PrivilegedUser: ").Append(PrivilegedUser).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
@@ -908,6 +952,7 @@ namespace akeyless.Model
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
+            sb.Append("  UserPassword: ").Append(UserPassword).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  VenafiApiKey: ").Append(VenafiApiKey).Append("\n");
             sb.Append("  VenafiBaseUrl: ").Append(VenafiBaseUrl).Append("\n");
@@ -951,6 +996,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.AdministrativePort == input.AdministrativePort ||
+                    (this.AdministrativePort != null &&
+                    this.AdministrativePort.Equals(input.AdministrativePort))
+                ) && 
+                (
                     this.AppPrivateKey == input.AppPrivateKey ||
                     this.AppPrivateKey != null &&
                     input.AppPrivateKey != null &&
@@ -975,6 +1025,11 @@ namespace akeyless.Model
                     this.AuthFlow == input.AuthFlow ||
                     (this.AuthFlow != null &&
                     this.AuthFlow.Equals(input.AuthFlow))
+                ) && 
+                (
+                    this.AuthorizationPort == input.AuthorizationPort ||
+                    (this.AuthorizationPort != null &&
+                    this.AuthorizationPort.Equals(input.AuthorizationPort))
                 ) && 
                 (
                     this.AwsAccessKeyId == input.AwsAccessKeyId ||
@@ -1320,6 +1375,11 @@ namespace akeyless.Model
                     this.Payload.Equals(input.Payload))
                 ) && 
                 (
+                    this.PingUrl == input.PingUrl ||
+                    (this.PingUrl != null &&
+                    this.PingUrl.Equals(input.PingUrl))
+                ) && 
+                (
                     this.Port == input.Port ||
                     (this.Port != null &&
                     this.Port.Equals(input.Port))
@@ -1333,6 +1393,11 @@ namespace akeyless.Model
                     this.PrivateKeyPassword == input.PrivateKeyPassword ||
                     (this.PrivateKeyPassword != null &&
                     this.PrivateKeyPassword.Equals(input.PrivateKeyPassword))
+                ) && 
+                (
+                    this.PrivilegedUser == input.PrivilegedUser ||
+                    (this.PrivilegedUser != null &&
+                    this.PrivilegedUser.Equals(input.PrivilegedUser))
                 ) && 
                 (
                     this.RabbitmqServerPassword == input.RabbitmqServerPassword ||
@@ -1388,6 +1453,11 @@ namespace akeyless.Model
                     this.UserName.Equals(input.UserName))
                 ) && 
                 (
+                    this.UserPassword == input.UserPassword ||
+                    (this.UserPassword != null &&
+                    this.UserPassword.Equals(input.UserPassword))
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -1432,6 +1502,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AdministrativePort != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdministrativePort.GetHashCode();
+                }
                 if (this.AppPrivateKey != null)
                 {
                     hashCode = (hashCode * 59) + this.AppPrivateKey.GetHashCode();
@@ -1451,6 +1525,10 @@ namespace akeyless.Model
                 if (this.AuthFlow != null)
                 {
                     hashCode = (hashCode * 59) + this.AuthFlow.GetHashCode();
+                }
+                if (this.AuthorizationPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthorizationPort.GetHashCode();
                 }
                 if (this.AwsAccessKeyId != null)
                 {
@@ -1719,6 +1797,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Payload.GetHashCode();
                 }
+                if (this.PingUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.PingUrl.GetHashCode();
+                }
                 if (this.Port != null)
                 {
                     hashCode = (hashCode * 59) + this.Port.GetHashCode();
@@ -1730,6 +1812,10 @@ namespace akeyless.Model
                 if (this.PrivateKeyPassword != null)
                 {
                     hashCode = (hashCode * 59) + this.PrivateKeyPassword.GetHashCode();
+                }
+                if (this.PrivilegedUser != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivilegedUser.GetHashCode();
                 }
                 if (this.RabbitmqServerPassword != null)
                 {
@@ -1768,6 +1854,10 @@ namespace akeyless.Model
                 if (this.UserName != null)
                 {
                     hashCode = (hashCode * 59) + this.UserName.GetHashCode();
+                }
+                if (this.UserPassword != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserPassword.GetHashCode();
                 }
                 if (this.Username != null)
                 {

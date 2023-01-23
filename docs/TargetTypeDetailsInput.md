@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdministrativePort** | **string** |  | [optional] 
 **AppPrivateKey** | **List&lt;int&gt;** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] 
 **ArtifactoryAdminApikey** | **string** |  | [optional] 
 **ArtifactoryAdminUsername** | **string** |  | [optional] 
 **ArtifactoryBaseUrl** | **string** |  | [optional] 
 **AuthFlow** | **string** |  | [optional] 
+**AuthorizationPort** | **string** |  | [optional] 
 **AwsAccessKeyId** | **string** |  | [optional] 
 **AwsRegion** | **string** |  | [optional] 
 **AwsSecretAccessKey** | **string** |  | [optional] 
@@ -78,9 +80,11 @@ Name | Type | Description | Notes
 **MongodbUsername** | **string** |  | [optional] 
 **Password** | **string** |  | [optional] 
 **Payload** | **string** |  | [optional] 
+**PingUrl** | **string** |  | [optional] 
 **Port** | **string** |  | [optional] 
 **PrivateKey** | **string** |  | [optional] 
 **PrivateKeyPassword** | **string** |  | [optional] 
+**PrivilegedUser** | **string** |  | [optional] 
 **RabbitmqServerPassword** | **string** |  | [optional] 
 **RabbitmqServerUri** | **string** |  | [optional] 
 **RabbitmqServerUser** | **string** |  | [optional] 
@@ -92,6 +96,7 @@ Name | Type | Description | Notes
 **Url** | **string** |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
 **UserName** | **string** |  | [optional] 
+**UserPassword** | **string** |  | [optional] 
 **Username** | **string** |  | [optional] 
 **VenafiApiKey** | **string** |  | [optional] 
 **VenafiBaseUrl** | **string** |  | [optional] 

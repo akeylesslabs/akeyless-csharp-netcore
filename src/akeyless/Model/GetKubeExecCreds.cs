@@ -40,17 +40,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetKubeExecCreds" /> class.
         /// </summary>
-        /// <param name="altNames">The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
+        /// <param name="altNames">The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it).</param>
         /// <param name="certIssuerName">The name of the PKI certificate issuer (required).</param>
-        /// <param name="commonName">The common name to be included in the PKI certificate.</param>
+        /// <param name="commonName">The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken).</param>
+        /// <param name="csrDataBase64">Certificate Signing Request contents encoded in base64 to generate the certificate with.</param>
         /// <param name="extendedKeyUsage">A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;..</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
-        public GetKubeExecCreds(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string extendedKeyUsage = default(string), bool json = default(bool), string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
+        /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it).</param>
+        public GetKubeExecCreds(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), bool json = default(bool), string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null)
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.CertIssuerName = certIssuerName;
             this.AltNames = altNames;
             this.CommonName = commonName;
+            this.CsrDataBase64 = csrDataBase64;
             this.ExtendedKeyUsage = extendedKeyUsage;
             this.Json = json;
             this.KeyDataBase64 = keyDataBase64;
@@ -70,9 +72,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
+        /// The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)
         /// </summary>
-        /// <value>The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)</value>
+        /// <value>The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)</value>
         [DataMember(Name = "alt-names", EmitDefaultValue = false)]
         public string AltNames { get; set; }
 
@@ -84,11 +86,18 @@ namespace akeyless.Model
         public string CertIssuerName { get; set; }
 
         /// <summary>
-        /// The common name to be included in the PKI certificate
+        /// The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)
         /// </summary>
-        /// <value>The common name to be included in the PKI certificate</value>
+        /// <value>The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)</value>
         [DataMember(Name = "common-name", EmitDefaultValue = false)]
         public string CommonName { get; set; }
+
+        /// <summary>
+        /// Certificate Signing Request contents encoded in base64 to generate the certificate with
+        /// </summary>
+        /// <value>Certificate Signing Request contents encoded in base64 to generate the certificate with</value>
+        [DataMember(Name = "csr-data-base64", EmitDefaultValue = false)]
+        public string CsrDataBase64 { get; set; }
 
         /// <summary>
         /// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;.
@@ -133,9 +142,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
+        /// The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)
         /// </summary>
-        /// <value>The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)</value>
+        /// <value>The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)</value>
         [DataMember(Name = "uri-sans", EmitDefaultValue = false)]
         public string UriSans { get; set; }
 
@@ -150,6 +159,7 @@ namespace akeyless.Model
             sb.Append("  AltNames: ").Append(AltNames).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
+            sb.Append("  CsrDataBase64: ").Append(CsrDataBase64).Append("\n");
             sb.Append("  ExtendedKeyUsage: ").Append(ExtendedKeyUsage).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
@@ -208,6 +218,11 @@ namespace akeyless.Model
                     this.CommonName.Equals(input.CommonName))
                 ) && 
                 (
+                    this.CsrDataBase64 == input.CsrDataBase64 ||
+                    (this.CsrDataBase64 != null &&
+                    this.CsrDataBase64.Equals(input.CsrDataBase64))
+                ) && 
+                (
                     this.ExtendedKeyUsage == input.ExtendedKeyUsage ||
                     (this.ExtendedKeyUsage != null &&
                     this.ExtendedKeyUsage.Equals(input.ExtendedKeyUsage))
@@ -262,6 +277,10 @@ namespace akeyless.Model
                 if (this.CommonName != null)
                 {
                     hashCode = (hashCode * 59) + this.CommonName.GetHashCode();
+                }
+                if (this.CsrDataBase64 != null)
+                {
+                    hashCode = (hashCode * 59) + this.CsrDataBase64.GetHashCode();
                 }
                 if (this.ExtendedKeyUsage != null)
                 {

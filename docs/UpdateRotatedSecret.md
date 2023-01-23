@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **NewName** | **string** | New item name | [optional] 
 **NewVersion** | **bool** | Deprecated | [optional] 
 **RmTag** | **List&lt;string&gt;** | List of the existent tags that will be removed from this item | [optional] 
+**RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends | [optional] [default to "false"]
 **RotatedPassword** | **string** |  | [optional] 
 **RotatedUsername** | **string** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
