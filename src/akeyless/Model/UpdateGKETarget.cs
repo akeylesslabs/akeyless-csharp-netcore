@@ -40,7 +40,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateGKETarget" /> class.
         /// </summary>
-        /// <param name="comment">Comment about the target.</param>
+        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
         /// <param name="gkeClusterCert">GKE cluster CA certificate.</param>
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public UpdateGKETarget(string comment = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateGKETarget(string comment = default(string), string description = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,6 +65,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Comment = comment;
+            this.Description = description;
             this.GkeAccountKey = gkeAccountKey;
             this.GkeClusterCert = gkeClusterCert;
             this.GkeClusterEndpoint = gkeClusterEndpoint;
@@ -80,11 +82,18 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Comment about the target
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Comment about the target</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// GKE Service Account key file path
@@ -191,6 +200,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateGKETarget {\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
             sb.Append("  GkeClusterCert: ").Append(GkeClusterCert).Append("\n");
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
@@ -244,6 +254,11 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.GkeAccountKey == input.GkeAccountKey ||
@@ -326,6 +341,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.GkeAccountKey != null)
                 {

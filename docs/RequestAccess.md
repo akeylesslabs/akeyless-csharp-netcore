@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capability** | **List&lt;string&gt;** | List of the required capabilities options: [read, update, delete] | 
-**Comment** | **string** | Comment about this request | [optional] 
+**Comment** | **string** | Deprecated - use description | [optional] 
+**Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Item type | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

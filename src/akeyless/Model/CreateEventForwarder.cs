@@ -42,7 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="adminName">Workstation Admin Name.</param>
         /// <param name="adminPwd">Workstation Admin password.</param>
-        /// <param name="comment">Comment about the EventForwarder.</param>
+        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder).</param>
         /// <param name="eventSourceLocations">Event sources (required).</param>
         /// <param name="eventSourceType">Event Source type [item, target] (default to &quot;item&quot;).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="runnerType">runnerType (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateEventForwarder(string adminName = default(string), string adminPwd = default(string), string comment = default(string), string emailTo = default(string), List<string> eventSourceLocations = default(List<string>), string eventSourceType = "item", List<string> eventTypes = default(List<string>), string every = default(string), string forwarderType = default(string), string host = default(string), bool json = default(bool), string key = default(string), string name = default(string), string runnerType = default(string), string token = default(string), string uidToken = default(string))
+        public CreateEventForwarder(string adminName = default(string), string adminPwd = default(string), string comment = default(string), string description = default(string), string emailTo = default(string), List<string> eventSourceLocations = default(List<string>), string eventSourceType = "item", List<string> eventTypes = default(List<string>), string every = default(string), string forwarderType = default(string), string host = default(string), bool json = default(bool), string key = default(string), string name = default(string), string runnerType = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "eventSourceLocations" is required (not null)
             if (eventSourceLocations == null)
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.AdminName = adminName;
             this.AdminPwd = adminPwd;
             this.Comment = comment;
+            this.Description = description;
             this.EmailTo = emailTo;
             // use default value if no "eventSourceType" provided
             this.EventSourceType = eventSourceType ?? "item";
@@ -112,11 +114,18 @@ namespace akeyless.Model
         public string AdminPwd { get; set; }
 
         /// <summary>
-        /// Comment about the EventForwarder
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Comment about the EventForwarder</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder)
@@ -218,6 +227,7 @@ namespace akeyless.Model
             sb.Append("  AdminName: ").Append(AdminName).Append("\n");
             sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EmailTo: ").Append(EmailTo).Append("\n");
             sb.Append("  EventSourceLocations: ").Append(EventSourceLocations).Append("\n");
             sb.Append("  EventSourceType: ").Append(EventSourceType).Append("\n");
@@ -280,6 +290,11 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.EmailTo == input.EmailTo ||
@@ -369,6 +384,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.EmailTo != null)
                 {

@@ -42,7 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="clientId">clientId.</param>
         /// <param name="clientSecret">clientSecret.</param>
-        /// <param name="comment">Comment about the target.</param>
+        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="keepPrevVersion">keepPrevVersion.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public UpdateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -67,6 +68,7 @@ namespace akeyless.Model
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
             this.Comment = comment;
+            this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -94,11 +96,18 @@ namespace akeyless.Model
         public string ClientSecret { get; set; }
 
         /// <summary>
-        /// Comment about the target
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Comment about the target</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -199,6 +208,7 @@ namespace akeyless.Model
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -261,6 +271,11 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -346,6 +361,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)

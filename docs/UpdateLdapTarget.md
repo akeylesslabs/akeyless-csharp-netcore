@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | **string** |  | [optional] 
 **BindDnPassword** | **string** |  | [optional] 
-**Comment** | **string** | Comment about the target | [optional] 
+**Comment** | **string** | Deprecated - use description | [optional] 
+**Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 

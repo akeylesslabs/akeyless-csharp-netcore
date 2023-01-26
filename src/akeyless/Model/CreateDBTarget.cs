@@ -40,11 +40,12 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDBTarget" /> class.
         /// </summary>
-        /// <param name="comment">Comment about the target.</param>
+        /// <param name="comment">Deprecated - use description.</param>
         /// <param name="dbName">dbName.</param>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="dbType">dbType (required).</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="host">host.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string host = default(string), bool json = default(bool), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = default(bool), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
             if (dbType == null)
@@ -84,6 +85,7 @@ namespace akeyless.Model
             this.DbName = dbName;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
+            this.Description = description;
             this.Host = host;
             this.Json = json;
             this.Key = key;
@@ -107,9 +109,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Comment about the target
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Comment about the target</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
 
@@ -138,6 +140,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "db-type", IsRequired = true, EmitDefaultValue = true)]
         public string DbType { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
@@ -292,6 +301,7 @@ namespace akeyless.Model
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -372,6 +382,11 @@ namespace akeyless.Model
                     this.DbType == input.DbType ||
                     (this.DbType != null &&
                     this.DbType.Equals(input.DbType))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Host == input.Host ||
@@ -505,6 +520,10 @@ namespace akeyless.Model
                 if (this.DbType != null)
                 {
                     hashCode = (hashCode * 59) + this.DbType.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.Host != null)
                 {

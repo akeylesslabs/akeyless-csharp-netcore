@@ -363,6 +363,7 @@ docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
+docs/ImporterInfo.md
 docs/Item.md
 docs/ItemGeneralInfo.md
 docs/ItemTargetAssociation.md
@@ -600,13 +601,7 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/CreatePingTargetOutputTests.cs
-src/akeyless.Test/Model/CreatePingTargetTests.cs
-src/akeyless.Test/Model/GatewayCreateProducerPingOutputTests.cs
-src/akeyless.Test/Model/GatewayCreateProducerPingTests.cs
-src/akeyless.Test/Model/GatewayUpdateProducerPingOutputTests.cs
-src/akeyless.Test/Model/GatewayUpdateProducerPingTests.cs
-src/akeyless.Test/Model/UpdatePingTargetTests.cs
+src/akeyless.Test/Model/ImporterInfoTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -987,6 +982,7 @@ src/akeyless/Model/GwClusterIdentity.cs
 src/akeyless/Model/HashiMigration.cs
 src/akeyless/Model/HashiPayload.cs
 src/akeyless/Model/HuaweiAccessRules.cs
+src/akeyless/Model/ImporterInfo.cs
 src/akeyless/Model/Item.cs
 src/akeyless/Model/ItemGeneralInfo.cs
 src/akeyless/Model/ItemTargetAssociation.cs

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | **string** | Comment about the target | [optional] 
+**Comment** | **string** | Deprecated - use description | [optional] 
+**Description** | **string** | Description of the object | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 

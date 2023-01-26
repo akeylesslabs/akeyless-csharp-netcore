@@ -40,13 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateTarget" /> class.
         /// </summary>
+        /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="newComment">New comment about the target (default to &quot;default_comment&quot;).</param>
+        /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateTarget(bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateTarget(string description = "default_comment", bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,6 +55,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateTarget and cannot be null");
             }
             this.Name = name;
+            // use default value if no "description" provided
+            this.Description = description ?? "default_comment";
             this.Json = json;
             // use default value if no "newComment" provided
             this.NewComment = newComment ?? "default_comment";
@@ -61,6 +64,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -77,9 +87,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// New comment about the target
+        /// Deprecated - use description
         /// </summary>
-        /// <value>New comment about the target</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "new-comment", EmitDefaultValue = false)]
         public string NewComment { get; set; }
 
@@ -112,6 +122,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateTarget {\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewComment: ").Append(NewComment).Append("\n");
@@ -154,6 +165,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -193,6 +209,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
                 {

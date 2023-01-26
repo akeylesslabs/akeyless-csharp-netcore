@@ -42,14 +42,15 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="analyticsAccess">Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
-        /// <param name="comment">Comment about the role.</param>
+        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Role name (required).</param>
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string gwAnalyticsAccess = default(string), bool json = default(bool), string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
+        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string description = default(string), string gwAnalyticsAccess = default(string), bool json = default(bool), string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.AnalyticsAccess = analyticsAccess;
             this.AuditAccess = auditAccess;
             this.Comment = comment;
+            this.Description = description;
             this.GwAnalyticsAccess = gwAnalyticsAccess;
             this.Json = json;
             this.SraReportsAccess = sraReportsAccess;
@@ -82,11 +84,18 @@ namespace akeyless.Model
         public string AuditAccess { get; set; }
 
         /// <summary>
-        /// Comment about the role
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Comment about the role</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
@@ -141,6 +150,7 @@ namespace akeyless.Model
             sb.Append("  AnalyticsAccess: ").Append(AnalyticsAccess).Append("\n");
             sb.Append("  AuditAccess: ").Append(AuditAccess).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GwAnalyticsAccess: ").Append(GwAnalyticsAccess).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -198,6 +208,11 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.GwAnalyticsAccess == input.GwAnalyticsAccess ||
                     (this.GwAnalyticsAccess != null &&
                     this.GwAnalyticsAccess.Equals(input.GwAnalyticsAccess))
@@ -248,6 +263,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.GwAnalyticsAccess != null)
                 {

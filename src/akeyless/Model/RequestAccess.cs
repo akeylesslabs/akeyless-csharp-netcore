@@ -41,12 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="RequestAccess" /> class.
         /// </summary>
         /// <param name="capability">List of the required capabilities options: [read, update, delete] (required).</param>
-        /// <param name="comment">Comment about this request.</param>
+        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">Item type (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RequestAccess(List<string> capability = default(List<string>), string comment = default(string), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
+        public RequestAccess(List<string> capability = default(List<string>), string comment = default(string), string description = default(string), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
             if (capability == null)
@@ -61,6 +62,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Comment = comment;
+            this.Description = description;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
@@ -74,11 +76,18 @@ namespace akeyless.Model
         public List<string> Capability { get; set; }
 
         /// <summary>
-        /// Comment about this request
+        /// Deprecated - use description
         /// </summary>
-        /// <value>Comment about this request</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -118,6 +127,7 @@ namespace akeyless.Model
             sb.Append("class RequestAccess {\n");
             sb.Append("  Capability: ").Append(Capability).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -169,6 +179,11 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -205,6 +220,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)

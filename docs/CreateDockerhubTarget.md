@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | **string** | Comment about the target | [optional] 
+**Comment** | **string** | Deprecated - use description | [optional] 
+**Description** | **string** | Description of the object | [optional] 
 **DockerhubPassword** | **string** | DockerhubPassword is either the user&#39;s password to manage the repository | [optional] 
 **DockerhubUsername** | **string** | DockerhubUsername is the name of the user in dockerhub | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 

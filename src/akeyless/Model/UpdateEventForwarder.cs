@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateEventForwarder" /> class.
         /// </summary>
         /// <param name="adminName">Workstation Admin Name.</param>
+        /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder).</param>
         /// <param name="enable">Enable.</param>
         /// <param name="eventSourceLocations">Event sources.</param>
@@ -48,11 +49,11 @@ namespace akeyless.Model
         /// <param name="host">Workstation Host.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="name">EventForwarder name (required).</param>
-        /// <param name="newComment">New comment about the Event Forwarder (default to &quot;default_comment&quot;).</param>
+        /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New EventForwarder name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateEventForwarder(string adminName = default(string), string emailTo = default(string), string enable = default(string), List<string> eventSourceLocations = default(List<string>), List<string> eventTypes = default(List<string>), string host = default(string), bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateEventForwarder(string adminName = default(string), string description = "default_comment", string emailTo = default(string), string enable = default(string), List<string> eventSourceLocations = default(List<string>), List<string> eventTypes = default(List<string>), string host = default(string), bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -61,6 +62,8 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AdminName = adminName;
+            // use default value if no "description" provided
+            this.Description = description ?? "default_comment";
             this.EmailTo = emailTo;
             this.Enable = enable;
             this.EventSourceLocations = eventSourceLocations;
@@ -80,6 +83,13 @@ namespace akeyless.Model
         /// <value>Workstation Admin Name</value>
         [DataMember(Name = "admin-name", EmitDefaultValue = false)]
         public string AdminName { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder)
@@ -131,9 +141,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// New comment about the Event Forwarder
+        /// Deprecated - use description
         /// </summary>
-        /// <value>New comment about the Event Forwarder</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "new-comment", EmitDefaultValue = false)]
         public string NewComment { get; set; }
 
@@ -167,6 +177,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateEventForwarder {\n");
             sb.Append("  AdminName: ").Append(AdminName).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EmailTo: ").Append(EmailTo).Append("\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
             sb.Append("  EventSourceLocations: ").Append(EventSourceLocations).Append("\n");
@@ -217,6 +228,11 @@ namespace akeyless.Model
                     this.AdminName == input.AdminName ||
                     (this.AdminName != null &&
                     this.AdminName.Equals(input.AdminName))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.EmailTo == input.EmailTo ||
@@ -288,6 +304,10 @@ namespace akeyless.Model
                 if (this.AdminName != null)
                 {
                     hashCode = (hashCode * 59) + this.AdminName.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.EmailTo != null)
                 {

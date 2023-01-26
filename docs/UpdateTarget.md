@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Description** | **string** | Description of the object | [optional] [default to "default_comment"]
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | Target name | 
-**NewComment** | **string** | New comment about the target | [optional] [default to "default_comment"]
+**NewComment** | **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | **string** | New Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

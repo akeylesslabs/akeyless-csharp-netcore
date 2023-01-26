@@ -39,18 +39,20 @@ namespace akeyless.Model
         /// <param name="childDenyInheritance">Deny from new child to create their own children.</param>
         /// <param name="childDenyRotate">Deny from new child to rotate.</param>
         /// <param name="childTtl">New child token ttl.</param>
-        /// <param name="comment">New Token comment.</param>
+        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uidTokenId">The ID of the uid-token, required only when uid-token is not provided.</param>
-        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
+        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), string description = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
         {
             this.AuthMethodName = authMethodName;
             this.ChildDenyInheritance = childDenyInheritance;
             this.ChildDenyRotate = childDenyRotate;
             this.ChildTtl = childTtl;
             this.Comment = comment;
+            this.Description = description;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
@@ -86,11 +88,18 @@ namespace akeyless.Model
         public int ChildTtl { get; set; }
 
         /// <summary>
-        /// New Token comment
+        /// Deprecated - use description
         /// </summary>
-        /// <value>New Token comment</value>
+        /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -133,6 +142,7 @@ namespace akeyless.Model
             sb.Append("  ChildDenyRotate: ").Append(ChildDenyRotate).Append("\n");
             sb.Append("  ChildTtl: ").Append(ChildTtl).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -195,6 +205,11 @@ namespace akeyless.Model
                     this.Comment.Equals(input.Comment))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -234,6 +249,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Token != null)

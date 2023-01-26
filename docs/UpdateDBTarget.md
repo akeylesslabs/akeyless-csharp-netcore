@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | **string** | Comment about the target | [optional] 
+**Comment** | **string** | Deprecated - use description | [optional] 
 **DbName** | **string** |  | [optional] 
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
+**Description** | **string** | Description of the object | [optional] 
 **Host** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **KeepPrevVersion** | **string** |  | [optional] 

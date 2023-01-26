@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ClusterGwUrl** | **string** |  | [optional] 
 **DisplayMetadata** | **string** |  | [optional] 
 **DynamicSecretProducerDetails** | [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
+**ImporterInfo** | [**ImporterInfo**](ImporterInfo.md) |  | [optional] 
 **PasswordPolicy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **RotatedSecretDetails** | [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 **SecureRemoteAccessDetails** | [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 

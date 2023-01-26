@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminName** | **string** | Workstation Admin Name | [optional] 
+**Description** | **string** | Description of the object | [optional] [default to "default_comment"]
 **EmailTo** | **string** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] 
 **Enable** | **string** | Enable | [optional] 
 **EventSourceLocations** | **List&lt;string&gt;** | Event sources | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 **Host** | **string** | Workstation Host | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] 
 **Name** | **string** | EventForwarder name | 
-**NewComment** | **string** | New comment about the Event Forwarder | [optional] [default to "default_comment"]
+**NewComment** | **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | **string** | New EventForwarder name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
