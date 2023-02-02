@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
+        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends (default to &quot;false&quot;).</param>
         /// <param name="secureAccessAddHost">secureAccessAddHost.</param>
         /// <param name="secureAccessAllowExternalUser">secureAccessAllowExternalUser.</param>
         /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
@@ -76,7 +77,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
+        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -96,6 +97,8 @@ namespace akeyless.Model
             this.NewMetadata = newMetadata ?? "default_metadata";
             this.NewName = newName;
             this.RmTag = rmTag;
+            // use default value if no "rotateAfterDisconnect" provided
+            this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
             this.SecureAccessAddHost = secureAccessAddHost;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
@@ -192,6 +195,13 @@ namespace akeyless.Model
         /// <value>List of the existent tags that will be removed from this item</value>
         [DataMember(Name = "rm-tag", EmitDefaultValue = false)]
         public List<string> RmTag { get; set; }
+
+        /// <summary>
+        /// Rotate the value of the secret after SRA session ends
+        /// </summary>
+        /// <value>Rotate the value of the secret after SRA session ends</value>
+        [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
+        public string RotateAfterDisconnect { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessAddHost
@@ -369,6 +379,7 @@ namespace akeyless.Model
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
+            sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  SecureAccessAddHost: ").Append(SecureAccessAddHost).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
             sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
@@ -480,6 +491,11 @@ namespace akeyless.Model
                     this.RmTag != null &&
                     input.RmTag != null &&
                     this.RmTag.SequenceEqual(input.RmTag)
+                ) && 
+                (
+                    this.RotateAfterDisconnect == input.RotateAfterDisconnect ||
+                    (this.RotateAfterDisconnect != null &&
+                    this.RotateAfterDisconnect.Equals(input.RotateAfterDisconnect))
                 ) && 
                 (
                     this.SecureAccessAddHost == input.SecureAccessAddHost ||
@@ -656,6 +672,10 @@ namespace akeyless.Model
                 if (this.RmTag != null)
                 {
                     hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
+                }
+                if (this.RotateAfterDisconnect != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotateAfterDisconnect.GetHashCode();
                 }
                 if (this.SecureAccessAddHost != null)
                 {
