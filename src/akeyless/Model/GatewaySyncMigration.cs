@@ -40,12 +40,12 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewaySyncMigration" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Migration name (required).</param>
         /// <param name="startSync">true, for starting synchronization, false for stopping.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewaySyncMigration(bool json = default(bool), string name = default(string), bool startSync = default(bool), string token = default(string), string uidToken = default(string))
+        public GatewaySyncMigration(bool json = false, string name = default(string), bool startSync = default(bool), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

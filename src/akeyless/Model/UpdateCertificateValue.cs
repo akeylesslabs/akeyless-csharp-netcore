@@ -42,13 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificateData">Content of the certificate PEM in a Base64 format..</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Content of the certificate&#39;s private key PEM in a Base64 format..</param>
         /// <param name="name">Certificate name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateCertificateValue(string certificateData = default(string), List<string> expirationEventIn = default(List<string>), bool json = default(bool), string key = default(string), string keyData = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateCertificateValue(string certificateData = default(string), List<string> expirationEventIn = default(List<string>), bool json = false, string key = default(string), string keyData = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

@@ -44,12 +44,12 @@ namespace akeyless.Model
         /// <param name="action">Action to be performed on the item [start/stop/describe] (required).</param>
         /// <param name="emails">For Password Management use, reflect the website context.</param>
         /// <param name="itemName">Item name (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">TTL of the Availability of the shared secret in seconds.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="viewOnce">ViewOnlyOnce Shared secrets can only be viewed once [true/false] (default to false).</param>
-        public ShareItem(string accessibility = "regular", string action = default(string), List<string> emails = default(List<string>), string itemName = default(string), bool json = default(bool), string token = default(string), int ttl = default(int), string uidToken = default(string), bool viewOnce = false)
+        public ShareItem(string accessibility = "regular", string action = default(string), List<string> emails = default(List<string>), string itemName = default(string), bool json = false, string token = default(string), int ttl = default(int), string uidToken = default(string), bool viewOnce = false)
         {
             // to ensure "action" is required (not null)
             if (action == null)

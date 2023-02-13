@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
-        /// <param name="disablePreviousKeyVersion">Automatically disable previous key version (required for azure targets).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="disablePreviousKeyVersion">Automatically disable previous key version (required for azure targets) (default to false).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
         /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
         /// <param name="kmsAlgorithm">Algorithm of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
-        /// <param name="multiRegion">Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets) (default to &quot;false&quot;).</param>
+        /// <param name="multiRegion">Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
@@ -56,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(bool disablePreviousKeyVersion = default(bool), bool json = default(bool), List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -130,9 +130,9 @@ namespace akeyless.Model
         public string LocationId { get; set; }
 
         /// <summary>
-        /// Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets)
+        /// Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets)
         /// </summary>
-        /// <value>Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets)</value>
+        /// <value>Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets)</value>
         [DataMember(Name = "multi-region", EmitDefaultValue = false)]
         public string MultiRegion { get; set; }
 

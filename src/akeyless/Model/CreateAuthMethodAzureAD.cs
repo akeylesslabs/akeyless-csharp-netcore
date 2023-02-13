@@ -55,13 +55,13 @@ namespace akeyless.Model
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL (default to &quot;https://sts.windows.net/---bound_tenant_id---&quot;).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (default to &quot;https://login.microsoftonline.com/common/discovery/keys&quot;).</param>
-        /// <param name="jwtTtl">Jwt TTL.</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = default(bool), string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null)

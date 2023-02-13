@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccessRulesType** | **string** |  | [optional] 
 **AllowedApi** | **bool** |  | [optional] 
 **AllowedsLogin** | **bool** |  | [optional] 
+**Editable** | **bool** |  | [optional] 
 **ErrMsg** | **string** |  | [optional] 
 **Hash** | **string** |  | [optional] 
 **IsValid** | **bool** |  | [optional] 

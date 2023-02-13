@@ -42,13 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the key to use in the encryption process.</param>
         /// <param name="itemId">The item id of the key to use in the encryption process.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="message">The message to be signed in base64 format (required).</param>
         /// <param name="passphrase">Passphrase that was used to generate the key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public SignGPG(string displayId = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string message = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
+        public SignGPG(string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string message = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "keyName" is required (not null)
             if (keyName == null)

@@ -6,7 +6,7 @@ uidListChildren is a command that lists child token ids of Akeyless Universal Id
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthMethodName** | **string** | The universal identity auth method name, required only when uid-token is not provided | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

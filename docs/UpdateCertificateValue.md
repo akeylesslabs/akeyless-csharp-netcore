@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateData** | **string** | Content of the certificate PEM in a Base64 format. | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used) | [optional] 
 **KeyData** | **string** | Content of the certificate&#39;s private key PEM in a Base64 format. | [optional] 
 **Name** | **string** | Certificate name | 

@@ -51,14 +51,14 @@ namespace akeyless.Model
         /// <param name="boundUserName">A list of full user-name that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="jwtTtl">Jwt TTL.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="stsUrl">sts URL (default to &quot;https://sts.amazonaws.com&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null)

@@ -51,13 +51,13 @@ namespace akeyless.Model
         /// <param name="every">Rate of periodic runner repetition in hours.</param>
         /// <param name="forwarderType">forwarderType (required).</param>
         /// <param name="host">Workstation Host.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">EventForwarder name (required).</param>
         /// <param name="runnerType">runnerType (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateEventForwarder(string adminName = default(string), string adminPwd = default(string), string comment = default(string), string description = default(string), string emailTo = default(string), List<string> eventSourceLocations = default(List<string>), string eventSourceType = "item", List<string> eventTypes = default(List<string>), string every = default(string), string forwarderType = default(string), string host = default(string), bool json = default(bool), string key = default(string), string name = default(string), string runnerType = default(string), string token = default(string), string uidToken = default(string))
+        public CreateEventForwarder(string adminName = default(string), string adminPwd = default(string), string comment = default(string), string description = default(string), string emailTo = default(string), List<string> eventSourceLocations = default(List<string>), string eventSourceType = "item", List<string> eventTypes = default(List<string>), string every = default(string), string forwarderType = default(string), string host = default(string), bool json = false, string key = default(string), string name = default(string), string runnerType = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "eventSourceLocations" is required (not null)
             if (eventSourceLocations == null)

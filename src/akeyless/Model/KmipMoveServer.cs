@@ -35,14 +35,24 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipMoveServer" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="newRoot">newRoot.</param>
+        [JsonConstructorAttribute]
+        protected KmipMoveServer() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KmipMoveServer" /> class.
+        /// </summary>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="newRoot">New root for the kmip server (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipMoveServer(bool json = default(bool), string newRoot = default(string), string token = default(string), string uidToken = default(string))
+        public KmipMoveServer(bool json = false, string newRoot = default(string), string token = default(string), string uidToken = default(string))
         {
-            this.Json = json;
+            // to ensure "newRoot" is required (not null)
+            if (newRoot == null)
+            {
+                throw new ArgumentNullException("newRoot is a required property for KmipMoveServer and cannot be null");
+            }
             this.NewRoot = newRoot;
+            this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -55,9 +65,10 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets NewRoot
+        /// New root for the kmip server
         /// </summary>
-        [DataMember(Name = "new-root", EmitDefaultValue = false)]
+        /// <value>New root for the kmip server</value>
+        [DataMember(Name = "new-root", IsRequired = true, EmitDefaultValue = true)]
         public string NewRoot { get; set; }
 
         /// <summary>

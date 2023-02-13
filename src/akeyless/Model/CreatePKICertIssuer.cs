@@ -47,9 +47,9 @@ namespace akeyless.Model
         /// <param name="clientFlag">If set, certificates will be flagged for client auth use.</param>
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
         /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of localities that will be set in the issued certificate.</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -67,7 +67,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -159,9 +159,9 @@ namespace akeyless.Model
         public string Country { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

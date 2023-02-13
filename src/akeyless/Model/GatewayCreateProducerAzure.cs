@@ -44,16 +44,16 @@ namespace akeyless.Model
         /// <param name="azureClientId">Azure Client ID.</param>
         /// <param name="azureClientSecret">Azure Client Secret.</param>
         /// <param name="azureTenantId">Azure Tenant ID.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessWeb">secureAccessWeb.</param>
-        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
-        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -64,7 +64,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
+        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -128,9 +128,9 @@ namespace akeyless.Model
         public string AzureTenantId { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -170,26 +170,30 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWeb
+        /// Enable Web Secure Remote Access
         /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebBrowsing
+        /// Secure browser via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebProxy
+        /// Web-Proxy via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 

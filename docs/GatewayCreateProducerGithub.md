@@ -5,13 +5,13 @@ gatewayCreateProducerGithub is a command that creates github producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **GithubAppId** | **long** | Github app id | [optional] 
 **GithubAppPrivateKey** | **string** | App private key | [optional] 
-**GithubBaseUrl** | **string** | Base URL | [optional] 
+**GithubBaseUrl** | **string** | Base URL | [optional] [default to "https://api.github.com/"]
 **InstallationId** | **long** | Github app installation id | [optional] 
 **InstallationRepository** | **string** | Repository that the app installation has access to | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

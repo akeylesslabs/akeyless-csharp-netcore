@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTargetDetails" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="showVersions">Include all target versions in reply (default to false).</param>
         /// <param name="targetVersion">Target version.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetTargetDetails(bool json = default(bool), string name = default(string), bool showVersions = false, int targetVersion = default(int), string token = default(string), string uidToken = default(string))
+        public GetTargetDetails(bool json = false, string name = default(string), bool showVersions = false, int targetVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

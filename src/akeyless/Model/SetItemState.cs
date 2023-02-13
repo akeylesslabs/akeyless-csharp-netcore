@@ -41,12 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SetItemState" /> class.
         /// </summary>
         /// <param name="desiredState">Desired item state (Enabled, Disabled) (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">The specific version you want to update: 0&#x3D;item level state (default) (default to 0).</param>
-        public SetItemState(string desiredState = default(string), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = 0)
+        public SetItemState(string desiredState = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = 0)
         {
             // to ensure "desiredState" is required (not null)
             if (desiredState == null)

@@ -36,11 +36,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UidRotateToken" /> class.
         /// </summary>
         /// <param name="fork">Create a new child token with default parameters.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="sendManualAckToken">The new rotated token to send manual ack for (with uid-token&#x3D;the-orig-token).</param>
         /// <param name="uidToken">The Universal identity token.</param>
         /// <param name="withManualAck">Disable automatic ack.</param>
-        public UidRotateToken(bool fork = default(bool), bool json = default(bool), string sendManualAckToken = default(string), string uidToken = default(string), bool withManualAck = default(bool))
+        public UidRotateToken(bool fork = default(bool), bool json = false, string sendManualAckToken = default(string), string uidToken = default(string), bool withManualAck = default(bool))
         {
             this.Fork = fork;
             this.Json = json;

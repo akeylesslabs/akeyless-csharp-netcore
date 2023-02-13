@@ -40,33 +40,44 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAWSTarget" /> class.
         /// </summary>
-        /// <param name="accessKey">accessKey.</param>
-        /// <param name="accessKeyId">accessKeyId.</param>
+        /// <param name="accessKey">AWS secret access key (required).</param>
+        /// <param name="accessKeyId">AWS access key ID (required).</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="region">region.</param>
-        /// <param name="sessionToken">sessionToken.</param>
+        /// <param name="region">AWS region (default to &quot;us-east-2&quot;).</param>
+        /// <param name="sessionToken">Required only for temporary security credentials retrieved using STS.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateAWSTarget(string accessKey = default(string), string accessKeyId = default(string), string comment = default(string), string description = default(string), bool json = default(bool), string key = default(string), string name = default(string), string region = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
+        public CreateAWSTarget(string accessKey = default(string), string accessKeyId = default(string), string comment = default(string), string description = default(string), bool json = false, string key = default(string), string name = default(string), string region = "us-east-2", string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
+            // to ensure "accessKey" is required (not null)
+            if (accessKey == null)
+            {
+                throw new ArgumentNullException("accessKey is a required property for CreateAWSTarget and cannot be null");
+            }
+            this.AccessKey = accessKey;
+            // to ensure "accessKeyId" is required (not null)
+            if (accessKeyId == null)
+            {
+                throw new ArgumentNullException("accessKeyId is a required property for CreateAWSTarget and cannot be null");
+            }
+            this.AccessKeyId = accessKeyId;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for CreateAWSTarget and cannot be null");
             }
             this.Name = name;
-            this.AccessKey = accessKey;
-            this.AccessKeyId = accessKeyId;
             this.Comment = comment;
             this.Description = description;
             this.Json = json;
             this.Key = key;
-            this.Region = region;
+            // use default value if no "region" provided
+            this.Region = region ?? "us-east-2";
             this.SessionToken = sessionToken;
             this.Token = token;
             this.UidToken = uidToken;
@@ -74,15 +85,17 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets AccessKey
+        /// AWS secret access key
         /// </summary>
-        [DataMember(Name = "access-key", EmitDefaultValue = false)]
+        /// <value>AWS secret access key</value>
+        [DataMember(Name = "access-key", IsRequired = true, EmitDefaultValue = true)]
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessKeyId
+        /// AWS access key ID
         /// </summary>
-        [DataMember(Name = "access-key-id", EmitDefaultValue = false)]
+        /// <value>AWS access key ID</value>
+        [DataMember(Name = "access-key-id", IsRequired = true, EmitDefaultValue = true)]
         public string AccessKeyId { get; set; }
 
         /// <summary>
@@ -121,14 +134,16 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Region
+        /// AWS region
         /// </summary>
+        /// <value>AWS region</value>
         [DataMember(Name = "region", EmitDefaultValue = false)]
         public string Region { get; set; }
 
         /// <summary>
-        /// Gets or Sets SessionToken
+        /// Required only for temporary security credentials retrieved using STS
         /// </summary>
+        /// <value>Required only for temporary security credentials retrieved using STS</value>
         [DataMember(Name = "session-token", EmitDefaultValue = false)]
         public string SessionToken { get; set; }
 
@@ -147,8 +162,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Gets or Sets UseGwCloudIdentity
+        /// Use the GW&#39;s Cloud IAM
         /// </summary>
+        /// <value>Use the GW&#39;s Cloud IAM</value>
         [DataMember(Name = "use-gw-cloud-identity", EmitDefaultValue = true)]
         public bool UseGwCloudIdentity { get; set; }
 

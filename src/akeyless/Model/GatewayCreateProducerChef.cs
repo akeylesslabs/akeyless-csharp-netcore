@@ -44,8 +44,8 @@ namespace akeyless.Model
         /// <param name="chefServerKey">Server key.</param>
         /// <param name="chefServerUrl">Server URL.</param>
         /// <param name="chefServerUsername">Server username.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="skipSsl">Skip SSL (default to true).</param>
@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerChef(string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -107,9 +107,9 @@ namespace akeyless.Model
         public string ChefServerUsername { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

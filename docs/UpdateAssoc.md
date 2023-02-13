@@ -6,8 +6,8 @@ updateAssoc is a command that updates the sub-claims of an association between r
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** | The association id to be updated | 
-**CaseSensitive** | **string** |  | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**CaseSensitive** | **string** | Treat sub claims as case-sensitive [true/false] | [optional] [default to "true"]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **SubClaims** | **Dictionary&lt;string, string&gt;** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

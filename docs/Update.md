@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | **bool** | Set output format to JSON | [optional] 
-**_Version** | **string** | Version | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
+**_Version** | **string** | Version | [optional] [default to "latest"]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

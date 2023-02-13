@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Tokenize" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="plaintext">Data to be encrypted (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenizerName">The name of the tokenizer to use in the encryption process (required).</param>
         /// <param name="tweak">Base64 encoded tweak for vaultless encryption.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Tokenize(bool json = default(bool), string plaintext = default(string), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
+        public Tokenize(bool json = false, string plaintext = default(string), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
         {
             // to ensure "plaintext" is required (not null)
             if (plaintext == null)

@@ -41,14 +41,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SetRoleRule" /> class.
         /// </summary>
         /// <param name="capability">List of the approved/denied capabilities in the path options: [read, create, update, delete, list, deny] (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="path">The path the rule refers to (required).</param>
         /// <param name="roleName">The role name to be updated (required).</param>
         /// <param name="ruleType">item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule (default to &quot;item-rule&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">RoleRule ttl.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public SetRoleRule(List<string> capability = default(List<string>), bool json = default(bool), string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), int ttl = default(int), string uidToken = default(string))
+        public SetRoleRule(List<string> capability = default(List<string>), bool json = false, string path = default(string), string roleName = default(string), string ruleType = "item-rule", string token = default(string), int ttl = default(int), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
             if (capability == null)

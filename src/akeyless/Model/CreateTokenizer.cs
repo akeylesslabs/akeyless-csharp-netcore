@@ -42,21 +42,21 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alphabet">Alphabet to use in regexp vaultless tokenization.</param>
         /// <param name="decodingTemplate">The Decoding output template to use in regexp vaultless tokenization.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="encodingTemplate">The Encoding output template to use in regexp vaultless tokenization.</param>
         /// <param name="encryptionKeyName">AES key name to use in vaultless tokenization.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Tokenizer name (required).</param>
         /// <param name="pattern">Pattern to use in regexp vaultless tokenization.</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="templateType">Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp] (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="tokenizerType">Tokenizer type (required).</param>
+        /// <param name="tokenizerType">Tokenizer type (required) (default to &quot;vaultless&quot;).</param>
         /// <param name="tweakType">The tweak type to use in vaultless tokenization [Supplied, Generated, Internal, Masking].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string description = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = default(string), string tweakType = default(string), string uidToken = default(string))
+        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string description = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = false, string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = "vaultless", string tweakType = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -106,9 +106,9 @@ namespace akeyless.Model
         public string DecodingTemplate { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capability** | **List&lt;string&gt;** | Access capabilities | 
 **ClientId** | **string** |  | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** |  | [optional] 
 **Path** | **string** | Access path | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

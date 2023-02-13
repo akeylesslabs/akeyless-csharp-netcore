@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminName** | **string** |  | [optional] 
-**AdminPwd** | **string** |  | [optional] 
-**HostName** | **string** |  | [optional] 
-**HostPort** | **string** |  | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | **string** |  | [optional] 
+**AdminName** | **string** | The admin name | [optional] 
+**AdminPwd** | **string** | The admin password | [optional] 
+**HostName** | **string** | The rdp host name | [optional] 
+**HostPort** | **string** | The rdp port | [optional] [default to "22"]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Name** | **string** | Target name | 
 **NewVersion** | **bool** | Deprecated | [optional] 
 **ProtectionKey** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 

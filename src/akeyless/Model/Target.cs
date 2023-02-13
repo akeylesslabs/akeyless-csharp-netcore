@@ -46,13 +46,14 @@ namespace akeyless.Model
         /// <param name="lastVersion">lastVersion.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
+        /// <param name="targetDetails">targetDetails.</param>
         /// <param name="targetId">targetId.</param>
         /// <param name="targetItemsAssoc">targetItemsAssoc.</param>
         /// <param name="targetName">targetName.</param>
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool credentialsLess = default(bool), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool credentialsLess = default(bool), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessRequestStatus = accessRequestStatus;
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.LastVersion = lastVersion;
             this.ModificationDate = modificationDate;
             this.ProtectionKeyName = protectionKeyName;
+            this.TargetDetails = targetDetails;
             this.TargetId = targetId;
             this.TargetItemsAssoc = targetItemsAssoc;
             this.TargetName = targetName;
@@ -141,6 +143,12 @@ namespace akeyless.Model
         public string ProtectionKeyName { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetDetails
+        /// </summary>
+        [DataMember(Name = "target_details", EmitDefaultValue = false)]
+        public string TargetDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets TargetId
         /// </summary>
         [DataMember(Name = "target_id", EmitDefaultValue = false)]
@@ -195,6 +203,7 @@ namespace akeyless.Model
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
+            sb.Append("  TargetDetails: ").Append(TargetDetails).Append("\n");
             sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetItemsAssoc: ").Append(TargetItemsAssoc).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
@@ -291,6 +300,11 @@ namespace akeyless.Model
                     this.ProtectionKeyName.Equals(input.ProtectionKeyName))
                 ) && 
                 (
+                    this.TargetDetails == input.TargetDetails ||
+                    (this.TargetDetails != null &&
+                    this.TargetDetails.Equals(input.TargetDetails))
+                ) && 
+                (
                     this.TargetId == input.TargetId ||
                     this.TargetId.Equals(input.TargetId)
                 ) && 
@@ -365,6 +379,10 @@ namespace akeyless.Model
                 if (this.ProtectionKeyName != null)
                 {
                     hashCode = (hashCode * 59) + this.ProtectionKeyName.GetHashCode();
+                }
+                if (this.TargetDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.TargetDetails.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.TargetId.GetHashCode();
                 if (this.TargetItemsAssoc != null)

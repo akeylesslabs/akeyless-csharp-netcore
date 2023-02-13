@@ -48,13 +48,13 @@ namespace akeyless.Model
         /// <param name="eksClusterName">EKS cluster name (required).</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="eksSecretAccessKey">Secret Access Key (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateEKSTarget(string comment = default(string), string description = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), bool json = default(bool), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public CreateEKSTarget(string comment = default(string), string description = default(string), string eksAccessKeyId = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = "us-east-2", string eksSecretAccessKey = default(string), bool json = false, string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "eksAccessKeyId" is required (not null)
             if (eksAccessKeyId == null)

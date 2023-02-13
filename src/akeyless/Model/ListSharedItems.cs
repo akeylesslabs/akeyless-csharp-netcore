@@ -36,10 +36,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ListSharedItems" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListSharedItems(string accessibility = "regular", bool json = default(bool), string token = default(string), string uidToken = default(string))
+        public ListSharedItems(string accessibility = "regular", bool json = false, string token = default(string), string uidToken = default(string))
         {
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";

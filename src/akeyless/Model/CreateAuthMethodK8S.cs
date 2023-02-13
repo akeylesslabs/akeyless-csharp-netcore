@@ -47,15 +47,15 @@ namespace akeyless.Model
         /// <param name="boundPodNames">A list of pod names that the access is restricted to.</param>
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
-        /// <param name="genKey">Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided (default to &quot;true&quot;).</param>
+        /// <param name="genKey">Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false] (default to &quot;true&quot;).</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="jwtTtl">Jwt TTL.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="publicKey">Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = "true", List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -130,9 +130,9 @@ namespace akeyless.Model
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
-        /// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided
+        /// Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false]
         /// </summary>
-        /// <value>Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided</value>
+        /// <value>Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false]</value>
         [DataMember(Name = "gen-key", EmitDefaultValue = false)]
         public string GenKey { get; set; }
 

@@ -35,11 +35,11 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListSRABastions" /> class.
         /// </summary>
-        /// <param name="allowedUrlsOnly">allowedUrlsOnly.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="allowedUrlsOnly">Filter the response to show only bastions allowed URLs (default to false).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListSRABastions(bool allowedUrlsOnly = default(bool), bool json = default(bool), string token = default(string), string uidToken = default(string))
+        public ListSRABastions(bool allowedUrlsOnly = false, bool json = false, string token = default(string), string uidToken = default(string))
         {
             this.AllowedUrlsOnly = allowedUrlsOnly;
             this.Json = json;
@@ -48,8 +48,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets AllowedUrlsOnly
+        /// Filter the response to show only bastions allowed URLs
         /// </summary>
+        /// <value>Filter the response to show only bastions allowed URLs</value>
         [DataMember(Name = "allowed-urls-only", EmitDefaultValue = true)]
         public bool AllowedUrlsOnly { get; set; }
 

@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="authorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="password">Ping Federate privileged user password.</param>
@@ -52,7 +52,7 @@ namespace akeyless.Model
         /// <param name="privilegedUser">Ping Federate privileged user.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePingTarget(string administrativePort = "9999", string authorizationPort = "9031", string comment = default(string), string description = default(string), bool json = default(bool), string key = default(string), string name = default(string), string password = default(string), string pingUrl = default(string), string privilegedUser = default(string), string token = default(string), string uidToken = default(string))
+        public CreatePingTarget(string administrativePort = "9999", string authorizationPort = "9031", string comment = default(string), string description = default(string), bool json = false, string key = default(string), string name = default(string), string password = default(string), string pingUrl = default(string), string privilegedUser = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

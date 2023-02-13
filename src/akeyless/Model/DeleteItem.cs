@@ -43,12 +43,12 @@ namespace akeyless.Model
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="deleteImmediately">When delete-in-days&#x3D;-1, must be set (default to false).</param>
         /// <param name="deleteInDays">The number of days to wait before deleting the item (relevant for keys only) (default to 7).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">The specific version you want to delete - 0&#x3D;last version, -1&#x3D;entire item with all versions (default) (default to -1).</param>
-        public DeleteItem(string accessibility = "regular", bool deleteImmediately = false, long deleteInDays = 7, bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
+        public DeleteItem(string accessibility = "regular", bool deleteImmediately = false, long deleteInDays = 7, bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = -1)
         {
             // to ensure "name" is required (not null)
             if (name == null)

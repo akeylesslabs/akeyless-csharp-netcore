@@ -42,13 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the key to use in the verification process.</param>
         /// <param name="itemId">The item id of the key to use in the verification process.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the RSA key to use in the verification process (required).</param>
         /// <param name="message">The message to be verified (required).</param>
         /// <param name="signature">The message&#39;s signature (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public VerifyPKCS1(string displayId = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string message = default(string), string signature = default(string), string token = default(string), string uidToken = default(string))
+        public VerifyPKCS1(string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string message = default(string), string signature = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "keyName" is required (not null)
             if (keyName == null)

@@ -36,6 +36,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target |  |
 | [**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target |  |
 | [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
+| [**CreateLinkedTarget**](V2Api.md#createlinkedtarget) | **POST** /create-linked-target |  |
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
 | [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer |  |
 | [**CreatePingTarget**](V2Api.md#createpingtarget) | **POST** /create-ping-target |  |
@@ -48,6 +49,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateSecret**](V2Api.md#createsecret) | **POST** /create-secret |  |
 | [**CreateTokenizer**](V2Api.md#createtokenizer) | **POST** /create-tokenizer |  |
 | [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target |  |
+| [**CreateWindowsTarget**](V2Api.md#createwindowstarget) | **POST** /create-windows-target |  |
 | [**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target |  |
 | [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
 | [**DecryptGPG**](V2Api.md#decryptgpg) | **POST** /decrypt-gpg |  |
@@ -236,6 +238,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item |  |
 | [**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target |  |
 | [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
+| [**UpdateLinkedTarget**](V2Api.md#updatelinkedtarget) | **POST** /update-linked-target |  |
 | [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target |  |
 | [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer |  |
 | [**UpdatePingTarget**](V2Api.md#updatepingtarget) | **POST** /update-ping-target |  |
@@ -254,6 +257,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateTargetDetails**](V2Api.md#updatetargetdetails) | **POST** /update-target-details |  |
 | [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target |  |
 | [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details |  |
+| [**UpdateWindowsTarget**](V2Api.md#updatewindowstarget) | **POST** /update-windows-target |  |
 | [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa |  |
 | [**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token |  |
 | [**VerifyGPG**](V2Api.md#verifygpg) | **POST** /verify-gpg |  |
@@ -3078,6 +3082,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createlinkedtarget"></a>
+# **CreateLinkedTarget**
+> CreateLinkedTargetOutput CreateLinkedTarget (CreateLinkedTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateLinkedTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateLinkedTarget(); // CreateLinkedTarget | 
+
+            try
+            {
+                CreateLinkedTargetOutput result = apiInstance.CreateLinkedTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateLinkedTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateLinkedTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateLinkedTargetOutput> response = apiInstance.CreateLinkedTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateLinkedTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateLinkedTarget**](CreateLinkedTarget.md) |  |  |
+
+### Return type
+
+[**CreateLinkedTargetOutput**](CreateLinkedTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createLinkedTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createnativek8starget"></a>
 # **CreateNativeK8STarget**
 > CreateNativeK8STargetOutput CreateNativeK8STarget (CreateNativeK8STarget body)
@@ -4130,6 +4222,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createWebTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createwindowstarget"></a>
+# **CreateWindowsTarget**
+> CreateWindowsTargetOutput CreateWindowsTarget (CreateWindowsTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateWindowsTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateWindowsTarget(); // CreateWindowsTarget | 
+
+            try
+            {
+                CreateWindowsTargetOutput result = apiInstance.CreateWindowsTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateWindowsTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateWindowsTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateWindowsTargetOutput> response = apiInstance.CreateWindowsTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateWindowsTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateWindowsTarget**](CreateWindowsTarget.md) |  |  |
+
+### Return type
+
+[**CreateWindowsTargetOutput**](CreateWindowsTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createWindowsTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -20653,6 +20833,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updatelinkedtarget"></a>
+# **UpdateLinkedTarget**
+> Object UpdateLinkedTarget (UpdateLinkedTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateLinkedTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateLinkedTarget(); // UpdateLinkedTarget | 
+
+            try
+            {
+                Object result = apiInstance.UpdateLinkedTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateLinkedTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateLinkedTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateLinkedTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateLinkedTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateLinkedTarget**](UpdateLinkedTarget.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateLinkedTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatenativek8starget"></a>
 # **UpdateNativeK8STarget**
 > UpdateNativeK8STargetOutput UpdateNativeK8STarget (UpdateNativeK8STarget body)
@@ -22228,6 +22496,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatewindowstarget"></a>
+# **UpdateWindowsTarget**
+> Object UpdateWindowsTarget (UpdateWindowsTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateWindowsTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateWindowsTarget(); // UpdateWindowsTarget | 
+
+            try
+            {
+                Object result = apiInstance.UpdateWindowsTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateWindowsTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateWindowsTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateWindowsTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateWindowsTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateWindowsTarget**](UpdateWindowsTarget.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateWindowsTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

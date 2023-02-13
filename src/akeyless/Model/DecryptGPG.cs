@@ -43,13 +43,13 @@ namespace akeyless.Model
         /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format (required).</param>
         /// <param name="displayId">The display id of the key to use in the decryption process.</param>
         /// <param name="itemId">The item id of the key to use in the decryption process.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
         /// <param name="outputFormat">If specified, the output will be formatted accordingly. options: [base64].</param>
         /// <param name="passphrase">Passphrase that was used to generate the key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptGPG(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string outputFormat = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
+        public DecryptGPG(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null)

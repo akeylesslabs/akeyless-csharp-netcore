@@ -43,18 +43,18 @@ namespace akeyless.Model
         /// <param name="alg">Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Name of key to be created (required).</param>
-        /// <param name="overwrite">When the overwrite flag is set, this command will only update an existing key. [true, false].</param>
+        /// <param name="overwrite">When the overwrite flag is set, this command will only update an existing key [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rsaFileData">RSA private key data, base64 encoded.</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (default to 2).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string overwrite = default(string), string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -74,7 +74,8 @@ namespace akeyless.Model
             this.Description = description;
             this.Json = json;
             this.Metadata = metadata;
-            this.Overwrite = overwrite;
+            // use default value if no "overwrite" provided
+            this.Overwrite = overwrite ?? "false";
             this.RsaFileData = rsaFileData;
             this.SplitLevel = splitLevel;
             this.Tag = tag;
@@ -104,9 +105,9 @@ namespace akeyless.Model
         public string CustomerFrgId { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -139,9 +140,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// When the overwrite flag is set, this command will only update an existing key. [true, false]
+        /// When the overwrite flag is set, this command will only update an existing key [true/false]
         /// </summary>
-        /// <value>When the overwrite flag is set, this command will only update an existing key. [true, false]</value>
+        /// <value>When the overwrite flag is set, this command will only update an existing key [true/false]</value>
         [DataMember(Name = "overwrite", EmitDefaultValue = false)]
         public string Overwrite { get; set; }
 

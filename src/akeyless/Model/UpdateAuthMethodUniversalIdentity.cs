@@ -46,14 +46,14 @@ namespace akeyless.Model
         /// <param name="denyRotate">Deny from the token to rotate.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="jwtTtl">Jwt TTL.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string token = default(string), int ttl = 60, string uidToken = default(string))
+        public UpdateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string token = default(string), int ttl = 60, string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

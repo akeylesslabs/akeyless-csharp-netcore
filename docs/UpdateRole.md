@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AuditAccess** | **string** | Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods. | [optional] 
 **Description** | **string** | Description of the object | [optional] [default to "default_comment"]
 **GwAnalyticsAccess** | **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Role name | 
 **NewComment** | **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | **string** | New Role name | [optional] 

@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerGithub" /> class.
         /// </summary>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="githubAppId">Github app id.</param>
         /// <param name="githubAppPrivateKey">App private key.</param>
-        /// <param name="githubBaseUrl">Base URL.</param>
+        /// <param name="githubBaseUrl">Base URL (default to &quot;https://api.github.com/&quot;).</param>
         /// <param name="installationId">Github app installation id.</param>
         /// <param name="installationRepository">Repository that the app installation has access to.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="targetName">Target name.</param>
@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="tokenPermissions">Optional - installation token&#39;s allowed permissions.</param>
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long installationId = default(long), string installationRepository = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
+        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = "https://api.github.com/", long installationId = default(long), string installationRepository = default(string), bool json = false, string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -65,7 +65,8 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.GithubAppId = githubAppId;
             this.GithubAppPrivateKey = githubAppPrivateKey;
-            this.GithubBaseUrl = githubBaseUrl;
+            // use default value if no "githubBaseUrl" provided
+            this.GithubBaseUrl = githubBaseUrl ?? "https://api.github.com/";
             this.InstallationId = installationId;
             this.InstallationRepository = installationRepository;
             this.Json = json;
@@ -78,9 +79,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

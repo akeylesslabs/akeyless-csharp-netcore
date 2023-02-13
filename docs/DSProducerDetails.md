@@ -83,6 +83,7 @@ Name | Type | Description | Notes
 **GcpRoleBindings** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **GcpServiceAccountEmail** | **string** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] 
 **GcpServiceAccountKey** | **string** |  | [optional] 
+**GcpServiceAccountKeyBase64** | **string** |  | [optional] 
 **GcpServiceAccountType** | **string** |  | [optional] 
 **GcpTmpServiceAccountName** | **string** |  | [optional] 
 **GcpTokenLifetime** | **string** |  | [optional] 

@@ -44,12 +44,12 @@ namespace akeyless.Model
         /// <param name="displayId">The display id of the key to use in the decryption process.</param>
         /// <param name="encryptionContext">The encryption context. If this was specified in the encrypt command, it must be specified here or the decryption operation will fail.</param>
         /// <param name="itemId">The item id of the key to use in the decryption process.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
         /// <param name="outputFormat">If specified, the output will be formatted accordingly. options: [base64].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Decrypt(string ciphertext = default(string), string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), long itemId = default(long), bool json = default(bool), string keyName = default(string), string outputFormat = default(string), string token = default(string), string uidToken = default(string))
+        public Decrypt(string ciphertext = default(string), string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "keyName" is required (not null)
             if (keyName == null)

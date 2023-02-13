@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **CassandraPassword** | **string** | Cassandra superuser password | [optional] 
 **CassandraPort** | **string** | Cassandra port | [optional] [default to "9042"]
 **CassandraUsername** | **string** | Cassandra superuser username | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

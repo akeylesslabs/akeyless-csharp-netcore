@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerGcp" /> class.
         /// </summary>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="gcpCredType">gcpCredType.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
         /// <param name="gcpSaEmail">The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed).</param>
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = "fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerGcp(string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = "fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -90,9 +90,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

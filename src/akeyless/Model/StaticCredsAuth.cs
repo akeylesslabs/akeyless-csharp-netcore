@@ -38,8 +38,8 @@ namespace akeyless.Model
         /// <param name="accessId">Akeyless JWT token.</param>
         /// <param name="adminEmail">Akeyless JWT token.</param>
         /// <param name="creds">Akeyless JWT token.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        public StaticCredsAuth(string accessId = default(string), string adminEmail = default(string), string creds = default(string), bool json = default(bool))
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        public StaticCredsAuth(string accessId = default(string), string adminEmail = default(string), string creds = default(string), bool json = false)
         {
             this.AccessId = accessId;
             this.AdminEmail = adminEmail;

@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <param name="_1passwordSecretKey">1Password user secret key to connect to the API.</param>
         /// <param name="_1passwordUrl">1Password api container url.</param>
         /// <param name="_1passwordVaults">1Password list of vault to get the items from.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value.</param>
         /// <param name="targetLocation">Target location in your Akeyless personal folder for migrated secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Migration type for now only 1password. (default to &quot;1password&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayMigratePersonalItems(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), bool json = default(bool), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = "1password", string uidToken = default(string))
+        public GatewayMigratePersonalItems(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), bool json = false, string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = "1password", string uidToken = default(string))
         {
             this._1passwordEmail = _1passwordEmail;
             this._1passwordPassword = _1passwordPassword;

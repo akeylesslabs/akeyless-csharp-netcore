@@ -51,12 +51,12 @@ namespace akeyless.Model
         /// <param name="boundUserName">A list of full user-name that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="jwtTtl">Jwt TTL.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodHuawei(long accessExpires = 0, string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodHuawei(long accessExpires = 0, string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

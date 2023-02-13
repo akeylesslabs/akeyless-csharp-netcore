@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Every** | **string** | Rate of periodic runner repetition in hours | [optional] 
 **ForwarderType** | **string** |  | 
 **Host** | **string** | Workstation Host | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | EventForwarder name | 
 **RunnerType** | **string** |  | 

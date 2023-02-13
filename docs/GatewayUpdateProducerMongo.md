@@ -5,8 +5,8 @@ gatewayUpdateProducerMongo is a command that updates either mongodb  producer or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 
 **MongodbAtlasProjectId** | **string** | MongoDB Atlas project ID | [optional] 
@@ -22,10 +22,10 @@ Name | Type | Description | Notes
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Encrypt producer with following key | [optional] 
-**SecureAccessBastionIssuer** | **string** |  | [optional] 
-**SecureAccessEnable** | **string** |  | [optional] 
-**SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
-**SecureAccessWeb** | **bool** |  | [optional] 
+**SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** | Target DB servers for connections | [optional] 
+**SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

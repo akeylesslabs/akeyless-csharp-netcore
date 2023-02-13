@@ -41,12 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Detokenize" /> class.
         /// </summary>
         /// <param name="ciphertext">Data to be decrypted (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenizerName">The name of the tokenizer to use in the decryption process (required).</param>
         /// <param name="tweak">Base64 encoded tweak for vaultless encryption.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Detokenize(string ciphertext = default(string), bool json = default(bool), string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
+        public Detokenize(string ciphertext = default(string), bool json = false, string token = default(string), string tokenizerName = default(string), string tweak = default(string), string uidToken = default(string))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null)

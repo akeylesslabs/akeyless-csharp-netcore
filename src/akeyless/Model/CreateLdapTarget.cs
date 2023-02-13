@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="bindDnPassword">Bind DN Password (required).</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL (required).</param>
@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = default(bool), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string serverType = "OpenLDAP", string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
+        public CreateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = false, string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string serverType = "OpenLDAP", string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
         {
             // to ensure "bindDn" is required (not null)
             if (bindDn == null)

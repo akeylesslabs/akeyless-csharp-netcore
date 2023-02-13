@@ -6,8 +6,8 @@ assocRoleAuthMethod is a command that creates an association between role and au
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AmName** | **string** | The auth method to associate | 
-**CaseSensitive** | **string** |  | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**CaseSensitive** | **string** | Treat sub claims as case-sensitive [true/false] | [optional] [default to "true"]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **RoleName** | **string** | The role to associate | 
 **SubClaims** | **Dictionary&lt;string, string&gt;** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

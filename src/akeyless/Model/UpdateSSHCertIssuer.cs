@@ -44,23 +44,23 @@ namespace akeyless.Model
         /// <param name="allowedUsers">Users allowed to fetch the certificate, e.g root,ubuntu (required).</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="principals">Signed certificates with principal, e.g example_role1,example_role2.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="secureAccessBastionApi">secureAccessBastionApi.</param>
-        /// <param name="secureAccessBastionSsh">secureAccessBastionSsh.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessHost">secureAccessHost.</param>
-        /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
-        /// <param name="secureAccessUseInternalBastion">secureAccessUseInternalBastion.</param>
+        /// <param name="secureAccessBastionApi">Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900.</param>
+        /// <param name="secureAccessBastionSsh">Bastion&#39;s SSH server. E.g. my.bastion:22.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessSshCredsUser">SSH username to connect to target server, must be in &#39;Allowed Users&#39; list.</param>
+        /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = default(bool), string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -170,38 +170,44 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionApi
+        /// Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900
         /// </summary>
+        /// <value>Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900</value>
         [DataMember(Name = "secure-access-bastion-api", EmitDefaultValue = false)]
         public string SecureAccessBastionApi { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionSsh
+        /// Bastion&#39;s SSH server. E.g. my.bastion:22
         /// </summary>
+        /// <value>Bastion&#39;s SSH server. E.g. my.bastion:22</value>
         [DataMember(Name = "secure-access-bastion-ssh", EmitDefaultValue = false)]
         public string SecureAccessBastionSsh { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessHost
+        /// Target servers for connections
         /// </summary>
+        /// <value>Target servers for connections</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessSshCredsUser
+        /// SSH username to connect to target server, must be in &#39;Allowed Users&#39; list
         /// </summary>
+        /// <value>SSH username to connect to target server, must be in &#39;Allowed Users&#39; list</value>
         [DataMember(Name = "secure-access-ssh-creds-user", EmitDefaultValue = false)]
         public string SecureAccessSshCredsUser { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessUseInternalBastion
+        /// Use internal SSH Bastion
         /// </summary>
+        /// <value>Use internal SSH Bastion</value>
         [DataMember(Name = "secure-access-use-internal-bastion", EmitDefaultValue = true)]
         public bool SecureAccessUseInternalBastion { get; set; }
 

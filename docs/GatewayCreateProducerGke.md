@@ -5,20 +5,20 @@ gatewayCreateProducerGke is a command that creates gke producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **GkeAccountKey** | **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | **string** | GKE service account email | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessAllowPortForwading** | **bool** |  | [optional] 
-**SecureAccessBastionIssuer** | **string** |  | [optional] 
-**SecureAccessClusterEndpoint** | **string** |  | [optional] 
-**SecureAccessEnable** | **string** |  | [optional] 
-**SecureAccessWeb** | **bool** |  | [optional] 
+**SecureAccessAllowPortForwading** | **bool** | Enable Port forwarding while using CLI access | [optional] 
+**SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessClusterEndpoint** | **string** | The K8s cluster endpoint URL | [optional] 
+**SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

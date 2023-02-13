@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **LastVersion** | **int** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
+**TargetDetails** | **string** |  | [optional] 
 **TargetId** | **long** |  | [optional] 
 **TargetItemsAssoc** | [**List&lt;TargetItemAssociation&gt;**](TargetItemAssociation.md) |  | [optional] 
 **TargetName** | **string** |  | [optional] 

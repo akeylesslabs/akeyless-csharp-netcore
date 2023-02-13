@@ -42,18 +42,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required).</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required).</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token (required).</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateNativeK8STarget(string comment = default(string), string description = default(string), bool json = default(bool), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
             if (k8sClusterCaCert == null)
@@ -133,8 +133,9 @@ namespace akeyless.Model
         public string K8sClusterToken { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 

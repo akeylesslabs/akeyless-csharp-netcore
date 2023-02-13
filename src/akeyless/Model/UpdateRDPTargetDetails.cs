@@ -40,18 +40,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateRDPTargetDetails" /> class.
         /// </summary>
-        /// <param name="adminName">adminName.</param>
-        /// <param name="adminPwd">adminPwd.</param>
-        /// <param name="hostName">hostName.</param>
-        /// <param name="hostPort">hostPort.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="adminName">The admin name.</param>
+        /// <param name="adminPwd">The admin password.</param>
+        /// <param name="hostName">The rdp host name.</param>
+        /// <param name="hostPort">The rdp port (default to &quot;22&quot;).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRDPTargetDetails(string adminName = default(string), string adminPwd = default(string), string hostName = default(string), string hostPort = default(string), bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRDPTargetDetails(string adminName = default(string), string adminPwd = default(string), string hostName = default(string), string hostPort = "22", bool json = false, string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,7 +62,8 @@ namespace akeyless.Model
             this.AdminName = adminName;
             this.AdminPwd = adminPwd;
             this.HostName = hostName;
-            this.HostPort = hostPort;
+            // use default value if no "hostPort" provided
+            this.HostPort = hostPort ?? "22";
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.NewVersion = newVersion;
@@ -72,26 +73,30 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets AdminName
+        /// The admin name
         /// </summary>
+        /// <value>The admin name</value>
         [DataMember(Name = "admin_name", EmitDefaultValue = false)]
         public string AdminName { get; set; }
 
         /// <summary>
-        /// Gets or Sets AdminPwd
+        /// The admin password
         /// </summary>
+        /// <value>The admin password</value>
         [DataMember(Name = "admin_pwd", EmitDefaultValue = false)]
         public string AdminPwd { get; set; }
 
         /// <summary>
-        /// Gets or Sets HostName
+        /// The rdp host name
         /// </summary>
+        /// <value>The rdp host name</value>
         [DataMember(Name = "host_name", EmitDefaultValue = false)]
         public string HostName { get; set; }
 
         /// <summary>
-        /// Gets or Sets HostPort
+        /// The rdp port
         /// </summary>
+        /// <value>The rdp port</value>
         [DataMember(Name = "host_port", EmitDefaultValue = false)]
         public string HostPort { get; set; }
 
@@ -103,8 +108,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 

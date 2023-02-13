@@ -41,11 +41,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DeleteTargets" /> class.
         /// </summary>
         /// <param name="forceDeletion">Enforce deletion (default to false).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="path">Path to delete the targets from (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteTargets(bool forceDeletion = false, bool json = default(bool), string path = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteTargets(bool forceDeletion = false, bool json = false, string path = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
             if (path == null)

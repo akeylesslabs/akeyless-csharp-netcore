@@ -59,20 +59,20 @@ namespace akeyless.Model
         /// <param name="adTargetsPathTemplate">Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration).</param>
         /// <param name="adUserBaseDn">Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
         /// <param name="adUserGroups">Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration).</param>
-        /// <param name="asSshPort">Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration).</param>
+        /// <param name="asSshPort">Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) (default to &quot;22&quot;).</param>
         /// <param name="awsKey">AWS Secret Access Key (relevant only for AWS migration).</param>
         /// <param name="awsKeyId">AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration).</param>
-        /// <param name="awsRegion">AWS region of the required Secrets Manager (relevant only for AWS migration).</param>
+        /// <param name="awsRegion">AWS region of the required Secrets Manager (relevant only for AWS migration) (default to &quot;us-east-2&quot;).</param>
         /// <param name="azureClientId">Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureKvName">Azure Key Vault Name (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureSecret">Azure Key Vault secret (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureTenantId">Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration).</param>
         /// <param name="gcpKey">Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration).</param>
-        /// <param name="hashiJson">Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration).</param>
+        /// <param name="hashiJson">Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] (default to &quot;true&quot;).</param>
         /// <param name="hashiNs">HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration).</param>
         /// <param name="hashiToken">HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration).</param>
         /// <param name="hashiUrl">HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sCaCertificate">For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method).</param>
         /// <param name="k8sClientCertificate">K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method).</param>
         /// <param name="k8sClientKey">K8s Client key (relevant only for K8s migration with Certificate Authentication method).</param>
@@ -88,7 +88,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string asSshPort = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = default(string), string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), bool json = default(bool), List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayCreateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string asSshPort = "22", string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -121,16 +121,19 @@ namespace akeyless.Model
             this.AdTargetsPathTemplate = adTargetsPathTemplate;
             this.AdUserBaseDn = adUserBaseDn;
             this.AdUserGroups = adUserGroups;
-            this.AsSshPort = asSshPort;
+            // use default value if no "asSshPort" provided
+            this.AsSshPort = asSshPort ?? "22";
             this.AwsKey = awsKey;
             this.AwsKeyId = awsKeyId;
-            this.AwsRegion = awsRegion;
+            // use default value if no "awsRegion" provided
+            this.AwsRegion = awsRegion ?? "us-east-2";
             this.AzureClientId = azureClientId;
             this.AzureKvName = azureKvName;
             this.AzureSecret = azureSecret;
             this.AzureTenantId = azureTenantId;
             this.GcpKey = gcpKey;
-            this.HashiJson = hashiJson;
+            // use default value if no "hashiJson" provided
+            this.HashiJson = hashiJson ?? "true";
             this.HashiNs = hashiNs;
             this.HashiToken = hashiToken;
             this.HashiUrl = hashiUrl;
@@ -347,9 +350,9 @@ namespace akeyless.Model
         public string GcpKey { get; set; }
 
         /// <summary>
-        /// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
+        /// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
         /// </summary>
-        /// <value>Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)</value>
+        /// <value>Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]</value>
         [DataMember(Name = "hashi-json", EmitDefaultValue = false)]
         public string HashiJson { get; set; }
 

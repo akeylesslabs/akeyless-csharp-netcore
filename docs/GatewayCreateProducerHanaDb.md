@@ -5,7 +5,7 @@ gatewayCreateProducerHanaDb is a command that creates hanadb producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **HanaDbname** | **string** | HanaDb Name | [optional] 
 **HanadbCreateStatements** | **string** | HanaDb Creation statements | [optional] 
 **HanadbHost** | **string** | HanaDb Host | [optional] [default to "127.0.0.1"]
@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **HanadbPort** | **string** | HanaDb Port | [optional] [default to "443"]
 **HanadbRevocationStatements** | **string** | HanaDb Revocation statements | [optional] 
 **HanadbUsername** | **string** | HanaDb Username | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessBastionIssuer** | **string** |  | [optional] 
-**SecureAccessDbSchema** | **string** |  | [optional] 
-**SecureAccessEnable** | **string** |  | [optional] 
-**SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
-**SecureAccessWeb** | **bool** |  | [optional] 
+**SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessDbSchema** | **string** | The DB schema | [optional] 
+**SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** | Target DB servers for connections | [optional] 
+**SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

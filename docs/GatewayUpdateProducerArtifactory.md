@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | **string** | Base URL | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

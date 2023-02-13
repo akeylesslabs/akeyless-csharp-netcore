@@ -10,6 +10,7 @@ docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
+docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -99,6 +100,8 @@ docs/CreateKey.md
 docs/CreateKeyOutput.md
 docs/CreateLdapTarget.md
 docs/CreateLdapTargetOutput.md
+docs/CreateLinkedTarget.md
+docs/CreateLinkedTargetOutput.md
 docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
@@ -124,6 +127,8 @@ docs/CreateTokenizer.md
 docs/CreateTokenizerOutput.md
 docs/CreateWebTarget.md
 docs/CreateWebTargetOutput.md
+docs/CreateWindowsTarget.md
+docs/CreateWindowsTargetOutput.md
 docs/CustomerFragment.md
 docs/CustomerFragmentsJson.md
 docs/CustomerFullAddress.md
@@ -146,6 +151,7 @@ docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
 docs/DeleteEventForwarder.md
+docs/DeleteGatewayAllowedAccessId.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -474,6 +480,7 @@ docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
+docs/SharingPolicyInfo.md
 docs/SignGPG.md
 docs/SignGPGOutput.md
 docs/SignJWTOutput.md
@@ -557,6 +564,7 @@ docs/UpdateItemOutput.md
 docs/UpdateLdapTarget.md
 docs/UpdateLdapTargetDetails.md
 docs/UpdateLdapTargetOutput.md
+docs/UpdateLinkedTarget.md
 docs/UpdateNativeK8STarget.md
 docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
@@ -588,6 +596,7 @@ docs/UpdateTargetOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
+docs/UpdateWindowsTarget.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
 docs/V2Api.md
@@ -601,6 +610,15 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/AddGatewayAllowedAccessIdTests.cs
+src/akeyless.Test/Model/CreateLinkedTargetOutputTests.cs
+src/akeyless.Test/Model/CreateLinkedTargetTests.cs
+src/akeyless.Test/Model/CreateWindowsTargetOutputTests.cs
+src/akeyless.Test/Model/CreateWindowsTargetTests.cs
+src/akeyless.Test/Model/DeleteGatewayAllowedAccessIdTests.cs
+src/akeyless.Test/Model/SharingPolicyInfoTests.cs
+src/akeyless.Test/Model/UpdateLinkedTargetTests.cs
+src/akeyless.Test/Model/UpdateWindowsTargetTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -628,6 +646,7 @@ src/akeyless/Model/AccountGeneralSettings.cs
 src/akeyless/Model/AccountObjectVersionSettingsOutput.cs
 src/akeyless/Model/ActiveDirectoryMigration.cs
 src/akeyless/Model/ActiveDirectoryPayload.cs
+src/akeyless/Model/AddGatewayAllowedAccessId.cs
 src/akeyless/Model/AdminsConfigPart.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AllowedAccess.cs
@@ -717,6 +736,8 @@ src/akeyless/Model/CreateKey.cs
 src/akeyless/Model/CreateKeyOutput.cs
 src/akeyless/Model/CreateLdapTarget.cs
 src/akeyless/Model/CreateLdapTargetOutput.cs
+src/akeyless/Model/CreateLinkedTarget.cs
+src/akeyless/Model/CreateLinkedTargetOutput.cs
 src/akeyless/Model/CreateNativeK8STarget.cs
 src/akeyless/Model/CreateNativeK8STargetOutput.cs
 src/akeyless/Model/CreatePKICertIssuer.cs
@@ -742,6 +763,8 @@ src/akeyless/Model/CreateTokenizer.cs
 src/akeyless/Model/CreateTokenizerOutput.cs
 src/akeyless/Model/CreateWebTarget.cs
 src/akeyless/Model/CreateWebTargetOutput.cs
+src/akeyless/Model/CreateWindowsTarget.cs
+src/akeyless/Model/CreateWindowsTargetOutput.cs
 src/akeyless/Model/CustomerFragment.cs
 src/akeyless/Model/CustomerFragmentsJson.cs
 src/akeyless/Model/CustomerFullAddress.cs
@@ -764,6 +787,7 @@ src/akeyless/Model/DeleteAuthMethodOutput.cs
 src/akeyless/Model/DeleteAuthMethods.cs
 src/akeyless/Model/DeleteAuthMethodsOutput.cs
 src/akeyless/Model/DeleteEventForwarder.cs
+src/akeyless/Model/DeleteGatewayAllowedAccessId.cs
 src/akeyless/Model/DeleteItem.cs
 src/akeyless/Model/DeleteItemOutput.cs
 src/akeyless/Model/DeleteItems.cs
@@ -1092,6 +1116,7 @@ src/akeyless/Model/SecureRemoteAccess.cs
 src/akeyless/Model/SetItemState.cs
 src/akeyless/Model/SetRoleRule.cs
 src/akeyless/Model/ShareItem.cs
+src/akeyless/Model/SharingPolicyInfo.cs
 src/akeyless/Model/SignGPG.cs
 src/akeyless/Model/SignGPGOutput.cs
 src/akeyless/Model/SignJWTOutput.cs
@@ -1175,6 +1200,7 @@ src/akeyless/Model/UpdateItemOutput.cs
 src/akeyless/Model/UpdateLdapTarget.cs
 src/akeyless/Model/UpdateLdapTargetDetails.cs
 src/akeyless/Model/UpdateLdapTargetOutput.cs
+src/akeyless/Model/UpdateLinkedTarget.cs
 src/akeyless/Model/UpdateNativeK8STarget.cs
 src/akeyless/Model/UpdateNativeK8STargetOutput.cs
 src/akeyless/Model/UpdateOutput.cs
@@ -1206,6 +1232,7 @@ src/akeyless/Model/UpdateTargetOutput.cs
 src/akeyless/Model/UpdateWebTarget.cs
 src/akeyless/Model/UpdateWebTargetDetails.cs
 src/akeyless/Model/UpdateWebTargetOutput.cs
+src/akeyless/Model/UpdateWindowsTarget.cs
 src/akeyless/Model/UploadPKCS12.cs
 src/akeyless/Model/UploadRSA.cs
 src/akeyless/Model/ValidateToken.cs

@@ -5,8 +5,8 @@ ExportClassicKey is a command that returns the classic key material
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IgnoreCache** | **string** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
-**Json** | **bool** | Set output format to JSON | [optional] 
+**IgnoreCache** | **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | ClassicKey name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

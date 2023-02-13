@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminRotationIntervalDays** | **long** | Define rotation interval in days | [optional] 
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **EnableAdminRotation** | **bool** | Should admin credentials be rotated | [optional] [default to false]
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **Payload** | **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 

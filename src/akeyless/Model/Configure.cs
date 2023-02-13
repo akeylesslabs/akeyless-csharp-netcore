@@ -42,11 +42,11 @@ namespace akeyless.Model
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context).</param>
-        /// <param name="gcpAudience">GCP JWT audience.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="gcpAudience">GCP JWT audience (default to &quot;akeyless.io&quot;).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context).</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = default(string), bool json = default(bool), string k8sAuthConfigName = default(string), string keyData = default(string))
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -56,7 +56,8 @@ namespace akeyless.Model
             this.AdminPassword = adminPassword;
             this.AzureAdObjectId = azureAdObjectId;
             this.CertData = certData;
-            this.GcpAudience = gcpAudience;
+            // use default value if no "gcpAudience" provided
+            this.GcpAudience = gcpAudience ?? "akeyless.io";
             this.Json = json;
             this.K8sAuthConfigName = k8sAuthConfigName;
             this.KeyData = keyData;

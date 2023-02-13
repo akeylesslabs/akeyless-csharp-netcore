@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | **string** | Deprecated - use description | [optional] 
 **Description** | **string** | Description of the object | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **K8sClusterCaCert** | **string** | K8S cluster CA certificate | 
 **K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | 
 **K8sClusterToken** | **string** | K8S cluster Bearer token | 
-**KeepPrevVersion** | **string** |  | [optional] 
+**KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 

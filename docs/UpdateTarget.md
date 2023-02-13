@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **string** | Description of the object | [optional] [default to "default_comment"]
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Target name | 
 **NewComment** | **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | **string** | New Target name | [optional] 

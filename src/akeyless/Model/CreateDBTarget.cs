@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="dbType">dbType (required).</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="host">host.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="mongodbAtlas">mongodbAtlas.</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
@@ -62,12 +62,12 @@ namespace akeyless.Model
         /// <param name="snowflakeAccount">snowflakeAccount.</param>
         /// <param name="snowflakeApiPrivateKey">RSA Private key (base64 encoded).</param>
         /// <param name="snowflakeApiPrivateKeyPassword">The Private key passphrase.</param>
-        /// <param name="ssl">SSL connection mode.</param>
+        /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = default(bool), string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "dbType" is required (not null)
             if (dbType == null)
@@ -255,9 +255,9 @@ namespace akeyless.Model
         public string SnowflakeApiPrivateKeyPassword { get; set; }
 
         /// <summary>
-        /// SSL connection mode
+        /// Enable/Disable SSL [true/false]
         /// </summary>
-        /// <value>SSL connection mode</value>
+        /// <value>Enable/Disable SSL [true/false]</value>
         [DataMember(Name = "ssl", EmitDefaultValue = true)]
         public bool Ssl { get; set; }
 

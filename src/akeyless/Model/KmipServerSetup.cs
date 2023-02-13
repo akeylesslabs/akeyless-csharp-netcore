@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipServerSetup" /> class.
         /// </summary>
-        /// <param name="certificateTtl">certificateTtl.</param>
+        /// <param name="certificateTtl">Server certificate TTL in days (default to 90).</param>
         /// <param name="hostname">Hostname (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="root">root.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="root">Root path of KMIP Resources (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipServerSetup(long certificateTtl = default(long), string hostname = default(string), bool json = default(bool), string root = default(string), string token = default(string), string uidToken = default(string))
+        public KmipServerSetup(long certificateTtl = 90, string hostname = default(string), bool json = false, string root = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null)
@@ -54,16 +54,22 @@ namespace akeyless.Model
                 throw new ArgumentNullException("hostname is a required property for KmipServerSetup and cannot be null");
             }
             this.Hostname = hostname;
+            // to ensure "root" is required (not null)
+            if (root == null)
+            {
+                throw new ArgumentNullException("root is a required property for KmipServerSetup and cannot be null");
+            }
+            this.Root = root;
             this.CertificateTtl = certificateTtl;
             this.Json = json;
-            this.Root = root;
             this.Token = token;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Gets or Sets CertificateTtl
+        /// Server certificate TTL in days
         /// </summary>
+        /// <value>Server certificate TTL in days</value>
         [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
         public long CertificateTtl { get; set; }
 
@@ -82,9 +88,10 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets Root
+        /// Root path of KMIP Resources
         /// </summary>
-        [DataMember(Name = "root", EmitDefaultValue = false)]
+        /// <value>Root path of KMIP Resources</value>
+        [DataMember(Name = "root", IsRequired = true, EmitDefaultValue = true)]
         public string Root { get; set; }
 
         /// <summary>

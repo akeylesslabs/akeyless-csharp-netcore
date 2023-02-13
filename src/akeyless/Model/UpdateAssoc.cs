@@ -41,12 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAssoc" /> class.
         /// </summary>
         /// <param name="assocId">The association id to be updated (required).</param>
-        /// <param name="caseSensitive">caseSensitive.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="caseSensitive">Treat sub claims as case-sensitive [true/false] (default to &quot;true&quot;).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAssoc(string assocId = default(string), string caseSensitive = default(string), bool json = default(bool), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public UpdateAssoc(string assocId = default(string), string caseSensitive = "true", bool json = false, Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "assocId" is required (not null)
             if (assocId == null)
@@ -54,7 +54,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("assocId is a required property for UpdateAssoc and cannot be null");
             }
             this.AssocId = assocId;
-            this.CaseSensitive = caseSensitive;
+            // use default value if no "caseSensitive" provided
+            this.CaseSensitive = caseSensitive ?? "true";
             this.Json = json;
             this.SubClaims = subClaims;
             this.Token = token;
@@ -69,8 +70,9 @@ namespace akeyless.Model
         public string AssocId { get; set; }
 
         /// <summary>
-        /// Gets or Sets CaseSensitive
+        /// Treat sub claims as case-sensitive [true/false]
         /// </summary>
+        /// <value>Treat sub claims as case-sensitive [true/false]</value>
         [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
         public string CaseSensitive { get; set; }
 

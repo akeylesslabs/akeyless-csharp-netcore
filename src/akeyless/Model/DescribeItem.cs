@@ -42,12 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the item.</param>
         /// <param name="itemId">Item id of the item.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string displayId = default(string), long itemId = default(long), bool json = default(bool), string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(string displayId = default(string), long itemId = default(long), bool json = false, string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

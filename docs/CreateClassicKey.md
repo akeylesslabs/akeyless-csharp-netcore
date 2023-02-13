@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] | 
 **CertFileData** | **string** | Certificate in a PEM format. | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **GpgAlg** | **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyData** | **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | ClassicKey name | 

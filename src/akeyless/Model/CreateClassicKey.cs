@@ -42,10 +42,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gpgAlg">gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519].</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">ClassicKey name (required).</param>
@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="tags">List of the tags attached to this classic key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), string gpgAlg = default(string), bool json = default(bool), string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), string gpgAlg = default(string), bool json = false, string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -95,9 +95,9 @@ namespace akeyless.Model
         public string CertFileData { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

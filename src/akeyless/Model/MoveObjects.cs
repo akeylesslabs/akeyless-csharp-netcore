@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MoveObjects" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="objectsType">The objects type to move (item/auth_method/role) (default to &quot;item&quot;).</param>
         /// <param name="source">Source path to move the objects from (required).</param>
         /// <param name="target">Target path to move the objects to (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public MoveObjects(bool json = default(bool), string objectsType = "item", string source = default(string), string target = default(string), string token = default(string), string uidToken = default(string))
+        public MoveObjects(bool json = false, string objectsType = "item", string source = default(string), string target = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "source" is required (not null)
             if (source == null)

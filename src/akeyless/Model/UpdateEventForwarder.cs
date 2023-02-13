@@ -43,17 +43,17 @@ namespace akeyless.Model
         /// <param name="adminName">Workstation Admin Name.</param>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder).</param>
-        /// <param name="enable">Enable.</param>
+        /// <param name="enable">Enable/Disable Event Forwarder [true/false] (default to &quot;true&quot;).</param>
         /// <param name="eventSourceLocations">Event sources.</param>
         /// <param name="eventTypes">Event types.</param>
         /// <param name="host">Workstation Host.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">EventForwarder name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New EventForwarder name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateEventForwarder(string adminName = default(string), string description = "default_comment", string emailTo = default(string), string enable = default(string), List<string> eventSourceLocations = default(List<string>), List<string> eventTypes = default(List<string>), string host = default(string), bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateEventForwarder(string adminName = default(string), string description = "default_comment", string emailTo = default(string), string enable = "true", List<string> eventSourceLocations = default(List<string>), List<string> eventTypes = default(List<string>), string host = default(string), bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -65,7 +65,8 @@ namespace akeyless.Model
             // use default value if no "description" provided
             this.Description = description ?? "default_comment";
             this.EmailTo = emailTo;
-            this.Enable = enable;
+            // use default value if no "enable" provided
+            this.Enable = enable ?? "true";
             this.EventSourceLocations = eventSourceLocations;
             this.EventTypes = eventTypes;
             this.Host = host;
@@ -99,9 +100,9 @@ namespace akeyless.Model
         public string EmailTo { get; set; }
 
         /// <summary>
-        /// Enable
+        /// Enable/Disable Event Forwarder [true/false]
         /// </summary>
-        /// <value>Enable</value>
+        /// <value>Enable/Disable Event Forwarder [true/false]</value>
         [DataMember(Name = "enable", EmitDefaultValue = false)]
         public string Enable { get; set; }
 

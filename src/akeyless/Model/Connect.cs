@@ -43,16 +43,16 @@ namespace akeyless.Model
         /// <param name="bastionCtrlSubdomain">The Bastion API prefix.</param>
         /// <param name="certIssuerName">The Akeyless certificate issuer name.</param>
         /// <param name="identityFile">The file from which the identity (private key) for public key authentication is read.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">The Secret name (for database and AWS producers - producer name).</param>
         /// <param name="sshCommand">Path to SSH executable. e.g. /usr/bin/ssh.</param>
         /// <param name="sshExtraArgs">The Use to add offical SSH arguments (except -i).</param>
-        /// <param name="sshLegacySigningAlg">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate..</param>
+        /// <param name="sshLegacySigningAlg">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. (default to false).</param>
         /// <param name="target">The target.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = default(bool), string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = default(bool), string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = false, string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
         {
             this.Helper = helper;
             this.RcFileOverride = rcFileOverride;

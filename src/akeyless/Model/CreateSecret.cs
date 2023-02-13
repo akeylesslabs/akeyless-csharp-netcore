@@ -41,9 +41,9 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateSecret" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
@@ -52,20 +52,20 @@ namespace akeyless.Model
         /// <param name="passwordManagerPassword">For Password Management use, additional fields.</param>
         /// <param name="passwordManagerUsername">For Password Management use.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessHost">secureAccessHost.</param>
-        /// <param name="secureAccessSshCreds">secureAccessSshCreds.</param>
-        /// <param name="secureAccessSshUser">secureAccessSshUser.</param>
-        /// <param name="secureAccessUrl">secureAccessUrl.</param>
-        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
-        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
+        /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessSshCreds">Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key].</param>
+        /// <param name="secureAccessSshUser">Override the SSH username as indicated in SSH Certificate Issuer.</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">For Password Management use, reflect the website context.</param>
+        /// <param name="type">The secret sub type [generic/password] (default to &quot;generic&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The secret value (required).</param>
-        public CreateSecret(string accessibility = "regular", string deleteProtection = default(string), string description = default(string), bool json = default(bool), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string token = default(string), string type = default(string), string uidToken = default(string), string value = default(string))
+        public CreateSecret(string accessibility = "regular", string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -101,7 +101,8 @@ namespace akeyless.Model
             this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Tags = tags;
             this.Token = token;
-            this.Type = type;
+            // use default value if no "type" provided
+            this.Type = type ?? "generic";
             this.UidToken = uidToken;
         }
 
@@ -113,9 +114,9 @@ namespace akeyless.Model
         public string Accessibility { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -190,50 +191,58 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionIssuer
+        /// Path to the SSH Certificate Issuer for your Akeyless Bastion
         /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Bastion</value>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessHost
+        /// Target servers for connections
         /// </summary>
+        /// <value>Target servers for connections</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessSshCreds
+        /// Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]
         /// </summary>
+        /// <value>Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]</value>
         [DataMember(Name = "secure-access-ssh-creds", EmitDefaultValue = false)]
         public string SecureAccessSshCreds { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessSshUser
+        /// Override the SSH username as indicated in SSH Certificate Issuer
         /// </summary>
+        /// <value>Override the SSH username as indicated in SSH Certificate Issuer</value>
         [DataMember(Name = "secure-access-ssh-user", EmitDefaultValue = false)]
         public string SecureAccessSshUser { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessUrl
+        /// Destination URL to inject secrets
         /// </summary>
+        /// <value>Destination URL to inject secrets</value>
         [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebBrowsing
+        /// Secure browser via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebProxy
+        /// Web-Proxy via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 
@@ -252,9 +261,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// For Password Management use, reflect the website context
+        /// The secret sub type [generic/password]
         /// </summary>
-        /// <value>For Password Management use, reflect the website context</value>
+        /// <value>The secret sub type [generic/password]</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 

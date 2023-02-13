@@ -40,11 +40,11 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipSetServerState" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="state">state (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipSetServerState(bool json = default(bool), string state = default(string), string token = default(string), string uidToken = default(string))
+        public KmipSetServerState(bool json = false, string state = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "state" is required (not null)
             if (state == null)

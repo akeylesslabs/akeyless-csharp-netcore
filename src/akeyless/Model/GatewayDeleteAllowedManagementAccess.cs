@@ -40,11 +40,11 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayDeleteAllowedManagementAccess" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="subAdminId">SubAdminID to be removed (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayDeleteAllowedManagementAccess(bool json = default(bool), string subAdminId = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayDeleteAllowedManagementAccess(bool json = false, string subAdminId = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "subAdminId" is required (not null)
             if (subAdminId == null)

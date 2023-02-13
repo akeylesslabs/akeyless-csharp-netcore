@@ -5,7 +5,7 @@ tokenize is a command that encrypts text with a tokenizer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Plaintext** | **string** | Data to be encrypted | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenizerName** | **string** | The name of the tokenizer to use in the encryption process | 

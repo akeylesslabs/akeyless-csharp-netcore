@@ -35,8 +35,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateTargetDetails" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
-        public UpdateTargetDetails(bool json = default(bool))
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        public UpdateTargetDetails(bool json = false)
         {
             this.Json = json;
         }

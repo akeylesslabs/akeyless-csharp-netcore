@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **DockerhubPassword** | **string** |  | [optional] 
 **DockerhubUsername** | **string** |  | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
-**KeepPrevVersion** | **string** |  | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
+**KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 

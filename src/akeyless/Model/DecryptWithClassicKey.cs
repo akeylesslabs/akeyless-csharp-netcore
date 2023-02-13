@@ -42,11 +42,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format (required).</param>
         /// <param name="displayId">The name of the key to use in the encryption process (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public DecryptWithClassicKey(string ciphertext = default(string), string displayId = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
+        public DecryptWithClassicKey(string ciphertext = default(string), string displayId = default(string), bool json = false, string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null)

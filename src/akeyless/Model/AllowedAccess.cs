@@ -39,17 +39,19 @@ namespace akeyless.Model
         /// <param name="accessRulesType">accessRulesType.</param>
         /// <param name="allowedApi">allowedApi.</param>
         /// <param name="allowedsLogin">allowedsLogin.</param>
+        /// <param name="editable">editable.</param>
         /// <param name="errMsg">errMsg.</param>
         /// <param name="hash">hash.</param>
         /// <param name="isValid">isValid.</param>
         /// <param name="name">name.</param>
         /// <param name="subClaims">subClaims.</param>
-        public AllowedAccess(string accId = default(string), string accessRulesType = default(string), bool allowedApi = default(bool), bool allowedsLogin = default(bool), string errMsg = default(string), string hash = default(string), bool isValid = default(bool), string name = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
+        public AllowedAccess(string accId = default(string), string accessRulesType = default(string), bool allowedApi = default(bool), bool allowedsLogin = default(bool), bool editable = default(bool), string errMsg = default(string), string hash = default(string), bool isValid = default(bool), string name = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
         {
             this.AccId = accId;
             this.AccessRulesType = accessRulesType;
             this.AllowedApi = allowedApi;
             this.AllowedsLogin = allowedsLogin;
+            this.Editable = editable;
             this.ErrMsg = errMsg;
             this.Hash = hash;
             this.IsValid = isValid;
@@ -80,6 +82,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "alloweds_login", EmitDefaultValue = true)]
         public bool AllowedsLogin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Editable
+        /// </summary>
+        [DataMember(Name = "editable", EmitDefaultValue = true)]
+        public bool Editable { get; set; }
 
         /// <summary>
         /// Gets or Sets ErrMsg
@@ -123,6 +131,7 @@ namespace akeyless.Model
             sb.Append("  AccessRulesType: ").Append(AccessRulesType).Append("\n");
             sb.Append("  AllowedApi: ").Append(AllowedApi).Append("\n");
             sb.Append("  AllowedsLogin: ").Append(AllowedsLogin).Append("\n");
+            sb.Append("  Editable: ").Append(Editable).Append("\n");
             sb.Append("  ErrMsg: ").Append(ErrMsg).Append("\n");
             sb.Append("  Hash: ").Append(Hash).Append("\n");
             sb.Append("  IsValid: ").Append(IsValid).Append("\n");
@@ -182,6 +191,10 @@ namespace akeyless.Model
                     this.AllowedsLogin.Equals(input.AllowedsLogin)
                 ) && 
                 (
+                    this.Editable == input.Editable ||
+                    this.Editable.Equals(input.Editable)
+                ) && 
+                (
                     this.ErrMsg == input.ErrMsg ||
                     (this.ErrMsg != null &&
                     this.ErrMsg.Equals(input.ErrMsg))
@@ -227,6 +240,7 @@ namespace akeyless.Model
                 }
                 hashCode = (hashCode * 59) + this.AllowedApi.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowedsLogin.GetHashCode();
+                hashCode = (hashCode * 59) + this.Editable.GetHashCode();
                 if (this.ErrMsg != null)
                 {
                     hashCode = (hashCode * 59) + this.ErrMsg.GetHashCode();

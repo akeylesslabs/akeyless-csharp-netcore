@@ -41,30 +41,30 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateItem" /> class.
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
-        /// <param name="apiId">apiId.</param>
-        /// <param name="apiKey">apiKey.</param>
-        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
-        /// <param name="customPayload">customPayload.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="apiId">API ID to rotate (relevant only for rotator-type&#x3D;api-key).</param>
+        /// <param name="apiKey">API key to rotate (relevant only for rotator-type&#x3D;api-key).</param>
+        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
+        /// <param name="customPayload">Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. (relevant only for - -type&#x3D;rotated-secret). If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotatedPassword">rotatedPassword.</param>
-        /// <param name="rotatedUsername">rotatedUsername.</param>
+        /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
+        /// <param name="rotatedUsername">username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotationHour">The Rotation Hour (default to 0).</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
-        /// <param name="rotatorCredsType">The rotation credentials type.</param>
+        /// <param name="rotatorCredsType">The rotation credentials type (default to &quot;use-self-creds&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -99,7 +99,8 @@ namespace akeyless.Model
             this.RotatedUsername = rotatedUsername;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
-            this.RotatorCredsType = rotatorCredsType;
+            // use default value if no "rotatorCredsType" provided
+            this.RotatorCredsType = rotatorCredsType ?? "use-self-creds";
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -112,34 +113,37 @@ namespace akeyless.Model
         public List<string> AddTag { get; set; }
 
         /// <summary>
-        /// Gets or Sets ApiId
+        /// API ID to rotate (relevant only for rotator-type&#x3D;api-key)
         /// </summary>
+        /// <value>API ID to rotate (relevant only for rotator-type&#x3D;api-key)</value>
         [DataMember(Name = "api-id", EmitDefaultValue = false)]
         public string ApiId { get; set; }
 
         /// <summary>
-        /// Gets or Sets ApiKey
+        /// API key to rotate (relevant only for rotator-type&#x3D;api-key)
         /// </summary>
+        /// <value>API key to rotate (relevant only for rotator-type&#x3D;api-key)</value>
         [DataMember(Name = "api-key", EmitDefaultValue = false)]
         public string ApiKey { get; set; }
 
         /// <summary>
-        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation
+        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]
         /// </summary>
-        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
+        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]</value>
         [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
         public string AutoRotate { get; set; }
 
         /// <summary>
-        /// Gets or Sets CustomPayload
+        /// Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom)
         /// </summary>
+        /// <value>Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom)</value>
         [DataMember(Name = "custom-payload", EmitDefaultValue = false)]
         public string CustomPayload { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -165,8 +169,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. (relevant only for - -type&#x3D;rotated-secret). If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. (relevant only for - -type&#x3D;rotated-secret). If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 
@@ -213,14 +218,16 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatedPassword
+        /// rotated-username password (relevant only for rotator-type&#x3D;password)
         /// </summary>
+        /// <value>rotated-username password (relevant only for rotator-type&#x3D;password)</value>
         [DataMember(Name = "rotated-password", EmitDefaultValue = false)]
         public string RotatedPassword { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatedUsername
+        /// username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password)
         /// </summary>
+        /// <value>username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password)</value>
         [DataMember(Name = "rotated-username", EmitDefaultValue = false)]
         public string RotatedUsername { get; set; }
 

@@ -40,18 +40,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateAWSTargetDetails" /> class.
         /// </summary>
-        /// <param name="accessKey">accessKey.</param>
-        /// <param name="accessKeyId">accessKeyId.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="accessKey">The aws secret access key.</param>
+        /// <param name="accessKeyId">The aws access key id.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="region">region.</param>
-        /// <param name="sessionToken">sessionToken.</param>
+        /// <param name="region">The aws region (default to &quot;us-east-2&quot;).</param>
+        /// <param name="sessionToken">Required only for temporary security credentials retrieved via STS, otherwise it can be an empty string.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAWSTargetDetails(string accessKey = default(string), string accessKeyId = default(string), bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string region = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateAWSTargetDetails(string accessKey = default(string), string accessKeyId = default(string), bool json = false, string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string region = "us-east-2", string sessionToken = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -65,21 +65,24 @@ namespace akeyless.Model
             this.KeepPrevVersion = keepPrevVersion;
             this.NewVersion = newVersion;
             this.ProtectionKey = protectionKey;
-            this.Region = region;
+            // use default value if no "region" provided
+            this.Region = region ?? "us-east-2";
             this.SessionToken = sessionToken;
             this.Token = token;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Gets or Sets AccessKey
+        /// The aws secret access key
         /// </summary>
+        /// <value>The aws secret access key</value>
         [DataMember(Name = "access-key", EmitDefaultValue = false)]
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessKeyId
+        /// The aws access key id
         /// </summary>
+        /// <value>The aws access key id</value>
         [DataMember(Name = "access-key-id", EmitDefaultValue = false)]
         public string AccessKeyId { get; set; }
 
@@ -91,8 +94,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 
@@ -118,14 +122,16 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets Region
+        /// The aws region
         /// </summary>
+        /// <value>The aws region</value>
         [DataMember(Name = "region", EmitDefaultValue = false)]
         public string Region { get; set; }
 
         /// <summary>
-        /// Gets or Sets SessionToken
+        /// Required only for temporary security credentials retrieved via STS, otherwise it can be an empty string
         /// </summary>
+        /// <value>Required only for temporary security credentials retrieved via STS, otherwise it can be an empty string</value>
         [DataMember(Name = "session-token", EmitDefaultValue = false)]
         public string SessionToken { get; set; }
 

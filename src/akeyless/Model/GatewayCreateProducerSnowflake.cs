@@ -44,8 +44,8 @@ namespace akeyless.Model
         /// <param name="accountPassword">Database Password.</param>
         /// <param name="accountUsername">Database Username.</param>
         /// <param name="dbName">Database name.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="privateKey">RSA Private key (base64 encoded).</param>
         /// <param name="privateKeyPassphrase">The Private key passphrase.</param>
@@ -56,7 +56,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = default(bool), string name = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -111,9 +111,9 @@ namespace akeyless.Model
         public string DbName { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

@@ -35,9 +35,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Unconfigure" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="profile">The profile name to be removed (default to &quot;default&quot;).</param>
-        public Unconfigure(bool json = default(bool), string profile = "default")
+        public Unconfigure(bool json = false, string profile = "default")
         {
             this.Json = json;
             // use default value if no "profile" provided

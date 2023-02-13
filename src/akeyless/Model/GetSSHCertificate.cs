@@ -42,13 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssuerName">The name of the SSH certificate issuer (required).</param>
         /// <param name="certUsername">The username to sign in the SSH certificate (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="legacySigningAlgName">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate..</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="legacySigningAlgName">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate. (default to false).</param>
         /// <param name="publicKeyData">SSH public key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), bool json = default(bool), bool legacySigningAlgName = default(bool), string publicKeyData = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public GetSSHCertificate(string certIssuerName = default(string), string certUsername = default(string), bool json = false, bool legacySigningAlgName = false, string publicKeyData = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null)

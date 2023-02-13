@@ -41,11 +41,11 @@ namespace akeyless.Model
         /// <param name="childTtl">New child token ttl.</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uidTokenId">The ID of the uid-token, required only when uid-token is not provided.</param>
-        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), string description = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
+        public UidCreateChildToken(string authMethodName = default(string), bool childDenyInheritance = default(bool), bool childDenyRotate = default(bool), int childTtl = default(int), string comment = default(string), string description = default(string), bool json = false, string token = default(string), string uidToken = default(string), string uidTokenId = default(string))
         {
             this.AuthMethodName = authMethodName;
             this.ChildDenyInheritance = childDenyInheritance;

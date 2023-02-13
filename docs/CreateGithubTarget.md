@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **GithubAppId** | **long** | Github app id | [optional] 
 **GithubAppPrivateKey** | **string** | App private key | [optional] 
-**GithubBaseUrl** | **string** | Base URL | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**GithubBaseUrl** | **string** | Base URL | [optional] [default to "https://api.github.com/"]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

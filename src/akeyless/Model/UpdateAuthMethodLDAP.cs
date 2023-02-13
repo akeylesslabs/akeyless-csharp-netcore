@@ -43,17 +43,17 @@ namespace akeyless.Model
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
-        /// <param name="genKey">Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided.</param>
+        /// <param name="genKey">Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided [true/false].</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="jwtTtl">Jwt TTL.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="publicKeyData">A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization..</param>
-        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = default(bool), long jwtTtl = default(long), string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (default to &quot;users&quot;).</param>
+        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = "users")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,7 +72,8 @@ namespace akeyless.Model
             this.PublicKeyData = publicKeyData;
             this.Token = token;
             this.UidToken = uidToken;
-            this.UniqueIdentifier = uniqueIdentifier;
+            // use default value if no "uniqueIdentifier" provided
+            this.UniqueIdentifier = uniqueIdentifier ?? "users";
         }
 
         /// <summary>
@@ -97,9 +98,9 @@ namespace akeyless.Model
         public bool ForceSubClaims { get; set; }
 
         /// <summary>
-        /// Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided
+        /// Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided [true/false]
         /// </summary>
-        /// <value>Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided</value>
+        /// <value>Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided [true/false]</value>
         [DataMember(Name = "gen-key", EmitDefaultValue = false)]
         public string GenKey { get; set; }
 

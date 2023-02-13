@@ -36,9 +36,9 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GenCustomerFragment" /> class.
         /// </summary>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
-        public GenCustomerFragment(string description = default(string), bool json = default(bool), string metadata = default(string))
+        public GenCustomerFragment(string description = default(string), bool json = false, string metadata = default(string))
         {
             this.Description = description;
             this.Json = json;

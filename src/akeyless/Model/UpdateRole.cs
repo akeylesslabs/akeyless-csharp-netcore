@@ -44,14 +44,14 @@ namespace akeyless.Model
         /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Role name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New Role name.</param>
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string description = "default_comment", string gwAnalyticsAccess = default(string), bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string description = "default_comment", string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

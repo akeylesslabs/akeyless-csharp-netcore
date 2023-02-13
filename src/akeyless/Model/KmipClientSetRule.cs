@@ -42,12 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="capability">Access capabilities (required).</param>
         /// <param name="clientId">clientId.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">name.</param>
         /// <param name="path">Access path (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipClientSetRule(List<string> capability = default(List<string>), string clientId = default(string), bool json = default(bool), string name = default(string), string path = default(string), string token = default(string), string uidToken = default(string))
+        public KmipClientSetRule(List<string> capability = default(List<string>), string clientId = default(string), bool json = false, string name = default(string), string path = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
             if (capability == null)

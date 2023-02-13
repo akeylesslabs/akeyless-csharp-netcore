@@ -41,13 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AssocRoleAuthMethod" /> class.
         /// </summary>
         /// <param name="amName">The auth method to associate (required).</param>
-        /// <param name="caseSensitive">caseSensitive.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="caseSensitive">Treat sub claims as case-sensitive [true/false] (default to &quot;true&quot;).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="roleName">The role to associate (required).</param>
         /// <param name="subClaims">key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AssocRoleAuthMethod(string amName = default(string), string caseSensitive = default(string), bool json = default(bool), string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public AssocRoleAuthMethod(string amName = default(string), string caseSensitive = "true", bool json = false, string roleName = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "amName" is required (not null)
             if (amName == null)
@@ -61,7 +61,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("roleName is a required property for AssocRoleAuthMethod and cannot be null");
             }
             this.RoleName = roleName;
-            this.CaseSensitive = caseSensitive;
+            // use default value if no "caseSensitive" provided
+            this.CaseSensitive = caseSensitive ?? "true";
             this.Json = json;
             this.SubClaims = subClaims;
             this.Token = token;
@@ -76,8 +77,9 @@ namespace akeyless.Model
         public string AmName { get; set; }
 
         /// <summary>
-        /// Gets or Sets CaseSensitive
+        /// Treat sub claims as case-sensitive [true/false]
         /// </summary>
+        /// <value>Treat sub claims as case-sensitive [true/false]</value>
         [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
         public string CaseSensitive { get; set; }
 

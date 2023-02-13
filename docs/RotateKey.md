@@ -5,7 +5,7 @@ of it.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Key name | 
 **NewCertPemData** | **string** | The new pem encoded certificate for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;) | [optional] 
 **NewKeyData** | **string** | The new base64 encoded value for the classic key. relevant only for keys provided by user (&#39;bring-your-own-key&#39;) | [optional] 

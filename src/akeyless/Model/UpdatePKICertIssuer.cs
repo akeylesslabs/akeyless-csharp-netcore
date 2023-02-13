@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
         /// <param name="country">A comma-separated list of the country that will be set in the issued certificate.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -68,7 +68,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string description = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string description = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

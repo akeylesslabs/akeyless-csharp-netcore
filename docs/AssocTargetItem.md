@@ -5,13 +5,13 @@ assocTargetItem is a command that creates an association between target and item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DisablePreviousKeyVersion** | **bool** | Automatically disable previous key version (required for azure targets) | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DisablePreviousKeyVersion** | **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyOperations** | **List&lt;string&gt;** | A list of allowed operations for the key (required for azure targets) | [optional] 
 **KeyringName** | **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
 **KmsAlgorithm** | **string** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] 
 **LocationId** | **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
-**MultiRegion** | **string** | Set to &#39;true&#39; to create a multi region managed key (relevant for aws targets) | [optional] [default to "false"]
+**MultiRegion** | **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
 **ProjectId** | **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **Purpose** | **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 

@@ -39,29 +39,31 @@ namespace akeyless.Model
         /// <param name="city">City.</param>
         /// <param name="companyName">Company name.</param>
         /// <param name="country">Country.</param>
-        /// <param name="defaultVersioning">Should create version by default.</param>
-        /// <param name="dpEnableClassicKeyProtection">Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;].</param>
+        /// <param name="defaultShareLinkTtlMinutes">Set the default ttl in minutes for sharing item number between 60 and 43200.</param>
+        /// <param name="defaultVersioning">If set to true, new item version will be created on each update [true/false].</param>
+        /// <param name="dpEnableClassicKeyProtection">Set to update protection with classic keys state [true/false].</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
         /// <param name="maxVersions">Max versions.</param>
-        /// <param name="passwordLength">For PasswordPolicy use.</param>
+        /// <param name="passwordLength">Password length between 5 - to 50 characters.</param>
         /// <param name="phone">Phone number.</param>
         /// <param name="postalCode">Postal code.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="useLowerLetters">For PasswordPolicy use.</param>
-        /// <param name="useNumbers">For PasswordPolicy use.</param>
-        /// <param name="useSpecialCharacters">For PasswordPolicy use.</param>
-        /// <param name="useCapitalLetters">For PasswordPolicy use.</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), bool json = default(bool), long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
+        /// <param name="useNumbers">Password must contain numbers [true/false].</param>
+        /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
+        /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
             this.CompanyName = companyName;
             this.Country = country;
+            this.DefaultShareLinkTtlMinutes = defaultShareLinkTtlMinutes;
             this.DefaultVersioning = defaultVersioning;
             this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
             this.ItemType = itemType;
@@ -110,16 +112,23 @@ namespace akeyless.Model
         public string Country { get; set; }
 
         /// <summary>
-        /// Should create version by default
+        /// Set the default ttl in minutes for sharing item number between 60 and 43200
         /// </summary>
-        /// <value>Should create version by default</value>
+        /// <value>Set the default ttl in minutes for sharing item number between 60 and 43200</value>
+        [DataMember(Name = "default-share-link-ttl-minutes", EmitDefaultValue = false)]
+        public string DefaultShareLinkTtlMinutes { get; set; }
+
+        /// <summary>
+        /// If set to true, new item version will be created on each update [true/false]
+        /// </summary>
+        /// <value>If set to true, new item version will be created on each update [true/false]</value>
         [DataMember(Name = "default-versioning", EmitDefaultValue = false)]
         public string DefaultVersioning { get; set; }
 
         /// <summary>
-        /// Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;]
+        /// Set to update protection with classic keys state [true/false]
         /// </summary>
-        /// <value>Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;]</value>
+        /// <value>Set to update protection with classic keys state [true/false]</value>
         [DataMember(Name = "dp-enable-classic-key-protection", EmitDefaultValue = false)]
         public string DpEnableClassicKeyProtection { get; set; }
 
@@ -166,9 +175,9 @@ namespace akeyless.Model
         public string MaxVersions { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
+        /// Password length between 5 - to 50 characters
         /// </summary>
-        /// <value>For PasswordPolicy use</value>
+        /// <value>Password length between 5 - to 50 characters</value>
         [DataMember(Name = "password-length", EmitDefaultValue = false)]
         public long PasswordLength { get; set; }
 
@@ -201,30 +210,30 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
+        /// Password must contain lower case letters [true/false]
         /// </summary>
-        /// <value>For PasswordPolicy use</value>
+        /// <value>Password must contain lower case letters [true/false]</value>
         [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
         public string UseLowerLetters { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
+        /// Password must contain numbers [true/false]
         /// </summary>
-        /// <value>For PasswordPolicy use</value>
+        /// <value>Password must contain numbers [true/false]</value>
         [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
         public string UseNumbers { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
+        /// Password must contain special characters [true/false]
         /// </summary>
-        /// <value>For PasswordPolicy use</value>
+        /// <value>Password must contain special characters [true/false]</value>
         [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
         public string UseSpecialCharacters { get; set; }
 
         /// <summary>
-        /// For PasswordPolicy use
+        /// Password must contain capital letters [true/false]
         /// </summary>
-        /// <value>For PasswordPolicy use</value>
+        /// <value>Password must contain capital letters [true/false]</value>
         [DataMember(Name = "use_capital-letters", EmitDefaultValue = false)]
         public string UseCapitalLetters { get; set; }
 
@@ -240,6 +249,7 @@ namespace akeyless.Model
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  DefaultShareLinkTtlMinutes: ").Append(DefaultShareLinkTtlMinutes).Append("\n");
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
             sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
@@ -311,6 +321,11 @@ namespace akeyless.Model
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
+                ) && 
+                (
+                    this.DefaultShareLinkTtlMinutes == input.DefaultShareLinkTtlMinutes ||
+                    (this.DefaultShareLinkTtlMinutes != null &&
+                    this.DefaultShareLinkTtlMinutes.Equals(input.DefaultShareLinkTtlMinutes))
                 ) && 
                 (
                     this.DefaultVersioning == input.DefaultVersioning ||
@@ -418,6 +433,10 @@ namespace akeyless.Model
                 if (this.Country != null)
                 {
                     hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
+                if (this.DefaultShareLinkTtlMinutes != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultShareLinkTtlMinutes.GetHashCode();
                 }
                 if (this.DefaultVersioning != null)
                 {

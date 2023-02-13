@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
-        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo))
+        /// <param name="sharingPolicy">sharingPolicy.</param>
+        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.DataProtectionSection = dataProtectionSection;
             this.EnableRequestForAccess = enableRequestForAccess;
             this.PasswordPolicy = passwordPolicy;
+            this.SharingPolicy = sharingPolicy;
         }
 
         /// <summary>
@@ -64,6 +66,12 @@ namespace akeyless.Model
         public PasswordPolicyInfo PasswordPolicy { get; set; }
 
         /// <summary>
+        /// Gets or Sets SharingPolicy
+        /// </summary>
+        [DataMember(Name = "sharing_policy", EmitDefaultValue = false)]
+        public SharingPolicyInfo SharingPolicy { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,6 +82,7 @@ namespace akeyless.Model
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
+            sb.Append("  SharingPolicy: ").Append(SharingPolicy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +131,11 @@ namespace akeyless.Model
                     this.PasswordPolicy == input.PasswordPolicy ||
                     (this.PasswordPolicy != null &&
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
+                ) && 
+                (
+                    this.SharingPolicy == input.SharingPolicy ||
+                    (this.SharingPolicy != null &&
+                    this.SharingPolicy.Equals(input.SharingPolicy))
                 );
         }
 
@@ -142,6 +156,10 @@ namespace akeyless.Model
                 if (this.PasswordPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();
+                }
+                if (this.SharingPolicy != null)
+                {
+                    hashCode = (hashCode * 59) + this.SharingPolicy.GetHashCode();
                 }
                 return hashCode;
             }

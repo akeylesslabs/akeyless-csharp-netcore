@@ -40,20 +40,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSSHTargetDetails" /> class.
         /// </summary>
-        /// <param name="host">host.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="host">The ssh host name.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
-        /// <param name="port">port.</param>
-        /// <param name="privateKey">privateKey.</param>
-        /// <param name="privateKeyPassword">privateKeyPassword.</param>
+        /// <param name="port">ssh port (default to &quot;22&quot;).</param>
+        /// <param name="privateKey">ssh private key.</param>
+        /// <param name="privateKeyPassword">The ssh private key password.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="sshPassword">sshPassword.</param>
-        /// <param name="sshUsername">sshUsername.</param>
+        /// <param name="sshPassword">ssh pawssword to rotate.</param>
+        /// <param name="sshUsername">ssh username.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHTargetDetails(string host = default(string), bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string protectionKey = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateSSHTargetDetails(string host = default(string), bool json = false, string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string port = "22", string privateKey = default(string), string privateKeyPassword = default(string), string protectionKey = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -65,7 +65,8 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.NewVersion = newVersion;
-            this.Port = port;
+            // use default value if no "port" provided
+            this.Port = port ?? "22";
             this.PrivateKey = privateKey;
             this.PrivateKeyPassword = privateKeyPassword;
             this.ProtectionKey = protectionKey;
@@ -76,8 +77,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets Host
+        /// The ssh host name
         /// </summary>
+        /// <value>The ssh host name</value>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
 
@@ -89,8 +91,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 
@@ -109,20 +112,23 @@ namespace akeyless.Model
         public bool NewVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets Port
+        /// ssh port
         /// </summary>
+        /// <value>ssh port</value>
         [DataMember(Name = "port", EmitDefaultValue = false)]
         public string Port { get; set; }
 
         /// <summary>
-        /// Gets or Sets PrivateKey
+        /// ssh private key
         /// </summary>
+        /// <value>ssh private key</value>
         [DataMember(Name = "private-key", EmitDefaultValue = false)]
         public string PrivateKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets PrivateKeyPassword
+        /// The ssh private key password
         /// </summary>
+        /// <value>The ssh private key password</value>
         [DataMember(Name = "private-key-password", EmitDefaultValue = false)]
         public string PrivateKeyPassword { get; set; }
 
@@ -134,14 +140,16 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets SshPassword
+        /// ssh pawssword to rotate
         /// </summary>
+        /// <value>ssh pawssword to rotate</value>
         [DataMember(Name = "ssh-password", EmitDefaultValue = false)]
         public string SshPassword { get; set; }
 
         /// <summary>
-        /// Gets or Sets SshUsername
+        /// ssh username
         /// </summary>
+        /// <value>ssh username</value>
         [DataMember(Name = "ssh-username", EmitDefaultValue = false)]
         public string SshUsername { get; set; }
 

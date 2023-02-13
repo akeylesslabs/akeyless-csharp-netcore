@@ -40,8 +40,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerPing" /> class.
         /// </summary>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer New name.</param>
         /// <param name="pingAdministrativePort">Ping Federate administrative port (default to &quot;9999&quot;).</param>
@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="pingAuthorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
         /// <param name="pingCertSubjectDn">The subject DN of the client certificate. If no explicit value is given, the producer will create CA certificate and matched client certificate and return it as value. Used in conjunction with ping-issuer-dn (relevant for CLIENT_TLS_CERTIFICATE authentication method).</param>
         /// <param name="pingClientAuthenticationType">OAuth Client Authentication Type [CLIENT_SECRET, PRIVATE_KEY_JWT, CLIENT_TLS_CERTIFICATE] (default to &quot;CLIENT_SECRET&quot;).</param>
-        /// <param name="pingEnforceReplayPrevention">Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method).</param>
+        /// <param name="pingEnforceReplayPrevention">Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method) [true/false] (default to &quot;false&quot;).</param>
         /// <param name="pingGrantTypes">List of OAuth client grant types [IMPLICIT, AUTHORIZATION_CODE, CLIENT_CREDENTIALS, TOKEN_EXCHANGE, REFRESH_TOKEN, ASSERTION_GRANTS, PASSWORD, RESOURCE_OWNER_CREDENTIALS]. If no explicit value is given, AUTHORIZATION_CODE will be selected as default..</param>
         /// <param name="pingIssuerDn">Issuer DN of trusted CA certificate that imported into Ping Federate server. You may select \\\&quot;Trust Any\\\&quot; to trust all the existing issuers in Ping Federate server. Used in conjunction with ping-cert-subject-dn (relevant for CLIENT_TLS_CERTIFICATE authentication method).</param>
         /// <param name="pingJwks">Base64-encoded JSON Web Key Set (JWKS). If no explicit value is given, the producer will create JWKs and matched signed JWT (Sign Algo: RS256) and return it as value (relevant for PRIVATE_KEY_JWT authentication method).</param>
@@ -66,7 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">The time from dynamic secret creation to expiration. (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerPing(string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string pingAdministrativePort = "9999", string pingAtmId = default(string), string pingAuthorizationPort = "9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = "CLIENT_SECRET", string pingEnforceReplayPrevention = default(string), List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerPing(string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string pingAdministrativePort = "9999", string pingAtmId = default(string), string pingAuthorizationPort = "9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = "CLIENT_SECRET", string pingEnforceReplayPrevention = "false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -85,7 +85,8 @@ namespace akeyless.Model
             this.PingCertSubjectDn = pingCertSubjectDn;
             // use default value if no "pingClientAuthenticationType" provided
             this.PingClientAuthenticationType = pingClientAuthenticationType ?? "CLIENT_SECRET";
-            this.PingEnforceReplayPrevention = pingEnforceReplayPrevention;
+            // use default value if no "pingEnforceReplayPrevention" provided
+            this.PingEnforceReplayPrevention = pingEnforceReplayPrevention ?? "false";
             this.PingGrantTypes = pingGrantTypes;
             this.PingIssuerDn = pingIssuerDn;
             this.PingJwks = pingJwks;
@@ -106,9 +107,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -169,9 +170,9 @@ namespace akeyless.Model
         public string PingClientAuthenticationType { get; set; }
 
         /// <summary>
-        /// Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method)
+        /// Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method) [true/false]
         /// </summary>
-        /// <value>Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method)</value>
+        /// <value>Determines whether PingFederate requires a unique signed JWT from the client for each action (relevant for PRIVATE_KEY_JWT authentication method) [true/false]</value>
         [DataMember(Name = "ping-enforce-replay-prevention", EmitDefaultValue = false)]
         public string PingEnforceReplayPrevention { get; set; }
 

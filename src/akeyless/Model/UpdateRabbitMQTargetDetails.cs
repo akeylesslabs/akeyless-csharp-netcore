@@ -40,8 +40,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateRabbitMQTargetDetails" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRabbitMQTargetDetails(bool json = default(bool), string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRabbitMQTargetDetails(bool json = false, string keepPrevVersion = default(string), string name = default(string), bool newVersion = default(bool), string protectionKey = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -77,8 +77,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 

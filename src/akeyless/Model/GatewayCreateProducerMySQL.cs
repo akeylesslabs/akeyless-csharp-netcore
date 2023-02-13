@@ -42,8 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="mysqlDbname">MySQL DB Name.</param>
         /// <param name="mysqlHost">MySQL Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="mysqlPassword">MySQL Password.</param>
@@ -52,18 +52,18 @@ namespace akeyless.Model
         /// <param name="mysqlUsername">MySQL Username.</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessHost">secureAccessHost.</param>
-        /// <param name="secureAccessWeb">secureAccessWeb.</param>
-        /// <param name="ssl">SSL connection mode.</param>
+        /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessHost">Target DB servers for connections.</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
+        /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = default(bool), string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = default(bool), bool ssl = default(bool), string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -113,9 +113,9 @@ namespace akeyless.Model
         public string DbServerName { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -183,33 +183,37 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionIssuer
+        /// Path to the SSH Certificate Issuer for your Akeyless Bastion
         /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Bastion</value>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessHost
+        /// Target DB servers for connections
         /// </summary>
+        /// <value>Target DB servers for connections</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWeb
+        /// Enable Web Secure Remote Access
         /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// SSL connection mode
+        /// Enable/Disable SSL [true/false]
         /// </summary>
-        /// <value>SSL connection mode</value>
+        /// <value>Enable/Disable SSL [true/false]</value>
         [DataMember(Name = "ssl", EmitDefaultValue = true)]
         public bool Ssl { get; set; }
 

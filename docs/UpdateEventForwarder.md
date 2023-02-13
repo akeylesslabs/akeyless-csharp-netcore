@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **AdminName** | **string** | Workstation Admin Name | [optional] 
 **Description** | **string** | Description of the object | [optional] [default to "default_comment"]
 **EmailTo** | **string** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] 
-**Enable** | **string** | Enable | [optional] 
+**Enable** | **string** | Enable/Disable Event Forwarder [true/false] | [optional] [default to "true"]
 **EventSourceLocations** | **List&lt;string&gt;** | Event sources | [optional] 
 **EventTypes** | **List&lt;string&gt;** | Event types | [optional] 
 **Host** | **string** | Workstation Host | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | EventForwarder name | 
 **NewComment** | **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | **string** | New EventForwarder name | [optional] 

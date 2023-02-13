@@ -44,8 +44,8 @@ namespace akeyless.Model
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
         /// <param name="gatewayUrl">Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s).</param>
-        /// <param name="gcpAudience">GCP JWT audience.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="gcpAudience">GCP JWT audience (default to &quot;akeyless.io&quot;).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="k8sServiceAccountToken">The K8S service account token. (relevant only for access-type&#x3D;k8s).</param>
@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = default(string), bool json = default(bool), string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -65,7 +65,8 @@ namespace akeyless.Model
             this.CloudId = cloudId;
             this.Debug = debug;
             this.GatewayUrl = gatewayUrl;
-            this.GcpAudience = gcpAudience;
+            // use default value if no "gcpAudience" provided
+            this.GcpAudience = gcpAudience ?? "akeyless.io";
             this.Json = json;
             this.Jwt = jwt;
             this.K8sAuthConfigName = k8sAuthConfigName;

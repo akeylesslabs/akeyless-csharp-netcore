@@ -41,14 +41,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayRevokeTmpUsers" /> class.
         /// </summary>
         /// <param name="host">Deprecated: has no effect.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer Name (required).</param>
         /// <param name="revokeAll">Revoke All Temp Creds.</param>
         /// <param name="softDelete">Soft Delete.</param>
         /// <param name="tmpCredsId">Tmp Creds ID (required) (default to &quot;demo_default_tmp_creds_id_for_sdk_bc&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayRevokeTmpUsers(string host = default(string), bool json = default(bool), string name = default(string), bool revokeAll = default(bool), bool softDelete = default(bool), string tmpCredsId = "demo_default_tmp_creds_id_for_sdk_bc", string token = default(string), string uidToken = default(string))
+        public GatewayRevokeTmpUsers(string host = default(string), bool json = false, string name = default(string), bool revokeAll = default(bool), bool softDelete = default(bool), string tmpCredsId = "demo_default_tmp_creds_id_for_sdk_bc", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

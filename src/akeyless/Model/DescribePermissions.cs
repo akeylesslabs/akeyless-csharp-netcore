@@ -40,12 +40,12 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DescribePermissions" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="path">Path to an object (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of object (item, am, role, target) (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribePermissions(bool json = default(bool), string path = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public DescribePermissions(bool json = false, string path = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
             if (path == null)

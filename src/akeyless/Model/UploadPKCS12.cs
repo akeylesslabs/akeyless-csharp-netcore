@@ -41,10 +41,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UploadPKCS12" /> class.
         /// </summary>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="_in">PKCS#12 input file (private key and certificate only) (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Name of key to be created (required).</param>
         /// <param name="passphrase">Passphrase to unlock the pkcs#12 bundle (required).</param>
@@ -52,7 +52,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), string _in = default(string), bool json = default(bool), string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), string _in = default(string), bool json = false, string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null)
@@ -91,9 +91,9 @@ namespace akeyless.Model
         public string CustomerFrgId { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

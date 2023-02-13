@@ -6,7 +6,7 @@ updateRotationSettings is a command that updates rotations settings of an existi
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoRotate** | **bool** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation | 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Key name | 
 **RotationInterval** | **long** | The number of days to wait between every automatic key rotation (7-365) | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

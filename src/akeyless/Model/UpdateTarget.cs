@@ -41,13 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateTarget" /> class.
         /// </summary>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateTarget(string description = "default_comment", bool json = default(bool), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateTarget(string description = "default_comment", bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

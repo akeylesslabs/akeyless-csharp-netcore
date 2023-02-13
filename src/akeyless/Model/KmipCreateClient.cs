@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipCreateClient" /> class.
         /// </summary>
-        /// <param name="activateKeysOnCreation">activateKeysOnCreation.</param>
-        /// <param name="certificateTtl">certificateTtl.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="activateKeysOnCreation">If set to &#39;true&#39;, newly created keys on the client will be set to an &#39;active&#39; state (default to &quot;false&quot;).</param>
+        /// <param name="certificateTtl">Client certificate TTL in days (default to 90).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Client name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipCreateClient(string activateKeysOnCreation = default(string), long certificateTtl = default(long), bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string))
+        public KmipCreateClient(string activateKeysOnCreation = "false", long certificateTtl = 90, bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,7 +54,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for KmipCreateClient and cannot be null");
             }
             this.Name = name;
-            this.ActivateKeysOnCreation = activateKeysOnCreation;
+            // use default value if no "activateKeysOnCreation" provided
+            this.ActivateKeysOnCreation = activateKeysOnCreation ?? "false";
             this.CertificateTtl = certificateTtl;
             this.Json = json;
             this.Token = token;
@@ -62,14 +63,16 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActivateKeysOnCreation
+        /// If set to &#39;true&#39;, newly created keys on the client will be set to an &#39;active&#39; state
         /// </summary>
+        /// <value>If set to &#39;true&#39;, newly created keys on the client will be set to an &#39;active&#39; state</value>
         [DataMember(Name = "activate-keys-on-creation", EmitDefaultValue = false)]
         public string ActivateKeysOnCreation { get; set; }
 
         /// <summary>
-        /// Gets or Sets CertificateTtl
+        /// Client certificate TTL in days
         /// </summary>
+        /// <value>Client certificate TTL in days</value>
         [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
         public long CertificateTtl { get; set; }
 

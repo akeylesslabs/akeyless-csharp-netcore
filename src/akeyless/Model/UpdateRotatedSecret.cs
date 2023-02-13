@@ -41,47 +41,47 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateRotatedSecret" /> class.
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
-        /// <param name="apiId">apiId.</param>
-        /// <param name="apiKey">apiKey.</param>
-        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation.</param>
+        /// <param name="apiId">API ID to rotate.</param>
+        /// <param name="apiKey">API key to rotate.</param>
+        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="awsRegion">Region (used in aws) (default to &quot;us-east-2&quot;).</param>
-        /// <param name="customPayload">customPayload.</param>
+        /// <param name="customPayload">Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom).</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Secret name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends (default to &quot;false&quot;).</param>
-        /// <param name="rotatedPassword">rotatedPassword.</param>
-        /// <param name="rotatedUsername">rotatedUsername.</param>
-        /// <param name="rotationHour">rotationHour.</param>
+        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="rotatedPassword">rotated-username password.</param>
+        /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password.</param>
+        /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
-        /// <param name="rotatorCredsType">rotatorCredsType.</param>
-        /// <param name="rotatorCustomCmd">rotatorCustomCmd.</param>
-        /// <param name="secureAccessAllowExternalUser">Secure Access Allow Providing External User (used in ssh) (default to false).</param>
-        /// <param name="secureAccessAwsAccountId">Secure Access Account Id (used in aws).</param>
-        /// <param name="secureAccessAwsNativeCli">Secure Access Aws Native Cli (used in aws).</param>
-        /// <param name="secureAccessBastionIssuer">Secure Access Bastion Issuer.</param>
-        /// <param name="secureAccessDbName">Secure Access DB Name (used in data bases).</param>
-        /// <param name="secureAccessDbSchema">Secure Access Schema (used in mssql, postgresql).</param>
-        /// <param name="secureAccessEnable">Secure Access Enabled.</param>
-        /// <param name="secureAccessHost">Secure Access Host.</param>
-        /// <param name="secureAccessRdpDomain">Secure Access Domain (used in ssh).</param>
-        /// <param name="secureAccessRdpUser">Secure Access Override User (used in ssh).</param>
-        /// <param name="secureAccessWeb">Secure Access Web (default to false).</param>
-        /// <param name="secureAccessWebBrowsing">Secure Access Isolated (used in aws, azure) (default to false).</param>
-        /// <param name="secureAccessWebProxy">Secure Access Web Proxy (used in aws, azure) (default to false).</param>
+        /// <param name="rotatorCredsType">The credentials to connect with use-self-creds/use-target-creds (default to &quot;use-self-creds&quot;).</param>
+        /// <param name="rotatorCustomCmd">\&quot;Custom rotation command (relevant only for ssh target).</param>
+        /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (relevant only for rdp) (default to false).</param>
+        /// <param name="secureAccessAwsAccountId">The AWS account id (relevant only for aws).</param>
+        /// <param name="secureAccessAwsNativeCli">The AWS native cli.</param>
+        /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
+        /// <param name="secureAccessDbName">The DB name (relevant only for DB Dynamic-Secret).</param>
+        /// <param name="secureAccessDbSchema">The db schema (relevant only for mssql or postgresql).</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
+        /// <param name="secureAccessRdpUser">Override the RDP Domain username (relevant only for rdp).</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) (default to false).</param>
         /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string rotatorCustomCmd = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -113,7 +113,8 @@ namespace akeyless.Model
             this.RotatedUsername = rotatedUsername;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
-            this.RotatorCredsType = rotatorCredsType;
+            // use default value if no "rotatorCredsType" provided
+            this.RotatorCredsType = rotatorCredsType ?? "use-self-creds";
             this.RotatorCustomCmd = rotatorCustomCmd;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
             this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
@@ -143,21 +144,23 @@ namespace akeyless.Model
         public List<string> AddTag { get; set; }
 
         /// <summary>
-        /// Gets or Sets ApiId
+        /// API ID to rotate
         /// </summary>
+        /// <value>API ID to rotate</value>
         [DataMember(Name = "api-id", EmitDefaultValue = false)]
         public string ApiId { get; set; }
 
         /// <summary>
-        /// Gets or Sets ApiKey
+        /// API key to rotate
         /// </summary>
+        /// <value>API key to rotate</value>
         [DataMember(Name = "api-key", EmitDefaultValue = false)]
         public string ApiKey { get; set; }
 
         /// <summary>
-        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation
+        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]
         /// </summary>
-        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation</value>
+        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]</value>
         [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
         public string AutoRotate { get; set; }
 
@@ -169,8 +172,9 @@ namespace akeyless.Model
         public string AwsRegion { get; set; }
 
         /// <summary>
-        /// Gets or Sets CustomPayload
+        /// Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom)
         /// </summary>
+        /// <value>Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom)</value>
         [DataMember(Name = "custom-payload", EmitDefaultValue = false)]
         public string CustomPayload { get; set; }
 
@@ -196,8 +200,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 
@@ -244,27 +249,30 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Rotate the value of the secret after SRA session ends
+        /// Rotate the value of the secret after SRA session ends [true/false]
         /// </summary>
-        /// <value>Rotate the value of the secret after SRA session ends</value>
+        /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatedPassword
+        /// rotated-username password
         /// </summary>
+        /// <value>rotated-username password</value>
         [DataMember(Name = "rotated-password", EmitDefaultValue = false)]
         public string RotatedPassword { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatedUsername
+        /// username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password
         /// </summary>
+        /// <value>username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password</value>
         [DataMember(Name = "rotated-username", EmitDefaultValue = false)]
         public string RotatedUsername { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotationHour
+        /// The Hour of the rotation in UTC
         /// </summary>
+        /// <value>The Hour of the rotation in UTC</value>
         [DataMember(Name = "rotation-hour", EmitDefaultValue = false)]
         public int RotationHour { get; set; }
 
@@ -276,105 +284,107 @@ namespace akeyless.Model
         public string RotationInterval { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatorCredsType
+        /// The credentials to connect with use-self-creds/use-target-creds
         /// </summary>
+        /// <value>The credentials to connect with use-self-creds/use-target-creds</value>
         [DataMember(Name = "rotator-creds-type", EmitDefaultValue = false)]
         public string RotatorCredsType { get; set; }
 
         /// <summary>
-        /// Gets or Sets RotatorCustomCmd
+        /// \&quot;Custom rotation command (relevant only for ssh target)
         /// </summary>
+        /// <value>\&quot;Custom rotation command (relevant only for ssh target)</value>
         [DataMember(Name = "rotator-custom-cmd", EmitDefaultValue = false)]
         public string RotatorCustomCmd { get; set; }
 
         /// <summary>
-        /// Secure Access Allow Providing External User (used in ssh)
+        /// Allow providing external user for a domain users (relevant only for rdp)
         /// </summary>
-        /// <value>Secure Access Allow Providing External User (used in ssh)</value>
+        /// <value>Allow providing external user for a domain users (relevant only for rdp)</value>
         [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = true)]
         public bool SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
-        /// Secure Access Account Id (used in aws)
+        /// The AWS account id (relevant only for aws)
         /// </summary>
-        /// <value>Secure Access Account Id (used in aws)</value>
+        /// <value>The AWS account id (relevant only for aws)</value>
         [DataMember(Name = "secure-access-aws-account-id", EmitDefaultValue = false)]
         public string SecureAccessAwsAccountId { get; set; }
 
         /// <summary>
-        /// Secure Access Aws Native Cli (used in aws)
+        /// The AWS native cli
         /// </summary>
-        /// <value>Secure Access Aws Native Cli (used in aws)</value>
+        /// <value>The AWS native cli</value>
         [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
         public bool SecureAccessAwsNativeCli { get; set; }
 
         /// <summary>
-        /// Secure Access Bastion Issuer
+        /// Path to the SSH Certificate Issuer for your Akeyless Bastion
         /// </summary>
-        /// <value>Secure Access Bastion Issuer</value>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Bastion</value>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
-        /// Secure Access DB Name (used in data bases)
+        /// The DB name (relevant only for DB Dynamic-Secret)
         /// </summary>
-        /// <value>Secure Access DB Name (used in data bases)</value>
+        /// <value>The DB name (relevant only for DB Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-db-name", EmitDefaultValue = false)]
         public string SecureAccessDbName { get; set; }
 
         /// <summary>
-        /// Secure Access Schema (used in mssql, postgresql)
+        /// The db schema (relevant only for mssql or postgresql)
         /// </summary>
-        /// <value>Secure Access Schema (used in mssql, postgresql)</value>
+        /// <value>The db schema (relevant only for mssql or postgresql)</value>
         [DataMember(Name = "secure-access-db-schema", EmitDefaultValue = false)]
         public string SecureAccessDbSchema { get; set; }
 
         /// <summary>
-        /// Secure Access Enabled
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
-        /// <value>Secure Access Enabled</value>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Secure Access Host
+        /// Target servers for connections
         /// </summary>
-        /// <value>Secure Access Host</value>
+        /// <value>Target servers for connections</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// Secure Access Domain (used in ssh)
+        /// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
         /// </summary>
-        /// <value>Secure Access Domain (used in ssh)</value>
+        /// <value>Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
         public string SecureAccessRdpDomain { get; set; }
 
         /// <summary>
-        /// Secure Access Override User (used in ssh)
+        /// Override the RDP Domain username (relevant only for rdp)
         /// </summary>
-        /// <value>Secure Access Override User (used in ssh)</value>
+        /// <value>Override the RDP Domain username (relevant only for rdp)</value>
         [DataMember(Name = "secure-access-rdp-user", EmitDefaultValue = false)]
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
-        /// Secure Access Web
+        /// Enable Web Secure Remote Access
         /// </summary>
-        /// <value>Secure Access Web</value>
+        /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// Secure Access Isolated (used in aws, azure)
+        /// Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure)
         /// </summary>
-        /// <value>Secure Access Isolated (used in aws, azure)</value>
+        /// <value>Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure)</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Secure Access Web Proxy (used in aws, azure)
+        /// Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure)
         /// </summary>
-        /// <value>Secure Access Web Proxy (used in aws, azure)</value>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure)</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 

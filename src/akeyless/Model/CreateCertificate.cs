@@ -41,10 +41,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateCertificate" /> class.
         /// </summary>
         /// <param name="certificateData">Content of the certificate PEM in a Base64 format..</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Content of the certificate&#39;s private key PEM in a Base64 format..</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -52,7 +52,7 @@ namespace akeyless.Model
         /// <param name="tags">List of the tags attached to this certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool json = default(bool), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -81,9 +81,9 @@ namespace akeyless.Model
         public string CertificateData { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

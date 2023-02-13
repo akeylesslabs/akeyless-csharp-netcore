@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **DbType** | **string** |  | 
 **Description** | **string** | Description of the object | [optional] 
 **Host** | **string** |  | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MongodbAtlas** | **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **SnowflakeAccount** | **string** |  | [optional] 
 **SnowflakeApiPrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 
 **SnowflakeApiPrivateKeyPassword** | **string** | The Private key passphrase | [optional] 
-**Ssl** | **bool** | SSL connection mode | [optional] 
+**Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | **string** | SSL connection certificate | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

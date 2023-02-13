@@ -6,8 +6,8 @@ gatewayUpdateProducerRedshift is a command that updates redshift producer
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationStatements** | **string** | Redshift Creation statements | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKey** | **string** | Dynamic producer encryption key | [optional] 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **RedshiftPassword** | **string** | Redshift Password | [optional] 
 **RedshiftPort** | **string** | Redshift Port | [optional] [default to "5439"]
 **RedshiftUsername** | **string** | Redshift Username | [optional] 
-**SecureAccessEnable** | **string** |  | [optional] 
-**SecureAccessHost** | **List&lt;string&gt;** |  | [optional] 
-**Ssl** | **bool** | SSL connection mode | [optional] 
+**SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** | Target DB servers for connections | [optional] 
+**Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

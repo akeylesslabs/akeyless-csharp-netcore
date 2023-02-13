@@ -79,6 +79,7 @@ namespace akeyless.Model
         /// <param name="eksSecretAccessKey">eksSecretAccessKey.</param>
         /// <param name="gcpServiceAccountEmail">deprecated.</param>
         /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
+        /// <param name="gcpServiceAccountKeyBase64">gcpServiceAccountKeyBase64.</param>
         /// <param name="githubAppId">githubAppId.</param>
         /// <param name="githubAppPrivateKey">githubAppPrivateKey.</param>
         /// <param name="githubBaseUrl">githubBaseUrl.</param>
@@ -88,6 +89,8 @@ namespace akeyless.Model
         /// <param name="gkeServiceAccountKey">gkeServiceAccountKey.</param>
         /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
         /// <param name="host">host.</param>
+        /// <param name="hostname">hostname.</param>
+        /// <param name="hosts">hosts.</param>
         /// <param name="implementationType">implementationType.</param>
         /// <param name="k8sBearerToken">k8sBearerToken.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
@@ -119,6 +122,7 @@ namespace akeyless.Model
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
+        /// <param name="rdpPort">rdpPort.</param>
         /// <param name="securityToken">securityToken.</param>
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
@@ -135,7 +139,7 @@ namespace akeyless.Model
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string administrativePort = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string administrativePort = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string hostname = default(string), List<string> hosts = default(List<string>), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rdpPort = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.AdministrativePort = administrativePort;
             this.AppPrivateKey = appPrivateKey;
@@ -181,6 +185,7 @@ namespace akeyless.Model
             this.EksSecretAccessKey = eksSecretAccessKey;
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKey = gcpServiceAccountKey;
+            this.GcpServiceAccountKeyBase64 = gcpServiceAccountKeyBase64;
             this.GithubAppId = githubAppId;
             this.GithubAppPrivateKey = githubAppPrivateKey;
             this.GithubBaseUrl = githubBaseUrl;
@@ -190,6 +195,8 @@ namespace akeyless.Model
             this.GkeServiceAccountKey = gkeServiceAccountKey;
             this.GkeServiceAccountName = gkeServiceAccountName;
             this.Host = host;
+            this.Hostname = hostname;
+            this.Hosts = hosts;
             this.ImplementationType = implementationType;
             this.K8sBearerToken = k8sBearerToken;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
@@ -221,6 +228,7 @@ namespace akeyless.Model
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
+            this.RdpPort = rdpPort;
             this.SecurityToken = securityToken;
             this.SfAccount = sfAccount;
             this.SslConnectionCertificate = sslConnectionCertificate;
@@ -512,6 +520,12 @@ namespace akeyless.Model
         public string GcpServiceAccountKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets GcpServiceAccountKeyBase64
+        /// </summary>
+        [DataMember(Name = "gcp_service_account_key_base64", EmitDefaultValue = false)]
+        public string GcpServiceAccountKeyBase64 { get; set; }
+
+        /// <summary>
         /// Gets or Sets GithubAppId
         /// </summary>
         [DataMember(Name = "github_app_id", EmitDefaultValue = false)]
@@ -564,6 +578,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Hostname
+        /// </summary>
+        [DataMember(Name = "hostname", EmitDefaultValue = false)]
+        public string Hostname { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Hosts
+        /// </summary>
+        [DataMember(Name = "hosts", EmitDefaultValue = false)]
+        public List<string> Hosts { get; set; }
 
         /// <summary>
         /// Gets or Sets ImplementationType
@@ -755,6 +781,12 @@ namespace akeyless.Model
         public string RabbitmqServerUser { get; set; }
 
         /// <summary>
+        /// Gets or Sets RdpPort
+        /// </summary>
+        [DataMember(Name = "rdp_port", EmitDefaultValue = false)]
+        public string RdpPort { get; set; }
+
+        /// <summary>
         /// Gets or Sets SecurityToken
         /// </summary>
         [DataMember(Name = "security_token", EmitDefaultValue = false)]
@@ -904,6 +936,7 @@ namespace akeyless.Model
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKey: ").Append(GcpServiceAccountKey).Append("\n");
+            sb.Append("  GcpServiceAccountKeyBase64: ").Append(GcpServiceAccountKeyBase64).Append("\n");
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
             sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
             sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
@@ -913,6 +946,8 @@ namespace akeyless.Model
             sb.Append("  GkeServiceAccountKey: ").Append(GkeServiceAccountKey).Append("\n");
             sb.Append("  GkeServiceAccountName: ").Append(GkeServiceAccountName).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Hostname: ").Append(Hostname).Append("\n");
+            sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  ImplementationType: ").Append(ImplementationType).Append("\n");
             sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
@@ -944,6 +979,7 @@ namespace akeyless.Model
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
+            sb.Append("  RdpPort: ").Append(RdpPort).Append("\n");
             sb.Append("  SecurityToken: ").Append(SecurityToken).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
@@ -1217,6 +1253,11 @@ namespace akeyless.Model
                     this.GcpServiceAccountKey.Equals(input.GcpServiceAccountKey))
                 ) && 
                 (
+                    this.GcpServiceAccountKeyBase64 == input.GcpServiceAccountKeyBase64 ||
+                    (this.GcpServiceAccountKeyBase64 != null &&
+                    this.GcpServiceAccountKeyBase64.Equals(input.GcpServiceAccountKeyBase64))
+                ) && 
+                (
                     this.GithubAppId == input.GithubAppId ||
                     this.GithubAppId.Equals(input.GithubAppId)
                 ) && 
@@ -1259,6 +1300,17 @@ namespace akeyless.Model
                     this.Host == input.Host ||
                     (this.Host != null &&
                     this.Host.Equals(input.Host))
+                ) && 
+                (
+                    this.Hostname == input.Hostname ||
+                    (this.Hostname != null &&
+                    this.Hostname.Equals(input.Hostname))
+                ) && 
+                (
+                    this.Hosts == input.Hosts ||
+                    this.Hosts != null &&
+                    input.Hosts != null &&
+                    this.Hosts.SequenceEqual(input.Hosts)
                 ) && 
                 (
                     this.ImplementationType == input.ImplementationType ||
@@ -1413,6 +1465,11 @@ namespace akeyless.Model
                     this.RabbitmqServerUser == input.RabbitmqServerUser ||
                     (this.RabbitmqServerUser != null &&
                     this.RabbitmqServerUser.Equals(input.RabbitmqServerUser))
+                ) && 
+                (
+                    this.RdpPort == input.RdpPort ||
+                    (this.RdpPort != null &&
+                    this.RdpPort.Equals(input.RdpPort))
                 ) && 
                 (
                     this.SecurityToken == input.SecurityToken ||
@@ -1675,6 +1732,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GcpServiceAccountKey.GetHashCode();
                 }
+                if (this.GcpServiceAccountKeyBase64 != null)
+                {
+                    hashCode = (hashCode * 59) + this.GcpServiceAccountKeyBase64.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.GithubAppId.GetHashCode();
                 if (this.GithubAppPrivateKey != null)
                 {
@@ -1707,6 +1768,14 @@ namespace akeyless.Model
                 if (this.Host != null)
                 {
                     hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
+                if (this.Hostname != null)
+                {
+                    hashCode = (hashCode * 59) + this.Hostname.GetHashCode();
+                }
+                if (this.Hosts != null)
+                {
+                    hashCode = (hashCode * 59) + this.Hosts.GetHashCode();
                 }
                 if (this.ImplementationType != null)
                 {
@@ -1828,6 +1897,10 @@ namespace akeyless.Model
                 if (this.RabbitmqServerUser != null)
                 {
                     hashCode = (hashCode * 59) + this.RabbitmqServerUser.GetHashCode();
+                }
+                if (this.RdpPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.RdpPort.GetHashCode();
                 }
                 if (this.SecurityToken != null)
                 {

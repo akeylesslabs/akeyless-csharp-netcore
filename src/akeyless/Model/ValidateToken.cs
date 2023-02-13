@@ -35,9 +35,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateToken" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Token.</param>
-        public ValidateToken(bool json = default(bool), string token = default(string))
+        public ValidateToken(bool json = false, string token = default(string))
         {
             this.Json = json;
             this.Token = token;

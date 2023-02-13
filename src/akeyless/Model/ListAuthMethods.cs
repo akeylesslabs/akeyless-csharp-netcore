@@ -36,12 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ListAuthMethods" /> class.
         /// </summary>
         /// <param name="filter">Filter by auth method name or part of it.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s, cert].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListAuthMethods(string filter = default(string), bool json = default(bool), string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListAuthMethods(string filter = default(string), bool json = false, string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.Filter = filter;
             this.Json = json;

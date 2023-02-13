@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **ObjectsType** | **string** | The objects type to move (item/auth_method/role) | [optional] [default to "item"]
 **Source** | **string** | Source path to move the objects from | 
 **Target** | **string** | Target path to move the objects to | 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ChildTtl** | **int** | New child token ttl | [optional] 
 **Comment** | **string** | Deprecated - use description | [optional] 
 **Description** | **string** | Description of the object | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UidTokenId** | **string** | The ID of the uid-token, required only when uid-token is not provided | [optional] 

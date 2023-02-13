@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDn** | **string** | Bind DN | [optional] 
 **BindDnPassword** | **string** | Bind DN Password | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**ExternalUsername** | **string** | Fixed user | [optional] [default to "false"]
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**ExternalUsername** | **string** | Externally provided username [true/false] | [optional] [default to "false"]
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | [optional] 
 **Name** | **string** | Producer name | 

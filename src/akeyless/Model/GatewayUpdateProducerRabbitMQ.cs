@@ -40,8 +40,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerRabbitMQ" /> class.
         /// </summary>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -53,17 +53,17 @@ namespace akeyless.Model
         /// <param name="rabbitmqUserTags">User Tags.</param>
         /// <param name="rabbitmqUserVhost">User Virtual Host.</param>
         /// <param name="rabbitmqUserWritePermission">User write permission.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessUrl">secureAccessUrl.</param>
-        /// <param name="secureAccessWeb">Secure Access Web Category (default to true).</param>
-        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
-        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerRabbitMQ(string deleteProtection = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerRabbitMQ(string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -97,9 +97,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -188,33 +188,37 @@ namespace akeyless.Model
         public string RabbitmqUserWritePermission { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessUrl
+        /// Destination URL to inject secrets
         /// </summary>
+        /// <value>Destination URL to inject secrets</value>
         [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
-        /// Secure Access Web Category
+        /// Enable Web Secure Remote Access
         /// </summary>
-        /// <value>Secure Access Web Category</value>
+        /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebBrowsing
+        /// Secure browser via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebProxy
+        /// Web-Proxy via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 

@@ -45,13 +45,13 @@ namespace akeyless.Model
         /// <param name="commonName">The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken).</param>
         /// <param name="csrDataBase64">Certificate Signing Request contents encoded in base64 to generate the certificate with.</param>
         /// <param name="extendedKeyUsage">A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;..</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it).</param>
-        public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), bool json = default(bool), string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
+        public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), bool json = false, string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null)

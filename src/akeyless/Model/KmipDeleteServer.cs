@@ -35,10 +35,10 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="KmipDeleteServer" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipDeleteServer(bool json = default(bool), string token = default(string), string uidToken = default(string))
+        public KmipDeleteServer(bool json = false, string token = default(string), string uidToken = default(string))
         {
             this.Json = json;
             this.Token = token;

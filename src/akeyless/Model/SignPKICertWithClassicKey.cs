@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="country">A comma-separated list of the country that will be set in the issued certificate.</param>
         /// <param name="displayId">The name of the key to use in the sign PKI Cert process (required).</param>
         /// <param name="dnsNames">DNS Names to be included in the PKI certificate (in a comma-delimited list).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
@@ -59,7 +59,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list).</param>
         /// <param name="version">classic key version (required).</param>
-        public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), bool json = default(bool), string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), int version = default(int))
+        public SignPKICertWithClassicKey(string commonName = default(string), string country = default(string), string displayId = default(string), string dnsNames = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), string publicKeyPemData = default(string), string signingMethod = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null)

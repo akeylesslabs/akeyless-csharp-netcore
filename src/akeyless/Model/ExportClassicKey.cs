@@ -40,13 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExportClassicKey" /> class.
         /// </summary>
-        /// <param name="ignoreCache">Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Classic key version.</param>
-        public ExportClassicKey(string ignoreCache = "false", bool json = default(bool), string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public ExportClassicKey(string ignoreCache = "false", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -63,9 +63,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI
+        /// Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
         /// </summary>
-        /// <value>Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI</value>
+        /// <value>Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI</value>
         [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
         public string IgnoreCache { get; set; }
 

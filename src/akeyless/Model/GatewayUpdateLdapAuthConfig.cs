@@ -41,9 +41,9 @@ namespace akeyless.Model
         /// <param name="groupAttr">Group Attr.</param>
         /// <param name="groupDn">Group Dn.</param>
         /// <param name="groupFilter">Group Filter.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="ldapCaCert">LDAP CA Certificate (base64 encoded).</param>
-        /// <param name="ldapEnable">Enable Ldap.</param>
+        /// <param name="ldapEnable">Enable Ldap [true/false].</param>
         /// <param name="ldapUrl">LDAP Server URL, e.g. ldap://planetexpress.com:389.</param>
         /// <param name="ldapAnonymousSearch">Ldap Anonymous Search.</param>
         /// <param name="signingKeyData">The private key (base64 encoded), associated with the public key defined in the Ldap auth.</param>
@@ -51,7 +51,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
-        public GatewayUpdateLdapAuthConfig(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), bool json = default(bool), string ldapCaCert = default(string), string ldapEnable = default(string), string ldapUrl = default(string), bool ldapAnonymousSearch = default(bool), string signingKeyData = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public GatewayUpdateLdapAuthConfig(string accessId = default(string), string bindDn = default(string), string bindDnPassword = default(string), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), bool json = false, string ldapCaCert = default(string), string ldapEnable = default(string), string ldapUrl = default(string), bool ldapAnonymousSearch = default(bool), string signingKeyData = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             this.AccessId = accessId;
             this.BindDn = bindDn;
@@ -128,9 +128,9 @@ namespace akeyless.Model
         public string LdapCaCert { get; set; }
 
         /// <summary>
-        /// Enable Ldap
+        /// Enable Ldap [true/false]
         /// </summary>
-        /// <value>Enable Ldap</value>
+        /// <value>Enable Ldap [true/false]</value>
         [DataMember(Name = "ldap-enable", EmitDefaultValue = false)]
         public string LdapEnable { get; set; }
 

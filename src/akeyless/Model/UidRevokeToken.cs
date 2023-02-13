@@ -41,12 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UidRevokeToken" /> class.
         /// </summary>
         /// <param name="authMethodName">The universal identity auth method name.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="revokeToken">the universal identity token/token-id to revoke (required).</param>
         /// <param name="revokeType">revokeSelf/revokeAll (delete only this token/this token and his children) (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UidRevokeToken(string authMethodName = default(string), bool json = default(bool), string revokeToken = default(string), string revokeType = default(string), string token = default(string), string uidToken = default(string))
+        public UidRevokeToken(string authMethodName = default(string), bool json = false, string revokeToken = default(string), string revokeType = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "revokeToken" is required (not null)
             if (revokeToken == null)

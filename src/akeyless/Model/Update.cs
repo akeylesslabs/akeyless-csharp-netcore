@@ -35,12 +35,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Update" /> class.
         /// </summary>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="version">Version.</param>
-        public Update(bool json = default(bool), string version = default(string))
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="version">Version (default to &quot;latest&quot;).</param>
+        public Update(bool json = false, string version = "latest")
         {
             this.Json = json;
-            this._Version = version;
+            // use default value if no "version" provided
+            this._Version = version ?? "latest";
         }
 
         /// <summary>

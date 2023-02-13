@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **AccountPassword** | **string** | Database Password | [optional] 
 **AccountUsername** | **string** | Database Username | [optional] 
 **DbName** | **string** | Database name | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **NewName** | **string** | Producer name | [optional] 
 **PrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 

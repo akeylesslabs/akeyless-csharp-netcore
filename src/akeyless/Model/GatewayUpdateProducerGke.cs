@@ -40,27 +40,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerGke" /> class.
         /// </summary>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
         /// <param name="gkeClusterCert">GKE cluster CA certificate.</param>
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
         /// <param name="gkeClusterName">GKE cluster name.</param>
         /// <param name="gkeServiceAccountEmail">GKE service account email.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
-        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
-        /// <param name="secureAccessClusterEndpoint">secureAccessClusterEndpoint.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessWeb">secureAccessWeb.</param>
+        /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access.</param>
+        /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
+        /// <param name="secureAccessClusterEndpoint">The K8s cluster endpoint URL.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,9 +91,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -161,32 +161,37 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAllowPortForwading
+        /// Enable Port forwarding while using CLI access
         /// </summary>
+        /// <value>Enable Port forwarding while using CLI access</value>
         [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
         public bool SecureAccessAllowPortForwading { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionIssuer
+        /// Path to the SSH Certificate Issuer for your Akeyless Bastion
         /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Bastion</value>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessClusterEndpoint
+        /// The K8s cluster endpoint URL
         /// </summary>
+        /// <value>The K8s cluster endpoint URL</value>
         [DataMember(Name = "secure-access-cluster-endpoint", EmitDefaultValue = false)]
         public string SecureAccessClusterEndpoint { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWeb
+        /// Enable Web Secure Remote Access
         /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 

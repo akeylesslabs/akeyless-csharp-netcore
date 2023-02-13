@@ -36,12 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ListTargets" /> class.
         /// </summary>
         /// <param name="filter">Filter by auth method name or part of it.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListTargets(string filter = default(string), bool json = default(bool), string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListTargets(string filter = default(string), bool json = false, string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.Filter = filter;
             this.Json = json;

@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required).</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required).</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token (required).</param>
@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateNativeK8STarget(string comment = default(string), string description = default(string), bool json = default(bool), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
             if (k8sClusterCaCert == null)

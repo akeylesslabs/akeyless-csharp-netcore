@@ -41,12 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateRotationSettings" /> class.
         /// </summary>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Key name (required).</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotationSettings(bool autoRotate = default(bool), bool json = default(bool), string name = default(string), long rotationInterval = default(long), string token = default(string), string uidToken = default(string))
+        public UpdateRotationSettings(bool autoRotate = default(bool), bool json = false, string name = default(string), long rotationInterval = default(long), string token = default(string), string uidToken = default(string))
         {
             this.AutoRotate = autoRotate;
             // to ensure "name" is required (not null)

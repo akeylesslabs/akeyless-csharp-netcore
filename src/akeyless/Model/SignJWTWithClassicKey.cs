@@ -41,13 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SignJWTWithClassicKey" /> class.
         /// </summary>
         /// <param name="displayId">The name of the key to use in the sign JWT process (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtClaims">JWTClaims (required).</param>
         /// <param name="signingMethod">SigningMethod (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public SignJWTWithClassicKey(string displayId = default(string), bool json = default(bool), string jwtClaims = default(string), string signingMethod = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public SignJWTWithClassicKey(string displayId = default(string), bool json = false, string jwtClaims = default(string), string signingMethod = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null)

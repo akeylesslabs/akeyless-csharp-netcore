@@ -5,8 +5,8 @@ gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item | [optional] 
-**Json** | **bool** | Set output format to JSON | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RabbitmqAdminPwd** | **string** | RabbitMQ Admin password | [optional] 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | **string** | User Tags | [optional] 
 **RabbitmqUserVhost** | **string** | User Virtual Host | [optional] 
 **RabbitmqUserWritePermission** | **string** | User write permission | [optional] 
-**SecureAccessEnable** | **string** |  | [optional] 
-**SecureAccessUrl** | **string** |  | [optional] 
-**SecureAccessWeb** | **bool** | Secure Access Web Category | [optional] [default to true]
-**SecureAccessWebBrowsing** | **bool** |  | [optional] 
-**SecureAccessWebProxy** | **bool** |  | [optional] 
+**SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessUrl** | **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to true]
+**SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

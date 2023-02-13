@@ -41,10 +41,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayDeleteMigration" /> class.
         /// </summary>
         /// <param name="id">Migration ID (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayDeleteMigration(string id = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string))
+        public GatewayDeleteMigration(string id = default(string), bool json = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)

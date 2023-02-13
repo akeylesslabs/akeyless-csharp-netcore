@@ -42,9 +42,9 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="adminRotationIntervalDays">Define rotation interval in days.</param>
         /// <param name="createSyncUrl">URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create (required).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="enableAdminRotation">Should admin credentials be rotated (default to false).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="payload">Secret payload to be sent with each create/revoke webhook request.</param>
@@ -56,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerCustom(long adminRotationIntervalDays = default(long), string createSyncUrl = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, bool json = default(bool), string name = default(string), string newName = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerCustom(long adminRotationIntervalDays = default(long), string createSyncUrl = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string newName = default(string), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "createSyncUrl" is required (not null)
             if (createSyncUrl == null)
@@ -107,9 +107,9 @@ namespace akeyless.Model
         public string CreateSyncUrl { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

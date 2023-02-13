@@ -48,27 +48,27 @@ namespace akeyless.Model
         /// <param name="awsUserConsoleAccess">AWS User console access (default to false).</param>
         /// <param name="awsUserGroups">AWS User groups.</param>
         /// <param name="awsUserPolicies">AWS User policies.</param>
-        /// <param name="awsUserProgrammaticAccess">AWS User programmatic access (default to true).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item.</param>
+        /// <param name="awsUserProgrammaticAccess">Enable AWS User programmatic access (default to true).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="region">Region (default to &quot;us-east-2&quot;).</param>
-        /// <param name="secureAccessAwsAccountId">secureAccessAwsAccountId.</param>
-        /// <param name="secureAccessAwsNativeCli">secureAccessAwsNativeCli.</param>
-        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessWeb">secureAccessWeb.</param>
-        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
-        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
+        /// <param name="secureAccessAwsAccountId">The AWS account id.</param>
+        /// <param name="secureAccessAwsNativeCli">The AWS native cli.</param>
+        /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="tags">List of the tags attached to this secret.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = default(bool), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -163,16 +163,16 @@ namespace akeyless.Model
         public string AwsUserPolicies { get; set; }
 
         /// <summary>
-        /// AWS User programmatic access
+        /// Enable AWS User programmatic access
         /// </summary>
-        /// <value>AWS User programmatic access</value>
+        /// <value>Enable AWS User programmatic access</value>
         [DataMember(Name = "aws-user-programmatic-access", EmitDefaultValue = true)]
         public bool AwsUserProgrammaticAccess { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item</value>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -219,44 +219,51 @@ namespace akeyless.Model
         public string Region { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAwsAccountId
+        /// The AWS account id
         /// </summary>
+        /// <value>The AWS account id</value>
         [DataMember(Name = "secure-access-aws-account-id", EmitDefaultValue = false)]
         public string SecureAccessAwsAccountId { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAwsNativeCli
+        /// The AWS native cli
         /// </summary>
+        /// <value>The AWS native cli</value>
         [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
         public bool SecureAccessAwsNativeCli { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionIssuer
+        /// Path to the SSH Certificate Issuer for your Akeyless Bastion
         /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Bastion</value>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWeb
+        /// Enable Web Secure Remote Access
         /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebBrowsing
+        /// Secure browser via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebProxy
+        /// Web-Proxy via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 

@@ -36,10 +36,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UidListChildren" /> class.
         /// </summary>
         /// <param name="authMethodName">The universal identity auth method name, required only when uid-token is not provided.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UidListChildren(string authMethodName = default(string), bool json = default(bool), string token = default(string), string uidToken = default(string))
+        public UidListChildren(string authMethodName = default(string), bool json = false, string token = default(string), string uidToken = default(string))
         {
             this.AuthMethodName = authMethodName;
             this.Json = json;

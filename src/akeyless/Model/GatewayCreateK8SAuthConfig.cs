@@ -43,11 +43,11 @@ namespace akeyless.Model
         /// <param name="accessId">The access ID of the Kubernetes auth method (required).</param>
         /// <param name="clusterApiType">Cluster access type. options: [native_k8s, rancher] (default to &quot;native_k8s&quot;).</param>
         /// <param name="configEncryptionKeyName">Config encryption key.</param>
-        /// <param name="disableIssuerValidation">Disable issuer validation.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="disableIssuerValidation">Disable issuer validation [true/false].</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sCaCert">The CA Certificate (base64 encoded) to use to call into the kubernetes API server.</param>
         /// <param name="k8sHost">The URL of the kubernetes API server (required).</param>
-        /// <param name="k8sIssuer">The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer..</param>
+        /// <param name="k8sIssuer">The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token (default to &quot;kubernetes/serviceaccount&quot;).</param>
         /// <param name="name">K8S Auth config name (required).</param>
         /// <param name="rancherApiKey">The api key used to access the TokenReview API to validate other JWTs (relevant for \&quot;rancher\&quot; only).</param>
         /// <param name="rancherClusterId">The cluster id as define in rancher (relevant for \&quot;rancher\&quot; only).</param>
@@ -56,7 +56,7 @@ namespace akeyless.Model
         /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token (default to 300).</param>
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = default(bool), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), string name = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
+        public GatewayCreateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = false, string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = "kubernetes/serviceaccount", string name = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null)
@@ -88,7 +88,8 @@ namespace akeyless.Model
             this.DisableIssuerValidation = disableIssuerValidation;
             this.Json = json;
             this.K8sCaCert = k8sCaCert;
-            this.K8sIssuer = k8sIssuer;
+            // use default value if no "k8sIssuer" provided
+            this.K8sIssuer = k8sIssuer ?? "kubernetes/serviceaccount";
             this.RancherApiKey = rancherApiKey;
             this.RancherClusterId = rancherClusterId;
             this.Token = token;
@@ -119,9 +120,9 @@ namespace akeyless.Model
         public string ConfigEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// Disable issuer validation
+        /// Disable issuer validation [true/false]
         /// </summary>
-        /// <value>Disable issuer validation</value>
+        /// <value>Disable issuer validation [true/false]</value>
         [DataMember(Name = "disable-issuer-validation", EmitDefaultValue = false)]
         public string DisableIssuerValidation { get; set; }
 
@@ -147,9 +148,9 @@ namespace akeyless.Model
         public string K8sHost { get; set; }
 
         /// <summary>
-        /// The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.
+        /// The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token
         /// </summary>
-        /// <value>The Kubernetes JWT issuer name. If not set, kubernetes/serviceaccount will use as an issuer.</value>
+        /// <value>The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token</value>
         [DataMember(Name = "k8s-issuer", EmitDefaultValue = false)]
         public string K8sIssuer { get; set; }
 

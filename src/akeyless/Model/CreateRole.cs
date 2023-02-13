@@ -45,12 +45,12 @@ namespace akeyless.Model
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Role name (required).</param>
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string description = default(string), string gwAnalyticsAccess = default(string), bool json = default(bool), string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
+        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string description = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

@@ -41,13 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="VerifyJWTWithClassicKey" /> class.
         /// </summary>
         /// <param name="displayId">The name of the key to use in the verify JWT process (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwt">JWT (required).</param>
         /// <param name="requiredClaims">RequiredClaims (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public VerifyJWTWithClassicKey(string displayId = default(string), bool json = default(bool), string jwt = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public VerifyJWTWithClassicKey(string displayId = default(string), bool json = false, string jwt = default(string), string requiredClaims = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "displayId" is required (not null)
             if (displayId == null)

@@ -44,12 +44,12 @@ namespace akeyless.Model
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
         /// <param name="_in">Path to the file to be encrypted. If not provided, the content will be taken from stdin (required).</param>
         /// <param name="itemId">The item id of the key to use in the encryption process.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="_out">Path to the output file. If not provided, the output will be sent to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), bool json = default(bool), string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
+        public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null)

@@ -41,12 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DeleteTargetAssociation" /> class.
         /// </summary>
         /// <param name="assocId">The association id to be deleted.</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="targetName">The target to associate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteTargetAssociation(string assocId = default(string), bool json = default(bool), string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteTargetAssociation(string assocId = default(string), bool json = false, string name = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)

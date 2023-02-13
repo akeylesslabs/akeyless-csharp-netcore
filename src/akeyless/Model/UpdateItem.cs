@@ -43,41 +43,41 @@ namespace akeyless.Model
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="certFileData">PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates..</param>
-        /// <param name="deleteProtection">deleteProtection.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends (default to &quot;false&quot;).</param>
-        /// <param name="secureAccessAddHost">secureAccessAddHost.</param>
-        /// <param name="secureAccessAllowExternalUser">secureAccessAllowExternalUser.</param>
-        /// <param name="secureAccessAllowPortForwading">secureAccessAllowPortForwading.</param>
-        /// <param name="secureAccessAwsAccountId">secureAccessAwsAccountId.</param>
-        /// <param name="secureAccessAwsNativeCli">secureAccessAwsNativeCli.</param>
-        /// <param name="secureAccessAwsRegion">secureAccessAwsRegion.</param>
-        /// <param name="secureAccessBastionApi">secureAccessBastionApi.</param>
-        /// <param name="secureAccessBastionIssuer">secureAccessBastionIssuer.</param>
-        /// <param name="secureAccessBastionSsh">secureAccessBastionSsh.</param>
-        /// <param name="secureAccessClusterEndpoint">secureAccessClusterEndpoint.</param>
-        /// <param name="secureAccessDashboardUrl">secureAccessDashboardUrl.</param>
-        /// <param name="secureAccessDbName">secureAccessDbName.</param>
-        /// <param name="secureAccessDbSchema">secureAccessDbSchema.</param>
-        /// <param name="secureAccessEnable">secureAccessEnable.</param>
-        /// <param name="secureAccessHost">secureAccessHost.</param>
-        /// <param name="secureAccessRdpDomain">secureAccessRdpDomain.</param>
-        /// <param name="secureAccessRdpUser">secureAccessRdpUser.</param>
-        /// <param name="secureAccessRmHost">secureAccessRmHost.</param>
-        /// <param name="secureAccessSshCreds">secureAccessSshCreds.</param>
-        /// <param name="secureAccessSshCredsUser">secureAccessSshCredsUser.</param>
-        /// <param name="secureAccessUrl">secureAccessUrl.</param>
-        /// <param name="secureAccessUseInternalBastion">secureAccessUseInternalBastion.</param>
-        /// <param name="secureAccessWebBrowsing">secureAccessWebBrowsing.</param>
-        /// <param name="secureAccessWebProxy">secureAccessWebProxy.</param>
+        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret) (default to &quot;false&quot;).</param>
+        /// <param name="secureAccessAddHost">List of the new hosts that will be attached to SRA servers host.</param>
+        /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users [true/false].</param>
+        /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
+        /// <param name="secureAccessAwsAccountId">The AWS account id (relevant only for aws).</param>
+        /// <param name="secureAccessAwsNativeCli">The AWS native cli (relevant only for aws).</param>
+        /// <param name="secureAccessAwsRegion">The AWS region (relevant only for aws).</param>
+        /// <param name="secureAccessBastionApi">Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer).</param>
+        /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
+        /// <param name="secureAccessBastionSsh">Bastion&#39;s SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer).</param>
+        /// <param name="secureAccessClusterEndpoint">The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
+        /// <param name="secureAccessDashboardUrl">The K8s dashboard url (relevant only for k8s).</param>
+        /// <param name="secureAccessDbName">The DB name (relevant only for DB Dynamic-Secret).</param>
+        /// <param name="secureAccessDbSchema">The DB schema (relevant only for DB Dynamic-Secret).</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
+        /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
+        /// <param name="secureAccessRmHost">List of the existent hosts that will be removed from SRA servers host.</param>
+        /// <param name="secureAccessSshCreds">Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret).</param>
+        /// <param name="secureAccessSshCredsUser">SSH username to connect to target server, must be in &#39;Allowed Users&#39; list (relevant only for ssh cert issuer).</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = default(bool), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string token = default(string), string uidToken = default(string))
+        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -149,8 +149,9 @@ namespace akeyless.Model
         public string CertFileData { get; set; }
 
         /// <summary>
-        /// Gets or Sets DeleteProtection
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -197,153 +198,177 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Rotate the value of the secret after SRA session ends
+        /// Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)
         /// </summary>
-        /// <value>Rotate the value of the secret after SRA session ends</value>
+        /// <value>Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAddHost
+        /// List of the new hosts that will be attached to SRA servers host
         /// </summary>
+        /// <value>List of the new hosts that will be attached to SRA servers host</value>
         [DataMember(Name = "secure-access-add-host", EmitDefaultValue = false)]
         public List<string> SecureAccessAddHost { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAllowExternalUser
+        /// Allow providing external user for a domain users [true/false]
         /// </summary>
+        /// <value>Allow providing external user for a domain users [true/false]</value>
         [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = false)]
         public string SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAllowPortForwading
+        /// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
         /// </summary>
+        /// <value>Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
         public bool SecureAccessAllowPortForwading { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAwsAccountId
+        /// The AWS account id (relevant only for aws)
         /// </summary>
+        /// <value>The AWS account id (relevant only for aws)</value>
         [DataMember(Name = "secure-access-aws-account-id", EmitDefaultValue = false)]
         public string SecureAccessAwsAccountId { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAwsNativeCli
+        /// The AWS native cli (relevant only for aws)
         /// </summary>
+        /// <value>The AWS native cli (relevant only for aws)</value>
         [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
         public bool SecureAccessAwsNativeCli { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessAwsRegion
+        /// The AWS region (relevant only for aws)
         /// </summary>
+        /// <value>The AWS region (relevant only for aws)</value>
         [DataMember(Name = "secure-access-aws-region", EmitDefaultValue = false)]
         public string SecureAccessAwsRegion { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionApi
+        /// Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer)
         /// </summary>
+        /// <value>Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer)</value>
         [DataMember(Name = "secure-access-bastion-api", EmitDefaultValue = false)]
         public string SecureAccessBastionApi { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionIssuer
+        /// Path to the SSH Certificate Issuer for your Akeyless Bastion
         /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Bastion</value>
         [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
         public string SecureAccessBastionIssuer { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessBastionSsh
+        /// Bastion&#39;s SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer)
         /// </summary>
+        /// <value>Bastion&#39;s SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer)</value>
         [DataMember(Name = "secure-access-bastion-ssh", EmitDefaultValue = false)]
         public string SecureAccessBastionSsh { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessClusterEndpoint
+        /// The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret)
         /// </summary>
+        /// <value>The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-cluster-endpoint", EmitDefaultValue = false)]
         public string SecureAccessClusterEndpoint { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessDashboardUrl
+        /// The K8s dashboard url (relevant only for k8s)
         /// </summary>
+        /// <value>The K8s dashboard url (relevant only for k8s)</value>
         [DataMember(Name = "secure-access-dashboard-url", EmitDefaultValue = false)]
         public string SecureAccessDashboardUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessDbName
+        /// The DB name (relevant only for DB Dynamic-Secret)
         /// </summary>
+        /// <value>The DB name (relevant only for DB Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-db-name", EmitDefaultValue = false)]
         public string SecureAccessDbName { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessDbSchema
+        /// The DB schema (relevant only for DB Dynamic-Secret)
         /// </summary>
+        /// <value>The DB schema (relevant only for DB Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-db-schema", EmitDefaultValue = false)]
         public string SecureAccessDbSchema { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessEnable
+        /// Enable/Disable secure remote access [true/false]
         /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessHost
+        /// Target servers for connections
         /// </summary>
+        /// <value>Target servers for connections</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessRdpDomain
+        /// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
         /// </summary>
+        /// <value>Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)</value>
         [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
         public string SecureAccessRdpDomain { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessRdpUser
+        /// Override the RDP Domain username
         /// </summary>
+        /// <value>Override the RDP Domain username</value>
         [DataMember(Name = "secure-access-rdp-user", EmitDefaultValue = false)]
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessRmHost
+        /// List of the existent hosts that will be removed from SRA servers host
         /// </summary>
+        /// <value>List of the existent hosts that will be removed from SRA servers host</value>
         [DataMember(Name = "secure-access-rm-host", EmitDefaultValue = false)]
         public List<string> SecureAccessRmHost { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessSshCreds
+        /// Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)
         /// </summary>
+        /// <value>Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)</value>
         [DataMember(Name = "secure-access-ssh-creds", EmitDefaultValue = false)]
         public string SecureAccessSshCreds { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessSshCredsUser
+        /// SSH username to connect to target server, must be in &#39;Allowed Users&#39; list (relevant only for ssh cert issuer)
         /// </summary>
+        /// <value>SSH username to connect to target server, must be in &#39;Allowed Users&#39; list (relevant only for ssh cert issuer)</value>
         [DataMember(Name = "secure-access-ssh-creds-user", EmitDefaultValue = false)]
         public string SecureAccessSshCredsUser { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessUrl
+        /// Destination URL to inject secrets
         /// </summary>
+        /// <value>Destination URL to inject secrets</value>
         [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessUseInternalBastion
+        /// Use internal SSH Bastion
         /// </summary>
+        /// <value>Use internal SSH Bastion</value>
         [DataMember(Name = "secure-access-use-internal-bastion", EmitDefaultValue = true)]
         public bool SecureAccessUseInternalBastion { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebBrowsing
+        /// Secure browser via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecureAccessWebProxy
+        /// Web-Proxy via Akeyless Web Access Bastion
         /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 

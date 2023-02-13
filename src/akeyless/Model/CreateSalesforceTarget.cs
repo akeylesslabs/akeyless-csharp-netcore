@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="email">The email of the user attached to the oauth2 app used for connecting to Salesforce (required).</param>
-        /// <param name="json">Set output format to JSON.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="password">The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow).</param>
@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="tenantUrl">Url of the Salesforce tenant (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), string email = default(string), bool json = default(bool), string key = default(string), string name = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string))
+        public CreateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), string email = default(string), bool json = false, string key = default(string), string name = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "authFlow" is required (not null)
             if (authFlow == null)

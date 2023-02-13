@@ -41,8 +41,8 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateSecretVal" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
-        /// <param name="json">Set output format to JSON.</param>
-        /// <param name="keepPrevVersion">keepPrevVersion.</param>
+        /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="multiline">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The new secret value (required).</param>
-        public UpdateSecretVal(string accessibility = "regular", bool json = default(bool), string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string token = default(string), string uidToken = default(string), string value = default(string))
+        public UpdateSecretVal(string accessibility = "regular", bool json = false, string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string token = default(string), string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -98,8 +98,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets KeepPrevVersion
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
         /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
         [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
         public string KeepPrevVersion { get; set; }
 
