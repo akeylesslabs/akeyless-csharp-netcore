@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="mysqlHost">MySQL Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="mysqlPassword">MySQL Password.</param>
         /// <param name="mysqlPort">MySQL Port (default to &quot;3306&quot;).</param>
+        /// <param name="mysqlRevocationStatements">MySQL Revocation statements.</param>
         /// <param name="mysqlScreationStatements">MySQL Creation statements.</param>
         /// <param name="mysqlUsername">MySQL Username.</param>
         /// <param name="name">Producer name (required).</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerMySQL(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string mysqlDbname = default(string), string mysqlHost = "127.0.0.1", string mysqlPassword = default(string), string mysqlPort = "3306", string mysqlRevocationStatements = default(string), string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.MysqlPassword = mysqlPassword;
             // use default value if no "mysqlPort" provided
             this.MysqlPort = mysqlPort ?? "3306";
+            this.MysqlRevocationStatements = mysqlRevocationStatements;
             this.MysqlScreationStatements = mysqlScreationStatements;
             this.MysqlUsername = mysqlUsername;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -153,6 +155,13 @@ namespace akeyless.Model
         /// <value>MySQL Port</value>
         [DataMember(Name = "mysql-port", EmitDefaultValue = false)]
         public string MysqlPort { get; set; }
+
+        /// <summary>
+        /// MySQL Revocation statements
+        /// </summary>
+        /// <value>MySQL Revocation statements</value>
+        [DataMember(Name = "mysql-revocation-statements", EmitDefaultValue = false)]
+        public string MysqlRevocationStatements { get; set; }
 
         /// <summary>
         /// MySQL Creation statements
@@ -275,6 +284,7 @@ namespace akeyless.Model
             sb.Append("  MysqlHost: ").Append(MysqlHost).Append("\n");
             sb.Append("  MysqlPassword: ").Append(MysqlPassword).Append("\n");
             sb.Append("  MysqlPort: ").Append(MysqlPort).Append("\n");
+            sb.Append("  MysqlRevocationStatements: ").Append(MysqlRevocationStatements).Append("\n");
             sb.Append("  MysqlScreationStatements: ").Append(MysqlScreationStatements).Append("\n");
             sb.Append("  MysqlUsername: ").Append(MysqlUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -363,6 +373,11 @@ namespace akeyless.Model
                     this.MysqlPort == input.MysqlPort ||
                     (this.MysqlPort != null &&
                     this.MysqlPort.Equals(input.MysqlPort))
+                ) && 
+                (
+                    this.MysqlRevocationStatements == input.MysqlRevocationStatements ||
+                    (this.MysqlRevocationStatements != null &&
+                    this.MysqlRevocationStatements.Equals(input.MysqlRevocationStatements))
                 ) && 
                 (
                     this.MysqlScreationStatements == input.MysqlScreationStatements ||
@@ -478,6 +493,10 @@ namespace akeyless.Model
                 if (this.MysqlPort != null)
                 {
                     hashCode = (hashCode * 59) + this.MysqlPort.GetHashCode();
+                }
+                if (this.MysqlRevocationStatements != null)
+                {
+                    hashCode = (hashCode * 59) + this.MysqlRevocationStatements.GetHashCode();
                 }
                 if (this.MysqlScreationStatements != null)
                 {

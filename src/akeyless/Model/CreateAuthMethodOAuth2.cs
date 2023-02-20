@@ -48,13 +48,15 @@ namespace akeyless.Model
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (required).</param>
+        /// <param name="jwksJsonData">The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string.</param>
+        /// <param name="jwksJsonFile">JSON Web Key Set (JWKS) JSON file path that will be used to verify any JSON Web Token (JWT) issued by the authorization server..</param>
+        /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. (required) (default to &quot;default_jwks_url&quot;).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksUri = default(string), long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksJsonFile = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "jwksUri" is required (not null)
             if (jwksUri == null)
@@ -82,6 +84,8 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Issuer = issuer;
             this.Json = json;
+            this.JwksJsonData = jwksJsonData;
+            this.JwksJsonFile = jwksJsonFile;
             this.JwtTtl = jwtTtl;
             this.Token = token;
             this.UidToken = uidToken;
@@ -144,6 +148,20 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string
+        /// </summary>
+        /// <value>The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string</value>
+        [DataMember(Name = "jwks-json-data", EmitDefaultValue = false)]
+        public string JwksJsonData { get; set; }
+
+        /// <summary>
+        /// JSON Web Key Set (JWKS) JSON file path that will be used to verify any JSON Web Token (JWT) issued by the authorization server.
+        /// </summary>
+        /// <value>JSON Web Key Set (JWKS) JSON file path that will be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
+        [DataMember(Name = "jwks-json-file", EmitDefaultValue = false)]
+        public string JwksJsonFile { get; set; }
+
+        /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
@@ -201,6 +219,8 @@ namespace akeyless.Model
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  JwksJsonData: ").Append(JwksJsonData).Append("\n");
+            sb.Append("  JwksJsonFile: ").Append(JwksJsonFile).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -283,6 +303,16 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.JwksJsonData == input.JwksJsonData ||
+                    (this.JwksJsonData != null &&
+                    this.JwksJsonData.Equals(input.JwksJsonData))
+                ) && 
+                (
+                    this.JwksJsonFile == input.JwksJsonFile ||
+                    (this.JwksJsonFile != null &&
+                    this.JwksJsonFile.Equals(input.JwksJsonFile))
+                ) && 
+                (
                     this.JwksUri == input.JwksUri ||
                     (this.JwksUri != null &&
                     this.JwksUri.Equals(input.JwksUri))
@@ -345,6 +375,14 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.JwksJsonData != null)
+                {
+                    hashCode = (hashCode * 59) + this.JwksJsonData.GetHashCode();
+                }
+                if (this.JwksJsonFile != null)
+                {
+                    hashCode = (hashCode * 59) + this.JwksJsonFile.GetHashCode();
+                }
                 if (this.JwksUri != null)
                 {
                     hashCode = (hashCode * 59) + this.JwksUri.GetHashCode();

@@ -150,6 +150,7 @@ Name | Type | Description | Notes
 **MssqlCreationStatements** | **string** |  | [optional] 
 **MssqlRevocationStatements** | **string** |  | [optional] 
 **MysqlCreationStatements** | **string** |  | [optional] 
+**MysqlRevocationStatements** | **string** |  | [optional] 
 **OracleCreationStatements** | **string** |  | [optional] 
 **Password** | **string** |  | [optional] 
 **PasswordLength** | **long** |  | [optional] 

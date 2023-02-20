@@ -45,8 +45,8 @@ namespace akeyless.Model
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate.</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint.</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token.</param>
-        /// <param name="k8sNamespace">K8S namespace (default to &quot;default&quot;).</param>
-        /// <param name="k8sServiceAccount">K8S service account.</param>
+        /// <param name="k8sNamespace">K8S Namespace where the ServiceAccount exists..</param>
+        /// <param name="k8sServiceAccount">K8S ServiceAccount to extract token from..</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -63,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = "default", string k8sServiceAccount = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -76,8 +76,7 @@ namespace akeyless.Model
             this.K8sClusterCaCert = k8sClusterCaCert;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
             this.K8sClusterToken = k8sClusterToken;
-            // use default value if no "k8sNamespace" provided
-            this.K8sNamespace = k8sNamespace ?? "default";
+            this.K8sNamespace = k8sNamespace;
             this.K8sServiceAccount = k8sServiceAccount;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -133,16 +132,16 @@ namespace akeyless.Model
         public string K8sClusterToken { get; set; }
 
         /// <summary>
-        /// K8S namespace
+        /// K8S Namespace where the ServiceAccount exists.
         /// </summary>
-        /// <value>K8S namespace</value>
+        /// <value>K8S Namespace where the ServiceAccount exists.</value>
         [DataMember(Name = "k8s-namespace", EmitDefaultValue = false)]
         public string K8sNamespace { get; set; }
 
         /// <summary>
-        /// K8S service account
+        /// K8S ServiceAccount to extract token from.
         /// </summary>
-        /// <value>K8S service account</value>
+        /// <value>K8S ServiceAccount to extract token from.</value>
         [DataMember(Name = "k8s-service-account", EmitDefaultValue = false)]
         public string K8sServiceAccount { get; set; }
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AuthMethodRolesAssoc** | [**List&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
+**IsApproved** | **bool** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

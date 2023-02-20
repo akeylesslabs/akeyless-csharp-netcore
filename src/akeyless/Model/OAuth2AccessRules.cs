@@ -39,14 +39,16 @@ namespace akeyless.Model
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="boundClientsId">The clients ids that login is restricted to..</param>
         /// <param name="issuer">Issuer URL.</param>
+        /// <param name="jwksJsonData">The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server..</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OAuth2AccessRules(string audience = default(string), List<OAuth2CustomClaim> boundClaims = default(List<OAuth2CustomClaim>), List<string> boundClientsId = default(List<string>), string issuer = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
+        public OAuth2AccessRules(string audience = default(string), List<OAuth2CustomClaim> boundClaims = default(List<OAuth2CustomClaim>), List<string> boundClientsId = default(List<string>), string issuer = default(string), string jwksJsonData = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
         {
             this.Audience = audience;
             this.BoundClaims = boundClaims;
             this.BoundClientsId = boundClientsId;
             this.Issuer = issuer;
+            this.JwksJsonData = jwksJsonData;
             this.JwksUri = jwksUri;
             this.UniqueIdentifier = uniqueIdentifier;
         }
@@ -80,6 +82,13 @@ namespace akeyless.Model
         public string Issuer { get; set; }
 
         /// <summary>
+        /// The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string
+        /// </summary>
+        /// <value>The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string</value>
+        [DataMember(Name = "jwks_json_data", EmitDefaultValue = false)]
+        public string JwksJsonData { get; set; }
+
+        /// <summary>
         /// The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
         /// </summary>
         /// <value>The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.</value>
@@ -105,6 +114,7 @@ namespace akeyless.Model
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  BoundClientsId: ").Append(BoundClientsId).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
+            sb.Append("  JwksJsonData: ").Append(JwksJsonData).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
@@ -165,6 +175,11 @@ namespace akeyless.Model
                     this.Issuer.Equals(input.Issuer))
                 ) && 
                 (
+                    this.JwksJsonData == input.JwksJsonData ||
+                    (this.JwksJsonData != null &&
+                    this.JwksJsonData.Equals(input.JwksJsonData))
+                ) && 
+                (
                     this.JwksUri == input.JwksUri ||
                     (this.JwksUri != null &&
                     this.JwksUri.Equals(input.JwksUri))
@@ -200,6 +215,10 @@ namespace akeyless.Model
                 if (this.Issuer != null)
                 {
                     hashCode = (hashCode * 59) + this.Issuer.GetHashCode();
+                }
+                if (this.JwksJsonData != null)
+                {
+                    hashCode = (hashCode * 59) + this.JwksJsonData.GetHashCode();
                 }
                 if (this.JwksUri != null)
                 {

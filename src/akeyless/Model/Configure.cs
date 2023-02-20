@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access Key.</param>
         /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s) (default to &quot;access_key&quot;).</param>
+        /// <param name="accountId">Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
@@ -46,12 +47,13 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context).</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string))
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
             // use default value if no "accessType" provided
             this.AccessType = accessType ?? "access_key";
+            this.AccountId = accountId;
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
             this.AzureAdObjectId = azureAdObjectId;
@@ -83,6 +85,13 @@ namespace akeyless.Model
         /// <value>Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s)</value>
         [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
+
+        /// <summary>
+        /// Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account)
+        /// </summary>
+        /// <value>Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account)</value>
+        [DataMember(Name = "account-id", EmitDefaultValue = false)]
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Email (relevant only for access-type&#x3D;password)
@@ -151,6 +160,7 @@ namespace akeyless.Model
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
             sb.Append("  AccessType: ").Append(AccessType).Append("\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
@@ -208,6 +218,11 @@ namespace akeyless.Model
                     this.AccessType == input.AccessType ||
                     (this.AccessType != null &&
                     this.AccessType.Equals(input.AccessType))
+                ) && 
+                (
+                    this.AccountId == input.AccountId ||
+                    (this.AccountId != null &&
+                    this.AccountId.Equals(input.AccountId))
                 ) && 
                 (
                     this.AdminEmail == input.AdminEmail ||
@@ -270,6 +285,10 @@ namespace akeyless.Model
                 if (this.AccessType != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessType.GetHashCode();
+                }
+                if (this.AccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
                 }
                 if (this.AdminEmail != null)
                 {

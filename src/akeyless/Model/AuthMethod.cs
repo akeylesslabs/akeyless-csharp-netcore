@@ -43,8 +43,9 @@ namespace akeyless.Model
         /// <param name="authMethodRolesAssoc">authMethodRolesAssoc.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="creationDate">creationDate.</param>
+        /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime))
+        public AuthMethod(DateTime accessDate = default(DateTime), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
         {
             this.AccessDate = accessDate;
             this.AccessInfo = accessInfo;
@@ -54,6 +55,7 @@ namespace akeyless.Model
             this.AuthMethodRolesAssoc = authMethodRolesAssoc;
             this.ClientPermissions = clientPermissions;
             this.CreationDate = creationDate;
+            this.IsApproved = isApproved;
             this.ModificationDate = modificationDate;
         }
 
@@ -106,6 +108,12 @@ namespace akeyless.Model
         public DateTime CreationDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsApproved
+        /// </summary>
+        [DataMember(Name = "is_approved", EmitDefaultValue = true)]
+        public bool IsApproved { get; set; }
+
+        /// <summary>
         /// Gets or Sets ModificationDate
         /// </summary>
         [DataMember(Name = "modification_date", EmitDefaultValue = false)]
@@ -127,6 +135,7 @@ namespace akeyless.Model
             sb.Append("  AuthMethodRolesAssoc: ").Append(AuthMethodRolesAssoc).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  IsApproved: ").Append(IsApproved).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -206,6 +215,10 @@ namespace akeyless.Model
                     this.CreationDate.Equals(input.CreationDate))
                 ) && 
                 (
+                    this.IsApproved == input.IsApproved ||
+                    this.IsApproved.Equals(input.IsApproved)
+                ) && 
+                (
                     this.ModificationDate == input.ModificationDate ||
                     (this.ModificationDate != null &&
                     this.ModificationDate.Equals(input.ModificationDate))
@@ -253,6 +266,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsApproved.GetHashCode();
                 if (this.ModificationDate != null)
                 {
                     hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();

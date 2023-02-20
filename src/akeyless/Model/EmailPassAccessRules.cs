@@ -37,11 +37,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">alg.</param>
         /// <param name="email">The Email value.</param>
+        /// <param name="encEmailWithSharedKey">EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam).</param>
         /// <param name="hashPass">The password value.</param>
-        public EmailPassAccessRules(string alg = default(string), string email = default(string), string hashPass = default(string))
+        public EmailPassAccessRules(string alg = default(string), string email = default(string), string encEmailWithSharedKey = default(string), string hashPass = default(string))
         {
             this.Alg = alg;
             this.Email = email;
+            this.EncEmailWithSharedKey = encEmailWithSharedKey;
             this.HashPass = hashPass;
         }
 
@@ -57,6 +59,13 @@ namespace akeyless.Model
         /// <value>The Email value</value>
         [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam)
+        /// </summary>
+        /// <value>EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam)</value>
+        [DataMember(Name = "enc_email_with_shared_key", EmitDefaultValue = false)]
+        public string EncEmailWithSharedKey { get; set; }
 
         /// <summary>
         /// The password value
@@ -75,6 +84,7 @@ namespace akeyless.Model
             sb.Append("class EmailPassAccessRules {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  EncEmailWithSharedKey: ").Append(EncEmailWithSharedKey).Append("\n");
             sb.Append("  HashPass: ").Append(HashPass).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -122,6 +132,11 @@ namespace akeyless.Model
                     this.Email.Equals(input.Email))
                 ) && 
                 (
+                    this.EncEmailWithSharedKey == input.EncEmailWithSharedKey ||
+                    (this.EncEmailWithSharedKey != null &&
+                    this.EncEmailWithSharedKey.Equals(input.EncEmailWithSharedKey))
+                ) && 
+                (
                     this.HashPass == input.HashPass ||
                     (this.HashPass != null &&
                     this.HashPass.Equals(input.HashPass))
@@ -144,6 +159,10 @@ namespace akeyless.Model
                 if (this.Email != null)
                 {
                     hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                }
+                if (this.EncEmailWithSharedKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.EncEmailWithSharedKey.GetHashCode();
                 }
                 if (this.HashPass != null)
                 {

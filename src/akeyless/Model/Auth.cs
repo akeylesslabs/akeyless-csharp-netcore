@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access key (relevant only for access-type&#x3D;access_key).</param>
         /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert) (default to &quot;access_key&quot;).</param>
+        /// <param name="accountId">Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
@@ -53,12 +54,13 @@ namespace akeyless.Model
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
             // use default value if no "accessType" provided
             this.AccessType = accessType ?? "access_key";
+            this.AccountId = accountId;
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
             this.CertData = certData;
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)</value>
         [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
+
+        /// <summary>
+        /// Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account)
+        /// </summary>
+        /// <value>Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account)</value>
+        [DataMember(Name = "account-id", EmitDefaultValue = false)]
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Email (relevant only for access-type&#x3D;password)
@@ -213,6 +222,7 @@ namespace akeyless.Model
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
             sb.Append("  AccessType: ").Append(AccessType).Append("\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
             sb.Append("  CertData: ").Append(CertData).Append("\n");
@@ -277,6 +287,11 @@ namespace akeyless.Model
                     this.AccessType == input.AccessType ||
                     (this.AccessType != null &&
                     this.AccessType.Equals(input.AccessType))
+                ) && 
+                (
+                    this.AccountId == input.AccountId ||
+                    (this.AccountId != null &&
+                    this.AccountId.Equals(input.AccountId))
                 ) && 
                 (
                     this.AdminEmail == input.AdminEmail ||
@@ -373,6 +388,10 @@ namespace akeyless.Model
                 if (this.AccessType != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessType.GetHashCode();
+                }
+                if (this.AccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
                 }
                 if (this.AdminEmail != null)
                 {

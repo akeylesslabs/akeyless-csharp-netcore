@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **MysqlHost** | **string** | MySQL Host | [optional] [default to "127.0.0.1"]
 **MysqlPassword** | **string** | MySQL Password | [optional] 
 **MysqlPort** | **string** | MySQL Port | [optional] [default to "3306"]
+**MysqlRevocationStatements** | **string** | MySQL Revocation statements | [optional] 
 **MysqlScreationStatements** | **string** | MySQL Creation statements | [optional] 
 **MysqlUsername** | **string** | MySQL Username | [optional] 
 **Name** | **string** | Producer name | 

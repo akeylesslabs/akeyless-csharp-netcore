@@ -610,15 +610,6 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/AddGatewayAllowedAccessIdTests.cs
-src/akeyless.Test/Model/CreateLinkedTargetOutputTests.cs
-src/akeyless.Test/Model/CreateLinkedTargetTests.cs
-src/akeyless.Test/Model/CreateWindowsTargetOutputTests.cs
-src/akeyless.Test/Model/CreateWindowsTargetTests.cs
-src/akeyless.Test/Model/DeleteGatewayAllowedAccessIdTests.cs
-src/akeyless.Test/Model/SharingPolicyInfoTests.cs
-src/akeyless.Test/Model/UpdateLinkedTargetTests.cs
-src/akeyless.Test/Model/UpdateWindowsTargetTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
