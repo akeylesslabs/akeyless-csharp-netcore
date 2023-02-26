@@ -191,6 +191,7 @@ docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
+docs/GatewayBasicInfo.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -610,6 +611,7 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/GatewayBasicInfoTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -818,6 +820,7 @@ src/akeyless/Model/ExternalKMSKeyId.cs
 src/akeyless/Model/GCPAccessRules.cs
 src/akeyless/Model/GCPPayload.cs
 src/akeyless/Model/GCPSecretsMigration.cs
+src/akeyless/Model/GatewayBasicInfo.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfig.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayCreateMigration.cs

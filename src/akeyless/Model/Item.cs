@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="deletionDate">deletionDate.</param>
         /// <param name="displayId">displayId.</param>
+        /// <param name="gatewayDetails">gatewayDetails.</param>
         /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="isEnabled">isEnabled.</param>
         /// <param name="itemAccessibility">itemAccessibility.</param>
@@ -71,7 +72,7 @@ namespace akeyless.Model
         /// <param name="sharedBy">sharedBy.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
+        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayBasicInfo> gatewayDetails = default(List<GatewayBasicInfo>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessRequestStatus = accessRequestStatus;
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.DeletionDate = deletionDate;
             this.DisplayId = displayId;
+            this.GatewayDetails = gatewayDetails;
             this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.IsEnabled = isEnabled;
             this.ItemAccessibility = itemAccessibility;
@@ -182,6 +184,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "display_id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GatewayDetails
+        /// </summary>
+        [DataMember(Name = "gateway_details", EmitDefaultValue = false)]
+        public List<GatewayBasicInfo> GatewayDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets IsAccessRequestEnabled
@@ -348,6 +356,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
             sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");
             sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
@@ -465,6 +474,12 @@ namespace akeyless.Model
                     this.DisplayId == input.DisplayId ||
                     (this.DisplayId != null &&
                     this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.GatewayDetails == input.GatewayDetails ||
+                    this.GatewayDetails != null &&
+                    input.GatewayDetails != null &&
+                    this.GatewayDetails.SequenceEqual(input.GatewayDetails)
                 ) && 
                 (
                     this.IsAccessRequestEnabled == input.IsAccessRequestEnabled ||
@@ -634,6 +649,10 @@ namespace akeyless.Model
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                if (this.GatewayDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.GatewayDetails.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsAccessRequestEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.IsEnabled.GetHashCode();

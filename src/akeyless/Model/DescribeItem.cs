@@ -41,13 +41,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DescribeItem" /> class.
         /// </summary>
         /// <param name="displayId">The display id of the item.</param>
+        /// <param name="gatewayDetails">Indicate if the item should return with clusters details (url, etc) (default to false).</param>
         /// <param name="itemId">Item id of the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string displayId = default(string), long itemId = default(long), bool json = false, string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -56,6 +57,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.DisplayId = displayId;
+            this.GatewayDetails = gatewayDetails;
             this.ItemId = itemId;
             this.Json = json;
             this.ShowVersions = showVersions;
@@ -69,6 +71,13 @@ namespace akeyless.Model
         /// <value>The display id of the item</value>
         [DataMember(Name = "display-id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Indicate if the item should return with clusters details (url, etc)
+        /// </summary>
+        /// <value>Indicate if the item should return with clusters details (url, etc)</value>
+        [DataMember(Name = "gateway-details", EmitDefaultValue = true)]
+        public bool GatewayDetails { get; set; }
 
         /// <summary>
         /// Item id of the item
@@ -121,6 +130,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DescribeItem {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -168,6 +178,10 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
+                    this.GatewayDetails == input.GatewayDetails ||
+                    this.GatewayDetails.Equals(input.GatewayDetails)
+                ) && 
+                (
                     this.ItemId == input.ItemId ||
                     this.ItemId.Equals(input.ItemId)
                 ) && 
@@ -209,6 +223,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.GatewayDetails.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)

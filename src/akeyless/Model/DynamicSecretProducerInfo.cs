@@ -37,14 +37,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="failureMessage">failureMessage.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
+        /// <param name="k8sAllowedNamespaces">Relevant only for generic k8s producer.</param>
+        /// <param name="k8sDynamicMode">Relevant only for generic k8s producer.</param>
         /// <param name="producerLastKeepAlive">producerLastKeepAlive.</param>
         /// <param name="producerMetadata">producerMetadata.</param>
         /// <param name="producerStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="producerType">producerType.</param>
-        public DynamicSecretProducerInfo(string failureMessage = default(string), long gwClusterId = default(long), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
+        public DynamicSecretProducerInfo(string failureMessage = default(string), long gwClusterId = default(long), string k8sAllowedNamespaces = default(string), bool k8sDynamicMode = default(bool), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
         {
             this.FailureMessage = failureMessage;
             this.GwClusterId = gwClusterId;
+            this.K8sAllowedNamespaces = k8sAllowedNamespaces;
+            this.K8sDynamicMode = k8sDynamicMode;
             this.ProducerLastKeepAlive = producerLastKeepAlive;
             this.ProducerMetadata = producerMetadata;
             this.ProducerStatus = producerStatus;
@@ -62,6 +66,20 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "gw_cluster_id", EmitDefaultValue = false)]
         public long GwClusterId { get; set; }
+
+        /// <summary>
+        /// Relevant only for generic k8s producer
+        /// </summary>
+        /// <value>Relevant only for generic k8s producer</value>
+        [DataMember(Name = "k8s_allowed_namespaces", EmitDefaultValue = false)]
+        public string K8sAllowedNamespaces { get; set; }
+
+        /// <summary>
+        /// Relevant only for generic k8s producer
+        /// </summary>
+        /// <value>Relevant only for generic k8s producer</value>
+        [DataMember(Name = "k8s_dynamic_mode", EmitDefaultValue = true)]
+        public bool K8sDynamicMode { get; set; }
 
         /// <summary>
         /// Gets or Sets ProducerLastKeepAlive
@@ -98,6 +116,8 @@ namespace akeyless.Model
             sb.Append("class DynamicSecretProducerInfo {\n");
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
+            sb.Append("  K8sAllowedNamespaces: ").Append(K8sAllowedNamespaces).Append("\n");
+            sb.Append("  K8sDynamicMode: ").Append(K8sDynamicMode).Append("\n");
             sb.Append("  ProducerLastKeepAlive: ").Append(ProducerLastKeepAlive).Append("\n");
             sb.Append("  ProducerMetadata: ").Append(ProducerMetadata).Append("\n");
             sb.Append("  ProducerStatus: ").Append(ProducerStatus).Append("\n");
@@ -147,6 +167,15 @@ namespace akeyless.Model
                     this.GwClusterId.Equals(input.GwClusterId)
                 ) && 
                 (
+                    this.K8sAllowedNamespaces == input.K8sAllowedNamespaces ||
+                    (this.K8sAllowedNamespaces != null &&
+                    this.K8sAllowedNamespaces.Equals(input.K8sAllowedNamespaces))
+                ) && 
+                (
+                    this.K8sDynamicMode == input.K8sDynamicMode ||
+                    this.K8sDynamicMode.Equals(input.K8sDynamicMode)
+                ) && 
+                (
                     this.ProducerLastKeepAlive == input.ProducerLastKeepAlive ||
                     (this.ProducerLastKeepAlive != null &&
                     this.ProducerLastKeepAlive.Equals(input.ProducerLastKeepAlive))
@@ -182,6 +211,11 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.FailureMessage.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
+                if (this.K8sAllowedNamespaces != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sAllowedNamespaces.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.K8sDynamicMode.GetHashCode();
                 if (this.ProducerLastKeepAlive != null)
                 {
                     hashCode = (hashCode * 59) + this.ProducerLastKeepAlive.GetHashCode();

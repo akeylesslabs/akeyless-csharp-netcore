@@ -42,11 +42,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="k8sAllowedNamespaces">Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate.</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint.</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token.</param>
         /// <param name="k8sNamespace">K8S Namespace where the ServiceAccount exists..</param>
+        /// <param name="k8sPredefinedRoleName">The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
+        /// <param name="k8sPredefinedRoleType">Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
+        /// <param name="k8sRolebindingYamlDef">Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sServiceAccount">K8S ServiceAccount to extract token from..</param>
+        /// <param name="k8sServiceAccountType">K8S ServiceAccount type [fixed, dynamic]..</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="newName">Producer name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -63,7 +68,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sServiceAccount = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -73,11 +78,16 @@ namespace akeyless.Model
             this.Name = name;
             this.DeleteProtection = deleteProtection;
             this.Json = json;
+            this.K8sAllowedNamespaces = k8sAllowedNamespaces;
             this.K8sClusterCaCert = k8sClusterCaCert;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
             this.K8sClusterToken = k8sClusterToken;
             this.K8sNamespace = k8sNamespace;
+            this.K8sPredefinedRoleName = k8sPredefinedRoleName;
+            this.K8sPredefinedRoleType = k8sPredefinedRoleType;
+            this.K8sRolebindingYamlDef = k8sRolebindingYamlDef;
             this.K8sServiceAccount = k8sServiceAccount;
+            this.K8sServiceAccountType = k8sServiceAccountType;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
@@ -111,6 +121,13 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic)
+        /// </summary>
+        /// <value>Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic)</value>
+        [DataMember(Name = "k8s-allowed-namespaces", EmitDefaultValue = false)]
+        public string K8sAllowedNamespaces { get; set; }
+
+        /// <summary>
         /// K8S cluster CA certificate
         /// </summary>
         /// <value>K8S cluster CA certificate</value>
@@ -139,11 +156,39 @@ namespace akeyless.Model
         public string K8sNamespace { get; set; }
 
         /// <summary>
+        /// The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic)
+        /// </summary>
+        /// <value>The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic)</value>
+        [DataMember(Name = "k8s-predefined-role-name", EmitDefaultValue = false)]
+        public string K8sPredefinedRoleName { get; set; }
+
+        /// <summary>
+        /// Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic)
+        /// </summary>
+        /// <value>Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic)</value>
+        [DataMember(Name = "k8s-predefined-role-type", EmitDefaultValue = false)]
+        public string K8sPredefinedRoleType { get; set; }
+
+        /// <summary>
+        /// Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic)
+        /// </summary>
+        /// <value>Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic)</value>
+        [DataMember(Name = "k8s-rolebinding-yaml-def", EmitDefaultValue = false)]
+        public string K8sRolebindingYamlDef { get; set; }
+
+        /// <summary>
         /// K8S ServiceAccount to extract token from.
         /// </summary>
         /// <value>K8S ServiceAccount to extract token from.</value>
         [DataMember(Name = "k8s-service-account", EmitDefaultValue = false)]
         public string K8sServiceAccount { get; set; }
+
+        /// <summary>
+        /// K8S ServiceAccount type [fixed, dynamic].
+        /// </summary>
+        /// <value>K8S ServiceAccount type [fixed, dynamic].</value>
+        [DataMember(Name = "k8s-service-account-type", EmitDefaultValue = false)]
+        public string K8sServiceAccountType { get; set; }
 
         /// <summary>
         /// Producer name
@@ -267,11 +312,16 @@ namespace akeyless.Model
             sb.Append("class GatewayUpdateProducerNativeK8S {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  K8sAllowedNamespaces: ").Append(K8sAllowedNamespaces).Append("\n");
             sb.Append("  K8sClusterCaCert: ").Append(K8sClusterCaCert).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
             sb.Append("  K8sClusterToken: ").Append(K8sClusterToken).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
+            sb.Append("  K8sPredefinedRoleName: ").Append(K8sPredefinedRoleName).Append("\n");
+            sb.Append("  K8sPredefinedRoleType: ").Append(K8sPredefinedRoleType).Append("\n");
+            sb.Append("  K8sRolebindingYamlDef: ").Append(K8sRolebindingYamlDef).Append("\n");
             sb.Append("  K8sServiceAccount: ").Append(K8sServiceAccount).Append("\n");
+            sb.Append("  K8sServiceAccountType: ").Append(K8sServiceAccountType).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -333,6 +383,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.K8sAllowedNamespaces == input.K8sAllowedNamespaces ||
+                    (this.K8sAllowedNamespaces != null &&
+                    this.K8sAllowedNamespaces.Equals(input.K8sAllowedNamespaces))
+                ) && 
+                (
                     this.K8sClusterCaCert == input.K8sClusterCaCert ||
                     (this.K8sClusterCaCert != null &&
                     this.K8sClusterCaCert.Equals(input.K8sClusterCaCert))
@@ -353,9 +408,29 @@ namespace akeyless.Model
                     this.K8sNamespace.Equals(input.K8sNamespace))
                 ) && 
                 (
+                    this.K8sPredefinedRoleName == input.K8sPredefinedRoleName ||
+                    (this.K8sPredefinedRoleName != null &&
+                    this.K8sPredefinedRoleName.Equals(input.K8sPredefinedRoleName))
+                ) && 
+                (
+                    this.K8sPredefinedRoleType == input.K8sPredefinedRoleType ||
+                    (this.K8sPredefinedRoleType != null &&
+                    this.K8sPredefinedRoleType.Equals(input.K8sPredefinedRoleType))
+                ) && 
+                (
+                    this.K8sRolebindingYamlDef == input.K8sRolebindingYamlDef ||
+                    (this.K8sRolebindingYamlDef != null &&
+                    this.K8sRolebindingYamlDef.Equals(input.K8sRolebindingYamlDef))
+                ) && 
+                (
                     this.K8sServiceAccount == input.K8sServiceAccount ||
                     (this.K8sServiceAccount != null &&
                     this.K8sServiceAccount.Equals(input.K8sServiceAccount))
+                ) && 
+                (
+                    this.K8sServiceAccountType == input.K8sServiceAccountType ||
+                    (this.K8sServiceAccountType != null &&
+                    this.K8sServiceAccountType.Equals(input.K8sServiceAccountType))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -450,6 +525,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.K8sAllowedNamespaces != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sAllowedNamespaces.GetHashCode();
+                }
                 if (this.K8sClusterCaCert != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterCaCert.GetHashCode();
@@ -466,9 +545,25 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.K8sNamespace.GetHashCode();
                 }
+                if (this.K8sPredefinedRoleName != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sPredefinedRoleName.GetHashCode();
+                }
+                if (this.K8sPredefinedRoleType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sPredefinedRoleType.GetHashCode();
+                }
+                if (this.K8sRolebindingYamlDef != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sRolebindingYamlDef.GetHashCode();
+                }
                 if (this.K8sServiceAccount != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sServiceAccount.GetHashCode();
+                }
+                if (this.K8sServiceAccountType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sServiceAccountType.GetHashCode();
                 }
                 if (this.Name != null)
                 {
