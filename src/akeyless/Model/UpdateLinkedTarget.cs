@@ -40,10 +40,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateLinkedTarget" /> class.
         /// </summary>
-        /// <param name="addHosts">Comma separated list of new hosts that will be added to the Linked Target hosts..</param>
-        /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="addHosts">A comma seperated list of new server hosts and server descriptions joined by semicolon &#39;;&#39; that will be added to the Linked Target hosts..</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="hosts">A comma seperated list of server hosts. (required).</param>
+        /// <param name="hosts">A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="name">Linked Target name (required).</param>
@@ -52,14 +51,8 @@ namespace akeyless.Model
         /// <param name="rmHosts">Comma separated list of existing hosts that will be removed from Linked Target hosts..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateLinkedTarget(string addHosts = default(string), string comment = default(string), string description = default(string), string hosts = default(string), bool json = false, string keepPrevVersion = default(string), string name = default(string), string newName = default(string), string parentTargetName = default(string), string rmHosts = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateLinkedTarget(string addHosts = default(string), string description = default(string), string hosts = default(string), bool json = false, string keepPrevVersion = default(string), string name = default(string), string newName = default(string), string parentTargetName = default(string), string rmHosts = default(string), string token = default(string), string uidToken = default(string))
         {
-            // to ensure "hosts" is required (not null)
-            if (hosts == null)
-            {
-                throw new ArgumentNullException("hosts is a required property for UpdateLinkedTarget and cannot be null");
-            }
-            this.Hosts = hosts;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -67,8 +60,8 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AddHosts = addHosts;
-            this.Comment = comment;
             this.Description = description;
+            this.Hosts = hosts;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.NewName = newName;
@@ -79,18 +72,11 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Comma separated list of new hosts that will be added to the Linked Target hosts.
+        /// A comma seperated list of new server hosts and server descriptions joined by semicolon &#39;;&#39; that will be added to the Linked Target hosts.
         /// </summary>
-        /// <value>Comma separated list of new hosts that will be added to the Linked Target hosts.</value>
+        /// <value>A comma seperated list of new server hosts and server descriptions joined by semicolon &#39;;&#39; that will be added to the Linked Target hosts.</value>
         [DataMember(Name = "add-hosts", EmitDefaultValue = false)]
         public string AddHosts { get; set; }
-
-        /// <summary>
-        /// Deprecated - use description
-        /// </summary>
-        /// <value>Deprecated - use description</value>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
-        public string Comment { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -100,10 +86,10 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// A comma seperated list of server hosts.
+        /// A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;)
         /// </summary>
-        /// <value>A comma seperated list of server hosts.</value>
-        [DataMember(Name = "hosts", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;)</value>
+        [DataMember(Name = "hosts", EmitDefaultValue = false)]
         public string Hosts { get; set; }
 
         /// <summary>
@@ -171,7 +157,6 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateLinkedTarget {\n");
             sb.Append("  AddHosts: ").Append(AddHosts).Append("\n");
-            sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -221,11 +206,6 @@ namespace akeyless.Model
                     this.AddHosts == input.AddHosts ||
                     (this.AddHosts != null &&
                     this.AddHosts.Equals(input.AddHosts))
-                ) && 
-                (
-                    this.Comment == input.Comment ||
-                    (this.Comment != null &&
-                    this.Comment.Equals(input.Comment))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -290,10 +270,6 @@ namespace akeyless.Model
                 if (this.AddHosts != null)
                 {
                     hashCode = (hashCode * 59) + this.AddHosts.GetHashCode();
-                }
-                if (this.Comment != null)
-                {
-                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
                 }
                 if (this.Description != null)
                 {

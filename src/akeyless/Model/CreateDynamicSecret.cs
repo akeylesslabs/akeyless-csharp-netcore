@@ -46,7 +46,7 @@ namespace akeyless.Model
         /// <param name="key">The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Dynamic secret name (required).</param>
-        /// <param name="tags">List of the tags attached to this secret.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public CreateDynamicSecret(string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
@@ -110,9 +110,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this secret
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this secret</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

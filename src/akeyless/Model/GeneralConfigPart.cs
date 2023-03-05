@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="akeylessUrl">AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB..</param>
         /// <param name="apiTokenTtl">apiTokenTtl.</param>
         /// <param name="displayName">displayName.</param>
+        /// <param name="enableSniProxy">enableSniProxy.</param>
         /// <param name="enableTls">enableTls.</param>
         /// <param name="enableTlsConfigure">enableTlsConfigure.</param>
         /// <param name="enableTlsCurl">enableTlsCurl.</param>
@@ -46,11 +47,12 @@ namespace akeyless.Model
         /// <param name="tcpPort">tcpPort.</param>
         /// <param name="tlsCert">tlsCert.</param>
         /// <param name="tlsKey">tlsKey.</param>
-        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
+        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
         {
             this.AkeylessUrl = akeylessUrl;
             this.ApiTokenTtl = apiTokenTtl;
             this.DisplayName = displayName;
+            this.EnableSniProxy = enableSniProxy;
             this.EnableTls = enableTls;
             this.EnableTlsConfigure = enableTlsConfigure;
             this.EnableTlsCurl = enableTlsCurl;
@@ -79,6 +81,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "display_name", EmitDefaultValue = false)]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EnableSniProxy
+        /// </summary>
+        [DataMember(Name = "enable_sni_proxy", EmitDefaultValue = true)]
+        public bool EnableSniProxy { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableTls
@@ -139,6 +147,7 @@ namespace akeyless.Model
             sb.Append("  AkeylessUrl: ").Append(AkeylessUrl).Append("\n");
             sb.Append("  ApiTokenTtl: ").Append(ApiTokenTtl).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  EnableSniProxy: ").Append(EnableSniProxy).Append("\n");
             sb.Append("  EnableTls: ").Append(EnableTls).Append("\n");
             sb.Append("  EnableTlsConfigure: ").Append(EnableTlsConfigure).Append("\n");
             sb.Append("  EnableTlsCurl: ").Append(EnableTlsCurl).Append("\n");
@@ -196,6 +205,10 @@ namespace akeyless.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.EnableSniProxy == input.EnableSniProxy ||
+                    this.EnableSniProxy.Equals(input.EnableSniProxy)
                 ) && 
                 (
                     this.EnableTls == input.EnableTls ||
@@ -256,6 +269,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.EnableSniProxy.GetHashCode();
                 hashCode = (hashCode * 59) + this.EnableTls.GetHashCode();
                 hashCode = (hashCode * 59) + this.EnableTlsConfigure.GetHashCode();
                 hashCode = (hashCode * 59) + this.EnableTlsCurl.GetHashCode();

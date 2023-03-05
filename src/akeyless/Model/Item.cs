@@ -63,6 +63,7 @@ namespace akeyless.Model
         /// <param name="itemType">itemType.</param>
         /// <param name="itemVersions">itemVersions.</param>
         /// <param name="lastVersion">lastVersion.</param>
+        /// <param name="linkedDetails">linkedDetails.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="nextRotationDate">nextRotationDate.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
@@ -72,7 +73,7 @@ namespace akeyless.Model
         /// <param name="sharedBy">sharedBy.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayBasicInfo> gatewayDetails = default(List<GatewayBasicInfo>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
+        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayBasicInfo> gatewayDetails = default(List<GatewayBasicInfo>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessRequestStatus = accessRequestStatus;
@@ -102,6 +103,7 @@ namespace akeyless.Model
             this.ItemType = itemType;
             this.ItemVersions = itemVersions;
             this.LastVersion = lastVersion;
+            this.LinkedDetails = linkedDetails;
             this.ModificationDate = modificationDate;
             this.NextRotationDate = nextRotationDate;
             this.ProtectionKeyName = protectionKeyName;
@@ -283,6 +285,12 @@ namespace akeyless.Model
         public int LastVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets LinkedDetails
+        /// </summary>
+        [DataMember(Name = "linked_details", EmitDefaultValue = false)]
+        public LinkedDetails LinkedDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets ModificationDate
         /// </summary>
         [DataMember(Name = "modification_date", EmitDefaultValue = false)]
@@ -372,6 +380,7 @@ namespace akeyless.Model
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemVersions: ").Append(ItemVersions).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
+            sb.Append("  LinkedDetails: ").Append(LinkedDetails).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  NextRotationDate: ").Append(NextRotationDate).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");
@@ -554,6 +563,11 @@ namespace akeyless.Model
                     this.LastVersion.Equals(input.LastVersion)
                 ) && 
                 (
+                    this.LinkedDetails == input.LinkedDetails ||
+                    (this.LinkedDetails != null &&
+                    this.LinkedDetails.Equals(input.LinkedDetails))
+                ) && 
+                (
                     this.ModificationDate == input.ModificationDate ||
                     (this.ModificationDate != null &&
                     this.ModificationDate.Equals(input.ModificationDate))
@@ -696,6 +710,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.ItemVersions.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.LastVersion.GetHashCode();
+                if (this.LinkedDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.LinkedDetails.GetHashCode();
+                }
                 if (this.ModificationDate != null)
                 {
                     hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();

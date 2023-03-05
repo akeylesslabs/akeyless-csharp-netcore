@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target DB servers for connections.</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
-        /// <param name="tags">List of the tags attached to this secret.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -189,9 +189,9 @@ namespace akeyless.Model
         public bool Ssl { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this secret
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this secret</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

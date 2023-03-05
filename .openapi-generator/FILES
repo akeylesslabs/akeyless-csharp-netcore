@@ -164,6 +164,7 @@ docs/DeleteRoles.md
 docs/DeleteTarget.md
 docs/DeleteTargetAssociation.md
 docs/DeleteTargets.md
+docs/DescribeAssoc.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
@@ -251,6 +252,8 @@ docs/GatewayDeleteK8SAuthConfigOutput.md
 docs/GatewayDeleteMigration.md
 docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
+docs/GatewayDownloadCustomerFragments.md
+docs/GatewayDownloadCustomerFragmentsOutput.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
@@ -370,6 +373,8 @@ docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
+docs/ImportPasswords.md
+docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
 docs/Item.md
 docs/ItemGeneralInfo.md
@@ -413,6 +418,7 @@ docs/LastConfigChange.md
 docs/LastStatusInfo.md
 docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
+docs/LinkedDetails.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
 docs/ListGateways.md
@@ -462,6 +468,7 @@ docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
 docs/RevokeCreds.md
 docs/Role.md
+docs/RoleAssociationDetails.md
 docs/RoleAuthMethodAssociation.md
 docs/RollbackSecret.md
 docs/RollbackSecretOutput.md
@@ -611,7 +618,13 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/GatewayBasicInfoTests.cs
+src/akeyless.Test/Model/DescribeAssocTests.cs
+src/akeyless.Test/Model/GatewayDownloadCustomerFragmentsOutputTests.cs
+src/akeyless.Test/Model/GatewayDownloadCustomerFragmentsTests.cs
+src/akeyless.Test/Model/ImportPasswordsOutputTests.cs
+src/akeyless.Test/Model/ImportPasswordsTests.cs
+src/akeyless.Test/Model/LinkedDetailsTests.cs
+src/akeyless.Test/Model/RoleAssociationDetailsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -793,6 +806,7 @@ src/akeyless/Model/DeleteRoles.cs
 src/akeyless/Model/DeleteTarget.cs
 src/akeyless/Model/DeleteTargetAssociation.cs
 src/akeyless/Model/DeleteTargets.cs
+src/akeyless/Model/DescribeAssoc.cs
 src/akeyless/Model/DescribeItem.cs
 src/akeyless/Model/DescribePermissions.cs
 src/akeyless/Model/DescribePermissionsOutput.cs
@@ -880,6 +894,8 @@ src/akeyless/Model/GatewayDeleteK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayDeleteMigration.cs
 src/akeyless/Model/GatewayDeleteProducer.cs
 src/akeyless/Model/GatewayDeleteProducerOutput.cs
+src/akeyless/Model/GatewayDownloadCustomerFragments.cs
+src/akeyless/Model/GatewayDownloadCustomerFragmentsOutput.cs
 src/akeyless/Model/GatewayGetConfig.cs
 src/akeyless/Model/GatewayGetK8SAuthConfig.cs
 src/akeyless/Model/GatewayGetK8SAuthConfigOutput.cs
@@ -999,6 +1015,8 @@ src/akeyless/Model/GwClusterIdentity.cs
 src/akeyless/Model/HashiMigration.cs
 src/akeyless/Model/HashiPayload.cs
 src/akeyless/Model/HuaweiAccessRules.cs
+src/akeyless/Model/ImportPasswords.cs
+src/akeyless/Model/ImportPasswordsOutput.cs
 src/akeyless/Model/ImporterInfo.cs
 src/akeyless/Model/Item.cs
 src/akeyless/Model/ItemGeneralInfo.cs
@@ -1042,6 +1060,7 @@ src/akeyless/Model/LastConfigChange.cs
 src/akeyless/Model/LastStatusInfo.cs
 src/akeyless/Model/LdapConfigPart.cs
 src/akeyless/Model/LeadershipConfigPart.cs
+src/akeyless/Model/LinkedDetails.cs
 src/akeyless/Model/ListAuthMethods.cs
 src/akeyless/Model/ListAuthMethodsOutput.cs
 src/akeyless/Model/ListGateways.cs
@@ -1091,6 +1110,7 @@ src/akeyless/Model/ReverseRBACClient.cs
 src/akeyless/Model/ReverseRBACOutput.cs
 src/akeyless/Model/RevokeCreds.cs
 src/akeyless/Model/Role.cs
+src/akeyless/Model/RoleAssociationDetails.cs
 src/akeyless/Model/RoleAuthMethodAssociation.cs
 src/akeyless/Model/RollbackSecret.cs
 src/akeyless/Model/RollbackSecretOutput.cs

@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="protectionKeyName">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="tags">List of the tags attached to this classic key.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), string gpgAlg = default(string), bool json = false, string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
@@ -151,9 +151,9 @@ namespace akeyless.Model
         public string ProtectionKeyName { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this classic key
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this classic key</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

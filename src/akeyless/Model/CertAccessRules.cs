@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CertAccessRules" /> class.
         /// </summary>
+        /// <param name="allowedCors">a list of allowed cors domains if used for browser authentication.</param>
         /// <param name="boundCommonNames">A list of names. At least one must exist in the Common Name. Supports globbing..</param>
         /// <param name="boundDnsSans">A list of DNS names. At least one must exist in the SANs. Supports globbing..</param>
         /// <param name="boundEmailSans">A list of Email Addresses. At least one must exist in the SANs. Supports globbing..</param>
@@ -44,8 +45,9 @@ namespace akeyless.Model
         /// <param name="certificate">Base64 encdoed PEM certificate.</param>
         /// <param name="revokedCertIds">A list of revoked cert ids.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public CertAccessRules(List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificate = default(string), List<string> revokedCertIds = default(List<string>), string uniqueIdentifier = default(string))
+        public CertAccessRules(List<string> allowedCors = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificate = default(string), List<string> revokedCertIds = default(List<string>), string uniqueIdentifier = default(string))
         {
+            this.AllowedCors = allowedCors;
             this.BoundCommonNames = boundCommonNames;
             this.BoundDnsSans = boundDnsSans;
             this.BoundEmailSans = boundEmailSans;
@@ -56,6 +58,13 @@ namespace akeyless.Model
             this.RevokedCertIds = revokedCertIds;
             this.UniqueIdentifier = uniqueIdentifier;
         }
+
+        /// <summary>
+        /// a list of allowed cors domains if used for browser authentication
+        /// </summary>
+        /// <value>a list of allowed cors domains if used for browser authentication</value>
+        [DataMember(Name = "allowed_cors", EmitDefaultValue = false)]
+        public List<string> AllowedCors { get; set; }
 
         /// <summary>
         /// A list of names. At least one must exist in the Common Name. Supports globbing.
@@ -128,6 +137,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CertAccessRules {\n");
+            sb.Append("  AllowedCors: ").Append(AllowedCors).Append("\n");
             sb.Append("  BoundCommonNames: ").Append(BoundCommonNames).Append("\n");
             sb.Append("  BoundDnsSans: ").Append(BoundDnsSans).Append("\n");
             sb.Append("  BoundEmailSans: ").Append(BoundEmailSans).Append("\n");
@@ -172,6 +182,12 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.AllowedCors == input.AllowedCors ||
+                    this.AllowedCors != null &&
+                    input.AllowedCors != null &&
+                    this.AllowedCors.SequenceEqual(input.AllowedCors)
+                ) && 
                 (
                     this.BoundCommonNames == input.BoundCommonNames ||
                     this.BoundCommonNames != null &&
@@ -235,6 +251,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AllowedCors != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedCors.GetHashCode();
+                }
                 if (this.BoundCommonNames != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundCommonNames.GetHashCode();

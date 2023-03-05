@@ -41,7 +41,6 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="EncryptFile" /> class.
         /// </summary>
         /// <param name="displayId">The display id of the key to use in the encryption process.</param>
-        /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
         /// <param name="_in">Path to the file to be encrypted. If not provided, the content will be taken from stdin (required).</param>
         /// <param name="itemId">The item id of the key to use in the encryption process.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,7 +48,7 @@ namespace akeyless.Model
         /// <param name="_out">Path to the output file. If not provided, the output will be sent to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EncryptFile(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string _in = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
+        public EncryptFile(string displayId = default(string), string _in = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null)
@@ -64,7 +63,6 @@ namespace akeyless.Model
             }
             this.KeyName = keyName;
             this.DisplayId = displayId;
-            this.EncryptionContext = encryptionContext;
             this.ItemId = itemId;
             this.Json = json;
             this.Out = _out;
@@ -78,13 +76,6 @@ namespace akeyless.Model
         /// <value>The display id of the key to use in the encryption process</value>
         [DataMember(Name = "display-id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
-
-        /// <summary>
-        /// name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
-        /// </summary>
-        /// <value>name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail</value>
-        [DataMember(Name = "encryption-context", EmitDefaultValue = false)]
-        public Dictionary<string, string> EncryptionContext { get; set; }
 
         /// <summary>
         /// Path to the file to be encrypted. If not provided, the content will be taken from stdin
@@ -144,7 +135,6 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EncryptFile {\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
-            sb.Append("  EncryptionContext: ").Append(EncryptionContext).Append("\n");
             sb.Append("  In: ").Append(In).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -193,12 +183,6 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
-                    this.EncryptionContext == input.EncryptionContext ||
-                    this.EncryptionContext != null &&
-                    input.EncryptionContext != null &&
-                    this.EncryptionContext.SequenceEqual(input.EncryptionContext)
-                ) && 
-                (
                     this.In == input.In ||
                     (this.In != null &&
                     this.In.Equals(input.In))
@@ -245,10 +229,6 @@ namespace akeyless.Model
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
-                }
-                if (this.EncryptionContext != null)
-                {
-                    hashCode = (hashCode * 59) + this.EncryptionContext.GetHashCode();
                 }
                 if (this.In != null)
                 {

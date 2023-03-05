@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
         /// <param name="rotateSyncUrl">URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate.</param>
-        /// <param name="tags">List of the tags attached to this secret.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="timeoutSec">Maximum allowed time in seconds for the webhook to return the results (default to 60).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -161,9 +161,9 @@ namespace akeyless.Model
         public string RotateSyncUrl { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this secret
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this secret</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

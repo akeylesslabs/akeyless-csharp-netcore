@@ -40,26 +40,43 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DecryptFile" /> class.
         /// </summary>
+        /// <param name="cyphertextHeader">cyphertextHeader.</param>
         /// <param name="displayId">The display id of the key to use in the decryption process.</param>
+        /// <param name="_in">Path to the file to be decrypted. If not provided, the content will be taken from stdin (required).</param>
         /// <param name="itemId">The item id of the key to use in the decryption process.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
+        /// <param name="_out">Path to the output file. If not provided, the output will be sent to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptFile(string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string token = default(string), string uidToken = default(string))
+        public DecryptFile(string cyphertextHeader = default(string), string displayId = default(string), string _in = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
         {
+            // to ensure "_in" is required (not null)
+            if (_in == null)
+            {
+                throw new ArgumentNullException("_in is a required property for DecryptFile and cannot be null");
+            }
+            this.In = _in;
             // to ensure "keyName" is required (not null)
             if (keyName == null)
             {
                 throw new ArgumentNullException("keyName is a required property for DecryptFile and cannot be null");
             }
             this.KeyName = keyName;
+            this.CyphertextHeader = cyphertextHeader;
             this.DisplayId = displayId;
             this.ItemId = itemId;
             this.Json = json;
+            this.Out = _out;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Gets or Sets CyphertextHeader
+        /// </summary>
+        [DataMember(Name = "cyphertext-header", EmitDefaultValue = false)]
+        public string CyphertextHeader { get; set; }
 
         /// <summary>
         /// The display id of the key to use in the decryption process
@@ -67,6 +84,13 @@ namespace akeyless.Model
         /// <value>The display id of the key to use in the decryption process</value>
         [DataMember(Name = "display-id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Path to the file to be decrypted. If not provided, the content will be taken from stdin
+        /// </summary>
+        /// <value>Path to the file to be decrypted. If not provided, the content will be taken from stdin</value>
+        [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = true)]
+        public string In { get; set; }
 
         /// <summary>
         /// The item id of the key to use in the decryption process
@@ -90,6 +114,13 @@ namespace akeyless.Model
         public string KeyName { get; set; }
 
         /// <summary>
+        /// Path to the output file. If not provided, the output will be sent to stdout
+        /// </summary>
+        /// <value>Path to the output file. If not provided, the output will be sent to stdout</value>
+        [DataMember(Name = "out", EmitDefaultValue = false)]
+        public string Out { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -111,10 +142,13 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DecryptFile {\n");
+            sb.Append("  CyphertextHeader: ").Append(CyphertextHeader).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  In: ").Append(In).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
+            sb.Append("  Out: ").Append(Out).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -153,9 +187,19 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CyphertextHeader == input.CyphertextHeader ||
+                    (this.CyphertextHeader != null &&
+                    this.CyphertextHeader.Equals(input.CyphertextHeader))
+                ) && 
+                (
                     this.DisplayId == input.DisplayId ||
                     (this.DisplayId != null &&
                     this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.In == input.In ||
+                    (this.In != null &&
+                    this.In.Equals(input.In))
                 ) && 
                 (
                     this.ItemId == input.ItemId ||
@@ -169,6 +213,11 @@ namespace akeyless.Model
                     this.KeyName == input.KeyName ||
                     (this.KeyName != null &&
                     this.KeyName.Equals(input.KeyName))
+                ) && 
+                (
+                    this.Out == input.Out ||
+                    (this.Out != null &&
+                    this.Out.Equals(input.Out))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -191,15 +240,27 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CyphertextHeader != null)
+                {
+                    hashCode = (hashCode * 59) + this.CyphertextHeader.GetHashCode();
+                }
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                if (this.In != null)
+                {
+                    hashCode = (hashCode * 59) + this.In.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyName != null)
                 {
                     hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                }
+                if (this.Out != null)
+                {
+                    hashCode = (hashCode * 59) + this.Out.GetHashCode();
                 }
                 if (this.Token != null)
                 {

@@ -60,7 +60,7 @@ namespace akeyless.Model
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
-        /// <param name="tags">List of the tags attached to this secret.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The secret sub type [generic/password] (default to &quot;generic&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -247,9 +247,9 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this secret
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this secret</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

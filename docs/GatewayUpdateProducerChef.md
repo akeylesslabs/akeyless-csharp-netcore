@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **NewName** | **string** | Producer name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | **bool** | Skip SSL | [optional] [default to true]
-**Tags** | **List&lt;string&gt;** | List of the tags attached to this secret | [optional] 
+**Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

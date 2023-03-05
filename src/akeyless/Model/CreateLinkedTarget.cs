@@ -40,42 +40,28 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateLinkedTarget" /> class.
         /// </summary>
-        /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="hosts">A comma seperated list of server hosts. (required).</param>
+        /// <param name="hosts">A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="parentTargetName">The parent Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateLinkedTarget(string comment = default(string), string description = default(string), string hosts = default(string), bool json = false, string name = default(string), string parentTargetName = default(string), string token = default(string), string uidToken = default(string))
+        public CreateLinkedTarget(string description = default(string), string hosts = default(string), bool json = false, string name = default(string), string parentTargetName = default(string), string token = default(string), string uidToken = default(string))
         {
-            // to ensure "hosts" is required (not null)
-            if (hosts == null)
-            {
-                throw new ArgumentNullException("hosts is a required property for CreateLinkedTarget and cannot be null");
-            }
-            this.Hosts = hosts;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for CreateLinkedTarget and cannot be null");
             }
             this.Name = name;
-            this.Comment = comment;
             this.Description = description;
+            this.Hosts = hosts;
             this.Json = json;
             this.ParentTargetName = parentTargetName;
             this.Token = token;
             this.UidToken = uidToken;
         }
-
-        /// <summary>
-        /// Deprecated - use description
-        /// </summary>
-        /// <value>Deprecated - use description</value>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
-        public string Comment { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -85,10 +71,10 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// A comma seperated list of server hosts.
+        /// A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;)
         /// </summary>
-        /// <value>A comma seperated list of server hosts.</value>
-        [DataMember(Name = "hosts", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;)</value>
+        [DataMember(Name = "hosts", EmitDefaultValue = false)]
         public string Hosts { get; set; }
 
         /// <summary>
@@ -134,7 +120,6 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateLinkedTarget {\n");
-            sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -177,11 +162,6 @@ namespace akeyless.Model
                 return false;
             }
             return 
-                (
-                    this.Comment == input.Comment ||
-                    (this.Comment != null &&
-                    this.Comment.Equals(input.Comment))
-                ) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
@@ -227,10 +207,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Comment != null)
-                {
-                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
-                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();

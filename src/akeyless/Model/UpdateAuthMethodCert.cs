@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAuthMethodCert" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="allowedCors">Comma separated list of allowed CORS domains to be validated as part of the authentication flow..</param>
         /// <param name="boundCommonNames">A list of names. At least one must exist in the Common Name. Supports globbing..</param>
         /// <param name="boundDnsSans">A list of DNS names. At least one must exist in the SANs. Supports globbing..</param>
         /// <param name="boundEmailSans">A list of Email Addresses. At least one must exist in the SANs. Supports globbing..</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured, such as common_name or organizational_unit Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodCert(long accessExpires = 0, List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodCert(long accessExpires = 0, string allowedCors = default(string), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -74,6 +75,7 @@ namespace akeyless.Model
             }
             this.UniqueIdentifier = uniqueIdentifier;
             this.AccessExpires = accessExpires;
+            this.AllowedCors = allowedCors;
             this.BoundCommonNames = boundCommonNames;
             this.BoundDnsSans = boundDnsSans;
             this.BoundEmailSans = boundEmailSans;
@@ -98,6 +100,13 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Comma separated list of allowed CORS domains to be validated as part of the authentication flow.
+        /// </summary>
+        /// <value>Comma separated list of allowed CORS domains to be validated as part of the authentication flow.</value>
+        [DataMember(Name = "allowed-cors", EmitDefaultValue = false)]
+        public string AllowedCors { get; set; }
 
         /// <summary>
         /// A list of names. At least one must exist in the Common Name. Supports globbing.
@@ -234,6 +243,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAuthMethodCert {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AllowedCors: ").Append(AllowedCors).Append("\n");
             sb.Append("  BoundCommonNames: ").Append(BoundCommonNames).Append("\n");
             sb.Append("  BoundDnsSans: ").Append(BoundDnsSans).Append("\n");
             sb.Append("  BoundEmailSans: ").Append(BoundEmailSans).Append("\n");
@@ -290,6 +300,11 @@ namespace akeyless.Model
                 (
                     this.AccessExpires == input.AccessExpires ||
                     this.AccessExpires.Equals(input.AccessExpires)
+                ) && 
+                (
+                    this.AllowedCors == input.AllowedCors ||
+                    (this.AllowedCors != null &&
+                    this.AllowedCors.Equals(input.AllowedCors))
                 ) && 
                 (
                     this.BoundCommonNames == input.BoundCommonNames ||
@@ -399,6 +414,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
+                if (this.AllowedCors != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedCors.GetHashCode();
+                }
                 if (this.BoundCommonNames != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundCommonNames.GetHashCode();

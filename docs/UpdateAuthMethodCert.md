@@ -6,6 +6,7 @@ updateAuthMethodCert is a command that updates a new auth method that will be ab
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedCors** | **string** | Comma separated list of allowed CORS domains to be validated as part of the authentication flow. | [optional] 
 **BoundCommonNames** | **List&lt;string&gt;** | A list of names. At least one must exist in the Common Name. Supports globbing. | [optional] 
 **BoundDnsSans** | **List&lt;string&gt;** | A list of DNS names. At least one must exist in the SANs. Supports globbing. | [optional] 
 **BoundEmailSans** | **List&lt;string&gt;** | A list of Email Addresses. At least one must exist in the SANs. Supports globbing. | [optional] 

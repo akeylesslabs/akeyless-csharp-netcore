@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **KeyData** | **string** | Content of the certificate&#39;s private key PEM in a Base64 format. | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Certificate name | 
-**Tags** | **List&lt;string&gt;** | List of the tags attached to this certificate | [optional] 
+**Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

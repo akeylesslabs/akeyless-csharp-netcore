@@ -40,7 +40,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateWindowsTarget" /> class.
         /// </summary>
-        /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="hostname">Server hostname.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,12 +48,12 @@ namespace akeyless.Model
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="password">The privileged user password.</param>
-        /// <param name="rdpPort">Server port for RDP (Remote Desktop Protocol) (default to &quot;3389&quot;).</param>
+        /// <param name="port">Server WinRM HTTPS port (default to &quot;5986&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="username">Privileged username.</param>
-        public UpdateWindowsTarget(string comment = default(string), string description = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string rdpPort = "3389", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string username = default(string))
+        public UpdateWindowsTarget(string description = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,7 +61,6 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateWindowsTarget and cannot be null");
             }
             this.Name = name;
-            this.Comment = comment;
             this.Description = description;
             this.Hostname = hostname;
             this.Json = json;
@@ -70,20 +68,13 @@ namespace akeyless.Model
             this.Key = key;
             this.NewName = newName;
             this.Password = password;
-            // use default value if no "rdpPort" provided
-            this.RdpPort = rdpPort ?? "3389";
+            // use default value if no "port" provided
+            this.Port = port ?? "5986";
             this.Token = token;
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
             this.Username = username;
         }
-
-        /// <summary>
-        /// Deprecated - use description
-        /// </summary>
-        /// <value>Deprecated - use description</value>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
-        public string Comment { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -142,11 +133,11 @@ namespace akeyless.Model
         public string Password { get; set; }
 
         /// <summary>
-        /// Server port for RDP (Remote Desktop Protocol)
+        /// Server WinRM HTTPS port
         /// </summary>
-        /// <value>Server port for RDP (Remote Desktop Protocol)</value>
-        [DataMember(Name = "rdp-port", EmitDefaultValue = false)]
-        public string RdpPort { get; set; }
+        /// <value>Server WinRM HTTPS port</value>
+        [DataMember(Name = "port", EmitDefaultValue = false)]
+        public string Port { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -184,7 +175,6 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateWindowsTarget {\n");
-            sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -193,7 +183,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  RdpPort: ").Append(RdpPort).Append("\n");
+            sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
@@ -234,11 +224,6 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.Comment == input.Comment ||
-                    (this.Comment != null &&
-                    this.Comment.Equals(input.Comment))
-                ) && 
-                (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
@@ -278,9 +263,9 @@ namespace akeyless.Model
                     this.Password.Equals(input.Password))
                 ) && 
                 (
-                    this.RdpPort == input.RdpPort ||
-                    (this.RdpPort != null &&
-                    this.RdpPort.Equals(input.RdpPort))
+                    this.Port == input.Port ||
+                    (this.Port != null &&
+                    this.Port.Equals(input.Port))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -312,10 +297,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Comment != null)
-                {
-                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
-                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -345,9 +326,9 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Password.GetHashCode();
                 }
-                if (this.RdpPort != null)
+                if (this.Port != null)
                 {
-                    hashCode = (hashCode * 59) + this.RdpPort.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
                 }
                 if (this.Token != null)
                 {

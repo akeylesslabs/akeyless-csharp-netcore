@@ -67,6 +67,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DeleteTarget**](V2Api.md#deletetarget) | **POST** /delete-target |  |
 | [**DeleteTargetAssociation**](V2Api.md#deletetargetassociation) | **POST** /delete-assoc-target-item |  |
 | [**DeleteTargets**](V2Api.md#deletetargets) | **POST** /delete-targets |  |
+| [**DescribeAssoc**](V2Api.md#describeassoc) | **POST** /describe-role-am-assoc |  |
 | [**DescribeItem**](V2Api.md#describeitem) | **POST** /describe-item |  |
 | [**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions |  |
 | [**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims |  |
@@ -105,6 +106,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayDeleteK8SAuthConfig**](V2Api.md#gatewaydeletek8sauthconfig) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**GatewayDeleteMigration**](V2Api.md#gatewaydeletemigration) | **POST** /gateway-delete-migration |  |
 | [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer |  |
+| [**GatewayDownloadCustomerFragments**](V2Api.md#gatewaydownloadcustomerfragments) | **POST** /gateway-download-customer-fragments |  |
 | [**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config |  |
 | [**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config |  |
 | [**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config |  |
@@ -166,6 +168,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
 | [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
 | [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details |  |
+| [**ImportPasswords**](V2Api.md#importpasswords) | **POST** /import-passwords |  |
 | [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
 | [**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule |  |
 | [**KmipCreateClient**](V2Api.md#kmipcreateclient) | **POST** /kmip-create-client |  |
@@ -5810,6 +5813,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="describeassoc"></a>
+# **DescribeAssoc**
+> RoleAssociationDetails DescribeAssoc (DescribeAssoc body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DescribeAssocExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DescribeAssoc(); // DescribeAssoc | 
+
+            try
+            {
+                RoleAssociationDetails result = apiInstance.DescribeAssoc(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DescribeAssoc: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DescribeAssocWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RoleAssociationDetails> response = apiInstance.DescribeAssocWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DescribeAssocWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DescribeAssoc**](DescribeAssoc.md) |  |  |
+
+### Return type
+
+[**RoleAssociationDetails**](RoleAssociationDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | describeAssocResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="describeitem"></a>
 # **DescribeItem**
 > Item DescribeItem (DescribeItem body)
@@ -9151,6 +9242,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayDeleteProducerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaydownloadcustomerfragments"></a>
+# **GatewayDownloadCustomerFragments**
+> GatewayDownloadCustomerFragmentsOutput GatewayDownloadCustomerFragments (GatewayDownloadCustomerFragments body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayDownloadCustomerFragmentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayDownloadCustomerFragments(); // GatewayDownloadCustomerFragments | 
+
+            try
+            {
+                GatewayDownloadCustomerFragmentsOutput result = apiInstance.GatewayDownloadCustomerFragments(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayDownloadCustomerFragments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayDownloadCustomerFragmentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayDownloadCustomerFragmentsOutput> response = apiInstance.GatewayDownloadCustomerFragmentsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayDownloadCustomerFragmentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayDownloadCustomerFragments**](GatewayDownloadCustomerFragments.md) |  |  |
+
+### Return type
+
+[**GatewayDownloadCustomerFragmentsOutput**](GatewayDownloadCustomerFragmentsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayDownloadCustomerFragmentsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -14506,6 +14685,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getTargetDetailsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="importpasswords"></a>
+# **ImportPasswords**
+> ImportPasswordsOutput ImportPasswords (ImportPasswords body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ImportPasswordsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ImportPasswords(); // ImportPasswords | 
+
+            try
+            {
+                ImportPasswordsOutput result = apiInstance.ImportPasswords(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ImportPasswords: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ImportPasswordsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ImportPasswordsOutput> response = apiInstance.ImportPasswordsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ImportPasswordsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ImportPasswords**](ImportPasswords.md) |  |  |
+
+### Return type
+
+[**ImportPasswordsOutput**](ImportPasswordsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | importPasswordsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

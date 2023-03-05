@@ -56,7 +56,7 @@ namespace akeyless.Model
         /// <param name="secureAccessHost">Target servers for connections.</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user.</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
-        /// <param name="tags">List of the tags attached to this secret.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -209,9 +209,9 @@ namespace akeyless.Model
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this secret
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this secret</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

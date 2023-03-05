@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="keyData">Content of the certificate&#39;s private key PEM in a Base64 format..</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Certificate name (required).</param>
-        /// <param name="tags">List of the tags attached to this certificate.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
@@ -137,9 +137,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// List of the tags attached to this certificate
+        /// Add tags attached to this object
         /// </summary>
-        /// <value>List of the tags attached to this certificate</value>
+        /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
 

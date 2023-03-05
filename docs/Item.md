@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **ItemType** | **string** |  | [optional] 
 **ItemVersions** | [**List&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] 
 **LastVersion** | **int** |  | [optional] 
+**LinkedDetails** | [**LinkedDetails**](LinkedDetails.md) |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
 **NextRotationDate** | **DateTime** |  | [optional] 
 **ProtectionKeyName** | **string** |  | [optional] 
