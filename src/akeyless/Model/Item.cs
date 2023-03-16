@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="accessDate">accessDate.</param>
         /// <param name="accessRequestStatus">accessRequestStatus.</param>
         /// <param name="autoRotate">autoRotate.</param>
+        /// <param name="bastionDetails">bastionDetails.</param>
         /// <param name="certIssuerSignerKeyName">certIssuerSignerKeyName.</param>
         /// <param name="certificateIssueDetails">certificateIssueDetails.</param>
         /// <param name="certificates">certificates.</param>
@@ -73,11 +74,12 @@ namespace akeyless.Model
         /// <param name="sharedBy">sharedBy.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayBasicInfo> gatewayDetails = default(List<GatewayBasicInfo>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
+        public Item(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), bool autoRotate = default(bool), BastionsList bastionDetails = default(BastionsList), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayBasicInfo> gatewayDetails = default(List<GatewayBasicInfo>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessRequestStatus = accessRequestStatus;
             this.AutoRotate = autoRotate;
+            this.BastionDetails = bastionDetails;
             this.CertIssuerSignerKeyName = certIssuerSignerKeyName;
             this.CertificateIssueDetails = certificateIssueDetails;
             this.Certificates = certificates;
@@ -132,6 +134,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "auto_rotate", EmitDefaultValue = true)]
         public bool AutoRotate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BastionDetails
+        /// </summary>
+        [DataMember(Name = "bastion_details", EmitDefaultValue = false)]
+        public BastionsList BastionDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets CertIssuerSignerKeyName
@@ -355,6 +363,7 @@ namespace akeyless.Model
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  AccessRequestStatus: ").Append(AccessRequestStatus).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
+            sb.Append("  BastionDetails: ").Append(BastionDetails).Append("\n");
             sb.Append("  CertIssuerSignerKeyName: ").Append(CertIssuerSignerKeyName).Append("\n");
             sb.Append("  CertificateIssueDetails: ").Append(CertificateIssueDetails).Append("\n");
             sb.Append("  Certificates: ").Append(Certificates).Append("\n");
@@ -438,6 +447,11 @@ namespace akeyless.Model
                 (
                     this.AutoRotate == input.AutoRotate ||
                     this.AutoRotate.Equals(input.AutoRotate)
+                ) && 
+                (
+                    this.BastionDetails == input.BastionDetails ||
+                    (this.BastionDetails != null &&
+                    this.BastionDetails.Equals(input.BastionDetails))
                 ) && 
                 (
                     this.CertIssuerSignerKeyName == input.CertIssuerSignerKeyName ||
@@ -631,6 +645,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.AccessRequestStatus.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
+                if (this.BastionDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.BastionDetails.GetHashCode();
+                }
                 if (this.CertIssuerSignerKeyName != null)
                 {
                     hashCode = (hashCode * 59) + this.CertIssuerSignerKeyName.GetHashCode();

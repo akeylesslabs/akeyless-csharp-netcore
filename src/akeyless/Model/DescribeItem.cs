@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DescribeItem" /> class.
         /// </summary>
+        /// <param name="bastionDetails">Indicate if the item should return with ztb cluster details (url, etc) (default to false).</param>
         /// <param name="displayId">The display id of the item.</param>
         /// <param name="gatewayDetails">Indicate if the item should return with clusters details (url, etc) (default to false).</param>
         /// <param name="itemId">Item id of the item.</param>
@@ -48,7 +49,7 @@ namespace akeyless.Model
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(bool bastionDetails = false, string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -56,6 +57,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DescribeItem and cannot be null");
             }
             this.Name = name;
+            this.BastionDetails = bastionDetails;
             this.DisplayId = displayId;
             this.GatewayDetails = gatewayDetails;
             this.ItemId = itemId;
@@ -64,6 +66,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Indicate if the item should return with ztb cluster details (url, etc)
+        /// </summary>
+        /// <value>Indicate if the item should return with ztb cluster details (url, etc)</value>
+        [DataMember(Name = "bastion-details", EmitDefaultValue = true)]
+        public bool BastionDetails { get; set; }
 
         /// <summary>
         /// The display id of the item
@@ -129,6 +138,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DescribeItem {\n");
+            sb.Append("  BastionDetails: ").Append(BastionDetails).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
@@ -172,6 +182,10 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.BastionDetails == input.BastionDetails ||
+                    this.BastionDetails.Equals(input.BastionDetails)
+                ) && 
                 (
                     this.DisplayId == input.DisplayId ||
                     (this.DisplayId != null &&
@@ -219,6 +233,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.BastionDetails.GetHashCode();
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();

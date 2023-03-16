@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ProtectionKey** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
-**SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessSshCreds** | **string** | Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key] | [optional] 
 **SecureAccessSshUser** | **string** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] 
 **SecureAccessUrl** | **string** | Destination URL to inject secrets | [optional] 

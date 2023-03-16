@@ -55,7 +55,7 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
         /// <param name="secureAccessDbSchema">The DB schema.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="secureAccessHost">Target DB servers for connections.</param>
+        /// <param name="secureAccessHost">Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts).</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
@@ -202,9 +202,9 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Target DB servers for connections
+        /// Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
         /// </summary>
-        /// <value>Target DB servers for connections</value>
+        /// <value>Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 

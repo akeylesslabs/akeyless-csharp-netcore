@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessSshCreds">Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key].</param>
         /// <param name="secureAccessSshUser">Override the SSH username as indicated in SSH Certificate Issuer.</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
@@ -205,9 +205,9 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Target servers for connections
+        /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
-        /// <value>Target servers for connections</value>
+        /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 

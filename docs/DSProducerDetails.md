@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessTokenManagerId** | **string** |  | [optional] 
+**AclRules** | **List&lt;string&gt;** |  | [optional] 
 **Active** | **bool** |  | [optional] 
 **AdminName** | **string** |  | [optional] 
 **AdminPwd** | **string** |  | [optional] 

@@ -70,7 +70,7 @@ namespace akeyless.Model
         /// <param name="secureAccessDbName">The DB name (relevant only for DB Dynamic-Secret).</param>
         /// <param name="secureAccessDbSchema">The db schema (relevant only for mssql or postgresql).</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username (relevant only for rdp).</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
@@ -347,9 +347,9 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Target servers for connections
+        /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
-        /// <value>Target servers for connections</value>
+        /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 

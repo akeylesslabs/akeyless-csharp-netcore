@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionApi** | **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 | [optional] 
 **SecureAccessBastionSsh** | **string** | Bastion&#39;s SSH server. E.g. my.bastion:22 | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
-**SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections | [optional] 
+**SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessSshCredsUser** | **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list | [optional] 
 **SecureAccessUseInternalBastion** | **bool** | Use internal SSH Bastion | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 

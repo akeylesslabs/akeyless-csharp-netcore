@@ -40,35 +40,62 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateWindowsTarget" /> class.
         /// </summary>
+        /// <param name="certificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="hostname">Server hostname.</param>
+        /// <param name="hostname">Server hostname (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
-        /// <param name="password">The privileged user password.</param>
-        /// <param name="port">Server WinRM HTTPS port (default to &quot;5986&quot;).</param>
+        /// <param name="password">Privileged user password (required).</param>
+        /// <param name="port">Server WinRM port (default to &quot;5986&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="username">Privileged username.</param>
-        public CreateWindowsTarget(string description = default(string), string hostname = default(string), bool json = false, string key = default(string), string name = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), string username = default(string))
+        /// <param name="useTls">Enable/Disable TLS for WinRM over HTTPS [true/false] (default to &quot;true&quot;).</param>
+        /// <param name="username">Privileged username (required).</param>
+        public CreateWindowsTarget(string certificate = default(string), string description = default(string), string hostname = default(string), bool json = false, string key = default(string), string name = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), string useTls = "true", string username = default(string))
         {
+            // to ensure "hostname" is required (not null)
+            if (hostname == null)
+            {
+                throw new ArgumentNullException("hostname is a required property for CreateWindowsTarget and cannot be null");
+            }
+            this.Hostname = hostname;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for CreateWindowsTarget and cannot be null");
             }
             this.Name = name;
+            // to ensure "password" is required (not null)
+            if (password == null)
+            {
+                throw new ArgumentNullException("password is a required property for CreateWindowsTarget and cannot be null");
+            }
+            this.Password = password;
+            // to ensure "username" is required (not null)
+            if (username == null)
+            {
+                throw new ArgumentNullException("username is a required property for CreateWindowsTarget and cannot be null");
+            }
+            this.Username = username;
+            this.Certificate = certificate;
             this.Description = description;
-            this.Hostname = hostname;
             this.Json = json;
             this.Key = key;
-            this.Password = password;
             // use default value if no "port" provided
             this.Port = port ?? "5986";
             this.Token = token;
             this.UidToken = uidToken;
-            this.Username = username;
+            // use default value if no "useTls" provided
+            this.UseTls = useTls ?? "true";
         }
+
+        /// <summary>
+        /// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
+        /// </summary>
+        /// <value>SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)</value>
+        [DataMember(Name = "certificate", EmitDefaultValue = false)]
+        public string Certificate { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -81,7 +108,7 @@ namespace akeyless.Model
         /// Server hostname
         /// </summary>
         /// <value>Server hostname</value>
-        [DataMember(Name = "hostname", EmitDefaultValue = false)]
+        [DataMember(Name = "hostname", IsRequired = true, EmitDefaultValue = true)]
         public string Hostname { get; set; }
 
         /// <summary>
@@ -106,16 +133,16 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The privileged user password
+        /// Privileged user password
         /// </summary>
-        /// <value>The privileged user password</value>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
+        /// <value>Privileged user password</value>
+        [DataMember(Name = "password", IsRequired = true, EmitDefaultValue = true)]
         public string Password { get; set; }
 
         /// <summary>
-        /// Server WinRM HTTPS port
+        /// Server WinRM port
         /// </summary>
-        /// <value>Server WinRM HTTPS port</value>
+        /// <value>Server WinRM port</value>
         [DataMember(Name = "port", EmitDefaultValue = false)]
         public string Port { get; set; }
 
@@ -134,10 +161,17 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Enable/Disable TLS for WinRM over HTTPS [true/false]
+        /// </summary>
+        /// <value>Enable/Disable TLS for WinRM over HTTPS [true/false]</value>
+        [DataMember(Name = "use-tls", EmitDefaultValue = false)]
+        public string UseTls { get; set; }
+
+        /// <summary>
         /// Privileged username
         /// </summary>
         /// <value>Privileged username</value>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [DataMember(Name = "username", IsRequired = true, EmitDefaultValue = true)]
         public string Username { get; set; }
 
         /// <summary>
@@ -148,6 +182,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateWindowsTarget {\n");
+            sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -157,6 +192,7 @@ namespace akeyless.Model
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseTls: ").Append(UseTls).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -193,6 +229,11 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.Certificate == input.Certificate ||
+                    (this.Certificate != null &&
+                    this.Certificate.Equals(input.Certificate))
+                ) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
@@ -238,6 +279,11 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.UseTls == input.UseTls ||
+                    (this.UseTls != null &&
+                    this.UseTls.Equals(input.UseTls))
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -253,6 +299,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Certificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.Certificate.GetHashCode();
+                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -285,6 +335,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UseTls != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseTls.GetHashCode();
                 }
                 if (this.Username != null)
                 {

@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="rdpUserGroups">Groups.</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (default to false).</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user.</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -197,9 +197,9 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Target servers for connections
+        /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
-        /// <value>Target servers for connections</value>
+        /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 

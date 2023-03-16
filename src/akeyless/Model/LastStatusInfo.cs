@@ -37,10 +37,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="migrationsStatus">migrationsStatus.</param>
         /// <param name="producersErrors">producersErrors.</param>
-        public LastStatusInfo(MigrationStatus migrationsStatus = default(MigrationStatus), Object producersErrors = default(Object))
+        /// <param name="wasMigrationsCopiedToNewTable">flag to indicate migrationStatus copied to new table.</param>
+        public LastStatusInfo(MigrationStatus migrationsStatus = default(MigrationStatus), Object producersErrors = default(Object), bool wasMigrationsCopiedToNewTable = default(bool))
         {
             this.MigrationsStatus = migrationsStatus;
             this.ProducersErrors = producersErrors;
+            this.WasMigrationsCopiedToNewTable = wasMigrationsCopiedToNewTable;
         }
 
         /// <summary>
@@ -56,6 +58,13 @@ namespace akeyless.Model
         public Object ProducersErrors { get; set; }
 
         /// <summary>
+        /// flag to indicate migrationStatus copied to new table
+        /// </summary>
+        /// <value>flag to indicate migrationStatus copied to new table</value>
+        [DataMember(Name = "was_migrations_copied_to_new_table", EmitDefaultValue = true)]
+        public bool WasMigrationsCopiedToNewTable { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +74,7 @@ namespace akeyless.Model
             sb.Append("class LastStatusInfo {\n");
             sb.Append("  MigrationsStatus: ").Append(MigrationsStatus).Append("\n");
             sb.Append("  ProducersErrors: ").Append(ProducersErrors).Append("\n");
+            sb.Append("  WasMigrationsCopiedToNewTable: ").Append(WasMigrationsCopiedToNewTable).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,6 +119,10 @@ namespace akeyless.Model
                     this.ProducersErrors == input.ProducersErrors ||
                     (this.ProducersErrors != null &&
                     this.ProducersErrors.Equals(input.ProducersErrors))
+                ) && 
+                (
+                    this.WasMigrationsCopiedToNewTable == input.WasMigrationsCopiedToNewTable ||
+                    this.WasMigrationsCopiedToNewTable.Equals(input.WasMigrationsCopiedToNewTable)
                 );
         }
 
@@ -129,6 +143,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ProducersErrors.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.WasMigrationsCopiedToNewTable.GetHashCode();
                 return hashCode;
             }
         }

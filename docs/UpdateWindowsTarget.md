@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Certificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Description** | **string** | Description of the object | [optional] 
-**Hostname** | **string** | Server hostname | [optional] 
+**Hostname** | **string** | Server hostname | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 
-**Password** | **string** | The privileged user password | [optional] 
-**Port** | **string** | Server WinRM HTTPS port | [optional] [default to "5986"]
+**Password** | **string** | Privileged user password | 
+**Port** | **string** | Server WinRM port | [optional] [default to "5986"]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UpdateVersion** | **bool** | Deprecated | [optional] 
-**Username** | **string** | Privileged username | [optional] 
+**UseTls** | **string** | Enable/Disable TLS for WinRM over HTTPS [true/false] | [optional] [default to "true"]
+**Username** | **string** | Privileged username | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

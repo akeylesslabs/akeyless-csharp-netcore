@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionApi">Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900.</param>
         /// <param name="secureAccessBastionSsh">Bastion&#39;s SSH server. E.g. my.bastion:22.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="secureAccessHost">Target servers for connections.</param>
+        /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessSshCredsUser">SSH username to connect to target server, must be in &#39;Allowed Users&#39; list.</param>
         /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
@@ -191,9 +191,9 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Target servers for connections
+        /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
-        /// <value>Target servers for connections</value>
+        /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
         [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
         public List<string> SecureAccessHost { get; set; }
 
