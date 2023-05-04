@@ -49,6 +49,9 @@ namespace akeyless.Model
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
         /// <param name="country">A comma-separated list of the country that will be set in the issued certificate.</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="destinationPath">A path in which to save generated certificates.</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
+        /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from, required in Public CA mode.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
@@ -60,15 +63,16 @@ namespace akeyless.Model
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
         /// <param name="postalCode">A comma-separated list of the postal code that will be set in the issued certificate.</param>
+        /// <param name="protectCertificates">Whether to protect generated certificates from deletion.</param>
         /// <param name="province">A comma-separated list of the province that will be set in the issued certificate.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
-        /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
+        /// <param name="signerKeyName">A key to sign the certificate with, required in Private CA mode (required) (default to &quot;dummy_signer_key&quot;).</param>
         /// <param name="streetAddress">A comma-separated list of the street address that will be set in the issued certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string description = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -92,6 +96,9 @@ namespace akeyless.Model
             this.CodeSigningFlag = codeSigningFlag;
             this.Country = country;
             this.Description = description;
+            this.DestinationPath = destinationPath;
+            this.ExpirationEventIn = expirationEventIn;
+            this.GwClusterUrl = gwClusterUrl;
             this.Json = json;
             // use default value if no "keyUsage" provided
             this.KeyUsage = keyUsage ?? "DigitalSignature,KeyAgreement,KeyEncipherment";
@@ -103,6 +110,7 @@ namespace akeyless.Model
             this.OrganizationalUnits = organizationalUnits;
             this.Organizations = organizations;
             this.PostalCode = postalCode;
+            this.ProtectCertificates = protectCertificates;
             this.Province = province;
             this.RmTag = rmTag;
             this.ServerFlag = serverFlag;
@@ -173,6 +181,27 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// A path in which to save generated certificates
+        /// </summary>
+        /// <value>A path in which to save generated certificates</value>
+        [DataMember(Name = "destination-path", EmitDefaultValue = false)]
+        public string DestinationPath { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
+
+        /// <summary>
+        /// The GW cluster URL to issue the certificate from, required in Public CA mode
+        /// </summary>
+        /// <value>The GW cluster URL to issue the certificate from, required in Public CA mode</value>
+        [DataMember(Name = "gw-cluster-url", EmitDefaultValue = false)]
+        public string GwClusterUrl { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -252,6 +281,13 @@ namespace akeyless.Model
         public string PostalCode { get; set; }
 
         /// <summary>
+        /// Whether to protect generated certificates from deletion
+        /// </summary>
+        /// <value>Whether to protect generated certificates from deletion</value>
+        [DataMember(Name = "protect-certificates", EmitDefaultValue = true)]
+        public bool ProtectCertificates { get; set; }
+
+        /// <summary>
         /// A comma-separated list of the province that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of the province that will be set in the issued certificate</value>
@@ -273,9 +309,9 @@ namespace akeyless.Model
         public bool ServerFlag { get; set; }
 
         /// <summary>
-        /// A key to sign the certificate with
+        /// A key to sign the certificate with, required in Private CA mode
         /// </summary>
-        /// <value>A key to sign the certificate with</value>
+        /// <value>A key to sign the certificate with, required in Private CA mode</value>
         [DataMember(Name = "signer-key-name", IsRequired = true, EmitDefaultValue = true)]
         public string SignerKeyName { get; set; }
 
@@ -324,6 +360,9 @@ namespace akeyless.Model
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
+            sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
@@ -335,6 +374,7 @@ namespace akeyless.Model
             sb.Append("  OrganizationalUnits: ").Append(OrganizationalUnits).Append("\n");
             sb.Append("  Organizations: ").Append(Organizations).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
+            sb.Append("  ProtectCertificates: ").Append(ProtectCertificates).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
@@ -421,6 +461,22 @@ namespace akeyless.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.DestinationPath == input.DestinationPath ||
+                    (this.DestinationPath != null &&
+                    this.DestinationPath.Equals(input.DestinationPath))
+                ) && 
+                (
+                    this.ExpirationEventIn == input.ExpirationEventIn ||
+                    this.ExpirationEventIn != null &&
+                    input.ExpirationEventIn != null &&
+                    this.ExpirationEventIn.SequenceEqual(input.ExpirationEventIn)
+                ) && 
+                (
+                    this.GwClusterUrl == input.GwClusterUrl ||
+                    (this.GwClusterUrl != null &&
+                    this.GwClusterUrl.Equals(input.GwClusterUrl))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -471,6 +527,10 @@ namespace akeyless.Model
                     this.PostalCode == input.PostalCode ||
                     (this.PostalCode != null &&
                     this.PostalCode.Equals(input.PostalCode))
+                ) && 
+                (
+                    this.ProtectCertificates == input.ProtectCertificates ||
+                    this.ProtectCertificates.Equals(input.ProtectCertificates)
                 ) && 
                 (
                     this.Province == input.Province ||
@@ -546,6 +606,18 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                if (this.DestinationPath != null)
+                {
+                    hashCode = (hashCode * 59) + this.DestinationPath.GetHashCode();
+                }
+                if (this.ExpirationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();
+                }
+                if (this.GwClusterUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.GwClusterUrl.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyUsage != null)
                 {
@@ -581,6 +653,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ProtectCertificates.GetHashCode();
                 if (this.Province != null)
                 {
                     hashCode = (hashCode * 59) + this.Province.GetHashCode();

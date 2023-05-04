@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**Domain** | **string** | User domain name | [optional] 
 **Hostname** | **string** | Server hostname | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 

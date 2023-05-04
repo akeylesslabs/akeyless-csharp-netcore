@@ -35,13 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EsmGetSecretOutput" /> class.
         /// </summary>
+        /// <param name="binaryValue">binaryValue.</param>
         /// <param name="metadata">metadata.</param>
         /// <param name="value">value.</param>
-        public EsmGetSecretOutput(Object metadata = default(Object), string value = default(string))
+        public EsmGetSecretOutput(bool binaryValue = default(bool), Object metadata = default(Object), string value = default(string))
         {
+            this.BinaryValue = binaryValue;
             this.Metadata = metadata;
             this.Value = value;
         }
+
+        /// <summary>
+        /// Gets or Sets BinaryValue
+        /// </summary>
+        [DataMember(Name = "binary_value", EmitDefaultValue = true)]
+        public bool BinaryValue { get; set; }
 
         /// <summary>
         /// Gets or Sets Metadata
@@ -63,6 +71,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class EsmGetSecretOutput {\n");
+            sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
@@ -101,6 +110,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.BinaryValue == input.BinaryValue ||
+                    this.BinaryValue.Equals(input.BinaryValue)
+                ) && 
+                (
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
@@ -121,6 +134,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.BinaryValue.GetHashCode();
                 if (this.Metadata != null)
                 {
                     hashCode = (hashCode * 59) + this.Metadata.GetHashCode();

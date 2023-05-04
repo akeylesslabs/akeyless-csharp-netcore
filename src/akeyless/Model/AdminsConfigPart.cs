@@ -35,17 +35,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminsConfigPart" /> class.
         /// </summary>
+        /// <param name="adminsMigrationStatus">adminsMigrationStatus.</param>
         /// <param name="allowedAccess">allowedAccess.</param>
-        public AdminsConfigPart(Dictionary<string, AllowedAccess> allowedAccess = default(Dictionary<string, AllowedAccess>))
+        public AdminsConfigPart(long adminsMigrationStatus = default(long), Dictionary<string, AllowedAccessOld> allowedAccess = default(Dictionary<string, AllowedAccessOld>))
         {
+            this.AdminsMigrationStatus = adminsMigrationStatus;
             this.AllowedAccess = allowedAccess;
         }
+
+        /// <summary>
+        /// Gets or Sets AdminsMigrationStatus
+        /// </summary>
+        [DataMember(Name = "admins_migration_status", EmitDefaultValue = false)]
+        public long AdminsMigrationStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedAccess
         /// </summary>
         [DataMember(Name = "allowed_access", EmitDefaultValue = false)]
-        public Dictionary<string, AllowedAccess> AllowedAccess { get; set; }
+        public Dictionary<string, AllowedAccessOld> AllowedAccess { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,6 +63,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AdminsConfigPart {\n");
+            sb.Append("  AdminsMigrationStatus: ").Append(AdminsMigrationStatus).Append("\n");
             sb.Append("  AllowedAccess: ").Append(AllowedAccess).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -92,6 +101,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.AdminsMigrationStatus == input.AdminsMigrationStatus ||
+                    this.AdminsMigrationStatus.Equals(input.AdminsMigrationStatus)
+                ) && 
+                (
                     this.AllowedAccess == input.AllowedAccess ||
                     this.AllowedAccess != null &&
                     input.AllowedAccess != null &&
@@ -108,6 +121,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.AdminsMigrationStatus.GetHashCode();
                 if (this.AllowedAccess != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedAccess.GetHashCode();

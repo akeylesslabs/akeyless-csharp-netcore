@@ -38,13 +38,15 @@ namespace akeyless.Model
         /// <param name="authCreds">Temporary credentials for accessing Auth.</param>
         /// <param name="expiry">Credentials expiration date.</param>
         /// <param name="kfmCreds">Temporary credentials for accessing the KFMs instances.</param>
+        /// <param name="requiredMfa">requiredMfa.</param>
         /// <param name="token">Credentials tmp token.</param>
         /// <param name="uamCreds">Temporary credentials for accessing the UAM service.</param>
-        public SystemAccessCredentialsReplyObj(string authCreds = default(string), long expiry = default(long), string kfmCreds = default(string), string token = default(string), string uamCreds = default(string))
+        public SystemAccessCredentialsReplyObj(string authCreds = default(string), long expiry = default(long), string kfmCreds = default(string), string requiredMfa = default(string), string token = default(string), string uamCreds = default(string))
         {
             this.AuthCreds = authCreds;
             this.Expiry = expiry;
             this.KfmCreds = kfmCreds;
+            this.RequiredMfa = requiredMfa;
             this.Token = token;
             this.UamCreds = uamCreds;
         }
@@ -71,6 +73,12 @@ namespace akeyless.Model
         public string KfmCreds { get; set; }
 
         /// <summary>
+        /// Gets or Sets RequiredMfa
+        /// </summary>
+        [DataMember(Name = "required_mfa", EmitDefaultValue = false)]
+        public string RequiredMfa { get; set; }
+
+        /// <summary>
         /// Credentials tmp token
         /// </summary>
         /// <value>Credentials tmp token</value>
@@ -95,6 +103,7 @@ namespace akeyless.Model
             sb.Append("  AuthCreds: ").Append(AuthCreds).Append("\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
             sb.Append("  KfmCreds: ").Append(KfmCreds).Append("\n");
+            sb.Append("  RequiredMfa: ").Append(RequiredMfa).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UamCreds: ").Append(UamCreds).Append("\n");
             sb.Append("}\n");
@@ -147,6 +156,11 @@ namespace akeyless.Model
                     this.KfmCreds.Equals(input.KfmCreds))
                 ) && 
                 (
+                    this.RequiredMfa == input.RequiredMfa ||
+                    (this.RequiredMfa != null &&
+                    this.RequiredMfa.Equals(input.RequiredMfa))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -175,6 +189,10 @@ namespace akeyless.Model
                 if (this.KfmCreds != null)
                 {
                     hashCode = (hashCode * 59) + this.KfmCreds.GetHashCode();
+                }
+                if (this.RequiredMfa != null)
+                {
+                    hashCode = (hashCode * 59) + this.RequiredMfa.GetHashCode();
                 }
                 if (this.Token != null)
                 {

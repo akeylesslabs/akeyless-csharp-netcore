@@ -1,5 +1,5 @@
 # akeyless.Model.ItemTargetAssociation
-ItemTargetAssociation includes details of an association between an item and a target.
+and a target.
 
 ## Properties
 

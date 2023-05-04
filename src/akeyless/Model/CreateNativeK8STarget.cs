@@ -43,14 +43,15 @@ namespace akeyless.Model
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required).</param>
-        /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required).</param>
-        /// <param name="k8sClusterToken">K8S cluster Bearer token (required).</param>
+        /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required) (default to &quot;dummy_val&quot;).</param>
+        /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required) (default to &quot;dummy_val&quot;).</param>
+        /// <param name="k8sClusterToken">K8S cluster Bearer token (required) (default to &quot;dummy_val&quot;).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
+        public CreateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sClusterCaCert = "dummy_val", string k8sClusterEndpoint = "dummy_val", string k8sClusterToken = "dummy_val", string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
             if (k8sClusterCaCert == null)
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.Key = key;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseGwServiceAccount = useGwServiceAccount;
         }
 
         /// <summary>
@@ -155,6 +157,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Use the GW&#39;s service account
+        /// </summary>
+        /// <value>Use the GW&#39;s service account</value>
+        [DataMember(Name = "use-gw-service-account", EmitDefaultValue = true)]
+        public bool UseGwServiceAccount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -172,6 +181,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -255,6 +265,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UseGwServiceAccount == input.UseGwServiceAccount ||
+                    this.UseGwServiceAccount.Equals(input.UseGwServiceAccount)
                 );
         }
 
@@ -304,6 +318,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.UseGwServiceAccount.GetHashCode();
                 return hashCode;
             }
         }

@@ -4,16 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccId** | **string** |  | [optional] 
-**AccessRulesType** | **string** |  | [optional] 
-**AllowedApi** | **bool** |  | [optional] 
-**AllowedsLogin** | **bool** |  | [optional] 
+**AccessId** | **string** |  | [optional] 
+**AccessType** | **string** |  | [optional] 
+**ClusterId** | **long** |  | [optional] 
+**CreatedAt** | **DateTime** |  | [optional] 
+**Description** | **string** |  | [optional] 
 **Editable** | **bool** |  | [optional] 
-**ErrMsg** | **string** |  | [optional] 
-**Hash** | **string** |  | [optional] 
+**Error** | **string** |  | [optional] 
+**Id** | **long** |  | [optional] 
 **IsValid** | **bool** |  | [optional] 
 **Name** | **string** |  | [optional] 
+**Permissions** | **List&lt;string&gt;** |  | [optional] 
 **SubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
+**UpdatedAt** | **DateTime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

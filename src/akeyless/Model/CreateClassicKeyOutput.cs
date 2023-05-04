@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="classicKeyId">classicKeyId.</param>
         /// <param name="classicKeyName">classicKeyName.</param>
         /// <param name="classicKeyType">classicKeyType.</param>
-        public CreateClassicKeyOutput(string classicKeyId = default(string), string classicKeyName = default(string), string classicKeyType = default(string))
+        /// <param name="publicKey">publicKey.</param>
+        public CreateClassicKeyOutput(string classicKeyId = default(string), string classicKeyName = default(string), string classicKeyType = default(string), string publicKey = default(string))
         {
             this.ClassicKeyId = classicKeyId;
             this.ClassicKeyName = classicKeyName;
             this.ClassicKeyType = classicKeyType;
+            this.PublicKey = publicKey;
         }
 
         /// <summary>
@@ -64,6 +66,12 @@ namespace akeyless.Model
         public string ClassicKeyType { get; set; }
 
         /// <summary>
+        /// Gets or Sets PublicKey
+        /// </summary>
+        [DataMember(Name = "public_key", EmitDefaultValue = false)]
+        public string PublicKey { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,6 +82,7 @@ namespace akeyless.Model
             sb.Append("  ClassicKeyId: ").Append(ClassicKeyId).Append("\n");
             sb.Append("  ClassicKeyName: ").Append(ClassicKeyName).Append("\n");
             sb.Append("  ClassicKeyType: ").Append(ClassicKeyType).Append("\n");
+            sb.Append("  PublicKey: ").Append(PublicKey).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +132,11 @@ namespace akeyless.Model
                     this.ClassicKeyType == input.ClassicKeyType ||
                     (this.ClassicKeyType != null &&
                     this.ClassicKeyType.Equals(input.ClassicKeyType))
+                ) && 
+                (
+                    this.PublicKey == input.PublicKey ||
+                    (this.PublicKey != null &&
+                    this.PublicKey.Equals(input.PublicKey))
                 );
         }
 
@@ -146,6 +160,10 @@ namespace akeyless.Model
                 if (this.ClassicKeyType != null)
                 {
                     hashCode = (hashCode * 59) + this.ClassicKeyType.GetHashCode();
+                }
+                if (this.PublicKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublicKey.GetHashCode();
                 }
                 return hashCode;
             }

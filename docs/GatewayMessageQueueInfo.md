@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BroadcastQueueName** | **string** |  | [optional] 
+**BroadcastQueueNameA** | **string** |  | [optional] 
 **MqType** | **string** |  | [optional] 
 **QueueName** | **string** |  | [optional] 
 **QueueUrl** | **string** |  | [optional] 

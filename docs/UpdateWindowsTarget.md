@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**Domain** | **string** | User domain name | [optional] 
 **Hostname** | **string** | Server hostname | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 

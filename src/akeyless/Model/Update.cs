@@ -35,14 +35,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Update" /> class.
         /// </summary>
+        /// <param name="artifactRepository">Alternative CLI repository url. e.g. https://artifacts.site2.akeyless.io.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="version">Version (default to &quot;latest&quot;).</param>
-        public Update(bool json = false, string version = "latest")
+        /// <param name="showChangelog">Show the changelog between the current version and the latest one and exit (update will not be performed).</param>
+        /// <param name="version">The CLI version (default to &quot;latest&quot;).</param>
+        public Update(string artifactRepository = default(string), bool json = false, bool showChangelog = default(bool), string version = "latest")
         {
+            this.ArtifactRepository = artifactRepository;
             this.Json = json;
+            this.ShowChangelog = showChangelog;
             // use default value if no "version" provided
             this._Version = version ?? "latest";
         }
+
+        /// <summary>
+        /// Alternative CLI repository url. e.g. https://artifacts.site2.akeyless.io
+        /// </summary>
+        /// <value>Alternative CLI repository url. e.g. https://artifacts.site2.akeyless.io</value>
+        [DataMember(Name = "artifact-repository", EmitDefaultValue = false)]
+        public string ArtifactRepository { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -52,9 +63,16 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Version
+        /// Show the changelog between the current version and the latest one and exit (update will not be performed)
         /// </summary>
-        /// <value>Version</value>
+        /// <value>Show the changelog between the current version and the latest one and exit (update will not be performed)</value>
+        [DataMember(Name = "show-changelog", EmitDefaultValue = true)]
+        public bool ShowChangelog { get; set; }
+
+        /// <summary>
+        /// The CLI version
+        /// </summary>
+        /// <value>The CLI version</value>
         [DataMember(Name = "version", EmitDefaultValue = false)]
         public string _Version { get; set; }
 
@@ -66,7 +84,9 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Update {\n");
+            sb.Append("  ArtifactRepository: ").Append(ArtifactRepository).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  ShowChangelog: ").Append(ShowChangelog).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -104,8 +124,17 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.ArtifactRepository == input.ArtifactRepository ||
+                    (this.ArtifactRepository != null &&
+                    this.ArtifactRepository.Equals(input.ArtifactRepository))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.ShowChangelog == input.ShowChangelog ||
+                    this.ShowChangelog.Equals(input.ShowChangelog)
                 ) && 
                 (
                     this._Version == input._Version ||
@@ -123,7 +152,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ArtifactRepository != null)
+                {
+                    hashCode = (hashCode * 59) + this.ArtifactRepository.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                hashCode = (hashCode * 59) + this.ShowChangelog.GetHashCode();
                 if (this._Version != null)
                 {
                     hashCode = (hashCode * 59) + this._Version.GetHashCode();

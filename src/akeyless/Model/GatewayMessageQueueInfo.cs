@@ -35,23 +35,23 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayMessageQueueInfo" /> class.
         /// </summary>
-        /// <param name="broadcastQueueName">broadcastQueueName.</param>
+        /// <param name="broadcastQueueNameA">broadcastQueueNameA.</param>
         /// <param name="mqType">mqType.</param>
         /// <param name="queueName">queueName.</param>
         /// <param name="queueUrl">queueUrl.</param>
-        public GatewayMessageQueueInfo(string broadcastQueueName = default(string), string mqType = default(string), string queueName = default(string), string queueUrl = default(string))
+        public GatewayMessageQueueInfo(string broadcastQueueNameA = default(string), string mqType = default(string), string queueName = default(string), string queueUrl = default(string))
         {
-            this.BroadcastQueueName = broadcastQueueName;
+            this.BroadcastQueueNameA = broadcastQueueNameA;
             this.MqType = mqType;
             this.QueueName = queueName;
             this.QueueUrl = queueUrl;
         }
 
         /// <summary>
-        /// Gets or Sets BroadcastQueueName
+        /// Gets or Sets BroadcastQueueNameA
         /// </summary>
-        [DataMember(Name = "broadcast_queue_name", EmitDefaultValue = false)]
-        public string BroadcastQueueName { get; set; }
+        [DataMember(Name = "broadcast_queue_name_a", EmitDefaultValue = false)]
+        public string BroadcastQueueNameA { get; set; }
 
         /// <summary>
         /// Gets or Sets MqType
@@ -79,7 +79,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayMessageQueueInfo {\n");
-            sb.Append("  BroadcastQueueName: ").Append(BroadcastQueueName).Append("\n");
+            sb.Append("  BroadcastQueueNameA: ").Append(BroadcastQueueNameA).Append("\n");
             sb.Append("  MqType: ").Append(MqType).Append("\n");
             sb.Append("  QueueName: ").Append(QueueName).Append("\n");
             sb.Append("  QueueUrl: ").Append(QueueUrl).Append("\n");
@@ -119,9 +119,9 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.BroadcastQueueName == input.BroadcastQueueName ||
-                    (this.BroadcastQueueName != null &&
-                    this.BroadcastQueueName.Equals(input.BroadcastQueueName))
+                    this.BroadcastQueueNameA == input.BroadcastQueueNameA ||
+                    (this.BroadcastQueueNameA != null &&
+                    this.BroadcastQueueNameA.Equals(input.BroadcastQueueNameA))
                 ) && 
                 (
                     this.MqType == input.MqType ||
@@ -149,9 +149,9 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.BroadcastQueueName != null)
+                if (this.BroadcastQueueNameA != null)
                 {
-                    hashCode = (hashCode * 59) + this.BroadcastQueueName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.BroadcastQueueNameA.GetHashCode();
                 }
                 if (this.MqType != null)
                 {

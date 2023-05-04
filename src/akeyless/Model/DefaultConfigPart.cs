@@ -35,17 +35,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultConfigPart" /> class.
         /// </summary>
+        /// <param name="certificateAccessId">certificateAccessId.</param>
         /// <param name="defaultProtectionKeyId">defaultProtectionKeyId.</param>
         /// <param name="defaultSecretLocation">defaultSecretLocation.</param>
         /// <param name="oidcAccessId">oidcAccessId.</param>
         /// <param name="samlAccessId">samlAccessId.</param>
-        public DefaultConfigPart(long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string oidcAccessId = default(string), string samlAccessId = default(string))
+        public DefaultConfigPart(string certificateAccessId = default(string), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string oidcAccessId = default(string), string samlAccessId = default(string))
         {
+            this.CertificateAccessId = certificateAccessId;
             this.DefaultProtectionKeyId = defaultProtectionKeyId;
             this.DefaultSecretLocation = defaultSecretLocation;
             this.OidcAccessId = oidcAccessId;
             this.SamlAccessId = samlAccessId;
         }
+
+        /// <summary>
+        /// Gets or Sets CertificateAccessId
+        /// </summary>
+        [DataMember(Name = "certificate_access_id", EmitDefaultValue = false)]
+        public string CertificateAccessId { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultProtectionKeyId
@@ -79,6 +87,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DefaultConfigPart {\n");
+            sb.Append("  CertificateAccessId: ").Append(CertificateAccessId).Append("\n");
             sb.Append("  DefaultProtectionKeyId: ").Append(DefaultProtectionKeyId).Append("\n");
             sb.Append("  DefaultSecretLocation: ").Append(DefaultSecretLocation).Append("\n");
             sb.Append("  OidcAccessId: ").Append(OidcAccessId).Append("\n");
@@ -119,6 +128,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CertificateAccessId == input.CertificateAccessId ||
+                    (this.CertificateAccessId != null &&
+                    this.CertificateAccessId.Equals(input.CertificateAccessId))
+                ) && 
+                (
                     this.DefaultProtectionKeyId == input.DefaultProtectionKeyId ||
                     this.DefaultProtectionKeyId.Equals(input.DefaultProtectionKeyId)
                 ) && 
@@ -148,6 +162,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertificateAccessId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateAccessId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.DefaultProtectionKeyId.GetHashCode();
                 if (this.DefaultSecretLocation != null)
                 {

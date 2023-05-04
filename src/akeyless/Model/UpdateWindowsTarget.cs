@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="domain">User domain name.</param>
         /// <param name="hostname">Server hostname (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useTls">Enable/Disable TLS for WinRM over HTTPS [true/false] (default to &quot;true&quot;).</param>
         /// <param name="username">Privileged username (required).</param>
-        public UpdateWindowsTarget(string certificate = default(string), string description = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string useTls = "true", string username = default(string))
+        public UpdateWindowsTarget(string certificate = default(string), string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string useTls = "true", string username = default(string))
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null)
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.Username = username;
             this.Certificate = certificate;
             this.Description = description;
+            this.Domain = domain;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -109,6 +111,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// User domain name
+        /// </summary>
+        /// <value>User domain name</value>
+        [DataMember(Name = "domain", EmitDefaultValue = false)]
+        public string Domain { get; set; }
 
         /// <summary>
         /// Server hostname
@@ -211,6 +220,7 @@ namespace akeyless.Model
             sb.Append("class UpdateWindowsTarget {\n");
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
@@ -268,6 +278,11 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Domain == input.Domain ||
+                    (this.Domain != null &&
+                    this.Domain.Equals(input.Domain))
                 ) && 
                 (
                     this.Hostname == input.Hostname ||
@@ -350,6 +365,10 @@ namespace akeyless.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.Domain != null)
+                {
+                    hashCode = (hashCode * 59) + this.Domain.GetHashCode();
                 }
                 if (this.Hostname != null)
                 {

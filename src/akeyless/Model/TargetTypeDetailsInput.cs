@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetTypeDetailsInput" /> class.
         /// </summary>
         /// <param name="administrativePort">administrativePort.</param>
+        /// <param name="apiKey">apiKey.</param>
         /// <param name="appPrivateKey">params needed for jwt auth AppPrivateKey is the rsa private key in PEM format.</param>
         /// <param name="artifactoryAdminApikey">artifactoryAdminApikey.</param>
         /// <param name="artifactoryAdminUsername">artifactoryAdminUsername.</param>
@@ -72,12 +73,15 @@ namespace akeyless.Model
         /// <param name="dbServerCertificates">(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set..</param>
         /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
         /// <param name="dbUserName">dbUserName.</param>
+        /// <param name="domainName">domainName.</param>
         /// <param name="eksAccessKeyId">eksAccessKeyId.</param>
         /// <param name="eksClusterCaCertificate">eksClusterCaCertificate.</param>
         /// <param name="eksClusterEndpoint">eksClusterEndpoint.</param>
         /// <param name="eksClusterName">eksClusterName.</param>
         /// <param name="eksRegion">eksRegion.</param>
         /// <param name="eksSecretAccessKey">eksSecretAccessKey.</param>
+        /// <param name="email">email.</param>
+        /// <param name="firstName">Contact Info - GlobalSign requires this to be sent with every certificate creation request.</param>
         /// <param name="gcpServiceAccountEmail">deprecated.</param>
         /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
         /// <param name="gcpServiceAccountKeyBase64">gcpServiceAccountKeyBase64.</param>
@@ -92,10 +96,15 @@ namespace akeyless.Model
         /// <param name="host">host.</param>
         /// <param name="hostname">hostname.</param>
         /// <param name="hosts">hosts.</param>
+        /// <param name="imapFqdn">imapFqdn.</param>
+        /// <param name="imapPassword">imapPassword.</param>
+        /// <param name="imapPort">imapPort.</param>
+        /// <param name="imapUser">imapUser.</param>
         /// <param name="implementationType">implementationType.</param>
         /// <param name="k8sBearerToken">k8sBearerToken.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
         /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
+        /// <param name="lastName">lastName.</param>
         /// <param name="ldapAudience">ldapAudience.</param>
         /// <param name="ldapBindDn">ldapBindDn.</param>
         /// <param name="ldapBindPassword">ldapBindPassword.</param>
@@ -115,11 +124,13 @@ namespace akeyless.Model
         /// <param name="mongodbUsername">mongodbUsername.</param>
         /// <param name="password">password.</param>
         /// <param name="payload">payload.</param>
+        /// <param name="phone">phone.</param>
         /// <param name="pingUrl">pingUrl.</param>
         /// <param name="port">port.</param>
         /// <param name="privateKey">privateKey.</param>
         /// <param name="privateKeyPassword">privateKeyPassword.</param>
         /// <param name="privilegedUser">privilegedUser.</param>
+        /// <param name="profileId">profileId.</param>
         /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
         /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
         /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
@@ -128,21 +139,25 @@ namespace akeyless.Model
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
         /// <param name="tenantUrl">tenantUrl.</param>
+        /// <param name="timeout">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
         /// <param name="url">url.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
+        /// <param name="useGwServiceAccount">useGwServiceAccount.</param>
         /// <param name="useTls">useTls.</param>
         /// <param name="userName">userName.</param>
         /// <param name="userPassword">userPassword.</param>
         /// <param name="username">username.</param>
+        /// <param name="validationEmail">validationEmail.</param>
         /// <param name="venafiApiKey">venafiApiKey.</param>
         /// <param name="venafiBaseUrl">venafiBaseUrl.</param>
         /// <param name="venafiTppPassword">venafiTppPassword.</param>
         /// <param name="venafiTppUsername">venafiTppUsername.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string administrativePort = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string certificate = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string hostname = default(string), Dictionary<string, string> hosts = default(Dictionary<string, string>), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), string url = default(string), bool useGwCloudIdentity = default(bool), bool useTls = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string administrativePort = default(string), string apiKey = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string certificate = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string domainName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string email = default(string), string firstName = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string hostname = default(string), Dictionary<string, string> hosts = default(Dictionary<string, string>), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = default(string), string imapUser = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string lastName = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string phone = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string profileId = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), long timeout = default(long), string url = default(string), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), bool useTls = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string validationEmail = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.AdministrativePort = administrativePort;
+            this.ApiKey = apiKey;
             this.AppPrivateKey = appPrivateKey;
             this.ArtifactoryAdminApikey = artifactoryAdminApikey;
             this.ArtifactoryAdminUsername = artifactoryAdminUsername;
@@ -179,12 +194,15 @@ namespace akeyless.Model
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             this.DbUserName = dbUserName;
+            this.DomainName = domainName;
             this.EksAccessKeyId = eksAccessKeyId;
             this.EksClusterCaCertificate = eksClusterCaCertificate;
             this.EksClusterEndpoint = eksClusterEndpoint;
             this.EksClusterName = eksClusterName;
             this.EksRegion = eksRegion;
             this.EksSecretAccessKey = eksSecretAccessKey;
+            this.Email = email;
+            this.FirstName = firstName;
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKey = gcpServiceAccountKey;
             this.GcpServiceAccountKeyBase64 = gcpServiceAccountKeyBase64;
@@ -199,10 +217,15 @@ namespace akeyless.Model
             this.Host = host;
             this.Hostname = hostname;
             this.Hosts = hosts;
+            this.ImapFqdn = imapFqdn;
+            this.ImapPassword = imapPassword;
+            this.ImapPort = imapPort;
+            this.ImapUser = imapUser;
             this.ImplementationType = implementationType;
             this.K8sBearerToken = k8sBearerToken;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
+            this.LastName = lastName;
             this.LdapAudience = ldapAudience;
             this.LdapBindDn = ldapBindDn;
             this.LdapBindPassword = ldapBindPassword;
@@ -222,11 +245,13 @@ namespace akeyless.Model
             this.MongodbUsername = mongodbUsername;
             this.Password = password;
             this.Payload = payload;
+            this.Phone = phone;
             this.PingUrl = pingUrl;
             this.Port = port;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassword = privateKeyPassword;
             this.PrivilegedUser = privilegedUser;
+            this.ProfileId = profileId;
             this.RabbitmqServerPassword = rabbitmqServerPassword;
             this.RabbitmqServerUri = rabbitmqServerUri;
             this.RabbitmqServerUser = rabbitmqServerUser;
@@ -235,12 +260,15 @@ namespace akeyless.Model
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
             this.TenantUrl = tenantUrl;
+            this.Timeout = timeout;
             this.Url = url;
             this.UseGwCloudIdentity = useGwCloudIdentity;
+            this.UseGwServiceAccount = useGwServiceAccount;
             this.UseTls = useTls;
             this.UserName = userName;
             this.UserPassword = userPassword;
             this.Username = username;
+            this.ValidationEmail = validationEmail;
             this.VenafiApiKey = venafiApiKey;
             this.VenafiBaseUrl = venafiBaseUrl;
             this.VenafiTppPassword = venafiTppPassword;
@@ -254,6 +282,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "administrative_port", EmitDefaultValue = false)]
         public string AdministrativePort { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ApiKey
+        /// </summary>
+        [DataMember(Name = "api_key", EmitDefaultValue = false)]
+        public string ApiKey { get; set; }
 
         /// <summary>
         /// params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
@@ -479,6 +513,12 @@ namespace akeyless.Model
         public string DbUserName { get; set; }
 
         /// <summary>
+        /// Gets or Sets DomainName
+        /// </summary>
+        [DataMember(Name = "domain_name", EmitDefaultValue = false)]
+        public string DomainName { get; set; }
+
+        /// <summary>
         /// Gets or Sets EksAccessKeyId
         /// </summary>
         [DataMember(Name = "eks_access_key_id", EmitDefaultValue = false)]
@@ -513,6 +553,19 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "eks_secret_access_key", EmitDefaultValue = false)]
         public string EksSecretAccessKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Email
+        /// </summary>
+        [DataMember(Name = "email", EmitDefaultValue = false)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Contact Info - GlobalSign requires this to be sent with every certificate creation request
+        /// </summary>
+        /// <value>Contact Info - GlobalSign requires this to be sent with every certificate creation request</value>
+        [DataMember(Name = "first_name", EmitDefaultValue = false)]
+        public string FirstName { get; set; }
 
         /// <summary>
         /// deprecated
@@ -600,6 +653,30 @@ namespace akeyless.Model
         public Dictionary<string, string> Hosts { get; set; }
 
         /// <summary>
+        /// Gets or Sets ImapFqdn
+        /// </summary>
+        [DataMember(Name = "imap_fqdn", EmitDefaultValue = false)]
+        public string ImapFqdn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImapPassword
+        /// </summary>
+        [DataMember(Name = "imap_password", EmitDefaultValue = false)]
+        public string ImapPassword { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImapPort
+        /// </summary>
+        [DataMember(Name = "imap_port", EmitDefaultValue = false)]
+        public string ImapPort { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImapUser
+        /// </summary>
+        [DataMember(Name = "imap_user", EmitDefaultValue = false)]
+        public string ImapUser { get; set; }
+
+        /// <summary>
         /// Gets or Sets ImplementationType
         /// </summary>
         [DataMember(Name = "implementation_type", EmitDefaultValue = false)]
@@ -622,6 +699,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "k8s_cluster_endpoint", EmitDefaultValue = false)]
         public string K8sClusterEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastName
+        /// </summary>
+        [DataMember(Name = "last_name", EmitDefaultValue = false)]
+        public string LastName { get; set; }
 
         /// <summary>
         /// Gets or Sets LdapAudience
@@ -741,6 +824,12 @@ namespace akeyless.Model
         public string Payload { get; set; }
 
         /// <summary>
+        /// Gets or Sets Phone
+        /// </summary>
+        [DataMember(Name = "phone", EmitDefaultValue = false)]
+        public string Phone { get; set; }
+
+        /// <summary>
         /// Gets or Sets PingUrl
         /// </summary>
         [DataMember(Name = "ping_url", EmitDefaultValue = false)]
@@ -769,6 +858,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "privileged_user", EmitDefaultValue = false)]
         public string PrivilegedUser { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProfileId
+        /// </summary>
+        [DataMember(Name = "profile_id", EmitDefaultValue = false)]
+        public string ProfileId { get; set; }
 
         /// <summary>
         /// Gets or Sets RabbitmqServerPassword
@@ -821,6 +916,13 @@ namespace akeyless.Model
         public string TenantUrl { get; set; }
 
         /// <summary>
+        /// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
+        /// </summary>
+        /// <value>A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.</value>
+        [DataMember(Name = "timeout", EmitDefaultValue = false)]
+        public long Timeout { get; set; }
+
+        /// <summary>
         /// Gets or Sets Url
         /// </summary>
         [DataMember(Name = "url", EmitDefaultValue = false)]
@@ -831,6 +933,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
         public bool UseGwCloudIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseGwServiceAccount
+        /// </summary>
+        [DataMember(Name = "use_gw_service_account", EmitDefaultValue = true)]
+        public bool UseGwServiceAccount { get; set; }
 
         /// <summary>
         /// Gets or Sets UseTls
@@ -855,6 +963,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ValidationEmail
+        /// </summary>
+        [DataMember(Name = "validation_email", EmitDefaultValue = false)]
+        public string ValidationEmail { get; set; }
 
         /// <summary>
         /// Gets or Sets VenafiApiKey
@@ -901,6 +1015,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetTypeDetailsInput {\n");
             sb.Append("  AdministrativePort: ").Append(AdministrativePort).Append("\n");
+            sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  AppPrivateKey: ").Append(AppPrivateKey).Append("\n");
             sb.Append("  ArtifactoryAdminApikey: ").Append(ArtifactoryAdminApikey).Append("\n");
             sb.Append("  ArtifactoryAdminUsername: ").Append(ArtifactoryAdminUsername).Append("\n");
@@ -937,12 +1052,15 @@ namespace akeyless.Model
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbUserName: ").Append(DbUserName).Append("\n");
+            sb.Append("  DomainName: ").Append(DomainName).Append("\n");
             sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
             sb.Append("  EksClusterCaCertificate: ").Append(EksClusterCaCertificate).Append("\n");
             sb.Append("  EksClusterEndpoint: ").Append(EksClusterEndpoint).Append("\n");
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKey: ").Append(GcpServiceAccountKey).Append("\n");
             sb.Append("  GcpServiceAccountKeyBase64: ").Append(GcpServiceAccountKeyBase64).Append("\n");
@@ -957,10 +1075,15 @@ namespace akeyless.Model
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Hosts: ").Append(Hosts).Append("\n");
+            sb.Append("  ImapFqdn: ").Append(ImapFqdn).Append("\n");
+            sb.Append("  ImapPassword: ").Append(ImapPassword).Append("\n");
+            sb.Append("  ImapPort: ").Append(ImapPort).Append("\n");
+            sb.Append("  ImapUser: ").Append(ImapUser).Append("\n");
             sb.Append("  ImplementationType: ").Append(ImplementationType).Append("\n");
             sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  LdapAudience: ").Append(LdapAudience).Append("\n");
             sb.Append("  LdapBindDn: ").Append(LdapBindDn).Append("\n");
             sb.Append("  LdapBindPassword: ").Append(LdapBindPassword).Append("\n");
@@ -980,11 +1103,13 @@ namespace akeyless.Model
             sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  PingUrl: ").Append(PingUrl).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
             sb.Append("  PrivilegedUser: ").Append(PrivilegedUser).Append("\n");
+            sb.Append("  ProfileId: ").Append(ProfileId).Append("\n");
             sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
             sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
             sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
@@ -993,12 +1118,15 @@ namespace akeyless.Model
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
             sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
             sb.Append("  TenantUrl: ").Append(TenantUrl).Append("\n");
+            sb.Append("  Timeout: ").Append(Timeout).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
+            sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
             sb.Append("  UseTls: ").Append(UseTls).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("  UserPassword: ").Append(UserPassword).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("  ValidationEmail: ").Append(ValidationEmail).Append("\n");
             sb.Append("  VenafiApiKey: ").Append(VenafiApiKey).Append("\n");
             sb.Append("  VenafiBaseUrl: ").Append(VenafiBaseUrl).Append("\n");
             sb.Append("  VenafiTppPassword: ").Append(VenafiTppPassword).Append("\n");
@@ -1044,6 +1172,11 @@ namespace akeyless.Model
                     this.AdministrativePort == input.AdministrativePort ||
                     (this.AdministrativePort != null &&
                     this.AdministrativePort.Equals(input.AdministrativePort))
+                ) && 
+                (
+                    this.ApiKey == input.ApiKey ||
+                    (this.ApiKey != null &&
+                    this.ApiKey.Equals(input.ApiKey))
                 ) && 
                 (
                     this.AppPrivateKey == input.AppPrivateKey ||
@@ -1227,6 +1360,11 @@ namespace akeyless.Model
                     this.DbUserName.Equals(input.DbUserName))
                 ) && 
                 (
+                    this.DomainName == input.DomainName ||
+                    (this.DomainName != null &&
+                    this.DomainName.Equals(input.DomainName))
+                ) && 
+                (
                     this.EksAccessKeyId == input.EksAccessKeyId ||
                     (this.EksAccessKeyId != null &&
                     this.EksAccessKeyId.Equals(input.EksAccessKeyId))
@@ -1255,6 +1393,16 @@ namespace akeyless.Model
                     this.EksSecretAccessKey == input.EksSecretAccessKey ||
                     (this.EksSecretAccessKey != null &&
                     this.EksSecretAccessKey.Equals(input.EksSecretAccessKey))
+                ) && 
+                (
+                    this.Email == input.Email ||
+                    (this.Email != null &&
+                    this.Email.Equals(input.Email))
+                ) && 
+                (
+                    this.FirstName == input.FirstName ||
+                    (this.FirstName != null &&
+                    this.FirstName.Equals(input.FirstName))
                 ) && 
                 (
                     this.GcpServiceAccountEmail == input.GcpServiceAccountEmail ||
@@ -1327,6 +1475,26 @@ namespace akeyless.Model
                     this.Hosts.SequenceEqual(input.Hosts)
                 ) && 
                 (
+                    this.ImapFqdn == input.ImapFqdn ||
+                    (this.ImapFqdn != null &&
+                    this.ImapFqdn.Equals(input.ImapFqdn))
+                ) && 
+                (
+                    this.ImapPassword == input.ImapPassword ||
+                    (this.ImapPassword != null &&
+                    this.ImapPassword.Equals(input.ImapPassword))
+                ) && 
+                (
+                    this.ImapPort == input.ImapPort ||
+                    (this.ImapPort != null &&
+                    this.ImapPort.Equals(input.ImapPort))
+                ) && 
+                (
+                    this.ImapUser == input.ImapUser ||
+                    (this.ImapUser != null &&
+                    this.ImapUser.Equals(input.ImapUser))
+                ) && 
+                (
                     this.ImplementationType == input.ImplementationType ||
                     (this.ImplementationType != null &&
                     this.ImplementationType.Equals(input.ImplementationType))
@@ -1345,6 +1513,11 @@ namespace akeyless.Model
                     this.K8sClusterEndpoint == input.K8sClusterEndpoint ||
                     (this.K8sClusterEndpoint != null &&
                     this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
+                ) && 
+                (
+                    this.LastName == input.LastName ||
+                    (this.LastName != null &&
+                    this.LastName.Equals(input.LastName))
                 ) && 
                 (
                     this.LdapAudience == input.LdapAudience ||
@@ -1441,6 +1614,11 @@ namespace akeyless.Model
                     this.Payload.Equals(input.Payload))
                 ) && 
                 (
+                    this.Phone == input.Phone ||
+                    (this.Phone != null &&
+                    this.Phone.Equals(input.Phone))
+                ) && 
+                (
                     this.PingUrl == input.PingUrl ||
                     (this.PingUrl != null &&
                     this.PingUrl.Equals(input.PingUrl))
@@ -1464,6 +1642,11 @@ namespace akeyless.Model
                     this.PrivilegedUser == input.PrivilegedUser ||
                     (this.PrivilegedUser != null &&
                     this.PrivilegedUser.Equals(input.PrivilegedUser))
+                ) && 
+                (
+                    this.ProfileId == input.ProfileId ||
+                    (this.ProfileId != null &&
+                    this.ProfileId.Equals(input.ProfileId))
                 ) && 
                 (
                     this.RabbitmqServerPassword == input.RabbitmqServerPassword ||
@@ -1505,6 +1688,10 @@ namespace akeyless.Model
                     this.TenantUrl.Equals(input.TenantUrl))
                 ) && 
                 (
+                    this.Timeout == input.Timeout ||
+                    this.Timeout.Equals(input.Timeout)
+                ) && 
+                (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
@@ -1512,6 +1699,10 @@ namespace akeyless.Model
                 (
                     this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
                     this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
+                ) && 
+                (
+                    this.UseGwServiceAccount == input.UseGwServiceAccount ||
+                    this.UseGwServiceAccount.Equals(input.UseGwServiceAccount)
                 ) && 
                 (
                     this.UseTls == input.UseTls ||
@@ -1531,6 +1722,11 @@ namespace akeyless.Model
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
+                ) && 
+                (
+                    this.ValidationEmail == input.ValidationEmail ||
+                    (this.ValidationEmail != null &&
+                    this.ValidationEmail.Equals(input.ValidationEmail))
                 ) && 
                 (
                     this.VenafiApiKey == input.VenafiApiKey ||
@@ -1575,6 +1771,10 @@ namespace akeyless.Model
                 if (this.AdministrativePort != null)
                 {
                     hashCode = (hashCode * 59) + this.AdministrativePort.GetHashCode();
+                }
+                if (this.ApiKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApiKey.GetHashCode();
                 }
                 if (this.AppPrivateKey != null)
                 {
@@ -1717,6 +1917,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DbUserName.GetHashCode();
                 }
+                if (this.DomainName != null)
+                {
+                    hashCode = (hashCode * 59) + this.DomainName.GetHashCode();
+                }
                 if (this.EksAccessKeyId != null)
                 {
                     hashCode = (hashCode * 59) + this.EksAccessKeyId.GetHashCode();
@@ -1740,6 +1944,14 @@ namespace akeyless.Model
                 if (this.EksSecretAccessKey != null)
                 {
                     hashCode = (hashCode * 59) + this.EksSecretAccessKey.GetHashCode();
+                }
+                if (this.Email != null)
+                {
+                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                }
+                if (this.FirstName != null)
+                {
+                    hashCode = (hashCode * 59) + this.FirstName.GetHashCode();
                 }
                 if (this.GcpServiceAccountEmail != null)
                 {
@@ -1794,6 +2006,22 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Hosts.GetHashCode();
                 }
+                if (this.ImapFqdn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImapFqdn.GetHashCode();
+                }
+                if (this.ImapPassword != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImapPassword.GetHashCode();
+                }
+                if (this.ImapPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImapPort.GetHashCode();
+                }
+                if (this.ImapUser != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImapUser.GetHashCode();
+                }
                 if (this.ImplementationType != null)
                 {
                     hashCode = (hashCode * 59) + this.ImplementationType.GetHashCode();
@@ -1809,6 +2037,10 @@ namespace akeyless.Model
                 if (this.K8sClusterEndpoint != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
+                if (this.LastName != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastName.GetHashCode();
                 }
                 if (this.LdapAudience != null)
                 {
@@ -1883,6 +2115,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Payload.GetHashCode();
                 }
+                if (this.Phone != null)
+                {
+                    hashCode = (hashCode * 59) + this.Phone.GetHashCode();
+                }
                 if (this.PingUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.PingUrl.GetHashCode();
@@ -1902,6 +2138,10 @@ namespace akeyless.Model
                 if (this.PrivilegedUser != null)
                 {
                     hashCode = (hashCode * 59) + this.PrivilegedUser.GetHashCode();
+                }
+                if (this.ProfileId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProfileId.GetHashCode();
                 }
                 if (this.RabbitmqServerPassword != null)
                 {
@@ -1932,11 +2172,13 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.TenantUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Timeout.GetHashCode();
                 if (this.Url != null)
                 {
                     hashCode = (hashCode * 59) + this.Url.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
+                hashCode = (hashCode * 59) + this.UseGwServiceAccount.GetHashCode();
                 hashCode = (hashCode * 59) + this.UseTls.GetHashCode();
                 if (this.UserName != null)
                 {
@@ -1949,6 +2191,10 @@ namespace akeyless.Model
                 if (this.Username != null)
                 {
                     hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
+                if (this.ValidationEmail != null)
+                {
+                    hashCode = (hashCode * 59) + this.ValidationEmail.GetHashCode();
                 }
                 if (this.VenafiApiKey != null)
                 {

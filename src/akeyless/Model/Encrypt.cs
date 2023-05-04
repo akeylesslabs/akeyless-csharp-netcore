@@ -42,14 +42,15 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="displayId">The display id of the key to use in the encryption process.</param>
         /// <param name="encryptionContext">name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail.</param>
-        /// <param name="inputFormat">If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64].</param>
+        /// <param name="inputFormat">Select default assumed format for any plaintext input. Currently supported options: [base64].</param>
         /// <param name="itemId">The item id of the key to use in the encryption process.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the encryption process (required).</param>
         /// <param name="plaintext">Data to be encrypted.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string inputFormat = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="version">key version (relevant only for classic key).</param>
+        public Encrypt(string displayId = default(string), Dictionary<string, string> encryptionContext = default(Dictionary<string, string>), string inputFormat = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string plaintext = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "keyName" is required (not null)
             if (keyName == null)
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.Plaintext = plaintext;
             this.Token = token;
             this.UidToken = uidToken;
+            this._Version = version;
         }
 
         /// <summary>
@@ -82,9 +84,9 @@ namespace akeyless.Model
         public Dictionary<string, string> EncryptionContext { get; set; }
 
         /// <summary>
-        /// If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64]
+        /// Select default assumed format for any plaintext input. Currently supported options: [base64]
         /// </summary>
-        /// <value>If specified, the plaintext input is assumed to be formatted accordingly. Current supported options: [base64]</value>
+        /// <value>Select default assumed format for any plaintext input. Currently supported options: [base64]</value>
         [DataMember(Name = "input-format", EmitDefaultValue = false)]
         public string InputFormat { get; set; }
 
@@ -131,6 +133,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// key version (relevant only for classic key)
+        /// </summary>
+        /// <value>key version (relevant only for classic key)</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,6 +156,7 @@ namespace akeyless.Model
             sb.Append("  Plaintext: ").Append(Plaintext).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -225,6 +235,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -267,6 +281,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

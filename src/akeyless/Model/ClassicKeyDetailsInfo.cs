@@ -43,10 +43,11 @@ namespace akeyless.Model
         /// <param name="keyState">ItemState defines the different states an Item can be in.</param>
         /// <param name="keyType">keyType.</param>
         /// <param name="lastError">lastError.</param>
+        /// <param name="publicKey">publicKey.</param>
         /// <param name="targetAliasHelper">targetAliasHelper.</param>
         /// <param name="targetTypes">targetTypes.</param>
         /// <param name="targets">targets.</param>
-        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), long gwClusterId = default(long), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
+        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), long gwClusterId = default(long), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string publicKey = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
         {
             this.ClassicKeyAttributes = classicKeyAttributes;
             this.ClassicKeyId = classicKeyId;
@@ -56,6 +57,7 @@ namespace akeyless.Model
             this.KeyState = keyState;
             this.KeyType = keyType;
             this.LastError = lastError;
+            this.PublicKey = publicKey;
             this.TargetAliasHelper = targetAliasHelper;
             this.TargetTypes = targetTypes;
             this.Targets = targets;
@@ -111,6 +113,12 @@ namespace akeyless.Model
         public string LastError { get; set; }
 
         /// <summary>
+        /// Gets or Sets PublicKey
+        /// </summary>
+        [DataMember(Name = "public_key", EmitDefaultValue = false)]
+        public string PublicKey { get; set; }
+
+        /// <summary>
         /// Gets or Sets TargetAliasHelper
         /// </summary>
         [DataMember(Name = "target_alias_helper", EmitDefaultValue = false)]
@@ -144,6 +152,7 @@ namespace akeyless.Model
             sb.Append("  KeyState: ").Append(KeyState).Append("\n");
             sb.Append("  KeyType: ").Append(KeyType).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
+            sb.Append("  PublicKey: ").Append(PublicKey).Append("\n");
             sb.Append("  TargetAliasHelper: ").Append(TargetAliasHelper).Append("\n");
             sb.Append("  TargetTypes: ").Append(TargetTypes).Append("\n");
             sb.Append("  Targets: ").Append(Targets).Append("\n");
@@ -221,6 +230,11 @@ namespace akeyless.Model
                     this.LastError.Equals(input.LastError))
                 ) && 
                 (
+                    this.PublicKey == input.PublicKey ||
+                    (this.PublicKey != null &&
+                    this.PublicKey.Equals(input.PublicKey))
+                ) && 
+                (
                     this.TargetAliasHelper == input.TargetAliasHelper ||
                     (this.TargetAliasHelper != null &&
                     this.TargetAliasHelper.Equals(input.TargetAliasHelper))
@@ -270,6 +284,10 @@ namespace akeyless.Model
                 if (this.LastError != null)
                 {
                     hashCode = (hashCode * 59) + this.LastError.GetHashCode();
+                }
+                if (this.PublicKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublicKey.GetHashCode();
                 }
                 if (this.TargetAliasHelper != null)
                 {

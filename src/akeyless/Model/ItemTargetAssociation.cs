@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ItemTargetAssociation includes details of an association between an item and a target.
+    /// and a target.
     /// </summary>
     [DataContract(Name = "ItemTargetAssociation")]
     public partial class ItemTargetAssociation : IEquatable<ItemTargetAssociation>, IValidatableObject

@@ -36,6 +36,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target |  |
 | [**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target |  |
 | [**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target |  |
+| [**CreateGlobalSignTarget**](V2Api.md#createglobalsigntarget) | **POST** /create-globalsign-target |  |
 | [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
 | [**CreateLinkedTarget**](V2Api.md#createlinkedtarget) | **POST** /create-linked-target |  |
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
@@ -51,6 +52,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateTokenizer**](V2Api.md#createtokenizer) | **POST** /create-tokenizer |  |
 | [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target |  |
 | [**CreateWindowsTarget**](V2Api.md#createwindowstarget) | **POST** /create-windows-target |  |
+| [**CreateZeroSSLTarget**](V2Api.md#createzerossltarget) | **POST** /create-zerossl-target |  |
 | [**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target |  |
 | [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
 | [**DecryptGPG**](V2Api.md#decryptgpg) | **POST** /decrypt-gpg |  |
@@ -59,6 +61,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DeleteAuthMethod**](V2Api.md#deleteauthmethod) | **POST** /delete-auth-method |  |
 | [**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods |  |
 | [**DeleteEventForwarder**](V2Api.md#deleteeventforwarder) | **POST** /delete-event-forwarder |  |
+| [**DeleteGatewayAllowedAccessId**](V2Api.md#deletegatewayallowedaccessid) | **POST** /gateway-delete-allowed-management-access |  |
 | [**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item |  |
 | [**DeleteItems**](V2Api.md#deleteitems) | **POST** /delete-items |  |
 | [**DeleteRole**](V2Api.md#deleterole) | **POST** /delete-role |  |
@@ -109,7 +112,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayCreateProducerRedis**](V2Api.md#gatewaycreateproducerredis) | **POST** /gateway-create-producer-Redis |  |
 | [**GatewayCreateProducerRedshift**](V2Api.md#gatewaycreateproducerredshift) | **POST** /gateway-create-producer-redshift |  |
 | [**GatewayCreateProducerSnowflake**](V2Api.md#gatewaycreateproducersnowflake) | **POST** /gateway-create-producer-snowflake |  |
-| [**GatewayDeleteAllowedManagementAccess**](V2Api.md#gatewaydeleteallowedmanagementaccess) | **POST** /gateway-delete-allowed-management-access |  |
 | [**GatewayDeleteK8SAuthConfig**](V2Api.md#gatewaydeletek8sauthconfig) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**GatewayDeleteMigration**](V2Api.md#gatewaydeletemigration) | **POST** /gateway-delete-migration |  |
 | [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer |  |
@@ -120,9 +122,9 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayGetMigration**](V2Api.md#gatewaygetmigration) | **POST** /gateway-get-migration |  |
 | [**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer |  |
 | [**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds |  |
-| [**GatewayListAllowedManagementAccess**](V2Api.md#gatewaylistallowedmanagementaccess) | **POST** /gateway-list-allowed-management-access |  |
 | [**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration |  |
 | [**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers |  |
+| [**GatewayListRotatedSecrets**](V2Api.md#gatewaylistrotatedsecrets) | **POST** /gateway-list-rotated-secrets |  |
 | [**GatewayMigratePersonalItems**](V2Api.md#gatewaymigratepersonalitems) | **POST** /gateway-migrate-personal-items |  |
 | [**GatewayRevokeTmpUsers**](V2Api.md#gatewayrevoketmpusers) | **POST** /gateway-revoke-producer-tmp-creds |  |
 | [**GatewayStartProducer**](V2Api.md#gatewaystartproducer) | **POST** /gateway-start-producer |  |
@@ -176,6 +178,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
 | [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
 | [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details |  |
+| [**Hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**ImportPasswords**](V2Api.md#importpasswords) | **POST** /import-passwords |  |
 | [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
 | [**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule |  |
@@ -246,6 +249,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target |  |
 | [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target |  |
 | [**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target |  |
+| [**UpdateGlobalSignTarget**](V2Api.md#updateglobalsigntarget) | **POST** /update-globalsign-target |  |
 | [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item |  |
 | [**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target |  |
 | [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
@@ -269,6 +273,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateWebTarget**](V2Api.md#updatewebtarget) | **POST** /update-web-target |  |
 | [**UpdateWebTargetDetails**](V2Api.md#updatewebtargetdetails) | **POST** /update-web-target-details |  |
 | [**UpdateWindowsTarget**](V2Api.md#updatewindowstarget) | **POST** /update-windows-target |  |
+| [**UpdateZeroSSLTarget**](V2Api.md#updatezerossltarget) | **POST** /update-zerossl-target |  |
 | [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa |  |
 | [**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token |  |
 | [**VerifyGPG**](V2Api.md#verifygpg) | **POST** /verify-gpg |  |
@@ -3093,6 +3098,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createglobalsigntarget"></a>
+# **CreateGlobalSignTarget**
+> CreateGlobalSignTargetOutput CreateGlobalSignTarget (CreateGlobalSignTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateGlobalSignTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateGlobalSignTarget(); // CreateGlobalSignTarget | 
+
+            try
+            {
+                CreateGlobalSignTargetOutput result = apiInstance.CreateGlobalSignTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateGlobalSignTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateGlobalSignTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateGlobalSignTargetOutput> response = apiInstance.CreateGlobalSignTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateGlobalSignTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateGlobalSignTarget**](CreateGlobalSignTarget.md) |  |  |
+
+### Return type
+
+[**CreateGlobalSignTargetOutput**](CreateGlobalSignTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createGlobalSignTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createkey"></a>
 # **CreateKey**
 > CreateKeyOutput CreateKey (CreateKey body)
@@ -4413,6 +4506,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createzerossltarget"></a>
+# **CreateZeroSSLTarget**
+> CreateZeroSSLTargetOutput CreateZeroSSLTarget (CreateZeroSSLTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateZeroSSLTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateZeroSSLTarget(); // CreateZeroSSLTarget | 
+
+            try
+            {
+                CreateZeroSSLTargetOutput result = apiInstance.CreateZeroSSLTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateZeroSSLTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateZeroSSLTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateZeroSSLTargetOutput> response = apiInstance.CreateZeroSSLTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateZeroSSLTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateZeroSSLTarget**](CreateZeroSSLTarget.md) |  |  |
+
+### Return type
+
+[**CreateZeroSSLTargetOutput**](CreateZeroSSLTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createZeroSSLTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createldaptarget"></a>
 # **CreateldapTarget**
 > CreateLdapTargetOutput CreateldapTarget (CreateLdapTarget body)
@@ -5113,6 +5294,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | deleteEventForwarderResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deletegatewayallowedaccessid"></a>
+# **DeleteGatewayAllowedAccessId**
+> Object DeleteGatewayAllowedAccessId (DeleteGatewayAllowedAccessId body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DeleteGatewayAllowedAccessIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DeleteGatewayAllowedAccessId(); // DeleteGatewayAllowedAccessId | 
+
+            try
+            {
+                Object result = apiInstance.DeleteGatewayAllowedAccessId(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DeleteGatewayAllowedAccessId: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteGatewayAllowedAccessIdWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteGatewayAllowedAccessIdWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteGatewayAllowedAccessIdWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteGatewayAllowedAccessId**](DeleteGatewayAllowedAccessId.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | deleteGatewayAllowedAccessIdResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -9513,94 +9782,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="gatewaydeleteallowedmanagementaccess"></a>
-# **GatewayDeleteAllowedManagementAccess**
-> Object GatewayDeleteAllowedManagementAccess (GatewayDeleteAllowedManagementAccess body)
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class GatewayDeleteAllowedManagementAccessExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-            var body = new GatewayDeleteAllowedManagementAccess(); // GatewayDeleteAllowedManagementAccess | 
-
-            try
-            {
-                Object result = apiInstance.GatewayDeleteAllowedManagementAccess(body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedManagementAccess: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GatewayDeleteAllowedManagementAccessWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<Object> response = apiInstance.GatewayDeleteAllowedManagementAccessWithHttpInfo(body);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedManagementAccessWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **body** | [**GatewayDeleteAllowedManagementAccess**](GatewayDeleteAllowedManagementAccess.md) |  |  |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | gatewayDeleteSubAdminsResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="gatewaydeletek8sauthconfig"></a>
 # **GatewayDeleteK8SAuthConfig**
 > GatewayDeleteK8SAuthConfigOutput GatewayDeleteK8SAuthConfig (GatewayDeleteK8SAuthConfig body)
@@ -10481,94 +10662,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="gatewaylistallowedmanagementaccess"></a>
-# **GatewayListAllowedManagementAccess**
-> GetSubAdminsListReplyObj GatewayListAllowedManagementAccess (GatewayListAllowedManagementAccess body)
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class GatewayListAllowedManagementAccessExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-            var body = new GatewayListAllowedManagementAccess(); // GatewayListAllowedManagementAccess | 
-
-            try
-            {
-                GetSubAdminsListReplyObj result = apiInstance.GatewayListAllowedManagementAccess(body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.GatewayListAllowedManagementAccess: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GatewayListAllowedManagementAccessWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<GetSubAdminsListReplyObj> response = apiInstance.GatewayListAllowedManagementAccessWithHttpInfo(body);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling V2Api.GatewayListAllowedManagementAccessWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **body** | [**GatewayListAllowedManagementAccess**](GatewayListAllowedManagementAccess.md) |  |  |
-
-### Return type
-
-[**GetSubAdminsListReplyObj**](GetSubAdminsListReplyObj.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | gatewayListSubAdminsResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="gatewaylistmigration"></a>
 # **GatewayListMigration**
 > GatewayMigrationListOutput GatewayListMigration (GatewayListMigration body)
@@ -10741,6 +10834,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayListProducersResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaylistrotatedsecrets"></a>
+# **GatewayListRotatedSecrets**
+> ListItemsOutput GatewayListRotatedSecrets (GatewayListRotatedSecrets body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayListRotatedSecretsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayListRotatedSecrets(); // GatewayListRotatedSecrets | 
+
+            try
+            {
+                ListItemsOutput result = apiInstance.GatewayListRotatedSecrets(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayListRotatedSecrets: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayListRotatedSecretsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListItemsOutput> response = apiInstance.GatewayListRotatedSecretsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayListRotatedSecretsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayListRotatedSecrets**](GatewayListRotatedSecrets.md) |  |  |
+
+### Return type
+
+[**ListItemsOutput**](ListItemsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayListRotatedSecretsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -15392,6 +15573,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getTargetDetailsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="hmac"></a>
+# **Hmac**
+> HmacOutput Hmac (Hmac body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class HmacExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new Hmac(); // Hmac | 
+
+            try
+            {
+                HmacOutput result = apiInstance.Hmac(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.Hmac: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the HmacWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<HmacOutput> response = apiInstance.HmacWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.HmacWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**Hmac**](Hmac.md) |  |  |
+
+### Return type
+
+[**HmacOutput**](HmacOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | hmacResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -21543,6 +21812,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updateglobalsigntarget"></a>
+# **UpdateGlobalSignTarget**
+> UpdateGlobalSignTargetOutput UpdateGlobalSignTarget (UpdateGlobalSignTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateGlobalSignTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateGlobalSignTarget(); // UpdateGlobalSignTarget | 
+
+            try
+            {
+                UpdateGlobalSignTargetOutput result = apiInstance.UpdateGlobalSignTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateGlobalSignTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateGlobalSignTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateGlobalSignTargetOutput> response = apiInstance.UpdateGlobalSignTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateGlobalSignTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateGlobalSignTarget**](UpdateGlobalSignTarget.md) |  |  |
+
+### Return type
+
+[**UpdateGlobalSignTargetOutput**](UpdateGlobalSignTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateGlobalSignTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateitem"></a>
 # **UpdateItem**
 > UpdateItemOutput UpdateItem (UpdateItem body)
@@ -23558,6 +23915,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateWindowsTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatezerossltarget"></a>
+# **UpdateZeroSSLTarget**
+> UpdateZeroSSLTargetOutput UpdateZeroSSLTarget (UpdateZeroSSLTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateZeroSSLTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateZeroSSLTarget(); // UpdateZeroSSLTarget | 
+
+            try
+            {
+                UpdateZeroSSLTargetOutput result = apiInstance.UpdateZeroSSLTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateZeroSSLTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateZeroSSLTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateZeroSSLTargetOutput> response = apiInstance.UpdateZeroSSLTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateZeroSSLTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateZeroSSLTarget**](UpdateZeroSSLTarget.md) |  |  |
+
+### Return type
+
+[**UpdateZeroSSLTargetOutput**](UpdateZeroSSLTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateZeroSSLTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

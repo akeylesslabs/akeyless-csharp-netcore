@@ -35,53 +35,65 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AllowedAccess" /> class.
         /// </summary>
-        /// <param name="accId">accId.</param>
-        /// <param name="accessRulesType">accessRulesType.</param>
-        /// <param name="allowedApi">allowedApi.</param>
-        /// <param name="allowedsLogin">allowedsLogin.</param>
+        /// <param name="accessId">accessId.</param>
+        /// <param name="accessType">accessType.</param>
+        /// <param name="clusterId">clusterId.</param>
+        /// <param name="createdAt">createdAt.</param>
+        /// <param name="description">description.</param>
         /// <param name="editable">editable.</param>
-        /// <param name="errMsg">errMsg.</param>
-        /// <param name="hash">hash.</param>
+        /// <param name="error">error.</param>
+        /// <param name="id">id.</param>
         /// <param name="isValid">isValid.</param>
         /// <param name="name">name.</param>
+        /// <param name="permissions">permissions.</param>
         /// <param name="subClaims">subClaims.</param>
-        public AllowedAccess(string accId = default(string), string accessRulesType = default(string), bool allowedApi = default(bool), bool allowedsLogin = default(bool), bool editable = default(bool), string errMsg = default(string), string hash = default(string), bool isValid = default(bool), string name = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
+        /// <param name="updatedAt">updatedAt.</param>
+        public AllowedAccess(string accessId = default(string), string accessType = default(string), long clusterId = default(long), DateTime createdAt = default(DateTime), string description = default(string), bool editable = default(bool), string error = default(string), long id = default(long), bool isValid = default(bool), string name = default(string), List<string> permissions = default(List<string>), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>), DateTime updatedAt = default(DateTime))
         {
-            this.AccId = accId;
-            this.AccessRulesType = accessRulesType;
-            this.AllowedApi = allowedApi;
-            this.AllowedsLogin = allowedsLogin;
+            this.AccessId = accessId;
+            this.AccessType = accessType;
+            this.ClusterId = clusterId;
+            this.CreatedAt = createdAt;
+            this.Description = description;
             this.Editable = editable;
-            this.ErrMsg = errMsg;
-            this.Hash = hash;
+            this.Error = error;
+            this.Id = id;
             this.IsValid = isValid;
             this.Name = name;
+            this.Permissions = permissions;
             this.SubClaims = subClaims;
+            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
-        /// Gets or Sets AccId
+        /// Gets or Sets AccessId
         /// </summary>
-        [DataMember(Name = "acc_id", EmitDefaultValue = false)]
-        public string AccId { get; set; }
+        [DataMember(Name = "access_id", EmitDefaultValue = false)]
+        public string AccessId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessRulesType
+        /// Gets or Sets AccessType
         /// </summary>
-        [DataMember(Name = "access_rules_type", EmitDefaultValue = false)]
-        public string AccessRulesType { get; set; }
+        [DataMember(Name = "access_type", EmitDefaultValue = false)]
+        public string AccessType { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedApi
+        /// Gets or Sets ClusterId
         /// </summary>
-        [DataMember(Name = "allowed_api", EmitDefaultValue = true)]
-        public bool AllowedApi { get; set; }
+        [DataMember(Name = "cluster_id", EmitDefaultValue = false)]
+        public long ClusterId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedsLogin
+        /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "alloweds_login", EmitDefaultValue = true)]
-        public bool AllowedsLogin { get; set; }
+        [DataMember(Name = "created_at", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Editable
@@ -90,16 +102,16 @@ namespace akeyless.Model
         public bool Editable { get; set; }
 
         /// <summary>
-        /// Gets or Sets ErrMsg
+        /// Gets or Sets Error
         /// </summary>
-        [DataMember(Name = "err_msg", EmitDefaultValue = false)]
-        public string ErrMsg { get; set; }
+        [DataMember(Name = "error", EmitDefaultValue = false)]
+        public string Error { get; set; }
 
         /// <summary>
-        /// Gets or Sets Hash
+        /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name = "hash", EmitDefaultValue = false)]
-        public string Hash { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets IsValid
@@ -114,10 +126,22 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets Permissions
+        /// </summary>
+        [DataMember(Name = "permissions", EmitDefaultValue = false)]
+        public List<string> Permissions { get; set; }
+
+        /// <summary>
         /// Gets or Sets SubClaims
         /// </summary>
         [DataMember(Name = "sub_claims", EmitDefaultValue = false)]
         public Dictionary<string, List<string>> SubClaims { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updated_at", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -127,16 +151,19 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AllowedAccess {\n");
-            sb.Append("  AccId: ").Append(AccId).Append("\n");
-            sb.Append("  AccessRulesType: ").Append(AccessRulesType).Append("\n");
-            sb.Append("  AllowedApi: ").Append(AllowedApi).Append("\n");
-            sb.Append("  AllowedsLogin: ").Append(AllowedsLogin).Append("\n");
+            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("  AccessType: ").Append(AccessType).Append("\n");
+            sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Editable: ").Append(Editable).Append("\n");
-            sb.Append("  ErrMsg: ").Append(ErrMsg).Append("\n");
-            sb.Append("  Hash: ").Append(Hash).Append("\n");
+            sb.Append("  Error: ").Append(Error).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IsValid: ").Append(IsValid).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -173,36 +200,41 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.AccId == input.AccId ||
-                    (this.AccId != null &&
-                    this.AccId.Equals(input.AccId))
+                    this.AccessId == input.AccessId ||
+                    (this.AccessId != null &&
+                    this.AccessId.Equals(input.AccessId))
                 ) && 
                 (
-                    this.AccessRulesType == input.AccessRulesType ||
-                    (this.AccessRulesType != null &&
-                    this.AccessRulesType.Equals(input.AccessRulesType))
+                    this.AccessType == input.AccessType ||
+                    (this.AccessType != null &&
+                    this.AccessType.Equals(input.AccessType))
                 ) && 
                 (
-                    this.AllowedApi == input.AllowedApi ||
-                    this.AllowedApi.Equals(input.AllowedApi)
+                    this.ClusterId == input.ClusterId ||
+                    this.ClusterId.Equals(input.ClusterId)
                 ) && 
                 (
-                    this.AllowedsLogin == input.AllowedsLogin ||
-                    this.AllowedsLogin.Equals(input.AllowedsLogin)
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Editable == input.Editable ||
                     this.Editable.Equals(input.Editable)
                 ) && 
                 (
-                    this.ErrMsg == input.ErrMsg ||
-                    (this.ErrMsg != null &&
-                    this.ErrMsg.Equals(input.ErrMsg))
+                    this.Error == input.Error ||
+                    (this.Error != null &&
+                    this.Error.Equals(input.Error))
                 ) && 
                 (
-                    this.Hash == input.Hash ||
-                    (this.Hash != null &&
-                    this.Hash.Equals(input.Hash))
+                    this.Id == input.Id ||
+                    this.Id.Equals(input.Id)
                 ) && 
                 (
                     this.IsValid == input.IsValid ||
@@ -214,10 +246,21 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Permissions == input.Permissions ||
+                    this.Permissions != null &&
+                    input.Permissions != null &&
+                    this.Permissions.SequenceEqual(input.Permissions)
+                ) && 
+                (
                     this.SubClaims == input.SubClaims ||
                     this.SubClaims != null &&
                     input.SubClaims != null &&
                     this.SubClaims.SequenceEqual(input.SubClaims)
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
                 );
         }
 
@@ -230,33 +273,45 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AccId != null)
+                if (this.AccessId != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
                 }
-                if (this.AccessRulesType != null)
+                if (this.AccessType != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccessRulesType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AccessType.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AllowedApi.GetHashCode();
-                hashCode = (hashCode * 59) + this.AllowedsLogin.GetHashCode();
+                hashCode = (hashCode * 59) + this.ClusterId.GetHashCode();
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Editable.GetHashCode();
-                if (this.ErrMsg != null)
+                if (this.Error != null)
                 {
-                    hashCode = (hashCode * 59) + this.ErrMsg.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
                 }
-                if (this.Hash != null)
-                {
-                    hashCode = (hashCode * 59) + this.Hash.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 hashCode = (hashCode * 59) + this.IsValid.GetHashCode();
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                if (this.Permissions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Permissions.GetHashCode();
+                }
                 if (this.SubClaims != null)
                 {
                     hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 return hashCode;
             }

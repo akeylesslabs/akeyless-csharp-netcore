@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayListProducers is a command that returns producer
+    /// gatewayListProducers is a command that returns a list of producers
     /// </summary>
     [DataContract(Name = "gatewayListProducers")]
     public partial class GatewayListProducers : IEquatable<GatewayListProducers>, IValidatableObject

@@ -35,15 +35,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetPKICertificateOutput" /> class.
         /// </summary>
+        /// <param name="certDisplayId">certDisplayId.</param>
         /// <param name="data">data.</param>
         /// <param name="parentCert">parentCert.</param>
         /// <param name="path">path.</param>
-        public GetPKICertificateOutput(string data = default(string), string parentCert = default(string), string path = default(string))
+        /// <param name="readingToken">readingToken.</param>
+        public GetPKICertificateOutput(string certDisplayId = default(string), string data = default(string), string parentCert = default(string), string path = default(string), string readingToken = default(string))
         {
+            this.CertDisplayId = certDisplayId;
             this.Data = data;
             this.ParentCert = parentCert;
             this.Path = path;
+            this.ReadingToken = readingToken;
         }
+
+        /// <summary>
+        /// Gets or Sets CertDisplayId
+        /// </summary>
+        [DataMember(Name = "cert_display_id", EmitDefaultValue = false)]
+        public string CertDisplayId { get; set; }
 
         /// <summary>
         /// Gets or Sets Data
@@ -64,6 +74,12 @@ namespace akeyless.Model
         public string Path { get; set; }
 
         /// <summary>
+        /// Gets or Sets ReadingToken
+        /// </summary>
+        [DataMember(Name = "reading_token", EmitDefaultValue = false)]
+        public string ReadingToken { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -71,9 +87,11 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetPKICertificateOutput {\n");
+            sb.Append("  CertDisplayId: ").Append(CertDisplayId).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  ParentCert: ").Append(ParentCert).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("  ReadingToken: ").Append(ReadingToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,6 +128,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CertDisplayId == input.CertDisplayId ||
+                    (this.CertDisplayId != null &&
+                    this.CertDisplayId.Equals(input.CertDisplayId))
+                ) && 
+                (
                     this.Data == input.Data ||
                     (this.Data != null &&
                     this.Data.Equals(input.Data))
@@ -123,6 +146,11 @@ namespace akeyless.Model
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
+                ) && 
+                (
+                    this.ReadingToken == input.ReadingToken ||
+                    (this.ReadingToken != null &&
+                    this.ReadingToken.Equals(input.ReadingToken))
                 );
         }
 
@@ -135,6 +163,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertDisplayId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertDisplayId.GetHashCode();
+                }
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();
@@ -146,6 +178,10 @@ namespace akeyless.Model
                 if (this.Path != null)
                 {
                     hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                }
+                if (this.ReadingToken != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReadingToken.GetHashCode();
                 }
                 return hashCode;
             }

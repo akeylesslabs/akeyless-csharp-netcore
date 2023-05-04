@@ -40,19 +40,20 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateCertificate" /> class.
         /// </summary>
-        /// <param name="certificateData">Content of the certificate PEM in a Base64 format..</param>
+        /// <param name="certificateData">Content of the certificate in a Base64 format..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
+        /// <param name="format">CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="keyData">Content of the certificate&#39;s private key PEM in a Base64 format..</param>
+        /// <param name="keyData">Content of the certificate&#39;s private key in a Base64 format..</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Certificate name (required).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.ExpirationEventIn = expirationEventIn;
+            this.Format = format;
             this.Json = json;
             this.Key = key;
             this.KeyData = keyData;
@@ -74,9 +76,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Content of the certificate PEM in a Base64 format.
+        /// Content of the certificate in a Base64 format.
         /// </summary>
-        /// <value>Content of the certificate PEM in a Base64 format.</value>
+        /// <value>Content of the certificate in a Base64 format.</value>
         [DataMember(Name = "certificate-data", EmitDefaultValue = false)]
         public string CertificateData { get; set; }
 
@@ -102,6 +104,13 @@ namespace akeyless.Model
         public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
+        /// CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension.
+        /// </summary>
+        /// <value>CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension.</value>
+        [DataMember(Name = "format", EmitDefaultValue = false)]
+        public string Format { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -116,9 +125,9 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
-        /// Content of the certificate&#39;s private key PEM in a Base64 format.
+        /// Content of the certificate&#39;s private key in a Base64 format.
         /// </summary>
-        /// <value>Content of the certificate&#39;s private key PEM in a Base64 format.</value>
+        /// <value>Content of the certificate&#39;s private key in a Base64 format.</value>
         [DataMember(Name = "key-data", EmitDefaultValue = false)]
         public string KeyData { get; set; }
 
@@ -169,6 +178,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
@@ -232,6 +242,11 @@ namespace akeyless.Model
                     this.ExpirationEventIn != null &&
                     input.ExpirationEventIn != null &&
                     this.ExpirationEventIn.SequenceEqual(input.ExpirationEventIn)
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -299,6 +314,10 @@ namespace akeyless.Model
                 if (this.ExpirationEventIn != null)
                 {
                     hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();
+                }
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)

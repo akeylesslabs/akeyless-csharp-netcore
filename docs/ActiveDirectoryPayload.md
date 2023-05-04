@@ -17,8 +17,11 @@ Name | Type | Description | Notes
 **LocalUsersIgnoreList** | **Dictionary&lt;string, bool&gt;** |  | [optional] 
 **LocalUsersRotatedSecretsPathTemplate** | **string** |  | [optional] 
 **SshPort** | **string** |  | [optional] 
+**TargetsType** | **string** |  | [optional] 
 **UserBaseDn** | **string** |  | [optional] 
 **UserGroups** | **List&lt;string&gt;** |  | [optional] 
+**WinrmOverHttp** | **bool** |  | [optional] 
+**WinrmPort** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

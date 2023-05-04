@@ -40,12 +40,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCertificateValue" /> class.
         /// </summary>
+        /// <param name="certIssuerName">The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token.</param>
+        /// <param name="certificateFileOutput">File to write the certificates to..</param>
+        /// <param name="displayId">Certificate display ID.</param>
+        /// <param name="issuanceToken">Token for getting the issued certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Certificate name (required).</param>
+        /// <param name="name">Certificate name (required) (default to &quot;dummy_certificate_name&quot;).</param>
+        /// <param name="privateKeyFileOutput">File to write the private key to..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Certificate version.</param>
-        public GetCertificateValue(bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetCertificateValue(string certIssuerName = default(string), string certificateFileOutput = default(string), string displayId = default(string), string issuanceToken = default(string), bool json = false, string name = "dummy_certificate_name", string privateKeyFileOutput = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -53,11 +58,44 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for GetCertificateValue and cannot be null");
             }
             this.Name = name;
+            this.CertIssuerName = certIssuerName;
+            this.CertificateFileOutput = certificateFileOutput;
+            this.DisplayId = displayId;
+            this.IssuanceToken = issuanceToken;
             this.Json = json;
+            this.PrivateKeyFileOutput = privateKeyFileOutput;
             this.Token = token;
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token
+        /// </summary>
+        /// <value>The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token</value>
+        [DataMember(Name = "cert-issuer-name", EmitDefaultValue = false)]
+        public string CertIssuerName { get; set; }
+
+        /// <summary>
+        /// File to write the certificates to.
+        /// </summary>
+        /// <value>File to write the certificates to.</value>
+        [DataMember(Name = "certificate-file-output", EmitDefaultValue = false)]
+        public string CertificateFileOutput { get; set; }
+
+        /// <summary>
+        /// Certificate display ID
+        /// </summary>
+        /// <value>Certificate display ID</value>
+        [DataMember(Name = "display-id", EmitDefaultValue = false)]
+        public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Token for getting the issued certificate
+        /// </summary>
+        /// <value>Token for getting the issued certificate</value>
+        [DataMember(Name = "issuance-token", EmitDefaultValue = false)]
+        public string IssuanceToken { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -72,6 +110,13 @@ namespace akeyless.Model
         /// <value>Certificate name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// File to write the private key to.
+        /// </summary>
+        /// <value>File to write the private key to.</value>
+        [DataMember(Name = "private-key-file-output", EmitDefaultValue = false)]
+        public string PrivateKeyFileOutput { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -102,8 +147,13 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetCertificateValue {\n");
+            sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
+            sb.Append("  CertificateFileOutput: ").Append(CertificateFileOutput).Append("\n");
+            sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  IssuanceToken: ").Append(IssuanceToken).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PrivateKeyFileOutput: ").Append(PrivateKeyFileOutput).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
@@ -143,6 +193,26 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CertIssuerName == input.CertIssuerName ||
+                    (this.CertIssuerName != null &&
+                    this.CertIssuerName.Equals(input.CertIssuerName))
+                ) && 
+                (
+                    this.CertificateFileOutput == input.CertificateFileOutput ||
+                    (this.CertificateFileOutput != null &&
+                    this.CertificateFileOutput.Equals(input.CertificateFileOutput))
+                ) && 
+                (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.IssuanceToken == input.IssuanceToken ||
+                    (this.IssuanceToken != null &&
+                    this.IssuanceToken.Equals(input.IssuanceToken))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -150,6 +220,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.PrivateKeyFileOutput == input.PrivateKeyFileOutput ||
+                    (this.PrivateKeyFileOutput != null &&
+                    this.PrivateKeyFileOutput.Equals(input.PrivateKeyFileOutput))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -176,10 +251,30 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertIssuerName != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
+                if (this.CertificateFileOutput != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateFileOutput.GetHashCode();
+                }
+                if (this.DisplayId != null)
+                {
+                    hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                if (this.IssuanceToken != null)
+                {
+                    hashCode = (hashCode * 59) + this.IssuanceToken.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PrivateKeyFileOutput != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKeyFileOutput.GetHashCode();
                 }
                 if (this.Token != null)
                 {

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertificateAccessId** | **string** |  | [optional] 
 **DefaultProtectionKeyId** | **long** |  | [optional] 
 **DefaultSecretLocation** | **string** |  | [optional] 
 **OidcAccessId** | **string** |  | [optional] 

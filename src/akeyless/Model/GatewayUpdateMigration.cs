@@ -45,9 +45,13 @@ namespace akeyless.Model
         /// <param name="_1passwordSecretKey">1Password user secret key to connect to the API.</param>
         /// <param name="_1passwordUrl">1Password api container url.</param>
         /// <param name="_1passwordVaults">1Password list of vault to get the items from.</param>
+        /// <param name="adSshPort">Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) (default to &quot;22&quot;).</param>
+        /// <param name="adTargetsType">Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) (default to &quot;windows&quot;).</param>
+        /// <param name="adWinrmOverHttp">Use WinRM over HTTP, by default runs over HTTPS (default to &quot;false&quot;).</param>
+        /// <param name="adWinrmPort">Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) (default to &quot;5986&quot;).</param>
         /// <param name="adAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration).</param>
         /// <param name="adComputerBaseDn">Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
-        /// <param name="adDiscoverLocalUsers">Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration).</param>
+        /// <param name="adDiscoverLocalUsers">Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration).</param>
         /// <param name="adDomainName">Active Directory Domain Name (Relevant only for Active Directory migration).</param>
         /// <param name="adDomainUsersPathTemplate">Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration).</param>
         /// <param name="adLocalUsersIgnore">Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration).</param>
@@ -56,10 +60,9 @@ namespace akeyless.Model
         /// <param name="adRotationInterval">The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration).</param>
         /// <param name="adSraEnableRdp">Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration).</param>
         /// <param name="adTargetName">Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration).</param>
-        /// <param name="adTargetsPathTemplate">Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration).</param>
+        /// <param name="adTargetsPathTemplate">Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration).</param>
         /// <param name="adUserBaseDn">Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
         /// <param name="adUserGroups">Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration).</param>
-        /// <param name="asSshPort">Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) (default to &quot;22&quot;).</param>
         /// <param name="awsKey">AWS Secret Access Key (relevant only for AWS migration).</param>
         /// <param name="awsKeyId">AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration).</param>
         /// <param name="awsRegion">AWS region of the required Secrets Manager (relevant only for AWS migration) (default to &quot;us-east-2&quot;).</param>
@@ -89,7 +92,7 @@ namespace akeyless.Model
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string asSshPort = "22", string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adSshPort = "22", string adTargetsType = "windows", string adWinrmOverHttp = "false", string adWinrmPort = "5986", string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "targetLocation" is required (not null)
             if (targetLocation == null)
@@ -102,6 +105,14 @@ namespace akeyless.Model
             this._1passwordSecretKey = _1passwordSecretKey;
             this._1passwordUrl = _1passwordUrl;
             this._1passwordVaults = _1passwordVaults;
+            // use default value if no "adSshPort" provided
+            this.AdSshPort = adSshPort ?? "22";
+            // use default value if no "adTargetsType" provided
+            this.AdTargetsType = adTargetsType ?? "windows";
+            // use default value if no "adWinrmOverHttp" provided
+            this.AdWinrmOverHttp = adWinrmOverHttp ?? "false";
+            // use default value if no "adWinrmPort" provided
+            this.AdWinrmPort = adWinrmPort ?? "5986";
             this.AdAutoRotate = adAutoRotate;
             this.AdComputerBaseDn = adComputerBaseDn;
             this.AdDiscoverLocalUsers = adDiscoverLocalUsers;
@@ -116,8 +127,6 @@ namespace akeyless.Model
             this.AdTargetsPathTemplate = adTargetsPathTemplate;
             this.AdUserBaseDn = adUserBaseDn;
             this.AdUserGroups = adUserGroups;
-            // use default value if no "asSshPort" provided
-            this.AsSshPort = asSshPort ?? "22";
             this.AwsKey = awsKey;
             this.AwsKeyId = awsKeyId;
             // use default value if no "awsRegion" provided
@@ -186,6 +195,34 @@ namespace akeyless.Model
         public List<string> _1passwordVaults { get; set; }
 
         /// <summary>
+        /// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
+        /// </summary>
+        /// <value>Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)</value>
+        [DataMember(Name = "ad-ssh-port", EmitDefaultValue = false)]
+        public string AdSshPort { get; set; }
+
+        /// <summary>
+        /// Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration)
+        /// </summary>
+        /// <value>Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration)</value>
+        [DataMember(Name = "ad-targets-type", EmitDefaultValue = false)]
+        public string AdTargetsType { get; set; }
+
+        /// <summary>
+        /// Use WinRM over HTTP, by default runs over HTTPS
+        /// </summary>
+        /// <value>Use WinRM over HTTP, by default runs over HTTPS</value>
+        [DataMember(Name = "ad-winrm-over-http", EmitDefaultValue = false)]
+        public string AdWinrmOverHttp { get; set; }
+
+        /// <summary>
+        /// Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration)
+        /// </summary>
+        /// <value>Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration)</value>
+        [DataMember(Name = "ad-winrm-port", EmitDefaultValue = false)]
+        public string AdWinrmPort { get; set; }
+
+        /// <summary>
         /// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration)
         /// </summary>
         /// <value>Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration)</value>
@@ -200,9 +237,9 @@ namespace akeyless.Model
         public string AdComputerBaseDn { get; set; }
 
         /// <summary>
-        /// Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
+        /// Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
         /// </summary>
-        /// <value>Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)</value>
+        /// <value>Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)</value>
         [DataMember(Name = "ad_discover_local_users", EmitDefaultValue = false)]
         public string AdDiscoverLocalUsers { get; set; }
 
@@ -263,9 +300,9 @@ namespace akeyless.Model
         public string AdTargetName { get; set; }
 
         /// <summary>
-        /// Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
+        /// Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)
         /// </summary>
-        /// <value>Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)</value>
+        /// <value>Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration)</value>
         [DataMember(Name = "ad_targets_path_template", EmitDefaultValue = false)]
         public string AdTargetsPathTemplate { get; set; }
 
@@ -282,13 +319,6 @@ namespace akeyless.Model
         /// <value>Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration)</value>
         [DataMember(Name = "ad_user_groups", EmitDefaultValue = false)]
         public string AdUserGroups { get; set; }
-
-        /// <summary>
-        /// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
-        /// </summary>
-        /// <value>Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)</value>
-        [DataMember(Name = "as_ssh_port", EmitDefaultValue = false)]
-        public string AsSshPort { get; set; }
 
         /// <summary>
         /// AWS Secret Access Key (relevant only for AWS migration)
@@ -506,6 +536,10 @@ namespace akeyless.Model
             sb.Append("  _1passwordSecretKey: ").Append(_1passwordSecretKey).Append("\n");
             sb.Append("  _1passwordUrl: ").Append(_1passwordUrl).Append("\n");
             sb.Append("  _1passwordVaults: ").Append(_1passwordVaults).Append("\n");
+            sb.Append("  AdSshPort: ").Append(AdSshPort).Append("\n");
+            sb.Append("  AdTargetsType: ").Append(AdTargetsType).Append("\n");
+            sb.Append("  AdWinrmOverHttp: ").Append(AdWinrmOverHttp).Append("\n");
+            sb.Append("  AdWinrmPort: ").Append(AdWinrmPort).Append("\n");
             sb.Append("  AdAutoRotate: ").Append(AdAutoRotate).Append("\n");
             sb.Append("  AdComputerBaseDn: ").Append(AdComputerBaseDn).Append("\n");
             sb.Append("  AdDiscoverLocalUsers: ").Append(AdDiscoverLocalUsers).Append("\n");
@@ -520,7 +554,6 @@ namespace akeyless.Model
             sb.Append("  AdTargetsPathTemplate: ").Append(AdTargetsPathTemplate).Append("\n");
             sb.Append("  AdUserBaseDn: ").Append(AdUserBaseDn).Append("\n");
             sb.Append("  AdUserGroups: ").Append(AdUserGroups).Append("\n");
-            sb.Append("  AsSshPort: ").Append(AsSshPort).Append("\n");
             sb.Append("  AwsKey: ").Append(AwsKey).Append("\n");
             sb.Append("  AwsKeyId: ").Append(AwsKeyId).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
@@ -612,6 +645,26 @@ namespace akeyless.Model
                     this._1passwordVaults.SequenceEqual(input._1passwordVaults)
                 ) && 
                 (
+                    this.AdSshPort == input.AdSshPort ||
+                    (this.AdSshPort != null &&
+                    this.AdSshPort.Equals(input.AdSshPort))
+                ) && 
+                (
+                    this.AdTargetsType == input.AdTargetsType ||
+                    (this.AdTargetsType != null &&
+                    this.AdTargetsType.Equals(input.AdTargetsType))
+                ) && 
+                (
+                    this.AdWinrmOverHttp == input.AdWinrmOverHttp ||
+                    (this.AdWinrmOverHttp != null &&
+                    this.AdWinrmOverHttp.Equals(input.AdWinrmOverHttp))
+                ) && 
+                (
+                    this.AdWinrmPort == input.AdWinrmPort ||
+                    (this.AdWinrmPort != null &&
+                    this.AdWinrmPort.Equals(input.AdWinrmPort))
+                ) && 
+                (
                     this.AdAutoRotate == input.AdAutoRotate ||
                     (this.AdAutoRotate != null &&
                     this.AdAutoRotate.Equals(input.AdAutoRotate))
@@ -678,11 +731,6 @@ namespace akeyless.Model
                     this.AdUserGroups == input.AdUserGroups ||
                     (this.AdUserGroups != null &&
                     this.AdUserGroups.Equals(input.AdUserGroups))
-                ) && 
-                (
-                    this.AsSshPort == input.AsSshPort ||
-                    (this.AsSshPort != null &&
-                    this.AsSshPort.Equals(input.AsSshPort))
                 ) && 
                 (
                     this.AwsKey == input.AwsKey ||
@@ -862,6 +910,22 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this._1passwordVaults.GetHashCode();
                 }
+                if (this.AdSshPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdSshPort.GetHashCode();
+                }
+                if (this.AdTargetsType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdTargetsType.GetHashCode();
+                }
+                if (this.AdWinrmOverHttp != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdWinrmOverHttp.GetHashCode();
+                }
+                if (this.AdWinrmPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdWinrmPort.GetHashCode();
+                }
                 if (this.AdAutoRotate != null)
                 {
                     hashCode = (hashCode * 59) + this.AdAutoRotate.GetHashCode();
@@ -911,10 +975,6 @@ namespace akeyless.Model
                 if (this.AdUserGroups != null)
                 {
                     hashCode = (hashCode * 59) + this.AdUserGroups.GetHashCode();
-                }
-                if (this.AsSshPort != null)
-                {
-                    hashCode = (hashCode * 59) + this.AsSshPort.GetHashCode();
                 }
                 if (this.AwsKey != null)
                 {

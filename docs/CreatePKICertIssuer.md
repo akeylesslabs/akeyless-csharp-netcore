@@ -8,11 +8,15 @@ Name | Type | Description | Notes
 **AllowSubdomains** | **bool** | If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains | [optional] 
 **AllowedDomains** | **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
 **AllowedUriSans** | **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
+**CaTarget** | **string** | The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode | [optional] 
 **ClientFlag** | **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**DestinationPath** | **string** | A path in which to save generated certificates | [optional] 
+**ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
+**GwClusterUrl** | **string** | The GW cluster URL to issue the certificate from, required in Public CA mode | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
@@ -23,13 +27,14 @@ Name | Type | Description | Notes
 **OrganizationalUnits** | **string** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] 
 **Organizations** | **string** | A comma-separated list of organizations (O) that will be set in the issued certificate | [optional] 
 **PostalCode** | **string** | A comma-separated list of postal codes that will be set in the issued certificate | [optional] 
+**ProtectCertificates** | **bool** | Whether to protect generated certificates from deletion | [optional] 
 **Province** | **string** | A comma-separated list of provinces that will be set in the issued certificate | [optional] 
 **ServerFlag** | **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with | 
+**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
 **StreetAddress** | **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Tag** | **List&lt;string&gt;** | List of the tags attached to this key | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | **long** | he requested Time To Live for the certificate, in seconds | 
+**Ttl** | **long** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs | 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -66,8 +66,9 @@ namespace akeyless.Model
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseGwServiceAccount = useGwServiceAccount;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
@@ -287,6 +289,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Use the GW&#39;s service account
+        /// </summary>
+        /// <value>Use the GW&#39;s service account</value>
+        [DataMember(Name = "use-gw-service-account", EmitDefaultValue = true)]
+        public bool UseGwServiceAccount { get; set; }
+
+        /// <summary>
         /// User TTL
         /// </summary>
         /// <value>User TTL</value>
@@ -327,6 +336,7 @@ namespace akeyless.Model
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -490,6 +500,10 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.UseGwServiceAccount == input.UseGwServiceAccount ||
+                    this.UseGwServiceAccount.Equals(input.UseGwServiceAccount)
+                ) && 
+                (
                     this.UserTtl == input.UserTtl ||
                     (this.UserTtl != null &&
                     this.UserTtl.Equals(input.UserTtl))
@@ -594,6 +608,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.UseGwServiceAccount.GetHashCode();
                 if (this.UserTtl != null)
                 {
                     hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();

@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificateData** | **string** | Content of the certificate PEM in a Base64 format. | [optional] 
+**CertificateData** | **string** | Content of the certificate in a Base64 format. | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
+**Format** | **string** | CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension. | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used) | [optional] 
-**KeyData** | **string** | Content of the certificate&#39;s private key PEM in a Base64 format. | [optional] 
+**KeyData** | **string** | Content of the certificate&#39;s private key in a Base64 format. | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Certificate name | 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

@@ -48,9 +48,12 @@ namespace akeyless.Model
         /// <param name="localUsersIgnoreList">localUsersIgnoreList.</param>
         /// <param name="localUsersRotatedSecretsPathTemplate">localUsersRotatedSecretsPathTemplate.</param>
         /// <param name="sshPort">sshPort.</param>
+        /// <param name="targetsType">targetsType.</param>
         /// <param name="userBaseDn">userBaseDn.</param>
         /// <param name="userGroups">userGroups.</param>
-        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverLocalUsers = default(bool), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string sshPort = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>))
+        /// <param name="winrmOverHttp">winrmOverHttp.</param>
+        /// <param name="winrmPort">winrmPort.</param>
+        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverLocalUsers = default(bool), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string sshPort = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
         {
             this.ActiveDirectoryTargetId = activeDirectoryTargetId;
             this.AutoRotate = autoRotate;
@@ -65,8 +68,11 @@ namespace akeyless.Model
             this.LocalUsersIgnoreList = localUsersIgnoreList;
             this.LocalUsersRotatedSecretsPathTemplate = localUsersRotatedSecretsPathTemplate;
             this.SshPort = sshPort;
+            this.TargetsType = targetsType;
             this.UserBaseDn = userBaseDn;
             this.UserGroups = userGroups;
+            this.WinrmOverHttp = winrmOverHttp;
+            this.WinrmPort = winrmPort;
         }
 
         /// <summary>
@@ -148,6 +154,12 @@ namespace akeyless.Model
         public string SshPort { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetsType
+        /// </summary>
+        [DataMember(Name = "targets_type", EmitDefaultValue = false)]
+        public string TargetsType { get; set; }
+
+        /// <summary>
         /// Gets or Sets UserBaseDn
         /// </summary>
         [DataMember(Name = "user_base_dn", EmitDefaultValue = false)]
@@ -158,6 +170,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "user_groups", EmitDefaultValue = false)]
         public List<string> UserGroups { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WinrmOverHttp
+        /// </summary>
+        [DataMember(Name = "winrm_over_http", EmitDefaultValue = true)]
+        public bool WinrmOverHttp { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WinrmPort
+        /// </summary>
+        [DataMember(Name = "winrm_port", EmitDefaultValue = false)]
+        public string WinrmPort { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +204,11 @@ namespace akeyless.Model
             sb.Append("  LocalUsersIgnoreList: ").Append(LocalUsersIgnoreList).Append("\n");
             sb.Append("  LocalUsersRotatedSecretsPathTemplate: ").Append(LocalUsersRotatedSecretsPathTemplate).Append("\n");
             sb.Append("  SshPort: ").Append(SshPort).Append("\n");
+            sb.Append("  TargetsType: ").Append(TargetsType).Append("\n");
             sb.Append("  UserBaseDn: ").Append(UserBaseDn).Append("\n");
             sb.Append("  UserGroups: ").Append(UserGroups).Append("\n");
+            sb.Append("  WinrmOverHttp: ").Append(WinrmOverHttp).Append("\n");
+            sb.Append("  WinrmPort: ").Append(WinrmPort).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -278,6 +305,11 @@ namespace akeyless.Model
                     this.SshPort.Equals(input.SshPort))
                 ) && 
                 (
+                    this.TargetsType == input.TargetsType ||
+                    (this.TargetsType != null &&
+                    this.TargetsType.Equals(input.TargetsType))
+                ) && 
+                (
                     this.UserBaseDn == input.UserBaseDn ||
                     (this.UserBaseDn != null &&
                     this.UserBaseDn.Equals(input.UserBaseDn))
@@ -287,6 +319,15 @@ namespace akeyless.Model
                     this.UserGroups != null &&
                     input.UserGroups != null &&
                     this.UserGroups.SequenceEqual(input.UserGroups)
+                ) && 
+                (
+                    this.WinrmOverHttp == input.WinrmOverHttp ||
+                    this.WinrmOverHttp.Equals(input.WinrmOverHttp)
+                ) && 
+                (
+                    this.WinrmPort == input.WinrmPort ||
+                    (this.WinrmPort != null &&
+                    this.WinrmPort.Equals(input.WinrmPort))
                 );
         }
 
@@ -333,6 +374,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.SshPort.GetHashCode();
                 }
+                if (this.TargetsType != null)
+                {
+                    hashCode = (hashCode * 59) + this.TargetsType.GetHashCode();
+                }
                 if (this.UserBaseDn != null)
                 {
                     hashCode = (hashCode * 59) + this.UserBaseDn.GetHashCode();
@@ -340,6 +385,11 @@ namespace akeyless.Model
                 if (this.UserGroups != null)
                 {
                     hashCode = (hashCode * 59) + this.UserGroups.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WinrmOverHttp.GetHashCode();
+                if (this.WinrmPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.WinrmPort.GetHashCode();
                 }
                 return hashCode;
             }

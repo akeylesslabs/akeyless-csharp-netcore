@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | **string** | A comma-separated list of the country that will be set in the issued certificate | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**DestinationPath** | **string** | A path in which to save generated certificates | [optional] 
+**ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
+**GwClusterUrl** | **string** | The GW cluster URL to issue the certificate from, required in Public CA mode | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | **string** | A comma-separated list of the locality that will be set in the issued certificate | [optional] 
@@ -24,10 +27,11 @@ Name | Type | Description | Notes
 **OrganizationalUnits** | **string** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] 
 **Organizations** | **string** | A comma-separated list of organizations (O) that will be set in the issued certificate | [optional] 
 **PostalCode** | **string** | A comma-separated list of the postal code that will be set in the issued certificate | [optional] 
+**ProtectCertificates** | **bool** | Whether to protect generated certificates from deletion | [optional] 
 **Province** | **string** | A comma-separated list of the province that will be set in the issued certificate | [optional] 
 **RmTag** | **List&lt;string&gt;** | List of the existent tags that will be removed from this item | [optional] 
 **ServerFlag** | **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with | 
+**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
 **StreetAddress** | **string** | A comma-separated list of the street address that will be set in the issued certificate | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **long** | he requested Time To Live for the certificate, in seconds | 

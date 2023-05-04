@@ -40,13 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExportClassicKey" /> class.
         /// </summary>
+        /// <param name="exportPublicKey">Use this option to output only public key (default to false).</param>
         /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Classic key version.</param>
-        public ExportClassicKey(string ignoreCache = "false", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public ExportClassicKey(bool exportPublicKey = false, string ignoreCache = "false", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,6 +55,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for ExportClassicKey and cannot be null");
             }
             this.Name = name;
+            this.ExportPublicKey = exportPublicKey;
             // use default value if no "ignoreCache" provided
             this.IgnoreCache = ignoreCache ?? "false";
             this.Json = json;
@@ -61,6 +63,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// Use this option to output only public key
+        /// </summary>
+        /// <value>Use this option to output only public key</value>
+        [DataMember(Name = "export-public-key", EmitDefaultValue = true)]
+        public bool ExportPublicKey { get; set; }
 
         /// <summary>
         /// Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
@@ -112,6 +121,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ExportClassicKey {\n");
+            sb.Append("  ExportPublicKey: ").Append(ExportPublicKey).Append("\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -154,6 +164,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.ExportPublicKey == input.ExportPublicKey ||
+                    this.ExportPublicKey.Equals(input.ExportPublicKey)
+                ) && 
+                (
                     this.IgnoreCache == input.IgnoreCache ||
                     (this.IgnoreCache != null &&
                     this.IgnoreCache.Equals(input.IgnoreCache))
@@ -192,6 +206,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.ExportPublicKey.GetHashCode();
                 if (this.IgnoreCache != null)
                 {
                     hashCode = (hashCode * 59) + this.IgnoreCache.GetHashCode();
