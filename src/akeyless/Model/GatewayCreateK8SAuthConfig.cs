@@ -56,7 +56,8 @@ namespace akeyless.Model
         /// <param name="tokenExp">Time in seconds of expiration of the Akeyless Kube Auth Method token (default to 300).</param>
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = false, string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = "kubernetes/serviceaccount", string name = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string))
+        /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
+        public GatewayCreateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = false, string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = "kubernetes/serviceaccount", string name = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null)
@@ -96,6 +97,7 @@ namespace akeyless.Model
             this.TokenExp = tokenExp;
             this.TokenReviewerJwt = tokenReviewerJwt;
             this.UidToken = uidToken;
+            this.UseGwServiceAccount = useGwServiceAccount;
         }
 
         /// <summary>
@@ -211,6 +213,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Use the GW&#39;s service account
+        /// </summary>
+        /// <value>Use the GW&#39;s service account</value>
+        [DataMember(Name = "use-gw-service-account", EmitDefaultValue = true)]
+        public bool UseGwServiceAccount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -234,6 +243,7 @@ namespace akeyless.Model
             sb.Append("  TokenExp: ").Append(TokenExp).Append("\n");
             sb.Append("  TokenReviewerJwt: ").Append(TokenReviewerJwt).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -346,6 +356,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UseGwServiceAccount == input.UseGwServiceAccount ||
+                    this.UseGwServiceAccount.Equals(input.UseGwServiceAccount)
                 );
         }
 
@@ -416,6 +430,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.UseGwServiceAccount.GetHashCode();
                 return hashCode;
             }
         }

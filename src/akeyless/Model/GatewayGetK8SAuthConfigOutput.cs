@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="protectionKey">protectionKey.</param>
         /// <param name="rancherApiKey">RancherApiKey the bear token for clusterApiTypeRancher.</param>
         /// <param name="rancherClusterId">RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher).</param>
-        /// <param name="useLocalCaJwt">UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod.</param>
+        /// <param name="useLocalCaJwt">UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod.</param>
         public GatewayGetK8SAuthConfigOutput(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), string clusterApiType = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string protectionKey = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), bool useLocalCaJwt = default(bool))
         {
             this.AmTokenExpiration = amTokenExpiration;
@@ -174,9 +174,9 @@ namespace akeyless.Model
         public string RancherClusterId { get; set; }
 
         /// <summary>
-        /// UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
+        /// UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod
         /// </summary>
-        /// <value>UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod</value>
+        /// <value>UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod</value>
         [DataMember(Name = "use_local_ca_jwt", EmitDefaultValue = true)]
         public bool UseLocalCaJwt { get; set; }
 
