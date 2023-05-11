@@ -55,6 +55,7 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
+        /// <param name="secureAccessRdpUser">Remote Desktop Username.</param>
         /// <param name="secureAccessSshCreds">Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key].</param>
         /// <param name="secureAccessSshUser">Override the SSH username as indicated in SSH Certificate Issuer.</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="type">The secret sub type [generic/password] (default to &quot;generic&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="value">The secret value (required).</param>
-        public CreateSecret(string accessibility = "regular", string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string value = default(string))
+        public CreateSecret(string accessibility = "regular", string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), Dictionary<string, string> passwordManagerCustomField = default(Dictionary<string, string>), List<string> passwordManagerInjectUrl = default(List<string>), string passwordManagerPassword = default(string), string passwordManagerUsername = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -94,6 +95,7 @@ namespace akeyless.Model
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessRdpUser = secureAccessRdpUser;
             this.SecureAccessSshCreds = secureAccessSshCreds;
             this.SecureAccessSshUser = secureAccessSshUser;
             this.SecureAccessUrl = secureAccessUrl;
@@ -212,6 +214,13 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
+        /// Remote Desktop Username
+        /// </summary>
+        /// <value>Remote Desktop Username</value>
+        [DataMember(Name = "secure-access-rdp-user", EmitDefaultValue = false)]
+        public string SecureAccessRdpUser { get; set; }
+
+        /// <summary>
         /// Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]
         /// </summary>
         /// <value>Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]</value>
@@ -304,6 +313,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
             sb.Append("  SecureAccessSshCreds: ").Append(SecureAccessSshCreds).Append("\n");
             sb.Append("  SecureAccessSshUser: ").Append(SecureAccessSshUser).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
@@ -426,6 +436,11 @@ namespace akeyless.Model
                     this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
                 ) && 
                 (
+                    this.SecureAccessRdpUser == input.SecureAccessRdpUser ||
+                    (this.SecureAccessRdpUser != null &&
+                    this.SecureAccessRdpUser.Equals(input.SecureAccessRdpUser))
+                ) && 
+                (
                     this.SecureAccessSshCreds == input.SecureAccessSshCreds ||
                     (this.SecureAccessSshCreds != null &&
                     this.SecureAccessSshCreds.Equals(input.SecureAccessSshCreds))
@@ -538,6 +553,10 @@ namespace akeyless.Model
                 if (this.SecureAccessHost != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
+                if (this.SecureAccessRdpUser != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpUser.GetHashCode();
                 }
                 if (this.SecureAccessSshCreds != null)
                 {

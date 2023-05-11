@@ -41,12 +41,13 @@ namespace akeyless.Model
         /// <param name="minimalView">minimalView.</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="path">Path to folder.</param>
+        /// <param name="sraOnly">Filter by items with SRA functionality enabled (default to false).</param>
         /// <param name="subTypes">subTypes.</param>
         /// <param name="tag">Filter by item tag.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string accessibility = "regular", string filter = default(string), bool json = false, bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string accessibility = "regular", string filter = default(string), bool json = false, bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.MinimalView = minimalView;
             this.PaginationToken = paginationToken;
             this.Path = path;
+            this.SraOnly = sraOnly;
             this.SubTypes = subTypes;
             this.Tag = tag;
             this.Token = token;
@@ -104,6 +106,13 @@ namespace akeyless.Model
         public string Path { get; set; }
 
         /// <summary>
+        /// Filter by items with SRA functionality enabled
+        /// </summary>
+        /// <value>Filter by items with SRA functionality enabled</value>
+        [DataMember(Name = "sra-only", EmitDefaultValue = true)]
+        public bool SraOnly { get; set; }
+
+        /// <summary>
         /// Gets or Sets SubTypes
         /// </summary>
         [DataMember(Name = "sub_types", EmitDefaultValue = false)]
@@ -151,6 +160,7 @@ namespace akeyless.Model
             sb.Append("  MinimalView: ").Append(MinimalView).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("  SraOnly: ").Append(SraOnly).Append("\n");
             sb.Append("  SubTypes: ").Append(SubTypes).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -220,6 +230,10 @@ namespace akeyless.Model
                     this.Path.Equals(input.Path))
                 ) && 
                 (
+                    this.SraOnly == input.SraOnly ||
+                    this.SraOnly.Equals(input.SraOnly)
+                ) && 
+                (
                     this.SubTypes == input.SubTypes ||
                     this.SubTypes != null &&
                     input.SubTypes != null &&
@@ -275,6 +289,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Path.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SraOnly.GetHashCode();
                 if (this.SubTypes != null)
                 {
                     hashCode = (hashCode * 59) + this.SubTypes.GetHashCode();

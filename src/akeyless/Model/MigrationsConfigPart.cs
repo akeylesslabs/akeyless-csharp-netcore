@@ -43,7 +43,8 @@ namespace akeyless.Model
         /// <param name="k8sMigrations">k8sMigrations.</param>
         /// <param name="mockMigrations">mockMigrations.</param>
         /// <param name="onePasswordMigrations">onePasswordMigrations.</param>
-        public MigrationsConfigPart(List<ActiveDirectoryMigration> activeDirectoryMigrations = default(List<ActiveDirectoryMigration>), List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<MockMigration> mockMigrations = default(List<MockMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>))
+        /// <param name="serverInventoryMigrations">serverInventoryMigrations.</param>
+        public MigrationsConfigPart(List<ActiveDirectoryMigration> activeDirectoryMigrations = default(List<ActiveDirectoryMigration>), List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<MockMigration> mockMigrations = default(List<MockMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>), List<ServerInventoryMigration> serverInventoryMigrations = default(List<ServerInventoryMigration>))
         {
             this.ActiveDirectoryMigrations = activeDirectoryMigrations;
             this.AwsSecretsMigrations = awsSecretsMigrations;
@@ -53,6 +54,7 @@ namespace akeyless.Model
             this.K8sMigrations = k8sMigrations;
             this.MockMigrations = mockMigrations;
             this.OnePasswordMigrations = onePasswordMigrations;
+            this.ServerInventoryMigrations = serverInventoryMigrations;
         }
 
         /// <summary>
@@ -104,6 +106,12 @@ namespace akeyless.Model
         public List<OnePasswordMigration> OnePasswordMigrations { get; set; }
 
         /// <summary>
+        /// Gets or Sets ServerInventoryMigrations
+        /// </summary>
+        [DataMember(Name = "server_inventory_migrations", EmitDefaultValue = false)]
+        public List<ServerInventoryMigration> ServerInventoryMigrations { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -119,6 +127,7 @@ namespace akeyless.Model
             sb.Append("  K8sMigrations: ").Append(K8sMigrations).Append("\n");
             sb.Append("  MockMigrations: ").Append(MockMigrations).Append("\n");
             sb.Append("  OnePasswordMigrations: ").Append(OnePasswordMigrations).Append("\n");
+            sb.Append("  ServerInventoryMigrations: ").Append(ServerInventoryMigrations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -201,6 +210,12 @@ namespace akeyless.Model
                     this.OnePasswordMigrations != null &&
                     input.OnePasswordMigrations != null &&
                     this.OnePasswordMigrations.SequenceEqual(input.OnePasswordMigrations)
+                ) && 
+                (
+                    this.ServerInventoryMigrations == input.ServerInventoryMigrations ||
+                    this.ServerInventoryMigrations != null &&
+                    input.ServerInventoryMigrations != null &&
+                    this.ServerInventoryMigrations.SequenceEqual(input.ServerInventoryMigrations)
                 );
         }
 
@@ -244,6 +259,10 @@ namespace akeyless.Model
                 if (this.OnePasswordMigrations != null)
                 {
                     hashCode = (hashCode * 59) + this.OnePasswordMigrations.GetHashCode();
+                }
+                if (this.ServerInventoryMigrations != null)
+                {
+                    hashCode = (hashCode * 59) + this.ServerInventoryMigrations.GetHashCode();
                 }
                 return hashCode;
             }

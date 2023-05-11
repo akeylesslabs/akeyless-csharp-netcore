@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MinimalView** | **bool** |  | [optional] 
 **PaginationToken** | **string** | Next page reference | [optional] 
 **Path** | **string** | Path to folder | [optional] 
+**SraOnly** | **bool** | Filter by items with SRA functionality enabled | [optional] [default to false]
 **SubTypes** | **List&lt;string&gt;** |  | [optional] 
 **Tag** | **string** | Filter by item tag | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

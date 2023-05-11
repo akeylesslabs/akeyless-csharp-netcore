@@ -62,7 +62,7 @@ namespace akeyless.Model
         /// <param name="adTargetName">Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration).</param>
         /// <param name="adTargetsPathTemplate">Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration).</param>
         /// <param name="adUserBaseDn">Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
-        /// <param name="adUserGroups">Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration).</param>
+        /// <param name="adUserGroups">Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the - -ad-user-base-dn (Relevant only for Active Directory migration).</param>
         /// <param name="awsKey">AWS Secret Access Key (relevant only for AWS migration).</param>
         /// <param name="awsKeyId">AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration).</param>
         /// <param name="awsRegion">AWS region of the required Secrets Manager (relevant only for AWS migration) (default to &quot;us-east-2&quot;).</param>
@@ -87,11 +87,18 @@ namespace akeyless.Model
         /// <param name="k8sUsername">For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method).</param>
         /// <param name="name">Migration name (required).</param>
         /// <param name="protectionKey">The name of the key that protects the classic key value (if empty, the account default key will be used).</param>
+        /// <param name="siAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -si-rotation-interval and - -si-rotation-hour parameters (Relevant only for Server Inventory migration).</param>
+        /// <param name="siRotationHour">The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration).</param>
+        /// <param name="siRotationInterval">The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration).</param>
+        /// <param name="siSraEnableRdp">Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration) (default to &quot;false&quot;).</param>
+        /// <param name="siTargetName">SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration) (required).</param>
+        /// <param name="siUsersIgnore">Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration).</param>
+        /// <param name="siUsersPathTemplate">Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) (required).</param>
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adSshPort = "22", string adTargetsType = "windows", string adWinrmOverHttp = "false", string adWinrmPort = "5986", string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayCreateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adSshPort = "22", string adTargetsType = "windows", string adWinrmOverHttp = "false", string adWinrmPort = "5986", string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = "false", string siTargetName = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -99,6 +106,18 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for GatewayCreateMigration and cannot be null");
             }
             this.Name = name;
+            // to ensure "siTargetName" is required (not null)
+            if (siTargetName == null)
+            {
+                throw new ArgumentNullException("siTargetName is a required property for GatewayCreateMigration and cannot be null");
+            }
+            this.SiTargetName = siTargetName;
+            // to ensure "siUsersPathTemplate" is required (not null)
+            if (siUsersPathTemplate == null)
+            {
+                throw new ArgumentNullException("siUsersPathTemplate is a required property for GatewayCreateMigration and cannot be null");
+            }
+            this.SiUsersPathTemplate = siUsersPathTemplate;
             // to ensure "targetLocation" is required (not null)
             if (targetLocation == null)
             {
@@ -157,6 +176,12 @@ namespace akeyless.Model
             this.K8sUrl = k8sUrl;
             this.K8sUsername = k8sUsername;
             this.ProtectionKey = protectionKey;
+            this.SiAutoRotate = siAutoRotate;
+            this.SiRotationHour = siRotationHour;
+            this.SiRotationInterval = siRotationInterval;
+            // use default value if no "siSraEnableRdp" provided
+            this.SiSraEnableRdp = siSraEnableRdp ?? "false";
+            this.SiUsersIgnore = siUsersIgnore;
             this.Token = token;
             this.Type = type;
             this.UidToken = uidToken;
@@ -317,9 +342,9 @@ namespace akeyless.Model
         public string AdUserBaseDn { get; set; }
 
         /// <summary>
-        /// Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration)
+        /// Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the - -ad-user-base-dn (Relevant only for Active Directory migration)
         /// </summary>
-        /// <value>Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration)</value>
+        /// <value>Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the - -ad-user-base-dn (Relevant only for Active Directory migration)</value>
         [DataMember(Name = "ad_user_groups", EmitDefaultValue = false)]
         public string AdUserGroups { get; set; }
 
@@ -492,6 +517,55 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
+        /// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -si-rotation-interval and - -si-rotation-hour parameters (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -si-rotation-interval and - -si-rotation-hour parameters (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-auto-rotate", EmitDefaultValue = false)]
+        public string SiAutoRotate { get; set; }
+
+        /// <summary>
+        /// The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-rotation-hour", EmitDefaultValue = false)]
+        public int SiRotationHour { get; set; }
+
+        /// <summary>
+        /// The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-rotation-interval", EmitDefaultValue = false)]
+        public int SiRotationInterval { get; set; }
+
+        /// <summary>
+        /// Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-sra-enable-rdp", EmitDefaultValue = false)]
+        public string SiSraEnableRdp { get; set; }
+
+        /// <summary>
+        /// SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-target-name", IsRequired = true, EmitDefaultValue = true)]
+        public string SiTargetName { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-users-ignore", EmitDefaultValue = false)]
+        public string SiUsersIgnore { get; set; }
+
+        /// <summary>
+        /// Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration)
+        /// </summary>
+        /// <value>Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration)</value>
+        [DataMember(Name = "si-users-path-template", IsRequired = true, EmitDefaultValue = true)]
+        public string SiUsersPathTemplate { get; set; }
+
+        /// <summary>
         /// Target location in Akeyless for imported secrets
         /// </summary>
         /// <value>Target location in Akeyless for imported secrets</value>
@@ -574,6 +648,13 @@ namespace akeyless.Model
             sb.Append("  K8sUsername: ").Append(K8sUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
+            sb.Append("  SiAutoRotate: ").Append(SiAutoRotate).Append("\n");
+            sb.Append("  SiRotationHour: ").Append(SiRotationHour).Append("\n");
+            sb.Append("  SiRotationInterval: ").Append(SiRotationInterval).Append("\n");
+            sb.Append("  SiSraEnableRdp: ").Append(SiSraEnableRdp).Append("\n");
+            sb.Append("  SiTargetName: ").Append(SiTargetName).Append("\n");
+            sb.Append("  SiUsersIgnore: ").Append(SiUsersIgnore).Append("\n");
+            sb.Append("  SiUsersPathTemplate: ").Append(SiUsersPathTemplate).Append("\n");
             sb.Append("  TargetLocation: ").Append(TargetLocation).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -850,6 +931,39 @@ namespace akeyless.Model
                     this.ProtectionKey.Equals(input.ProtectionKey))
                 ) && 
                 (
+                    this.SiAutoRotate == input.SiAutoRotate ||
+                    (this.SiAutoRotate != null &&
+                    this.SiAutoRotate.Equals(input.SiAutoRotate))
+                ) && 
+                (
+                    this.SiRotationHour == input.SiRotationHour ||
+                    this.SiRotationHour.Equals(input.SiRotationHour)
+                ) && 
+                (
+                    this.SiRotationInterval == input.SiRotationInterval ||
+                    this.SiRotationInterval.Equals(input.SiRotationInterval)
+                ) && 
+                (
+                    this.SiSraEnableRdp == input.SiSraEnableRdp ||
+                    (this.SiSraEnableRdp != null &&
+                    this.SiSraEnableRdp.Equals(input.SiSraEnableRdp))
+                ) && 
+                (
+                    this.SiTargetName == input.SiTargetName ||
+                    (this.SiTargetName != null &&
+                    this.SiTargetName.Equals(input.SiTargetName))
+                ) && 
+                (
+                    this.SiUsersIgnore == input.SiUsersIgnore ||
+                    (this.SiUsersIgnore != null &&
+                    this.SiUsersIgnore.Equals(input.SiUsersIgnore))
+                ) && 
+                (
+                    this.SiUsersPathTemplate == input.SiUsersPathTemplate ||
+                    (this.SiUsersPathTemplate != null &&
+                    this.SiUsersPathTemplate.Equals(input.SiUsersPathTemplate))
+                ) && 
+                (
                     this.TargetLocation == input.TargetLocation ||
                     (this.TargetLocation != null &&
                     this.TargetLocation.Equals(input.TargetLocation))
@@ -1055,6 +1169,28 @@ namespace akeyless.Model
                 if (this.ProtectionKey != null)
                 {
                     hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
+                }
+                if (this.SiAutoRotate != null)
+                {
+                    hashCode = (hashCode * 59) + this.SiAutoRotate.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SiRotationHour.GetHashCode();
+                hashCode = (hashCode * 59) + this.SiRotationInterval.GetHashCode();
+                if (this.SiSraEnableRdp != null)
+                {
+                    hashCode = (hashCode * 59) + this.SiSraEnableRdp.GetHashCode();
+                }
+                if (this.SiTargetName != null)
+                {
+                    hashCode = (hashCode * 59) + this.SiTargetName.GetHashCode();
+                }
+                if (this.SiUsersIgnore != null)
+                {
+                    hashCode = (hashCode * 59) + this.SiUsersIgnore.GetHashCode();
+                }
+                if (this.SiUsersPathTemplate != null)
+                {
+                    hashCode = (hashCode * 59) + this.SiUsersPathTemplate.GetHashCode();
                 }
                 if (this.TargetLocation != null)
                 {

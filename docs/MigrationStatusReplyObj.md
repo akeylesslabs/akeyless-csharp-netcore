@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DurationTime** | **string** |  | [optional] 
+**Error** | **string** |  | [optional] 
 **LastStatusMessage** | **string** |  | [optional] 
 **MaxNameLength** | **long** |  | [optional] 
 **MaxValueLength** | **long** |  | [optional] 
@@ -13,7 +14,10 @@ Name | Type | Description | Notes
 **MigrationName** | **string** |  | [optional] 
 **MigrationState** | **string** |  | [optional] 
 **MigrationType** | **string** |  | [optional] 
+**MigrationTypeName** | **string** |  | [optional] 
+**RotatedSecrets** | [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **StartTime** | **string** |  | [optional] 
+**Targets** | [**MigrationItems**](MigrationItems.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

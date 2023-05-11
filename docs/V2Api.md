@@ -62,6 +62,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods |  |
 | [**DeleteEventForwarder**](V2Api.md#deleteeventforwarder) | **POST** /delete-event-forwarder |  |
 | [**DeleteGatewayAllowedAccessId**](V2Api.md#deletegatewayallowedaccessid) | **POST** /gateway-delete-allowed-management-access |  |
+| [**DeleteGwCluster**](V2Api.md#deletegwcluster) | **POST** /delete-gateway-cluster |  |
 | [**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item |  |
 | [**DeleteItems**](V2Api.md#deleteitems) | **POST** /delete-items |  |
 | [**DeleteRole**](V2Api.md#deleterole) | **POST** /delete-role |  |
@@ -5382,6 +5383,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | deleteGatewayAllowedAccessIdResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deletegwcluster"></a>
+# **DeleteGwCluster**
+> Object DeleteGwCluster (DeleteGwCluster body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DeleteGwClusterExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DeleteGwCluster(); // DeleteGwCluster | 
+
+            try
+            {
+                Object result = apiInstance.DeleteGwCluster(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DeleteGwCluster: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteGwClusterWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeleteGwClusterWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteGwClusterWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteGwCluster**](DeleteGwCluster.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | deleteGwClusterResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -162,6 +162,7 @@ docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
 docs/DeleteEventForwarder.md
 docs/DeleteGatewayAllowedAccessId.md
+docs/DeleteGwCluster.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -511,6 +512,8 @@ docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
 docs/SecretInfo.md
 docs/SecureRemoteAccess.md
+docs/ServerInventoryMigration.md
+docs/ServerInventoryPayload.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
@@ -648,6 +651,9 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/DeleteGwClusterTests.cs
+src/akeyless.Test/Model/ServerInventoryMigrationTests.cs
+src/akeyless.Test/Model/ServerInventoryPayloadTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -827,6 +833,7 @@ src/akeyless/Model/DeleteAuthMethods.cs
 src/akeyless/Model/DeleteAuthMethodsOutput.cs
 src/akeyless/Model/DeleteEventForwarder.cs
 src/akeyless/Model/DeleteGatewayAllowedAccessId.cs
+src/akeyless/Model/DeleteGwCluster.cs
 src/akeyless/Model/DeleteItem.cs
 src/akeyless/Model/DeleteItemOutput.cs
 src/akeyless/Model/DeleteItems.cs
@@ -1176,6 +1183,8 @@ src/akeyless/Model/SAMLAttribute.cs
 src/akeyless/Model/SSHCertificateIssueDetails.cs
 src/akeyless/Model/SecretInfo.cs
 src/akeyless/Model/SecureRemoteAccess.cs
+src/akeyless/Model/ServerInventoryMigration.cs
+src/akeyless/Model/ServerInventoryPayload.cs
 src/akeyless/Model/SetItemState.cs
 src/akeyless/Model/SetRoleRule.cs
 src/akeyless/Model/ShareItem.cs

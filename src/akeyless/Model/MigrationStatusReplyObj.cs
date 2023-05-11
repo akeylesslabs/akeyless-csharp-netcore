@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="MigrationStatusReplyObj" /> class.
         /// </summary>
         /// <param name="durationTime">durationTime.</param>
+        /// <param name="error">error.</param>
         /// <param name="lastStatusMessage">lastStatusMessage.</param>
         /// <param name="maxNameLength">maxNameLength.</param>
         /// <param name="maxValueLength">maxValueLength.</param>
@@ -44,10 +45,14 @@ namespace akeyless.Model
         /// <param name="migrationName">migrationName.</param>
         /// <param name="migrationState">migrationState.</param>
         /// <param name="migrationType">migrationType.</param>
+        /// <param name="migrationTypeName">migrationTypeName.</param>
+        /// <param name="rotatedSecrets">rotatedSecrets.</param>
         /// <param name="startTime">startTime.</param>
-        public MigrationStatusReplyObj(string durationTime = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string startTime = default(string))
+        /// <param name="targets">targets.</param>
+        public MigrationStatusReplyObj(string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), MigrationItems targets = default(MigrationItems))
         {
             this.DurationTime = durationTime;
+            this.Error = error;
             this.LastStatusMessage = lastStatusMessage;
             this.MaxNameLength = maxNameLength;
             this.MaxValueLength = maxValueLength;
@@ -56,7 +61,10 @@ namespace akeyless.Model
             this.MigrationName = migrationName;
             this.MigrationState = migrationState;
             this.MigrationType = migrationType;
+            this.MigrationTypeName = migrationTypeName;
+            this.RotatedSecrets = rotatedSecrets;
             this.StartTime = startTime;
+            this.Targets = targets;
         }
 
         /// <summary>
@@ -64,6 +72,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "duration_time", EmitDefaultValue = false)]
         public string DurationTime { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Error
+        /// </summary>
+        [DataMember(Name = "error", EmitDefaultValue = false)]
+        public string Error { get; set; }
 
         /// <summary>
         /// Gets or Sets LastStatusMessage
@@ -114,10 +128,28 @@ namespace akeyless.Model
         public string MigrationType { get; set; }
 
         /// <summary>
+        /// Gets or Sets MigrationTypeName
+        /// </summary>
+        [DataMember(Name = "migration_type_name", EmitDefaultValue = false)]
+        public string MigrationTypeName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RotatedSecrets
+        /// </summary>
+        [DataMember(Name = "rotated_secrets", EmitDefaultValue = false)]
+        public MigrationItems RotatedSecrets { get; set; }
+
+        /// <summary>
         /// Gets or Sets StartTime
         /// </summary>
         [DataMember(Name = "start_time", EmitDefaultValue = false)]
         public string StartTime { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Targets
+        /// </summary>
+        [DataMember(Name = "targets", EmitDefaultValue = false)]
+        public MigrationItems Targets { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,6 +160,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationStatusReplyObj {\n");
             sb.Append("  DurationTime: ").Append(DurationTime).Append("\n");
+            sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  LastStatusMessage: ").Append(LastStatusMessage).Append("\n");
             sb.Append("  MaxNameLength: ").Append(MaxNameLength).Append("\n");
             sb.Append("  MaxValueLength: ").Append(MaxValueLength).Append("\n");
@@ -136,7 +169,10 @@ namespace akeyless.Model
             sb.Append("  MigrationName: ").Append(MigrationName).Append("\n");
             sb.Append("  MigrationState: ").Append(MigrationState).Append("\n");
             sb.Append("  MigrationType: ").Append(MigrationType).Append("\n");
+            sb.Append("  MigrationTypeName: ").Append(MigrationTypeName).Append("\n");
+            sb.Append("  RotatedSecrets: ").Append(RotatedSecrets).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
+            sb.Append("  Targets: ").Append(Targets).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -178,6 +214,11 @@ namespace akeyless.Model
                     this.DurationTime.Equals(input.DurationTime))
                 ) && 
                 (
+                    this.Error == input.Error ||
+                    (this.Error != null &&
+                    this.Error.Equals(input.Error))
+                ) && 
+                (
                     this.LastStatusMessage == input.LastStatusMessage ||
                     (this.LastStatusMessage != null &&
                     this.LastStatusMessage.Equals(input.LastStatusMessage))
@@ -216,9 +257,24 @@ namespace akeyless.Model
                     this.MigrationType.Equals(input.MigrationType))
                 ) && 
                 (
+                    this.MigrationTypeName == input.MigrationTypeName ||
+                    (this.MigrationTypeName != null &&
+                    this.MigrationTypeName.Equals(input.MigrationTypeName))
+                ) && 
+                (
+                    this.RotatedSecrets == input.RotatedSecrets ||
+                    (this.RotatedSecrets != null &&
+                    this.RotatedSecrets.Equals(input.RotatedSecrets))
+                ) && 
+                (
                     this.StartTime == input.StartTime ||
                     (this.StartTime != null &&
                     this.StartTime.Equals(input.StartTime))
+                ) && 
+                (
+                    this.Targets == input.Targets ||
+                    (this.Targets != null &&
+                    this.Targets.Equals(input.Targets))
                 );
         }
 
@@ -234,6 +290,10 @@ namespace akeyless.Model
                 if (this.DurationTime != null)
                 {
                     hashCode = (hashCode * 59) + this.DurationTime.GetHashCode();
+                }
+                if (this.Error != null)
+                {
+                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
                 }
                 if (this.LastStatusMessage != null)
                 {
@@ -261,9 +321,21 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.MigrationType.GetHashCode();
                 }
+                if (this.MigrationTypeName != null)
+                {
+                    hashCode = (hashCode * 59) + this.MigrationTypeName.GetHashCode();
+                }
+                if (this.RotatedSecrets != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotatedSecrets.GetHashCode();
+                }
                 if (this.StartTime != null)
                 {
                     hashCode = (hashCode * 59) + this.StartTime.GetHashCode();
+                }
+                if (this.Targets != null)
+                {
+                    hashCode = (hashCode * 59) + this.Targets.GetHashCode();
                 }
                 return hashCode;
             }
