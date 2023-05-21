@@ -33,7 +33,7 @@ namespace akeyless.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.3.4";
+        public const string Version = "3.3.5";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -115,7 +115,7 @@ namespace akeyless.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/3.3.4/csharp");
+            UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/3.3.5/csharp");
             BasePath = "https://api.akeyless.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -523,7 +523,7 @@ namespace akeyless.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2.0\n";
-            report += "    SDK Package Version: 3.3.4\n";
+            report += "    SDK Package Version: 3.3.5\n";
 
             return report;
         }

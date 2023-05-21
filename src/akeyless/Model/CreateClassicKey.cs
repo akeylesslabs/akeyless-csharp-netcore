@@ -42,8 +42,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
+        /// <param name="certificateCommonName">Common name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
+        /// <param name="certificateCountry">Country name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
+        /// <param name="certificateDigestAlgo">Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI..</param>
+        /// <param name="certificateLocality">Locality for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
+        /// <param name="certificateOrganization">Organization name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
+        /// <param name="certificateProvince">Province name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
+        /// <param name="certificateTtl">TTL in days for the generated certificate. Required only for generate-self-signed-certificate..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="generateSelfSignedCertificate">Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided..</param>
         /// <param name="gpgAlg">gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
@@ -53,7 +61,7 @@ namespace akeyless.Model
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), string gpgAlg = default(string), bool json = false, string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateClassicKey(string alg = default(string), string certFileData = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string deleteProtection = default(string), string description = default(string), bool generateSelfSignedCertificate = default(bool), string gpgAlg = default(string), bool json = false, string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -68,8 +76,16 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.CertFileData = certFileData;
+            this.CertificateCommonName = certificateCommonName;
+            this.CertificateCountry = certificateCountry;
+            this.CertificateDigestAlgo = certificateDigestAlgo;
+            this.CertificateLocality = certificateLocality;
+            this.CertificateOrganization = certificateOrganization;
+            this.CertificateProvince = certificateProvince;
+            this.CertificateTtl = certificateTtl;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.GenerateSelfSignedCertificate = generateSelfSignedCertificate;
             this.GpgAlg = gpgAlg;
             this.Json = json;
             this.KeyData = keyData;
@@ -95,6 +111,55 @@ namespace akeyless.Model
         public string CertFileData { get; set; }
 
         /// <summary>
+        /// Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
+        /// </summary>
+        /// <value>Common name for the generated certificate. Relevant only for generate-self-signed-certificate.</value>
+        [DataMember(Name = "certificate-common-name", EmitDefaultValue = false)]
+        public string CertificateCommonName { get; set; }
+
+        /// <summary>
+        /// Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
+        /// </summary>
+        /// <value>Country name for the generated certificate. Relevant only for generate-self-signed-certificate.</value>
+        [DataMember(Name = "certificate-country", EmitDefaultValue = false)]
+        public string CertificateCountry { get; set; }
+
+        /// <summary>
+        /// Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI.
+        /// </summary>
+        /// <value>Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI.</value>
+        [DataMember(Name = "certificate-digest-algo", EmitDefaultValue = false)]
+        public string CertificateDigestAlgo { get; set; }
+
+        /// <summary>
+        /// Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
+        /// </summary>
+        /// <value>Locality for the generated certificate. Relevant only for generate-self-signed-certificate.</value>
+        [DataMember(Name = "certificate-locality", EmitDefaultValue = false)]
+        public string CertificateLocality { get; set; }
+
+        /// <summary>
+        /// Organization name for the generated certificate. Relevant only for generate-self-signed-certificate.
+        /// </summary>
+        /// <value>Organization name for the generated certificate. Relevant only for generate-self-signed-certificate.</value>
+        [DataMember(Name = "certificate-organization", EmitDefaultValue = false)]
+        public string CertificateOrganization { get; set; }
+
+        /// <summary>
+        /// Province name for the generated certificate. Relevant only for generate-self-signed-certificate.
+        /// </summary>
+        /// <value>Province name for the generated certificate. Relevant only for generate-self-signed-certificate.</value>
+        [DataMember(Name = "certificate-province", EmitDefaultValue = false)]
+        public string CertificateProvince { get; set; }
+
+        /// <summary>
+        /// TTL in days for the generated certificate. Required only for generate-self-signed-certificate.
+        /// </summary>
+        /// <value>TTL in days for the generated certificate. Required only for generate-self-signed-certificate.</value>
+        [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
+        public long CertificateTtl { get; set; }
+
+        /// <summary>
         /// Protection from accidental deletion of this item [true/false]
         /// </summary>
         /// <value>Protection from accidental deletion of this item [true/false]</value>
@@ -107,6 +172,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided.
+        /// </summary>
+        /// <value>Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided.</value>
+        [DataMember(Name = "generate-self-signed-certificate", EmitDefaultValue = true)]
+        public bool GenerateSelfSignedCertificate { get; set; }
 
         /// <summary>
         /// gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]
@@ -181,8 +253,16 @@ namespace akeyless.Model
             sb.Append("class CreateClassicKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  CertificateCommonName: ").Append(CertificateCommonName).Append("\n");
+            sb.Append("  CertificateCountry: ").Append(CertificateCountry).Append("\n");
+            sb.Append("  CertificateDigestAlgo: ").Append(CertificateDigestAlgo).Append("\n");
+            sb.Append("  CertificateLocality: ").Append(CertificateLocality).Append("\n");
+            sb.Append("  CertificateOrganization: ").Append(CertificateOrganization).Append("\n");
+            sb.Append("  CertificateProvince: ").Append(CertificateProvince).Append("\n");
+            sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  GenerateSelfSignedCertificate: ").Append(GenerateSelfSignedCertificate).Append("\n");
             sb.Append("  GpgAlg: ").Append(GpgAlg).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
@@ -238,6 +318,40 @@ namespace akeyless.Model
                     this.CertFileData.Equals(input.CertFileData))
                 ) && 
                 (
+                    this.CertificateCommonName == input.CertificateCommonName ||
+                    (this.CertificateCommonName != null &&
+                    this.CertificateCommonName.Equals(input.CertificateCommonName))
+                ) && 
+                (
+                    this.CertificateCountry == input.CertificateCountry ||
+                    (this.CertificateCountry != null &&
+                    this.CertificateCountry.Equals(input.CertificateCountry))
+                ) && 
+                (
+                    this.CertificateDigestAlgo == input.CertificateDigestAlgo ||
+                    (this.CertificateDigestAlgo != null &&
+                    this.CertificateDigestAlgo.Equals(input.CertificateDigestAlgo))
+                ) && 
+                (
+                    this.CertificateLocality == input.CertificateLocality ||
+                    (this.CertificateLocality != null &&
+                    this.CertificateLocality.Equals(input.CertificateLocality))
+                ) && 
+                (
+                    this.CertificateOrganization == input.CertificateOrganization ||
+                    (this.CertificateOrganization != null &&
+                    this.CertificateOrganization.Equals(input.CertificateOrganization))
+                ) && 
+                (
+                    this.CertificateProvince == input.CertificateProvince ||
+                    (this.CertificateProvince != null &&
+                    this.CertificateProvince.Equals(input.CertificateProvince))
+                ) && 
+                (
+                    this.CertificateTtl == input.CertificateTtl ||
+                    this.CertificateTtl.Equals(input.CertificateTtl)
+                ) && 
+                (
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
@@ -246,6 +360,10 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.GenerateSelfSignedCertificate == input.GenerateSelfSignedCertificate ||
+                    this.GenerateSelfSignedCertificate.Equals(input.GenerateSelfSignedCertificate)
                 ) && 
                 (
                     this.GpgAlg == input.GpgAlg ||
@@ -311,6 +429,31 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
                 }
+                if (this.CertificateCommonName != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateCommonName.GetHashCode();
+                }
+                if (this.CertificateCountry != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateCountry.GetHashCode();
+                }
+                if (this.CertificateDigestAlgo != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateDigestAlgo.GetHashCode();
+                }
+                if (this.CertificateLocality != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateLocality.GetHashCode();
+                }
+                if (this.CertificateOrganization != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateOrganization.GetHashCode();
+                }
+                if (this.CertificateProvince != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateProvince.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CertificateTtl.GetHashCode();
                 if (this.DeleteProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
@@ -319,6 +462,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.GenerateSelfSignedCertificate.GetHashCode();
                 if (this.GpgAlg != null)
                 {
                     hashCode = (hashCode * 59) + this.GpgAlg.GetHashCode();

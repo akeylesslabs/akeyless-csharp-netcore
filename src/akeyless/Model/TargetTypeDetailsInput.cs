@@ -150,11 +150,14 @@ namespace akeyless.Model
         /// <param name="validationEmail">validationEmail.</param>
         /// <param name="venafiApiKey">venafiApiKey.</param>
         /// <param name="venafiBaseUrl">venafiBaseUrl.</param>
-        /// <param name="venafiTppPassword">venafiTppPassword.</param>
-        /// <param name="venafiTppUsername">venafiTppUsername.</param>
+        /// <param name="venafiTppAccessToken">venafiTppAccessToken.</param>
+        /// <param name="venafiTppClientId">venafiTppClientId.</param>
+        /// <param name="venafiTppPassword">Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead.</param>
+        /// <param name="venafiTppRefreshToken">venafiTppRefreshToken.</param>
+        /// <param name="venafiTppUsername">Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead.</param>
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string administrativePort = default(string), string apiKey = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string certificate = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string domainName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string email = default(string), string firstName = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string hostname = default(string), Dictionary<string, string> hosts = default(Dictionary<string, string>), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = default(string), string imapUser = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string lastName = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string phone = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string profileId = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), long timeout = default(long), string url = default(string), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), bool useTls = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string validationEmail = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppPassword = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        public TargetTypeDetailsInput(string administrativePort = default(string), string apiKey = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string certificate = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string domainName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string email = default(string), string firstName = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string hostname = default(string), Dictionary<string, string> hosts = default(Dictionary<string, string>), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = default(string), string imapUser = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string lastName = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string phone = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string profileId = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), long timeout = default(long), string url = default(string), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), bool useTls = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string validationEmail = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppAccessToken = default(string), string venafiTppClientId = default(string), string venafiTppPassword = default(string), string venafiTppRefreshToken = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
         {
             this.AdministrativePort = administrativePort;
             this.ApiKey = apiKey;
@@ -271,7 +274,10 @@ namespace akeyless.Model
             this.ValidationEmail = validationEmail;
             this.VenafiApiKey = venafiApiKey;
             this.VenafiBaseUrl = venafiBaseUrl;
+            this.VenafiTppAccessToken = venafiTppAccessToken;
+            this.VenafiTppClientId = venafiTppClientId;
             this.VenafiTppPassword = venafiTppPassword;
+            this.VenafiTppRefreshToken = venafiTppRefreshToken;
             this.VenafiTppUsername = venafiTppUsername;
             this.VenafiUseTpp = venafiUseTpp;
             this.VenafiZone = venafiZone;
@@ -983,14 +989,34 @@ namespace akeyless.Model
         public string VenafiBaseUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets VenafiTppPassword
+        /// Gets or Sets VenafiTppAccessToken
         /// </summary>
+        [DataMember(Name = "venafi_tpp_access_token", EmitDefaultValue = false)]
+        public string VenafiTppAccessToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VenafiTppClientId
+        /// </summary>
+        [DataMember(Name = "venafi_tpp_client_id", EmitDefaultValue = false)]
+        public string VenafiTppClientId { get; set; }
+
+        /// <summary>
+        /// Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
+        /// </summary>
+        /// <value>Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead</value>
         [DataMember(Name = "venafi_tpp_password", EmitDefaultValue = false)]
         public string VenafiTppPassword { get; set; }
 
         /// <summary>
-        /// Gets or Sets VenafiTppUsername
+        /// Gets or Sets VenafiTppRefreshToken
         /// </summary>
+        [DataMember(Name = "venafi_tpp_refresh_token", EmitDefaultValue = false)]
+        public string VenafiTppRefreshToken { get; set; }
+
+        /// <summary>
+        /// Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
+        /// </summary>
+        /// <value>Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead</value>
         [DataMember(Name = "venafi_tpp_username", EmitDefaultValue = false)]
         public string VenafiTppUsername { get; set; }
 
@@ -1129,7 +1155,10 @@ namespace akeyless.Model
             sb.Append("  ValidationEmail: ").Append(ValidationEmail).Append("\n");
             sb.Append("  VenafiApiKey: ").Append(VenafiApiKey).Append("\n");
             sb.Append("  VenafiBaseUrl: ").Append(VenafiBaseUrl).Append("\n");
+            sb.Append("  VenafiTppAccessToken: ").Append(VenafiTppAccessToken).Append("\n");
+            sb.Append("  VenafiTppClientId: ").Append(VenafiTppClientId).Append("\n");
             sb.Append("  VenafiTppPassword: ").Append(VenafiTppPassword).Append("\n");
+            sb.Append("  VenafiTppRefreshToken: ").Append(VenafiTppRefreshToken).Append("\n");
             sb.Append("  VenafiTppUsername: ").Append(VenafiTppUsername).Append("\n");
             sb.Append("  VenafiUseTpp: ").Append(VenafiUseTpp).Append("\n");
             sb.Append("  VenafiZone: ").Append(VenafiZone).Append("\n");
@@ -1739,9 +1768,24 @@ namespace akeyless.Model
                     this.VenafiBaseUrl.Equals(input.VenafiBaseUrl))
                 ) && 
                 (
+                    this.VenafiTppAccessToken == input.VenafiTppAccessToken ||
+                    (this.VenafiTppAccessToken != null &&
+                    this.VenafiTppAccessToken.Equals(input.VenafiTppAccessToken))
+                ) && 
+                (
+                    this.VenafiTppClientId == input.VenafiTppClientId ||
+                    (this.VenafiTppClientId != null &&
+                    this.VenafiTppClientId.Equals(input.VenafiTppClientId))
+                ) && 
+                (
                     this.VenafiTppPassword == input.VenafiTppPassword ||
                     (this.VenafiTppPassword != null &&
                     this.VenafiTppPassword.Equals(input.VenafiTppPassword))
+                ) && 
+                (
+                    this.VenafiTppRefreshToken == input.VenafiTppRefreshToken ||
+                    (this.VenafiTppRefreshToken != null &&
+                    this.VenafiTppRefreshToken.Equals(input.VenafiTppRefreshToken))
                 ) && 
                 (
                     this.VenafiTppUsername == input.VenafiTppUsername ||
@@ -2204,9 +2248,21 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.VenafiBaseUrl.GetHashCode();
                 }
+                if (this.VenafiTppAccessToken != null)
+                {
+                    hashCode = (hashCode * 59) + this.VenafiTppAccessToken.GetHashCode();
+                }
+                if (this.VenafiTppClientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.VenafiTppClientId.GetHashCode();
+                }
                 if (this.VenafiTppPassword != null)
                 {
                     hashCode = (hashCode * 59) + this.VenafiTppPassword.GetHashCode();
+                }
+                if (this.VenafiTppRefreshToken != null)
+                {
+                    hashCode = (hashCode * 59) + this.VenafiTppRefreshToken.GetHashCode();
                 }
                 if (this.VenafiTppUsername != null)
                 {

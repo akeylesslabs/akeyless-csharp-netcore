@@ -119,8 +119,11 @@ Name | Type | Description | Notes
 **ValidationEmail** | **string** |  | [optional] 
 **VenafiApiKey** | **string** |  | [optional] 
 **VenafiBaseUrl** | **string** |  | [optional] 
-**VenafiTppPassword** | **string** |  | [optional] 
-**VenafiTppUsername** | **string** |  | [optional] 
+**VenafiTppAccessToken** | **string** |  | [optional] 
+**VenafiTppClientId** | **string** |  | [optional] 
+**VenafiTppPassword** | **string** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] 
+**VenafiTppRefreshToken** | **string** |  | [optional] 
+**VenafiTppUsername** | **string** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] 
 **VenafiUseTpp** | **bool** |  | [optional] 
 **VenafiZone** | **string** |  | [optional] 
 

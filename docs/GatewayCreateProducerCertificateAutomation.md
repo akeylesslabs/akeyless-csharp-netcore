@@ -23,11 +23,12 @@ Name | Type | Description | Notes
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | **string** | User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone&#39;s&#39; Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/ | [optional] [default to "2160h"]
+**VenafiAccessToken** | **string** | Venafi Access Token to use to access the TPP environment (Relevant when using TPP) | [optional] 
 **VenafiApiKey** | **string** | Venafi API key | [optional] 
 **VenafiBaseurl** | **string** | Venafi Baseurl | [optional] 
-**VenafiPassword** | **string** | Venafi Password | [optional] 
+**VenafiClientId** | **string** | Venafi Client ID that was used when the access token was generated | [optional] [default to "akeyless"]
+**VenafiRefreshToken** | **string** | Venafi Refresh Token to use when the Access Token is expired (Relevant when using TPP) | [optional] 
 **VenafiUseTpp** | **bool** | Venafi using TPP | [optional] 
-**VenafiUsername** | **string** | Venafi Username | [optional] 
 **VenafiZone** | **string** | Venafi Zone | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
