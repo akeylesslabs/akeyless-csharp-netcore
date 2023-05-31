@@ -522,10 +522,12 @@ docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
 docs/SharingPolicyInfo.md
+docs/SignDataWithClassicKey.md
 docs/SignGPG.md
 docs/SignGPGOutput.md
 docs/SignJWTOutput.md
 docs/SignJWTWithClassicKey.md
+docs/SignOutput.md
 docs/SignPKCS1.md
 docs/SignPKCS1Output.md
 docs/SignPKICertOutput.md
@@ -648,6 +650,7 @@ docs/V2Api.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
 docs/VaultlessTokenizerInfo.md
+docs/VerifyDataWithClassicKey.md
 docs/VerifyGPG.md
 docs/VerifyJWTOutput.md
 docs/VerifyJWTWithClassicKey.md
@@ -655,10 +658,9 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/CertificateTemplateInfoTests.cs
-src/akeyless.Test/Model/DeriveKeyOutputTests.cs
-src/akeyless.Test/Model/DeriveKeyTests.cs
-src/akeyless.Test/Model/EventActionTests.cs
+src/akeyless.Test/Model/SignDataWithClassicKeyTests.cs
+src/akeyless.Test/Model/SignOutputTests.cs
+src/akeyless.Test/Model/VerifyDataWithClassicKeyTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1198,10 +1200,12 @@ src/akeyless/Model/SetItemState.cs
 src/akeyless/Model/SetRoleRule.cs
 src/akeyless/Model/ShareItem.cs
 src/akeyless/Model/SharingPolicyInfo.cs
+src/akeyless/Model/SignDataWithClassicKey.cs
 src/akeyless/Model/SignGPG.cs
 src/akeyless/Model/SignGPGOutput.cs
 src/akeyless/Model/SignJWTOutput.cs
 src/akeyless/Model/SignJWTWithClassicKey.cs
+src/akeyless/Model/SignOutput.cs
 src/akeyless/Model/SignPKCS1.cs
 src/akeyless/Model/SignPKCS1Output.cs
 src/akeyless/Model/SignPKICertOutput.cs
@@ -1323,6 +1327,7 @@ src/akeyless/Model/UploadRSA.cs
 src/akeyless/Model/ValidateToken.cs
 src/akeyless/Model/ValidateTokenOutput.cs
 src/akeyless/Model/VaultlessTokenizerInfo.cs
+src/akeyless/Model/VerifyDataWithClassicKey.cs
 src/akeyless/Model/VerifyGPG.cs
 src/akeyless/Model/VerifyJWTOutput.cs
 src/akeyless/Model/VerifyJWTWithClassicKey.cs

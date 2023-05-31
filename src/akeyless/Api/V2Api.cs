@@ -4247,6 +4247,26 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>SignOutput</returns>
+        SignOutput SignDataWithClassicKey(SignDataWithClassicKey body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of SignOutput</returns>
+        ApiResponse<SignOutput> SignDataWithClassicKeyWithHttpInfo(SignDataWithClassicKey body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SignGPGOutput</returns>
         SignGPGOutput SignGPG(SignGPG body, int operationIndex = 0);
 
@@ -5519,6 +5539,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ValidateTokenOutput</returns>
         ApiResponse<ValidateTokenOutput> ValidateTokenWithHttpInfo(ValidateToken body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>VerifyPKICertOutput</returns>
+        VerifyPKICertOutput VerifyDataWithClassicKey(VerifyDataWithClassicKey body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of VerifyPKICertOutput</returns>
+        ApiResponse<VerifyPKICertOutput> VerifyDataWithClassicKeyWithHttpInfo(VerifyDataWithClassicKey body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -10887,6 +10927,31 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignOutput</returns>
+        System.Threading.Tasks.Task<SignOutput> SignDataWithClassicKeyAsync(SignDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignOutput>> SignDataWithClassicKeyWithHttpInfoAsync(SignDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SignGPGOutput</returns>
         System.Threading.Tasks.Task<SignGPGOutput> SignGPGAsync(SignGPG body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -12475,6 +12540,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ValidateTokenOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<ValidateTokenOutput>> ValidateTokenWithHttpInfoAsync(ValidateToken body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VerifyPKICertOutput</returns>
+        System.Threading.Tasks.Task<VerifyPKICertOutput> VerifyDataWithClassicKeyAsync(VerifyDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VerifyPKICertOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VerifyPKICertOutput>> VerifyDataWithClassicKeyWithHttpInfoAsync(VerifyDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -43235,6 +43325,152 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>SignOutput</returns>
+        public SignOutput SignDataWithClassicKey(SignDataWithClassicKey body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<SignOutput> localVarResponse = SignDataWithClassicKeyWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of SignOutput</returns>
+        public akeyless.Client.ApiResponse<SignOutput> SignDataWithClassicKeyWithHttpInfo(SignDataWithClassicKey body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->SignDataWithClassicKey");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.SignDataWithClassicKey";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<SignOutput>("/sign-data-with-classic-key", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignDataWithClassicKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignOutput</returns>
+        public async System.Threading.Tasks.Task<SignOutput> SignDataWithClassicKeyAsync(SignDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<SignOutput> localVarResponse = await SignDataWithClassicKeyWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<SignOutput>> SignDataWithClassicKeyWithHttpInfoAsync(SignDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->SignDataWithClassicKey");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.SignDataWithClassicKey";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignOutput>("/sign-data-with-classic-key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignDataWithClassicKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SignGPGOutput</returns>
         public SignGPGOutput SignGPG(SignGPG body, int operationIndex = 0)
         {
@@ -52544,6 +52780,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ValidateToken", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>VerifyPKICertOutput</returns>
+        public VerifyPKICertOutput VerifyDataWithClassicKey(VerifyDataWithClassicKey body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<VerifyPKICertOutput> localVarResponse = VerifyDataWithClassicKeyWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of VerifyPKICertOutput</returns>
+        public akeyless.Client.ApiResponse<VerifyPKICertOutput> VerifyDataWithClassicKeyWithHttpInfo(VerifyDataWithClassicKey body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->VerifyDataWithClassicKey");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.VerifyDataWithClassicKey";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<VerifyPKICertOutput>("/verify-data-with-classic-key", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("VerifyDataWithClassicKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VerifyPKICertOutput</returns>
+        public async System.Threading.Tasks.Task<VerifyPKICertOutput> VerifyDataWithClassicKeyAsync(VerifyDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<VerifyPKICertOutput> localVarResponse = await VerifyDataWithClassicKeyWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VerifyPKICertOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<VerifyPKICertOutput>> VerifyDataWithClassicKeyWithHttpInfoAsync(VerifyDataWithClassicKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->VerifyDataWithClassicKey");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.VerifyDataWithClassicKey";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VerifyPKICertOutput>("/verify-data-with-classic-key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("VerifyDataWithClassicKey", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

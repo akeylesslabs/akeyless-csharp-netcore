@@ -215,6 +215,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state |  |
 | [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule |  |
 | [**ShareItem**](V2Api.md#shareitem) | **POST** /share-item |  |
+| [**SignDataWithClassicKey**](V2Api.md#signdatawithclassickey) | **POST** /sign-data-with-classic-key |  |
 | [**SignGPG**](V2Api.md#signgpg) | **POST** /sign-gpg |  |
 | [**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key |  |
 | [**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 |  |
@@ -279,6 +280,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateZeroSSLTarget**](V2Api.md#updatezerossltarget) | **POST** /update-zerossl-target |  |
 | [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa |  |
 | [**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token |  |
+| [**VerifyDataWithClassicKey**](V2Api.md#verifydatawithclassickey) | **POST** /verify-data-with-classic-key |  |
 | [**VerifyGPG**](V2Api.md#verifygpg) | **POST** /verify-gpg |  |
 | [**VerifyJWTWithClassicKey**](V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key |  |
 | [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 |  |
@@ -18823,6 +18825,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="signdatawithclassickey"></a>
+# **SignDataWithClassicKey**
+> SignOutput SignDataWithClassicKey (SignDataWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class SignDataWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new SignDataWithClassicKey(); // SignDataWithClassicKey | 
+
+            try
+            {
+                SignOutput result = apiInstance.SignDataWithClassicKey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.SignDataWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the SignDataWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SignOutput> response = apiInstance.SignDataWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SignDataWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SignDataWithClassicKey**](SignDataWithClassicKey.md) |  |  |
+
+### Return type
+
+[**SignOutput**](SignOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | signDataWithClassicKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="signgpg"></a>
 # **SignGPG**
 > SignGPGOutput SignGPG (SignGPG body)
@@ -24447,6 +24537,94 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | validateTokenResponse wraps response body. |  -  |
 | **401** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="verifydatawithclassickey"></a>
+# **VerifyDataWithClassicKey**
+> VerifyPKICertOutput VerifyDataWithClassicKey (VerifyDataWithClassicKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class VerifyDataWithClassicKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new VerifyDataWithClassicKey(); // VerifyDataWithClassicKey | 
+
+            try
+            {
+                VerifyPKICertOutput result = apiInstance.VerifyDataWithClassicKey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.VerifyDataWithClassicKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the VerifyDataWithClassicKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<VerifyPKICertOutput> response = apiInstance.VerifyDataWithClassicKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VerifyDataWithClassicKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**VerifyDataWithClassicKey**](VerifyDataWithClassicKey.md) |  |  |
+
+### Return type
+
+[**VerifyPKICertOutput**](VerifyPKICertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | verifyDataWithClassicKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
