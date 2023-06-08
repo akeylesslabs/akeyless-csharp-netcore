@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="filter">Filter by item name or part of it.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="minimalView">minimalView.</param>
+        /// <param name="pagination">Retrieve items with pagination (default to &quot;enabled&quot;).</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="path">Path to folder.</param>
         /// <param name="sraOnly">Filter by items with SRA functionality enabled (default to false).</param>
@@ -47,13 +48,15 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string accessibility = "regular", string filter = default(string), bool json = false, bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string accessibility = "regular", string filter = default(string), bool json = false, bool minimalView = default(bool), string pagination = "enabled", string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
             this.Filter = filter;
             this.Json = json;
             this.MinimalView = minimalView;
+            // use default value if no "pagination" provided
+            this.Pagination = pagination ?? "enabled";
             this.PaginationToken = paginationToken;
             this.Path = path;
             this.SraOnly = sraOnly;
@@ -90,6 +93,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "minimal-view", EmitDefaultValue = true)]
         public bool MinimalView { get; set; }
+
+        /// <summary>
+        /// Retrieve items with pagination
+        /// </summary>
+        /// <value>Retrieve items with pagination</value>
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
+        public string Pagination { get; set; }
 
         /// <summary>
         /// Next page reference
@@ -158,6 +168,7 @@ namespace akeyless.Model
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  MinimalView: ").Append(MinimalView).Append("\n");
+            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  SraOnly: ").Append(SraOnly).Append("\n");
@@ -218,6 +229,11 @@ namespace akeyless.Model
                 (
                     this.MinimalView == input.MinimalView ||
                     this.MinimalView.Equals(input.MinimalView)
+                ) && 
+                (
+                    this.Pagination == input.Pagination ||
+                    (this.Pagination != null &&
+                    this.Pagination.Equals(input.Pagination))
                 ) && 
                 (
                     this.PaginationToken == input.PaginationToken ||
@@ -281,6 +297,10 @@ namespace akeyless.Model
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 hashCode = (hashCode * 59) + this.MinimalView.GetHashCode();
+                if (this.Pagination != null)
+                {
+                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
+                }
                 if (this.PaginationToken != null)
                 {
                     hashCode = (hashCode * 59) + this.PaginationToken.GetHashCode();

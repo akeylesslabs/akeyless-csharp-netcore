@@ -47,14 +47,15 @@ namespace akeyless.Model
         /// <param name="allowedUriSans">A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list).</param>
         /// <param name="clientFlag">If set, certificates will be flagged for client auth use.</param>
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
-        /// <param name="country">A comma-separated list of the country that will be set in the issued certificate.</param>
+        /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="destinationPath">A path in which to save generated certificates.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from, required in Public CA mode.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
-        /// <param name="locality">A comma-separated list of the locality that will be set in the issued certificate.</param>
+        /// <param name="locality">A comma-separated list of localities that will be set in the issued certificate.</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">PKI certificate issuer name (required).</param>
         /// <param name="newName">New item name.</param>
@@ -62,17 +63,17 @@ namespace akeyless.Model
         /// <param name="notRequireCn">If set, clients can request certificates without a CN.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
-        /// <param name="postalCode">A comma-separated list of the postal code that will be set in the issued certificate.</param>
+        /// <param name="postalCode">A comma-separated list of postal codes that will be set in the issued certificate.</param>
         /// <param name="protectCertificates">Whether to protect generated certificates from deletion.</param>
-        /// <param name="province">A comma-separated list of the province that will be set in the issued certificate.</param>
+        /// <param name="province">A comma-separated list of provinces that will be set in the issued certificate.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
         /// <param name="signerKeyName">A key to sign the certificate with, required in Private CA mode (required) (default to &quot;dummy_signer_key&quot;).</param>
-        /// <param name="streetAddress">A comma-separated list of the street address that will be set in the issued certificate.</param>
+        /// <param name="streetAddress">A comma-separated list of street addresses that will be set in the issued certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
+        /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -95,6 +96,7 @@ namespace akeyless.Model
             this.ClientFlag = clientFlag;
             this.CodeSigningFlag = codeSigningFlag;
             this.Country = country;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.DestinationPath = destinationPath;
             this.ExpirationEventIn = expirationEventIn;
@@ -169,11 +171,18 @@ namespace akeyless.Model
         public bool CodeSigningFlag { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the country that will be set in the issued certificate
+        /// A comma-separated list of countries that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the country that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of countries that will be set in the issued certificate</value>
         [DataMember(Name = "country", EmitDefaultValue = false)]
         public string Country { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -218,9 +227,9 @@ namespace akeyless.Model
         public string KeyUsage { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the locality that will be set in the issued certificate
+        /// A comma-separated list of localities that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the locality that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of localities that will be set in the issued certificate</value>
         [DataMember(Name = "locality", EmitDefaultValue = false)]
         public string Locality { get; set; }
 
@@ -274,9 +283,9 @@ namespace akeyless.Model
         public string Organizations { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the postal code that will be set in the issued certificate
+        /// A comma-separated list of postal codes that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the postal code that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of postal codes that will be set in the issued certificate</value>
         [DataMember(Name = "postal-code", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
@@ -288,9 +297,9 @@ namespace akeyless.Model
         public bool ProtectCertificates { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the province that will be set in the issued certificate
+        /// A comma-separated list of provinces that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the province that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of provinces that will be set in the issued certificate</value>
         [DataMember(Name = "province", EmitDefaultValue = false)]
         public string Province { get; set; }
 
@@ -316,9 +325,9 @@ namespace akeyless.Model
         public string SignerKeyName { get; set; }
 
         /// <summary>
-        /// A comma-separated list of the street address that will be set in the issued certificate
+        /// A comma-separated list of street addresses that will be set in the issued certificate
         /// </summary>
-        /// <value>A comma-separated list of the street address that will be set in the issued certificate</value>
+        /// <value>A comma-separated list of street addresses that will be set in the issued certificate</value>
         [DataMember(Name = "street-address", EmitDefaultValue = false)]
         public string StreetAddress { get; set; }
 
@@ -330,9 +339,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// he requested Time To Live for the certificate, in seconds
+        /// The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs
         /// </summary>
-        /// <value>he requested Time To Live for the certificate, in seconds</value>
+        /// <value>The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs</value>
         [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = true)]
         public long Ttl { get; set; }
 
@@ -359,6 +368,7 @@ namespace akeyless.Model
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
@@ -454,6 +464,11 @@ namespace akeyless.Model
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -601,6 +616,10 @@ namespace akeyless.Model
                 if (this.Country != null)
                 {
                     hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

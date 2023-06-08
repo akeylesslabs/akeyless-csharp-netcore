@@ -45,12 +45,12 @@ namespace akeyless.Model
         /// <param name="hashed">Defines whether the data should be hashed as part of the signing. If true, the data will not be hashed (default to false).</param>
         /// <param name="hashingMethod">HashingMethod (default to &quot;SHA256&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="keyName">The name of the key to use in the verification process (required).</param>
+        /// <param name="name">The name of the key to use in the verification process (required).</param>
         /// <param name="signature">The data&#39;s signature in a Base64 format. (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public VerifyDataWithClassicKey(string data = default(string), string displayId = default(string), bool hashed = false, string hashingMethod = "SHA256", bool json = false, string keyName = default(string), string signature = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public VerifyDataWithClassicKey(string data = default(string), string displayId = default(string), bool hashed = false, string hashingMethod = "SHA256", bool json = false, string name = default(string), string signature = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -58,12 +58,12 @@ namespace akeyless.Model
                 throw new ArgumentNullException("data is a required property for VerifyDataWithClassicKey and cannot be null");
             }
             this.Data = data;
-            // to ensure "keyName" is required (not null)
-            if (keyName == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("keyName is a required property for VerifyDataWithClassicKey and cannot be null");
+                throw new ArgumentNullException("name is a required property for VerifyDataWithClassicKey and cannot be null");
             }
-            this.KeyName = keyName;
+            this.Name = name;
             // to ensure "signature" is required (not null)
             if (signature == null)
             {
@@ -119,8 +119,8 @@ namespace akeyless.Model
         /// The name of the key to use in the verification process
         /// </summary>
         /// <value>The name of the key to use in the verification process</value>
-        [DataMember(Name = "key-name", IsRequired = true, EmitDefaultValue = true)]
-        public string KeyName { get; set; }
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// The data&#39;s signature in a Base64 format.
@@ -163,7 +163,7 @@ namespace akeyless.Model
             sb.Append("  Hashed: ").Append(Hashed).Append("\n");
             sb.Append("  HashingMethod: ").Append(HashingMethod).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
-            sb.Append("  KeyName: ").Append(KeyName).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -227,9 +227,9 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
-                    this.KeyName == input.KeyName ||
-                    (this.KeyName != null &&
-                    this.KeyName.Equals(input.KeyName))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.Signature == input.Signature ||
@@ -275,9 +275,9 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.HashingMethod.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
-                if (this.KeyName != null)
+                if (this.Name != null)
                 {
-                    hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 if (this.Signature != null)
                 {

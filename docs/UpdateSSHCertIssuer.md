@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
 **AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
+**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Extensions** | **Dictionary&lt;string, string&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 **SecureAccessUseInternalBastion** | **bool** | Use internal SSH Bastion | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | **long** | he requested Time To Live for the certificate, in seconds | 
+**Ttl** | **long** | The requested Time To Live for the certificate, in seconds | 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

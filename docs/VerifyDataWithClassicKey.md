@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Hashed** | **bool** | Defines whether the data should be hashed as part of the signing. If true, the data will not be hashed | [optional] [default to false]
 **HashingMethod** | **string** | HashingMethod | [optional] [default to "SHA256"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**KeyName** | **string** | The name of the key to use in the verification process | 
+**Name** | **string** | The name of the key to use in the verification process | 
 **Signature** | **string** | The data&#39;s signature in a Base64 format. | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

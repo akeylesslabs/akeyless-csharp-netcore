@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Filter** | **string** | Filter by item name or part of it | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MinimalView** | **bool** |  | [optional] 
+**Pagination** | **string** | Retrieve items with pagination | [optional] [default to "enabled"]
 **PaginationToken** | **string** | Next page reference | [optional] 
 **Path** | **string** | Path to folder | [optional] 
 **SraOnly** | **bool** | Filter by items with SRA functionality enabled | [optional] [default to false]

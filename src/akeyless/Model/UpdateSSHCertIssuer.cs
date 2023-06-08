@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="allowedUsers">Users allowed to fetch the certificate, e.g root,ubuntu (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -58,9 +59,9 @@ namespace akeyless.Model
         /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">he requested Time To Live for the certificate, in seconds (required).</param>
+        /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(List<string> addTag = default(List<string>), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.SignerKeyName = signerKeyName;
             this.Ttl = ttl;
             this.AddTag = addTag;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Extensions = extensions;
             this.Json = json;
@@ -112,6 +114,13 @@ namespace akeyless.Model
         /// <value>Users allowed to fetch the certificate, e.g root,ubuntu</value>
         [DataMember(Name = "allowed-users", IsRequired = true, EmitDefaultValue = true)]
         public string AllowedUsers { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -226,9 +235,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// he requested Time To Live for the certificate, in seconds
+        /// The requested Time To Live for the certificate, in seconds
         /// </summary>
-        /// <value>he requested Time To Live for the certificate, in seconds</value>
+        /// <value>The requested Time To Live for the certificate, in seconds</value>
         [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = true)]
         public long Ttl { get; set; }
 
@@ -249,6 +258,7 @@ namespace akeyless.Model
             sb.Append("class UpdateSSHCertIssuer {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  AllowedUsers: ").Append(AllowedUsers).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -312,6 +322,11 @@ namespace akeyless.Model
                     this.AllowedUsers == input.AllowedUsers ||
                     (this.AllowedUsers != null &&
                     this.AllowedUsers.Equals(input.AllowedUsers))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -421,6 +436,10 @@ namespace akeyless.Model
                 if (this.AllowedUsers != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedUsers.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {
