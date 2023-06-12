@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="accessDate">accessDate.</param>
         /// <param name="accessInfo">accessInfo.</param>
         /// <param name="accountId">accountId.</param>
+        /// <param name="associatedGwIds">associatedGwIds.</param>
         /// <param name="authMethodAccessId">authMethodAccessId.</param>
         /// <param name="authMethodName">authMethodName.</param>
         /// <param name="authMethodRolesAssoc">authMethodRolesAssoc.</param>
@@ -45,11 +46,12 @@ namespace akeyless.Model
         /// <param name="creationDate">creationDate.</param>
         /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
+        public AuthMethod(DateTime accessDate = default(DateTime), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
         {
             this.AccessDate = accessDate;
             this.AccessInfo = accessInfo;
             this.AccountId = accountId;
+            this.AssociatedGwIds = associatedGwIds;
             this.AuthMethodAccessId = authMethodAccessId;
             this.AuthMethodName = authMethodName;
             this.AuthMethodRolesAssoc = authMethodRolesAssoc;
@@ -76,6 +78,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "account_id", EmitDefaultValue = false)]
         public string AccountId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssociatedGwIds
+        /// </summary>
+        [DataMember(Name = "associated_gw_ids", EmitDefaultValue = false)]
+        public List<long> AssociatedGwIds { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthMethodAccessId
@@ -130,6 +138,7 @@ namespace akeyless.Model
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  AccessInfo: ").Append(AccessInfo).Append("\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
+            sb.Append("  AssociatedGwIds: ").Append(AssociatedGwIds).Append("\n");
             sb.Append("  AuthMethodAccessId: ").Append(AuthMethodAccessId).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("  AuthMethodRolesAssoc: ").Append(AuthMethodRolesAssoc).Append("\n");
@@ -186,6 +195,12 @@ namespace akeyless.Model
                     this.AccountId == input.AccountId ||
                     (this.AccountId != null &&
                     this.AccountId.Equals(input.AccountId))
+                ) && 
+                (
+                    this.AssociatedGwIds == input.AssociatedGwIds ||
+                    this.AssociatedGwIds != null &&
+                    input.AssociatedGwIds != null &&
+                    this.AssociatedGwIds.SequenceEqual(input.AssociatedGwIds)
                 ) && 
                 (
                     this.AuthMethodAccessId == input.AuthMethodAccessId ||
@@ -245,6 +260,10 @@ namespace akeyless.Model
                 if (this.AccountId != null)
                 {
                     hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
+                }
+                if (this.AssociatedGwIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssociatedGwIds.GetHashCode();
                 }
                 if (this.AuthMethodAccessId != null)
                 {

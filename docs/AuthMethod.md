@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessDate** | **DateTime** |  | [optional] 
 **AccessInfo** | [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] 
 **AccountId** | **string** |  | [optional] 
+**AssociatedGwIds** | **List&lt;long&gt;** |  | [optional] 
 **AuthMethodAccessId** | **string** |  | [optional] 
 **AuthMethodName** | **string** |  | [optional] 
 **AuthMethodRolesAssoc** | [**List&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] 
