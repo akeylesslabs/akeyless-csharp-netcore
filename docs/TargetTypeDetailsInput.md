@@ -64,7 +64,7 @@ Name | Type | Description | Notes
 **GkeServiceAccountName** | **string** |  | [optional] 
 **Host** | **string** |  | [optional] 
 **Hostname** | **string** |  | [optional] 
-**Hosts** | **Dictionary&lt;string, string&gt;** |  | [optional] 
+**Hosts** | **Dictionary&lt;string, string&gt;** | key hostname, value description | [optional] 
 **ImapFqdn** | **string** |  | [optional] 
 **ImapPassword** | **string** |  | [optional] 
 **ImapPort** | **string** |  | [optional] 

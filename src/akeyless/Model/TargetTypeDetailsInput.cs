@@ -95,7 +95,7 @@ namespace akeyless.Model
         /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
         /// <param name="host">host.</param>
         /// <param name="hostname">hostname.</param>
-        /// <param name="hosts">hosts.</param>
+        /// <param name="hosts">key hostname, value description.</param>
         /// <param name="imapFqdn">imapFqdn.</param>
         /// <param name="imapPassword">imapPassword.</param>
         /// <param name="imapPort">imapPort.</param>
@@ -653,8 +653,9 @@ namespace akeyless.Model
         public string Hostname { get; set; }
 
         /// <summary>
-        /// Gets or Sets Hosts
+        /// key hostname, value description
         /// </summary>
+        /// <value>key hostname, value description</value>
         [DataMember(Name = "hosts", EmitDefaultValue = false)]
         public Dictionary<string, string> Hosts { get; set; }
 

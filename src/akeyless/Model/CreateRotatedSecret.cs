@@ -62,6 +62,7 @@ namespace akeyless.Model
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorCustomCmd">Custom rotation command (relevant only for ssh target).</param>
         /// <param name="rotatorType">Rotator Type (required).</param>
+        /// <param name="samePassword">Rotate same password for each host from the Linked Target (relevant only for Linked Target).</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (relevant only for rdp) (default to false).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id (relevant only for aws).</param>
         /// <param name="secureAccessAwsNativeCli">The AWS native cli.</param>
@@ -84,7 +85,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot;.</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -127,6 +128,7 @@ namespace akeyless.Model
             this.RotationInterval = rotationInterval;
             this.RotatorCredsType = rotatorCredsType;
             this.RotatorCustomCmd = rotatorCustomCmd;
+            this.SamePassword = samePassword;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
             this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
             this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
@@ -302,6 +304,13 @@ namespace akeyless.Model
         /// <value>Rotator Type</value>
         [DataMember(Name = "rotator-type", IsRequired = true, EmitDefaultValue = true)]
         public string RotatorType { get; set; }
+
+        /// <summary>
+        /// Rotate same password for each host from the Linked Target (relevant only for Linked Target)
+        /// </summary>
+        /// <value>Rotate same password for each host from the Linked Target (relevant only for Linked Target)</value>
+        [DataMember(Name = "same-password", EmitDefaultValue = false)]
+        public string SamePassword { get; set; }
 
         /// <summary>
         /// Allow providing external user for a domain users (relevant only for rdp)
@@ -487,6 +496,7 @@ namespace akeyless.Model
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
             sb.Append("  RotatorCustomCmd: ").Append(RotatorCustomCmd).Append("\n");
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
+            sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
             sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
             sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");
@@ -651,6 +661,11 @@ namespace akeyless.Model
                     this.RotatorType == input.RotatorType ||
                     (this.RotatorType != null &&
                     this.RotatorType.Equals(input.RotatorType))
+                ) && 
+                (
+                    this.SamePassword == input.SamePassword ||
+                    (this.SamePassword != null &&
+                    this.SamePassword.Equals(input.SamePassword))
                 ) && 
                 (
                     this.SecureAccessAllowExternalUser == input.SecureAccessAllowExternalUser ||
@@ -851,6 +866,10 @@ namespace akeyless.Model
                 if (this.RotatorType != null)
                 {
                     hashCode = (hashCode * 59) + this.RotatorType.GetHashCode();
+                }
+                if (this.SamePassword != null)
+                {
+                    hashCode = (hashCode * 59) + this.SamePassword.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SecureAccessAllowExternalUser.GetHashCode();
                 if (this.SecureAccessAwsAccountId != null)

@@ -40,13 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetRotatedSecretValue" /> class.
         /// </summary>
+        /// <param name="host">Get rotated secret value of specific Host (relevant only for Linked Target).</param>
         /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="names">Secret name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Secret version.</param>
-        public GetRotatedSecretValue(string ignoreCache = "false", bool json = false, string names = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetRotatedSecretValue(string host = default(string), string ignoreCache = "false", bool json = false, string names = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
             if (names == null)
@@ -54,6 +55,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("names is a required property for GetRotatedSecretValue and cannot be null");
             }
             this.Names = names;
+            this.Host = host;
             // use default value if no "ignoreCache" provided
             this.IgnoreCache = ignoreCache ?? "false";
             this.Json = json;
@@ -61,6 +63,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// Get rotated secret value of specific Host (relevant only for Linked Target)
+        /// </summary>
+        /// <value>Get rotated secret value of specific Host (relevant only for Linked Target)</value>
+        [DataMember(Name = "host", EmitDefaultValue = false)]
+        public string Host { get; set; }
 
         /// <summary>
         /// Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
@@ -112,6 +121,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetRotatedSecretValue {\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Names: ").Append(Names).Append("\n");
@@ -154,6 +164,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Host == input.Host ||
+                    (this.Host != null &&
+                    this.Host.Equals(input.Host))
+                ) && 
+                (
                     this.IgnoreCache == input.IgnoreCache ||
                     (this.IgnoreCache != null &&
                     this.IgnoreCache.Equals(input.IgnoreCache))
@@ -192,6 +207,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Host != null)
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
                 if (this.IgnoreCache != null)
                 {
                     hashCode = (hashCode * 59) + this.IgnoreCache.GetHashCode();

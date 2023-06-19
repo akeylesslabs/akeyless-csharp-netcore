@@ -38,12 +38,14 @@ namespace akeyless.Model
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
+        /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.DataProtectionSection = dataProtectionSection;
             this.EnableRequestForAccess = enableRequestForAccess;
             this.PasswordPolicy = passwordPolicy;
+            this.ProtectItemsByDefault = protectItemsByDefault;
             this.SharingPolicy = sharingPolicy;
         }
 
@@ -66,6 +68,12 @@ namespace akeyless.Model
         public PasswordPolicyInfo PasswordPolicy { get; set; }
 
         /// <summary>
+        /// Gets or Sets ProtectItemsByDefault
+        /// </summary>
+        [DataMember(Name = "protect_items_by_default", EmitDefaultValue = true)]
+        public bool ProtectItemsByDefault { get; set; }
+
+        /// <summary>
         /// Gets or Sets SharingPolicy
         /// </summary>
         [DataMember(Name = "sharing_policy", EmitDefaultValue = false)]
@@ -82,6 +90,7 @@ namespace akeyless.Model
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
+            sb.Append("  ProtectItemsByDefault: ").Append(ProtectItemsByDefault).Append("\n");
             sb.Append("  SharingPolicy: ").Append(SharingPolicy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -133,6 +142,10 @@ namespace akeyless.Model
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
                 ) && 
                 (
+                    this.ProtectItemsByDefault == input.ProtectItemsByDefault ||
+                    this.ProtectItemsByDefault.Equals(input.ProtectItemsByDefault)
+                ) && 
+                (
                     this.SharingPolicy == input.SharingPolicy ||
                     (this.SharingPolicy != null &&
                     this.SharingPolicy.Equals(input.SharingPolicy))
@@ -157,6 +170,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ProtectItemsByDefault.GetHashCode();
                 if (this.SharingPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.SharingPolicy.GetHashCode();

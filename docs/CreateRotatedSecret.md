@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **RotatorCredsType** | **string** |  | [optional] 
 **RotatorCustomCmd** | **string** | Custom rotation command (relevant only for ssh target) | [optional] 
 **RotatorType** | **string** | Rotator Type | 
+**SamePassword** | **string** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] 
 **SecureAccessAllowExternalUser** | **bool** | Allow providing external user for a domain users (relevant only for rdp) | [optional] [default to false]
 **SecureAccessAwsAccountId** | **string** | The AWS account id (relevant only for aws) | [optional] 
 **SecureAccessAwsNativeCli** | **bool** | The AWS native cli | [optional] 

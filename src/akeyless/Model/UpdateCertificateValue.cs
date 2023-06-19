@@ -40,16 +40,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateCertificateValue" /> class.
         /// </summary>
+        /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="certificateData">Content of the certificate in a Base64 format..</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="description">Description of the object.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="format">CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Content of the certificate&#39;s private key in a Base64 format..</param>
+        /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Certificate name (required).</param>
+        /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateCertificateValue(string certificateData = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), bool json = false, string key = default(string), string keyData = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateCertificateValue(List<string> addTag = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> rmTag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -57,15 +62,27 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateCertificateValue and cannot be null");
             }
             this.Name = name;
+            this.AddTag = addTag;
             this.CertificateData = certificateData;
+            this.DeleteProtection = deleteProtection;
+            this.Description = description;
             this.ExpirationEventIn = expirationEventIn;
             this.Format = format;
             this.Json = json;
             this.Key = key;
             this.KeyData = keyData;
+            this.Metadata = metadata;
+            this.RmTag = rmTag;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// List of the new tags that will be attached to this item
+        /// </summary>
+        /// <value>List of the new tags that will be attached to this item</value>
+        [DataMember(Name = "add-tag", EmitDefaultValue = false)]
+        public List<string> AddTag { get; set; }
 
         /// <summary>
         /// Content of the certificate in a Base64 format.
@@ -73,6 +90,20 @@ namespace akeyless.Model
         /// <value>Content of the certificate in a Base64 format.</value>
         [DataMember(Name = "certificate-data", EmitDefaultValue = false)]
         public string CertificateData { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this item [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Description of the object
+        /// </summary>
+        /// <value>Description of the object</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
@@ -110,11 +141,25 @@ namespace akeyless.Model
         public string KeyData { get; set; }
 
         /// <summary>
+        /// Deprecated - use description
+        /// </summary>
+        /// <value>Deprecated - use description</value>
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
+        public string Metadata { get; set; }
+
+        /// <summary>
         /// Certificate name
         /// </summary>
         /// <value>Certificate name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// List of the existent tags that will be removed from this item
+        /// </summary>
+        /// <value>List of the existent tags that will be removed from this item</value>
+        [DataMember(Name = "rm-tag", EmitDefaultValue = false)]
+        public List<string> RmTag { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -138,13 +183,18 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateCertificateValue {\n");
+            sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  CertificateData: ").Append(CertificateData).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -183,9 +233,25 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.AddTag == input.AddTag ||
+                    this.AddTag != null &&
+                    input.AddTag != null &&
+                    this.AddTag.SequenceEqual(input.AddTag)
+                ) && 
+                (
                     this.CertificateData == input.CertificateData ||
                     (this.CertificateData != null &&
                     this.CertificateData.Equals(input.CertificateData))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ExpirationEventIn == input.ExpirationEventIn ||
@@ -213,9 +279,20 @@ namespace akeyless.Model
                     this.KeyData.Equals(input.KeyData))
                 ) && 
                 (
+                    this.Metadata == input.Metadata ||
+                    (this.Metadata != null &&
+                    this.Metadata.Equals(input.Metadata))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.RmTag == input.RmTag ||
+                    this.RmTag != null &&
+                    input.RmTag != null &&
+                    this.RmTag.SequenceEqual(input.RmTag)
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -238,9 +315,21 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AddTag != null)
+                {
+                    hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
+                }
                 if (this.CertificateData != null)
                 {
                     hashCode = (hashCode * 59) + this.CertificateData.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 if (this.ExpirationEventIn != null)
                 {
@@ -259,9 +348,17 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
                 }
+                if (this.Metadata != null)
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.RmTag != null)
+                {
+                    hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
                 }
                 if (this.Token != null)
                 {

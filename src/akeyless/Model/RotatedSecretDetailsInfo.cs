@@ -45,7 +45,8 @@ namespace akeyless.Model
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="rotatorType">rotatorType.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string))
+        /// <param name="samePassword">samePassword.</param>
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.GwClusterId = gwClusterId;
@@ -57,6 +58,7 @@ namespace akeyless.Model
             this.RotatorCredsType = rotatorCredsType;
             this.RotatorStatus = rotatorStatus;
             this.RotatorType = rotatorType;
+            this.SamePassword = samePassword;
         }
 
         /// <summary>
@@ -121,6 +123,12 @@ namespace akeyless.Model
         public string RotatorType { get; set; }
 
         /// <summary>
+        /// Gets or Sets SamePassword
+        /// </summary>
+        [DataMember(Name = "same_password", EmitDefaultValue = true)]
+        public bool SamePassword { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -138,6 +146,7 @@ namespace akeyless.Model
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
             sb.Append("  RotatorStatus: ").Append(RotatorStatus).Append("\n");
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
+            sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -217,6 +226,10 @@ namespace akeyless.Model
                     this.RotatorType == input.RotatorType ||
                     (this.RotatorType != null &&
                     this.RotatorType.Equals(input.RotatorType))
+                ) && 
+                (
+                    this.SamePassword == input.SamePassword ||
+                    this.SamePassword.Equals(input.SamePassword)
                 );
         }
 
@@ -254,6 +267,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.RotatorType.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SamePassword.GetHashCode();
                 return hashCode;
             }
         }

@@ -130,6 +130,7 @@ Name | Type | Description | Notes
 **LdapBindDn** | **string** |  | [optional] 
 **LdapBindPassword** | **string** |  | [optional] 
 **LdapCertificate** | **string** |  | [optional] 
+**LdapGroupDn** | **string** |  | [optional] 
 **LdapTokenExpiration** | **string** |  | [optional] 
 **LdapUrl** | **string** |  | [optional] 
 **LdapUserAttr** | **string** |  | [optional] 
