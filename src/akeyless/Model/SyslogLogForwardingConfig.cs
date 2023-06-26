@@ -35,17 +35,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SyslogLogForwardingConfig" /> class.
         /// </summary>
+        /// <param name="syslogEnableTls">syslogEnableTls.</param>
         /// <param name="syslogFormatter">syslogFormatter.</param>
         /// <param name="syslogHost">syslogHost.</param>
         /// <param name="syslogNetwork">syslogNetwork.</param>
         /// <param name="syslogTargetTag">syslogTargetTag.</param>
-        public SyslogLogForwardingConfig(string syslogFormatter = default(string), string syslogHost = default(string), string syslogNetwork = default(string), string syslogTargetTag = default(string))
+        /// <param name="syslogTlsCertificate">syslogTlsCertificate.</param>
+        public SyslogLogForwardingConfig(bool syslogEnableTls = default(bool), string syslogFormatter = default(string), string syslogHost = default(string), string syslogNetwork = default(string), string syslogTargetTag = default(string), string syslogTlsCertificate = default(string))
         {
+            this.SyslogEnableTls = syslogEnableTls;
             this.SyslogFormatter = syslogFormatter;
             this.SyslogHost = syslogHost;
             this.SyslogNetwork = syslogNetwork;
             this.SyslogTargetTag = syslogTargetTag;
+            this.SyslogTlsCertificate = syslogTlsCertificate;
         }
+
+        /// <summary>
+        /// Gets or Sets SyslogEnableTls
+        /// </summary>
+        [DataMember(Name = "syslog_enable_tls", EmitDefaultValue = true)]
+        public bool SyslogEnableTls { get; set; }
 
         /// <summary>
         /// Gets or Sets SyslogFormatter
@@ -72,6 +82,12 @@ namespace akeyless.Model
         public string SyslogTargetTag { get; set; }
 
         /// <summary>
+        /// Gets or Sets SyslogTlsCertificate
+        /// </summary>
+        [DataMember(Name = "syslog_tls_certificate", EmitDefaultValue = false)]
+        public string SyslogTlsCertificate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -79,10 +95,12 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SyslogLogForwardingConfig {\n");
+            sb.Append("  SyslogEnableTls: ").Append(SyslogEnableTls).Append("\n");
             sb.Append("  SyslogFormatter: ").Append(SyslogFormatter).Append("\n");
             sb.Append("  SyslogHost: ").Append(SyslogHost).Append("\n");
             sb.Append("  SyslogNetwork: ").Append(SyslogNetwork).Append("\n");
             sb.Append("  SyslogTargetTag: ").Append(SyslogTargetTag).Append("\n");
+            sb.Append("  SyslogTlsCertificate: ").Append(SyslogTlsCertificate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,6 +137,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.SyslogEnableTls == input.SyslogEnableTls ||
+                    this.SyslogEnableTls.Equals(input.SyslogEnableTls)
+                ) && 
+                (
                     this.SyslogFormatter == input.SyslogFormatter ||
                     (this.SyslogFormatter != null &&
                     this.SyslogFormatter.Equals(input.SyslogFormatter))
@@ -137,6 +159,11 @@ namespace akeyless.Model
                     this.SyslogTargetTag == input.SyslogTargetTag ||
                     (this.SyslogTargetTag != null &&
                     this.SyslogTargetTag.Equals(input.SyslogTargetTag))
+                ) && 
+                (
+                    this.SyslogTlsCertificate == input.SyslogTlsCertificate ||
+                    (this.SyslogTlsCertificate != null &&
+                    this.SyslogTlsCertificate.Equals(input.SyslogTlsCertificate))
                 );
         }
 
@@ -149,6 +176,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.SyslogEnableTls.GetHashCode();
                 if (this.SyslogFormatter != null)
                 {
                     hashCode = (hashCode * 59) + this.SyslogFormatter.GetHashCode();
@@ -164,6 +192,10 @@ namespace akeyless.Model
                 if (this.SyslogTargetTag != null)
                 {
                     hashCode = (hashCode * 59) + this.SyslogTargetTag.GetHashCode();
+                }
+                if (this.SyslogTlsCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.SyslogTlsCertificate.GetHashCode();
                 }
                 return hashCode;
             }

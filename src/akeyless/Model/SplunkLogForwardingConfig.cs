@@ -35,19 +35,29 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SplunkLogForwardingConfig" /> class.
         /// </summary>
+        /// <param name="splunkEnableTls">splunkEnableTls.</param>
         /// <param name="splunkIndex">splunkIndex.</param>
         /// <param name="splunkSource">splunkSource.</param>
         /// <param name="splunkSourcetype">splunkSourcetype.</param>
+        /// <param name="splunkTlsCertificate">splunkTlsCertificate.</param>
         /// <param name="splunkToken">splunkToken.</param>
         /// <param name="splunkUrl">splunkUrl.</param>
-        public SplunkLogForwardingConfig(string splunkIndex = default(string), string splunkSource = default(string), string splunkSourcetype = default(string), string splunkToken = default(string), string splunkUrl = default(string))
+        public SplunkLogForwardingConfig(bool splunkEnableTls = default(bool), string splunkIndex = default(string), string splunkSource = default(string), string splunkSourcetype = default(string), string splunkTlsCertificate = default(string), string splunkToken = default(string), string splunkUrl = default(string))
         {
+            this.SplunkEnableTls = splunkEnableTls;
             this.SplunkIndex = splunkIndex;
             this.SplunkSource = splunkSource;
             this.SplunkSourcetype = splunkSourcetype;
+            this.SplunkTlsCertificate = splunkTlsCertificate;
             this.SplunkToken = splunkToken;
             this.SplunkUrl = splunkUrl;
         }
+
+        /// <summary>
+        /// Gets or Sets SplunkEnableTls
+        /// </summary>
+        [DataMember(Name = "splunk_enable_tls", EmitDefaultValue = true)]
+        public bool SplunkEnableTls { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkIndex
@@ -66,6 +76,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "splunk_sourcetype", EmitDefaultValue = false)]
         public string SplunkSourcetype { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SplunkTlsCertificate
+        /// </summary>
+        [DataMember(Name = "splunk_tls_certificate", EmitDefaultValue = false)]
+        public string SplunkTlsCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkToken
@@ -87,9 +103,11 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SplunkLogForwardingConfig {\n");
+            sb.Append("  SplunkEnableTls: ").Append(SplunkEnableTls).Append("\n");
             sb.Append("  SplunkIndex: ").Append(SplunkIndex).Append("\n");
             sb.Append("  SplunkSource: ").Append(SplunkSource).Append("\n");
             sb.Append("  SplunkSourcetype: ").Append(SplunkSourcetype).Append("\n");
+            sb.Append("  SplunkTlsCertificate: ").Append(SplunkTlsCertificate).Append("\n");
             sb.Append("  SplunkToken: ").Append(SplunkToken).Append("\n");
             sb.Append("  SplunkUrl: ").Append(SplunkUrl).Append("\n");
             sb.Append("}\n");
@@ -128,6 +146,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.SplunkEnableTls == input.SplunkEnableTls ||
+                    this.SplunkEnableTls.Equals(input.SplunkEnableTls)
+                ) && 
+                (
                     this.SplunkIndex == input.SplunkIndex ||
                     (this.SplunkIndex != null &&
                     this.SplunkIndex.Equals(input.SplunkIndex))
@@ -141,6 +163,11 @@ namespace akeyless.Model
                     this.SplunkSourcetype == input.SplunkSourcetype ||
                     (this.SplunkSourcetype != null &&
                     this.SplunkSourcetype.Equals(input.SplunkSourcetype))
+                ) && 
+                (
+                    this.SplunkTlsCertificate == input.SplunkTlsCertificate ||
+                    (this.SplunkTlsCertificate != null &&
+                    this.SplunkTlsCertificate.Equals(input.SplunkTlsCertificate))
                 ) && 
                 (
                     this.SplunkToken == input.SplunkToken ||
@@ -163,6 +190,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.SplunkEnableTls.GetHashCode();
                 if (this.SplunkIndex != null)
                 {
                     hashCode = (hashCode * 59) + this.SplunkIndex.GetHashCode();
@@ -174,6 +202,10 @@ namespace akeyless.Model
                 if (this.SplunkSourcetype != null)
                 {
                     hashCode = (hashCode * 59) + this.SplunkSourcetype.GetHashCode();
+                }
+                if (this.SplunkTlsCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.SplunkTlsCertificate.GetHashCode();
                 }
                 if (this.SplunkToken != null)
                 {

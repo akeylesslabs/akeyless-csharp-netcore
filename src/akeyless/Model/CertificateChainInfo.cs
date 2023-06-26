@@ -37,14 +37,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificateChain">certificateChain.</param>
         /// <param name="certificateFormat">certificateFormat.</param>
+        /// <param name="certificateIssuerItemId">certificateIssuerItemId.</param>
         /// <param name="certificateIssuerName">certificateIssuerName.</param>
         /// <param name="certificatePem">certificatePem.</param>
         /// <param name="certificateStatus">certificateStatus.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
-        public CertificateChainInfo(List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>))
+        public CertificateChainInfo(List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>))
         {
             this.CertificateChain = certificateChain;
             this.CertificateFormat = certificateFormat;
+            this.CertificateIssuerItemId = certificateIssuerItemId;
             this.CertificateIssuerName = certificateIssuerName;
             this.CertificatePem = certificatePem;
             this.CertificateStatus = certificateStatus;
@@ -62,6 +64,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate_format", EmitDefaultValue = false)]
         public string CertificateFormat { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateIssuerItemId
+        /// </summary>
+        [DataMember(Name = "certificate_issuer_item_id", EmitDefaultValue = false)]
+        public long CertificateIssuerItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificateIssuerName
@@ -97,6 +105,7 @@ namespace akeyless.Model
             sb.Append("class CertificateChainInfo {\n");
             sb.Append("  CertificateChain: ").Append(CertificateChain).Append("\n");
             sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
+            sb.Append("  CertificateIssuerItemId: ").Append(CertificateIssuerItemId).Append("\n");
             sb.Append("  CertificateIssuerName: ").Append(CertificateIssuerName).Append("\n");
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  CertificateStatus: ").Append(CertificateStatus).Append("\n");
@@ -148,6 +157,10 @@ namespace akeyless.Model
                     this.CertificateFormat.Equals(input.CertificateFormat))
                 ) && 
                 (
+                    this.CertificateIssuerItemId == input.CertificateIssuerItemId ||
+                    this.CertificateIssuerItemId.Equals(input.CertificateIssuerItemId)
+                ) && 
+                (
                     this.CertificateIssuerName == input.CertificateIssuerName ||
                     (this.CertificateIssuerName != null &&
                     this.CertificateIssuerName.Equals(input.CertificateIssuerName))
@@ -187,6 +200,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.CertificateIssuerItemId.GetHashCode();
                 if (this.CertificateIssuerName != null)
                 {
                     hashCode = (hashCode * 59) + this.CertificateIssuerName.GetHashCode();

@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="city">City.</param>
         /// <param name="companyName">Company name.</param>
         /// <param name="country">Country.</param>
+        /// <param name="defaultKeyName">Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing..</param>
         /// <param name="defaultShareLinkTtlMinutes">Set the default ttl in minutes for sharing item number between 60 and 43200.</param>
         /// <param name="defaultVersioning">If set to true, new item version will be created on each update [true/false].</param>
         /// <param name="dpEnableClassicKeyProtection">Set to update protection with classic keys state [true/false].</param>
@@ -58,12 +59,13 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
             this.CompanyName = companyName;
             this.Country = country;
+            this.DefaultKeyName = defaultKeyName;
             this.DefaultShareLinkTtlMinutes = defaultShareLinkTtlMinutes;
             this.DefaultVersioning = defaultVersioning;
             this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
@@ -112,6 +114,13 @@ namespace akeyless.Model
         /// <value>Country</value>
         [DataMember(Name = "country", EmitDefaultValue = false)]
         public string Country { get; set; }
+
+        /// <summary>
+        /// Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing.
+        /// </summary>
+        /// <value>Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing.</value>
+        [DataMember(Name = "default-key-name", EmitDefaultValue = false)]
+        public string DefaultKeyName { get; set; }
 
         /// <summary>
         /// Set the default ttl in minutes for sharing item number between 60 and 43200
@@ -258,6 +267,7 @@ namespace akeyless.Model
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  DefaultKeyName: ").Append(DefaultKeyName).Append("\n");
             sb.Append("  DefaultShareLinkTtlMinutes: ").Append(DefaultShareLinkTtlMinutes).Append("\n");
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
             sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
@@ -331,6 +341,11 @@ namespace akeyless.Model
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
+                ) && 
+                (
+                    this.DefaultKeyName == input.DefaultKeyName ||
+                    (this.DefaultKeyName != null &&
+                    this.DefaultKeyName.Equals(input.DefaultKeyName))
                 ) && 
                 (
                     this.DefaultShareLinkTtlMinutes == input.DefaultShareLinkTtlMinutes ||
@@ -448,6 +463,10 @@ namespace akeyless.Model
                 if (this.Country != null)
                 {
                     hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
+                if (this.DefaultKeyName != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultKeyName.GetHashCode();
                 }
                 if (this.DefaultShareLinkTtlMinutes != null)
                 {

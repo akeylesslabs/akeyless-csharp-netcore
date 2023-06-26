@@ -36,11 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="LogstashLogForwardingConfig" /> class.
         /// </summary>
         /// <param name="logstashDns">logstashDns.</param>
+        /// <param name="logstashEnableTls">logstashEnableTls.</param>
         /// <param name="logstashProtocol">logstashProtocol.</param>
-        public LogstashLogForwardingConfig(string logstashDns = default(string), string logstashProtocol = default(string))
+        /// <param name="logstashTlsCertificate">logstashTlsCertificate.</param>
+        public LogstashLogForwardingConfig(string logstashDns = default(string), bool logstashEnableTls = default(bool), string logstashProtocol = default(string), string logstashTlsCertificate = default(string))
         {
             this.LogstashDns = logstashDns;
+            this.LogstashEnableTls = logstashEnableTls;
             this.LogstashProtocol = logstashProtocol;
+            this.LogstashTlsCertificate = logstashTlsCertificate;
         }
 
         /// <summary>
@@ -50,10 +54,22 @@ namespace akeyless.Model
         public string LogstashDns { get; set; }
 
         /// <summary>
+        /// Gets or Sets LogstashEnableTls
+        /// </summary>
+        [DataMember(Name = "logstash_enable_tls", EmitDefaultValue = true)]
+        public bool LogstashEnableTls { get; set; }
+
+        /// <summary>
         /// Gets or Sets LogstashProtocol
         /// </summary>
         [DataMember(Name = "logstash_protocol", EmitDefaultValue = false)]
         public string LogstashProtocol { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LogstashTlsCertificate
+        /// </summary>
+        [DataMember(Name = "logstash_tls_certificate", EmitDefaultValue = false)]
+        public string LogstashTlsCertificate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +80,9 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class LogstashLogForwardingConfig {\n");
             sb.Append("  LogstashDns: ").Append(LogstashDns).Append("\n");
+            sb.Append("  LogstashEnableTls: ").Append(LogstashEnableTls).Append("\n");
             sb.Append("  LogstashProtocol: ").Append(LogstashProtocol).Append("\n");
+            sb.Append("  LogstashTlsCertificate: ").Append(LogstashTlsCertificate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,9 +124,18 @@ namespace akeyless.Model
                     this.LogstashDns.Equals(input.LogstashDns))
                 ) && 
                 (
+                    this.LogstashEnableTls == input.LogstashEnableTls ||
+                    this.LogstashEnableTls.Equals(input.LogstashEnableTls)
+                ) && 
+                (
                     this.LogstashProtocol == input.LogstashProtocol ||
                     (this.LogstashProtocol != null &&
                     this.LogstashProtocol.Equals(input.LogstashProtocol))
+                ) && 
+                (
+                    this.LogstashTlsCertificate == input.LogstashTlsCertificate ||
+                    (this.LogstashTlsCertificate != null &&
+                    this.LogstashTlsCertificate.Equals(input.LogstashTlsCertificate))
                 );
         }
 
@@ -125,9 +152,14 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.LogstashDns.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.LogstashEnableTls.GetHashCode();
                 if (this.LogstashProtocol != null)
                 {
                     hashCode = (hashCode * 59) + this.LogstashProtocol.GetHashCode();
+                }
+                if (this.LogstashTlsCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.LogstashTlsCertificate.GetHashCode();
                 }
                 return hashCode;
             }

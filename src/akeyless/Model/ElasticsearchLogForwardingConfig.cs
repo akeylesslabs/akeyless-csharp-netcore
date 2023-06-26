@@ -38,20 +38,24 @@ namespace akeyless.Model
         /// <param name="elasticsearchApiKey">elasticsearchApiKey.</param>
         /// <param name="elasticsearchAuthType">elasticsearchAuthType.</param>
         /// <param name="elasticsearchCloudId">elasticsearchCloudId.</param>
+        /// <param name="elasticsearchEnableTls">elasticsearchEnableTls.</param>
         /// <param name="elasticsearchIndex">elasticsearchIndex.</param>
         /// <param name="elasticsearchNodes">elasticsearchNodes.</param>
         /// <param name="elasticsearchPassword">elasticsearchPassword.</param>
         /// <param name="elasticsearchServerType">elasticsearchServerType.</param>
+        /// <param name="elasticsearchTlsCertificate">elasticsearchTlsCertificate.</param>
         /// <param name="elasticsearchUserName">elasticsearchUserName.</param>
-        public ElasticsearchLogForwardingConfig(string elasticsearchApiKey = default(string), string elasticsearchAuthType = default(string), string elasticsearchCloudId = default(string), string elasticsearchIndex = default(string), string elasticsearchNodes = default(string), string elasticsearchPassword = default(string), string elasticsearchServerType = default(string), string elasticsearchUserName = default(string))
+        public ElasticsearchLogForwardingConfig(string elasticsearchApiKey = default(string), string elasticsearchAuthType = default(string), string elasticsearchCloudId = default(string), bool elasticsearchEnableTls = default(bool), string elasticsearchIndex = default(string), string elasticsearchNodes = default(string), string elasticsearchPassword = default(string), string elasticsearchServerType = default(string), string elasticsearchTlsCertificate = default(string), string elasticsearchUserName = default(string))
         {
             this.ElasticsearchApiKey = elasticsearchApiKey;
             this.ElasticsearchAuthType = elasticsearchAuthType;
             this.ElasticsearchCloudId = elasticsearchCloudId;
+            this.ElasticsearchEnableTls = elasticsearchEnableTls;
             this.ElasticsearchIndex = elasticsearchIndex;
             this.ElasticsearchNodes = elasticsearchNodes;
             this.ElasticsearchPassword = elasticsearchPassword;
             this.ElasticsearchServerType = elasticsearchServerType;
+            this.ElasticsearchTlsCertificate = elasticsearchTlsCertificate;
             this.ElasticsearchUserName = elasticsearchUserName;
         }
 
@@ -72,6 +76,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "elasticsearch_cloud_id", EmitDefaultValue = false)]
         public string ElasticsearchCloudId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ElasticsearchEnableTls
+        /// </summary>
+        [DataMember(Name = "elasticsearch_enable_tls", EmitDefaultValue = true)]
+        public bool ElasticsearchEnableTls { get; set; }
 
         /// <summary>
         /// Gets or Sets ElasticsearchIndex
@@ -98,6 +108,12 @@ namespace akeyless.Model
         public string ElasticsearchServerType { get; set; }
 
         /// <summary>
+        /// Gets or Sets ElasticsearchTlsCertificate
+        /// </summary>
+        [DataMember(Name = "elasticsearch_tls_certificate", EmitDefaultValue = false)]
+        public string ElasticsearchTlsCertificate { get; set; }
+
+        /// <summary>
         /// Gets or Sets ElasticsearchUserName
         /// </summary>
         [DataMember(Name = "elasticsearch_user_name", EmitDefaultValue = false)]
@@ -114,10 +130,12 @@ namespace akeyless.Model
             sb.Append("  ElasticsearchApiKey: ").Append(ElasticsearchApiKey).Append("\n");
             sb.Append("  ElasticsearchAuthType: ").Append(ElasticsearchAuthType).Append("\n");
             sb.Append("  ElasticsearchCloudId: ").Append(ElasticsearchCloudId).Append("\n");
+            sb.Append("  ElasticsearchEnableTls: ").Append(ElasticsearchEnableTls).Append("\n");
             sb.Append("  ElasticsearchIndex: ").Append(ElasticsearchIndex).Append("\n");
             sb.Append("  ElasticsearchNodes: ").Append(ElasticsearchNodes).Append("\n");
             sb.Append("  ElasticsearchPassword: ").Append(ElasticsearchPassword).Append("\n");
             sb.Append("  ElasticsearchServerType: ").Append(ElasticsearchServerType).Append("\n");
+            sb.Append("  ElasticsearchTlsCertificate: ").Append(ElasticsearchTlsCertificate).Append("\n");
             sb.Append("  ElasticsearchUserName: ").Append(ElasticsearchUserName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -170,6 +188,10 @@ namespace akeyless.Model
                     this.ElasticsearchCloudId.Equals(input.ElasticsearchCloudId))
                 ) && 
                 (
+                    this.ElasticsearchEnableTls == input.ElasticsearchEnableTls ||
+                    this.ElasticsearchEnableTls.Equals(input.ElasticsearchEnableTls)
+                ) && 
+                (
                     this.ElasticsearchIndex == input.ElasticsearchIndex ||
                     (this.ElasticsearchIndex != null &&
                     this.ElasticsearchIndex.Equals(input.ElasticsearchIndex))
@@ -188,6 +210,11 @@ namespace akeyless.Model
                     this.ElasticsearchServerType == input.ElasticsearchServerType ||
                     (this.ElasticsearchServerType != null &&
                     this.ElasticsearchServerType.Equals(input.ElasticsearchServerType))
+                ) && 
+                (
+                    this.ElasticsearchTlsCertificate == input.ElasticsearchTlsCertificate ||
+                    (this.ElasticsearchTlsCertificate != null &&
+                    this.ElasticsearchTlsCertificate.Equals(input.ElasticsearchTlsCertificate))
                 ) && 
                 (
                     this.ElasticsearchUserName == input.ElasticsearchUserName ||
@@ -217,6 +244,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ElasticsearchCloudId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ElasticsearchEnableTls.GetHashCode();
                 if (this.ElasticsearchIndex != null)
                 {
                     hashCode = (hashCode * 59) + this.ElasticsearchIndex.GetHashCode();
@@ -232,6 +260,10 @@ namespace akeyless.Model
                 if (this.ElasticsearchServerType != null)
                 {
                     hashCode = (hashCode * 59) + this.ElasticsearchServerType.GetHashCode();
+                }
+                if (this.ElasticsearchTlsCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.ElasticsearchTlsCertificate.GetHashCode();
                 }
                 if (this.ElasticsearchUserName != null)
                 {

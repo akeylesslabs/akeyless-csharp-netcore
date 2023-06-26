@@ -35,19 +35,37 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountGeneralSettings" /> class.
         /// </summary>
+        /// <param name="accountDefaultKeyItemId">AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key.</param>
+        /// <param name="accountDefaultKeyName">AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will..</param>
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
+            this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
+            this.AccountDefaultKeyName = accountDefaultKeyName;
             this.DataProtectionSection = dataProtectionSection;
             this.EnableRequestForAccess = enableRequestForAccess;
             this.PasswordPolicy = passwordPolicy;
             this.ProtectItemsByDefault = protectItemsByDefault;
             this.SharingPolicy = sharingPolicy;
         }
+
+        /// <summary>
+        /// AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key
+        /// </summary>
+        /// <value>AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key</value>
+        [DataMember(Name = "account_default_key_item_id", EmitDefaultValue = false)]
+        public long AccountDefaultKeyItemId { get; set; }
+
+        /// <summary>
+        /// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
+        /// </summary>
+        /// <value>AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.</value>
+        [DataMember(Name = "account_default_key_name", EmitDefaultValue = false)]
+        public string AccountDefaultKeyName { get; set; }
 
         /// <summary>
         /// Gets or Sets DataProtectionSection
@@ -87,6 +105,8 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccountGeneralSettings {\n");
+            sb.Append("  AccountDefaultKeyItemId: ").Append(AccountDefaultKeyItemId).Append("\n");
+            sb.Append("  AccountDefaultKeyName: ").Append(AccountDefaultKeyName).Append("\n");
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
@@ -128,6 +148,15 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.AccountDefaultKeyItemId == input.AccountDefaultKeyItemId ||
+                    this.AccountDefaultKeyItemId.Equals(input.AccountDefaultKeyItemId)
+                ) && 
+                (
+                    this.AccountDefaultKeyName == input.AccountDefaultKeyName ||
+                    (this.AccountDefaultKeyName != null &&
+                    this.AccountDefaultKeyName.Equals(input.AccountDefaultKeyName))
+                ) && 
+                (
                     this.DataProtectionSection == input.DataProtectionSection ||
                     (this.DataProtectionSection != null &&
                     this.DataProtectionSection.Equals(input.DataProtectionSection))
@@ -161,6 +190,11 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.AccountDefaultKeyItemId.GetHashCode();
+                if (this.AccountDefaultKeyName != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountDefaultKeyName.GetHashCode();
+                }
                 if (this.DataProtectionSection != null)
                 {
                     hashCode = (hashCode * 59) + this.DataProtectionSection.GetHashCode();

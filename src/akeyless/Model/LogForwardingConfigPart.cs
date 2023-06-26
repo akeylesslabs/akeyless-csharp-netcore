@@ -46,9 +46,10 @@ namespace akeyless.Model
         /// <param name="logzIoConfig">logzIoConfig.</param>
         /// <param name="pullIntervalSec">pullIntervalSec.</param>
         /// <param name="splunkConfig">splunkConfig.</param>
+        /// <param name="sumoLogicConfig">sumoLogicConfig.</param>
         /// <param name="syslogConfig">syslogConfig.</param>
         /// <param name="targetLogType">targetLogType.</param>
-        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool jsonOutput = default(bool), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
+        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool jsonOutput = default(bool), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SumologicLogForwardingConfig sumoLogicConfig = default(SumologicLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
         {
             this.AwsS3Config = awsS3Config;
             this.AzureAnalyticsConfig = azureAnalyticsConfig;
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.LogzIoConfig = logzIoConfig;
             this.PullIntervalSec = pullIntervalSec;
             this.SplunkConfig = splunkConfig;
+            this.SumoLogicConfig = sumoLogicConfig;
             this.SyslogConfig = syslogConfig;
             this.TargetLogType = targetLogType;
         }
@@ -132,6 +134,12 @@ namespace akeyless.Model
         public SplunkLogForwardingConfig SplunkConfig { get; set; }
 
         /// <summary>
+        /// Gets or Sets SumoLogicConfig
+        /// </summary>
+        [DataMember(Name = "sumo_logic_config", EmitDefaultValue = false)]
+        public SumologicLogForwardingConfig SumoLogicConfig { get; set; }
+
+        /// <summary>
         /// Gets or Sets SyslogConfig
         /// </summary>
         [DataMember(Name = "syslog_config", EmitDefaultValue = false)]
@@ -162,6 +170,7 @@ namespace akeyless.Model
             sb.Append("  LogzIoConfig: ").Append(LogzIoConfig).Append("\n");
             sb.Append("  PullIntervalSec: ").Append(PullIntervalSec).Append("\n");
             sb.Append("  SplunkConfig: ").Append(SplunkConfig).Append("\n");
+            sb.Append("  SumoLogicConfig: ").Append(SumoLogicConfig).Append("\n");
             sb.Append("  SyslogConfig: ").Append(SyslogConfig).Append("\n");
             sb.Append("  TargetLogType: ").Append(TargetLogType).Append("\n");
             sb.Append("}\n");
@@ -253,6 +262,11 @@ namespace akeyless.Model
                     this.SplunkConfig.Equals(input.SplunkConfig))
                 ) && 
                 (
+                    this.SumoLogicConfig == input.SumoLogicConfig ||
+                    (this.SumoLogicConfig != null &&
+                    this.SumoLogicConfig.Equals(input.SumoLogicConfig))
+                ) && 
+                (
                     this.SyslogConfig == input.SyslogConfig ||
                     (this.SyslogConfig != null &&
                     this.SyslogConfig.Equals(input.SyslogConfig))
@@ -310,6 +324,10 @@ namespace akeyless.Model
                 if (this.SplunkConfig != null)
                 {
                     hashCode = (hashCode * 59) + this.SplunkConfig.GetHashCode();
+                }
+                if (this.SumoLogicConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.SumoLogicConfig.GetHashCode();
                 }
                 if (this.SyslogConfig != null)
                 {

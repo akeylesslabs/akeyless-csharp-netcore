@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SplunkEnableTls** | **bool** |  | [optional] 
 **SplunkIndex** | **string** |  | [optional] 
 **SplunkSource** | **string** |  | [optional] 
 **SplunkSourcetype** | **string** |  | [optional] 
+**SplunkTlsCertificate** | **string** |  | [optional] 
 **SplunkToken** | **string** |  | [optional] 
 **SplunkUrl** | **string** |  | [optional] 
 
