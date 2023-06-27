@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AllowedOps** | **List&lt;string&gt;** |  | [optional] 
 **AssocId** | **string** |  | [optional] 
 **AuthMethodSubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
+**IsSubClaimsCaseSensitive** | **bool** |  | [optional] 
 **RoleName** | **string** |  | [optional] 
 **Rules** | [**Rules**](Rules.md) |  | [optional] 
 
