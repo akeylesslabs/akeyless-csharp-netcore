@@ -15,10 +15,7 @@ docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
-docs/AllowedAccessArgs.md
-docs/AllowedAccessDeleteArgs.md
 docs/AllowedAccessOld.md
-docs/AllowedAccessUpdateArgs.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
 docs/AttributeTypeAndValue.md
@@ -221,6 +218,7 @@ docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
 docs/GatewayBasicInfo.md
+docs/GatewayCreateAllowedAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -276,6 +274,7 @@ docs/GatewayCreateProducerRedshift.md
 docs/GatewayCreateProducerRedshiftOutput.md
 docs/GatewayCreateProducerSnowflake.md
 docs/GatewayCreateProducerSnowflakeOutput.md
+docs/GatewayDeleteAllowedAccess.md
 docs/GatewayDeleteAllowedAccessOutput.md
 docs/GatewayDeleteK8SAuthConfig.md
 docs/GatewayDeleteK8SAuthConfigOutput.md
@@ -284,6 +283,7 @@ docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
 docs/GatewayDownloadCustomerFragments.md
 docs/GatewayDownloadCustomerFragmentsOutput.md
+docs/GatewayGetAllowedAccess.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
@@ -311,6 +311,7 @@ docs/GatewayStatusMigration.md
 docs/GatewayStopProducer.md
 docs/GatewayStopProducerOutput.md
 docs/GatewaySyncMigration.md
+docs/GatewayUpdateAllowedAccess.md
 docs/GatewayUpdateItem.md
 docs/GatewayUpdateItemOutput.md
 docs/GatewayUpdateK8SAuthConfig.md
@@ -665,12 +666,10 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/AccessPermissionAssignmentTests.cs
-src/akeyless.Test/Model/CreateAuthMethodEmailOutputTests.cs
-src/akeyless.Test/Model/CreateAuthMethodEmailTests.cs
-src/akeyless.Test/Model/EsmDeleteSecretOutputTests.cs
-src/akeyless.Test/Model/GoogleChronicleForwardingConfigTests.cs
-src/akeyless.Test/Model/OidcClientInfoTests.cs
+src/akeyless.Test/Model/GatewayCreateAllowedAccessTests.cs
+src/akeyless.Test/Model/GatewayDeleteAllowedAccessTests.cs
+src/akeyless.Test/Model/GatewayGetAllowedAccessTests.cs
+src/akeyless.Test/Model/GatewayUpdateAllowedAccessTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -703,10 +702,7 @@ src/akeyless/Model/AddGatewayAllowedAccessId.cs
 src/akeyless/Model/AdminsConfigPart.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AllowedAccess.cs
-src/akeyless/Model/AllowedAccessArgs.cs
-src/akeyless/Model/AllowedAccessDeleteArgs.cs
 src/akeyless/Model/AllowedAccessOld.cs
-src/akeyless/Model/AllowedAccessUpdateArgs.cs
 src/akeyless/Model/AssocRoleAuthMethod.cs
 src/akeyless/Model/AssocTargetItem.cs
 src/akeyless/Model/AttributeTypeAndValue.cs
@@ -909,6 +905,7 @@ src/akeyless/Model/GCPAccessRules.cs
 src/akeyless/Model/GCPPayload.cs
 src/akeyless/Model/GCPSecretsMigration.cs
 src/akeyless/Model/GatewayBasicInfo.cs
+src/akeyless/Model/GatewayCreateAllowedAccess.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfig.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayCreateMigration.cs
@@ -964,6 +961,7 @@ src/akeyless/Model/GatewayCreateProducerRedshift.cs
 src/akeyless/Model/GatewayCreateProducerRedshiftOutput.cs
 src/akeyless/Model/GatewayCreateProducerSnowflake.cs
 src/akeyless/Model/GatewayCreateProducerSnowflakeOutput.cs
+src/akeyless/Model/GatewayDeleteAllowedAccess.cs
 src/akeyless/Model/GatewayDeleteAllowedAccessOutput.cs
 src/akeyless/Model/GatewayDeleteK8SAuthConfig.cs
 src/akeyless/Model/GatewayDeleteK8SAuthConfigOutput.cs
@@ -972,6 +970,7 @@ src/akeyless/Model/GatewayDeleteProducer.cs
 src/akeyless/Model/GatewayDeleteProducerOutput.cs
 src/akeyless/Model/GatewayDownloadCustomerFragments.cs
 src/akeyless/Model/GatewayDownloadCustomerFragmentsOutput.cs
+src/akeyless/Model/GatewayGetAllowedAccess.cs
 src/akeyless/Model/GatewayGetConfig.cs
 src/akeyless/Model/GatewayGetK8SAuthConfig.cs
 src/akeyless/Model/GatewayGetK8SAuthConfigOutput.cs
@@ -999,6 +998,7 @@ src/akeyless/Model/GatewayStatusMigration.cs
 src/akeyless/Model/GatewayStopProducer.cs
 src/akeyless/Model/GatewayStopProducerOutput.cs
 src/akeyless/Model/GatewaySyncMigration.cs
+src/akeyless/Model/GatewayUpdateAllowedAccess.cs
 src/akeyless/Model/GatewayUpdateItem.cs
 src/akeyless/Model/GatewayUpdateItemOutput.cs
 src/akeyless/Model/GatewayUpdateK8SAuthConfig.cs

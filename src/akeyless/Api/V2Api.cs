@@ -1732,7 +1732,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AllowedAccess</returns>
-        AllowedAccess GatewayCreateAllowedAccess(AllowedAccessArgs body, int operationIndex = 0);
+        AllowedAccess GatewayCreateAllowedAccess(GatewayCreateAllowedAccess body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -1744,7 +1744,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AllowedAccess</returns>
-        ApiResponse<AllowedAccess> GatewayCreateAllowedAccessWithHttpInfo(AllowedAccessArgs body, int operationIndex = 0);
+        ApiResponse<AllowedAccess> GatewayCreateAllowedAccessWithHttpInfo(GatewayCreateAllowedAccess body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -2292,7 +2292,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GatewayDeleteAllowedAccessOutput</returns>
-        GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess(AllowedAccessDeleteArgs body, int operationIndex = 0);
+        GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess(GatewayDeleteAllowedAccess body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -2304,7 +2304,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GatewayDeleteAllowedAccessOutput</returns>
-        ApiResponse<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessWithHttpInfo(AllowedAccessDeleteArgs body, int operationIndex = 0);
+        ApiResponse<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessWithHttpInfo(GatewayDeleteAllowedAccess body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -2392,7 +2392,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AllowedAccess</returns>
-        AllowedAccess GatewayGetAllowedAccess(AllowedAccessArgs body, int operationIndex = 0);
+        AllowedAccess GatewayGetAllowedAccess(GatewayGetAllowedAccess body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -2404,7 +2404,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AllowedAccess</returns>
-        ApiResponse<AllowedAccess> GatewayGetAllowedAccessWithHttpInfo(AllowedAccessArgs body, int operationIndex = 0);
+        ApiResponse<AllowedAccess> GatewayGetAllowedAccessWithHttpInfo(GatewayGetAllowedAccess body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -2712,7 +2712,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AllowedAccess</returns>
-        AllowedAccess GatewayUpdateAllowedAccess(AllowedAccessUpdateArgs body, int operationIndex = 0);
+        AllowedAccess GatewayUpdateAllowedAccess(GatewayUpdateAllowedAccess body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -2724,7 +2724,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AllowedAccess</returns>
-        ApiResponse<AllowedAccess> GatewayUpdateAllowedAccessWithHttpInfo(AllowedAccessUpdateArgs body, int operationIndex = 0);
+        ApiResponse<AllowedAccess> GatewayUpdateAllowedAccessWithHttpInfo(GatewayUpdateAllowedAccess body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -7882,7 +7882,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AllowedAccess</returns>
-        System.Threading.Tasks.Task<AllowedAccess> GatewayCreateAllowedAccessAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AllowedAccess> GatewayCreateAllowedAccessAsync(GatewayCreateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -7895,7 +7895,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AllowedAccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AllowedAccess>> GatewayCreateAllowedAccessWithHttpInfoAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AllowedAccess>> GatewayCreateAllowedAccessWithHttpInfoAsync(GatewayCreateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8582,7 +8582,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayDeleteAllowedAccessOutput</returns>
-        System.Threading.Tasks.Task<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessAsync(AllowedAccessDeleteArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessAsync(GatewayDeleteAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -8595,7 +8595,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayDeleteAllowedAccessOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GatewayDeleteAllowedAccessOutput>> GatewayDeleteAllowedAccessWithHttpInfoAsync(AllowedAccessDeleteArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GatewayDeleteAllowedAccessOutput>> GatewayDeleteAllowedAccessWithHttpInfoAsync(GatewayDeleteAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8707,7 +8707,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AllowedAccess</returns>
-        System.Threading.Tasks.Task<AllowedAccess> GatewayGetAllowedAccessAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AllowedAccess> GatewayGetAllowedAccessAsync(GatewayGetAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -8720,7 +8720,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AllowedAccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AllowedAccess>> GatewayGetAllowedAccessWithHttpInfoAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AllowedAccess>> GatewayGetAllowedAccessWithHttpInfoAsync(GatewayGetAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -9107,7 +9107,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AllowedAccess</returns>
-        System.Threading.Tasks.Task<AllowedAccess> GatewayUpdateAllowedAccessAsync(AllowedAccessUpdateArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AllowedAccess> GatewayUpdateAllowedAccessAsync(GatewayUpdateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -9120,7 +9120,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AllowedAccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AllowedAccess>> GatewayUpdateAllowedAccessWithHttpInfoAsync(AllowedAccessUpdateArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AllowedAccess>> GatewayUpdateAllowedAccessWithHttpInfoAsync(GatewayUpdateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -25407,7 +25407,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AllowedAccess</returns>
-        public AllowedAccess GatewayCreateAllowedAccess(AllowedAccessArgs body, int operationIndex = 0)
+        public AllowedAccess GatewayCreateAllowedAccess(GatewayCreateAllowedAccess body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<AllowedAccess> localVarResponse = GatewayCreateAllowedAccessWithHttpInfo(body);
             return localVarResponse.Data;
@@ -25420,7 +25420,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AllowedAccess</returns>
-        public akeyless.Client.ApiResponse<AllowedAccess> GatewayCreateAllowedAccessWithHttpInfo(AllowedAccessArgs body, int operationIndex = 0)
+        public akeyless.Client.ApiResponse<AllowedAccess> GatewayCreateAllowedAccessWithHttpInfo(GatewayCreateAllowedAccess body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -25479,7 +25479,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AllowedAccess</returns>
-        public async System.Threading.Tasks.Task<AllowedAccess> GatewayCreateAllowedAccessAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AllowedAccess> GatewayCreateAllowedAccessAsync(GatewayCreateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<AllowedAccess> localVarResponse = await GatewayCreateAllowedAccessWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -25493,7 +25493,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AllowedAccess)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllowedAccess>> GatewayCreateAllowedAccessWithHttpInfoAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllowedAccess>> GatewayCreateAllowedAccessWithHttpInfoAsync(GatewayCreateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -29483,7 +29483,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GatewayDeleteAllowedAccessOutput</returns>
-        public GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess(AllowedAccessDeleteArgs body, int operationIndex = 0)
+        public GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess(GatewayDeleteAllowedAccess body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<GatewayDeleteAllowedAccessOutput> localVarResponse = GatewayDeleteAllowedAccessWithHttpInfo(body);
             return localVarResponse.Data;
@@ -29496,7 +29496,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GatewayDeleteAllowedAccessOutput</returns>
-        public akeyless.Client.ApiResponse<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessWithHttpInfo(AllowedAccessDeleteArgs body, int operationIndex = 0)
+        public akeyless.Client.ApiResponse<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessWithHttpInfo(GatewayDeleteAllowedAccess body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -29555,7 +29555,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GatewayDeleteAllowedAccessOutput</returns>
-        public async System.Threading.Tasks.Task<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessAsync(AllowedAccessDeleteArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GatewayDeleteAllowedAccessOutput> GatewayDeleteAllowedAccessAsync(GatewayDeleteAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<GatewayDeleteAllowedAccessOutput> localVarResponse = await GatewayDeleteAllowedAccessWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -29569,7 +29569,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GatewayDeleteAllowedAccessOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayDeleteAllowedAccessOutput>> GatewayDeleteAllowedAccessWithHttpInfoAsync(AllowedAccessDeleteArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GatewayDeleteAllowedAccessOutput>> GatewayDeleteAllowedAccessWithHttpInfoAsync(GatewayDeleteAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -30213,7 +30213,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AllowedAccess</returns>
-        public AllowedAccess GatewayGetAllowedAccess(AllowedAccessArgs body, int operationIndex = 0)
+        public AllowedAccess GatewayGetAllowedAccess(GatewayGetAllowedAccess body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<AllowedAccess> localVarResponse = GatewayGetAllowedAccessWithHttpInfo(body);
             return localVarResponse.Data;
@@ -30226,7 +30226,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AllowedAccess</returns>
-        public akeyless.Client.ApiResponse<AllowedAccess> GatewayGetAllowedAccessWithHttpInfo(AllowedAccessArgs body, int operationIndex = 0)
+        public akeyless.Client.ApiResponse<AllowedAccess> GatewayGetAllowedAccessWithHttpInfo(GatewayGetAllowedAccess body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -30285,7 +30285,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AllowedAccess</returns>
-        public async System.Threading.Tasks.Task<AllowedAccess> GatewayGetAllowedAccessAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AllowedAccess> GatewayGetAllowedAccessAsync(GatewayGetAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<AllowedAccess> localVarResponse = await GatewayGetAllowedAccessWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -30299,7 +30299,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AllowedAccess)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllowedAccess>> GatewayGetAllowedAccessWithHttpInfoAsync(AllowedAccessArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllowedAccess>> GatewayGetAllowedAccessWithHttpInfoAsync(GatewayGetAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -32535,7 +32535,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AllowedAccess</returns>
-        public AllowedAccess GatewayUpdateAllowedAccess(AllowedAccessUpdateArgs body, int operationIndex = 0)
+        public AllowedAccess GatewayUpdateAllowedAccess(GatewayUpdateAllowedAccess body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<AllowedAccess> localVarResponse = GatewayUpdateAllowedAccessWithHttpInfo(body);
             return localVarResponse.Data;
@@ -32548,7 +32548,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AllowedAccess</returns>
-        public akeyless.Client.ApiResponse<AllowedAccess> GatewayUpdateAllowedAccessWithHttpInfo(AllowedAccessUpdateArgs body, int operationIndex = 0)
+        public akeyless.Client.ApiResponse<AllowedAccess> GatewayUpdateAllowedAccessWithHttpInfo(GatewayUpdateAllowedAccess body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -32607,7 +32607,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AllowedAccess</returns>
-        public async System.Threading.Tasks.Task<AllowedAccess> GatewayUpdateAllowedAccessAsync(AllowedAccessUpdateArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AllowedAccess> GatewayUpdateAllowedAccessAsync(GatewayUpdateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<AllowedAccess> localVarResponse = await GatewayUpdateAllowedAccessWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -32621,7 +32621,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AllowedAccess)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllowedAccess>> GatewayUpdateAllowedAccessWithHttpInfoAsync(AllowedAccessUpdateArgs body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllowedAccess>> GatewayUpdateAllowedAccessWithHttpInfoAsync(GatewayUpdateAllowedAccess body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)

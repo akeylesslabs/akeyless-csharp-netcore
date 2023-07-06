@@ -7770,7 +7770,7 @@ No authorization required
 
 <a name="gatewaycreateallowedaccess"></a>
 # **GatewayCreateAllowedAccess**
-> AllowedAccess GatewayCreateAllowedAccess (AllowedAccessArgs body)
+> AllowedAccess GatewayCreateAllowedAccess (GatewayCreateAllowedAccess body)
 
 
 
@@ -7791,7 +7791,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new AllowedAccessArgs(); // AllowedAccessArgs | 
+            var body = new GatewayCreateAllowedAccess(); // GatewayCreateAllowedAccess | 
 
             try
             {
@@ -7832,7 +7832,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+| **body** | [**GatewayCreateAllowedAccess**](GatewayCreateAllowedAccess.md) |  |  |
 
 ### Return type
 
@@ -10234,7 +10234,7 @@ No authorization required
 
 <a name="gatewaydeleteallowedaccess"></a>
 # **GatewayDeleteAllowedAccess**
-> GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess (AllowedAccessDeleteArgs body)
+> GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess (GatewayDeleteAllowedAccess body)
 
 
 
@@ -10255,7 +10255,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new AllowedAccessDeleteArgs(); // AllowedAccessDeleteArgs | 
+            var body = new GatewayDeleteAllowedAccess(); // GatewayDeleteAllowedAccess | 
 
             try
             {
@@ -10296,7 +10296,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **body** | [**AllowedAccessDeleteArgs**](AllowedAccessDeleteArgs.md) |  |  |
+| **body** | [**GatewayDeleteAllowedAccess**](GatewayDeleteAllowedAccess.md) |  |  |
 
 ### Return type
 
@@ -10674,7 +10674,7 @@ No authorization required
 
 <a name="gatewaygetallowedaccess"></a>
 # **GatewayGetAllowedAccess**
-> AllowedAccess GatewayGetAllowedAccess (AllowedAccessArgs body)
+> AllowedAccess GatewayGetAllowedAccess (GatewayGetAllowedAccess body)
 
 
 
@@ -10695,7 +10695,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new AllowedAccessArgs(); // AllowedAccessArgs | 
+            var body = new GatewayGetAllowedAccess(); // GatewayGetAllowedAccess | 
 
             try
             {
@@ -10736,7 +10736,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+| **body** | [**GatewayGetAllowedAccess**](GatewayGetAllowedAccess.md) |  |  |
 
 ### Return type
 
@@ -12078,7 +12078,7 @@ No authorization required
 
 <a name="gatewayupdateallowedaccess"></a>
 # **GatewayUpdateAllowedAccess**
-> AllowedAccess GatewayUpdateAllowedAccess (AllowedAccessUpdateArgs body)
+> AllowedAccess GatewayUpdateAllowedAccess (GatewayUpdateAllowedAccess body)
 
 
 
@@ -12099,7 +12099,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new AllowedAccessUpdateArgs(); // AllowedAccessUpdateArgs | 
+            var body = new GatewayUpdateAllowedAccess(); // GatewayUpdateAllowedAccess | 
 
             try
             {
@@ -12140,7 +12140,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **body** | [**AllowedAccessUpdateArgs**](AllowedAccessUpdateArgs.md) |  |  |
+| **body** | [**GatewayUpdateAllowedAccess**](GatewayUpdateAllowedAccess.md) |  |  |
 
 ### Return type
 
