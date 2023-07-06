@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="azureAnalyticsConfig">azureAnalyticsConfig.</param>
         /// <param name="datadogConfig">datadogConfig.</param>
         /// <param name="elasticsearchConfig">elasticsearchConfig.</param>
+        /// <param name="googleChronicleConfig">googleChronicleConfig.</param>
         /// <param name="jsonOutput">jsonOutput.</param>
         /// <param name="loganEnable">loganEnable.</param>
         /// <param name="loganUrl">loganUrl.</param>
@@ -49,12 +50,13 @@ namespace akeyless.Model
         /// <param name="sumoLogicConfig">sumoLogicConfig.</param>
         /// <param name="syslogConfig">syslogConfig.</param>
         /// <param name="targetLogType">targetLogType.</param>
-        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), bool jsonOutput = default(bool), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SumologicLogForwardingConfig sumoLogicConfig = default(SumologicLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
+        public LogForwardingConfigPart(AwsS3LogForwardingConfig awsS3Config = default(AwsS3LogForwardingConfig), AzureLogAnalyticsForwardingConfig azureAnalyticsConfig = default(AzureLogAnalyticsForwardingConfig), DatadogForwardingConfig datadogConfig = default(DatadogForwardingConfig), ElasticsearchLogForwardingConfig elasticsearchConfig = default(ElasticsearchLogForwardingConfig), GoogleChronicleForwardingConfig googleChronicleConfig = default(GoogleChronicleForwardingConfig), bool jsonOutput = default(bool), bool loganEnable = default(bool), string loganUrl = default(string), LogstashLogForwardingConfig logstashConfig = default(LogstashLogForwardingConfig), LogzIoLogForwardingConfig logzIoConfig = default(LogzIoLogForwardingConfig), string pullIntervalSec = default(string), SplunkLogForwardingConfig splunkConfig = default(SplunkLogForwardingConfig), SumologicLogForwardingConfig sumoLogicConfig = default(SumologicLogForwardingConfig), SyslogLogForwardingConfig syslogConfig = default(SyslogLogForwardingConfig), string targetLogType = default(string))
         {
             this.AwsS3Config = awsS3Config;
             this.AzureAnalyticsConfig = azureAnalyticsConfig;
             this.DatadogConfig = datadogConfig;
             this.ElasticsearchConfig = elasticsearchConfig;
+            this.GoogleChronicleConfig = googleChronicleConfig;
             this.JsonOutput = jsonOutput;
             this.LoganEnable = loganEnable;
             this.LoganUrl = loganUrl;
@@ -90,6 +92,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "elasticsearch_config", EmitDefaultValue = false)]
         public ElasticsearchLogForwardingConfig ElasticsearchConfig { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoogleChronicleConfig
+        /// </summary>
+        [DataMember(Name = "google_chronicle_config", EmitDefaultValue = false)]
+        public GoogleChronicleForwardingConfig GoogleChronicleConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets JsonOutput
@@ -163,6 +171,7 @@ namespace akeyless.Model
             sb.Append("  AzureAnalyticsConfig: ").Append(AzureAnalyticsConfig).Append("\n");
             sb.Append("  DatadogConfig: ").Append(DatadogConfig).Append("\n");
             sb.Append("  ElasticsearchConfig: ").Append(ElasticsearchConfig).Append("\n");
+            sb.Append("  GoogleChronicleConfig: ").Append(GoogleChronicleConfig).Append("\n");
             sb.Append("  JsonOutput: ").Append(JsonOutput).Append("\n");
             sb.Append("  LoganEnable: ").Append(LoganEnable).Append("\n");
             sb.Append("  LoganUrl: ").Append(LoganUrl).Append("\n");
@@ -227,6 +236,11 @@ namespace akeyless.Model
                     this.ElasticsearchConfig == input.ElasticsearchConfig ||
                     (this.ElasticsearchConfig != null &&
                     this.ElasticsearchConfig.Equals(input.ElasticsearchConfig))
+                ) && 
+                (
+                    this.GoogleChronicleConfig == input.GoogleChronicleConfig ||
+                    (this.GoogleChronicleConfig != null &&
+                    this.GoogleChronicleConfig.Equals(input.GoogleChronicleConfig))
                 ) && 
                 (
                     this.JsonOutput == input.JsonOutput ||
@@ -302,6 +316,10 @@ namespace akeyless.Model
                 if (this.ElasticsearchConfig != null)
                 {
                     hashCode = (hashCode * 59) + this.ElasticsearchConfig.GetHashCode();
+                }
+                if (this.GoogleChronicleConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleChronicleConfig.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.JsonOutput.GetHashCode();
                 hashCode = (hashCode * 59) + this.LoganEnable.GetHashCode();

@@ -27,41 +27,33 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// EsmUpdateSecretOutput
+    /// AccessPermissionAssignment
     /// </summary>
-    [DataContract(Name = "EsmUpdateSecretOutput")]
-    public partial class EsmUpdateSecretOutput : IEquatable<EsmUpdateSecretOutput>, IValidatableObject
+    [DataContract(Name = "AccessPermissionAssignment")]
+    public partial class AccessPermissionAssignment : IEquatable<AccessPermissionAssignment>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EsmUpdateSecretOutput" /> class.
+        /// Initializes a new instance of the <see cref="AccessPermissionAssignment" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="secretId">secretId.</param>
-        /// <param name="versionId">versionId.</param>
-        public EsmUpdateSecretOutput(string name = default(string), string secretId = default(string), string versionId = default(string))
+        /// <param name="accessId">accessId.</param>
+        /// <param name="subClaims">subClaims.</param>
+        public AccessPermissionAssignment(string accessId = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
         {
-            this.Name = name;
-            this.SecretId = secretId;
-            this.VersionId = versionId;
+            this.AccessId = accessId;
+            this.SubClaims = subClaims;
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Gets or Sets AccessId
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        [DataMember(Name = "access_id", EmitDefaultValue = false)]
+        public string AccessId { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecretId
+        /// Gets or Sets SubClaims
         /// </summary>
-        [DataMember(Name = "secret_id", EmitDefaultValue = false)]
-        public string SecretId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VersionId
-        /// </summary>
-        [DataMember(Name = "version_id", EmitDefaultValue = false)]
-        public string VersionId { get; set; }
+        [DataMember(Name = "sub_claims", EmitDefaultValue = false)]
+        public Dictionary<string, List<string>> SubClaims { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +62,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EsmUpdateSecretOutput {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  SecretId: ").Append(SecretId).Append("\n");
-            sb.Append("  VersionId: ").Append(VersionId).Append("\n");
+            sb.Append("class AccessPermissionAssignment {\n");
+            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +85,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EsmUpdateSecretOutput);
+            return this.Equals(input as AccessPermissionAssignment);
         }
 
         /// <summary>
-        /// Returns true if EsmUpdateSecretOutput instances are equal
+        /// Returns true if AccessPermissionAssignment instances are equal
         /// </summary>
-        /// <param name="input">Instance of EsmUpdateSecretOutput to be compared</param>
+        /// <param name="input">Instance of AccessPermissionAssignment to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EsmUpdateSecretOutput input)
+        public bool Equals(AccessPermissionAssignment input)
         {
             if (input == null)
             {
@@ -110,19 +101,15 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.AccessId == input.AccessId ||
+                    (this.AccessId != null &&
+                    this.AccessId.Equals(input.AccessId))
                 ) && 
                 (
-                    this.SecretId == input.SecretId ||
-                    (this.SecretId != null &&
-                    this.SecretId.Equals(input.SecretId))
-                ) && 
-                (
-                    this.VersionId == input.VersionId ||
-                    (this.VersionId != null &&
-                    this.VersionId.Equals(input.VersionId))
+                    this.SubClaims == input.SubClaims ||
+                    this.SubClaims != null &&
+                    input.SubClaims != null &&
+                    this.SubClaims.SequenceEqual(input.SubClaims)
                 );
         }
 
@@ -135,17 +122,13 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
+                if (this.AccessId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
                 }
-                if (this.SecretId != null)
+                if (this.SubClaims != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecretId.GetHashCode();
-                }
-                if (this.VersionId != null)
-                {
-                    hashCode = (hashCode * 59) + this.VersionId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
                 }
                 return hashCode;
             }

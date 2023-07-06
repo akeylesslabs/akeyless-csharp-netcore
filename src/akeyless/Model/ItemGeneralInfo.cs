@@ -43,12 +43,13 @@ namespace akeyless.Model
         /// <param name="displayMetadata">displayMetadata.</param>
         /// <param name="dynamicSecretProducerDetails">dynamicSecretProducerDetails.</param>
         /// <param name="importerInfo">importerInfo.</param>
+        /// <param name="oidcClientInfo">oidcClientInfo.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="rotatedSecretDetails">rotatedSecretDetails.</param>
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
         /// <param name="tokenizerInfo">tokenizerInfo.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), ImporterInfo importerInfo = default(ImporterInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), ImporterInfo importerInfo = default(ImporterInfo), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
             this.CertIssueDetails = certIssueDetails;
             this.CertificateChainInfo = certificateChainInfo;
@@ -58,6 +59,7 @@ namespace akeyless.Model
             this.DisplayMetadata = displayMetadata;
             this.DynamicSecretProducerDetails = dynamicSecretProducerDetails;
             this.ImporterInfo = importerInfo;
+            this.OidcClientInfo = oidcClientInfo;
             this.PasswordPolicy = passwordPolicy;
             this.RotatedSecretDetails = rotatedSecretDetails;
             this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
@@ -114,6 +116,12 @@ namespace akeyless.Model
         public ImporterInfo ImporterInfo { get; set; }
 
         /// <summary>
+        /// Gets or Sets OidcClientInfo
+        /// </summary>
+        [DataMember(Name = "oidc_client_info", EmitDefaultValue = false)]
+        public OidcClientInfo OidcClientInfo { get; set; }
+
+        /// <summary>
         /// Gets or Sets PasswordPolicy
         /// </summary>
         [DataMember(Name = "password_policy", EmitDefaultValue = false)]
@@ -159,6 +167,7 @@ namespace akeyless.Model
             sb.Append("  DisplayMetadata: ").Append(DisplayMetadata).Append("\n");
             sb.Append("  DynamicSecretProducerDetails: ").Append(DynamicSecretProducerDetails).Append("\n");
             sb.Append("  ImporterInfo: ").Append(ImporterInfo).Append("\n");
+            sb.Append("  OidcClientInfo: ").Append(OidcClientInfo).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  RotatedSecretDetails: ").Append(RotatedSecretDetails).Append("\n");
             sb.Append("  SecureRemoteAccessDetails: ").Append(SecureRemoteAccessDetails).Append("\n");
@@ -240,6 +249,11 @@ namespace akeyless.Model
                     this.ImporterInfo.Equals(input.ImporterInfo))
                 ) && 
                 (
+                    this.OidcClientInfo == input.OidcClientInfo ||
+                    (this.OidcClientInfo != null &&
+                    this.OidcClientInfo.Equals(input.OidcClientInfo))
+                ) && 
+                (
                     this.PasswordPolicy == input.PasswordPolicy ||
                     (this.PasswordPolicy != null &&
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
@@ -306,6 +320,10 @@ namespace akeyless.Model
                 if (this.ImporterInfo != null)
                 {
                     hashCode = (hashCode * 59) + this.ImporterInfo.GetHashCode();
+                }
+                if (this.OidcClientInfo != null)
+                {
+                    hashCode = (hashCode * 59) + this.OidcClientInfo.GetHashCode();
                 }
                 if (this.PasswordPolicy != null)
                 {

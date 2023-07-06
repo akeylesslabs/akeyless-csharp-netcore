@@ -53,6 +53,7 @@ namespace akeyless.Model
         /// <param name="destinationPath">A path in which to save generated certificates.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from, required in Public CA mode.</param>
+        /// <param name="isCa">If set, the basic constraints extension will be added to certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of localities that will be set in the issued certificate.</param>
@@ -72,7 +73,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.DestinationPath = destinationPath;
             this.ExpirationEventIn = expirationEventIn;
             this.GwClusterUrl = gwClusterUrl;
+            this.IsCa = isCa;
             this.Json = json;
             // use default value if no "keyUsage" provided
             this.KeyUsage = keyUsage ?? "DigitalSignature,KeyAgreement,KeyEncipherment";
@@ -209,6 +211,13 @@ namespace akeyless.Model
         /// <value>The GW cluster URL to issue the certificate from, required in Public CA mode</value>
         [DataMember(Name = "gw-cluster-url", EmitDefaultValue = false)]
         public string GwClusterUrl { get; set; }
+
+        /// <summary>
+        /// If set, the basic constraints extension will be added to certificate
+        /// </summary>
+        /// <value>If set, the basic constraints extension will be added to certificate</value>
+        [DataMember(Name = "is-ca", EmitDefaultValue = true)]
+        public bool IsCa { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -364,6 +373,7 @@ namespace akeyless.Model
             sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
+            sb.Append("  IsCa: ").Append(IsCa).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
@@ -479,6 +489,10 @@ namespace akeyless.Model
                     this.GwClusterUrl == input.GwClusterUrl ||
                     (this.GwClusterUrl != null &&
                     this.GwClusterUrl.Equals(input.GwClusterUrl))
+                ) && 
+                (
+                    this.IsCa == input.IsCa ||
+                    this.IsCa.Equals(input.IsCa)
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -621,6 +635,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GwClusterUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsCa.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyUsage != null)
                 {

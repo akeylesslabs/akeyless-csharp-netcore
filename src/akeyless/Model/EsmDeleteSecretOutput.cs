@@ -27,22 +27,18 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// EsmUpdateSecretOutput
+    /// EsmDeleteSecretOutput
     /// </summary>
-    [DataContract(Name = "EsmUpdateSecretOutput")]
-    public partial class EsmUpdateSecretOutput : IEquatable<EsmUpdateSecretOutput>, IValidatableObject
+    [DataContract(Name = "EsmDeleteSecretOutput")]
+    public partial class EsmDeleteSecretOutput : IEquatable<EsmDeleteSecretOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EsmUpdateSecretOutput" /> class.
+        /// Initializes a new instance of the <see cref="EsmDeleteSecretOutput" /> class.
         /// </summary>
         /// <param name="name">name.</param>
-        /// <param name="secretId">secretId.</param>
-        /// <param name="versionId">versionId.</param>
-        public EsmUpdateSecretOutput(string name = default(string), string secretId = default(string), string versionId = default(string))
+        public EsmDeleteSecretOutput(string name = default(string))
         {
             this.Name = name;
-            this.SecretId = secretId;
-            this.VersionId = versionId;
         }
 
         /// <summary>
@@ -52,28 +48,14 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets SecretId
-        /// </summary>
-        [DataMember(Name = "secret_id", EmitDefaultValue = false)]
-        public string SecretId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VersionId
-        /// </summary>
-        [DataMember(Name = "version_id", EmitDefaultValue = false)]
-        public string VersionId { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EsmUpdateSecretOutput {\n");
+            sb.Append("class EsmDeleteSecretOutput {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  SecretId: ").Append(SecretId).Append("\n");
-            sb.Append("  VersionId: ").Append(VersionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +76,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EsmUpdateSecretOutput);
+            return this.Equals(input as EsmDeleteSecretOutput);
         }
 
         /// <summary>
-        /// Returns true if EsmUpdateSecretOutput instances are equal
+        /// Returns true if EsmDeleteSecretOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of EsmUpdateSecretOutput to be compared</param>
+        /// <param name="input">Instance of EsmDeleteSecretOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EsmUpdateSecretOutput input)
+        public bool Equals(EsmDeleteSecretOutput input)
         {
             if (input == null)
             {
@@ -113,16 +95,6 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.SecretId == input.SecretId ||
-                    (this.SecretId != null &&
-                    this.SecretId.Equals(input.SecretId))
-                ) && 
-                (
-                    this.VersionId == input.VersionId ||
-                    (this.VersionId != null &&
-                    this.VersionId.Equals(input.VersionId))
                 );
         }
 
@@ -138,14 +110,6 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                }
-                if (this.SecretId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SecretId.GetHashCode();
-                }
-                if (this.VersionId != null)
-                {
-                    hashCode = (hashCode * 59) + this.VersionId.GetHashCode();
                 }
                 return hashCode;
             }

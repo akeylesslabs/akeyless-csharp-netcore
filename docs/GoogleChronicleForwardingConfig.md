@@ -1,12 +1,13 @@
-# akeyless.Model.EsmUpdateSecretOutput
+# akeyless.Model.GoogleChronicleForwardingConfig
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | [optional] 
-**SecretId** | **string** |  | [optional] 
-**VersionId** | **string** |  | [optional] 
+**CustomerId** | **string** |  | [optional] 
+**LogType** | **string** |  | [optional] 
+**Region** | **string** |  | [optional] 
+**ServiceAccountKey** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

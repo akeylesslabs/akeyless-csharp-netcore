@@ -6,6 +6,7 @@ docs/APIKeyAccessRules.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
+docs/AccessPermissionAssignment.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/ActiveDirectoryMigration.md
@@ -61,6 +62,8 @@ docs/CreateAuthMethodAzureAD.md
 docs/CreateAuthMethodAzureADOutput.md
 docs/CreateAuthMethodCert.md
 docs/CreateAuthMethodCertOutput.md
+docs/CreateAuthMethodEmail.md
+docs/CreateAuthMethodEmailOutput.md
 docs/CreateAuthMethodGCP.md
 docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
@@ -202,6 +205,7 @@ docs/EncryptWithClassicKeyOutput.md
 docs/EsmCreate.md
 docs/EsmCreateSecretOutput.md
 docs/EsmDelete.md
+docs/EsmDeleteSecretOutput.md
 docs/EsmGet.md
 docs/EsmGetSecretOutput.md
 docs/EsmList.md
@@ -396,6 +400,7 @@ docs/GetTags.md
 docs/GetTarget.md
 docs/GetTargetDetails.md
 docs/GetTargetDetailsOutput.md
+docs/GoogleChronicleForwardingConfig.md
 docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
@@ -479,6 +484,7 @@ docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
+docs/OidcClientInfo.md
 docs/OnePasswordMigration.md
 docs/OnePasswordPayload.md
 docs/PKICertificateIssueDetails.md
@@ -659,6 +665,12 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
+src/akeyless.Test/Model/AccessPermissionAssignmentTests.cs
+src/akeyless.Test/Model/CreateAuthMethodEmailOutputTests.cs
+src/akeyless.Test/Model/CreateAuthMethodEmailTests.cs
+src/akeyless.Test/Model/EsmDeleteSecretOutputTests.cs
+src/akeyless.Test/Model/GoogleChronicleForwardingConfigTests.cs
+src/akeyless.Test/Model/OidcClientInfoTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -682,6 +694,7 @@ src/akeyless/Model/AWSIAMAccessRules.cs
 src/akeyless/Model/AWSPayload.cs
 src/akeyless/Model/AWSSecretsMigration.cs
 src/akeyless/Model/AbstractOpenAPISchema.cs
+src/akeyless/Model/AccessPermissionAssignment.cs
 src/akeyless/Model/AccountGeneralSettings.cs
 src/akeyless/Model/AccountObjectVersionSettingsOutput.cs
 src/akeyless/Model/ActiveDirectoryMigration.cs
@@ -737,6 +750,8 @@ src/akeyless/Model/CreateAuthMethodAzureAD.cs
 src/akeyless/Model/CreateAuthMethodAzureADOutput.cs
 src/akeyless/Model/CreateAuthMethodCert.cs
 src/akeyless/Model/CreateAuthMethodCertOutput.cs
+src/akeyless/Model/CreateAuthMethodEmail.cs
+src/akeyless/Model/CreateAuthMethodEmailOutput.cs
 src/akeyless/Model/CreateAuthMethodGCP.cs
 src/akeyless/Model/CreateAuthMethodGCPOutput.cs
 src/akeyless/Model/CreateAuthMethodHuawei.cs
@@ -878,6 +893,7 @@ src/akeyless/Model/EncryptWithClassicKeyOutput.cs
 src/akeyless/Model/EsmCreate.cs
 src/akeyless/Model/EsmCreateSecretOutput.cs
 src/akeyless/Model/EsmDelete.cs
+src/akeyless/Model/EsmDeleteSecretOutput.cs
 src/akeyless/Model/EsmGet.cs
 src/akeyless/Model/EsmGetSecretOutput.cs
 src/akeyless/Model/EsmList.cs
@@ -1072,6 +1088,7 @@ src/akeyless/Model/GetTags.cs
 src/akeyless/Model/GetTarget.cs
 src/akeyless/Model/GetTargetDetails.cs
 src/akeyless/Model/GetTargetDetailsOutput.cs
+src/akeyless/Model/GoogleChronicleForwardingConfig.cs
 src/akeyless/Model/GwClusterIdentity.cs
 src/akeyless/Model/HashiMigration.cs
 src/akeyless/Model/HashiPayload.cs
@@ -1155,6 +1172,7 @@ src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OIDCAccessRules.cs
 src/akeyless/Model/OIDCCustomClaim.cs
 src/akeyless/Model/ObjectVersionSettingsOutput.cs
+src/akeyless/Model/OidcClientInfo.cs
 src/akeyless/Model/OnePasswordMigration.cs
 src/akeyless/Model/OnePasswordPayload.cs
 src/akeyless/Model/PKICertificateIssueDetails.cs

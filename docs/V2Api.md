@@ -15,6 +15,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateAuthMethodAWSIAM**](V2Api.md#createauthmethodawsiam) | **POST** /create-auth-method-aws-iam |  |
 | [**CreateAuthMethodAzureAD**](V2Api.md#createauthmethodazuread) | **POST** /create-auth-method-azure-ad |  |
 | [**CreateAuthMethodCert**](V2Api.md#createauthmethodcert) | **POST** /create-auth-method-cert |  |
+| [**CreateAuthMethodEmail**](V2Api.md#createauthmethodemail) | **POST** /create-auth-method-email |  |
 | [**CreateAuthMethodGCP**](V2Api.md#createauthmethodgcp) | **POST** /create-auth-method-gcp |  |
 | [**CreateAuthMethodHuawei**](V2Api.md#createauthmethodhuawei) | **POST** /create-auth-method-huawei |  |
 | [**CreateAuthMethodK8S**](V2Api.md#createauthmethodk8s) | **POST** /create-auth-method-k8s |  |
@@ -88,6 +89,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**EsmUpdate**](V2Api.md#esmupdate) | **POST** /esm-update |  |
 | [**EventAction**](V2Api.md#eventaction) | **POST** /event-action |  |
 | [**ExportClassicKey**](V2Api.md#exportclassickey) | **POST** /export-classic-key |  |
+| [**GatewayCreateAllowedAccess**](V2Api.md#gatewaycreateallowedaccess) | **POST** /gateway-create-allowed-access |  |
 | [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config |  |
 | [**GatewayCreateMigration**](V2Api.md#gatewaycreatemigration) | **POST** /gateway-create-migration |  |
 | [**GatewayCreateProducerArtifactory**](V2Api.md#gatewaycreateproducerartifactory) | **POST** /gateway-create-producer-artifactory |  |
@@ -115,10 +117,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayCreateProducerRedis**](V2Api.md#gatewaycreateproducerredis) | **POST** /gateway-create-producer-Redis |  |
 | [**GatewayCreateProducerRedshift**](V2Api.md#gatewaycreateproducerredshift) | **POST** /gateway-create-producer-redshift |  |
 | [**GatewayCreateProducerSnowflake**](V2Api.md#gatewaycreateproducersnowflake) | **POST** /gateway-create-producer-snowflake |  |
+| [**GatewayDeleteAllowedAccess**](V2Api.md#gatewaydeleteallowedaccess) | **DELETE** /gateway-delete-allowed-access |  |
 | [**GatewayDeleteK8SAuthConfig**](V2Api.md#gatewaydeletek8sauthconfig) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**GatewayDeleteMigration**](V2Api.md#gatewaydeletemigration) | **POST** /gateway-delete-migration |  |
 | [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer |  |
 | [**GatewayDownloadCustomerFragments**](V2Api.md#gatewaydownloadcustomerfragments) | **POST** /gateway-download-customer-fragments |  |
+| [**GatewayGetAllowedAccess**](V2Api.md#gatewaygetallowedaccess) | **GET** /gateway-get-allowed-access |  |
 | [**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config |  |
 | [**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config |  |
 | [**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config |  |
@@ -134,6 +138,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayStatusMigration**](V2Api.md#gatewaystatusmigration) | **POST** /gateway-migration-status |  |
 | [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer |  |
 | [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration |  |
+| [**GatewayUpdateAllowedAccess**](V2Api.md#gatewayupdateallowedaccess) | **POST** /gateway-update-allowed-access |  |
 | [**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item |  |
 | [**GatewayUpdateK8SAuthConfig**](V2Api.md#gatewayupdatek8sauthconfig) | **POST** /gateway-update-k8s-auth-config |  |
 | [**GatewayUpdateLdapAuthConfig**](V2Api.md#gatewayupdateldapauthconfig) | **POST** /gateway-update-ldap-auth-config |  |
@@ -1251,6 +1256,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createAuthMethodCertResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodemail"></a>
+# **CreateAuthMethodEmail**
+> CreateAuthMethodEmailOutput CreateAuthMethodEmail (CreateAuthMethodEmail body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodEmailExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodEmail(); // CreateAuthMethodEmail | 
+
+            try
+            {
+                CreateAuthMethodEmailOutput result = apiInstance.CreateAuthMethodEmail(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodEmail: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateAuthMethodEmailWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodEmailOutput> response = apiInstance.CreateAuthMethodEmailWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodEmailWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodEmail**](CreateAuthMethodEmail.md) |  |  |
+
+### Return type
+
+[**CreateAuthMethodEmailOutput**](CreateAuthMethodEmailOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodEmailResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7154,7 +7247,7 @@ No authorization required
 
 <a name="esmdelete"></a>
 # **EsmDelete**
-> Object EsmDelete (EsmDelete body)
+> EsmDeleteSecretOutput EsmDelete (EsmDelete body)
 
 
 
@@ -7179,7 +7272,7 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.EsmDelete(body);
+                EsmDeleteSecretOutput result = apiInstance.EsmDelete(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7199,7 +7292,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Object> response = apiInstance.EsmDeleteWithHttpInfo(body);
+    ApiResponse<EsmDeleteSecretOutput> response = apiInstance.EsmDeleteWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -7220,7 +7313,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Object**
+[**EsmDeleteSecretOutput**](EsmDeleteSecretOutput.md)
 
 ### Authorization
 
@@ -7671,6 +7764,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | ExportClassicKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaycreateallowedaccess"></a>
+# **GatewayCreateAllowedAccess**
+> AllowedAccess GatewayCreateAllowedAccess (AllowedAccessArgs body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayCreateAllowedAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AllowedAccessArgs(); // AllowedAccessArgs | 
+
+            try
+            {
+                AllowedAccess result = apiInstance.GatewayCreateAllowedAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayCreateAllowedAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayCreateAllowedAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AllowedAccess> response = apiInstance.GatewayCreateAllowedAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayCreateAllowedAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+
+### Return type
+
+[**AllowedAccess**](AllowedAccess.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayCreateAllowedAccessResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -10051,6 +10232,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaydeleteallowedaccess"></a>
+# **GatewayDeleteAllowedAccess**
+> GatewayDeleteAllowedAccessOutput GatewayDeleteAllowedAccess (AllowedAccessDeleteArgs body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayDeleteAllowedAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AllowedAccessDeleteArgs(); // AllowedAccessDeleteArgs | 
+
+            try
+            {
+                GatewayDeleteAllowedAccessOutput result = apiInstance.GatewayDeleteAllowedAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayDeleteAllowedAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayDeleteAllowedAccessOutput> response = apiInstance.GatewayDeleteAllowedAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayDeleteAllowedAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AllowedAccessDeleteArgs**](AllowedAccessDeleteArgs.md) |  |  |
+
+### Return type
+
+[**GatewayDeleteAllowedAccessOutput**](GatewayDeleteAllowedAccessOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayDeleteAllowedAccessResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaydeletek8sauthconfig"></a>
 # **GatewayDeleteK8SAuthConfig**
 > GatewayDeleteK8SAuthConfigOutput GatewayDeleteK8SAuthConfig (GatewayDeleteK8SAuthConfig body)
@@ -10399,6 +10668,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayDownloadCustomerFragmentsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaygetallowedaccess"></a>
+# **GatewayGetAllowedAccess**
+> AllowedAccess GatewayGetAllowedAccess (AllowedAccessArgs body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayGetAllowedAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AllowedAccessArgs(); // AllowedAccessArgs | 
+
+            try
+            {
+                AllowedAccess result = apiInstance.GatewayGetAllowedAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayGetAllowedAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayGetAllowedAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AllowedAccess> response = apiInstance.GatewayGetAllowedAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetAllowedAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+
+### Return type
+
+[**AllowedAccess**](AllowedAccess.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayGetAllowedAccessResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -11715,6 +12072,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayMigrationSyncResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateallowedaccess"></a>
+# **GatewayUpdateAllowedAccess**
+> AllowedAccess GatewayUpdateAllowedAccess (AllowedAccessUpdateArgs body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateAllowedAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AllowedAccessUpdateArgs(); // AllowedAccessUpdateArgs | 
+
+            try
+            {
+                AllowedAccess result = apiInstance.GatewayUpdateAllowedAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateAllowedAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateAllowedAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AllowedAccess> response = apiInstance.GatewayUpdateAllowedAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateAllowedAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AllowedAccessUpdateArgs**](AllowedAccessUpdateArgs.md) |  |  |
+
+### Return type
+
+[**AllowedAccess**](AllowedAccess.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayCreateAllowedAccessResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

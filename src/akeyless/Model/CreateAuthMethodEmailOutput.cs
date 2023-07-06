@@ -27,41 +27,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// EsmUpdateSecretOutput
+    /// CreateAuthMethodEmailOutput
     /// </summary>
-    [DataContract(Name = "EsmUpdateSecretOutput")]
-    public partial class EsmUpdateSecretOutput : IEquatable<EsmUpdateSecretOutput>, IValidatableObject
+    [DataContract(Name = "createAuthMethodEmailOutput")]
+    public partial class CreateAuthMethodEmailOutput : IEquatable<CreateAuthMethodEmailOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EsmUpdateSecretOutput" /> class.
+        /// Initializes a new instance of the <see cref="CreateAuthMethodEmailOutput" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="secretId">secretId.</param>
-        /// <param name="versionId">versionId.</param>
-        public EsmUpdateSecretOutput(string name = default(string), string secretId = default(string), string versionId = default(string))
+        /// <param name="accessId">accessId.</param>
+        public CreateAuthMethodEmailOutput(string accessId = default(string))
         {
-            this.Name = name;
-            this.SecretId = secretId;
-            this.VersionId = versionId;
+            this.AccessId = accessId;
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Gets or Sets AccessId
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SecretId
-        /// </summary>
-        [DataMember(Name = "secret_id", EmitDefaultValue = false)]
-        public string SecretId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VersionId
-        /// </summary>
-        [DataMember(Name = "version_id", EmitDefaultValue = false)]
-        public string VersionId { get; set; }
+        [DataMember(Name = "access_id", EmitDefaultValue = false)]
+        public string AccessId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +54,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EsmUpdateSecretOutput {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  SecretId: ").Append(SecretId).Append("\n");
-            sb.Append("  VersionId: ").Append(VersionId).Append("\n");
+            sb.Append("class CreateAuthMethodEmailOutput {\n");
+            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +76,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EsmUpdateSecretOutput);
+            return this.Equals(input as CreateAuthMethodEmailOutput);
         }
 
         /// <summary>
-        /// Returns true if EsmUpdateSecretOutput instances are equal
+        /// Returns true if CreateAuthMethodEmailOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of EsmUpdateSecretOutput to be compared</param>
+        /// <param name="input">Instance of CreateAuthMethodEmailOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EsmUpdateSecretOutput input)
+        public bool Equals(CreateAuthMethodEmailOutput input)
         {
             if (input == null)
             {
@@ -110,19 +92,9 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.SecretId == input.SecretId ||
-                    (this.SecretId != null &&
-                    this.SecretId.Equals(input.SecretId))
-                ) && 
-                (
-                    this.VersionId == input.VersionId ||
-                    (this.VersionId != null &&
-                    this.VersionId.Equals(input.VersionId))
+                    this.AccessId == input.AccessId ||
+                    (this.AccessId != null &&
+                    this.AccessId.Equals(input.AccessId))
                 );
         }
 
@@ -135,17 +107,9 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
+                if (this.AccessId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                }
-                if (this.SecretId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SecretId.GetHashCode();
-                }
-                if (this.VersionId != null)
-                {
-                    hashCode = (hashCode * 59) + this.VersionId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
                 }
                 return hashCode;
             }

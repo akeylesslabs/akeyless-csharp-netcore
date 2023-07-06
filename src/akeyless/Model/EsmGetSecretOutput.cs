@@ -37,11 +37,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="binaryValue">binaryValue.</param>
         /// <param name="metadata">metadata.</param>
+        /// <param name="name">name.</param>
         /// <param name="value">value.</param>
-        public EsmGetSecretOutput(bool binaryValue = default(bool), Object metadata = default(Object), string value = default(string))
+        public EsmGetSecretOutput(bool binaryValue = default(bool), Object metadata = default(Object), string name = default(string), string value = default(string))
         {
             this.BinaryValue = binaryValue;
             this.Metadata = metadata;
+            this.Name = name;
             this.Value = value;
         }
 
@@ -56,6 +58,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public Object Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Value
@@ -73,6 +81,7 @@ namespace akeyless.Model
             sb.Append("class EsmGetSecretOutput {\n");
             sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -119,6 +128,11 @@ namespace akeyless.Model
                     this.Metadata.Equals(input.Metadata))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
@@ -138,6 +152,10 @@ namespace akeyless.Model
                 if (this.Metadata != null)
                 {
                     hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 if (this.Value != null)
                 {

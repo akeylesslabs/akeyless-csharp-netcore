@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AzureAnalyticsConfig** | [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] 
 **DatadogConfig** | [**DatadogForwardingConfig**](DatadogForwardingConfig.md) |  | [optional] 
 **ElasticsearchConfig** | [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] 
+**GoogleChronicleConfig** | [**GoogleChronicleForwardingConfig**](GoogleChronicleForwardingConfig.md) |  | [optional] 
 **JsonOutput** | **bool** |  | [optional] 
 **LoganEnable** | **bool** |  | [optional] 
 **LoganUrl** | **string** |  | [optional] 
