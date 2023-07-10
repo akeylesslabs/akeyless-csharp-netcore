@@ -117,12 +117,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayCreateProducerRedis**](V2Api.md#gatewaycreateproducerredis) | **POST** /gateway-create-producer-Redis |  |
 | [**GatewayCreateProducerRedshift**](V2Api.md#gatewaycreateproducerredshift) | **POST** /gateway-create-producer-redshift |  |
 | [**GatewayCreateProducerSnowflake**](V2Api.md#gatewaycreateproducersnowflake) | **POST** /gateway-create-producer-snowflake |  |
-| [**GatewayDeleteAllowedAccess**](V2Api.md#gatewaydeleteallowedaccess) | **DELETE** /gateway-delete-allowed-access |  |
+| [**GatewayDeleteAllowedAccess**](V2Api.md#gatewaydeleteallowedaccess) | **POST** /gateway-delete-allowed-access |  |
 | [**GatewayDeleteK8SAuthConfig**](V2Api.md#gatewaydeletek8sauthconfig) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**GatewayDeleteMigration**](V2Api.md#gatewaydeletemigration) | **POST** /gateway-delete-migration |  |
 | [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer |  |
 | [**GatewayDownloadCustomerFragments**](V2Api.md#gatewaydownloadcustomerfragments) | **POST** /gateway-download-customer-fragments |  |
-| [**GatewayGetAllowedAccess**](V2Api.md#gatewaygetallowedaccess) | **GET** /gateway-get-allowed-access |  |
+| [**GatewayGetAllowedAccess**](V2Api.md#gatewaygetallowedaccess) | **POST** /gateway-get-allowed-access |  |
 | [**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config |  |
 | [**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config |  |
 | [**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config |  |
@@ -170,6 +170,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake |  |
 | [**GatewayUpdateTlsCert**](V2Api.md#gatewayupdatetlscert) | **POST** /gateway-update-tls-cert |  |
 | [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds |  |
+| [**GenerateCsr**](V2Api.md#generatecsr) | **POST** /generate-csr |  |
 | [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo |  |
 | [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
 | [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method |  |
@@ -14884,6 +14885,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayUpdateTmpUsersResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="generatecsr"></a>
+# **GenerateCsr**
+> GenerateCsrOutput GenerateCsr (GenerateCsr body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GenerateCsrExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GenerateCsr(); // GenerateCsr | 
+
+            try
+            {
+                GenerateCsrOutput result = apiInstance.GenerateCsr(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GenerateCsr: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GenerateCsrWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GenerateCsrOutput> response = apiInstance.GenerateCsrWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GenerateCsrWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GenerateCsr**](GenerateCsr.md) |  |  |
+
+### Return type
+
+[**GenerateCsrOutput**](GenerateCsrOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | generateCsrResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

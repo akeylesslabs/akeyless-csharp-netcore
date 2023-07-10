@@ -377,6 +377,8 @@ docs/GatewayUpdateTmpUsers.md
 docs/GatewaysListResponse.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
+docs/GenerateCsr.md
+docs/GenerateCsrOutput.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
@@ -666,10 +668,8 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 git_push.sh
-src/akeyless.Test/Model/GatewayCreateAllowedAccessTests.cs
-src/akeyless.Test/Model/GatewayDeleteAllowedAccessTests.cs
-src/akeyless.Test/Model/GatewayGetAllowedAccessTests.cs
-src/akeyless.Test/Model/GatewayUpdateAllowedAccessTests.cs
+src/akeyless.Test/Model/GenerateCsrOutputTests.cs
+src/akeyless.Test/Model/GenerateCsrTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1064,6 +1064,8 @@ src/akeyless/Model/GatewayUpdateTmpUsers.cs
 src/akeyless/Model/GatewaysListResponse.cs
 src/akeyless/Model/GenCustomerFragment.cs
 src/akeyless/Model/GeneralConfigPart.cs
+src/akeyless/Model/GenerateCsr.cs
+src/akeyless/Model/GenerateCsrOutput.cs
 src/akeyless/Model/GetAccountSettings.cs
 src/akeyless/Model/GetAccountSettingsCommandOutput.cs
 src/akeyless/Model/GetAuthMethod.cs

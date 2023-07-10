@@ -72,7 +72,7 @@ namespace akeyless.Model
         /// <summary>
         /// Gets or Sets ClientId
         /// </summary>
-        [DataMember(Name = "client-id", EmitDefaultValue = false)]
+        [DataMember(Name = "client_id", EmitDefaultValue = false)]
         public string ClientId { get; set; }
 
         /// <summary>
