@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="adminName">Workstation Admin Name.</param>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
-        /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder).</param>
+        /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder).</param>
         /// <param name="enable">Enable/Disable Event Forwarder [true/false] (default to &quot;true&quot;).</param>
         /// <param name="eventSourceLocations">Event sources.</param>
         /// <param name="eventTypes">Event types.</param>
@@ -93,9 +93,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder)
+        /// A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder)
         /// </summary>
-        /// <value>A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder)</value>
+        /// <value>A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder)</value>
         [DataMember(Name = "email-to", EmitDefaultValue = false)]
         public string EmailTo { get; set; }
 

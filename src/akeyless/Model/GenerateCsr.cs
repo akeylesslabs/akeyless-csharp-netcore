@@ -41,26 +41,24 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GenerateCsr" /> class.
         /// </summary>
         /// <param name="alg">alg.</param>
-        /// <param name="altNames">The DNS Alternative Names to be included in the CSR certificate (in a comma-separated list).</param>
-        /// <param name="certificateType">The certificateType to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing).</param>
+        /// <param name="altNames">A comma-separated list of dns alternative names.</param>
+        /// <param name="certificateType">The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing).</param>
         /// <param name="city">The city to be included in the CSR certificate.</param>
-        /// <param name="commonName">The commonName to be included in the CSR certificate (required).</param>
+        /// <param name="commonName">The common name to be included in the CSR certificate (required).</param>
         /// <param name="country">The country to be included in the CSR certificate.</param>
         /// <param name="critical">Add critical to the key usage extension (will be false if not added).</param>
         /// <param name="dep">The department to be included in the CSR certificate.</param>
-        /// <param name="description">Description of the object.</param>
-        /// <param name="emailAddresses">The email addresses Alternative Names to be included in the CSR certificate (in a comma-separated list).</param>
-        /// <param name="generateKey">Generate a new csr key.</param>
-        /// <param name="ipAddresses">The ip addresses Alternative Names to be included in the CSR certificate (in a comma-separated list).</param>
+        /// <param name="emailAddresses">A comma-separated list of email addresses alternative names.</param>
+        /// <param name="generateKey">Generate a new classic key for the csr.</param>
+        /// <param name="ipAddresses">A comma-separated list of ip addresses alternative names.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="metadata">Deprecated - use description.</param>
-        /// <param name="name">Key name in akeyless (required).</param>
+        /// <param name="name">The classic key name (required).</param>
         /// <param name="org">The organization to be included in the CSR certificate.</param>
         /// <param name="state">The state to be included in the CSR certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="uriSans">The URI Subject Alternative Names to be included in the CSR certificate (in a comma-separated list).</param>
-        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string description = default(string), string emailAddresses = default(string), bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string metadata = default(string), string name = default(string), string org = default(string), string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        /// <param name="uriSans">A comma-separated list of uri alternative names.</param>
+        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string name = default(string), string org = default(string), string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "commonName" is required (not null)
             if (commonName == null)
@@ -81,12 +79,10 @@ namespace akeyless.Model
             this.Country = country;
             this.Critical = critical;
             this.Dep = dep;
-            this.Description = description;
             this.EmailAddresses = emailAddresses;
             this.GenerateKey = generateKey;
             this.IpAddresses = ipAddresses;
             this.Json = json;
-            this.Metadata = metadata;
             this.Org = org;
             this.State = state;
             this.Token = token;
@@ -101,16 +97,16 @@ namespace akeyless.Model
         public string Alg { get; set; }
 
         /// <summary>
-        /// The DNS Alternative Names to be included in the CSR certificate (in a comma-separated list)
+        /// A comma-separated list of dns alternative names
         /// </summary>
-        /// <value>The DNS Alternative Names to be included in the CSR certificate (in a comma-separated list)</value>
+        /// <value>A comma-separated list of dns alternative names</value>
         [DataMember(Name = "alt-names", EmitDefaultValue = false)]
         public string AltNames { get; set; }
 
         /// <summary>
-        /// The certificateType to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)
+        /// The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)
         /// </summary>
-        /// <value>The certificateType to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)</value>
+        /// <value>The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)</value>
         [DataMember(Name = "certificate-type", EmitDefaultValue = false)]
         public string CertificateType { get; set; }
 
@@ -122,9 +118,9 @@ namespace akeyless.Model
         public string City { get; set; }
 
         /// <summary>
-        /// The commonName to be included in the CSR certificate
+        /// The common name to be included in the CSR certificate
         /// </summary>
-        /// <value>The commonName to be included in the CSR certificate</value>
+        /// <value>The common name to be included in the CSR certificate</value>
         [DataMember(Name = "common-name", IsRequired = true, EmitDefaultValue = true)]
         public string CommonName { get; set; }
 
@@ -150,30 +146,23 @@ namespace akeyless.Model
         public string Dep { get; set; }
 
         /// <summary>
-        /// Description of the object
+        /// A comma-separated list of email addresses alternative names
         /// </summary>
-        /// <value>Description of the object</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// The email addresses Alternative Names to be included in the CSR certificate (in a comma-separated list)
-        /// </summary>
-        /// <value>The email addresses Alternative Names to be included in the CSR certificate (in a comma-separated list)</value>
+        /// <value>A comma-separated list of email addresses alternative names</value>
         [DataMember(Name = "email-addresses", EmitDefaultValue = false)]
         public string EmailAddresses { get; set; }
 
         /// <summary>
-        /// Generate a new csr key
+        /// Generate a new classic key for the csr
         /// </summary>
-        /// <value>Generate a new csr key</value>
+        /// <value>Generate a new classic key for the csr</value>
         [DataMember(Name = "generate-key", EmitDefaultValue = true)]
         public bool GenerateKey { get; set; }
 
         /// <summary>
-        /// The ip addresses Alternative Names to be included in the CSR certificate (in a comma-separated list)
+        /// A comma-separated list of ip addresses alternative names
         /// </summary>
-        /// <value>The ip addresses Alternative Names to be included in the CSR certificate (in a comma-separated list)</value>
+        /// <value>A comma-separated list of ip addresses alternative names</value>
         [DataMember(Name = "ip-addresses", EmitDefaultValue = false)]
         public string IpAddresses { get; set; }
 
@@ -185,16 +174,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Deprecated - use description
+        /// The classic key name
         /// </summary>
-        /// <value>Deprecated - use description</value>
-        [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public string Metadata { get; set; }
-
-        /// <summary>
-        /// Key name in akeyless
-        /// </summary>
-        /// <value>Key name in akeyless</value>
+        /// <value>The classic key name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
@@ -227,9 +209,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// The URI Subject Alternative Names to be included in the CSR certificate (in a comma-separated list)
+        /// A comma-separated list of uri alternative names
         /// </summary>
-        /// <value>The URI Subject Alternative Names to be included in the CSR certificate (in a comma-separated list)</value>
+        /// <value>A comma-separated list of uri alternative names</value>
         [DataMember(Name = "uri-sans", EmitDefaultValue = false)]
         public string UriSans { get; set; }
 
@@ -249,12 +231,10 @@ namespace akeyless.Model
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  Critical: ").Append(Critical).Append("\n");
             sb.Append("  Dep: ").Append(Dep).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
             sb.Append("  GenerateKey: ").Append(GenerateKey).Append("\n");
             sb.Append("  IpAddresses: ").Append(IpAddresses).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Org: ").Append(Org).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
@@ -336,11 +316,6 @@ namespace akeyless.Model
                     this.Dep.Equals(input.Dep))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
                     this.EmailAddresses == input.EmailAddresses ||
                     (this.EmailAddresses != null &&
                     this.EmailAddresses.Equals(input.EmailAddresses))
@@ -357,11 +332,6 @@ namespace akeyless.Model
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
-                ) && 
-                (
-                    this.Metadata == input.Metadata ||
-                    (this.Metadata != null &&
-                    this.Metadata.Equals(input.Metadata))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -433,10 +403,6 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Dep.GetHashCode();
                 }
-                if (this.Description != null)
-                {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
-                }
                 if (this.EmailAddresses != null)
                 {
                     hashCode = (hashCode * 59) + this.EmailAddresses.GetHashCode();
@@ -447,10 +413,6 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.IpAddresses.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
-                if (this.Metadata != null)
-                {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
-                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();

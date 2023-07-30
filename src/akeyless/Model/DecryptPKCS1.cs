@@ -45,9 +45,11 @@ namespace akeyless.Model
         /// <param name="itemId">The item id of the key to use in the decryption process.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
+        /// <param name="outputFormat">If specified, the output will be formatted accordingly. options: [base64].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptPKCS1(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="version">key version (relevant only for classic key).</param>
+        public DecryptPKCS1(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null)
@@ -64,8 +66,10 @@ namespace akeyless.Model
             this.DisplayId = displayId;
             this.ItemId = itemId;
             this.Json = json;
+            this.OutputFormat = outputFormat;
             this.Token = token;
             this.UidToken = uidToken;
+            this._Version = version;
         }
 
         /// <summary>
@@ -104,6 +108,13 @@ namespace akeyless.Model
         public string KeyName { get; set; }
 
         /// <summary>
+        /// If specified, the output will be formatted accordingly. options: [base64]
+        /// </summary>
+        /// <value>If specified, the output will be formatted accordingly. options: [base64]</value>
+        [DataMember(Name = "output-format", EmitDefaultValue = false)]
+        public string OutputFormat { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -118,6 +129,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// key version (relevant only for classic key)
+        /// </summary>
+        /// <value>key version (relevant only for classic key)</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -130,8 +148,10 @@ namespace akeyless.Model
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
+            sb.Append("  OutputFormat: ").Append(OutputFormat).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -191,6 +211,11 @@ namespace akeyless.Model
                     this.KeyName.Equals(input.KeyName))
                 ) && 
                 (
+                    this.OutputFormat == input.OutputFormat ||
+                    (this.OutputFormat != null &&
+                    this.OutputFormat.Equals(input.OutputFormat))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -199,6 +224,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -225,6 +254,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.KeyName.GetHashCode();
                 }
+                if (this.OutputFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.OutputFormat.GetHashCode();
+                }
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
@@ -233,6 +266,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

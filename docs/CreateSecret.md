@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **Type** | **string** | The secret sub type [generic/password] | [optional] [default to "generic"]
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | **string** | For Password Management use | [optional] 
-**Value** | **string** | The secret value | 
+**Value** | **string** | The secret value (only relevant for type &#39;generic&#39;) | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

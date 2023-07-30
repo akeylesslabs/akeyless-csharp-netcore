@@ -35,1003 +35,209 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetTypeDetailsInput" /> class.
         /// </summary>
-        /// <param name="administrativePort">administrativePort.</param>
-        /// <param name="apiKey">apiKey.</param>
-        /// <param name="appPrivateKey">params needed for jwt auth AppPrivateKey is the rsa private key in PEM format.</param>
-        /// <param name="artifactoryAdminApikey">artifactoryAdminApikey.</param>
-        /// <param name="artifactoryAdminUsername">artifactoryAdminUsername.</param>
-        /// <param name="artifactoryBaseUrl">artifactoryBaseUrl.</param>
-        /// <param name="authFlow">authFlow.</param>
-        /// <param name="authorizationPort">authorizationPort.</param>
-        /// <param name="awsAccessKeyId">awsAccessKeyId.</param>
-        /// <param name="awsRegion">awsRegion.</param>
-        /// <param name="awsSecretAccessKey">awsSecretAccessKey.</param>
-        /// <param name="awsSessionToken">awsSessionToken.</param>
-        /// <param name="azureClientId">azureClientId.</param>
-        /// <param name="azureClientSecret">azureClientSecret.</param>
-        /// <param name="azureResourceGroupName">azureResourceGroupName.</param>
-        /// <param name="azureResourceName">azureResourceName.</param>
-        /// <param name="azureSubscriptionId">azureSubscriptionId.</param>
-        /// <param name="azureTenantId">azureTenantId.</param>
-        /// <param name="caCertData">CACertData is the rsa 4096 certificate data in PEM format.</param>
-        /// <param name="caCertName">CACertName is the name of the certificate in SalesForce tenant.</param>
-        /// <param name="certificate">certificate.</param>
-        /// <param name="chefServerHostName">chefServerHostName.</param>
-        /// <param name="chefServerKey">chefServerKey.</param>
-        /// <param name="chefServerPort">chefServerPort.</param>
-        /// <param name="chefServerUrl">chefServerUrl.</param>
-        /// <param name="chefServerUsername">chefServerUsername.</param>
-        /// <param name="chefSkipSsl">chefSkipSsl.</param>
-        /// <param name="clientId">clientId.</param>
-        /// <param name="clientSecret">params needed for password auth.</param>
-        /// <param name="dbHostName">dbHostName.</param>
-        /// <param name="dbName">dbName.</param>
-        /// <param name="dbPort">dbPort.</param>
-        /// <param name="dbPrivateKey">(Optional) Private Key in PEM format.</param>
-        /// <param name="dbPrivateKeyPassphrase">dbPrivateKeyPassphrase.</param>
-        /// <param name="dbPwd">dbPwd.</param>
-        /// <param name="dbServerCertificates">(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set..</param>
-        /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
-        /// <param name="dbUserName">dbUserName.</param>
-        /// <param name="domainName">domainName.</param>
-        /// <param name="eksAccessKeyId">eksAccessKeyId.</param>
-        /// <param name="eksClusterCaCertificate">eksClusterCaCertificate.</param>
-        /// <param name="eksClusterEndpoint">eksClusterEndpoint.</param>
-        /// <param name="eksClusterName">eksClusterName.</param>
-        /// <param name="eksRegion">eksRegion.</param>
-        /// <param name="eksSecretAccessKey">eksSecretAccessKey.</param>
-        /// <param name="email">email.</param>
-        /// <param name="firstName">Contact Info - GlobalSign requires this to be sent with every certificate creation request.</param>
-        /// <param name="gcpServiceAccountEmail">deprecated.</param>
-        /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
-        /// <param name="gcpServiceAccountKeyBase64">gcpServiceAccountKeyBase64.</param>
-        /// <param name="githubAppId">githubAppId.</param>
-        /// <param name="githubAppPrivateKey">githubAppPrivateKey.</param>
-        /// <param name="githubBaseUrl">githubBaseUrl.</param>
-        /// <param name="gkeClusterCaCertificate">gkeClusterCaCertificate.</param>
-        /// <param name="gkeClusterEndpoint">gkeClusterEndpoint.</param>
-        /// <param name="gkeClusterName">gkeClusterName.</param>
-        /// <param name="gkeServiceAccountKey">gkeServiceAccountKey.</param>
-        /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
-        /// <param name="host">host.</param>
-        /// <param name="hostname">hostname.</param>
-        /// <param name="hosts">key hostname, value description.</param>
-        /// <param name="imapFqdn">imapFqdn.</param>
-        /// <param name="imapPassword">imapPassword.</param>
-        /// <param name="imapPort">imapPort.</param>
-        /// <param name="imapUser">imapUser.</param>
-        /// <param name="implementationType">implementationType.</param>
-        /// <param name="k8sBearerToken">k8sBearerToken.</param>
-        /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
-        /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
-        /// <param name="lastName">lastName.</param>
-        /// <param name="ldapAudience">ldapAudience.</param>
-        /// <param name="ldapBindDn">ldapBindDn.</param>
-        /// <param name="ldapBindPassword">ldapBindPassword.</param>
-        /// <param name="ldapCertificate">ldapCertificate.</param>
-        /// <param name="ldapTokenExpiration">ldapTokenExpiration.</param>
-        /// <param name="ldapUrl">ldapUrl.</param>
-        /// <param name="mongodbAtlasApiPrivateKey">mongodbAtlasApiPrivateKey.</param>
-        /// <param name="mongodbAtlasApiPublicKey">mongodbAtlasApiPublicKey.</param>
-        /// <param name="mongodbAtlasProjectId">mongodb atlas fields.</param>
-        /// <param name="mongodbDbName">common fields.</param>
-        /// <param name="mongodbDefaultAuthDb">mongodbDefaultAuthDb.</param>
-        /// <param name="mongodbHostPort">mongodbHostPort.</param>
-        /// <param name="mongodbIsAtlas">mongodbIsAtlas.</param>
-        /// <param name="mongodbPassword">mongodbPassword.</param>
-        /// <param name="mongodbUriConnection">mongodb fields.</param>
-        /// <param name="mongodbUriOptions">mongodbUriOptions.</param>
-        /// <param name="mongodbUsername">mongodbUsername.</param>
-        /// <param name="password">password.</param>
-        /// <param name="payload">payload.</param>
-        /// <param name="phone">phone.</param>
-        /// <param name="pingUrl">pingUrl.</param>
-        /// <param name="port">port.</param>
-        /// <param name="privateKey">privateKey.</param>
-        /// <param name="privateKeyPassword">privateKeyPassword.</param>
-        /// <param name="privilegedUser">privilegedUser.</param>
-        /// <param name="profileId">profileId.</param>
-        /// <param name="rabbitmqServerPassword">rabbitmqServerPassword.</param>
-        /// <param name="rabbitmqServerUri">rabbitmqServerUri.</param>
-        /// <param name="rabbitmqServerUser">rabbitmqServerUser.</param>
-        /// <param name="securityToken">securityToken.</param>
-        /// <param name="sfAccount">sfAccount.</param>
-        /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
-        /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
-        /// <param name="tenantUrl">tenantUrl.</param>
-        /// <param name="timeout">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
-        /// <param name="url">url.</param>
-        /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        /// <param name="useGwServiceAccount">useGwServiceAccount.</param>
-        /// <param name="useTls">useTls.</param>
-        /// <param name="userName">userName.</param>
-        /// <param name="userPassword">userPassword.</param>
-        /// <param name="username">username.</param>
-        /// <param name="validationEmail">validationEmail.</param>
-        /// <param name="venafiApiKey">venafiApiKey.</param>
-        /// <param name="venafiBaseUrl">venafiBaseUrl.</param>
-        /// <param name="venafiTppAccessToken">venafiTppAccessToken.</param>
-        /// <param name="venafiTppClientId">venafiTppClientId.</param>
-        /// <param name="venafiTppPassword">Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead.</param>
-        /// <param name="venafiTppRefreshToken">venafiTppRefreshToken.</param>
-        /// <param name="venafiTppUsername">Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead.</param>
-        /// <param name="venafiUseTpp">venafiUseTpp.</param>
-        /// <param name="venafiZone">venafiZone.</param>
-        public TargetTypeDetailsInput(string administrativePort = default(string), string apiKey = default(string), List<int> appPrivateKey = default(List<int>), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string authFlow = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), List<int> caCertData = default(List<int>), string caCertName = default(string), string certificate = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientId = default(string), string clientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string domainName = default(string), string eksAccessKeyId = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), string email = default(string), string firstName = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string host = default(string), string hostname = default(string), Dictionary<string, string> hosts = default(Dictionary<string, string>), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = default(string), string imapUser = default(string), string implementationType = default(string), string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string lastName = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string password = default(string), string payload = default(string), string phone = default(string), string pingUrl = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string privilegedUser = default(string), string profileId = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string securityToken = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string tenantUrl = default(string), long timeout = default(long), string url = default(string), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), bool useTls = default(bool), string userName = default(string), string userPassword = default(string), string username = default(string), string validationEmail = default(string), string venafiApiKey = default(string), string venafiBaseUrl = default(string), string venafiTppAccessToken = default(string), string venafiTppClientId = default(string), string venafiTppPassword = default(string), string venafiTppRefreshToken = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string))
+        /// <param name="artifactoryTargetDetails">artifactoryTargetDetails.</param>
+        /// <param name="awsTargetDetails">awsTargetDetails.</param>
+        /// <param name="azureTargetDetails">azureTargetDetails.</param>
+        /// <param name="chefTargetDetails">chefTargetDetails.</param>
+        /// <param name="customTargetDetails">customTargetDetails.</param>
+        /// <param name="dbTargetDetails">dbTargetDetails.</param>
+        /// <param name="dockerhubTargetDetails">dockerhubTargetDetails.</param>
+        /// <param name="eksTargetDetails">eksTargetDetails.</param>
+        /// <param name="gcpTargetDetails">gcpTargetDetails.</param>
+        /// <param name="githubTargetDetails">githubTargetDetails.</param>
+        /// <param name="gkeTargetDetails">gkeTargetDetails.</param>
+        /// <param name="globalsignAtlasTargetDetails">globalsignAtlasTargetDetails.</param>
+        /// <param name="globalsignTargetDetails">globalsignTargetDetails.</param>
+        /// <param name="ldapTargetDetails">ldapTargetDetails.</param>
+        /// <param name="linkedTargetDetails">linkedTargetDetails.</param>
+        /// <param name="mongoDbTargetDetails">mongoDbTargetDetails.</param>
+        /// <param name="nativeK8sTargetDetails">nativeK8sTargetDetails.</param>
+        /// <param name="pingTargetDetails">pingTargetDetails.</param>
+        /// <param name="rabbitMqTargetDetails">rabbitMqTargetDetails.</param>
+        /// <param name="salesforceTargetDetails">salesforceTargetDetails.</param>
+        /// <param name="sshTargetDetails">sshTargetDetails.</param>
+        /// <param name="venafiTargetDetails">venafiTargetDetails.</param>
+        /// <param name="webTargetDetails">webTargetDetails.</param>
+        /// <param name="windowsTargetDetails">windowsTargetDetails.</param>
+        /// <param name="zerosslTargetDetails">zerosslTargetDetails.</param>
+        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
         {
-            this.AdministrativePort = administrativePort;
-            this.ApiKey = apiKey;
-            this.AppPrivateKey = appPrivateKey;
-            this.ArtifactoryAdminApikey = artifactoryAdminApikey;
-            this.ArtifactoryAdminUsername = artifactoryAdminUsername;
-            this.ArtifactoryBaseUrl = artifactoryBaseUrl;
-            this.AuthFlow = authFlow;
-            this.AuthorizationPort = authorizationPort;
-            this.AwsAccessKeyId = awsAccessKeyId;
-            this.AwsRegion = awsRegion;
-            this.AwsSecretAccessKey = awsSecretAccessKey;
-            this.AwsSessionToken = awsSessionToken;
-            this.AzureClientId = azureClientId;
-            this.AzureClientSecret = azureClientSecret;
-            this.AzureResourceGroupName = azureResourceGroupName;
-            this.AzureResourceName = azureResourceName;
-            this.AzureSubscriptionId = azureSubscriptionId;
-            this.AzureTenantId = azureTenantId;
-            this.CaCertData = caCertData;
-            this.CaCertName = caCertName;
-            this.Certificate = certificate;
-            this.ChefServerHostName = chefServerHostName;
-            this.ChefServerKey = chefServerKey;
-            this.ChefServerPort = chefServerPort;
-            this.ChefServerUrl = chefServerUrl;
-            this.ChefServerUsername = chefServerUsername;
-            this.ChefSkipSsl = chefSkipSsl;
-            this.ClientId = clientId;
-            this.ClientSecret = clientSecret;
-            this.DbHostName = dbHostName;
-            this.DbName = dbName;
-            this.DbPort = dbPort;
-            this.DbPrivateKey = dbPrivateKey;
-            this.DbPrivateKeyPassphrase = dbPrivateKeyPassphrase;
-            this.DbPwd = dbPwd;
-            this.DbServerCertificates = dbServerCertificates;
-            this.DbServerName = dbServerName;
-            this.DbUserName = dbUserName;
-            this.DomainName = domainName;
-            this.EksAccessKeyId = eksAccessKeyId;
-            this.EksClusterCaCertificate = eksClusterCaCertificate;
-            this.EksClusterEndpoint = eksClusterEndpoint;
-            this.EksClusterName = eksClusterName;
-            this.EksRegion = eksRegion;
-            this.EksSecretAccessKey = eksSecretAccessKey;
-            this.Email = email;
-            this.FirstName = firstName;
-            this.GcpServiceAccountEmail = gcpServiceAccountEmail;
-            this.GcpServiceAccountKey = gcpServiceAccountKey;
-            this.GcpServiceAccountKeyBase64 = gcpServiceAccountKeyBase64;
-            this.GithubAppId = githubAppId;
-            this.GithubAppPrivateKey = githubAppPrivateKey;
-            this.GithubBaseUrl = githubBaseUrl;
-            this.GkeClusterCaCertificate = gkeClusterCaCertificate;
-            this.GkeClusterEndpoint = gkeClusterEndpoint;
-            this.GkeClusterName = gkeClusterName;
-            this.GkeServiceAccountKey = gkeServiceAccountKey;
-            this.GkeServiceAccountName = gkeServiceAccountName;
-            this.Host = host;
-            this.Hostname = hostname;
-            this.Hosts = hosts;
-            this.ImapFqdn = imapFqdn;
-            this.ImapPassword = imapPassword;
-            this.ImapPort = imapPort;
-            this.ImapUser = imapUser;
-            this.ImplementationType = implementationType;
-            this.K8sBearerToken = k8sBearerToken;
-            this.K8sClusterCaCertificate = k8sClusterCaCertificate;
-            this.K8sClusterEndpoint = k8sClusterEndpoint;
-            this.LastName = lastName;
-            this.LdapAudience = ldapAudience;
-            this.LdapBindDn = ldapBindDn;
-            this.LdapBindPassword = ldapBindPassword;
-            this.LdapCertificate = ldapCertificate;
-            this.LdapTokenExpiration = ldapTokenExpiration;
-            this.LdapUrl = ldapUrl;
-            this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
-            this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
-            this.MongodbAtlasProjectId = mongodbAtlasProjectId;
-            this.MongodbDbName = mongodbDbName;
-            this.MongodbDefaultAuthDb = mongodbDefaultAuthDb;
-            this.MongodbHostPort = mongodbHostPort;
-            this.MongodbIsAtlas = mongodbIsAtlas;
-            this.MongodbPassword = mongodbPassword;
-            this.MongodbUriConnection = mongodbUriConnection;
-            this.MongodbUriOptions = mongodbUriOptions;
-            this.MongodbUsername = mongodbUsername;
-            this.Password = password;
-            this.Payload = payload;
-            this.Phone = phone;
-            this.PingUrl = pingUrl;
-            this.Port = port;
-            this.PrivateKey = privateKey;
-            this.PrivateKeyPassword = privateKeyPassword;
-            this.PrivilegedUser = privilegedUser;
-            this.ProfileId = profileId;
-            this.RabbitmqServerPassword = rabbitmqServerPassword;
-            this.RabbitmqServerUri = rabbitmqServerUri;
-            this.RabbitmqServerUser = rabbitmqServerUser;
-            this.SecurityToken = securityToken;
-            this.SfAccount = sfAccount;
-            this.SslConnectionCertificate = sslConnectionCertificate;
-            this.SslConnectionMode = sslConnectionMode;
-            this.TenantUrl = tenantUrl;
-            this.Timeout = timeout;
-            this.Url = url;
-            this.UseGwCloudIdentity = useGwCloudIdentity;
-            this.UseGwServiceAccount = useGwServiceAccount;
-            this.UseTls = useTls;
-            this.UserName = userName;
-            this.UserPassword = userPassword;
-            this.Username = username;
-            this.ValidationEmail = validationEmail;
-            this.VenafiApiKey = venafiApiKey;
-            this.VenafiBaseUrl = venafiBaseUrl;
-            this.VenafiTppAccessToken = venafiTppAccessToken;
-            this.VenafiTppClientId = venafiTppClientId;
-            this.VenafiTppPassword = venafiTppPassword;
-            this.VenafiTppRefreshToken = venafiTppRefreshToken;
-            this.VenafiTppUsername = venafiTppUsername;
-            this.VenafiUseTpp = venafiUseTpp;
-            this.VenafiZone = venafiZone;
+            this.ArtifactoryTargetDetails = artifactoryTargetDetails;
+            this.AwsTargetDetails = awsTargetDetails;
+            this.AzureTargetDetails = azureTargetDetails;
+            this.ChefTargetDetails = chefTargetDetails;
+            this.CustomTargetDetails = customTargetDetails;
+            this.DbTargetDetails = dbTargetDetails;
+            this.DockerhubTargetDetails = dockerhubTargetDetails;
+            this.EksTargetDetails = eksTargetDetails;
+            this.GcpTargetDetails = gcpTargetDetails;
+            this.GithubTargetDetails = githubTargetDetails;
+            this.GkeTargetDetails = gkeTargetDetails;
+            this.GlobalsignAtlasTargetDetails = globalsignAtlasTargetDetails;
+            this.GlobalsignTargetDetails = globalsignTargetDetails;
+            this.LdapTargetDetails = ldapTargetDetails;
+            this.LinkedTargetDetails = linkedTargetDetails;
+            this.MongoDbTargetDetails = mongoDbTargetDetails;
+            this.NativeK8sTargetDetails = nativeK8sTargetDetails;
+            this.PingTargetDetails = pingTargetDetails;
+            this.RabbitMqTargetDetails = rabbitMqTargetDetails;
+            this.SalesforceTargetDetails = salesforceTargetDetails;
+            this.SshTargetDetails = sshTargetDetails;
+            this.VenafiTargetDetails = venafiTargetDetails;
+            this.WebTargetDetails = webTargetDetails;
+            this.WindowsTargetDetails = windowsTargetDetails;
+            this.ZerosslTargetDetails = zerosslTargetDetails;
         }
 
         /// <summary>
-        /// Gets or Sets AdministrativePort
+        /// Gets or Sets ArtifactoryTargetDetails
         /// </summary>
-        [DataMember(Name = "administrative_port", EmitDefaultValue = false)]
-        public string AdministrativePort { get; set; }
+        [DataMember(Name = "artifactory_target_details", EmitDefaultValue = false)]
+        public ArtifactoryTargetDetails ArtifactoryTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ApiKey
+        /// Gets or Sets AwsTargetDetails
         /// </summary>
-        [DataMember(Name = "api_key", EmitDefaultValue = false)]
-        public string ApiKey { get; set; }
+        [DataMember(Name = "aws_target_details", EmitDefaultValue = false)]
+        public AWSTargetDetails AwsTargetDetails { get; set; }
 
         /// <summary>
-        /// params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
+        /// Gets or Sets AzureTargetDetails
         /// </summary>
-        /// <value>params needed for jwt auth AppPrivateKey is the rsa private key in PEM format</value>
-        [DataMember(Name = "app_private_key", EmitDefaultValue = false)]
-        public List<int> AppPrivateKey { get; set; }
+        [DataMember(Name = "azure_target_details", EmitDefaultValue = false)]
+        public AzureTargetDetails AzureTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ArtifactoryAdminApikey
+        /// Gets or Sets ChefTargetDetails
         /// </summary>
-        [DataMember(Name = "artifactory_admin_apikey", EmitDefaultValue = false)]
-        public string ArtifactoryAdminApikey { get; set; }
+        [DataMember(Name = "chef_target_details", EmitDefaultValue = false)]
+        public ChefTargetDetails ChefTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ArtifactoryAdminUsername
+        /// Gets or Sets CustomTargetDetails
         /// </summary>
-        [DataMember(Name = "artifactory_admin_username", EmitDefaultValue = false)]
-        public string ArtifactoryAdminUsername { get; set; }
+        [DataMember(Name = "custom_target_details", EmitDefaultValue = false)]
+        public CustomTargetDetails CustomTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ArtifactoryBaseUrl
+        /// Gets or Sets DbTargetDetails
         /// </summary>
-        [DataMember(Name = "artifactory_base_url", EmitDefaultValue = false)]
-        public string ArtifactoryBaseUrl { get; set; }
+        [DataMember(Name = "db_target_details", EmitDefaultValue = false)]
+        public DbTargetDetails DbTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AuthFlow
+        /// Gets or Sets DockerhubTargetDetails
         /// </summary>
-        [DataMember(Name = "auth_flow", EmitDefaultValue = false)]
-        public string AuthFlow { get; set; }
+        [DataMember(Name = "dockerhub_target_details", EmitDefaultValue = false)]
+        public DockerhubTargetDetails DockerhubTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AuthorizationPort
+        /// Gets or Sets EksTargetDetails
         /// </summary>
-        [DataMember(Name = "authorization_port", EmitDefaultValue = false)]
-        public string AuthorizationPort { get; set; }
+        [DataMember(Name = "eks_target_details", EmitDefaultValue = false)]
+        public EKSTargetDetails EksTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsAccessKeyId
+        /// Gets or Sets GcpTargetDetails
         /// </summary>
-        [DataMember(Name = "aws_access_key_id", EmitDefaultValue = false)]
-        public string AwsAccessKeyId { get; set; }
+        [DataMember(Name = "gcp_target_details", EmitDefaultValue = false)]
+        public GcpTargetDetails GcpTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsRegion
+        /// Gets or Sets GithubTargetDetails
         /// </summary>
-        [DataMember(Name = "aws_region", EmitDefaultValue = false)]
-        public string AwsRegion { get; set; }
+        [DataMember(Name = "github_target_details", EmitDefaultValue = false)]
+        public GithubTargetDetails GithubTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsSecretAccessKey
+        /// Gets or Sets GkeTargetDetails
         /// </summary>
-        [DataMember(Name = "aws_secret_access_key", EmitDefaultValue = false)]
-        public string AwsSecretAccessKey { get; set; }
+        [DataMember(Name = "gke_target_details", EmitDefaultValue = false)]
+        public GKETargetDetails GkeTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsSessionToken
+        /// Gets or Sets GlobalsignAtlasTargetDetails
         /// </summary>
-        [DataMember(Name = "aws_session_token", EmitDefaultValue = false)]
-        public string AwsSessionToken { get; set; }
+        [DataMember(Name = "globalsign_atlas_target_details", EmitDefaultValue = false)]
+        public GlobalSignAtlasTargetDetails GlobalsignAtlasTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureClientId
+        /// Gets or Sets GlobalsignTargetDetails
         /// </summary>
-        [DataMember(Name = "azure_client_id", EmitDefaultValue = false)]
-        public string AzureClientId { get; set; }
+        [DataMember(Name = "globalsign_target_details", EmitDefaultValue = false)]
+        public GlobalSignGCCTargetDetails GlobalsignTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureClientSecret
+        /// Gets or Sets LdapTargetDetails
         /// </summary>
-        [DataMember(Name = "azure_client_secret", EmitDefaultValue = false)]
-        public string AzureClientSecret { get; set; }
+        [DataMember(Name = "ldap_target_details", EmitDefaultValue = false)]
+        public LdapTargetDetails LdapTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureResourceGroupName
+        /// Gets or Sets LinkedTargetDetails
         /// </summary>
-        [DataMember(Name = "azure_resource_group_name", EmitDefaultValue = false)]
-        public string AzureResourceGroupName { get; set; }
+        [DataMember(Name = "linked_target_details", EmitDefaultValue = false)]
+        public LinkedTargetDetails LinkedTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureResourceName
+        /// Gets or Sets MongoDbTargetDetails
         /// </summary>
-        [DataMember(Name = "azure_resource_name", EmitDefaultValue = false)]
-        public string AzureResourceName { get; set; }
+        [DataMember(Name = "mongo_db_target_details", EmitDefaultValue = false)]
+        public MongoDBTargetDetails MongoDbTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureSubscriptionId
+        /// Gets or Sets NativeK8sTargetDetails
         /// </summary>
-        [DataMember(Name = "azure_subscription_id", EmitDefaultValue = false)]
-        public string AzureSubscriptionId { get; set; }
+        [DataMember(Name = "native_k8s_target_details", EmitDefaultValue = false)]
+        public NativeK8sTargetDetails NativeK8sTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets AzureTenantId
+        /// Gets or Sets PingTargetDetails
         /// </summary>
-        [DataMember(Name = "azure_tenant_id", EmitDefaultValue = false)]
-        public string AzureTenantId { get; set; }
+        [DataMember(Name = "ping_target_details", EmitDefaultValue = false)]
+        public PingTargetDetails PingTargetDetails { get; set; }
 
         /// <summary>
-        /// CACertData is the rsa 4096 certificate data in PEM format
+        /// Gets or Sets RabbitMqTargetDetails
         /// </summary>
-        /// <value>CACertData is the rsa 4096 certificate data in PEM format</value>
-        [DataMember(Name = "ca_cert_data", EmitDefaultValue = false)]
-        public List<int> CaCertData { get; set; }
+        [DataMember(Name = "rabbit_mq_target_details", EmitDefaultValue = false)]
+        public RabbitMQTargetDetails RabbitMqTargetDetails { get; set; }
 
         /// <summary>
-        /// CACertName is the name of the certificate in SalesForce tenant
+        /// Gets or Sets SalesforceTargetDetails
         /// </summary>
-        /// <value>CACertName is the name of the certificate in SalesForce tenant</value>
-        [DataMember(Name = "ca_cert_name", EmitDefaultValue = false)]
-        public string CaCertName { get; set; }
+        [DataMember(Name = "salesforce_target_details", EmitDefaultValue = false)]
+        public SalesforceTargetDetails SalesforceTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets Certificate
+        /// Gets or Sets SshTargetDetails
         /// </summary>
-        [DataMember(Name = "certificate", EmitDefaultValue = false)]
-        public string Certificate { get; set; }
+        [DataMember(Name = "ssh_target_details", EmitDefaultValue = false)]
+        public SSHTargetDetails SshTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ChefServerHostName
+        /// Gets or Sets VenafiTargetDetails
         /// </summary>
-        [DataMember(Name = "chef_server_host_name", EmitDefaultValue = false)]
-        public string ChefServerHostName { get; set; }
+        [DataMember(Name = "venafi_target_details", EmitDefaultValue = false)]
+        public VenafiTargetDetails VenafiTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ChefServerKey
+        /// Gets or Sets WebTargetDetails
         /// </summary>
-        [DataMember(Name = "chef_server_key", EmitDefaultValue = false)]
-        public string ChefServerKey { get; set; }
+        [DataMember(Name = "web_target_details", EmitDefaultValue = false)]
+        public WebTargetDetails WebTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ChefServerPort
+        /// Gets or Sets WindowsTargetDetails
         /// </summary>
-        [DataMember(Name = "chef_server_port", EmitDefaultValue = false)]
-        public string ChefServerPort { get; set; }
+        [DataMember(Name = "windows_target_details", EmitDefaultValue = false)]
+        public WindowsTargetDetails WindowsTargetDetails { get; set; }
 
         /// <summary>
-        /// Gets or Sets ChefServerUrl
+        /// Gets or Sets ZerosslTargetDetails
         /// </summary>
-        [DataMember(Name = "chef_server_url", EmitDefaultValue = false)]
-        public string ChefServerUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChefServerUsername
-        /// </summary>
-        [DataMember(Name = "chef_server_username", EmitDefaultValue = false)]
-        public string ChefServerUsername { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChefSkipSsl
-        /// </summary>
-        [DataMember(Name = "chef_skip_ssl", EmitDefaultValue = true)]
-        public bool ChefSkipSsl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientId
-        /// </summary>
-        [DataMember(Name = "client_id", EmitDefaultValue = false)]
-        public string ClientId { get; set; }
-
-        /// <summary>
-        /// params needed for password auth
-        /// </summary>
-        /// <value>params needed for password auth</value>
-        [DataMember(Name = "client_secret", EmitDefaultValue = false)]
-        public string ClientSecret { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbHostName
-        /// </summary>
-        [DataMember(Name = "db_host_name", EmitDefaultValue = false)]
-        public string DbHostName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbName
-        /// </summary>
-        [DataMember(Name = "db_name", EmitDefaultValue = false)]
-        public string DbName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbPort
-        /// </summary>
-        [DataMember(Name = "db_port", EmitDefaultValue = false)]
-        public string DbPort { get; set; }
-
-        /// <summary>
-        /// (Optional) Private Key in PEM format
-        /// </summary>
-        /// <value>(Optional) Private Key in PEM format</value>
-        [DataMember(Name = "db_private_key", EmitDefaultValue = false)]
-        public string DbPrivateKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbPrivateKeyPassphrase
-        /// </summary>
-        [DataMember(Name = "db_private_key_passphrase", EmitDefaultValue = false)]
-        public string DbPrivateKeyPassphrase { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbPwd
-        /// </summary>
-        [DataMember(Name = "db_pwd", EmitDefaultValue = false)]
-        public string DbPwd { get; set; }
-
-        /// <summary>
-        /// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set.
-        /// </summary>
-        /// <value>(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set.</value>
-        [DataMember(Name = "db_server_certificates", EmitDefaultValue = false)]
-        public string DbServerCertificates { get; set; }
-
-        /// <summary>
-        /// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address.
-        /// </summary>
-        /// <value>(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address.</value>
-        [DataMember(Name = "db_server_name", EmitDefaultValue = false)]
-        public string DbServerName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DbUserName
-        /// </summary>
-        [DataMember(Name = "db_user_name", EmitDefaultValue = false)]
-        public string DbUserName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DomainName
-        /// </summary>
-        [DataMember(Name = "domain_name", EmitDefaultValue = false)]
-        public string DomainName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EksAccessKeyId
-        /// </summary>
-        [DataMember(Name = "eks_access_key_id", EmitDefaultValue = false)]
-        public string EksAccessKeyId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EksClusterCaCertificate
-        /// </summary>
-        [DataMember(Name = "eks_cluster_ca_certificate", EmitDefaultValue = false)]
-        public string EksClusterCaCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EksClusterEndpoint
-        /// </summary>
-        [DataMember(Name = "eks_cluster_endpoint", EmitDefaultValue = false)]
-        public string EksClusterEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EksClusterName
-        /// </summary>
-        [DataMember(Name = "eks_cluster_name", EmitDefaultValue = false)]
-        public string EksClusterName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EksRegion
-        /// </summary>
-        [DataMember(Name = "eks_region", EmitDefaultValue = false)]
-        public string EksRegion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EksSecretAccessKey
-        /// </summary>
-        [DataMember(Name = "eks_secret_access_key", EmitDefaultValue = false)]
-        public string EksSecretAccessKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Email
-        /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Contact Info - GlobalSign requires this to be sent with every certificate creation request
-        /// </summary>
-        /// <value>Contact Info - GlobalSign requires this to be sent with every certificate creation request</value>
-        [DataMember(Name = "first_name", EmitDefaultValue = false)]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// deprecated
-        /// </summary>
-        /// <value>deprecated</value>
-        [DataMember(Name = "gcp_service_account_email", EmitDefaultValue = false)]
-        public string GcpServiceAccountEmail { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GcpServiceAccountKey
-        /// </summary>
-        [DataMember(Name = "gcp_service_account_key", EmitDefaultValue = false)]
-        public string GcpServiceAccountKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GcpServiceAccountKeyBase64
-        /// </summary>
-        [DataMember(Name = "gcp_service_account_key_base64", EmitDefaultValue = false)]
-        public string GcpServiceAccountKeyBase64 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GithubAppId
-        /// </summary>
-        [DataMember(Name = "github_app_id", EmitDefaultValue = false)]
-        public long GithubAppId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GithubAppPrivateKey
-        /// </summary>
-        [DataMember(Name = "github_app_private_key", EmitDefaultValue = false)]
-        public string GithubAppPrivateKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GithubBaseUrl
-        /// </summary>
-        [DataMember(Name = "github_base_url", EmitDefaultValue = false)]
-        public string GithubBaseUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GkeClusterCaCertificate
-        /// </summary>
-        [DataMember(Name = "gke_cluster_ca_certificate", EmitDefaultValue = false)]
-        public string GkeClusterCaCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GkeClusterEndpoint
-        /// </summary>
-        [DataMember(Name = "gke_cluster_endpoint", EmitDefaultValue = false)]
-        public string GkeClusterEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GkeClusterName
-        /// </summary>
-        [DataMember(Name = "gke_cluster_name", EmitDefaultValue = false)]
-        public string GkeClusterName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GkeServiceAccountKey
-        /// </summary>
-        [DataMember(Name = "gke_service_account_key", EmitDefaultValue = false)]
-        public string GkeServiceAccountKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GkeServiceAccountName
-        /// </summary>
-        [DataMember(Name = "gke_service_account_name", EmitDefaultValue = false)]
-        public string GkeServiceAccountName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Host
-        /// </summary>
-        [DataMember(Name = "host", EmitDefaultValue = false)]
-        public string Host { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Hostname
-        /// </summary>
-        [DataMember(Name = "hostname", EmitDefaultValue = false)]
-        public string Hostname { get; set; }
-
-        /// <summary>
-        /// key hostname, value description
-        /// </summary>
-        /// <value>key hostname, value description</value>
-        [DataMember(Name = "hosts", EmitDefaultValue = false)]
-        public Dictionary<string, string> Hosts { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImapFqdn
-        /// </summary>
-        [DataMember(Name = "imap_fqdn", EmitDefaultValue = false)]
-        public string ImapFqdn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImapPassword
-        /// </summary>
-        [DataMember(Name = "imap_password", EmitDefaultValue = false)]
-        public string ImapPassword { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImapPort
-        /// </summary>
-        [DataMember(Name = "imap_port", EmitDefaultValue = false)]
-        public string ImapPort { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImapUser
-        /// </summary>
-        [DataMember(Name = "imap_user", EmitDefaultValue = false)]
-        public string ImapUser { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImplementationType
-        /// </summary>
-        [DataMember(Name = "implementation_type", EmitDefaultValue = false)]
-        public string ImplementationType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets K8sBearerToken
-        /// </summary>
-        [DataMember(Name = "k8s_bearer_token", EmitDefaultValue = false)]
-        public string K8sBearerToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets K8sClusterCaCertificate
-        /// </summary>
-        [DataMember(Name = "k8s_cluster_ca_certificate", EmitDefaultValue = false)]
-        public string K8sClusterCaCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets K8sClusterEndpoint
-        /// </summary>
-        [DataMember(Name = "k8s_cluster_endpoint", EmitDefaultValue = false)]
-        public string K8sClusterEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastName
-        /// </summary>
-        [DataMember(Name = "last_name", EmitDefaultValue = false)]
-        public string LastName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapAudience
-        /// </summary>
-        [DataMember(Name = "ldap_audience", EmitDefaultValue = false)]
-        public string LdapAudience { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapBindDn
-        /// </summary>
-        [DataMember(Name = "ldap_bind_dn", EmitDefaultValue = false)]
-        public string LdapBindDn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapBindPassword
-        /// </summary>
-        [DataMember(Name = "ldap_bind_password", EmitDefaultValue = false)]
-        public string LdapBindPassword { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapCertificate
-        /// </summary>
-        [DataMember(Name = "ldap_certificate", EmitDefaultValue = false)]
-        public string LdapCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapTokenExpiration
-        /// </summary>
-        [DataMember(Name = "ldap_token_expiration", EmitDefaultValue = false)]
-        public string LdapTokenExpiration { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LdapUrl
-        /// </summary>
-        [DataMember(Name = "ldap_url", EmitDefaultValue = false)]
-        public string LdapUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbAtlasApiPrivateKey
-        /// </summary>
-        [DataMember(Name = "mongodb_atlas_api_private_key", EmitDefaultValue = false)]
-        public string MongodbAtlasApiPrivateKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbAtlasApiPublicKey
-        /// </summary>
-        [DataMember(Name = "mongodb_atlas_api_public_key", EmitDefaultValue = false)]
-        public string MongodbAtlasApiPublicKey { get; set; }
-
-        /// <summary>
-        /// mongodb atlas fields
-        /// </summary>
-        /// <value>mongodb atlas fields</value>
-        [DataMember(Name = "mongodb_atlas_project_id", EmitDefaultValue = false)]
-        public string MongodbAtlasProjectId { get; set; }
-
-        /// <summary>
-        /// common fields
-        /// </summary>
-        /// <value>common fields</value>
-        [DataMember(Name = "mongodb_db_name", EmitDefaultValue = false)]
-        public string MongodbDbName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbDefaultAuthDb
-        /// </summary>
-        [DataMember(Name = "mongodb_default_auth_db", EmitDefaultValue = false)]
-        public string MongodbDefaultAuthDb { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbHostPort
-        /// </summary>
-        [DataMember(Name = "mongodb_host_port", EmitDefaultValue = false)]
-        public string MongodbHostPort { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbIsAtlas
-        /// </summary>
-        [DataMember(Name = "mongodb_is_atlas", EmitDefaultValue = true)]
-        public bool MongodbIsAtlas { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbPassword
-        /// </summary>
-        [DataMember(Name = "mongodb_password", EmitDefaultValue = false)]
-        public string MongodbPassword { get; set; }
-
-        /// <summary>
-        /// mongodb fields
-        /// </summary>
-        /// <value>mongodb fields</value>
-        [DataMember(Name = "mongodb_uri_connection", EmitDefaultValue = false)]
-        public string MongodbUriConnection { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbUriOptions
-        /// </summary>
-        [DataMember(Name = "mongodb_uri_options", EmitDefaultValue = false)]
-        public string MongodbUriOptions { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongodbUsername
-        /// </summary>
-        [DataMember(Name = "mongodb_username", EmitDefaultValue = false)]
-        public string MongodbUsername { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Password
-        /// </summary>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Payload
-        /// </summary>
-        [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public string Payload { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Phone
-        /// </summary>
-        [DataMember(Name = "phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PingUrl
-        /// </summary>
-        [DataMember(Name = "ping_url", EmitDefaultValue = false)]
-        public string PingUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Port
-        /// </summary>
-        [DataMember(Name = "port", EmitDefaultValue = false)]
-        public string Port { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PrivateKey
-        /// </summary>
-        [DataMember(Name = "private_key", EmitDefaultValue = false)]
-        public string PrivateKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PrivateKeyPassword
-        /// </summary>
-        [DataMember(Name = "private_key_password", EmitDefaultValue = false)]
-        public string PrivateKeyPassword { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PrivilegedUser
-        /// </summary>
-        [DataMember(Name = "privileged_user", EmitDefaultValue = false)]
-        public string PrivilegedUser { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProfileId
-        /// </summary>
-        [DataMember(Name = "profile_id", EmitDefaultValue = false)]
-        public string ProfileId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RabbitmqServerPassword
-        /// </summary>
-        [DataMember(Name = "rabbitmq_server_password", EmitDefaultValue = false)]
-        public string RabbitmqServerPassword { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RabbitmqServerUri
-        /// </summary>
-        [DataMember(Name = "rabbitmq_server_uri", EmitDefaultValue = false)]
-        public string RabbitmqServerUri { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RabbitmqServerUser
-        /// </summary>
-        [DataMember(Name = "rabbitmq_server_user", EmitDefaultValue = false)]
-        public string RabbitmqServerUser { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SecurityToken
-        /// </summary>
-        [DataMember(Name = "security_token", EmitDefaultValue = false)]
-        public string SecurityToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SfAccount
-        /// </summary>
-        [DataMember(Name = "sf_account", EmitDefaultValue = false)]
-        public string SfAccount { get; set; }
-
-        /// <summary>
-        /// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
-        /// </summary>
-        /// <value>(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field</value>
-        [DataMember(Name = "ssl_connection_certificate", EmitDefaultValue = false)]
-        public string SslConnectionCertificate { get; set; }
-
-        /// <summary>
-        /// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
-        /// </summary>
-        /// <value>(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB</value>
-        [DataMember(Name = "ssl_connection_mode", EmitDefaultValue = true)]
-        public bool SslConnectionMode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TenantUrl
-        /// </summary>
-        [DataMember(Name = "tenant_url", EmitDefaultValue = false)]
-        public string TenantUrl { get; set; }
-
-        /// <summary>
-        /// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
-        /// </summary>
-        /// <value>A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.</value>
-        [DataMember(Name = "timeout", EmitDefaultValue = false)]
-        public long Timeout { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Url
-        /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UseGwCloudIdentity
-        /// </summary>
-        [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
-        public bool UseGwCloudIdentity { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UseGwServiceAccount
-        /// </summary>
-        [DataMember(Name = "use_gw_service_account", EmitDefaultValue = true)]
-        public bool UseGwServiceAccount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UseTls
-        /// </summary>
-        [DataMember(Name = "use_tls", EmitDefaultValue = true)]
-        public bool UseTls { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserName
-        /// </summary>
-        [DataMember(Name = "user_name", EmitDefaultValue = false)]
-        public string UserName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserPassword
-        /// </summary>
-        [DataMember(Name = "user_password", EmitDefaultValue = false)]
-        public string UserPassword { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ValidationEmail
-        /// </summary>
-        [DataMember(Name = "validation_email", EmitDefaultValue = false)]
-        public string ValidationEmail { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiApiKey
-        /// </summary>
-        [DataMember(Name = "venafi_api_key", EmitDefaultValue = false)]
-        public string VenafiApiKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiBaseUrl
-        /// </summary>
-        [DataMember(Name = "venafi_base_url", EmitDefaultValue = false)]
-        public string VenafiBaseUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiTppAccessToken
-        /// </summary>
-        [DataMember(Name = "venafi_tpp_access_token", EmitDefaultValue = false)]
-        public string VenafiTppAccessToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiTppClientId
-        /// </summary>
-        [DataMember(Name = "venafi_tpp_client_id", EmitDefaultValue = false)]
-        public string VenafiTppClientId { get; set; }
-
-        /// <summary>
-        /// Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
-        /// </summary>
-        /// <value>Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead</value>
-        [DataMember(Name = "venafi_tpp_password", EmitDefaultValue = false)]
-        public string VenafiTppPassword { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiTppRefreshToken
-        /// </summary>
-        [DataMember(Name = "venafi_tpp_refresh_token", EmitDefaultValue = false)]
-        public string VenafiTppRefreshToken { get; set; }
-
-        /// <summary>
-        /// Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
-        /// </summary>
-        /// <value>Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead</value>
-        [DataMember(Name = "venafi_tpp_username", EmitDefaultValue = false)]
-        public string VenafiTppUsername { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiUseTpp
-        /// </summary>
-        [DataMember(Name = "venafi_use_tpp", EmitDefaultValue = true)]
-        public bool VenafiUseTpp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VenafiZone
-        /// </summary>
-        [DataMember(Name = "venafi_zone", EmitDefaultValue = false)]
-        public string VenafiZone { get; set; }
+        [DataMember(Name = "zerossl_target_details", EmitDefaultValue = false)]
+        public ZeroSSLTargetDetails ZerosslTargetDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -1041,128 +247,31 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetTypeDetailsInput {\n");
-            sb.Append("  AdministrativePort: ").Append(AdministrativePort).Append("\n");
-            sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
-            sb.Append("  AppPrivateKey: ").Append(AppPrivateKey).Append("\n");
-            sb.Append("  ArtifactoryAdminApikey: ").Append(ArtifactoryAdminApikey).Append("\n");
-            sb.Append("  ArtifactoryAdminUsername: ").Append(ArtifactoryAdminUsername).Append("\n");
-            sb.Append("  ArtifactoryBaseUrl: ").Append(ArtifactoryBaseUrl).Append("\n");
-            sb.Append("  AuthFlow: ").Append(AuthFlow).Append("\n");
-            sb.Append("  AuthorizationPort: ").Append(AuthorizationPort).Append("\n");
-            sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
-            sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
-            sb.Append("  AwsSecretAccessKey: ").Append(AwsSecretAccessKey).Append("\n");
-            sb.Append("  AwsSessionToken: ").Append(AwsSessionToken).Append("\n");
-            sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
-            sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
-            sb.Append("  AzureResourceGroupName: ").Append(AzureResourceGroupName).Append("\n");
-            sb.Append("  AzureResourceName: ").Append(AzureResourceName).Append("\n");
-            sb.Append("  AzureSubscriptionId: ").Append(AzureSubscriptionId).Append("\n");
-            sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
-            sb.Append("  CaCertData: ").Append(CaCertData).Append("\n");
-            sb.Append("  CaCertName: ").Append(CaCertName).Append("\n");
-            sb.Append("  Certificate: ").Append(Certificate).Append("\n");
-            sb.Append("  ChefServerHostName: ").Append(ChefServerHostName).Append("\n");
-            sb.Append("  ChefServerKey: ").Append(ChefServerKey).Append("\n");
-            sb.Append("  ChefServerPort: ").Append(ChefServerPort).Append("\n");
-            sb.Append("  ChefServerUrl: ").Append(ChefServerUrl).Append("\n");
-            sb.Append("  ChefServerUsername: ").Append(ChefServerUsername).Append("\n");
-            sb.Append("  ChefSkipSsl: ").Append(ChefSkipSsl).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
-            sb.Append("  DbHostName: ").Append(DbHostName).Append("\n");
-            sb.Append("  DbName: ").Append(DbName).Append("\n");
-            sb.Append("  DbPort: ").Append(DbPort).Append("\n");
-            sb.Append("  DbPrivateKey: ").Append(DbPrivateKey).Append("\n");
-            sb.Append("  DbPrivateKeyPassphrase: ").Append(DbPrivateKeyPassphrase).Append("\n");
-            sb.Append("  DbPwd: ").Append(DbPwd).Append("\n");
-            sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
-            sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
-            sb.Append("  DbUserName: ").Append(DbUserName).Append("\n");
-            sb.Append("  DomainName: ").Append(DomainName).Append("\n");
-            sb.Append("  EksAccessKeyId: ").Append(EksAccessKeyId).Append("\n");
-            sb.Append("  EksClusterCaCertificate: ").Append(EksClusterCaCertificate).Append("\n");
-            sb.Append("  EksClusterEndpoint: ").Append(EksClusterEndpoint).Append("\n");
-            sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
-            sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
-            sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-            sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
-            sb.Append("  GcpServiceAccountKey: ").Append(GcpServiceAccountKey).Append("\n");
-            sb.Append("  GcpServiceAccountKeyBase64: ").Append(GcpServiceAccountKeyBase64).Append("\n");
-            sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
-            sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
-            sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
-            sb.Append("  GkeClusterCaCertificate: ").Append(GkeClusterCaCertificate).Append("\n");
-            sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
-            sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
-            sb.Append("  GkeServiceAccountKey: ").Append(GkeServiceAccountKey).Append("\n");
-            sb.Append("  GkeServiceAccountName: ").Append(GkeServiceAccountName).Append("\n");
-            sb.Append("  Host: ").Append(Host).Append("\n");
-            sb.Append("  Hostname: ").Append(Hostname).Append("\n");
-            sb.Append("  Hosts: ").Append(Hosts).Append("\n");
-            sb.Append("  ImapFqdn: ").Append(ImapFqdn).Append("\n");
-            sb.Append("  ImapPassword: ").Append(ImapPassword).Append("\n");
-            sb.Append("  ImapPort: ").Append(ImapPort).Append("\n");
-            sb.Append("  ImapUser: ").Append(ImapUser).Append("\n");
-            sb.Append("  ImplementationType: ").Append(ImplementationType).Append("\n");
-            sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
-            sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
-            sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
-            sb.Append("  LastName: ").Append(LastName).Append("\n");
-            sb.Append("  LdapAudience: ").Append(LdapAudience).Append("\n");
-            sb.Append("  LdapBindDn: ").Append(LdapBindDn).Append("\n");
-            sb.Append("  LdapBindPassword: ").Append(LdapBindPassword).Append("\n");
-            sb.Append("  LdapCertificate: ").Append(LdapCertificate).Append("\n");
-            sb.Append("  LdapTokenExpiration: ").Append(LdapTokenExpiration).Append("\n");
-            sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
-            sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
-            sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
-            sb.Append("  MongodbAtlasProjectId: ").Append(MongodbAtlasProjectId).Append("\n");
-            sb.Append("  MongodbDbName: ").Append(MongodbDbName).Append("\n");
-            sb.Append("  MongodbDefaultAuthDb: ").Append(MongodbDefaultAuthDb).Append("\n");
-            sb.Append("  MongodbHostPort: ").Append(MongodbHostPort).Append("\n");
-            sb.Append("  MongodbIsAtlas: ").Append(MongodbIsAtlas).Append("\n");
-            sb.Append("  MongodbPassword: ").Append(MongodbPassword).Append("\n");
-            sb.Append("  MongodbUriConnection: ").Append(MongodbUriConnection).Append("\n");
-            sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
-            sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
-            sb.Append("  Phone: ").Append(Phone).Append("\n");
-            sb.Append("  PingUrl: ").Append(PingUrl).Append("\n");
-            sb.Append("  Port: ").Append(Port).Append("\n");
-            sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
-            sb.Append("  PrivateKeyPassword: ").Append(PrivateKeyPassword).Append("\n");
-            sb.Append("  PrivilegedUser: ").Append(PrivilegedUser).Append("\n");
-            sb.Append("  ProfileId: ").Append(ProfileId).Append("\n");
-            sb.Append("  RabbitmqServerPassword: ").Append(RabbitmqServerPassword).Append("\n");
-            sb.Append("  RabbitmqServerUri: ").Append(RabbitmqServerUri).Append("\n");
-            sb.Append("  RabbitmqServerUser: ").Append(RabbitmqServerUser).Append("\n");
-            sb.Append("  SecurityToken: ").Append(SecurityToken).Append("\n");
-            sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
-            sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
-            sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
-            sb.Append("  TenantUrl: ").Append(TenantUrl).Append("\n");
-            sb.Append("  Timeout: ").Append(Timeout).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
-            sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
-            sb.Append("  UseTls: ").Append(UseTls).Append("\n");
-            sb.Append("  UserName: ").Append(UserName).Append("\n");
-            sb.Append("  UserPassword: ").Append(UserPassword).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  ValidationEmail: ").Append(ValidationEmail).Append("\n");
-            sb.Append("  VenafiApiKey: ").Append(VenafiApiKey).Append("\n");
-            sb.Append("  VenafiBaseUrl: ").Append(VenafiBaseUrl).Append("\n");
-            sb.Append("  VenafiTppAccessToken: ").Append(VenafiTppAccessToken).Append("\n");
-            sb.Append("  VenafiTppClientId: ").Append(VenafiTppClientId).Append("\n");
-            sb.Append("  VenafiTppPassword: ").Append(VenafiTppPassword).Append("\n");
-            sb.Append("  VenafiTppRefreshToken: ").Append(VenafiTppRefreshToken).Append("\n");
-            sb.Append("  VenafiTppUsername: ").Append(VenafiTppUsername).Append("\n");
-            sb.Append("  VenafiUseTpp: ").Append(VenafiUseTpp).Append("\n");
-            sb.Append("  VenafiZone: ").Append(VenafiZone).Append("\n");
+            sb.Append("  ArtifactoryTargetDetails: ").Append(ArtifactoryTargetDetails).Append("\n");
+            sb.Append("  AwsTargetDetails: ").Append(AwsTargetDetails).Append("\n");
+            sb.Append("  AzureTargetDetails: ").Append(AzureTargetDetails).Append("\n");
+            sb.Append("  ChefTargetDetails: ").Append(ChefTargetDetails).Append("\n");
+            sb.Append("  CustomTargetDetails: ").Append(CustomTargetDetails).Append("\n");
+            sb.Append("  DbTargetDetails: ").Append(DbTargetDetails).Append("\n");
+            sb.Append("  DockerhubTargetDetails: ").Append(DockerhubTargetDetails).Append("\n");
+            sb.Append("  EksTargetDetails: ").Append(EksTargetDetails).Append("\n");
+            sb.Append("  GcpTargetDetails: ").Append(GcpTargetDetails).Append("\n");
+            sb.Append("  GithubTargetDetails: ").Append(GithubTargetDetails).Append("\n");
+            sb.Append("  GkeTargetDetails: ").Append(GkeTargetDetails).Append("\n");
+            sb.Append("  GlobalsignAtlasTargetDetails: ").Append(GlobalsignAtlasTargetDetails).Append("\n");
+            sb.Append("  GlobalsignTargetDetails: ").Append(GlobalsignTargetDetails).Append("\n");
+            sb.Append("  LdapTargetDetails: ").Append(LdapTargetDetails).Append("\n");
+            sb.Append("  LinkedTargetDetails: ").Append(LinkedTargetDetails).Append("\n");
+            sb.Append("  MongoDbTargetDetails: ").Append(MongoDbTargetDetails).Append("\n");
+            sb.Append("  NativeK8sTargetDetails: ").Append(NativeK8sTargetDetails).Append("\n");
+            sb.Append("  PingTargetDetails: ").Append(PingTargetDetails).Append("\n");
+            sb.Append("  RabbitMqTargetDetails: ").Append(RabbitMqTargetDetails).Append("\n");
+            sb.Append("  SalesforceTargetDetails: ").Append(SalesforceTargetDetails).Append("\n");
+            sb.Append("  SshTargetDetails: ").Append(SshTargetDetails).Append("\n");
+            sb.Append("  VenafiTargetDetails: ").Append(VenafiTargetDetails).Append("\n");
+            sb.Append("  WebTargetDetails: ").Append(WebTargetDetails).Append("\n");
+            sb.Append("  WindowsTargetDetails: ").Append(WindowsTargetDetails).Append("\n");
+            sb.Append("  ZerosslTargetDetails: ").Append(ZerosslTargetDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -1199,608 +308,129 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.AdministrativePort == input.AdministrativePort ||
-                    (this.AdministrativePort != null &&
-                    this.AdministrativePort.Equals(input.AdministrativePort))
+                    this.ArtifactoryTargetDetails == input.ArtifactoryTargetDetails ||
+                    (this.ArtifactoryTargetDetails != null &&
+                    this.ArtifactoryTargetDetails.Equals(input.ArtifactoryTargetDetails))
                 ) && 
                 (
-                    this.ApiKey == input.ApiKey ||
-                    (this.ApiKey != null &&
-                    this.ApiKey.Equals(input.ApiKey))
+                    this.AwsTargetDetails == input.AwsTargetDetails ||
+                    (this.AwsTargetDetails != null &&
+                    this.AwsTargetDetails.Equals(input.AwsTargetDetails))
                 ) && 
                 (
-                    this.AppPrivateKey == input.AppPrivateKey ||
-                    this.AppPrivateKey != null &&
-                    input.AppPrivateKey != null &&
-                    this.AppPrivateKey.SequenceEqual(input.AppPrivateKey)
+                    this.AzureTargetDetails == input.AzureTargetDetails ||
+                    (this.AzureTargetDetails != null &&
+                    this.AzureTargetDetails.Equals(input.AzureTargetDetails))
                 ) && 
                 (
-                    this.ArtifactoryAdminApikey == input.ArtifactoryAdminApikey ||
-                    (this.ArtifactoryAdminApikey != null &&
-                    this.ArtifactoryAdminApikey.Equals(input.ArtifactoryAdminApikey))
+                    this.ChefTargetDetails == input.ChefTargetDetails ||
+                    (this.ChefTargetDetails != null &&
+                    this.ChefTargetDetails.Equals(input.ChefTargetDetails))
                 ) && 
                 (
-                    this.ArtifactoryAdminUsername == input.ArtifactoryAdminUsername ||
-                    (this.ArtifactoryAdminUsername != null &&
-                    this.ArtifactoryAdminUsername.Equals(input.ArtifactoryAdminUsername))
+                    this.CustomTargetDetails == input.CustomTargetDetails ||
+                    (this.CustomTargetDetails != null &&
+                    this.CustomTargetDetails.Equals(input.CustomTargetDetails))
                 ) && 
                 (
-                    this.ArtifactoryBaseUrl == input.ArtifactoryBaseUrl ||
-                    (this.ArtifactoryBaseUrl != null &&
-                    this.ArtifactoryBaseUrl.Equals(input.ArtifactoryBaseUrl))
+                    this.DbTargetDetails == input.DbTargetDetails ||
+                    (this.DbTargetDetails != null &&
+                    this.DbTargetDetails.Equals(input.DbTargetDetails))
                 ) && 
                 (
-                    this.AuthFlow == input.AuthFlow ||
-                    (this.AuthFlow != null &&
-                    this.AuthFlow.Equals(input.AuthFlow))
+                    this.DockerhubTargetDetails == input.DockerhubTargetDetails ||
+                    (this.DockerhubTargetDetails != null &&
+                    this.DockerhubTargetDetails.Equals(input.DockerhubTargetDetails))
                 ) && 
                 (
-                    this.AuthorizationPort == input.AuthorizationPort ||
-                    (this.AuthorizationPort != null &&
-                    this.AuthorizationPort.Equals(input.AuthorizationPort))
+                    this.EksTargetDetails == input.EksTargetDetails ||
+                    (this.EksTargetDetails != null &&
+                    this.EksTargetDetails.Equals(input.EksTargetDetails))
                 ) && 
                 (
-                    this.AwsAccessKeyId == input.AwsAccessKeyId ||
-                    (this.AwsAccessKeyId != null &&
-                    this.AwsAccessKeyId.Equals(input.AwsAccessKeyId))
+                    this.GcpTargetDetails == input.GcpTargetDetails ||
+                    (this.GcpTargetDetails != null &&
+                    this.GcpTargetDetails.Equals(input.GcpTargetDetails))
                 ) && 
                 (
-                    this.AwsRegion == input.AwsRegion ||
-                    (this.AwsRegion != null &&
-                    this.AwsRegion.Equals(input.AwsRegion))
+                    this.GithubTargetDetails == input.GithubTargetDetails ||
+                    (this.GithubTargetDetails != null &&
+                    this.GithubTargetDetails.Equals(input.GithubTargetDetails))
                 ) && 
                 (
-                    this.AwsSecretAccessKey == input.AwsSecretAccessKey ||
-                    (this.AwsSecretAccessKey != null &&
-                    this.AwsSecretAccessKey.Equals(input.AwsSecretAccessKey))
+                    this.GkeTargetDetails == input.GkeTargetDetails ||
+                    (this.GkeTargetDetails != null &&
+                    this.GkeTargetDetails.Equals(input.GkeTargetDetails))
                 ) && 
                 (
-                    this.AwsSessionToken == input.AwsSessionToken ||
-                    (this.AwsSessionToken != null &&
-                    this.AwsSessionToken.Equals(input.AwsSessionToken))
+                    this.GlobalsignAtlasTargetDetails == input.GlobalsignAtlasTargetDetails ||
+                    (this.GlobalsignAtlasTargetDetails != null &&
+                    this.GlobalsignAtlasTargetDetails.Equals(input.GlobalsignAtlasTargetDetails))
                 ) && 
                 (
-                    this.AzureClientId == input.AzureClientId ||
-                    (this.AzureClientId != null &&
-                    this.AzureClientId.Equals(input.AzureClientId))
+                    this.GlobalsignTargetDetails == input.GlobalsignTargetDetails ||
+                    (this.GlobalsignTargetDetails != null &&
+                    this.GlobalsignTargetDetails.Equals(input.GlobalsignTargetDetails))
                 ) && 
                 (
-                    this.AzureClientSecret == input.AzureClientSecret ||
-                    (this.AzureClientSecret != null &&
-                    this.AzureClientSecret.Equals(input.AzureClientSecret))
+                    this.LdapTargetDetails == input.LdapTargetDetails ||
+                    (this.LdapTargetDetails != null &&
+                    this.LdapTargetDetails.Equals(input.LdapTargetDetails))
                 ) && 
                 (
-                    this.AzureResourceGroupName == input.AzureResourceGroupName ||
-                    (this.AzureResourceGroupName != null &&
-                    this.AzureResourceGroupName.Equals(input.AzureResourceGroupName))
+                    this.LinkedTargetDetails == input.LinkedTargetDetails ||
+                    (this.LinkedTargetDetails != null &&
+                    this.LinkedTargetDetails.Equals(input.LinkedTargetDetails))
                 ) && 
                 (
-                    this.AzureResourceName == input.AzureResourceName ||
-                    (this.AzureResourceName != null &&
-                    this.AzureResourceName.Equals(input.AzureResourceName))
+                    this.MongoDbTargetDetails == input.MongoDbTargetDetails ||
+                    (this.MongoDbTargetDetails != null &&
+                    this.MongoDbTargetDetails.Equals(input.MongoDbTargetDetails))
                 ) && 
                 (
-                    this.AzureSubscriptionId == input.AzureSubscriptionId ||
-                    (this.AzureSubscriptionId != null &&
-                    this.AzureSubscriptionId.Equals(input.AzureSubscriptionId))
+                    this.NativeK8sTargetDetails == input.NativeK8sTargetDetails ||
+                    (this.NativeK8sTargetDetails != null &&
+                    this.NativeK8sTargetDetails.Equals(input.NativeK8sTargetDetails))
                 ) && 
                 (
-                    this.AzureTenantId == input.AzureTenantId ||
-                    (this.AzureTenantId != null &&
-                    this.AzureTenantId.Equals(input.AzureTenantId))
+                    this.PingTargetDetails == input.PingTargetDetails ||
+                    (this.PingTargetDetails != null &&
+                    this.PingTargetDetails.Equals(input.PingTargetDetails))
                 ) && 
                 (
-                    this.CaCertData == input.CaCertData ||
-                    this.CaCertData != null &&
-                    input.CaCertData != null &&
-                    this.CaCertData.SequenceEqual(input.CaCertData)
+                    this.RabbitMqTargetDetails == input.RabbitMqTargetDetails ||
+                    (this.RabbitMqTargetDetails != null &&
+                    this.RabbitMqTargetDetails.Equals(input.RabbitMqTargetDetails))
                 ) && 
                 (
-                    this.CaCertName == input.CaCertName ||
-                    (this.CaCertName != null &&
-                    this.CaCertName.Equals(input.CaCertName))
+                    this.SalesforceTargetDetails == input.SalesforceTargetDetails ||
+                    (this.SalesforceTargetDetails != null &&
+                    this.SalesforceTargetDetails.Equals(input.SalesforceTargetDetails))
                 ) && 
                 (
-                    this.Certificate == input.Certificate ||
-                    (this.Certificate != null &&
-                    this.Certificate.Equals(input.Certificate))
+                    this.SshTargetDetails == input.SshTargetDetails ||
+                    (this.SshTargetDetails != null &&
+                    this.SshTargetDetails.Equals(input.SshTargetDetails))
                 ) && 
                 (
-                    this.ChefServerHostName == input.ChefServerHostName ||
-                    (this.ChefServerHostName != null &&
-                    this.ChefServerHostName.Equals(input.ChefServerHostName))
+                    this.VenafiTargetDetails == input.VenafiTargetDetails ||
+                    (this.VenafiTargetDetails != null &&
+                    this.VenafiTargetDetails.Equals(input.VenafiTargetDetails))
                 ) && 
                 (
-                    this.ChefServerKey == input.ChefServerKey ||
-                    (this.ChefServerKey != null &&
-                    this.ChefServerKey.Equals(input.ChefServerKey))
+                    this.WebTargetDetails == input.WebTargetDetails ||
+                    (this.WebTargetDetails != null &&
+                    this.WebTargetDetails.Equals(input.WebTargetDetails))
                 ) && 
                 (
-                    this.ChefServerPort == input.ChefServerPort ||
-                    (this.ChefServerPort != null &&
-                    this.ChefServerPort.Equals(input.ChefServerPort))
+                    this.WindowsTargetDetails == input.WindowsTargetDetails ||
+                    (this.WindowsTargetDetails != null &&
+                    this.WindowsTargetDetails.Equals(input.WindowsTargetDetails))
                 ) && 
                 (
-                    this.ChefServerUrl == input.ChefServerUrl ||
-                    (this.ChefServerUrl != null &&
-                    this.ChefServerUrl.Equals(input.ChefServerUrl))
-                ) && 
-                (
-                    this.ChefServerUsername == input.ChefServerUsername ||
-                    (this.ChefServerUsername != null &&
-                    this.ChefServerUsername.Equals(input.ChefServerUsername))
-                ) && 
-                (
-                    this.ChefSkipSsl == input.ChefSkipSsl ||
-                    this.ChefSkipSsl.Equals(input.ChefSkipSsl)
-                ) && 
-                (
-                    this.ClientId == input.ClientId ||
-                    (this.ClientId != null &&
-                    this.ClientId.Equals(input.ClientId))
-                ) && 
-                (
-                    this.ClientSecret == input.ClientSecret ||
-                    (this.ClientSecret != null &&
-                    this.ClientSecret.Equals(input.ClientSecret))
-                ) && 
-                (
-                    this.DbHostName == input.DbHostName ||
-                    (this.DbHostName != null &&
-                    this.DbHostName.Equals(input.DbHostName))
-                ) && 
-                (
-                    this.DbName == input.DbName ||
-                    (this.DbName != null &&
-                    this.DbName.Equals(input.DbName))
-                ) && 
-                (
-                    this.DbPort == input.DbPort ||
-                    (this.DbPort != null &&
-                    this.DbPort.Equals(input.DbPort))
-                ) && 
-                (
-                    this.DbPrivateKey == input.DbPrivateKey ||
-                    (this.DbPrivateKey != null &&
-                    this.DbPrivateKey.Equals(input.DbPrivateKey))
-                ) && 
-                (
-                    this.DbPrivateKeyPassphrase == input.DbPrivateKeyPassphrase ||
-                    (this.DbPrivateKeyPassphrase != null &&
-                    this.DbPrivateKeyPassphrase.Equals(input.DbPrivateKeyPassphrase))
-                ) && 
-                (
-                    this.DbPwd == input.DbPwd ||
-                    (this.DbPwd != null &&
-                    this.DbPwd.Equals(input.DbPwd))
-                ) && 
-                (
-                    this.DbServerCertificates == input.DbServerCertificates ||
-                    (this.DbServerCertificates != null &&
-                    this.DbServerCertificates.Equals(input.DbServerCertificates))
-                ) && 
-                (
-                    this.DbServerName == input.DbServerName ||
-                    (this.DbServerName != null &&
-                    this.DbServerName.Equals(input.DbServerName))
-                ) && 
-                (
-                    this.DbUserName == input.DbUserName ||
-                    (this.DbUserName != null &&
-                    this.DbUserName.Equals(input.DbUserName))
-                ) && 
-                (
-                    this.DomainName == input.DomainName ||
-                    (this.DomainName != null &&
-                    this.DomainName.Equals(input.DomainName))
-                ) && 
-                (
-                    this.EksAccessKeyId == input.EksAccessKeyId ||
-                    (this.EksAccessKeyId != null &&
-                    this.EksAccessKeyId.Equals(input.EksAccessKeyId))
-                ) && 
-                (
-                    this.EksClusterCaCertificate == input.EksClusterCaCertificate ||
-                    (this.EksClusterCaCertificate != null &&
-                    this.EksClusterCaCertificate.Equals(input.EksClusterCaCertificate))
-                ) && 
-                (
-                    this.EksClusterEndpoint == input.EksClusterEndpoint ||
-                    (this.EksClusterEndpoint != null &&
-                    this.EksClusterEndpoint.Equals(input.EksClusterEndpoint))
-                ) && 
-                (
-                    this.EksClusterName == input.EksClusterName ||
-                    (this.EksClusterName != null &&
-                    this.EksClusterName.Equals(input.EksClusterName))
-                ) && 
-                (
-                    this.EksRegion == input.EksRegion ||
-                    (this.EksRegion != null &&
-                    this.EksRegion.Equals(input.EksRegion))
-                ) && 
-                (
-                    this.EksSecretAccessKey == input.EksSecretAccessKey ||
-                    (this.EksSecretAccessKey != null &&
-                    this.EksSecretAccessKey.Equals(input.EksSecretAccessKey))
-                ) && 
-                (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
-                ) && 
-                (
-                    this.FirstName == input.FirstName ||
-                    (this.FirstName != null &&
-                    this.FirstName.Equals(input.FirstName))
-                ) && 
-                (
-                    this.GcpServiceAccountEmail == input.GcpServiceAccountEmail ||
-                    (this.GcpServiceAccountEmail != null &&
-                    this.GcpServiceAccountEmail.Equals(input.GcpServiceAccountEmail))
-                ) && 
-                (
-                    this.GcpServiceAccountKey == input.GcpServiceAccountKey ||
-                    (this.GcpServiceAccountKey != null &&
-                    this.GcpServiceAccountKey.Equals(input.GcpServiceAccountKey))
-                ) && 
-                (
-                    this.GcpServiceAccountKeyBase64 == input.GcpServiceAccountKeyBase64 ||
-                    (this.GcpServiceAccountKeyBase64 != null &&
-                    this.GcpServiceAccountKeyBase64.Equals(input.GcpServiceAccountKeyBase64))
-                ) && 
-                (
-                    this.GithubAppId == input.GithubAppId ||
-                    this.GithubAppId.Equals(input.GithubAppId)
-                ) && 
-                (
-                    this.GithubAppPrivateKey == input.GithubAppPrivateKey ||
-                    (this.GithubAppPrivateKey != null &&
-                    this.GithubAppPrivateKey.Equals(input.GithubAppPrivateKey))
-                ) && 
-                (
-                    this.GithubBaseUrl == input.GithubBaseUrl ||
-                    (this.GithubBaseUrl != null &&
-                    this.GithubBaseUrl.Equals(input.GithubBaseUrl))
-                ) && 
-                (
-                    this.GkeClusterCaCertificate == input.GkeClusterCaCertificate ||
-                    (this.GkeClusterCaCertificate != null &&
-                    this.GkeClusterCaCertificate.Equals(input.GkeClusterCaCertificate))
-                ) && 
-                (
-                    this.GkeClusterEndpoint == input.GkeClusterEndpoint ||
-                    (this.GkeClusterEndpoint != null &&
-                    this.GkeClusterEndpoint.Equals(input.GkeClusterEndpoint))
-                ) && 
-                (
-                    this.GkeClusterName == input.GkeClusterName ||
-                    (this.GkeClusterName != null &&
-                    this.GkeClusterName.Equals(input.GkeClusterName))
-                ) && 
-                (
-                    this.GkeServiceAccountKey == input.GkeServiceAccountKey ||
-                    (this.GkeServiceAccountKey != null &&
-                    this.GkeServiceAccountKey.Equals(input.GkeServiceAccountKey))
-                ) && 
-                (
-                    this.GkeServiceAccountName == input.GkeServiceAccountName ||
-                    (this.GkeServiceAccountName != null &&
-                    this.GkeServiceAccountName.Equals(input.GkeServiceAccountName))
-                ) && 
-                (
-                    this.Host == input.Host ||
-                    (this.Host != null &&
-                    this.Host.Equals(input.Host))
-                ) && 
-                (
-                    this.Hostname == input.Hostname ||
-                    (this.Hostname != null &&
-                    this.Hostname.Equals(input.Hostname))
-                ) && 
-                (
-                    this.Hosts == input.Hosts ||
-                    this.Hosts != null &&
-                    input.Hosts != null &&
-                    this.Hosts.SequenceEqual(input.Hosts)
-                ) && 
-                (
-                    this.ImapFqdn == input.ImapFqdn ||
-                    (this.ImapFqdn != null &&
-                    this.ImapFqdn.Equals(input.ImapFqdn))
-                ) && 
-                (
-                    this.ImapPassword == input.ImapPassword ||
-                    (this.ImapPassword != null &&
-                    this.ImapPassword.Equals(input.ImapPassword))
-                ) && 
-                (
-                    this.ImapPort == input.ImapPort ||
-                    (this.ImapPort != null &&
-                    this.ImapPort.Equals(input.ImapPort))
-                ) && 
-                (
-                    this.ImapUser == input.ImapUser ||
-                    (this.ImapUser != null &&
-                    this.ImapUser.Equals(input.ImapUser))
-                ) && 
-                (
-                    this.ImplementationType == input.ImplementationType ||
-                    (this.ImplementationType != null &&
-                    this.ImplementationType.Equals(input.ImplementationType))
-                ) && 
-                (
-                    this.K8sBearerToken == input.K8sBearerToken ||
-                    (this.K8sBearerToken != null &&
-                    this.K8sBearerToken.Equals(input.K8sBearerToken))
-                ) && 
-                (
-                    this.K8sClusterCaCertificate == input.K8sClusterCaCertificate ||
-                    (this.K8sClusterCaCertificate != null &&
-                    this.K8sClusterCaCertificate.Equals(input.K8sClusterCaCertificate))
-                ) && 
-                (
-                    this.K8sClusterEndpoint == input.K8sClusterEndpoint ||
-                    (this.K8sClusterEndpoint != null &&
-                    this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
-                ) && 
-                (
-                    this.LastName == input.LastName ||
-                    (this.LastName != null &&
-                    this.LastName.Equals(input.LastName))
-                ) && 
-                (
-                    this.LdapAudience == input.LdapAudience ||
-                    (this.LdapAudience != null &&
-                    this.LdapAudience.Equals(input.LdapAudience))
-                ) && 
-                (
-                    this.LdapBindDn == input.LdapBindDn ||
-                    (this.LdapBindDn != null &&
-                    this.LdapBindDn.Equals(input.LdapBindDn))
-                ) && 
-                (
-                    this.LdapBindPassword == input.LdapBindPassword ||
-                    (this.LdapBindPassword != null &&
-                    this.LdapBindPassword.Equals(input.LdapBindPassword))
-                ) && 
-                (
-                    this.LdapCertificate == input.LdapCertificate ||
-                    (this.LdapCertificate != null &&
-                    this.LdapCertificate.Equals(input.LdapCertificate))
-                ) && 
-                (
-                    this.LdapTokenExpiration == input.LdapTokenExpiration ||
-                    (this.LdapTokenExpiration != null &&
-                    this.LdapTokenExpiration.Equals(input.LdapTokenExpiration))
-                ) && 
-                (
-                    this.LdapUrl == input.LdapUrl ||
-                    (this.LdapUrl != null &&
-                    this.LdapUrl.Equals(input.LdapUrl))
-                ) && 
-                (
-                    this.MongodbAtlasApiPrivateKey == input.MongodbAtlasApiPrivateKey ||
-                    (this.MongodbAtlasApiPrivateKey != null &&
-                    this.MongodbAtlasApiPrivateKey.Equals(input.MongodbAtlasApiPrivateKey))
-                ) && 
-                (
-                    this.MongodbAtlasApiPublicKey == input.MongodbAtlasApiPublicKey ||
-                    (this.MongodbAtlasApiPublicKey != null &&
-                    this.MongodbAtlasApiPublicKey.Equals(input.MongodbAtlasApiPublicKey))
-                ) && 
-                (
-                    this.MongodbAtlasProjectId == input.MongodbAtlasProjectId ||
-                    (this.MongodbAtlasProjectId != null &&
-                    this.MongodbAtlasProjectId.Equals(input.MongodbAtlasProjectId))
-                ) && 
-                (
-                    this.MongodbDbName == input.MongodbDbName ||
-                    (this.MongodbDbName != null &&
-                    this.MongodbDbName.Equals(input.MongodbDbName))
-                ) && 
-                (
-                    this.MongodbDefaultAuthDb == input.MongodbDefaultAuthDb ||
-                    (this.MongodbDefaultAuthDb != null &&
-                    this.MongodbDefaultAuthDb.Equals(input.MongodbDefaultAuthDb))
-                ) && 
-                (
-                    this.MongodbHostPort == input.MongodbHostPort ||
-                    (this.MongodbHostPort != null &&
-                    this.MongodbHostPort.Equals(input.MongodbHostPort))
-                ) && 
-                (
-                    this.MongodbIsAtlas == input.MongodbIsAtlas ||
-                    this.MongodbIsAtlas.Equals(input.MongodbIsAtlas)
-                ) && 
-                (
-                    this.MongodbPassword == input.MongodbPassword ||
-                    (this.MongodbPassword != null &&
-                    this.MongodbPassword.Equals(input.MongodbPassword))
-                ) && 
-                (
-                    this.MongodbUriConnection == input.MongodbUriConnection ||
-                    (this.MongodbUriConnection != null &&
-                    this.MongodbUriConnection.Equals(input.MongodbUriConnection))
-                ) && 
-                (
-                    this.MongodbUriOptions == input.MongodbUriOptions ||
-                    (this.MongodbUriOptions != null &&
-                    this.MongodbUriOptions.Equals(input.MongodbUriOptions))
-                ) && 
-                (
-                    this.MongodbUsername == input.MongodbUsername ||
-                    (this.MongodbUsername != null &&
-                    this.MongodbUsername.Equals(input.MongodbUsername))
-                ) && 
-                (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
-                ) && 
-                (
-                    this.Payload == input.Payload ||
-                    (this.Payload != null &&
-                    this.Payload.Equals(input.Payload))
-                ) && 
-                (
-                    this.Phone == input.Phone ||
-                    (this.Phone != null &&
-                    this.Phone.Equals(input.Phone))
-                ) && 
-                (
-                    this.PingUrl == input.PingUrl ||
-                    (this.PingUrl != null &&
-                    this.PingUrl.Equals(input.PingUrl))
-                ) && 
-                (
-                    this.Port == input.Port ||
-                    (this.Port != null &&
-                    this.Port.Equals(input.Port))
-                ) && 
-                (
-                    this.PrivateKey == input.PrivateKey ||
-                    (this.PrivateKey != null &&
-                    this.PrivateKey.Equals(input.PrivateKey))
-                ) && 
-                (
-                    this.PrivateKeyPassword == input.PrivateKeyPassword ||
-                    (this.PrivateKeyPassword != null &&
-                    this.PrivateKeyPassword.Equals(input.PrivateKeyPassword))
-                ) && 
-                (
-                    this.PrivilegedUser == input.PrivilegedUser ||
-                    (this.PrivilegedUser != null &&
-                    this.PrivilegedUser.Equals(input.PrivilegedUser))
-                ) && 
-                (
-                    this.ProfileId == input.ProfileId ||
-                    (this.ProfileId != null &&
-                    this.ProfileId.Equals(input.ProfileId))
-                ) && 
-                (
-                    this.RabbitmqServerPassword == input.RabbitmqServerPassword ||
-                    (this.RabbitmqServerPassword != null &&
-                    this.RabbitmqServerPassword.Equals(input.RabbitmqServerPassword))
-                ) && 
-                (
-                    this.RabbitmqServerUri == input.RabbitmqServerUri ||
-                    (this.RabbitmqServerUri != null &&
-                    this.RabbitmqServerUri.Equals(input.RabbitmqServerUri))
-                ) && 
-                (
-                    this.RabbitmqServerUser == input.RabbitmqServerUser ||
-                    (this.RabbitmqServerUser != null &&
-                    this.RabbitmqServerUser.Equals(input.RabbitmqServerUser))
-                ) && 
-                (
-                    this.SecurityToken == input.SecurityToken ||
-                    (this.SecurityToken != null &&
-                    this.SecurityToken.Equals(input.SecurityToken))
-                ) && 
-                (
-                    this.SfAccount == input.SfAccount ||
-                    (this.SfAccount != null &&
-                    this.SfAccount.Equals(input.SfAccount))
-                ) && 
-                (
-                    this.SslConnectionCertificate == input.SslConnectionCertificate ||
-                    (this.SslConnectionCertificate != null &&
-                    this.SslConnectionCertificate.Equals(input.SslConnectionCertificate))
-                ) && 
-                (
-                    this.SslConnectionMode == input.SslConnectionMode ||
-                    this.SslConnectionMode.Equals(input.SslConnectionMode)
-                ) && 
-                (
-                    this.TenantUrl == input.TenantUrl ||
-                    (this.TenantUrl != null &&
-                    this.TenantUrl.Equals(input.TenantUrl))
-                ) && 
-                (
-                    this.Timeout == input.Timeout ||
-                    this.Timeout.Equals(input.Timeout)
-                ) && 
-                (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
-                ) && 
-                (
-                    this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
-                    this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
-                ) && 
-                (
-                    this.UseGwServiceAccount == input.UseGwServiceAccount ||
-                    this.UseGwServiceAccount.Equals(input.UseGwServiceAccount)
-                ) && 
-                (
-                    this.UseTls == input.UseTls ||
-                    this.UseTls.Equals(input.UseTls)
-                ) && 
-                (
-                    this.UserName == input.UserName ||
-                    (this.UserName != null &&
-                    this.UserName.Equals(input.UserName))
-                ) && 
-                (
-                    this.UserPassword == input.UserPassword ||
-                    (this.UserPassword != null &&
-                    this.UserPassword.Equals(input.UserPassword))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
-                ) && 
-                (
-                    this.ValidationEmail == input.ValidationEmail ||
-                    (this.ValidationEmail != null &&
-                    this.ValidationEmail.Equals(input.ValidationEmail))
-                ) && 
-                (
-                    this.VenafiApiKey == input.VenafiApiKey ||
-                    (this.VenafiApiKey != null &&
-                    this.VenafiApiKey.Equals(input.VenafiApiKey))
-                ) && 
-                (
-                    this.VenafiBaseUrl == input.VenafiBaseUrl ||
-                    (this.VenafiBaseUrl != null &&
-                    this.VenafiBaseUrl.Equals(input.VenafiBaseUrl))
-                ) && 
-                (
-                    this.VenafiTppAccessToken == input.VenafiTppAccessToken ||
-                    (this.VenafiTppAccessToken != null &&
-                    this.VenafiTppAccessToken.Equals(input.VenafiTppAccessToken))
-                ) && 
-                (
-                    this.VenafiTppClientId == input.VenafiTppClientId ||
-                    (this.VenafiTppClientId != null &&
-                    this.VenafiTppClientId.Equals(input.VenafiTppClientId))
-                ) && 
-                (
-                    this.VenafiTppPassword == input.VenafiTppPassword ||
-                    (this.VenafiTppPassword != null &&
-                    this.VenafiTppPassword.Equals(input.VenafiTppPassword))
-                ) && 
-                (
-                    this.VenafiTppRefreshToken == input.VenafiTppRefreshToken ||
-                    (this.VenafiTppRefreshToken != null &&
-                    this.VenafiTppRefreshToken.Equals(input.VenafiTppRefreshToken))
-                ) && 
-                (
-                    this.VenafiTppUsername == input.VenafiTppUsername ||
-                    (this.VenafiTppUsername != null &&
-                    this.VenafiTppUsername.Equals(input.VenafiTppUsername))
-                ) && 
-                (
-                    this.VenafiUseTpp == input.VenafiUseTpp ||
-                    this.VenafiUseTpp.Equals(input.VenafiUseTpp)
-                ) && 
-                (
-                    this.VenafiZone == input.VenafiZone ||
-                    (this.VenafiZone != null &&
-                    this.VenafiZone.Equals(input.VenafiZone))
+                    this.ZerosslTargetDetails == input.ZerosslTargetDetails ||
+                    (this.ZerosslTargetDetails != null &&
+                    this.ZerosslTargetDetails.Equals(input.ZerosslTargetDetails))
                 );
         }
 
@@ -1813,466 +443,105 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AdministrativePort != null)
+                if (this.ArtifactoryTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AdministrativePort.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ArtifactoryTargetDetails.GetHashCode();
                 }
-                if (this.ApiKey != null)
+                if (this.AwsTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ApiKey.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AwsTargetDetails.GetHashCode();
                 }
-                if (this.AppPrivateKey != null)
+                if (this.AzureTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AppPrivateKey.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AzureTargetDetails.GetHashCode();
                 }
-                if (this.ArtifactoryAdminApikey != null)
+                if (this.ChefTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ArtifactoryAdminApikey.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ChefTargetDetails.GetHashCode();
                 }
-                if (this.ArtifactoryAdminUsername != null)
+                if (this.CustomTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ArtifactoryAdminUsername.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CustomTargetDetails.GetHashCode();
                 }
-                if (this.ArtifactoryBaseUrl != null)
+                if (this.DbTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ArtifactoryBaseUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DbTargetDetails.GetHashCode();
                 }
-                if (this.AuthFlow != null)
+                if (this.DockerhubTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AuthFlow.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DockerhubTargetDetails.GetHashCode();
                 }
-                if (this.AuthorizationPort != null)
+                if (this.EksTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AuthorizationPort.GetHashCode();
+                    hashCode = (hashCode * 59) + this.EksTargetDetails.GetHashCode();
                 }
-                if (this.AwsAccessKeyId != null)
+                if (this.GcpTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AwsAccessKeyId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GcpTargetDetails.GetHashCode();
                 }
-                if (this.AwsRegion != null)
+                if (this.GithubTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AwsRegion.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GithubTargetDetails.GetHashCode();
                 }
-                if (this.AwsSecretAccessKey != null)
+                if (this.GkeTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AwsSecretAccessKey.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GkeTargetDetails.GetHashCode();
                 }
-                if (this.AwsSessionToken != null)
+                if (this.GlobalsignAtlasTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AwsSessionToken.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GlobalsignAtlasTargetDetails.GetHashCode();
                 }
-                if (this.AzureClientId != null)
+                if (this.GlobalsignTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AzureClientId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GlobalsignTargetDetails.GetHashCode();
                 }
-                if (this.AzureClientSecret != null)
+                if (this.LdapTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AzureClientSecret.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LdapTargetDetails.GetHashCode();
                 }
-                if (this.AzureResourceGroupName != null)
+                if (this.LinkedTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AzureResourceGroupName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LinkedTargetDetails.GetHashCode();
                 }
-                if (this.AzureResourceName != null)
+                if (this.MongoDbTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AzureResourceName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MongoDbTargetDetails.GetHashCode();
                 }
-                if (this.AzureSubscriptionId != null)
+                if (this.NativeK8sTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AzureSubscriptionId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NativeK8sTargetDetails.GetHashCode();
                 }
-                if (this.AzureTenantId != null)
+                if (this.PingTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.AzureTenantId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PingTargetDetails.GetHashCode();
                 }
-                if (this.CaCertData != null)
+                if (this.RabbitMqTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.CaCertData.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RabbitMqTargetDetails.GetHashCode();
                 }
-                if (this.CaCertName != null)
+                if (this.SalesforceTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.CaCertName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SalesforceTargetDetails.GetHashCode();
                 }
-                if (this.Certificate != null)
+                if (this.SshTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.Certificate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SshTargetDetails.GetHashCode();
                 }
-                if (this.ChefServerHostName != null)
+                if (this.VenafiTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ChefServerHostName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.VenafiTargetDetails.GetHashCode();
                 }
-                if (this.ChefServerKey != null)
+                if (this.WebTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ChefServerKey.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WebTargetDetails.GetHashCode();
                 }
-                if (this.ChefServerPort != null)
+                if (this.WindowsTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ChefServerPort.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WindowsTargetDetails.GetHashCode();
                 }
-                if (this.ChefServerUrl != null)
+                if (this.ZerosslTargetDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.ChefServerUrl.GetHashCode();
-                }
-                if (this.ChefServerUsername != null)
-                {
-                    hashCode = (hashCode * 59) + this.ChefServerUsername.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.ChefSkipSsl.GetHashCode();
-                if (this.ClientId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
-                }
-                if (this.ClientSecret != null)
-                {
-                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
-                }
-                if (this.DbHostName != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbHostName.GetHashCode();
-                }
-                if (this.DbName != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbName.GetHashCode();
-                }
-                if (this.DbPort != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbPort.GetHashCode();
-                }
-                if (this.DbPrivateKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbPrivateKey.GetHashCode();
-                }
-                if (this.DbPrivateKeyPassphrase != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbPrivateKeyPassphrase.GetHashCode();
-                }
-                if (this.DbPwd != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbPwd.GetHashCode();
-                }
-                if (this.DbServerCertificates != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbServerCertificates.GetHashCode();
-                }
-                if (this.DbServerName != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbServerName.GetHashCode();
-                }
-                if (this.DbUserName != null)
-                {
-                    hashCode = (hashCode * 59) + this.DbUserName.GetHashCode();
-                }
-                if (this.DomainName != null)
-                {
-                    hashCode = (hashCode * 59) + this.DomainName.GetHashCode();
-                }
-                if (this.EksAccessKeyId != null)
-                {
-                    hashCode = (hashCode * 59) + this.EksAccessKeyId.GetHashCode();
-                }
-                if (this.EksClusterCaCertificate != null)
-                {
-                    hashCode = (hashCode * 59) + this.EksClusterCaCertificate.GetHashCode();
-                }
-                if (this.EksClusterEndpoint != null)
-                {
-                    hashCode = (hashCode * 59) + this.EksClusterEndpoint.GetHashCode();
-                }
-                if (this.EksClusterName != null)
-                {
-                    hashCode = (hashCode * 59) + this.EksClusterName.GetHashCode();
-                }
-                if (this.EksRegion != null)
-                {
-                    hashCode = (hashCode * 59) + this.EksRegion.GetHashCode();
-                }
-                if (this.EksSecretAccessKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.EksSecretAccessKey.GetHashCode();
-                }
-                if (this.Email != null)
-                {
-                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
-                }
-                if (this.FirstName != null)
-                {
-                    hashCode = (hashCode * 59) + this.FirstName.GetHashCode();
-                }
-                if (this.GcpServiceAccountEmail != null)
-                {
-                    hashCode = (hashCode * 59) + this.GcpServiceAccountEmail.GetHashCode();
-                }
-                if (this.GcpServiceAccountKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.GcpServiceAccountKey.GetHashCode();
-                }
-                if (this.GcpServiceAccountKeyBase64 != null)
-                {
-                    hashCode = (hashCode * 59) + this.GcpServiceAccountKeyBase64.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.GithubAppId.GetHashCode();
-                if (this.GithubAppPrivateKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.GithubAppPrivateKey.GetHashCode();
-                }
-                if (this.GithubBaseUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.GithubBaseUrl.GetHashCode();
-                }
-                if (this.GkeClusterCaCertificate != null)
-                {
-                    hashCode = (hashCode * 59) + this.GkeClusterCaCertificate.GetHashCode();
-                }
-                if (this.GkeClusterEndpoint != null)
-                {
-                    hashCode = (hashCode * 59) + this.GkeClusterEndpoint.GetHashCode();
-                }
-                if (this.GkeClusterName != null)
-                {
-                    hashCode = (hashCode * 59) + this.GkeClusterName.GetHashCode();
-                }
-                if (this.GkeServiceAccountKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.GkeServiceAccountKey.GetHashCode();
-                }
-                if (this.GkeServiceAccountName != null)
-                {
-                    hashCode = (hashCode * 59) + this.GkeServiceAccountName.GetHashCode();
-                }
-                if (this.Host != null)
-                {
-                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
-                }
-                if (this.Hostname != null)
-                {
-                    hashCode = (hashCode * 59) + this.Hostname.GetHashCode();
-                }
-                if (this.Hosts != null)
-                {
-                    hashCode = (hashCode * 59) + this.Hosts.GetHashCode();
-                }
-                if (this.ImapFqdn != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImapFqdn.GetHashCode();
-                }
-                if (this.ImapPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImapPassword.GetHashCode();
-                }
-                if (this.ImapPort != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImapPort.GetHashCode();
-                }
-                if (this.ImapUser != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImapUser.GetHashCode();
-                }
-                if (this.ImplementationType != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImplementationType.GetHashCode();
-                }
-                if (this.K8sBearerToken != null)
-                {
-                    hashCode = (hashCode * 59) + this.K8sBearerToken.GetHashCode();
-                }
-                if (this.K8sClusterCaCertificate != null)
-                {
-                    hashCode = (hashCode * 59) + this.K8sClusterCaCertificate.GetHashCode();
-                }
-                if (this.K8sClusterEndpoint != null)
-                {
-                    hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
-                }
-                if (this.LastName != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastName.GetHashCode();
-                }
-                if (this.LdapAudience != null)
-                {
-                    hashCode = (hashCode * 59) + this.LdapAudience.GetHashCode();
-                }
-                if (this.LdapBindDn != null)
-                {
-                    hashCode = (hashCode * 59) + this.LdapBindDn.GetHashCode();
-                }
-                if (this.LdapBindPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.LdapBindPassword.GetHashCode();
-                }
-                if (this.LdapCertificate != null)
-                {
-                    hashCode = (hashCode * 59) + this.LdapCertificate.GetHashCode();
-                }
-                if (this.LdapTokenExpiration != null)
-                {
-                    hashCode = (hashCode * 59) + this.LdapTokenExpiration.GetHashCode();
-                }
-                if (this.LdapUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
-                }
-                if (this.MongodbAtlasApiPrivateKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbAtlasApiPrivateKey.GetHashCode();
-                }
-                if (this.MongodbAtlasApiPublicKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbAtlasApiPublicKey.GetHashCode();
-                }
-                if (this.MongodbAtlasProjectId != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbAtlasProjectId.GetHashCode();
-                }
-                if (this.MongodbDbName != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbDbName.GetHashCode();
-                }
-                if (this.MongodbDefaultAuthDb != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbDefaultAuthDb.GetHashCode();
-                }
-                if (this.MongodbHostPort != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbHostPort.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.MongodbIsAtlas.GetHashCode();
-                if (this.MongodbPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbPassword.GetHashCode();
-                }
-                if (this.MongodbUriConnection != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbUriConnection.GetHashCode();
-                }
-                if (this.MongodbUriOptions != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbUriOptions.GetHashCode();
-                }
-                if (this.MongodbUsername != null)
-                {
-                    hashCode = (hashCode * 59) + this.MongodbUsername.GetHashCode();
-                }
-                if (this.Password != null)
-                {
-                    hashCode = (hashCode * 59) + this.Password.GetHashCode();
-                }
-                if (this.Payload != null)
-                {
-                    hashCode = (hashCode * 59) + this.Payload.GetHashCode();
-                }
-                if (this.Phone != null)
-                {
-                    hashCode = (hashCode * 59) + this.Phone.GetHashCode();
-                }
-                if (this.PingUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.PingUrl.GetHashCode();
-                }
-                if (this.Port != null)
-                {
-                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
-                }
-                if (this.PrivateKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.PrivateKey.GetHashCode();
-                }
-                if (this.PrivateKeyPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.PrivateKeyPassword.GetHashCode();
-                }
-                if (this.PrivilegedUser != null)
-                {
-                    hashCode = (hashCode * 59) + this.PrivilegedUser.GetHashCode();
-                }
-                if (this.ProfileId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ProfileId.GetHashCode();
-                }
-                if (this.RabbitmqServerPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.RabbitmqServerPassword.GetHashCode();
-                }
-                if (this.RabbitmqServerUri != null)
-                {
-                    hashCode = (hashCode * 59) + this.RabbitmqServerUri.GetHashCode();
-                }
-                if (this.RabbitmqServerUser != null)
-                {
-                    hashCode = (hashCode * 59) + this.RabbitmqServerUser.GetHashCode();
-                }
-                if (this.SecurityToken != null)
-                {
-                    hashCode = (hashCode * 59) + this.SecurityToken.GetHashCode();
-                }
-                if (this.SfAccount != null)
-                {
-                    hashCode = (hashCode * 59) + this.SfAccount.GetHashCode();
-                }
-                if (this.SslConnectionCertificate != null)
-                {
-                    hashCode = (hashCode * 59) + this.SslConnectionCertificate.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.SslConnectionMode.GetHashCode();
-                if (this.TenantUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.TenantUrl.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Timeout.GetHashCode();
-                if (this.Url != null)
-                {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
-                hashCode = (hashCode * 59) + this.UseGwServiceAccount.GetHashCode();
-                hashCode = (hashCode * 59) + this.UseTls.GetHashCode();
-                if (this.UserName != null)
-                {
-                    hashCode = (hashCode * 59) + this.UserName.GetHashCode();
-                }
-                if (this.UserPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.UserPassword.GetHashCode();
-                }
-                if (this.Username != null)
-                {
-                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
-                }
-                if (this.ValidationEmail != null)
-                {
-                    hashCode = (hashCode * 59) + this.ValidationEmail.GetHashCode();
-                }
-                if (this.VenafiApiKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiApiKey.GetHashCode();
-                }
-                if (this.VenafiBaseUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiBaseUrl.GetHashCode();
-                }
-                if (this.VenafiTppAccessToken != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiTppAccessToken.GetHashCode();
-                }
-                if (this.VenafiTppClientId != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiTppClientId.GetHashCode();
-                }
-                if (this.VenafiTppPassword != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiTppPassword.GetHashCode();
-                }
-                if (this.VenafiTppRefreshToken != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiTppRefreshToken.GetHashCode();
-                }
-                if (this.VenafiTppUsername != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiTppUsername.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.VenafiUseTpp.GetHashCode();
-                if (this.VenafiZone != null)
-                {
-                    hashCode = (hashCode * 59) + this.VenafiZone.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ZerosslTargetDetails.GetHashCode();
                 }
                 return hashCode;
             }

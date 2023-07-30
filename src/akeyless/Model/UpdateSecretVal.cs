@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
-        /// <param name="value">The new secret value (required).</param>
+        /// <param name="value">The secret value (only relevant for type &#39;generic&#39;) (required).</param>
         public UpdateSecretVal(string accessibility = "regular", Dictionary<string, string> customField = default(Dictionary<string, string>), List<string> injectUrl = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
@@ -175,9 +175,9 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// The new secret value
+        /// The secret value (only relevant for type &#39;generic&#39;)
         /// </summary>
-        /// <value>The new secret value</value>
+        /// <value>The secret value (only relevant for type &#39;generic&#39;)</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 

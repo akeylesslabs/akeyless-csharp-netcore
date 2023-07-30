@@ -65,7 +65,7 @@ namespace akeyless.Model
         /// <param name="type">The secret sub type [generic/password] (default to &quot;generic&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
-        /// <param name="value">The secret value (required).</param>
+        /// <param name="value">The secret value (only relevant for type &#39;generic&#39;) (required).</param>
         public CreateSecret(string accessibility = "regular", Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), List<string> injectUrl = default(List<string>), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
@@ -284,9 +284,9 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// The secret value
+        /// The secret value (only relevant for type &#39;generic&#39;)
         /// </summary>
-        /// <value>The secret value</value>
+        /// <value>The secret value (only relevant for type &#39;generic&#39;)</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 

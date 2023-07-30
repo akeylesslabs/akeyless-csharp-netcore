@@ -44,10 +44,10 @@ namespace akeyless.Model
         /// <param name="adminPwd">Workstation Admin password.</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder).</param>
+        /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder).</param>
         /// <param name="eventSourceLocations">Event sources (required).</param>
-        /// <param name="eventSourceType">Event Source type [item, target] (default to &quot;item&quot;).</param>
-        /// <param name="eventTypes">Event types.</param>
+        /// <param name="eventSourceType">Event Source type [item, target, auth_method] (default to &quot;item&quot;).</param>
+        /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure].</param>
         /// <param name="every">Rate of periodic runner repetition in hours.</param>
         /// <param name="forwarderType">forwarderType (required).</param>
         /// <param name="host">Workstation Host.</param>
@@ -128,9 +128,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder)
+        /// A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder)
         /// </summary>
-        /// <value>A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder)</value>
+        /// <value>A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder)</value>
         [DataMember(Name = "email-to", EmitDefaultValue = false)]
         public string EmailTo { get; set; }
 
@@ -142,16 +142,16 @@ namespace akeyless.Model
         public List<string> EventSourceLocations { get; set; }
 
         /// <summary>
-        /// Event Source type [item, target]
+        /// Event Source type [item, target, auth_method]
         /// </summary>
-        /// <value>Event Source type [item, target]</value>
+        /// <value>Event Source type [item, target, auth_method]</value>
         [DataMember(Name = "event-source-type", EmitDefaultValue = false)]
         public string EventSourceType { get; set; }
 
         /// <summary>
-        /// Event types
+        /// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure]
         /// </summary>
-        /// <value>Event types</value>
+        /// <value>List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure]</value>
         [DataMember(Name = "event-types", EmitDefaultValue = false)]
         public List<string> EventTypes { get; set; }
 
