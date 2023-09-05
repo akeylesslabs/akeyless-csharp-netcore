@@ -184,6 +184,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetEventForwarder**](V2Api.md#geteventforwarder) | **POST** /get-event-forwarder |  |
 | [**GetGroup**](V2Api.md#getgroup) | **POST** /get-group |  |
 | [**GetKubeExecCreds**](V2Api.md#getkubeexeccreds) | **POST** /get-kube-exec-creds |  |
+| [**GetLastUserEventStatus**](V2Api.md#getlastusereventstatus) | **POST** /user-event-last-status |  |
 | [**GetPKICertificate**](V2Api.md#getpkicertificate) | **POST** /get-pki-certificate |  |
 | [**GetRSAPublic**](V2Api.md#getrsapublic) | **POST** /get-rsa-public |  |
 | [**GetRole**](V2Api.md#getrole) | **POST** /get-role |  |
@@ -193,7 +194,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
 | [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
 | [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details |  |
-| [**GetUserLastEventStatus**](V2Api.md#getuserlasteventstatus) | **POST** /user-event-last-status |  |
 | [**Hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**ImportPasswords**](V2Api.md#importpasswords) | **POST** /import-passwords |  |
 | [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
@@ -16128,6 +16128,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getlastusereventstatus"></a>
+# **GetLastUserEventStatus**
+> GetUserEventStatusOutput GetLastUserEventStatus (GetLastUserEventStatus body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetLastUserEventStatusExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GetLastUserEventStatus(); // GetLastUserEventStatus | 
+
+            try
+            {
+                GetUserEventStatusOutput result = apiInstance.GetLastUserEventStatus(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetLastUserEventStatus: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetLastUserEventStatusWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetUserEventStatusOutput> response = apiInstance.GetLastUserEventStatusWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetLastUserEventStatusWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetLastUserEventStatus**](GetLastUserEventStatus.md) |  |  |
+
+### Return type
+
+[**GetUserEventStatusOutput**](GetUserEventStatusOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getLastUserEventStatusResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getpkicertificate"></a>
 # **GetPKICertificate**
 > GetPKICertificateOutput GetPKICertificate (GetPKICertificate body)
@@ -16916,89 +17004,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getTargetDetailsResponse wraps response body. |  -  |
-| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="getuserlasteventstatus"></a>
-# **GetUserLastEventStatus**
-> GetUserEventStatusOutput GetUserLastEventStatus ()
-
-
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using akeyless.Api;
-using akeyless.Client;
-using akeyless.Model;
-
-namespace Example
-{
-    public class GetUserLastEventStatusExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.akeyless.io";
-            var apiInstance = new V2Api(config);
-
-            try
-            {
-                GetUserEventStatusOutput result = apiInstance.GetUserLastEventStatus();
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling V2Api.GetUserLastEventStatus: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetUserLastEventStatusWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<GetUserEventStatusOutput> response = apiInstance.GetUserLastEventStatusWithHttpInfo();
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling V2Api.GetUserLastEventStatusWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-### Return type
-
-[**GetUserEventStatusOutput**](GetUserEventStatusOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | getLastUserEventStatusResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
