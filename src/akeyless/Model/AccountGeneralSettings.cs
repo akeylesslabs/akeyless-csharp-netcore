@@ -39,15 +39,17 @@ namespace akeyless.Model
         /// <param name="accountDefaultKeyName">AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will..</param>
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
+        /// <param name="invalidCharacters">InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
             this.DataProtectionSection = dataProtectionSection;
             this.EnableRequestForAccess = enableRequestForAccess;
+            this.InvalidCharacters = invalidCharacters;
             this.PasswordPolicy = passwordPolicy;
             this.ProtectItemsByDefault = protectItemsByDefault;
             this.SharingPolicy = sharingPolicy;
@@ -80,6 +82,13 @@ namespace akeyless.Model
         public bool EnableRequestForAccess { get; set; }
 
         /// <summary>
+        /// InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention
+        /// </summary>
+        /// <value>InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention</value>
+        [DataMember(Name = "invalid_characters", EmitDefaultValue = false)]
+        public string InvalidCharacters { get; set; }
+
+        /// <summary>
         /// Gets or Sets PasswordPolicy
         /// </summary>
         [DataMember(Name = "password_policy", EmitDefaultValue = false)]
@@ -109,6 +118,7 @@ namespace akeyless.Model
             sb.Append("  AccountDefaultKeyName: ").Append(AccountDefaultKeyName).Append("\n");
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
+            sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  ProtectItemsByDefault: ").Append(ProtectItemsByDefault).Append("\n");
             sb.Append("  SharingPolicy: ").Append(SharingPolicy).Append("\n");
@@ -166,6 +176,11 @@ namespace akeyless.Model
                     this.EnableRequestForAccess.Equals(input.EnableRequestForAccess)
                 ) && 
                 (
+                    this.InvalidCharacters == input.InvalidCharacters ||
+                    (this.InvalidCharacters != null &&
+                    this.InvalidCharacters.Equals(input.InvalidCharacters))
+                ) && 
+                (
                     this.PasswordPolicy == input.PasswordPolicy ||
                     (this.PasswordPolicy != null &&
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
@@ -200,6 +215,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.DataProtectionSection.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.EnableRequestForAccess.GetHashCode();
+                if (this.InvalidCharacters != null)
+                {
+                    hashCode = (hashCode * 59) + this.InvalidCharacters.GetHashCode();
+                }
                 if (this.PasswordPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();

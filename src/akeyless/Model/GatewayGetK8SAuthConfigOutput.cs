@@ -41,7 +41,10 @@ namespace akeyless.Model
         /// <param name="clusterApiType">ClusterApiType defines types of API access to cluster.</param>
         /// <param name="disableIssValidation">DisableISSValidation is optional parameter to disable ISS validation.</param>
         /// <param name="id">id.</param>
+        /// <param name="k8sAuthType">k8sAuthType.</param>
         /// <param name="k8sCaCert">K8SCACert is the CA Cert to use to call into the kubernetes API.</param>
+        /// <param name="k8sClientCertData">K8sClientCertData is the client certificate for k8s client certificate authentication.</param>
+        /// <param name="k8sClientKeyData">K8sClientKeyData is the client key for k8s client certificate authentication.</param>
         /// <param name="k8sHost">K8SHost is the url string for the kubernetes API.</param>
         /// <param name="k8sIssuer">K8SIssuer is the claim that specifies who issued the Kubernetes token.</param>
         /// <param name="k8sPubKeysPem">K8SPublicKeysPEM is the list of public key in PEM format.</param>
@@ -51,7 +54,7 @@ namespace akeyless.Model
         /// <param name="rancherApiKey">RancherApiKey the bear token for clusterApiTypeRancher.</param>
         /// <param name="rancherClusterId">RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher).</param>
         /// <param name="useLocalCaJwt">UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod.</param>
-        public GatewayGetK8SAuthConfigOutput(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), string clusterApiType = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string protectionKey = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), bool useLocalCaJwt = default(bool))
+        public GatewayGetK8SAuthConfigOutput(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), string clusterApiType = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sAuthType = default(string), string k8sCaCert = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string protectionKey = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), bool useLocalCaJwt = default(bool))
         {
             this.AmTokenExpiration = amTokenExpiration;
             this.AuthMethodAccessId = authMethodAccessId;
@@ -59,7 +62,10 @@ namespace akeyless.Model
             this.ClusterApiType = clusterApiType;
             this.DisableIssValidation = disableIssValidation;
             this.Id = id;
+            this.K8sAuthType = k8sAuthType;
             this.K8sCaCert = k8sCaCert;
+            this.K8sClientCertData = k8sClientCertData;
+            this.K8sClientKeyData = k8sClientKeyData;
             this.K8sHost = k8sHost;
             this.K8sIssuer = k8sIssuer;
             this.K8sPubKeysPem = k8sPubKeysPem;
@@ -113,11 +119,31 @@ namespace akeyless.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets K8sAuthType
+        /// </summary>
+        [DataMember(Name = "k8s_auth_type", EmitDefaultValue = false)]
+        public string K8sAuthType { get; set; }
+
+        /// <summary>
         /// K8SCACert is the CA Cert to use to call into the kubernetes API
         /// </summary>
         /// <value>K8SCACert is the CA Cert to use to call into the kubernetes API</value>
         [DataMember(Name = "k8s_ca_cert", EmitDefaultValue = false)]
         public string K8sCaCert { get; set; }
+
+        /// <summary>
+        /// K8sClientCertData is the client certificate for k8s client certificate authentication
+        /// </summary>
+        /// <value>K8sClientCertData is the client certificate for k8s client certificate authentication</value>
+        [DataMember(Name = "k8s_client_cert_data", EmitDefaultValue = false)]
+        public string K8sClientCertData { get; set; }
+
+        /// <summary>
+        /// K8sClientKeyData is the client key for k8s client certificate authentication
+        /// </summary>
+        /// <value>K8sClientKeyData is the client key for k8s client certificate authentication</value>
+        [DataMember(Name = "k8s_client_key_data", EmitDefaultValue = false)]
+        public string K8sClientKeyData { get; set; }
 
         /// <summary>
         /// K8SHost is the url string for the kubernetes API
@@ -194,7 +220,10 @@ namespace akeyless.Model
             sb.Append("  ClusterApiType: ").Append(ClusterApiType).Append("\n");
             sb.Append("  DisableIssValidation: ").Append(DisableIssValidation).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  K8sAuthType: ").Append(K8sAuthType).Append("\n");
             sb.Append("  K8sCaCert: ").Append(K8sCaCert).Append("\n");
+            sb.Append("  K8sClientCertData: ").Append(K8sClientCertData).Append("\n");
+            sb.Append("  K8sClientKeyData: ").Append(K8sClientKeyData).Append("\n");
             sb.Append("  K8sHost: ").Append(K8sHost).Append("\n");
             sb.Append("  K8sIssuer: ").Append(K8sIssuer).Append("\n");
             sb.Append("  K8sPubKeysPem: ").Append(K8sPubKeysPem).Append("\n");
@@ -268,9 +297,24 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.K8sAuthType == input.K8sAuthType ||
+                    (this.K8sAuthType != null &&
+                    this.K8sAuthType.Equals(input.K8sAuthType))
+                ) && 
+                (
                     this.K8sCaCert == input.K8sCaCert ||
                     (this.K8sCaCert != null &&
                     this.K8sCaCert.Equals(input.K8sCaCert))
+                ) && 
+                (
+                    this.K8sClientCertData == input.K8sClientCertData ||
+                    (this.K8sClientCertData != null &&
+                    this.K8sClientCertData.Equals(input.K8sClientCertData))
+                ) && 
+                (
+                    this.K8sClientKeyData == input.K8sClientKeyData ||
+                    (this.K8sClientKeyData != null &&
+                    this.K8sClientKeyData.Equals(input.K8sClientKeyData))
                 ) && 
                 (
                     this.K8sHost == input.K8sHost ||
@@ -346,9 +390,21 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.K8sAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuthType.GetHashCode();
+                }
                 if (this.K8sCaCert != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sCaCert.GetHashCode();
+                }
+                if (this.K8sClientCertData != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientCertData.GetHashCode();
+                }
+                if (this.K8sClientKeyData != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientKeyData.GetHashCode();
                 }
                 if (this.K8sHost != null)
                 {

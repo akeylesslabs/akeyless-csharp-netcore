@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder).</param>
         /// <param name="eventSourceLocations">Event sources (required).</param>
         /// <param name="eventSourceType">Event Source type [item, target, auth_method] (default to &quot;item&quot;).</param>
-        /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure].</param>
+        /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure].</param>
         /// <param name="every">Rate of periodic runner repetition in hours.</param>
         /// <param name="forwarderType">forwarderType (required).</param>
         /// <param name="host">Workstation Host.</param>
@@ -149,9 +149,9 @@ namespace akeyless.Model
         public string EventSourceType { get; set; }
 
         /// <summary>
-        /// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure]
+        /// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure]
         /// </summary>
-        /// <value>List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure]</value>
+        /// <value>List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure]</value>
         [DataMember(Name = "event-types", EmitDefaultValue = false)]
         public List<string> EventTypes { get; set; }
 

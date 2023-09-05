@@ -51,7 +51,8 @@ namespace akeyless.Model
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string description = "default_comment", string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
+        public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string description = "default_comment", string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.SraReportsAccess = sraReportsAccess;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UsageReportsAccess = usageReportsAccess;
         }
 
         /// <summary>
@@ -151,6 +153,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported.
+        /// </summary>
+        /// <value>Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported.</value>
+        [DataMember(Name = "usage-reports-access", EmitDefaultValue = false)]
+        public string UsageReportsAccess { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -169,6 +178,7 @@ namespace akeyless.Model
             sb.Append("  SraReportsAccess: ").Append(SraReportsAccess).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UsageReportsAccess: ").Append(UsageReportsAccess).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -257,6 +267,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UsageReportsAccess == input.UsageReportsAccess ||
+                    (this.UsageReportsAccess != null &&
+                    this.UsageReportsAccess.Equals(input.UsageReportsAccess))
                 );
         }
 
@@ -309,6 +324,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UsageReportsAccess != null)
+                {
+                    hashCode = (hashCode * 59) + this.UsageReportsAccess.GetHashCode();
                 }
                 return hashCode;
             }

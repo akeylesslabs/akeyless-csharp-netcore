@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="defaultShareLinkTtlMinutes">Set the default ttl in minutes for sharing item number between 60 and 43200.</param>
         /// <param name="defaultVersioning">If set to true, new item version will be created on each update [true/false].</param>
         /// <param name="dpEnableClassicKeyProtection">Set to update protection with classic keys state [true/false].</param>
+        /// <param name="invalidCharacters">Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. (default to &quot;notReceivedInvalidCharacter&quot;).</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="itemsDeletionProtection">Set or unset the default behaviour of items deletion protection [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -69,6 +70,8 @@ namespace akeyless.Model
             this.DefaultShareLinkTtlMinutes = defaultShareLinkTtlMinutes;
             this.DefaultVersioning = defaultVersioning;
             this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
+            // use default value if no "invalidCharacters" provided
+            this.InvalidCharacters = invalidCharacters ?? "notReceivedInvalidCharacter";
             this.ItemType = itemType;
             this.ItemsDeletionProtection = itemsDeletionProtection;
             this.Json = json;
@@ -142,6 +145,13 @@ namespace akeyless.Model
         /// <value>Set to update protection with classic keys state [true/false]</value>
         [DataMember(Name = "dp-enable-classic-key-protection", EmitDefaultValue = false)]
         public string DpEnableClassicKeyProtection { get; set; }
+
+        /// <summary>
+        /// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
+        /// </summary>
+        /// <value>Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.</value>
+        [DataMember(Name = "invalid-characters", EmitDefaultValue = false)]
+        public string InvalidCharacters { get; set; }
 
         /// <summary>
         /// VersionSettingsObjectType defines object types for account version settings
@@ -271,6 +281,7 @@ namespace akeyless.Model
             sb.Append("  DefaultShareLinkTtlMinutes: ").Append(DefaultShareLinkTtlMinutes).Append("\n");
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
             sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
+            sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemsDeletionProtection: ").Append(ItemsDeletionProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -361,6 +372,11 @@ namespace akeyless.Model
                     this.DpEnableClassicKeyProtection == input.DpEnableClassicKeyProtection ||
                     (this.DpEnableClassicKeyProtection != null &&
                     this.DpEnableClassicKeyProtection.Equals(input.DpEnableClassicKeyProtection))
+                ) && 
+                (
+                    this.InvalidCharacters == input.InvalidCharacters ||
+                    (this.InvalidCharacters != null &&
+                    this.InvalidCharacters.Equals(input.InvalidCharacters))
                 ) && 
                 (
                     this.ItemType == input.ItemType ||
@@ -479,6 +495,10 @@ namespace akeyless.Model
                 if (this.DpEnableClassicKeyProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DpEnableClassicKeyProtection.GetHashCode();
+                }
+                if (this.InvalidCharacters != null)
+                {
+                    hashCode = (hashCode * 59) + this.InvalidCharacters.GetHashCode();
                 }
                 if (this.ItemType != null)
                 {

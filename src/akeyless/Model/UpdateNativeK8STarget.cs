@@ -43,6 +43,9 @@ namespace akeyless.Model
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="k8sAuthType">K8S auth type [token/certificate] (default to &quot;token&quot;).</param>
+        /// <param name="k8sClientCertificate">Content of the k8 client certificate (PEM format) in a Base64 format.</param>
+        /// <param name="k8sClientKey">Content of the k8 client private key (PEM format) in a Base64 format.</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required) (default to &quot;dummy_val&quot;).</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required) (default to &quot;dummy_val&quot;).</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token (required) (default to &quot;dummy_val&quot;).</param>
@@ -54,7 +57,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
-        public UpdateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sClusterCaCert = "dummy_val", string k8sClusterEndpoint = "dummy_val", string k8sClusterToken = "dummy_val", string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwServiceAccount = default(bool))
+        public UpdateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sAuthType = "token", string k8sClientCertificate = default(string), string k8sClientKey = default(string), string k8sClusterCaCert = "dummy_val", string k8sClusterEndpoint = "dummy_val", string k8sClusterToken = "dummy_val", string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwServiceAccount = default(bool))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
             if (k8sClusterCaCert == null)
@@ -83,6 +86,10 @@ namespace akeyless.Model
             this.Comment = comment;
             this.Description = description;
             this.Json = json;
+            // use default value if no "k8sAuthType" provided
+            this.K8sAuthType = k8sAuthType ?? "token";
+            this.K8sClientCertificate = k8sClientCertificate;
+            this.K8sClientKey = k8sClientKey;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
@@ -112,6 +119,27 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// K8S auth type [token/certificate]
+        /// </summary>
+        /// <value>K8S auth type [token/certificate]</value>
+        [DataMember(Name = "k8s-auth-type", EmitDefaultValue = false)]
+        public string K8sAuthType { get; set; }
+
+        /// <summary>
+        /// Content of the k8 client certificate (PEM format) in a Base64 format
+        /// </summary>
+        /// <value>Content of the k8 client certificate (PEM format) in a Base64 format</value>
+        [DataMember(Name = "k8s-client-certificate", EmitDefaultValue = false)]
+        public string K8sClientCertificate { get; set; }
+
+        /// <summary>
+        /// Content of the k8 client private key (PEM format) in a Base64 format
+        /// </summary>
+        /// <value>Content of the k8 client private key (PEM format) in a Base64 format</value>
+        [DataMember(Name = "k8s-client-key", EmitDefaultValue = false)]
+        public string K8sClientKey { get; set; }
 
         /// <summary>
         /// K8S cluster CA certificate
@@ -201,6 +229,9 @@ namespace akeyless.Model
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  K8sAuthType: ").Append(K8sAuthType).Append("\n");
+            sb.Append("  K8sClientCertificate: ").Append(K8sClientCertificate).Append("\n");
+            sb.Append("  K8sClientKey: ").Append(K8sClientKey).Append("\n");
             sb.Append("  K8sClusterCaCert: ").Append(K8sClusterCaCert).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
             sb.Append("  K8sClusterToken: ").Append(K8sClusterToken).Append("\n");
@@ -260,6 +291,21 @@ namespace akeyless.Model
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.K8sAuthType == input.K8sAuthType ||
+                    (this.K8sAuthType != null &&
+                    this.K8sAuthType.Equals(input.K8sAuthType))
+                ) && 
+                (
+                    this.K8sClientCertificate == input.K8sClientCertificate ||
+                    (this.K8sClientCertificate != null &&
+                    this.K8sClientCertificate.Equals(input.K8sClientCertificate))
+                ) && 
+                (
+                    this.K8sClientKey == input.K8sClientKey ||
+                    (this.K8sClientKey != null &&
+                    this.K8sClientKey.Equals(input.K8sClientKey))
                 ) && 
                 (
                     this.K8sClusterCaCert == input.K8sClusterCaCert ||
@@ -334,6 +380,18 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.K8sAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuthType.GetHashCode();
+                }
+                if (this.K8sClientCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientCertificate.GetHashCode();
+                }
+                if (this.K8sClientKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientKey.GetHashCode();
+                }
                 if (this.K8sClusterCaCert != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterCaCert.GetHashCode();

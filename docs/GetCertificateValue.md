@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CertIssuerName** | **string** | The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token | [optional] 
 **CertificateFileOutput** | **string** | File to write the certificates to. | [optional] 
 **DisplayId** | **string** | Certificate display ID | [optional] 
+**IgnoreCache** | **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
 **IssuanceToken** | **string** | Token for getting the issued certificate | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Certificate name | [default to "dummy_certificate_name"]

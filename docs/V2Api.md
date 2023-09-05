@@ -39,9 +39,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target |  |
 | [**CreateGlobalSignAtlasTarget**](V2Api.md#createglobalsignatlastarget) | **POST** /create-globalsign-atlas-target |  |
 | [**CreateGlobalSignTarget**](V2Api.md#createglobalsigntarget) | **POST** /create-globalsign-target |  |
+| [**CreateGroup**](V2Api.md#creategroup) | **POST** /create-group |  |
 | [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
 | [**CreateLinkedTarget**](V2Api.md#createlinkedtarget) | **POST** /create-linked-target |  |
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
+| [**CreateOidcApp**](V2Api.md#createoidcapp) | **POST** /create-oidc-app |  |
 | [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer |  |
 | [**CreatePingTarget**](V2Api.md#createpingtarget) | **POST** /create-ping-target |  |
 | [**CreateRabbitMQTarget**](V2Api.md#createrabbitmqtarget) | **POST** /create-rabbitmq-target |  |
@@ -52,6 +54,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateSalesforceTarget**](V2Api.md#createsalesforcetarget) | **POST** /create-salesforce-target |  |
 | [**CreateSecret**](V2Api.md#createsecret) | **POST** /create-secret |  |
 | [**CreateTokenizer**](V2Api.md#createtokenizer) | **POST** /create-tokenizer |  |
+| [**CreateUserEvent**](V2Api.md#createuserevent) | **POST** /create-user-event |  |
 | [**CreateWebTarget**](V2Api.md#createwebtarget) | **POST** /create-web-target |  |
 | [**CreateWindowsTarget**](V2Api.md#createwindowstarget) | **POST** /create-windows-target |  |
 | [**CreateZeroSSLTarget**](V2Api.md#createzerossltarget) | **POST** /create-zerossl-target |  |
@@ -64,6 +67,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DeleteAuthMethods**](V2Api.md#deleteauthmethods) | **POST** /delete-auth-methods |  |
 | [**DeleteEventForwarder**](V2Api.md#deleteeventforwarder) | **POST** /delete-event-forwarder |  |
 | [**DeleteGatewayAllowedAccessId**](V2Api.md#deletegatewayallowedaccessid) | **POST** /gateway-delete-allowed-management-access |  |
+| [**DeleteGroup**](V2Api.md#deletegroup) | **POST** /delete-group |  |
 | [**DeleteGwCluster**](V2Api.md#deletegwcluster) | **POST** /delete-gateway-cluster |  |
 | [**DeleteItem**](V2Api.md#deleteitem) | **POST** /delete-item |  |
 | [**DeleteItems**](V2Api.md#deleteitems) | **POST** /delete-items |  |
@@ -178,6 +182,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetCertificateValue**](V2Api.md#getcertificatevalue) | **POST** /get-certificate-value |  |
 | [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value |  |
 | [**GetEventForwarder**](V2Api.md#geteventforwarder) | **POST** /get-event-forwarder |  |
+| [**GetGroup**](V2Api.md#getgroup) | **POST** /get-group |  |
 | [**GetKubeExecCreds**](V2Api.md#getkubeexeccreds) | **POST** /get-kube-exec-creds |  |
 | [**GetPKICertificate**](V2Api.md#getpkicertificate) | **POST** /get-pki-certificate |  |
 | [**GetRSAPublic**](V2Api.md#getrsapublic) | **POST** /get-rsa-public |  |
@@ -188,6 +193,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
 | [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
 | [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details |  |
+| [**GetUserLastEventStatus**](V2Api.md#getuserlasteventstatus) | **POST** /user-event-last-status |  |
 | [**Hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**ImportPasswords**](V2Api.md#importpasswords) | **POST** /import-passwords |  |
 | [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
@@ -205,6 +211,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state |  |
 | [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods |  |
 | [**ListGateways**](V2Api.md#listgateways) | **POST** /list-gateways |  |
+| [**ListGroups**](V2Api.md#listgroups) | **POST** /list-group |  |
 | [**ListItems**](V2Api.md#listitems) | **POST** /list-items |  |
 | [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles |  |
 | [**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions |  |
@@ -218,6 +225,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds |  |
 | [**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret |  |
 | [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key |  |
+| [**RotateOidcClientSecret**](V2Api.md#rotateoidcclientsecret) | **POST** /rotate-oidc-client-secret |  |
 | [**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret |  |
 | [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state |  |
 | [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule |  |
@@ -262,11 +270,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target |  |
 | [**UpdateGlobalSignAtlasTarget**](V2Api.md#updateglobalsignatlastarget) | **POST** /update-globalsign-atlas-target |  |
 | [**UpdateGlobalSignTarget**](V2Api.md#updateglobalsigntarget) | **POST** /update-globalsign-target |  |
+| [**UpdateGroup**](V2Api.md#updategroup) | **POST** /update-group |  |
 | [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item |  |
 | [**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target |  |
 | [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
 | [**UpdateLinkedTarget**](V2Api.md#updatelinkedtarget) | **POST** /update-linked-target |  |
 | [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target |  |
+| [**UpdateOidcApp**](V2Api.md#updateoidcapp) | **POST** /update-oidc-app |  |
 | [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer |  |
 | [**UpdatePingTarget**](V2Api.md#updatepingtarget) | **POST** /update-ping-target |  |
 | [**UpdateRDPTargetDetails**](V2Api.md#updaterdptargetdetails) | **POST** /update-rdp-target-details |  |
@@ -3375,6 +3385,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="creategroup"></a>
+# **CreateGroup**
+> CreateGroupOutput CreateGroup (CreateGroup body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateGroup(); // CreateGroup | 
+
+            try
+            {
+                CreateGroupOutput result = apiInstance.CreateGroup(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateGroupOutput> response = apiInstance.CreateGroupWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateGroup**](CreateGroup.md) |  |  |
+
+### Return type
+
+[**CreateGroupOutput**](CreateGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createGroupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createkey"></a>
 # **CreateKey**
 > CreateKeyOutput CreateKey (CreateKey body)
@@ -3635,6 +3733,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createNativeK8STargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createoidcapp"></a>
+# **CreateOidcApp**
+> CreateOidcAppOutput CreateOidcApp (CreateOidcApp body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateOidcAppExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateOidcApp(); // CreateOidcApp | 
+
+            try
+            {
+                CreateOidcAppOutput result = apiInstance.CreateOidcApp(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateOidcApp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateOidcAppWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateOidcAppOutput> response = apiInstance.CreateOidcAppWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateOidcAppWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateOidcApp**](CreateOidcApp.md) |  |  |
+
+### Return type
+
+[**CreateOidcAppOutput**](CreateOidcAppOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createOidcAppResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4515,6 +4701,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createTokenizerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createuserevent"></a>
+# **CreateUserEvent**
+> CreateUserEventOutput CreateUserEvent (CreateUserEvent body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateUserEventExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateUserEvent(); // CreateUserEvent | 
+
+            try
+            {
+                CreateUserEventOutput result = apiInstance.CreateUserEvent(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateUserEvent: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateUserEventWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateUserEventOutput> response = apiInstance.CreateUserEventWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateUserEventWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateUserEvent**](CreateUserEvent.md) |  |  |
+
+### Return type
+
+[**CreateUserEventOutput**](CreateUserEventOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createUserEventResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5571,6 +5845,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | deleteGatewayAllowedAccessIdResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deletegroup"></a>
+# **DeleteGroup**
+> DeleteGroupOutput DeleteGroup (DeleteGroup body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DeleteGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DeleteGroup(); // DeleteGroup | 
+
+            try
+            {
+                DeleteGroupOutput result = apiInstance.DeleteGroup(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DeleteGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DeleteGroupOutput> response = apiInstance.DeleteGroupWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeleteGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeleteGroup**](DeleteGroup.md) |  |  |
+
+### Return type
+
+[**DeleteGroupOutput**](DeleteGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | deleteGroupResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -15590,6 +15952,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getgroup"></a>
+# **GetGroup**
+> GetGroupOutput GetGroup (GetGroup body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GetGroup(); // GetGroup | 
+
+            try
+            {
+                GetGroupOutput result = apiInstance.GetGroup(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetGroupOutput> response = apiInstance.GetGroupWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetGroup**](GetGroup.md) |  |  |
+
+### Return type
+
+[**GetGroupOutput**](GetGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getGroupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getkubeexeccreds"></a>
 # **GetKubeExecCreds**
 > GetKubeExecCredsOutput GetKubeExecCreds (GetKubeExecCreds body)
@@ -16466,6 +16916,89 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getTargetDetailsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getuserlasteventstatus"></a>
+# **GetUserLastEventStatus**
+> GetUserEventStatusOutput GetUserLastEventStatus ()
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetUserLastEventStatusExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+
+            try
+            {
+                GetUserEventStatusOutput result = apiInstance.GetUserLastEventStatus();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetUserLastEventStatus: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetUserLastEventStatusWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetUserEventStatusOutput> response = apiInstance.GetUserLastEventStatusWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetUserLastEventStatusWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**GetUserEventStatusOutput**](GetUserEventStatusOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getLastUserEventStatusResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -17966,6 +18499,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="listgroups"></a>
+# **ListGroups**
+> ListGroupsOutput ListGroups (ListGroups body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ListGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ListGroups(); // ListGroups | 
+
+            try
+            {
+                ListGroupsOutput result = apiInstance.ListGroups(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ListGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListGroupsOutput> response = apiInstance.ListGroupsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListGroups**](ListGroups.md) |  |  |
+
+### Return type
+
+[**ListGroupsOutput**](ListGroupsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | listGroupsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="listitems"></a>
 # **ListItems**
 > ListItemsInPathOutput ListItems (ListItems body)
@@ -19097,6 +19718,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | rotateKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="rotateoidcclientsecret"></a>
+# **RotateOidcClientSecret**
+> RotateOidcClientOutput RotateOidcClientSecret (RotateOidcClientSecret body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotateOidcClientSecretExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new RotateOidcClientSecret(); // RotateOidcClientSecret | 
+
+            try
+            {
+                RotateOidcClientOutput result = apiInstance.RotateOidcClientSecret(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotateOidcClientSecret: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotateOidcClientSecretWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotateOidcClientOutput> response = apiInstance.RotateOidcClientSecretWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotateOidcClientSecretWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RotateOidcClientSecret**](RotateOidcClientSecret.md) |  |  |
+
+### Return type
+
+[**RotateOidcClientOutput**](RotateOidcClientOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotateOidcClientResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -22969,6 +23678,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updategroup"></a>
+# **UpdateGroup**
+> UpdateGroupOutput UpdateGroup (UpdateGroup body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateGroup(); // UpdateGroup | 
+
+            try
+            {
+                UpdateGroupOutput result = apiInstance.UpdateGroup(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateGroupOutput> response = apiInstance.UpdateGroupWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateGroup**](UpdateGroup.md) |  |  |
+
+### Return type
+
+[**UpdateGroupOutput**](UpdateGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateGroupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateitem"></a>
 # **UpdateItem**
 > UpdateItemOutput UpdateItem (UpdateItem body)
@@ -23405,6 +24202,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateNativeK8STargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateoidcapp"></a>
+# **UpdateOidcApp**
+> Object UpdateOidcApp (UpdateOidcApp body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateOidcAppExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateOidcApp(); // UpdateOidcApp | 
+
+            try
+            {
+                Object result = apiInstance.UpdateOidcApp(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateOidcApp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateOidcAppWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateOidcAppWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateOidcAppWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateOidcApp**](UpdateOidcApp.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateOidcAppResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

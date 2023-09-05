@@ -39,17 +39,19 @@ namespace akeyless.Model
         /// <param name="audience">audience.</param>
         /// <param name="clientId">clientId.</param>
         /// <param name="grantTypes">grantTypes.</param>
+        /// <param name="issuerUrl">issuerUrl.</param>
         /// <param name="logoutUris">logoutUris.</param>
         /// <param name="_public">_public.</param>
         /// <param name="redirectUris">redirectUris.</param>
         /// <param name="responseTypes">responseTypes.</param>
         /// <param name="scopes">scopes.</param>
-        public OidcClientInfo(List<AccessPermissionAssignment> accessPermissionAssignment = default(List<AccessPermissionAssignment>), List<string> audience = default(List<string>), string clientId = default(string), List<string> grantTypes = default(List<string>), List<string> logoutUris = default(List<string>), bool _public = default(bool), List<string> redirectUris = default(List<string>), List<string> responseTypes = default(List<string>), List<string> scopes = default(List<string>))
+        public OidcClientInfo(List<AccessOrGroupPermissionAssignment> accessPermissionAssignment = default(List<AccessOrGroupPermissionAssignment>), List<string> audience = default(List<string>), string clientId = default(string), List<string> grantTypes = default(List<string>), string issuerUrl = default(string), List<string> logoutUris = default(List<string>), bool _public = default(bool), List<string> redirectUris = default(List<string>), List<string> responseTypes = default(List<string>), List<string> scopes = default(List<string>))
         {
             this.AccessPermissionAssignment = accessPermissionAssignment;
             this.Audience = audience;
             this.ClientId = clientId;
             this.GrantTypes = grantTypes;
+            this.IssuerUrl = issuerUrl;
             this.LogoutUris = logoutUris;
             this.Public = _public;
             this.RedirectUris = redirectUris;
@@ -61,7 +63,7 @@ namespace akeyless.Model
         /// Gets or Sets AccessPermissionAssignment
         /// </summary>
         [DataMember(Name = "access_permission_assignment", EmitDefaultValue = false)]
-        public List<AccessPermissionAssignment> AccessPermissionAssignment { get; set; }
+        public List<AccessOrGroupPermissionAssignment> AccessPermissionAssignment { get; set; }
 
         /// <summary>
         /// Gets or Sets Audience
@@ -80,6 +82,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "grant_types", EmitDefaultValue = false)]
         public List<string> GrantTypes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IssuerUrl
+        /// </summary>
+        [DataMember(Name = "issuer_url", EmitDefaultValue = false)]
+        public string IssuerUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets LogoutUris
@@ -123,6 +131,7 @@ namespace akeyless.Model
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  GrantTypes: ").Append(GrantTypes).Append("\n");
+            sb.Append("  IssuerUrl: ").Append(IssuerUrl).Append("\n");
             sb.Append("  LogoutUris: ").Append(LogoutUris).Append("\n");
             sb.Append("  Public: ").Append(Public).Append("\n");
             sb.Append("  RedirectUris: ").Append(RedirectUris).Append("\n");
@@ -187,6 +196,11 @@ namespace akeyless.Model
                     this.GrantTypes.SequenceEqual(input.GrantTypes)
                 ) && 
                 (
+                    this.IssuerUrl == input.IssuerUrl ||
+                    (this.IssuerUrl != null &&
+                    this.IssuerUrl.Equals(input.IssuerUrl))
+                ) && 
+                (
                     this.LogoutUris == input.LogoutUris ||
                     this.LogoutUris != null &&
                     input.LogoutUris != null &&
@@ -240,6 +254,10 @@ namespace akeyless.Model
                 if (this.GrantTypes != null)
                 {
                     hashCode = (hashCode * 59) + this.GrantTypes.GetHashCode();
+                }
+                if (this.IssuerUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.IssuerUrl.GetHashCode();
                 }
                 if (this.LogoutUris != null)
                 {

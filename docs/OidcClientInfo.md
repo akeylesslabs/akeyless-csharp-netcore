@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessPermissionAssignment** | [**List&lt;AccessPermissionAssignment&gt;**](AccessPermissionAssignment.md) |  | [optional] 
+**AccessPermissionAssignment** | [**List&lt;AccessOrGroupPermissionAssignment&gt;**](AccessOrGroupPermissionAssignment.md) |  | [optional] 
 **Audience** | **List&lt;string&gt;** |  | [optional] 
 **ClientId** | **string** |  | [optional] 
 **GrantTypes** | **List&lt;string&gt;** |  | [optional] 
+**IssuerUrl** | **string** |  | [optional] 
 **LogoutUris** | **List&lt;string&gt;** |  | [optional] 
 **Public** | **bool** |  | [optional] 
 **RedirectUris** | **List&lt;string&gt;** |  | [optional] 

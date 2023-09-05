@@ -51,8 +51,9 @@ namespace akeyless.Model
         /// <param name="target">The target.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="useSshAgent">Enable ssh-agent.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = false, string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), string viaBastion = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = false, string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), bool useSshAgent = default(bool), string viaBastion = default(string))
         {
             this.Helper = helper;
             this.RcFileOverride = rcFileOverride;
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseSshAgent = useSshAgent;
             this.ViaBastion = viaBastion;
         }
 
@@ -187,6 +189,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Enable ssh-agent
+        /// </summary>
+        /// <value>Enable ssh-agent</value>
+        [DataMember(Name = "use-ssh-agent", EmitDefaultValue = true)]
+        public bool UseSshAgent { get; set; }
+
+        /// <summary>
         /// The jump box server
         /// </summary>
         /// <value>The jump box server</value>
@@ -217,6 +226,7 @@ namespace akeyless.Model
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseSshAgent: ").Append(UseSshAgent).Append("\n");
             sb.Append("  ViaBastion: ").Append(ViaBastion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -332,6 +342,10 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.UseSshAgent == input.UseSshAgent ||
+                    this.UseSshAgent.Equals(input.UseSshAgent)
+                ) && 
+                (
                     this.ViaBastion == input.ViaBastion ||
                     (this.ViaBastion != null &&
                     this.ViaBastion.Equals(input.ViaBastion))
@@ -405,6 +419,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.UseSshAgent.GetHashCode();
                 if (this.ViaBastion != null)
                 {
                     hashCode = (hashCode * 59) + this.ViaBastion.GetHashCode();

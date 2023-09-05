@@ -35,23 +35,48 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NativeK8sTargetDetails" /> class.
         /// </summary>
+        /// <param name="k8sAuthType">k8sAuthType.</param>
         /// <param name="k8sBearerToken">k8sBearerToken.</param>
+        /// <param name="k8sClientCertData">For K8s Client certificates authentication.</param>
+        /// <param name="k8sClientKeyData">k8sClientKeyData.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
         /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
         /// <param name="useGwServiceAccount">useGwServiceAccount.</param>
-        public NativeK8sTargetDetails(string k8sBearerToken = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), bool useGwServiceAccount = default(bool))
+        public NativeK8sTargetDetails(string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), bool useGwServiceAccount = default(bool))
         {
+            this.K8sAuthType = k8sAuthType;
             this.K8sBearerToken = k8sBearerToken;
+            this.K8sClientCertData = k8sClientCertData;
+            this.K8sClientKeyData = k8sClientKeyData;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
             this.UseGwServiceAccount = useGwServiceAccount;
         }
 
         /// <summary>
+        /// Gets or Sets K8sAuthType
+        /// </summary>
+        [DataMember(Name = "k8s_auth_type", EmitDefaultValue = false)]
+        public string K8sAuthType { get; set; }
+
+        /// <summary>
         /// Gets or Sets K8sBearerToken
         /// </summary>
         [DataMember(Name = "k8s_bearer_token", EmitDefaultValue = false)]
         public string K8sBearerToken { get; set; }
+
+        /// <summary>
+        /// For K8s Client certificates authentication
+        /// </summary>
+        /// <value>For K8s Client certificates authentication</value>
+        [DataMember(Name = "k8s_client_cert_data", EmitDefaultValue = false)]
+        public string K8sClientCertData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets K8sClientKeyData
+        /// </summary>
+        [DataMember(Name = "k8s_client_key_data", EmitDefaultValue = false)]
+        public string K8sClientKeyData { get; set; }
 
         /// <summary>
         /// Gets or Sets K8sClusterCaCertificate
@@ -79,7 +104,10 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class NativeK8sTargetDetails {\n");
+            sb.Append("  K8sAuthType: ").Append(K8sAuthType).Append("\n");
             sb.Append("  K8sBearerToken: ").Append(K8sBearerToken).Append("\n");
+            sb.Append("  K8sClientCertData: ").Append(K8sClientCertData).Append("\n");
+            sb.Append("  K8sClientKeyData: ").Append(K8sClientKeyData).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
             sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
@@ -119,9 +147,24 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.K8sAuthType == input.K8sAuthType ||
+                    (this.K8sAuthType != null &&
+                    this.K8sAuthType.Equals(input.K8sAuthType))
+                ) && 
+                (
                     this.K8sBearerToken == input.K8sBearerToken ||
                     (this.K8sBearerToken != null &&
                     this.K8sBearerToken.Equals(input.K8sBearerToken))
+                ) && 
+                (
+                    this.K8sClientCertData == input.K8sClientCertData ||
+                    (this.K8sClientCertData != null &&
+                    this.K8sClientCertData.Equals(input.K8sClientCertData))
+                ) && 
+                (
+                    this.K8sClientKeyData == input.K8sClientKeyData ||
+                    (this.K8sClientKeyData != null &&
+                    this.K8sClientKeyData.Equals(input.K8sClientKeyData))
                 ) && 
                 (
                     this.K8sClusterCaCertificate == input.K8sClusterCaCertificate ||
@@ -148,9 +191,21 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.K8sAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuthType.GetHashCode();
+                }
                 if (this.K8sBearerToken != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sBearerToken.GetHashCode();
+                }
+                if (this.K8sClientCertData != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientCertData.GetHashCode();
+                }
+                if (this.K8sClientKeyData != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientKeyData.GetHashCode();
                 }
                 if (this.K8sClusterCaCertificate != null)
                 {

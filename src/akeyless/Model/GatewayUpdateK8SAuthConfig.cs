@@ -45,7 +45,10 @@ namespace akeyless.Model
         /// <param name="configEncryptionKeyName">Config encryption key.</param>
         /// <param name="disableIssuerValidation">Disable issuer validation [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="k8sAuthType">K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only) (default to &quot;token&quot;).</param>
         /// <param name="k8sCaCert">The CA Certificate (base64 encoded) to use to call into the kubernetes API server.</param>
+        /// <param name="k8sClientCertificate">Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only).</param>
+        /// <param name="k8sClientKey">Content of the k8 client private key (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only).</param>
         /// <param name="k8sHost">The URL of the kubernetes API server (required).</param>
         /// <param name="k8sIssuer">The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token (default to &quot;kubernetes/serviceaccount&quot;).</param>
         /// <param name="name">K8S Auth config name (required).</param>
@@ -58,7 +61,7 @@ namespace akeyless.Model
         /// <param name="tokenReviewerJwt">A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
-        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = false, string k8sCaCert = default(string), string k8sHost = default(string), string k8sIssuer = "kubernetes/serviceaccount", string name = default(string), string newName = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool))
+        public GatewayUpdateK8SAuthConfig(string accessId = default(string), string clusterApiType = "native_k8s", string configEncryptionKeyName = default(string), string disableIssuerValidation = default(string), bool json = false, string k8sAuthType = "token", string k8sCaCert = default(string), string k8sClientCertificate = default(string), string k8sClientKey = default(string), string k8sHost = default(string), string k8sIssuer = "kubernetes/serviceaccount", string name = default(string), string newName = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), string signingKey = default(string), string token = default(string), long tokenExp = 300, string tokenReviewerJwt = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null)
@@ -95,7 +98,11 @@ namespace akeyless.Model
             this.ConfigEncryptionKeyName = configEncryptionKeyName;
             this.DisableIssuerValidation = disableIssuerValidation;
             this.Json = json;
+            // use default value if no "k8sAuthType" provided
+            this.K8sAuthType = k8sAuthType ?? "token";
             this.K8sCaCert = k8sCaCert;
+            this.K8sClientCertificate = k8sClientCertificate;
+            this.K8sClientKey = k8sClientKey;
             // use default value if no "k8sIssuer" provided
             this.K8sIssuer = k8sIssuer ?? "kubernetes/serviceaccount";
             this.RancherApiKey = rancherApiKey;
@@ -143,11 +150,32 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only)
+        /// </summary>
+        /// <value>K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only)</value>
+        [DataMember(Name = "k8s-auth-type", EmitDefaultValue = false)]
+        public string K8sAuthType { get; set; }
+
+        /// <summary>
         /// The CA Certificate (base64 encoded) to use to call into the kubernetes API server
         /// </summary>
         /// <value>The CA Certificate (base64 encoded) to use to call into the kubernetes API server</value>
         [DataMember(Name = "k8s-ca-cert", EmitDefaultValue = false)]
         public string K8sCaCert { get; set; }
+
+        /// <summary>
+        /// Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only)
+        /// </summary>
+        /// <value>Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only)</value>
+        [DataMember(Name = "k8s-client-certificate", EmitDefaultValue = false)]
+        public string K8sClientCertificate { get; set; }
+
+        /// <summary>
+        /// Content of the k8 client private key (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only)
+        /// </summary>
+        /// <value>Content of the k8 client private key (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only)</value>
+        [DataMember(Name = "k8s-client-key", EmitDefaultValue = false)]
+        public string K8sClientKey { get; set; }
 
         /// <summary>
         /// The URL of the kubernetes API server
@@ -246,7 +274,10 @@ namespace akeyless.Model
             sb.Append("  ConfigEncryptionKeyName: ").Append(ConfigEncryptionKeyName).Append("\n");
             sb.Append("  DisableIssuerValidation: ").Append(DisableIssuerValidation).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  K8sAuthType: ").Append(K8sAuthType).Append("\n");
             sb.Append("  K8sCaCert: ").Append(K8sCaCert).Append("\n");
+            sb.Append("  K8sClientCertificate: ").Append(K8sClientCertificate).Append("\n");
+            sb.Append("  K8sClientKey: ").Append(K8sClientKey).Append("\n");
             sb.Append("  K8sHost: ").Append(K8sHost).Append("\n");
             sb.Append("  K8sIssuer: ").Append(K8sIssuer).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -319,9 +350,24 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.K8sAuthType == input.K8sAuthType ||
+                    (this.K8sAuthType != null &&
+                    this.K8sAuthType.Equals(input.K8sAuthType))
+                ) && 
+                (
                     this.K8sCaCert == input.K8sCaCert ||
                     (this.K8sCaCert != null &&
                     this.K8sCaCert.Equals(input.K8sCaCert))
+                ) && 
+                (
+                    this.K8sClientCertificate == input.K8sClientCertificate ||
+                    (this.K8sClientCertificate != null &&
+                    this.K8sClientCertificate.Equals(input.K8sClientCertificate))
+                ) && 
+                (
+                    this.K8sClientKey == input.K8sClientKey ||
+                    (this.K8sClientKey != null &&
+                    this.K8sClientKey.Equals(input.K8sClientKey))
                 ) && 
                 (
                     this.K8sHost == input.K8sHost ||
@@ -409,9 +455,21 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.DisableIssuerValidation.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.K8sAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sAuthType.GetHashCode();
+                }
                 if (this.K8sCaCert != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sCaCert.GetHashCode();
+                }
+                if (this.K8sClientCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientCertificate.GetHashCode();
+                }
+                if (this.K8sClientKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClientKey.GetHashCode();
                 }
                 if (this.K8sHost != null)
                 {

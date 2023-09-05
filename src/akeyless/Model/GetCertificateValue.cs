@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="certIssuerName">The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token.</param>
         /// <param name="certificateFileOutput">File to write the certificates to..</param>
         /// <param name="displayId">Certificate display ID.</param>
+        /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
         /// <param name="issuanceToken">Token for getting the issued certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Certificate name (required) (default to &quot;dummy_certificate_name&quot;).</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Certificate version.</param>
-        public GetCertificateValue(string certIssuerName = default(string), string certificateFileOutput = default(string), string displayId = default(string), string issuanceToken = default(string), bool json = false, string name = "dummy_certificate_name", string privateKeyFileOutput = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public GetCertificateValue(string certIssuerName = default(string), string certificateFileOutput = default(string), string displayId = default(string), string ignoreCache = "false", string issuanceToken = default(string), bool json = false, string name = "dummy_certificate_name", string privateKeyFileOutput = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -61,6 +62,8 @@ namespace akeyless.Model
             this.CertIssuerName = certIssuerName;
             this.CertificateFileOutput = certificateFileOutput;
             this.DisplayId = displayId;
+            // use default value if no "ignoreCache" provided
+            this.IgnoreCache = ignoreCache ?? "false";
             this.IssuanceToken = issuanceToken;
             this.Json = json;
             this.PrivateKeyFileOutput = privateKeyFileOutput;
@@ -89,6 +92,13 @@ namespace akeyless.Model
         /// <value>Certificate display ID</value>
         [DataMember(Name = "display-id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
+        /// </summary>
+        /// <value>Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI</value>
+        [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
+        public string IgnoreCache { get; set; }
 
         /// <summary>
         /// Token for getting the issued certificate
@@ -150,6 +160,7 @@ namespace akeyless.Model
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CertificateFileOutput: ").Append(CertificateFileOutput).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  IssuanceToken: ").Append(IssuanceToken).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -208,6 +219,11 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
+                    this.IgnoreCache == input.IgnoreCache ||
+                    (this.IgnoreCache != null &&
+                    this.IgnoreCache.Equals(input.IgnoreCache))
+                ) && 
+                (
                     this.IssuanceToken == input.IssuanceToken ||
                     (this.IssuanceToken != null &&
                     this.IssuanceToken.Equals(input.IssuanceToken))
@@ -262,6 +278,10 @@ namespace akeyless.Model
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                if (this.IgnoreCache != null)
+                {
+                    hashCode = (hashCode * 59) + this.IgnoreCache.GetHashCode();
                 }
                 if (this.IssuanceToken != null)
                 {
