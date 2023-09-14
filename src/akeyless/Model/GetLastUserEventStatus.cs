@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="itemName">Event item name (required).</param>
         /// <param name="itemType">Event item type can be either \&quot;target\&quot; or type of item eg \&quot;static_secret\&quot;/\&quot;dynamic_secret\&quot; To get type of some item run &#x60;akeyless describe-item -n {ITEM_NAME} - -jq-expression .item_type&#x60; (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="timeBack">The time back to search the event, can be passed as string representation. For example if the value is \&quot;5m\&quot; we will return the last user event issued in the last 5 minutes By default we will search without any time boundary.</param>
+        /// <param name="timeBack">The time back to search the event, for example if the value is \&quot;5m\&quot; we will return the last user event issued in the last 5 minutes. By default, we will search without any time boundary..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GetLastUserEventStatus(string eventSource = default(string), string eventType = default(string), string itemName = default(string), string itemType = default(string), bool json = false, string timeBack = default(string), string token = default(string), string uidToken = default(string))
@@ -109,9 +109,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// The time back to search the event, can be passed as string representation. For example if the value is \&quot;5m\&quot; we will return the last user event issued in the last 5 minutes By default we will search without any time boundary
+        /// The time back to search the event, for example if the value is \&quot;5m\&quot; we will return the last user event issued in the last 5 minutes. By default, we will search without any time boundary.
         /// </summary>
-        /// <value>The time back to search the event, can be passed as string representation. For example if the value is \&quot;5m\&quot; we will return the last user event issued in the last 5 minutes By default we will search without any time boundary</value>
+        /// <value>The time back to search the event, for example if the value is \&quot;5m\&quot; we will return the last user event issued in the last 5 minutes. By default, we will search without any time boundary.</value>
         [DataMember(Name = "time-back", EmitDefaultValue = false)]
         public string TimeBack { get; set; }
 

@@ -45,10 +45,10 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="eventSource">eventSource.</param>
         /// <param name="eventType">eventType (required).</param>
-        /// <param name="itemName">Event item name (required).</param>
-        /// <param name="itemType">Event item type can be either \&quot;target\&quot; or type of item eg \&quot;static_secret\&quot;/\&quot;dynamic_secret\&quot; To get type of some item run &#x60;akeyless describe-item -n {ITEM_NAME} - -jq-expression .item_type&#x60; (required).</param>
+        /// <param name="itemName">EventItemName Event item name (required).</param>
+        /// <param name="itemType">EventItemType Event item type (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="requestAccessTtl">TTL in minutes for how long to grant the requested access.</param>
+        /// <param name="requestAccessTtl">For how long to grant the requested access, in minutes.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public CreateUserEvent(List<string> capabilities = default(List<string>), string comment = default(string), string description = default(string), string eventSource = default(string), string eventType = default(string), string itemName = default(string), string itemType = default(string), bool json = false, long requestAccessTtl = default(long), string token = default(string), string uidToken = default(string))
@@ -115,16 +115,16 @@ namespace akeyless.Model
         public string EventType { get; set; }
 
         /// <summary>
-        /// Event item name
+        /// EventItemName Event item name
         /// </summary>
-        /// <value>Event item name</value>
+        /// <value>EventItemName Event item name</value>
         [DataMember(Name = "item-name", IsRequired = true, EmitDefaultValue = true)]
         public string ItemName { get; set; }
 
         /// <summary>
-        /// Event item type can be either \&quot;target\&quot; or type of item eg \&quot;static_secret\&quot;/\&quot;dynamic_secret\&quot; To get type of some item run &#x60;akeyless describe-item -n {ITEM_NAME} - -jq-expression .item_type&#x60;
+        /// EventItemType Event item type
         /// </summary>
-        /// <value>Event item type can be either \&quot;target\&quot; or type of item eg \&quot;static_secret\&quot;/\&quot;dynamic_secret\&quot; To get type of some item run &#x60;akeyless describe-item -n {ITEM_NAME} - -jq-expression .item_type&#x60;</value>
+        /// <value>EventItemType Event item type</value>
         [DataMember(Name = "item-type", IsRequired = true, EmitDefaultValue = true)]
         public string ItemType { get; set; }
 
@@ -136,9 +136,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// TTL in minutes for how long to grant the requested access
+        /// For how long to grant the requested access, in minutes
         /// </summary>
-        /// <value>TTL in minutes for how long to grant the requested access</value>
+        /// <value>For how long to grant the requested access, in minutes</value>
         [DataMember(Name = "request-access-ttl", EmitDefaultValue = false)]
         public long RequestAccessTtl { get; set; }
 

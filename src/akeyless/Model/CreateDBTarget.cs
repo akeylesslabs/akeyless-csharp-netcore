@@ -40,7 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDBTarget" /> class.
         /// </summary>
+        /// <param name="dBDefinedConnectionType">dBDefinedConnectionType.</param>
+        /// <param name="azureClientId">(Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only).</param>
+        /// <param name="azureClientSecret">(Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only).</param>
+        /// <param name="azureTenantId">(Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only).</param>
+        /// <param name="cloudServiceProvider">(Optional) Cloud service provider (currently only supports Azure).</param>
         /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="connectionType">(Optional) Type of connection to mssql database [credentials/cloud-identity] (required) (default to &quot;credentials&quot;).</param>
         /// <param name="dbName">dbName.</param>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
@@ -67,8 +73,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string comment = default(string), string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public CreateDBTarget(string dBDefinedConnectionType = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), string comment = default(string), string connectionType = "credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
+            // to ensure "connectionType" is required (not null)
+            if (connectionType == null)
+            {
+                throw new ArgumentNullException("connectionType is a required property for CreateDBTarget and cannot be null");
+            }
+            this.ConnectionType = connectionType;
             // to ensure "dbType" is required (not null)
             if (dbType == null)
             {
@@ -81,6 +93,11 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for CreateDBTarget and cannot be null");
             }
             this.Name = name;
+            this.DBDefinedConnectionType = dBDefinedConnectionType;
+            this.AzureClientId = azureClientId;
+            this.AzureClientSecret = azureClientSecret;
+            this.AzureTenantId = azureTenantId;
+            this.CloudServiceProvider = cloudServiceProvider;
             this.Comment = comment;
             this.DbName = dbName;
             this.DbServerCertificates = dbServerCertificates;
@@ -109,11 +126,52 @@ namespace akeyless.Model
         }
 
         /// <summary>
+        /// Gets or Sets DBDefinedConnectionType
+        /// </summary>
+        [DataMember(Name = "DBDefinedConnectionType", EmitDefaultValue = false)]
+        public string DBDefinedConnectionType { get; set; }
+
+        /// <summary>
+        /// (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only)
+        /// </summary>
+        /// <value>(Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only)</value>
+        [DataMember(Name = "azure-client-id", EmitDefaultValue = false)]
+        public string AzureClientId { get; set; }
+
+        /// <summary>
+        /// (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only)
+        /// </summary>
+        /// <value>(Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only)</value>
+        [DataMember(Name = "azure-client-secret", EmitDefaultValue = false)]
+        public string AzureClientSecret { get; set; }
+
+        /// <summary>
+        /// (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only)
+        /// </summary>
+        /// <value>(Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only)</value>
+        [DataMember(Name = "azure-tenant-id", EmitDefaultValue = false)]
+        public string AzureTenantId { get; set; }
+
+        /// <summary>
+        /// (Optional) Cloud service provider (currently only supports Azure)
+        /// </summary>
+        /// <value>(Optional) Cloud service provider (currently only supports Azure)</value>
+        [DataMember(Name = "cloud-service-provider", EmitDefaultValue = false)]
+        public string CloudServiceProvider { get; set; }
+
+        /// <summary>
         /// Deprecated - use description
         /// </summary>
         /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// (Optional) Type of connection to mssql database [credentials/cloud-identity]
+        /// </summary>
+        /// <value>(Optional) Type of connection to mssql database [credentials/cloud-identity]</value>
+        [DataMember(Name = "connection-type", IsRequired = true, EmitDefaultValue = true)]
+        public string ConnectionType { get; set; }
 
         /// <summary>
         /// Gets or Sets DbName
@@ -296,7 +354,13 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateDBTarget {\n");
+            sb.Append("  DBDefinedConnectionType: ").Append(DBDefinedConnectionType).Append("\n");
+            sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
+            sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
+            sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
@@ -359,9 +423,39 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.DBDefinedConnectionType == input.DBDefinedConnectionType ||
+                    (this.DBDefinedConnectionType != null &&
+                    this.DBDefinedConnectionType.Equals(input.DBDefinedConnectionType))
+                ) && 
+                (
+                    this.AzureClientId == input.AzureClientId ||
+                    (this.AzureClientId != null &&
+                    this.AzureClientId.Equals(input.AzureClientId))
+                ) && 
+                (
+                    this.AzureClientSecret == input.AzureClientSecret ||
+                    (this.AzureClientSecret != null &&
+                    this.AzureClientSecret.Equals(input.AzureClientSecret))
+                ) && 
+                (
+                    this.AzureTenantId == input.AzureTenantId ||
+                    (this.AzureTenantId != null &&
+                    this.AzureTenantId.Equals(input.AzureTenantId))
+                ) && 
+                (
+                    this.CloudServiceProvider == input.CloudServiceProvider ||
+                    (this.CloudServiceProvider != null &&
+                    this.CloudServiceProvider.Equals(input.CloudServiceProvider))
+                ) && 
+                (
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.ConnectionType == input.ConnectionType ||
+                    (this.ConnectionType != null &&
+                    this.ConnectionType.Equals(input.ConnectionType))
                 ) && 
                 (
                     this.DbName == input.DbName ||
@@ -501,9 +595,33 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DBDefinedConnectionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.DBDefinedConnectionType.GetHashCode();
+                }
+                if (this.AzureClientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientId.GetHashCode();
+                }
+                if (this.AzureClientSecret != null)
+                {
+                    hashCode = (hashCode * 59) + this.AzureClientSecret.GetHashCode();
+                }
+                if (this.AzureTenantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AzureTenantId.GetHashCode();
+                }
+                if (this.CloudServiceProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.CloudServiceProvider.GetHashCode();
+                }
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.ConnectionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConnectionType.GetHashCode();
                 }
                 if (this.DbName != null)
                 {

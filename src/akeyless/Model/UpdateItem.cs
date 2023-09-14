@@ -66,6 +66,7 @@ namespace akeyless.Model
         /// <param name="secureAccessDbSchema">The DB schema (relevant only for DB Dynamic-Secret).</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
+        /// <param name="secureAccessRdGatewayServer">RD Gateway server (relevant only for rdp).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
         /// <param name="secureAccessRmHost">List of the existent hosts that will be removed from SRA servers host.</param>
@@ -77,7 +78,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -114,6 +115,7 @@ namespace akeyless.Model
             this.SecureAccessDbSchema = secureAccessDbSchema;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessRdGatewayServer = secureAccessRdGatewayServer;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessRdpUser = secureAccessRdpUser;
             this.SecureAccessRmHost = secureAccessRmHost;
@@ -310,6 +312,13 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
+        /// RD Gateway server (relevant only for rdp)
+        /// </summary>
+        /// <value>RD Gateway server (relevant only for rdp)</value>
+        [DataMember(Name = "secure-access-rd-gateway-server", EmitDefaultValue = false)]
+        public string SecureAccessRdGatewayServer { get; set; }
+
+        /// <summary>
         /// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
         /// </summary>
         /// <value>Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)</value>
@@ -420,6 +429,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessRdGatewayServer: ").Append(SecureAccessRdGatewayServer).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
             sb.Append("  SecureAccessRmHost: ").Append(SecureAccessRmHost).Append("\n");
@@ -598,6 +608,11 @@ namespace akeyless.Model
                     this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
                 ) && 
                 (
+                    this.SecureAccessRdGatewayServer == input.SecureAccessRdGatewayServer ||
+                    (this.SecureAccessRdGatewayServer != null &&
+                    this.SecureAccessRdGatewayServer.Equals(input.SecureAccessRdGatewayServer))
+                ) && 
+                (
                     this.SecureAccessRdpDomain == input.SecureAccessRdpDomain ||
                     (this.SecureAccessRdpDomain != null &&
                     this.SecureAccessRdpDomain.Equals(input.SecureAccessRdpDomain))
@@ -755,6 +770,10 @@ namespace akeyless.Model
                 if (this.SecureAccessHost != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
+                if (this.SecureAccessRdGatewayServer != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdGatewayServer.GetHashCode();
                 }
                 if (this.SecureAccessRdpDomain != null)
                 {

@@ -35,6 +35,10 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DbTargetDetails" /> class.
         /// </summary>
+        /// <param name="cloudServiceProvider">cloudServiceProvider.</param>
+        /// <param name="connectionType">connectionType.</param>
+        /// <param name="dbClientId">dbClientId.</param>
+        /// <param name="dbClientSecret">dbClientSecret.</param>
         /// <param name="dbHostName">dbHostName.</param>
         /// <param name="dbName">dbName.</param>
         /// <param name="dbPort">dbPort.</param>
@@ -43,12 +47,17 @@ namespace akeyless.Model
         /// <param name="dbPwd">dbPwd.</param>
         /// <param name="dbServerCertificates">(Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set..</param>
         /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
+        /// <param name="dbTenantId">dbTenantId.</param>
         /// <param name="dbUserName">dbUserName.</param>
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
-        public DbTargetDetails(string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbUserName = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
+        public DbTargetDetails(string cloudServiceProvider = default(string), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
         {
+            this.CloudServiceProvider = cloudServiceProvider;
+            this.ConnectionType = connectionType;
+            this.DbClientId = dbClientId;
+            this.DbClientSecret = dbClientSecret;
             this.DbHostName = dbHostName;
             this.DbName = dbName;
             this.DbPort = dbPort;
@@ -57,11 +66,36 @@ namespace akeyless.Model
             this.DbPwd = dbPwd;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
+            this.DbTenantId = dbTenantId;
             this.DbUserName = dbUserName;
             this.SfAccount = sfAccount;
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
         }
+
+        /// <summary>
+        /// Gets or Sets CloudServiceProvider
+        /// </summary>
+        [DataMember(Name = "cloud_service_provider", EmitDefaultValue = false)]
+        public string CloudServiceProvider { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ConnectionType
+        /// </summary>
+        [DataMember(Name = "connection_type", EmitDefaultValue = false)]
+        public string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DbClientId
+        /// </summary>
+        [DataMember(Name = "db_client_id", EmitDefaultValue = false)]
+        public string DbClientId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DbClientSecret
+        /// </summary>
+        [DataMember(Name = "db_client_secret", EmitDefaultValue = false)]
+        public string DbClientSecret { get; set; }
 
         /// <summary>
         /// Gets or Sets DbHostName
@@ -115,6 +149,12 @@ namespace akeyless.Model
         public string DbServerName { get; set; }
 
         /// <summary>
+        /// Gets or Sets DbTenantId
+        /// </summary>
+        [DataMember(Name = "db_tenant_id", EmitDefaultValue = false)]
+        public string DbTenantId { get; set; }
+
+        /// <summary>
         /// Gets or Sets DbUserName
         /// </summary>
         [DataMember(Name = "db_user_name", EmitDefaultValue = false)]
@@ -148,6 +188,10 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DbTargetDetails {\n");
+            sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
+            sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
+            sb.Append("  DbClientId: ").Append(DbClientId).Append("\n");
+            sb.Append("  DbClientSecret: ").Append(DbClientSecret).Append("\n");
             sb.Append("  DbHostName: ").Append(DbHostName).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  DbPort: ").Append(DbPort).Append("\n");
@@ -156,6 +200,7 @@ namespace akeyless.Model
             sb.Append("  DbPwd: ").Append(DbPwd).Append("\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
+            sb.Append("  DbTenantId: ").Append(DbTenantId).Append("\n");
             sb.Append("  DbUserName: ").Append(DbUserName).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
@@ -195,6 +240,26 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.CloudServiceProvider == input.CloudServiceProvider ||
+                    (this.CloudServiceProvider != null &&
+                    this.CloudServiceProvider.Equals(input.CloudServiceProvider))
+                ) && 
+                (
+                    this.ConnectionType == input.ConnectionType ||
+                    (this.ConnectionType != null &&
+                    this.ConnectionType.Equals(input.ConnectionType))
+                ) && 
+                (
+                    this.DbClientId == input.DbClientId ||
+                    (this.DbClientId != null &&
+                    this.DbClientId.Equals(input.DbClientId))
+                ) && 
+                (
+                    this.DbClientSecret == input.DbClientSecret ||
+                    (this.DbClientSecret != null &&
+                    this.DbClientSecret.Equals(input.DbClientSecret))
+                ) && 
                 (
                     this.DbHostName == input.DbHostName ||
                     (this.DbHostName != null &&
@@ -236,6 +301,11 @@ namespace akeyless.Model
                     this.DbServerName.Equals(input.DbServerName))
                 ) && 
                 (
+                    this.DbTenantId == input.DbTenantId ||
+                    (this.DbTenantId != null &&
+                    this.DbTenantId.Equals(input.DbTenantId))
+                ) && 
+                (
                     this.DbUserName == input.DbUserName ||
                     (this.DbUserName != null &&
                     this.DbUserName.Equals(input.DbUserName))
@@ -265,6 +335,22 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CloudServiceProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.CloudServiceProvider.GetHashCode();
+                }
+                if (this.ConnectionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConnectionType.GetHashCode();
+                }
+                if (this.DbClientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.DbClientId.GetHashCode();
+                }
+                if (this.DbClientSecret != null)
+                {
+                    hashCode = (hashCode * 59) + this.DbClientSecret.GetHashCode();
+                }
                 if (this.DbHostName != null)
                 {
                     hashCode = (hashCode * 59) + this.DbHostName.GetHashCode();
@@ -296,6 +382,10 @@ namespace akeyless.Model
                 if (this.DbServerName != null)
                 {
                     hashCode = (hashCode * 59) + this.DbServerName.GetHashCode();
+                }
+                if (this.DbTenantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.DbTenantId.GetHashCode();
                 }
                 if (this.DbUserName != null)
                 {

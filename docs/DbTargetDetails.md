@@ -5,6 +5,10 @@ DbTargetDetails
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudServiceProvider** | **string** |  | [optional] 
+**ConnectionType** | **string** |  | [optional] 
+**DbClientId** | **string** |  | [optional] 
+**DbClientSecret** | **string** |  | [optional] 
 **DbHostName** | **string** |  | [optional] 
 **DbName** | **string** |  | [optional] 
 **DbPort** | **string** |  | [optional] 
@@ -13,6 +17,7 @@ Name | Type | Description | Notes
 **DbPwd** | **string** |  | [optional] 
 **DbServerCertificates** | **string** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] 
 **DbServerName** | **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
+**DbTenantId** | **string** |  | [optional] 
 **DbUserName** | **string** |  | [optional] 
 **SfAccount** | **string** |  | [optional] 
 **SslConnectionCertificate** | **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 

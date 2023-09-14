@@ -53,6 +53,7 @@ namespace akeyless.Model
         /// <param name="isWeb">isWeb.</param>
         /// <param name="isolated">isolated.</param>
         /// <param name="native">native.</param>
+        /// <param name="rdGatewayServer">rdGatewayServer.</param>
         /// <param name="rdpUser">rdpUser.</param>
         /// <param name="region">region.</param>
         /// <param name="rotateAfterDisconnect">rotateAfterDisconnect.</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.IsWeb = isWeb;
             this.Isolated = isolated;
             this.Native = native;
+            this.RdGatewayServer = rdGatewayServer;
             this.RdpUser = rdpUser;
             this.Region = region;
             this.RotateAfterDisconnect = rotateAfterDisconnect;
@@ -204,6 +206,12 @@ namespace akeyless.Model
         public bool Native { get; set; }
 
         /// <summary>
+        /// Gets or Sets RdGatewayServer
+        /// </summary>
+        [DataMember(Name = "rd_gateway_server", EmitDefaultValue = false)]
+        public string RdGatewayServer { get; set; }
+
+        /// <summary>
         /// Gets or Sets RdpUser
         /// </summary>
         [DataMember(Name = "rdp_user", EmitDefaultValue = false)]
@@ -289,6 +297,7 @@ namespace akeyless.Model
             sb.Append("  IsWeb: ").Append(IsWeb).Append("\n");
             sb.Append("  Isolated: ").Append(Isolated).Append("\n");
             sb.Append("  Native: ").Append(Native).Append("\n");
+            sb.Append("  RdGatewayServer: ").Append(RdGatewayServer).Append("\n");
             sb.Append("  RdpUser: ").Append(RdpUser).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
@@ -418,6 +427,11 @@ namespace akeyless.Model
                     this.Native.Equals(input.Native)
                 ) && 
                 (
+                    this.RdGatewayServer == input.RdGatewayServer ||
+                    (this.RdGatewayServer != null &&
+                    this.RdGatewayServer.Equals(input.RdGatewayServer))
+                ) && 
+                (
                     this.RdpUser == input.RdpUser ||
                     (this.RdpUser != null &&
                     this.RdpUser.Equals(input.RdpUser))
@@ -521,6 +535,10 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.IsWeb.GetHashCode();
                 hashCode = (hashCode * 59) + this.Isolated.GetHashCode();
                 hashCode = (hashCode * 59) + this.Native.GetHashCode();
+                if (this.RdGatewayServer != null)
+                {
+                    hashCode = (hashCode * 59) + this.RdGatewayServer.GetHashCode();
+                }
                 if (this.RdpUser != null)
                 {
                     hashCode = (hashCode * 59) + this.RdpUser.GetHashCode();

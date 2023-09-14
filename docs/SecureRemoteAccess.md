@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **IsWeb** | **bool** |  | [optional] 
 **Isolated** | **bool** |  | [optional] 
 **Native** | **bool** |  | [optional] 
+**RdGatewayServer** | **string** |  | [optional] 
 **RdpUser** | **string** |  | [optional] 
 **Region** | **string** |  | [optional] 
 **RotateAfterDisconnect** | **bool** |  | [optional] 
