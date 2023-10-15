@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Role" /> class.
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
+        /// <param name="accessDateDisplay">accessDateDisplay.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
         /// <param name="creationDate">creationDate.</param>
@@ -43,9 +44,10 @@ namespace akeyless.Model
         /// <param name="roleAuthMethodsAssoc">roleAuthMethodsAssoc.</param>
         /// <param name="roleName">roleName.</param>
         /// <param name="rules">rules.</param>
-        public Role(DateTime accessDate = default(DateTime), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime), List<RoleAuthMethodAssociation> roleAuthMethodsAssoc = default(List<RoleAuthMethodAssociation>), string roleName = default(string), Rules rules = default(Rules))
+        public Role(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime), List<RoleAuthMethodAssociation> roleAuthMethodsAssoc = default(List<RoleAuthMethodAssociation>), string roleName = default(string), Rules rules = default(Rules))
         {
             this.AccessDate = accessDate;
+            this.AccessDateDisplay = accessDateDisplay;
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
             this.CreationDate = creationDate;
@@ -60,6 +62,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date", EmitDefaultValue = false)]
         public DateTime AccessDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessDateDisplay
+        /// </summary>
+        [DataMember(Name = "access_date_display", EmitDefaultValue = false)]
+        public string AccessDateDisplay { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientPermissions
@@ -112,6 +120,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Role {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
+            sb.Append("  AccessDateDisplay: ").Append(AccessDateDisplay).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
@@ -158,6 +167,11 @@ namespace akeyless.Model
                     this.AccessDate == input.AccessDate ||
                     (this.AccessDate != null &&
                     this.AccessDate.Equals(input.AccessDate))
+                ) && 
+                (
+                    this.AccessDateDisplay == input.AccessDateDisplay ||
+                    (this.AccessDateDisplay != null &&
+                    this.AccessDateDisplay.Equals(input.AccessDateDisplay))
                 ) && 
                 (
                     this.ClientPermissions == input.ClientPermissions ||
@@ -210,6 +224,10 @@ namespace akeyless.Model
                 if (this.AccessDate != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
+                if (this.AccessDateDisplay != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessDateDisplay.GetHashCode();
                 }
                 if (this.ClientPermissions != null)
                 {

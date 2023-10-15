@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
+**AccessDateDisplay** | **string** |  | [optional] 
 **AccessRequestStatus** | **string** |  | [optional] 
 **Attributes** | **Dictionary&lt;string, Object&gt;** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 

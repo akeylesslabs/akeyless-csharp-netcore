@@ -36,15 +36,17 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="MigrationGeneral" /> class.
         /// </summary>
         /// <param name="id">id.</param>
+        /// <param name="lastMigration">lastMigration.</param>
         /// <param name="name">name.</param>
         /// <param name="newName">newName.</param>
         /// <param name="prefix">prefix.</param>
         /// <param name="protectionKey">protectionKey.</param>
         /// <param name="status">status.</param>
         /// <param name="type">type.</param>
-        public MigrationGeneral(string id = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string), string status = default(string), string type = default(string))
+        public MigrationGeneral(string id = default(string), string lastMigration = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string), string status = default(string), string type = default(string))
         {
             this.Id = id;
+            this.LastMigration = lastMigration;
             this.Name = name;
             this.NewName = newName;
             this.Prefix = prefix;
@@ -58,6 +60,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastMigration
+        /// </summary>
+        [DataMember(Name = "last_migration", EmitDefaultValue = false)]
+        public string LastMigration { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -104,6 +112,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationGeneral {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  LastMigration: ").Append(LastMigration).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Prefix: ").Append(Prefix).Append("\n");
@@ -151,6 +160,11 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.LastMigration == input.LastMigration ||
+                    (this.LastMigration != null &&
+                    this.LastMigration.Equals(input.LastMigration))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -194,6 +208,10 @@ namespace akeyless.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.LastMigration != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastMigration.GetHashCode();
                 }
                 if (this.Name != null)
                 {

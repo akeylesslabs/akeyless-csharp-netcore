@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
+**AccessDateDisplay** | **string** |  | [optional] 
 **AccessRequestStatus** | **string** |  | [optional] 
 **AutoRotate** | **bool** |  | [optional] 
 **BastionDetails** | [**BastionsList**](BastionsList.md) |  | [optional] 

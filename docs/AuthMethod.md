@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
+**AccessDateDisplay** | **string** |  | [optional] 
 **AccessInfo** | [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] 
 **AccountId** | **string** |  | [optional] 
 **AssociatedGwIds** | **List&lt;long&gt;** |  | [optional] 

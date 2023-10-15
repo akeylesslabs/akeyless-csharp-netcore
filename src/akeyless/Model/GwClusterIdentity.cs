@@ -40,14 +40,15 @@ namespace akeyless.Model
         /// <param name="clusterName">clusterName.</param>
         /// <param name="clusterUrl">clusterUrl.</param>
         /// <param name="currentGw">currentGw.</param>
-        /// <param name="customerFragmentIds">customerFragmentIds.</param>
+        /// <param name="customerFragmentIds">Deprecated - use CustomerFragments instead.</param>
+        /// <param name="customerFragments">customerFragments.</param>
         /// <param name="defaultProtectionKeyId">defaultProtectionKeyId.</param>
         /// <param name="defaultSecretLocation">defaultSecretLocation.</param>
         /// <param name="displayName">displayName.</param>
         /// <param name="id">id.</param>
         /// <param name="status">status.</param>
         /// <param name="statusDescription">statusDescription.</param>
-        public GwClusterIdentity(bool allowed = default(bool), List<string> allowedAccessIds = default(List<string>), string clusterName = default(string), string clusterUrl = default(string), bool currentGw = default(bool), List<string> customerFragmentIds = default(List<string>), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string displayName = default(string), long id = default(long), string status = default(string), string statusDescription = default(string))
+        public GwClusterIdentity(bool allowed = default(bool), List<string> allowedAccessIds = default(List<string>), string clusterName = default(string), string clusterUrl = default(string), bool currentGw = default(bool), List<string> customerFragmentIds = default(List<string>), List<CfInfo> customerFragments = default(List<CfInfo>), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string displayName = default(string), long id = default(long), string status = default(string), string statusDescription = default(string))
         {
             this.Allowed = allowed;
             this.AllowedAccessIds = allowedAccessIds;
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.ClusterUrl = clusterUrl;
             this.CurrentGw = currentGw;
             this.CustomerFragmentIds = customerFragmentIds;
+            this.CustomerFragments = customerFragments;
             this.DefaultProtectionKeyId = defaultProtectionKeyId;
             this.DefaultSecretLocation = defaultSecretLocation;
             this.DisplayName = displayName;
@@ -94,10 +96,17 @@ namespace akeyless.Model
         public bool CurrentGw { get; set; }
 
         /// <summary>
-        /// Gets or Sets CustomerFragmentIds
+        /// Deprecated - use CustomerFragments instead
         /// </summary>
+        /// <value>Deprecated - use CustomerFragments instead</value>
         [DataMember(Name = "customer_fragment_ids", EmitDefaultValue = false)]
         public List<string> CustomerFragmentIds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustomerFragments
+        /// </summary>
+        [DataMember(Name = "customer_fragments", EmitDefaultValue = false)]
+        public List<CfInfo> CustomerFragments { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultProtectionKeyId
@@ -149,6 +158,7 @@ namespace akeyless.Model
             sb.Append("  ClusterUrl: ").Append(ClusterUrl).Append("\n");
             sb.Append("  CurrentGw: ").Append(CurrentGw).Append("\n");
             sb.Append("  CustomerFragmentIds: ").Append(CustomerFragmentIds).Append("\n");
+            sb.Append("  CustomerFragments: ").Append(CustomerFragments).Append("\n");
             sb.Append("  DefaultProtectionKeyId: ").Append(DefaultProtectionKeyId).Append("\n");
             sb.Append("  DefaultSecretLocation: ").Append(DefaultSecretLocation).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
@@ -221,6 +231,12 @@ namespace akeyless.Model
                     this.CustomerFragmentIds.SequenceEqual(input.CustomerFragmentIds)
                 ) && 
                 (
+                    this.CustomerFragments == input.CustomerFragments ||
+                    this.CustomerFragments != null &&
+                    input.CustomerFragments != null &&
+                    this.CustomerFragments.SequenceEqual(input.CustomerFragments)
+                ) && 
+                (
                     this.DefaultProtectionKeyId == input.DefaultProtectionKeyId ||
                     this.DefaultProtectionKeyId.Equals(input.DefaultProtectionKeyId)
                 ) && 
@@ -276,6 +292,10 @@ namespace akeyless.Model
                 if (this.CustomerFragmentIds != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomerFragmentIds.GetHashCode();
+                }
+                if (this.CustomerFragments != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustomerFragments.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.DefaultProtectionKeyId.GetHashCode();
                 if (this.DefaultSecretLocation != null)

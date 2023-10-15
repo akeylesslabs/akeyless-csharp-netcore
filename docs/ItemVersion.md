@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
+**AccessDateDisplay** | **string** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
 **CustomerFragmentId** | **string** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 

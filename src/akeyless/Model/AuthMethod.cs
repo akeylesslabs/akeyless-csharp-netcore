@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AuthMethod" /> class.
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
+        /// <param name="accessDateDisplay">accessDateDisplay.</param>
         /// <param name="accessInfo">accessInfo.</param>
         /// <param name="accountId">accountId.</param>
         /// <param name="associatedGwIds">associatedGwIds.</param>
@@ -46,9 +47,10 @@ namespace akeyless.Model
         /// <param name="creationDate">creationDate.</param>
         /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
+        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
         {
             this.AccessDate = accessDate;
+            this.AccessDateDisplay = accessDateDisplay;
             this.AccessInfo = accessInfo;
             this.AccountId = accountId;
             this.AssociatedGwIds = associatedGwIds;
@@ -66,6 +68,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date", EmitDefaultValue = false)]
         public DateTime AccessDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessDateDisplay
+        /// </summary>
+        [DataMember(Name = "access_date_display", EmitDefaultValue = false)]
+        public string AccessDateDisplay { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessInfo
@@ -136,6 +144,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AuthMethod {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
+            sb.Append("  AccessDateDisplay: ").Append(AccessDateDisplay).Append("\n");
             sb.Append("  AccessInfo: ").Append(AccessInfo).Append("\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AssociatedGwIds: ").Append(AssociatedGwIds).Append("\n");
@@ -185,6 +194,11 @@ namespace akeyless.Model
                     this.AccessDate == input.AccessDate ||
                     (this.AccessDate != null &&
                     this.AccessDate.Equals(input.AccessDate))
+                ) && 
+                (
+                    this.AccessDateDisplay == input.AccessDateDisplay ||
+                    (this.AccessDateDisplay != null &&
+                    this.AccessDateDisplay.Equals(input.AccessDateDisplay))
                 ) && 
                 (
                     this.AccessInfo == input.AccessInfo ||
@@ -252,6 +266,10 @@ namespace akeyless.Model
                 if (this.AccessDate != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
+                if (this.AccessDateDisplay != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessDateDisplay.GetHashCode();
                 }
                 if (this.AccessInfo != null)
                 {

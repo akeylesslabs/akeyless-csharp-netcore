@@ -36,15 +36,17 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="OAuth2AccessRules" /> class.
         /// </summary>
         /// <param name="audience">The audience in the JWT..</param>
+        /// <param name="authorizedGwClusterName">The gateway cluster name that is authorized to access JWKeySetURL.</param>
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="boundClientsId">The clients ids that login is restricted to..</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="jwksJsonData">The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server..</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OAuth2AccessRules(string audience = default(string), List<OAuth2CustomClaim> boundClaims = default(List<OAuth2CustomClaim>), List<string> boundClientsId = default(List<string>), string issuer = default(string), string jwksJsonData = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
+        public OAuth2AccessRules(string audience = default(string), string authorizedGwClusterName = default(string), List<OAuth2CustomClaim> boundClaims = default(List<OAuth2CustomClaim>), List<string> boundClientsId = default(List<string>), string issuer = default(string), string jwksJsonData = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
         {
             this.Audience = audience;
+            this.AuthorizedGwClusterName = authorizedGwClusterName;
             this.BoundClaims = boundClaims;
             this.BoundClientsId = boundClientsId;
             this.Issuer = issuer;
@@ -59,6 +61,13 @@ namespace akeyless.Model
         /// <value>The audience in the JWT.</value>
         [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
+
+        /// <summary>
+        /// The gateway cluster name that is authorized to access JWKeySetURL
+        /// </summary>
+        /// <value>The gateway cluster name that is authorized to access JWKeySetURL</value>
+        [DataMember(Name = "authorized_gw_cluster_name", EmitDefaultValue = false)]
+        public string AuthorizedGwClusterName { get; set; }
 
         /// <summary>
         /// The claims that login is restricted to.
@@ -111,6 +120,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class OAuth2AccessRules {\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  AuthorizedGwClusterName: ").Append(AuthorizedGwClusterName).Append("\n");
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  BoundClientsId: ").Append(BoundClientsId).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
@@ -158,6 +168,11 @@ namespace akeyless.Model
                     this.Audience.Equals(input.Audience))
                 ) && 
                 (
+                    this.AuthorizedGwClusterName == input.AuthorizedGwClusterName ||
+                    (this.AuthorizedGwClusterName != null &&
+                    this.AuthorizedGwClusterName.Equals(input.AuthorizedGwClusterName))
+                ) && 
+                (
                     this.BoundClaims == input.BoundClaims ||
                     this.BoundClaims != null &&
                     input.BoundClaims != null &&
@@ -203,6 +218,10 @@ namespace akeyless.Model
                 if (this.Audience != null)
                 {
                     hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
+                if (this.AuthorizedGwClusterName != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthorizedGwClusterName.GetHashCode();
                 }
                 if (this.BoundClaims != null)
                 {

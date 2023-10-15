@@ -37,11 +37,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="description">description.</param>
         /// <param name="id">id.</param>
+        /// <param name="name">name.</param>
         /// <param name="value">value.</param>
-        public CustomerFragment(string description = default(string), string id = default(string), string value = default(string))
+        public CustomerFragment(string description = default(string), string id = default(string), string name = default(string), string value = default(string))
         {
             this.Description = description;
             this.Id = id;
+            this.Name = name;
             this.Value = value;
         }
 
@@ -56,6 +58,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Value
@@ -73,6 +81,7 @@ namespace akeyless.Model
             sb.Append("class CustomerFragment {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -120,6 +129,11 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
@@ -142,6 +156,10 @@ namespace akeyless.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 if (this.Value != null)
                 {

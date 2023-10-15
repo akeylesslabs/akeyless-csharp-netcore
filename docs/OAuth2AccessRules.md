@@ -6,6 +6,7 @@ OAuth2AccessRules contains access rules specific to OAuth2 authentication method
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Audience** | **string** | The audience in the JWT. | [optional] 
+**AuthorizedGwClusterName** | **string** | The gateway cluster name that is authorized to access JWKeySetURL | [optional] 
 **BoundClaims** | [**List&lt;OAuth2CustomClaim&gt;**](OAuth2CustomClaim.md) | The claims that login is restricted to. | [optional] 
 **BoundClientsId** | **List&lt;string&gt;** | The clients ids that login is restricted to. | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] 

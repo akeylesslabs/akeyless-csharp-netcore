@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AccessPermissionAssignment" /> class.
         /// </summary>
         /// <param name="accessId">accessId.</param>
+        /// <param name="accessType">accessType.</param>
         /// <param name="subClaims">subClaims.</param>
-        public AccessPermissionAssignment(string accessId = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
+        public AccessPermissionAssignment(string accessId = default(string), string accessType = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
         {
             this.AccessId = accessId;
+            this.AccessType = accessType;
             this.SubClaims = subClaims;
         }
 
@@ -48,6 +50,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_id", EmitDefaultValue = false)]
         public string AccessId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessType
+        /// </summary>
+        [DataMember(Name = "access_type", EmitDefaultValue = false)]
+        public string AccessType { get; set; }
 
         /// <summary>
         /// Gets or Sets SubClaims
@@ -64,6 +72,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccessPermissionAssignment {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("  AccessType: ").Append(AccessType).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -106,6 +115,11 @@ namespace akeyless.Model
                     this.AccessId.Equals(input.AccessId))
                 ) && 
                 (
+                    this.AccessType == input.AccessType ||
+                    (this.AccessType != null &&
+                    this.AccessType.Equals(input.AccessType))
+                ) && 
+                (
                     this.SubClaims == input.SubClaims ||
                     this.SubClaims != null &&
                     input.SubClaims != null &&
@@ -125,6 +139,10 @@ namespace akeyless.Model
                 if (this.AccessId != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
+                if (this.AccessType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessType.GetHashCode();
                 }
                 if (this.SubClaims != null)
                 {

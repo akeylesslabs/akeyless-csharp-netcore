@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
-        public GenCustomerFragment(string description = default(string), bool json = false, string metadata = default(string))
+        /// <param name="name">Customer fragment name.</param>
+        public GenCustomerFragment(string description = default(string), bool json = false, string metadata = default(string), string name = default(string))
         {
             this.Description = description;
             this.Json = json;
             this.Metadata = metadata;
+            this.Name = name;
         }
 
         /// <summary>
@@ -67,6 +69,13 @@ namespace akeyless.Model
         public string Metadata { get; set; }
 
         /// <summary>
+        /// Customer fragment name
+        /// </summary>
+        /// <value>Customer fragment name</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -77,6 +86,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -125,6 +135,11 @@ namespace akeyless.Model
                     this.Metadata == input.Metadata ||
                     (this.Metadata != null &&
                     this.Metadata.Equals(input.Metadata))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -145,6 +160,10 @@ namespace akeyless.Model
                 if (this.Metadata != null)
                 {
                     hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 return hashCode;
             }

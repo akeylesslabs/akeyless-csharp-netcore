@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Target" /> class.
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
+        /// <param name="accessDateDisplay">accessDateDisplay.</param>
         /// <param name="accessRequestStatus">accessRequestStatus.</param>
         /// <param name="attributes">this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
@@ -54,9 +55,10 @@ namespace akeyless.Model
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(DateTime accessDate = default(DateTime), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool credentialsLess = default(bool), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetSubType = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool credentialsLess = default(bool), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetSubType = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
+            this.AccessDateDisplay = accessDateDisplay;
             this.AccessRequestStatus = accessRequestStatus;
             this.Attributes = attributes;
             this.ClientPermissions = clientPermissions;
@@ -82,6 +84,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date", EmitDefaultValue = false)]
         public DateTime AccessDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessDateDisplay
+        /// </summary>
+        [DataMember(Name = "access_date_display", EmitDefaultValue = false)]
+        public string AccessDateDisplay { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessRequestStatus
@@ -201,6 +209,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Target {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
+            sb.Append("  AccessDateDisplay: ").Append(AccessDateDisplay).Append("\n");
             sb.Append("  AccessRequestStatus: ").Append(AccessRequestStatus).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
@@ -258,6 +267,11 @@ namespace akeyless.Model
                     this.AccessDate == input.AccessDate ||
                     (this.AccessDate != null &&
                     this.AccessDate.Equals(input.AccessDate))
+                ) && 
+                (
+                    this.AccessDateDisplay == input.AccessDateDisplay ||
+                    (this.AccessDateDisplay != null &&
+                    this.AccessDateDisplay.Equals(input.AccessDateDisplay))
                 ) && 
                 (
                     this.AccessRequestStatus == input.AccessRequestStatus ||
@@ -362,6 +376,10 @@ namespace akeyless.Model
                 if (this.AccessDate != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
+                if (this.AccessDateDisplay != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessDateDisplay.GetHashCode();
                 }
                 if (this.AccessRequestStatus != null)
                 {

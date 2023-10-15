@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **OidcAccessRules** | [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] 
 **RulesType** | **string** |  | [optional] 
 **SamlAccessRules** | [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
+**SubClaimsDelimiters** | **List&lt;string&gt;** |  | [optional] 
 **UniversalIdentityAccessRules** | [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

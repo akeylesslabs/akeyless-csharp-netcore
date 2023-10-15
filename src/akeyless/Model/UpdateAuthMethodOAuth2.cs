@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="boundClientIds">The clients ids that the access is restricted to.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
+        /// <param name="gatewayUrl">Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway..</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -53,10 +54,11 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
+        /// <param name="subclaimsDelimiters">A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "jwksUri" is required (not null)
             if (jwksUri == null)
@@ -81,12 +83,14 @@ namespace akeyless.Model
             this.BoundClientIds = boundClientIds;
             this.BoundIps = boundIps;
             this.ForceSubClaims = forceSubClaims;
+            this.GatewayUrl = gatewayUrl;
             this.GwBoundIps = gwBoundIps;
             this.Issuer = issuer;
             this.Json = json;
             this.JwksJsonData = jwksJsonData;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
+            this.SubclaimsDelimiters = subclaimsDelimiters;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -125,6 +129,13 @@ namespace akeyless.Model
         /// <value>if true: enforce role-association must include sub claims</value>
         [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
+
+        /// <summary>
+        /// Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway.
+        /// </summary>
+        /// <value>Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway.</value>
+        [DataMember(Name = "gateway-url", EmitDefaultValue = false)]
+        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -183,6 +194,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
+        /// </summary>
+        /// <value>A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)</value>
+        [DataMember(Name = "subclaims-delimiters", EmitDefaultValue = false)]
+        public List<string> SubclaimsDelimiters { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -216,6 +234,7 @@ namespace akeyless.Model
             sb.Append("  BoundClientIds: ").Append(BoundClientIds).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
+            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -224,6 +243,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  SubclaimsDelimiters: ").Append(SubclaimsDelimiters).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
@@ -288,6 +308,11 @@ namespace akeyless.Model
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
                 (
+                    this.GatewayUrl == input.GatewayUrl ||
+                    (this.GatewayUrl != null &&
+                    this.GatewayUrl.Equals(input.GatewayUrl))
+                ) && 
+                (
                     this.GwBoundIps == input.GwBoundIps ||
                     this.GwBoundIps != null &&
                     input.GwBoundIps != null &&
@@ -325,6 +350,12 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
+                ) && 
+                (
+                    this.SubclaimsDelimiters == input.SubclaimsDelimiters ||
+                    this.SubclaimsDelimiters != null &&
+                    input.SubclaimsDelimiters != null &&
+                    this.SubclaimsDelimiters.SequenceEqual(input.SubclaimsDelimiters)
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -366,6 +397,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
+                if (this.GatewayUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.GatewayUrl.GetHashCode();
+                }
                 if (this.GwBoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
@@ -391,6 +426,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.SubclaimsDelimiters != null)
+                {
+                    hashCode = (hashCode * 59) + this.SubclaimsDelimiters.GetHashCode();
                 }
                 if (this.Token != null)
                 {

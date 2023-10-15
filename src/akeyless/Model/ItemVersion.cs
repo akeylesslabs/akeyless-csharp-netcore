@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ItemVersion" /> class.
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
+        /// <param name="accessDateDisplay">accessDateDisplay.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="customerFragmentId">customerFragmentId.</param>
         /// <param name="deletionDate">deletionDate.</param>
@@ -44,9 +45,10 @@ namespace akeyless.Model
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="version">version.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public ItemVersion(DateTime accessDate = default(DateTime), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
+        public ItemVersion(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
+            this.AccessDateDisplay = accessDateDisplay;
             this.CreationDate = creationDate;
             this.CustomerFragmentId = customerFragmentId;
             this.DeletionDate = deletionDate;
@@ -62,6 +64,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date", EmitDefaultValue = false)]
         public DateTime AccessDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessDateDisplay
+        /// </summary>
+        [DataMember(Name = "access_date_display", EmitDefaultValue = false)]
+        public string AccessDateDisplay { get; set; }
 
         /// <summary>
         /// Gets or Sets CreationDate
@@ -121,6 +129,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ItemVersion {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
+            sb.Append("  AccessDateDisplay: ").Append(AccessDateDisplay).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  CustomerFragmentId: ").Append(CustomerFragmentId).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
@@ -168,6 +177,11 @@ namespace akeyless.Model
                     this.AccessDate == input.AccessDate ||
                     (this.AccessDate != null &&
                     this.AccessDate.Equals(input.AccessDate))
+                ) && 
+                (
+                    this.AccessDateDisplay == input.AccessDateDisplay ||
+                    (this.AccessDateDisplay != null &&
+                    this.AccessDateDisplay.Equals(input.AccessDateDisplay))
                 ) && 
                 (
                     this.CreationDate == input.CreationDate ||
@@ -221,6 +235,10 @@ namespace akeyless.Model
                 if (this.AccessDate != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessDate.GetHashCode();
+                }
+                if (this.AccessDateDisplay != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessDateDisplay.GetHashCode();
                 }
                 if (this.CreationDate != null)
                 {

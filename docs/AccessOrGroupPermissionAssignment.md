@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | **string** |  | [optional] 
+**AccessType** | **string** |  | [optional] 
+**AssignmentName** | **string** |  | [optional] 
 **AssignmentType** | **string** |  | [optional] 
 **GroupId** | **string** |  | [optional] 
 **SubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 

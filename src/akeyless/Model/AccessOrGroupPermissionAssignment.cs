@@ -36,12 +36,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AccessOrGroupPermissionAssignment" /> class.
         /// </summary>
         /// <param name="accessId">accessId.</param>
+        /// <param name="accessType">accessType.</param>
+        /// <param name="assignmentName">assignmentName.</param>
         /// <param name="assignmentType">assignmentType.</param>
         /// <param name="groupId">groupId.</param>
         /// <param name="subClaims">subClaims.</param>
-        public AccessOrGroupPermissionAssignment(string accessId = default(string), string assignmentType = default(string), string groupId = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
+        public AccessOrGroupPermissionAssignment(string accessId = default(string), string accessType = default(string), string assignmentName = default(string), string assignmentType = default(string), string groupId = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>))
         {
             this.AccessId = accessId;
+            this.AccessType = accessType;
+            this.AssignmentName = assignmentName;
             this.AssignmentType = assignmentType;
             this.GroupId = groupId;
             this.SubClaims = subClaims;
@@ -52,6 +56,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_id", EmitDefaultValue = false)]
         public string AccessId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessType
+        /// </summary>
+        [DataMember(Name = "access_type", EmitDefaultValue = false)]
+        public string AccessType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssignmentName
+        /// </summary>
+        [DataMember(Name = "assignment_name", EmitDefaultValue = false)]
+        public string AssignmentName { get; set; }
 
         /// <summary>
         /// Gets or Sets AssignmentType
@@ -80,6 +96,8 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccessOrGroupPermissionAssignment {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("  AccessType: ").Append(AccessType).Append("\n");
+            sb.Append("  AssignmentName: ").Append(AssignmentName).Append("\n");
             sb.Append("  AssignmentType: ").Append(AssignmentType).Append("\n");
             sb.Append("  GroupId: ").Append(GroupId).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
@@ -124,6 +142,16 @@ namespace akeyless.Model
                     this.AccessId.Equals(input.AccessId))
                 ) && 
                 (
+                    this.AccessType == input.AccessType ||
+                    (this.AccessType != null &&
+                    this.AccessType.Equals(input.AccessType))
+                ) && 
+                (
+                    this.AssignmentName == input.AssignmentName ||
+                    (this.AssignmentName != null &&
+                    this.AssignmentName.Equals(input.AssignmentName))
+                ) && 
+                (
                     this.AssignmentType == input.AssignmentType ||
                     (this.AssignmentType != null &&
                     this.AssignmentType.Equals(input.AssignmentType))
@@ -153,6 +181,14 @@ namespace akeyless.Model
                 if (this.AccessId != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
+                if (this.AccessType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccessType.GetHashCode();
+                }
+                if (this.AssignmentName != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssignmentName.GetHashCode();
                 }
                 if (this.AssignmentType != null)
                 {

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
+**AccessDateDisplay** | **string** |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **Comment** | **string** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 

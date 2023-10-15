@@ -231,10 +231,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule |  |
 | [**ShareItem**](V2Api.md#shareitem) | **POST** /share-item |  |
 | [**SignDataWithClassicKey**](V2Api.md#signdatawithclassickey) | **POST** /sign-data-with-classic-key |  |
+| [**SignEcDsa**](V2Api.md#signecdsa) | **POST** /sign-ecdsa |  |
 | [**SignGPG**](V2Api.md#signgpg) | **POST** /sign-gpg |  |
 | [**SignJWTWithClassicKey**](V2Api.md#signjwtwithclassickey) | **POST** /sign-jwt-with-classic-key |  |
 | [**SignPKCS1**](V2Api.md#signpkcs1) | **POST** /sign-pkcs1 |  |
 | [**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key |  |
+| [**SignRsaSsaPss**](V2Api.md#signrsassapss) | **POST** /sign-rsassa-pss |  |
 | [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth |  |
 | [**Tokenize**](V2Api.md#tokenize) | **POST** /tokenize |  |
 | [**UidCreateChildToken**](V2Api.md#uidcreatechildtoken) | **POST** /uid-create-child-token |  |
@@ -299,10 +301,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UploadRSA**](V2Api.md#uploadrsa) | **POST** /upload-rsa |  |
 | [**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token |  |
 | [**VerifyDataWithClassicKey**](V2Api.md#verifydatawithclassickey) | **POST** /verify-data-with-classic-key |  |
+| [**VerifyEcDsa**](V2Api.md#verifyecdsa) | **POST** /verify-ecdsa |  |
 | [**VerifyGPG**](V2Api.md#verifygpg) | **POST** /verify-gpg |  |
 | [**VerifyJWTWithClassicKey**](V2Api.md#verifyjwtwithclassickey) | **POST** /verify-jwt-with-classic-key |  |
 | [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 |  |
 | [**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key |  |
+| [**VerifyRsaSsaPss**](V2Api.md#verifyrsassapss) | **POST** /verify-rsassa-pss |  |
 
 <a name="assocroleauthmethod"></a>
 # **AssocRoleAuthMethod**
@@ -20251,6 +20255,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="signecdsa"></a>
+# **SignEcDsa**
+> SignEcDsaOutput SignEcDsa (SignEcDsa body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class SignEcDsaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new SignEcDsa(); // SignEcDsa | 
+
+            try
+            {
+                SignEcDsaOutput result = apiInstance.SignEcDsa(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.SignEcDsa: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the SignEcDsaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SignEcDsaOutput> response = apiInstance.SignEcDsaWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SignEcDsaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SignEcDsa**](SignEcDsa.md) |  |  |
+
+### Return type
+
+[**SignEcDsaOutput**](SignEcDsaOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | signEcDsaResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="signgpg"></a>
 # **SignGPG**
 > SignGPGOutput SignGPG (SignGPG body)
@@ -20599,6 +20691,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | signPKICertWithClassicKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="signrsassapss"></a>
+# **SignRsaSsaPss**
+> SignRsaSsaPssOutput SignRsaSsaPss (SignRsaSsaPss body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class SignRsaSsaPssExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new SignRsaSsaPss(); // SignRsaSsaPss | 
+
+            try
+            {
+                SignRsaSsaPssOutput result = apiInstance.SignRsaSsaPss(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.SignRsaSsaPss: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the SignRsaSsaPssWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SignRsaSsaPssOutput> response = apiInstance.SignRsaSsaPssWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.SignRsaSsaPssWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**SignRsaSsaPss**](SignRsaSsaPss.md) |  |  |
+
+### Return type
+
+[**SignRsaSsaPssOutput**](SignRsaSsaPssOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | signRsaSsaPssResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -26231,6 +26411,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="verifyecdsa"></a>
+# **VerifyEcDsa**
+> Object VerifyEcDsa (VerifyEcDsa body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class VerifyEcDsaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new VerifyEcDsa(); // VerifyEcDsa | 
+
+            try
+            {
+                Object result = apiInstance.VerifyEcDsa(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.VerifyEcDsa: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the VerifyEcDsaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.VerifyEcDsaWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VerifyEcDsaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**VerifyEcDsa**](VerifyEcDsa.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | verifyEcDsaResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="verifygpg"></a>
 # **VerifyGPG**
 > Object VerifyGPG (VerifyGPG body)
@@ -26579,6 +26847,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | verifyPKICertWithClassicKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="verifyrsassapss"></a>
+# **VerifyRsaSsaPss**
+> Object VerifyRsaSsaPss (VerifyRsaSsaPss body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class VerifyRsaSsaPssExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new VerifyRsaSsaPss(); // VerifyRsaSsaPss | 
+
+            try
+            {
+                Object result = apiInstance.VerifyRsaSsaPss(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.VerifyRsaSsaPss: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the VerifyRsaSsaPssWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.VerifyRsaSsaPssWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VerifyRsaSsaPssWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**VerifyRsaSsaPss**](VerifyRsaSsaPss.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | verifyRsaSsaPssResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

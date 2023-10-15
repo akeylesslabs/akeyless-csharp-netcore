@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
-        /// <param name="gatewayUrl">Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s).</param>
+        /// <param name="gatewayUrl">Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type&#x3D;k8s/oauth2).</param>
         /// <param name="gcpAudience">GCP JWT audience (default to &quot;akeyless.io&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
@@ -142,9 +142,9 @@ namespace akeyless.Model
         public bool Debug { get; set; }
 
         /// <summary>
-        /// Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s)
+        /// Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type&#x3D;k8s/oauth2)
         /// </summary>
-        /// <value>Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s)</value>
+        /// <value>Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type&#x3D;k8s/oauth2)</value>
         [DataMember(Name = "gateway-url", EmitDefaultValue = false)]
         public string GatewayUrl { get; set; }
 

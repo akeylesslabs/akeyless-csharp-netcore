@@ -54,8 +54,9 @@ namespace akeyless.Model
         /// <param name="oidcAccessRules">oidcAccessRules.</param>
         /// <param name="rulesType">rulesType.</param>
         /// <param name="samlAccessRules">samlAccessRules.</param>
+        /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.OidcAccessRules = oidcAccessRules;
             this.RulesType = rulesType;
             this.SamlAccessRules = samlAccessRules;
+            this.SubClaimsDelimiters = subClaimsDelimiters;
             this.UniversalIdentityAccessRules = universalIdentityAccessRules;
         }
 
@@ -196,6 +198,12 @@ namespace akeyless.Model
         public SAMLAccessRules SamlAccessRules { get; set; }
 
         /// <summary>
+        /// Gets or Sets SubClaimsDelimiters
+        /// </summary>
+        [DataMember(Name = "sub_claims_delimiters", EmitDefaultValue = false)]
+        public List<string> SubClaimsDelimiters { get; set; }
+
+        /// <summary>
         /// Gets or Sets UniversalIdentityAccessRules
         /// </summary>
         [DataMember(Name = "universal_identity_access_rules", EmitDefaultValue = false)]
@@ -228,6 +236,7 @@ namespace akeyless.Model
             sb.Append("  OidcAccessRules: ").Append(OidcAccessRules).Append("\n");
             sb.Append("  RulesType: ").Append(RulesType).Append("\n");
             sb.Append("  SamlAccessRules: ").Append(SamlAccessRules).Append("\n");
+            sb.Append("  SubClaimsDelimiters: ").Append(SubClaimsDelimiters).Append("\n");
             sb.Append("  UniversalIdentityAccessRules: ").Append(UniversalIdentityAccessRules).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -357,6 +366,12 @@ namespace akeyless.Model
                     this.SamlAccessRules.Equals(input.SamlAccessRules))
                 ) && 
                 (
+                    this.SubClaimsDelimiters == input.SubClaimsDelimiters ||
+                    this.SubClaimsDelimiters != null &&
+                    input.SubClaimsDelimiters != null &&
+                    this.SubClaimsDelimiters.SequenceEqual(input.SubClaimsDelimiters)
+                ) && 
+                (
                     this.UniversalIdentityAccessRules == input.UniversalIdentityAccessRules ||
                     (this.UniversalIdentityAccessRules != null &&
                     this.UniversalIdentityAccessRules.Equals(input.UniversalIdentityAccessRules))
@@ -438,6 +453,10 @@ namespace akeyless.Model
                 if (this.SamlAccessRules != null)
                 {
                     hashCode = (hashCode * 59) + this.SamlAccessRules.GetHashCode();
+                }
+                if (this.SubClaimsDelimiters != null)
+                {
+                    hashCode = (hashCode * 59) + this.SubClaimsDelimiters.GetHashCode();
                 }
                 if (this.UniversalIdentityAccessRules != null)
                 {

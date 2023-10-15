@@ -39,7 +39,7 @@ namespace akeyless.Model
         /// <param name="city">City.</param>
         /// <param name="companyName">Company name.</param>
         /// <param name="country">Country.</param>
-        /// <param name="defaultKeyName">Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing..</param>
+        /// <param name="defaultKeyName">Set the account default key based on the DFC key name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account..</param>
         /// <param name="defaultShareLinkTtlMinutes">Set the default ttl in minutes for sharing item number between 60 and 43200.</param>
         /// <param name="defaultVersioning">If set to true, new item version will be created on each update [true/false].</param>
         /// <param name="dpEnableClassicKeyProtection">Set to update protection with classic keys state [true/false].</param>
@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
+        /// <param name="lockDefaultKey">Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false].</param>
         /// <param name="maxVersions">Max versions.</param>
         /// <param name="passwordLength">Password length between 5 - to 50 characters.</param>
         /// <param name="phone">Phone number.</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -78,6 +79,7 @@ namespace akeyless.Model
             this.JwtTtlDefault = jwtTtlDefault;
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
+            this.LockDefaultKey = lockDefaultKey;
             this.MaxVersions = maxVersions;
             this.PasswordLength = passwordLength;
             this.Phone = phone;
@@ -119,9 +121,9 @@ namespace akeyless.Model
         public string Country { get; set; }
 
         /// <summary>
-        /// Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing.
+        /// Set the account default key based on the DFC key name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account.
         /// </summary>
-        /// <value>Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing.</value>
+        /// <value>Set the account default key based on the DFC key name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account.</value>
         [DataMember(Name = "default-key-name", EmitDefaultValue = false)]
         public string DefaultKeyName { get; set; }
 
@@ -194,6 +196,13 @@ namespace akeyless.Model
         /// <value>Minimum ttl</value>
         [DataMember(Name = "jwt-ttl-min", EmitDefaultValue = false)]
         public long JwtTtlMin { get; set; }
+
+        /// <summary>
+        /// Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]
+        /// </summary>
+        /// <value>Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]</value>
+        [DataMember(Name = "lock-default-key", EmitDefaultValue = false)]
+        public string LockDefaultKey { get; set; }
 
         /// <summary>
         /// Max versions
@@ -288,6 +297,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
+            sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
@@ -405,6 +415,11 @@ namespace akeyless.Model
                     this.JwtTtlMin.Equals(input.JwtTtlMin)
                 ) && 
                 (
+                    this.LockDefaultKey == input.LockDefaultKey ||
+                    (this.LockDefaultKey != null &&
+                    this.LockDefaultKey.Equals(input.LockDefaultKey))
+                ) && 
+                (
                     this.MaxVersions == input.MaxVersions ||
                     (this.MaxVersions != null &&
                     this.MaxVersions.Equals(input.MaxVersions))
@@ -512,6 +527,10 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.JwtTtlDefault.GetHashCode();
                 hashCode = (hashCode * 59) + this.JwtTtlMax.GetHashCode();
                 hashCode = (hashCode * 59) + this.JwtTtlMin.GetHashCode();
+                if (this.LockDefaultKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.LockDefaultKey.GetHashCode();
+                }
                 if (this.MaxVersions != null)
                 {
                     hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();

@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
         /// <param name="invalidCharacters">InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention.</param>
+        /// <param name="lockDefaultKey">LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), DataProtectionSection dataProtectionSection = default(DataProtectionSection), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), bool lockDefaultKey = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
             this.DataProtectionSection = dataProtectionSection;
             this.EnableRequestForAccess = enableRequestForAccess;
             this.InvalidCharacters = invalidCharacters;
+            this.LockDefaultKey = lockDefaultKey;
             this.PasswordPolicy = passwordPolicy;
             this.ProtectItemsByDefault = protectItemsByDefault;
             this.SharingPolicy = sharingPolicy;
@@ -89,6 +91,13 @@ namespace akeyless.Model
         public string InvalidCharacters { get; set; }
 
         /// <summary>
+        /// LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty
+        /// </summary>
+        /// <value>LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty</value>
+        [DataMember(Name = "lock_default_key", EmitDefaultValue = true)]
+        public bool LockDefaultKey { get; set; }
+
+        /// <summary>
         /// Gets or Sets PasswordPolicy
         /// </summary>
         [DataMember(Name = "password_policy", EmitDefaultValue = false)]
@@ -119,6 +128,7 @@ namespace akeyless.Model
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
+            sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  ProtectItemsByDefault: ").Append(ProtectItemsByDefault).Append("\n");
             sb.Append("  SharingPolicy: ").Append(SharingPolicy).Append("\n");
@@ -181,6 +191,10 @@ namespace akeyless.Model
                     this.InvalidCharacters.Equals(input.InvalidCharacters))
                 ) && 
                 (
+                    this.LockDefaultKey == input.LockDefaultKey ||
+                    this.LockDefaultKey.Equals(input.LockDefaultKey)
+                ) && 
+                (
                     this.PasswordPolicy == input.PasswordPolicy ||
                     (this.PasswordPolicy != null &&
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
@@ -219,6 +233,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.InvalidCharacters.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.LockDefaultKey.GetHashCode();
                 if (this.PasswordPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();
