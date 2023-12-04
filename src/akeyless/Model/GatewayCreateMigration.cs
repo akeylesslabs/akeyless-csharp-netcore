@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="_1passwordSecretKey">1Password user secret key to connect to the API.</param>
         /// <param name="_1passwordUrl">1Password api container url.</param>
         /// <param name="_1passwordVaults">1Password list of vault to get the items from.</param>
+        /// <param name="adDiscoverServices">Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) (default to &quot;false&quot;).</param>
         /// <param name="adSshPort">Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) (default to &quot;22&quot;).</param>
         /// <param name="adTargetsType">Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) (default to &quot;windows&quot;).</param>
         /// <param name="adWinrmOverHttp">Use WinRM over HTTP, by default runs over HTTPS (default to &quot;false&quot;).</param>
@@ -98,7 +99,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adSshPort = "22", string adTargetsType = "windows", string adWinrmOverHttp = "false", string adWinrmPort = "5986", string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = "false", string siTargetName = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayCreateMigration(string _1passwordEmail = default(string), string _1passwordPassword = default(string), string _1passwordSecretKey = default(string), string _1passwordUrl = default(string), List<string> _1passwordVaults = default(List<string>), string adDiscoverServices = "false", string adSshPort = "22", string adTargetsType = "windows", string adWinrmOverHttp = "false", string adWinrmPort = "5986", string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverLocalUsers = default(string), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adUserBaseDn = default(string), string adUserGroups = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = "us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = "true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = "false", string siTargetName = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -129,6 +130,8 @@ namespace akeyless.Model
             this._1passwordSecretKey = _1passwordSecretKey;
             this._1passwordUrl = _1passwordUrl;
             this._1passwordVaults = _1passwordVaults;
+            // use default value if no "adDiscoverServices" provided
+            this.AdDiscoverServices = adDiscoverServices ?? "false";
             // use default value if no "adSshPort" provided
             this.AdSshPort = adSshPort ?? "22";
             // use default value if no "adTargetsType" provided
@@ -221,6 +224,13 @@ namespace akeyless.Model
         /// <value>1Password list of vault to get the items from</value>
         [DataMember(Name = "1password-vaults", EmitDefaultValue = false)]
         public List<string> _1passwordVaults { get; set; }
+
+        /// <summary>
+        /// Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
+        /// </summary>
+        /// <value>Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)</value>
+        [DataMember(Name = "ad-discover-services", EmitDefaultValue = false)]
+        public string AdDiscoverServices { get; set; }
 
         /// <summary>
         /// Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
@@ -606,6 +616,7 @@ namespace akeyless.Model
             sb.Append("  _1passwordSecretKey: ").Append(_1passwordSecretKey).Append("\n");
             sb.Append("  _1passwordUrl: ").Append(_1passwordUrl).Append("\n");
             sb.Append("  _1passwordVaults: ").Append(_1passwordVaults).Append("\n");
+            sb.Append("  AdDiscoverServices: ").Append(AdDiscoverServices).Append("\n");
             sb.Append("  AdSshPort: ").Append(AdSshPort).Append("\n");
             sb.Append("  AdTargetsType: ").Append(AdTargetsType).Append("\n");
             sb.Append("  AdWinrmOverHttp: ").Append(AdWinrmOverHttp).Append("\n");
@@ -719,6 +730,11 @@ namespace akeyless.Model
                     this._1passwordVaults != null &&
                     input._1passwordVaults != null &&
                     this._1passwordVaults.SequenceEqual(input._1passwordVaults)
+                ) && 
+                (
+                    this.AdDiscoverServices == input.AdDiscoverServices ||
+                    (this.AdDiscoverServices != null &&
+                    this.AdDiscoverServices.Equals(input.AdDiscoverServices))
                 ) && 
                 (
                     this.AdSshPort == input.AdSshPort ||
@@ -1013,6 +1029,10 @@ namespace akeyless.Model
                 if (this._1passwordVaults != null)
                 {
                     hashCode = (hashCode * 59) + this._1passwordVaults.GetHashCode();
+                }
+                if (this.AdDiscoverServices != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdDiscoverServices.GetHashCode();
                 }
                 if (this.AdSshPort != null)
                 {

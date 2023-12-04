@@ -600,6 +600,7 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
+docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -707,6 +708,7 @@ docs/UpdateZeroSSLTarget.md
 docs/UpdateZeroSSLTargetOutput.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
+docs/UsageEventSetting.md
 docs/V2Api.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
@@ -722,16 +724,15 @@ docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 docs/VerifyRsaSsaPss.md
 docs/WebTargetDetails.md
+docs/WindowsService.md
+docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/CfInfoTests.cs
-src/akeyless.Test/Model/SignEcDsaOutputTests.cs
-src/akeyless.Test/Model/SignEcDsaTests.cs
-src/akeyless.Test/Model/SignRsaSsaPssOutputTests.cs
-src/akeyless.Test/Model/SignRsaSsaPssTests.cs
-src/akeyless.Test/Model/VerifyEcDsaTests.cs
-src/akeyless.Test/Model/VerifyRsaSsaPssTests.cs
+src/akeyless.Test/Model/TargetNameWithHostsTests.cs
+src/akeyless.Test/Model/UsageEventSettingTests.cs
+src/akeyless.Test/Model/WindowsServiceAttributesTests.cs
+src/akeyless.Test/Model/WindowsServiceTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1349,6 +1350,7 @@ src/akeyless/Model/SystemAccessCredsSettings.cs
 src/akeyless/Model/Target.cs
 src/akeyless/Model/TargetItemAssociation.cs
 src/akeyless/Model/TargetItemVersion.cs
+src/akeyless/Model/TargetNameWithHosts.cs
 src/akeyless/Model/TargetTypeDetailsInput.cs
 src/akeyless/Model/TmpUserData.cs
 src/akeyless/Model/Tokenize.cs
@@ -1456,6 +1458,7 @@ src/akeyless/Model/UpdateZeroSSLTarget.cs
 src/akeyless/Model/UpdateZeroSSLTargetOutput.cs
 src/akeyless/Model/UploadPKCS12.cs
 src/akeyless/Model/UploadRSA.cs
+src/akeyless/Model/UsageEventSetting.cs
 src/akeyless/Model/ValidateToken.cs
 src/akeyless/Model/ValidateTokenOutput.cs
 src/akeyless/Model/VaultlessTokenizerInfo.cs
@@ -1470,6 +1473,8 @@ src/akeyless/Model/VerifyPKICertOutput.cs
 src/akeyless/Model/VerifyPKICertWithClassicKey.cs
 src/akeyless/Model/VerifyRsaSsaPss.cs
 src/akeyless/Model/WebTargetDetails.cs
+src/akeyless/Model/WindowsService.cs
+src/akeyless/Model/WindowsServiceAttributes.cs
 src/akeyless/Model/WindowsTargetDetails.cs
 src/akeyless/Model/ZeroSSLTargetDetails.cs
 src/akeyless/akeyless.csproj

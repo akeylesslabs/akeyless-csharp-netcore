@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AutoRotateRotationHour** | **int** |  | [optional] 
 **ComputerBaseDn** | **string** |  | [optional] 
 **DiscoverLocalUsers** | **bool** |  | [optional] 
+**DiscoverServices** | **bool** |  | [optional] 
 **DomainName** | **string** |  | [optional] 
 **DomainServerTargetsPathTemplate** | **string** |  | [optional] 
 **DomainUsersRotatedSecretsPathTemplate** | **string** |  | [optional] 

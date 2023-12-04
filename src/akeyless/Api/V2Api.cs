@@ -1694,7 +1694,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>EsmCreateSecretOutput</returns>
-        EsmCreateSecretOutput EsmCreate(EsmUpdate body, int operationIndex = 0);
+        EsmCreateSecretOutput EsmCreate(EsmCreate body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -1706,7 +1706,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of EsmCreateSecretOutput</returns>
-        ApiResponse<EsmCreateSecretOutput> EsmCreateWithHttpInfo(EsmUpdate body, int operationIndex = 0);
+        ApiResponse<EsmCreateSecretOutput> EsmCreateWithHttpInfo(EsmCreate body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -1771,9 +1771,10 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>EsmUpdateSecretOutput</returns>
-        EsmUpdateSecretOutput EsmUpdate(int operationIndex = 0);
+        EsmUpdateSecretOutput EsmUpdate(EsmUpdate body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -1782,9 +1783,10 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of EsmUpdateSecretOutput</returns>
-        ApiResponse<EsmUpdateSecretOutput> EsmUpdateWithHttpInfo(int operationIndex = 0);
+        ApiResponse<EsmUpdateSecretOutput> EsmUpdateWithHttpInfo(EsmUpdate body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -8174,7 +8176,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EsmCreateSecretOutput</returns>
-        System.Threading.Tasks.Task<EsmCreateSecretOutput> EsmCreateAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<EsmCreateSecretOutput> EsmCreateAsync(EsmCreate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -8187,7 +8189,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EsmCreateSecretOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EsmCreateSecretOutput>> EsmCreateWithHttpInfoAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<EsmCreateSecretOutput>> EsmCreateWithHttpInfoAsync(EsmCreate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -8270,10 +8272,11 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EsmUpdateSecretOutput</returns>
-        System.Threading.Tasks.Task<EsmUpdateSecretOutput> EsmUpdateAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<EsmUpdateSecretOutput> EsmUpdateAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -8282,10 +8285,11 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EsmUpdateSecretOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EsmUpdateSecretOutput>> EsmUpdateWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<EsmUpdateSecretOutput>> EsmUpdateWithHttpInfoAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -25900,7 +25904,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>EsmCreateSecretOutput</returns>
-        public EsmCreateSecretOutput EsmCreate(EsmUpdate body, int operationIndex = 0)
+        public EsmCreateSecretOutput EsmCreate(EsmCreate body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<EsmCreateSecretOutput> localVarResponse = EsmCreateWithHttpInfo(body);
             return localVarResponse.Data;
@@ -25913,7 +25917,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of EsmCreateSecretOutput</returns>
-        public akeyless.Client.ApiResponse<EsmCreateSecretOutput> EsmCreateWithHttpInfo(EsmUpdate body, int operationIndex = 0)
+        public akeyless.Client.ApiResponse<EsmCreateSecretOutput> EsmCreateWithHttpInfo(EsmCreate body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -25972,7 +25976,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EsmCreateSecretOutput</returns>
-        public async System.Threading.Tasks.Task<EsmCreateSecretOutput> EsmCreateAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<EsmCreateSecretOutput> EsmCreateAsync(EsmCreate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<EsmCreateSecretOutput> localVarResponse = await EsmCreateWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -25986,7 +25990,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EsmCreateSecretOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EsmCreateSecretOutput>> EsmCreateWithHttpInfoAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EsmCreateSecretOutput>> EsmCreateWithHttpInfoAsync(EsmCreate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -26481,11 +26485,12 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>EsmUpdateSecretOutput</returns>
-        public EsmUpdateSecretOutput EsmUpdate(int operationIndex = 0)
+        public EsmUpdateSecretOutput EsmUpdate(EsmUpdate body, int operationIndex = 0)
         {
-            akeyless.Client.ApiResponse<EsmUpdateSecretOutput> localVarResponse = EsmUpdateWithHttpInfo();
+            akeyless.Client.ApiResponse<EsmUpdateSecretOutput> localVarResponse = EsmUpdateWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -26493,13 +26498,21 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of EsmUpdateSecretOutput</returns>
-        public akeyless.Client.ApiResponse<EsmUpdateSecretOutput> EsmUpdateWithHttpInfo(int operationIndex = 0)
+        public akeyless.Client.ApiResponse<EsmUpdateSecretOutput> EsmUpdateWithHttpInfo(EsmUpdate body, int operationIndex = 0)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EsmUpdate");
+            }
+
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -26519,6 +26532,7 @@ namespace akeyless.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = body;
 
             localVarRequestOptions.Operation = "V2Api.EsmUpdate";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -26542,12 +26556,13 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EsmUpdateSecretOutput</returns>
-        public async System.Threading.Tasks.Task<EsmUpdateSecretOutput> EsmUpdateAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<EsmUpdateSecretOutput> EsmUpdateAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<EsmUpdateSecretOutput> localVarResponse = await EsmUpdateWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<EsmUpdateSecretOutput> localVarResponse = await EsmUpdateWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -26555,15 +26570,23 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EsmUpdateSecretOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EsmUpdateSecretOutput>> EsmUpdateWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EsmUpdateSecretOutput>> EsmUpdateWithHttpInfoAsync(EsmUpdate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EsmUpdate");
+            }
+
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -26583,6 +26606,7 @@ namespace akeyless.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = body;
 
             localVarRequestOptions.Operation = "V2Api.EsmUpdate";
             localVarRequestOptions.OperationIndex = operationIndex;

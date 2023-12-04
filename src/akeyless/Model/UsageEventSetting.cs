@@ -27,41 +27,41 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteItemsOutput
+    /// UsageEventSetting
     /// </summary>
-    [DataContract(Name = "deleteItemsOutput")]
-    public partial class DeleteItemsOutput : IEquatable<DeleteItemsOutput>, IValidatableObject
+    [DataContract(Name = "UsageEventSetting")]
+    public partial class UsageEventSetting : IEquatable<UsageEventSetting>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteItemsOutput" /> class.
+        /// Initializes a new instance of the <see cref="UsageEventSetting" /> class.
         /// </summary>
-        /// <param name="deletedItems">deletedItems.</param>
-        /// <param name="failedDeletedItems">failedDeletedItems.</param>
-        /// <param name="path">path.</param>
-        public DeleteItemsOutput(List<string> deletedItems = default(List<string>), Dictionary<string, string> failedDeletedItems = default(Dictionary<string, string>), string path = default(string))
+        /// <param name="enable">enable.</param>
+        /// <param name="enableTime">enableTime.</param>
+        /// <param name="intervalByDays">intervalByDays.</param>
+        public UsageEventSetting(bool enable = default(bool), DateTime enableTime = default(DateTime), long intervalByDays = default(long))
         {
-            this.DeletedItems = deletedItems;
-            this.FailedDeletedItems = failedDeletedItems;
-            this.Path = path;
+            this.Enable = enable;
+            this.EnableTime = enableTime;
+            this.IntervalByDays = intervalByDays;
         }
 
         /// <summary>
-        /// Gets or Sets DeletedItems
+        /// Gets or Sets Enable
         /// </summary>
-        [DataMember(Name = "deleted_items", EmitDefaultValue = false)]
-        public List<string> DeletedItems { get; set; }
+        [DataMember(Name = "enable", EmitDefaultValue = true)]
+        public bool Enable { get; set; }
 
         /// <summary>
-        /// Gets or Sets FailedDeletedItems
+        /// Gets or Sets EnableTime
         /// </summary>
-        [DataMember(Name = "failed_deleted_items", EmitDefaultValue = false)]
-        public Dictionary<string, string> FailedDeletedItems { get; set; }
+        [DataMember(Name = "enable_time", EmitDefaultValue = false)]
+        public DateTime EnableTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets Path
+        /// Gets or Sets IntervalByDays
         /// </summary>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
-        public string Path { get; set; }
+        [DataMember(Name = "interval_by_days", EmitDefaultValue = false)]
+        public long IntervalByDays { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +70,10 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DeleteItemsOutput {\n");
-            sb.Append("  DeletedItems: ").Append(DeletedItems).Append("\n");
-            sb.Append("  FailedDeletedItems: ").Append(FailedDeletedItems).Append("\n");
-            sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("class UsageEventSetting {\n");
+            sb.Append("  Enable: ").Append(Enable).Append("\n");
+            sb.Append("  EnableTime: ").Append(EnableTime).Append("\n");
+            sb.Append("  IntervalByDays: ").Append(IntervalByDays).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +94,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DeleteItemsOutput);
+            return this.Equals(input as UsageEventSetting);
         }
 
         /// <summary>
-        /// Returns true if DeleteItemsOutput instances are equal
+        /// Returns true if UsageEventSetting instances are equal
         /// </summary>
-        /// <param name="input">Instance of DeleteItemsOutput to be compared</param>
+        /// <param name="input">Instance of UsageEventSetting to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DeleteItemsOutput input)
+        public bool Equals(UsageEventSetting input)
         {
             if (input == null)
             {
@@ -110,21 +110,17 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.DeletedItems == input.DeletedItems ||
-                    this.DeletedItems != null &&
-                    input.DeletedItems != null &&
-                    this.DeletedItems.SequenceEqual(input.DeletedItems)
+                    this.Enable == input.Enable ||
+                    this.Enable.Equals(input.Enable)
                 ) && 
                 (
-                    this.FailedDeletedItems == input.FailedDeletedItems ||
-                    this.FailedDeletedItems != null &&
-                    input.FailedDeletedItems != null &&
-                    this.FailedDeletedItems.SequenceEqual(input.FailedDeletedItems)
+                    this.EnableTime == input.EnableTime ||
+                    (this.EnableTime != null &&
+                    this.EnableTime.Equals(input.EnableTime))
                 ) && 
                 (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
+                    this.IntervalByDays == input.IntervalByDays ||
+                    this.IntervalByDays.Equals(input.IntervalByDays)
                 );
         }
 
@@ -137,18 +133,12 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DeletedItems != null)
+                hashCode = (hashCode * 59) + this.Enable.GetHashCode();
+                if (this.EnableTime != null)
                 {
-                    hashCode = (hashCode * 59) + this.DeletedItems.GetHashCode();
+                    hashCode = (hashCode * 59) + this.EnableTime.GetHashCode();
                 }
-                if (this.FailedDeletedItems != null)
-                {
-                    hashCode = (hashCode * 59) + this.FailedDeletedItems.GetHashCode();
-                }
-                if (this.Path != null)
-                {
-                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.IntervalByDays.GetHashCode();
                 return hashCode;
             }
         }

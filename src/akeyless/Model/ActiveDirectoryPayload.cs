@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="autoRotateRotationHour">autoRotateRotationHour.</param>
         /// <param name="computerBaseDn">computerBaseDn.</param>
         /// <param name="discoverLocalUsers">discoverLocalUsers.</param>
+        /// <param name="discoverServices">discoverServices.</param>
         /// <param name="domainName">domainName.</param>
         /// <param name="domainServerTargetsPathTemplate">domainServerTargetsPathTemplate.</param>
         /// <param name="domainUsersRotatedSecretsPathTemplate">domainUsersRotatedSecretsPathTemplate.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="userGroups">userGroups.</param>
         /// <param name="winrmOverHttp">winrmOverHttp.</param>
         /// <param name="winrmPort">winrmPort.</param>
-        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverLocalUsers = default(bool), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string sshPort = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
+        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string sshPort = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
         {
             this.ActiveDirectoryTargetId = activeDirectoryTargetId;
             this.AutoRotate = autoRotate;
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.AutoRotateRotationHour = autoRotateRotationHour;
             this.ComputerBaseDn = computerBaseDn;
             this.DiscoverLocalUsers = discoverLocalUsers;
+            this.DiscoverServices = discoverServices;
             this.DomainName = domainName;
             this.DomainServerTargetsPathTemplate = domainServerTargetsPathTemplate;
             this.DomainUsersRotatedSecretsPathTemplate = domainUsersRotatedSecretsPathTemplate;
@@ -110,6 +112,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "discover_local_users", EmitDefaultValue = true)]
         public bool DiscoverLocalUsers { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DiscoverServices
+        /// </summary>
+        [DataMember(Name = "discover_services", EmitDefaultValue = true)]
+        public bool DiscoverServices { get; set; }
 
         /// <summary>
         /// Gets or Sets DomainName
@@ -197,6 +205,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotateRotationHour: ").Append(AutoRotateRotationHour).Append("\n");
             sb.Append("  ComputerBaseDn: ").Append(ComputerBaseDn).Append("\n");
             sb.Append("  DiscoverLocalUsers: ").Append(DiscoverLocalUsers).Append("\n");
+            sb.Append("  DiscoverServices: ").Append(DiscoverServices).Append("\n");
             sb.Append("  DomainName: ").Append(DomainName).Append("\n");
             sb.Append("  DomainServerTargetsPathTemplate: ").Append(DomainServerTargetsPathTemplate).Append("\n");
             sb.Append("  DomainUsersRotatedSecretsPathTemplate: ").Append(DomainUsersRotatedSecretsPathTemplate).Append("\n");
@@ -268,6 +277,10 @@ namespace akeyless.Model
                 (
                     this.DiscoverLocalUsers == input.DiscoverLocalUsers ||
                     this.DiscoverLocalUsers.Equals(input.DiscoverLocalUsers)
+                ) && 
+                (
+                    this.DiscoverServices == input.DiscoverServices ||
+                    this.DiscoverServices.Equals(input.DiscoverServices)
                 ) && 
                 (
                     this.DomainName == input.DomainName ||
@@ -349,6 +362,7 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.ComputerBaseDn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.DiscoverLocalUsers.GetHashCode();
+                hashCode = (hashCode * 59) + this.DiscoverServices.GetHashCode();
                 if (this.DomainName != null)
                 {
                     hashCode = (hashCode * 59) + this.DomainName.GetHashCode();

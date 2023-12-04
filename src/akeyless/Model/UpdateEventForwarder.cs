@@ -41,6 +41,8 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateEventForwarder" /> class.
         /// </summary>
         /// <param name="adminName">Workstation Admin Name.</param>
+        /// <param name="authType">The authentication type to use when connecting to ServiceNow (user-pass / jwt) (default to &quot;user-pass&quot;).</param>
+        /// <param name="clientId">The client ID to use when connecting to ServiceNow with jwt authentication.</param>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder).</param>
         /// <param name="enable">Enable/Disable Event Forwarder [true/false] (default to &quot;true&quot;).</param>
@@ -53,7 +55,8 @@ namespace akeyless.Model
         /// <param name="newName">New EventForwarder name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateEventForwarder(string adminName = default(string), string description = "default_comment", string emailTo = default(string), string enable = "true", List<string> eventSourceLocations = default(List<string>), List<string> eventTypes = default(List<string>), string host = default(string), bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="userEmail">The user email to use when connecting to ServiceNow with jwt authentication.</param>
+        public UpdateEventForwarder(string adminName = default(string), string authType = "user-pass", string clientId = default(string), string description = "default_comment", string emailTo = default(string), string enable = "true", List<string> eventSourceLocations = default(List<string>), List<string> eventTypes = default(List<string>), string host = default(string), bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string), string userEmail = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +65,9 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AdminName = adminName;
+            // use default value if no "authType" provided
+            this.AuthType = authType ?? "user-pass";
+            this.ClientId = clientId;
             // use default value if no "description" provided
             this.Description = description ?? "default_comment";
             this.EmailTo = emailTo;
@@ -76,6 +82,7 @@ namespace akeyless.Model
             this.NewName = newName;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UserEmail = userEmail;
         }
 
         /// <summary>
@@ -84,6 +91,20 @@ namespace akeyless.Model
         /// <value>Workstation Admin Name</value>
         [DataMember(Name = "admin-name", EmitDefaultValue = false)]
         public string AdminName { get; set; }
+
+        /// <summary>
+        /// The authentication type to use when connecting to ServiceNow (user-pass / jwt)
+        /// </summary>
+        /// <value>The authentication type to use when connecting to ServiceNow (user-pass / jwt)</value>
+        [DataMember(Name = "auth-type", EmitDefaultValue = false)]
+        public string AuthType { get; set; }
+
+        /// <summary>
+        /// The client ID to use when connecting to ServiceNow with jwt authentication
+        /// </summary>
+        /// <value>The client ID to use when connecting to ServiceNow with jwt authentication</value>
+        [DataMember(Name = "client-id", EmitDefaultValue = false)]
+        public string ClientId { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -170,6 +191,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// The user email to use when connecting to ServiceNow with jwt authentication
+        /// </summary>
+        /// <value>The user email to use when connecting to ServiceNow with jwt authentication</value>
+        [DataMember(Name = "user-email", EmitDefaultValue = false)]
+        public string UserEmail { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -178,6 +206,8 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateEventForwarder {\n");
             sb.Append("  AdminName: ").Append(AdminName).Append("\n");
+            sb.Append("  AuthType: ").Append(AuthType).Append("\n");
+            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EmailTo: ").Append(EmailTo).Append("\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
@@ -190,6 +220,7 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UserEmail: ").Append(UserEmail).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,6 +260,16 @@ namespace akeyless.Model
                     this.AdminName == input.AdminName ||
                     (this.AdminName != null &&
                     this.AdminName.Equals(input.AdminName))
+                ) && 
+                (
+                    this.AuthType == input.AuthType ||
+                    (this.AuthType != null &&
+                    this.AuthType.Equals(input.AuthType))
+                ) && 
+                (
+                    this.ClientId == input.ClientId ||
+                    (this.ClientId != null &&
+                    this.ClientId.Equals(input.ClientId))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -290,6 +331,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UserEmail == input.UserEmail ||
+                    (this.UserEmail != null &&
+                    this.UserEmail.Equals(input.UserEmail))
                 );
         }
 
@@ -305,6 +351,14 @@ namespace akeyless.Model
                 if (this.AdminName != null)
                 {
                     hashCode = (hashCode * 59) + this.AdminName.GetHashCode();
+                }
+                if (this.AuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthType.GetHashCode();
+                }
+                if (this.ClientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
                 }
                 if (this.Description != null)
                 {
@@ -350,6 +404,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UserEmail != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserEmail.GetHashCode();
                 }
                 return hashCode;
             }

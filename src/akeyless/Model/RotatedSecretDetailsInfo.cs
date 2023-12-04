@@ -46,7 +46,8 @@ namespace akeyless.Model
         /// <param name="rotatorStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="rotatorType">rotatorType.</param>
         /// <param name="samePassword">samePassword.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool))
+        /// <param name="servicesDetails">servicesDetails.</param>
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.GwClusterId = gwClusterId;
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.RotatorStatus = rotatorStatus;
             this.RotatorType = rotatorType;
             this.SamePassword = samePassword;
+            this.ServicesDetails = servicesDetails;
         }
 
         /// <summary>
@@ -129,6 +131,12 @@ namespace akeyless.Model
         public bool SamePassword { get; set; }
 
         /// <summary>
+        /// Gets or Sets ServicesDetails
+        /// </summary>
+        [DataMember(Name = "services_details", EmitDefaultValue = false)]
+        public List<WindowsService> ServicesDetails { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,6 +155,7 @@ namespace akeyless.Model
             sb.Append("  RotatorStatus: ").Append(RotatorStatus).Append("\n");
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
             sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
+            sb.Append("  ServicesDetails: ").Append(ServicesDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -230,6 +239,12 @@ namespace akeyless.Model
                 (
                     this.SamePassword == input.SamePassword ||
                     this.SamePassword.Equals(input.SamePassword)
+                ) && 
+                (
+                    this.ServicesDetails == input.ServicesDetails ||
+                    this.ServicesDetails != null &&
+                    input.ServicesDetails != null &&
+                    this.ServicesDetails.SequenceEqual(input.ServicesDetails)
                 );
         }
 
@@ -268,6 +283,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.RotatorType.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SamePassword.GetHashCode();
+                if (this.ServicesDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.ServicesDetails.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GwClusterIdentity" /> class.
         /// </summary>
+        /// <param name="actionAllowed">actionAllowed.</param>
         /// <param name="allowed">allowed.</param>
         /// <param name="allowedAccessIds">allowedAccessIds.</param>
         /// <param name="clusterName">clusterName.</param>
@@ -48,8 +49,9 @@ namespace akeyless.Model
         /// <param name="id">id.</param>
         /// <param name="status">status.</param>
         /// <param name="statusDescription">statusDescription.</param>
-        public GwClusterIdentity(bool allowed = default(bool), List<string> allowedAccessIds = default(List<string>), string clusterName = default(string), string clusterUrl = default(string), bool currentGw = default(bool), List<string> customerFragmentIds = default(List<string>), List<CfInfo> customerFragments = default(List<CfInfo>), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string displayName = default(string), long id = default(long), string status = default(string), string statusDescription = default(string))
+        public GwClusterIdentity(bool actionAllowed = default(bool), bool allowed = default(bool), List<string> allowedAccessIds = default(List<string>), string clusterName = default(string), string clusterUrl = default(string), bool currentGw = default(bool), List<string> customerFragmentIds = default(List<string>), List<CfInfo> customerFragments = default(List<CfInfo>), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string displayName = default(string), long id = default(long), string status = default(string), string statusDescription = default(string))
         {
+            this.ActionAllowed = actionAllowed;
             this.Allowed = allowed;
             this.AllowedAccessIds = allowedAccessIds;
             this.ClusterName = clusterName;
@@ -64,6 +66,12 @@ namespace akeyless.Model
             this.Status = status;
             this.StatusDescription = statusDescription;
         }
+
+        /// <summary>
+        /// Gets or Sets ActionAllowed
+        /// </summary>
+        [DataMember(Name = "action_allowed", EmitDefaultValue = true)]
+        public bool ActionAllowed { get; set; }
 
         /// <summary>
         /// Gets or Sets Allowed
@@ -152,6 +160,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GwClusterIdentity {\n");
+            sb.Append("  ActionAllowed: ").Append(ActionAllowed).Append("\n");
             sb.Append("  Allowed: ").Append(Allowed).Append("\n");
             sb.Append("  AllowedAccessIds: ").Append(AllowedAccessIds).Append("\n");
             sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
@@ -200,6 +209,10 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.ActionAllowed == input.ActionAllowed ||
+                    this.ActionAllowed.Equals(input.ActionAllowed)
+                ) && 
                 (
                     this.Allowed == input.Allowed ||
                     this.Allowed.Equals(input.Allowed)
@@ -275,6 +288,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.ActionAllowed.GetHashCode();
                 hashCode = (hashCode * 59) + this.Allowed.GetHashCode();
                 if (this.AllowedAccessIds != null)
                 {

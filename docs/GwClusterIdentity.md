@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActionAllowed** | **bool** |  | [optional] 
 **Allowed** | **bool** |  | [optional] 
 **AllowedAccessIds** | **List&lt;string&gt;** |  | [optional] 
 **ClusterName** | **string** |  | [optional] 

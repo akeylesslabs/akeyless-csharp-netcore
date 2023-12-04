@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AuthType** | **string** |  | [optional] 
+**ClientId** | **string** | Auth - JWT | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **Comment** | **string** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
@@ -22,7 +24,8 @@ Name | Type | Description | Notes
 **RunnerType** | **string** |  | [optional] 
 **TimespanInSeconds** | **long** |  | [optional] 
 **ToEmails** | [**List&lt;EmailEntry&gt;**](EmailEntry.md) |  | [optional] 
-**Username** | **string** |  | [optional] 
+**UserEmail** | **string** |  | [optional] 
+**Username** | **string** | Auth - User Password | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

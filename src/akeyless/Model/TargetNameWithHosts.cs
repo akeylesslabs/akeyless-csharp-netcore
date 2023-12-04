@@ -27,41 +27,33 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteItemsOutput
+    /// TargetNameWithHosts
     /// </summary>
-    [DataContract(Name = "deleteItemsOutput")]
-    public partial class DeleteItemsOutput : IEquatable<DeleteItemsOutput>, IValidatableObject
+    [DataContract(Name = "TargetNameWithHosts")]
+    public partial class TargetNameWithHosts : IEquatable<TargetNameWithHosts>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteItemsOutput" /> class.
+        /// Initializes a new instance of the <see cref="TargetNameWithHosts" /> class.
         /// </summary>
-        /// <param name="deletedItems">deletedItems.</param>
-        /// <param name="failedDeletedItems">failedDeletedItems.</param>
-        /// <param name="path">path.</param>
-        public DeleteItemsOutput(List<string> deletedItems = default(List<string>), Dictionary<string, string> failedDeletedItems = default(Dictionary<string, string>), string path = default(string))
+        /// <param name="hosts">hosts.</param>
+        /// <param name="targetName">targetName.</param>
+        public TargetNameWithHosts(List<string> hosts = default(List<string>), string targetName = default(string))
         {
-            this.DeletedItems = deletedItems;
-            this.FailedDeletedItems = failedDeletedItems;
-            this.Path = path;
+            this.Hosts = hosts;
+            this.TargetName = targetName;
         }
 
         /// <summary>
-        /// Gets or Sets DeletedItems
+        /// Gets or Sets Hosts
         /// </summary>
-        [DataMember(Name = "deleted_items", EmitDefaultValue = false)]
-        public List<string> DeletedItems { get; set; }
+        [DataMember(Name = "hosts", EmitDefaultValue = false)]
+        public List<string> Hosts { get; set; }
 
         /// <summary>
-        /// Gets or Sets FailedDeletedItems
+        /// Gets or Sets TargetName
         /// </summary>
-        [DataMember(Name = "failed_deleted_items", EmitDefaultValue = false)]
-        public Dictionary<string, string> FailedDeletedItems { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Path
-        /// </summary>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
-        public string Path { get; set; }
+        [DataMember(Name = "target_name", EmitDefaultValue = false)]
+        public string TargetName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +62,9 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DeleteItemsOutput {\n");
-            sb.Append("  DeletedItems: ").Append(DeletedItems).Append("\n");
-            sb.Append("  FailedDeletedItems: ").Append(FailedDeletedItems).Append("\n");
-            sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("class TargetNameWithHosts {\n");
+            sb.Append("  Hosts: ").Append(Hosts).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +85,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DeleteItemsOutput);
+            return this.Equals(input as TargetNameWithHosts);
         }
 
         /// <summary>
-        /// Returns true if DeleteItemsOutput instances are equal
+        /// Returns true if TargetNameWithHosts instances are equal
         /// </summary>
-        /// <param name="input">Instance of DeleteItemsOutput to be compared</param>
+        /// <param name="input">Instance of TargetNameWithHosts to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DeleteItemsOutput input)
+        public bool Equals(TargetNameWithHosts input)
         {
             if (input == null)
             {
@@ -110,21 +101,15 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.DeletedItems == input.DeletedItems ||
-                    this.DeletedItems != null &&
-                    input.DeletedItems != null &&
-                    this.DeletedItems.SequenceEqual(input.DeletedItems)
+                    this.Hosts == input.Hosts ||
+                    this.Hosts != null &&
+                    input.Hosts != null &&
+                    this.Hosts.SequenceEqual(input.Hosts)
                 ) && 
                 (
-                    this.FailedDeletedItems == input.FailedDeletedItems ||
-                    this.FailedDeletedItems != null &&
-                    input.FailedDeletedItems != null &&
-                    this.FailedDeletedItems.SequenceEqual(input.FailedDeletedItems)
-                ) && 
-                (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
+                    this.TargetName == input.TargetName ||
+                    (this.TargetName != null &&
+                    this.TargetName.Equals(input.TargetName))
                 );
         }
 
@@ -137,17 +122,13 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DeletedItems != null)
+                if (this.Hosts != null)
                 {
-                    hashCode = (hashCode * 59) + this.DeletedItems.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Hosts.GetHashCode();
                 }
-                if (this.FailedDeletedItems != null)
+                if (this.TargetName != null)
                 {
-                    hashCode = (hashCode * 59) + this.FailedDeletedItems.GetHashCode();
-                }
-                if (this.Path != null)
-                {
-                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TargetName.GetHashCode();
                 }
                 return hashCode;
             }

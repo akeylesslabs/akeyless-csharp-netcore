@@ -40,11 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateSecret" /> class.
         /// </summary>
+        /// <param name="rotateAllServicesBoolean">rotateAllServicesBoolean.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Secret name (Rotated Secret or Custom Dynamic Secret) (required).</param>
+        /// <param name="rotateAllServices">Rotate all associated services (default to &quot;false&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotateSecret(bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public RotateSecret(bool rotateAllServicesBoolean = default(bool), bool json = false, string name = default(string), string rotateAllServices = "false", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -52,10 +54,19 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for RotateSecret and cannot be null");
             }
             this.Name = name;
+            this.RotateAllServicesBoolean = rotateAllServicesBoolean;
             this.Json = json;
+            // use default value if no "rotateAllServices" provided
+            this.RotateAllServices = rotateAllServices ?? "false";
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Gets or Sets RotateAllServicesBoolean
+        /// </summary>
+        [DataMember(Name = "RotateAllServicesBoolean", EmitDefaultValue = true)]
+        public bool RotateAllServicesBoolean { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -70,6 +81,13 @@ namespace akeyless.Model
         /// <value>Secret name (Rotated Secret or Custom Dynamic Secret)</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Rotate all associated services
+        /// </summary>
+        /// <value>Rotate all associated services</value>
+        [DataMember(Name = "rotate-all-services", EmitDefaultValue = false)]
+        public string RotateAllServices { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -93,8 +111,10 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotateSecret {\n");
+            sb.Append("  RotateAllServicesBoolean: ").Append(RotateAllServicesBoolean).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RotateAllServices: ").Append(RotateAllServices).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -133,6 +153,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.RotateAllServicesBoolean == input.RotateAllServicesBoolean ||
+                    this.RotateAllServicesBoolean.Equals(input.RotateAllServicesBoolean)
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -140,6 +164,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.RotateAllServices == input.RotateAllServices ||
+                    (this.RotateAllServices != null &&
+                    this.RotateAllServices.Equals(input.RotateAllServices))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -162,10 +191,15 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.RotateAllServicesBoolean.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.RotateAllServices != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotateAllServices.GetHashCode();
                 }
                 if (this.Token != null)
                 {

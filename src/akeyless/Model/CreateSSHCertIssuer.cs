@@ -40,10 +40,12 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSSHCertIssuer" /> class.
         /// </summary>
+        /// <param name="sshCertIssuerHostProvider">sshCertIssuerHostProvider.</param>
         /// <param name="allowedUsers">Users allowed to fetch the certificate, e.g root,ubuntu (required).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target] (default to &quot;explicit&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
@@ -56,10 +58,11 @@ namespace akeyless.Model
         /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
+        /// <param name="target">A list of existing targets to be associated, Relevant only for Secure Remote Access, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateSSHCertIssuer(string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public CreateSSHCertIssuer(string sshCertIssuerHostProvider = default(string), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = "explicit", bool json = false, string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), List<string> target = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -80,9 +83,12 @@ namespace akeyless.Model
             }
             this.SignerKeyName = signerKeyName;
             this.Ttl = ttl;
+            this.SshCertIssuerHostProvider = sshCertIssuerHostProvider;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Extensions = extensions;
+            // use default value if no "hostProvider" provided
+            this.HostProvider = hostProvider ?? "explicit";
             this.Json = json;
             this.Metadata = metadata;
             this.Principals = principals;
@@ -93,9 +99,16 @@ namespace akeyless.Model
             this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
             this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
             this.Tag = tag;
+            this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Gets or Sets SshCertIssuerHostProvider
+        /// </summary>
+        [DataMember(Name = "SshCertIssuerHostProvider", EmitDefaultValue = false)]
+        public string SshCertIssuerHostProvider { get; set; }
 
         /// <summary>
         /// Users allowed to fetch the certificate, e.g root,ubuntu
@@ -124,6 +137,13 @@ namespace akeyless.Model
         /// <value>Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;</value>
         [DataMember(Name = "extensions", EmitDefaultValue = false)]
         public Dictionary<string, string> Extensions { get; set; }
+
+        /// <summary>
+        /// Host provider type [explicit/target]
+        /// </summary>
+        /// <value>Host provider type [explicit/target]</value>
+        [DataMember(Name = "host-provider", EmitDefaultValue = false)]
+        public string HostProvider { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -210,6 +230,13 @@ namespace akeyless.Model
         public List<string> Tag { get; set; }
 
         /// <summary>
+        /// A list of existing targets to be associated, Relevant only for Secure Remote Access, To specify multiple targets use argument multiple times
+        /// </summary>
+        /// <value>A list of existing targets to be associated, Relevant only for Secure Remote Access, To specify multiple targets use argument multiple times</value>
+        [DataMember(Name = "target", EmitDefaultValue = false)]
+        public List<string> Target { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -238,10 +265,12 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateSSHCertIssuer {\n");
+            sb.Append("  SshCertIssuerHostProvider: ").Append(SshCertIssuerHostProvider).Append("\n");
             sb.Append("  AllowedUsers: ").Append(AllowedUsers).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
+            sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -254,6 +283,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessUseInternalBastion: ").Append(SecureAccessUseInternalBastion).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -293,6 +323,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.SshCertIssuerHostProvider == input.SshCertIssuerHostProvider ||
+                    (this.SshCertIssuerHostProvider != null &&
+                    this.SshCertIssuerHostProvider.Equals(input.SshCertIssuerHostProvider))
+                ) && 
+                (
                     this.AllowedUsers == input.AllowedUsers ||
                     (this.AllowedUsers != null &&
                     this.AllowedUsers.Equals(input.AllowedUsers))
@@ -312,6 +347,11 @@ namespace akeyless.Model
                     this.Extensions != null &&
                     input.Extensions != null &&
                     this.Extensions.SequenceEqual(input.Extensions)
+                ) && 
+                (
+                    this.HostProvider == input.HostProvider ||
+                    (this.HostProvider != null &&
+                    this.HostProvider.Equals(input.HostProvider))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -374,6 +414,12 @@ namespace akeyless.Model
                     this.Tag.SequenceEqual(input.Tag)
                 ) && 
                 (
+                    this.Target == input.Target ||
+                    this.Target != null &&
+                    input.Target != null &&
+                    this.Target.SequenceEqual(input.Target)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -398,6 +444,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.SshCertIssuerHostProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.SshCertIssuerHostProvider.GetHashCode();
+                }
                 if (this.AllowedUsers != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedUsers.GetHashCode();
@@ -413,6 +463,10 @@ namespace akeyless.Model
                 if (this.Extensions != null)
                 {
                     hashCode = (hashCode * 59) + this.Extensions.GetHashCode();
+                }
+                if (this.HostProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
@@ -455,6 +509,10 @@ namespace akeyless.Model
                 if (this.Tag != null)
                 {
                     hashCode = (hashCode * 59) + this.Tag.GetHashCode();
+                }
+                if (this.Target != null)
+                {
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
                 }
                 if (this.Token != null)
                 {

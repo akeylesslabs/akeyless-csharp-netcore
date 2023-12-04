@@ -37,10 +37,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">alg.</param>
         /// <param name="key">The public key value of the API-key..</param>
-        public APIKeyAccessRules(string alg = default(string), string key = default(string))
+        /// <param name="modificationDate">modificationDate.</param>
+        public APIKeyAccessRules(string alg = default(string), string key = default(string), DateTime modificationDate = default(DateTime))
         {
             this.Alg = alg;
             this.Key = key;
+            this.ModificationDate = modificationDate;
         }
 
         /// <summary>
@@ -57,6 +59,12 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Gets or Sets ModificationDate
+        /// </summary>
+        [DataMember(Name = "modification_date", EmitDefaultValue = false)]
+        public DateTime ModificationDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -66,6 +74,7 @@ namespace akeyless.Model
             sb.Append("class APIKeyAccessRules {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,6 +119,11 @@ namespace akeyless.Model
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.ModificationDate == input.ModificationDate ||
+                    (this.ModificationDate != null &&
+                    this.ModificationDate.Equals(input.ModificationDate))
                 );
         }
 
@@ -129,6 +143,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.ModificationDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();
                 }
                 return hashCode;
             }

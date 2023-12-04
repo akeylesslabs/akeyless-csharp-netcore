@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **_1passwordSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
 **_1passwordUrl** | **string** | 1Password api container url | [optional] 
 **_1passwordVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
+**AdDiscoverServices** | **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **AdSshPort** | **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] [default to "22"]
 **AdTargetsType** | **string** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional] [default to "windows"]
 **AdWinrmOverHttp** | **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]

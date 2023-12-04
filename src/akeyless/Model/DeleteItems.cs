@@ -40,11 +40,12 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteItems" /> class.
         /// </summary>
+        /// <param name="item">A list of items to delete, To specify multiple items use argument multiple times.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="path">Path to delete the items from (required).</param>
+        /// <param name="path">Path to delete the items from (required) (default to &quot;dummy_path&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DeleteItems(bool json = false, string path = default(string), string token = default(string), string uidToken = default(string))
+        public DeleteItems(List<string> item = default(List<string>), bool json = false, string path = "dummy_path", string token = default(string), string uidToken = default(string))
         {
             // to ensure "path" is required (not null)
             if (path == null)
@@ -52,10 +53,18 @@ namespace akeyless.Model
                 throw new ArgumentNullException("path is a required property for DeleteItems and cannot be null");
             }
             this.Path = path;
+            this.Item = item;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// A list of items to delete, To specify multiple items use argument multiple times
+        /// </summary>
+        /// <value>A list of items to delete, To specify multiple items use argument multiple times</value>
+        [DataMember(Name = "item", EmitDefaultValue = false)]
+        public List<string> Item { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -93,6 +102,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DeleteItems {\n");
+            sb.Append("  Item: ").Append(Item).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -133,6 +143,12 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Item == input.Item ||
+                    this.Item != null &&
+                    input.Item != null &&
+                    this.Item.SequenceEqual(input.Item)
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -162,6 +178,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Item != null)
+                {
+                    hashCode = (hashCode * 59) + this.Item.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Path != null)
                 {

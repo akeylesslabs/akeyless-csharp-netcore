@@ -27,41 +27,41 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteItemsOutput
+    /// WindowsServiceAttributes
     /// </summary>
-    [DataContract(Name = "deleteItemsOutput")]
-    public partial class DeleteItemsOutput : IEquatable<DeleteItemsOutput>, IValidatableObject
+    [DataContract(Name = "WindowsServiceAttributes")]
+    public partial class WindowsServiceAttributes : IEquatable<WindowsServiceAttributes>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteItemsOutput" /> class.
+        /// Initializes a new instance of the <see cref="WindowsServiceAttributes" /> class.
         /// </summary>
-        /// <param name="deletedItems">deletedItems.</param>
-        /// <param name="failedDeletedItems">failedDeletedItems.</param>
-        /// <param name="path">path.</param>
-        public DeleteItemsOutput(List<string> deletedItems = default(List<string>), Dictionary<string, string> failedDeletedItems = default(Dictionary<string, string>), string path = default(string))
+        /// <param name="connectionType">connectionType.</param>
+        /// <param name="port">port.</param>
+        /// <param name="useTls">useTls.</param>
+        public WindowsServiceAttributes(string connectionType = default(string), string port = default(string), bool useTls = default(bool))
         {
-            this.DeletedItems = deletedItems;
-            this.FailedDeletedItems = failedDeletedItems;
-            this.Path = path;
+            this.ConnectionType = connectionType;
+            this.Port = port;
+            this.UseTls = useTls;
         }
 
         /// <summary>
-        /// Gets or Sets DeletedItems
+        /// Gets or Sets ConnectionType
         /// </summary>
-        [DataMember(Name = "deleted_items", EmitDefaultValue = false)]
-        public List<string> DeletedItems { get; set; }
+        [DataMember(Name = "connection_type", EmitDefaultValue = false)]
+        public string ConnectionType { get; set; }
 
         /// <summary>
-        /// Gets or Sets FailedDeletedItems
+        /// Gets or Sets Port
         /// </summary>
-        [DataMember(Name = "failed_deleted_items", EmitDefaultValue = false)]
-        public Dictionary<string, string> FailedDeletedItems { get; set; }
+        [DataMember(Name = "port", EmitDefaultValue = false)]
+        public string Port { get; set; }
 
         /// <summary>
-        /// Gets or Sets Path
+        /// Gets or Sets UseTls
         /// </summary>
-        [DataMember(Name = "path", EmitDefaultValue = false)]
-        public string Path { get; set; }
+        [DataMember(Name = "use_tls", EmitDefaultValue = true)]
+        public bool UseTls { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +70,10 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DeleteItemsOutput {\n");
-            sb.Append("  DeletedItems: ").Append(DeletedItems).Append("\n");
-            sb.Append("  FailedDeletedItems: ").Append(FailedDeletedItems).Append("\n");
-            sb.Append("  Path: ").Append(Path).Append("\n");
+            sb.Append("class WindowsServiceAttributes {\n");
+            sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
+            sb.Append("  Port: ").Append(Port).Append("\n");
+            sb.Append("  UseTls: ").Append(UseTls).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +94,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DeleteItemsOutput);
+            return this.Equals(input as WindowsServiceAttributes);
         }
 
         /// <summary>
-        /// Returns true if DeleteItemsOutput instances are equal
+        /// Returns true if WindowsServiceAttributes instances are equal
         /// </summary>
-        /// <param name="input">Instance of DeleteItemsOutput to be compared</param>
+        /// <param name="input">Instance of WindowsServiceAttributes to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DeleteItemsOutput input)
+        public bool Equals(WindowsServiceAttributes input)
         {
             if (input == null)
             {
@@ -110,21 +110,18 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.DeletedItems == input.DeletedItems ||
-                    this.DeletedItems != null &&
-                    input.DeletedItems != null &&
-                    this.DeletedItems.SequenceEqual(input.DeletedItems)
+                    this.ConnectionType == input.ConnectionType ||
+                    (this.ConnectionType != null &&
+                    this.ConnectionType.Equals(input.ConnectionType))
                 ) && 
                 (
-                    this.FailedDeletedItems == input.FailedDeletedItems ||
-                    this.FailedDeletedItems != null &&
-                    input.FailedDeletedItems != null &&
-                    this.FailedDeletedItems.SequenceEqual(input.FailedDeletedItems)
+                    this.Port == input.Port ||
+                    (this.Port != null &&
+                    this.Port.Equals(input.Port))
                 ) && 
                 (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
+                    this.UseTls == input.UseTls ||
+                    this.UseTls.Equals(input.UseTls)
                 );
         }
 
@@ -137,18 +134,15 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DeletedItems != null)
+                if (this.ConnectionType != null)
                 {
-                    hashCode = (hashCode * 59) + this.DeletedItems.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ConnectionType.GetHashCode();
                 }
-                if (this.FailedDeletedItems != null)
+                if (this.Port != null)
                 {
-                    hashCode = (hashCode * 59) + this.FailedDeletedItems.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
                 }
-                if (this.Path != null)
-                {
-                    hashCode = (hashCode * 59) + this.Path.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.UseTls.GetHashCode();
                 return hashCode;
             }
         }

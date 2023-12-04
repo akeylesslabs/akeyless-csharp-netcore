@@ -1,12 +1,11 @@
-# akeyless.Model.APIKeyAccessRules
+# akeyless.Model.TargetNameWithHosts
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alg** | **string** |  | [optional] 
-**Key** | **string** | The public key value of the API-key. | [optional] 
-**ModificationDate** | **DateTime** |  | [optional] 
+**Hosts** | **List&lt;string&gt;** |  | [optional] 
+**TargetName** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

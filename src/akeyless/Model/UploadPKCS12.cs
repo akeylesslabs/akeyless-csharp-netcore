@@ -48,11 +48,11 @@ namespace akeyless.Model
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Name of key to be created (required).</param>
         /// <param name="passphrase">Passphrase to unlock the pkcs#12 bundle (required).</param>
-        /// <param name="splitLevel">The number of fragments that the item will be split into (default to 2).</param>
+        /// <param name="splitLevel">The number of fragments that the item will be split into (default to 3).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), string _in = default(string), bool json = false, string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), string _in = default(string), bool json = false, string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "_in" is required (not null)
             if (_in == null)

@@ -57,11 +57,14 @@ namespace akeyless.Model
         /// <param name="postalCode">Postal code.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="usageEventEnable">Enable event for objects that have not been used or changed [true/false].</param>
+        /// <param name="usageEventInterval">Interval by days for unused objects. Default and minimum interval is 90 days.</param>
+        /// <param name="usageEventObjectType">Usage event is supported for auth method or secrets-and-keys [auth/item].</param>
         /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -86,6 +89,9 @@ namespace akeyless.Model
             this.PostalCode = postalCode;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UsageEventEnable = usageEventEnable;
+            this.UsageEventInterval = usageEventInterval;
+            this.UsageEventObjectType = usageEventObjectType;
             this.UseLowerLetters = useLowerLetters;
             this.UseNumbers = useNumbers;
             this.UseSpecialCharacters = useSpecialCharacters;
@@ -247,6 +253,27 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Enable event for objects that have not been used or changed [true/false]
+        /// </summary>
+        /// <value>Enable event for objects that have not been used or changed [true/false]</value>
+        [DataMember(Name = "usage-event-enable", EmitDefaultValue = false)]
+        public string UsageEventEnable { get; set; }
+
+        /// <summary>
+        /// Interval by days for unused objects. Default and minimum interval is 90 days
+        /// </summary>
+        /// <value>Interval by days for unused objects. Default and minimum interval is 90 days</value>
+        [DataMember(Name = "usage-event-interval", EmitDefaultValue = false)]
+        public long UsageEventInterval { get; set; }
+
+        /// <summary>
+        /// Usage event is supported for auth method or secrets-and-keys [auth/item]
+        /// </summary>
+        /// <value>Usage event is supported for auth method or secrets-and-keys [auth/item]</value>
+        [DataMember(Name = "usage-event-object-type", EmitDefaultValue = false)]
+        public string UsageEventObjectType { get; set; }
+
+        /// <summary>
         /// Password must contain lower case letters [true/false]
         /// </summary>
         /// <value>Password must contain lower case letters [true/false]</value>
@@ -304,6 +331,9 @@ namespace akeyless.Model
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UsageEventEnable: ").Append(UsageEventEnable).Append("\n");
+            sb.Append("  UsageEventInterval: ").Append(UsageEventInterval).Append("\n");
+            sb.Append("  UsageEventObjectType: ").Append(UsageEventObjectType).Append("\n");
             sb.Append("  UseLowerLetters: ").Append(UseLowerLetters).Append("\n");
             sb.Append("  UseNumbers: ").Append(UseNumbers).Append("\n");
             sb.Append("  UseSpecialCharacters: ").Append(UseSpecialCharacters).Append("\n");
@@ -449,6 +479,20 @@ namespace akeyless.Model
                     this.UidToken.Equals(input.UidToken))
                 ) && 
                 (
+                    this.UsageEventEnable == input.UsageEventEnable ||
+                    (this.UsageEventEnable != null &&
+                    this.UsageEventEnable.Equals(input.UsageEventEnable))
+                ) && 
+                (
+                    this.UsageEventInterval == input.UsageEventInterval ||
+                    this.UsageEventInterval.Equals(input.UsageEventInterval)
+                ) && 
+                (
+                    this.UsageEventObjectType == input.UsageEventObjectType ||
+                    (this.UsageEventObjectType != null &&
+                    this.UsageEventObjectType.Equals(input.UsageEventObjectType))
+                ) && 
+                (
                     this.UseLowerLetters == input.UseLowerLetters ||
                     (this.UseLowerLetters != null &&
                     this.UseLowerLetters.Equals(input.UseLowerLetters))
@@ -551,6 +595,15 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UsageEventEnable != null)
+                {
+                    hashCode = (hashCode * 59) + this.UsageEventEnable.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UsageEventInterval.GetHashCode();
+                if (this.UsageEventObjectType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UsageEventObjectType.GetHashCode();
                 }
                 if (this.UseLowerLetters != null)
                 {

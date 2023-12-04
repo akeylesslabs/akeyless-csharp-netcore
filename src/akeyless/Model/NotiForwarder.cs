@@ -35,6 +35,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NotiForwarder" /> class.
         /// </summary>
+        /// <param name="authType">authType.</param>
+        /// <param name="clientId">Auth - JWT.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
         /// <param name="creationDate">creationDate.</param>
@@ -53,10 +55,13 @@ namespace akeyless.Model
         /// <param name="runnerType">runnerType.</param>
         /// <param name="timespanInSeconds">timespanInSeconds.</param>
         /// <param name="toEmails">toEmails.</param>
-        /// <param name="username">username.</param>
+        /// <param name="userEmail">userEmail.</param>
+        /// <param name="username">Auth - User Password.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public NotiForwarder(List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string username = default(string), bool withCustomerFragment = default(bool))
+        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), bool withCustomerFragment = default(bool))
         {
+            this.AuthType = authType;
+            this.ClientId = clientId;
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
             this.CreationDate = creationDate;
@@ -75,9 +80,23 @@ namespace akeyless.Model
             this.RunnerType = runnerType;
             this.TimespanInSeconds = timespanInSeconds;
             this.ToEmails = toEmails;
+            this.UserEmail = userEmail;
             this.Username = username;
             this.WithCustomerFragment = withCustomerFragment;
         }
+
+        /// <summary>
+        /// Gets or Sets AuthType
+        /// </summary>
+        [DataMember(Name = "auth_type", EmitDefaultValue = false)]
+        public string AuthType { get; set; }
+
+        /// <summary>
+        /// Auth - JWT
+        /// </summary>
+        /// <value>Auth - JWT</value>
+        [DataMember(Name = "client_id", EmitDefaultValue = false)]
+        public string ClientId { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientPermissions
@@ -188,8 +207,15 @@ namespace akeyless.Model
         public List<EmailEntry> ToEmails { get; set; }
 
         /// <summary>
-        /// Gets or Sets Username
+        /// Gets or Sets UserEmail
         /// </summary>
+        [DataMember(Name = "user_email", EmitDefaultValue = false)]
+        public string UserEmail { get; set; }
+
+        /// <summary>
+        /// Auth - User Password
+        /// </summary>
+        /// <value>Auth - User Password</value>
         [DataMember(Name = "username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
@@ -207,6 +233,8 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class NotiForwarder {\n");
+            sb.Append("  AuthType: ").Append(AuthType).Append("\n");
+            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
@@ -225,6 +253,7 @@ namespace akeyless.Model
             sb.Append("  RunnerType: ").Append(RunnerType).Append("\n");
             sb.Append("  TimespanInSeconds: ").Append(TimespanInSeconds).Append("\n");
             sb.Append("  ToEmails: ").Append(ToEmails).Append("\n");
+            sb.Append("  UserEmail: ").Append(UserEmail).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
             sb.Append("}\n");
@@ -262,6 +291,16 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.AuthType == input.AuthType ||
+                    (this.AuthType != null &&
+                    this.AuthType.Equals(input.AuthType))
+                ) && 
+                (
+                    this.ClientId == input.ClientId ||
+                    (this.ClientId != null &&
+                    this.ClientId.Equals(input.ClientId))
+                ) && 
                 (
                     this.ClientPermissions == input.ClientPermissions ||
                     this.ClientPermissions != null &&
@@ -353,6 +392,11 @@ namespace akeyless.Model
                     this.ToEmails.SequenceEqual(input.ToEmails)
                 ) && 
                 (
+                    this.UserEmail == input.UserEmail ||
+                    (this.UserEmail != null &&
+                    this.UserEmail.Equals(input.UserEmail))
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -372,6 +416,14 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthType.GetHashCode();
+                }
+                if (this.ClientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
                 if (this.ClientPermissions != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientPermissions.GetHashCode();
@@ -428,6 +480,10 @@ namespace akeyless.Model
                 if (this.ToEmails != null)
                 {
                     hashCode = (hashCode * 59) + this.ToEmails.GetHashCode();
+                }
+                if (this.UserEmail != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserEmail.GetHashCode();
                 }
                 if (this.Username != null)
                 {

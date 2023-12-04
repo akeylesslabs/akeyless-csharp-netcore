@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DescribeItem" /> class.
         /// </summary>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="bastionDetails">Indicate if the item should return with ztb cluster details (url, etc) (default to false).</param>
         /// <param name="displayId">The display id of the item.</param>
         /// <param name="gatewayDetails">Indicate if the item should return with clusters details (url, etc) (default to false).</param>
         /// <param name="itemId">Item id of the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
+        /// <param name="servicesDetails">Include all associated services details (default to false).</param>
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(bool bastionDetails = false, string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(string accessibility = "regular", bool bastionDetails = false, string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool servicesDetails = false, bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -57,15 +59,25 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DescribeItem and cannot be null");
             }
             this.Name = name;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.BastionDetails = bastionDetails;
             this.DisplayId = displayId;
             this.GatewayDetails = gatewayDetails;
             this.ItemId = itemId;
             this.Json = json;
+            this.ServicesDetails = servicesDetails;
             this.ShowVersions = showVersions;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "accessibility", EmitDefaultValue = false)]
+        public string Accessibility { get; set; }
 
         /// <summary>
         /// Indicate if the item should return with ztb cluster details (url, etc)
@@ -110,6 +122,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Include all associated services details
+        /// </summary>
+        /// <value>Include all associated services details</value>
+        [DataMember(Name = "services-details", EmitDefaultValue = true)]
+        public bool ServicesDetails { get; set; }
+
+        /// <summary>
         /// Include all item versions in reply
         /// </summary>
         /// <value>Include all item versions in reply</value>
@@ -138,12 +157,14 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DescribeItem {\n");
+            sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  BastionDetails: ").Append(BastionDetails).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ServicesDetails: ").Append(ServicesDetails).Append("\n");
             sb.Append("  ShowVersions: ").Append(ShowVersions).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -183,6 +204,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Accessibility == input.Accessibility ||
+                    (this.Accessibility != null &&
+                    this.Accessibility.Equals(input.Accessibility))
+                ) && 
+                (
                     this.BastionDetails == input.BastionDetails ||
                     this.BastionDetails.Equals(input.BastionDetails)
                 ) && 
@@ -209,6 +235,10 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ServicesDetails == input.ServicesDetails ||
+                    this.ServicesDetails.Equals(input.ServicesDetails)
+                ) && 
+                (
                     this.ShowVersions == input.ShowVersions ||
                     this.ShowVersions.Equals(input.ShowVersions)
                 ) && 
@@ -233,6 +263,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Accessibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.BastionDetails.GetHashCode();
                 if (this.DisplayId != null)
                 {
@@ -245,6 +279,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ServicesDetails.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShowVersions.GetHashCode();
                 if (this.Token != null)
                 {

@@ -7616,7 +7616,7 @@ No authorization required
 
 <a name="esmcreate"></a>
 # **EsmCreate**
-> EsmCreateSecretOutput EsmCreate (EsmUpdate body)
+> EsmCreateSecretOutput EsmCreate (EsmCreate body)
 
 
 
@@ -7637,7 +7637,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new EsmUpdate(); // EsmUpdate | 
+            var body = new EsmCreate(); // EsmCreate | 
 
             try
             {
@@ -7678,7 +7678,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **body** | [**EsmUpdate**](EsmUpdate.md) |  |  |
+| **body** | [**EsmCreate**](EsmCreate.md) |  |  |
 
 ### Return type
 
@@ -7968,7 +7968,7 @@ No authorization required
 
 <a name="esmupdate"></a>
 # **EsmUpdate**
-> EsmUpdateSecretOutput EsmUpdate ()
+> EsmUpdateSecretOutput EsmUpdate (EsmUpdate body)
 
 
 
@@ -7989,10 +7989,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new EsmUpdate(); // EsmUpdate | 
 
             try
             {
-                EsmUpdateSecretOutput result = apiInstance.EsmUpdate();
+                EsmUpdateSecretOutput result = apiInstance.EsmUpdate(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8012,7 +8013,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<EsmUpdateSecretOutput> response = apiInstance.EsmUpdateWithHttpInfo();
+    ApiResponse<EsmUpdateSecretOutput> response = apiInstance.EsmUpdateWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -8026,7 +8027,11 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**EsmUpdate**](EsmUpdate.md) |  |  |
+
 ### Return type
 
 [**EsmUpdateSecretOutput**](EsmUpdateSecretOutput.md)
@@ -8037,7 +8042,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

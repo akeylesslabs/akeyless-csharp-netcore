@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **ItemTargetsAssoc** | [**List&lt;ItemTargetAssociation&gt;**](ItemTargetAssociation.md) |  | [optional] 
 **ItemType** | **string** |  | [optional] 
 **ItemVersions** | [**List&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] 
+**LastRotationDate** | **DateTime** |  | [optional] 
 **LastVersion** | **int** |  | [optional] 
 **LinkedDetails** | [**LinkedDetails**](LinkedDetails.md) |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 

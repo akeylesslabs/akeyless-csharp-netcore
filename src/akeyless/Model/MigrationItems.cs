@@ -39,12 +39,14 @@ namespace akeyless.Model
         /// <param name="migrated">migrated.</param>
         /// <param name="skipped">skipped.</param>
         /// <param name="total">total.</param>
-        public MigrationItems(long failed = default(long), long migrated = default(long), long skipped = default(long), long total = default(long))
+        /// <param name="updated">updated.</param>
+        public MigrationItems(long failed = default(long), long migrated = default(long), long skipped = default(long), long total = default(long), long updated = default(long))
         {
             this.Failed = failed;
             this.Migrated = migrated;
             this.Skipped = skipped;
             this.Total = total;
+            this.Updated = updated;
         }
 
         /// <summary>
@@ -72,6 +74,12 @@ namespace akeyless.Model
         public long Total { get; set; }
 
         /// <summary>
+        /// Gets or Sets Updated
+        /// </summary>
+        [DataMember(Name = "updated", EmitDefaultValue = false)]
+        public long Updated { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -83,6 +91,7 @@ namespace akeyless.Model
             sb.Append("  Migrated: ").Append(Migrated).Append("\n");
             sb.Append("  Skipped: ").Append(Skipped).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
+            sb.Append("  Updated: ").Append(Updated).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,6 +142,10 @@ namespace akeyless.Model
                 (
                     this.Total == input.Total ||
                     this.Total.Equals(input.Total)
+                ) && 
+                (
+                    this.Updated == input.Updated ||
+                    this.Updated.Equals(input.Updated)
                 );
         }
 
@@ -149,6 +162,7 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.Migrated.GetHashCode();
                 hashCode = (hashCode * 59) + this.Skipped.GetHashCode();
                 hashCode = (hashCode * 59) + this.Total.GetHashCode();
+                hashCode = (hashCode * 59) + this.Updated.GetHashCode();
                 return hashCode;
             }
         }

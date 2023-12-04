@@ -42,6 +42,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="adminName">Workstation Admin Name.</param>
         /// <param name="adminPwd">Workstation Admin password.</param>
+        /// <param name="appPrivateKeyBase64">The RSA Private Key PEM formatted in base64 to use when connecting to ServiceNow with jwt authentication.</param>
+        /// <param name="authType">The authentication type to use when connecting to ServiceNow (user-pass / jwt) (default to &quot;user-pass&quot;).</param>
+        /// <param name="clientId">The client ID to use when connecting to ServiceNow with jwt authentication.</param>
+        /// <param name="clientSecret">The client secret to use when connecting to ServiceNow with jwt authentication.</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder).</param>
@@ -57,7 +61,8 @@ namespace akeyless.Model
         /// <param name="runnerType">runnerType (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateEventForwarder(string adminName = default(string), string adminPwd = default(string), string comment = default(string), string description = default(string), string emailTo = default(string), List<string> eventSourceLocations = default(List<string>), string eventSourceType = "item", List<string> eventTypes = default(List<string>), string every = default(string), string forwarderType = default(string), string host = default(string), bool json = false, string key = default(string), string name = default(string), string runnerType = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="userEmail">The user email to use when connecting to ServiceNow with jwt authentication.</param>
+        public CreateEventForwarder(string adminName = default(string), string adminPwd = default(string), string appPrivateKeyBase64 = default(string), string authType = "user-pass", string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), string emailTo = default(string), List<string> eventSourceLocations = default(List<string>), string eventSourceType = "item", List<string> eventTypes = default(List<string>), string every = default(string), string forwarderType = default(string), string host = default(string), bool json = false, string key = default(string), string name = default(string), string runnerType = default(string), string token = default(string), string uidToken = default(string), string userEmail = default(string))
         {
             // to ensure "eventSourceLocations" is required (not null)
             if (eventSourceLocations == null)
@@ -85,6 +90,11 @@ namespace akeyless.Model
             this.RunnerType = runnerType;
             this.AdminName = adminName;
             this.AdminPwd = adminPwd;
+            this.AppPrivateKeyBase64 = appPrivateKeyBase64;
+            // use default value if no "authType" provided
+            this.AuthType = authType ?? "user-pass";
+            this.ClientId = clientId;
+            this.ClientSecret = clientSecret;
             this.Comment = comment;
             this.Description = description;
             this.EmailTo = emailTo;
@@ -97,6 +107,7 @@ namespace akeyless.Model
             this.Key = key;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UserEmail = userEmail;
         }
 
         /// <summary>
@@ -112,6 +123,34 @@ namespace akeyless.Model
         /// <value>Workstation Admin password</value>
         [DataMember(Name = "admin-pwd", EmitDefaultValue = false)]
         public string AdminPwd { get; set; }
+
+        /// <summary>
+        /// The RSA Private Key PEM formatted in base64 to use when connecting to ServiceNow with jwt authentication
+        /// </summary>
+        /// <value>The RSA Private Key PEM formatted in base64 to use when connecting to ServiceNow with jwt authentication</value>
+        [DataMember(Name = "app-private-key-base64", EmitDefaultValue = false)]
+        public string AppPrivateKeyBase64 { get; set; }
+
+        /// <summary>
+        /// The authentication type to use when connecting to ServiceNow (user-pass / jwt)
+        /// </summary>
+        /// <value>The authentication type to use when connecting to ServiceNow (user-pass / jwt)</value>
+        [DataMember(Name = "auth-type", EmitDefaultValue = false)]
+        public string AuthType { get; set; }
+
+        /// <summary>
+        /// The client ID to use when connecting to ServiceNow with jwt authentication
+        /// </summary>
+        /// <value>The client ID to use when connecting to ServiceNow with jwt authentication</value>
+        [DataMember(Name = "client-id", EmitDefaultValue = false)]
+        public string ClientId { get; set; }
+
+        /// <summary>
+        /// The client secret to use when connecting to ServiceNow with jwt authentication
+        /// </summary>
+        /// <value>The client secret to use when connecting to ServiceNow with jwt authentication</value>
+        [DataMember(Name = "client-secret", EmitDefaultValue = false)]
+        public string ClientSecret { get; set; }
 
         /// <summary>
         /// Deprecated - use description
@@ -217,6 +256,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// The user email to use when connecting to ServiceNow with jwt authentication
+        /// </summary>
+        /// <value>The user email to use when connecting to ServiceNow with jwt authentication</value>
+        [DataMember(Name = "user-email", EmitDefaultValue = false)]
+        public string UserEmail { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -226,6 +272,10 @@ namespace akeyless.Model
             sb.Append("class CreateEventForwarder {\n");
             sb.Append("  AdminName: ").Append(AdminName).Append("\n");
             sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
+            sb.Append("  AppPrivateKeyBase64: ").Append(AppPrivateKeyBase64).Append("\n");
+            sb.Append("  AuthType: ").Append(AuthType).Append("\n");
+            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EmailTo: ").Append(EmailTo).Append("\n");
@@ -241,6 +291,7 @@ namespace akeyless.Model
             sb.Append("  RunnerType: ").Append(RunnerType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UserEmail: ").Append(UserEmail).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -285,6 +336,26 @@ namespace akeyless.Model
                     this.AdminPwd == input.AdminPwd ||
                     (this.AdminPwd != null &&
                     this.AdminPwd.Equals(input.AdminPwd))
+                ) && 
+                (
+                    this.AppPrivateKeyBase64 == input.AppPrivateKeyBase64 ||
+                    (this.AppPrivateKeyBase64 != null &&
+                    this.AppPrivateKeyBase64.Equals(input.AppPrivateKeyBase64))
+                ) && 
+                (
+                    this.AuthType == input.AuthType ||
+                    (this.AuthType != null &&
+                    this.AuthType.Equals(input.AuthType))
+                ) && 
+                (
+                    this.ClientId == input.ClientId ||
+                    (this.ClientId != null &&
+                    this.ClientId.Equals(input.ClientId))
+                ) && 
+                (
+                    this.ClientSecret == input.ClientSecret ||
+                    (this.ClientSecret != null &&
+                    this.ClientSecret.Equals(input.ClientSecret))
                 ) && 
                 (
                     this.Comment == input.Comment ||
@@ -361,6 +432,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UserEmail == input.UserEmail ||
+                    (this.UserEmail != null &&
+                    this.UserEmail.Equals(input.UserEmail))
                 );
         }
 
@@ -380,6 +456,22 @@ namespace akeyless.Model
                 if (this.AdminPwd != null)
                 {
                     hashCode = (hashCode * 59) + this.AdminPwd.GetHashCode();
+                }
+                if (this.AppPrivateKeyBase64 != null)
+                {
+                    hashCode = (hashCode * 59) + this.AppPrivateKeyBase64.GetHashCode();
+                }
+                if (this.AuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthType.GetHashCode();
+                }
+                if (this.ClientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientId.GetHashCode();
+                }
+                if (this.ClientSecret != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
                 }
                 if (this.Comment != null)
                 {
@@ -437,6 +529,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UserEmail != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserEmail.GetHashCode();
                 }
                 return hashCode;
             }

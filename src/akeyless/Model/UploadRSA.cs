@@ -50,11 +50,11 @@ namespace akeyless.Model
         /// <param name="name">Name of key to be created (required).</param>
         /// <param name="overwrite">When the overwrite flag is set, this command will only update an existing key [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rsaFileData">RSA private key data, base64 encoded.</param>
-        /// <param name="splitLevel">The number of fragments that the item will be split into (default to 2).</param>
+        /// <param name="splitLevel">The number of fragments that the item will be split into (default to 3).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 2, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)

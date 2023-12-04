@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Name of key to be created | 
 **Passphrase** | **string** | Passphrase to unlock the pkcs#12 bundle | 
-**SplitLevel** | **long** | The number of fragments that the item will be split into | [optional] [default to 2]
+**SplitLevel** | **long** | The number of fragments that the item will be split into | [optional] [default to 3]
 **Tag** | **List&lt;string&gt;** | List of the tags attached to this key | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
