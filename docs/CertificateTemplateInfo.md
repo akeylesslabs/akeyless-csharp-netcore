@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CommonName** | **string** |  | [optional] 
 **Country** | **string** |  | [optional] 
+**CsrCnfBase64** | **string** |  | [optional] 
 **DigestAlgo** | **string** |  | [optional] 
 **Locality** | **string** |  | [optional] 
 **Organization** | **string** |  | [optional] 

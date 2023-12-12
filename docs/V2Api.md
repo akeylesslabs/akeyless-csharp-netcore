@@ -262,6 +262,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateAuthMethodUniversalIdentity**](V2Api.md#updateauthmethoduniversalidentity) | **POST** /update-auth-method-universal-identity |  |
 | [**UpdateAzureTarget**](V2Api.md#updateazuretarget) | **POST** /update-azure-target |  |
 | [**UpdateCertificateValue**](V2Api.md#updatecertificatevalue) | **POST** /update-certificate-value |  |
+| [**UpdateClassicKeyCertificate**](V2Api.md#updateclassickeycertificate) | **POST** /update-classic-key-certificate |  |
 | [**UpdateDBTarget**](V2Api.md#updatedbtarget) | **POST** /update-db-target |  |
 | [**UpdateDBTargetDetails**](V2Api.md#updatedbtargetdetails) | **POST** /update-db-target-details |  |
 | [**UpdateDockerhubTarget**](V2Api.md#updatedockerhubtarget) | **POST** /update-dockerhub-target |  |
@@ -22984,6 +22985,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateCertificateValueResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateclassickeycertificate"></a>
+# **UpdateClassicKeyCertificate**
+> Object UpdateClassicKeyCertificate (UpdateClassicKeyCertificate body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateClassicKeyCertificateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateClassicKeyCertificate(); // UpdateClassicKeyCertificate | 
+
+            try
+            {
+                Object result = apiInstance.UpdateClassicKeyCertificate(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateClassicKeyCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateClassicKeyCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UpdateClassicKeyCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateClassicKeyCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateClassicKeyCertificate**](UpdateClassicKeyCertificate.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | UpdateClassicKeyCertificateResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

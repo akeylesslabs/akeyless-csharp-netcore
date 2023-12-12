@@ -37,16 +37,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="commonName">commonName.</param>
         /// <param name="country">country.</param>
+        /// <param name="csrCnfBase64">csrCnfBase64.</param>
         /// <param name="digestAlgo">digestAlgo.</param>
         /// <param name="locality">locality.</param>
         /// <param name="organization">organization.</param>
         /// <param name="province">province.</param>
         /// <param name="selfSignedEnabled">selfSignedEnabled.</param>
         /// <param name="ttl">ttl.</param>
-        public CertificateTemplateInfo(string commonName = default(string), string country = default(string), string digestAlgo = default(string), string locality = default(string), string organization = default(string), string province = default(string), bool selfSignedEnabled = default(bool), long ttl = default(long))
+        public CertificateTemplateInfo(string commonName = default(string), string country = default(string), string csrCnfBase64 = default(string), string digestAlgo = default(string), string locality = default(string), string organization = default(string), string province = default(string), bool selfSignedEnabled = default(bool), long ttl = default(long))
         {
             this.CommonName = commonName;
             this.Country = country;
+            this.CsrCnfBase64 = csrCnfBase64;
             this.DigestAlgo = digestAlgo;
             this.Locality = locality;
             this.Organization = organization;
@@ -66,6 +68,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "country", EmitDefaultValue = false)]
         public string Country { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CsrCnfBase64
+        /// </summary>
+        [DataMember(Name = "csr_cnf_base_64", EmitDefaultValue = false)]
+        public string CsrCnfBase64 { get; set; }
 
         /// <summary>
         /// Gets or Sets DigestAlgo
@@ -113,6 +121,7 @@ namespace akeyless.Model
             sb.Append("class CertificateTemplateInfo {\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  CsrCnfBase64: ").Append(CsrCnfBase64).Append("\n");
             sb.Append("  DigestAlgo: ").Append(DigestAlgo).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
             sb.Append("  Organization: ").Append(Organization).Append("\n");
@@ -165,6 +174,11 @@ namespace akeyless.Model
                     this.Country.Equals(input.Country))
                 ) && 
                 (
+                    this.CsrCnfBase64 == input.CsrCnfBase64 ||
+                    (this.CsrCnfBase64 != null &&
+                    this.CsrCnfBase64.Equals(input.CsrCnfBase64))
+                ) && 
+                (
                     this.DigestAlgo == input.DigestAlgo ||
                     (this.DigestAlgo != null &&
                     this.DigestAlgo.Equals(input.DigestAlgo))
@@ -210,6 +224,10 @@ namespace akeyless.Model
                 if (this.Country != null)
                 {
                     hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                }
+                if (this.CsrCnfBase64 != null)
+                {
+                    hashCode = (hashCode * 59) + this.CsrCnfBase64.GetHashCode();
                 }
                 if (this.DigestAlgo != null)
                 {

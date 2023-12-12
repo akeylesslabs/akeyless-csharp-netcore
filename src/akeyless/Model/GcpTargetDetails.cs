@@ -35,22 +35,23 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GcpTargetDetails" /> class.
         /// </summary>
-        /// <param name="gcpServiceAccountEmail">deprecated.</param>
+        /// <param name="gcpServiceAccountEmail">gcpServiceAccountEmail.</param>
         /// <param name="gcpServiceAccountKey">gcpServiceAccountKey.</param>
         /// <param name="gcpServiceAccountKeyBase64">gcpServiceAccountKeyBase64.</param>
+        /// <param name="gcpServiceAccountKeyId">gcpServiceAccountKeyId.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public GcpTargetDetails(string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), bool useGwCloudIdentity = default(bool))
+        public GcpTargetDetails(string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), string gcpServiceAccountKeyId = default(string), bool useGwCloudIdentity = default(bool))
         {
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKey = gcpServiceAccountKey;
             this.GcpServiceAccountKeyBase64 = gcpServiceAccountKeyBase64;
+            this.GcpServiceAccountKeyId = gcpServiceAccountKeyId;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
 
         /// <summary>
-        /// deprecated
+        /// Gets or Sets GcpServiceAccountEmail
         /// </summary>
-        /// <value>deprecated</value>
         [DataMember(Name = "gcp_service_account_email", EmitDefaultValue = false)]
         public string GcpServiceAccountEmail { get; set; }
 
@@ -65,6 +66,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "gcp_service_account_key_base64", EmitDefaultValue = false)]
         public string GcpServiceAccountKeyBase64 { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GcpServiceAccountKeyId
+        /// </summary>
+        [DataMember(Name = "gcp_service_account_key_id", EmitDefaultValue = false)]
+        public string GcpServiceAccountKeyId { get; set; }
 
         /// <summary>
         /// Gets or Sets UseGwCloudIdentity
@@ -83,6 +90,7 @@ namespace akeyless.Model
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKey: ").Append(GcpServiceAccountKey).Append("\n");
             sb.Append("  GcpServiceAccountKeyBase64: ").Append(GcpServiceAccountKeyBase64).Append("\n");
+            sb.Append("  GcpServiceAccountKeyId: ").Append(GcpServiceAccountKeyId).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,6 +143,11 @@ namespace akeyless.Model
                     this.GcpServiceAccountKeyBase64.Equals(input.GcpServiceAccountKeyBase64))
                 ) && 
                 (
+                    this.GcpServiceAccountKeyId == input.GcpServiceAccountKeyId ||
+                    (this.GcpServiceAccountKeyId != null &&
+                    this.GcpServiceAccountKeyId.Equals(input.GcpServiceAccountKeyId))
+                ) && 
+                (
                     this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
                     this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
                 );
@@ -160,6 +173,10 @@ namespace akeyless.Model
                 if (this.GcpServiceAccountKeyBase64 != null)
                 {
                     hashCode = (hashCode * 59) + this.GcpServiceAccountKeyBase64.GetHashCode();
+                }
+                if (this.GcpServiceAccountKeyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.GcpServiceAccountKeyId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
                 return hashCode;

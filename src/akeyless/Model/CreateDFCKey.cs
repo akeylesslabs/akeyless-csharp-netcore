@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="certificateOrganization">Organization name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateProvince">Province name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateTtl">TTL in days for the generated certificate. Required only for generate-self-signed-certificate..</param>
+        /// <param name="confFileData">The csr config data in base64 encoding.</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.CertificateOrganization = certificateOrganization;
             this.CertificateProvince = certificateProvince;
             this.CertificateTtl = certificateTtl;
+            this.ConfFileData = confFileData;
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
@@ -147,6 +149,13 @@ namespace akeyless.Model
         /// <value>TTL in days for the generated certificate. Required only for generate-self-signed-certificate.</value>
         [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
         public long CertificateTtl { get; set; }
+
+        /// <summary>
+        /// The csr config data in base64 encoding
+        /// </summary>
+        /// <value>The csr config data in base64 encoding</value>
+        [DataMember(Name = "conf-file-data", EmitDefaultValue = false)]
+        public string ConfFileData { get; set; }
 
         /// <summary>
         /// The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
@@ -241,6 +250,7 @@ namespace akeyless.Model
             sb.Append("  CertificateOrganization: ").Append(CertificateOrganization).Append("\n");
             sb.Append("  CertificateProvince: ").Append(CertificateProvince).Append("\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
+            sb.Append("  ConfFileData: ").Append(ConfFileData).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -325,6 +335,11 @@ namespace akeyless.Model
                 (
                     this.CertificateTtl == input.CertificateTtl ||
                     this.CertificateTtl.Equals(input.CertificateTtl)
+                ) && 
+                (
+                    this.ConfFileData == input.ConfFileData ||
+                    (this.ConfFileData != null &&
+                    this.ConfFileData.Equals(input.ConfFileData))
                 ) && 
                 (
                     this.CustomerFrgId == input.CustomerFrgId ||
@@ -419,6 +434,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.CertificateProvince.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.CertificateTtl.GetHashCode();
+                if (this.ConfFileData != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConfFileData.GetHashCode();
+                }
                 if (this.CustomerFrgId != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomerFrgId.GetHashCode();

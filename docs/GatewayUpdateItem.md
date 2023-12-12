@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] [default to "default_metadata"]
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
+**GcpServiceAccountEmail** | **string** | The email of the gcp service account to rotate | [optional] 
+**GcpServiceAccountKeyId** | **string** | The key id of the gcp service account to rotate | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. (relevant only for - -type&#x3D;rotated-secret). If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 

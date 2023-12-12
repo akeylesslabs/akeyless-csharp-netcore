@@ -50,6 +50,8 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
+        /// <param name="gcpServiceAccountEmail">The email of the gcp service account to rotate.</param>
+        /// <param name="gcpServiceAccountKeyId">The key id of the gcp service account to rotate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -85,7 +87,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot;.</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -117,6 +119,8 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GcpKey = gcpKey;
+            this.GcpServiceAccountEmail = gcpServiceAccountEmail;
+            this.GcpServiceAccountKeyId = gcpServiceAccountKeyId;
             this.Json = json;
             this.Key = key;
             this.Metadata = metadata;
@@ -221,6 +225,20 @@ namespace akeyless.Model
         /// <value>Base64-encoded service account private key text</value>
         [DataMember(Name = "gcp-key", EmitDefaultValue = false)]
         public string GcpKey { get; set; }
+
+        /// <summary>
+        /// The email of the gcp service account to rotate
+        /// </summary>
+        /// <value>The email of the gcp service account to rotate</value>
+        [DataMember(Name = "gcp-service-account-email", EmitDefaultValue = false)]
+        public string GcpServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// The key id of the gcp service account to rotate
+        /// </summary>
+        /// <value>The key id of the gcp service account to rotate</value>
+        [DataMember(Name = "gcp-service-account-key-id", EmitDefaultValue = false)]
+        public string GcpServiceAccountKeyId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -484,6 +502,8 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
+            sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
+            sb.Append("  GcpServiceAccountKeyId: ").Append(GcpServiceAccountKeyId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -603,6 +623,16 @@ namespace akeyless.Model
                     this.GcpKey == input.GcpKey ||
                     (this.GcpKey != null &&
                     this.GcpKey.Equals(input.GcpKey))
+                ) && 
+                (
+                    this.GcpServiceAccountEmail == input.GcpServiceAccountEmail ||
+                    (this.GcpServiceAccountEmail != null &&
+                    this.GcpServiceAccountEmail.Equals(input.GcpServiceAccountEmail))
+                ) && 
+                (
+                    this.GcpServiceAccountKeyId == input.GcpServiceAccountKeyId ||
+                    (this.GcpServiceAccountKeyId != null &&
+                    this.GcpServiceAccountKeyId.Equals(input.GcpServiceAccountKeyId))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -824,6 +854,14 @@ namespace akeyless.Model
                 if (this.GcpKey != null)
                 {
                     hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
+                }
+                if (this.GcpServiceAccountEmail != null)
+                {
+                    hashCode = (hashCode * 59) + this.GcpServiceAccountEmail.GetHashCode();
+                }
+                if (this.GcpServiceAccountKeyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.GcpServiceAccountKeyId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)

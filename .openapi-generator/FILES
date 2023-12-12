@@ -645,6 +645,7 @@ docs/UpdateAzureTarget.md
 docs/UpdateAzureTargetOutput.md
 docs/UpdateCertificateOutput.md
 docs/UpdateCertificateValue.md
+docs/UpdateClassicKeyCertificate.md
 docs/UpdateDBTarget.md
 docs/UpdateDBTargetDetails.md
 docs/UpdateDBTargetOutput.md
@@ -729,10 +730,7 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/TargetNameWithHostsTests.cs
-src/akeyless.Test/Model/UsageEventSettingTests.cs
-src/akeyless.Test/Model/WindowsServiceAttributesTests.cs
-src/akeyless.Test/Model/WindowsServiceTests.cs
+src/akeyless.Test/Model/UpdateClassicKeyCertificateTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1395,6 +1393,7 @@ src/akeyless/Model/UpdateAzureTarget.cs
 src/akeyless/Model/UpdateAzureTargetOutput.cs
 src/akeyless/Model/UpdateCertificateOutput.cs
 src/akeyless/Model/UpdateCertificateValue.cs
+src/akeyless/Model/UpdateClassicKeyCertificate.cs
 src/akeyless/Model/UpdateDBTarget.cs
 src/akeyless/Model/UpdateDBTargetDetails.cs
 src/akeyless/Model/UpdateDBTargetOutput.cs

@@ -52,13 +52,15 @@ namespace akeyless.Model
         /// <param name="generateKey">Generate a new classic key for the csr.</param>
         /// <param name="ipAddresses">A comma-separated list of ip addresses alternative names.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keyType">The type of the key to generate (classic-key/dfc) (required) (default to &quot;classic-key&quot;).</param>
         /// <param name="name">The classic key name (required).</param>
         /// <param name="org">The organization to be included in the CSR certificate.</param>
+        /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 3).</param>
         /// <param name="state">The state to be included in the CSR certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">A comma-separated list of uri alternative names.</param>
-        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string name = default(string), string org = default(string), string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string keyType = "classic-key", string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "commonName" is required (not null)
             if (commonName == null)
@@ -66,6 +68,12 @@ namespace akeyless.Model
                 throw new ArgumentNullException("commonName is a required property for GenerateCsr and cannot be null");
             }
             this.CommonName = commonName;
+            // to ensure "keyType" is required (not null)
+            if (keyType == null)
+            {
+                throw new ArgumentNullException("keyType is a required property for GenerateCsr and cannot be null");
+            }
+            this.KeyType = keyType;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -84,6 +92,7 @@ namespace akeyless.Model
             this.IpAddresses = ipAddresses;
             this.Json = json;
             this.Org = org;
+            this.SplitLevel = splitLevel;
             this.State = state;
             this.Token = token;
             this.UidToken = uidToken;
@@ -174,6 +183,13 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// The type of the key to generate (classic-key/dfc)
+        /// </summary>
+        /// <value>The type of the key to generate (classic-key/dfc)</value>
+        [DataMember(Name = "key-type", IsRequired = true, EmitDefaultValue = true)]
+        public string KeyType { get; set; }
+
+        /// <summary>
         /// The classic key name
         /// </summary>
         /// <value>The classic key name</value>
@@ -186,6 +202,13 @@ namespace akeyless.Model
         /// <value>The organization to be included in the CSR certificate</value>
         [DataMember(Name = "org", EmitDefaultValue = false)]
         public string Org { get; set; }
+
+        /// <summary>
+        /// The number of fragments that the item will be split into (not includes customer fragment)
+        /// </summary>
+        /// <value>The number of fragments that the item will be split into (not includes customer fragment)</value>
+        [DataMember(Name = "split-level", EmitDefaultValue = false)]
+        public long SplitLevel { get; set; }
 
         /// <summary>
         /// The state to be included in the CSR certificate
@@ -235,8 +258,10 @@ namespace akeyless.Model
             sb.Append("  GenerateKey: ").Append(GenerateKey).Append("\n");
             sb.Append("  IpAddresses: ").Append(IpAddresses).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  KeyType: ").Append(KeyType).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Org: ").Append(Org).Append("\n");
+            sb.Append("  SplitLevel: ").Append(SplitLevel).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -334,6 +359,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.KeyType == input.KeyType ||
+                    (this.KeyType != null &&
+                    this.KeyType.Equals(input.KeyType))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -342,6 +372,10 @@ namespace akeyless.Model
                     this.Org == input.Org ||
                     (this.Org != null &&
                     this.Org.Equals(input.Org))
+                ) && 
+                (
+                    this.SplitLevel == input.SplitLevel ||
+                    this.SplitLevel.Equals(input.SplitLevel)
                 ) && 
                 (
                     this.State == input.State ||
@@ -413,6 +447,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.IpAddresses.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.KeyType != null)
+                {
+                    hashCode = (hashCode * 59) + this.KeyType.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -421,6 +459,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Org.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SplitLevel.GetHashCode();
                 if (this.State != null)
                 {
                     hashCode = (hashCode * 59) + this.State.GetHashCode();
