@@ -44,10 +44,11 @@ namespace akeyless.Model
         /// <param name="enableTlsCurl">enableTlsCurl.</param>
         /// <param name="enableTlsHvp">enableTlsHvp.</param>
         /// <param name="gwClusterUrl">gwClusterUrl.</param>
+        /// <param name="notifyOnStatusChange">notifyOnStatusChange.</param>
         /// <param name="tcpPort">tcpPort.</param>
         /// <param name="tlsCert">tlsCert.</param>
         /// <param name="tlsKey">tlsKey.</param>
-        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
+        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), bool notifyOnStatusChange = default(bool), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
         {
             this.AkeylessUrl = akeylessUrl;
             this.ApiTokenTtl = apiTokenTtl;
@@ -58,6 +59,7 @@ namespace akeyless.Model
             this.EnableTlsCurl = enableTlsCurl;
             this.EnableTlsHvp = enableTlsHvp;
             this.GwClusterUrl = gwClusterUrl;
+            this.NotifyOnStatusChange = notifyOnStatusChange;
             this.TcpPort = tcpPort;
             this.TlsCert = tlsCert;
             this.TlsKey = tlsKey;
@@ -119,6 +121,12 @@ namespace akeyless.Model
         public string GwClusterUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets NotifyOnStatusChange
+        /// </summary>
+        [DataMember(Name = "notify_on_status_change", EmitDefaultValue = true)]
+        public bool NotifyOnStatusChange { get; set; }
+
+        /// <summary>
         /// Gets or Sets TcpPort
         /// </summary>
         [DataMember(Name = "tcp_port", EmitDefaultValue = false)]
@@ -153,6 +161,7 @@ namespace akeyless.Model
             sb.Append("  EnableTlsCurl: ").Append(EnableTlsCurl).Append("\n");
             sb.Append("  EnableTlsHvp: ").Append(EnableTlsHvp).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
+            sb.Append("  NotifyOnStatusChange: ").Append(NotifyOnStatusChange).Append("\n");
             sb.Append("  TcpPort: ").Append(TcpPort).Append("\n");
             sb.Append("  TlsCert: ").Append(TlsCert).Append("\n");
             sb.Append("  TlsKey: ").Append(TlsKey).Append("\n");
@@ -232,6 +241,10 @@ namespace akeyless.Model
                     this.GwClusterUrl.Equals(input.GwClusterUrl))
                 ) && 
                 (
+                    this.NotifyOnStatusChange == input.NotifyOnStatusChange ||
+                    this.NotifyOnStatusChange.Equals(input.NotifyOnStatusChange)
+                ) && 
+                (
                     this.TcpPort == input.TcpPort ||
                     (this.TcpPort != null &&
                     this.TcpPort.Equals(input.TcpPort))
@@ -278,6 +291,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GwClusterUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.NotifyOnStatusChange.GetHashCode();
                 if (this.TcpPort != null)
                 {
                     hashCode = (hashCode * 59) + this.TcpPort.GetHashCode();
