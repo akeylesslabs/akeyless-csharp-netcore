@@ -27,78 +27,71 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateAllowedAccess is a command that creates allowed access in Gator
+    /// CreateUSC is a command that creates a Universal Secrets Connector
     /// </summary>
-    [DataContract(Name = "gatewayCreateAllowedAccess")]
-    public partial class GatewayCreateAllowedAccess : IEquatable<GatewayCreateAllowedAccess>, IValidatableObject
+    [DataContract(Name = "CreateUSC")]
+    public partial class CreateUSC : IEquatable<CreateUSC>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateAllowedAccess" /> class.
+        /// Initializes a new instance of the <see cref="CreateUSC" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GatewayCreateAllowedAccess() { }
+        protected CreateUSC() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GatewayCreateAllowedAccess" /> class.
+        /// Initializes a new instance of the <see cref="CreateUSC" /> class.
         /// </summary>
-        /// <param name="subClaimsCaseInsensitive">subClaimsCaseInsensitive.</param>
-        /// <param name="accessId">Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist. (required).</param>
-        /// <param name="caseSensitive">Treat sub claims as case-sensitive [true/false] (default to &quot;true&quot;).</param>
-        /// <param name="description">Allowed access description.</param>
+        /// <param name="azureKvName">Azure Key Vault name (Relevant only for Azure targets).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="description">Description of the Universal Secrets Connector.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Allowed access name (required).</param>
-        /// <param name="permissions">Permissions  Comma-seperated list of permissions for this allowed access. Available permissions: [defaults,targets,classic_keys,automatic_migration,ldap_auth,dynamic_secret,k8s_auth,log_forwarding,zero_knowledge_encryption,rotated_secret,caching,event_forwarding,admin,kmip,general].</param>
-        /// <param name="subClaims">Sub claims key/val of sub claims, e.g group&#x3D;admins,developers.</param>
+        /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
+        /// <param name="name">Universal Secrets Connector name (required).</param>
+        /// <param name="tags">List of the tags attached to this Universal Secrets Connector.</param>
+        /// <param name="targetToAssociate">Target Universal Secrets Connector to connect (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateAllowedAccess(bool subClaimsCaseInsensitive = default(bool), string accessId = default(string), string caseSensitive = "true", string description = default(string), bool json = false, string name = default(string), string permissions = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string))
         {
-            // to ensure "accessId" is required (not null)
-            if (accessId == null)
-            {
-                throw new ArgumentNullException("accessId is a required property for GatewayCreateAllowedAccess and cannot be null");
-            }
-            this.AccessId = accessId;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for GatewayCreateAllowedAccess and cannot be null");
+                throw new ArgumentNullException("name is a required property for CreateUSC and cannot be null");
             }
             this.Name = name;
-            this.SubClaimsCaseInsensitive = subClaimsCaseInsensitive;
-            // use default value if no "caseSensitive" provided
-            this.CaseSensitive = caseSensitive ?? "true";
+            // to ensure "targetToAssociate" is required (not null)
+            if (targetToAssociate == null)
+            {
+                throw new ArgumentNullException("targetToAssociate is a required property for CreateUSC and cannot be null");
+            }
+            this.TargetToAssociate = targetToAssociate;
+            this.AzureKvName = azureKvName;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
-            this.Permissions = permissions;
-            this.SubClaims = subClaims;
+            this.K8sNamespace = k8sNamespace;
+            this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Gets or Sets SubClaimsCaseInsensitive
+        /// Azure Key Vault name (Relevant only for Azure targets)
         /// </summary>
-        [DataMember(Name = "SubClaimsCaseInsensitive", EmitDefaultValue = true)]
-        public bool SubClaimsCaseInsensitive { get; set; }
+        /// <value>Azure Key Vault name (Relevant only for Azure targets)</value>
+        [DataMember(Name = "azure-kv-name", EmitDefaultValue = false)]
+        public string AzureKvName { get; set; }
 
         /// <summary>
-        /// Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist.
+        /// Protection from accidental deletion of this item [true/false]
         /// </summary>
-        /// <value>Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist.</value>
-        [DataMember(Name = "access-id", IsRequired = true, EmitDefaultValue = true)]
-        public string AccessId { get; set; }
+        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
-        /// Treat sub claims as case-sensitive [true/false]
+        /// Description of the Universal Secrets Connector
         /// </summary>
-        /// <value>Treat sub claims as case-sensitive [true/false]</value>
-        [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
-        public string CaseSensitive { get; set; }
-
-        /// <summary>
-        /// Allowed access description
-        /// </summary>
-        /// <value>Allowed access description</value>
+        /// <value>Description of the Universal Secrets Connector</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
@@ -110,25 +103,32 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Allowed access name
+        /// K8s namespace (Relevant to Kubernetes targets)
         /// </summary>
-        /// <value>Allowed access name</value>
+        /// <value>K8s namespace (Relevant to Kubernetes targets)</value>
+        [DataMember(Name = "k8s-namespace", EmitDefaultValue = false)]
+        public string K8sNamespace { get; set; }
+
+        /// <summary>
+        /// Universal Secrets Connector name
+        /// </summary>
+        /// <value>Universal Secrets Connector name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Permissions  Comma-seperated list of permissions for this allowed access. Available permissions: [defaults,targets,classic_keys,automatic_migration,ldap_auth,dynamic_secret,k8s_auth,log_forwarding,zero_knowledge_encryption,rotated_secret,caching,event_forwarding,admin,kmip,general]
+        /// List of the tags attached to this Universal Secrets Connector
         /// </summary>
-        /// <value>Permissions  Comma-seperated list of permissions for this allowed access. Available permissions: [defaults,targets,classic_keys,automatic_migration,ldap_auth,dynamic_secret,k8s_auth,log_forwarding,zero_knowledge_encryption,rotated_secret,caching,event_forwarding,admin,kmip,general]</value>
-        [DataMember(Name = "permissions", EmitDefaultValue = false)]
-        public string Permissions { get; set; }
+        /// <value>List of the tags attached to this Universal Secrets Connector</value>
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Sub claims key/val of sub claims, e.g group&#x3D;admins,developers
+        /// Target Universal Secrets Connector to connect
         /// </summary>
-        /// <value>Sub claims key/val of sub claims, e.g group&#x3D;admins,developers</value>
-        [DataMember(Name = "sub-claims", EmitDefaultValue = false)]
-        public Dictionary<string, string> SubClaims { get; set; }
+        /// <value>Target Universal Secrets Connector to connect</value>
+        [DataMember(Name = "target-to-associate", IsRequired = true, EmitDefaultValue = true)]
+        public string TargetToAssociate { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -151,15 +151,15 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GatewayCreateAllowedAccess {\n");
-            sb.Append("  SubClaimsCaseInsensitive: ").Append(SubClaimsCaseInsensitive).Append("\n");
-            sb.Append("  AccessId: ").Append(AccessId).Append("\n");
-            sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
+            sb.Append("class CreateUSC {\n");
+            sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Permissions: ").Append(Permissions).Append("\n");
-            sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  TargetToAssociate: ").Append(TargetToAssociate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -182,15 +182,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GatewayCreateAllowedAccess);
+            return this.Equals(input as CreateUSC);
         }
 
         /// <summary>
-        /// Returns true if GatewayCreateAllowedAccess instances are equal
+        /// Returns true if CreateUSC instances are equal
         /// </summary>
-        /// <param name="input">Instance of GatewayCreateAllowedAccess to be compared</param>
+        /// <param name="input">Instance of CreateUSC to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GatewayCreateAllowedAccess input)
+        public bool Equals(CreateUSC input)
         {
             if (input == null)
             {
@@ -198,18 +198,14 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.SubClaimsCaseInsensitive == input.SubClaimsCaseInsensitive ||
-                    this.SubClaimsCaseInsensitive.Equals(input.SubClaimsCaseInsensitive)
+                    this.AzureKvName == input.AzureKvName ||
+                    (this.AzureKvName != null &&
+                    this.AzureKvName.Equals(input.AzureKvName))
                 ) && 
                 (
-                    this.AccessId == input.AccessId ||
-                    (this.AccessId != null &&
-                    this.AccessId.Equals(input.AccessId))
-                ) && 
-                (
-                    this.CaseSensitive == input.CaseSensitive ||
-                    (this.CaseSensitive != null &&
-                    this.CaseSensitive.Equals(input.CaseSensitive))
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -221,20 +217,25 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.K8sNamespace == input.K8sNamespace ||
+                    (this.K8sNamespace != null &&
+                    this.K8sNamespace.Equals(input.K8sNamespace))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Permissions == input.Permissions ||
-                    (this.Permissions != null &&
-                    this.Permissions.Equals(input.Permissions))
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
-                    this.SubClaims == input.SubClaims ||
-                    this.SubClaims != null &&
-                    input.SubClaims != null &&
-                    this.SubClaims.SequenceEqual(input.SubClaims)
+                    this.TargetToAssociate == input.TargetToAssociate ||
+                    (this.TargetToAssociate != null &&
+                    this.TargetToAssociate.Equals(input.TargetToAssociate))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -257,31 +258,34 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.SubClaimsCaseInsensitive.GetHashCode();
-                if (this.AccessId != null)
+                if (this.AzureKvName != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AzureKvName.GetHashCode();
                 }
-                if (this.CaseSensitive != null)
+                if (this.DeleteProtection != null)
                 {
-                    hashCode = (hashCode * 59) + this.CaseSensitive.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.K8sNamespace != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sNamespace.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.Permissions != null)
+                if (this.Tags != null)
                 {
-                    hashCode = (hashCode * 59) + this.Permissions.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
                 }
-                if (this.SubClaims != null)
+                if (this.TargetToAssociate != null)
                 {
-                    hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TargetToAssociate.GetHashCode();
                 }
                 if (this.Token != null)
                 {

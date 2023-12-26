@@ -47,8 +47,9 @@ namespace akeyless.Model
         /// <param name="name">name.</param>
         /// <param name="permissions">permissions.</param>
         /// <param name="subClaims">subClaims.</param>
+        /// <param name="subClaimsCaseInsensitive">subClaimsCaseInsensitive.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public AllowedAccess(string accessId = default(string), string accessType = default(string), long clusterId = default(long), DateTime createdAt = default(DateTime), string description = default(string), bool editable = default(bool), string error = default(string), long id = default(long), bool isValid = default(bool), string name = default(string), List<string> permissions = default(List<string>), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>), DateTime updatedAt = default(DateTime))
+        public AllowedAccess(string accessId = default(string), string accessType = default(string), long clusterId = default(long), DateTime createdAt = default(DateTime), string description = default(string), bool editable = default(bool), string error = default(string), long id = default(long), bool isValid = default(bool), string name = default(string), List<string> permissions = default(List<string>), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>), bool subClaimsCaseInsensitive = default(bool), DateTime updatedAt = default(DateTime))
         {
             this.AccessId = accessId;
             this.AccessType = accessType;
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.Name = name;
             this.Permissions = permissions;
             this.SubClaims = subClaims;
+            this.SubClaimsCaseInsensitive = subClaimsCaseInsensitive;
             this.UpdatedAt = updatedAt;
         }
 
@@ -138,6 +140,12 @@ namespace akeyless.Model
         public Dictionary<string, List<string>> SubClaims { get; set; }
 
         /// <summary>
+        /// Gets or Sets SubClaimsCaseInsensitive
+        /// </summary>
+        [DataMember(Name = "sub_claims_case_insensitive", EmitDefaultValue = true)]
+        public bool SubClaimsCaseInsensitive { get; set; }
+
+        /// <summary>
         /// Gets or Sets UpdatedAt
         /// </summary>
         [DataMember(Name = "updated_at", EmitDefaultValue = false)]
@@ -163,6 +171,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
+            sb.Append("  SubClaimsCaseInsensitive: ").Append(SubClaimsCaseInsensitive).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -258,6 +267,10 @@ namespace akeyless.Model
                     this.SubClaims.SequenceEqual(input.SubClaims)
                 ) && 
                 (
+                    this.SubClaimsCaseInsensitive == input.SubClaimsCaseInsensitive ||
+                    this.SubClaimsCaseInsensitive.Equals(input.SubClaimsCaseInsensitive)
+                ) && 
+                (
                     this.UpdatedAt == input.UpdatedAt ||
                     (this.UpdatedAt != null &&
                     this.UpdatedAt.Equals(input.UpdatedAt))
@@ -309,6 +322,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.SubClaims.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SubClaimsCaseInsensitive.GetHashCode();
                 if (this.UpdatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();

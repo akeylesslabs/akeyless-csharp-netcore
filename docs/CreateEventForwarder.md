@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **EmailTo** | **string** | A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder) | [optional] 
 **EventSourceLocations** | **List&lt;string&gt;** | Event sources | 
-**EventSourceType** | **string** | Event Source type [item, target, auth_method] | [optional] [default to "item"]
+**EventSourceType** | **string** | Event Source type [item, target, auth_method, gateway] | [optional] [default to "item"]
 **EventTypes** | **List&lt;string&gt;** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure] | [optional] 
 **Every** | **string** | Rate of periodic runner repetition in hours | [optional] 
 **ForwarderType** | **string** |  | 

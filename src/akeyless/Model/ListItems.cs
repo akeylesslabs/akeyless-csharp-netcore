@@ -40,7 +40,8 @@ namespace akeyless.Model
         /// <param name="autoPagination">Retrieve all items using pagination, when disabled retrieving only first 1000 items (default to &quot;enabled&quot;).</param>
         /// <param name="filter">Filter by item name or part of it.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="minimalView">minimalView.</param>
+        /// <param name="minimalView">Show only basic information of the items.</param>
+        /// <param name="modifiedAfter">List only secrets modified after specified date (in unix time).</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="path">Path to folder.</param>
         /// <param name="sraOnly">Filter by items with SRA functionality enabled (default to false).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string accessibility = "regular", string advancedFilter = default(string), string autoPagination = "enabled", string filter = default(string), bool json = false, bool minimalView = default(bool), string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string accessibility = "regular", string advancedFilter = default(string), string autoPagination = "enabled", string filter = default(string), bool json = false, bool minimalView = default(bool), long modifiedAfter = default(long), string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.Filter = filter;
             this.Json = json;
             this.MinimalView = minimalView;
+            this.ModifiedAfter = modifiedAfter;
             this.PaginationToken = paginationToken;
             this.Path = path;
             this.SraOnly = sraOnly;
@@ -105,10 +107,18 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Gets or Sets MinimalView
+        /// Show only basic information of the items
         /// </summary>
+        /// <value>Show only basic information of the items</value>
         [DataMember(Name = "minimal-view", EmitDefaultValue = true)]
         public bool MinimalView { get; set; }
+
+        /// <summary>
+        /// List only secrets modified after specified date (in unix time)
+        /// </summary>
+        /// <value>List only secrets modified after specified date (in unix time)</value>
+        [DataMember(Name = "modified-after", EmitDefaultValue = false)]
+        public long ModifiedAfter { get; set; }
 
         /// <summary>
         /// Next page reference
@@ -179,6 +189,7 @@ namespace akeyless.Model
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  MinimalView: ").Append(MinimalView).Append("\n");
+            sb.Append("  ModifiedAfter: ").Append(ModifiedAfter).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  SraOnly: ").Append(SraOnly).Append("\n");
@@ -251,6 +262,10 @@ namespace akeyless.Model
                     this.MinimalView.Equals(input.MinimalView)
                 ) && 
                 (
+                    this.ModifiedAfter == input.ModifiedAfter ||
+                    this.ModifiedAfter.Equals(input.ModifiedAfter)
+                ) && 
+                (
                     this.PaginationToken == input.PaginationToken ||
                     (this.PaginationToken != null &&
                     this.PaginationToken.Equals(input.PaginationToken))
@@ -320,6 +335,7 @@ namespace akeyless.Model
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 hashCode = (hashCode * 59) + this.MinimalView.GetHashCode();
+                hashCode = (hashCode * 59) + this.ModifiedAfter.GetHashCode();
                 if (this.PaginationToken != null)
                 {
                     hashCode = (hashCode * 59) + this.PaginationToken.GetHashCode();

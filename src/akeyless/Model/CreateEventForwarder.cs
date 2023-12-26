@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="emailTo">A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder).</param>
         /// <param name="eventSourceLocations">Event sources (required).</param>
-        /// <param name="eventSourceType">Event Source type [item, target, auth_method] (default to &quot;item&quot;).</param>
+        /// <param name="eventSourceType">Event Source type [item, target, auth_method, gateway] (default to &quot;item&quot;).</param>
         /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure].</param>
         /// <param name="every">Rate of periodic runner repetition in hours.</param>
         /// <param name="forwarderType">forwarderType (required).</param>
@@ -181,9 +181,9 @@ namespace akeyless.Model
         public List<string> EventSourceLocations { get; set; }
 
         /// <summary>
-        /// Event Source type [item, target, auth_method]
+        /// Event Source type [item, target, auth_method, gateway]
         /// </summary>
-        /// <value>Event Source type [item, target, auth_method]</value>
+        /// <value>Event Source type [item, target, auth_method, gateway]</value>
         [DataMember(Name = "event-source-type", EmitDefaultValue = false)]
         public string EventSourceType { get; set; }
 

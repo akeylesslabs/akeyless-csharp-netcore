@@ -27,71 +27,67 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateESM is a command that creates an External Secrets Manager. [Deprecated: Use command create-usc]
+    /// uscCreate is a command that creates a new secret in a Universal Secrets Connector
     /// </summary>
-    [DataContract(Name = "CreateESM")]
-    public partial class CreateESM : IEquatable<CreateESM>, IValidatableObject
+    [DataContract(Name = "uscCreate")]
+    public partial class UscCreate : IEquatable<UscCreate>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateESM" /> class.
+        /// Initializes a new instance of the <see cref="UscCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CreateESM() { }
+        protected UscCreate() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateESM" /> class.
+        /// Initializes a new instance of the <see cref="UscCreate" /> class.
         /// </summary>
-        /// <param name="azureKvName">Azure Key Vault name (Relevant only for Azure targets).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
-        /// <param name="description">Description of the External Secrets Manager.</param>
+        /// <param name="binaryValue">Use this option if the universal secrets value is a base64 encoded binary.</param>
+        /// <param name="description">Description of the universal secrets.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
-        /// <param name="name">External Secrets Manager name (required).</param>
-        /// <param name="tags">List of the tags attached to this External Secrets Manager.</param>
-        /// <param name="targetToAssociate">Target External Secrets Manager to connect (required).</param>
+        /// <param name="secretName">Name for the new universal secrets (required).</param>
+        /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateESM(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
+        /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
+        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string secretName = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
+            // to ensure "secretName" is required (not null)
+            if (secretName == null)
             {
-                throw new ArgumentNullException("name is a required property for CreateESM and cannot be null");
+                throw new ArgumentNullException("secretName is a required property for UscCreate and cannot be null");
             }
-            this.Name = name;
-            // to ensure "targetToAssociate" is required (not null)
-            if (targetToAssociate == null)
+            this.SecretName = secretName;
+            // to ensure "uscName" is required (not null)
+            if (uscName == null)
             {
-                throw new ArgumentNullException("targetToAssociate is a required property for CreateESM and cannot be null");
+                throw new ArgumentNullException("uscName is a required property for UscCreate and cannot be null");
             }
-            this.TargetToAssociate = targetToAssociate;
-            this.AzureKvName = azureKvName;
-            this.DeleteProtection = deleteProtection;
+            this.UscName = uscName;
+            // to ensure "value" is required (not null)
+            if (value == null)
+            {
+                throw new ArgumentNullException("value is a required property for UscCreate and cannot be null");
+            }
+            this.Value = value;
+            this.BinaryValue = binaryValue;
             this.Description = description;
             this.Json = json;
-            this.K8sNamespace = k8sNamespace;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
         }
 
         /// <summary>
-        /// Azure Key Vault name (Relevant only for Azure targets)
+        /// Use this option if the universal secrets value is a base64 encoded binary
         /// </summary>
-        /// <value>Azure Key Vault name (Relevant only for Azure targets)</value>
-        [DataMember(Name = "azure-kv-name", EmitDefaultValue = false)]
-        public string AzureKvName { get; set; }
+        /// <value>Use this option if the universal secrets value is a base64 encoded binary</value>
+        [DataMember(Name = "binary-value", EmitDefaultValue = true)]
+        public bool BinaryValue { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Description of the universal secrets
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
-        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
-        public string DeleteProtection { get; set; }
-
-        /// <summary>
-        /// Description of the External Secrets Manager
-        /// </summary>
-        /// <value>Description of the External Secrets Manager</value>
+        /// <value>Description of the universal secrets</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
@@ -103,32 +99,18 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// K8s namespace (Relevant to Kubernetes targets)
+        /// Name for the new universal secrets
         /// </summary>
-        /// <value>K8s namespace (Relevant to Kubernetes targets)</value>
-        [DataMember(Name = "k8s-namespace", EmitDefaultValue = false)]
-        public string K8sNamespace { get; set; }
+        /// <value>Name for the new universal secrets</value>
+        [DataMember(Name = "secret-name", IsRequired = true, EmitDefaultValue = true)]
+        public string SecretName { get; set; }
 
         /// <summary>
-        /// External Secrets Manager name
+        /// Tags for the universal secrets
         /// </summary>
-        /// <value>External Secrets Manager name</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// List of the tags attached to this External Secrets Manager
-        /// </summary>
-        /// <value>List of the tags attached to this External Secrets Manager</value>
+        /// <value>Tags for the universal secrets</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
-        public List<string> Tags { get; set; }
-
-        /// <summary>
-        /// Target External Secrets Manager to connect
-        /// </summary>
-        /// <value>Target External Secrets Manager to connect</value>
-        [DataMember(Name = "target-to-associate", IsRequired = true, EmitDefaultValue = true)]
-        public string TargetToAssociate { get; set; }
+        public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -145,23 +127,36 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Name of the Universal Secrets Connector item
+        /// </summary>
+        /// <value>Name of the Universal Secrets Connector item</value>
+        [DataMember(Name = "usc-name", IsRequired = true, EmitDefaultValue = true)]
+        public string UscName { get; set; }
+
+        /// <summary>
+        /// Value of the universal secrets item, either text or base64 encoded binary
+        /// </summary>
+        /// <value>Value of the universal secrets item, either text or base64 encoded binary</value>
+        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
+        public string Value { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateESM {\n");
-            sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
-            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("class UscCreate {\n");
+            sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
-            sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  SecretName: ").Append(SecretName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  TargetToAssociate: ").Append(TargetToAssociate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UscName: ").Append(UscName).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -182,15 +177,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateESM);
+            return this.Equals(input as UscCreate);
         }
 
         /// <summary>
-        /// Returns true if CreateESM instances are equal
+        /// Returns true if UscCreate instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateESM to be compared</param>
+        /// <param name="input">Instance of UscCreate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateESM input)
+        public bool Equals(UscCreate input)
         {
             if (input == null)
             {
@@ -198,14 +193,8 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.AzureKvName == input.AzureKvName ||
-                    (this.AzureKvName != null &&
-                    this.AzureKvName.Equals(input.AzureKvName))
-                ) && 
-                (
-                    this.DeleteProtection == input.DeleteProtection ||
-                    (this.DeleteProtection != null &&
-                    this.DeleteProtection.Equals(input.DeleteProtection))
+                    this.BinaryValue == input.BinaryValue ||
+                    this.BinaryValue.Equals(input.BinaryValue)
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -217,25 +206,15 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
-                    this.K8sNamespace == input.K8sNamespace ||
-                    (this.K8sNamespace != null &&
-                    this.K8sNamespace.Equals(input.K8sNamespace))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.SecretName == input.SecretName ||
+                    (this.SecretName != null &&
+                    this.SecretName.Equals(input.SecretName))
                 ) && 
                 (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
                     this.Tags.SequenceEqual(input.Tags)
-                ) && 
-                (
-                    this.TargetToAssociate == input.TargetToAssociate ||
-                    (this.TargetToAssociate != null &&
-                    this.TargetToAssociate.Equals(input.TargetToAssociate))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -246,6 +225,16 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UscName == input.UscName ||
+                    (this.UscName != null &&
+                    this.UscName.Equals(input.UscName))
+                ) && 
+                (
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -258,34 +247,19 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AzureKvName != null)
-                {
-                    hashCode = (hashCode * 59) + this.AzureKvName.GetHashCode();
-                }
-                if (this.DeleteProtection != null)
-                {
-                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.BinaryValue.GetHashCode();
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
-                if (this.K8sNamespace != null)
+                if (this.SecretName != null)
                 {
-                    hashCode = (hashCode * 59) + this.K8sNamespace.GetHashCode();
-                }
-                if (this.Name != null)
-                {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SecretName.GetHashCode();
                 }
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
-                }
-                if (this.TargetToAssociate != null)
-                {
-                    hashCode = (hashCode * 59) + this.TargetToAssociate.GetHashCode();
                 }
                 if (this.Token != null)
                 {
@@ -294,6 +268,14 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UscName != null)
+                {
+                    hashCode = (hashCode * 59) + this.UscName.GetHashCode();
+                }
+                if (this.Value != null)
+                {
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
                 }
                 return hashCode;
             }

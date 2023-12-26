@@ -40,7 +40,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateAllowedAccess" /> class.
         /// </summary>
+        /// <param name="subClaimsCaseInsensitive">subClaimsCaseInsensitive.</param>
         /// <param name="accessId">Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist. (required).</param>
+        /// <param name="caseSensitive">Treat sub claims as case-sensitive [true/false] (default to &quot;true&quot;).</param>
         /// <param name="description">Allowed access description.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Allowed access name (required).</param>
@@ -49,7 +51,7 @@ namespace akeyless.Model
         /// <param name="subClaims">Sub claims key/val of sub claims, e.g group&#x3D;admins,developers.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateAllowedAccess(string accessId = default(string), string description = default(string), bool json = false, string name = default(string), string newName = default(string), string permissions = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateAllowedAccess(bool subClaimsCaseInsensitive = default(bool), string accessId = default(string), string caseSensitive = "true", string description = default(string), bool json = false, string name = default(string), string newName = default(string), string permissions = default(string), Dictionary<string, string> subClaims = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "accessId" is required (not null)
             if (accessId == null)
@@ -63,6 +65,9 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for GatewayUpdateAllowedAccess and cannot be null");
             }
             this.Name = name;
+            this.SubClaimsCaseInsensitive = subClaimsCaseInsensitive;
+            // use default value if no "caseSensitive" provided
+            this.CaseSensitive = caseSensitive ?? "true";
             this.Description = description;
             this.Json = json;
             this.NewName = newName;
@@ -73,11 +78,24 @@ namespace akeyless.Model
         }
 
         /// <summary>
+        /// Gets or Sets SubClaimsCaseInsensitive
+        /// </summary>
+        [DataMember(Name = "SubClaimsCaseInsensitive", EmitDefaultValue = true)]
+        public bool SubClaimsCaseInsensitive { get; set; }
+
+        /// <summary>
         /// Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist.
         /// </summary>
         /// <value>Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist.</value>
         [DataMember(Name = "access-id", IsRequired = true, EmitDefaultValue = true)]
         public string AccessId { get; set; }
+
+        /// <summary>
+        /// Treat sub claims as case-sensitive [true/false]
+        /// </summary>
+        /// <value>Treat sub claims as case-sensitive [true/false]</value>
+        [DataMember(Name = "case-sensitive", EmitDefaultValue = false)]
+        public string CaseSensitive { get; set; }
 
         /// <summary>
         /// Allowed access description
@@ -143,7 +161,9 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateAllowedAccess {\n");
+            sb.Append("  SubClaimsCaseInsensitive: ").Append(SubClaimsCaseInsensitive).Append("\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
+            sb.Append("  CaseSensitive: ").Append(CaseSensitive).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -188,9 +208,18 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.SubClaimsCaseInsensitive == input.SubClaimsCaseInsensitive ||
+                    this.SubClaimsCaseInsensitive.Equals(input.SubClaimsCaseInsensitive)
+                ) && 
+                (
                     this.AccessId == input.AccessId ||
                     (this.AccessId != null &&
                     this.AccessId.Equals(input.AccessId))
+                ) && 
+                (
+                    this.CaseSensitive == input.CaseSensitive ||
+                    (this.CaseSensitive != null &&
+                    this.CaseSensitive.Equals(input.CaseSensitive))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -243,9 +272,14 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.SubClaimsCaseInsensitive.GetHashCode();
                 if (this.AccessId != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessId.GetHashCode();
+                }
+                if (this.CaseSensitive != null)
+                {
+                    hashCode = (hashCode * 59) + this.CaseSensitive.GetHashCode();
                 }
                 if (this.Description != null)
                 {

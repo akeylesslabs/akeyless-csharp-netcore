@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="oracleHost">Oracle Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="oraclePassword">Oracle Password.</param>
         /// <param name="oraclePort">Oracle Port (default to &quot;1521&quot;).</param>
+        /// <param name="oracleRevocationStatements">Oracle Revocation statements.</param>
         /// <param name="oracleScreationStatements">Oracle Creation statements.</param>
         /// <param name="oracleServiceName">Oracle DB Name.</param>
         /// <param name="oracleUsername">Oracle Username.</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = "false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = "false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.OraclePassword = oraclePassword;
             // use default value if no "oraclePort" provided
             this.OraclePort = oraclePort ?? "1521";
+            this.OracleRevocationStatements = oracleRevocationStatements;
             this.OracleScreationStatements = oracleScreationStatements;
             this.OracleServiceName = oracleServiceName;
             this.OracleUsername = oracleUsername;
@@ -159,6 +161,13 @@ namespace akeyless.Model
         /// <value>Oracle Port</value>
         [DataMember(Name = "oracle-port", EmitDefaultValue = false)]
         public string OraclePort { get; set; }
+
+        /// <summary>
+        /// Oracle Revocation statements
+        /// </summary>
+        /// <value>Oracle Revocation statements</value>
+        [DataMember(Name = "oracle-revocation-statements", EmitDefaultValue = false)]
+        public string OracleRevocationStatements { get; set; }
 
         /// <summary>
         /// Oracle Creation statements
@@ -268,6 +277,7 @@ namespace akeyless.Model
             sb.Append("  OracleHost: ").Append(OracleHost).Append("\n");
             sb.Append("  OraclePassword: ").Append(OraclePassword).Append("\n");
             sb.Append("  OraclePort: ").Append(OraclePort).Append("\n");
+            sb.Append("  OracleRevocationStatements: ").Append(OracleRevocationStatements).Append("\n");
             sb.Append("  OracleScreationStatements: ").Append(OracleScreationStatements).Append("\n");
             sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
             sb.Append("  OracleUsername: ").Append(OracleUsername).Append("\n");
@@ -359,6 +369,11 @@ namespace akeyless.Model
                     this.OraclePort == input.OraclePort ||
                     (this.OraclePort != null &&
                     this.OraclePort.Equals(input.OraclePort))
+                ) && 
+                (
+                    this.OracleRevocationStatements == input.OracleRevocationStatements ||
+                    (this.OracleRevocationStatements != null &&
+                    this.OracleRevocationStatements.Equals(input.OracleRevocationStatements))
                 ) && 
                 (
                     this.OracleScreationStatements == input.OracleScreationStatements ||
@@ -469,6 +484,10 @@ namespace akeyless.Model
                 if (this.OraclePort != null)
                 {
                     hashCode = (hashCode * 59) + this.OraclePort.GetHashCode();
+                }
+                if (this.OracleRevocationStatements != null)
+                {
+                    hashCode = (hashCode * 59) + this.OracleRevocationStatements.GetHashCode();
                 }
                 if (this.OracleScreationStatements != null)
                 {
