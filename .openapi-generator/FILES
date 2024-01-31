@@ -752,11 +752,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/CreateAuthMethodOCIOutputTests.cs
-src/akeyless.Test/Model/CreateAuthMethodOCITests.cs
-src/akeyless.Test/Model/OCIAccessRulesTests.cs
-src/akeyless.Test/Model/UpdateAuthMethodOCIOutputTests.cs
-src/akeyless.Test/Model/UpdateAuthMethodOCITests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
