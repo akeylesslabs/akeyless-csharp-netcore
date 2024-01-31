@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **AuthMethodRolesAssoc** | [**List&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
+**Description** | **string** |  | [optional] 
 **IsApproved** | **bool** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
 

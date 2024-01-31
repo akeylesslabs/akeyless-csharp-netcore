@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodAzureAD" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
-        /// <param name="audience">The audience in the JWT (default to &quot;https://management.azure.com/&quot;).</param>
+        /// <param name="audience">Deprecated (Deprecated) The audience in the JWT (default to &quot;https://management.azure.com/&quot;).</param>
         /// <param name="boundGroupId">A list of group ids that the access is restricted to.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundProviders">A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc).</param>
@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="boundSpid">A list of service principal IDs that the access is restricted to.</param>
         /// <param name="boundSubId">A list of subscription ids that the access is restricted to.</param>
         /// <param name="boundTenantId">The Azure tenant id that the access is restricted to (required).</param>
+        /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL (default to &quot;https://sts.windows.net/---bound_tenant_id---&quot;).</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null)
@@ -87,6 +88,7 @@ namespace akeyless.Model
             this.BoundRgId = boundRgId;
             this.BoundSpid = boundSpid;
             this.BoundSubId = boundSubId;
+            this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
             // use default value if no "issuer" provided
@@ -107,9 +109,9 @@ namespace akeyless.Model
         public long AccessExpires { get; set; }
 
         /// <summary>
-        /// The audience in the JWT
+        /// Deprecated (Deprecated) The audience in the JWT
         /// </summary>
-        /// <value>The audience in the JWT</value>
+        /// <value>Deprecated (Deprecated) The audience in the JWT</value>
         [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
 
@@ -182,6 +184,13 @@ namespace akeyless.Model
         /// <value>The Azure tenant id that the access is restricted to</value>
         [DataMember(Name = "bound-tenant-id", IsRequired = true, EmitDefaultValue = true)]
         public string BoundTenantId { get; set; }
+
+        /// <summary>
+        /// Auth Method description
+        /// </summary>
+        /// <value>Auth Method description</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
@@ -266,6 +275,7 @@ namespace akeyless.Model
             sb.Append("  BoundSpid: ").Append(BoundSpid).Append("\n");
             sb.Append("  BoundSubId: ").Append(BoundSubId).Append("\n");
             sb.Append("  BoundTenantId: ").Append(BoundTenantId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
@@ -379,6 +389,11 @@ namespace akeyless.Model
                     this.BoundTenantId.Equals(input.BoundTenantId))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.ForceSubClaims == input.ForceSubClaims ||
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
@@ -476,6 +491,10 @@ namespace akeyless.Model
                 if (this.BoundTenantId != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundTenantId.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)

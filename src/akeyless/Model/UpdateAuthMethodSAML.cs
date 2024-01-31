@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.AccessExpires = accessExpires;
             this.AllowedRedirectUri = allowedRedirectUri;
             this.BoundIps = boundIps;
+            this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
             this.IdpMetadataUrl = idpMetadataUrl;
@@ -104,6 +106,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// Auth Method description
+        /// </summary>
+        /// <value>Auth Method description</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
@@ -200,6 +209,7 @@ namespace akeyless.Model
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
@@ -262,6 +272,11 @@ namespace akeyless.Model
                     this.BoundIps != null &&
                     input.BoundIps != null &&
                     this.BoundIps.SequenceEqual(input.BoundIps)
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ForceSubClaims == input.ForceSubClaims ||
@@ -341,6 +356,10 @@ namespace akeyless.Model
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)

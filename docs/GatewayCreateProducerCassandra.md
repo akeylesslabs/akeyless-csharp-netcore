@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Producer name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
+**Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
+**SslCertificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**NotifyOnChangeEvent** | **bool** |  | [optional] 
 **Username** | **string** |  | [optional] 
 **Website** | **string** | deprecated | [optional] 
 **Websites** | **List&lt;string&gt;** |  | [optional] 

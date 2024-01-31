@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Justification** | **string** |  | [optional] 
 **Name** | **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
 **SshCommand** | **string** | Path to SSH executable. e.g. /usr/bin/ssh | [optional] 
-**SshExtraArgs** | **string** | The Use to add offical SSH arguments (except -i) | [optional] 
+**SshExtraArgs** | **string** | Additional SSH arguments (except -i) | [optional] 
 **SshLegacySigningAlg** | **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] [default to false]
 **Target** | **string** | The target | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

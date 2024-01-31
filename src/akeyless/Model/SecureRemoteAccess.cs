@@ -63,10 +63,11 @@ namespace akeyless.Model
         /// <param name="sshPrivateKey">sshPrivateKey.</param>
         /// <param name="sshUser">sshUser.</param>
         /// <param name="targetHosts">targetHosts.</param>
+        /// <param name="targets">targets.</param>
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -96,6 +97,7 @@ namespace akeyless.Model
             this.SshPrivateKey = sshPrivateKey;
             this.SshUser = sshUser;
             this.TargetHosts = targetHosts;
+            this.Targets = targets;
             this.Url = url;
             this.UseInternalBastion = useInternalBastion;
             this.WebProxy = webProxy;
@@ -270,6 +272,12 @@ namespace akeyless.Model
         public List<TargetNameWithHosts> TargetHosts { get; set; }
 
         /// <summary>
+        /// Gets or Sets Targets
+        /// </summary>
+        [DataMember(Name = "targets", EmitDefaultValue = false)]
+        public List<string> Targets { get; set; }
+
+        /// <summary>
         /// Gets or Sets Url
         /// </summary>
         [DataMember(Name = "url", EmitDefaultValue = false)]
@@ -323,6 +331,7 @@ namespace akeyless.Model
             sb.Append("  SshPrivateKey: ").Append(SshPrivateKey).Append("\n");
             sb.Append("  SshUser: ").Append(SshUser).Append("\n");
             sb.Append("  TargetHosts: ").Append(TargetHosts).Append("\n");
+            sb.Append("  Targets: ").Append(Targets).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  UseInternalBastion: ").Append(UseInternalBastion).Append("\n");
             sb.Append("  WebProxy: ").Append(WebProxy).Append("\n");
@@ -493,6 +502,12 @@ namespace akeyless.Model
                     this.TargetHosts.SequenceEqual(input.TargetHosts)
                 ) && 
                 (
+                    this.Targets == input.Targets ||
+                    this.Targets != null &&
+                    input.Targets != null &&
+                    this.Targets.SequenceEqual(input.Targets)
+                ) && 
+                (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
@@ -594,6 +609,10 @@ namespace akeyless.Model
                 if (this.TargetHosts != null)
                 {
                     hashCode = (hashCode * 59) + this.TargetHosts.GetHashCode();
+                }
+                if (this.Targets != null)
+                {
+                    hashCode = (hashCode * 59) + this.Targets.GetHashCode();
                 }
                 if (this.Url != null)
                 {

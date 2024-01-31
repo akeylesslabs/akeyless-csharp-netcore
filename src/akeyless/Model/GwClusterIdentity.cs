@@ -47,9 +47,10 @@ namespace akeyless.Model
         /// <param name="defaultSecretLocation">defaultSecretLocation.</param>
         /// <param name="displayName">displayName.</param>
         /// <param name="id">id.</param>
+        /// <param name="serverlessType">serverlessType.</param>
         /// <param name="status">status.</param>
         /// <param name="statusDescription">statusDescription.</param>
-        public GwClusterIdentity(bool actionAllowed = default(bool), bool allowed = default(bool), List<string> allowedAccessIds = default(List<string>), string clusterName = default(string), string clusterUrl = default(string), bool currentGw = default(bool), List<string> customerFragmentIds = default(List<string>), List<CfInfo> customerFragments = default(List<CfInfo>), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string displayName = default(string), long id = default(long), string status = default(string), string statusDescription = default(string))
+        public GwClusterIdentity(bool actionAllowed = default(bool), bool allowed = default(bool), List<string> allowedAccessIds = default(List<string>), string clusterName = default(string), string clusterUrl = default(string), bool currentGw = default(bool), List<string> customerFragmentIds = default(List<string>), List<CfInfo> customerFragments = default(List<CfInfo>), long defaultProtectionKeyId = default(long), string defaultSecretLocation = default(string), string displayName = default(string), long id = default(long), string serverlessType = default(string), string status = default(string), string statusDescription = default(string))
         {
             this.ActionAllowed = actionAllowed;
             this.Allowed = allowed;
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.DefaultSecretLocation = defaultSecretLocation;
             this.DisplayName = displayName;
             this.Id = id;
+            this.ServerlessType = serverlessType;
             this.Status = status;
             this.StatusDescription = statusDescription;
         }
@@ -141,6 +143,12 @@ namespace akeyless.Model
         public long Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets ServerlessType
+        /// </summary>
+        [DataMember(Name = "serverless_type", EmitDefaultValue = false)]
+        public string ServerlessType { get; set; }
+
+        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", EmitDefaultValue = false)]
@@ -172,6 +180,7 @@ namespace akeyless.Model
             sb.Append("  DefaultSecretLocation: ").Append(DefaultSecretLocation).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  ServerlessType: ").Append(ServerlessType).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  StatusDescription: ").Append(StatusDescription).Append("\n");
             sb.Append("}\n");
@@ -268,6 +277,11 @@ namespace akeyless.Model
                     this.Id.Equals(input.Id)
                 ) && 
                 (
+                    this.ServerlessType == input.ServerlessType ||
+                    (this.ServerlessType != null &&
+                    this.ServerlessType.Equals(input.ServerlessType))
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -321,6 +335,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.ServerlessType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ServerlessType.GetHashCode();
+                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();

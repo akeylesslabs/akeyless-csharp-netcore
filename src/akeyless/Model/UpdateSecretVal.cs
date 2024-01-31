@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lastVersion">The last version number before the update.</param>
         /// <param name="multiline">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
         /// <param name="newVersion">Deprecated.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
         /// <param name="value">The secret value (only relevant for type &#39;generic&#39;) (required).</param>
-        public UpdateSecretVal(string accessibility = "regular", Dictionary<string, string> customField = default(Dictionary<string, string>), List<string> injectUrl = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
+        public UpdateSecretVal(string accessibility = "regular", Dictionary<string, string> customField = default(Dictionary<string, string>), List<string> injectUrl = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LastVersion = lastVersion;
             this.Multiline = multiline;
             this.NewVersion = newVersion;
             this.Password = password;
@@ -124,6 +126,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// The last version number before the update
+        /// </summary>
+        /// <value>The last version number before the update</value>
+        [DataMember(Name = "last-version", EmitDefaultValue = false)]
+        public int LastVersion { get; set; }
 
         /// <summary>
         /// The provided value is a multiline value (separated by &#39;\\n&#39;)
@@ -195,6 +204,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
             sb.Append("  Multiline: ").Append(Multiline).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
@@ -270,6 +280,10 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.LastVersion == input.LastVersion ||
+                    this.LastVersion.Equals(input.LastVersion)
+                ) && 
+                (
                     this.Multiline == input.Multiline ||
                     this.Multiline.Equals(input.Multiline)
                 ) && 
@@ -339,6 +353,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.LastVersion.GetHashCode();
                 hashCode = (hashCode * 59) + this.Multiline.GetHashCode();
                 if (this.Name != null)
                 {

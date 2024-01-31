@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="genKey">Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided [true/false].</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (default to &quot;users&quot;).</param>
-        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = "users")
+        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = "users")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.Name = name;
             this.AccessExpires = accessExpires;
             this.BoundIps = boundIps;
+            this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GenKey = genKey;
             this.GwBoundIps = gwBoundIps;
@@ -89,6 +91,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// Auth Method description
+        /// </summary>
+        /// <value>Auth Method description</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
@@ -177,6 +186,7 @@ namespace akeyless.Model
             sb.Append("class UpdateAuthMethodLDAP {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GenKey: ").Append(GenKey).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
@@ -232,6 +242,11 @@ namespace akeyless.Model
                     this.BoundIps != null &&
                     input.BoundIps != null &&
                     this.BoundIps.SequenceEqual(input.BoundIps)
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ForceSubClaims == input.ForceSubClaims ||
@@ -301,6 +316,10 @@ namespace akeyless.Model
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GenKey != null)

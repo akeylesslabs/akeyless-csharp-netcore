@@ -45,9 +45,10 @@ namespace akeyless.Model
         /// <param name="authMethodRolesAssoc">authMethodRolesAssoc.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="creationDate">creationDate.</param>
+        /// <param name="description">description.</param>
         /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
+        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string description = default(string), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.AuthMethodRolesAssoc = authMethodRolesAssoc;
             this.ClientPermissions = clientPermissions;
             this.CreationDate = creationDate;
+            this.Description = description;
             this.IsApproved = isApproved;
             this.ModificationDate = modificationDate;
         }
@@ -124,6 +126,12 @@ namespace akeyless.Model
         public DateTime CreationDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or Sets IsApproved
         /// </summary>
         [DataMember(Name = "is_approved", EmitDefaultValue = true)]
@@ -153,6 +161,7 @@ namespace akeyless.Model
             sb.Append("  AuthMethodRolesAssoc: ").Append(AuthMethodRolesAssoc).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  IsApproved: ").Append(IsApproved).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("}\n");
@@ -244,6 +253,11 @@ namespace akeyless.Model
                     this.CreationDate.Equals(input.CreationDate))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.IsApproved == input.IsApproved ||
                     this.IsApproved.Equals(input.IsApproved)
                 ) && 
@@ -302,6 +316,10 @@ namespace akeyless.Model
                 if (this.CreationDate != null)
                 {
                     hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsApproved.GetHashCode();
                 if (this.ModificationDate != null)

@@ -44,6 +44,8 @@ namespace akeyless.Model
         /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="eventCenterAccess">Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported.</param>
+        /// <param name="eventForwardersAccess">Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
         /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Role name (required).</param>
@@ -51,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string description = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -63,6 +65,8 @@ namespace akeyless.Model
             this.AuditAccess = auditAccess;
             this.Comment = comment;
             this.Description = description;
+            this.EventCenterAccess = eventCenterAccess;
+            this.EventForwardersAccess = eventForwardersAccess;
             this.GwAnalyticsAccess = gwAnalyticsAccess;
             this.Json = json;
             this.SraReportsAccess = sraReportsAccess;
@@ -98,6 +102,20 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported
+        /// </summary>
+        /// <value>Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported</value>
+        [DataMember(Name = "event-center-access", EmitDefaultValue = false)]
+        public string EventCenterAccess { get; set; }
+
+        /// <summary>
+        /// Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported.
+        /// </summary>
+        /// <value>Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported.</value>
+        [DataMember(Name = "event-forwarders-access", EmitDefaultValue = false)]
+        public string EventForwardersAccess { get; set; }
 
         /// <summary>
         /// Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
@@ -160,6 +178,8 @@ namespace akeyless.Model
             sb.Append("  AuditAccess: ").Append(AuditAccess).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  EventCenterAccess: ").Append(EventCenterAccess).Append("\n");
+            sb.Append("  EventForwardersAccess: ").Append(EventForwardersAccess).Append("\n");
             sb.Append("  GwAnalyticsAccess: ").Append(GwAnalyticsAccess).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -223,6 +243,16 @@ namespace akeyless.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.EventCenterAccess == input.EventCenterAccess ||
+                    (this.EventCenterAccess != null &&
+                    this.EventCenterAccess.Equals(input.EventCenterAccess))
+                ) && 
+                (
+                    this.EventForwardersAccess == input.EventForwardersAccess ||
+                    (this.EventForwardersAccess != null &&
+                    this.EventForwardersAccess.Equals(input.EventForwardersAccess))
+                ) && 
+                (
                     this.GwAnalyticsAccess == input.GwAnalyticsAccess ||
                     (this.GwAnalyticsAccess != null &&
                     this.GwAnalyticsAccess.Equals(input.GwAnalyticsAccess))
@@ -282,6 +312,14 @@ namespace akeyless.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.EventCenterAccess != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventCenterAccess.GetHashCode();
+                }
+                if (this.EventForwardersAccess != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventForwardersAccess.GetHashCode();
                 }
                 if (this.GwAnalyticsAccess != null)
                 {

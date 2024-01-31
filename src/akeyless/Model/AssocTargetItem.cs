@@ -40,6 +40,8 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
+        /// <param name="certificatePath">A path on the target to store the certificate pem file (relevant only for certificate provisioning).</param>
+        /// <param name="chainPath">A path on the target to store the full chain pem file (relevant only for certificate provisioning).</param>
         /// <param name="disablePreviousKeyVersion">Automatically disable previous key version (required for azure targets) (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
@@ -48,15 +50,17 @@ namespace akeyless.Model
         /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
         /// <param name="multiRegion">Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
+        /// <param name="privateKeyPath">A path on the target to store the private key (relevant only for certificate provisioning).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="regions">The list of regions to create a copy of the key in (relevant for aws targets).</param>
+        /// <param name="sraAssociation">Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret (default to false).</param>
         /// <param name="targetName">The target to associate (required).</param>
         /// <param name="tenantSecretType">The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string privateKeyPath = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -70,6 +74,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             }
             this.TargetName = targetName;
+            this.CertificatePath = certificatePath;
+            this.ChainPath = chainPath;
             this.DisablePreviousKeyVersion = disablePreviousKeyVersion;
             this.Json = json;
             this.KeyOperations = keyOperations;
@@ -78,14 +84,30 @@ namespace akeyless.Model
             this.LocationId = locationId;
             // use default value if no "multiRegion" provided
             this.MultiRegion = multiRegion ?? "false";
+            this.PrivateKeyPath = privateKeyPath;
             this.ProjectId = projectId;
             this.Purpose = purpose;
             this.Regions = regions;
+            this.SraAssociation = sraAssociation;
             this.TenantSecretType = tenantSecretType;
             this.Token = token;
             this.UidToken = uidToken;
             this.VaultName = vaultName;
         }
+
+        /// <summary>
+        /// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>A path on the target to store the certificate pem file (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "certificate-path", EmitDefaultValue = false)]
+        public string CertificatePath { get; set; }
+
+        /// <summary>
+        /// A path on the target to store the full chain pem file (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>A path on the target to store the full chain pem file (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "chain-path", EmitDefaultValue = false)]
+        public string ChainPath { get; set; }
 
         /// <summary>
         /// Automatically disable previous key version (required for azure targets)
@@ -144,6 +166,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// A path on the target to store the private key (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>A path on the target to store the private key (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "private-key-path", EmitDefaultValue = false)]
+        public string PrivateKeyPath { get; set; }
+
+        /// <summary>
         /// Project id of the GCP KMS (required for gcp targets)
         /// </summary>
         /// <value>Project id of the GCP KMS (required for gcp targets)</value>
@@ -163,6 +192,13 @@ namespace akeyless.Model
         /// <value>The list of regions to create a copy of the key in (relevant for aws targets)</value>
         [DataMember(Name = "regions", EmitDefaultValue = false)]
         public List<string> Regions { get; set; }
+
+        /// <summary>
+        /// Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret
+        /// </summary>
+        /// <value>Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret</value>
+        [DataMember(Name = "sra-association", EmitDefaultValue = true)]
+        public bool SraAssociation { get; set; }
 
         /// <summary>
         /// The target to associate
@@ -207,6 +243,8 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
+            sb.Append("  CertificatePath: ").Append(CertificatePath).Append("\n");
+            sb.Append("  ChainPath: ").Append(ChainPath).Append("\n");
             sb.Append("  DisablePreviousKeyVersion: ").Append(DisablePreviousKeyVersion).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
@@ -215,9 +253,11 @@ namespace akeyless.Model
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
             sb.Append("  MultiRegion: ").Append(MultiRegion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PrivateKeyPath: ").Append(PrivateKeyPath).Append("\n");
             sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Regions: ").Append(Regions).Append("\n");
+            sb.Append("  SraAssociation: ").Append(SraAssociation).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  TenantSecretType: ").Append(TenantSecretType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -259,6 +299,16 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CertificatePath == input.CertificatePath ||
+                    (this.CertificatePath != null &&
+                    this.CertificatePath.Equals(input.CertificatePath))
+                ) && 
+                (
+                    this.ChainPath == input.ChainPath ||
+                    (this.ChainPath != null &&
+                    this.ChainPath.Equals(input.ChainPath))
+                ) && 
+                (
                     this.DisablePreviousKeyVersion == input.DisablePreviousKeyVersion ||
                     this.DisablePreviousKeyVersion.Equals(input.DisablePreviousKeyVersion)
                 ) && 
@@ -298,6 +348,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.PrivateKeyPath == input.PrivateKeyPath ||
+                    (this.PrivateKeyPath != null &&
+                    this.PrivateKeyPath.Equals(input.PrivateKeyPath))
+                ) && 
+                (
                     this.ProjectId == input.ProjectId ||
                     (this.ProjectId != null &&
                     this.ProjectId.Equals(input.ProjectId))
@@ -312,6 +367,10 @@ namespace akeyless.Model
                     this.Regions != null &&
                     input.Regions != null &&
                     this.Regions.SequenceEqual(input.Regions)
+                ) && 
+                (
+                    this.SraAssociation == input.SraAssociation ||
+                    this.SraAssociation.Equals(input.SraAssociation)
                 ) && 
                 (
                     this.TargetName == input.TargetName ||
@@ -349,6 +408,14 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertificatePath != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificatePath.GetHashCode();
+                }
+                if (this.ChainPath != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChainPath.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.DisablePreviousKeyVersion.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyOperations != null)
@@ -375,6 +442,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                if (this.PrivateKeyPath != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivateKeyPath.GetHashCode();
+                }
                 if (this.ProjectId != null)
                 {
                     hashCode = (hashCode * 59) + this.ProjectId.GetHashCode();
@@ -387,6 +458,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Regions.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SraAssociation.GetHashCode();
                 if (this.TargetName != null)
                 {
                     hashCode = (hashCode * 59) + this.TargetName.GetHashCode();

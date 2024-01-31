@@ -41,9 +41,10 @@ namespace akeyless.Model
         /// <param name="enableRdpSra">enableRdpSra.</param>
         /// <param name="migrationTargetId">migrationTargetId.</param>
         /// <param name="serverTargetsPathTemplate">serverTargetsPathTemplate.</param>
+        /// <param name="userGroups">userGroups.</param>
         /// <param name="usersIgnoreList">usersIgnoreList.</param>
         /// <param name="usersRotatedSecretsPathTemplate">usersRotatedSecretsPathTemplate.</param>
-        public ServerInventoryPayload(bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), bool enableRdpSra = default(bool), long migrationTargetId = default(long), string serverTargetsPathTemplate = default(string), Dictionary<string, bool> usersIgnoreList = default(Dictionary<string, bool>), string usersRotatedSecretsPathTemplate = default(string))
+        public ServerInventoryPayload(bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), bool enableRdpSra = default(bool), long migrationTargetId = default(long), string serverTargetsPathTemplate = default(string), List<string> userGroups = default(List<string>), Dictionary<string, bool> usersIgnoreList = default(Dictionary<string, bool>), string usersRotatedSecretsPathTemplate = default(string))
         {
             this.AutoRotate = autoRotate;
             this.AutoRotateIntervalInDays = autoRotateIntervalInDays;
@@ -51,6 +52,7 @@ namespace akeyless.Model
             this.EnableRdpSra = enableRdpSra;
             this.MigrationTargetId = migrationTargetId;
             this.ServerTargetsPathTemplate = serverTargetsPathTemplate;
+            this.UserGroups = userGroups;
             this.UsersIgnoreList = usersIgnoreList;
             this.UsersRotatedSecretsPathTemplate = usersRotatedSecretsPathTemplate;
         }
@@ -92,6 +94,12 @@ namespace akeyless.Model
         public string ServerTargetsPathTemplate { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserGroups
+        /// </summary>
+        [DataMember(Name = "user_groups", EmitDefaultValue = false)]
+        public List<string> UserGroups { get; set; }
+
+        /// <summary>
         /// Gets or Sets UsersIgnoreList
         /// </summary>
         [DataMember(Name = "users_ignore_list", EmitDefaultValue = false)]
@@ -117,6 +125,7 @@ namespace akeyless.Model
             sb.Append("  EnableRdpSra: ").Append(EnableRdpSra).Append("\n");
             sb.Append("  MigrationTargetId: ").Append(MigrationTargetId).Append("\n");
             sb.Append("  ServerTargetsPathTemplate: ").Append(ServerTargetsPathTemplate).Append("\n");
+            sb.Append("  UserGroups: ").Append(UserGroups).Append("\n");
             sb.Append("  UsersIgnoreList: ").Append(UsersIgnoreList).Append("\n");
             sb.Append("  UsersRotatedSecretsPathTemplate: ").Append(UsersRotatedSecretsPathTemplate).Append("\n");
             sb.Append("}\n");
@@ -180,6 +189,12 @@ namespace akeyless.Model
                     this.ServerTargetsPathTemplate.Equals(input.ServerTargetsPathTemplate))
                 ) && 
                 (
+                    this.UserGroups == input.UserGroups ||
+                    this.UserGroups != null &&
+                    input.UserGroups != null &&
+                    this.UserGroups.SequenceEqual(input.UserGroups)
+                ) && 
+                (
                     this.UsersIgnoreList == input.UsersIgnoreList ||
                     this.UsersIgnoreList != null &&
                     input.UsersIgnoreList != null &&
@@ -209,6 +224,10 @@ namespace akeyless.Model
                 if (this.ServerTargetsPathTemplate != null)
                 {
                     hashCode = (hashCode * 59) + this.ServerTargetsPathTemplate.GetHashCode();
+                }
+                if (this.UserGroups != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserGroups.GetHashCode();
                 }
                 if (this.UsersIgnoreList != null)
                 {

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
+**Description** | **string** | Auth Method description | [optional] 
 **Email** | **string** | An email address to be invited to have access | 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 

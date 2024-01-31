@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRotatedSecret" /> class.
         /// </summary>
+        /// <param name="providerType">providerType.</param>
         /// <param name="apiId">API ID to rotate (relevant only for rotator-type&#x3D;api-key).</param>
         /// <param name="apiKey">API key to rotate (relevant only for rotator-type&#x3D;api-key).</param>
         /// <param name="applicationId">ApplicationId (used in azure).</param>
@@ -52,6 +53,7 @@ namespace akeyless.Model
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpServiceAccountEmail">The email of the gcp service account to rotate.</param>
         /// <param name="gcpServiceAccountKeyId">The key id of the gcp service account to rotate.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -59,7 +61,7 @@ namespace akeyless.Model
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
-        /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
+        /// <param name="rotationHour">The Hour of the rotation in UTC. Default rotation-hour is 14:00.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="rotatorCredsType">rotatorCredsType.</param>
         /// <param name="rotatorCustomCmd">Custom rotation command (relevant only for ssh target).</param>
@@ -82,12 +84,13 @@ namespace akeyless.Model
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account).</param>
         /// <param name="tags">Add tags attached to this object.</param>
+        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times.</param>
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot;.</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public CreateRotatedSecret(string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string hostProvider = "explicit", bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -107,6 +110,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for CreateRotatedSecret and cannot be null");
             }
             this.TargetName = targetName;
+            this.ProviderType = providerType;
             this.ApiId = apiId;
             this.ApiKey = apiKey;
             this.ApplicationId = applicationId;
@@ -121,6 +125,8 @@ namespace akeyless.Model
             this.GcpKey = gcpKey;
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKeyId = gcpServiceAccountKeyId;
+            // use default value if no "hostProvider" provided
+            this.HostProvider = hostProvider ?? "explicit";
             this.Json = json;
             this.Key = key;
             this.Metadata = metadata;
@@ -150,11 +156,18 @@ namespace akeyless.Model
             this.SshUsername = sshUsername;
             this.StorageAccountKeyName = storageAccountKeyName;
             this.Tags = tags;
+            this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
             this.UserAttribute = userAttribute;
             this.UserDn = userDn;
         }
+
+        /// <summary>
+        /// Gets or Sets ProviderType
+        /// </summary>
+        [DataMember(Name = "ProviderType", EmitDefaultValue = false)]
+        public string ProviderType { get; set; }
 
         /// <summary>
         /// API ID to rotate (relevant only for rotator-type&#x3D;api-key)
@@ -241,6 +254,13 @@ namespace akeyless.Model
         public string GcpServiceAccountKeyId { get; set; }
 
         /// <summary>
+        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// </summary>
+        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        [DataMember(Name = "host-provider", EmitDefaultValue = false)]
+        public string HostProvider { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -290,9 +310,9 @@ namespace akeyless.Model
         public string RotatedUsername { get; set; }
 
         /// <summary>
-        /// The Hour of the rotation in UTC
+        /// The Hour of the rotation in UTC. Default rotation-hour is 14:00
         /// </summary>
-        /// <value>The Hour of the rotation in UTC</value>
+        /// <value>The Hour of the rotation in UTC. Default rotation-hour is 14:00</value>
         [DataMember(Name = "rotation-hour", EmitDefaultValue = false)]
         public int RotationHour { get; set; }
 
@@ -450,6 +470,13 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
+        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+        /// </summary>
+        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times</value>
+        [DataMember(Name = "target", EmitDefaultValue = false)]
+        public List<string> Target { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -492,6 +519,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateRotatedSecret {\n");
+            sb.Append("  ProviderType: ").Append(ProviderType).Append("\n");
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
@@ -504,6 +532,7 @@ namespace akeyless.Model
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKeyId: ").Append(GcpServiceAccountKeyId).Append("\n");
+            sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -534,6 +563,7 @@ namespace akeyless.Model
             sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
             sb.Append("  StorageAccountKeyName: ").Append(StorageAccountKeyName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -574,6 +604,11 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.ProviderType == input.ProviderType ||
+                    (this.ProviderType != null &&
+                    this.ProviderType.Equals(input.ProviderType))
+                ) && 
                 (
                     this.ApiId == input.ApiId ||
                     (this.ApiId != null &&
@@ -633,6 +668,11 @@ namespace akeyless.Model
                     this.GcpServiceAccountKeyId == input.GcpServiceAccountKeyId ||
                     (this.GcpServiceAccountKeyId != null &&
                     this.GcpServiceAccountKeyId.Equals(input.GcpServiceAccountKeyId))
+                ) && 
+                (
+                    this.HostProvider == input.HostProvider ||
+                    (this.HostProvider != null &&
+                    this.HostProvider.Equals(input.HostProvider))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -780,6 +820,12 @@ namespace akeyless.Model
                     this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
+                    this.Target == input.Target ||
+                    this.Target != null &&
+                    input.Target != null &&
+                    this.Target.SequenceEqual(input.Target)
+                ) && 
+                (
                     this.TargetName == input.TargetName ||
                     (this.TargetName != null &&
                     this.TargetName.Equals(input.TargetName))
@@ -815,6 +861,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ProviderType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProviderType.GetHashCode();
+                }
                 if (this.ApiId != null)
                 {
                     hashCode = (hashCode * 59) + this.ApiId.GetHashCode();
@@ -862,6 +912,10 @@ namespace akeyless.Model
                 if (this.GcpServiceAccountKeyId != null)
                 {
                     hashCode = (hashCode * 59) + this.GcpServiceAccountKeyId.GetHashCode();
+                }
+                if (this.HostProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Key != null)
@@ -961,6 +1015,10 @@ namespace akeyless.Model
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
+                if (this.Target != null)
+                {
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
                 }
                 if (this.TargetName != null)
                 {

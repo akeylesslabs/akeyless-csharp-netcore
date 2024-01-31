@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethod(long accessExpires = 0, List<string> boundIps = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethod(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.Name = name;
             this.AccessExpires = accessExpires;
             this.BoundIps = boundIps;
+            this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
@@ -80,6 +82,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// Auth Method description
+        /// </summary>
+        /// <value>Auth Method description</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
@@ -140,6 +149,7 @@ namespace akeyless.Model
             sb.Append("class CreateAuthMethod {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -193,6 +203,11 @@ namespace akeyless.Model
                     this.BoundIps.SequenceEqual(input.BoundIps)
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.ForceSubClaims == input.ForceSubClaims ||
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
@@ -240,6 +255,10 @@ namespace akeyless.Model
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)

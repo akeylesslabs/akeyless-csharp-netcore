@@ -219,8 +219,10 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ListSharedItems**](V2Api.md#listshareditems) | **POST** /list-shared-items |  |
 | [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
 | [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects |  |
+| [**ProvisionCertificate**](V2Api.md#provisioncertificate) | **POST** /provision-certificate |  |
 | [**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds |  |
 | [**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key |  |
+| [**RenewCertificate**](V2Api.md#renewcertificate) | **POST** /renew-certificate |  |
 | [**RequestAccess**](V2Api.md#requestaccess) | **POST** /request-access |  |
 | [**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac |  |
 | [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds |  |
@@ -288,7 +290,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateRabbitMQTargetDetails**](V2Api.md#updaterabbitmqtargetdetails) | **POST** /update-rabbitmq-target-details |  |
 | [**UpdateRole**](V2Api.md#updaterole) | **POST** /update-role |  |
 | [**UpdateRotatedSecret**](V2Api.md#updaterotatedsecret) | **POST** /update-rotated-secret |  |
-| [**UpdateRotationSettings**](V2Api.md#updaterotationsettings) | **POST** /update-rotation-settingsrotate-key |  |
+| [**UpdateRotationSettings**](V2Api.md#updaterotationsettings) | **POST** /update-rotation-settings |  |
 | [**UpdateSSHCertIssuer**](V2Api.md#updatesshcertissuer) | **POST** /update-ssh-cert-issuer |  |
 | [**UpdateSSHTarget**](V2Api.md#updatesshtarget) | **POST** /update-ssh-target |  |
 | [**UpdateSSHTargetDetails**](V2Api.md#updatesshtargetdetails) | **POST** /update-ssh-target-details |  |
@@ -19220,6 +19222,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="provisioncertificate"></a>
+# **ProvisionCertificate**
+> ProvisionCertificateOutput ProvisionCertificate (ProvisionCertificate body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ProvisionCertificateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ProvisionCertificate(); // ProvisionCertificate | 
+
+            try
+            {
+                ProvisionCertificateOutput result = apiInstance.ProvisionCertificate(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ProvisionCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ProvisionCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ProvisionCertificateOutput> response = apiInstance.ProvisionCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ProvisionCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ProvisionCertificate**](ProvisionCertificate.md) |  |  |
+
+### Return type
+
+[**ProvisionCertificateOutput**](ProvisionCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | provisionCertificateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="rawcreds"></a>
 # **RawCreds**
 > SystemAccessCredentialsReplyObj RawCreds (RawCreds? body = null)
@@ -19392,6 +19482,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | refreshKeyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="renewcertificate"></a>
+# **RenewCertificate**
+> RenewCertificateOutput RenewCertificate (RenewCertificate body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RenewCertificateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new RenewCertificate(); // RenewCertificate | 
+
+            try
+            {
+                RenewCertificateOutput result = apiInstance.RenewCertificate(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RenewCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RenewCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RenewCertificateOutput> response = apiInstance.RenewCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RenewCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RenewCertificate**](RenewCertificate.md) |  |  |
+
+### Return type
+
+[**RenewCertificateOutput**](RenewCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | renewCertificateResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -19745,7 +19923,7 @@ No authorization required
 
 <a name="rotatekey"></a>
 # **RotateKey**
-> RotateKeyOutput RotateKey (UpdateRotationSettings body)
+> RotateKeyOutput RotateKey (RotateKey body)
 
 
 
@@ -19766,7 +19944,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var body = new UpdateRotationSettings(); // UpdateRotationSettings | 
+            var body = new RotateKey(); // RotateKey | 
 
             try
             {
@@ -19807,7 +19985,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **body** | [**UpdateRotationSettings**](UpdateRotationSettings.md) |  |  |
+| **body** | [**RotateKey**](RotateKey.md) |  |  |
 
 ### Return type
 
@@ -25285,7 +25463,7 @@ No authorization required
 
 <a name="updaterotationsettings"></a>
 # **UpdateRotationSettings**
-> RotateKeyOutput UpdateRotationSettings ()
+> RotateKeyOutput UpdateRotationSettings (UpdateRotationSettings body)
 
 
 
@@ -25306,10 +25484,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new UpdateRotationSettings(); // UpdateRotationSettings | 
 
             try
             {
-                RotateKeyOutput result = apiInstance.UpdateRotationSettings();
+                RotateKeyOutput result = apiInstance.UpdateRotationSettings(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25329,7 +25508,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<RotateKeyOutput> response = apiInstance.UpdateRotationSettingsWithHttpInfo();
+    ApiResponse<RotateKeyOutput> response = apiInstance.UpdateRotationSettingsWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -25343,7 +25522,11 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateRotationSettings**](UpdateRotationSettings.md) |  |  |
+
 ### Return type
 
 [**RotateKeyOutput**](RotateKeyOutput.md)
@@ -25354,7 +25537,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

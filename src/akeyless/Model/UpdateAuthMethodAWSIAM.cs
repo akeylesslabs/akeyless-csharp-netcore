@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="boundRoleName">A list of full role-name that the access is restricted to.</param>
         /// <param name="boundUserId">A list of full user ids that the access is restricted to.</param>
         /// <param name="boundUserName">A list of full user-name that the access is restricted to.</param>
+        /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="stsUrl">sts URL (default to &quot;https://sts.amazonaws.com&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null)
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.BoundRoleName = boundRoleName;
             this.BoundUserId = boundUserId;
             this.BoundUserName = boundUserName;
+            this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
@@ -153,6 +155,13 @@ namespace akeyless.Model
         /// <value>A list of full user-name that the access is restricted to</value>
         [DataMember(Name = "bound-user-name", EmitDefaultValue = false)]
         public List<string> BoundUserName { get; set; }
+
+        /// <summary>
+        /// Auth Method description
+        /// </summary>
+        /// <value>Auth Method description</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
@@ -234,6 +243,7 @@ namespace akeyless.Model
             sb.Append("  BoundRoleName: ").Append(BoundRoleName).Append("\n");
             sb.Append("  BoundUserId: ").Append(BoundUserId).Append("\n");
             sb.Append("  BoundUserName: ").Append(BoundUserName).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -331,6 +341,11 @@ namespace akeyless.Model
                     this.BoundUserName.SequenceEqual(input.BoundUserName)
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.ForceSubClaims == input.ForceSubClaims ||
                     this.ForceSubClaims.Equals(input.ForceSubClaims)
                 ) && 
@@ -416,6 +431,10 @@ namespace akeyless.Model
                 if (this.BoundUserName != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundUserName.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GwBoundIps != null)

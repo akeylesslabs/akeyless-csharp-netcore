@@ -46,10 +46,12 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the RSA key to use in the verification process.</param>
         /// <param name="message">The input message to verify in a base64 format (required).</param>
+        /// <param name="prehashed">Markes that the message is already hashed.</param>
         /// <param name="signature">The message&#39;s signature (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public VerifyRsaSsaPss(string displayId = default(string), string hashFunction = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string message = default(string), string signature = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="version">The version of the key to use for verification.</param>
+        public VerifyRsaSsaPss(string displayId = default(string), string hashFunction = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string message = default(string), bool prehashed = default(bool), string signature = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "message" is required (not null)
             if (message == null)
@@ -68,8 +70,10 @@ namespace akeyless.Model
             this.ItemId = itemId;
             this.Json = json;
             this.KeyName = keyName;
+            this.Prehashed = prehashed;
             this.Token = token;
             this.UidToken = uidToken;
+            this._Version = version;
         }
 
         /// <summary>
@@ -115,6 +119,13 @@ namespace akeyless.Model
         public string Message { get; set; }
 
         /// <summary>
+        /// Markes that the message is already hashed
+        /// </summary>
+        /// <value>Markes that the message is already hashed</value>
+        [DataMember(Name = "prehashed", EmitDefaultValue = true)]
+        public bool Prehashed { get; set; }
+
+        /// <summary>
         /// The message&#39;s signature
         /// </summary>
         /// <value>The message&#39;s signature</value>
@@ -136,6 +147,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// The version of the key to use for verification
+        /// </summary>
+        /// <value>The version of the key to use for verification</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -149,9 +167,11 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Prehashed: ").Append(Prehashed).Append("\n");
             sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -216,6 +236,10 @@ namespace akeyless.Model
                     this.Message.Equals(input.Message))
                 ) && 
                 (
+                    this.Prehashed == input.Prehashed ||
+                    this.Prehashed.Equals(input.Prehashed)
+                ) && 
+                (
                     this.Signature == input.Signature ||
                     (this.Signature != null &&
                     this.Signature.Equals(input.Signature))
@@ -229,6 +253,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -259,6 +287,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Message.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Prehashed.GetHashCode();
                 if (this.Signature != null)
                 {
                     hashCode = (hashCode * 59) + this.Signature.GetHashCode();
@@ -271,6 +300,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

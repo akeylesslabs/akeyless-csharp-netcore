@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="justification">justification.</param>
         /// <param name="name">The Secret name (for database and AWS producers - producer name).</param>
         /// <param name="sshCommand">Path to SSH executable. e.g. /usr/bin/ssh.</param>
-        /// <param name="sshExtraArgs">The Use to add offical SSH arguments (except -i).</param>
+        /// <param name="sshExtraArgs">Additional SSH arguments (except -i).</param>
         /// <param name="sshLegacySigningAlg">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. (default to false).</param>
         /// <param name="target">The target.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -162,9 +162,9 @@ namespace akeyless.Model
         public string SshCommand { get; set; }
 
         /// <summary>
-        /// The Use to add offical SSH arguments (except -i)
+        /// Additional SSH arguments (except -i)
         /// </summary>
-        /// <value>The Use to add offical SSH arguments (except -i)</value>
+        /// <value>Additional SSH arguments (except -i)</value>
         [DataMember(Name = "ssh-extra-args", EmitDefaultValue = false)]
         public string SshExtraArgs { get; set; }
 

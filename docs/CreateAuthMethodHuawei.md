@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BoundTenantName** | **List&lt;string&gt;** | A list of full tenant names that the access is restricted to | [optional] 
 **BoundUserId** | **List&lt;string&gt;** | A list of full user ids that the access is restricted to | [optional] 
 **BoundUserName** | **List&lt;string&gt;** | A list of full user-name that the access is restricted to | [optional] 
+**Description** | **string** | Auth Method description | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

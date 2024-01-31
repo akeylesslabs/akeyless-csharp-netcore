@@ -4329,6 +4329,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ProvisionCertificateOutput</returns>
+        ProvisionCertificateOutput ProvisionCertificate(ProvisionCertificate body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ProvisionCertificateOutput</returns>
+        ApiResponse<ProvisionCertificateOutput> ProvisionCertificateWithHttpInfo(ProvisionCertificate body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SystemAccessCredentialsReplyObj</returns>
@@ -4365,6 +4385,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RefreshKeyOutput</returns>
         ApiResponse<RefreshKeyOutput> RefreshKeyWithHttpInfo(RefreshKey body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RenewCertificateOutput</returns>
+        RenewCertificateOutput RenewCertificate(RenewCertificate body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RenewCertificateOutput</returns>
+        ApiResponse<RenewCertificateOutput> RenewCertificateWithHttpInfo(RenewCertificate body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -4450,7 +4490,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotateKeyOutput</returns>
-        RotateKeyOutput RotateKey(UpdateRotationSettings body, int operationIndex = 0);
+        RotateKeyOutput RotateKey(RotateKey body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -4462,7 +4502,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RotateKeyOutput</returns>
-        ApiResponse<RotateKeyOutput> RotateKeyWithHttpInfo(UpdateRotationSettings body, int operationIndex = 0);
+        ApiResponse<RotateKeyOutput> RotateKeyWithHttpInfo(RotateKey body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -5707,9 +5747,10 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotateKeyOutput</returns>
-        RotateKeyOutput UpdateRotationSettings(int operationIndex = 0);
+        RotateKeyOutput UpdateRotationSettings(UpdateRotationSettings body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -5718,9 +5759,10 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RotateKeyOutput</returns>
-        ApiResponse<RotateKeyOutput> UpdateRotationSettingsWithHttpInfo(int operationIndex = 0);
+        ApiResponse<RotateKeyOutput> UpdateRotationSettingsWithHttpInfo(UpdateRotationSettings body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -11608,6 +11650,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProvisionCertificateOutput</returns>
+        System.Threading.Tasks.Task<ProvisionCertificateOutput> ProvisionCertificateAsync(ProvisionCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProvisionCertificateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ProvisionCertificateOutput>> ProvisionCertificateWithHttpInfoAsync(ProvisionCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -11651,6 +11718,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RefreshKeyOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<RefreshKeyOutput>> RefreshKeyWithHttpInfoAsync(RefreshKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RenewCertificateOutput</returns>
+        System.Threading.Tasks.Task<RenewCertificateOutput> RenewCertificateAsync(RenewCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RenewCertificateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RenewCertificateOutput>> RenewCertificateWithHttpInfoAsync(RenewCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -11760,7 +11852,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateKeyOutput</returns>
-        System.Threading.Tasks.Task<RotateKeyOutput> RotateKeyAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<RotateKeyOutput> RotateKeyAsync(RotateKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -11773,7 +11865,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateKeyOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RotateKeyOutput>> RotateKeyWithHttpInfoAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<RotateKeyOutput>> RotateKeyWithHttpInfoAsync(RotateKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -13331,10 +13423,11 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateKeyOutput</returns>
-        System.Threading.Tasks.Task<RotateKeyOutput> UpdateRotationSettingsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<RotateKeyOutput> UpdateRotationSettingsAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -13343,10 +13436,11 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateKeyOutput)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RotateKeyOutput>> UpdateRotationSettingsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<RotateKeyOutput>> UpdateRotationSettingsWithHttpInfoAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -45266,6 +45360,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ProvisionCertificateOutput</returns>
+        public ProvisionCertificateOutput ProvisionCertificate(ProvisionCertificate body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<ProvisionCertificateOutput> localVarResponse = ProvisionCertificateWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ProvisionCertificateOutput</returns>
+        public akeyless.Client.ApiResponse<ProvisionCertificateOutput> ProvisionCertificateWithHttpInfo(ProvisionCertificate body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->ProvisionCertificate");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.ProvisionCertificate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ProvisionCertificateOutput>("/provision-certificate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ProvisionCertificate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProvisionCertificateOutput</returns>
+        public async System.Threading.Tasks.Task<ProvisionCertificateOutput> ProvisionCertificateAsync(ProvisionCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<ProvisionCertificateOutput> localVarResponse = await ProvisionCertificateWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProvisionCertificateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<ProvisionCertificateOutput>> ProvisionCertificateWithHttpInfoAsync(ProvisionCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->ProvisionCertificate");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.ProvisionCertificate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ProvisionCertificateOutput>("/provision-certificate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ProvisionCertificate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SystemAccessCredentialsReplyObj</returns>
@@ -45533,6 +45773,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RefreshKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RenewCertificateOutput</returns>
+        public RenewCertificateOutput RenewCertificate(RenewCertificate body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RenewCertificateOutput> localVarResponse = RenewCertificateWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RenewCertificateOutput</returns>
+        public akeyless.Client.ApiResponse<RenewCertificateOutput> RenewCertificateWithHttpInfo(RenewCertificate body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->RenewCertificate");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.RenewCertificate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RenewCertificateOutput>("/renew-certificate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RenewCertificate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RenewCertificateOutput</returns>
+        public async System.Threading.Tasks.Task<RenewCertificateOutput> RenewCertificateAsync(RenewCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RenewCertificateOutput> localVarResponse = await RenewCertificateWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RenewCertificateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RenewCertificateOutput>> RenewCertificateWithHttpInfoAsync(RenewCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->RenewCertificate");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.RenewCertificate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RenewCertificateOutput>("/renew-certificate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RenewCertificate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -46113,7 +46499,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotateKeyOutput</returns>
-        public RotateKeyOutput RotateKey(UpdateRotationSettings body, int operationIndex = 0)
+        public RotateKeyOutput RotateKey(RotateKey body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<RotateKeyOutput> localVarResponse = RotateKeyWithHttpInfo(body);
             return localVarResponse.Data;
@@ -46126,7 +46512,7 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RotateKeyOutput</returns>
-        public akeyless.Client.ApiResponse<RotateKeyOutput> RotateKeyWithHttpInfo(UpdateRotationSettings body, int operationIndex = 0)
+        public akeyless.Client.ApiResponse<RotateKeyOutput> RotateKeyWithHttpInfo(RotateKey body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -46185,7 +46571,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateKeyOutput</returns>
-        public async System.Threading.Tasks.Task<RotateKeyOutput> RotateKeyAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<RotateKeyOutput> RotateKeyAsync(RotateKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             akeyless.Client.ApiResponse<RotateKeyOutput> localVarResponse = await RotateKeyWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -46199,7 +46585,7 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateKeyOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotateKeyOutput>> RotateKeyWithHttpInfoAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotateKeyOutput>> RotateKeyWithHttpInfoAsync(RotateKey body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -55306,11 +55692,12 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotateKeyOutput</returns>
-        public RotateKeyOutput UpdateRotationSettings(int operationIndex = 0)
+        public RotateKeyOutput UpdateRotationSettings(UpdateRotationSettings body, int operationIndex = 0)
         {
-            akeyless.Client.ApiResponse<RotateKeyOutput> localVarResponse = UpdateRotationSettingsWithHttpInfo();
+            akeyless.Client.ApiResponse<RotateKeyOutput> localVarResponse = UpdateRotationSettingsWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -55318,13 +55705,21 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RotateKeyOutput</returns>
-        public akeyless.Client.ApiResponse<RotateKeyOutput> UpdateRotationSettingsWithHttpInfo(int operationIndex = 0)
+        public akeyless.Client.ApiResponse<RotateKeyOutput> UpdateRotationSettingsWithHttpInfo(UpdateRotationSettings body, int operationIndex = 0)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateRotationSettings");
+            }
+
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55344,13 +55739,14 @@ namespace akeyless.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = body;
 
             localVarRequestOptions.Operation = "V2Api.UpdateRotationSettings";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<RotateKeyOutput>("/update-rotation-settingsrotate-key", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<RotateKeyOutput>("/update-rotation-settings", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateRotationSettings", localVarResponse);
@@ -55367,12 +55763,13 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateKeyOutput</returns>
-        public async System.Threading.Tasks.Task<RotateKeyOutput> UpdateRotationSettingsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<RotateKeyOutput> UpdateRotationSettingsAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<RotateKeyOutput> localVarResponse = await UpdateRotationSettingsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<RotateKeyOutput> localVarResponse = await UpdateRotationSettingsWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55380,15 +55777,23 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateKeyOutput)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotateKeyOutput>> UpdateRotationSettingsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotateKeyOutput>> UpdateRotationSettingsWithHttpInfoAsync(UpdateRotationSettings body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->UpdateRotationSettings");
+            }
+
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55408,13 +55813,14 @@ namespace akeyless.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = body;
 
             localVarRequestOptions.Operation = "V2Api.UpdateRotationSettings";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<RotateKeyOutput>("/update-rotation-settingsrotate-key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotateKeyOutput>("/update-rotation-settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **EnableRdpSra** | **bool** |  | [optional] 
 **MigrationTargetId** | **long** |  | [optional] 
 **ServerTargetsPathTemplate** | **string** |  | [optional] 
+**UserGroups** | **List&lt;string&gt;** |  | [optional] 
 **UsersIgnoreList** | **Dictionary&lt;string, bool&gt;** |  | [optional] 
 **UsersRotatedSecretsPathTemplate** | **string** |  | [optional] 
 

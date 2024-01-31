@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | **DateTime** |  | [optional] 
 **AccessDateDisplay** | **string** |  | [optional] 
+**CertificateVersionInfo** | [**CertificateVersionInfo**](CertificateVersionInfo.md) |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
 **CustomerFragmentId** | **string** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 

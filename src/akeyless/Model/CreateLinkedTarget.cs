@@ -46,8 +46,9 @@ namespace akeyless.Model
         /// <param name="name">Target name (required).</param>
         /// <param name="parentTargetName">The parent Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="type">Specifies the hosts type, relevant only when working without parent target.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateLinkedTarget(string description = default(string), string hosts = default(string), bool json = false, string name = default(string), string parentTargetName = default(string), string token = default(string), string uidToken = default(string))
+        public CreateLinkedTarget(string description = default(string), string hosts = default(string), bool json = false, string name = default(string), string parentTargetName = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.Json = json;
             this.ParentTargetName = parentTargetName;
             this.Token = token;
+            this.Type = type;
             this.UidToken = uidToken;
         }
 
@@ -106,6 +108,13 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
+        /// Specifies the hosts type, relevant only when working without parent target
+        /// </summary>
+        /// <value>Specifies the hosts type, relevant only when working without parent target</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public string Type { get; set; }
+
+        /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
@@ -126,6 +135,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ParentTargetName: ").Append(ParentTargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -192,6 +202,11 @@ namespace akeyless.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
+                (
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
@@ -227,6 +242,10 @@ namespace akeyless.Model
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                if (this.Type != null)
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 if (this.UidToken != null)
                 {

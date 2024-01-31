@@ -40,11 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateItem" /> class.
         /// </summary>
+        /// <param name="providerType">providerType.</param>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="certFileData">PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates..</param>
+        /// <param name="changeEvent">Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
@@ -78,7 +81,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = "explicit", bool json = false, string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -86,13 +89,17 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateItem and cannot be null");
             }
             this.Name = name;
+            this.ProviderType = providerType;
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
             this.AddTag = addTag;
             this.CertFileData = certFileData;
+            this.ChangeEvent = changeEvent;
             this.DeleteProtection = deleteProtection;
             // use default value if no "description" provided
             this.Description = description ?? "default_metadata";
+            // use default value if no "hostProvider" provided
+            this.HostProvider = hostProvider ?? "explicit";
             this.Json = json;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? "default_metadata";
@@ -130,6 +137,12 @@ namespace akeyless.Model
         }
 
         /// <summary>
+        /// Gets or Sets ProviderType
+        /// </summary>
+        [DataMember(Name = "ProviderType", EmitDefaultValue = false)]
+        public string ProviderType { get; set; }
+
+        /// <summary>
         /// for personal password manager
         /// </summary>
         /// <value>for personal password manager</value>
@@ -151,6 +164,13 @@ namespace akeyless.Model
         public string CertFileData { get; set; }
 
         /// <summary>
+        /// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
+        /// </summary>
+        /// <value>Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)</value>
+        [DataMember(Name = "change-event", EmitDefaultValue = false)]
+        public string ChangeEvent { get; set; }
+
+        /// <summary>
         /// Protection from accidental deletion of this item [true/false]
         /// </summary>
         /// <value>Protection from accidental deletion of this item [true/false]</value>
@@ -163,6 +183,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// </summary>
+        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        [DataMember(Name = "host-provider", EmitDefaultValue = false)]
+        public string HostProvider { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -403,11 +430,14 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateItem {\n");
+            sb.Append("  ProviderType: ").Append(ProviderType).Append("\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  ChangeEvent: ").Append(ChangeEvent).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
@@ -477,6 +507,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.ProviderType == input.ProviderType ||
+                    (this.ProviderType != null &&
+                    this.ProviderType.Equals(input.ProviderType))
+                ) && 
+                (
                     this.Accessibility == input.Accessibility ||
                     (this.Accessibility != null &&
                     this.Accessibility.Equals(input.Accessibility))
@@ -493,6 +528,11 @@ namespace akeyless.Model
                     this.CertFileData.Equals(input.CertFileData))
                 ) && 
                 (
+                    this.ChangeEvent == input.ChangeEvent ||
+                    (this.ChangeEvent != null &&
+                    this.ChangeEvent.Equals(input.ChangeEvent))
+                ) && 
+                (
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
@@ -501,6 +541,11 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.HostProvider == input.HostProvider ||
+                    (this.HostProvider != null &&
+                    this.HostProvider.Equals(input.HostProvider))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -676,6 +721,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ProviderType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProviderType.GetHashCode();
+                }
                 if (this.Accessibility != null)
                 {
                     hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
@@ -688,6 +737,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
                 }
+                if (this.ChangeEvent != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChangeEvent.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
@@ -695,6 +748,10 @@ namespace akeyless.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.HostProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)

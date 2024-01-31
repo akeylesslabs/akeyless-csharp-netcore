@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
+**ChangeEvent** | **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
 **CustomField** | **Dictionary&lt;string, string&gt;** | For Password Management use, additional fields | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 

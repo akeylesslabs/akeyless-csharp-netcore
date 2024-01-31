@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="ipAddresses">A comma-separated list of ip addresses alternative names.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyType">The type of the key to generate (classic-key/dfc) (required) (default to &quot;classic-key&quot;).</param>
-        /// <param name="name">The classic key name (required).</param>
+        /// <param name="name">The key name (required).</param>
         /// <param name="org">The organization to be included in the CSR certificate.</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 3).</param>
         /// <param name="state">The state to be included in the CSR certificate.</param>
@@ -190,9 +190,9 @@ namespace akeyless.Model
         public string KeyType { get; set; }
 
         /// <summary>
-        /// The classic key name
+        /// The key name
         /// </summary>
-        /// <value>The classic key name</value>
+        /// <value>The key name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

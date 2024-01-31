@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **EmailTo** | **string** | A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder) | [optional] 
 **EventSourceLocations** | **List&lt;string&gt;** | Event sources | 
 **EventSourceType** | **string** | Event Source type [item, target, auth_method, gateway] | [optional] [default to "item"]
-**EventTypes** | **List&lt;string&gt;** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure] | [optional] 
+**EventTypes** | **List&lt;string&gt;** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated] | [optional] 
 **Every** | **string** | Rate of periodic runner repetition in hours | [optional] 
 **ForwarderType** | **string** |  | 
 **Host** | **string** | Workstation Host | [optional] 

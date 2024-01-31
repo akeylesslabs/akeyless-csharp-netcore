@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="boundNamespaces">A list of namespaces that the access is restricted to.</param>
         /// <param name="boundPodNames">A list of pod names that the access is restricted to.</param>
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
+        /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="genKey">Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false].</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="publicKey">Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -70,6 +71,7 @@ namespace akeyless.Model
             this.BoundNamespaces = boundNamespaces;
             this.BoundPodNames = boundPodNames;
             this.BoundSaNames = boundSaNames;
+            this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GenKey = genKey;
             this.GwBoundIps = gwBoundIps;
@@ -122,6 +124,13 @@ namespace akeyless.Model
         /// <value>A list of service account names that the access is restricted to</value>
         [DataMember(Name = "bound-sa-names", EmitDefaultValue = false)]
         public List<string> BoundSaNames { get; set; }
+
+        /// <summary>
+        /// Auth Method description
+        /// </summary>
+        /// <value>Auth Method description</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// if true: enforce role-association must include sub claims
@@ -207,6 +216,7 @@ namespace akeyless.Model
             sb.Append("  BoundNamespaces: ").Append(BoundNamespaces).Append("\n");
             sb.Append("  BoundPodNames: ").Append(BoundPodNames).Append("\n");
             sb.Append("  BoundSaNames: ").Append(BoundSaNames).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GenKey: ").Append(GenKey).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
@@ -284,6 +294,11 @@ namespace akeyless.Model
                     this.BoundSaNames != null &&
                     input.BoundSaNames != null &&
                     this.BoundSaNames.SequenceEqual(input.BoundSaNames)
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ForceSubClaims == input.ForceSubClaims ||
@@ -364,6 +379,10 @@ namespace akeyless.Model
                 if (this.BoundSaNames != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundSaNames.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ForceSubClaims.GetHashCode();
                 if (this.GenKey != null)

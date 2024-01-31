@@ -49,12 +49,14 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Producer name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
+        /// <param name="sslCertificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -71,6 +73,8 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.Ssl = ssl;
+            this.SslCertificate = sslCertificate;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -143,6 +147,20 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Enable/Disable SSL [true/false]
+        /// </summary>
+        /// <value>Enable/Disable SSL [true/false]</value>
+        [DataMember(Name = "ssl", EmitDefaultValue = true)]
+        public bool Ssl { get; set; }
+
+        /// <summary>
+        /// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
+        /// </summary>
+        /// <value>SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)</value>
+        [DataMember(Name = "ssl-certificate", EmitDefaultValue = false)]
+        public string SslCertificate { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -194,6 +212,8 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  Ssl: ").Append(Ssl).Append("\n");
+            sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -279,6 +299,15 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.Ssl == input.Ssl ||
+                    this.Ssl.Equals(input.Ssl)
+                ) && 
+                (
+                    this.SslCertificate == input.SslCertificate ||
+                    (this.SslCertificate != null &&
+                    this.SslCertificate.Equals(input.SslCertificate))
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -347,6 +376,11 @@ namespace akeyless.Model
                 if (this.ProducerEncryptionKeyName != null)
                 {
                     hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Ssl.GetHashCode();
+                if (this.SslCertificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.SslCertificate.GetHashCode();
                 }
                 if (this.Tags != null)
                 {

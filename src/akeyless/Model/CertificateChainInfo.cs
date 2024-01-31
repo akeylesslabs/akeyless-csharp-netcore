@@ -37,15 +37,19 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificateChain">certificateChain.</param>
         /// <param name="certificateFormat">certificateFormat.</param>
+        /// <param name="certificateHasPrivateKey">certificateHasPrivateKey.</param>
+        /// <param name="certificateIssuerGwClusterUrl">certificateIssuerGwClusterUrl.</param>
         /// <param name="certificateIssuerItemId">certificateIssuerItemId.</param>
         /// <param name="certificateIssuerName">certificateIssuerName.</param>
         /// <param name="certificatePem">certificatePem.</param>
         /// <param name="certificateStatus">certificateStatus.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
-        public CertificateChainInfo(List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>))
+        public CertificateChainInfo(List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>))
         {
             this.CertificateChain = certificateChain;
             this.CertificateFormat = certificateFormat;
+            this.CertificateHasPrivateKey = certificateHasPrivateKey;
+            this.CertificateIssuerGwClusterUrl = certificateIssuerGwClusterUrl;
             this.CertificateIssuerItemId = certificateIssuerItemId;
             this.CertificateIssuerName = certificateIssuerName;
             this.CertificatePem = certificatePem;
@@ -64,6 +68,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate_format", EmitDefaultValue = false)]
         public string CertificateFormat { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateHasPrivateKey
+        /// </summary>
+        [DataMember(Name = "certificate_has_private_key", EmitDefaultValue = true)]
+        public bool CertificateHasPrivateKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateIssuerGwClusterUrl
+        /// </summary>
+        [DataMember(Name = "certificate_issuer_gw_cluster_url", EmitDefaultValue = false)]
+        public string CertificateIssuerGwClusterUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificateIssuerItemId
@@ -105,6 +121,8 @@ namespace akeyless.Model
             sb.Append("class CertificateChainInfo {\n");
             sb.Append("  CertificateChain: ").Append(CertificateChain).Append("\n");
             sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
+            sb.Append("  CertificateHasPrivateKey: ").Append(CertificateHasPrivateKey).Append("\n");
+            sb.Append("  CertificateIssuerGwClusterUrl: ").Append(CertificateIssuerGwClusterUrl).Append("\n");
             sb.Append("  CertificateIssuerItemId: ").Append(CertificateIssuerItemId).Append("\n");
             sb.Append("  CertificateIssuerName: ").Append(CertificateIssuerName).Append("\n");
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
@@ -157,6 +175,15 @@ namespace akeyless.Model
                     this.CertificateFormat.Equals(input.CertificateFormat))
                 ) && 
                 (
+                    this.CertificateHasPrivateKey == input.CertificateHasPrivateKey ||
+                    this.CertificateHasPrivateKey.Equals(input.CertificateHasPrivateKey)
+                ) && 
+                (
+                    this.CertificateIssuerGwClusterUrl == input.CertificateIssuerGwClusterUrl ||
+                    (this.CertificateIssuerGwClusterUrl != null &&
+                    this.CertificateIssuerGwClusterUrl.Equals(input.CertificateIssuerGwClusterUrl))
+                ) && 
+                (
                     this.CertificateIssuerItemId == input.CertificateIssuerItemId ||
                     this.CertificateIssuerItemId.Equals(input.CertificateIssuerItemId)
                 ) && 
@@ -199,6 +226,11 @@ namespace akeyless.Model
                 if (this.CertificateFormat != null)
                 {
                     hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CertificateHasPrivateKey.GetHashCode();
+                if (this.CertificateIssuerGwClusterUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateIssuerGwClusterUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.CertificateIssuerItemId.GetHashCode();
                 if (this.CertificateIssuerName != null)

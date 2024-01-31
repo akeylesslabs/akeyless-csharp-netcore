@@ -44,12 +44,13 @@ namespace akeyless.Model
         /// <param name="displayId">The name of the key to use in the sign data process (required).</param>
         /// <param name="hashed">Defines whether the data should be hashed as part of the signing. If true, the data will not be hashed (default to false).</param>
         /// <param name="hashingMethod">HashingMethod (default to &quot;SHA256&quot;).</param>
+        /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">classic key version (required).</param>
-        public SignDataWithClassicKey(string data = default(string), string displayId = default(string), bool hashed = false, string hashingMethod = "SHA256", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public SignDataWithClassicKey(string data = default(string), string displayId = default(string), bool hashed = false, string hashingMethod = "SHA256", string ignoreCache = "false", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -73,6 +74,8 @@ namespace akeyless.Model
             this.Hashed = hashed;
             // use default value if no "hashingMethod" provided
             this.HashingMethod = hashingMethod ?? "SHA256";
+            // use default value if no "ignoreCache" provided
+            this.IgnoreCache = ignoreCache ?? "false";
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
@@ -105,6 +108,13 @@ namespace akeyless.Model
         /// <value>HashingMethod</value>
         [DataMember(Name = "hashing-method", EmitDefaultValue = false)]
         public string HashingMethod { get; set; }
+
+        /// <summary>
+        /// Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
+        /// </summary>
+        /// <value>Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI</value>
+        [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
+        public string IgnoreCache { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -153,6 +163,7 @@ namespace akeyless.Model
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Hashed: ").Append(Hashed).Append("\n");
             sb.Append("  HashingMethod: ").Append(HashingMethod).Append("\n");
+            sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -213,6 +224,11 @@ namespace akeyless.Model
                     this.HashingMethod.Equals(input.HashingMethod))
                 ) && 
                 (
+                    this.IgnoreCache == input.IgnoreCache ||
+                    (this.IgnoreCache != null &&
+                    this.IgnoreCache.Equals(input.IgnoreCache))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -258,6 +274,10 @@ namespace akeyless.Model
                 if (this.HashingMethod != null)
                 {
                     hashCode = (hashCode * 59) + this.HashingMethod.GetHashCode();
+                }
+                if (this.IgnoreCache != null)
+                {
+                    hashCode = (hashCode * 59) + this.IgnoreCache.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)

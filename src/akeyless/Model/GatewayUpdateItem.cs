@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="apiId">API ID to rotate (relevant only for rotator-type&#x3D;api-key).</param>
         /// <param name="apiKey">API key to rotate (relevant only for rotator-type&#x3D;api-key).</param>
+        /// <param name="appId">ApplicationId (used in azure).</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="customPayload">Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string appId = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.AddTag = addTag;
             this.ApiId = apiId;
             this.ApiKey = apiKey;
+            this.AppId = appId;
             this.AutoRotate = autoRotate;
             this.CustomPayload = customPayload;
             this.DeleteProtection = deleteProtection;
@@ -129,6 +131,13 @@ namespace akeyless.Model
         /// <value>API key to rotate (relevant only for rotator-type&#x3D;api-key)</value>
         [DataMember(Name = "api-key", EmitDefaultValue = false)]
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// ApplicationId (used in azure)
+        /// </summary>
+        /// <value>ApplicationId (used in azure)</value>
+        [DataMember(Name = "app-id", EmitDefaultValue = false)]
+        public string AppId { get; set; }
 
         /// <summary>
         /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]
@@ -302,6 +311,7 @@ namespace akeyless.Model
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
+            sb.Append("  AppId: ").Append(AppId).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -375,6 +385,11 @@ namespace akeyless.Model
                     this.ApiKey == input.ApiKey ||
                     (this.ApiKey != null &&
                     this.ApiKey.Equals(input.ApiKey))
+                ) && 
+                (
+                    this.AppId == input.AppId ||
+                    (this.AppId != null &&
+                    this.AppId.Equals(input.AppId))
                 ) && 
                 (
                     this.AutoRotate == input.AutoRotate ||
@@ -511,6 +526,10 @@ namespace akeyless.Model
                 if (this.ApiKey != null)
                 {
                     hashCode = (hashCode * 59) + this.ApiKey.GetHashCode();
+                }
+                if (this.AppId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AppId.GetHashCode();
                 }
                 if (this.AutoRotate != null)
                 {

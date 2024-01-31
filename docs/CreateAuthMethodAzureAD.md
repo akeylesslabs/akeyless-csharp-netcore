@@ -6,7 +6,7 @@ createAuthMethodAzureAD is a command that creates a new auth method that will be
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
-**Audience** | **string** | The audience in the JWT | [optional] [default to "https://management.azure.com/"]
+**Audience** | **string** | Deprecated (Deprecated) The audience in the JWT | [optional] [default to "https://management.azure.com/"]
 **BoundGroupId** | **List&lt;string&gt;** | A list of group ids that the access is restricted to | [optional] 
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **BoundProviders** | **List&lt;string&gt;** | A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc) | [optional] 
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **BoundSpid** | **List&lt;string&gt;** | A list of service principal IDs that the access is restricted to | [optional] 
 **BoundSubId** | **List&lt;string&gt;** | A list of subscription ids that the access is restricted to | [optional] 
 **BoundTenantId** | **string** | The Azure tenant id that the access is restricted to | 
+**Description** | **string** | Auth Method description | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] [default to "https://sts.windows.net/---bound_tenant_id---"]

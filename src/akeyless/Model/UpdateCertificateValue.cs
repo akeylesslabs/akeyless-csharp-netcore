@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="format">CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Content of the certificate&#39;s private key in a Base64 format..</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateCertificateValue(List<string> addTag = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> rmTag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UpdateCertificateValue(List<string> addTag = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> rmTag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -69,6 +70,7 @@ namespace akeyless.Model
             this.ExpirationEventIn = expirationEventIn;
             this.Format = format;
             this.Json = json;
+            this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.KeyData = keyData;
             this.Metadata = metadata;
@@ -125,6 +127,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Whether to keep previous version [true/false]. If not set, use default according to account settings
+        /// </summary>
+        /// <value>Whether to keep previous version [true/false]. If not set, use default according to account settings</value>
+        [DataMember(Name = "keep-prev-version", EmitDefaultValue = false)]
+        public string KeepPrevVersion { get; set; }
 
         /// <summary>
         /// The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used)
@@ -190,6 +199,7 @@ namespace akeyless.Model
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -269,6 +279,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.KeepPrevVersion == input.KeepPrevVersion ||
+                    (this.KeepPrevVersion != null &&
+                    this.KeepPrevVersion.Equals(input.KeepPrevVersion))
+                ) && 
+                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
@@ -340,6 +355,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.KeepPrevVersion != null)
+                {
+                    hashCode = (hashCode * 59) + this.KeepPrevVersion.GetHashCode();
+                }
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();

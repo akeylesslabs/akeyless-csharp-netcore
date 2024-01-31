@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessDate">accessDate.</param>
         /// <param name="accessDateDisplay">accessDateDisplay.</param>
+        /// <param name="certificateVersionInfo">certificateVersionInfo.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="customerFragmentId">customerFragmentId.</param>
         /// <param name="deletionDate">deletionDate.</param>
@@ -45,10 +46,11 @@ namespace akeyless.Model
         /// <param name="protectionKeyName">protectionKeyName.</param>
         /// <param name="version">version.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public ItemVersion(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
+        public ItemVersion(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), CertificateVersionInfo certificateVersionInfo = default(CertificateVersionInfo), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), DateTime deletionDate = default(DateTime), string itemVersionState = default(string), DateTime modificationDate = default(DateTime), string protectionKeyName = default(string), int version = default(int), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
+            this.CertificateVersionInfo = certificateVersionInfo;
             this.CreationDate = creationDate;
             this.CustomerFragmentId = customerFragmentId;
             this.DeletionDate = deletionDate;
@@ -70,6 +72,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access_date_display", EmitDefaultValue = false)]
         public string AccessDateDisplay { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateVersionInfo
+        /// </summary>
+        [DataMember(Name = "certificate_version_info", EmitDefaultValue = false)]
+        public CertificateVersionInfo CertificateVersionInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets CreationDate
@@ -130,6 +138,7 @@ namespace akeyless.Model
             sb.Append("class ItemVersion {\n");
             sb.Append("  AccessDate: ").Append(AccessDate).Append("\n");
             sb.Append("  AccessDateDisplay: ").Append(AccessDateDisplay).Append("\n");
+            sb.Append("  CertificateVersionInfo: ").Append(CertificateVersionInfo).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  CustomerFragmentId: ").Append(CustomerFragmentId).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
@@ -182,6 +191,11 @@ namespace akeyless.Model
                     this.AccessDateDisplay == input.AccessDateDisplay ||
                     (this.AccessDateDisplay != null &&
                     this.AccessDateDisplay.Equals(input.AccessDateDisplay))
+                ) && 
+                (
+                    this.CertificateVersionInfo == input.CertificateVersionInfo ||
+                    (this.CertificateVersionInfo != null &&
+                    this.CertificateVersionInfo.Equals(input.CertificateVersionInfo))
                 ) && 
                 (
                     this.CreationDate == input.CreationDate ||
@@ -239,6 +253,10 @@ namespace akeyless.Model
                 if (this.AccessDateDisplay != null)
                 {
                     hashCode = (hashCode * 59) + this.AccessDateDisplay.GetHashCode();
+                }
+                if (this.CertificateVersionInfo != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateVersionInfo.GetHashCode();
                 }
                 if (this.CreationDate != null)
                 {

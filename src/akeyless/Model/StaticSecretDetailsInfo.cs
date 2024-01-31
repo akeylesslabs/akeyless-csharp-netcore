@@ -35,15 +35,23 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticSecretDetailsInfo" /> class.
         /// </summary>
+        /// <param name="notifyOnChangeEvent">notifyOnChangeEvent.</param>
         /// <param name="username">username.</param>
         /// <param name="website">deprecated.</param>
         /// <param name="websites">websites.</param>
-        public StaticSecretDetailsInfo(string username = default(string), string website = default(string), List<string> websites = default(List<string>))
+        public StaticSecretDetailsInfo(bool notifyOnChangeEvent = default(bool), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
         {
+            this.NotifyOnChangeEvent = notifyOnChangeEvent;
             this.Username = username;
             this.Website = website;
             this.Websites = websites;
         }
+
+        /// <summary>
+        /// Gets or Sets NotifyOnChangeEvent
+        /// </summary>
+        [DataMember(Name = "notify_on_change_event", EmitDefaultValue = true)]
+        public bool NotifyOnChangeEvent { get; set; }
 
         /// <summary>
         /// Gets or Sets Username
@@ -72,6 +80,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretDetailsInfo {\n");
+            sb.Append("  NotifyOnChangeEvent: ").Append(NotifyOnChangeEvent).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
             sb.Append("  Websites: ").Append(Websites).Append("\n");
@@ -111,6 +120,10 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.NotifyOnChangeEvent == input.NotifyOnChangeEvent ||
+                    this.NotifyOnChangeEvent.Equals(input.NotifyOnChangeEvent)
+                ) && 
+                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
@@ -137,6 +150,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.NotifyOnChangeEvent.GetHashCode();
                 if (this.Username != null)
                 {
                     hashCode = (hashCode * 59) + this.Username.GetHashCode();

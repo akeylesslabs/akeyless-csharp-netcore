@@ -29,14 +29,14 @@ namespace akeyless.Model
     /// <summary>
     /// SignPKCS1Output
     /// </summary>
-    [DataContract(Name = "signPKCS1Output")]
+    [DataContract(Name = "SignPKCS1Output")]
     public partial class SignPKCS1Output : IEquatable<SignPKCS1Output>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SignPKCS1Output" /> class.
         /// </summary>
         /// <param name="result">result.</param>
-        public SignPKCS1Output(List<int> result = default(List<int>))
+        public SignPKCS1Output(string result = default(string))
         {
             this.Result = result;
         }
@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// Gets or Sets Result
         /// </summary>
         [DataMember(Name = "result", EmitDefaultValue = false)]
-        public List<int> Result { get; set; }
+        public string Result { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,9 +93,8 @@ namespace akeyless.Model
             return 
                 (
                     this.Result == input.Result ||
-                    this.Result != null &&
-                    input.Result != null &&
-                    this.Result.SequenceEqual(input.Result)
+                    (this.Result != null &&
+                    this.Result.Equals(input.Result))
                 );
         }
 

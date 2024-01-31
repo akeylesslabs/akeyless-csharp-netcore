@@ -48,7 +48,8 @@ namespace akeyless.Model
         /// <param name="targetFolder">Target folder for imported passwords (default to &quot;/&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ImportPasswords(string accessibility = "personal", string format = "LastPass", string importPath = default(string), bool json = false, string protectionKey = default(string), string targetFolder = "/", string token = default(string), string uidToken = default(string))
+        /// <param name="updateMode">updateMode.</param>
+        public ImportPasswords(string accessibility = "personal", string format = "LastPass", string importPath = default(string), bool json = false, string protectionKey = default(string), string targetFolder = "/", string token = default(string), string uidToken = default(string), string updateMode = default(string))
         {
             // to ensure "importPath" is required (not null)
             if (importPath == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.TargetFolder = targetFolder ?? "/";
             this.Token = token;
             this.UidToken = uidToken;
+            this.UpdateMode = updateMode;
         }
 
         /// <summary>
@@ -125,6 +127,12 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Gets or Sets UpdateMode
+        /// </summary>
+        [DataMember(Name = "update-mode", EmitDefaultValue = false)]
+        public string UpdateMode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -140,6 +148,7 @@ namespace akeyless.Model
             sb.Append("  TargetFolder: ").Append(TargetFolder).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UpdateMode: ").Append(UpdateMode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -213,6 +222,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UpdateMode == input.UpdateMode ||
+                    (this.UpdateMode != null &&
+                    this.UpdateMode.Equals(input.UpdateMode))
                 );
         }
 
@@ -253,6 +267,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UpdateMode != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdateMode.GetHashCode();
                 }
                 return hashCode;
             }

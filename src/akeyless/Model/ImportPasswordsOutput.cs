@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="imported">imported.</param>
         /// <param name="passwordsInFile">passwordsInFile.</param>
         /// <param name="successfullyParsed">successfullyParsed.</param>
-        public ImportPasswordsOutput(int imported = default(int), long passwordsInFile = default(long), long successfullyParsed = default(long))
+        /// <param name="updated">updated.</param>
+        public ImportPasswordsOutput(int imported = default(int), long passwordsInFile = default(long), long successfullyParsed = default(long), int updated = default(int))
         {
             this.Imported = imported;
             this.PasswordsInFile = passwordsInFile;
             this.SuccessfullyParsed = successfullyParsed;
+            this.Updated = updated;
         }
 
         /// <summary>
@@ -64,6 +66,12 @@ namespace akeyless.Model
         public long SuccessfullyParsed { get; set; }
 
         /// <summary>
+        /// Gets or Sets Updated
+        /// </summary>
+        [DataMember(Name = "updated", EmitDefaultValue = false)]
+        public int Updated { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,6 +82,7 @@ namespace akeyless.Model
             sb.Append("  Imported: ").Append(Imported).Append("\n");
             sb.Append("  PasswordsInFile: ").Append(PasswordsInFile).Append("\n");
             sb.Append("  SuccessfullyParsed: ").Append(SuccessfullyParsed).Append("\n");
+            sb.Append("  Updated: ").Append(Updated).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,6 +129,10 @@ namespace akeyless.Model
                 (
                     this.SuccessfullyParsed == input.SuccessfullyParsed ||
                     this.SuccessfullyParsed.Equals(input.SuccessfullyParsed)
+                ) && 
+                (
+                    this.Updated == input.Updated ||
+                    this.Updated.Equals(input.Updated)
                 );
         }
 
@@ -135,6 +148,7 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.Imported.GetHashCode();
                 hashCode = (hashCode * 59) + this.PasswordsInFile.GetHashCode();
                 hashCode = (hashCode * 59) + this.SuccessfullyParsed.GetHashCode();
+                hashCode = (hashCode * 59) + this.Updated.GetHashCode();
                 return hashCode;
             }
         }

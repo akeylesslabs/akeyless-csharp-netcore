@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
 **ApiId** | **string** | API ID to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] 
 **ApiKey** | **string** | API key to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] 
+**AppId** | **string** | ApplicationId (used in azure) | [optional] 
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
 **CustomPayload** | **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 

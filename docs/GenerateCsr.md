@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **IpAddresses** | **string** | A comma-separated list of ip addresses alternative names | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyType** | **string** | The type of the key to generate (classic-key/dfc) | [default to "classic-key"]
-**Name** | **string** | The classic key name | 
+**Name** | **string** | The key name | 
 **Org** | **string** | The organization to be included in the CSR certificate | [optional] 
 **SplitLevel** | **long** | The number of fragments that the item will be split into (not includes customer fragment) | [optional] [default to 3]
 **State** | **string** | The state to be included in the CSR certificate | [optional] 
