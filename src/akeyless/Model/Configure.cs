@@ -47,7 +47,9 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context).</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string))
+        /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
+        /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -63,6 +65,9 @@ namespace akeyless.Model
             this.Json = json;
             this.K8sAuthConfigName = k8sAuthConfigName;
             this.KeyData = keyData;
+            // use default value if no "ociAuthType" provided
+            this.OciAuthType = ociAuthType ?? "apikey";
+            this.OciGroupOcid = ociGroupOcid;
         }
 
         /// <summary>
@@ -150,6 +155,20 @@ namespace akeyless.Model
         public string KeyData { get; set; }
 
         /// <summary>
+        /// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci)
+        /// </summary>
+        /// <value>The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci)</value>
+        [DataMember(Name = "oci-auth-type", EmitDefaultValue = false)]
+        public string OciAuthType { get; set; }
+
+        /// <summary>
+        /// A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci)
+        /// </summary>
+        /// <value>A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci)</value>
+        [DataMember(Name = "oci-group-ocid", EmitDefaultValue = false)]
+        public List<string> OciGroupOcid { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -169,6 +188,8 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
+            sb.Append("  OciAuthType: ").Append(OciAuthType).Append("\n");
+            sb.Append("  OciGroupOcid: ").Append(OciGroupOcid).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -262,6 +283,17 @@ namespace akeyless.Model
                     this.KeyData == input.KeyData ||
                     (this.KeyData != null &&
                     this.KeyData.Equals(input.KeyData))
+                ) && 
+                (
+                    this.OciAuthType == input.OciAuthType ||
+                    (this.OciAuthType != null &&
+                    this.OciAuthType.Equals(input.OciAuthType))
+                ) && 
+                (
+                    this.OciGroupOcid == input.OciGroupOcid ||
+                    this.OciGroupOcid != null &&
+                    input.OciGroupOcid != null &&
+                    this.OciGroupOcid.SequenceEqual(input.OciGroupOcid)
                 );
         }
 
@@ -318,6 +350,14 @@ namespace akeyless.Model
                 if (this.KeyData != null)
                 {
                     hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
+                }
+                if (this.OciAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.OciAuthType.GetHashCode();
+                }
+                if (this.OciGroupOcid != null)
+                {
+                    hashCode = (hashCode * 59) + this.OciGroupOcid.GetHashCode();
                 }
                 return hashCode;
             }

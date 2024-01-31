@@ -21,6 +21,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateAuthMethodK8S**](V2Api.md#createauthmethodk8s) | **POST** /create-auth-method-k8s |  |
 | [**CreateAuthMethodLDAP**](V2Api.md#createauthmethodldap) | **POST** /create-auth-method-ldap |  |
 | [**CreateAuthMethodOAuth2**](V2Api.md#createauthmethodoauth2) | **POST** /create-auth-method-oauth2 |  |
+| [**CreateAuthMethodOCI**](V2Api.md#createauthmethodoci) | **POST** /create-auth-method-oci |  |
 | [**CreateAuthMethodOIDC**](V2Api.md#createauthmethodoidc) | **POST** /create-auth-method-oidc |  |
 | [**CreateAuthMethodSAML**](V2Api.md#createauthmethodsaml) | **POST** /create-auth-method-saml |  |
 | [**CreateAuthMethodUniversalIdentity**](V2Api.md#createauthmethoduniversalidentity) | **POST** /create-auth-method-universal-identity |  |
@@ -260,6 +261,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateAuthMethodK8S**](V2Api.md#updateauthmethodk8s) | **POST** /update-auth-method-k8s |  |
 | [**UpdateAuthMethodLDAP**](V2Api.md#updateauthmethodldap) | **POST** /update-auth-method-ldap |  |
 | [**UpdateAuthMethodOAuth2**](V2Api.md#updateauthmethodoauth2) | **POST** /update-auth-method-oauth2 |  |
+| [**UpdateAuthMethodOCI**](V2Api.md#updateauthmethodoci) | **POST** /update-auth-method-oci |  |
 | [**UpdateAuthMethodOIDC**](V2Api.md#updateauthmethodoidc) | **POST** /update-auth-method-oidc |  |
 | [**UpdateAuthMethodSAML**](V2Api.md#updateauthmethodsaml) | **POST** /update-auth-method-saml |  |
 | [**UpdateAuthMethodUniversalIdentity**](V2Api.md#updateauthmethoduniversalidentity) | **POST** /update-auth-method-universal-identity |  |
@@ -1810,6 +1812,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createAuthMethodOAuth2Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createauthmethodoci"></a>
+# **CreateAuthMethodOCI**
+> CreateAuthMethodOCIOutput CreateAuthMethodOCI (CreateAuthMethodOCI body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateAuthMethodOCIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateAuthMethodOCI(); // CreateAuthMethodOCI | 
+
+            try
+            {
+                CreateAuthMethodOCIOutput result = apiInstance.CreateAuthMethodOCI(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateAuthMethodOCI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateAuthMethodOCIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAuthMethodOCIOutput> response = apiInstance.CreateAuthMethodOCIWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateAuthMethodOCIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateAuthMethodOCI**](CreateAuthMethodOCI.md) |  |  |
+
+### Return type
+
+[**CreateAuthMethodOCIOutput**](CreateAuthMethodOCIOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createAuthMethodOCIResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -22817,6 +22907,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateAuthMethodOAuth2Response wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateauthmethodoci"></a>
+# **UpdateAuthMethodOCI**
+> UpdateAuthMethodOCIOutput UpdateAuthMethodOCI (UpdateAuthMethodOCI body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateAuthMethodOCIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateAuthMethodOCI(); // UpdateAuthMethodOCI | 
+
+            try
+            {
+                UpdateAuthMethodOCIOutput result = apiInstance.UpdateAuthMethodOCI(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateAuthMethodOCI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateAuthMethodOCIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAuthMethodOCIOutput> response = apiInstance.UpdateAuthMethodOCIWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateAuthMethodOCIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateAuthMethodOCI**](UpdateAuthMethodOCI.md) |  |  |
+
+### Return type
+
+[**UpdateAuthMethodOCIOutput**](UpdateAuthMethodOCIOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateAuthMethodOCIResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

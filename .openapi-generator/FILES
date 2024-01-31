@@ -78,6 +78,8 @@ docs/CreateAuthMethodLDAP.md
 docs/CreateAuthMethodLDAPOutput.md
 docs/CreateAuthMethodOAuth2.md
 docs/CreateAuthMethodOAuth2Output.md
+docs/CreateAuthMethodOCI.md
+docs/CreateAuthMethodOCIOutput.md
 docs/CreateAuthMethodOIDC.md
 docs/CreateAuthMethodOIDCOutput.md
 docs/CreateAuthMethodOutput.md
@@ -523,6 +525,7 @@ docs/NativeK8sTargetDetails.md
 docs/NotiForwarder.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
+docs/OCIAccessRules.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
@@ -644,6 +647,8 @@ docs/UpdateAuthMethodK8SOutput.md
 docs/UpdateAuthMethodLDAP.md
 docs/UpdateAuthMethodLDAPOutput.md
 docs/UpdateAuthMethodOAuth2.md
+docs/UpdateAuthMethodOCI.md
+docs/UpdateAuthMethodOCIOutput.md
 docs/UpdateAuthMethodOIDC.md
 docs/UpdateAuthMethodOutput.md
 docs/UpdateAuthMethodSAML.md
@@ -747,11 +752,11 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/CertificateVersionInfoTests.cs
-src/akeyless.Test/Model/ProvisionCertificateOutputTests.cs
-src/akeyless.Test/Model/ProvisionCertificateTests.cs
-src/akeyless.Test/Model/RenewCertificateOutputTests.cs
-src/akeyless.Test/Model/RenewCertificateTests.cs
+src/akeyless.Test/Model/CreateAuthMethodOCIOutputTests.cs
+src/akeyless.Test/Model/CreateAuthMethodOCITests.cs
+src/akeyless.Test/Model/OCIAccessRulesTests.cs
+src/akeyless.Test/Model/UpdateAuthMethodOCIOutputTests.cs
+src/akeyless.Test/Model/UpdateAuthMethodOCITests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -847,6 +852,8 @@ src/akeyless/Model/CreateAuthMethodLDAP.cs
 src/akeyless/Model/CreateAuthMethodLDAPOutput.cs
 src/akeyless/Model/CreateAuthMethodOAuth2.cs
 src/akeyless/Model/CreateAuthMethodOAuth2Output.cs
+src/akeyless/Model/CreateAuthMethodOCI.cs
+src/akeyless/Model/CreateAuthMethodOCIOutput.cs
 src/akeyless/Model/CreateAuthMethodOIDC.cs
 src/akeyless/Model/CreateAuthMethodOIDCOutput.cs
 src/akeyless/Model/CreateAuthMethodOutput.cs
@@ -1292,6 +1299,7 @@ src/akeyless/Model/NativeK8sTargetDetails.cs
 src/akeyless/Model/NotiForwarder.cs
 src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs
+src/akeyless/Model/OCIAccessRules.cs
 src/akeyless/Model/OIDCAccessRules.cs
 src/akeyless/Model/OIDCCustomClaim.cs
 src/akeyless/Model/ObjectVersionSettingsOutput.cs
@@ -1413,6 +1421,8 @@ src/akeyless/Model/UpdateAuthMethodK8SOutput.cs
 src/akeyless/Model/UpdateAuthMethodLDAP.cs
 src/akeyless/Model/UpdateAuthMethodLDAPOutput.cs
 src/akeyless/Model/UpdateAuthMethodOAuth2.cs
+src/akeyless/Model/UpdateAuthMethodOCI.cs
+src/akeyless/Model/UpdateAuthMethodOCIOutput.cs
 src/akeyless/Model/UpdateAuthMethodOIDC.cs
 src/akeyless/Model/UpdateAuthMethodOutput.cs
 src/akeyless/Model/UpdateAuthMethodSAML.cs

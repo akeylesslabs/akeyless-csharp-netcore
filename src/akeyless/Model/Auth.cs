@@ -53,8 +53,10 @@ namespace akeyless.Model
         /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert).</param>
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
+        /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
+        /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string uidToken = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>), string uidToken = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -76,6 +78,9 @@ namespace akeyless.Model
             this.KeyData = keyData;
             this.LdapPassword = ldapPassword;
             this.LdapUsername = ldapUsername;
+            // use default value if no "ociAuthType" provided
+            this.OciAuthType = ociAuthType ?? "apikey";
+            this.OciGroupOcid = ociGroupOcid;
             this.UidToken = uidToken;
         }
 
@@ -205,6 +210,20 @@ namespace akeyless.Model
         public string LdapUsername { get; set; }
 
         /// <summary>
+        /// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci)
+        /// </summary>
+        /// <value>The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci)</value>
+        [DataMember(Name = "oci-auth-type", EmitDefaultValue = false)]
+        public string OciAuthType { get; set; }
+
+        /// <summary>
+        /// A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci)
+        /// </summary>
+        /// <value>A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci)</value>
+        [DataMember(Name = "oci-group-ocid", EmitDefaultValue = false)]
+        public List<string> OciGroupOcid { get; set; }
+
+        /// <summary>
         /// The universal_identity token (relevant only for access-type&#x3D;universal_identity)
         /// </summary>
         /// <value>The universal_identity token (relevant only for access-type&#x3D;universal_identity)</value>
@@ -237,6 +256,8 @@ namespace akeyless.Model
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  LdapPassword: ").Append(LdapPassword).Append("\n");
             sb.Append("  LdapUsername: ").Append(LdapUsername).Append("\n");
+            sb.Append("  OciAuthType: ").Append(OciAuthType).Append("\n");
+            sb.Append("  OciGroupOcid: ").Append(OciGroupOcid).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -362,6 +383,17 @@ namespace akeyless.Model
                     this.LdapUsername.Equals(input.LdapUsername))
                 ) && 
                 (
+                    this.OciAuthType == input.OciAuthType ||
+                    (this.OciAuthType != null &&
+                    this.OciAuthType.Equals(input.OciAuthType))
+                ) && 
+                (
+                    this.OciGroupOcid == input.OciGroupOcid ||
+                    this.OciGroupOcid != null &&
+                    input.OciGroupOcid != null &&
+                    this.OciGroupOcid.SequenceEqual(input.OciGroupOcid)
+                ) && 
+                (
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
@@ -442,6 +474,14 @@ namespace akeyless.Model
                 if (this.LdapUsername != null)
                 {
                     hashCode = (hashCode * 59) + this.LdapUsername.GetHashCode();
+                }
+                if (this.OciAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.OciAuthType.GetHashCode();
+                }
+                if (this.OciGroupOcid != null)
+                {
+                    hashCode = (hashCode * 59) + this.OciGroupOcid.GetHashCode();
                 }
                 if (this.UidToken != null)
                 {
