@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerNativeK8S is a command that updates k8s producer
+    /// gatewayUpdateProducerNativeK8S is a command that updates k8s producer [Deprecated: Use dynamic-secret-update-k8s command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerNativeK8S")]
     public partial class GatewayUpdateProducerNativeK8S : IEquatable<GatewayUpdateProducerNativeK8S>, IValidatableObject
@@ -52,8 +52,8 @@ namespace akeyless.Model
         /// <param name="k8sRolebindingYamlDef">Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sServiceAccount">K8S ServiceAccount to extract token from..</param>
         /// <param name="k8sServiceAccountType">K8S ServiceAccount type [fixed, dynamic]..</param>
-        /// <param name="name">Producer name (required).</param>
-        /// <param name="newName">Producer name.</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access.</param>
         /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
@@ -193,16 +193,16 @@ namespace akeyless.Model
         public string K8sServiceAccountType { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

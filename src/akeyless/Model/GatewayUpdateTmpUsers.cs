@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateTmpUsers is a command that returns gateway configuration
+    /// gatewayUpdateTmpUsers is a command that returns gateway configuration [Deprecated: Use dynamic-secret-tmp-creds-update command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateTmpUsers")]
     public partial class GatewayUpdateTmpUsers : IEquatable<GatewayUpdateTmpUsers>, IValidatableObject
@@ -40,14 +40,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateTmpUsers" /> class.
         /// </summary>
+        /// <param name="host">Host (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer Name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newTtlMin">New TTL in Minutes (required).</param>
         /// <param name="tmpCredsId">Tmp Creds ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateTmpUsers(bool json = false, string name = default(string), long newTtlMin = default(long), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateTmpUsers(string host = default(string), bool json = false, string name = default(string), long newTtlMin = default(long), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
         {
+            // to ensure "host" is required (not null)
+            if (host == null)
+            {
+                throw new ArgumentNullException("host is a required property for GatewayUpdateTmpUsers and cannot be null");
+            }
+            this.Host = host;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -67,6 +74,13 @@ namespace akeyless.Model
         }
 
         /// <summary>
+        /// Host
+        /// </summary>
+        /// <value>Host</value>
+        [DataMember(Name = "host", IsRequired = true, EmitDefaultValue = true)]
+        public string Host { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -74,9 +88,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer Name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer Name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
@@ -116,6 +130,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateTmpUsers {\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewTtlMin: ").Append(NewTtlMin).Append("\n");
@@ -158,6 +173,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Host == input.Host ||
+                    (this.Host != null &&
+                    this.Host.Equals(input.Host))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -196,6 +216,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Host != null)
+                {
+                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
                 {

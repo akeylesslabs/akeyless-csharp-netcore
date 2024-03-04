@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerPing
-gatewayUpdateProducerPing is a command that updates Ping producer
+gatewayUpdateProducerPing is a command that updates Ping producer [Deprecated: Use dynamic-secret-update-ping command]
 
 ## Properties
 
@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer New name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret New name | [optional] 
 **PingAdministrativePort** | **string** | Ping Federate administrative port | [optional] [default to "9999"]
 **PingAtmId** | **string** | Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set. | [optional] 
 **PingAuthorizationPort** | **string** | Ping Federate authorization port | [optional] [default to "9031"]

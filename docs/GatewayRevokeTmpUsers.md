@@ -1,13 +1,13 @@
 # akeyless.Model.GatewayRevokeTmpUsers
-gatewayRevokeTmpUsers is a command that revoke producer tmp user
+gatewayRevokeTmpUsers is a command that revoke producer tmp user [Deprecated: Use dynamic-secret-tmp-creds-delete command]
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Host** | **string** | Deprecated: has no effect | [optional] 
+**Host** | **string** | Host | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer Name | 
+**Name** | **string** | Dynamic secret name | 
 **RevokeAll** | **bool** | Revoke All Temp Creds | [optional] 
 **SoftDelete** | **bool** | Soft Delete | [optional] 
 **TmpCredsId** | **string** | Tmp Creds ID | [default to "demo_default_tmp_creds_id_for_sdk_bc"]

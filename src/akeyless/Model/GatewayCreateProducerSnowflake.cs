@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+    /// GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer [Deprecated: Use dynamic-secret-create-snowflake command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerSnowflake")]
     public partial class GatewayCreateProducerSnowflake : IEquatable<GatewayCreateProducerSnowflake>, IValidatableObject
@@ -46,7 +46,8 @@ namespace akeyless.Model
         /// <param name="dbName">Database name.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="privateKey">RSA Private key (base64 encoded).</param>
         /// <param name="privateKeyPassphrase">The Private key passphrase.</param>
         /// <param name="role">User role.</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -70,6 +71,7 @@ namespace akeyless.Model
             this.DbName = dbName;
             this.DeleteProtection = deleteProtection;
             this.Json = json;
+            this.PasswordLength = passwordLength;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassphrase = privateKeyPassphrase;
             this.Role = role;
@@ -125,11 +127,18 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// RSA Private key (base64 encoded)
@@ -209,6 +218,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  PrivateKeyPassphrase: ").Append(PrivateKeyPassphrase).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
@@ -286,6 +296,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.PrivateKey == input.PrivateKey ||
@@ -368,6 +383,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.PrivateKey != null)
                 {

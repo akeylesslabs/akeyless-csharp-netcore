@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
 **AllowAnyName** | **bool** | If set, clients can request certificates for any CN | [optional] 
+**AllowCopyExtFromCsr** | **bool** | If set, will allow copying the extra extensions from the csr file (if given) | [optional] 
 **AllowSubdomains** | **bool** | If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains | [optional] 
 **AllowedDomains** | **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
+**AllowedExtraExtensions** | **string** | A json string containing the allowed extra extensions for the pki cert issuer | [optional] 
 **AllowedUriSans** | **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **ClientFlag** | **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | **bool** | If set, certificates will be flagged for code signing use | [optional] 

@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerMySQL
-gatewayCreateProducerMySQL is a command that creates mysql producer
+gatewayCreateProducerMySQL is a command that creates mysql producer [Deprecated: Use dynamic-secret-create-mysql command]
 
 ## Properties
 
@@ -16,7 +16,8 @@ Name | Type | Description | Notes
 **MysqlRevocationStatements** | **string** | MySQL Revocation statements | [optional] 
 **MysqlScreationStatements** | **string** | MySQL Creation statements | [optional] 
 **MysqlUsername** | **string** | MySQL Username | [optional] 
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 

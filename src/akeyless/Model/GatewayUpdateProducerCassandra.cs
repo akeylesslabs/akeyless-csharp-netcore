@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerCassandra is a command that updates a Cassandra producer
+    /// gatewayUpdateProducerCassandra is a command that updates a Cassandra producer [Deprecated: Use dynamic-secret-update-cassandra command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerCassandra")]
     public partial class GatewayUpdateProducerCassandra : IEquatable<GatewayUpdateProducerCassandra>, IValidatableObject
@@ -47,8 +47,9 @@ namespace akeyless.Model
         /// <param name="cassandraUsername">Cassandra superuser username.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
-        /// <param name="newName">Producer name.</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="newName">Dynamic secret name.</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerCassandra(string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = "9042", string cassandraUsername = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Json = json;
             this.NewName = newName;
+            this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Ssl = ssl;
             this.SslCertificate = sslCertificate;
@@ -135,18 +137,25 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -221,6 +230,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
@@ -309,6 +319,11 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
+                ) && 
+                (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
                     (this.ProducerEncryptionKeyName != null &&
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
@@ -391,6 +406,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.ProducerEncryptionKeyName != null)
                 {

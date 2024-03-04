@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerRedis
-gatewayUpdateProducerRedis is a command that updates redis producer
+gatewayUpdateProducerRedis is a command that updates redis producer [Deprecated: Use dynamic-secret-update-redis command]
 
 ## Properties
 
@@ -9,9 +9,10 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Host** | **string** | Redis Host | [optional] [default to "127.0.0.1"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **Password** | **string** | Redis Password | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **Port** | **string** | Redis Port | [optional] [default to "6379"]
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]

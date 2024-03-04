@@ -43,6 +43,8 @@ namespace akeyless.Model
         /// <param name="defaultShareLinkTtlMinutes">Set the default ttl in minutes for sharing item number between 60 and 43200.</param>
         /// <param name="defaultVersioning">If set to true, new item version will be created on each update [true/false].</param>
         /// <param name="dpEnableClassicKeyProtection">Set to update protection with classic keys state [true/false].</param>
+        /// <param name="dynamicSecretMaxTtl">Set the maximum ttl for dynamic secrets.</param>
+        /// <param name="dynamicSecretMaxTtlEnable">Set a maximum ttl for dynamic secrets [true/false].</param>
         /// <param name="invalidCharacters">Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. (default to &quot;notReceivedInvalidCharacter&quot;).</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="itemsDeletionProtection">Set or unset the default behaviour of items deletion protection [true/false].</param>
@@ -51,6 +53,8 @@ namespace akeyless.Model
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
         /// <param name="lockDefaultKey">Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false].</param>
+        /// <param name="maxRotationInterval">Set the maximum rotation interval for rotated secrets auto rotation settings.</param>
+        /// <param name="maxRotationIntervalEnable">Set a maximum rotation interval for rotated secrets auto rotation settings [true/false].</param>
         /// <param name="maxVersions">Max versions.</param>
         /// <param name="passwordLength">Password length between 5 - to 50 characters.</param>
         /// <param name="phone">Phone number.</param>
@@ -64,7 +68,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -74,6 +78,8 @@ namespace akeyless.Model
             this.DefaultShareLinkTtlMinutes = defaultShareLinkTtlMinutes;
             this.DefaultVersioning = defaultVersioning;
             this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
+            this.DynamicSecretMaxTtl = dynamicSecretMaxTtl;
+            this.DynamicSecretMaxTtlEnable = dynamicSecretMaxTtlEnable;
             // use default value if no "invalidCharacters" provided
             this.InvalidCharacters = invalidCharacters ?? "notReceivedInvalidCharacter";
             this.ItemType = itemType;
@@ -83,6 +89,8 @@ namespace akeyless.Model
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
             this.LockDefaultKey = lockDefaultKey;
+            this.MaxRotationInterval = maxRotationInterval;
+            this.MaxRotationIntervalEnable = maxRotationIntervalEnable;
             this.MaxVersions = maxVersions;
             this.PasswordLength = passwordLength;
             this.Phone = phone;
@@ -155,6 +163,20 @@ namespace akeyless.Model
         public string DpEnableClassicKeyProtection { get; set; }
 
         /// <summary>
+        /// Set the maximum ttl for dynamic secrets
+        /// </summary>
+        /// <value>Set the maximum ttl for dynamic secrets</value>
+        [DataMember(Name = "dynamic-secret-max-ttl", EmitDefaultValue = false)]
+        public long DynamicSecretMaxTtl { get; set; }
+
+        /// <summary>
+        /// Set a maximum ttl for dynamic secrets [true/false]
+        /// </summary>
+        /// <value>Set a maximum ttl for dynamic secrets [true/false]</value>
+        [DataMember(Name = "dynamic-secret-max-ttl-enable", EmitDefaultValue = false)]
+        public string DynamicSecretMaxTtlEnable { get; set; }
+
+        /// <summary>
         /// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
         /// </summary>
         /// <value>Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.</value>
@@ -209,6 +231,20 @@ namespace akeyless.Model
         /// <value>Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]</value>
         [DataMember(Name = "lock-default-key", EmitDefaultValue = false)]
         public string LockDefaultKey { get; set; }
+
+        /// <summary>
+        /// Set the maximum rotation interval for rotated secrets auto rotation settings
+        /// </summary>
+        /// <value>Set the maximum rotation interval for rotated secrets auto rotation settings</value>
+        [DataMember(Name = "max-rotation-interval", EmitDefaultValue = false)]
+        public int MaxRotationInterval { get; set; }
+
+        /// <summary>
+        /// Set a maximum rotation interval for rotated secrets auto rotation settings [true/false]
+        /// </summary>
+        /// <value>Set a maximum rotation interval for rotated secrets auto rotation settings [true/false]</value>
+        [DataMember(Name = "max-rotation-interval-enable", EmitDefaultValue = false)]
+        public string MaxRotationIntervalEnable { get; set; }
 
         /// <summary>
         /// Max versions
@@ -317,6 +353,8 @@ namespace akeyless.Model
             sb.Append("  DefaultShareLinkTtlMinutes: ").Append(DefaultShareLinkTtlMinutes).Append("\n");
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
             sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
+            sb.Append("  DynamicSecretMaxTtl: ").Append(DynamicSecretMaxTtl).Append("\n");
+            sb.Append("  DynamicSecretMaxTtlEnable: ").Append(DynamicSecretMaxTtlEnable).Append("\n");
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemsDeletionProtection: ").Append(ItemsDeletionProtection).Append("\n");
@@ -325,6 +363,8 @@ namespace akeyless.Model
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
             sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
+            sb.Append("  MaxRotationInterval: ").Append(MaxRotationInterval).Append("\n");
+            sb.Append("  MaxRotationIntervalEnable: ").Append(MaxRotationIntervalEnable).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
@@ -414,6 +454,15 @@ namespace akeyless.Model
                     this.DpEnableClassicKeyProtection.Equals(input.DpEnableClassicKeyProtection))
                 ) && 
                 (
+                    this.DynamicSecretMaxTtl == input.DynamicSecretMaxTtl ||
+                    this.DynamicSecretMaxTtl.Equals(input.DynamicSecretMaxTtl)
+                ) && 
+                (
+                    this.DynamicSecretMaxTtlEnable == input.DynamicSecretMaxTtlEnable ||
+                    (this.DynamicSecretMaxTtlEnable != null &&
+                    this.DynamicSecretMaxTtlEnable.Equals(input.DynamicSecretMaxTtlEnable))
+                ) && 
+                (
                     this.InvalidCharacters == input.InvalidCharacters ||
                     (this.InvalidCharacters != null &&
                     this.InvalidCharacters.Equals(input.InvalidCharacters))
@@ -448,6 +497,15 @@ namespace akeyless.Model
                     this.LockDefaultKey == input.LockDefaultKey ||
                     (this.LockDefaultKey != null &&
                     this.LockDefaultKey.Equals(input.LockDefaultKey))
+                ) && 
+                (
+                    this.MaxRotationInterval == input.MaxRotationInterval ||
+                    this.MaxRotationInterval.Equals(input.MaxRotationInterval)
+                ) && 
+                (
+                    this.MaxRotationIntervalEnable == input.MaxRotationIntervalEnable ||
+                    (this.MaxRotationIntervalEnable != null &&
+                    this.MaxRotationIntervalEnable.Equals(input.MaxRotationIntervalEnable))
                 ) && 
                 (
                     this.MaxVersions == input.MaxVersions ||
@@ -555,6 +613,11 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DpEnableClassicKeyProtection.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.DynamicSecretMaxTtl.GetHashCode();
+                if (this.DynamicSecretMaxTtlEnable != null)
+                {
+                    hashCode = (hashCode * 59) + this.DynamicSecretMaxTtlEnable.GetHashCode();
+                }
                 if (this.InvalidCharacters != null)
                 {
                     hashCode = (hashCode * 59) + this.InvalidCharacters.GetHashCode();
@@ -574,6 +637,11 @@ namespace akeyless.Model
                 if (this.LockDefaultKey != null)
                 {
                     hashCode = (hashCode * 59) + this.LockDefaultKey.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MaxRotationInterval.GetHashCode();
+                if (this.MaxRotationIntervalEnable != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxRotationIntervalEnable.GetHashCode();
                 }
                 if (this.MaxVersions != null)
                 {

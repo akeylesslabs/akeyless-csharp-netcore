@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerArtifactory is a command that creates artifactory producer
+    /// gatewayCreateProducerArtifactory is a command that creates artifactory producer [Deprecated: Use dynamic-secret-create-artifactory command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerArtifactory")]
     public partial class GatewayCreateProducerArtifactory : IEquatable<GatewayCreateProducerArtifactory>, IValidatableObject
@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="baseUrl">Base URL.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
@@ -138,9 +138,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

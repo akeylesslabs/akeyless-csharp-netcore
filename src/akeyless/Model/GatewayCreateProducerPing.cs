@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerPing is a command that creates ping producer
+    /// gatewayCreateProducerPing is a command that creates ping producer [Deprecated: Use dynamic-secret-create-ping command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerPing")]
     public partial class GatewayCreateProducerPing : IEquatable<GatewayCreateProducerPing>, IValidatableObject
@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="pingAdministrativePort">Ping Federate administrative port (default to &quot;9999&quot;).</param>
         /// <param name="pingAtmId">Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set..</param>
         /// <param name="pingAuthorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
@@ -119,9 +119,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

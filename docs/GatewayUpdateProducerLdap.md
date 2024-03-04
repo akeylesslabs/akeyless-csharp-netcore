@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerLdap
-gatewayUpdateProducerLdap is a command that updates ldap producer
+gatewayUpdateProducerLdap is a command that updates ldap producer [Deprecated: Use dynamic-secret-update-ldap command]
 
 ## Properties
 
@@ -13,8 +13,9 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 

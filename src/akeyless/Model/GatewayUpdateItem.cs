@@ -51,6 +51,7 @@ namespace akeyless.Model
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpServiceAccountEmail">The email of the gcp service account to rotate.</param>
         /// <param name="gcpServiceAccountKeyId">The key id of the gcp service account to rotate.</param>
+        /// <param name="graceRotation">Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. (relevant only for - -type&#x3D;rotated-secret). If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -58,6 +59,7 @@ namespace akeyless.Model
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="newVersion">Deprecated.</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
@@ -67,7 +69,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string appId = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string appId = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -93,6 +95,7 @@ namespace akeyless.Model
             this.GcpKey = gcpKey;
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKeyId = gcpServiceAccountKeyId;
+            this.GraceRotation = graceRotation;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -100,6 +103,7 @@ namespace akeyless.Model
             this.NewMetadata = newMetadata ?? "default_metadata";
             this.NewName = newName;
             this.NewVersion = newVersion;
+            this.PasswordLength = passwordLength;
             this.RmTag = rmTag;
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
@@ -189,6 +193,13 @@ namespace akeyless.Model
         public string GcpServiceAccountKeyId { get; set; }
 
         /// <summary>
+        /// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
+        /// </summary>
+        /// <value>Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]</value>
+        [DataMember(Name = "grace-rotation", EmitDefaultValue = false)]
+        public string GraceRotation { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -236,6 +247,13 @@ namespace akeyless.Model
         /// <value>Deprecated</value>
         [DataMember(Name = "new-version", EmitDefaultValue = true)]
         public bool NewVersion { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// List of the existent tags that will be removed from this item
@@ -319,6 +337,7 @@ namespace akeyless.Model
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKeyId: ").Append(GcpServiceAccountKeyId).Append("\n");
+            sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -326,6 +345,7 @@ namespace akeyless.Model
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  NewVersion: ").Append(NewVersion).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
@@ -427,6 +447,11 @@ namespace akeyless.Model
                     this.GcpServiceAccountKeyId.Equals(input.GcpServiceAccountKeyId))
                 ) && 
                 (
+                    this.GraceRotation == input.GraceRotation ||
+                    (this.GraceRotation != null &&
+                    this.GraceRotation.Equals(input.GraceRotation))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -458,6 +483,11 @@ namespace akeyless.Model
                 (
                     this.NewVersion == input.NewVersion ||
                     this.NewVersion.Equals(input.NewVersion)
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.RmTag == input.RmTag ||
@@ -559,6 +589,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GcpServiceAccountKeyId.GetHashCode();
                 }
+                if (this.GraceRotation != null)
+                {
+                    hashCode = (hashCode * 59) + this.GraceRotation.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
                 {
@@ -581,6 +615,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.NewVersion.GetHashCode();
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
+                }
                 if (this.RmTag != null)
                 {
                     hashCode = (hashCode * 59) + this.RmTag.GetHashCode();

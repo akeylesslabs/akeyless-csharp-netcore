@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerRedis
-gatewayCreateProducerRedis is a command that creates Redis producer
+gatewayCreateProducerRedis is a command that creates Redis producer [Deprecated: Use dynamic-secret-create-redis command]
 
 ## Properties
 
@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Host** | **string** | Redis Host | [optional] [default to "127.0.0.1"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **Password** | **string** | Redis Password | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **Port** | **string** | Redis Port | [optional] [default to "6379"]
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]

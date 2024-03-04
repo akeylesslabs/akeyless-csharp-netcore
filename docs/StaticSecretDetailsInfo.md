@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Format** | **string** | StaticSecretFormat defines the format of static secret (e.g. Text) | [optional] 
 **NotifyOnChangeEvent** | **bool** |  | [optional] 
 **Username** | **string** |  | [optional] 
 **Website** | **string** | deprecated | [optional] 

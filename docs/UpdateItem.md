@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **NewMetadata** | **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | **string** | New item name | [optional] 
 **RmTag** | **List&lt;string&gt;** | List of the existent tags that will be removed from this item | [optional] 
-**RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret) | [optional] [default to "false"]
+**RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **SecureAccessAddHost** | **List&lt;string&gt;** | List of the new hosts that will be attached to SRA servers host | [optional] 
 **SecureAccessAllowExternalUser** | **string** | Allow providing external user for a domain users [true/false] | [optional] 
 **SecureAccessAllowPortForwading** | **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 

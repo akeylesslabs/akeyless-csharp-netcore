@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerGcp
-gatewayUpdateProducerGcp is a command that updates a GCP producer
+gatewayUpdateProducerGcp is a command that updates a GCP producer [Deprecated: Use dynamic-secret-update-gcp command]
 
 ## Properties
 
@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **GcpSaEmail** | **string** | The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed) | [optional] 
 **GcpTokenScopes** | **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RoleBinding** | **string** | Role binding definitions in json format | [optional] 
 **ServiceAccountType** | **string** | The type of the gcp dynamic secret. Options[fixed, dynamic] | [default to "fixed"]

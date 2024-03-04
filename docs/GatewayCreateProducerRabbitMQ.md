@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerRabbitMQ
-gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer
+gatewayCreateProducerRabbitMQ is a command that creates rabbitmq producer [Deprecated: Use dynamic-secret-create-rabbitmq command]
 
 ## Properties
 
@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RabbitmqAdminPwd** | **string** | RabbitMQ Admin password | [optional] 
 **RabbitmqAdminUser** | **string** | RabbitMQ Admin User | [optional] 

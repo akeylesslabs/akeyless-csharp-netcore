@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="customField">For Password Management use, additional fields.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="format">Secret format [text/json] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -66,8 +67,8 @@ namespace akeyless.Model
         /// <param name="type">The secret sub type [generic/password] (default to &quot;generic&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
-        /// <param name="value">The secret value (only relevant for type &#39;generic&#39;) (required).</param>
-        public CreateSecret(string accessibility = "regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), List<string> injectUrl = default(List<string>), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string username = default(string), string value = default(string))
+        /// <param name="value">The secret value (relevant only for type &#39;generic&#39;) (required).</param>
+        public CreateSecret(string accessibility = "regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = "text", List<string> injectUrl = default(List<string>), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -87,6 +88,8 @@ namespace akeyless.Model
             this.CustomField = customField;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            // use default value if no "format" provided
+            this.Format = format ?? "text";
             this.InjectUrl = injectUrl;
             this.Json = json;
             this.Metadata = metadata;
@@ -144,6 +147,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Secret format [text/json] (relevant only for type &#39;generic&#39;)
+        /// </summary>
+        /// <value>Secret format [text/json] (relevant only for type &#39;generic&#39;)</value>
+        [DataMember(Name = "format", EmitDefaultValue = false)]
+        public string Format { get; set; }
 
         /// <summary>
         /// For Password Management use, reflect the website context
@@ -293,9 +303,9 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// The secret value (only relevant for type &#39;generic&#39;)
+        /// The secret value (relevant only for type &#39;generic&#39;)
         /// </summary>
-        /// <value>The secret value (only relevant for type &#39;generic&#39;)</value>
+        /// <value>The secret value (relevant only for type &#39;generic&#39;)</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 
@@ -312,6 +322,7 @@ namespace akeyless.Model
             sb.Append("  CustomField: ").Append(CustomField).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  InjectUrl: ").Append(InjectUrl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -394,6 +405,11 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
                 ) && 
                 (
                     this.InjectUrl == input.InjectUrl ||
@@ -534,6 +550,10 @@ namespace akeyless.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 }
                 if (this.InjectUrl != null)
                 {

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
+**ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **int** | Token ttl | [optional] [default to 60]
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

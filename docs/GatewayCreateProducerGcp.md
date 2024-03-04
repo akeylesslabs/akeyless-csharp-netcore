@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerGcp
-gatewayCreateProducerGcp is a command that creates a GCP producer
+gatewayCreateProducerGcp is a command that creates a GCP producer [Deprecated: Use dynamic-secret-create-gcp command]
 
 ## Properties
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **GcpSaEmail** | **string** | The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed) | [optional] 
 **GcpTokenScopes** | **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RoleBinding** | **string** | Role binding definitions in json format | [optional] 
 **ServiceAccountType** | **string** | The type of the gcp dynamic secret. Options[fixed, dynamic] | [default to "fixed"]

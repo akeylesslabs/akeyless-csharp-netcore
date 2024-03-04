@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerArtifactory
-gatewayCreateProducerArtifactory is a command that creates artifactory producer
+gatewayCreateProducerArtifactory is a command that creates artifactory producer [Deprecated: Use dynamic-secret-create-artifactory command]
 
 ## Properties
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **BaseUrl** | **string** | Base URL | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 

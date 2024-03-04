@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// GetRotatedSecretValue
+    /// getRotatedSecretValue is a command that creates a new Akeyless profile. [Deprecated: Use rotated-secret get-value command]
     /// </summary>
     [DataContract(Name = "getRotatedSecretValue")]
     public partial class GetRotatedSecretValue : IEquatable<GetRotatedSecretValue>, IValidatableObject

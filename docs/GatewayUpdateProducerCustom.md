@@ -1,4 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerCustom
+gatewayUpdateProducerCustom is a command that updates a custom producer. [Deprecated: Use dynamic-secret-update-custom command]
 
 ## Properties
 
@@ -9,8 +10,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **EnableAdminRotation** | **bool** | Should admin credentials be rotated | [optional] [default to false]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **Payload** | **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RevokeSyncUrl** | **string** | URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke | 

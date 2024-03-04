@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerLdap is a command that creates ldap producer
+    /// gatewayCreateProducerLdap is a command that creates ldap producer [Deprecated: Use dynamic-secret-create-ldap command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerLdap")]
     public partial class GatewayCreateProducerLdap : IEquatable<GatewayCreateProducerLdap>, IValidatableObject
@@ -48,7 +48,8 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL.</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerLdap(string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string externalUsername = "false", string groupDn = default(string), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m")
+        public GatewayCreateProducerLdap(string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string externalUsername = "false", string groupDn = default(string), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.Json = json;
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
+            this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -144,11 +146,18 @@ namespace akeyless.Model
         public string LdapUrl { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -230,6 +239,7 @@ namespace akeyless.Model
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
@@ -317,6 +327,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -407,6 +422,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.ProducerEncryptionKeyName != null)
                 {

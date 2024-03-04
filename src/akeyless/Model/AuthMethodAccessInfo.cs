@@ -53,11 +53,12 @@ namespace akeyless.Model
         /// <param name="oauth2AccessRules">oauth2AccessRules.</param>
         /// <param name="ociAccessRules">ociAccessRules.</param>
         /// <param name="oidcAccessRules">oidcAccessRules.</param>
+        /// <param name="productTypes">List of product types this auth method will be in use of.</param>
         /// <param name="rulesType">rulesType.</param>
         /// <param name="samlAccessRules">samlAccessRules.</param>
         /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.Oauth2AccessRules = oauth2AccessRules;
             this.OciAccessRules = ociAccessRules;
             this.OidcAccessRules = oidcAccessRules;
+            this.ProductTypes = productTypes;
             this.RulesType = rulesType;
             this.SamlAccessRules = samlAccessRules;
             this.SubClaimsDelimiters = subClaimsDelimiters;
@@ -194,6 +196,13 @@ namespace akeyless.Model
         public OIDCAccessRules OidcAccessRules { get; set; }
 
         /// <summary>
+        /// List of product types this auth method will be in use of
+        /// </summary>
+        /// <value>List of product types this auth method will be in use of</value>
+        [DataMember(Name = "product_types", EmitDefaultValue = false)]
+        public List<string> ProductTypes { get; set; }
+
+        /// <summary>
         /// Gets or Sets RulesType
         /// </summary>
         [DataMember(Name = "rules_type", EmitDefaultValue = false)]
@@ -243,6 +252,7 @@ namespace akeyless.Model
             sb.Append("  Oauth2AccessRules: ").Append(Oauth2AccessRules).Append("\n");
             sb.Append("  OciAccessRules: ").Append(OciAccessRules).Append("\n");
             sb.Append("  OidcAccessRules: ").Append(OidcAccessRules).Append("\n");
+            sb.Append("  ProductTypes: ").Append(ProductTypes).Append("\n");
             sb.Append("  RulesType: ").Append(RulesType).Append("\n");
             sb.Append("  SamlAccessRules: ").Append(SamlAccessRules).Append("\n");
             sb.Append("  SubClaimsDelimiters: ").Append(SubClaimsDelimiters).Append("\n");
@@ -370,6 +380,12 @@ namespace akeyless.Model
                     this.OidcAccessRules.Equals(input.OidcAccessRules))
                 ) && 
                 (
+                    this.ProductTypes == input.ProductTypes ||
+                    this.ProductTypes != null &&
+                    input.ProductTypes != null &&
+                    this.ProductTypes.SequenceEqual(input.ProductTypes)
+                ) && 
+                (
                     this.RulesType == input.RulesType ||
                     (this.RulesType != null &&
                     this.RulesType.Equals(input.RulesType))
@@ -463,6 +479,10 @@ namespace akeyless.Model
                 if (this.OidcAccessRules != null)
                 {
                     hashCode = (hashCode * 59) + this.OidcAccessRules.GetHashCode();
+                }
+                if (this.ProductTypes != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductTypes.GetHashCode();
                 }
                 if (this.RulesType != null)
                 {

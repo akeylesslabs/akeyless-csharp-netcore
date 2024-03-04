@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="name">Current item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="version">The specific version you want to update: 0&#x3D;item level state (default) (default to 0).</param>
+        /// <param name="version">The specific version you want to update: 0&#x3D;item level state (default) (relevant only for keys) (default to 0).</param>
         public SetItemState(string desiredState = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = 0)
         {
             // to ensure "desiredState" is required (not null)
@@ -102,9 +102,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// The specific version you want to update: 0&#x3D;item level state (default)
+        /// The specific version you want to update: 0&#x3D;item level state (default) (relevant only for keys)
         /// </summary>
-        /// <value>The specific version you want to update: 0&#x3D;item level state (default)</value>
+        /// <value>The specific version you want to update: 0&#x3D;item level state (default) (relevant only for keys)</value>
         [DataMember(Name = "version", EmitDefaultValue = false)]
         public int _Version { get; set; }
 

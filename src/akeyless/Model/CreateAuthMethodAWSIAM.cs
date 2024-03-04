@@ -55,10 +55,11 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="stsUrl">sts URL (default to &quot;https://sts.amazonaws.com&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodAWSIAM(long accessExpires = 0, List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null)
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.ProductType = productType;
             // use default value if no "stsUrl" provided
             this.StsUrl = stsUrl ?? "https://sts.amazonaws.com";
             this.Token = token;
@@ -197,6 +199,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// </summary>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        [DataMember(Name = "product-type", EmitDefaultValue = false)]
+        public List<string> ProductType { get; set; }
+
+        /// <summary>
         /// sts URL
         /// </summary>
         /// <value>sts URL</value>
@@ -240,6 +249,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  StsUrl: ").Append(StsUrl).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -359,6 +369,12 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ProductType == input.ProductType ||
+                    this.ProductType != null &&
+                    input.ProductType != null &&
+                    this.ProductType.SequenceEqual(input.ProductType)
+                ) && 
+                (
                     this.StsUrl == input.StsUrl ||
                     (this.StsUrl != null &&
                     this.StsUrl.Equals(input.StsUrl))
@@ -431,6 +447,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.ProductType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductType.GetHashCode();
                 }
                 if (this.StsUrl != null)
                 {

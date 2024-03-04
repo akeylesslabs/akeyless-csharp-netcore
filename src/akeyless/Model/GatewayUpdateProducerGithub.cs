@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerGithub is a command that updates github producer
+    /// gatewayUpdateProducerGithub is a command that updates github producer [Deprecated: Use dynamic-secret-update-github command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerGithub")]
     public partial class GatewayUpdateProducerGithub : IEquatable<GatewayUpdateProducerGithub>, IValidatableObject
@@ -45,16 +45,18 @@ namespace akeyless.Model
         /// <param name="githubAppPrivateKey">App private key.</param>
         /// <param name="githubBaseUrl">Base URL (default to &quot;https://api.github.com/&quot;).</param>
         /// <param name="installationId">Github app installation id.</param>
-        /// <param name="installationRepository">Repository that the app installation has access to.</param>
+        /// <param name="installationOrganization">Optional, instead of installation id, set a GitHub organization name.</param>
+        /// <param name="installationRepository">Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
-        /// <param name="newName">Producer name.</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="newName">Dynamic secret name.</param>
+        /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenPermissions">Optional - installation token&#39;s allowed permissions.</param>
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = "https://api.github.com/", long installationId = default(long), string installationRepository = default(string), bool json = false, string name = default(string), string newName = default(string), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
+        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = "https://api.github.com/", long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), bool json = false, string name = default(string), string newName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,9 +70,11 @@ namespace akeyless.Model
             // use default value if no "githubBaseUrl" provided
             this.GithubBaseUrl = githubBaseUrl ?? "https://api.github.com/";
             this.InstallationId = installationId;
+            this.InstallationOrganization = installationOrganization;
             this.InstallationRepository = installationRepository;
             this.Json = json;
             this.NewName = newName;
+            this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.TokenPermissions = tokenPermissions;
@@ -114,9 +118,16 @@ namespace akeyless.Model
         public long InstallationId { get; set; }
 
         /// <summary>
-        /// Repository that the app installation has access to
+        /// Optional, instead of installation id, set a GitHub organization name
         /// </summary>
-        /// <value>Repository that the app installation has access to</value>
+        /// <value>Optional, instead of installation id, set a GitHub organization name</value>
+        [DataMember(Name = "installation-organization", EmitDefaultValue = false)]
+        public string InstallationOrganization { get; set; }
+
+        /// <summary>
+        /// Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;
+        /// </summary>
+        /// <value>Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;</value>
         [DataMember(Name = "installation-repository", EmitDefaultValue = false)]
         public string InstallationRepository { get; set; }
 
@@ -128,18 +139,25 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// Add tags attached to this object
+        /// </summary>
+        /// <value>Add tags attached to this object</value>
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<string> Tags { get; set; }
 
         /// <summary>
         /// Target name
@@ -189,10 +207,12 @@ namespace akeyless.Model
             sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
             sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
             sb.Append("  InstallationId: ").Append(InstallationId).Append("\n");
+            sb.Append("  InstallationOrganization: ").Append(InstallationOrganization).Append("\n");
             sb.Append("  InstallationRepository: ").Append(InstallationRepository).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenPermissions: ").Append(TokenPermissions).Append("\n");
@@ -257,6 +277,11 @@ namespace akeyless.Model
                     this.InstallationId.Equals(input.InstallationId)
                 ) && 
                 (
+                    this.InstallationOrganization == input.InstallationOrganization ||
+                    (this.InstallationOrganization != null &&
+                    this.InstallationOrganization.Equals(input.InstallationOrganization))
+                ) && 
+                (
                     this.InstallationRepository == input.InstallationRepository ||
                     (this.InstallationRepository != null &&
                     this.InstallationRepository.Equals(input.InstallationRepository))
@@ -274,6 +299,12 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
+                ) && 
+                (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
                     this.TargetName == input.TargetName ||
@@ -327,6 +358,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.GithubBaseUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstallationId.GetHashCode();
+                if (this.InstallationOrganization != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstallationOrganization.GetHashCode();
+                }
                 if (this.InstallationRepository != null)
                 {
                     hashCode = (hashCode * 59) + this.InstallationRepository.GetHashCode();
@@ -339,6 +374,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.Tags != null)
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
                 }
                 if (this.TargetName != null)
                 {

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | **string** | Deprecated - use description | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Host** | **string** | SSH host name | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

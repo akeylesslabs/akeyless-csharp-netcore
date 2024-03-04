@@ -44,6 +44,8 @@ namespace akeyless.Model
         /// <param name="audience">The audience in the JWT.</param>
         /// <param name="boundClientIds">The clients ids that the access is restricted to.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="cert">CertificateFile Path to a file that contain the certificate in a PEM format..</param>
+        /// <param name="certFileData">CertificateFileData PEM Certificate in a Base64 format..</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gatewayUrl">Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway..</param>
@@ -55,11 +57,12 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="subclaimsDelimiters">A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string description = default(string), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "jwksUri" is required (not null)
             if (jwksUri == null)
@@ -83,6 +86,8 @@ namespace akeyless.Model
             this.Audience = audience;
             this.BoundClientIds = boundClientIds;
             this.BoundIps = boundIps;
+            this.Cert = cert;
+            this.CertFileData = certFileData;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GatewayUrl = gatewayUrl;
@@ -92,6 +97,7 @@ namespace akeyless.Model
             this.JwksJsonData = jwksJsonData;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
+            this.ProductType = productType;
             this.SubclaimsDelimiters = subclaimsDelimiters;
             this.Token = token;
             this.UidToken = uidToken;
@@ -124,6 +130,20 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// CertificateFile Path to a file that contain the certificate in a PEM format.
+        /// </summary>
+        /// <value>CertificateFile Path to a file that contain the certificate in a PEM format.</value>
+        [DataMember(Name = "cert", EmitDefaultValue = false)]
+        public string Cert { get; set; }
+
+        /// <summary>
+        /// CertificateFileData PEM Certificate in a Base64 format.
+        /// </summary>
+        /// <value>CertificateFileData PEM Certificate in a Base64 format.</value>
+        [DataMember(Name = "cert-file-data", EmitDefaultValue = false)]
+        public string CertFileData { get; set; }
 
         /// <summary>
         /// Auth Method description
@@ -203,6 +223,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// </summary>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        [DataMember(Name = "product-type", EmitDefaultValue = false)]
+        public List<string> ProductType { get; set; }
+
+        /// <summary>
         /// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
         /// </summary>
         /// <value>A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)</value>
@@ -242,6 +269,8 @@ namespace akeyless.Model
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  BoundClientIds: ").Append(BoundClientIds).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  Cert: ").Append(Cert).Append("\n");
+            sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
@@ -253,6 +282,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  SubclaimsDelimiters: ").Append(SubclaimsDelimiters).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -314,6 +344,16 @@ namespace akeyless.Model
                     this.BoundIps.SequenceEqual(input.BoundIps)
                 ) && 
                 (
+                    this.Cert == input.Cert ||
+                    (this.Cert != null &&
+                    this.Cert.Equals(input.Cert))
+                ) && 
+                (
+                    this.CertFileData == input.CertFileData ||
+                    (this.CertFileData != null &&
+                    this.CertFileData.Equals(input.CertFileData))
+                ) && 
+                (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
@@ -367,6 +407,12 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
+                    this.ProductType == input.ProductType ||
+                    this.ProductType != null &&
+                    input.ProductType != null &&
+                    this.ProductType.SequenceEqual(input.ProductType)
+                ) && 
+                (
                     this.SubclaimsDelimiters == input.SubclaimsDelimiters ||
                     this.SubclaimsDelimiters != null &&
                     input.SubclaimsDelimiters != null &&
@@ -411,6 +457,14 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
                 }
+                if (this.Cert != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cert.GetHashCode();
+                }
+                if (this.CertFileData != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -445,6 +499,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.ProductType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductType.GetHashCode();
                 }
                 if (this.SubclaimsDelimiters != null)
                 {

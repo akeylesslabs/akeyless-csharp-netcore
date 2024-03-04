@@ -35,17 +35,26 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticSecretDetailsInfo" /> class.
         /// </summary>
+        /// <param name="format">StaticSecretFormat defines the format of static secret (e.g. Text).</param>
         /// <param name="notifyOnChangeEvent">notifyOnChangeEvent.</param>
         /// <param name="username">username.</param>
         /// <param name="website">deprecated.</param>
         /// <param name="websites">websites.</param>
-        public StaticSecretDetailsInfo(bool notifyOnChangeEvent = default(bool), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
+        public StaticSecretDetailsInfo(string format = default(string), bool notifyOnChangeEvent = default(bool), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
         {
+            this.Format = format;
             this.NotifyOnChangeEvent = notifyOnChangeEvent;
             this.Username = username;
             this.Website = website;
             this.Websites = websites;
         }
+
+        /// <summary>
+        /// StaticSecretFormat defines the format of static secret (e.g. Text)
+        /// </summary>
+        /// <value>StaticSecretFormat defines the format of static secret (e.g. Text)</value>
+        [DataMember(Name = "format", EmitDefaultValue = false)]
+        public string Format { get; set; }
 
         /// <summary>
         /// Gets or Sets NotifyOnChangeEvent
@@ -80,6 +89,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretDetailsInfo {\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  NotifyOnChangeEvent: ").Append(NotifyOnChangeEvent).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
@@ -120,6 +130,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
+                ) && 
+                (
                     this.NotifyOnChangeEvent == input.NotifyOnChangeEvent ||
                     this.NotifyOnChangeEvent.Equals(input.NotifyOnChangeEvent)
                 ) && 
@@ -150,6 +165,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.NotifyOnChangeEvent.GetHashCode();
                 if (this.Username != null)
                 {

@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowAnyName** | **bool** |  | [optional] 
+**AllowCopyExtFromCsr** | **bool** |  | [optional] 
 **AllowSubdomains** | **bool** |  | [optional] 
 **AllowedDomainsList** | **List&lt;string&gt;** |  | [optional] 
+**AllowedExtraExtensions** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **AllowedUriSans** | **List&lt;string&gt;** |  | [optional] 
 **BasicConstraintsValidForNonCa** | **bool** |  | [optional] 
 **CertificateAuthorityMode** | **string** |  | [optional] 

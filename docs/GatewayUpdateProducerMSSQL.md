@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerMSSQL
-gatewayUpdateProducerMSSQL is a command that updates mssql producer
+gatewayUpdateProducerMSSQL is a command that updates mssql producer [Deprecated: Use dynamic-secret-update-mssql command]
 
 ## Properties
 
@@ -14,8 +14,9 @@ Name | Type | Description | Notes
 **MssqlPort** | **string** | MSSQL Port | [optional] [default to "1433"]
 **MssqlRevocationStatements** | **string** | MSSQL Revocation statements | [optional] 
 **MssqlUsername** | **string** | MSSQL Username | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessDbSchema** | **string** | The DB schema | [optional] 

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateRotatedSecret
+    /// createRotatedSecret is a command that creates a rotated secret [Deprecated: Use rotated-secret-create commands]
     /// </summary>
     [DataContract(Name = "createRotatedSecret")]
     public partial class CreateRotatedSecret : IEquatable<CreateRotatedSecret>, IValidatableObject
@@ -46,18 +46,20 @@ namespace akeyless.Model
         /// <param name="applicationId">ApplicationId (used in azure).</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
-        /// <param name="awsRegion">Region (used in aws) (default to &quot;us-east-2&quot;).</param>
+        /// <param name="awsRegion">Aws Region (relevant only for aws) (default to &quot;us-east-2&quot;).</param>
         /// <param name="customPayload">Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpServiceAccountEmail">The email of the gcp service account to rotate.</param>
         /// <param name="gcpServiceAccountKeyId">The key id of the gcp service account to rotate.</param>
+        /// <param name="graceRotation">Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false].</param>
         /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Secret name (required).</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
@@ -77,6 +79,7 @@ namespace akeyless.Model
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username (relevant only for rdp).</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) (default to false).</param>
@@ -88,9 +91,9 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot;.</param>
+        /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string hostProvider = "explicit", bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string))
+        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), string hostProvider = "explicit", bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -125,11 +128,13 @@ namespace akeyless.Model
             this.GcpKey = gcpKey;
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKeyId = gcpServiceAccountKeyId;
+            this.GraceRotation = graceRotation;
             // use default value if no "hostProvider" provided
             this.HostProvider = hostProvider ?? "explicit";
             this.Json = json;
             this.Key = key;
             this.Metadata = metadata;
+            this.PasswordLength = passwordLength;
             // use default value if no "rotateAfterDisconnect" provided
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
             this.RotatedPassword = rotatedPassword;
@@ -149,6 +154,7 @@ namespace akeyless.Model
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessRdpUser = secureAccessRdpUser;
+            this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
@@ -159,7 +165,8 @@ namespace akeyless.Model
             this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
-            this.UserAttribute = userAttribute;
+            // use default value if no "userAttribute" provided
+            this.UserAttribute = userAttribute ?? "cn";
             this.UserDn = userDn;
         }
 
@@ -205,9 +212,9 @@ namespace akeyless.Model
         public string AutoRotate { get; set; }
 
         /// <summary>
-        /// Region (used in aws)
+        /// Aws Region (relevant only for aws)
         /// </summary>
-        /// <value>Region (used in aws)</value>
+        /// <value>Aws Region (relevant only for aws)</value>
         [DataMember(Name = "aws-region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
@@ -254,6 +261,13 @@ namespace akeyless.Model
         public string GcpServiceAccountKeyId { get; set; }
 
         /// <summary>
+        /// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
+        /// </summary>
+        /// <value>Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]</value>
+        [DataMember(Name = "grace-rotation", EmitDefaultValue = false)]
+        public string GraceRotation { get; set; }
+
+        /// <summary>
         /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
         /// </summary>
         /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
@@ -287,6 +301,13 @@ namespace akeyless.Model
         /// <value>Secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Rotate the value of the secret after SRA session ends [true/false]
@@ -421,6 +442,13 @@ namespace akeyless.Model
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
         /// Enable Web Secure Remote Access
         /// </summary>
         /// <value>Enable Web Secure Remote Access</value>
@@ -532,11 +560,13 @@ namespace akeyless.Model
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpServiceAccountEmail: ").Append(GcpServiceAccountEmail).Append("\n");
             sb.Append("  GcpServiceAccountKeyId: ").Append(GcpServiceAccountKeyId).Append("\n");
+            sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
@@ -556,6 +586,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
@@ -670,6 +701,11 @@ namespace akeyless.Model
                     this.GcpServiceAccountKeyId.Equals(input.GcpServiceAccountKeyId))
                 ) && 
                 (
+                    this.GraceRotation == input.GraceRotation ||
+                    (this.GraceRotation != null &&
+                    this.GraceRotation.Equals(input.GraceRotation))
+                ) && 
+                (
                     this.HostProvider == input.HostProvider ||
                     (this.HostProvider != null &&
                     this.HostProvider.Equals(input.HostProvider))
@@ -692,6 +728,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.RotateAfterDisconnect == input.RotateAfterDisconnect ||
@@ -785,6 +826,11 @@ namespace akeyless.Model
                     this.SecureAccessRdpUser == input.SecureAccessRdpUser ||
                     (this.SecureAccessRdpUser != null &&
                     this.SecureAccessRdpUser.Equals(input.SecureAccessRdpUser))
+                ) && 
+                (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
                 ) && 
                 (
                     this.SecureAccessWeb == input.SecureAccessWeb ||
@@ -913,6 +959,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GcpServiceAccountKeyId.GetHashCode();
                 }
+                if (this.GraceRotation != null)
+                {
+                    hashCode = (hashCode * 59) + this.GraceRotation.GetHashCode();
+                }
                 if (this.HostProvider != null)
                 {
                     hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
@@ -929,6 +979,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.RotateAfterDisconnect != null)
                 {
@@ -996,6 +1050,10 @@ namespace akeyless.Model
                 if (this.SecureAccessRdpUser != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessRdpUser.GetHashCode();
+                }
+                if (this.SecureAccessUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();

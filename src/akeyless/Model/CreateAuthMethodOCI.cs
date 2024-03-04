@@ -49,10 +49,11 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="tenantOcid">The Oracle Cloud tenant ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodOCI(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> groupOcid = default(List<string>), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string tenantOcid = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodOCI(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> groupOcid = default(List<string>), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string tenantOcid = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "groupOcid" is required (not null)
             if (groupOcid == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.ProductType = productType;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -147,6 +149,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// </summary>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        [DataMember(Name = "product-type", EmitDefaultValue = false)]
+        public List<string> ProductType { get; set; }
+
+        /// <summary>
         /// The Oracle Cloud tenant ID
         /// </summary>
         /// <value>The Oracle Cloud tenant ID</value>
@@ -184,6 +193,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  TenantOcid: ").Append(TenantOcid).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -267,6 +277,12 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ProductType == input.ProductType ||
+                    this.ProductType != null &&
+                    input.ProductType != null &&
+                    this.ProductType.SequenceEqual(input.ProductType)
+                ) && 
+                (
                     this.TenantOcid == input.TenantOcid ||
                     (this.TenantOcid != null &&
                     this.TenantOcid.Equals(input.TenantOcid))
@@ -315,6 +331,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.ProductType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductType.GetHashCode();
                 }
                 if (this.TenantOcid != null)
                 {

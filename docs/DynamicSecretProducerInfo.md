@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ProducerMetadata** | **string** |  | [optional] 
 **ProducerStatus** | **string** | RotationStatus defines types of rotation Status | [optional] 
 **ProducerType** | **string** |  | [optional] 
+**UserTtl** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

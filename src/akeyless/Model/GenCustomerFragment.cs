@@ -36,15 +36,20 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GenCustomerFragment" /> class.
         /// </summary>
         /// <param name="description">Description of the object.</param>
+        /// <param name="hsmKeyLabel">The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Customer fragment name.</param>
-        public GenCustomerFragment(string description = default(string), bool json = false, string metadata = default(string), string name = default(string))
+        /// <param name="type">Customer fragment type [standard/hsm_wrapped/hsm_secured] (default to &quot;standard&quot;).</param>
+        public GenCustomerFragment(string description = default(string), string hsmKeyLabel = default(string), bool json = false, string metadata = default(string), string name = default(string), string type = "standard")
         {
             this.Description = description;
+            this.HsmKeyLabel = hsmKeyLabel;
             this.Json = json;
             this.Metadata = metadata;
             this.Name = name;
+            // use default value if no "type" provided
+            this.Type = type ?? "standard";
         }
 
         /// <summary>
@@ -53,6 +58,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments)
+        /// </summary>
+        /// <value>The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments)</value>
+        [DataMember(Name = "hsm-key-label", EmitDefaultValue = false)]
+        public string HsmKeyLabel { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -76,6 +88,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Customer fragment type [standard/hsm_wrapped/hsm_secured]
+        /// </summary>
+        /// <value>Customer fragment type [standard/hsm_wrapped/hsm_secured]</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public string Type { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -84,9 +103,11 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GenCustomerFragment {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  HsmKeyLabel: ").Append(HsmKeyLabel).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -128,6 +149,11 @@ namespace akeyless.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.HsmKeyLabel == input.HsmKeyLabel ||
+                    (this.HsmKeyLabel != null &&
+                    this.HsmKeyLabel.Equals(input.HsmKeyLabel))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -140,6 +166,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -156,6 +187,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                if (this.HsmKeyLabel != null)
+                {
+                    hashCode = (hashCode * 59) + this.HsmKeyLabel.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
                 {
@@ -164,6 +199,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.Type != null)
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 return hashCode;
             }

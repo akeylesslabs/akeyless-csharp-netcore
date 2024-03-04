@@ -42,8 +42,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="allowAnyName">If set, clients can request certificates for any CN.</param>
+        /// <param name="allowCopyExtFromCsr">If set, will allow copying the extra extensions from the csr file (if given).</param>
         /// <param name="allowSubdomains">If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains.</param>
         /// <param name="allowedDomains">A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list).</param>
+        /// <param name="allowedExtraExtensions">A json string containing the allowed extra extensions for the pki cert issuer.</param>
         /// <param name="allowedUriSans">A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list).</param>
         /// <param name="clientFlag">If set, certificates will be flagged for client auth use.</param>
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
@@ -74,7 +76,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,8 +93,10 @@ namespace akeyless.Model
             this.Ttl = ttl;
             this.AddTag = addTag;
             this.AllowAnyName = allowAnyName;
+            this.AllowCopyExtFromCsr = allowCopyExtFromCsr;
             this.AllowSubdomains = allowSubdomains;
             this.AllowedDomains = allowedDomains;
+            this.AllowedExtraExtensions = allowedExtraExtensions;
             this.AllowedUriSans = allowedUriSans;
             this.ClientFlag = clientFlag;
             this.CodeSigningFlag = codeSigningFlag;
@@ -138,6 +142,13 @@ namespace akeyless.Model
         public bool AllowAnyName { get; set; }
 
         /// <summary>
+        /// If set, will allow copying the extra extensions from the csr file (if given)
+        /// </summary>
+        /// <value>If set, will allow copying the extra extensions from the csr file (if given)</value>
+        [DataMember(Name = "allow-copy-ext-from-csr", EmitDefaultValue = true)]
+        public bool AllowCopyExtFromCsr { get; set; }
+
+        /// <summary>
         /// If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains
         /// </summary>
         /// <value>If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains</value>
@@ -150,6 +161,13 @@ namespace akeyless.Model
         /// <value>A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list)</value>
         [DataMember(Name = "allowed-domains", EmitDefaultValue = false)]
         public string AllowedDomains { get; set; }
+
+        /// <summary>
+        /// A json string containing the allowed extra extensions for the pki cert issuer
+        /// </summary>
+        /// <value>A json string containing the allowed extra extensions for the pki cert issuer</value>
+        [DataMember(Name = "allowed-extra-extensions", EmitDefaultValue = false)]
+        public string AllowedExtraExtensions { get; set; }
 
         /// <summary>
         /// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
@@ -371,8 +389,10 @@ namespace akeyless.Model
             sb.Append("class UpdatePKICertIssuer {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  AllowAnyName: ").Append(AllowAnyName).Append("\n");
+            sb.Append("  AllowCopyExtFromCsr: ").Append(AllowCopyExtFromCsr).Append("\n");
             sb.Append("  AllowSubdomains: ").Append(AllowSubdomains).Append("\n");
             sb.Append("  AllowedDomains: ").Append(AllowedDomains).Append("\n");
+            sb.Append("  AllowedExtraExtensions: ").Append(AllowedExtraExtensions).Append("\n");
             sb.Append("  AllowedUriSans: ").Append(AllowedUriSans).Append("\n");
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
@@ -449,6 +469,10 @@ namespace akeyless.Model
                     this.AllowAnyName.Equals(input.AllowAnyName)
                 ) && 
                 (
+                    this.AllowCopyExtFromCsr == input.AllowCopyExtFromCsr ||
+                    this.AllowCopyExtFromCsr.Equals(input.AllowCopyExtFromCsr)
+                ) && 
+                (
                     this.AllowSubdomains == input.AllowSubdomains ||
                     this.AllowSubdomains.Equals(input.AllowSubdomains)
                 ) && 
@@ -456,6 +480,11 @@ namespace akeyless.Model
                     this.AllowedDomains == input.AllowedDomains ||
                     (this.AllowedDomains != null &&
                     this.AllowedDomains.Equals(input.AllowedDomains))
+                ) && 
+                (
+                    this.AllowedExtraExtensions == input.AllowedExtraExtensions ||
+                    (this.AllowedExtraExtensions != null &&
+                    this.AllowedExtraExtensions.Equals(input.AllowedExtraExtensions))
                 ) && 
                 (
                     this.AllowedUriSans == input.AllowedUriSans ||
@@ -616,10 +645,15 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AllowAnyName.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowCopyExtFromCsr.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowSubdomains.GetHashCode();
                 if (this.AllowedDomains != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedDomains.GetHashCode();
+                }
+                if (this.AllowedExtraExtensions != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedExtraExtensions.GetHashCode();
                 }
                 if (this.AllowedUriSans != null)
                 {

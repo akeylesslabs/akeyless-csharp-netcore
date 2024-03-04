@@ -44,10 +44,11 @@ namespace akeyless.Model
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Item type (required).</param>
+        /// <param name="name">Item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RequestAccess(List<string> capability = default(List<string>), string comment = default(string), string description = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public RequestAccess(List<string> capability = default(List<string>), string comment = default(string), string description = default(string), bool json = false, string name = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
             if (capability == null)
@@ -61,6 +62,12 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for RequestAccess and cannot be null");
             }
             this.Name = name;
+            // to ensure "type" is required (not null)
+            if (type == null)
+            {
+                throw new ArgumentNullException("type is a required property for RequestAccess and cannot be null");
+            }
+            this.Type = type;
             this.Comment = comment;
             this.Description = description;
             this.Json = json;
@@ -97,9 +104,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Item type
+        /// Item name
         /// </summary>
-        /// <value>Item type</value>
+        /// <value>Item name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
@@ -109,6 +116,13 @@ namespace akeyless.Model
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Item type
+        /// </summary>
+        /// <value>Item type</value>
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+        public string Type { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -131,6 +145,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -198,6 +213,11 @@ namespace akeyless.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
+                (
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
@@ -233,6 +253,10 @@ namespace akeyless.Model
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                if (this.Type != null)
+                {
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 if (this.UidToken != null)
                 {

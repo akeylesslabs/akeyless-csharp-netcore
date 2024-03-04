@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerPing is a command that updates Ping producer
+    /// gatewayUpdateProducerPing is a command that updates Ping producer [Deprecated: Use dynamic-secret-update-ping command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerPing")]
     public partial class GatewayUpdateProducerPing : IEquatable<GatewayUpdateProducerPing>, IValidatableObject
@@ -42,8 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
-        /// <param name="newName">Producer New name.</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="newName">Dynamic secret New name.</param>
         /// <param name="pingAdministrativePort">Ping Federate administrative port (default to &quot;9999&quot;).</param>
         /// <param name="pingAtmId">Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set..</param>
         /// <param name="pingAuthorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
@@ -121,16 +121,16 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Producer New name
+        /// Dynamic secret New name
         /// </summary>
-        /// <value>Producer New name</value>
+        /// <value>Dynamic secret New name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

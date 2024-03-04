@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerAws
-gatewayUpdateProducerAws is a command that Updates aws producer
+gatewayUpdateProducerAws is a command that Updates aws producer [Deprecated: Use dynamic-secret-update-aws command]
 
 ## Properties
 
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **EnableAdminRotation** | **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Region** | **string** | Region | [optional] [default to "us-east-2"]
 **SecureAccessAwsAccountId** | **string** | The AWS account id | [optional] 

@@ -1,4 +1,5 @@
 # akeyless.Model.CreateRotatedSecret
+createRotatedSecret is a command that creates a rotated secret [Deprecated: Use rotated-secret-create commands]
 
 ## Properties
 
@@ -10,18 +11,20 @@ Name | Type | Description | Notes
 **ApplicationId** | **string** | ApplicationId (used in azure) | [optional] 
 **AuthenticationCredentials** | **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | **string** | Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
-**AwsRegion** | **string** | Region (used in aws) | [optional] [default to "us-east-2"]
+**AwsRegion** | **string** | Aws Region (relevant only for aws) | [optional] [default to "us-east-2"]
 **CustomPayload** | **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GcpServiceAccountEmail** | **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | **string** | The key id of the gcp service account to rotate | [optional] 
+**GraceRotation** | **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
 **HostProvider** | **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **RotatedPassword** | **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -41,6 +44,7 @@ Name | Type | Description | Notes
 **SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
+**SecureAccessUrl** | **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
 **SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
@@ -52,7 +56,7 @@ Name | Type | Description | Notes
 **TargetName** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UserAttribute** | **string** | LDAP User Attribute, Default value \&quot;cn\&quot; | [optional] 
+**UserAttribute** | **string** | LDAP User Attribute, Default value \&quot;cn\&quot; | [optional] [default to "cn"]
 **UserDn** | **string** | LDAP User Base DN | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

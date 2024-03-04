@@ -103,6 +103,7 @@ Name | Type | Description | Notes
 **GithubInstallationTokenPermissions** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **GithubInstallationTokenRepositories** | **List&lt;string&gt;** |  | [optional] 
 **GithubInstallationTokenRepositoriesIds** | **List&lt;long&gt;** |  | [optional] 
+**GithubOrganizationName** | **string** |  | [optional] 
 **GithubRepositoryPath** | **string** |  | [optional] 
 **GkeClusterCaCertificate** | **string** |  | [optional] 
 **GkeClusterEndpoint** | **string** |  | [optional] 

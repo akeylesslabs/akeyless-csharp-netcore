@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="RotatedSecretDetailsInfo" /> class.
         /// </summary>
         /// <param name="deletePreviousVersionInDays">deletePreviousVersionInDays.</param>
+        /// <param name="graceRotation">graceRotation.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="lastRotationError">lastRotationError.</param>
         /// <param name="numberOfVersionsToSave">numberOfVersionsToSave.</param>
@@ -47,9 +48,10 @@ namespace akeyless.Model
         /// <param name="rotatorType">rotatorType.</param>
         /// <param name="samePassword">samePassword.</param>
         /// <param name="servicesDetails">servicesDetails.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>))
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool graceRotation = default(bool), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
+            this.GraceRotation = graceRotation;
             this.GwClusterId = gwClusterId;
             this.LastRotationError = lastRotationError;
             this.NumberOfVersionsToSave = numberOfVersionsToSave;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "delete_previous_version_in_days", EmitDefaultValue = false)]
         public int DeletePreviousVersionInDays { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GraceRotation
+        /// </summary>
+        [DataMember(Name = "grace_rotation", EmitDefaultValue = true)]
+        public bool GraceRotation { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterId
@@ -145,6 +153,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretDetailsInfo {\n");
             sb.Append("  DeletePreviousVersionInDays: ").Append(DeletePreviousVersionInDays).Append("\n");
+            sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  LastRotationError: ").Append(LastRotationError).Append("\n");
             sb.Append("  NumberOfVersionsToSave: ").Append(NumberOfVersionsToSave).Append("\n");
@@ -194,6 +203,10 @@ namespace akeyless.Model
                 (
                     this.DeletePreviousVersionInDays == input.DeletePreviousVersionInDays ||
                     this.DeletePreviousVersionInDays.Equals(input.DeletePreviousVersionInDays)
+                ) && 
+                (
+                    this.GraceRotation == input.GraceRotation ||
+                    this.GraceRotation.Equals(input.GraceRotation)
                 ) && 
                 (
                     this.GwClusterId == input.GwClusterId ||
@@ -258,6 +271,7 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.DeletePreviousVersionInDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.GraceRotation.GetHashCode();
                 hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
                 if (this.LastRotationError != null)
                 {

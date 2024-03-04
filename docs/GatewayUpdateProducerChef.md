@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerChef
-gatewayUpdateProducerChef is a command that updates chef producer
+gatewayUpdateProducerChef is a command that updates chef producer [Deprecated: Use dynamic-secret-update-chef command]
 
 ## Properties
 
@@ -11,8 +11,9 @@ Name | Type | Description | Notes
 **ChefServerUsername** | **string** | Server username | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | **bool** | Skip SSL | [optional] [default to true]
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

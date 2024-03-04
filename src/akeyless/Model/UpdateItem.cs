@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret) (default to &quot;false&quot;).</param>
+        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="secureAccessAddHost">List of the new hosts that will be attached to SRA servers host.</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users [true/false].</param>
         /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
@@ -227,9 +227,9 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)
+        /// Rotate the value of the secret after SRA session ends [true/false]
         /// </summary>
-        /// <value>Rotate the value of the secret after SRA session ends [true/false] (relevant only for Rotated-secret)</value>
+        /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
 

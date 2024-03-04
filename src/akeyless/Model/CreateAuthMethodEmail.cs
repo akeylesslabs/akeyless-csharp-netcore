@@ -49,9 +49,10 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodEmail(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), string email = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodEmail(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), string email = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.ProductType = productType;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -140,6 +142,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// </summary>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        [DataMember(Name = "product-type", EmitDefaultValue = false)]
+        public List<string> ProductType { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -170,6 +179,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -251,6 +261,12 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ProductType == input.ProductType ||
+                    this.ProductType != null &&
+                    input.ProductType != null &&
+                    this.ProductType.SequenceEqual(input.ProductType)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -294,6 +310,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.ProductType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductType.GetHashCode();
                 }
                 if (this.Token != null)
                 {

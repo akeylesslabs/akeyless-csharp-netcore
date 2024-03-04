@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerPostgreSQL
-gatewayUpdateProducerPostgreSQL is a command that updates postgresql producer
+gatewayUpdateProducerPostgreSQL is a command that updates postgresql producer [Deprecated: Use dynamic-secret-update-postgresql command]
 
 ## Properties
 
@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **CreationStatements** | **string** | PostgreSQL Creation statements | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **PostgresqlDbName** | **string** | PostgreSQL DB Name | [optional] 
 **PostgresqlHost** | **string** | PostgreSQL Host | [optional] [default to "127.0.0.1"]
 **PostgresqlPassword** | **string** | PostgreSQL Password | [optional] 

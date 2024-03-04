@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerRdp
-gatewayUpdateProducerRdp is a command that updates rdp producer
+gatewayUpdateProducerRdp is a command that updates rdp producer [Deprecated: Use dynamic-secret-update-rdp command]
 
 ## Properties
 
@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **FixedUserOnly** | **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RdpAdminName** | **string** | RDP Admin Name | [optional] 
 **RdpAdminPwd** | **string** | RDP Admin password | [optional] 

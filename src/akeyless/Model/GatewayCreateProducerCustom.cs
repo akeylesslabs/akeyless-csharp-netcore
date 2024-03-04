@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// GatewayCreateProducerCustom
+    /// gatewayCreateProducerCustom is a command that creates a custom producer. [Deprecated: Use dynamic-secret-create-custom command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerCustom")]
     public partial class GatewayCreateProducerCustom : IEquatable<GatewayCreateProducerCustom>, IValidatableObject
@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="enableAdminRotation">Should admin credentials be rotated (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="payload">Secret payload to be sent with each create/revoke webhook request.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
@@ -126,9 +126,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

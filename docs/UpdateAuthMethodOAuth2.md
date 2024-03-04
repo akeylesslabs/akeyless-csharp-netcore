@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Audience** | **string** | The audience in the JWT | [optional] 
 **BoundClientIds** | **List&lt;string&gt;** | The clients ids that the access is restricted to | [optional] 
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
+**Cert** | **string** | CertificateFile Path to a file that contain the certificate in a PEM format. | [optional] 
+**CertFileData** | **string** | CertificateFileData PEM Certificate in a Base64 format. | [optional] 
 **Description** | **string** | Auth Method description | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GatewayUrl** | **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway. | [optional] 
@@ -20,6 +22,7 @@ Name | Type | Description | Notes
 **JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
+**ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **SubclaimsDelimiters** | **List&lt;string&gt;** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

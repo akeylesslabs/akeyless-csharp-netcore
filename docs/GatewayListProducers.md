@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayListProducers
-gatewayListProducers is a command that returns a list of producers
+gatewayListProducers is a command that returns a list of producers [Deprecated: Use dynamic-secret-list command]
 
 ## Properties
 

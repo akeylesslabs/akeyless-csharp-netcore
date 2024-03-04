@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerRabbitMQ
-gatewayUpdateProducerRabbitMQ is a command that updates rabbitmq producer
+gatewayUpdateProducerRabbitMQ is a command that updates rabbitmq producer [Deprecated: Use dynamic-secret-update-rabbitmq command]
 
 ## Properties
 
@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RabbitmqAdminPwd** | **string** | RabbitMQ Admin password | [optional] 
 **RabbitmqAdminUser** | **string** | RabbitMQ Admin User | [optional] 

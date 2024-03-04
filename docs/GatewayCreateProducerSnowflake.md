@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerSnowflake
-GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer [Deprecated: Use dynamic-secret-create-snowflake command]
 
 ## Properties
 
@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **DbName** | **string** | Database name | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **PrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 
 **PrivateKeyPassphrase** | **string** | The Private key passphrase | [optional] 
 **Role** | **string** | User role | [optional] 

@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerGithub
-gatewayUpdateProducerGithub is a command that updates github producer
+gatewayUpdateProducerGithub is a command that updates github producer [Deprecated: Use dynamic-secret-update-github command]
 
 ## Properties
 
@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 **GithubAppPrivateKey** | **string** | App private key | [optional] 
 **GithubBaseUrl** | **string** | Base URL | [optional] [default to "https://api.github.com/"]
 **InstallationId** | **long** | Github app installation id | [optional] 
-**InstallationRepository** | **string** | Repository that the app installation has access to | [optional] 
+**InstallationOrganization** | **string** | Optional, instead of installation id, set a GitHub organization name | [optional] 
+**InstallationRepository** | **string** | Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt; | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenPermissions** | **List&lt;string&gt;** | Optional - installation token&#39;s allowed permissions | [optional] 

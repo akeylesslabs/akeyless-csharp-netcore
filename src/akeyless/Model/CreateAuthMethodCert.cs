@@ -56,11 +56,12 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="revokedCertIds">A list of revoked cert ids.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured, such as common_name or organizational_unit Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodCert(long accessExpires = 0, string allowedCors = default(string), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodCert(long accessExpires = 0, string allowedCors = default(string), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -89,6 +90,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.ProductType = productType;
             this.RevokedCertIds = revokedCertIds;
             this.Token = token;
             this.UidToken = uidToken;
@@ -207,6 +209,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// </summary>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        [DataMember(Name = "product-type", EmitDefaultValue = false)]
+        public List<string> ProductType { get; set; }
+
+        /// <summary>
         /// A list of revoked cert ids
         /// </summary>
         /// <value>A list of revoked cert ids</value>
@@ -258,6 +267,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  RevokedCertIds: ").Append(RevokedCertIds).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -382,6 +392,12 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ProductType == input.ProductType ||
+                    this.ProductType != null &&
+                    input.ProductType != null &&
+                    this.ProductType.SequenceEqual(input.ProductType)
+                ) && 
+                (
                     this.RevokedCertIds == input.RevokedCertIds ||
                     this.RevokedCertIds != null &&
                     input.RevokedCertIds != null &&
@@ -464,6 +480,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.ProductType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductType.GetHashCode();
                 }
                 if (this.RevokedCertIds != null)
                 {

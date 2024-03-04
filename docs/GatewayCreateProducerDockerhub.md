@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerDockerhub
-gatewayCreateProducerDockerhub is a command that creates a DOCKERHUB producer
+gatewayCreateProducerDockerhub is a command that creates a DOCKERHUB producer [Deprecated: Use dynamic-secret-create-dockerhub command]
 
 ## Properties
 
@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DockerhubTokenScopes** | **string** | Access token scopes list (comma-separated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot; | [optional] 
 **DockerhubUsername** | **string** | DockerhubUsername is the name of the user in dockerhub | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 

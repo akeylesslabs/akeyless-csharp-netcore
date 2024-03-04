@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerChef
-gatewayCreateProducerChef is a command that creates chef producer
+gatewayCreateProducerChef is a command that creates chef producer [Deprecated: Use dynamic-secret-create-chef command]
 
 ## Properties
 
@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **ChefServerUsername** | **string** | Server username | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | **bool** | Skip SSL | [optional] [default to true]
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

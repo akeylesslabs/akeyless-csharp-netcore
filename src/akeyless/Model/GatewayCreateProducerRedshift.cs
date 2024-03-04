@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerRedshift is a command that creates redshift producer
+    /// gatewayCreateProducerRedshift is a command that creates redshift producer [Deprecated: Use dynamic-secret-create-redshift command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerRedshift")]
     public partial class GatewayCreateProducerRedshift : IEquatable<GatewayCreateProducerRedshift>, IValidatableObject
@@ -43,7 +43,8 @@ namespace akeyless.Model
         /// <param name="creationStatements">Redshift Creation statements.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKey">Dynamic producer encryption key.</param>
         /// <param name="redshiftDbName">Redshift DB Name.</param>
         /// <param name="redshiftHost">Redshift Host (default to &quot;127.0.0.1&quot;).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerRedshift(string creationStatements = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = "127.0.0.1", string redshiftPassword = default(string), string redshiftPort = "5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool ssl = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerRedshift(string creationStatements = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = "127.0.0.1", string redshiftPassword = default(string), string redshiftPort = "5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool ssl = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -69,6 +70,7 @@ namespace akeyless.Model
             this.CreationStatements = creationStatements;
             this.DeleteProtection = deleteProtection;
             this.Json = json;
+            this.PasswordLength = passwordLength;
             this.ProducerEncryptionKey = producerEncryptionKey;
             this.RedshiftDbName = redshiftDbName;
             // use default value if no "redshiftHost" provided
@@ -110,11 +112,18 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -226,6 +235,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKey: ").Append(ProducerEncryptionKey).Append("\n");
             sb.Append("  RedshiftDbName: ").Append(RedshiftDbName).Append("\n");
             sb.Append("  RedshiftHost: ").Append(RedshiftHost).Append("\n");
@@ -293,6 +303,11 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.ProducerEncryptionKey == input.ProducerEncryptionKey ||
@@ -388,6 +403,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.ProducerEncryptionKey != null)
                 {

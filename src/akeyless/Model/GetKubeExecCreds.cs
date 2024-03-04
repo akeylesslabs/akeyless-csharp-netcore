@@ -46,13 +46,14 @@ namespace akeyless.Model
         /// <param name="commonName">The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken).</param>
         /// <param name="csrDataBase64">Certificate Signing Request contents encoded in base64 to generate the certificate with.</param>
         /// <param name="extendedKeyUsage">A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;..</param>
+        /// <param name="extraExtensions">A json string that defines the requested extra extensions for the certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it).</param>
-        public GetKubeExecCreds(string altNames = default(string), string apiVersion = "v1", string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), bool json = false, string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
+        public GetKubeExecCreds(string altNames = default(string), string apiVersion = "v1", string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), string extraExtensions = default(string), bool json = false, string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.CommonName = commonName;
             this.CsrDataBase64 = csrDataBase64;
             this.ExtendedKeyUsage = extendedKeyUsage;
+            this.ExtraExtensions = extraExtensions;
             this.Json = json;
             this.KeyDataBase64 = keyDataBase64;
             this.Token = token;
@@ -115,6 +117,13 @@ namespace akeyless.Model
         /// <value>A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;.</value>
         [DataMember(Name = "extended-key-usage", EmitDefaultValue = false)]
         public string ExtendedKeyUsage { get; set; }
+
+        /// <summary>
+        /// A json string that defines the requested extra extensions for the certificate
+        /// </summary>
+        /// <value>A json string that defines the requested extra extensions for the certificate</value>
+        [DataMember(Name = "extra-extensions", EmitDefaultValue = false)]
+        public string ExtraExtensions { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -172,6 +181,7 @@ namespace akeyless.Model
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
             sb.Append("  CsrDataBase64: ").Append(CsrDataBase64).Append("\n");
             sb.Append("  ExtendedKeyUsage: ").Append(ExtendedKeyUsage).Append("\n");
+            sb.Append("  ExtraExtensions: ").Append(ExtraExtensions).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -244,6 +254,11 @@ namespace akeyless.Model
                     this.ExtendedKeyUsage.Equals(input.ExtendedKeyUsage))
                 ) && 
                 (
+                    this.ExtraExtensions == input.ExtraExtensions ||
+                    (this.ExtraExtensions != null &&
+                    this.ExtraExtensions.Equals(input.ExtraExtensions))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -305,6 +320,10 @@ namespace akeyless.Model
                 if (this.ExtendedKeyUsage != null)
                 {
                     hashCode = (hashCode * 59) + this.ExtendedKeyUsage.GetHashCode();
+                }
+                if (this.ExtraExtensions != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExtraExtensions.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeyDataBase64 != null)

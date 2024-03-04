@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerRedshift
-gatewayCreateProducerRedshift is a command that creates redshift producer
+gatewayCreateProducerRedshift is a command that creates redshift producer [Deprecated: Use dynamic-secret-create-redshift command]
 
 ## Properties
 
@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **CreationStatements** | **string** | Redshift Creation statements | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKey** | **string** | Dynamic producer encryption key | [optional] 
 **RedshiftDbName** | **string** | Redshift DB Name | [optional] 
 **RedshiftHost** | **string** | Redshift Host | [optional] [default to "127.0.0.1"]

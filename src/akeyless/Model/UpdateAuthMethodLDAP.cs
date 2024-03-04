@@ -50,11 +50,12 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="publicKeyData">A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (default to &quot;users&quot;).</param>
-        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = "users")
+        public UpdateAuthMethodLDAP(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string publicKeyData = default(string), string token = default(string), string uidToken = default(string), string uniqueIdentifier = "users")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.Json = json;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
+            this.ProductType = productType;
             this.PublicKeyData = publicKeyData;
             this.Token = token;
             this.UidToken = uidToken;
@@ -149,6 +151,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// </summary>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        [DataMember(Name = "product-type", EmitDefaultValue = false)]
+        public List<string> ProductType { get; set; }
+
+        /// <summary>
         /// A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048]
         /// </summary>
         /// <value>A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048]</value>
@@ -194,6 +203,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  PublicKeyData: ").Append(PublicKeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -282,6 +292,12 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
+                    this.ProductType == input.ProductType ||
+                    this.ProductType != null &&
+                    input.ProductType != null &&
+                    this.ProductType.SequenceEqual(input.ProductType)
+                ) && 
+                (
                     this.PublicKeyData == input.PublicKeyData ||
                     (this.PublicKeyData != null &&
                     this.PublicKeyData.Equals(input.PublicKeyData))
@@ -339,6 +355,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.ProductType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProductType.GetHashCode();
                 }
                 if (this.PublicKeyData != null)
                 {

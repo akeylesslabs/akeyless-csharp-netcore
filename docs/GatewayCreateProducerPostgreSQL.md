@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerPostgreSQL
-gatewayCreateProducerPostgreSQL is a command that creates postgresql producer
+gatewayCreateProducerPostgreSQL is a command that creates postgresql producer [Deprecated: Use dynamic-secret-create-postgresql command]
 
 ## Properties
 
@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **CreationStatements** | **string** | PostgreSQL Creation statements | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **PostgresqlDbName** | **string** | PostgreSQL DB Name | [optional] 
 **PostgresqlHost** | **string** | PostgreSQL Host | [optional] [default to "127.0.0.1"]
 **PostgresqlPassword** | **string** | PostgreSQL Password | [optional] 

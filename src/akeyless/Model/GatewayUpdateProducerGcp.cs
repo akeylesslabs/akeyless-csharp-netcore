@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerGcp is a command that updates a GCP producer
+    /// gatewayUpdateProducerGcp is a command that updates a GCP producer [Deprecated: Use dynamic-secret-update-gcp command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerGcp")]
     public partial class GatewayUpdateProducerGcp : IEquatable<GatewayUpdateProducerGcp>, IValidatableObject
@@ -47,8 +47,8 @@ namespace akeyless.Model
         /// <param name="gcpSaEmail">The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed).</param>
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
-        /// <param name="newName">Producer name.</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="roleBinding">Role binding definitions in json format.</param>
         /// <param name="serviceAccountType">The type of the gcp dynamic secret. Options[fixed, dynamic] (required) (default to &quot;fixed&quot;).</param>
@@ -138,16 +138,16 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

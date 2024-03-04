@@ -39,16 +39,18 @@ namespace akeyless.Model
         /// <param name="authorizedGwClusterName">The gateway cluster name that is authorized to access JWKeySetURL.</param>
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="boundClientsId">The clients ids that login is restricted to..</param>
+        /// <param name="certificate">Certificate to use when calling jwks_uri from the gateway. in PEM format.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="jwksJsonData">The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server..</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OAuth2AccessRules(string audience = default(string), string authorizedGwClusterName = default(string), List<OAuth2CustomClaim> boundClaims = default(List<OAuth2CustomClaim>), List<string> boundClientsId = default(List<string>), string issuer = default(string), string jwksJsonData = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
+        public OAuth2AccessRules(string audience = default(string), string authorizedGwClusterName = default(string), List<OAuth2CustomClaim> boundClaims = default(List<OAuth2CustomClaim>), List<string> boundClientsId = default(List<string>), string certificate = default(string), string issuer = default(string), string jwksJsonData = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
         {
             this.Audience = audience;
             this.AuthorizedGwClusterName = authorizedGwClusterName;
             this.BoundClaims = boundClaims;
             this.BoundClientsId = boundClientsId;
+            this.Certificate = certificate;
             this.Issuer = issuer;
             this.JwksJsonData = jwksJsonData;
             this.JwksUri = jwksUri;
@@ -82,6 +84,13 @@ namespace akeyless.Model
         /// <value>The clients ids that login is restricted to.</value>
         [DataMember(Name = "bound_clients_id", EmitDefaultValue = false)]
         public List<string> BoundClientsId { get; set; }
+
+        /// <summary>
+        /// Certificate to use when calling jwks_uri from the gateway. in PEM format
+        /// </summary>
+        /// <value>Certificate to use when calling jwks_uri from the gateway. in PEM format</value>
+        [DataMember(Name = "certificate", EmitDefaultValue = false)]
+        public string Certificate { get; set; }
 
         /// <summary>
         /// Issuer URL
@@ -123,6 +132,7 @@ namespace akeyless.Model
             sb.Append("  AuthorizedGwClusterName: ").Append(AuthorizedGwClusterName).Append("\n");
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  BoundClientsId: ").Append(BoundClientsId).Append("\n");
+            sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  JwksJsonData: ").Append(JwksJsonData).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
@@ -185,6 +195,11 @@ namespace akeyless.Model
                     this.BoundClientsId.SequenceEqual(input.BoundClientsId)
                 ) && 
                 (
+                    this.Certificate == input.Certificate ||
+                    (this.Certificate != null &&
+                    this.Certificate.Equals(input.Certificate))
+                ) && 
+                (
                     this.Issuer == input.Issuer ||
                     (this.Issuer != null &&
                     this.Issuer.Equals(input.Issuer))
@@ -230,6 +245,10 @@ namespace akeyless.Model
                 if (this.BoundClientsId != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundClientsId.GetHashCode();
+                }
+                if (this.Certificate != null)
+                {
+                    hashCode = (hashCode * 59) + this.Certificate.GetHashCode();
                 }
                 if (this.Issuer != null)
                 {

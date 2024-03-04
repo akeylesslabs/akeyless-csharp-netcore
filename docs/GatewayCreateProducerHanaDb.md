@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerHanaDb
-gatewayCreateProducerHanaDb is a command that creates hanadb producer
+gatewayCreateProducerHanaDb is a command that creates hanadb producer [Deprecated: Use dynamic-secret-create-hanadb command]
 
 ## Properties
 
@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **HanadbRevocationStatements** | **string** | HanaDb Revocation statements | [optional] 
 **HanadbUsername** | **string** | HanaDb Username | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessDbSchema** | **string** | The DB schema | [optional] 

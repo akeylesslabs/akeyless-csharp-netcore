@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// updateRotatedSecret is a command that updates rotated secret. [Deprecated: Use gateway-update-item command]
+    /// updateRotatedSecret is a command that updates rotated secret. [Deprecated: Use rotated-secret update commands]
     /// </summary>
     [DataContract(Name = "updateRotatedSecret")]
     public partial class UpdateRotatedSecret : IEquatable<UpdateRotatedSecret>, IValidatableObject
@@ -40,14 +40,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateRotatedSecret" /> class.
         /// </summary>
+        /// <param name="providerType">providerType.</param>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="apiId">API ID to rotate.</param>
         /// <param name="apiKey">API key to rotate.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
-        /// <param name="awsRegion">Region (used in aws) (default to &quot;us-east-2&quot;).</param>
+        /// <param name="awsRegion">Aws Region (relevant only for aws) (default to &quot;us-east-2&quot;).</param>
         /// <param name="customPayload">Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom).</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
+        /// <param name="graceRotation">Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false].</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -74,6 +77,7 @@ namespace akeyless.Model
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username (relevant only for rdp).</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) (default to false).</param>
@@ -82,7 +86,9 @@ namespace akeyless.Model
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotatedSecret(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
+        /// <param name="userDn">LDAP User Base DN.</param>
+        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = "explicit", bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -90,6 +96,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateRotatedSecret and cannot be null");
             }
             this.Name = name;
+            this.ProviderType = providerType;
             this.AddTag = addTag;
             this.ApiId = apiId;
             this.ApiKey = apiKey;
@@ -100,6 +107,9 @@ namespace akeyless.Model
             // use default value if no "description" provided
             this.Description = description ?? "default_metadata";
             this.GcpKey = gcpKey;
+            this.GraceRotation = graceRotation;
+            // use default value if no "hostProvider" provided
+            this.HostProvider = hostProvider ?? "explicit";
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -128,6 +138,7 @@ namespace akeyless.Model
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessRdpUser = secureAccessRdpUser;
+            this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
@@ -136,7 +147,16 @@ namespace akeyless.Model
             this.StorageAccountKeyName = storageAccountKeyName;
             this.Token = token;
             this.UidToken = uidToken;
+            // use default value if no "userAttribute" provided
+            this.UserAttribute = userAttribute ?? "cn";
+            this.UserDn = userDn;
         }
+
+        /// <summary>
+        /// Gets or Sets ProviderType
+        /// </summary>
+        [DataMember(Name = "ProviderType", EmitDefaultValue = false)]
+        public string ProviderType { get; set; }
 
         /// <summary>
         /// List of the new tags that will be attached to this item
@@ -167,9 +187,9 @@ namespace akeyless.Model
         public string AutoRotate { get; set; }
 
         /// <summary>
-        /// Region (used in aws)
+        /// Aws Region (relevant only for aws)
         /// </summary>
-        /// <value>Region (used in aws)</value>
+        /// <value>Aws Region (relevant only for aws)</value>
         [DataMember(Name = "aws-region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
@@ -193,6 +213,20 @@ namespace akeyless.Model
         /// <value>Base64-encoded service account private key text</value>
         [DataMember(Name = "gcp-key", EmitDefaultValue = false)]
         public string GcpKey { get; set; }
+
+        /// <summary>
+        /// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
+        /// </summary>
+        /// <value>Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]</value>
+        [DataMember(Name = "grace-rotation", EmitDefaultValue = false)]
+        public string GraceRotation { get; set; }
+
+        /// <summary>
+        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// </summary>
+        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        [DataMember(Name = "host-provider", EmitDefaultValue = false)]
+        public string HostProvider { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -377,6 +411,13 @@ namespace akeyless.Model
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
         /// Enable Web Secure Remote Access
         /// </summary>
         /// <value>Enable Web Secure Remote Access</value>
@@ -433,6 +474,20 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// LDAP User Attribute, Default value \&quot;cn\&quot;
+        /// </summary>
+        /// <value>LDAP User Attribute, Default value \&quot;cn\&quot;</value>
+        [DataMember(Name = "user-attribute", EmitDefaultValue = false)]
+        public string UserAttribute { get; set; }
+
+        /// <summary>
+        /// LDAP User Base DN
+        /// </summary>
+        /// <value>LDAP User Base DN</value>
+        [DataMember(Name = "user-dn", EmitDefaultValue = false)]
+        public string UserDn { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -440,6 +495,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateRotatedSecret {\n");
+            sb.Append("  ProviderType: ").Append(ProviderType).Append("\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  ApiId: ").Append(ApiId).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
@@ -448,6 +504,8 @@ namespace akeyless.Model
             sb.Append("  CustomPayload: ").Append(CustomPayload).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
+            sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
+            sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -474,6 +532,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
@@ -482,6 +541,8 @@ namespace akeyless.Model
             sb.Append("  StorageAccountKeyName: ").Append(StorageAccountKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UserAttribute: ").Append(UserAttribute).Append("\n");
+            sb.Append("  UserDn: ").Append(UserDn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -517,6 +578,11 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.ProviderType == input.ProviderType ||
+                    (this.ProviderType != null &&
+                    this.ProviderType.Equals(input.ProviderType))
+                ) && 
                 (
                     this.AddTag == input.AddTag ||
                     this.AddTag != null &&
@@ -557,6 +623,16 @@ namespace akeyless.Model
                     this.GcpKey == input.GcpKey ||
                     (this.GcpKey != null &&
                     this.GcpKey.Equals(input.GcpKey))
+                ) && 
+                (
+                    this.GraceRotation == input.GraceRotation ||
+                    (this.GraceRotation != null &&
+                    this.GraceRotation.Equals(input.GraceRotation))
+                ) && 
+                (
+                    this.HostProvider == input.HostProvider ||
+                    (this.HostProvider != null &&
+                    this.HostProvider.Equals(input.HostProvider))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -686,6 +762,11 @@ namespace akeyless.Model
                     this.SecureAccessRdpUser.Equals(input.SecureAccessRdpUser))
                 ) && 
                 (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
+                ) && 
+                (
                     this.SecureAccessWeb == input.SecureAccessWeb ||
                     this.SecureAccessWeb.Equals(input.SecureAccessWeb)
                 ) && 
@@ -721,6 +802,16 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UserAttribute == input.UserAttribute ||
+                    (this.UserAttribute != null &&
+                    this.UserAttribute.Equals(input.UserAttribute))
+                ) && 
+                (
+                    this.UserDn == input.UserDn ||
+                    (this.UserDn != null &&
+                    this.UserDn.Equals(input.UserDn))
                 );
         }
 
@@ -733,6 +824,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ProviderType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProviderType.GetHashCode();
+                }
                 if (this.AddTag != null)
                 {
                     hashCode = (hashCode * 59) + this.AddTag.GetHashCode();
@@ -764,6 +859,14 @@ namespace akeyless.Model
                 if (this.GcpKey != null)
                 {
                     hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
+                }
+                if (this.GraceRotation != null)
+                {
+                    hashCode = (hashCode * 59) + this.GraceRotation.GetHashCode();
+                }
+                if (this.HostProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.KeepPrevVersion != null)
@@ -854,6 +957,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessRdpUser.GetHashCode();
                 }
+                if (this.SecureAccessUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
@@ -876,6 +983,14 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UserAttribute != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserAttribute.GetHashCode();
+                }
+                if (this.UserDn != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserDn.GetHashCode();
                 }
                 return hashCode;
             }

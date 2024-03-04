@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerAzure
-gatewayUpdateProducerAzure is a command that updates azure producer
+gatewayUpdateProducerAzure is a command that updates azure producer [Deprecated: Use dynamic-secret-update-azure command]
 
 ## Properties
 
@@ -13,8 +13,9 @@ Name | Type | Description | Notes
 **FixedUserClaimKeyname** | **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | **bool** | Fixed user | [optional] [default to false]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to true]

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayRevokeTmpUsers is a command that revoke producer tmp user
+    /// gatewayRevokeTmpUsers is a command that revoke producer tmp user [Deprecated: Use dynamic-secret-tmp-creds-delete command]
     /// </summary>
     [DataContract(Name = "gatewayRevokeTmpUsers")]
     public partial class GatewayRevokeTmpUsers : IEquatable<GatewayRevokeTmpUsers>, IValidatableObject
@@ -40,9 +40,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayRevokeTmpUsers" /> class.
         /// </summary>
-        /// <param name="host">Deprecated: has no effect.</param>
+        /// <param name="host">Host.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer Name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="revokeAll">Revoke All Temp Creds.</param>
         /// <param name="softDelete">Soft Delete.</param>
         /// <param name="tmpCredsId">Tmp Creds ID (required) (default to &quot;demo_default_tmp_creds_id_for_sdk_bc&quot;).</param>
@@ -71,9 +71,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Deprecated: has no effect
+        /// Host
         /// </summary>
-        /// <value>Deprecated: has no effect</value>
+        /// <value>Host</value>
         [DataMember(Name = "host", EmitDefaultValue = false)]
         public string Host { get; set; }
 
@@ -85,9 +85,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer Name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer Name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

@@ -57,8 +57,9 @@ namespace akeyless.Model
         /// <param name="toEmails">toEmails.</param>
         /// <param name="userEmail">userEmail.</param>
         /// <param name="username">Auth - User Password.</param>
+        /// <param name="webhookNotiForwarderPublicDetails">webhookNotiForwarderPublicDetails.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), bool withCustomerFragment = default(bool))
+        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
         {
             this.AuthType = authType;
             this.ClientId = clientId;
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.ToEmails = toEmails;
             this.UserEmail = userEmail;
             this.Username = username;
+            this.WebhookNotiForwarderPublicDetails = webhookNotiForwarderPublicDetails;
             this.WithCustomerFragment = withCustomerFragment;
         }
 
@@ -220,6 +222,12 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
+        /// Gets or Sets WebhookNotiForwarderPublicDetails
+        /// </summary>
+        [DataMember(Name = "webhook_noti_forwarder_public_details", EmitDefaultValue = false)]
+        public WebHookNotiForwarderPublicDetails WebhookNotiForwarderPublicDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets WithCustomerFragment
         /// </summary>
         [DataMember(Name = "with_customer_fragment", EmitDefaultValue = true)]
@@ -255,6 +263,7 @@ namespace akeyless.Model
             sb.Append("  ToEmails: ").Append(ToEmails).Append("\n");
             sb.Append("  UserEmail: ").Append(UserEmail).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("  WebhookNotiForwarderPublicDetails: ").Append(WebhookNotiForwarderPublicDetails).Append("\n");
             sb.Append("  WithCustomerFragment: ").Append(WithCustomerFragment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -402,6 +411,11 @@ namespace akeyless.Model
                     this.Username.Equals(input.Username))
                 ) && 
                 (
+                    this.WebhookNotiForwarderPublicDetails == input.WebhookNotiForwarderPublicDetails ||
+                    (this.WebhookNotiForwarderPublicDetails != null &&
+                    this.WebhookNotiForwarderPublicDetails.Equals(input.WebhookNotiForwarderPublicDetails))
+                ) && 
+                (
                     this.WithCustomerFragment == input.WithCustomerFragment ||
                     this.WithCustomerFragment.Equals(input.WithCustomerFragment)
                 );
@@ -488,6 +502,10 @@ namespace akeyless.Model
                 if (this.Username != null)
                 {
                     hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
+                if (this.WebhookNotiForwarderPublicDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.WebhookNotiForwarderPublicDetails.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.WithCustomerFragment.GetHashCode();
                 return hashCode;

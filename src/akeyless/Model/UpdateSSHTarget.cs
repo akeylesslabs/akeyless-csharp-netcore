@@ -40,7 +40,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSSHTarget" /> class.
         /// </summary>
-        /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="host">SSH host name.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -56,7 +55,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateSSHTarget(string comment = default(string), string description = default(string), string host = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string port = "22", string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateSSHTarget(string description = default(string), string host = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string port = "22", string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,7 +63,6 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateSSHTarget and cannot be null");
             }
             this.Name = name;
-            this.Comment = comment;
             this.Description = description;
             this.Host = host;
             this.Json = json;
@@ -81,13 +79,6 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
         }
-
-        /// <summary>
-        /// Deprecated - use description
-        /// </summary>
-        /// <value>Deprecated - use description</value>
-        [DataMember(Name = "comment", EmitDefaultValue = false)]
-        public string Comment { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -202,7 +193,6 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateSSHTarget {\n");
-            sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -253,11 +243,6 @@ namespace akeyless.Model
                 return false;
             }
             return 
-                (
-                    this.Comment == input.Comment ||
-                    (this.Comment != null &&
-                    this.Comment.Equals(input.Comment))
-                ) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
@@ -342,10 +327,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Comment != null)
-                {
-                    hashCode = (hashCode * 59) + this.Comment.GetHashCode();
-                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();

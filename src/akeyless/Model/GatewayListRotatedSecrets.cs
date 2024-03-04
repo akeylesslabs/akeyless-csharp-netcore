@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayListRotatedSecrets is a command that returns a list of rotated secrets
+    /// gatewayListRotatedSecrets is a command that returns a list of rotated secrets. [Deprecated: Use rotated-secret list command]
     /// </summary>
     [DataContract(Name = "gatewayListRotatedSecrets")]
     public partial class GatewayListRotatedSecrets : IEquatable<GatewayListRotatedSecrets>, IValidatableObject

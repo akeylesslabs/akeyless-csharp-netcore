@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayUpdateProducerMongo
-gatewayUpdateProducerMongo is a command that updates either mongodb  producer or mongodb atlas producer
+gatewayUpdateProducerMongo is a command that updates either mongodb  producer or mongodb atlas producer [Deprecated: Use dynamic-secret-update-mongodb command]
 
 ## Properties
 
@@ -19,8 +19,9 @@ Name | Type | Description | Notes
 **MongodbServerUri** | **string** | MongoDB server URI | [optional] 
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | **string** | MongoDB server username | [optional] 
-**Name** | **string** | Producer name | 
-**NewName** | **string** | Producer name | [optional] 
+**Name** | **string** | Dynamic secret name | 
+**NewName** | **string** | Dynamic secret name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Encrypt producer with following key | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 

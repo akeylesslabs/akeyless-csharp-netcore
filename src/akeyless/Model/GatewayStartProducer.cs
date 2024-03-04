@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayStartProducer is a command that starts producer
+    /// gatewayStartProducer is a command that starts producer [Deprecated: Use set-item-state command]
     /// </summary>
     [DataContract(Name = "gatewayStartProducer")]
     public partial class GatewayStartProducer : IEquatable<GatewayStartProducer>, IValidatableObject
@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayStartProducer" /> class.
         /// </summary>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GatewayStartProducer(bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
@@ -65,9 +65,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

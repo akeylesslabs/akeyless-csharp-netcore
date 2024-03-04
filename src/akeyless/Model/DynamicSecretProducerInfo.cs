@@ -43,7 +43,8 @@ namespace akeyless.Model
         /// <param name="producerMetadata">producerMetadata.</param>
         /// <param name="producerStatus">RotationStatus defines types of rotation Status.</param>
         /// <param name="producerType">producerType.</param>
-        public DynamicSecretProducerInfo(string failureMessage = default(string), long gwClusterId = default(long), string k8sAllowedNamespaces = default(string), bool k8sDynamicMode = default(bool), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string))
+        /// <param name="userTtl">userTtl.</param>
+        public DynamicSecretProducerInfo(string failureMessage = default(string), long gwClusterId = default(long), string k8sAllowedNamespaces = default(string), bool k8sDynamicMode = default(bool), string producerLastKeepAlive = default(string), string producerMetadata = default(string), string producerStatus = default(string), string producerType = default(string), string userTtl = default(string))
         {
             this.FailureMessage = failureMessage;
             this.GwClusterId = gwClusterId;
@@ -53,6 +54,7 @@ namespace akeyless.Model
             this.ProducerMetadata = producerMetadata;
             this.ProducerStatus = producerStatus;
             this.ProducerType = producerType;
+            this.UserTtl = userTtl;
         }
 
         /// <summary>
@@ -107,6 +109,12 @@ namespace akeyless.Model
         public string ProducerType { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserTtl
+        /// </summary>
+        [DataMember(Name = "user_ttl", EmitDefaultValue = false)]
+        public string UserTtl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,6 +130,7 @@ namespace akeyless.Model
             sb.Append("  ProducerMetadata: ").Append(ProducerMetadata).Append("\n");
             sb.Append("  ProducerStatus: ").Append(ProducerStatus).Append("\n");
             sb.Append("  ProducerType: ").Append(ProducerType).Append("\n");
+            sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,6 +203,11 @@ namespace akeyless.Model
                     this.ProducerType == input.ProducerType ||
                     (this.ProducerType != null &&
                     this.ProducerType.Equals(input.ProducerType))
+                ) && 
+                (
+                    this.UserTtl == input.UserTtl ||
+                    (this.UserTtl != null &&
+                    this.UserTtl.Equals(input.UserTtl))
                 );
         }
 
@@ -231,6 +245,10 @@ namespace akeyless.Model
                 if (this.ProducerType != null)
                 {
                     hashCode = (hashCode * 59) + this.ProducerType.GetHashCode();
+                }
+                if (this.UserTtl != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserTtl.GetHashCode();
                 }
                 return hashCode;
             }

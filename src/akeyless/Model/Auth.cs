@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// Auth
     /// </summary>
-    [DataContract(Name = "auth")]
+    [DataContract(Name = "Auth")]
     public partial class Auth : IEquatable<Auth>, IValidatableObject
     {
         /// <summary>

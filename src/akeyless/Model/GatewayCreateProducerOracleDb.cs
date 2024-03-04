@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerOracleDb is a command that creates oracle db producer
+    /// gatewayCreateProducerOracleDb is a command that creates oracle db producer [Deprecated: Use dynamic-secret-create-oracledb command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerOracleDb")]
     public partial class GatewayCreateProducerOracleDb : IEquatable<GatewayCreateProducerOracleDb>, IValidatableObject
@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="oracleHost">Oracle Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="oraclePassword">Oracle Password.</param>
         /// <param name="oraclePort">Oracle Port (default to &quot;1521&quot;).</param>
@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="oracleScreationStatements">Oracle Creation statements.</param>
         /// <param name="oracleServiceName">Oracle DB Name.</param>
         /// <param name="oracleUsername">Oracle Username.</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false] (default to &quot;false&quot;).</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = "false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerOracleDb(string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string oracleHost = "127.0.0.1", string oraclePassword = default(string), string oraclePort = "1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = "false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.OracleScreationStatements = oracleScreationStatements;
             this.OracleServiceName = oracleServiceName;
             this.OracleUsername = oracleUsername;
+            this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             // use default value if no "secureAccessEnable" provided
@@ -126,9 +128,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
@@ -180,6 +182,13 @@ namespace akeyless.Model
         /// <value>Oracle Username</value>
         [DataMember(Name = "oracle-username", EmitDefaultValue = false)]
         public string OracleUsername { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -271,6 +280,7 @@ namespace akeyless.Model
             sb.Append("  OracleScreationStatements: ").Append(OracleScreationStatements).Append("\n");
             sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
             sb.Append("  OracleUsername: ").Append(OracleUsername).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
@@ -374,6 +384,11 @@ namespace akeyless.Model
                     this.OracleUsername == input.OracleUsername ||
                     (this.OracleUsername != null &&
                     this.OracleUsername.Equals(input.OracleUsername))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -481,6 +496,10 @@ namespace akeyless.Model
                 if (this.OracleUsername != null)
                 {
                     hashCode = (hashCode * 59) + this.OracleUsername.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.ProducerEncryptionKeyName != null)
                 {

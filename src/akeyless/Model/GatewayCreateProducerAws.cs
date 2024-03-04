@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerAws is a command that creates aws producer
+    /// gatewayCreateProducerAws is a command that creates aws producer [Deprecated: Use dynamic-secret-create-aws command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerAws")]
     public partial class GatewayCreateProducerAws : IEquatable<GatewayCreateProducerAws>, IValidatableObject
@@ -52,7 +52,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
+        /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="region">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id.</param>
@@ -189,9 +189,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 

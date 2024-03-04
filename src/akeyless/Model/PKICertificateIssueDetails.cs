@@ -36,8 +36,10 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="PKICertificateIssueDetails" /> class.
         /// </summary>
         /// <param name="allowAnyName">allowAnyName.</param>
+        /// <param name="allowCopyExtFromCsr">allowCopyExtFromCsr.</param>
         /// <param name="allowSubdomains">allowSubdomains.</param>
         /// <param name="allowedDomainsList">allowedDomainsList.</param>
+        /// <param name="allowedExtraExtensions">allowedExtraExtensions.</param>
         /// <param name="allowedUriSans">allowedUriSans.</param>
         /// <param name="basicConstraintsValidForNonCa">basicConstraintsValidForNonCa.</param>
         /// <param name="certificateAuthorityMode">certificateAuthorityMode.</param>
@@ -62,11 +64,13 @@ namespace akeyless.Model
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool allowAnyName = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AllowAnyName = allowAnyName;
+            this.AllowCopyExtFromCsr = allowCopyExtFromCsr;
             this.AllowSubdomains = allowSubdomains;
             this.AllowedDomainsList = allowedDomainsList;
+            this.AllowedExtraExtensions = allowedExtraExtensions;
             this.AllowedUriSans = allowedUriSans;
             this.BasicConstraintsValidForNonCa = basicConstraintsValidForNonCa;
             this.CertificateAuthorityMode = certificateAuthorityMode;
@@ -100,6 +104,12 @@ namespace akeyless.Model
         public bool AllowAnyName { get; set; }
 
         /// <summary>
+        /// Gets or Sets AllowCopyExtFromCsr
+        /// </summary>
+        [DataMember(Name = "allow_copy_ext_from_csr", EmitDefaultValue = true)]
+        public bool AllowCopyExtFromCsr { get; set; }
+
+        /// <summary>
         /// Gets or Sets AllowSubdomains
         /// </summary>
         [DataMember(Name = "allow_subdomains", EmitDefaultValue = true)]
@@ -110,6 +120,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "allowed_domains_list", EmitDefaultValue = false)]
         public List<string> AllowedDomainsList { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedExtraExtensions
+        /// </summary>
+        [DataMember(Name = "allowed_extra_extensions", EmitDefaultValue = false)]
+        public Dictionary<string, List<string>> AllowedExtraExtensions { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedUriSans
@@ -269,8 +285,10 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class PKICertificateIssueDetails {\n");
             sb.Append("  AllowAnyName: ").Append(AllowAnyName).Append("\n");
+            sb.Append("  AllowCopyExtFromCsr: ").Append(AllowCopyExtFromCsr).Append("\n");
             sb.Append("  AllowSubdomains: ").Append(AllowSubdomains).Append("\n");
             sb.Append("  AllowedDomainsList: ").Append(AllowedDomainsList).Append("\n");
+            sb.Append("  AllowedExtraExtensions: ").Append(AllowedExtraExtensions).Append("\n");
             sb.Append("  AllowedUriSans: ").Append(AllowedUriSans).Append("\n");
             sb.Append("  BasicConstraintsValidForNonCa: ").Append(BasicConstraintsValidForNonCa).Append("\n");
             sb.Append("  CertificateAuthorityMode: ").Append(CertificateAuthorityMode).Append("\n");
@@ -335,6 +353,10 @@ namespace akeyless.Model
                     this.AllowAnyName.Equals(input.AllowAnyName)
                 ) && 
                 (
+                    this.AllowCopyExtFromCsr == input.AllowCopyExtFromCsr ||
+                    this.AllowCopyExtFromCsr.Equals(input.AllowCopyExtFromCsr)
+                ) && 
+                (
                     this.AllowSubdomains == input.AllowSubdomains ||
                     this.AllowSubdomains.Equals(input.AllowSubdomains)
                 ) && 
@@ -343,6 +365,12 @@ namespace akeyless.Model
                     this.AllowedDomainsList != null &&
                     input.AllowedDomainsList != null &&
                     this.AllowedDomainsList.SequenceEqual(input.AllowedDomainsList)
+                ) && 
+                (
+                    this.AllowedExtraExtensions == input.AllowedExtraExtensions ||
+                    this.AllowedExtraExtensions != null &&
+                    input.AllowedExtraExtensions != null &&
+                    this.AllowedExtraExtensions.SequenceEqual(input.AllowedExtraExtensions)
                 ) && 
                 (
                     this.AllowedUriSans == input.AllowedUriSans ||
@@ -476,10 +504,15 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.AllowAnyName.GetHashCode();
+                hashCode = (hashCode * 59) + this.AllowCopyExtFromCsr.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowSubdomains.GetHashCode();
                 if (this.AllowedDomainsList != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedDomainsList.GetHashCode();
+                }
+                if (this.AllowedExtraExtensions != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedExtraExtensions.GetHashCode();
                 }
                 if (this.AllowedUriSans != null)
                 {

@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="prettyPrint">Print the secret value with json-pretty-print (not relevent to SDK).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="version">Secret version.</param>
+        /// <param name="version">Secret version, if negative value N is provided the last N versions will return (maximum 20).</param>
         public GetSecretValue(string accessibility = "regular", string ignoreCache = "false", bool json = false, List<string> names = default(List<string>), bool prettyPrint = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "names" is required (not null)
@@ -117,9 +117,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Secret version
+        /// Secret version, if negative value N is provided the last N versions will return (maximum 20)
         /// </summary>
-        /// <value>Secret version</value>
+        /// <value>Secret version, if negative value N is provided the last N versions will return (maximum 20)</value>
         [DataMember(Name = "version", EmitDefaultValue = false)]
         public int _Version { get; set; }
 

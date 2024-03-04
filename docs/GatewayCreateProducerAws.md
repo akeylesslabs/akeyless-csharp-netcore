@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerAws
-gatewayCreateProducerAws is a command that creates aws producer
+gatewayCreateProducerAws is a command that creates aws producer [Deprecated: Use dynamic-secret-create-aws command]
 
 ## Properties
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **EnableAdminRotation** | **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **Region** | **string** | Region | [optional] [default to "us-east-2"]
 **SecureAccessAwsAccountId** | **string** | The AWS account id | [optional] 

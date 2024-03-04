@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayUpdateProducerRedis is a command that updates redis producer
+    /// gatewayUpdateProducerRedis is a command that updates redis producer [Deprecated: Use dynamic-secret-update-redis command]
     /// </summary>
     [DataContract(Name = "gatewayUpdateProducerRedis")]
     public partial class GatewayUpdateProducerRedis : IEquatable<GatewayUpdateProducerRedis>, IValidatableObject
@@ -44,9 +44,10 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="host">Redis Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">Producer name (required).</param>
-        /// <param name="newName">Producer name.</param>
+        /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="password">Redis Password.</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="port">Redis Port (default to &quot;6379&quot;).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Redis Username.</param>
-        public GatewayUpdateProducerRedis(string aclRules = default(string), string deleteProtection = default(string), string host = "127.0.0.1", bool json = false, string name = default(string), string newName = default(string), string password = default(string), string port = "6379", string producerEncryptionKeyName = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
+        public GatewayUpdateProducerRedis(string aclRules = default(string), string deleteProtection = default(string), string host = "127.0.0.1", bool json = false, string name = default(string), string newName = default(string), string password = default(string), string passwordLength = default(string), string port = "6379", string producerEncryptionKeyName = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.Json = json;
             this.NewName = newName;
             this.Password = password;
+            this.PasswordLength = passwordLength;
             // use default value if no "port" provided
             this.Port = port ?? "6379";
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -115,16 +117,16 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Producer name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Producer name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 
@@ -134,6 +136,13 @@ namespace akeyless.Model
         /// <value>Redis Password</value>
         [DataMember(Name = "password", EmitDefaultValue = false)]
         public string Password { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Redis Port
@@ -220,6 +229,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
@@ -298,6 +308,11 @@ namespace akeyless.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.Port == input.Port ||
@@ -384,6 +399,10 @@ namespace akeyless.Model
                 if (this.Password != null)
                 {
                     hashCode = (hashCode * 59) + this.Password.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.Port != null)
                 {

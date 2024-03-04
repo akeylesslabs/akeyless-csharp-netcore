@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AuthorizedGwClusterName** | **string** | The gateway cluster name that is authorized to access JWKeySetURL | [optional] 
 **BoundClaims** | [**List&lt;OAuth2CustomClaim&gt;**](OAuth2CustomClaim.md) | The claims that login is restricted to. | [optional] 
 **BoundClientsId** | **List&lt;string&gt;** | The clients ids that login is restricted to. | [optional] 
+**Certificate** | **string** | Certificate to use when calling jwks_uri from the gateway. in PEM format | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] 
 **JwksJsonData** | **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 

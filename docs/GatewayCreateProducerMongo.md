@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerMongo
-gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer
+gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer [Deprecated: Use dynamic-secret-create-mongodb command]
 
 ## Properties
 
@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **MongodbServerUri** | **string** | MongoDB server URI | [optional] 
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | **string** | MongoDB server username | [optional] 
-**Name** | **string** | Producer name | 
+**Name** | **string** | Dynamic secret name | 
+**PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Encrypt producer with following key | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 

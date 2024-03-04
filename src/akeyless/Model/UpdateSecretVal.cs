@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="customField">For Password Management use, additional fields.</param>
+        /// <param name="format">Secret format [text/json] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -54,8 +55,8 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
-        /// <param name="value">The secret value (only relevant for type &#39;generic&#39;) (required).</param>
-        public UpdateSecretVal(string accessibility = "regular", Dictionary<string, string> customField = default(Dictionary<string, string>), List<string> injectUrl = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
+        /// <param name="value">The secret value (relevant only for type &#39;generic&#39;) (required).</param>
+        public UpdateSecretVal(string accessibility = "regular", Dictionary<string, string> customField = default(Dictionary<string, string>), string format = "text", List<string> injectUrl = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), bool multiline = default(bool), string name = default(string), bool newVersion = default(bool), string password = default(string), string token = default(string), string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,8 @@ namespace akeyless.Model
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
             this.CustomField = customField;
+            // use default value if no "format" provided
+            this.Format = format ?? "text";
             this.InjectUrl = injectUrl;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -98,6 +101,13 @@ namespace akeyless.Model
         /// <value>For Password Management use, additional fields</value>
         [DataMember(Name = "custom-field", EmitDefaultValue = false)]
         public Dictionary<string, string> CustomField { get; set; }
+
+        /// <summary>
+        /// Secret format [text/json] (relevant only for type &#39;generic&#39;)
+        /// </summary>
+        /// <value>Secret format [text/json] (relevant only for type &#39;generic&#39;)</value>
+        [DataMember(Name = "format", EmitDefaultValue = false)]
+        public string Format { get; set; }
 
         /// <summary>
         /// For Password Management use, reflect the website context
@@ -184,9 +194,9 @@ namespace akeyless.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// The secret value (only relevant for type &#39;generic&#39;)
+        /// The secret value (relevant only for type &#39;generic&#39;)
         /// </summary>
-        /// <value>The secret value (only relevant for type &#39;generic&#39;)</value>
+        /// <value>The secret value (relevant only for type &#39;generic&#39;)</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 
@@ -200,6 +210,7 @@ namespace akeyless.Model
             sb.Append("class UpdateSecretVal {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  CustomField: ").Append(CustomField).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  InjectUrl: ").Append(InjectUrl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
@@ -258,6 +269,11 @@ namespace akeyless.Model
                     this.CustomField != null &&
                     input.CustomField != null &&
                     this.CustomField.SequenceEqual(input.CustomField)
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
                 ) && 
                 (
                     this.InjectUrl == input.InjectUrl ||
@@ -339,6 +355,10 @@ namespace akeyless.Model
                 if (this.CustomField != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomField.GetHashCode();
+                }
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 }
                 if (this.InjectUrl != null)
                 {
