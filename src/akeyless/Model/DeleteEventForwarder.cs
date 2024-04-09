@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteEventForwarder
+    /// deleteEventForwarder is a command that creates a new event forwarder [Deprecated - please use event-forwarder-delete command]
     /// </summary>
     [DataContract(Name = "deleteEventForwarder")]
     public partial class DeleteEventForwarder : IEquatable<DeleteEventForwarder>, IValidatableObject

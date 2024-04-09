@@ -41,8 +41,9 @@ namespace akeyless.Model
         /// <param name="azureResourceName">azureResourceName.</param>
         /// <param name="azureSubscriptionId">azureSubscriptionId.</param>
         /// <param name="azureTenantId">azureTenantId.</param>
+        /// <param name="azureUsername">azureUsername.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public AzureTargetDetails(string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), bool useGwCloudIdentity = default(bool))
+        public AzureTargetDetails(string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUsername = default(string), bool useGwCloudIdentity = default(bool))
         {
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
@@ -50,6 +51,7 @@ namespace akeyless.Model
             this.AzureResourceName = azureResourceName;
             this.AzureSubscriptionId = azureSubscriptionId;
             this.AzureTenantId = azureTenantId;
+            this.AzureUsername = azureUsername;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
 
@@ -90,6 +92,12 @@ namespace akeyless.Model
         public string AzureTenantId { get; set; }
 
         /// <summary>
+        /// Gets or Sets AzureUsername
+        /// </summary>
+        [DataMember(Name = "azure_username", EmitDefaultValue = false)]
+        public string AzureUsername { get; set; }
+
+        /// <summary>
         /// Gets or Sets UseGwCloudIdentity
         /// </summary>
         [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
@@ -109,6 +117,7 @@ namespace akeyless.Model
             sb.Append("  AzureResourceName: ").Append(AzureResourceName).Append("\n");
             sb.Append("  AzureSubscriptionId: ").Append(AzureSubscriptionId).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  AzureUsername: ").Append(AzureUsername).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -176,6 +185,11 @@ namespace akeyless.Model
                     this.AzureTenantId.Equals(input.AzureTenantId))
                 ) && 
                 (
+                    this.AzureUsername == input.AzureUsername ||
+                    (this.AzureUsername != null &&
+                    this.AzureUsername.Equals(input.AzureUsername))
+                ) && 
+                (
                     this.UseGwCloudIdentity == input.UseGwCloudIdentity ||
                     this.UseGwCloudIdentity.Equals(input.UseGwCloudIdentity)
                 );
@@ -213,6 +227,10 @@ namespace akeyless.Model
                 if (this.AzureTenantId != null)
                 {
                     hashCode = (hashCode * 59) + this.AzureTenantId.GetHashCode();
+                }
+                if (this.AzureUsername != null)
+                {
+                    hashCode = (hashCode * 59) + this.AzureUsername.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.UseGwCloudIdentity.GetHashCode();
                 return hashCode;

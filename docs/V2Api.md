@@ -154,10 +154,14 @@ All URIs are relative to *https://api.akeyless.io*
 | [**EsmUpdate**](V2Api.md#esmupdate) | **POST** /esm-update |  |
 | [**EventAction**](V2Api.md#eventaction) | **POST** /event-action |  |
 | [**EventForwarderCreateEmail**](V2Api.md#eventforwardercreateemail) | **POST** /event-forwarder-create-email |  |
+| [**EventForwarderCreateServiceNow**](V2Api.md#eventforwardercreateservicenow) | **POST** /event-forwarder-create-servicenow |  |
+| [**EventForwarderCreateSlack**](V2Api.md#eventforwardercreateslack) | **POST** /event-forwarder-create-slack |  |
 | [**EventForwarderCreateWebhook**](V2Api.md#eventforwardercreatewebhook) | **POST** /event-forwarder-create-webhook |  |
 | [**EventForwarderDelete**](V2Api.md#eventforwarderdelete) | **POST** /event-forwarder-delete |  |
 | [**EventForwarderGet**](V2Api.md#eventforwarderget) | **POST** /event-forwarder-get |  |
 | [**EventForwarderUpdateEmail**](V2Api.md#eventforwarderupdateemail) | **POST** /event-forwarder-update-email |  |
+| [**EventForwarderUpdateServiceNow**](V2Api.md#eventforwarderupdateservicenow) | **POST** /event-forwarder-update-servicenow |  |
+| [**EventForwarderUpdateSlack**](V2Api.md#eventforwarderupdateslack) | **POST** /event-forwarder-update-slack |  |
 | [**EventForwarderUpdateWebhook**](V2Api.md#eventforwarderupdatewebhook) | **POST** /event-forwarder-update-webhook |  |
 | [**ExportClassicKey**](V2Api.md#exportclassickey) | **POST** /export-classic-key |  |
 | [**GatewayCreateAllowedAccess**](V2Api.md#gatewaycreateallowedaccess) | **POST** /gateway-create-allowed-access |  |
@@ -246,6 +250,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GenerateCsr**](V2Api.md#generatecsr) | **POST** /generate-csr |  |
 | [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo |  |
 | [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
+| [**GetAnalyticsData**](V2Api.md#getanalyticsdata) | **POST** /get-analytics-data |  |
 | [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method |  |
 | [**GetCertificateValue**](V2Api.md#getcertificatevalue) | **POST** /get-certificate-value |  |
 | [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value |  |
@@ -292,6 +297,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RenewCertificate**](V2Api.md#renewcertificate) | **POST** /renew-certificate |  |
 | [**RequestAccess**](V2Api.md#requestaccess) | **POST** /request-access |  |
 | [**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac |  |
+| [**RevokeCertificate**](V2Api.md#revokecertificate) | **POST** /revoke-certificate |  |
 | [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds |  |
 | [**RollbackSecret**](V2Api.md#rollbacksecret) | **POST** /rollback-secret |  |
 | [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key |  |
@@ -13613,6 +13619,182 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="eventforwardercreateservicenow"></a>
+# **EventForwarderCreateServiceNow**
+> EventForwarderCreateUpdateOutput EventForwarderCreateServiceNow (EventForwarderCreateServiceNow body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EventForwarderCreateServiceNowExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new EventForwarderCreateServiceNow(); // EventForwarderCreateServiceNow | 
+
+            try
+            {
+                EventForwarderCreateUpdateOutput result = apiInstance.EventForwarderCreateServiceNow(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EventForwarderCreateServiceNow: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EventForwarderCreateServiceNowWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EventForwarderCreateUpdateOutput> response = apiInstance.EventForwarderCreateServiceNowWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EventForwarderCreateServiceNowWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**EventForwarderCreateServiceNow**](EventForwarderCreateServiceNow.md) |  |  |
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | eventForwarderCreateServiceNowResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="eventforwardercreateslack"></a>
+# **EventForwarderCreateSlack**
+> EventForwarderCreateUpdateOutput EventForwarderCreateSlack (EventForwarderCreateSlack body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EventForwarderCreateSlackExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new EventForwarderCreateSlack(); // EventForwarderCreateSlack | 
+
+            try
+            {
+                EventForwarderCreateUpdateOutput result = apiInstance.EventForwarderCreateSlack(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EventForwarderCreateSlack: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EventForwarderCreateSlackWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EventForwarderCreateUpdateOutput> response = apiInstance.EventForwarderCreateSlackWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EventForwarderCreateSlackWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**EventForwarderCreateSlack**](EventForwarderCreateSlack.md) |  |  |
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | eventForwarderCreateSlackResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="eventforwardercreatewebhook"></a>
 # **EventForwarderCreateWebhook**
 > EventForwarderCreateUpdateOutput EventForwarderCreateWebhook (EventForwarderCreateWebhook body)
@@ -13961,6 +14143,182 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | eventForwarderUpdateEmailResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="eventforwarderupdateservicenow"></a>
+# **EventForwarderUpdateServiceNow**
+> EventForwarderCreateUpdateOutput EventForwarderUpdateServiceNow (EventForwarderUpdateServiceNow body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EventForwarderUpdateServiceNowExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new EventForwarderUpdateServiceNow(); // EventForwarderUpdateServiceNow | 
+
+            try
+            {
+                EventForwarderCreateUpdateOutput result = apiInstance.EventForwarderUpdateServiceNow(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EventForwarderUpdateServiceNow: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EventForwarderUpdateServiceNowWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EventForwarderCreateUpdateOutput> response = apiInstance.EventForwarderUpdateServiceNowWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EventForwarderUpdateServiceNowWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**EventForwarderUpdateServiceNow**](EventForwarderUpdateServiceNow.md) |  |  |
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | eventForwarderUpdateServiceNowResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="eventforwarderupdateslack"></a>
+# **EventForwarderUpdateSlack**
+> EventForwarderCreateUpdateOutput EventForwarderUpdateSlack (EventForwarderUpdateSlack body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EventForwarderUpdateSlackExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new EventForwarderUpdateSlack(); // EventForwarderUpdateSlack | 
+
+            try
+            {
+                EventForwarderCreateUpdateOutput result = apiInstance.EventForwarderUpdateSlack(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EventForwarderUpdateSlack: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EventForwarderUpdateSlackWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EventForwarderCreateUpdateOutput> response = apiInstance.EventForwarderUpdateSlackWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EventForwarderUpdateSlackWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**EventForwarderUpdateSlack**](EventForwarderUpdateSlack.md) |  |  |
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | eventForwarderUpdateSlackResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -21696,6 +22054,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getanalyticsdata"></a>
+# **GetAnalyticsData**
+> AllAnalyticsData GetAnalyticsData (GetAnalyticsData body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetAnalyticsDataExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GetAnalyticsData(); // GetAnalyticsData | 
+
+            try
+            {
+                AllAnalyticsData result = apiInstance.GetAnalyticsData(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetAnalyticsData: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetAnalyticsDataWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AllAnalyticsData> response = apiInstance.GetAnalyticsDataWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetAnalyticsDataWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GetAnalyticsData**](GetAnalyticsData.md) |  |  |
+
+### Return type
+
+[**AllAnalyticsData**](AllAnalyticsData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getAnalyticsDataResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getauthmethod"></a>
 # **GetAuthMethod**
 > AuthMethod GetAuthMethod (GetAuthMethod body)
@@ -25736,6 +26182,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | reverseRBACResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="revokecertificate"></a>
+# **RevokeCertificate**
+> Object RevokeCertificate (RevokeCertificate body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RevokeCertificateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new RevokeCertificate(); // RevokeCertificate | 
+
+            try
+            {
+                Object result = apiInstance.RevokeCertificate(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RevokeCertificate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RevokeCertificateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.RevokeCertificateWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RevokeCertificateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**RevokeCertificate**](RevokeCertificate.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | RevokeCertificateResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

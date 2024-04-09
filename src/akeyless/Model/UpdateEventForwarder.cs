@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateEventForwarder
+    /// updateEventForwarder is a command that updates an event forwarder [Deprecated - please use event-forwarder-update-* command]
     /// </summary>
     [DataContract(Name = "updateEventForwarder")]
     public partial class UpdateEventForwarder : IEquatable<UpdateEventForwarder>, IValidatableObject

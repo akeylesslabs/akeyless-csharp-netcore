@@ -54,6 +54,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
+        /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="region">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id.</param>
@@ -68,7 +69,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayUpdateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -89,6 +90,7 @@ namespace akeyless.Model
             this.EnableAdminRotation = enableAdminRotation;
             this.Json = json;
             this.NewName = newName;
+            this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             // use default value if no "region" provided
             this.Region = region ?? "us-east-2";
@@ -203,6 +205,13 @@ namespace akeyless.Model
         /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// The length of the password to be generated
+        /// </summary>
+        /// <value>The length of the password to be generated</value>
+        [DataMember(Name = "password-length", EmitDefaultValue = false)]
+        public string PasswordLength { get; set; }
 
         /// <summary>
         /// Dynamic producer encryption key
@@ -324,6 +333,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
@@ -437,6 +447,11 @@ namespace akeyless.Model
                     this.NewName == input.NewName ||
                     (this.NewName != null &&
                     this.NewName.Equals(input.NewName))
+                ) && 
+                (
+                    this.PasswordLength == input.PasswordLength ||
+                    (this.PasswordLength != null &&
+                    this.PasswordLength.Equals(input.PasswordLength))
                 ) && 
                 (
                     this.ProducerEncryptionKeyName == input.ProducerEncryptionKeyName ||
@@ -556,6 +571,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.PasswordLength != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 }
                 if (this.ProducerEncryptionKeyName != null)
                 {

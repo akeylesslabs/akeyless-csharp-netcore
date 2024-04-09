@@ -50,11 +50,12 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">EventForwarder name (required).</param>
+        /// <param name="overrideUrl">Override Akeyless default URL with your Gateway url (port 18888).</param>
         /// <param name="runnerType">runnerType (required).</param>
         /// <param name="targetsEventSourceLocations">Targets Event sources.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EventForwarderCreateEmail(List<string> authMethodsEventSourceLocations = default(List<string>), string description = default(string), string emailTo = default(string), List<string> eventTypes = default(List<string>), string every = default(string), List<string> gatewaysEventSourceLocations = default(List<string>), List<string> itemsEventSourceLocations = default(List<string>), bool json = false, string key = default(string), string name = default(string), string runnerType = default(string), List<string> targetsEventSourceLocations = default(List<string>), string token = default(string), string uidToken = default(string))
+        public EventForwarderCreateEmail(List<string> authMethodsEventSourceLocations = default(List<string>), string description = default(string), string emailTo = default(string), List<string> eventTypes = default(List<string>), string every = default(string), List<string> gatewaysEventSourceLocations = default(List<string>), List<string> itemsEventSourceLocations = default(List<string>), bool json = false, string key = default(string), string name = default(string), string overrideUrl = default(string), string runnerType = default(string), List<string> targetsEventSourceLocations = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "gatewaysEventSourceLocations" is required (not null)
             if (gatewaysEventSourceLocations == null)
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.ItemsEventSourceLocations = itemsEventSourceLocations;
             this.Json = json;
             this.Key = key;
+            this.OverrideUrl = overrideUrl;
             this.TargetsEventSourceLocations = targetsEventSourceLocations;
             this.Token = token;
             this.UidToken = uidToken;
@@ -158,6 +160,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Override Akeyless default URL with your Gateway url (port 18888)
+        /// </summary>
+        /// <value>Override Akeyless default URL with your Gateway url (port 18888)</value>
+        [DataMember(Name = "override-url", EmitDefaultValue = false)]
+        public string OverrideUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets RunnerType
         /// </summary>
         [DataMember(Name = "runner-type", IsRequired = true, EmitDefaultValue = true)]
@@ -202,6 +211,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OverrideUrl: ").Append(OverrideUrl).Append("\n");
             sb.Append("  RunnerType: ").Append(RunnerType).Append("\n");
             sb.Append("  TargetsEventSourceLocations: ").Append(TargetsEventSourceLocations).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -295,6 +305,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.OverrideUrl == input.OverrideUrl ||
+                    (this.OverrideUrl != null &&
+                    this.OverrideUrl.Equals(input.OverrideUrl))
+                ) && 
+                (
                     this.RunnerType == input.RunnerType ||
                     (this.RunnerType != null &&
                     this.RunnerType.Equals(input.RunnerType))
@@ -362,6 +377,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.OverrideUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.OverrideUrl.GetHashCode();
                 }
                 if (this.RunnerType != null)
                 {

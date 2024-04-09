@@ -55,6 +55,7 @@ namespace akeyless.Model
         /// <param name="host">host.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="mongodbAtlas">mongodbAtlas.</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
         /// <param name="mongodbAtlasApiPublicKey">MongoDB Atlas public key.</param>
@@ -73,7 +74,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string dBDefinedConnectionType = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), string comment = default(string), string connectionType = "credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public CreateDBTarget(string dBDefinedConnectionType = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), string comment = default(string), string connectionType = "credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "connectionType" is required (not null)
             if (connectionType == null)
@@ -106,6 +107,7 @@ namespace akeyless.Model
             this.Host = host;
             this.Json = json;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.MongodbAtlas = mongodbAtlas;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
             this.MongodbAtlasApiPublicKey = mongodbAtlasApiPublicKey;
@@ -225,6 +227,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets MongodbAtlas
@@ -369,6 +378,7 @@ namespace akeyless.Model
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  MongodbAtlas: ").Append(MongodbAtlas).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
             sb.Append("  MongodbAtlasApiPublicKey: ").Append(MongodbAtlasApiPublicKey).Append("\n");
@@ -495,6 +505,11 @@ namespace akeyless.Model
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
                     this.MongodbAtlas == input.MongodbAtlas ||
@@ -651,6 +666,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.MongodbAtlas.GetHashCode();
                 if (this.MongodbAtlasApiPrivateKey != null)

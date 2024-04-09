@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Computers** | **long** |  | [optional] 
 **DurationTime** | **string** |  | [optional] 
 **Error** | **string** |  | [optional] 
 **LastStatusMessage** | **string** |  | [optional] 

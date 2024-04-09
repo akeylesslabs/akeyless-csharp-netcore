@@ -46,9 +46,12 @@ namespace akeyless.Model
         /// <param name="clientFlag">clientFlag.</param>
         /// <param name="codeSigningFlag">codeSigningFlag.</param>
         /// <param name="country">country.</param>
+        /// <param name="createPrivateCrl">createPrivateCrl.</param>
+        /// <param name="createPublicCrl">createPublicCrl.</param>
         /// <param name="destinationPath">DestinationPath is the destination to save generated certificates.</param>
         /// <param name="enforceHostnames">enforceHostnames.</param>
         /// <param name="expirationEvents">ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created.</param>
+        /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="gwClusterUrl">GWClusterURL is required when CAMode is \&quot;public\&quot; and it defines the cluster URL the PKI should be issued from. The GW cluster must have permissions to read associated target&#39;s details.</param>
         /// <param name="isCa">isCa.</param>
         /// <param name="keyBits">keyBits.</param>
@@ -64,7 +67,7 @@ namespace akeyless.Model
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AllowAnyName = allowAnyName;
             this.AllowCopyExtFromCsr = allowCopyExtFromCsr;
@@ -77,9 +80,12 @@ namespace akeyless.Model
             this.ClientFlag = clientFlag;
             this.CodeSigningFlag = codeSigningFlag;
             this.Country = country;
+            this.CreatePrivateCrl = createPrivateCrl;
+            this.CreatePublicCrl = createPublicCrl;
             this.DestinationPath = destinationPath;
             this.EnforceHostnames = enforceHostnames;
             this.ExpirationEvents = expirationEvents;
+            this.GwClusterId = gwClusterId;
             this.GwClusterUrl = gwClusterUrl;
             this.IsCa = isCa;
             this.KeyBits = keyBits;
@@ -164,6 +170,18 @@ namespace akeyless.Model
         public List<string> Country { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreatePrivateCrl
+        /// </summary>
+        [DataMember(Name = "create_private_crl", EmitDefaultValue = true)]
+        public bool CreatePrivateCrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatePublicCrl
+        /// </summary>
+        [DataMember(Name = "create_public_crl", EmitDefaultValue = true)]
+        public bool CreatePublicCrl { get; set; }
+
+        /// <summary>
         /// DestinationPath is the destination to save generated certificates
         /// </summary>
         /// <value>DestinationPath is the destination to save generated certificates</value>
@@ -182,6 +200,12 @@ namespace akeyless.Model
         /// <value>ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created</value>
         [DataMember(Name = "expiration_events", EmitDefaultValue = false)]
         public List<CertificateExpirationEvent> ExpirationEvents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GwClusterId
+        /// </summary>
+        [DataMember(Name = "gw_cluster_id", EmitDefaultValue = false)]
+        public long GwClusterId { get; set; }
 
         /// <summary>
         /// GWClusterURL is required when CAMode is \&quot;public\&quot; and it defines the cluster URL the PKI should be issued from. The GW cluster must have permissions to read associated target&#39;s details
@@ -295,9 +319,12 @@ namespace akeyless.Model
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  CreatePrivateCrl: ").Append(CreatePrivateCrl).Append("\n");
+            sb.Append("  CreatePublicCrl: ").Append(CreatePublicCrl).Append("\n");
             sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
             sb.Append("  EnforceHostnames: ").Append(EnforceHostnames).Append("\n");
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
+            sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
             sb.Append("  IsCa: ").Append(IsCa).Append("\n");
             sb.Append("  KeyBits: ").Append(KeyBits).Append("\n");
@@ -402,6 +429,14 @@ namespace akeyless.Model
                     this.Country.SequenceEqual(input.Country)
                 ) && 
                 (
+                    this.CreatePrivateCrl == input.CreatePrivateCrl ||
+                    this.CreatePrivateCrl.Equals(input.CreatePrivateCrl)
+                ) && 
+                (
+                    this.CreatePublicCrl == input.CreatePublicCrl ||
+                    this.CreatePublicCrl.Equals(input.CreatePublicCrl)
+                ) && 
+                (
                     this.DestinationPath == input.DestinationPath ||
                     (this.DestinationPath != null &&
                     this.DestinationPath.Equals(input.DestinationPath))
@@ -415,6 +450,10 @@ namespace akeyless.Model
                     this.ExpirationEvents != null &&
                     input.ExpirationEvents != null &&
                     this.ExpirationEvents.SequenceEqual(input.ExpirationEvents)
+                ) && 
+                (
+                    this.GwClusterId == input.GwClusterId ||
+                    this.GwClusterId.Equals(input.GwClusterId)
                 ) && 
                 (
                     this.GwClusterUrl == input.GwClusterUrl ||
@@ -529,6 +568,8 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Country.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.CreatePrivateCrl.GetHashCode();
+                hashCode = (hashCode * 59) + this.CreatePublicCrl.GetHashCode();
                 if (this.DestinationPath != null)
                 {
                     hashCode = (hashCode * 59) + this.DestinationPath.GetHashCode();
@@ -538,6 +579,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ExpirationEvents.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
                 if (this.GwClusterUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.GwClusterUrl.GetHashCode();

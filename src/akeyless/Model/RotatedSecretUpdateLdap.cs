@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
@@ -61,15 +62,17 @@ namespace akeyless.Model
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
-        /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user.</param>
+        /// <param name="secureAccessRdpDomain">Default domain name server. i.e. microsoft.com.</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">Base DN to Perform User Search.</param>
-        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = "explicit", bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
+        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = "explicit", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -90,6 +93,7 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.PasswordLength = passwordLength;
             this.RmTag = rmTag;
@@ -104,6 +108,8 @@ namespace akeyless.Model
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
@@ -180,6 +186,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Rotated secret name
@@ -259,9 +272,9 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// Required when the Dynamic Secret is used for a domain user
+        /// Default domain name server. i.e. microsoft.com
         /// </summary>
-        /// <value>Required when the Dynamic Secret is used for a domain user</value>
+        /// <value>Default domain name server. i.e. microsoft.com</value>
         [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
         public string SecureAccessRdpDomain { get; set; }
 
@@ -278,6 +291,20 @@ namespace akeyless.Model
         /// <value>Enable Web Secure Remote Access</value>
         [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
         public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
+        /// Secure browser via Akeyless Web Access Bastion
+        /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
+        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Web-Proxy via Akeyless Web Access Bastion
+        /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
         /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
@@ -332,6 +359,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
@@ -346,6 +374,8 @@ namespace akeyless.Model
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -437,6 +467,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -505,6 +540,14 @@ namespace akeyless.Model
                 (
                     this.SecureAccessWeb == input.SecureAccessWeb ||
                     this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
+                    this.SecureAccessWebProxy == input.SecureAccessWebProxy ||
+                    this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
                 ) && 
                 (
                     this.Target == input.Target ||
@@ -580,6 +623,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
                 }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -630,6 +677,8 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Target != null)
                 {
                     hashCode = (hashCode * 59) + this.Target.GetHashCode();

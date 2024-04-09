@@ -1,5 +1,5 @@
 # akeyless.Model.GatewayCreateProducerAzure
-gatewayCreateProducerAzure is a command that creates azure producer [Deprecated: Use dynamic-secret-create-azure command]
+gatewayCreateProducerAzure is a command that creates azure dynamic secret [Deprecated: Use dynamic-secret-create-azure command]
 
 ## Properties
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
-**ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
+**ProducerEncryptionKeyName** | **string** | Dynamic secret encryption key | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to true]
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]

@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretCreatePostgresql(string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public RotatedSecretCreatePostgresql(string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,6 +92,7 @@ namespace akeyless.Model
             this.Description = description;
             this.Json = json;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.PasswordLength = passwordLength;
             // use default value if no "rotateAfterDisconnect" provided
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
@@ -150,6 +152,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Rotated secret name
@@ -291,6 +300,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
@@ -372,6 +382,11 @@ namespace akeyless.Model
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -494,6 +509,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

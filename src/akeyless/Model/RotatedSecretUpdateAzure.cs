@@ -51,16 +51,24 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
+        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="username">The user principal name to rotate his password (relevant only for rotator-type&#x3D;password).</param>
+        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -81,14 +89,23 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.PasswordLength = passwordLength;
             this.RmTag = rmTag;
+            // use default value if no "rotateAfterDisconnect" provided
+            this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWeb = secureAccessWeb;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.StorageAccountKeyName = storageAccountKeyName;
             this.Token = token;
             this.UidToken = uidToken;
+            this.Username = username;
         }
 
         /// <summary>
@@ -169,6 +186,13 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
+
+        /// <summary>
         /// Rotated secret name
         /// </summary>
         /// <value>Rotated secret name</value>
@@ -197,6 +221,13 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
+        /// Rotate the value of the secret after SRA session ends [true/false]
+        /// </summary>
+        /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
+        [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
+        public string RotateAfterDisconnect { get; set; }
+
+        /// <summary>
         /// The Hour of the rotation in UTC
         /// </summary>
         /// <value>The Hour of the rotation in UTC</value>
@@ -209,6 +240,41 @@ namespace akeyless.Model
         /// <value>The number of days to wait between every automatic key rotation (1-365)</value>
         [DataMember(Name = "rotation-interval", EmitDefaultValue = false)]
         public string RotationInterval { get; set; }
+
+        /// <summary>
+        /// Enable/Disable secure remote access [true/false]
+        /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
+        /// Enable Web Secure Remote Access
+        /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
+        /// Secure browser via Akeyless Web Access Bastion
+        /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
+        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Web-Proxy via Akeyless Web Access Bastion
+        /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
         /// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
@@ -232,6 +298,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// The user principal name to rotate his password (relevant only for rotator-type&#x3D;password)
+        /// </summary>
+        /// <value>The user principal name to rotate his password (relevant only for rotator-type&#x3D;password)</value>
+        [DataMember(Name = "username", EmitDefaultValue = false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -250,15 +323,23 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
+            sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  StorageAccountKeyName: ").Append(StorageAccountKeyName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -350,6 +431,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -371,6 +457,11 @@ namespace akeyless.Model
                     this.RmTag.SequenceEqual(input.RmTag)
                 ) && 
                 (
+                    this.RotateAfterDisconnect == input.RotateAfterDisconnect ||
+                    (this.RotateAfterDisconnect != null &&
+                    this.RotateAfterDisconnect.Equals(input.RotateAfterDisconnect))
+                ) && 
+                (
                     this.RotationHour == input.RotationHour ||
                     this.RotationHour.Equals(input.RotationHour)
                 ) && 
@@ -378,6 +469,28 @@ namespace akeyless.Model
                     this.RotationInterval == input.RotationInterval ||
                     (this.RotationInterval != null &&
                     this.RotationInterval.Equals(input.RotationInterval))
+                ) && 
+                (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
+                ) && 
+                (
+                    this.SecureAccessWeb == input.SecureAccessWeb ||
+                    this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
+                    this.SecureAccessWebProxy == input.SecureAccessWebProxy ||
+                    this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
                 ) && 
                 (
                     this.StorageAccountKeyName == input.StorageAccountKeyName ||
@@ -393,6 +506,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -446,6 +564,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
                 }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -462,11 +584,26 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.RmTag.GetHashCode();
                 }
+                if (this.RotateAfterDisconnect != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotateAfterDisconnect.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)
                 {
                     hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
                 }
+                if (this.SecureAccessEnable != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                if (this.SecureAccessUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.StorageAccountKeyName != null)
                 {
                     hashCode = (hashCode * 59) + this.StorageAccountKeyName.GetHashCode();
@@ -478,6 +615,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.Username != null)
+                {
+                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
                 }
                 return hashCode;
             }

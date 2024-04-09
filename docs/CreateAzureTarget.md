@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **ResourceGroupName** | **string** | The Resource Group name in your Azure subscription | [optional] 
 **ResourceName** | **string** | The name of the relevant Resource | [optional] 

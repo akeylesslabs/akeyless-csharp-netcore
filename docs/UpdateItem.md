@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] [default to "default_metadata"]
 **HostProvider** | **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | **string** | New item name | [optional] 

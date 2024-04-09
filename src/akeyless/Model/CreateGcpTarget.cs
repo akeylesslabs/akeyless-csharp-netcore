@@ -45,11 +45,12 @@ namespace akeyless.Model
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateGcpTarget(string comment = default(string), string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public CreateGcpTarget(string comment = default(string), string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.GcpKey = gcpKey;
             this.Json = json;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.Token = token;
             this.UidToken = uidToken;
             this.UseGwCloudIdentity = useGwCloudIdentity;
@@ -103,6 +105,13 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -142,6 +151,7 @@ namespace akeyless.Model
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -206,6 +216,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -251,6 +266,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

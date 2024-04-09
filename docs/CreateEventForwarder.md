@@ -1,4 +1,5 @@
 # akeyless.Model.CreateEventForwarder
+createEventForwarder is a command that creates a new event forwarder [Deprecated - please use event-forwarder-create-* command]
 
 ## Properties
 

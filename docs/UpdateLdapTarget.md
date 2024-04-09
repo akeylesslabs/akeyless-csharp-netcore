@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **LdapCaCert** | **string** |  | [optional] 
 **LdapUrl** | **string** |  | [optional] 
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 
 **ServerType** | **string** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory] | [optional] 

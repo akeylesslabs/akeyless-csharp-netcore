@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="format">Secret format [text/json] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
@@ -68,7 +69,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
         /// <param name="value">The secret value (relevant only for type &#39;generic&#39;) (required).</param>
-        public CreateSecret(string accessibility = "regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = "text", List<string> injectUrl = default(List<string>), bool json = false, string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string username = default(string), string value = default(string))
+        public CreateSecret(string accessibility = "regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = "text", List<string> injectUrl = default(List<string>), bool json = false, string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = "generic", string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -92,6 +93,7 @@ namespace akeyless.Model
             this.Format = format ?? "text";
             this.InjectUrl = injectUrl;
             this.Json = json;
+            this.MaxVersions = maxVersions;
             this.Metadata = metadata;
             this.MultilineValue = multilineValue;
             this.Password = password;
@@ -168,6 +170,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Deprecated - use description
@@ -325,6 +334,7 @@ namespace akeyless.Model
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  InjectUrl: ").Append(InjectUrl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  MultilineValue: ").Append(MultilineValue).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -420,6 +430,11 @@ namespace akeyless.Model
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
                     this.Metadata == input.Metadata ||
@@ -560,6 +575,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.InjectUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
                 if (this.Metadata != null)
                 {
                     hashCode = (hashCode * 59) + this.Metadata.GetHashCode();

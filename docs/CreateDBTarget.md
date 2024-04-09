@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Host** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **MongodbAtlas** | **bool** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 

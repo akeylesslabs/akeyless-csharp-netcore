@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MigrationStatusReplyObj" /> class.
         /// </summary>
+        /// <param name="computers">computers.</param>
         /// <param name="durationTime">durationTime.</param>
         /// <param name="error">error.</param>
         /// <param name="lastStatusMessage">lastStatusMessage.</param>
@@ -49,8 +50,9 @@ namespace akeyless.Model
         /// <param name="rotatedSecrets">rotatedSecrets.</param>
         /// <param name="startTime">startTime.</param>
         /// <param name="targets">targets.</param>
-        public MigrationStatusReplyObj(string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), MigrationItems targets = default(MigrationItems))
+        public MigrationStatusReplyObj(long computers = default(long), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), MigrationItems targets = default(MigrationItems))
         {
+            this.Computers = computers;
             this.DurationTime = durationTime;
             this.Error = error;
             this.LastStatusMessage = lastStatusMessage;
@@ -66,6 +68,12 @@ namespace akeyless.Model
             this.StartTime = startTime;
             this.Targets = targets;
         }
+
+        /// <summary>
+        /// Gets or Sets Computers
+        /// </summary>
+        [DataMember(Name = "computers", EmitDefaultValue = false)]
+        public long Computers { get; set; }
 
         /// <summary>
         /// Gets or Sets DurationTime
@@ -159,6 +167,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationStatusReplyObj {\n");
+            sb.Append("  Computers: ").Append(Computers).Append("\n");
             sb.Append("  DurationTime: ").Append(DurationTime).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  LastStatusMessage: ").Append(LastStatusMessage).Append("\n");
@@ -208,6 +217,10 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.Computers == input.Computers ||
+                    this.Computers.Equals(input.Computers)
+                ) && 
                 (
                     this.DurationTime == input.DurationTime ||
                     (this.DurationTime != null &&
@@ -287,6 +300,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Computers.GetHashCode();
                 if (this.DurationTime != null)
                 {
                     hashCode = (hashCode * 59) + this.DurationTime.GetHashCode();

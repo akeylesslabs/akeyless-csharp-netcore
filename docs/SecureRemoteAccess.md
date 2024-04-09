@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **SshPassword** | **bool** |  | [optional] 
 **SshPrivateKey** | **bool** |  | [optional] 
 **SshUser** | **string** |  | [optional] 
+**Status** | [**ItemSraStatus**](ItemSraStatus.md) |  | [optional] 
 **TargetHosts** | [**List&lt;TargetNameWithHosts&gt;**](TargetNameWithHosts.md) |  | [optional] 
 **Targets** | **List&lt;string&gt;** |  | [optional] 
 **Url** | **string** |  | [optional] 

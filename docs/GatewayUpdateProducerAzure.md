@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **NewName** | **string** | Dynamic secret name | [optional] 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
-**ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
+**ProducerEncryptionKeyName** | **string** | Dynamic secret encryption key | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to true]
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]

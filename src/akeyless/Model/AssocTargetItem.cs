@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
         /// <param name="multiRegion">Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
+        /// <param name="postProvisionCommand">A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning).</param>
         /// <param name="privateKeyPath">A path on the target to store the private key (relevant only for certificate provisioning).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string privateKeyPath = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -84,6 +85,7 @@ namespace akeyless.Model
             this.LocationId = locationId;
             // use default value if no "multiRegion" provided
             this.MultiRegion = multiRegion ?? "false";
+            this.PostProvisionCommand = postProvisionCommand;
             this.PrivateKeyPath = privateKeyPath;
             this.ProjectId = projectId;
             this.Purpose = purpose;
@@ -164,6 +166,13 @@ namespace akeyless.Model
         /// <value>The item to associate</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "post-provision-command", EmitDefaultValue = false)]
+        public string PostProvisionCommand { get; set; }
 
         /// <summary>
         /// A path on the target to store the private key (relevant only for certificate provisioning)
@@ -253,6 +262,7 @@ namespace akeyless.Model
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
             sb.Append("  MultiRegion: ").Append(MultiRegion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PostProvisionCommand: ").Append(PostProvisionCommand).Append("\n");
             sb.Append("  PrivateKeyPath: ").Append(PrivateKeyPath).Append("\n");
             sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
@@ -348,6 +358,11 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.PostProvisionCommand == input.PostProvisionCommand ||
+                    (this.PostProvisionCommand != null &&
+                    this.PostProvisionCommand.Equals(input.PostProvisionCommand))
+                ) && 
+                (
                     this.PrivateKeyPath == input.PrivateKeyPath ||
                     (this.PrivateKeyPath != null &&
                     this.PrivateKeyPath.Equals(input.PrivateKeyPath))
@@ -441,6 +456,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PostProvisionCommand != null)
+                {
+                    hashCode = (hashCode * 59) + this.PostProvisionCommand.GetHashCode();
                 }
                 if (this.PrivateKeyPath != null)
                 {

@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="extKeyUsage">extKeyUsage.</param>
         /// <param name="keyUsage">KeyUsage represents the set of actions that are valid for a given key. It&#39;s a bitmap of the KeyUsage* constants..</param>
+        /// <param name="crlDistributionPoints">crlDistributionPoints.</param>
         /// <param name="dnsNames">dnsNames.</param>
         /// <param name="emailAddresses">emailAddresses.</param>
         /// <param name="extensions">extensions.</param>
@@ -58,10 +59,11 @@ namespace akeyless.Model
         /// <param name="subjectPublicKey">subjectPublicKey.</param>
         /// <param name="uris">uris.</param>
         /// <param name="version">version.</param>
-        public CertificateInfo(List<long> extKeyUsage = default(List<long>), long keyUsage = default(long), List<string> dnsNames = default(List<string>), List<string> emailAddresses = default(List<string>), List<Extension> extensions = default(List<Extension>), List<string> ipAddresses = default(List<string>), bool isCa = default(bool), Name issuer = default(Name), List<string> issuingCertificateUrl = default(List<string>), long keySize = default(long), DateTime notAfter = default(DateTime), DateTime notBefore = default(DateTime), List<string> ocspServer = default(List<string>), string publicKeyAlgorithmName = default(string), string serialNumber = default(string), string sha1Fingerprint = default(string), string sha256Fingerprint = default(string), string signature = default(string), string signatureAlgorithmName = default(string), Name subject = default(Name), string subjectPublicKey = default(string), List<string> uris = default(List<string>), long version = default(long))
+        public CertificateInfo(List<long> extKeyUsage = default(List<long>), long keyUsage = default(long), List<string> crlDistributionPoints = default(List<string>), List<string> dnsNames = default(List<string>), List<string> emailAddresses = default(List<string>), List<Extension> extensions = default(List<Extension>), List<string> ipAddresses = default(List<string>), bool isCa = default(bool), Name issuer = default(Name), List<string> issuingCertificateUrl = default(List<string>), long keySize = default(long), DateTime notAfter = default(DateTime), DateTime notBefore = default(DateTime), List<string> ocspServer = default(List<string>), string publicKeyAlgorithmName = default(string), string serialNumber = default(string), string sha1Fingerprint = default(string), string sha256Fingerprint = default(string), string signature = default(string), string signatureAlgorithmName = default(string), Name subject = default(Name), string subjectPublicKey = default(string), List<string> uris = default(List<string>), long version = default(long))
         {
             this.ExtKeyUsage = extKeyUsage;
             this.KeyUsage = keyUsage;
+            this.CrlDistributionPoints = crlDistributionPoints;
             this.DnsNames = dnsNames;
             this.EmailAddresses = emailAddresses;
             this.Extensions = extensions;
@@ -97,6 +99,12 @@ namespace akeyless.Model
         /// <value>KeyUsage represents the set of actions that are valid for a given key. It&#39;s a bitmap of the KeyUsage* constants.</value>
         [DataMember(Name = "KeyUsage", EmitDefaultValue = false)]
         public long KeyUsage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CrlDistributionPoints
+        /// </summary>
+        [DataMember(Name = "crl_distribution_points", EmitDefaultValue = false)]
+        public List<string> CrlDistributionPoints { get; set; }
 
         /// <summary>
         /// Gets or Sets DnsNames
@@ -234,6 +242,7 @@ namespace akeyless.Model
             sb.Append("class CertificateInfo {\n");
             sb.Append("  ExtKeyUsage: ").Append(ExtKeyUsage).Append("\n");
             sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
+            sb.Append("  CrlDistributionPoints: ").Append(CrlDistributionPoints).Append("\n");
             sb.Append("  DnsNames: ").Append(DnsNames).Append("\n");
             sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
@@ -299,6 +308,12 @@ namespace akeyless.Model
                 (
                     this.KeyUsage == input.KeyUsage ||
                     this.KeyUsage.Equals(input.KeyUsage)
+                ) && 
+                (
+                    this.CrlDistributionPoints == input.CrlDistributionPoints ||
+                    this.CrlDistributionPoints != null &&
+                    input.CrlDistributionPoints != null &&
+                    this.CrlDistributionPoints.SequenceEqual(input.CrlDistributionPoints)
                 ) && 
                 (
                     this.DnsNames == input.DnsNames ||
@@ -425,6 +440,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.ExtKeyUsage.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.KeyUsage.GetHashCode();
+                if (this.CrlDistributionPoints != null)
+                {
+                    hashCode = (hashCode * 59) + this.CrlDistributionPoints.GetHashCode();
+                }
                 if (this.DnsNames != null)
                 {
                     hashCode = (hashCode * 59) + this.DnsNames.GetHashCode();

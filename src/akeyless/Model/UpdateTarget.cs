@@ -42,12 +42,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateTarget(string description = "default_comment", bool json = false, string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateTarget(string description = "default_comment", bool json = false, string maxVersions = default(string), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -58,6 +59,7 @@ namespace akeyless.Model
             // use default value if no "description" provided
             this.Description = description ?? "default_comment";
             this.Json = json;
+            this.MaxVersions = maxVersions;
             // use default value if no "newComment" provided
             this.NewComment = newComment ?? "default_comment";
             this.NewName = newName;
@@ -78,6 +80,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Target name
@@ -124,6 +133,7 @@ namespace akeyless.Model
             sb.Append("class UpdateTarget {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewComment: ").Append(NewComment).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -174,6 +184,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -214,6 +229,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();

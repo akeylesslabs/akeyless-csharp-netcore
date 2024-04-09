@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="ldapCaCert">ldapCaCert.</param>
         /// <param name="ldapUrl">ldapUrl.</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="serverType">Set Ldap server type, Options:[OpenLDAP, ActiveDirectory].</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="tokenExpiration">tokenExpiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.Key = key;
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
+            this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.ServerType = serverType;
             this.Token = token;
@@ -141,6 +143,13 @@ namespace akeyless.Model
         public string LdapUrl { get; set; }
 
         /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -205,6 +214,7 @@ namespace akeyless.Model
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ServerType: ").Append(ServerType).Append("\n");
@@ -292,6 +302,11 @@ namespace akeyless.Model
                     this.LdapUrl.Equals(input.LdapUrl))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -368,6 +383,10 @@ namespace akeyless.Model
                 if (this.LdapUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.LdapUrl.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

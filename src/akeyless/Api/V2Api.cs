@@ -3032,6 +3032,46 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>EventForwarderCreateUpdateOutput</returns>
+        EventForwarderCreateUpdateOutput EventForwarderCreateServiceNow(EventForwarderCreateServiceNow body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderCreateServiceNowWithHttpInfo(EventForwarderCreateServiceNow body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
+        EventForwarderCreateUpdateOutput EventForwarderCreateSlack(EventForwarderCreateSlack body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderCreateSlackWithHttpInfo(EventForwarderCreateSlack body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
         EventForwarderCreateUpdateOutput EventForwarderCreateWebhook(EventForwarderCreateWebhook body, int operationIndex = 0);
 
         /// <summary>
@@ -3105,6 +3145,46 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
         ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderUpdateEmailWithHttpInfo(EventForwarderUpdateEmail body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
+        EventForwarderCreateUpdateOutput EventForwarderUpdateServiceNow(EventForwarderUpdateServiceNow body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderUpdateServiceNowWithHttpInfo(EventForwarderUpdateServiceNow body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
+        EventForwarderCreateUpdateOutput EventForwarderUpdateSlack(EventForwarderUpdateSlack body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderUpdateSlackWithHttpInfo(EventForwarderUpdateSlack body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -4869,6 +4949,26 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AllAnalyticsData</returns>
+        AllAnalyticsData GetAnalyticsData(GetAnalyticsData body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AllAnalyticsData</returns>
+        ApiResponse<AllAnalyticsData> GetAnalyticsDataWithHttpInfo(GetAnalyticsData body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AuthMethod</returns>
         AuthMethod GetAuthMethod(GetAuthMethod body, int operationIndex = 0);
 
@@ -5783,6 +5883,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ReverseRBACOutput</returns>
         ApiResponse<ReverseRBACOutput> ReverseRBACWithHttpInfo(ReverseRBAC body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>Object</returns>
+        Object RevokeCertificate(RevokeCertificate body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> RevokeCertificateWithHttpInfo(RevokeCertificate body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -12167,6 +12287,56 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderCreateServiceNowAsync(EventForwarderCreateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderCreateServiceNowWithHttpInfoAsync(EventForwarderCreateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderCreateSlackAsync(EventForwarderCreateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderCreateSlackWithHttpInfoAsync(EventForwarderCreateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
         System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderCreateWebhookAsync(EventForwarderCreateWebhook body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -12256,6 +12426,56 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderUpdateEmailWithHttpInfoAsync(EventForwarderUpdateEmail body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderUpdateServiceNowAsync(EventForwarderUpdateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderUpdateServiceNowWithHttpInfoAsync(EventForwarderUpdateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderUpdateSlackAsync(EventForwarderUpdateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderUpdateSlackWithHttpInfoAsync(EventForwarderUpdateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -14464,6 +14684,31 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AllAnalyticsData</returns>
+        System.Threading.Tasks.Task<AllAnalyticsData> GetAnalyticsDataAsync(GetAnalyticsData body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AllAnalyticsData)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AllAnalyticsData>> GetAnalyticsDataWithHttpInfoAsync(GetAnalyticsData body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AuthMethod</returns>
         System.Threading.Tasks.Task<AuthMethod> GetAuthMethodAsync(GetAuthMethod body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
@@ -15604,6 +15849,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ReverseRBACOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<ReverseRBACOutput>> ReverseRBACWithHttpInfoAsync(ReverseRBAC body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> RevokeCertificateAsync(RevokeCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> RevokeCertificateWithHttpInfoAsync(RevokeCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -40854,6 +41124,298 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>EventForwarderCreateUpdateOutput</returns>
+        public EventForwarderCreateUpdateOutput EventForwarderCreateServiceNow(EventForwarderCreateServiceNow body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = EventForwarderCreateServiceNowWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderCreateServiceNowWithHttpInfo(EventForwarderCreateServiceNow body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderCreateServiceNow");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderCreateServiceNow";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<EventForwarderCreateUpdateOutput>("/event-forwarder-create-servicenow", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderCreateServiceNow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderCreateServiceNowAsync(EventForwarderCreateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = await EventForwarderCreateServiceNowWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderCreateServiceNowWithHttpInfoAsync(EventForwarderCreateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderCreateServiceNow");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderCreateServiceNow";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EventForwarderCreateUpdateOutput>("/event-forwarder-create-servicenow", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderCreateServiceNow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
+        public EventForwarderCreateUpdateOutput EventForwarderCreateSlack(EventForwarderCreateSlack body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = EventForwarderCreateSlackWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderCreateSlackWithHttpInfo(EventForwarderCreateSlack body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderCreateSlack");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderCreateSlack";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<EventForwarderCreateUpdateOutput>("/event-forwarder-create-slack", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderCreateSlack", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderCreateSlackAsync(EventForwarderCreateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = await EventForwarderCreateSlackWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderCreateSlackWithHttpInfoAsync(EventForwarderCreateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderCreateSlack");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderCreateSlack";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EventForwarderCreateUpdateOutput>("/event-forwarder-create-slack", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderCreateSlack", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
         public EventForwarderCreateUpdateOutput EventForwarderCreateWebhook(EventForwarderCreateWebhook body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = EventForwarderCreateWebhookWithHttpInfo(body);
@@ -41422,6 +41984,298 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("EventForwarderUpdateEmail", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
+        public EventForwarderCreateUpdateOutput EventForwarderUpdateServiceNow(EventForwarderUpdateServiceNow body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = EventForwarderUpdateServiceNowWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderUpdateServiceNowWithHttpInfo(EventForwarderUpdateServiceNow body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderUpdateServiceNow");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderUpdateServiceNow";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<EventForwarderCreateUpdateOutput>("/event-forwarder-update-servicenow", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderUpdateServiceNow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderUpdateServiceNowAsync(EventForwarderUpdateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = await EventForwarderUpdateServiceNowWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderUpdateServiceNowWithHttpInfoAsync(EventForwarderUpdateServiceNow body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderUpdateServiceNow");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderUpdateServiceNow";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EventForwarderCreateUpdateOutput>("/event-forwarder-update-servicenow", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderUpdateServiceNow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EventForwarderCreateUpdateOutput</returns>
+        public EventForwarderCreateUpdateOutput EventForwarderUpdateSlack(EventForwarderUpdateSlack body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = EventForwarderUpdateSlackWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EventForwarderCreateUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> EventForwarderUpdateSlackWithHttpInfo(EventForwarderUpdateSlack body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderUpdateSlack");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderUpdateSlack";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<EventForwarderCreateUpdateOutput>("/event-forwarder-update-slack", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderUpdateSlack", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EventForwarderCreateUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<EventForwarderCreateUpdateOutput> EventForwarderUpdateSlackAsync(EventForwarderUpdateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput> localVarResponse = await EventForwarderUpdateSlackWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EventForwarderCreateUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<EventForwarderCreateUpdateOutput>> EventForwarderUpdateSlackWithHttpInfoAsync(EventForwarderUpdateSlack body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->EventForwarderUpdateSlack");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.EventForwarderUpdateSlack";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EventForwarderCreateUpdateOutput>("/event-forwarder-update-slack", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EventForwarderUpdateSlack", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -54225,6 +55079,152 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AllAnalyticsData</returns>
+        public AllAnalyticsData GetAnalyticsData(GetAnalyticsData body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<AllAnalyticsData> localVarResponse = GetAnalyticsDataWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AllAnalyticsData</returns>
+        public akeyless.Client.ApiResponse<AllAnalyticsData> GetAnalyticsDataWithHttpInfo(GetAnalyticsData body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GetAnalyticsData");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.GetAnalyticsData";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AllAnalyticsData>("/get-analytics-data", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticsData", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AllAnalyticsData</returns>
+        public async System.Threading.Tasks.Task<AllAnalyticsData> GetAnalyticsDataAsync(GetAnalyticsData body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<AllAnalyticsData> localVarResponse = await GetAnalyticsDataWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AllAnalyticsData)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AllAnalyticsData>> GetAnalyticsDataWithHttpInfoAsync(GetAnalyticsData body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->GetAnalyticsData");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.GetAnalyticsData";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AllAnalyticsData>("/get-analytics-data", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticsData", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AuthMethod</returns>
         public AuthMethod GetAuthMethod(GetAuthMethod body, int operationIndex = 0)
         {
@@ -60756,6 +61756,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ReverseRBAC", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>Object</returns>
+        public Object RevokeCertificate(RevokeCertificate body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<Object> localVarResponse = RevokeCertificateWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object</returns>
+        public akeyless.Client.ApiResponse<Object> RevokeCertificateWithHttpInfo(RevokeCertificate body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->RevokeCertificate");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.RevokeCertificate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/revoke-certificate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RevokeCertificate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> RevokeCertificateAsync(RevokeCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<Object> localVarResponse = await RevokeCertificateWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Object>> RevokeCertificateWithHttpInfoAsync(RevokeCertificate body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->RevokeCertificate");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.RevokeCertificate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/revoke-certificate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RevokeCertificate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

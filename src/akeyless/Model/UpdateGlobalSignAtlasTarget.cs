@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="mtlsCertDataBase64">Mutual TLS Certificate contents of the GlobalSign Atlas account encoded in base64, either mtls-cert-file-path or mtls-cert-data-base64 must be supplied.</param>
         /// <param name="mtlsKeyDataBase64">Mutual TLS Key contents of the GlobalSign Atlas account encoded in base64, either mtls-key-file-path or mtls-data-base64 must be supplied.</param>
         /// <param name="name">Target name (required).</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateGlobalSignAtlasTarget(string apiKey = default(string), string apiSecret = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string mtlsCertDataBase64 = default(string), string mtlsKeyDataBase64 = default(string), string name = default(string), string newName = default(string), string timeout = "5m", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateGlobalSignAtlasTarget(string apiKey = default(string), string apiSecret = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string mtlsCertDataBase64 = default(string), string mtlsKeyDataBase64 = default(string), string name = default(string), string newName = default(string), string timeout = "5m", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "apiKey" is required (not null)
             if (apiKey == null)
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.MtlsCertDataBase64 = mtlsCertDataBase64;
             this.MtlsKeyDataBase64 = mtlsKeyDataBase64;
             this.NewName = newName;
@@ -138,6 +140,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Mutual TLS Certificate contents of the GlobalSign Atlas account encoded in base64, either mtls-cert-file-path or mtls-cert-data-base64 must be supplied
@@ -210,6 +219,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  MtlsCertDataBase64: ").Append(MtlsCertDataBase64).Append("\n");
             sb.Append("  MtlsKeyDataBase64: ").Append(MtlsKeyDataBase64).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -288,6 +298,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.MtlsCertDataBase64 == input.MtlsCertDataBase64 ||
                     (this.MtlsCertDataBase64 != null &&
                     this.MtlsCertDataBase64.Equals(input.MtlsCertDataBase64))
@@ -361,6 +376,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.MtlsCertDataBase64 != null)
                 {

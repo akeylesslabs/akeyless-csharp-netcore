@@ -41,10 +41,11 @@ namespace akeyless.Model
         /// <param name="country">Country.</param>
         /// <param name="defaultKeyName">Set the account default key based on the DFC key name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account..</param>
         /// <param name="defaultShareLinkTtlMinutes">Set the default ttl in minutes for sharing item number between 60 and 43200.</param>
-        /// <param name="defaultVersioning">If set to true, new item version will be created on each update [true/false].</param>
+        /// <param name="defaultVersioning">If set to true, new versions is enabled by default.</param>
         /// <param name="dpEnableClassicKeyProtection">Set to update protection with classic keys state [true/false].</param>
         /// <param name="dynamicSecretMaxTtl">Set the maximum ttl for dynamic secrets.</param>
         /// <param name="dynamicSecretMaxTtlEnable">Set a maximum ttl for dynamic secrets [true/false].</param>
+        /// <param name="forceNewVersions">If set to true, new version will be created on update.</param>
         /// <param name="invalidCharacters">Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. (default to &quot;notReceivedInvalidCharacter&quot;).</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="itemsDeletionProtection">Set or unset the default behaviour of items deletion protection [true/false].</param>
@@ -68,7 +69,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string forceNewVersions = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.City = city;
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.DpEnableClassicKeyProtection = dpEnableClassicKeyProtection;
             this.DynamicSecretMaxTtl = dynamicSecretMaxTtl;
             this.DynamicSecretMaxTtlEnable = dynamicSecretMaxTtlEnable;
+            this.ForceNewVersions = forceNewVersions;
             // use default value if no "invalidCharacters" provided
             this.InvalidCharacters = invalidCharacters ?? "notReceivedInvalidCharacter";
             this.ItemType = itemType;
@@ -149,9 +151,9 @@ namespace akeyless.Model
         public string DefaultShareLinkTtlMinutes { get; set; }
 
         /// <summary>
-        /// If set to true, new item version will be created on each update [true/false]
+        /// If set to true, new versions is enabled by default
         /// </summary>
-        /// <value>If set to true, new item version will be created on each update [true/false]</value>
+        /// <value>If set to true, new versions is enabled by default</value>
         [DataMember(Name = "default-versioning", EmitDefaultValue = false)]
         public string DefaultVersioning { get; set; }
 
@@ -175,6 +177,13 @@ namespace akeyless.Model
         /// <value>Set a maximum ttl for dynamic secrets [true/false]</value>
         [DataMember(Name = "dynamic-secret-max-ttl-enable", EmitDefaultValue = false)]
         public string DynamicSecretMaxTtlEnable { get; set; }
+
+        /// <summary>
+        /// If set to true, new version will be created on update
+        /// </summary>
+        /// <value>If set to true, new version will be created on update</value>
+        [DataMember(Name = "force-new-versions", EmitDefaultValue = false)]
+        public string ForceNewVersions { get; set; }
 
         /// <summary>
         /// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
@@ -355,6 +364,7 @@ namespace akeyless.Model
             sb.Append("  DpEnableClassicKeyProtection: ").Append(DpEnableClassicKeyProtection).Append("\n");
             sb.Append("  DynamicSecretMaxTtl: ").Append(DynamicSecretMaxTtl).Append("\n");
             sb.Append("  DynamicSecretMaxTtlEnable: ").Append(DynamicSecretMaxTtlEnable).Append("\n");
+            sb.Append("  ForceNewVersions: ").Append(ForceNewVersions).Append("\n");
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemsDeletionProtection: ").Append(ItemsDeletionProtection).Append("\n");
@@ -461,6 +471,11 @@ namespace akeyless.Model
                     this.DynamicSecretMaxTtlEnable == input.DynamicSecretMaxTtlEnable ||
                     (this.DynamicSecretMaxTtlEnable != null &&
                     this.DynamicSecretMaxTtlEnable.Equals(input.DynamicSecretMaxTtlEnable))
+                ) && 
+                (
+                    this.ForceNewVersions == input.ForceNewVersions ||
+                    (this.ForceNewVersions != null &&
+                    this.ForceNewVersions.Equals(input.ForceNewVersions))
                 ) && 
                 (
                     this.InvalidCharacters == input.InvalidCharacters ||
@@ -617,6 +632,10 @@ namespace akeyless.Model
                 if (this.DynamicSecretMaxTtlEnable != null)
                 {
                     hashCode = (hashCode * 59) + this.DynamicSecretMaxTtlEnable.GetHashCode();
+                }
+                if (this.ForceNewVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.ForceNewVersions.GetHashCode();
                 }
                 if (this.InvalidCharacters != null)
                 {

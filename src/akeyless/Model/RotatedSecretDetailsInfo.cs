@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="graceRotation">graceRotation.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="lastRotationError">lastRotationError.</param>
+        /// <param name="maxVersions">maxVersions.</param>
         /// <param name="numberOfVersionsToSave">numberOfVersionsToSave.</param>
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationIntervalMin">rotationIntervalMin.</param>
@@ -48,12 +49,13 @@ namespace akeyless.Model
         /// <param name="rotatorType">rotatorType.</param>
         /// <param name="samePassword">samePassword.</param>
         /// <param name="servicesDetails">servicesDetails.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool graceRotation = default(bool), long gwClusterId = default(long), string lastRotationError = default(string), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>))
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool graceRotation = default(bool), long gwClusterId = default(long), string lastRotationError = default(string), long maxVersions = default(long), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.GraceRotation = graceRotation;
             this.GwClusterId = gwClusterId;
             this.LastRotationError = lastRotationError;
+            this.MaxVersions = maxVersions;
             this.NumberOfVersionsToSave = numberOfVersionsToSave;
             this.RotationHour = rotationHour;
             this.RotationIntervalMin = rotationIntervalMin;
@@ -88,6 +90,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "last_rotation_error", EmitDefaultValue = false)]
         public string LastRotationError { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MaxVersions
+        /// </summary>
+        [DataMember(Name = "max_versions", EmitDefaultValue = false)]
+        public long MaxVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets NumberOfVersionsToSave
@@ -156,6 +164,7 @@ namespace akeyless.Model
             sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  LastRotationError: ").Append(LastRotationError).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  NumberOfVersionsToSave: ").Append(NumberOfVersionsToSave).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationIntervalMin: ").Append(RotationIntervalMin).Append("\n");
@@ -218,6 +227,10 @@ namespace akeyless.Model
                     this.LastRotationError.Equals(input.LastRotationError))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    this.MaxVersions.Equals(input.MaxVersions)
+                ) && 
+                (
                     this.NumberOfVersionsToSave == input.NumberOfVersionsToSave ||
                     this.NumberOfVersionsToSave.Equals(input.NumberOfVersionsToSave)
                 ) && 
@@ -277,6 +290,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.LastRotationError.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 hashCode = (hashCode * 59) + this.NumberOfVersionsToSave.GetHashCode();
                 hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 hashCode = (hashCode * 59) + this.RotationIntervalMin.GetHashCode();

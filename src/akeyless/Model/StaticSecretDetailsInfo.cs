@@ -36,13 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="StaticSecretDetailsInfo" /> class.
         /// </summary>
         /// <param name="format">StaticSecretFormat defines the format of static secret (e.g. Text).</param>
+        /// <param name="maxVersions">maxVersions.</param>
         /// <param name="notifyOnChangeEvent">notifyOnChangeEvent.</param>
         /// <param name="username">username.</param>
         /// <param name="website">deprecated.</param>
         /// <param name="websites">websites.</param>
-        public StaticSecretDetailsInfo(string format = default(string), bool notifyOnChangeEvent = default(bool), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
+        public StaticSecretDetailsInfo(string format = default(string), long maxVersions = default(long), bool notifyOnChangeEvent = default(bool), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
         {
             this.Format = format;
+            this.MaxVersions = maxVersions;
             this.NotifyOnChangeEvent = notifyOnChangeEvent;
             this.Username = username;
             this.Website = website;
@@ -55,6 +57,12 @@ namespace akeyless.Model
         /// <value>StaticSecretFormat defines the format of static secret (e.g. Text)</value>
         [DataMember(Name = "format", EmitDefaultValue = false)]
         public string Format { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MaxVersions
+        /// </summary>
+        [DataMember(Name = "max_versions", EmitDefaultValue = false)]
+        public long MaxVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets NotifyOnChangeEvent
@@ -90,6 +98,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretDetailsInfo {\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  NotifyOnChangeEvent: ").Append(NotifyOnChangeEvent).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
@@ -135,6 +144,10 @@ namespace akeyless.Model
                     this.Format.Equals(input.Format))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    this.MaxVersions.Equals(input.MaxVersions)
+                ) && 
+                (
                     this.NotifyOnChangeEvent == input.NotifyOnChangeEvent ||
                     this.NotifyOnChangeEvent.Equals(input.NotifyOnChangeEvent)
                 ) && 
@@ -169,6 +182,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 hashCode = (hashCode * 59) + this.NotifyOnChangeEvent.GetHashCode();
                 if (this.Username != null)
                 {

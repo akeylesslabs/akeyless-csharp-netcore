@@ -52,10 +52,11 @@ namespace akeyless.Model
         /// <param name="key">The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">EventForwarder name (required).</param>
         /// <param name="newName">New EventForwarder name.</param>
+        /// <param name="overrideUrl">Override Akeyless default URL with your Gateway url (port 18888).</param>
         /// <param name="targetsEventSourceLocations">Targets Event sources.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EventForwarderUpdateEmail(List<string> authMethodsEventSourceLocations = default(List<string>), string description = default(string), string emailTo = default(string), string enable = "true", List<string> eventTypes = default(List<string>), List<string> gatewaysEventSourceLocations = default(List<string>), List<string> itemsEventSourceLocations = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), List<string> targetsEventSourceLocations = default(List<string>), string token = default(string), string uidToken = default(string))
+        public EventForwarderUpdateEmail(List<string> authMethodsEventSourceLocations = default(List<string>), string description = default(string), string emailTo = default(string), string enable = "true", List<string> eventTypes = default(List<string>), List<string> gatewaysEventSourceLocations = default(List<string>), List<string> itemsEventSourceLocations = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string overrideUrl = default(string), List<string> targetsEventSourceLocations = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "gatewaysEventSourceLocations" is required (not null)
             if (gatewaysEventSourceLocations == null)
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.NewName = newName;
+            this.OverrideUrl = overrideUrl;
             this.TargetsEventSourceLocations = targetsEventSourceLocations;
             this.Token = token;
             this.UidToken = uidToken;
@@ -170,6 +172,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Override Akeyless default URL with your Gateway url (port 18888)
+        /// </summary>
+        /// <value>Override Akeyless default URL with your Gateway url (port 18888)</value>
+        [DataMember(Name = "override-url", EmitDefaultValue = false)]
+        public string OverrideUrl { get; set; }
+
+        /// <summary>
         /// Targets Event sources
         /// </summary>
         /// <value>Targets Event sources</value>
@@ -210,6 +219,7 @@ namespace akeyless.Model
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  OverrideUrl: ").Append(OverrideUrl).Append("\n");
             sb.Append("  TargetsEventSourceLocations: ").Append(TargetsEventSourceLocations).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -312,6 +322,11 @@ namespace akeyless.Model
                     this.NewName.Equals(input.NewName))
                 ) && 
                 (
+                    this.OverrideUrl == input.OverrideUrl ||
+                    (this.OverrideUrl != null &&
+                    this.OverrideUrl.Equals(input.OverrideUrl))
+                ) && 
+                (
                     this.TargetsEventSourceLocations == input.TargetsEventSourceLocations ||
                     this.TargetsEventSourceLocations != null &&
                     input.TargetsEventSourceLocations != null &&
@@ -382,6 +397,10 @@ namespace akeyless.Model
                 if (this.NewName != null)
                 {
                     hashCode = (hashCode * 59) + this.NewName.GetHashCode();
+                }
+                if (this.OverrideUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.OverrideUrl.GetHashCode();
                 }
                 if (this.TargetsEventSourceLocations != null)
                 {

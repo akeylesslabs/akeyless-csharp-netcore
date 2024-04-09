@@ -50,16 +50,18 @@ namespace akeyless.Model
         /// <param name="notiForwarderName">notiForwarderName.</param>
         /// <param name="notiForwarderType">notiForwarderType.</param>
         /// <param name="notiForwarderVersions">notiForwarderVersions.</param>
+        /// <param name="overrideUrl">overrideUrl.</param>
         /// <param name="paths">paths.</param>
         /// <param name="protectionKey">protectionKey.</param>
         /// <param name="runnerType">runnerType.</param>
+        /// <param name="slackNotiForwarderPublicDetails">slackNotiForwarderPublicDetails.</param>
         /// <param name="timespanInSeconds">timespanInSeconds.</param>
         /// <param name="toEmails">toEmails.</param>
         /// <param name="userEmail">userEmail.</param>
         /// <param name="username">Auth - User Password.</param>
         /// <param name="webhookNotiForwarderPublicDetails">webhookNotiForwarderPublicDetails.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
+        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), string overrideUrl = default(string), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), Object slackNotiForwarderPublicDetails = default(Object), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
         {
             this.AuthType = authType;
             this.ClientId = clientId;
@@ -76,9 +78,11 @@ namespace akeyless.Model
             this.NotiForwarderName = notiForwarderName;
             this.NotiForwarderType = notiForwarderType;
             this.NotiForwarderVersions = notiForwarderVersions;
+            this.OverrideUrl = overrideUrl;
             this.Paths = paths;
             this.ProtectionKey = protectionKey;
             this.RunnerType = runnerType;
+            this.SlackNotiForwarderPublicDetails = slackNotiForwarderPublicDetails;
             this.TimespanInSeconds = timespanInSeconds;
             this.ToEmails = toEmails;
             this.UserEmail = userEmail;
@@ -179,6 +183,12 @@ namespace akeyless.Model
         public List<ItemVersion> NotiForwarderVersions { get; set; }
 
         /// <summary>
+        /// Gets or Sets OverrideUrl
+        /// </summary>
+        [DataMember(Name = "override_url", EmitDefaultValue = false)]
+        public string OverrideUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Paths
         /// </summary>
         [DataMember(Name = "paths", EmitDefaultValue = false)]
@@ -195,6 +205,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "runner_type", EmitDefaultValue = false)]
         public string RunnerType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SlackNotiForwarderPublicDetails
+        /// </summary>
+        [DataMember(Name = "slack_noti_forwarder_public_details", EmitDefaultValue = false)]
+        public Object SlackNotiForwarderPublicDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets TimespanInSeconds
@@ -256,9 +272,11 @@ namespace akeyless.Model
             sb.Append("  NotiForwarderName: ").Append(NotiForwarderName).Append("\n");
             sb.Append("  NotiForwarderType: ").Append(NotiForwarderType).Append("\n");
             sb.Append("  NotiForwarderVersions: ").Append(NotiForwarderVersions).Append("\n");
+            sb.Append("  OverrideUrl: ").Append(OverrideUrl).Append("\n");
             sb.Append("  Paths: ").Append(Paths).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  RunnerType: ").Append(RunnerType).Append("\n");
+            sb.Append("  SlackNotiForwarderPublicDetails: ").Append(SlackNotiForwarderPublicDetails).Append("\n");
             sb.Append("  TimespanInSeconds: ").Append(TimespanInSeconds).Append("\n");
             sb.Append("  ToEmails: ").Append(ToEmails).Append("\n");
             sb.Append("  UserEmail: ").Append(UserEmail).Append("\n");
@@ -375,6 +393,11 @@ namespace akeyless.Model
                     this.NotiForwarderVersions.SequenceEqual(input.NotiForwarderVersions)
                 ) && 
                 (
+                    this.OverrideUrl == input.OverrideUrl ||
+                    (this.OverrideUrl != null &&
+                    this.OverrideUrl.Equals(input.OverrideUrl))
+                ) && 
+                (
                     this.Paths == input.Paths ||
                     this.Paths != null &&
                     input.Paths != null &&
@@ -389,6 +412,11 @@ namespace akeyless.Model
                     this.RunnerType == input.RunnerType ||
                     (this.RunnerType != null &&
                     this.RunnerType.Equals(input.RunnerType))
+                ) && 
+                (
+                    this.SlackNotiForwarderPublicDetails == input.SlackNotiForwarderPublicDetails ||
+                    (this.SlackNotiForwarderPublicDetails != null &&
+                    this.SlackNotiForwarderPublicDetails.Equals(input.SlackNotiForwarderPublicDetails))
                 ) && 
                 (
                     this.TimespanInSeconds == input.TimespanInSeconds ||
@@ -478,6 +506,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.NotiForwarderVersions.GetHashCode();
                 }
+                if (this.OverrideUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.OverrideUrl.GetHashCode();
+                }
                 if (this.Paths != null)
                 {
                     hashCode = (hashCode * 59) + this.Paths.GetHashCode();
@@ -489,6 +521,10 @@ namespace akeyless.Model
                 if (this.RunnerType != null)
                 {
                     hashCode = (hashCode * 59) + this.RunnerType.GetHashCode();
+                }
+                if (this.SlackNotiForwarderPublicDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.SlackNotiForwarderPublicDetails.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.TimespanInSeconds.GetHashCode();
                 if (this.ToEmails != null)

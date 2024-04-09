@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="password">Privileged user password (required).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useTls">Enable/Disable TLS for WinRM over HTTPS [true/false] (default to &quot;true&quot;).</param>
         /// <param name="username">Privileged username (required).</param>
-        public UpdateWindowsTarget(string certificate = default(string), string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string useTls = "true", string username = default(string))
+        public UpdateWindowsTarget(string certificate = default(string), string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string useTls = "true", string username = default(string))
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.NewName = newName;
             // use default value if no "port" provided
             this.Port = port ?? "5986";
@@ -146,6 +148,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Target name
@@ -225,6 +234,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -302,6 +312,11 @@ namespace akeyless.Model
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -382,6 +397,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

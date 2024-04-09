@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="password">The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow).</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), string email = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateSalesforceTarget(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), string email = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "authFlow" is required (not null)
             if (authFlow == null)
@@ -101,6 +102,7 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.Password = password;
             this.SecurityToken = securityToken;
@@ -194,6 +196,13 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
+
+        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -269,6 +278,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -372,6 +382,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -465,6 +480,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

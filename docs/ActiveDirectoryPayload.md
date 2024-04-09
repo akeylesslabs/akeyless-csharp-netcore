@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **LocalUsersRotatedSecretsPathTemplate** | **string** |  | [optional] 
 **OsFilter** | **string** |  | [optional] 
 **SshPort** | **string** |  | [optional] 
+**TargetFormat** | **string** |  | [optional] 
 **TargetsType** | **string** |  | [optional] 
 **UserBaseDn** | **string** |  | [optional] 
 **UserGroups** | **List&lt;string&gt;** |  | [optional] 

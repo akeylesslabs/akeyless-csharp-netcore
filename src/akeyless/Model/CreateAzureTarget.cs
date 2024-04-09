@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="resourceGroupName">The Resource Group name in your Azure subscription.</param>
         /// <param name="resourceName">The name of the relevant Resource.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public CreateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), bool json = false, string key = default(string), string name = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public CreateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,6 +69,7 @@ namespace akeyless.Model
             this.Description = description;
             this.Json = json;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             this.ResourceGroupName = resourceGroupName;
             this.ResourceName = resourceName;
             this.SubscriptionId = subscriptionId;
@@ -116,6 +118,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Target name
@@ -185,6 +194,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ResourceGroupName: ").Append(ResourceGroupName).Append("\n");
             sb.Append("  ResourceName: ").Append(ResourceName).Append("\n");
@@ -258,6 +268,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -327,6 +342,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

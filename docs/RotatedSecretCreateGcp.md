@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **GcpServiceAccountKeyId** | **string** | The key id of the gcp service account to rotate | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **RotationHour** | **int** | The Hour of the rotation in UTC | [optional] 

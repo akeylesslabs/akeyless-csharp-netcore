@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
@@ -81,7 +82,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = "explicit", bool json = false, string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = "explicit", bool json = false, string maxVersions = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -101,6 +102,7 @@ namespace akeyless.Model
             // use default value if no "hostProvider" provided
             this.HostProvider = hostProvider ?? "explicit";
             this.Json = json;
+            this.MaxVersions = maxVersions;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? "default_metadata";
             this.NewName = newName;
@@ -197,6 +199,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Current item name
@@ -439,6 +448,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -550,6 +560,11 @@ namespace akeyless.Model
                 (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
+                ) && 
+                (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -754,6 +769,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();

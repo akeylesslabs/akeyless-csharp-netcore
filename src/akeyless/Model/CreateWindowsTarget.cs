@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="hostname">Server hostname (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="password">Privileged user password (required).</param>
         /// <param name="port">Server WinRM port (default to &quot;5986&quot;).</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useTls">Enable/Disable TLS for WinRM over HTTPS [true/false] (default to &quot;true&quot;).</param>
         /// <param name="username">Privileged username (required).</param>
-        public CreateWindowsTarget(string certificate = default(string), string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string key = default(string), string name = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), string useTls = "true", string username = default(string))
+        public CreateWindowsTarget(string certificate = default(string), string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string password = default(string), string port = "5986", string token = default(string), string uidToken = default(string), string useTls = "true", string username = default(string))
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null)
@@ -84,6 +85,7 @@ namespace akeyless.Model
             this.Domain = domain;
             this.Json = json;
             this.Key = key;
+            this.MaxVersions = maxVersions;
             // use default value if no "port" provided
             this.Port = port ?? "5986";
             this.Token = token;
@@ -133,6 +135,13 @@ namespace akeyless.Model
         /// <value>The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
 
         /// <summary>
         /// Target name
@@ -197,6 +206,7 @@ namespace akeyless.Model
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
@@ -269,6 +279,11 @@ namespace akeyless.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.MaxVersions == input.MaxVersions ||
+                    (this.MaxVersions != null &&
+                    this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -334,6 +349,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.MaxVersions != null)
+                {
+                    hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
                 }
                 if (this.Name != null)
                 {

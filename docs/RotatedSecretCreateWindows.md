@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 **SecureAccessAllowExternalUser** | **bool** | Allow providing external user for a domain users | [optional] [default to false]
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
-**SecureAccessRdpDomain** | **string** | Required when the Dynamic Secret is used for a domain user | [optional] 
+**SecureAccessRdpDomain** | **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessRdpUser** | **string** | Override the RDP Domain username | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 

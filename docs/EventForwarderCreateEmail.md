@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Name** | **string** | EventForwarder name | 
+**OverrideUrl** | **string** | Override Akeyless default URL with your Gateway url (port 18888) | [optional] 
 **RunnerType** | **string** |  | 
 **TargetsEventSourceLocations** | **List&lt;string&gt;** | Targets Event sources | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

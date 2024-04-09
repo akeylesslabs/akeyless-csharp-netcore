@@ -44,9 +44,9 @@ namespace akeyless.Model
         /// <param name="githubAppId">Github app id.</param>
         /// <param name="githubAppPrivateKey">App private key.</param>
         /// <param name="githubBaseUrl">Base URL (default to &quot;https://api.github.com/&quot;).</param>
-        /// <param name="installationId">Github app installation id.</param>
-        /// <param name="installationOrganization">Optional, instead of installation id, set a GitHub organization name.</param>
-        /// <param name="installationRepository">Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;.</param>
+        /// <param name="installationId">GitHub application installation id.</param>
+        /// <param name="installationOrganization">Optional, mutually exclusive with installation id, GitHub organization name.</param>
+        /// <param name="installationRepository">Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -109,23 +109,23 @@ namespace akeyless.Model
         public string GithubBaseUrl { get; set; }
 
         /// <summary>
-        /// Github app installation id
+        /// GitHub application installation id
         /// </summary>
-        /// <value>Github app installation id</value>
+        /// <value>GitHub application installation id</value>
         [DataMember(Name = "installation-id", EmitDefaultValue = false)]
         public long InstallationId { get; set; }
 
         /// <summary>
-        /// Optional, instead of installation id, set a GitHub organization name
+        /// Optional, mutually exclusive with installation id, GitHub organization name
         /// </summary>
-        /// <value>Optional, instead of installation id, set a GitHub organization name</value>
+        /// <value>Optional, mutually exclusive with installation id, GitHub organization name</value>
         [DataMember(Name = "installation-organization", EmitDefaultValue = false)]
         public string InstallationOrganization { get; set; }
 
         /// <summary>
-        /// Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;
+        /// Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;
         /// </summary>
-        /// <value>Optional, instead of installation id, set a GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;</value>
+        /// <value>Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;</value>
         [DataMember(Name = "installation-repository", EmitDefaultValue = false)]
         public string InstallationRepository { get; set; }
 

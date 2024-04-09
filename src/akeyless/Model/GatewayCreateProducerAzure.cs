@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// gatewayCreateProducerAzure is a command that creates azure producer [Deprecated: Use dynamic-secret-create-azure command]
+    /// gatewayCreateProducerAzure is a command that creates azure dynamic secret [Deprecated: Use dynamic-secret-create-azure command]
     /// </summary>
     [DataContract(Name = "gatewayCreateProducerAzure")]
     public partial class GatewayCreateProducerAzure : IEquatable<GatewayCreateProducerAzure>, IValidatableObject
@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
-        /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="producerEncryptionKeyName">Dynamic secret encryption key.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
@@ -172,9 +172,9 @@ namespace akeyless.Model
         public string PasswordLength { get; set; }
 
         /// <summary>
-        /// Dynamic producer encryption key
+        /// Dynamic secret encryption key
         /// </summary>
-        /// <value>Dynamic producer encryption key</value>
+        /// <value>Dynamic secret encryption key</value>
         [DataMember(Name = "producer-encryption-key-name", EmitDefaultValue = false)]
         public string ProducerEncryptionKeyName { get; set; }
 

@@ -37,15 +37,19 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="awsAccessId">awsAccessId.</param>
         /// <param name="awsAccessKey">awsAccessKey.</param>
+        /// <param name="awsAuthType">awsAuthType.</param>
         /// <param name="awsRegion">awsRegion.</param>
-        /// <param name="awsUseGatewayCloudIdentity">awsUseGatewayCloudIdentity.</param>
+        /// <param name="awsRoleArn">awsRoleArn.</param>
+        /// <param name="awsUseGatewayCloudIdentity">deprecated.</param>
         /// <param name="bucketName">bucketName.</param>
         /// <param name="logFolder">logFolder.</param>
-        public AwsS3LogForwardingConfig(string awsAccessId = default(string), string awsAccessKey = default(string), string awsRegion = default(string), bool awsUseGatewayCloudIdentity = default(bool), string bucketName = default(string), string logFolder = default(string))
+        public AwsS3LogForwardingConfig(string awsAccessId = default(string), string awsAccessKey = default(string), string awsAuthType = default(string), string awsRegion = default(string), string awsRoleArn = default(string), bool awsUseGatewayCloudIdentity = default(bool), string bucketName = default(string), string logFolder = default(string))
         {
             this.AwsAccessId = awsAccessId;
             this.AwsAccessKey = awsAccessKey;
+            this.AwsAuthType = awsAuthType;
             this.AwsRegion = awsRegion;
+            this.AwsRoleArn = awsRoleArn;
             this.AwsUseGatewayCloudIdentity = awsUseGatewayCloudIdentity;
             this.BucketName = bucketName;
             this.LogFolder = logFolder;
@@ -64,14 +68,27 @@ namespace akeyless.Model
         public string AwsAccessKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets AwsAuthType
+        /// </summary>
+        [DataMember(Name = "aws_auth_type", EmitDefaultValue = false)]
+        public string AwsAuthType { get; set; }
+
+        /// <summary>
         /// Gets or Sets AwsRegion
         /// </summary>
         [DataMember(Name = "aws_region", EmitDefaultValue = false)]
         public string AwsRegion { get; set; }
 
         /// <summary>
-        /// Gets or Sets AwsUseGatewayCloudIdentity
+        /// Gets or Sets AwsRoleArn
         /// </summary>
+        [DataMember(Name = "aws_role_arn", EmitDefaultValue = false)]
+        public string AwsRoleArn { get; set; }
+
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        /// <value>deprecated</value>
         [DataMember(Name = "aws_use_gateway_cloud_identity", EmitDefaultValue = true)]
         public bool AwsUseGatewayCloudIdentity { get; set; }
 
@@ -97,7 +114,9 @@ namespace akeyless.Model
             sb.Append("class AwsS3LogForwardingConfig {\n");
             sb.Append("  AwsAccessId: ").Append(AwsAccessId).Append("\n");
             sb.Append("  AwsAccessKey: ").Append(AwsAccessKey).Append("\n");
+            sb.Append("  AwsAuthType: ").Append(AwsAuthType).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
+            sb.Append("  AwsRoleArn: ").Append(AwsRoleArn).Append("\n");
             sb.Append("  AwsUseGatewayCloudIdentity: ").Append(AwsUseGatewayCloudIdentity).Append("\n");
             sb.Append("  BucketName: ").Append(BucketName).Append("\n");
             sb.Append("  LogFolder: ").Append(LogFolder).Append("\n");
@@ -147,9 +166,19 @@ namespace akeyless.Model
                     this.AwsAccessKey.Equals(input.AwsAccessKey))
                 ) && 
                 (
+                    this.AwsAuthType == input.AwsAuthType ||
+                    (this.AwsAuthType != null &&
+                    this.AwsAuthType.Equals(input.AwsAuthType))
+                ) && 
+                (
                     this.AwsRegion == input.AwsRegion ||
                     (this.AwsRegion != null &&
                     this.AwsRegion.Equals(input.AwsRegion))
+                ) && 
+                (
+                    this.AwsRoleArn == input.AwsRoleArn ||
+                    (this.AwsRoleArn != null &&
+                    this.AwsRoleArn.Equals(input.AwsRoleArn))
                 ) && 
                 (
                     this.AwsUseGatewayCloudIdentity == input.AwsUseGatewayCloudIdentity ||
@@ -184,9 +213,17 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AwsAccessKey.GetHashCode();
                 }
+                if (this.AwsAuthType != null)
+                {
+                    hashCode = (hashCode * 59) + this.AwsAuthType.GetHashCode();
+                }
                 if (this.AwsRegion != null)
                 {
                     hashCode = (hashCode * 59) + this.AwsRegion.GetHashCode();
+                }
+                if (this.AwsRoleArn != null)
+                {
+                    hashCode = (hashCode * 59) + this.AwsRoleArn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AwsUseGatewayCloudIdentity.GetHashCode();
                 if (this.BucketName != null)

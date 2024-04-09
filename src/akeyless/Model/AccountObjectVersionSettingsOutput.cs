@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AccountObjectVersionSettingsOutput" /> class.
         /// </summary>
         /// <param name="defaultVersioning">defaultVersioning.</param>
+        /// <param name="forceNewVersions">forceNewVersions.</param>
         /// <param name="items">items.</param>
-        public AccountObjectVersionSettingsOutput(bool defaultVersioning = default(bool), List<ObjectVersionSettingsOutput> items = default(List<ObjectVersionSettingsOutput>))
+        public AccountObjectVersionSettingsOutput(bool defaultVersioning = default(bool), bool forceNewVersions = default(bool), List<ObjectVersionSettingsOutput> items = default(List<ObjectVersionSettingsOutput>))
         {
             this.DefaultVersioning = defaultVersioning;
+            this.ForceNewVersions = forceNewVersions;
             this.Items = items;
         }
 
@@ -48,6 +50,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "default-versioning", EmitDefaultValue = true)]
         public bool DefaultVersioning { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ForceNewVersions
+        /// </summary>
+        [DataMember(Name = "force_new_versions", EmitDefaultValue = true)]
+        public bool ForceNewVersions { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
@@ -64,6 +72,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccountObjectVersionSettingsOutput {\n");
             sb.Append("  DefaultVersioning: ").Append(DefaultVersioning).Append("\n");
+            sb.Append("  ForceNewVersions: ").Append(ForceNewVersions).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -105,6 +114,10 @@ namespace akeyless.Model
                     this.DefaultVersioning.Equals(input.DefaultVersioning)
                 ) && 
                 (
+                    this.ForceNewVersions == input.ForceNewVersions ||
+                    this.ForceNewVersions.Equals(input.ForceNewVersions)
+                ) && 
+                (
                     this.Items == input.Items ||
                     this.Items != null &&
                     input.Items != null &&
@@ -122,6 +135,7 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.DefaultVersioning.GetHashCode();
+                hashCode = (hashCode * 59) + this.ForceNewVersions.GetHashCode();
                 if (this.Items != null)
                 {
                     hashCode = (hashCode * 59) + this.Items.GetHashCode();
