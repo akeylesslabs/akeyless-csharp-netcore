@@ -1,5 +1,5 @@
 # akeyless.Model.DynamicSecretGet
-DynamicSecretGet is a command that returns dynamic secret details
+dynamicSecretGet is a command that returns dynamic secret details
 
 ## Properties
 

@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="k8sAllowedNamespaces">Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate.</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint.</param>
+        /// <param name="k8sClusterName">K8S cluster name.</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token.</param>
         /// <param name="k8sNamespace">K8S Namespace where the ServiceAccount exists..</param>
         /// <param name="k8sPredefinedRoleName">The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
@@ -69,7 +70,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = "60m")
+        public GatewayUpdateProducerNativeK8S(string deleteProtection = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.K8sAllowedNamespaces = k8sAllowedNamespaces;
             this.K8sClusterCaCert = k8sClusterCaCert;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
+            this.K8sClusterName = k8sClusterName;
             this.K8sClusterToken = k8sClusterToken;
             this.K8sNamespace = k8sNamespace;
             this.K8sPredefinedRoleName = k8sPredefinedRoleName;
@@ -142,6 +144,13 @@ namespace akeyless.Model
         /// <value>K8S cluster URL endpoint</value>
         [DataMember(Name = "k8s-cluster-endpoint", EmitDefaultValue = false)]
         public string K8sClusterEndpoint { get; set; }
+
+        /// <summary>
+        /// K8S cluster name
+        /// </summary>
+        /// <value>K8S cluster name</value>
+        [DataMember(Name = "k8s-cluster-name", EmitDefaultValue = false)]
+        public string K8sClusterName { get; set; }
 
         /// <summary>
         /// K8S cluster Bearer token
@@ -324,6 +333,7 @@ namespace akeyless.Model
             sb.Append("  K8sAllowedNamespaces: ").Append(K8sAllowedNamespaces).Append("\n");
             sb.Append("  K8sClusterCaCert: ").Append(K8sClusterCaCert).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
+            sb.Append("  K8sClusterName: ").Append(K8sClusterName).Append("\n");
             sb.Append("  K8sClusterToken: ").Append(K8sClusterToken).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
             sb.Append("  K8sPredefinedRoleName: ").Append(K8sPredefinedRoleName).Append("\n");
@@ -406,6 +416,11 @@ namespace akeyless.Model
                     this.K8sClusterEndpoint == input.K8sClusterEndpoint ||
                     (this.K8sClusterEndpoint != null &&
                     this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
+                ) && 
+                (
+                    this.K8sClusterName == input.K8sClusterName ||
+                    (this.K8sClusterName != null &&
+                    this.K8sClusterName.Equals(input.K8sClusterName))
                 ) && 
                 (
                     this.K8sClusterToken == input.K8sClusterToken ||
@@ -550,6 +565,10 @@ namespace akeyless.Model
                 if (this.K8sClusterEndpoint != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
+                if (this.K8sClusterName != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterName.GetHashCode();
                 }
                 if (this.K8sClusterToken != null)
                 {

@@ -62,13 +62,13 @@ namespace akeyless.Model
         /// <param name="sshPassword">sshPassword.</param>
         /// <param name="sshPrivateKey">sshPrivateKey.</param>
         /// <param name="sshUser">sshUser.</param>
-        /// <param name="status">status.</param>
+        /// <param name="statusInfo">statusInfo.</param>
         /// <param name="targetHosts">targetHosts.</param>
         /// <param name="targets">targets.</param>
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus status = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -97,7 +97,7 @@ namespace akeyless.Model
             this.SshPassword = sshPassword;
             this.SshPrivateKey = sshPrivateKey;
             this.SshUser = sshUser;
-            this.Status = status;
+            this.StatusInfo = statusInfo;
             this.TargetHosts = targetHosts;
             this.Targets = targets;
             this.Url = url;
@@ -268,10 +268,10 @@ namespace akeyless.Model
         public string SshUser { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets StatusInfo
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public ItemSraStatus Status { get; set; }
+        [DataMember(Name = "status_info", EmitDefaultValue = false)]
+        public ItemSraStatus StatusInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetHosts
@@ -338,7 +338,7 @@ namespace akeyless.Model
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
             sb.Append("  SshPrivateKey: ").Append(SshPrivateKey).Append("\n");
             sb.Append("  SshUser: ").Append(SshUser).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  StatusInfo: ").Append(StatusInfo).Append("\n");
             sb.Append("  TargetHosts: ").Append(TargetHosts).Append("\n");
             sb.Append("  Targets: ").Append(Targets).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
@@ -505,9 +505,9 @@ namespace akeyless.Model
                     this.SshUser.Equals(input.SshUser))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.StatusInfo == input.StatusInfo ||
+                    (this.StatusInfo != null &&
+                    this.StatusInfo.Equals(input.StatusInfo))
                 ) && 
                 (
                     this.TargetHosts == input.TargetHosts ||
@@ -620,9 +620,9 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.SshUser.GetHashCode();
                 }
-                if (this.Status != null)
+                if (this.StatusInfo != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.StatusInfo.GetHashCode();
                 }
                 if (this.TargetHosts != null)
                 {

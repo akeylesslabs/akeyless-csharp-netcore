@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="k8sClientKey">Content of the k8 client private key (PEM format) in a Base64 format.</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate (required) (default to &quot;dummy_val&quot;).</param>
         /// <param name="k8sClusterEndpoint">K8S cluster URL endpoint (required) (default to &quot;dummy_val&quot;).</param>
+        /// <param name="k8sClusterName">K8S cluster name.</param>
         /// <param name="k8sClusterToken">K8S cluster Bearer token (required) (default to &quot;dummy_val&quot;).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
-        public UpdateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sAuthType = "token", string k8sClientCertificate = default(string), string k8sClientKey = default(string), string k8sClusterCaCert = "dummy_val", string k8sClusterEndpoint = "dummy_val", string k8sClusterToken = "dummy_val", string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwServiceAccount = default(bool))
+        public UpdateNativeK8STarget(string comment = default(string), string description = default(string), bool json = false, string k8sAuthType = "token", string k8sClientCertificate = default(string), string k8sClientKey = default(string), string k8sClusterCaCert = "dummy_val", string k8sClusterEndpoint = "dummy_val", string k8sClusterName = default(string), string k8sClusterToken = "dummy_val", string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwServiceAccount = default(bool))
         {
             // to ensure "k8sClusterCaCert" is required (not null)
             if (k8sClusterCaCert == null)
@@ -91,6 +92,7 @@ namespace akeyless.Model
             this.K8sAuthType = k8sAuthType ?? "token";
             this.K8sClientCertificate = k8sClientCertificate;
             this.K8sClientKey = k8sClientKey;
+            this.K8sClusterName = k8sClusterName;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.MaxVersions = maxVersions;
@@ -156,6 +158,13 @@ namespace akeyless.Model
         /// <value>K8S cluster URL endpoint</value>
         [DataMember(Name = "k8s-cluster-endpoint", IsRequired = true, EmitDefaultValue = true)]
         public string K8sClusterEndpoint { get; set; }
+
+        /// <summary>
+        /// K8S cluster name
+        /// </summary>
+        /// <value>K8S cluster name</value>
+        [DataMember(Name = "k8s-cluster-name", EmitDefaultValue = false)]
+        public string K8sClusterName { get; set; }
 
         /// <summary>
         /// K8S cluster Bearer token
@@ -243,6 +252,7 @@ namespace akeyless.Model
             sb.Append("  K8sClientKey: ").Append(K8sClientKey).Append("\n");
             sb.Append("  K8sClusterCaCert: ").Append(K8sClusterCaCert).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
+            sb.Append("  K8sClusterName: ").Append(K8sClusterName).Append("\n");
             sb.Append("  K8sClusterToken: ").Append(K8sClusterToken).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -326,6 +336,11 @@ namespace akeyless.Model
                     this.K8sClusterEndpoint == input.K8sClusterEndpoint ||
                     (this.K8sClusterEndpoint != null &&
                     this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
+                ) && 
+                (
+                    this.K8sClusterName == input.K8sClusterName ||
+                    (this.K8sClusterName != null &&
+                    this.K8sClusterName.Equals(input.K8sClusterName))
                 ) && 
                 (
                     this.K8sClusterToken == input.K8sClusterToken ||
@@ -414,6 +429,10 @@ namespace akeyless.Model
                 if (this.K8sClusterEndpoint != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
+                if (this.K8sClusterName != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterName.GetHashCode();
                 }
                 if (this.K8sClusterToken != null)
                 {

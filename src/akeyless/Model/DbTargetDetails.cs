@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DbTargetDetails" /> class.
         /// </summary>
         /// <param name="cloudServiceProvider">cloudServiceProvider.</param>
+        /// <param name="clusterMode">clusterMode.</param>
         /// <param name="connectionType">connectionType.</param>
         /// <param name="dbClientId">dbClientId.</param>
         /// <param name="dbClientSecret">dbClientSecret.</param>
@@ -52,9 +53,10 @@ namespace akeyless.Model
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
-        public DbTargetDetails(string cloudServiceProvider = default(string), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
+        public DbTargetDetails(string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
         {
             this.CloudServiceProvider = cloudServiceProvider;
+            this.ClusterMode = clusterMode;
             this.ConnectionType = connectionType;
             this.DbClientId = dbClientId;
             this.DbClientSecret = dbClientSecret;
@@ -78,6 +80,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "cloud_service_provider", EmitDefaultValue = false)]
         public string CloudServiceProvider { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClusterMode
+        /// </summary>
+        [DataMember(Name = "cluster_mode", EmitDefaultValue = true)]
+        public bool ClusterMode { get; set; }
 
         /// <summary>
         /// Gets or Sets ConnectionType
@@ -189,6 +197,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DbTargetDetails {\n");
             sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
+            sb.Append("  ClusterMode: ").Append(ClusterMode).Append("\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
             sb.Append("  DbClientId: ").Append(DbClientId).Append("\n");
             sb.Append("  DbClientSecret: ").Append(DbClientSecret).Append("\n");
@@ -244,6 +253,10 @@ namespace akeyless.Model
                     this.CloudServiceProvider == input.CloudServiceProvider ||
                     (this.CloudServiceProvider != null &&
                     this.CloudServiceProvider.Equals(input.CloudServiceProvider))
+                ) && 
+                (
+                    this.ClusterMode == input.ClusterMode ||
+                    this.ClusterMode.Equals(input.ClusterMode)
                 ) && 
                 (
                     this.ConnectionType == input.ConnectionType ||
@@ -339,6 +352,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CloudServiceProvider.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ClusterMode.GetHashCode();
                 if (this.ConnectionType != null)
                 {
                     hashCode = (hashCode * 59) + this.ConnectionType.GetHashCode();

@@ -97,6 +97,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretCreateGcp**](V2Api.md#dynamicsecretcreategcp) | **POST** /dynamic-secret-create-gcp |  |
 | [**DynamicSecretCreateGithub**](V2Api.md#dynamicsecretcreategithub) | **POST** /dynamic-secret-create-github |  |
 | [**DynamicSecretCreateGke**](V2Api.md#dynamicsecretcreategke) | **POST** /dynamic-secret-create-gke |  |
+| [**DynamicSecretCreateGoogleWorkspace**](V2Api.md#dynamicsecretcreategoogleworkspace) | **POST** /dynamic-secret-create-google-workspace |  |
 | [**DynamicSecretCreateHanaDb**](V2Api.md#dynamicsecretcreatehanadb) | **POST** /dynamic-secret-create-hanadb |  |
 | [**DynamicSecretCreateK8s**](V2Api.md#dynamicsecretcreatek8s) | **POST** /dynamic-secret-create-k8s |  |
 | [**DynamicSecretCreateLdap**](V2Api.md#dynamicsecretcreateldap) | **POST** /dynamic-secret-create-ldap |  |
@@ -129,6 +130,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretUpdateGcp**](V2Api.md#dynamicsecretupdategcp) | **POST** /dynamic-secret-update-gcp |  |
 | [**DynamicSecretUpdateGithub**](V2Api.md#dynamicsecretupdategithub) | **POST** /dynamic-secret-update-github |  |
 | [**DynamicSecretUpdateGke**](V2Api.md#dynamicsecretupdategke) | **POST** /dynamic-secret-update-gke |  |
+| [**DynamicSecretUpdateGoogleWorkspace**](V2Api.md#dynamicsecretupdategoogleworkspace) | **POST** /dynamic-secret-update-google-workspace |  |
 | [**DynamicSecretUpdateHanaDb**](V2Api.md#dynamicsecretupdatehanadb) | **POST** /dynamic-secret-update-hana |  |
 | [**DynamicSecretUpdateK8s**](V2Api.md#dynamicsecretupdatek8s) | **POST** /dynamic-secret-update-k8s |  |
 | [**DynamicSecretUpdateLdap**](V2Api.md#dynamicsecretupdateldap) | **POST** /dynamic-secret-update-ldap |  |
@@ -8616,6 +8618,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="dynamicsecretcreategoogleworkspace"></a>
+# **DynamicSecretCreateGoogleWorkspace**
+> DynamicSecretCreateOutput DynamicSecretCreateGoogleWorkspace (DynamicSecretCreateGoogleWorkspace body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretCreateGoogleWorkspaceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DynamicSecretCreateGoogleWorkspace(); // DynamicSecretCreateGoogleWorkspace | 
+
+            try
+            {
+                DynamicSecretCreateOutput result = apiInstance.DynamicSecretCreateGoogleWorkspace(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretCreateGoogleWorkspace: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretCreateGoogleWorkspaceWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretCreateOutput> response = apiInstance.DynamicSecretCreateGoogleWorkspaceWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretCreateGoogleWorkspaceWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DynamicSecretCreateGoogleWorkspace**](DynamicSecretCreateGoogleWorkspace.md) |  |  |
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | dynamicSecretCreateGoogleWorkspaceResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="dynamicsecretcreatehanadb"></a>
 # **DynamicSecretCreateHanaDb**
 > DynamicSecretCreateOutput DynamicSecretCreateHanaDb (DynamicSecretCreateHanaDb body)
@@ -10026,7 +10116,7 @@ No authorization required
 
 <a name="dynamicsecretget"></a>
 # **DynamicSecretGet**
-> DSProducerDetails DynamicSecretGet ()
+> DSProducerDetails DynamicSecretGet (DynamicSecretGet body)
 
 
 
@@ -10047,10 +10137,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new DynamicSecretGet(); // DynamicSecretGet | 
 
             try
             {
-                DSProducerDetails result = apiInstance.DynamicSecretGet();
+                DSProducerDetails result = apiInstance.DynamicSecretGet(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -10070,7 +10161,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<DSProducerDetails> response = apiInstance.DynamicSecretGetWithHttpInfo();
+    ApiResponse<DSProducerDetails> response = apiInstance.DynamicSecretGetWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -10084,7 +10175,11 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DynamicSecretGet**](DynamicSecretGet.md) |  |  |
+
 ### Return type
 
 [**DSProducerDetails**](DSProducerDetails.md)
@@ -10095,7 +10190,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -11415,6 +11510,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | dynamicSecretUpdateGkeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="dynamicsecretupdategoogleworkspace"></a>
+# **DynamicSecretUpdateGoogleWorkspace**
+> DynamicSecretUpdateOutput DynamicSecretUpdateGoogleWorkspace (DynamicSecretUpdateGoogleWorkspace body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretUpdateGoogleWorkspaceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DynamicSecretUpdateGoogleWorkspace(); // DynamicSecretUpdateGoogleWorkspace | 
+
+            try
+            {
+                DynamicSecretUpdateOutput result = apiInstance.DynamicSecretUpdateGoogleWorkspace(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretUpdateGoogleWorkspace: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretUpdateGoogleWorkspaceWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretUpdateOutput> response = apiInstance.DynamicSecretUpdateGoogleWorkspaceWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretUpdateGoogleWorkspaceWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DynamicSecretUpdateGoogleWorkspace**](DynamicSecretUpdateGoogleWorkspace.md) |  |  |
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | dynamicSecretUpdateGoogleWorkspaceResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -22320,7 +22503,7 @@ No authorization required
 
 <a name="getdynamicsecretvalue"></a>
 # **GetDynamicSecretValue**
-> Dictionary&lt;string, string&gt; GetDynamicSecretValue (GetDynamicSecretValue body)
+> Dictionary&lt;string, Object&gt; GetDynamicSecretValue (GetDynamicSecretValue body)
 
 
 
@@ -22345,7 +22528,7 @@ namespace Example
 
             try
             {
-                Dictionary<string, string> result = apiInstance.GetDynamicSecretValue(body);
+                Dictionary<string, Object> result = apiInstance.GetDynamicSecretValue(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -22365,7 +22548,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Dictionary<string, string>> response = apiInstance.GetDynamicSecretValueWithHttpInfo(body);
+    ApiResponse<Dictionary<string, Object>> response = apiInstance.GetDynamicSecretValueWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -22386,7 +22569,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Dictionary<string, string>**
+**Dictionary<string, Object>**
 
 ### Authorization
 
@@ -23200,7 +23383,7 @@ No authorization required
 
 <a name="getsecretvalue"></a>
 # **GetSecretValue**
-> Dictionary&lt;string, string&gt; GetSecretValue (GetSecretValue body)
+> Dictionary&lt;string, Object&gt; GetSecretValue (GetSecretValue body)
 
 
 
@@ -23225,7 +23408,7 @@ namespace Example
 
             try
             {
-                Dictionary<string, string> result = apiInstance.GetSecretValue(body);
+                Dictionary<string, Object> result = apiInstance.GetSecretValue(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23245,7 +23428,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Dictionary<string, string>> response = apiInstance.GetSecretValueWithHttpInfo(body);
+    ApiResponse<Dictionary<string, Object>> response = apiInstance.GetSecretValueWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -23266,7 +23449,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Dictionary<string, string>**
+**Dictionary<string, Object>**
 
 ### Authorization
 
@@ -28295,7 +28478,7 @@ No authorization required
 
 <a name="rotatedsecretgetvalue"></a>
 # **RotatedSecretGetValue**
-> Dictionary&lt;string, string&gt; RotatedSecretGetValue (RotatedSecretGetValue body)
+> Dictionary&lt;string, Object&gt; RotatedSecretGetValue (RotatedSecretGetValue body)
 
 
 
@@ -28320,7 +28503,7 @@ namespace Example
 
             try
             {
-                Dictionary<string, string> result = apiInstance.RotatedSecretGetValue(body);
+                Dictionary<string, Object> result = apiInstance.RotatedSecretGetValue(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -28340,7 +28523,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Dictionary<string, string>> response = apiInstance.RotatedSecretGetValueWithHttpInfo(body);
+    ApiResponse<Dictionary<string, Object>> response = apiInstance.RotatedSecretGetValueWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -28361,7 +28544,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Dictionary<string, string>**
+**Dictionary<string, Object>**
 
 ### Authorization
 

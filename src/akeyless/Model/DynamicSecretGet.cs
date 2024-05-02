@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DynamicSecretGet is a command that returns dynamic secret details
+    /// dynamicSecretGet is a command that returns dynamic secret details
     /// </summary>
     [DataContract(Name = "dynamicSecretGet")]
     public partial class DynamicSecretGet : IEquatable<DynamicSecretGet>, IValidatableObject

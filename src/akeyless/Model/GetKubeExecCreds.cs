@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it).</param>
-        public GetKubeExecCreds(string altNames = default(string), string apiVersion = "v1", string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), string extraExtensions = default(string), bool json = false, string keyDataBase64 = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string), string uriSans = default(string))
+        public GetKubeExecCreds(string altNames = default(string), string apiVersion = "v1", string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), string extraExtensions = default(string), bool json = false, string keyDataBase64 = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "certIssuerName" is required (not null)
             if (certIssuerName == null)
@@ -151,7 +151,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)</value>
         [DataMember(Name = "ttl", EmitDefaultValue = false)]
-        public long Ttl { get; set; }
+        public string Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -274,7 +274,8 @@ namespace akeyless.Model
                 ) && 
                 (
                     this.Ttl == input.Ttl ||
-                    this.Ttl.Equals(input.Ttl)
+                    (this.Ttl != null &&
+                    this.Ttl.Equals(input.Ttl))
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -334,7 +335,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
+                if (this.Ttl != null)
+                {
+                    hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
+                }
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();

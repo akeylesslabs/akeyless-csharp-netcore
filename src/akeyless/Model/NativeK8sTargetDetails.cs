@@ -41,8 +41,9 @@ namespace akeyless.Model
         /// <param name="k8sClientKeyData">k8sClientKeyData.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
         /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
+        /// <param name="k8sClusterName">k8sClusterName.</param>
         /// <param name="useGwServiceAccount">useGwServiceAccount.</param>
-        public NativeK8sTargetDetails(string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), bool useGwServiceAccount = default(bool))
+        public NativeK8sTargetDetails(string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), bool useGwServiceAccount = default(bool))
         {
             this.K8sAuthType = k8sAuthType;
             this.K8sBearerToken = k8sBearerToken;
@@ -50,6 +51,7 @@ namespace akeyless.Model
             this.K8sClientKeyData = k8sClientKeyData;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
+            this.K8sClusterName = k8sClusterName;
             this.UseGwServiceAccount = useGwServiceAccount;
         }
 
@@ -91,6 +93,12 @@ namespace akeyless.Model
         public string K8sClusterEndpoint { get; set; }
 
         /// <summary>
+        /// Gets or Sets K8sClusterName
+        /// </summary>
+        [DataMember(Name = "k8s_cluster_name", EmitDefaultValue = false)]
+        public string K8sClusterName { get; set; }
+
+        /// <summary>
         /// Gets or Sets UseGwServiceAccount
         /// </summary>
         [DataMember(Name = "use_gw_service_account", EmitDefaultValue = true)]
@@ -110,6 +118,7 @@ namespace akeyless.Model
             sb.Append("  K8sClientKeyData: ").Append(K8sClientKeyData).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
+            sb.Append("  K8sClusterName: ").Append(K8sClusterName).Append("\n");
             sb.Append("  UseGwServiceAccount: ").Append(UseGwServiceAccount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -177,6 +186,11 @@ namespace akeyless.Model
                     this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
                 ) && 
                 (
+                    this.K8sClusterName == input.K8sClusterName ||
+                    (this.K8sClusterName != null &&
+                    this.K8sClusterName.Equals(input.K8sClusterName))
+                ) && 
+                (
                     this.UseGwServiceAccount == input.UseGwServiceAccount ||
                     this.UseGwServiceAccount.Equals(input.UseGwServiceAccount)
                 );
@@ -214,6 +228,10 @@ namespace akeyless.Model
                 if (this.K8sClusterEndpoint != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
+                if (this.K8sClusterName != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterName.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.UseGwServiceAccount.GetHashCode();
                 return hashCode;

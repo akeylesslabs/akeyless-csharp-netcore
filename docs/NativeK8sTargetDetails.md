@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **K8sClientKeyData** | **string** |  | [optional] 
 **K8sClusterCaCertificate** | **string** |  | [optional] 
 **K8sClusterEndpoint** | **string** |  | [optional] 
+**K8sClusterName** | **string** |  | [optional] 
 **UseGwServiceAccount** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

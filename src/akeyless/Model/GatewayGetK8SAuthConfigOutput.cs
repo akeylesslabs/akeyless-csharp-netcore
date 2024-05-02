@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// GatewayGetK8SAuthConfigOutput
     /// </summary>
-    [DataContract(Name = "gatewayGetK8SAuthConfigOutput")]
+    [DataContract(Name = "GatewayGetK8SAuthConfigOutput")]
     public partial class GatewayGetK8SAuthConfigOutput : IEquatable<GatewayGetK8SAuthConfigOutput>, IValidatableObject
     {
         /// <summary>

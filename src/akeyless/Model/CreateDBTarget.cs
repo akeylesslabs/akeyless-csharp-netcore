@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="azureClientSecret">(Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only).</param>
         /// <param name="azureTenantId">(Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only).</param>
         /// <param name="cloudServiceProvider">(Optional) Cloud service provider (currently only supports Azure).</param>
+        /// <param name="clusterMode">Cluster Mode.</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="connectionType">(Optional) Type of connection to mssql database [credentials/cloud-identity] (required) (default to &quot;credentials&quot;).</param>
         /// <param name="dbName">dbName.</param>
@@ -74,7 +75,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string dBDefinedConnectionType = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), string comment = default(string), string connectionType = "credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public CreateDBTarget(string dBDefinedConnectionType = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = "credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "connectionType" is required (not null)
             if (connectionType == null)
@@ -99,6 +100,7 @@ namespace akeyless.Model
             this.AzureClientSecret = azureClientSecret;
             this.AzureTenantId = azureTenantId;
             this.CloudServiceProvider = cloudServiceProvider;
+            this.ClusterMode = clusterMode;
             this.Comment = comment;
             this.DbName = dbName;
             this.DbServerCertificates = dbServerCertificates;
@@ -160,6 +162,13 @@ namespace akeyless.Model
         /// <value>(Optional) Cloud service provider (currently only supports Azure)</value>
         [DataMember(Name = "cloud-service-provider", EmitDefaultValue = false)]
         public string CloudServiceProvider { get; set; }
+
+        /// <summary>
+        /// Cluster Mode
+        /// </summary>
+        /// <value>Cluster Mode</value>
+        [DataMember(Name = "cluster-mode", EmitDefaultValue = true)]
+        public bool ClusterMode { get; set; }
 
         /// <summary>
         /// Deprecated - use description
@@ -368,6 +377,7 @@ namespace akeyless.Model
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
             sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
+            sb.Append("  ClusterMode: ").Append(ClusterMode).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
@@ -456,6 +466,10 @@ namespace akeyless.Model
                     this.CloudServiceProvider == input.CloudServiceProvider ||
                     (this.CloudServiceProvider != null &&
                     this.CloudServiceProvider.Equals(input.CloudServiceProvider))
+                ) && 
+                (
+                    this.ClusterMode == input.ClusterMode ||
+                    this.ClusterMode.Equals(input.ClusterMode)
                 ) && 
                 (
                     this.Comment == input.Comment ||
@@ -630,6 +644,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CloudServiceProvider.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ClusterMode.GetHashCode();
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();

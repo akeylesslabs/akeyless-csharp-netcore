@@ -29,7 +29,7 @@ namespace akeyless.Model
     /// <summary>
     /// ValidateTokenOutput
     /// </summary>
-    [DataContract(Name = "validateTokenOutput")]
+    [DataContract(Name = "ValidateTokenOutput")]
     public partial class ValidateTokenOutput : IEquatable<ValidateTokenOutput>, IValidatableObject
     {
         /// <summary>
@@ -37,12 +37,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="expiration">expiration.</param>
         /// <param name="isValid">isValid.</param>
+        /// <param name="lastRotate">lastRotate.</param>
         /// <param name="reason">reason.</param>
-        public ValidateTokenOutput(string expiration = default(string), bool isValid = default(bool), string reason = default(string))
+        /// <param name="ttl">ttl.</param>
+        public ValidateTokenOutput(string expiration = default(string), bool isValid = default(bool), string lastRotate = default(string), string reason = default(string), int ttl = default(int))
         {
             this.Expiration = expiration;
             this.IsValid = isValid;
+            this.LastRotate = lastRotate;
             this.Reason = reason;
+            this.Ttl = ttl;
         }
 
         /// <summary>
@@ -58,10 +62,22 @@ namespace akeyless.Model
         public bool IsValid { get; set; }
 
         /// <summary>
+        /// Gets or Sets LastRotate
+        /// </summary>
+        [DataMember(Name = "last_rotate", EmitDefaultValue = false)]
+        public string LastRotate { get; set; }
+
+        /// <summary>
         /// Gets or Sets Reason
         /// </summary>
         [DataMember(Name = "reason", EmitDefaultValue = false)]
         public string Reason { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Ttl
+        /// </summary>
+        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        public int Ttl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +89,9 @@ namespace akeyless.Model
             sb.Append("class ValidateTokenOutput {\n");
             sb.Append("  Expiration: ").Append(Expiration).Append("\n");
             sb.Append("  IsValid: ").Append(IsValid).Append("\n");
+            sb.Append("  LastRotate: ").Append(LastRotate).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
+            sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,9 +137,18 @@ namespace akeyless.Model
                     this.IsValid.Equals(input.IsValid)
                 ) && 
                 (
+                    this.LastRotate == input.LastRotate ||
+                    (this.LastRotate != null &&
+                    this.LastRotate.Equals(input.LastRotate))
+                ) && 
+                (
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
+                ) && 
+                (
+                    this.Ttl == input.Ttl ||
+                    this.Ttl.Equals(input.Ttl)
                 );
         }
 
@@ -139,10 +166,15 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Expiration.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsValid.GetHashCode();
+                if (this.LastRotate != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastRotate.GetHashCode();
+                }
                 if (this.Reason != null)
                 {
                     hashCode = (hashCode * 59) + this.Reason.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
                 return hashCode;
             }
         }

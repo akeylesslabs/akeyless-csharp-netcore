@@ -27,41 +27,25 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ItemSraStatus
+    /// GatewayCreateProducerGoogleWorkspaceOutput
     /// </summary>
-    [DataContract(Name = "ItemSraStatus")]
-    public partial class ItemSraStatus : IEquatable<ItemSraStatus>, IValidatableObject
+    [DataContract(Name = "gatewayCreateProducerGoogleWorkspaceOutput")]
+    public partial class GatewayCreateProducerGoogleWorkspaceOutput : IEquatable<GatewayCreateProducerGoogleWorkspaceOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemSraStatus" /> class.
+        /// Initializes a new instance of the <see cref="GatewayCreateProducerGoogleWorkspaceOutput" /> class.
         /// </summary>
-        /// <param name="countInfo">countInfo.</param>
-        /// <param name="isInUse">isInUse.</param>
-        /// <param name="lastUsedItem">lastUsedItem.</param>
-        public ItemSraStatus(Dictionary<string, Dictionary<string, long>> countInfo = default(Dictionary<string, Dictionary<string, long>>), bool isInUse = default(bool), DateTime lastUsedItem = default(DateTime))
+        /// <param name="producerDetails">producerDetails.</param>
+        public GatewayCreateProducerGoogleWorkspaceOutput(DSProducerDetails producerDetails = default(DSProducerDetails))
         {
-            this.CountInfo = countInfo;
-            this.IsInUse = isInUse;
-            this.LastUsedItem = lastUsedItem;
+            this.ProducerDetails = producerDetails;
         }
 
         /// <summary>
-        /// Gets or Sets CountInfo
+        /// Gets or Sets ProducerDetails
         /// </summary>
-        [DataMember(Name = "count_info", EmitDefaultValue = false)]
-        public Dictionary<string, Dictionary<string, long>> CountInfo { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsInUse
-        /// </summary>
-        [DataMember(Name = "is_in_use", EmitDefaultValue = true)]
-        public bool IsInUse { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastUsedItem
-        /// </summary>
-        [DataMember(Name = "last_used_item", EmitDefaultValue = false)]
-        public DateTime LastUsedItem { get; set; }
+        [DataMember(Name = "producer_details", EmitDefaultValue = false)]
+        public DSProducerDetails ProducerDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +54,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemSraStatus {\n");
-            sb.Append("  CountInfo: ").Append(CountInfo).Append("\n");
-            sb.Append("  IsInUse: ").Append(IsInUse).Append("\n");
-            sb.Append("  LastUsedItem: ").Append(LastUsedItem).Append("\n");
+            sb.Append("class GatewayCreateProducerGoogleWorkspaceOutput {\n");
+            sb.Append("  ProducerDetails: ").Append(ProducerDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +76,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ItemSraStatus);
+            return this.Equals(input as GatewayCreateProducerGoogleWorkspaceOutput);
         }
 
         /// <summary>
-        /// Returns true if ItemSraStatus instances are equal
+        /// Returns true if GatewayCreateProducerGoogleWorkspaceOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of ItemSraStatus to be compared</param>
+        /// <param name="input">Instance of GatewayCreateProducerGoogleWorkspaceOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ItemSraStatus input)
+        public bool Equals(GatewayCreateProducerGoogleWorkspaceOutput input)
         {
             if (input == null)
             {
@@ -110,19 +92,9 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.CountInfo == input.CountInfo ||
-                    this.CountInfo != null &&
-                    input.CountInfo != null &&
-                    this.CountInfo.SequenceEqual(input.CountInfo)
-                ) && 
-                (
-                    this.IsInUse == input.IsInUse ||
-                    this.IsInUse.Equals(input.IsInUse)
-                ) && 
-                (
-                    this.LastUsedItem == input.LastUsedItem ||
-                    (this.LastUsedItem != null &&
-                    this.LastUsedItem.Equals(input.LastUsedItem))
+                    this.ProducerDetails == input.ProducerDetails ||
+                    (this.ProducerDetails != null &&
+                    this.ProducerDetails.Equals(input.ProducerDetails))
                 );
         }
 
@@ -135,14 +107,9 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CountInfo != null)
+                if (this.ProducerDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.CountInfo.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsInUse.GetHashCode();
-                if (this.LastUsedItem != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastUsedItem.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ProducerDetails.GetHashCode();
                 }
                 return hashCode;
             }

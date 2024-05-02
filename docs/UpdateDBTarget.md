@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AzureClientSecret** | **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **CloudServiceProvider** | **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
+**ClusterMode** | **bool** | Cluster Mode | [optional] 
 **Comment** | **string** | Deprecated - use description | [optional] 
 **ConnectionType** | **string** | (Optional) Type of connection to mssql database [credentials/cloud-identity] | [default to "credentials"]
 **DbName** | **string** |  | [optional] 

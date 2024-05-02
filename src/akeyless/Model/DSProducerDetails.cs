@@ -83,6 +83,7 @@ namespace akeyless.Model
         /// <param name="chefSkipSsl">chefSkipSsl.</param>
         /// <param name="clientAuthenticationType">clientAuthenticationType.</param>
         /// <param name="cloudServiceProvider">cloudServiceProvider.</param>
+        /// <param name="clusterMode">clusterMode.</param>
         /// <param name="connectionType">connectionType.</param>
         /// <param name="createSyncUrl">createSyncUrl.</param>
         /// <param name="dbClientId">dbClientId.</param>
@@ -142,6 +143,12 @@ namespace akeyless.Model
         /// <param name="gkeClusterName">gkeClusterName.</param>
         /// <param name="gkeServiceAccountKey">gkeServiceAccountKey.</param>
         /// <param name="gkeServiceAccountName">gkeServiceAccountName.</param>
+        /// <param name="googleWorkspaceAccessMode">googleWorkspaceAccessMode.</param>
+        /// <param name="googleWorkspaceAdminName">googleWorkspaceAdminName.</param>
+        /// <param name="googleWorkspaceGroupName">googleWorkspaceGroupName.</param>
+        /// <param name="googleWorkspaceGroupRole">googleWorkspaceGroupRole.</param>
+        /// <param name="googleWorkspaceRoleName">googleWorkspaceRoleName.</param>
+        /// <param name="googleWorkspaceRoleScope">googleWorkspaceRoleScope.</param>
         /// <param name="grantTypes">grantTypes.</param>
         /// <param name="groups">groups.</param>
         /// <param name="hanadbCreationStatements">hanadbCreationStatements.</param>
@@ -161,6 +168,7 @@ namespace akeyless.Model
         /// <param name="k8sClientKeyData">k8sClientKeyData.</param>
         /// <param name="k8sClusterCaCertificate">k8sClusterCaCertificate.</param>
         /// <param name="k8sClusterEndpoint">k8sClusterEndpoint.</param>
+        /// <param name="k8sClusterName">k8sClusterName.</param>
         /// <param name="k8sDynamicMode">when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before.</param>
         /// <param name="k8sMultipleDocYamlTempDefinition">Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically.</param>
         /// <param name="k8sNamespace">k8sNamespace.</param>
@@ -256,7 +264,7 @@ namespace akeyless.Model
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
         /// <param name="warnBeforeUserExpirationMin">warnBeforeUserExpirationMin.</param>
-        public DSProducerDetails(string accessTokenManagerId = default(string), List<string> aclRules = default(List<string>), bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string administrativePort = default(string), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string azureUsername = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientAuthenticationType = default(string), string cloudServiceProvider = default(string), string connectionType = default(string), string createSyncUrl = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), bool enforceReplayPrevention = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), string gcpServiceAccountKeyId = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubOrganizationName = default(string), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), List<string> grantTypes = default(List<string>), string groups = default(string), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), string issuer = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string jwks = default(string), string jwksUrl = default(string), string k8sAllowedNamespaces = default(string), string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), bool k8sDynamicMode = default(bool), List<int> k8sMultipleDocYamlTempDefinition = default(List<int>), string k8sNamespace = default(string), string k8sRoleName = default(string), string k8sRoleType = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapGroupDn = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string mysqlRevocationStatements = default(string), string oracleCreationStatements = default(string), string oracleRevocationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string pingUrl = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), List<string> redirectUris = default(List<string>), string redshiftCreationStatements = default(string), List<string> restrictedScopes = default(List<string>), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string signingAlgorithm = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string subjectDn = default(string), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), string userName = default(string), string userPassword = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppAccessToken = default(string), string venafiTppClientId = default(string), string venafiTppPassword = default(string), string venafiTppRefreshToken = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
+        public DSProducerDetails(string accessTokenManagerId = default(string), List<string> aclRules = default(List<string>), bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string administrativePort = default(string), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string azureUsername = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientAuthenticationType = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string createSyncUrl = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), bool enforceReplayPrevention = default(bool), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpKeyAlgo = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), string gcpServiceAccountKeyId = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubOrganizationName = default(string), string githubRepositoryPath = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string googleWorkspaceAccessMode = default(string), string googleWorkspaceAdminName = default(string), string googleWorkspaceGroupName = default(string), string googleWorkspaceGroupRole = default(string), string googleWorkspaceRoleName = default(string), string googleWorkspaceRoleScope = default(string), List<string> grantTypes = default(List<string>), string groups = default(string), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), string issuer = default(string), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string jwks = default(string), string jwksUrl = default(string), string k8sAllowedNamespaces = default(string), string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), bool k8sDynamicMode = default(bool), List<int> k8sMultipleDocYamlTempDefinition = default(List<int>), string k8sNamespace = default(string), string k8sRoleName = default(string), string k8sRoleType = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapGroupDn = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string mysqlRevocationStatements = default(string), string oracleCreationStatements = default(string), string oracleRevocationStatements = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), string payload = default(string), string pingUrl = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), string privilegedUser = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), List<string> redirectUris = default(List<string>), string redshiftCreationStatements = default(string), List<string> restrictedScopes = default(List<string>), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string signingAlgorithm = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string subjectDn = default(string), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), string userName = default(string), string userPassword = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppAccessToken = default(string), string venafiTppClientId = default(string), string venafiTppPassword = default(string), string venafiTppRefreshToken = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
         {
             this.AccessTokenManagerId = accessTokenManagerId;
             this.AclRules = aclRules;
@@ -306,6 +314,7 @@ namespace akeyless.Model
             this.ChefSkipSsl = chefSkipSsl;
             this.ClientAuthenticationType = clientAuthenticationType;
             this.CloudServiceProvider = cloudServiceProvider;
+            this.ClusterMode = clusterMode;
             this.ConnectionType = connectionType;
             this.CreateSyncUrl = createSyncUrl;
             this.DbClientId = dbClientId;
@@ -365,6 +374,12 @@ namespace akeyless.Model
             this.GkeClusterName = gkeClusterName;
             this.GkeServiceAccountKey = gkeServiceAccountKey;
             this.GkeServiceAccountName = gkeServiceAccountName;
+            this.GoogleWorkspaceAccessMode = googleWorkspaceAccessMode;
+            this.GoogleWorkspaceAdminName = googleWorkspaceAdminName;
+            this.GoogleWorkspaceGroupName = googleWorkspaceGroupName;
+            this.GoogleWorkspaceGroupRole = googleWorkspaceGroupRole;
+            this.GoogleWorkspaceRoleName = googleWorkspaceRoleName;
+            this.GoogleWorkspaceRoleScope = googleWorkspaceRoleScope;
             this.GrantTypes = grantTypes;
             this.Groups = groups;
             this.HanadbCreationStatements = hanadbCreationStatements;
@@ -384,6 +399,7 @@ namespace akeyless.Model
             this.K8sClientKeyData = k8sClientKeyData;
             this.K8sClusterCaCertificate = k8sClusterCaCertificate;
             this.K8sClusterEndpoint = k8sClusterEndpoint;
+            this.K8sClusterName = k8sClusterName;
             this.K8sDynamicMode = k8sDynamicMode;
             this.K8sMultipleDocYamlTempDefinition = k8sMultipleDocYamlTempDefinition;
             this.K8sNamespace = k8sNamespace;
@@ -770,6 +786,12 @@ namespace akeyless.Model
         public string CloudServiceProvider { get; set; }
 
         /// <summary>
+        /// Gets or Sets ClusterMode
+        /// </summary>
+        [DataMember(Name = "cluster_mode", EmitDefaultValue = true)]
+        public bool ClusterMode { get; set; }
+
+        /// <summary>
         /// Gets or Sets ConnectionType
         /// </summary>
         [DataMember(Name = "connection_type", EmitDefaultValue = false)]
@@ -1129,6 +1151,42 @@ namespace akeyless.Model
         public string GkeServiceAccountName { get; set; }
 
         /// <summary>
+        /// Gets or Sets GoogleWorkspaceAccessMode
+        /// </summary>
+        [DataMember(Name = "google_workspace_access_mode", EmitDefaultValue = false)]
+        public string GoogleWorkspaceAccessMode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoogleWorkspaceAdminName
+        /// </summary>
+        [DataMember(Name = "google_workspace_admin_name", EmitDefaultValue = false)]
+        public string GoogleWorkspaceAdminName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoogleWorkspaceGroupName
+        /// </summary>
+        [DataMember(Name = "google_workspace_group_name", EmitDefaultValue = false)]
+        public string GoogleWorkspaceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoogleWorkspaceGroupRole
+        /// </summary>
+        [DataMember(Name = "google_workspace_group_role", EmitDefaultValue = false)]
+        public string GoogleWorkspaceGroupRole { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoogleWorkspaceRoleName
+        /// </summary>
+        [DataMember(Name = "google_workspace_role_name", EmitDefaultValue = false)]
+        public string GoogleWorkspaceRoleName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GoogleWorkspaceRoleScope
+        /// </summary>
+        [DataMember(Name = "google_workspace_role_scope", EmitDefaultValue = false)]
+        public string GoogleWorkspaceRoleScope { get; set; }
+
+        /// <summary>
         /// Gets or Sets GrantTypes
         /// </summary>
         [DataMember(Name = "grant_types", EmitDefaultValue = false)]
@@ -1244,6 +1302,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "k8s_cluster_endpoint", EmitDefaultValue = false)]
         public string K8sClusterEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets K8sClusterName
+        /// </summary>
+        [DataMember(Name = "k8s_cluster_name", EmitDefaultValue = false)]
+        public string K8sClusterName { get; set; }
 
         /// <summary>
         /// when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
@@ -1884,6 +1948,7 @@ namespace akeyless.Model
             sb.Append("  ChefSkipSsl: ").Append(ChefSkipSsl).Append("\n");
             sb.Append("  ClientAuthenticationType: ").Append(ClientAuthenticationType).Append("\n");
             sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
+            sb.Append("  ClusterMode: ").Append(ClusterMode).Append("\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
             sb.Append("  DbClientId: ").Append(DbClientId).Append("\n");
@@ -1943,6 +2008,12 @@ namespace akeyless.Model
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountKey: ").Append(GkeServiceAccountKey).Append("\n");
             sb.Append("  GkeServiceAccountName: ").Append(GkeServiceAccountName).Append("\n");
+            sb.Append("  GoogleWorkspaceAccessMode: ").Append(GoogleWorkspaceAccessMode).Append("\n");
+            sb.Append("  GoogleWorkspaceAdminName: ").Append(GoogleWorkspaceAdminName).Append("\n");
+            sb.Append("  GoogleWorkspaceGroupName: ").Append(GoogleWorkspaceGroupName).Append("\n");
+            sb.Append("  GoogleWorkspaceGroupRole: ").Append(GoogleWorkspaceGroupRole).Append("\n");
+            sb.Append("  GoogleWorkspaceRoleName: ").Append(GoogleWorkspaceRoleName).Append("\n");
+            sb.Append("  GoogleWorkspaceRoleScope: ").Append(GoogleWorkspaceRoleScope).Append("\n");
             sb.Append("  GrantTypes: ").Append(GrantTypes).Append("\n");
             sb.Append("  Groups: ").Append(Groups).Append("\n");
             sb.Append("  HanadbCreationStatements: ").Append(HanadbCreationStatements).Append("\n");
@@ -1962,6 +2033,7 @@ namespace akeyless.Model
             sb.Append("  K8sClientKeyData: ").Append(K8sClientKeyData).Append("\n");
             sb.Append("  K8sClusterCaCertificate: ").Append(K8sClusterCaCertificate).Append("\n");
             sb.Append("  K8sClusterEndpoint: ").Append(K8sClusterEndpoint).Append("\n");
+            sb.Append("  K8sClusterName: ").Append(K8sClusterName).Append("\n");
             sb.Append("  K8sDynamicMode: ").Append(K8sDynamicMode).Append("\n");
             sb.Append("  K8sMultipleDocYamlTempDefinition: ").Append(K8sMultipleDocYamlTempDefinition).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
@@ -2326,6 +2398,10 @@ namespace akeyless.Model
                     this.CloudServiceProvider.Equals(input.CloudServiceProvider))
                 ) && 
                 (
+                    this.ClusterMode == input.ClusterMode ||
+                    this.ClusterMode.Equals(input.ClusterMode)
+                ) && 
+                (
                     this.ConnectionType == input.ConnectionType ||
                     (this.ConnectionType != null &&
                     this.ConnectionType.Equals(input.ConnectionType))
@@ -2619,6 +2695,36 @@ namespace akeyless.Model
                     this.GkeServiceAccountName.Equals(input.GkeServiceAccountName))
                 ) && 
                 (
+                    this.GoogleWorkspaceAccessMode == input.GoogleWorkspaceAccessMode ||
+                    (this.GoogleWorkspaceAccessMode != null &&
+                    this.GoogleWorkspaceAccessMode.Equals(input.GoogleWorkspaceAccessMode))
+                ) && 
+                (
+                    this.GoogleWorkspaceAdminName == input.GoogleWorkspaceAdminName ||
+                    (this.GoogleWorkspaceAdminName != null &&
+                    this.GoogleWorkspaceAdminName.Equals(input.GoogleWorkspaceAdminName))
+                ) && 
+                (
+                    this.GoogleWorkspaceGroupName == input.GoogleWorkspaceGroupName ||
+                    (this.GoogleWorkspaceGroupName != null &&
+                    this.GoogleWorkspaceGroupName.Equals(input.GoogleWorkspaceGroupName))
+                ) && 
+                (
+                    this.GoogleWorkspaceGroupRole == input.GoogleWorkspaceGroupRole ||
+                    (this.GoogleWorkspaceGroupRole != null &&
+                    this.GoogleWorkspaceGroupRole.Equals(input.GoogleWorkspaceGroupRole))
+                ) && 
+                (
+                    this.GoogleWorkspaceRoleName == input.GoogleWorkspaceRoleName ||
+                    (this.GoogleWorkspaceRoleName != null &&
+                    this.GoogleWorkspaceRoleName.Equals(input.GoogleWorkspaceRoleName))
+                ) && 
+                (
+                    this.GoogleWorkspaceRoleScope == input.GoogleWorkspaceRoleScope ||
+                    (this.GoogleWorkspaceRoleScope != null &&
+                    this.GoogleWorkspaceRoleScope.Equals(input.GoogleWorkspaceRoleScope))
+                ) && 
+                (
                     this.GrantTypes == input.GrantTypes ||
                     this.GrantTypes != null &&
                     input.GrantTypes != null &&
@@ -2714,6 +2820,11 @@ namespace akeyless.Model
                     this.K8sClusterEndpoint == input.K8sClusterEndpoint ||
                     (this.K8sClusterEndpoint != null &&
                     this.K8sClusterEndpoint.Equals(input.K8sClusterEndpoint))
+                ) && 
+                (
+                    this.K8sClusterName == input.K8sClusterName ||
+                    (this.K8sClusterName != null &&
+                    this.K8sClusterName.Equals(input.K8sClusterName))
                 ) && 
                 (
                     this.K8sDynamicMode == input.K8sDynamicMode ||
@@ -3359,6 +3470,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CloudServiceProvider.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ClusterMode.GetHashCode();
                 if (this.ConnectionType != null)
                 {
                     hashCode = (hashCode * 59) + this.ConnectionType.GetHashCode();
@@ -3577,6 +3689,30 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GkeServiceAccountName.GetHashCode();
                 }
+                if (this.GoogleWorkspaceAccessMode != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleWorkspaceAccessMode.GetHashCode();
+                }
+                if (this.GoogleWorkspaceAdminName != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleWorkspaceAdminName.GetHashCode();
+                }
+                if (this.GoogleWorkspaceGroupName != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleWorkspaceGroupName.GetHashCode();
+                }
+                if (this.GoogleWorkspaceGroupRole != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleWorkspaceGroupRole.GetHashCode();
+                }
+                if (this.GoogleWorkspaceRoleName != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleWorkspaceRoleName.GetHashCode();
+                }
+                if (this.GoogleWorkspaceRoleScope != null)
+                {
+                    hashCode = (hashCode * 59) + this.GoogleWorkspaceRoleScope.GetHashCode();
+                }
                 if (this.GrantTypes != null)
                 {
                     hashCode = (hashCode * 59) + this.GrantTypes.GetHashCode();
@@ -3652,6 +3788,10 @@ namespace akeyless.Model
                 if (this.K8sClusterEndpoint != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sClusterEndpoint.GetHashCode();
+                }
+                if (this.K8sClusterName != null)
+                {
+                    hashCode = (hashCode * 59) + this.K8sClusterName.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.K8sDynamicMode.GetHashCode();
                 if (this.K8sMultipleDocYamlTempDefinition != null)

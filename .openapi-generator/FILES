@@ -227,6 +227,7 @@ docs/DynamicSecretCreateEks.md
 docs/DynamicSecretCreateGcp.md
 docs/DynamicSecretCreateGithub.md
 docs/DynamicSecretCreateGke.md
+docs/DynamicSecretCreateGoogleWorkspace.md
 docs/DynamicSecretCreateHanaDb.md
 docs/DynamicSecretCreateK8s.md
 docs/DynamicSecretCreateLdap.md
@@ -264,6 +265,7 @@ docs/DynamicSecretUpdateEks.md
 docs/DynamicSecretUpdateGcp.md
 docs/DynamicSecretUpdateGithub.md
 docs/DynamicSecretUpdateGke.md
+docs/DynamicSecretUpdateGoogleWorkspace.md
 docs/DynamicSecretUpdateHanaDb.md
 docs/DynamicSecretUpdateK8s.md
 docs/DynamicSecretUpdateLdap.md
@@ -352,6 +354,7 @@ docs/GatewayCreateProducerGithub.md
 docs/GatewayCreateProducerGithubOutput.md
 docs/GatewayCreateProducerGke.md
 docs/GatewayCreateProducerGkeOutput.md
+docs/GatewayCreateProducerGoogleWorkspaceOutput.md
 docs/GatewayCreateProducerHanaDb.md
 docs/GatewayCreateProducerHanaDbOutput.md
 docs/GatewayCreateProducerLdap.md
@@ -412,6 +415,8 @@ docs/GatewayMigrationGetOutput.md
 docs/GatewayMigrationListOutput.md
 docs/GatewayMigrationSyncOutput.md
 docs/GatewayMigrationUpdateOutput.md
+docs/GatewayPartialUpdateK8SAuthConfig.md
+docs/GatewayPartialUpdateK8SAuthConfigOutput.md
 docs/GatewayRevokeTmpUsers.md
 docs/GatewayStartProducer.md
 docs/GatewayStartProducerOutput.md
@@ -883,18 +888,11 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/AllAnalyticsDataTests.cs
-src/akeyless.Test/Model/CertificateAnalyticAggregationTests.cs
-src/akeyless.Test/Model/ClientUsageInfoTests.cs
-src/akeyless.Test/Model/ClientsUsageReportTests.cs
-src/akeyless.Test/Model/EventForwarderCreateServiceNowTests.cs
-src/akeyless.Test/Model/EventForwarderCreateSlackTests.cs
-src/akeyless.Test/Model/EventForwarderUpdateServiceNowTests.cs
-src/akeyless.Test/Model/EventForwarderUpdateSlackTests.cs
-src/akeyless.Test/Model/GetAnalyticsDataTests.cs
-src/akeyless.Test/Model/ItemSraStatusTests.cs
-src/akeyless.Test/Model/RevokeCertificateTests.cs
-src/akeyless.Test/Model/UsageReportSummaryTests.cs
+src/akeyless.Test/Model/DynamicSecretCreateGoogleWorkspaceTests.cs
+src/akeyless.Test/Model/DynamicSecretUpdateGoogleWorkspaceTests.cs
+src/akeyless.Test/Model/GatewayCreateProducerGoogleWorkspaceOutputTests.cs
+src/akeyless.Test/Model/GatewayPartialUpdateK8SAuthConfigOutputTests.cs
+src/akeyless.Test/Model/GatewayPartialUpdateK8SAuthConfigTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1139,6 +1137,7 @@ src/akeyless/Model/DynamicSecretCreateEks.cs
 src/akeyless/Model/DynamicSecretCreateGcp.cs
 src/akeyless/Model/DynamicSecretCreateGithub.cs
 src/akeyless/Model/DynamicSecretCreateGke.cs
+src/akeyless/Model/DynamicSecretCreateGoogleWorkspace.cs
 src/akeyless/Model/DynamicSecretCreateHanaDb.cs
 src/akeyless/Model/DynamicSecretCreateK8s.cs
 src/akeyless/Model/DynamicSecretCreateLdap.cs
@@ -1176,6 +1175,7 @@ src/akeyless/Model/DynamicSecretUpdateEks.cs
 src/akeyless/Model/DynamicSecretUpdateGcp.cs
 src/akeyless/Model/DynamicSecretUpdateGithub.cs
 src/akeyless/Model/DynamicSecretUpdateGke.cs
+src/akeyless/Model/DynamicSecretUpdateGoogleWorkspace.cs
 src/akeyless/Model/DynamicSecretUpdateHanaDb.cs
 src/akeyless/Model/DynamicSecretUpdateK8s.cs
 src/akeyless/Model/DynamicSecretUpdateLdap.cs
@@ -1264,6 +1264,7 @@ src/akeyless/Model/GatewayCreateProducerGithub.cs
 src/akeyless/Model/GatewayCreateProducerGithubOutput.cs
 src/akeyless/Model/GatewayCreateProducerGke.cs
 src/akeyless/Model/GatewayCreateProducerGkeOutput.cs
+src/akeyless/Model/GatewayCreateProducerGoogleWorkspaceOutput.cs
 src/akeyless/Model/GatewayCreateProducerHanaDb.cs
 src/akeyless/Model/GatewayCreateProducerHanaDbOutput.cs
 src/akeyless/Model/GatewayCreateProducerLdap.cs
@@ -1324,6 +1325,8 @@ src/akeyless/Model/GatewayMigrationGetOutput.cs
 src/akeyless/Model/GatewayMigrationListOutput.cs
 src/akeyless/Model/GatewayMigrationSyncOutput.cs
 src/akeyless/Model/GatewayMigrationUpdateOutput.cs
+src/akeyless/Model/GatewayPartialUpdateK8SAuthConfig.cs
+src/akeyless/Model/GatewayPartialUpdateK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayRevokeTmpUsers.cs
 src/akeyless/Model/GatewayStartProducer.cs
 src/akeyless/Model/GatewayStartProducerOutput.cs

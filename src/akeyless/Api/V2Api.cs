@@ -1894,6 +1894,26 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DynamicSecretCreateOutput</returns>
+        DynamicSecretCreateOutput DynamicSecretCreateGoogleWorkspace(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretCreateOutput</returns>
+        ApiResponse<DynamicSecretCreateOutput> DynamicSecretCreateGoogleWorkspaceWithHttpInfo(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretCreateOutput</returns>
         DynamicSecretCreateOutput DynamicSecretCreateHanaDb(DynamicSecretCreateHanaDb body, int operationIndex = 0);
 
         /// <summary>
@@ -2211,9 +2231,10 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DSProducerDetails</returns>
-        DSProducerDetails DynamicSecretGet(int operationIndex = 0);
+        DSProducerDetails DynamicSecretGet(DynamicSecretGet body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -2222,9 +2243,10 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DSProducerDetails</returns>
-        ApiResponse<DSProducerDetails> DynamicSecretGetWithHttpInfo(int operationIndex = 0);
+        ApiResponse<DSProducerDetails> DynamicSecretGetWithHttpInfo(DynamicSecretGet body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -2525,6 +2547,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
         ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateGkeWithHttpInfo(DynamicSecretUpdateGke body, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretUpdateOutput</returns>
+        DynamicSecretUpdateOutput DynamicSecretUpdateGoogleWorkspace(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
+        ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateGoogleWorkspaceWithHttpInfo(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -5009,8 +5051,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> GetDynamicSecretValue(GetDynamicSecretValue body, int operationIndex = 0);
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        Dictionary<string, Object> GetDynamicSecretValue(GetDynamicSecretValue body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -5021,8 +5063,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> GetDynamicSecretValueWithHttpInfo(GetDynamicSecretValue body, int operationIndex = 0);
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        ApiResponse<Dictionary<string, Object>> GetDynamicSecretValueWithHttpInfo(GetDynamicSecretValue body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -5209,8 +5251,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> GetSecretValue(GetSecretValue body, int operationIndex = 0);
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        Dictionary<string, Object> GetSecretValue(GetSecretValue body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -5221,8 +5263,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> GetSecretValueWithHttpInfo(GetSecretValue body, int operationIndex = 0);
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        ApiResponse<Dictionary<string, Object>> GetSecretValueWithHttpInfo(GetSecretValue body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -6367,8 +6409,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> RotatedSecretGetValue(RotatedSecretGetValue body, int operationIndex = 0);
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        Dictionary<string, Object> RotatedSecretGetValue(RotatedSecretGetValue body, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -6379,8 +6421,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> RotatedSecretGetValueWithHttpInfo(RotatedSecretGetValue body, int operationIndex = 0);
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        ApiResponse<Dictionary<string, Object>> RotatedSecretGetValueWithHttpInfo(RotatedSecretGetValue body, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -10864,6 +10906,31 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DynamicSecretCreateOutput</returns>
+        System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateGoogleWorkspaceAsync(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DynamicSecretCreateOutput>> DynamicSecretCreateGoogleWorkspaceWithHttpInfoAsync(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretCreateOutput</returns>
         System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateHanaDbAsync(DynamicSecretCreateHanaDb body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -11260,10 +11327,11 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DSProducerDetails</returns>
-        System.Threading.Tasks.Task<DSProducerDetails> DynamicSecretGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DSProducerDetails> DynamicSecretGetAsync(DynamicSecretGet body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -11272,10 +11340,11 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DSProducerDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DSProducerDetails>> DynamicSecretGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DSProducerDetails>> DynamicSecretGetWithHttpInfoAsync(DynamicSecretGet body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -11651,6 +11720,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateGkeWithHttpInfoAsync(DynamicSecretUpdateGke body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretUpdateOutput</returns>
+        System.Threading.Tasks.Task<DynamicSecretUpdateOutput> DynamicSecretUpdateGoogleWorkspaceAsync(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateGoogleWorkspaceWithHttpInfoAsync(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -14759,8 +14853,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> GetDynamicSecretValueAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, Object>> GetDynamicSecretValueAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -14772,8 +14866,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetDynamicSecretValueWithHttpInfoAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetDynamicSecretValueWithHttpInfoAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -15009,8 +15103,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> GetSecretValueAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, Object>> GetSecretValueAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -15022,8 +15116,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetSecretValueWithHttpInfoAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> GetSecretValueWithHttpInfoAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -16457,8 +16551,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> RotatedSecretGetValueAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, Object>> RotatedSecretGetValueAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -16470,8 +16564,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> RotatedSecretGetValueWithHttpInfoAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> RotatedSecretGetValueWithHttpInfoAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -32838,6 +32932,152 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DynamicSecretCreateOutput</returns>
+        public DynamicSecretCreateOutput DynamicSecretCreateGoogleWorkspace(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = DynamicSecretCreateGoogleWorkspaceWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretCreateOutput</returns>
+        public akeyless.Client.ApiResponse<DynamicSecretCreateOutput> DynamicSecretCreateGoogleWorkspaceWithHttpInfo(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->DynamicSecretCreateGoogleWorkspace");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretCreateGoogleWorkspace";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DynamicSecretCreateOutput>("/dynamic-secret-create-google-workspace", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretCreateGoogleWorkspace", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretCreateOutput</returns>
+        public async System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateGoogleWorkspaceAsync(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = await DynamicSecretCreateGoogleWorkspaceWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DynamicSecretCreateOutput>> DynamicSecretCreateGoogleWorkspaceWithHttpInfoAsync(DynamicSecretCreateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->DynamicSecretCreateGoogleWorkspace");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretCreateGoogleWorkspace";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DynamicSecretCreateOutput>("/dynamic-secret-create-google-workspace", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretCreateGoogleWorkspace", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretCreateOutput</returns>
         public DynamicSecretCreateOutput DynamicSecretCreateHanaDb(DynamicSecretCreateHanaDb body, int operationIndex = 0)
         {
             akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = DynamicSecretCreateHanaDbWithHttpInfo(body);
@@ -35171,11 +35411,12 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DSProducerDetails</returns>
-        public DSProducerDetails DynamicSecretGet(int operationIndex = 0)
+        public DSProducerDetails DynamicSecretGet(DynamicSecretGet body, int operationIndex = 0)
         {
-            akeyless.Client.ApiResponse<DSProducerDetails> localVarResponse = DynamicSecretGetWithHttpInfo();
+            akeyless.Client.ApiResponse<DSProducerDetails> localVarResponse = DynamicSecretGetWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -35183,13 +35424,21 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DSProducerDetails</returns>
-        public akeyless.Client.ApiResponse<DSProducerDetails> DynamicSecretGetWithHttpInfo(int operationIndex = 0)
+        public akeyless.Client.ApiResponse<DSProducerDetails> DynamicSecretGetWithHttpInfo(DynamicSecretGet body, int operationIndex = 0)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->DynamicSecretGet");
+            }
+
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -35209,6 +35458,7 @@ namespace akeyless.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = body;
 
             localVarRequestOptions.Operation = "V2Api.DynamicSecretGet";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -35232,12 +35482,13 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DSProducerDetails</returns>
-        public async System.Threading.Tasks.Task<DSProducerDetails> DynamicSecretGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DSProducerDetails> DynamicSecretGetAsync(DynamicSecretGet body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<DSProducerDetails> localVarResponse = await DynamicSecretGetWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<DSProducerDetails> localVarResponse = await DynamicSecretGetWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -35245,15 +35496,23 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DSProducerDetails)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DSProducerDetails>> DynamicSecretGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DSProducerDetails>> DynamicSecretGetWithHttpInfoAsync(DynamicSecretGet body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->DynamicSecretGet");
+            }
+
 
             akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -35273,6 +35532,7 @@ namespace akeyless.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = body;
 
             localVarRequestOptions.Operation = "V2Api.DynamicSecretGet";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -37458,6 +37718,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DynamicSecretUpdateGke", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretUpdateOutput</returns>
+        public DynamicSecretUpdateOutput DynamicSecretUpdateGoogleWorkspace(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> localVarResponse = DynamicSecretUpdateGoogleWorkspaceWithHttpInfo(body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateGoogleWorkspaceWithHttpInfo(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->DynamicSecretUpdateGoogleWorkspace");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretUpdateGoogleWorkspace";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DynamicSecretUpdateOutput>("/dynamic-secret-update-google-workspace", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretUpdateGoogleWorkspace", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<DynamicSecretUpdateOutput> DynamicSecretUpdateGoogleWorkspaceAsync(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> localVarResponse = await DynamicSecretUpdateGoogleWorkspaceWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateGoogleWorkspaceWithHttpInfoAsync(DynamicSecretUpdateGoogleWorkspace body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'body' when calling V2Api->DynamicSecretUpdateGoogleWorkspace");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = body;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretUpdateGoogleWorkspace";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DynamicSecretUpdateOutput>("/dynamic-secret-update-google-workspace", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretUpdateGoogleWorkspace", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -55517,10 +55923,10 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> GetDynamicSecretValue(GetDynamicSecretValue body, int operationIndex = 0)
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        public Dictionary<string, Object> GetDynamicSecretValue(GetDynamicSecretValue body, int operationIndex = 0)
         {
-            akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = GetDynamicSecretValueWithHttpInfo(body);
+            akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = GetDynamicSecretValueWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -55530,8 +55936,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public akeyless.Client.ApiResponse<Dictionary<string, string>> GetDynamicSecretValueWithHttpInfo(GetDynamicSecretValue body, int operationIndex = 0)
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        public akeyless.Client.ApiResponse<Dictionary<string, Object>> GetDynamicSecretValueWithHttpInfo(GetDynamicSecretValue body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -55569,7 +55975,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Dictionary<string, string>>("/get-dynamic-secret-value", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Dictionary<string, Object>>("/get-dynamic-secret-value", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDynamicSecretValue", localVarResponse);
@@ -55589,10 +55995,10 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetDynamicSecretValueAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetDynamicSecretValueAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = await GetDynamicSecretValueWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = await GetDynamicSecretValueWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55603,8 +56009,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, string>>> GetDynamicSecretValueWithHttpInfoAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, Object>>> GetDynamicSecretValueWithHttpInfoAsync(GetDynamicSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -55643,7 +56049,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, string>>("/get-dynamic-secret-value", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, Object>>("/get-dynamic-secret-value", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -56977,10 +57383,10 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> GetSecretValue(GetSecretValue body, int operationIndex = 0)
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        public Dictionary<string, Object> GetSecretValue(GetSecretValue body, int operationIndex = 0)
         {
-            akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = GetSecretValueWithHttpInfo(body);
+            akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = GetSecretValueWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -56990,8 +57396,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public akeyless.Client.ApiResponse<Dictionary<string, string>> GetSecretValueWithHttpInfo(GetSecretValue body, int operationIndex = 0)
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        public akeyless.Client.ApiResponse<Dictionary<string, Object>> GetSecretValueWithHttpInfo(GetSecretValue body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -57029,7 +57435,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Dictionary<string, string>>("/get-secret-value", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Dictionary<string, Object>>("/get-secret-value", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetSecretValue", localVarResponse);
@@ -57049,10 +57455,10 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetSecretValueAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> GetSecretValueAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = await GetSecretValueWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = await GetSecretValueWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -57063,8 +57469,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, string>>> GetSecretValueWithHttpInfoAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, Object>>> GetSecretValueWithHttpInfoAsync(GetSecretValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -57103,7 +57509,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, string>>("/get-secret-value", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, Object>>("/get-secret-value", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -65255,10 +65661,10 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> RotatedSecretGetValue(RotatedSecretGetValue body, int operationIndex = 0)
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        public Dictionary<string, Object> RotatedSecretGetValue(RotatedSecretGetValue body, int operationIndex = 0)
         {
-            akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = RotatedSecretGetValueWithHttpInfo(body);
+            akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = RotatedSecretGetValueWithHttpInfo(body);
             return localVarResponse.Data;
         }
 
@@ -65268,8 +65674,8 @@ namespace akeyless.Api
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public akeyless.Client.ApiResponse<Dictionary<string, string>> RotatedSecretGetValueWithHttpInfo(RotatedSecretGetValue body, int operationIndex = 0)
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        public akeyless.Client.ApiResponse<Dictionary<string, Object>> RotatedSecretGetValueWithHttpInfo(RotatedSecretGetValue body, int operationIndex = 0)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -65307,7 +65713,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Dictionary<string, string>>("/rotated-secret-get-value", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Dictionary<string, Object>>("/rotated-secret-get-value", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RotatedSecretGetValue", localVarResponse);
@@ -65327,10 +65733,10 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> RotatedSecretGetValueAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> RotatedSecretGetValueAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            akeyless.Client.ApiResponse<Dictionary<string, string>> localVarResponse = await RotatedSecretGetValueWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
+            akeyless.Client.ApiResponse<Dictionary<string, Object>> localVarResponse = await RotatedSecretGetValueWithHttpInfoAsync(body, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -65341,8 +65747,8 @@ namespace akeyless.Api
         /// <param name="body"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, string>>> RotatedSecretGetValueWithHttpInfoAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<Dictionary<string, Object>>> RotatedSecretGetValueWithHttpInfoAsync(RotatedSecretGetValue body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -65381,7 +65787,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, string>>("/rotated-secret-get-value", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, Object>>("/rotated-secret-get-value", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

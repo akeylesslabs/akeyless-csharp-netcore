@@ -78,7 +78,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -92,6 +92,11 @@ namespace akeyless.Model
                 throw new ArgumentNullException("signerKeyName is a required property for UpdatePKICertIssuer and cannot be null");
             }
             this.SignerKeyName = signerKeyName;
+            // to ensure "ttl" is required (not null)
+            if (ttl == null)
+            {
+                throw new ArgumentNullException("ttl is a required property for UpdatePKICertIssuer and cannot be null");
+            }
             this.Ttl = ttl;
             this.AddTag = addTag;
             this.AllowAnyName = allowAnyName;
@@ -388,7 +393,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs</value>
         [DataMember(Name = "ttl", IsRequired = true, EmitDefaultValue = true)]
-        public long Ttl { get; set; }
+        public string Ttl { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -650,7 +655,8 @@ namespace akeyless.Model
                 ) && 
                 (
                     this.Ttl == input.Ttl ||
-                    this.Ttl.Equals(input.Ttl)
+                    (this.Ttl != null &&
+                    this.Ttl.Equals(input.Ttl))
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -773,7 +779,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
+                if (this.Ttl != null)
+                {
+                    hashCode = (hashCode * 59) + this.Ttl.GetHashCode();
+                }
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();

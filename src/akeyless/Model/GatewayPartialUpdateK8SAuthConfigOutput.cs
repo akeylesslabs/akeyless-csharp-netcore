@@ -27,41 +27,41 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ItemSraStatus
+    /// GatewayPartialUpdateK8SAuthConfigOutput
     /// </summary>
-    [DataContract(Name = "ItemSraStatus")]
-    public partial class ItemSraStatus : IEquatable<ItemSraStatus>, IValidatableObject
+    [DataContract(Name = "gatewayPartialUpdateK8SAuthConfigOutput")]
+    public partial class GatewayPartialUpdateK8SAuthConfigOutput : IEquatable<GatewayPartialUpdateK8SAuthConfigOutput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemSraStatus" /> class.
+        /// Initializes a new instance of the <see cref="GatewayPartialUpdateK8SAuthConfigOutput" /> class.
         /// </summary>
-        /// <param name="countInfo">countInfo.</param>
-        /// <param name="isInUse">isInUse.</param>
-        /// <param name="lastUsedItem">lastUsedItem.</param>
-        public ItemSraStatus(Dictionary<string, Dictionary<string, long>> countInfo = default(Dictionary<string, Dictionary<string, long>>), bool isInUse = default(bool), DateTime lastUsedItem = default(DateTime))
+        /// <param name="clusterId">clusterId.</param>
+        /// <param name="partsChange">partsChange.</param>
+        /// <param name="totalHash">totalHash.</param>
+        public GatewayPartialUpdateK8SAuthConfigOutput(string clusterId = default(string), ConfigChange partsChange = default(ConfigChange), string totalHash = default(string))
         {
-            this.CountInfo = countInfo;
-            this.IsInUse = isInUse;
-            this.LastUsedItem = lastUsedItem;
+            this.ClusterId = clusterId;
+            this.PartsChange = partsChange;
+            this.TotalHash = totalHash;
         }
 
         /// <summary>
-        /// Gets or Sets CountInfo
+        /// Gets or Sets ClusterId
         /// </summary>
-        [DataMember(Name = "count_info", EmitDefaultValue = false)]
-        public Dictionary<string, Dictionary<string, long>> CountInfo { get; set; }
+        [DataMember(Name = "cluster_id", EmitDefaultValue = false)]
+        public string ClusterId { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsInUse
+        /// Gets or Sets PartsChange
         /// </summary>
-        [DataMember(Name = "is_in_use", EmitDefaultValue = true)]
-        public bool IsInUse { get; set; }
+        [DataMember(Name = "parts_change", EmitDefaultValue = false)]
+        public ConfigChange PartsChange { get; set; }
 
         /// <summary>
-        /// Gets or Sets LastUsedItem
+        /// Gets or Sets TotalHash
         /// </summary>
-        [DataMember(Name = "last_used_item", EmitDefaultValue = false)]
-        public DateTime LastUsedItem { get; set; }
+        [DataMember(Name = "total_hash", EmitDefaultValue = false)]
+        public string TotalHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,10 +70,10 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemSraStatus {\n");
-            sb.Append("  CountInfo: ").Append(CountInfo).Append("\n");
-            sb.Append("  IsInUse: ").Append(IsInUse).Append("\n");
-            sb.Append("  LastUsedItem: ").Append(LastUsedItem).Append("\n");
+            sb.Append("class GatewayPartialUpdateK8SAuthConfigOutput {\n");
+            sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
+            sb.Append("  PartsChange: ").Append(PartsChange).Append("\n");
+            sb.Append("  TotalHash: ").Append(TotalHash).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +94,15 @@ namespace akeyless.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ItemSraStatus);
+            return this.Equals(input as GatewayPartialUpdateK8SAuthConfigOutput);
         }
 
         /// <summary>
-        /// Returns true if ItemSraStatus instances are equal
+        /// Returns true if GatewayPartialUpdateK8SAuthConfigOutput instances are equal
         /// </summary>
-        /// <param name="input">Instance of ItemSraStatus to be compared</param>
+        /// <param name="input">Instance of GatewayPartialUpdateK8SAuthConfigOutput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ItemSraStatus input)
+        public bool Equals(GatewayPartialUpdateK8SAuthConfigOutput input)
         {
             if (input == null)
             {
@@ -110,19 +110,19 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.CountInfo == input.CountInfo ||
-                    this.CountInfo != null &&
-                    input.CountInfo != null &&
-                    this.CountInfo.SequenceEqual(input.CountInfo)
+                    this.ClusterId == input.ClusterId ||
+                    (this.ClusterId != null &&
+                    this.ClusterId.Equals(input.ClusterId))
                 ) && 
                 (
-                    this.IsInUse == input.IsInUse ||
-                    this.IsInUse.Equals(input.IsInUse)
+                    this.PartsChange == input.PartsChange ||
+                    (this.PartsChange != null &&
+                    this.PartsChange.Equals(input.PartsChange))
                 ) && 
                 (
-                    this.LastUsedItem == input.LastUsedItem ||
-                    (this.LastUsedItem != null &&
-                    this.LastUsedItem.Equals(input.LastUsedItem))
+                    this.TotalHash == input.TotalHash ||
+                    (this.TotalHash != null &&
+                    this.TotalHash.Equals(input.TotalHash))
                 );
         }
 
@@ -135,14 +135,17 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CountInfo != null)
+                if (this.ClusterId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CountInfo.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ClusterId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsInUse.GetHashCode();
-                if (this.LastUsedItem != null)
+                if (this.PartsChange != null)
                 {
-                    hashCode = (hashCode * 59) + this.LastUsedItem.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PartsChange.GetHashCode();
+                }
+                if (this.TotalHash != null)
+                {
+                    hashCode = (hashCode * 59) + this.TotalHash.GetHashCode();
                 }
                 return hashCode;
             }
