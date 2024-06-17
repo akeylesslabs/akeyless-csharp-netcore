@@ -53,6 +53,7 @@ namespace akeyless.Model
         /// <param name="postProvisionCommand">A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning).</param>
         /// <param name="privateKeyPath">A path on the target to store the private key (relevant only for certificate provisioning).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
+        /// <param name="protectionLevel">Protection level of the key [software/hardware] (relevant for gcp targets) (default to &quot;software&quot;).</param>
         /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="regions">The list of regions to create a copy of the key in (relevant for aws targets).</param>
         /// <param name="sraAssociation">Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret (default to false).</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = "false", string name = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = "software", string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -88,6 +89,8 @@ namespace akeyless.Model
             this.PostProvisionCommand = postProvisionCommand;
             this.PrivateKeyPath = privateKeyPath;
             this.ProjectId = projectId;
+            // use default value if no "protectionLevel" provided
+            this.ProtectionLevel = protectionLevel ?? "software";
             this.Purpose = purpose;
             this.Regions = regions;
             this.SraAssociation = sraAssociation;
@@ -189,6 +192,13 @@ namespace akeyless.Model
         public string ProjectId { get; set; }
 
         /// <summary>
+        /// Protection level of the key [software/hardware] (relevant for gcp targets)
+        /// </summary>
+        /// <value>Protection level of the key [software/hardware] (relevant for gcp targets)</value>
+        [DataMember(Name = "protection-level", EmitDefaultValue = false)]
+        public string ProtectionLevel { get; set; }
+
+        /// <summary>
         /// Purpose of the key in GCP KMS (required for gcp targets)
         /// </summary>
         /// <value>Purpose of the key in GCP KMS (required for gcp targets)</value>
@@ -265,6 +275,7 @@ namespace akeyless.Model
             sb.Append("  PostProvisionCommand: ").Append(PostProvisionCommand).Append("\n");
             sb.Append("  PrivateKeyPath: ").Append(PrivateKeyPath).Append("\n");
             sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
+            sb.Append("  ProtectionLevel: ").Append(ProtectionLevel).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Regions: ").Append(Regions).Append("\n");
             sb.Append("  SraAssociation: ").Append(SraAssociation).Append("\n");
@@ -373,6 +384,11 @@ namespace akeyless.Model
                     this.ProjectId.Equals(input.ProjectId))
                 ) && 
                 (
+                    this.ProtectionLevel == input.ProtectionLevel ||
+                    (this.ProtectionLevel != null &&
+                    this.ProtectionLevel.Equals(input.ProtectionLevel))
+                ) && 
+                (
                     this.Purpose == input.Purpose ||
                     (this.Purpose != null &&
                     this.Purpose.Equals(input.Purpose))
@@ -468,6 +484,10 @@ namespace akeyless.Model
                 if (this.ProjectId != null)
                 {
                     hashCode = (hashCode * 59) + this.ProjectId.GetHashCode();
+                }
+                if (this.ProtectionLevel != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProtectionLevel.GetHashCode();
                 }
                 if (this.Purpose != null)
                 {

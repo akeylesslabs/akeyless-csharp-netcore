@@ -41,23 +41,23 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretCreateGoogleWorkspace" /> class.
         /// </summary>
         /// <param name="accessMode">accessMode (required).</param>
-        /// <param name="adminName">Admin user email (required).</param>
+        /// <param name="adminEmail">Admin user email (required).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
-        /// <param name="groupName">A group email, relevant only for group access-mode.</param>
-        /// <param name="groupRoleType">groupRoleType.</param>
+        /// <param name="groupEmail">A group email, relevant only for group access-mode.</param>
+        /// <param name="groupRole">groupRole.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="roleName">Name of the admin role to assign to the user, relevant only for role access-mode.</param>
         /// <param name="roleScope">roleScope.</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="targetName">Name of existing target to use in producer creation.</param>
+        /// <param name="targetName">Name of existing target to use in dynamic secret creation.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateGoogleWorkspace(string accessMode = default(string), string adminName = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string groupName = default(string), string groupRoleType = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public DynamicSecretCreateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "accessMode" is required (not null)
             if (accessMode == null)
@@ -65,12 +65,12 @@ namespace akeyless.Model
                 throw new ArgumentNullException("accessMode is a required property for DynamicSecretCreateGoogleWorkspace and cannot be null");
             }
             this.AccessMode = accessMode;
-            // to ensure "adminName" is required (not null)
-            if (adminName == null)
+            // to ensure "adminEmail" is required (not null)
+            if (adminEmail == null)
             {
-                throw new ArgumentNullException("adminName is a required property for DynamicSecretCreateGoogleWorkspace and cannot be null");
+                throw new ArgumentNullException("adminEmail is a required property for DynamicSecretCreateGoogleWorkspace and cannot be null");
             }
-            this.AdminName = adminName;
+            this.AdminEmail = adminEmail;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -80,8 +80,8 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GcpKey = gcpKey;
-            this.GroupName = groupName;
-            this.GroupRoleType = groupRoleType;
+            this.GroupEmail = groupEmail;
+            this.GroupRole = groupRole;
             this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RoleName = roleName;
@@ -104,8 +104,8 @@ namespace akeyless.Model
         /// Admin user email
         /// </summary>
         /// <value>Admin user email</value>
-        [DataMember(Name = "admin-name", IsRequired = true, EmitDefaultValue = true)]
-        public string AdminName { get; set; }
+        [DataMember(Name = "admin-email", IsRequired = true, EmitDefaultValue = true)]
+        public string AdminEmail { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this item [true/false]
@@ -132,14 +132,14 @@ namespace akeyless.Model
         /// A group email, relevant only for group access-mode
         /// </summary>
         /// <value>A group email, relevant only for group access-mode</value>
-        [DataMember(Name = "group-name", EmitDefaultValue = false)]
-        public string GroupName { get; set; }
+        [DataMember(Name = "group-email", EmitDefaultValue = false)]
+        public string GroupEmail { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupRoleType
+        /// Gets or Sets GroupRole
         /// </summary>
-        [DataMember(Name = "group-role-type", EmitDefaultValue = false)]
-        public string GroupRoleType { get; set; }
+        [DataMember(Name = "group-role", EmitDefaultValue = false)]
+        public string GroupRole { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -183,9 +183,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Name of existing target to use in producer creation
+        /// Name of existing target to use in dynamic secret creation
         /// </summary>
-        /// <value>Name of existing target to use in producer creation</value>
+        /// <value>Name of existing target to use in dynamic secret creation</value>
         [DataMember(Name = "target-name", EmitDefaultValue = false)]
         public string TargetName { get; set; }
 
@@ -219,12 +219,12 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreateGoogleWorkspace {\n");
             sb.Append("  AccessMode: ").Append(AccessMode).Append("\n");
-            sb.Append("  AdminName: ").Append(AdminName).Append("\n");
+            sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
-            sb.Append("  GroupName: ").Append(GroupName).Append("\n");
-            sb.Append("  GroupRoleType: ").Append(GroupRoleType).Append("\n");
+            sb.Append("  GroupEmail: ").Append(GroupEmail).Append("\n");
+            sb.Append("  GroupRole: ").Append(GroupRole).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
@@ -276,9 +276,9 @@ namespace akeyless.Model
                     this.AccessMode.Equals(input.AccessMode))
                 ) && 
                 (
-                    this.AdminName == input.AdminName ||
-                    (this.AdminName != null &&
-                    this.AdminName.Equals(input.AdminName))
+                    this.AdminEmail == input.AdminEmail ||
+                    (this.AdminEmail != null &&
+                    this.AdminEmail.Equals(input.AdminEmail))
                 ) && 
                 (
                     this.DeleteProtection == input.DeleteProtection ||
@@ -296,14 +296,14 @@ namespace akeyless.Model
                     this.GcpKey.Equals(input.GcpKey))
                 ) && 
                 (
-                    this.GroupName == input.GroupName ||
-                    (this.GroupName != null &&
-                    this.GroupName.Equals(input.GroupName))
+                    this.GroupEmail == input.GroupEmail ||
+                    (this.GroupEmail != null &&
+                    this.GroupEmail.Equals(input.GroupEmail))
                 ) && 
                 (
-                    this.GroupRoleType == input.GroupRoleType ||
-                    (this.GroupRoleType != null &&
-                    this.GroupRoleType.Equals(input.GroupRoleType))
+                    this.GroupRole == input.GroupRole ||
+                    (this.GroupRole != null &&
+                    this.GroupRole.Equals(input.GroupRole))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -370,9 +370,9 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AccessMode.GetHashCode();
                 }
-                if (this.AdminName != null)
+                if (this.AdminEmail != null)
                 {
-                    hashCode = (hashCode * 59) + this.AdminName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AdminEmail.GetHashCode();
                 }
                 if (this.DeleteProtection != null)
                 {
@@ -386,13 +386,13 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GcpKey.GetHashCode();
                 }
-                if (this.GroupName != null)
+                if (this.GroupEmail != null)
                 {
-                    hashCode = (hashCode * 59) + this.GroupName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GroupEmail.GetHashCode();
                 }
-                if (this.GroupRoleType != null)
+                if (this.GroupRole != null)
                 {
-                    hashCode = (hashCode * 59) + this.GroupRoleType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.GroupRole.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)

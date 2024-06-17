@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="gcpServiceAccountEmail">The email of the gcp service account to rotate.</param>
         /// <param name="gcpServiceAccountKeyId">The key id of the gcp service account to rotate.</param>
         /// <param name="graceRotation">Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false].</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -87,13 +87,13 @@ namespace akeyless.Model
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account).</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times.</param>
+        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), string hostProvider = "explicit", bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
+        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -129,8 +129,7 @@ namespace akeyless.Model
             this.GcpServiceAccountEmail = gcpServiceAccountEmail;
             this.GcpServiceAccountKeyId = gcpServiceAccountKeyId;
             this.GraceRotation = graceRotation;
-            // use default value if no "hostProvider" provided
-            this.HostProvider = hostProvider ?? "explicit";
+            this.HostProvider = hostProvider;
             this.Json = json;
             this.Key = key;
             this.Metadata = metadata;
@@ -268,9 +267,9 @@ namespace akeyless.Model
         public string GraceRotation { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
         /// </summary>
-        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -498,9 +497,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
         /// </summary>
-        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times</value>
+        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
         [DataMember(Name = "target", EmitDefaultValue = false)]
         public List<string> Target { get; set; }
 

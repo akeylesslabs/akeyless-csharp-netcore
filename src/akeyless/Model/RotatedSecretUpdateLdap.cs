@@ -46,7 +46,7 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -67,12 +67,12 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
-        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times.</param>
+        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">Base DN to Perform User Search.</param>
-        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = "explicit", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
+        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -88,8 +88,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             // use default value if no "description" provided
             this.Description = description ?? "default_metadata";
-            // use default value if no "hostProvider" provided
-            this.HostProvider = hostProvider ?? "explicit";
+            this.HostProvider = hostProvider;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -160,9 +159,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
         /// </summary>
-        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -307,9 +306,9 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
-        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
         /// </summary>
-        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times</value>
+        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
         [DataMember(Name = "target", EmitDefaultValue = false)]
         public List<string> Target { get; set; }
 

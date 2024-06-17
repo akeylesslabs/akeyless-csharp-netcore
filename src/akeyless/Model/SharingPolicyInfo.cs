@@ -36,9 +36,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SharingPolicyInfo" /> class.
         /// </summary>
         /// <param name="defaultShareLinkTtl">defaultShareLinkTtl.</param>
-        public SharingPolicyInfo(long defaultShareLinkTtl = default(long))
+        /// <param name="enable">enable.</param>
+        public SharingPolicyInfo(long defaultShareLinkTtl = default(long), bool enable = default(bool))
         {
             this.DefaultShareLinkTtl = defaultShareLinkTtl;
+            this.Enable = enable;
         }
 
         /// <summary>
@@ -46,6 +48,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "default_share_link_ttl", EmitDefaultValue = false)]
         public long DefaultShareLinkTtl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Enable
+        /// </summary>
+        [DataMember(Name = "enable", EmitDefaultValue = true)]
+        public bool Enable { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,6 +64,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SharingPolicyInfo {\n");
             sb.Append("  DefaultShareLinkTtl: ").Append(DefaultShareLinkTtl).Append("\n");
+            sb.Append("  Enable: ").Append(Enable).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,6 +103,10 @@ namespace akeyless.Model
                 (
                     this.DefaultShareLinkTtl == input.DefaultShareLinkTtl ||
                     this.DefaultShareLinkTtl.Equals(input.DefaultShareLinkTtl)
+                ) && 
+                (
+                    this.Enable == input.Enable ||
+                    this.Enable.Equals(input.Enable)
                 );
         }
 
@@ -107,6 +120,7 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.DefaultShareLinkTtl.GetHashCode();
+                hashCode = (hashCode * 59) + this.Enable.GetHashCode();
                 return hashCode;
             }
         }

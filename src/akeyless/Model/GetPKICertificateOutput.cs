@@ -36,13 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetPKICertificateOutput" /> class.
         /// </summary>
         /// <param name="certDisplayId">certDisplayId.</param>
+        /// <param name="certItemId">certItemId.</param>
         /// <param name="data">data.</param>
         /// <param name="parentCert">parentCert.</param>
         /// <param name="path">path.</param>
         /// <param name="readingToken">readingToken.</param>
-        public GetPKICertificateOutput(string certDisplayId = default(string), string data = default(string), string parentCert = default(string), string path = default(string), string readingToken = default(string))
+        public GetPKICertificateOutput(string certDisplayId = default(string), long certItemId = default(long), string data = default(string), string parentCert = default(string), string path = default(string), string readingToken = default(string))
         {
             this.CertDisplayId = certDisplayId;
+            this.CertItemId = certItemId;
             this.Data = data;
             this.ParentCert = parentCert;
             this.Path = path;
@@ -54,6 +56,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "cert_display_id", EmitDefaultValue = false)]
         public string CertDisplayId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertItemId
+        /// </summary>
+        [DataMember(Name = "cert_item_id", EmitDefaultValue = false)]
+        public long CertItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets Data
@@ -88,6 +96,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetPKICertificateOutput {\n");
             sb.Append("  CertDisplayId: ").Append(CertDisplayId).Append("\n");
+            sb.Append("  CertItemId: ").Append(CertItemId).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  ParentCert: ").Append(ParentCert).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
@@ -133,6 +142,10 @@ namespace akeyless.Model
                     this.CertDisplayId.Equals(input.CertDisplayId))
                 ) && 
                 (
+                    this.CertItemId == input.CertItemId ||
+                    this.CertItemId.Equals(input.CertItemId)
+                ) && 
+                (
                     this.Data == input.Data ||
                     (this.Data != null &&
                     this.Data.Equals(input.Data))
@@ -167,6 +180,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CertDisplayId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.CertItemId.GetHashCode();
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();

@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
@@ -58,11 +58,11 @@ namespace akeyless.Model
         /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
-        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times.</param>
+        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateSSHCertIssuer(string providerType = default(string), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = "explicit", bool json = false, string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), List<string> target = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public CreateSSHCertIssuer(string providerType = default(string), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = default(string), bool json = false, string metadata = default(string), string name = default(string), string principals = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), List<string> tag = default(List<string>), List<string> target = default(List<string>), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -87,8 +87,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Extensions = extensions;
-            // use default value if no "hostProvider" provided
-            this.HostProvider = hostProvider ?? "explicit";
+            this.HostProvider = hostProvider;
             this.Json = json;
             this.Metadata = metadata;
             this.Principals = principals;
@@ -139,9 +138,9 @@ namespace akeyless.Model
         public Dictionary<string, string> Extensions { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
         /// </summary>
-        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -230,9 +229,9 @@ namespace akeyless.Model
         public List<string> Tag { get; set; }
 
         /// <summary>
-        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
         /// </summary>
-        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times</value>
+        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
         [DataMember(Name = "target", EmitDefaultValue = false)]
         public List<string> Target { get; set; }
 

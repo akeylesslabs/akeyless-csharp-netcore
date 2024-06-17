@@ -49,7 +49,8 @@ namespace akeyless.Model
         /// <param name="_out">Path to the output file. If not provided, the output will be sent to stdout.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptFile(string cyphertextHeader = default(string), string displayId = default(string), string _in = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="version">key version (relevant only for classic key).</param>
+        public DecryptFile(string cyphertextHeader = default(string), string displayId = default(string), string _in = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string _out = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "_in" is required (not null)
             if (_in == null)
@@ -70,6 +71,7 @@ namespace akeyless.Model
             this.Out = _out;
             this.Token = token;
             this.UidToken = uidToken;
+            this._Version = version;
         }
 
         /// <summary>
@@ -135,6 +137,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// key version (relevant only for classic key)
+        /// </summary>
+        /// <value>key version (relevant only for classic key)</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -151,6 +160,7 @@ namespace akeyless.Model
             sb.Append("  Out: ").Append(Out).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -228,6 +238,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -270,6 +284,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

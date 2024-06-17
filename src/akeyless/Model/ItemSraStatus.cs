@@ -35,21 +35,37 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemSraStatus" /> class.
         /// </summary>
+        /// <param name="countByHostInfo">countByHostInfo.</param>
         /// <param name="countInfo">countInfo.</param>
+        /// <param name="hostsInUse">hostsInUse.</param>
         /// <param name="isInUse">isInUse.</param>
         /// <param name="lastUsedItem">lastUsedItem.</param>
-        public ItemSraStatus(Dictionary<string, Dictionary<string, long>> countInfo = default(Dictionary<string, Dictionary<string, long>>), bool isInUse = default(bool), DateTime lastUsedItem = default(DateTime))
+        public ItemSraStatus(Dictionary<string, long> countByHostInfo = default(Dictionary<string, long>), Dictionary<string, Dictionary<string, long>> countInfo = default(Dictionary<string, Dictionary<string, long>>), List<string> hostsInUse = default(List<string>), bool isInUse = default(bool), DateTime lastUsedItem = default(DateTime))
         {
+            this.CountByHostInfo = countByHostInfo;
             this.CountInfo = countInfo;
+            this.HostsInUse = hostsInUse;
             this.IsInUse = isInUse;
             this.LastUsedItem = lastUsedItem;
         }
+
+        /// <summary>
+        /// Gets or Sets CountByHostInfo
+        /// </summary>
+        [DataMember(Name = "count_by_host_info", EmitDefaultValue = false)]
+        public Dictionary<string, long> CountByHostInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets CountInfo
         /// </summary>
         [DataMember(Name = "count_info", EmitDefaultValue = false)]
         public Dictionary<string, Dictionary<string, long>> CountInfo { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HostsInUse
+        /// </summary>
+        [DataMember(Name = "hosts_in_use", EmitDefaultValue = false)]
+        public List<string> HostsInUse { get; set; }
 
         /// <summary>
         /// Gets or Sets IsInUse
@@ -71,7 +87,9 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ItemSraStatus {\n");
+            sb.Append("  CountByHostInfo: ").Append(CountByHostInfo).Append("\n");
             sb.Append("  CountInfo: ").Append(CountInfo).Append("\n");
+            sb.Append("  HostsInUse: ").Append(HostsInUse).Append("\n");
             sb.Append("  IsInUse: ").Append(IsInUse).Append("\n");
             sb.Append("  LastUsedItem: ").Append(LastUsedItem).Append("\n");
             sb.Append("}\n");
@@ -110,10 +128,22 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CountByHostInfo == input.CountByHostInfo ||
+                    this.CountByHostInfo != null &&
+                    input.CountByHostInfo != null &&
+                    this.CountByHostInfo.SequenceEqual(input.CountByHostInfo)
+                ) && 
+                (
                     this.CountInfo == input.CountInfo ||
                     this.CountInfo != null &&
                     input.CountInfo != null &&
                     this.CountInfo.SequenceEqual(input.CountInfo)
+                ) && 
+                (
+                    this.HostsInUse == input.HostsInUse ||
+                    this.HostsInUse != null &&
+                    input.HostsInUse != null &&
+                    this.HostsInUse.SequenceEqual(input.HostsInUse)
                 ) && 
                 (
                     this.IsInUse == input.IsInUse ||
@@ -135,9 +165,17 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CountByHostInfo != null)
+                {
+                    hashCode = (hashCode * 59) + this.CountByHostInfo.GetHashCode();
+                }
                 if (this.CountInfo != null)
                 {
                     hashCode = (hashCode * 59) + this.CountInfo.GetHashCode();
+                }
+                if (this.HostsInUse != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostsInUse.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsInUse.GetHashCode();
                 if (this.LastUsedItem != null)

@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CountByHostInfo** | **Dictionary&lt;string, long&gt;** |  | [optional] 
 **CountInfo** | **Dictionary&lt;string, Dictionary&lt;string, long&gt;&gt;** |  | [optional] 
+**HostsInUse** | **List&lt;string&gt;** |  | [optional] 
 **IsInUse** | **bool** |  | [optional] 
 **LastUsedItem** | **DateTime** |  | [optional] 
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Extensions** | **Dictionary&lt;string, string&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
-**HostProvider** | **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
+**HostProvider** | **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | SSH certificate issuer name | 

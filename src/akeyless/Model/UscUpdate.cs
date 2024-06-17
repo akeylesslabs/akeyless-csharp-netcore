@@ -43,13 +43,14 @@ namespace akeyless.Model
         /// <param name="binaryValue">Use this option if the universal secrets value is a base64 encoded binary.</param>
         /// <param name="description">Description of the universal secrets.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="secretId">The universal secrets id (or name, for AWS, Azure or K8s targets) to update (required).</param>
+        /// <param name="_namespace">The namespace (relevant for Hashi vault target).</param>
+        /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update (required).</param>
         /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string secretId = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
+        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string _namespace = default(string), string secretId = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.BinaryValue = binaryValue;
             this.Description = description;
             this.Json = json;
+            this.Namespace = _namespace;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -99,9 +101,16 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// The universal secrets id (or name, for AWS, Azure or K8s targets) to update
+        /// The namespace (relevant for Hashi vault target)
         /// </summary>
-        /// <value>The universal secrets id (or name, for AWS, Azure or K8s targets) to update</value>
+        /// <value>The namespace (relevant for Hashi vault target)</value>
+        [DataMember(Name = "namespace", EmitDefaultValue = false)]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update
+        /// </summary>
+        /// <value>The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update</value>
         [DataMember(Name = "secret-id", IsRequired = true, EmitDefaultValue = true)]
         public string SecretId { get; set; }
 
@@ -151,6 +160,7 @@ namespace akeyless.Model
             sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -206,6 +216,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.Namespace == input.Namespace ||
+                    (this.Namespace != null &&
+                    this.Namespace.Equals(input.Namespace))
+                ) && 
+                (
                     this.SecretId == input.SecretId ||
                     (this.SecretId != null &&
                     this.SecretId.Equals(input.SecretId))
@@ -253,6 +268,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.Namespace != null)
+                {
+                    hashCode = (hashCode * 59) + this.Namespace.GetHashCode();
+                }
                 if (this.SecretId != null)
                 {
                     hashCode = (hashCode * 59) + this.SecretId.GetHashCode();

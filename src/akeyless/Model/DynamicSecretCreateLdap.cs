@@ -40,19 +40,26 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretCreateLdap" /> class.
         /// </summary>
+        /// <param name="providerType">providerType.</param>
         /// <param name="bindDn">Bind DN.</param>
         /// <param name="bindDnPassword">Bind DN Password.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="externalUsername">Externally provided username [true/false] (default to &quot;false&quot;).</param>
         /// <param name="groupDn">Group DN which the temporary user should be added.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL.</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
+        /// <param name="secureAccessRdGatewayServer">RD Gateway server.</param>
+        /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user.</param>
         /// <param name="tags">Add tags attached to this object.</param>
+        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
@@ -60,7 +67,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateLdap(string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string description = default(string), string externalUsername = "false", string groupDn = default(string), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m")
+        public DynamicSecretCreateLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string description = default(string), string externalUsername = "false", string groupDn = default(string), string hostProvider = default(string), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,6 +75,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretCreateLdap and cannot be null");
             }
             this.Name = name;
+            this.ProviderType = providerType;
             this.BindDn = bindDn;
             this.BindDnPassword = bindDnPassword;
             this.DeleteProtection = deleteProtection;
@@ -75,12 +83,18 @@ namespace akeyless.Model
             // use default value if no "externalUsername" provided
             this.ExternalUsername = externalUsername ?? "false";
             this.GroupDn = groupDn;
+            this.HostProvider = hostProvider;
             this.Json = json;
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessHost = secureAccessHost;
+            this.SecureAccessRdGatewayServer = secureAccessRdGatewayServer;
+            this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.Tags = tags;
+            this.Target = target;
             this.TargetName = targetName;
             this.Token = token;
             this.TokenExpiration = tokenExpiration;
@@ -90,6 +104,12 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
         }
+
+        /// <summary>
+        /// Gets or Sets ProviderType
+        /// </summary>
+        [DataMember(Name = "ProviderType", EmitDefaultValue = false)]
+        public string ProviderType { get; set; }
 
         /// <summary>
         /// Bind DN
@@ -134,6 +154,13 @@ namespace akeyless.Model
         public string GroupDn { get; set; }
 
         /// <summary>
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+        /// </summary>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
+        [DataMember(Name = "host-provider", EmitDefaultValue = false)]
+        public string HostProvider { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -176,11 +203,46 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Enable/Disable secure remote access [true/false]
+        /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
+        /// </summary>
+        /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
+        [DataMember(Name = "secure-access-host", EmitDefaultValue = false)]
+        public List<string> SecureAccessHost { get; set; }
+
+        /// <summary>
+        /// RD Gateway server
+        /// </summary>
+        /// <value>RD Gateway server</value>
+        [DataMember(Name = "secure-access-rd-gateway-server", EmitDefaultValue = false)]
+        public string SecureAccessRdGatewayServer { get; set; }
+
+        /// <summary>
+        /// Required when the Dynamic Secret is used for a domain user
+        /// </summary>
+        /// <value>Required when the Dynamic Secret is used for a domain user</value>
+        [DataMember(Name = "secure-access-rdp-domain", EmitDefaultValue = false)]
+        public string SecureAccessRdpDomain { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
         [DataMember(Name = "tags", EmitDefaultValue = false)]
         public List<string> Tags { get; set; }
+
+        /// <summary>
+        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+        /// </summary>
+        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
+        [DataMember(Name = "target", EmitDefaultValue = false)]
+        public List<string> Target { get; set; }
 
         /// <summary>
         /// Target name
@@ -239,19 +301,26 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreateLdap {\n");
+            sb.Append("  ProviderType: ").Append(ProviderType).Append("\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalUsername: ").Append(ExternalUsername).Append("\n");
             sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
+            sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SecureAccessRdGatewayServer: ").Append(SecureAccessRdGatewayServer).Append("\n");
+            sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
@@ -295,6 +364,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.ProviderType == input.ProviderType ||
+                    (this.ProviderType != null &&
+                    this.ProviderType.Equals(input.ProviderType))
+                ) && 
+                (
                     this.BindDn == input.BindDn ||
                     (this.BindDn != null &&
                     this.BindDn.Equals(input.BindDn))
@@ -323,6 +397,11 @@ namespace akeyless.Model
                     this.GroupDn == input.GroupDn ||
                     (this.GroupDn != null &&
                     this.GroupDn.Equals(input.GroupDn))
+                ) && 
+                (
+                    this.HostProvider == input.HostProvider ||
+                    (this.HostProvider != null &&
+                    this.HostProvider.Equals(input.HostProvider))
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -354,10 +433,37 @@ namespace akeyless.Model
                     this.ProducerEncryptionKeyName.Equals(input.ProducerEncryptionKeyName))
                 ) && 
                 (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessHost == input.SecureAccessHost ||
+                    this.SecureAccessHost != null &&
+                    input.SecureAccessHost != null &&
+                    this.SecureAccessHost.SequenceEqual(input.SecureAccessHost)
+                ) && 
+                (
+                    this.SecureAccessRdGatewayServer == input.SecureAccessRdGatewayServer ||
+                    (this.SecureAccessRdGatewayServer != null &&
+                    this.SecureAccessRdGatewayServer.Equals(input.SecureAccessRdGatewayServer))
+                ) && 
+                (
+                    this.SecureAccessRdpDomain == input.SecureAccessRdpDomain ||
+                    (this.SecureAccessRdpDomain != null &&
+                    this.SecureAccessRdpDomain.Equals(input.SecureAccessRdpDomain))
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
                     this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
+                    this.Target == input.Target ||
+                    this.Target != null &&
+                    input.Target != null &&
+                    this.Target.SequenceEqual(input.Target)
                 ) && 
                 (
                     this.TargetName == input.TargetName ||
@@ -405,6 +511,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ProviderType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProviderType.GetHashCode();
+                }
                 if (this.BindDn != null)
                 {
                     hashCode = (hashCode * 59) + this.BindDn.GetHashCode();
@@ -429,6 +539,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GroupDn.GetHashCode();
                 }
+                if (this.HostProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostProvider.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.LdapCaCert != null)
                 {
@@ -450,9 +564,29 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ProducerEncryptionKeyName.GetHashCode();
                 }
+                if (this.SecureAccessEnable != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                if (this.SecureAccessHost != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();
+                }
+                if (this.SecureAccessRdGatewayServer != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdGatewayServer.GetHashCode();
+                }
+                if (this.SecureAccessRdpDomain != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessRdpDomain.GetHashCode();
+                }
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
+                if (this.Target != null)
+                {
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
                 }
                 if (this.TargetName != null)
                 {

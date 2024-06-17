@@ -43,13 +43,14 @@ namespace akeyless.Model
         /// <param name="binaryValue">Use this option if the universal secrets value is a base64 encoded binary.</param>
         /// <param name="description">Description of the universal secrets.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="_namespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="secretName">Name for the new universal secrets (required).</param>
         /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string secretName = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
+        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string _namespace = default(string), string secretName = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretName" is required (not null)
             if (secretName == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.BinaryValue = binaryValue;
             this.Description = description;
             this.Json = json;
+            this.Namespace = _namespace;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// The namespace (relevant for Hashi vault target)
+        /// </summary>
+        /// <value>The namespace (relevant for Hashi vault target)</value>
+        [DataMember(Name = "namespace", EmitDefaultValue = false)]
+        public string Namespace { get; set; }
 
         /// <summary>
         /// Name for the new universal secrets
@@ -151,6 +160,7 @@ namespace akeyless.Model
             sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  SecretName: ").Append(SecretName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -206,6 +216,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.Namespace == input.Namespace ||
+                    (this.Namespace != null &&
+                    this.Namespace.Equals(input.Namespace))
+                ) && 
+                (
                     this.SecretName == input.SecretName ||
                     (this.SecretName != null &&
                     this.SecretName.Equals(input.SecretName))
@@ -253,6 +268,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.Namespace != null)
+                {
+                    hashCode = (hashCode * 59) + this.Namespace.GetHashCode();
+                }
                 if (this.SecretName != null)
                 {
                     hashCode = (hashCode * 59) + this.SecretName.GetHashCode();

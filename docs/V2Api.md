@@ -42,6 +42,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateGlobalSignTarget**](V2Api.md#createglobalsigntarget) | **POST** /create-globalsign-target |  |
 | [**CreateGodaddyTarget**](V2Api.md#creategodaddytarget) | **POST** /create-godaddy-target |  |
 | [**CreateGroup**](V2Api.md#creategroup) | **POST** /create-group |  |
+| [**CreateHashiVaultTarget**](V2Api.md#createhashivaulttarget) | **POST** /create-hashi-vault-target |  |
 | [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
 | [**CreateLinkedTarget**](V2Api.md#createlinkedtarget) | **POST** /create-linked-target |  |
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
@@ -201,12 +202,16 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayDeleteProducer**](V2Api.md#gatewaydeleteproducer) | **POST** /gateway-delete-producer |  |
 | [**GatewayDownloadCustomerFragments**](V2Api.md#gatewaydownloadcustomerfragments) | **POST** /gateway-download-customer-fragments |  |
 | [**GatewayGetAllowedAccess**](V2Api.md#gatewaygetallowedaccess) | **POST** /gateway-get-allowed-access |  |
+| [**GatewayGetCache**](V2Api.md#gatewaygetcache) | **POST** /gateway-get-cache |  |
 | [**GatewayGetConfig**](V2Api.md#gatewaygetconfig) | **POST** /gateway-get-config |  |
+| [**GatewayGetDefaults**](V2Api.md#gatewaygetdefaults) | **POST** /gateway-get-defaults |  |
 | [**GatewayGetK8SAuthConfig**](V2Api.md#gatewaygetk8sauthconfig) | **POST** /gateway-get-k8s-auth-config |  |
 | [**GatewayGetLdapAuthConfig**](V2Api.md#gatewaygetldapauthconfig) | **POST** /gateway-get-ldap-auth-config |  |
+| [**GatewayGetLogForwarding**](V2Api.md#gatewaygetlogforwarding) | **POST** /gateway-get-log-forwarding |  |
 | [**GatewayGetMigration**](V2Api.md#gatewaygetmigration) | **POST** /gateway-get-migration |  |
 | [**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer |  |
 | [**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds |  |
+| [**GatewayListCustomerFragments**](V2Api.md#gatewaylistcustomerfragments) | **POST** /gateway-list-customer-fragments |  |
 | [**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration |  |
 | [**GatewayListProducers**](V2Api.md#gatewaylistproducers) | **POST** /gateway-list-producers |  |
 | [**GatewayListRotatedSecrets**](V2Api.md#gatewaylistrotatedsecrets) | **POST** /gateway-list-rotated-secrets |  |
@@ -217,9 +222,22 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayStopProducer**](V2Api.md#gatewaystopproducer) | **POST** /gateway-stop-producer |  |
 | [**GatewaySyncMigration**](V2Api.md#gatewaysyncmigration) | **POST** /gateway-sync-migration |  |
 | [**GatewayUpdateAllowedAccess**](V2Api.md#gatewayupdateallowedaccess) | **POST** /gateway-update-allowed-access |  |
+| [**GatewayUpdateCache**](V2Api.md#gatewayupdatecache) | **POST** /gateway-update-cache |  |
+| [**GatewayUpdateDefaults**](V2Api.md#gatewayupdatedefaults) | **POST** /gateway-update-defaults |  |
 | [**GatewayUpdateItem**](V2Api.md#gatewayupdateitem) | **POST** /gateway-update-item |  |
 | [**GatewayUpdateK8SAuthConfig**](V2Api.md#gatewayupdatek8sauthconfig) | **POST** /gateway-update-k8s-auth-config |  |
 | [**GatewayUpdateLdapAuthConfig**](V2Api.md#gatewayupdateldapauthconfig) | **POST** /gateway-update-ldap-auth-config |  |
+| [**GatewayUpdateLogForwardingAwsS3**](V2Api.md#gatewayupdatelogforwardingawss3) | **POST** /gateway-update-log-forwarding-aws-s3 |  |
+| [**GatewayUpdateLogForwardingAzureAnalytics**](V2Api.md#gatewayupdatelogforwardingazureanalytics) | **POST** /gateway-update-log-forwarding-azure-analytics |  |
+| [**GatewayUpdateLogForwardingDatadog**](V2Api.md#gatewayupdatelogforwardingdatadog) | **POST** /gateway-update-log-forwarding-datadog |  |
+| [**GatewayUpdateLogForwardingElasticsearch**](V2Api.md#gatewayupdatelogforwardingelasticsearch) | **POST** /gateway-update-log-forwarding-elasticsearch |  |
+| [**GatewayUpdateLogForwardingGoogleChronicle**](V2Api.md#gatewayupdatelogforwardinggooglechronicle) | **POST** /gateway-update-log-forwarding-google-chronicle |  |
+| [**GatewayUpdateLogForwardingLogstash**](V2Api.md#gatewayupdatelogforwardinglogstash) | **POST** /gateway-update-log-forwarding-logstash |  |
+| [**GatewayUpdateLogForwardingLogzIo**](V2Api.md#gatewayupdatelogforwardinglogzio) | **POST** /gateway-update-log-forwarding-logz-io |  |
+| [**GatewayUpdateLogForwardingSplunk**](V2Api.md#gatewayupdatelogforwardingsplunk) | **POST** /gateway-update-log-forwarding-splunk |  |
+| [**GatewayUpdateLogForwardingStdout**](V2Api.md#gatewayupdatelogforwardingstdout) | **POST** /gateway-update-log-forwarding-stdout |  |
+| [**GatewayUpdateLogForwardingSumologic**](V2Api.md#gatewayupdatelogforwardingsumologic) | **POST** /gateway-update-log-forwarding-sumologic |  |
+| [**GatewayUpdateLogForwardingSyslog**](V2Api.md#gatewayupdatelogforwardingsyslog) | **POST** /gateway-update-log-forwarding-syslog |  |
 | [**GatewayUpdateMigration**](V2Api.md#gatewayupdatemigration) | **POST** /gateway-update-migration |  |
 | [**GatewayUpdateProducerArtifactory**](V2Api.md#gatewayupdateproducerartifactory) | **POST** /gateway-update-producer-artifactory |  |
 | [**GatewayUpdateProducerAws**](V2Api.md#gatewayupdateproduceraws) | **POST** /gateway-update-producer-aws |  |
@@ -392,6 +410,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateGlobalSignTarget**](V2Api.md#updateglobalsigntarget) | **POST** /update-globalsign-target |  |
 | [**UpdateGodaddyTarget**](V2Api.md#updategodaddytarget) | **POST** /update-godaddy-target |  |
 | [**UpdateGroup**](V2Api.md#updategroup) | **POST** /update-group |  |
+| [**UpdateHashiVaultTarget**](V2Api.md#updatehashivaulttarget) | **POST** /update-hashi-vault-target |  |
 | [**UpdateItem**](V2Api.md#updateitem) | **POST** /update-item |  |
 | [**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target |  |
 | [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
@@ -3773,6 +3792,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createGroupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createhashivaulttarget"></a>
+# **CreateHashiVaultTarget**
+> CreateHashiVaultTargetOutput CreateHashiVaultTarget (CreateHashiVaultTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateHashiVaultTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreateHashiVaultTarget(); // CreateHashiVaultTarget | 
+
+            try
+            {
+                CreateHashiVaultTargetOutput result = apiInstance.CreateHashiVaultTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateHashiVaultTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateHashiVaultTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateHashiVaultTargetOutput> response = apiInstance.CreateHashiVaultTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateHashiVaultTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreateHashiVaultTarget**](CreateHashiVaultTarget.md) |  |  |
+
+### Return type
+
+[**CreateHashiVaultTargetOutput**](CreateHashiVaultTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createHashiVaultTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -17762,6 +17869,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaygetcache"></a>
+# **GatewayGetCache**
+> CacheConfigPart GatewayGetCache (GatewayGetCache body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayGetCacheExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayGetCache(); // GatewayGetCache | 
+
+            try
+            {
+                CacheConfigPart result = apiInstance.GatewayGetCache(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayGetCache: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayGetCacheWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CacheConfigPart> response = apiInstance.GatewayGetCacheWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetCacheWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetCache**](GatewayGetCache.md) |  |  |
+
+### Return type
+
+[**CacheConfigPart**](CacheConfigPart.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayGetCacheResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaygetconfig"></a>
 # **GatewayGetConfig**
 > AkeylessGatewayConfig GatewayGetConfig (GatewayGetConfig body)
@@ -17846,6 +18041,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayGetConfigResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaygetdefaults"></a>
+# **GatewayGetDefaults**
+> GatewayGetDefaultsOutput GatewayGetDefaults (GatewayGetDefaults body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayGetDefaultsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayGetDefaults(); // GatewayGetDefaults | 
+
+            try
+            {
+                GatewayGetDefaultsOutput result = apiInstance.GatewayGetDefaults(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayGetDefaults: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayGetDefaultsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayGetDefaultsOutput> response = apiInstance.GatewayGetDefaultsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetDefaultsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetDefaults**](GatewayGetDefaults.md) |  |  |
+
+### Return type
+
+[**GatewayGetDefaultsOutput**](GatewayGetDefaultsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayGetDefaultsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -18022,6 +18305,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | gatewayGetLdapAuthConfigResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaygetlogforwarding"></a>
+# **GatewayGetLogForwarding**
+> LogForwardingConfigPart GatewayGetLogForwarding (GatewayGetLogForwarding body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayGetLogForwardingExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayGetLogForwarding(); // GatewayGetLogForwarding | 
+
+            try
+            {
+                LogForwardingConfigPart result = apiInstance.GatewayGetLogForwarding(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayGetLogForwarding: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayGetLogForwardingWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<LogForwardingConfigPart> response = apiInstance.GatewayGetLogForwardingWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetLogForwardingWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetLogForwarding**](GatewayGetLogForwarding.md) |  |  |
+
+### Return type
+
+[**LogForwardingConfigPart**](LogForwardingConfigPart.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayGetLogForwardingResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -18286,6 +18657,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayGetTmpUsersResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewaylistcustomerfragments"></a>
+# **GatewayListCustomerFragments**
+> Dictionary&lt;string, Object&gt; GatewayListCustomerFragments (GatewayListCustomerFragments body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayListCustomerFragmentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayListCustomerFragments(); // GatewayListCustomerFragments | 
+
+            try
+            {
+                Dictionary<string, Object> result = apiInstance.GatewayListCustomerFragments(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayListCustomerFragments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayListCustomerFragmentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Dictionary<string, Object>> response = apiInstance.GatewayListCustomerFragmentsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayListCustomerFragmentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayListCustomerFragments**](GatewayListCustomerFragments.md) |  |  |
+
+### Return type
+
+**Dictionary<string, Object>**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayListCustomerFragmentsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -19166,6 +19625,182 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdatecache"></a>
+# **GatewayUpdateCache**
+> GatewayUpdateOutput GatewayUpdateCache (GatewayUpdateCache body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateCacheExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateCache(); // GatewayUpdateCache | 
+
+            try
+            {
+                GatewayUpdateOutput result = apiInstance.GatewayUpdateCache(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateCache: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateCacheWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateOutput> response = apiInstance.GatewayUpdateCacheWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateCacheWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateCache**](GatewayUpdateCache.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateOutput**](GatewayUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateCacheResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatedefaults"></a>
+# **GatewayUpdateDefaults**
+> GatewayUpdateOutput GatewayUpdateDefaults (GatewayUpdateDefaults body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateDefaultsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateDefaults(); // GatewayUpdateDefaults | 
+
+            try
+            {
+                GatewayUpdateOutput result = apiInstance.GatewayUpdateDefaults(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateDefaults: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateDefaultsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateOutput> response = apiInstance.GatewayUpdateDefaultsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateDefaultsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateDefaults**](GatewayUpdateDefaults.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateOutput**](GatewayUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateDefaultsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdateitem"></a>
 # **GatewayUpdateItem**
 > GatewayUpdateItemOutput GatewayUpdateItem (GatewayUpdateItem body)
@@ -19426,6 +20061,974 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | GatewayUpdateLdapAuthConfigResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingawss3"></a>
+# **GatewayUpdateLogForwardingAwsS3**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingAwsS3 (GatewayUpdateLogForwardingAwsS3 body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingAwsS3Example
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingAwsS3(); // GatewayUpdateLogForwardingAwsS3 | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingAwsS3(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingAwsS3: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingAwsS3WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingAwsS3WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingAwsS3WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingAwsS3**](GatewayUpdateLogForwardingAwsS3.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingazureanalytics"></a>
+# **GatewayUpdateLogForwardingAzureAnalytics**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingAzureAnalytics (GatewayUpdateLogForwardingAzureAnalytics body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingAzureAnalyticsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingAzureAnalytics(); // GatewayUpdateLogForwardingAzureAnalytics | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingAzureAnalytics(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingAzureAnalytics: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingAzureAnalyticsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingAzureAnalyticsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingAzureAnalyticsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingAzureAnalytics**](GatewayUpdateLogForwardingAzureAnalytics.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingdatadog"></a>
+# **GatewayUpdateLogForwardingDatadog**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingDatadog (GatewayUpdateLogForwardingDatadog body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingDatadogExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingDatadog(); // GatewayUpdateLogForwardingDatadog | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingDatadog(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingDatadog: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingDatadogWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingDatadogWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingDatadogWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingDatadog**](GatewayUpdateLogForwardingDatadog.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingelasticsearch"></a>
+# **GatewayUpdateLogForwardingElasticsearch**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingElasticsearch (GatewayUpdateLogForwardingElasticsearch body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingElasticsearchExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingElasticsearch(); // GatewayUpdateLogForwardingElasticsearch | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingElasticsearch(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingElasticsearch: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingElasticsearchWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingElasticsearchWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingElasticsearchWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingElasticsearch**](GatewayUpdateLogForwardingElasticsearch.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardinggooglechronicle"></a>
+# **GatewayUpdateLogForwardingGoogleChronicle**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingGoogleChronicle (GatewayUpdateLogForwardingGoogleChronicle body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingGoogleChronicleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingGoogleChronicle(); // GatewayUpdateLogForwardingGoogleChronicle | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingGoogleChronicle(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingGoogleChronicle: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingGoogleChronicleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingGoogleChronicleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingGoogleChronicleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingGoogleChronicle**](GatewayUpdateLogForwardingGoogleChronicle.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardinglogstash"></a>
+# **GatewayUpdateLogForwardingLogstash**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingLogstash (GatewayUpdateLogForwardingLogstash body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingLogstashExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingLogstash(); // GatewayUpdateLogForwardingLogstash | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingLogstash(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingLogstash: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingLogstashWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingLogstashWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingLogstashWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingLogstash**](GatewayUpdateLogForwardingLogstash.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardinglogzio"></a>
+# **GatewayUpdateLogForwardingLogzIo**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingLogzIo (GatewayUpdateLogForwardingLogzIo body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingLogzIoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingLogzIo(); // GatewayUpdateLogForwardingLogzIo | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingLogzIo(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingLogzIo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingLogzIoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingLogzIoWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingLogzIoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingLogzIo**](GatewayUpdateLogForwardingLogzIo.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingsplunk"></a>
+# **GatewayUpdateLogForwardingSplunk**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingSplunk (GatewayUpdateLogForwardingSplunk body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingSplunkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingSplunk(); // GatewayUpdateLogForwardingSplunk | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingSplunk(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingSplunk: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingSplunkWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingSplunkWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingSplunkWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingSplunk**](GatewayUpdateLogForwardingSplunk.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingstdout"></a>
+# **GatewayUpdateLogForwardingStdout**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingStdout (GatewayUpdateLogForwardingStdout body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingStdoutExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingStdout(); // GatewayUpdateLogForwardingStdout | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingStdout(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingStdout: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingStdoutWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingStdoutWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingStdoutWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingStdout**](GatewayUpdateLogForwardingStdout.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingsumologic"></a>
+# **GatewayUpdateLogForwardingSumologic**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingSumologic (GatewayUpdateLogForwardingSumologic body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingSumologicExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingSumologic(); // GatewayUpdateLogForwardingSumologic | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingSumologic(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingSumologic: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingSumologicWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingSumologicWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingSumologicWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingSumologic**](GatewayUpdateLogForwardingSumologic.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdatelogforwardingsyslog"></a>
+# **GatewayUpdateLogForwardingSyslog**
+> GatewayUpdateLogForwardingOutput GatewayUpdateLogForwardingSyslog (GatewayUpdateLogForwardingSyslog body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateLogForwardingSyslogExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateLogForwardingSyslog(); // GatewayUpdateLogForwardingSyslog | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GatewayUpdateLogForwardingSyslog(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingSyslog: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateLogForwardingSyslogWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GatewayUpdateLogForwardingSyslogWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateLogForwardingSyslogWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateLogForwardingSyslog**](GatewayUpdateLogForwardingSyslog.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gatewayUpdateLogForwardingResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -34540,6 +36143,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateGroupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatehashivaulttarget"></a>
+# **UpdateHashiVaultTarget**
+> UpdateHashiVaultTargetOutput UpdateHashiVaultTarget (UpdateHashiVaultTarget body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateHashiVaultTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new UpdateHashiVaultTarget(); // UpdateHashiVaultTarget | 
+
+            try
+            {
+                UpdateHashiVaultTargetOutput result = apiInstance.UpdateHashiVaultTarget(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateHashiVaultTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateHashiVaultTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateHashiVaultTargetOutput> response = apiInstance.UpdateHashiVaultTargetWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateHashiVaultTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**UpdateHashiVaultTarget**](UpdateHashiVaultTarget.md) |  |  |
+
+### Return type
+
+[**UpdateHashiVaultTargetOutput**](UpdateHashiVaultTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateHashiVaultTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -6,19 +6,19 @@ dynamicSecretCreateGoogleWorkspace is a command that creates Google Workspace dy
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | **string** |  | 
-**AdminName** | **string** | Admin user email | 
+**AdminEmail** | **string** | Admin user email | 
 **DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
-**GroupName** | **string** | A group email, relevant only for group access-mode | [optional] 
-**GroupRoleType** | **string** |  | [optional] 
+**GroupEmail** | **string** | A group email, relevant only for group access-mode | [optional] 
+**GroupRole** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RoleName** | **string** | Name of the admin role to assign to the user, relevant only for role access-mode | [optional] 
 **RoleScope** | **string** |  | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
-**TargetName** | **string** | Name of existing target to use in producer creation | [optional] 
+**TargetName** | **string** | Name of existing target to use in dynamic secret creation | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]

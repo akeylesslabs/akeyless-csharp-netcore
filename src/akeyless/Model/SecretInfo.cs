@@ -45,7 +45,8 @@ namespace akeyless.Model
         /// <param name="status">status.</param>
         /// <param name="tags">tags.</param>
         /// <param name="type">type.</param>
-        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string type = default(string))
+        /// <param name="version">version.</param>
+        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string type = default(string), long version = default(long))
         {
             this.Created = created;
             this.Description = description;
@@ -57,6 +58,7 @@ namespace akeyless.Model
             this.Status = status;
             this.Tags = tags;
             this.Type = type;
+            this._Version = version;
         }
 
         /// <summary>
@@ -120,6 +122,12 @@ namespace akeyless.Model
         public string Type { get; set; }
 
         /// <summary>
+        /// Gets or Sets _Version
+        /// </summary>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public long _Version { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -137,6 +145,7 @@ namespace akeyless.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,6 +230,10 @@ namespace akeyless.Model
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this._Version == input._Version ||
+                    this._Version.Equals(input._Version)
                 );
         }
 
@@ -270,6 +283,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 return hashCode;
             }
         }

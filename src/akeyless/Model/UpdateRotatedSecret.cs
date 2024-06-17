@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="graceRotation">Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false].</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -88,7 +88,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = "explicit", bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
+        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string description = "default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -108,8 +108,7 @@ namespace akeyless.Model
             this.Description = description ?? "default_metadata";
             this.GcpKey = gcpKey;
             this.GraceRotation = graceRotation;
-            // use default value if no "hostProvider" provided
-            this.HostProvider = hostProvider ?? "explicit";
+            this.HostProvider = hostProvider;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -222,9 +221,9 @@ namespace akeyless.Model
         public string GraceRotation { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
         /// </summary>
-        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 

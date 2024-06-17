@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DpEnableClassicKeyProtection** | **string** | Set to update protection with classic keys state [true/false] | [optional] 
 **DynamicSecretMaxTtl** | **long** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
+**EnableItemSharing** | **string** | Enable sharing items [true/false] | [optional] 
 **ForceNewVersions** | **string** | If set to true, new version will be created on update | [optional] 
 **InvalidCharacters** | **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
 **ItemType** | **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 

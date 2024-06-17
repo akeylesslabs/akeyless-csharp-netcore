@@ -46,7 +46,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret (default to &quot;explicit&quot;).</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
@@ -63,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(string providerType = default(string), List<string> addTag = default(List<string>), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = "explicit", bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(string providerType = default(string), List<string> addTag = default(List<string>), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = default(string), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -89,8 +89,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Extensions = extensions;
-            // use default value if no "hostProvider" provided
-            this.HostProvider = hostProvider ?? "explicit";
+            this.HostProvider = hostProvider;
             this.Json = json;
             this.Metadata = metadata;
             this.NewName = newName;
@@ -148,9 +147,9 @@ namespace akeyless.Model
         public Dictionary<string, string> Extensions { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
         /// </summary>
-        /// <value>Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 

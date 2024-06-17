@@ -41,11 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UscGet" /> class.
         /// </summary>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="secretId">The secret id (or name, for AWS, Azure or K8s targets) to get from the Universal Secrets Connector (required).</param>
+        /// <param name="_namespace">The namespace (relevant for Hashi vault target).</param>
+        /// <param name="secretId">The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscGet(bool json = false, string secretId = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        /// <param name="versionId">The version id (if not specified, will retrieve the last version).</param>
+        public UscGet(bool json = false, string _namespace = default(string), string secretId = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string), string versionId = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -60,8 +62,10 @@ namespace akeyless.Model
             }
             this.UscName = uscName;
             this.Json = json;
+            this.Namespace = _namespace;
             this.Token = token;
             this.UidToken = uidToken;
+            this.VersionId = versionId;
         }
 
         /// <summary>
@@ -72,9 +76,16 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// The secret id (or name, for AWS, Azure or K8s targets) to get from the Universal Secrets Connector
+        /// The namespace (relevant for Hashi vault target)
         /// </summary>
-        /// <value>The secret id (or name, for AWS, Azure or K8s targets) to get from the Universal Secrets Connector</value>
+        /// <value>The namespace (relevant for Hashi vault target)</value>
+        [DataMember(Name = "namespace", EmitDefaultValue = false)]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector
+        /// </summary>
+        /// <value>The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector</value>
         [DataMember(Name = "secret-id", IsRequired = true, EmitDefaultValue = true)]
         public string SecretId { get; set; }
 
@@ -100,6 +111,13 @@ namespace akeyless.Model
         public string UscName { get; set; }
 
         /// <summary>
+        /// The version id (if not specified, will retrieve the last version)
+        /// </summary>
+        /// <value>The version id (if not specified, will retrieve the last version)</value>
+        [DataMember(Name = "version-id", EmitDefaultValue = false)]
+        public string VersionId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -108,10 +126,12 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscGet {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");
+            sb.Append("  VersionId: ").Append(VersionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -152,6 +172,11 @@ namespace akeyless.Model
                     this.Json.Equals(input.Json)
                 ) && 
                 (
+                    this.Namespace == input.Namespace ||
+                    (this.Namespace != null &&
+                    this.Namespace.Equals(input.Namespace))
+                ) && 
+                (
                     this.SecretId == input.SecretId ||
                     (this.SecretId != null &&
                     this.SecretId.Equals(input.SecretId))
@@ -170,6 +195,11 @@ namespace akeyless.Model
                     this.UscName == input.UscName ||
                     (this.UscName != null &&
                     this.UscName.Equals(input.UscName))
+                ) && 
+                (
+                    this.VersionId == input.VersionId ||
+                    (this.VersionId != null &&
+                    this.VersionId.Equals(input.VersionId))
                 );
         }
 
@@ -183,6 +213,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
+                if (this.Namespace != null)
+                {
+                    hashCode = (hashCode * 59) + this.Namespace.GetHashCode();
+                }
                 if (this.SecretId != null)
                 {
                     hashCode = (hashCode * 59) + this.SecretId.GetHashCode();
@@ -198,6 +232,10 @@ namespace akeyless.Model
                 if (this.UscName != null)
                 {
                     hashCode = (hashCode * 59) + this.UscName.GetHashCode();
+                }
+                if (this.VersionId != null)
+                {
+                    hashCode = (hashCode * 59) + this.VersionId.GetHashCode();
                 }
                 return hashCode;
             }

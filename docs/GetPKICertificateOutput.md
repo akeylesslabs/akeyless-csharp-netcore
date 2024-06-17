@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertDisplayId** | **string** |  | [optional] 
+**CertItemId** | **long** |  | [optional] 
 **Data** | **string** |  | [optional] 
 **ParentCert** | **string** |  | [optional] 
 **Path** | **string** |  | [optional] 

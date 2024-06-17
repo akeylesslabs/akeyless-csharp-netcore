@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **GcpServiceAccountEmail** | **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | **string** | The key id of the gcp service account to rotate | [optional] 
 **GraceRotation** | **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
-**HostProvider** | **string** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional] [default to "explicit"]
+**HostProvider** | **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 
@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 **SshUsername** | **string** | Deprecated: use RotatedUser | [optional] 
 **StorageAccountKeyName** | **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
-**Target** | **List&lt;string&gt;** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times | [optional] 
+**Target** | **List&lt;string&gt;** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
