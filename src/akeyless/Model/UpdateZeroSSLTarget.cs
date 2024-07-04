@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateZeroSSLTarget
+    /// updateZeroSSLTarget is a command that updates an existing target. [Deprecated: Use target-update-zerossl command]
     /// </summary>
     [DataContract(Name = "updateZeroSSLTarget")]
     public partial class UpdateZeroSSLTarget : IEquatable<UpdateZeroSSLTarget>, IValidatableObject

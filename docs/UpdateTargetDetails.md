@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateTargetDetails
+updateTargetDetails is a command that updates an existing target. [Deprecated]
 
 ## Properties
 

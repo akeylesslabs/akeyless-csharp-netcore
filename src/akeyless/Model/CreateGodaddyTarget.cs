@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateGodaddyTarget
+    /// createGodaddyTarget is a command that creates a new target. [Deprecated: Use target-create-godaddy command]
     /// </summary>
     [DataContract(Name = "createGodaddyTarget")]
     public partial class CreateGodaddyTarget : IEquatable<CreateGodaddyTarget>, IValidatableObject

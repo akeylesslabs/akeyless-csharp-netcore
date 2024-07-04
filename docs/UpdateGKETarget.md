@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateGKETarget
+updateGKETarget is a command that updates an existing target. [Deprecated: Use target-update-gke command]
 
 ## Properties
 

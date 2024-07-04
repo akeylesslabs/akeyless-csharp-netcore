@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateWindowsTarget
+    /// createWindowsTarget is a command that creates a new windows target. [Deprecated: Use target-create-windows command]
     /// </summary>
     [DataContract(Name = "createWindowsTarget")]
     public partial class CreateWindowsTarget : IEquatable<CreateWindowsTarget>, IValidatableObject

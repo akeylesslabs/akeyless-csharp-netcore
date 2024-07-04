@@ -1,4 +1,5 @@
 # akeyless.Model.CreateWebTarget
+createWebTarget is a command that creates a new target. [Deprecated: Use target-create-web command]
 
 ## Properties
 

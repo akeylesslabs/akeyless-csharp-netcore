@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateHashiVaultTarget
+    /// updateHashiVaultTarget is a command that updates an existing target. [Deprecated: Use target-update-hashi-vault command]
     /// </summary>
     [DataContract(Name = "updateHashiVaultTarget")]
     public partial class UpdateHashiVaultTarget : IEquatable<UpdateHashiVaultTarget>, IValidatableObject

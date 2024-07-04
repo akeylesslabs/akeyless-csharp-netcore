@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// createAuthMethodEmail is a command that creates a new auth method that will be able to authenticate using email.
+    /// createAuthMethodEmail is a command that creates a new auth method that will be able to authenticate using email. [Deprecated: Use auth-method-create-email command]
     /// </summary>
     [DataContract(Name = "createAuthMethodEmail")]
     public partial class CreateAuthMethodEmail : IEquatable<CreateAuthMethodEmail>, IValidatableObject
@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodEmail" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="email">An email address to be invited to have access (required).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodEmail(long accessExpires = 0, List<string> boundIps = default(List<string>), string description = default(string), string email = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodEmail(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string description = default(string), string email = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -67,6 +68,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessExpires = accessExpires;
+            this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
@@ -84,6 +86,13 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
@@ -171,6 +180,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodEmail {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -220,6 +230,12 @@ namespace akeyless.Model
                 (
                     this.AccessExpires == input.AccessExpires ||
                     this.AccessExpires.Equals(input.AccessExpires)
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -288,6 +304,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
+                }
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();

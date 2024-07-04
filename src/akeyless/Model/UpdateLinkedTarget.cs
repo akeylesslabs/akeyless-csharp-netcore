@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateLinkedTarget
+    /// updateLinkedTarget is a command that updates an existing target. [Deprecated: Use target-update-linked command]
     /// </summary>
     [DataContract(Name = "updateLinkedTarget")]
     public partial class UpdateLinkedTarget : IEquatable<UpdateLinkedTarget>, IValidatableObject

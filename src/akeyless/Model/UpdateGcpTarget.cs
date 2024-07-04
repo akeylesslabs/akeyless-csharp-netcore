@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateGcpTarget
+    /// updateGcpTarget is a command that updates an existing target. [Deprecated: Use target-update-gcp command]
     /// </summary>
     [DataContract(Name = "updateGcpTarget")]
     public partial class UpdateGcpTarget : IEquatable<UpdateGcpTarget>, IValidatableObject

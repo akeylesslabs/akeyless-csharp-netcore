@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateLdapTarget
+    /// updateLdapTarget is a command that updates an existing target. [Deprecated: Use target-update-ldap command]
     /// </summary>
     [DataContract(Name = "updateLdapTarget")]
     public partial class UpdateLdapTarget : IEquatable<UpdateLdapTarget>, IValidatableObject
@@ -40,40 +40,55 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateLdapTarget" /> class.
         /// </summary>
-        /// <param name="bindDn">bindDn.</param>
-        /// <param name="bindDnPassword">bindDnPassword.</param>
+        /// <param name="bindDn">Bind DN (required).</param>
+        /// <param name="bindDnPassword">Bind DN Password (required).</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
-        /// <param name="ldapCaCert">ldapCaCert.</param>
-        /// <param name="ldapUrl">ldapUrl.</param>
+        /// <param name="ldapCaCert">CA Certificate File Content.</param>
+        /// <param name="ldapUrl">LDAP Server URL (required).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
         /// <param name="serverType">Set Ldap server type, Options:[OpenLDAP, ActiveDirectory].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="tokenExpiration">tokenExpiration.</param>
+        /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
+            // to ensure "bindDn" is required (not null)
+            if (bindDn == null)
+            {
+                throw new ArgumentNullException("bindDn is a required property for UpdateLdapTarget and cannot be null");
+            }
+            this.BindDn = bindDn;
+            // to ensure "bindDnPassword" is required (not null)
+            if (bindDnPassword == null)
+            {
+                throw new ArgumentNullException("bindDnPassword is a required property for UpdateLdapTarget and cannot be null");
+            }
+            this.BindDnPassword = bindDnPassword;
+            // to ensure "ldapUrl" is required (not null)
+            if (ldapUrl == null)
+            {
+                throw new ArgumentNullException("ldapUrl is a required property for UpdateLdapTarget and cannot be null");
+            }
+            this.LdapUrl = ldapUrl;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for UpdateLdapTarget and cannot be null");
             }
             this.Name = name;
-            this.BindDn = bindDn;
-            this.BindDnPassword = bindDnPassword;
             this.Comment = comment;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.LdapCaCert = ldapCaCert;
-            this.LdapUrl = ldapUrl;
             this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.ServerType = serverType;
@@ -84,15 +99,17 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets BindDn
+        /// Bind DN
         /// </summary>
-        [DataMember(Name = "bind-dn", EmitDefaultValue = false)]
+        /// <value>Bind DN</value>
+        [DataMember(Name = "bind-dn", IsRequired = true, EmitDefaultValue = true)]
         public string BindDn { get; set; }
 
         /// <summary>
-        /// Gets or Sets BindDnPassword
+        /// Bind DN Password
         /// </summary>
-        [DataMember(Name = "bind-dn-password", EmitDefaultValue = false)]
+        /// <value>Bind DN Password</value>
+        [DataMember(Name = "bind-dn-password", IsRequired = true, EmitDefaultValue = true)]
         public string BindDnPassword { get; set; }
 
         /// <summary>
@@ -131,15 +148,17 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
-        /// Gets or Sets LdapCaCert
+        /// CA Certificate File Content
         /// </summary>
+        /// <value>CA Certificate File Content</value>
         [DataMember(Name = "ldap-ca-cert", EmitDefaultValue = false)]
         public string LdapCaCert { get; set; }
 
         /// <summary>
-        /// Gets or Sets LdapUrl
+        /// LDAP Server URL
         /// </summary>
-        [DataMember(Name = "ldap-url", EmitDefaultValue = false)]
+        /// <value>LDAP Server URL</value>
+        [DataMember(Name = "ldap-url", IsRequired = true, EmitDefaultValue = true)]
         public string LdapUrl { get; set; }
 
         /// <summary>
@@ -178,8 +197,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or Sets TokenExpiration
+        /// Token expiration
         /// </summary>
+        /// <value>Token expiration</value>
         [DataMember(Name = "token-expiration", EmitDefaultValue = false)]
         public string TokenExpiration { get; set; }
 

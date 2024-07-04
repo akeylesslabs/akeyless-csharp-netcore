@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// ListTargets
+    /// listTargets is a command that returns a list of targets. [Deprecated: Use target-list command]
     /// </summary>
     [DataContract(Name = "listTargets")]
     public partial class ListTargets : IEquatable<ListTargets>, IValidatableObject

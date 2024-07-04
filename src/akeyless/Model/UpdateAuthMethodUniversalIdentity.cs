@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// updateAuthMethodUniversalIdentity is a command that updates a new auth method that will be able to authenticate using Akeyless Universal Identity.
+    /// updateAuthMethodUniversalIdentity is a command that updates a new auth method that will be able to authenticate using Akeyless Universal Identity. [Deprecated: Use auth-method-update-universal-identity command]
     /// </summary>
     [DataContract(Name = "updateAuthMethodUniversalIdentity")]
     public partial class UpdateAuthMethodUniversalIdentity : IEquatable<UpdateAuthMethodUniversalIdentity>, IValidatableObject
@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAuthMethodUniversalIdentity" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="denyInheritance">Deny from root to create children.</param>
         /// <param name="denyRotate">Deny from the token to rotate.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int ttl = 60, string uidToken = default(string))
+        public UpdateAuthMethodUniversalIdentity(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int ttl = 60, string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,6 +65,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessExpires = accessExpires;
+            this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
             this.DenyInheritance = denyInheritance;
             this.DenyRotate = denyRotate;
@@ -85,6 +87,13 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
@@ -193,6 +202,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAuthMethodUniversalIdentity {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
@@ -245,6 +255,12 @@ namespace akeyless.Model
                 (
                     this.AccessExpires == input.AccessExpires ||
                     this.AccessExpires.Equals(input.AccessExpires)
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -325,6 +341,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
+                }
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();

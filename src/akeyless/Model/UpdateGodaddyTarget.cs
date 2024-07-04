@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateGodaddyTarget
+    /// updateGodaddyTarget is a command that updates an existing target. [Deprecated: Use target-update-godaddy command]
     /// </summary>
     [DataContract(Name = "updateGodaddyTarget")]
     public partial class UpdateGodaddyTarget : IEquatable<UpdateGodaddyTarget>, IValidatableObject

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateLinkedTarget
+    /// createLinkedTarget is a command that creates a new Linked Target which can inherit credentials from existing Targets. [Deprecated: Use target-create-linked command]
     /// </summary>
     [DataContract(Name = "createLinkedTarget")]
     public partial class CreateLinkedTarget : IEquatable<CreateLinkedTarget>, IValidatableObject

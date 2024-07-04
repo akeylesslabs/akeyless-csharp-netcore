@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodHuawei" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="authUrl">sts URL (default to &quot;https://iam.myhwclouds.com:443/v3&quot;).</param>
         /// <param name="boundDomainId">A list of domain IDs that the access is restricted to.</param>
         /// <param name="boundDomainName">A list of domain names that the access is restricted to.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodHuawei(long accessExpires = 0, string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodHuawei(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), string authUrl = "https://iam.myhwclouds.com:443/v3", List<string> boundDomainId = default(List<string>), List<string> boundDomainName = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundTenantId = default(List<string>), List<string> boundTenantName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -67,6 +68,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessExpires = accessExpires;
+            this.AuditLogsClaims = auditLogsClaims;
             // use default value if no "authUrl" provided
             this.AuthUrl = authUrl ?? "https://iam.myhwclouds.com:443/v3";
             this.BoundDomainId = boundDomainId;
@@ -92,6 +94,13 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// sts URL
@@ -221,6 +230,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodHuawei {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  AuthUrl: ").Append(AuthUrl).Append("\n");
             sb.Append("  BoundDomainId: ").Append(BoundDomainId).Append("\n");
             sb.Append("  BoundDomainName: ").Append(BoundDomainName).Append("\n");
@@ -276,6 +286,12 @@ namespace akeyless.Model
                 (
                     this.AccessExpires == input.AccessExpires ||
                     this.AccessExpires.Equals(input.AccessExpires)
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.AuthUrl == input.AuthUrl ||
@@ -380,6 +396,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.AccessExpires.GetHashCode();
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
+                }
                 if (this.AuthUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.AuthUrl.GetHashCode();

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteAuthMethod
+    /// deleteAuthMethod is a command that deletes the auth method. [Deprecated: Use auth-method-delete command]
     /// </summary>
     [DataContract(Name = "deleteAuthMethod")]
     public partial class DeleteAuthMethod : IEquatable<DeleteAuthMethod>, IValidatableObject

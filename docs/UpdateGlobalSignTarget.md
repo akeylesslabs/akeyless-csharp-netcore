@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateGlobalSignTarget
+updateGlobalSignTarget is a command that updates an existing target. [Deprecated: Use target-update-globalsign command]
 
 ## Properties
 

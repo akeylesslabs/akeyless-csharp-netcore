@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// GetTargetDetails
+    /// getTargetDetails is a command that returns target details. [Deprecated: Use target-get-details command]
     /// </summary>
     [DataContract(Name = "getTargetDetails")]
     public partial class GetTargetDetails : IEquatable<GetTargetDetails>, IValidatableObject

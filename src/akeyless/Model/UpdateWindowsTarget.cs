@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateWindowsTarget
+    /// updateWindowsTarget is a command that updates an existing windows target. [Deprecated: Use target-update-windows command]
     /// </summary>
     [DataContract(Name = "updateWindowsTarget")]
     public partial class UpdateWindowsTarget : IEquatable<UpdateWindowsTarget>, IValidatableObject

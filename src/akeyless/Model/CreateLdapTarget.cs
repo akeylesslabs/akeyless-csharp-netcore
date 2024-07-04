@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateLdapTarget
+    /// createldapTarget is a command that creates a new target. [Deprecated: Use target-create-ldap command]
     /// </summary>
     [DataContract(Name = "createLdapTarget")]
     public partial class CreateLdapTarget : IEquatable<CreateLdapTarget>, IValidatableObject

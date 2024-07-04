@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateAWSTarget
+updateAWSTarget is a command that updates a new target. [Deprecated: Use target-update-aws command]
 
 ## Properties
 

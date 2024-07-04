@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateGlobalSignTarget
+    /// updateGlobalSignTarget is a command that updates an existing target. [Deprecated: Use target-update-globalsign command]
     /// </summary>
     [DataContract(Name = "updateGlobalSignTarget")]
     public partial class UpdateGlobalSignTarget : IEquatable<UpdateGlobalSignTarget>, IValidatableObject

@@ -37,6 +37,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accountDefaultKeyItemId">AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key.</param>
         /// <param name="accountDefaultKeyName">AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will..</param>
+        /// <param name="allowedClientsIps">allowedClientsIps.</param>
+        /// <param name="allowedGatewaysIps">allowedGatewaysIps.</param>
         /// <param name="authUsageEvent">authUsageEvent.</param>
         /// <param name="dataProtectionSection">dataProtectionSection.</param>
         /// <param name="dynamicSecretMaxTtl">dynamicSecretMaxTtl.</param>
@@ -48,10 +50,12 @@ namespace akeyless.Model
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), UsageEventSetting authUsageEvent = default(UsageEventSetting), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
+            this.AllowedClientsIps = allowedClientsIps;
+            this.AllowedGatewaysIps = allowedGatewaysIps;
             this.AuthUsageEvent = authUsageEvent;
             this.DataProtectionSection = dataProtectionSection;
             this.DynamicSecretMaxTtl = dynamicSecretMaxTtl;
@@ -78,6 +82,18 @@ namespace akeyless.Model
         /// <value>AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.</value>
         [DataMember(Name = "account_default_key_name", EmitDefaultValue = false)]
         public string AccountDefaultKeyName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientsIps
+        /// </summary>
+        [DataMember(Name = "allowed_clients_ips", EmitDefaultValue = false)]
+        public AllowedIpSettings AllowedClientsIps { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedGatewaysIps
+        /// </summary>
+        [DataMember(Name = "allowed_gateways_ips", EmitDefaultValue = false)]
+        public AllowedIpSettings AllowedGatewaysIps { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthUsageEvent
@@ -157,6 +173,8 @@ namespace akeyless.Model
             sb.Append("class AccountGeneralSettings {\n");
             sb.Append("  AccountDefaultKeyItemId: ").Append(AccountDefaultKeyItemId).Append("\n");
             sb.Append("  AccountDefaultKeyName: ").Append(AccountDefaultKeyName).Append("\n");
+            sb.Append("  AllowedClientsIps: ").Append(AllowedClientsIps).Append("\n");
+            sb.Append("  AllowedGatewaysIps: ").Append(AllowedGatewaysIps).Append("\n");
             sb.Append("  AuthUsageEvent: ").Append(AuthUsageEvent).Append("\n");
             sb.Append("  DataProtectionSection: ").Append(DataProtectionSection).Append("\n");
             sb.Append("  DynamicSecretMaxTtl: ").Append(DynamicSecretMaxTtl).Append("\n");
@@ -211,6 +229,16 @@ namespace akeyless.Model
                     this.AccountDefaultKeyName == input.AccountDefaultKeyName ||
                     (this.AccountDefaultKeyName != null &&
                     this.AccountDefaultKeyName.Equals(input.AccountDefaultKeyName))
+                ) && 
+                (
+                    this.AllowedClientsIps == input.AllowedClientsIps ||
+                    (this.AllowedClientsIps != null &&
+                    this.AllowedClientsIps.Equals(input.AllowedClientsIps))
+                ) && 
+                (
+                    this.AllowedGatewaysIps == input.AllowedGatewaysIps ||
+                    (this.AllowedGatewaysIps != null &&
+                    this.AllowedGatewaysIps.Equals(input.AllowedGatewaysIps))
                 ) && 
                 (
                     this.AuthUsageEvent == input.AuthUsageEvent ||
@@ -279,6 +307,14 @@ namespace akeyless.Model
                 if (this.AccountDefaultKeyName != null)
                 {
                     hashCode = (hashCode * 59) + this.AccountDefaultKeyName.GetHashCode();
+                }
+                if (this.AllowedClientsIps != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedClientsIps.GetHashCode();
+                }
+                if (this.AllowedGatewaysIps != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedGatewaysIps.GetHashCode();
                 }
                 if (this.AuthUsageEvent != null)
                 {

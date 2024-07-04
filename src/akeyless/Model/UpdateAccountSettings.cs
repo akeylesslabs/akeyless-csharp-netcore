@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAccountSettings" /> class.
         /// </summary>
         /// <param name="address">Address.</param>
+        /// <param name="boundIps">A default list of comma-separated CIDR block that are allowed to authenticate..</param>
         /// <param name="city">City.</param>
         /// <param name="companyName">Company name.</param>
         /// <param name="country">Country.</param>
@@ -47,6 +48,7 @@ namespace akeyless.Model
         /// <param name="dynamicSecretMaxTtlEnable">Set a maximum ttl for dynamic secrets [true/false].</param>
         /// <param name="enableItemSharing">Enable sharing items [true/false].</param>
         /// <param name="forceNewVersions">If set to true, new version will be created on update.</param>
+        /// <param name="gwBoundIps">A default list of comma-separated CIDR block that acts as a trusted Gateway entity..</param>
         /// <param name="invalidCharacters">Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. (default to &quot;notReceivedInvalidCharacter&quot;).</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="itemsDeletionProtection">Set or unset the default behaviour of items deletion protection [true/false].</param>
@@ -54,7 +56,9 @@ namespace akeyless.Model
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
+        /// <param name="lockBoundIps">Lock bound-ips setting globally in the account..</param>
         /// <param name="lockDefaultKey">Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false].</param>
+        /// <param name="lockGwBoundIps">Lock gw-bound-ips setting in the account..</param>
         /// <param name="maxRotationInterval">Set the maximum rotation interval for rotated secrets auto rotation settings.</param>
         /// <param name="maxRotationIntervalEnable">Set a maximum rotation interval for rotated secrets auto rotation settings [true/false].</param>
         /// <param name="maxVersions">Max versions.</param>
@@ -70,9 +74,10 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableItemSharing = default(string), string forceNewVersions = default(string), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockDefaultKey = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableItemSharing = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
+            this.BoundIps = boundIps;
             this.City = city;
             this.CompanyName = companyName;
             this.Country = country;
@@ -84,6 +89,7 @@ namespace akeyless.Model
             this.DynamicSecretMaxTtlEnable = dynamicSecretMaxTtlEnable;
             this.EnableItemSharing = enableItemSharing;
             this.ForceNewVersions = forceNewVersions;
+            this.GwBoundIps = gwBoundIps;
             // use default value if no "invalidCharacters" provided
             this.InvalidCharacters = invalidCharacters ?? "notReceivedInvalidCharacter";
             this.ItemType = itemType;
@@ -92,7 +98,9 @@ namespace akeyless.Model
             this.JwtTtlDefault = jwtTtlDefault;
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
+            this.LockBoundIps = lockBoundIps;
             this.LockDefaultKey = lockDefaultKey;
+            this.LockGwBoundIps = lockGwBoundIps;
             this.MaxRotationInterval = maxRotationInterval;
             this.MaxRotationIntervalEnable = maxRotationIntervalEnable;
             this.MaxVersions = maxVersions;
@@ -116,6 +124,13 @@ namespace akeyless.Model
         /// <value>Address</value>
         [DataMember(Name = "address", EmitDefaultValue = false)]
         public string Address { get; set; }
+
+        /// <summary>
+        /// A default list of comma-separated CIDR block that are allowed to authenticate.
+        /// </summary>
+        /// <value>A default list of comma-separated CIDR block that are allowed to authenticate.</value>
+        [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
+        public List<string> BoundIps { get; set; }
 
         /// <summary>
         /// City
@@ -195,6 +210,13 @@ namespace akeyless.Model
         public string ForceNewVersions { get; set; }
 
         /// <summary>
+        /// A default list of comma-separated CIDR block that acts as a trusted Gateway entity.
+        /// </summary>
+        /// <value>A default list of comma-separated CIDR block that acts as a trusted Gateway entity.</value>
+        [DataMember(Name = "gw-bound-ips", EmitDefaultValue = false)]
+        public List<string> GwBoundIps { get; set; }
+
+        /// <summary>
         /// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
         /// </summary>
         /// <value>Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.</value>
@@ -244,11 +266,25 @@ namespace akeyless.Model
         public long JwtTtlMin { get; set; }
 
         /// <summary>
+        /// Lock bound-ips setting globally in the account.
+        /// </summary>
+        /// <value>Lock bound-ips setting globally in the account.</value>
+        [DataMember(Name = "lock-bound-ips", EmitDefaultValue = false)]
+        public string LockBoundIps { get; set; }
+
+        /// <summary>
         /// Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]
         /// </summary>
         /// <value>Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]</value>
         [DataMember(Name = "lock-default-key", EmitDefaultValue = false)]
         public string LockDefaultKey { get; set; }
+
+        /// <summary>
+        /// Lock gw-bound-ips setting in the account.
+        /// </summary>
+        /// <value>Lock gw-bound-ips setting in the account.</value>
+        [DataMember(Name = "lock-gw-bound-ips", EmitDefaultValue = false)]
+        public string LockGwBoundIps { get; set; }
 
         /// <summary>
         /// Set the maximum rotation interval for rotated secrets auto rotation settings
@@ -364,6 +400,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAccountSettings {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
@@ -375,6 +412,7 @@ namespace akeyless.Model
             sb.Append("  DynamicSecretMaxTtlEnable: ").Append(DynamicSecretMaxTtlEnable).Append("\n");
             sb.Append("  EnableItemSharing: ").Append(EnableItemSharing).Append("\n");
             sb.Append("  ForceNewVersions: ").Append(ForceNewVersions).Append("\n");
+            sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemsDeletionProtection: ").Append(ItemsDeletionProtection).Append("\n");
@@ -382,7 +420,9 @@ namespace akeyless.Model
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
+            sb.Append("  LockBoundIps: ").Append(LockBoundIps).Append("\n");
             sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
+            sb.Append("  LockGwBoundIps: ").Append(LockGwBoundIps).Append("\n");
             sb.Append("  MaxRotationInterval: ").Append(MaxRotationInterval).Append("\n");
             sb.Append("  MaxRotationIntervalEnable: ").Append(MaxRotationIntervalEnable).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
@@ -439,6 +479,12 @@ namespace akeyless.Model
                     this.Address.Equals(input.Address))
                 ) && 
                 (
+                    this.BoundIps == input.BoundIps ||
+                    this.BoundIps != null &&
+                    input.BoundIps != null &&
+                    this.BoundIps.SequenceEqual(input.BoundIps)
+                ) && 
+                (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
@@ -493,6 +539,12 @@ namespace akeyless.Model
                     this.ForceNewVersions.Equals(input.ForceNewVersions))
                 ) && 
                 (
+                    this.GwBoundIps == input.GwBoundIps ||
+                    this.GwBoundIps != null &&
+                    input.GwBoundIps != null &&
+                    this.GwBoundIps.SequenceEqual(input.GwBoundIps)
+                ) && 
+                (
                     this.InvalidCharacters == input.InvalidCharacters ||
                     (this.InvalidCharacters != null &&
                     this.InvalidCharacters.Equals(input.InvalidCharacters))
@@ -524,9 +576,19 @@ namespace akeyless.Model
                     this.JwtTtlMin.Equals(input.JwtTtlMin)
                 ) && 
                 (
+                    this.LockBoundIps == input.LockBoundIps ||
+                    (this.LockBoundIps != null &&
+                    this.LockBoundIps.Equals(input.LockBoundIps))
+                ) && 
+                (
                     this.LockDefaultKey == input.LockDefaultKey ||
                     (this.LockDefaultKey != null &&
                     this.LockDefaultKey.Equals(input.LockDefaultKey))
+                ) && 
+                (
+                    this.LockGwBoundIps == input.LockGwBoundIps ||
+                    (this.LockGwBoundIps != null &&
+                    this.LockGwBoundIps.Equals(input.LockGwBoundIps))
                 ) && 
                 (
                     this.MaxRotationInterval == input.MaxRotationInterval ||
@@ -615,6 +677,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Address.GetHashCode();
                 }
+                if (this.BoundIps != null)
+                {
+                    hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
                 if (this.City != null)
                 {
                     hashCode = (hashCode * 59) + this.City.GetHashCode();
@@ -656,6 +722,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ForceNewVersions.GetHashCode();
                 }
+                if (this.GwBoundIps != null)
+                {
+                    hashCode = (hashCode * 59) + this.GwBoundIps.GetHashCode();
+                }
                 if (this.InvalidCharacters != null)
                 {
                     hashCode = (hashCode * 59) + this.InvalidCharacters.GetHashCode();
@@ -672,9 +742,17 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.JwtTtlDefault.GetHashCode();
                 hashCode = (hashCode * 59) + this.JwtTtlMax.GetHashCode();
                 hashCode = (hashCode * 59) + this.JwtTtlMin.GetHashCode();
+                if (this.LockBoundIps != null)
+                {
+                    hashCode = (hashCode * 59) + this.LockBoundIps.GetHashCode();
+                }
                 if (this.LockDefaultKey != null)
                 {
                     hashCode = (hashCode * 59) + this.LockDefaultKey.GetHashCode();
+                }
+                if (this.LockGwBoundIps != null)
+                {
+                    hashCode = (hashCode * 59) + this.LockGwBoundIps.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.MaxRotationInterval.GetHashCode();
                 if (this.MaxRotationIntervalEnable != null)

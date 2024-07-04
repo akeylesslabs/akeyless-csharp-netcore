@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateGlobalSignAtlasTarget
+    /// createGlobalSignAtlasTarget is a command that creates a new target. [Deprecated: Use target-create-globalsign-atlas command]
     /// </summary>
     [DataContract(Name = "createGlobalSignAtlasTarget")]
     public partial class CreateGlobalSignAtlasTarget : IEquatable<CreateGlobalSignAtlasTarget>, IValidatableObject

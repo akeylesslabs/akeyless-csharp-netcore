@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateEKSTarget
+    /// updateEKSTarget is a command that updates an existing target. [Deprecated: Use target-update-eks command]
     /// </summary>
     [DataContract(Name = "updateEKSTarget")]
     public partial class UpdateEKSTarget : IEquatable<UpdateEKSTarget>, IValidatableObject

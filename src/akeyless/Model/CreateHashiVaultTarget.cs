@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateHashiVaultTarget
+    /// createHashiVaultTarget is a command that creates a new hashi-vault target. [Deprecated: Use target-create-hashi-vault command]
     /// </summary>
     [DataContract(Name = "createHashiVaultTarget")]
     public partial class CreateHashiVaultTarget : IEquatable<CreateHashiVaultTarget>, IValidatableObject

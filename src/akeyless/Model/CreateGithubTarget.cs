@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateGithubTarget
+    /// createGithubTarget is a command that creates a new target. [Deprecated: Use target-create-github command]
     /// </summary>
     [DataContract(Name = "createGithubTarget")]
     public partial class CreateGithubTarget : IEquatable<CreateGithubTarget>, IValidatableObject

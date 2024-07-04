@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateNativeK8STarget
+    /// createNativeK8STarget is a command that creates a new target. [Deprecated: Use target-create-k8s command]
     /// </summary>
     [DataContract(Name = "createNativeK8STarget")]
     public partial class CreateNativeK8STarget : IEquatable<CreateNativeK8STarget>, IValidatableObject

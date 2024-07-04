@@ -1,4 +1,5 @@
 # akeyless.Model.GetTargetDetails
+getTargetDetails is a command that returns target details. [Deprecated: Use target-get-details command]
 
 ## Properties
 

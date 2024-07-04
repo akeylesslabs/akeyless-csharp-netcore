@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateAzureTarget
+updateAzureTarget is a command that updates an existing target. [Deprecated: Use target-update-azure command]
 
 ## Properties
 

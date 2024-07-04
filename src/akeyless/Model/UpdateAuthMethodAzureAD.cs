@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// updateAuthMethodAzureAD is a command that updates a new auth method that will be able to authenticate using Azure Active Directory credentials.
+    /// updateAuthMethodAzureAD is a command that updates a new auth method that will be able to authenticate using Azure Active Directory credentials. [Deprecated: Use auth-method-update-azure-ad command]
     /// </summary>
     [DataContract(Name = "updateAuthMethodAzureAD")]
     public partial class UpdateAuthMethodAzureAD : IEquatable<UpdateAuthMethodAzureAD>, IValidatableObject
@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="audience">Deprecated (Deprecated) The audience in the JWT (default to &quot;https://management.azure.com/&quot;).</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundGroupId">A list of group ids that the access is restricted to.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundProviders">A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc).</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethodAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> auditLogsClaims = default(List<string>), List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.AccessExpires = accessExpires;
             // use default value if no "audience" provided
             this.Audience = audience ?? "https://management.azure.com/";
+            this.AuditLogsClaims = auditLogsClaims;
             this.BoundGroupId = boundGroupId;
             this.BoundIps = boundIps;
             this.BoundProviders = boundProviders;
@@ -118,6 +120,13 @@ namespace akeyless.Model
         /// <value>Deprecated (Deprecated) The audience in the JWT</value>
         [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// A list of group ids that the access is restricted to
@@ -283,6 +292,7 @@ namespace akeyless.Model
             sb.Append("class UpdateAuthMethodAzureAD {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundGroupId: ").Append(BoundGroupId).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  BoundProviders: ").Append(BoundProviders).Append("\n");
@@ -348,6 +358,12 @@ namespace akeyless.Model
                     this.Audience == input.Audience ||
                     (this.Audience != null &&
                     this.Audience.Equals(input.Audience))
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.BoundGroupId == input.BoundGroupId ||
@@ -482,6 +498,10 @@ namespace akeyless.Model
                 if (this.Audience != null)
                 {
                     hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
                 }
                 if (this.BoundGroupId != null)
                 {

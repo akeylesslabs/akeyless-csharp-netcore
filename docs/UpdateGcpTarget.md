@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateGcpTarget
+updateGcpTarget is a command that updates an existing target. [Deprecated: Use target-update-gcp command]
 
 ## Properties
 

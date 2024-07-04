@@ -1,4 +1,5 @@
 # akeyless.Model.CreateEKSTarget
+createEKSTarget is a command that creates a new target. [Deprecated: Use target-create-eks command]
 
 ## Properties
 

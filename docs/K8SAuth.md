@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **K8sPubKeysPem** | **List&lt;string&gt;** | K8SPublicKeysPEM is the list of public key in PEM format | [optional] 
 **K8sTokenReviewerJwt** | **string** | K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call | [optional] 
 **Name** | **string** |  | [optional] 
-**ProtectionKey** | **string** |  | [optional] 
 **RancherApiKey** | **string** | RancherApiKey the bear token for clusterApiTypeRancher | [optional] 
 **RancherClusterId** | **string** | RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher) | [optional] 
 **UseLocalCaJwt** | **bool** | UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod | [optional] 

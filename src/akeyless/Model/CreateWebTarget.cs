@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateWebTarget
+    /// createWebTarget is a command that creates a new target. [Deprecated: Use target-create-web command]
     /// </summary>
     [DataContract(Name = "createWebTarget")]
     public partial class CreateWebTarget : IEquatable<CreateWebTarget>, IValidatableObject

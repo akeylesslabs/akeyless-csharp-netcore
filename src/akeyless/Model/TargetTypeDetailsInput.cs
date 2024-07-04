@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="eksTargetDetails">eksTargetDetails.</param>
         /// <param name="gcpTargetDetails">gcpTargetDetails.</param>
         /// <param name="githubTargetDetails">githubTargetDetails.</param>
+        /// <param name="gitlabTargetDetails">gitlabTargetDetails.</param>
         /// <param name="gkeTargetDetails">gkeTargetDetails.</param>
         /// <param name="globalsignAtlasTargetDetails">globalsignAtlasTargetDetails.</param>
         /// <param name="globalsignTargetDetails">globalsignTargetDetails.</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="webTargetDetails">webTargetDetails.</param>
         /// <param name="windowsTargetDetails">windowsTargetDetails.</param>
         /// <param name="zerosslTargetDetails">zerosslTargetDetails.</param>
-        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), GodaddyTargetDetails godaddyTargetDetails = default(GodaddyTargetDetails), HashiVaultTargetDetails hashiVaultTargetDetails = default(HashiVaultTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
+        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GitlabTargetDetails gitlabTargetDetails = default(GitlabTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), GodaddyTargetDetails godaddyTargetDetails = default(GodaddyTargetDetails), HashiVaultTargetDetails hashiVaultTargetDetails = default(HashiVaultTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
         {
             this.ArtifactoryTargetDetails = artifactoryTargetDetails;
             this.AwsTargetDetails = awsTargetDetails;
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.EksTargetDetails = eksTargetDetails;
             this.GcpTargetDetails = gcpTargetDetails;
             this.GithubTargetDetails = githubTargetDetails;
+            this.GitlabTargetDetails = gitlabTargetDetails;
             this.GkeTargetDetails = gkeTargetDetails;
             this.GlobalsignAtlasTargetDetails = globalsignAtlasTargetDetails;
             this.GlobalsignTargetDetails = globalsignTargetDetails;
@@ -152,6 +154,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "github_target_details", EmitDefaultValue = false)]
         public GithubTargetDetails GithubTargetDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GitlabTargetDetails
+        /// </summary>
+        [DataMember(Name = "gitlab_target_details", EmitDefaultValue = false)]
+        public GitlabTargetDetails GitlabTargetDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets GkeTargetDetails
@@ -273,6 +281,7 @@ namespace akeyless.Model
             sb.Append("  EksTargetDetails: ").Append(EksTargetDetails).Append("\n");
             sb.Append("  GcpTargetDetails: ").Append(GcpTargetDetails).Append("\n");
             sb.Append("  GithubTargetDetails: ").Append(GithubTargetDetails).Append("\n");
+            sb.Append("  GitlabTargetDetails: ").Append(GitlabTargetDetails).Append("\n");
             sb.Append("  GkeTargetDetails: ").Append(GkeTargetDetails).Append("\n");
             sb.Append("  GlobalsignAtlasTargetDetails: ").Append(GlobalsignAtlasTargetDetails).Append("\n");
             sb.Append("  GlobalsignTargetDetails: ").Append(GlobalsignTargetDetails).Append("\n");
@@ -374,6 +383,11 @@ namespace akeyless.Model
                     this.GithubTargetDetails == input.GithubTargetDetails ||
                     (this.GithubTargetDetails != null &&
                     this.GithubTargetDetails.Equals(input.GithubTargetDetails))
+                ) && 
+                (
+                    this.GitlabTargetDetails == input.GitlabTargetDetails ||
+                    (this.GitlabTargetDetails != null &&
+                    this.GitlabTargetDetails.Equals(input.GitlabTargetDetails))
                 ) && 
                 (
                     this.GkeTargetDetails == input.GkeTargetDetails ||
@@ -510,6 +524,10 @@ namespace akeyless.Model
                 if (this.GithubTargetDetails != null)
                 {
                     hashCode = (hashCode * 59) + this.GithubTargetDetails.GetHashCode();
+                }
+                if (this.GitlabTargetDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.GitlabTargetDetails.GetHashCode();
                 }
                 if (this.GkeTargetDetails != null)
                 {

@@ -1,4 +1,5 @@
 # akeyless.Model.CreateDockerhubTarget
+createDockerhubTarget is a command that creates a new target. [Deprecated: Use target-create-dockerhub command]
 
 ## Properties
 
@@ -6,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | **string** | Deprecated - use description | [optional] 
 **Description** | **string** | Description of the object | [optional] 
-**DockerhubPassword** | **string** | DockerhubPassword is either the user&#39;s password to manage the repository | [optional] 
-**DockerhubUsername** | **string** | DockerhubUsername is the name of the user in dockerhub | [optional] 
+**DockerhubPassword** | **string** | Password for docker repository | [optional] 
+**DockerhubUsername** | **string** | Username for docker repository | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 

@@ -1,4 +1,5 @@
 # akeyless.Model.GetTarget
+getTarget is a command that returns target. [Deprecated: Use target-get command]
 
 ## Properties
 

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// DeleteTarget
+    /// deleteTarget is a command that deletes a target. [Deprecated: Use target-delete command]
     /// </summary>
     [DataContract(Name = "deleteTarget")]
     public partial class DeleteTarget : IEquatable<DeleteTarget>, IValidatableObject

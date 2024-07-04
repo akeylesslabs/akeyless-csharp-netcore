@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// updateAuthMethodGCP is a command that updates a new auth method that will be able to authenticate using GCP IAM Service Account credentials or GCE instance credentials.
+    /// updateAuthMethodGCP is a command that updates a new auth method that will be able to authenticate using GCP IAM Service Account credentials or GCE instance credentials. [Deprecated: Use auth-method-update-gcp command]
     /// </summary>
     [DataContract(Name = "updateAuthMethodGCP")]
     public partial class UpdateAuthMethodGCP : IEquatable<UpdateAuthMethodGCP>, IValidatableObject
@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="audience">The audience to verify in the JWT received by the client (required) (default to &quot;akeyless.io&quot;).</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundLabels">A comma-separated list of GCP labels formatted as \&quot;key:value\&quot; strings that must be set on authorized GCE instances. TODO: Because GCP labels are not currently ACL&#39;d .....</param>
         /// <param name="boundProjects">&#x3D;&#x3D;&#x3D; Human and Machine authentication section &#x3D;&#x3D;&#x3D; Array of GCP project IDs. Only entities belonging to any of the provided projects can authenticate..</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public UpdateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "audience" is required (not null)
             if (audience == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
             }
             this.Type = type;
             this.AccessExpires = accessExpires;
+            this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
             this.BoundLabels = boundLabels;
             this.BoundProjects = boundProjects;
@@ -112,6 +114,13 @@ namespace akeyless.Model
         /// <value>The audience to verify in the JWT received by the client</value>
         [DataMember(Name = "audience", IsRequired = true, EmitDefaultValue = true)]
         public string Audience { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
@@ -249,6 +258,7 @@ namespace akeyless.Model
             sb.Append("class UpdateAuthMethodGCP {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  BoundLabels: ").Append(BoundLabels).Append("\n");
             sb.Append("  BoundProjects: ").Append(BoundProjects).Append("\n");
@@ -310,6 +320,12 @@ namespace akeyless.Model
                     this.Audience == input.Audience ||
                     (this.Audience != null &&
                     this.Audience.Equals(input.Audience))
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -421,6 +437,10 @@ namespace akeyless.Model
                 if (this.Audience != null)
                 {
                     hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
                 }
                 if (this.BoundIps != null)
                 {

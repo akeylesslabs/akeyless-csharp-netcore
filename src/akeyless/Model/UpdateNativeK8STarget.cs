@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateNativeK8STarget
+    /// updateNativeK8STarget is a command that updates an existing target. [Deprecated: Use target-update-k8s command]
     /// </summary>
     [DataContract(Name = "updateNativeK8STarget")]
     public partial class UpdateNativeK8STarget : IEquatable<UpdateNativeK8STarget>, IValidatableObject

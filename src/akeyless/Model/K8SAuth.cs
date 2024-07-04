@@ -50,11 +50,10 @@ namespace akeyless.Model
         /// <param name="k8sPubKeysPem">K8SPublicKeysPEM is the list of public key in PEM format.</param>
         /// <param name="k8sTokenReviewerJwt">K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call.</param>
         /// <param name="name">name.</param>
-        /// <param name="protectionKey">protectionKey.</param>
         /// <param name="rancherApiKey">RancherApiKey the bear token for clusterApiTypeRancher.</param>
         /// <param name="rancherClusterId">RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher).</param>
         /// <param name="useLocalCaJwt">UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod.</param>
-        public K8SAuth(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), string clusterApiType = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sAuthType = default(string), string k8sCaCert = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string protectionKey = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), bool useLocalCaJwt = default(bool))
+        public K8SAuth(long amTokenExpiration = default(long), string authMethodAccessId = default(string), string authMethodPrvKeyPem = default(string), string clusterApiType = default(string), bool disableIssValidation = default(bool), string id = default(string), string k8sAuthType = default(string), string k8sCaCert = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sHost = default(string), string k8sIssuer = default(string), List<string> k8sPubKeysPem = default(List<string>), string k8sTokenReviewerJwt = default(string), string name = default(string), string rancherApiKey = default(string), string rancherClusterId = default(string), bool useLocalCaJwt = default(bool))
         {
             this.AmTokenExpiration = amTokenExpiration;
             this.AuthMethodAccessId = authMethodAccessId;
@@ -71,7 +70,6 @@ namespace akeyless.Model
             this.K8sPubKeysPem = k8sPubKeysPem;
             this.K8sTokenReviewerJwt = k8sTokenReviewerJwt;
             this.Name = name;
-            this.ProtectionKey = protectionKey;
             this.RancherApiKey = rancherApiKey;
             this.RancherClusterId = rancherClusterId;
             this.UseLocalCaJwt = useLocalCaJwt;
@@ -180,12 +178,6 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets ProtectionKey
-        /// </summary>
-        [DataMember(Name = "protection_key", EmitDefaultValue = false)]
-        public string ProtectionKey { get; set; }
-
-        /// <summary>
         /// RancherApiKey the bear token for clusterApiTypeRancher
         /// </summary>
         /// <value>RancherApiKey the bear token for clusterApiTypeRancher</value>
@@ -229,7 +221,6 @@ namespace akeyless.Model
             sb.Append("  K8sPubKeysPem: ").Append(K8sPubKeysPem).Append("\n");
             sb.Append("  K8sTokenReviewerJwt: ").Append(K8sTokenReviewerJwt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  RancherApiKey: ").Append(RancherApiKey).Append("\n");
             sb.Append("  RancherClusterId: ").Append(RancherClusterId).Append("\n");
             sb.Append("  UseLocalCaJwt: ").Append(UseLocalCaJwt).Append("\n");
@@ -343,11 +334,6 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.ProtectionKey == input.ProtectionKey ||
-                    (this.ProtectionKey != null &&
-                    this.ProtectionKey.Equals(input.ProtectionKey))
-                ) && 
-                (
                     this.RancherApiKey == input.RancherApiKey ||
                     (this.RancherApiKey != null &&
                     this.RancherApiKey.Equals(input.RancherApiKey))
@@ -425,10 +411,6 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                }
-                if (this.ProtectionKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.ProtectionKey.GetHashCode();
                 }
                 if (this.RancherApiKey != null)
                 {

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateSalesforceTarget
+    /// createSalesforceTarget is a command that creates a new target. [Deprecated: Use target-create-salesforce command]
     /// </summary>
     [DataContract(Name = "createSalesforceTarget")]
     public partial class CreateSalesforceTarget : IEquatable<CreateSalesforceTarget>, IValidatableObject

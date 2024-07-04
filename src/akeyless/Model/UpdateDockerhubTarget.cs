@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateDockerhubTarget
+    /// updateDockerhubTarget is a command that updates a new target. [Deprecated: Use target-update-dockerhub command]
     /// </summary>
     [DataContract(Name = "updateDockerhubTarget")]
     public partial class UpdateDockerhubTarget : IEquatable<UpdateDockerhubTarget>, IValidatableObject
@@ -42,8 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="dockerhubPassword">dockerhubPassword.</param>
-        /// <param name="dockerhubUsername">dockerhubUsername.</param>
+        /// <param name="dockerhubPassword">Password for docker repository.</param>
+        /// <param name="dockerhubUsername">Username for docker repository.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -90,14 +90,16 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets DockerhubPassword
+        /// Password for docker repository
         /// </summary>
+        /// <value>Password for docker repository</value>
         [DataMember(Name = "dockerhub-password", EmitDefaultValue = false)]
         public string DockerhubPassword { get; set; }
 
         /// <summary>
-        /// Gets or Sets DockerhubUsername
+        /// Username for docker repository
         /// </summary>
+        /// <value>Username for docker repository</value>
         [DataMember(Name = "dockerhub-username", EmitDefaultValue = false)]
         public string DockerhubUsername { get; set; }
 

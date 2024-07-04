@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateAWSTarget
+    /// createAWSTarget is a command that creates a new target. [Deprecated: Use target-create-aws command]
     /// </summary>
     [DataContract(Name = "createAWSTarget")]
     public partial class CreateAWSTarget : IEquatable<CreateAWSTarget>, IValidatableObject

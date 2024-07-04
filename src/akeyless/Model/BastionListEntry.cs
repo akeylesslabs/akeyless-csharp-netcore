@@ -41,9 +41,8 @@ namespace akeyless.Model
         /// <param name="allowedUrlsPerInstance">allowedUrlsPerInstance.</param>
         /// <param name="clusterName">clusterName.</param>
         /// <param name="displayName">displayName.</param>
-        /// <param name="hasGatewayIdentity">hasGatewayIdentity.</param>
         /// <param name="lastReport">lastReport.</param>
-        public BastionListEntry(string accessId = default(string), List<string> allowedAccessIds = default(List<string>), List<string> allowedUrls = default(List<string>), Dictionary<string, List<string>> allowedUrlsPerInstance = default(Dictionary<string, List<string>>), string clusterName = default(string), string displayName = default(string), bool hasGatewayIdentity = default(bool), DateTime lastReport = default(DateTime))
+        public BastionListEntry(string accessId = default(string), List<string> allowedAccessIds = default(List<string>), List<string> allowedUrls = default(List<string>), Dictionary<string, List<string>> allowedUrlsPerInstance = default(Dictionary<string, List<string>>), string clusterName = default(string), string displayName = default(string), DateTime lastReport = default(DateTime))
         {
             this.AccessId = accessId;
             this.AllowedAccessIds = allowedAccessIds;
@@ -51,7 +50,6 @@ namespace akeyless.Model
             this.AllowedUrlsPerInstance = allowedUrlsPerInstance;
             this.ClusterName = clusterName;
             this.DisplayName = displayName;
-            this.HasGatewayIdentity = hasGatewayIdentity;
             this.LastReport = lastReport;
         }
 
@@ -92,12 +90,6 @@ namespace akeyless.Model
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or Sets HasGatewayIdentity
-        /// </summary>
-        [DataMember(Name = "has_gateway_identity", EmitDefaultValue = true)]
-        public bool HasGatewayIdentity { get; set; }
-
-        /// <summary>
         /// Gets or Sets LastReport
         /// </summary>
         [DataMember(Name = "last_report", EmitDefaultValue = false)]
@@ -117,7 +109,6 @@ namespace akeyless.Model
             sb.Append("  AllowedUrlsPerInstance: ").Append(AllowedUrlsPerInstance).Append("\n");
             sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  HasGatewayIdentity: ").Append(HasGatewayIdentity).Append("\n");
             sb.Append("  LastReport: ").Append(LastReport).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -188,10 +179,6 @@ namespace akeyless.Model
                     this.DisplayName.Equals(input.DisplayName))
                 ) && 
                 (
-                    this.HasGatewayIdentity == input.HasGatewayIdentity ||
-                    this.HasGatewayIdentity.Equals(input.HasGatewayIdentity)
-                ) && 
-                (
                     this.LastReport == input.LastReport ||
                     (this.LastReport != null &&
                     this.LastReport.Equals(input.LastReport))
@@ -231,7 +218,6 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.HasGatewayIdentity.GetHashCode();
                 if (this.LastReport != null)
                 {
                     hashCode = (hashCode * 59) + this.LastReport.GetHashCode();

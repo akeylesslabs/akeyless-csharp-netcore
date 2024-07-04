@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// createAuthMethodK8S is a command that creates a new auth method that will be able to authenticate using K8S.
+    /// createAuthMethodK8S is a command that creates a new auth method that will be able to authenticate using K8S. [Deprecated: Use auth-method-create-k8s command]
     /// </summary>
     [DataContract(Name = "createAuthMethodK8S")]
     public partial class CreateAuthMethodK8S : IEquatable<CreateAuthMethodK8S>, IValidatableObject
@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="audience">The audience in the Kubernetes JWT that the access is restricted to.</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="boundNamespaces">A list of namespaces that the access is restricted to.</param>
         /// <param name="boundPodNames">A list of pod names that the access is restricted to.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="publicKey">Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = "true", List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string publicKey = default(string), string token = default(string), string uidToken = default(string))
+        public CreateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = "true", List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string publicKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -67,6 +68,7 @@ namespace akeyless.Model
             this.Name = name;
             this.AccessExpires = accessExpires;
             this.Audience = audience;
+            this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
             this.BoundNamespaces = boundNamespaces;
             this.BoundPodNames = boundPodNames;
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>The audience in the Kubernetes JWT that the access is restricted to</value>
         [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
@@ -213,6 +222,7 @@ namespace akeyless.Model
             sb.Append("class CreateAuthMethodK8S {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  BoundNamespaces: ").Append(BoundNamespaces).Append("\n");
             sb.Append("  BoundPodNames: ").Append(BoundPodNames).Append("\n");
@@ -271,6 +281,12 @@ namespace akeyless.Model
                     this.Audience == input.Audience ||
                     (this.Audience != null &&
                     this.Audience.Equals(input.Audience))
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -365,6 +381,10 @@ namespace akeyless.Model
                 if (this.Audience != null)
                 {
                     hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
                 }
                 if (this.BoundIps != null)
                 {

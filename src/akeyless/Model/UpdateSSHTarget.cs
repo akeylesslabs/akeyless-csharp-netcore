@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateSSHTarget
+    /// updateSSHTarget is a command that updates an existing target. [Deprecated: Use target-update-ssh command]
     /// </summary>
     [DataContract(Name = "updateSSHTarget")]
     public partial class UpdateSSHTarget : IEquatable<UpdateSSHTarget>, IValidatableObject

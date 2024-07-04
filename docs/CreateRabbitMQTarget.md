@@ -1,4 +1,5 @@
 # akeyless.Model.CreateRabbitMQTarget
+createRabbitMQTarget is a command that creates a new target. [Deprecated: Use target-create-rabbitmq command]
 
 ## Properties
 

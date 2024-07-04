@@ -1,4 +1,5 @@
 # akeyless.Model.CreateAzureTarget
+createAzureTarget is a command that creates a new target. [Deprecated: Use target-create-azure command]
 
 ## Properties
 

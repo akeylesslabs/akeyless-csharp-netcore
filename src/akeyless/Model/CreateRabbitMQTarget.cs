@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateRabbitMQTarget
+    /// createRabbitMQTarget is a command that creates a new target. [Deprecated: Use target-create-rabbitmq command]
     /// </summary>
     [DataContract(Name = "createRabbitMQTarget")]
     public partial class CreateRabbitMQTarget : IEquatable<CreateRabbitMQTarget>, IValidatableObject

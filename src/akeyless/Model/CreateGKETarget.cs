@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateGKETarget
+    /// createGKETarget is a command that creates a new target. [Deprecated: Use target-create-gke command]
     /// </summary>
     [DataContract(Name = "createGKETarget")]
     public partial class CreateGKETarget : IEquatable<CreateGKETarget>, IValidatableObject

@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="critical">Add critical to the key usage extension (will be false if not added).</param>
         /// <param name="dep">The department to be included in the CSR certificate.</param>
         /// <param name="emailAddresses">A comma-separated list of email addresses alternative names.</param>
+        /// <param name="exportPrivateKey">The flag to indicate if the private key should be exported (default to false).</param>
         /// <param name="generateKey">Generate a new classic key for the csr.</param>
         /// <param name="ipAddresses">A comma-separated list of ip addresses alternative names.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">A comma-separated list of uri alternative names.</param>
-        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string keyType = "classic-key", string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool exportPrivateKey = false, bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string keyType = "classic-key", string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "commonName" is required (not null)
             if (commonName == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.Critical = critical;
             this.Dep = dep;
             this.EmailAddresses = emailAddresses;
+            this.ExportPrivateKey = exportPrivateKey;
             this.GenerateKey = generateKey;
             this.IpAddresses = ipAddresses;
             this.Json = json;
@@ -160,6 +162,13 @@ namespace akeyless.Model
         /// <value>A comma-separated list of email addresses alternative names</value>
         [DataMember(Name = "email-addresses", EmitDefaultValue = false)]
         public string EmailAddresses { get; set; }
+
+        /// <summary>
+        /// The flag to indicate if the private key should be exported
+        /// </summary>
+        /// <value>The flag to indicate if the private key should be exported</value>
+        [DataMember(Name = "export-private-key", EmitDefaultValue = true)]
+        public bool ExportPrivateKey { get; set; }
 
         /// <summary>
         /// Generate a new classic key for the csr
@@ -255,6 +264,7 @@ namespace akeyless.Model
             sb.Append("  Critical: ").Append(Critical).Append("\n");
             sb.Append("  Dep: ").Append(Dep).Append("\n");
             sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
+            sb.Append("  ExportPrivateKey: ").Append(ExportPrivateKey).Append("\n");
             sb.Append("  GenerateKey: ").Append(GenerateKey).Append("\n");
             sb.Append("  IpAddresses: ").Append(IpAddresses).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -344,6 +354,10 @@ namespace akeyless.Model
                     this.EmailAddresses == input.EmailAddresses ||
                     (this.EmailAddresses != null &&
                     this.EmailAddresses.Equals(input.EmailAddresses))
+                ) && 
+                (
+                    this.ExportPrivateKey == input.ExportPrivateKey ||
+                    this.ExportPrivateKey.Equals(input.ExportPrivateKey)
                 ) && 
                 (
                     this.GenerateKey == input.GenerateKey ||
@@ -441,6 +455,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.EmailAddresses.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ExportPrivateKey.GetHashCode();
                 hashCode = (hashCode * 59) + this.GenerateKey.GetHashCode();
                 if (this.IpAddresses != null)
                 {

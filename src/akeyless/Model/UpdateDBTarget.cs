@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateDBTarget
+    /// updateDBTarget is a command that updates an existing target. [Deprecated: Use target-update-db command]
     /// </summary>
     [DataContract(Name = "updateDBTarget")]
     public partial class UpdateDBTarget : IEquatable<UpdateDBTarget>, IValidatableObject

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateDockerhubTarget
+    /// createDockerhubTarget is a command that creates a new target. [Deprecated: Use target-create-dockerhub command]
     /// </summary>
     [DataContract(Name = "createDockerhubTarget")]
     public partial class CreateDockerhubTarget : IEquatable<CreateDockerhubTarget>, IValidatableObject
@@ -42,8 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="dockerhubPassword">DockerhubPassword is either the user&#39;s password to manage the repository.</param>
-        /// <param name="dockerhubUsername">DockerhubUsername is the name of the user in dockerhub.</param>
+        /// <param name="dockerhubPassword">Password for docker repository.</param>
+        /// <param name="dockerhubUsername">Username for docker repository.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
@@ -84,16 +84,16 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// DockerhubPassword is either the user&#39;s password to manage the repository
+        /// Password for docker repository
         /// </summary>
-        /// <value>DockerhubPassword is either the user&#39;s password to manage the repository</value>
+        /// <value>Password for docker repository</value>
         [DataMember(Name = "dockerhub-password", EmitDefaultValue = false)]
         public string DockerhubPassword { get; set; }
 
         /// <summary>
-        /// DockerhubUsername is the name of the user in dockerhub
+        /// Username for docker repository
         /// </summary>
-        /// <value>DockerhubUsername is the name of the user in dockerhub</value>
+        /// <value>Username for docker repository</value>
         [DataMember(Name = "dockerhub-username", EmitDefaultValue = false)]
         public string DockerhubUsername { get; set; }
 

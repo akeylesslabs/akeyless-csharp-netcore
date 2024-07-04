@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// createAuthMethodSAML is a command that creates a new auth method that will be available to authenticate using SAML.
+    /// createAuthMethodSAML is a command that creates a new auth method that will be available to authenticate using SAML. [Deprecated: Use auth-method-create-saml command]
     /// </summary>
     [DataContract(Name = "createAuthMethodSAML")]
     public partial class CreateAuthMethodSAML : IEquatable<CreateAuthMethodSAML>, IValidatableObject
@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
+        /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.UniqueIdentifier = uniqueIdentifier;
             this.AccessExpires = accessExpires;
             this.AllowedRedirectUri = allowedRedirectUri;
+            this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
@@ -99,6 +101,13 @@ namespace akeyless.Model
         /// <value>Allowed redirect URIs after the authentication</value>
         [DataMember(Name = "allowed-redirect-uri", EmitDefaultValue = false)]
         public List<string> AllowedRedirectUri { get; set; }
+
+        /// <summary>
+        /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
+        /// </summary>
+        /// <value>Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;</value>
+        [DataMember(Name = "audit-logs-claims", EmitDefaultValue = false)]
+        public List<string> AuditLogsClaims { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the IPs that the access is restricted to
@@ -208,6 +217,7 @@ namespace akeyless.Model
             sb.Append("class CreateAuthMethodSAML {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
+            sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
@@ -266,6 +276,12 @@ namespace akeyless.Model
                     this.AllowedRedirectUri != null &&
                     input.AllowedRedirectUri != null &&
                     this.AllowedRedirectUri.SequenceEqual(input.AllowedRedirectUri)
+                ) && 
+                (
+                    this.AuditLogsClaims == input.AuditLogsClaims ||
+                    this.AuditLogsClaims != null &&
+                    input.AuditLogsClaims != null &&
+                    this.AuditLogsClaims.SequenceEqual(input.AuditLogsClaims)
                 ) && 
                 (
                     this.BoundIps == input.BoundIps ||
@@ -353,6 +369,10 @@ namespace akeyless.Model
                 if (this.AllowedRedirectUri != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowedRedirectUri.GetHashCode();
+                }
+                if (this.AuditLogsClaims != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuditLogsClaims.GetHashCode();
                 }
                 if (this.BoundIps != null)
                 {

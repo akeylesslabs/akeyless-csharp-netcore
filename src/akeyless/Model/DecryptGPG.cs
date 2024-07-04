@@ -40,8 +40,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DecryptGPG" /> class.
         /// </summary>
-        /// <param name="ciphertext">Ciphertext to be decrypted in base64 encoded format (required).</param>
+        /// <param name="ciphertext">Ciphertext to be decrypted (required).</param>
         /// <param name="displayId">The display id of the key to use in the decryption process.</param>
+        /// <param name="inputFormat">Select default assumed format for the ciphertext. Currently supported options: [base64,raw] (default to &quot;base64&quot;).</param>
         /// <param name="itemId">The item id of the key to use in the decryption process.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyName">The name of the key to use in the decryption process (required).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="passphrase">Passphrase that was used to generate the key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptGPG(string ciphertext = default(string), string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
+        public DecryptGPG(string ciphertext = default(string), string displayId = default(string), string inputFormat = "base64", long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null)
@@ -64,6 +65,8 @@ namespace akeyless.Model
             }
             this.KeyName = keyName;
             this.DisplayId = displayId;
+            // use default value if no "inputFormat" provided
+            this.InputFormat = inputFormat ?? "base64";
             this.ItemId = itemId;
             this.Json = json;
             this.OutputFormat = outputFormat;
@@ -73,9 +76,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Ciphertext to be decrypted in base64 encoded format
+        /// Ciphertext to be decrypted
         /// </summary>
-        /// <value>Ciphertext to be decrypted in base64 encoded format</value>
+        /// <value>Ciphertext to be decrypted</value>
         [DataMember(Name = "ciphertext", IsRequired = true, EmitDefaultValue = true)]
         public string Ciphertext { get; set; }
 
@@ -85,6 +88,13 @@ namespace akeyless.Model
         /// <value>The display id of the key to use in the decryption process</value>
         [DataMember(Name = "display-id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Select default assumed format for the ciphertext. Currently supported options: [base64,raw]
+        /// </summary>
+        /// <value>Select default assumed format for the ciphertext. Currently supported options: [base64,raw]</value>
+        [DataMember(Name = "input-format", EmitDefaultValue = false)]
+        public string InputFormat { get; set; }
 
         /// <summary>
         /// The item id of the key to use in the decryption process
@@ -145,6 +155,7 @@ namespace akeyless.Model
             sb.Append("class DecryptGPG {\n");
             sb.Append("  Ciphertext: ").Append(Ciphertext).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  InputFormat: ").Append(InputFormat).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyName: ").Append(KeyName).Append("\n");
@@ -198,6 +209,11 @@ namespace akeyless.Model
                     this.DisplayId.Equals(input.DisplayId))
                 ) && 
                 (
+                    this.InputFormat == input.InputFormat ||
+                    (this.InputFormat != null &&
+                    this.InputFormat.Equals(input.InputFormat))
+                ) && 
+                (
                     this.ItemId == input.ItemId ||
                     this.ItemId.Equals(input.ItemId)
                 ) && 
@@ -248,6 +264,10 @@ namespace akeyless.Model
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();
+                }
+                if (this.InputFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.InputFormat.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();

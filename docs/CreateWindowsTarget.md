@@ -1,4 +1,5 @@
 # akeyless.Model.CreateWindowsTarget
+createWindowsTarget is a command that creates a new windows target. [Deprecated: Use target-create-windows command]
 
 ## Properties
 

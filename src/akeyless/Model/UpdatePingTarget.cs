@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdatePingTarget
+    /// updatePingTarget is a command that updates an existing target. [Deprecated: Use target-update-ping command]
     /// </summary>
     [DataContract(Name = "updatePingTarget")]
     public partial class UpdatePingTarget : IEquatable<UpdatePingTarget>, IValidatableObject

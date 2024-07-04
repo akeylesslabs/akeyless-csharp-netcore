@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// listAuthMethods is a command that returns a list of all auth methods in the account.
+    /// listAuthMethods is a command that returns a list of all auth methods in the account. [Deprecated: Use auth-method-list command]
     /// </summary>
     [DataContract(Name = "listAuthMethods")]
     public partial class ListAuthMethods : IEquatable<ListAuthMethods>, IValidatableObject

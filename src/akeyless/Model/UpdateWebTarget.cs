@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// UpdateWebTarget
+    /// updateWebTarget is a command that updates an existing target. [Deprecated: Use target-update-web command]
     /// </summary>
     [DataContract(Name = "updateWebTarget")]
     public partial class UpdateWebTarget : IEquatable<UpdateWebTarget>, IValidatableObject

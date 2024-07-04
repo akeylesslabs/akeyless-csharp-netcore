@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateGodaddyTarget
+updateGodaddyTarget is a command that updates an existing target. [Deprecated: Use target-update-godaddy command]
 
 ## Properties
 

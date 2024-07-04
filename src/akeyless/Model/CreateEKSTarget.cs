@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateEKSTarget
+    /// createEKSTarget is a command that creates a new target. [Deprecated: Use target-create-eks command]
     /// </summary>
     [DataContract(Name = "createEKSTarget")]
     public partial class CreateEKSTarget : IEquatable<CreateEKSTarget>, IValidatableObject

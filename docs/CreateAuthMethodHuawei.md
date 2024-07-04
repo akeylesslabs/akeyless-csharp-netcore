@@ -6,6 +6,7 @@ createAuthMethodHuawei is a command that creates a new auth method that will be 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AuditLogsClaims** | **List&lt;string&gt;** | Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot; | [optional] 
 **AuthUrl** | **string** | sts URL | [optional] [default to "https://iam.myhwclouds.com:443/v3"]
 **BoundDomainId** | **List&lt;string&gt;** | A list of domain IDs that the access is restricted to | [optional] 
 **BoundDomainName** | **List&lt;string&gt;** | A list of domain names that the access is restricted to | [optional] 

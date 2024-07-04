@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ciphertext** | **string** | Ciphertext to be decrypted in base64 encoded format | 
+**Ciphertext** | **string** | Ciphertext to be decrypted | 
 **DisplayId** | **string** | The display id of the key to use in the decryption process | [optional] 
+**InputFormat** | **string** | Select default assumed format for the ciphertext. Currently supported options: [base64,raw] | [optional] [default to "base64"]
 **ItemId** | **long** | The item id of the key to use in the decryption process | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyName** | **string** | The name of the key to use in the decryption process | 

@@ -42,6 +42,8 @@ namespace akeyless.Model
         /// <param name="bastionIssuer">bastionIssuer.</param>
         /// <param name="bastionIssuerId">bastionIssuerId.</param>
         /// <param name="bastionSsh">bastionSsh.</param>
+        /// <param name="blockConcurrentConnections">blockConcurrentConnections.</param>
+        /// <param name="blockConcurrentConnectionsLevel">blockConcurrentConnectionsLevel.</param>
         /// <param name="category">category.</param>
         /// <param name="dashboardUrl">dashboardUrl.</param>
         /// <param name="dbName">dbName.</param>
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -77,6 +79,8 @@ namespace akeyless.Model
             this.BastionIssuer = bastionIssuer;
             this.BastionIssuerId = bastionIssuerId;
             this.BastionSsh = bastionSsh;
+            this.BlockConcurrentConnections = blockConcurrentConnections;
+            this.BlockConcurrentConnectionsLevel = blockConcurrentConnectionsLevel;
             this.Category = category;
             this.DashboardUrl = dashboardUrl;
             this.DbName = dbName;
@@ -146,6 +150,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "bastion_ssh", EmitDefaultValue = false)]
         public string BastionSsh { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BlockConcurrentConnections
+        /// </summary>
+        [DataMember(Name = "block_concurrent_connections", EmitDefaultValue = true)]
+        public bool BlockConcurrentConnections { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BlockConcurrentConnectionsLevel
+        /// </summary>
+        [DataMember(Name = "block_concurrent_connections_level", EmitDefaultValue = false)]
+        public string BlockConcurrentConnectionsLevel { get; set; }
 
         /// <summary>
         /// Gets or Sets Category
@@ -318,6 +334,8 @@ namespace akeyless.Model
             sb.Append("  BastionIssuer: ").Append(BastionIssuer).Append("\n");
             sb.Append("  BastionIssuerId: ").Append(BastionIssuerId).Append("\n");
             sb.Append("  BastionSsh: ").Append(BastionSsh).Append("\n");
+            sb.Append("  BlockConcurrentConnections: ").Append(BlockConcurrentConnections).Append("\n");
+            sb.Append("  BlockConcurrentConnectionsLevel: ").Append(BlockConcurrentConnectionsLevel).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  DashboardUrl: ").Append(DashboardUrl).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
@@ -410,6 +428,15 @@ namespace akeyless.Model
                     this.BastionSsh == input.BastionSsh ||
                     (this.BastionSsh != null &&
                     this.BastionSsh.Equals(input.BastionSsh))
+                ) && 
+                (
+                    this.BlockConcurrentConnections == input.BlockConcurrentConnections ||
+                    this.BlockConcurrentConnections.Equals(input.BlockConcurrentConnections)
+                ) && 
+                (
+                    this.BlockConcurrentConnectionsLevel == input.BlockConcurrentConnectionsLevel ||
+                    (this.BlockConcurrentConnectionsLevel != null &&
+                    this.BlockConcurrentConnectionsLevel.Equals(input.BlockConcurrentConnectionsLevel))
                 ) && 
                 (
                     this.Category == input.Category ||
@@ -563,6 +590,11 @@ namespace akeyless.Model
                 if (this.BastionSsh != null)
                 {
                     hashCode = (hashCode * 59) + this.BastionSsh.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.BlockConcurrentConnections.GetHashCode();
+                if (this.BlockConcurrentConnectionsLevel != null)
+                {
+                    hashCode = (hashCode * 59) + this.BlockConcurrentConnectionsLevel.GetHashCode();
                 }
                 if (this.Category != null)
                 {

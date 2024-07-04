@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **BastionIssuer** | **string** |  | [optional] 
 **BastionIssuerId** | **long** |  | [optional] 
 **BastionSsh** | **string** |  | [optional] 
+**BlockConcurrentConnections** | **bool** |  | [optional] 
+**BlockConcurrentConnectionsLevel** | **string** |  | [optional] 
 **Category** | **string** |  | [optional] 
 **DashboardUrl** | **string** |  | [optional] 
 **DbName** | **string** |  | [optional] 

@@ -1,4 +1,5 @@
 # akeyless.Model.CreateGodaddyTarget
+createGodaddyTarget is a command that creates a new target. [Deprecated: Use target-create-godaddy command]
 
 ## Properties
 

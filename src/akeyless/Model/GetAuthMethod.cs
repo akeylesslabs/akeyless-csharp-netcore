@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// GetAuthMethod
+    /// getAuthMethod is a command that returns information about the auth method. [Deprecated: Use auth-method-get command]
     /// </summary>
     [DataContract(Name = "getAuthMethod")]
     public partial class GetAuthMethod : IEquatable<GetAuthMethod>, IValidatableObject

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreatePingTarget
+    /// createPingTarget is a command that creates a new target. [Deprecated: Use target-create-ping command]
     /// </summary>
     [DataContract(Name = "createPingTarget")]
     public partial class CreatePingTarget : IEquatable<CreatePingTarget>, IValidatableObject

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateAzureTarget
+    /// createAzureTarget is a command that creates a new target. [Deprecated: Use target-create-azure command]
     /// </summary>
     [DataContract(Name = "createAzureTarget")]
     public partial class CreateAzureTarget : IEquatable<CreateAzureTarget>, IValidatableObject

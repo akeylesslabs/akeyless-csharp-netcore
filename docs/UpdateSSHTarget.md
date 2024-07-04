@@ -1,4 +1,5 @@
 # akeyless.Model.UpdateSSHTarget
+updateSSHTarget is a command that updates an existing target. [Deprecated: Use target-update-ssh command]
 
 ## Properties
 

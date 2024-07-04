@@ -75,6 +75,7 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionIssuer">Path to the SSH Certificate Issuer for your Akeyless Bastion.</param>
         /// <param name="secureAccessDbName">The DB name (relevant only for DB Dynamic-Secret).</param>
         /// <param name="secureAccessDbSchema">The db schema (relevant only for mssql or postgresql).</param>
+        /// <param name="secureAccessDisableConcurrentConnections">Enable this flag to prevent simultaneous use of the same secret.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
@@ -93,7 +94,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
+        public CreateRotatedSecret(string providerType = default(string), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -149,6 +150,7 @@ namespace akeyless.Model
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessDbName = secureAccessDbName;
             this.SecureAccessDbSchema = secureAccessDbSchema;
+            this.SecureAccessDisableConcurrentConnections = secureAccessDisableConcurrentConnections;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
@@ -413,6 +415,13 @@ namespace akeyless.Model
         public string SecureAccessDbSchema { get; set; }
 
         /// <summary>
+        /// Enable this flag to prevent simultaneous use of the same secret
+        /// </summary>
+        /// <value>Enable this flag to prevent simultaneous use of the same secret</value>
+        [DataMember(Name = "secure-access-disable-concurrent-connections", EmitDefaultValue = true)]
+        public bool SecureAccessDisableConcurrentConnections { get; set; }
+
+        /// <summary>
         /// Enable/Disable secure remote access [true/false]
         /// </summary>
         /// <value>Enable/Disable secure remote access [true/false]</value>
@@ -581,6 +590,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessDbName: ").Append(SecureAccessDbName).Append("\n");
             sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
+            sb.Append("  SecureAccessDisableConcurrentConnections: ").Append(SecureAccessDisableConcurrentConnections).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
@@ -804,6 +814,10 @@ namespace akeyless.Model
                     this.SecureAccessDbSchema == input.SecureAccessDbSchema ||
                     (this.SecureAccessDbSchema != null &&
                     this.SecureAccessDbSchema.Equals(input.SecureAccessDbSchema))
+                ) && 
+                (
+                    this.SecureAccessDisableConcurrentConnections == input.SecureAccessDisableConcurrentConnections ||
+                    this.SecureAccessDisableConcurrentConnections.Equals(input.SecureAccessDisableConcurrentConnections)
                 ) && 
                 (
                     this.SecureAccessEnable == input.SecureAccessEnable ||
@@ -1034,6 +1048,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessDbSchema.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SecureAccessDisableConcurrentConnections.GetHashCode();
                 if (this.SecureAccessEnable != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();

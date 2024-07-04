@@ -37,10 +37,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificatePem">certificatePem.</param>
         /// <param name="key">key.</param>
-        public ExportClassicKeyOutput(string certificatePem = default(string), string key = default(string))
+        /// <param name="ssh">ssh.</param>
+        public ExportClassicKeyOutput(string certificatePem = default(string), string key = default(string), string ssh = default(string))
         {
             this.CertificatePem = certificatePem;
             this.Key = key;
+            this.Ssh = ssh;
         }
 
         /// <summary>
@@ -56,6 +58,12 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Gets or Sets Ssh
+        /// </summary>
+        [DataMember(Name = "ssh", EmitDefaultValue = false)]
+        public string Ssh { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +73,7 @@ namespace akeyless.Model
             sb.Append("class ExportClassicKeyOutput {\n");
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Ssh: ").Append(Ssh).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,6 +118,11 @@ namespace akeyless.Model
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.Ssh == input.Ssh ||
+                    (this.Ssh != null &&
+                    this.Ssh.Equals(input.Ssh))
                 );
         }
 
@@ -128,6 +142,10 @@ namespace akeyless.Model
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.Ssh != null)
+                {
+                    hashCode = (hashCode * 59) + this.Ssh.GetHashCode();
                 }
                 return hashCode;
             }

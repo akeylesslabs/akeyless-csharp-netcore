@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// CreateDBTarget
+    /// createDBTarget is a command that creates a new target. [Deprecated: Use target-create-db command]
     /// </summary>
     [DataContract(Name = "createDBTarget")]
     public partial class CreateDBTarget : IEquatable<CreateDBTarget>, IValidatableObject

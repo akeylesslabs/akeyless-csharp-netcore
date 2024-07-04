@@ -1,4 +1,5 @@
 # akeyless.Model.CreateNativeK8STarget
+createNativeK8STarget is a command that creates a new target. [Deprecated: Use target-create-k8s command]
 
 ## Properties
 
