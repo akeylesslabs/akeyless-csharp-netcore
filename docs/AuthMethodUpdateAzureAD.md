@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **BoundSpid** | **List&lt;string&gt;** | A list of service principal IDs that the access is restricted to | [optional] 
 **BoundSubId** | **List&lt;string&gt;** | A list of subscription ids that the access is restricted to | [optional] 
 **BoundTenantId** | **string** | The Azure tenant id that the access is restricted to | 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Auth Method description | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 

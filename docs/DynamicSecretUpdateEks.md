@@ -5,7 +5,7 @@ dynamicSecretUpdateEks is a command that updates eks dynamic secret
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **EksAccessKeyId** | **string** | Access Key ID | [optional] 
 **EksAssumeRole** | **string** | IAM assume role | [optional] 

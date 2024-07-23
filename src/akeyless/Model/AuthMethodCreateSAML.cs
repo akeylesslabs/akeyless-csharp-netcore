@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public AuthMethodCreateSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public AuthMethodCreateSAML(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string idpMetadataUrl = default(string), string idpMetadataXmlData = default(string), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.AllowedRedirectUri = allowedRedirectUri;
             this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
@@ -115,6 +117,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Auth Method description
@@ -219,6 +228,7 @@ namespace akeyless.Model
             sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
@@ -288,6 +298,11 @@ namespace akeyless.Model
                     this.BoundIps != null &&
                     input.BoundIps != null &&
                     this.BoundIps.SequenceEqual(input.BoundIps)
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -377,6 +392,10 @@ namespace akeyless.Model
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

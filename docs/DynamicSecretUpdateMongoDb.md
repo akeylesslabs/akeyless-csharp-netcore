@@ -5,7 +5,7 @@ dynamicSecretUpdateMongoDb is a command that updates either mongodb  dynamic sec
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 

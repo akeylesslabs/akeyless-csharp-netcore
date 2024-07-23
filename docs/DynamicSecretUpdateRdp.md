@@ -6,7 +6,7 @@ dynamicSecretUpdateRdp is a command that updates rdp dynamic secret
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowUserExtendSession** | **long** | AllowUserExtendSession | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **FixedUserOnly** | **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

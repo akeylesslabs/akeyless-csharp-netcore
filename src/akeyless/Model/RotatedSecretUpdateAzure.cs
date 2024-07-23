@@ -46,7 +46,7 @@ namespace akeyless.Model
         /// <param name="applicationId">Id of the azure app that hold the serect to be rotated (relevant only for rotator-type&#x3D;api-key &amp; authentication-credentials&#x3D;use-target-creds).</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -59,6 +59,7 @@ namespace akeyless.Model
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
+        /// <param name="secureAccessDisableConcurrentConnections">Enable this flag to prevent simultaneous use of the same secret.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
@@ -68,7 +69,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">The user principal name to rotate his password (relevant only for rotator-type&#x3D;password).</param>
-        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -97,6 +98,7 @@ namespace akeyless.Model
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
+            this.SecureAccessDisableConcurrentConnections = secureAccessDisableConcurrentConnections;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
@@ -151,9 +153,9 @@ namespace akeyless.Model
         public string AutoRotate { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -240,6 +242,13 @@ namespace akeyless.Model
         /// <value>The number of days to wait between every automatic key rotation (1-365)</value>
         [DataMember(Name = "rotation-interval", EmitDefaultValue = false)]
         public string RotationInterval { get; set; }
+
+        /// <summary>
+        /// Enable this flag to prevent simultaneous use of the same secret
+        /// </summary>
+        /// <value>Enable this flag to prevent simultaneous use of the same secret</value>
+        [DataMember(Name = "secure-access-disable-concurrent-connections", EmitDefaultValue = true)]
+        public bool SecureAccessDisableConcurrentConnections { get; set; }
 
         /// <summary>
         /// Enable/Disable secure remote access [true/false]
@@ -331,6 +340,7 @@ namespace akeyless.Model
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
+            sb.Append("  SecureAccessDisableConcurrentConnections: ").Append(SecureAccessDisableConcurrentConnections).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
@@ -471,6 +481,10 @@ namespace akeyless.Model
                     this.RotationInterval.Equals(input.RotationInterval))
                 ) && 
                 (
+                    this.SecureAccessDisableConcurrentConnections == input.SecureAccessDisableConcurrentConnections ||
+                    this.SecureAccessDisableConcurrentConnections.Equals(input.SecureAccessDisableConcurrentConnections)
+                ) && 
+                (
                     this.SecureAccessEnable == input.SecureAccessEnable ||
                     (this.SecureAccessEnable != null &&
                     this.SecureAccessEnable.Equals(input.SecureAccessEnable))
@@ -593,6 +607,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SecureAccessDisableConcurrentConnections.GetHashCode();
                 if (this.SecureAccessEnable != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();

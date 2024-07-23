@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretCreateRedis" /> class.
         /// </summary>
         /// <param name="aclRules">A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39;.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="host">Redis Host (default to &quot;127.0.0.1&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -96,9 +96,9 @@ namespace akeyless.Model
         public string AclRules { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

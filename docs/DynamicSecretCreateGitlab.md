@@ -5,7 +5,7 @@ dynamicSecretCreateGitlab is a command that creates gitlab dynamic secret
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **GitlabAccessToken** | **string** | Gitlab access token | [optional] 
 **GitlabAccessType** | **string** | Gitlab access token type [project,group] | 

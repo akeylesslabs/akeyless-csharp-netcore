@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="denyInheritance">Deny from root to create children.</param>
         /// <param name="denyRotate">Deny from the token to rotate.</param>
         /// <param name="description">Auth Method description.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodCreateUniversalIdentity(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), int ttl = 60, string uidToken = default(string))
+        public AuthMethodCreateUniversalIdentity(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), int ttl = 60, string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.AccessExpires = accessExpires;
             this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
+            this.DeleteProtection = deleteProtection;
             this.DenyInheritance = denyInheritance;
             this.DenyRotate = denyRotate;
             this.Description = description;
@@ -99,6 +101,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Deny from root to create children
@@ -195,6 +204,7 @@ namespace akeyless.Model
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -257,6 +267,11 @@ namespace akeyless.Model
                     this.BoundIps != null &&
                     input.BoundIps != null &&
                     this.BoundIps.SequenceEqual(input.BoundIps)
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.DenyInheritance == input.DenyInheritance ||
@@ -333,6 +348,10 @@ namespace akeyless.Model
                 if (this.BoundIps != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundIps.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.DenyInheritance.GetHashCode();
                 hashCode = (hashCode * 59) + this.DenyRotate.GetHashCode();

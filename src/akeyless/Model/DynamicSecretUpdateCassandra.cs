@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="cassandraPassword">Cassandra superuser password.</param>
         /// <param name="cassandraPort">Cassandra port (default to &quot;9042&quot;).</param>
         /// <param name="cassandraUsername">Cassandra superuser username.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
@@ -125,9 +125,9 @@ namespace akeyless.Model
         public string CassandraUsername { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

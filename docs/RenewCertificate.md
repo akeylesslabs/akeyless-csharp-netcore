@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertIssuerName** | **string** | The name of the PKI certificate issuer | [optional] 
 **GenerateKey** | **bool** | Generate a new key as part of the certificate renewal | [optional] 
 **ItemId** | **long** | Certificate item id | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

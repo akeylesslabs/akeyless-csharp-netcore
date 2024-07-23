@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="customPayload">Secret payload to be sent with rotation request.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -68,9 +68,10 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="timeoutSec">Maximum allowed time in seconds for the custom rotator to return the results.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretUpdateCustom(List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public RotatedSecretUpdateCustom(List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, long timeoutSec = default(long), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -108,6 +109,7 @@ namespace akeyless.Model
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
+            this.TimeoutSec = timeoutSec;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -141,9 +143,9 @@ namespace akeyless.Model
         public string CustomPayload { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -309,6 +311,13 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
+        /// Maximum allowed time in seconds for the custom rotator to return the results
+        /// </summary>
+        /// <value>Maximum allowed time in seconds for the custom rotator to return the results</value>
+        [DataMember(Name = "timeout-sec", EmitDefaultValue = false)]
+        public long TimeoutSec { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -358,6 +367,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
+            sb.Append("  TimeoutSec: ").Append(TimeoutSec).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
@@ -533,6 +543,10 @@ namespace akeyless.Model
                     this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
                 ) && 
                 (
+                    this.TimeoutSec == input.TimeoutSec ||
+                    this.TimeoutSec.Equals(input.TimeoutSec)
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -647,6 +661,7 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
+                hashCode = (hashCode * 59) + this.TimeoutSec.GetHashCode();
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();

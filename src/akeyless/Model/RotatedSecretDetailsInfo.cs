@@ -49,7 +49,8 @@ namespace akeyless.Model
         /// <param name="rotatorType">rotatorType.</param>
         /// <param name="samePassword">samePassword.</param>
         /// <param name="servicesDetails">servicesDetails.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool graceRotation = default(bool), long gwClusterId = default(long), string lastRotationError = default(string), long maxVersions = default(long), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>))
+        /// <param name="timeoutSeconds">timeoutSeconds.</param>
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool graceRotation = default(bool), long gwClusterId = default(long), string lastRotationError = default(string), long maxVersions = default(long), int numberOfVersionsToSave = default(int), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), long timeoutSeconds = default(long))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.GraceRotation = graceRotation;
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.RotatorType = rotatorType;
             this.SamePassword = samePassword;
             this.ServicesDetails = servicesDetails;
+            this.TimeoutSeconds = timeoutSeconds;
         }
 
         /// <summary>
@@ -153,6 +155,12 @@ namespace akeyless.Model
         public List<WindowsService> ServicesDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets TimeoutSeconds
+        /// </summary>
+        [DataMember(Name = "timeout_seconds", EmitDefaultValue = false)]
+        public long TimeoutSeconds { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -174,6 +182,7 @@ namespace akeyless.Model
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
             sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
             sb.Append("  ServicesDetails: ").Append(ServicesDetails).Append("\n");
+            sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -271,6 +280,10 @@ namespace akeyless.Model
                     this.ServicesDetails != null &&
                     input.ServicesDetails != null &&
                     this.ServicesDetails.SequenceEqual(input.ServicesDetails)
+                ) && 
+                (
+                    this.TimeoutSeconds == input.TimeoutSeconds ||
+                    this.TimeoutSeconds.Equals(input.TimeoutSeconds)
                 );
         }
 
@@ -315,6 +328,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.ServicesDetails.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.TimeoutSeconds.GetHashCode();
                 return hashCode;
             }
         }

@@ -35,14 +35,16 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RenewCertificate" /> class.
         /// </summary>
+        /// <param name="certIssuerName">The name of the PKI certificate issuer.</param>
         /// <param name="generateKey">Generate a new key as part of the certificate renewal.</param>
         /// <param name="itemId">Certificate item id.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Certificate name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RenewCertificate(bool generateKey = default(bool), long itemId = default(long), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public RenewCertificate(string certIssuerName = default(string), bool generateKey = default(bool), long itemId = default(long), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
         {
+            this.CertIssuerName = certIssuerName;
             this.GenerateKey = generateKey;
             this.ItemId = itemId;
             this.Json = json;
@@ -50,6 +52,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// The name of the PKI certificate issuer
+        /// </summary>
+        /// <value>The name of the PKI certificate issuer</value>
+        [DataMember(Name = "cert-issuer-name", EmitDefaultValue = false)]
+        public string CertIssuerName { get; set; }
 
         /// <summary>
         /// Generate a new key as part of the certificate renewal
@@ -101,6 +110,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RenewCertificate {\n");
+            sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  GenerateKey: ").Append(GenerateKey).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -143,6 +153,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CertIssuerName == input.CertIssuerName ||
+                    (this.CertIssuerName != null &&
+                    this.CertIssuerName.Equals(input.CertIssuerName))
+                ) && 
+                (
                     this.GenerateKey == input.GenerateKey ||
                     this.GenerateKey.Equals(input.GenerateKey)
                 ) && 
@@ -180,6 +195,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CertIssuerName != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.GenerateKey.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemId.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();

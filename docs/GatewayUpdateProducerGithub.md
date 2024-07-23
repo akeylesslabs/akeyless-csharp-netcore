@@ -5,7 +5,7 @@ gatewayUpdateProducerGithub is a command that updates github producer [Deprecate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **GithubAppId** | **long** | Github app id | [optional] 
 **GithubAppPrivateKey** | **string** | App private key | [optional] 
 **GithubBaseUrl** | **string** | Base URL | [optional] [default to "https://api.github.com/"]

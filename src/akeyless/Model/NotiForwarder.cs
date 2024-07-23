@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="endpoint">endpoint.</param>
         /// <param name="eventTypes">eventTypes.</param>
         /// <param name="gatewayClusterId">gatewayClusterId.</param>
+        /// <param name="includeError">includeError.</param>
         /// <param name="isEnabled">isEnabled.</param>
         /// <param name="lastVersion">lastVersion.</param>
         /// <param name="modificationDate">modificationDate.</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="username">Auth - User Password.</param>
         /// <param name="webhookNotiForwarderPublicDetails">webhookNotiForwarderPublicDetails.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), string overrideUrl = default(string), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), Object slackNotiForwarderPublicDetails = default(Object), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
+        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool includeError = default(bool), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), string overrideUrl = default(string), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), Object slackNotiForwarderPublicDetails = default(Object), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
         {
             this.AuthType = authType;
             this.ClientId = clientId;
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.Endpoint = endpoint;
             this.EventTypes = eventTypes;
             this.GatewayClusterId = gatewayClusterId;
+            this.IncludeError = includeError;
             this.IsEnabled = isEnabled;
             this.LastVersion = lastVersion;
             this.ModificationDate = modificationDate;
@@ -139,6 +141,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "gateway_cluster_id", EmitDefaultValue = false)]
         public long GatewayClusterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IncludeError
+        /// </summary>
+        [DataMember(Name = "include_error", EmitDefaultValue = true)]
+        public bool IncludeError { get; set; }
 
         /// <summary>
         /// Gets or Sets IsEnabled
@@ -265,6 +273,7 @@ namespace akeyless.Model
             sb.Append("  Endpoint: ").Append(Endpoint).Append("\n");
             sb.Append("  EventTypes: ").Append(EventTypes).Append("\n");
             sb.Append("  GatewayClusterId: ").Append(GatewayClusterId).Append("\n");
+            sb.Append("  IncludeError: ").Append(IncludeError).Append("\n");
             sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
@@ -358,6 +367,10 @@ namespace akeyless.Model
                 (
                     this.GatewayClusterId == input.GatewayClusterId ||
                     this.GatewayClusterId.Equals(input.GatewayClusterId)
+                ) && 
+                (
+                    this.IncludeError == input.IncludeError ||
+                    this.IncludeError.Equals(input.IncludeError)
                 ) && 
                 (
                     this.IsEnabled == input.IsEnabled ||
@@ -487,6 +500,7 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.EventTypes.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.GatewayClusterId.GetHashCode();
+                hashCode = (hashCode * 59) + this.IncludeError.GetHashCode();
                 hashCode = (hashCode * 59) + this.IsEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.LastVersion.GetHashCode();
                 if (this.ModificationDate != null)

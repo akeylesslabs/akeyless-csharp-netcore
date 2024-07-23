@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="boundNamespaces">A list of namespaces that the access is restricted to.</param>
         /// <param name="boundPodNames">A list of pod names that the access is restricted to.</param>
         /// <param name="boundSaNames">A list of service account names that the access is restricted to.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="genKey">Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false].</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="publicKey">Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string publicKey = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateAuthMethodK8S(long accessExpires = 0, string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundNamespaces = default(List<string>), List<string> boundPodNames = default(List<string>), List<string> boundSaNames = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), string genKey = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string publicKey = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.BoundNamespaces = boundNamespaces;
             this.BoundPodNames = boundPodNames;
             this.BoundSaNames = boundSaNames;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GenKey = genKey;
@@ -135,6 +137,13 @@ namespace akeyless.Model
         /// <value>A list of service account names that the access is restricted to</value>
         [DataMember(Name = "bound-sa-names", EmitDefaultValue = false)]
         public List<string> BoundSaNames { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Auth Method description
@@ -235,6 +244,7 @@ namespace akeyless.Model
             sb.Append("  BoundNamespaces: ").Append(BoundNamespaces).Append("\n");
             sb.Append("  BoundPodNames: ").Append(BoundPodNames).Append("\n");
             sb.Append("  BoundSaNames: ").Append(BoundSaNames).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GenKey: ").Append(GenKey).Append("\n");
@@ -320,6 +330,11 @@ namespace akeyless.Model
                     this.BoundSaNames != null &&
                     input.BoundSaNames != null &&
                     this.BoundSaNames.SequenceEqual(input.BoundSaNames)
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -415,6 +430,10 @@ namespace akeyless.Model
                 if (this.BoundSaNames != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundSaNames.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

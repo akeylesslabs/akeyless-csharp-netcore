@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="boundRegions">List of regions that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a regional group and the group must belong to this region. If bound_zones are provided, this attribute is ignored..</param>
         /// <param name="boundServiceAccounts">List of service accounts the service account must be part of in order to be authenticated..</param>
         /// <param name="boundZones">&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone..</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "audience" is required (not null)
             if (audience == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.BoundRegions = boundRegions;
             this.BoundServiceAccounts = boundServiceAccounts;
             this.BoundZones = boundZones;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
@@ -161,6 +163,13 @@ namespace akeyless.Model
         /// <value>&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.</value>
         [DataMember(Name = "bound-zones", EmitDefaultValue = false)]
         public List<string> BoundZones { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Auth Method description
@@ -256,6 +265,7 @@ namespace akeyless.Model
             sb.Append("  BoundRegions: ").Append(BoundRegions).Append("\n");
             sb.Append("  BoundServiceAccounts: ").Append(BoundServiceAccounts).Append("\n");
             sb.Append("  BoundZones: ").Append(BoundZones).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
@@ -354,6 +364,11 @@ namespace akeyless.Model
                     this.BoundZones.SequenceEqual(input.BoundZones)
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
@@ -450,6 +465,10 @@ namespace akeyless.Model
                 if (this.BoundZones != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundZones.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

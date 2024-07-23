@@ -40,17 +40,19 @@ namespace akeyless.Model
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
         /// <param name="creationDate">creationDate.</param>
+        /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="roleAuthMethodsAssoc">roleAuthMethodsAssoc.</param>
         /// <param name="roleName">roleName.</param>
         /// <param name="rules">rules.</param>
-        public Role(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), DateTime modificationDate = default(DateTime), List<RoleAuthMethodAssociation> roleAuthMethodsAssoc = default(List<RoleAuthMethodAssociation>), string roleName = default(string), Rules rules = default(Rules))
+        public Role(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), DateTime modificationDate = default(DateTime), List<RoleAuthMethodAssociation> roleAuthMethodsAssoc = default(List<RoleAuthMethodAssociation>), string roleName = default(string), Rules rules = default(Rules))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
             this.CreationDate = creationDate;
+            this.DeleteProtection = deleteProtection;
             this.ModificationDate = modificationDate;
             this.RoleAuthMethodsAssoc = roleAuthMethodsAssoc;
             this.RoleName = roleName;
@@ -86,6 +88,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "creation_date", EmitDefaultValue = false)]
         public DateTime CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeleteProtection
+        /// </summary>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = true)]
+        public bool DeleteProtection { get; set; }
 
         /// <summary>
         /// Gets or Sets ModificationDate
@@ -124,6 +132,7 @@ namespace akeyless.Model
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  RoleAuthMethodsAssoc: ").Append(RoleAuthMethodsAssoc).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
@@ -190,6 +199,10 @@ namespace akeyless.Model
                     this.CreationDate.Equals(input.CreationDate))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    this.DeleteProtection.Equals(input.DeleteProtection)
+                ) && 
+                (
                     this.ModificationDate == input.ModificationDate ||
                     (this.ModificationDate != null &&
                     this.ModificationDate.Equals(input.ModificationDate))
@@ -241,6 +254,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CreationDate.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 if (this.ModificationDate != null)
                 {
                     hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();

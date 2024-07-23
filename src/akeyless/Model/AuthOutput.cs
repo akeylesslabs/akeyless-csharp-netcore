@@ -35,13 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthOutput" /> class.
         /// </summary>
+        /// <param name="completeAuthLink">completeAuthLink.</param>
         /// <param name="creds">creds.</param>
         /// <param name="token">token.</param>
-        public AuthOutput(SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string token = default(string))
+        public AuthOutput(string completeAuthLink = default(string), SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string token = default(string))
         {
+            this.CompleteAuthLink = completeAuthLink;
             this.Creds = creds;
             this.Token = token;
         }
+
+        /// <summary>
+        /// Gets or Sets CompleteAuthLink
+        /// </summary>
+        [DataMember(Name = "complete_auth_link", EmitDefaultValue = false)]
+        public string CompleteAuthLink { get; set; }
 
         /// <summary>
         /// Gets or Sets Creds
@@ -63,6 +71,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AuthOutput {\n");
+            sb.Append("  CompleteAuthLink: ").Append(CompleteAuthLink).Append("\n");
             sb.Append("  Creds: ").Append(Creds).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
@@ -101,6 +110,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.CompleteAuthLink == input.CompleteAuthLink ||
+                    (this.CompleteAuthLink != null &&
+                    this.CompleteAuthLink.Equals(input.CompleteAuthLink))
+                ) && 
+                (
                     this.Creds == input.Creds ||
                     (this.Creds != null &&
                     this.Creds.Equals(input.Creds))
@@ -121,6 +135,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CompleteAuthLink != null)
+                {
+                    hashCode = (hashCode * 59) + this.CompleteAuthLink.GetHashCode();
+                }
                 if (this.Creds != null)
                 {
                     hashCode = (hashCode * 59) + this.Creds.GetHashCode();

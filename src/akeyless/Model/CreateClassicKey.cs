@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="certificateProvince">Province name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateTtl">TTL in days for the generated certificate. Required only for generate-self-signed-certificate..</param>
         /// <param name="confFileData">The csr config data in base64 encoding.</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="generateSelfSignedCertificate">Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided..</param>
         /// <param name="gpgAlg">gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519].</param>
@@ -169,9 +169,9 @@ namespace akeyless.Model
         public string ConfFileData { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

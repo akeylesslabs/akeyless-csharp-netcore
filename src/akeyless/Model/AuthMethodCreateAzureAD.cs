@@ -53,6 +53,7 @@ namespace akeyless.Model
         /// <param name="boundSpid">A list of service principal IDs that the access is restricted to.</param>
         /// <param name="boundSubId">A list of subscription ids that the access is restricted to.</param>
         /// <param name="boundTenantId">The Azure tenant id that the access is restricted to (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodCreateAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> auditLogsClaims = default(List<string>), List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
+        public AuthMethodCreateAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> auditLogsClaims = default(List<string>), List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null)
@@ -91,6 +92,7 @@ namespace akeyless.Model
             this.BoundRgId = boundRgId;
             this.BoundSpid = boundSpid;
             this.BoundSubId = boundSubId;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GwBoundIps = gwBoundIps;
@@ -197,6 +199,13 @@ namespace akeyless.Model
         public string BoundTenantId { get; set; }
 
         /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
+
+        /// <summary>
         /// Auth Method description
         /// </summary>
         /// <value>Auth Method description</value>
@@ -294,6 +303,7 @@ namespace akeyless.Model
             sb.Append("  BoundSpid: ").Append(BoundSpid).Append("\n");
             sb.Append("  BoundSubId: ").Append(BoundSubId).Append("\n");
             sb.Append("  BoundTenantId: ").Append(BoundTenantId).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
@@ -415,6 +425,11 @@ namespace akeyless.Model
                     this.BoundTenantId.Equals(input.BoundTenantId))
                 ) && 
                 (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
+                ) && 
+                (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
@@ -527,6 +542,10 @@ namespace akeyless.Model
                 if (this.BoundTenantId != null)
                 {
                     hashCode = (hashCode * 59) + this.BoundTenantId.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

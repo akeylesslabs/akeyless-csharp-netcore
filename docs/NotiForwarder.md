@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Endpoint** | **string** |  | [optional] 
 **EventTypes** | **List&lt;string&gt;** |  | [optional] 
 **GatewayClusterId** | **long** |  | [optional] 
+**IncludeError** | **bool** |  | [optional] 
 **IsEnabled** | **bool** |  | [optional] 
 **LastVersion** | **int** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 

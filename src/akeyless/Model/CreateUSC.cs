@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateUSC" /> class.
         /// </summary>
         /// <param name="azureKvName">Azure Key Vault name (Relevant only for Azure targets).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the Universal Secrets Connector.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
@@ -82,9 +82,9 @@ namespace akeyless.Model
         public string AzureKvName { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

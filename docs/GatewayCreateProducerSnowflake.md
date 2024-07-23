@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AccountPassword** | **string** | Database Password | [optional] 
 **AccountUsername** | **string** | Database Username | [optional] 
 **DbName** | **string** | Database name | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 

@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="awsUserGroups">AWS User groups.</param>
         /// <param name="awsUserPolicies">AWS User policies.</param>
         /// <param name="awsUserProgrammaticAccess">Enable AWS User programmatic access (default to true).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
@@ -63,12 +63,14 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="sessionTags">String of Key value session tags comma separated, relevant only for Assumed Role.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="transitiveTagKeys">String of transitive tag keys space separated, relevant only for Assumed Role.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string deleteProtection = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = "us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -99,9 +101,11 @@ namespace akeyless.Model
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
+            this.SessionTags = sessionTags;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
+            this.TransitiveTagKeys = transitiveTagKeys;
             this.UidToken = uidToken;
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? "60m";
@@ -170,9 +174,9 @@ namespace akeyless.Model
         public bool AwsUserProgrammaticAccess { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 
@@ -268,6 +272,13 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
+        /// String of Key value session tags comma separated, relevant only for Assumed Role
+        /// </summary>
+        /// <value>String of Key value session tags comma separated, relevant only for Assumed Role</value>
+        [DataMember(Name = "session-tags", EmitDefaultValue = false)]
+        public string SessionTags { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -287,6 +298,13 @@ namespace akeyless.Model
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// String of transitive tag keys space separated, relevant only for Assumed Role
+        /// </summary>
+        /// <value>String of transitive tag keys space separated, relevant only for Assumed Role</value>
+        [DataMember(Name = "transitive-tag-keys", EmitDefaultValue = false)]
+        public string TransitiveTagKeys { get; set; }
 
         /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
@@ -333,9 +351,11 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
+            sb.Append("  SessionTags: ").Append(SessionTags).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TransitiveTagKeys: ").Append(TransitiveTagKeys).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");
             sb.Append("}\n");
@@ -480,6 +500,11 @@ namespace akeyless.Model
                     this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
                 ) && 
                 (
+                    this.SessionTags == input.SessionTags ||
+                    (this.SessionTags != null &&
+                    this.SessionTags.Equals(input.SessionTags))
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -494,6 +519,11 @@ namespace akeyless.Model
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.TransitiveTagKeys == input.TransitiveTagKeys ||
+                    (this.TransitiveTagKeys != null &&
+                    this.TransitiveTagKeys.Equals(input.TransitiveTagKeys))
                 ) && 
                 (
                     this.UidToken == input.UidToken ||
@@ -581,6 +611,10 @@ namespace akeyless.Model
                 hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
+                if (this.SessionTags != null)
+                {
+                    hashCode = (hashCode * 59) + this.SessionTags.GetHashCode();
+                }
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
@@ -592,6 +626,10 @@ namespace akeyless.Model
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                if (this.TransitiveTagKeys != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransitiveTagKeys.GetHashCode();
                 }
                 if (this.UidToken != null)
                 {

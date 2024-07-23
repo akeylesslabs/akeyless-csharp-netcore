@@ -5,7 +5,7 @@ gatewayUpdateProducerGcp is a command that updates a GCP producer [Deprecated: U
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **GcpCredType** | **string** |  | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GcpKeyAlgo** | **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 

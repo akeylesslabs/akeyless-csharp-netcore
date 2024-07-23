@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
         /// <param name="cert">CertificateFile Path to a file that contain the certificate in a PEM format..</param>
         /// <param name="certFileData">CertificateFileData PEM Certificate in a Base64 format..</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Auth Method description.</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
         /// <param name="gatewayUrl">Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway..</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string description = default(string), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = "default_jwks_url", long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "jwksUri" is required (not null)
             if (jwksUri == null)
@@ -89,6 +90,7 @@ namespace akeyless.Model
             this.BoundIps = boundIps;
             this.Cert = cert;
             this.CertFileData = certFileData;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.ForceSubClaims = forceSubClaims;
             this.GatewayUrl = gatewayUrl;
@@ -151,6 +153,13 @@ namespace akeyless.Model
         /// <value>CertificateFileData PEM Certificate in a Base64 format.</value>
         [DataMember(Name = "cert-file-data", EmitDefaultValue = false)]
         public string CertFileData { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Auth Method description
@@ -272,6 +281,7 @@ namespace akeyless.Model
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  Cert: ").Append(Cert).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
@@ -358,6 +368,11 @@ namespace akeyless.Model
                     this.CertFileData == input.CertFileData ||
                     (this.CertFileData != null &&
                     this.CertFileData.Equals(input.CertFileData))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -469,6 +484,10 @@ namespace akeyless.Model
                 if (this.CertFileData != null)
                 {
                     hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

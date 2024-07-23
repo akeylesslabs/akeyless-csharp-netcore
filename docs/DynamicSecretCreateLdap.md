@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ProviderType** | **string** |  | [optional] 
 **BindDn** | **string** | Bind DN | [optional] 
 **BindDnPassword** | **string** | Bind DN Password | [optional] 
-**DeleteProtection** | **string** | Protection from accidental deletion of this item [true/false] | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **ExternalUsername** | **string** | Externally provided username [true/false] | [optional] [default to "false"]
 **GroupDn** | **string** | Group DN which the temporary user should be added | [optional] 

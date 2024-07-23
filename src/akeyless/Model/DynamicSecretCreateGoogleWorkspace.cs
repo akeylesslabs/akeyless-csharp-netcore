@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessMode">accessMode (required).</param>
         /// <param name="adminEmail">Admin user email (required).</param>
-        /// <param name="deleteProtection">Protection from accidental deletion of this item [true/false].</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="groupEmail">A group email, relevant only for group access-mode.</param>
@@ -108,9 +108,9 @@ namespace akeyless.Model
         public string AdminEmail { get; set; }
 
         /// <summary>
-        /// Protection from accidental deletion of this item [true/false]
+        /// Protection from accidental deletion of this object [true/false]
         /// </summary>
-        /// <value>Protection from accidental deletion of this item [true/false]</value>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
 

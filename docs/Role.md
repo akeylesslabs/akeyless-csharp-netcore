@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 
 **Comment** | **string** |  | [optional] 
 **CreationDate** | **DateTime** |  | [optional] 
+**DeleteProtection** | **bool** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
 **RoleAuthMethodsAssoc** | [**List&lt;RoleAuthMethodAssociation&gt;**](RoleAuthMethodAssociation.md) |  | [optional] 
 **RoleName** | **string** |  | [optional] 

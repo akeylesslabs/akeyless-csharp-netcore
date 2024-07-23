@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="analyticsAccess">Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="comment">Deprecated - use description.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="eventCenterAccess">Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported.</param>
         /// <param name="eventForwardersAccess">Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,6 +65,7 @@ namespace akeyless.Model
             this.AnalyticsAccess = analyticsAccess;
             this.AuditAccess = auditAccess;
             this.Comment = comment;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.EventCenterAccess = eventCenterAccess;
             this.EventForwardersAccess = eventForwardersAccess;
@@ -95,6 +97,13 @@ namespace akeyless.Model
         /// <value>Deprecated - use description</value>
         [DataMember(Name = "comment", EmitDefaultValue = false)]
         public string Comment { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -177,6 +186,7 @@ namespace akeyless.Model
             sb.Append("  AnalyticsAccess: ").Append(AnalyticsAccess).Append("\n");
             sb.Append("  AuditAccess: ").Append(AuditAccess).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EventCenterAccess: ").Append(EventCenterAccess).Append("\n");
             sb.Append("  EventForwardersAccess: ").Append(EventForwardersAccess).Append("\n");
@@ -236,6 +246,11 @@ namespace akeyless.Model
                     this.Comment == input.Comment ||
                     (this.Comment != null &&
                     this.Comment.Equals(input.Comment))
+                ) && 
+                (
+                    this.DeleteProtection == input.DeleteProtection ||
+                    (this.DeleteProtection != null &&
+                    this.DeleteProtection.Equals(input.DeleteProtection))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -308,6 +323,10 @@ namespace akeyless.Model
                 if (this.Comment != null)
                 {
                     hashCode = (hashCode * 59) + this.Comment.GetHashCode();
+                }
+                if (this.DeleteProtection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
                 }
                 if (this.Description != null)
                 {

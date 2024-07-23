@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
-        /// <param name="gatewayUrl">Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type&#x3D;k8s/oauth2).</param>
+        /// <param name="gatewayUrl">Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc.</param>
         /// <param name="gcpAudience">GCP JWT audience (default to &quot;akeyless.io&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
@@ -56,7 +56,8 @@ namespace akeyless.Model
         /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
         /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>), string uidToken = default(string))
+        /// <param name="useRemoteBrowser">Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc).</param>
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>), string uidToken = default(string), bool useRemoteBrowser = default(bool))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.OciAuthType = ociAuthType ?? "apikey";
             this.OciGroupOcid = ociGroupOcid;
             this.UidToken = uidToken;
+            this.UseRemoteBrowser = useRemoteBrowser;
         }
 
         /// <summary>
@@ -147,9 +149,9 @@ namespace akeyless.Model
         public bool Debug { get; set; }
 
         /// <summary>
-        /// Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type&#x3D;k8s/oauth2)
+        /// Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc
         /// </summary>
-        /// <value>Gateway URL for the K8S/OAUTH2 authenticated (relevant only for access-type&#x3D;k8s/oauth2)</value>
+        /// <value>Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc</value>
         [DataMember(Name = "gateway-url", EmitDefaultValue = false)]
         public string GatewayUrl { get; set; }
 
@@ -231,6 +233,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc)
+        /// </summary>
+        /// <value>Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc)</value>
+        [DataMember(Name = "use-remote-browser", EmitDefaultValue = true)]
+        public bool UseRemoteBrowser { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -259,6 +268,7 @@ namespace akeyless.Model
             sb.Append("  OciAuthType: ").Append(OciAuthType).Append("\n");
             sb.Append("  OciGroupOcid: ").Append(OciGroupOcid).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseRemoteBrowser: ").Append(UseRemoteBrowser).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -397,6 +407,10 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UseRemoteBrowser == input.UseRemoteBrowser ||
+                    this.UseRemoteBrowser.Equals(input.UseRemoteBrowser)
                 );
         }
 
@@ -487,6 +501,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.UseRemoteBrowser.GetHashCode();
                 return hashCode;
             }
         }

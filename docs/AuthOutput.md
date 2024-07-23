@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CompleteAuthLink** | **string** |  | [optional] 
 **Creds** | [**SystemAccessCredentialsReplyObj**](SystemAccessCredentialsReplyObj.md) |  | [optional] 
 **Token** | **string** |  | [optional] 
 
