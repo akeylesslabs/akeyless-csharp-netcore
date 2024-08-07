@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="certificateCommonName">Common name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateCountry">Country name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateDigestAlgo">Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI..</param>
+        /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="certificateLocality">Locality for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateOrganization">Organization name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateProvince">Province name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.CertificateCommonName = certificateCommonName;
             this.CertificateCountry = certificateCountry;
             this.CertificateDigestAlgo = certificateDigestAlgo;
+            this.CertificateFormat = certificateFormat;
             this.CertificateLocality = certificateLocality;
             this.CertificateOrganization = certificateOrganization;
             this.CertificateProvince = certificateProvince;
@@ -121,6 +123,12 @@ namespace akeyless.Model
         /// <value>Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI.</value>
         [DataMember(Name = "certificate-digest-algo", EmitDefaultValue = false)]
         public string CertificateDigestAlgo { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateFormat
+        /// </summary>
+        [DataMember(Name = "certificate-format", EmitDefaultValue = false)]
+        public string CertificateFormat { get; set; }
 
         /// <summary>
         /// Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
@@ -246,6 +254,7 @@ namespace akeyless.Model
             sb.Append("  CertificateCommonName: ").Append(CertificateCommonName).Append("\n");
             sb.Append("  CertificateCountry: ").Append(CertificateCountry).Append("\n");
             sb.Append("  CertificateDigestAlgo: ").Append(CertificateDigestAlgo).Append("\n");
+            sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
             sb.Append("  CertificateLocality: ").Append(CertificateLocality).Append("\n");
             sb.Append("  CertificateOrganization: ").Append(CertificateOrganization).Append("\n");
             sb.Append("  CertificateProvince: ").Append(CertificateProvince).Append("\n");
@@ -316,6 +325,11 @@ namespace akeyless.Model
                     this.CertificateDigestAlgo == input.CertificateDigestAlgo ||
                     (this.CertificateDigestAlgo != null &&
                     this.CertificateDigestAlgo.Equals(input.CertificateDigestAlgo))
+                ) && 
+                (
+                    this.CertificateFormat == input.CertificateFormat ||
+                    (this.CertificateFormat != null &&
+                    this.CertificateFormat.Equals(input.CertificateFormat))
                 ) && 
                 (
                     this.CertificateLocality == input.CertificateLocality ||
@@ -420,6 +434,10 @@ namespace akeyless.Model
                 if (this.CertificateDigestAlgo != null)
                 {
                     hashCode = (hashCode * 59) + this.CertificateDigestAlgo.GetHashCode();
+                }
+                if (this.CertificateFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
                 }
                 if (this.CertificateLocality != null)
                 {

@@ -69,6 +69,8 @@ docs/AzurePayload.md
 docs/AzureTargetDetails.md
 docs/BastionListEntry.md
 docs/BastionsList.md
+docs/BatchEncryptionRequestLine.md
+docs/BatchEncryptionResponseLine.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -1007,6 +1009,8 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/BatchEncryptionRequestLineTests.cs
+src/akeyless.Test/Model/BatchEncryptionResponseLineTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1093,6 +1097,8 @@ src/akeyless/Model/AzurePayload.cs
 src/akeyless/Model/AzureTargetDetails.cs
 src/akeyless/Model/BastionListEntry.cs
 src/akeyless/Model/BastionsList.cs
+src/akeyless/Model/BatchEncryptionRequestLine.cs
+src/akeyless/Model/BatchEncryptionResponseLine.cs
 src/akeyless/Model/CFConfigPart.cs
 src/akeyless/Model/CacheConfigPart.cs
 src/akeyless/Model/CertAccessRules.cs

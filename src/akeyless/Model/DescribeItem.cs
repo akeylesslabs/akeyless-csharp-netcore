@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="bastionDetails">Indicate if the item should return with ztb cluster details (url, etc) (default to false).</param>
+        /// <param name="derCertificateFormat">The certificate will be displayed in DER format (default to false).</param>
         /// <param name="displayId">The display id of the item.</param>
         /// <param name="gatewayDetails">Indicate if the item should return with clusters details (url, etc) (default to false).</param>
         /// <param name="itemId">Item id of the item.</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string accessibility = "regular", bool bastionDetails = false, string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool servicesDetails = false, bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(string accessibility = "regular", bool bastionDetails = false, bool derCertificateFormat = false, string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool servicesDetails = false, bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace akeyless.Model
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? "regular";
             this.BastionDetails = bastionDetails;
+            this.DerCertificateFormat = derCertificateFormat;
             this.DisplayId = displayId;
             this.GatewayDetails = gatewayDetails;
             this.ItemId = itemId;
@@ -85,6 +87,13 @@ namespace akeyless.Model
         /// <value>Indicate if the item should return with ztb cluster details (url, etc)</value>
         [DataMember(Name = "bastion-details", EmitDefaultValue = true)]
         public bool BastionDetails { get; set; }
+
+        /// <summary>
+        /// The certificate will be displayed in DER format
+        /// </summary>
+        /// <value>The certificate will be displayed in DER format</value>
+        [DataMember(Name = "der-certificate-format", EmitDefaultValue = true)]
+        public bool DerCertificateFormat { get; set; }
 
         /// <summary>
         /// The display id of the item
@@ -159,6 +168,7 @@ namespace akeyless.Model
             sb.Append("class DescribeItem {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  BastionDetails: ").Append(BastionDetails).Append("\n");
+            sb.Append("  DerCertificateFormat: ").Append(DerCertificateFormat).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
@@ -211,6 +221,10 @@ namespace akeyless.Model
                 (
                     this.BastionDetails == input.BastionDetails ||
                     this.BastionDetails.Equals(input.BastionDetails)
+                ) && 
+                (
+                    this.DerCertificateFormat == input.DerCertificateFormat ||
+                    this.DerCertificateFormat.Equals(input.DerCertificateFormat)
                 ) && 
                 (
                     this.DisplayId == input.DisplayId ||
@@ -268,6 +282,7 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.BastionDetails.GetHashCode();
+                hashCode = (hashCode * 59) + this.DerCertificateFormat.GetHashCode();
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();

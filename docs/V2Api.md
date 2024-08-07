@@ -94,6 +94,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateZeroSSLTarget**](V2Api.md#createzerossltarget) | **POST** /create-zerossl-target |  |
 | [**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target |  |
 | [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
+| [**DecryptBatch**](V2Api.md#decryptbatch) | **POST** /decrypt-batch |  |
 | [**DecryptGPG**](V2Api.md#decryptgpg) | **POST** /decrypt-gpg |  |
 | [**DecryptPKCS1**](V2Api.md#decryptpkcs1) | **POST** /decrypt-pkcs1 |  |
 | [**DecryptWithClassicKey**](V2Api.md#decryptwithclassickey) | **POST** /decrypt-with-classic-key |  |
@@ -180,6 +181,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretUpdateSnowflake**](V2Api.md#dynamicsecretupdatesnowflake) | **POST** /dynamic-secret-update-snowflake |  |
 | [**DynamicSecretUpdateVenafi**](V2Api.md#dynamicsecretupdatevenafi) | **POST** /dynamic-secret-update-venafi |  |
 | [**Encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
+| [**EncryptBatch**](V2Api.md#encryptbatch) | **POST** /encrypt-batch |  |
 | [**EncryptGPG**](V2Api.md#encryptgpg) | **POST** /encrypt-gpg |  |
 | [**EncryptWithClassicKey**](V2Api.md#encryptwithclassickey) | **POST** /encrypt-with-classic-key |  |
 | [**EsmCreate**](V2Api.md#esmcreate) | **POST** /esm-create |  |
@@ -8457,6 +8459,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="decryptbatch"></a>
+# **DecryptBatch**
+> DecryptOutput DecryptBatch (List<BatchEncryptionRequestLine> body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DecryptBatchExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new List<BatchEncryptionRequestLine>(); // List<BatchEncryptionRequestLine> | 
+
+            try
+            {
+                DecryptOutput result = apiInstance.DecryptBatch(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DecryptBatch: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DecryptBatchWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DecryptOutput> response = apiInstance.DecryptBatchWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DecryptBatchWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**List&lt;BatchEncryptionRequestLine&gt;**](BatchEncryptionRequestLine.md) |  |  |
+
+### Return type
+
+[**DecryptOutput**](DecryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | decryptResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="decryptgpg"></a>
 # **DecryptGPG**
 > DecryptGPGOutput DecryptGPG (DecryptGPG body)
@@ -15995,6 +16085,94 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **body** | [**Encrypt**](Encrypt.md) |  |  |
+
+### Return type
+
+[**EncryptOutput**](EncryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | encryptResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="encryptbatch"></a>
+# **EncryptBatch**
+> EncryptOutput EncryptBatch (List<BatchEncryptionRequestLine> body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EncryptBatchExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new List<BatchEncryptionRequestLine>(); // List<BatchEncryptionRequestLine> | 
+
+            try
+            {
+                EncryptOutput result = apiInstance.EncryptBatch(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EncryptBatch: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EncryptBatchWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EncryptOutput> response = apiInstance.EncryptBatchWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EncryptBatchWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**List&lt;BatchEncryptionRequestLine&gt;**](BatchEncryptionRequestLine.md) |  |  |
 
 ### Return type
 

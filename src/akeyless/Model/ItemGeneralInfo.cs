@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssueDetails">certIssueDetails.</param>
         /// <param name="certificateChainInfo">certificateChainInfo.</param>
+        /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="certificatesTemplateInfo">certificatesTemplateInfo.</param>
         /// <param name="classicKeyDetails">classicKeyDetails.</param>
         /// <param name="clusterGwUrl">clusterGwUrl.</param>
@@ -49,10 +50,11 @@ namespace akeyless.Model
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
         /// <param name="tokenizerInfo">tokenizerInfo.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), ImporterInfo importerInfo = default(ImporterInfo), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), ImporterInfo importerInfo = default(ImporterInfo), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
             this.CertIssueDetails = certIssueDetails;
             this.CertificateChainInfo = certificateChainInfo;
+            this.CertificateFormat = certificateFormat;
             this.CertificatesTemplateInfo = certificatesTemplateInfo;
             this.ClassicKeyDetails = classicKeyDetails;
             this.ClusterGwUrl = clusterGwUrl;
@@ -78,6 +80,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate_chain_info", EmitDefaultValue = false)]
         public CertificateChainInfo CertificateChainInfo { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateFormat
+        /// </summary>
+        [DataMember(Name = "certificate_format", EmitDefaultValue = false)]
+        public string CertificateFormat { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificatesTemplateInfo
@@ -161,6 +169,7 @@ namespace akeyless.Model
             sb.Append("class ItemGeneralInfo {\n");
             sb.Append("  CertIssueDetails: ").Append(CertIssueDetails).Append("\n");
             sb.Append("  CertificateChainInfo: ").Append(CertificateChainInfo).Append("\n");
+            sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
             sb.Append("  CertificatesTemplateInfo: ").Append(CertificatesTemplateInfo).Append("\n");
             sb.Append("  ClassicKeyDetails: ").Append(ClassicKeyDetails).Append("\n");
             sb.Append("  ClusterGwUrl: ").Append(ClusterGwUrl).Append("\n");
@@ -217,6 +226,11 @@ namespace akeyless.Model
                     this.CertificateChainInfo == input.CertificateChainInfo ||
                     (this.CertificateChainInfo != null &&
                     this.CertificateChainInfo.Equals(input.CertificateChainInfo))
+                ) && 
+                (
+                    this.CertificateFormat == input.CertificateFormat ||
+                    (this.CertificateFormat != null &&
+                    this.CertificateFormat.Equals(input.CertificateFormat))
                 ) && 
                 (
                     this.CertificatesTemplateInfo == input.CertificatesTemplateInfo ||
@@ -296,6 +310,10 @@ namespace akeyless.Model
                 if (this.CertificateChainInfo != null)
                 {
                     hashCode = (hashCode * 59) + this.CertificateChainInfo.GetHashCode();
+                }
+                if (this.CertificateFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
                 }
                 if (this.CertificatesTemplateInfo != null)
                 {

@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
+        /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string certificateFormat = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -69,6 +70,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.CertFileData = certFileData;
+            this.CertificateFormat = certificateFormat;
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
@@ -96,6 +98,12 @@ namespace akeyless.Model
         /// <value>Certificate in a PEM format.</value>
         [DataMember(Name = "cert-file-data", EmitDefaultValue = false)]
         public string CertFileData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateFormat
+        /// </summary>
+        [DataMember(Name = "certificate-format", EmitDefaultValue = false)]
+        public string CertificateFormat { get; set; }
 
         /// <summary>
         /// The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment)
@@ -191,6 +199,7 @@ namespace akeyless.Model
             sb.Append("class UploadRSA {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -247,6 +256,11 @@ namespace akeyless.Model
                     this.CertFileData == input.CertFileData ||
                     (this.CertFileData != null &&
                     this.CertFileData.Equals(input.CertFileData))
+                ) && 
+                (
+                    this.CertificateFormat == input.CertificateFormat ||
+                    (this.CertificateFormat != null &&
+                    this.CertificateFormat.Equals(input.CertificateFormat))
                 ) && 
                 (
                     this.CustomerFrgId == input.CustomerFrgId ||
@@ -325,6 +339,10 @@ namespace akeyless.Model
                 if (this.CertFileData != null)
                 {
                     hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
+                if (this.CertificateFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
                 }
                 if (this.CustomerFrgId != null)
                 {
