@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated].</param>
         /// <param name="every">Rate of periodic runner repetition in hours.</param>
         /// <param name="gatewaysEventSourceLocations">Event sources (required).</param>
+        /// <param name="includeError">Set this option to include event errors details [true\\false].</param>
         /// <param name="itemsEventSourceLocations">Items Event sources.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used).</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="targetsEventSourceLocations">Targets Event sources.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EventForwarderCreateEmail(List<string> authMethodsEventSourceLocations = default(List<string>), string description = default(string), string emailTo = default(string), List<string> eventTypes = default(List<string>), string every = default(string), List<string> gatewaysEventSourceLocations = default(List<string>), List<string> itemsEventSourceLocations = default(List<string>), bool json = false, string key = default(string), string name = default(string), string overrideUrl = default(string), string runnerType = default(string), List<string> targetsEventSourceLocations = default(List<string>), string token = default(string), string uidToken = default(string))
+        public EventForwarderCreateEmail(List<string> authMethodsEventSourceLocations = default(List<string>), string description = default(string), string emailTo = default(string), List<string> eventTypes = default(List<string>), string every = default(string), List<string> gatewaysEventSourceLocations = default(List<string>), string includeError = default(string), List<string> itemsEventSourceLocations = default(List<string>), bool json = false, string key = default(string), string name = default(string), string overrideUrl = default(string), string runnerType = default(string), List<string> targetsEventSourceLocations = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "gatewaysEventSourceLocations" is required (not null)
             if (gatewaysEventSourceLocations == null)
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.EmailTo = emailTo;
             this.EventTypes = eventTypes;
             this.Every = every;
+            this.IncludeError = includeError;
             this.ItemsEventSourceLocations = itemsEventSourceLocations;
             this.Json = json;
             this.Key = key;
@@ -130,6 +132,13 @@ namespace akeyless.Model
         /// <value>Event sources</value>
         [DataMember(Name = "gateways-event-source-locations", IsRequired = true, EmitDefaultValue = true)]
         public List<string> GatewaysEventSourceLocations { get; set; }
+
+        /// <summary>
+        /// Set this option to include event errors details [true\\false]
+        /// </summary>
+        /// <value>Set this option to include event errors details [true\\false]</value>
+        [DataMember(Name = "include-error", EmitDefaultValue = false)]
+        public string IncludeError { get; set; }
 
         /// <summary>
         /// Items Event sources
@@ -207,6 +216,7 @@ namespace akeyless.Model
             sb.Append("  EventTypes: ").Append(EventTypes).Append("\n");
             sb.Append("  Every: ").Append(Every).Append("\n");
             sb.Append("  GatewaysEventSourceLocations: ").Append(GatewaysEventSourceLocations).Append("\n");
+            sb.Append("  IncludeError: ").Append(IncludeError).Append("\n");
             sb.Append("  ItemsEventSourceLocations: ").Append(ItemsEventSourceLocations).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
@@ -283,6 +293,11 @@ namespace akeyless.Model
                     this.GatewaysEventSourceLocations != null &&
                     input.GatewaysEventSourceLocations != null &&
                     this.GatewaysEventSourceLocations.SequenceEqual(input.GatewaysEventSourceLocations)
+                ) && 
+                (
+                    this.IncludeError == input.IncludeError ||
+                    (this.IncludeError != null &&
+                    this.IncludeError.Equals(input.IncludeError))
                 ) && 
                 (
                     this.ItemsEventSourceLocations == input.ItemsEventSourceLocations ||
@@ -364,6 +379,10 @@ namespace akeyless.Model
                 if (this.GatewaysEventSourceLocations != null)
                 {
                     hashCode = (hashCode * 59) + this.GatewaysEventSourceLocations.GetHashCode();
+                }
+                if (this.IncludeError != null)
+                {
+                    hashCode = (hashCode * 59) + this.IncludeError.GetHashCode();
                 }
                 if (this.ItemsEventSourceLocations != null)
                 {

@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic secret encryption key.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
+        public GatewayCreateProducerAzure(string appObjId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = "false", bool fixedUserOnly = false, bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = "60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
@@ -184,6 +186,13 @@ namespace akeyless.Model
         /// <value>Enable/Disable secure remote access [true/false]</value>
         [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
         public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
 
         /// <summary>
         /// Enable Web Secure Remote Access
@@ -296,6 +305,7 @@ namespace akeyless.Model
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
@@ -401,6 +411,11 @@ namespace akeyless.Model
                     this.SecureAccessEnable == input.SecureAccessEnable ||
                     (this.SecureAccessEnable != null &&
                     this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
                 ) && 
                 (
                     this.SecureAccessWeb == input.SecureAccessWeb ||
@@ -515,6 +530,10 @@ namespace akeyless.Model
                 if (this.SecureAccessEnable != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                if (this.SecureAccessUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
                 hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();

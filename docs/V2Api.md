@@ -4,11 +4,12 @@ All URIs are relative to *https://api.akeyless.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**AliasDetails**](V2Api.md#aliasdetails) | **GET** /alias-details |  |
 | [**AssocRoleAuthMethod**](V2Api.md#assocroleauthmethod) | **POST** /assoc-role-am |  |
 | [**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item |  |
 | [**Auth**](V2Api.md#auth) | **POST** /auth |  |
 | [**AuthMethodCreateApiKey**](V2Api.md#authmethodcreateapikey) | **POST** /auth-method-create-api-key |  |
-| [**AuthMethodCreateAwsIam**](V2Api.md#authmethodcreateawsiam) | **POST** /auth-method-create-aws |  |
+| [**AuthMethodCreateAwsIam**](V2Api.md#authmethodcreateawsiam) | **POST** /auth-method-create-aws-iam |  |
 | [**AuthMethodCreateAzureAD**](V2Api.md#authmethodcreateazuread) | **POST** /auth-method-create-azure-ad |  |
 | [**AuthMethodCreateCert**](V2Api.md#authmethodcreatecert) | **POST** /auth-method-create-cert |  |
 | [**AuthMethodCreateEmail**](V2Api.md#authmethodcreateemail) | **POST** /auth-method-create-email |  |
@@ -119,6 +120,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DescribePermissions**](V2Api.md#describepermissions) | **POST** /describe-permissions |  |
 | [**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims |  |
 | [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
+| [**DetokenizeBatch**](V2Api.md#detokenizebatch) | **POST** /detokenize-batch |  |
 | [**DynamicSecretCreateArtifactory**](V2Api.md#dynamicsecretcreateartifactory) | **POST** /dynamic-secret-create-artifactory |  |
 | [**DynamicSecretCreateAws**](V2Api.md#dynamicsecretcreateaws) | **POST** /dynamic-secret-create-aws |  |
 | [**DynamicSecretCreateAzure**](V2Api.md#dynamicsecretcreateazure) | **POST** /dynamic-secret-create-azure |  |
@@ -426,6 +428,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreatePing**](V2Api.md#targetcreateping) | **POST** /target-create-ping |  |
 | [**TargetCreateRabbitMq**](V2Api.md#targetcreaterabbitmq) | **POST** /target-create-rabbitmq |  |
 | [**TargetCreateSalesforce**](V2Api.md#targetcreatesalesforce) | **POST** /target-create-salesforce |  |
+| [**TargetCreateSectigo**](V2Api.md#targetcreatesectigo) | **POST** /target-create-sectigo |  |
 | [**TargetCreateSsh**](V2Api.md#targetcreatessh) | **POST** /target-create-ssh |  |
 | [**TargetCreateWeb**](V2Api.md#targetcreateweb) | **POST** /target-create-web |  |
 | [**TargetCreateWindows**](V2Api.md#targetcreatewindows) | **POST** /target-create-windows |  |
@@ -454,11 +457,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdatePing**](V2Api.md#targetupdateping) | **POST** /target-update-ping |  |
 | [**TargetUpdateRabbitMq**](V2Api.md#targetupdaterabbitmq) | **POST** /target-update-rabbitmq |  |
 | [**TargetUpdateSalesforce**](V2Api.md#targetupdatesalesforce) | **POST** /target-update-salesforce |  |
+| [**TargetUpdateSectigo**](V2Api.md#targetupdatesectigo) | **POST** /target-update-sectigo |  |
 | [**TargetUpdateSsh**](V2Api.md#targetupdatessh) | **POST** /target-update-ssh |  |
 | [**TargetUpdateWeb**](V2Api.md#targetupdateweb) | **POST** /target-update-web |  |
 | [**TargetUpdateWindows**](V2Api.md#targetupdatewindows) | **POST** /target-update-windows |  |
 | [**TargetUpdateZeroSSL**](V2Api.md#targetupdatezerossl) | **POST** /target-update-zerossl |  |
 | [**Tokenize**](V2Api.md#tokenize) | **POST** /tokenize |  |
+| [**TokenizeBatch**](V2Api.md#tokenizebatch) | **POST** /tokenize-batch |  |
 | [**UidCreateChildToken**](V2Api.md#uidcreatechildtoken) | **POST** /uid-create-child-token |  |
 | [**UidGenerateToken**](V2Api.md#uidgeneratetoken) | **POST** /uid-generate-token |  |
 | [**UidListChildren**](V2Api.md#uidlistchildren) | **POST** /uid-list-children |  |
@@ -537,6 +542,94 @@ All URIs are relative to *https://api.akeyless.io*
 | [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 |  |
 | [**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key |  |
 | [**VerifyRsaSsaPss**](V2Api.md#verifyrsassapss) | **POST** /verify-rsassa-pss |  |
+
+<a name="aliasdetails"></a>
+# **AliasDetails**
+> Object AliasDetails (AliasDetails body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AliasDetailsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AliasDetails(); // AliasDetails | 
+
+            try
+            {
+                Object result = apiInstance.AliasDetails(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AliasDetails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AliasDetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.AliasDetailsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AliasDetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AliasDetails**](AliasDetails.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | deleteRoleResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="assocroleauthmethod"></a>
 # **AssocRoleAuthMethod**
@@ -10637,6 +10730,94 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **body** | [**Detokenize**](Detokenize.md) |  |  |
+
+### Return type
+
+[**DetokenizeOutput**](DetokenizeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | detokenizeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="detokenizebatch"></a>
+# **DetokenizeBatch**
+> DetokenizeOutput DetokenizeBatch (List<BatchTokenizationRequestLine> body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DetokenizeBatchExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new List<BatchTokenizationRequestLine>(); // List<BatchTokenizationRequestLine> | 
+
+            try
+            {
+                DetokenizeOutput result = apiInstance.DetokenizeBatch(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DetokenizeBatch: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DetokenizeBatchWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DetokenizeOutput> response = apiInstance.DetokenizeBatchWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DetokenizeBatchWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**List&lt;BatchTokenizationRequestLine&gt;**](BatchTokenizationRequestLine.md) |  |  |
 
 ### Return type
 
@@ -37642,6 +37823,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="targetcreatesectigo"></a>
+# **TargetCreateSectigo**
+> TargetCreateOutput TargetCreateSectigo (TargetCreateSectigo body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateSectigoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new TargetCreateSectigo(); // TargetCreateSectigo | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateSectigo(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateSectigo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateSectigoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateSectigoWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateSectigoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**TargetCreateSectigo**](TargetCreateSectigo.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateSectigoResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="targetcreatessh"></a>
 # **TargetCreateSsh**
 > TargetCreateOutput TargetCreateSsh (TargetCreateSsh body)
@@ -40106,6 +40375,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="targetupdatesectigo"></a>
+# **TargetUpdateSectigo**
+> TargetUpdateOutput TargetUpdateSectigo (TargetUpdateSectigo body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateSectigoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new TargetUpdateSectigo(); // TargetUpdateSectigo | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateSectigo(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateSectigo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateSectigoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateSectigoWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateSectigoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**TargetUpdateSectigo**](TargetUpdateSectigo.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateSectigoResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="targetupdatessh"></a>
 # **TargetUpdateSsh**
 > TargetUpdateOutput TargetUpdateSsh (TargetUpdateSsh body)
@@ -40523,6 +40880,94 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **body** | [**Tokenize**](Tokenize.md) |  |  |
+
+### Return type
+
+[**TokenizeOutput**](TokenizeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | tokenizeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="tokenizebatch"></a>
+# **TokenizeBatch**
+> TokenizeOutput TokenizeBatch (List<BatchTokenizationRequestLine> body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TokenizeBatchExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new List<BatchTokenizationRequestLine>(); // List<BatchTokenizationRequestLine> | 
+
+            try
+            {
+                TokenizeOutput result = apiInstance.TokenizeBatch(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TokenizeBatch: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TokenizeBatchWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TokenizeOutput> response = apiInstance.TokenizeBatchWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TokenizeBatchWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**List&lt;BatchTokenizationRequestLine&gt;**](BatchTokenizationRequestLine.md) |  |  |
 
 ### Return type
 

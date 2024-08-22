@@ -61,7 +61,8 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
+        public CreateAuthMethodGCP(long accessExpires = 0, string audience = "akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "audience" is required (not null)
             if (audience == null)
@@ -99,6 +100,7 @@ namespace akeyless.Model
             this.ServiceAccountCredsData = serviceAccountCredsData;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UniqueIdentifier = uniqueIdentifier;
         }
 
         /// <summary>
@@ -249,6 +251,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities.
+        /// </summary>
+        /// <value>A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities.</value>
+        [DataMember(Name = "unique-identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -277,6 +286,7 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -421,6 +431,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
                 );
         }
 
@@ -504,6 +519,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UniqueIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
                 }
                 return hashCode;
             }

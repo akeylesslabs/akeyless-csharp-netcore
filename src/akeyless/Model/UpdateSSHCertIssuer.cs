@@ -56,6 +56,7 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionApi">Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900.</param>
         /// <param name="secureAccessBastionSsh">Bastion&#39;s SSH server. E.g. my.bastion:22.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessEnforceHostsRestriction">Enable this flag to enforce connections only to the hosts listed in - -secure-access-host.</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessSshCredsUser">SSH username to connect to target server, must be in &#39;Allowed Users&#39; list.</param>
         /// <param name="secureAccessUseInternalBastion">Use internal SSH Bastion.</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(string providerType = default(string), List<string> addTag = default(List<string>), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = default(string), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(string providerType = default(string), List<string> addTag = default(List<string>), string allowedUsers = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string hostProvider = default(string), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -98,6 +99,7 @@ namespace akeyless.Model
             this.SecureAccessBastionApi = secureAccessBastionApi;
             this.SecureAccessBastionSsh = secureAccessBastionSsh;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessEnforceHostsRestriction = secureAccessEnforceHostsRestriction;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessSshCredsUser = secureAccessSshCredsUser;
             this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
@@ -217,6 +219,13 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
+        /// Enable this flag to enforce connections only to the hosts listed in - -secure-access-host
+        /// </summary>
+        /// <value>Enable this flag to enforce connections only to the hosts listed in - -secure-access-host</value>
+        [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
+        public bool SecureAccessEnforceHostsRestriction { get; set; }
+
+        /// <summary>
         /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
         /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
@@ -289,6 +298,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessBastionApi: ").Append(SecureAccessBastionApi).Append("\n");
             sb.Append("  SecureAccessBastionSsh: ").Append(SecureAccessBastionSsh).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessEnforceHostsRestriction: ").Append(SecureAccessEnforceHostsRestriction).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessSshCredsUser: ").Append(SecureAccessSshCredsUser).Append("\n");
             sb.Append("  SecureAccessUseInternalBastion: ").Append(SecureAccessUseInternalBastion).Append("\n");
@@ -414,6 +424,10 @@ namespace akeyless.Model
                     this.SecureAccessEnable.Equals(input.SecureAccessEnable))
                 ) && 
                 (
+                    this.SecureAccessEnforceHostsRestriction == input.SecureAccessEnforceHostsRestriction ||
+                    this.SecureAccessEnforceHostsRestriction.Equals(input.SecureAccessEnforceHostsRestriction)
+                ) && 
+                (
                     this.SecureAccessHost == input.SecureAccessHost ||
                     this.SecureAccessHost != null &&
                     input.SecureAccessHost != null &&
@@ -519,6 +533,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SecureAccessEnforceHostsRestriction.GetHashCode();
                 if (this.SecureAccessHost != null)
                 {
                     hashCode = (hashCode * 59) + this.SecureAccessHost.GetHashCode();

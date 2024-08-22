@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Assigners** | [**List&lt;RuleAssigner&gt;**](RuleAssigner.md) |  | [optional] 
 **Capabilities** | **List&lt;string&gt;** | The approved/denied capabilities in the path | [optional] 
+**Cb** | **int** |  | [optional] 
 **IsLimitAccess** | **bool** | flag that indicate that this rule is allowed to be access RemainingAccess of times. | [optional] 
 **NumberOfAccessUsed** | **long** |  | [optional] 
 **NumberOfAllowedAccess** | **long** |  | [optional] 

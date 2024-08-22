@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **EventTypes** | **List&lt;string&gt;** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated] | [optional] 
 **Every** | **string** | Rate of periodic runner repetition in hours | [optional] 
 **GatewaysEventSourceLocations** | **List&lt;string&gt;** | Event sources | 
+**IncludeError** | **string** | Set this option to include event errors details [true\\false] | [optional] 
 **ItemsEventSourceLocations** | **List&lt;string&gt;** | Items Event sources | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used) | [optional] 

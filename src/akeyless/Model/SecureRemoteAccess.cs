@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="domain">domain.</param>
         /// <param name="enable">enable.</param>
         /// <param name="endpoint">endpoint.</param>
+        /// <param name="enforceHostsRestriction">enforceHostsRestriction.</param>
         /// <param name="host">host.</param>
         /// <param name="hostProviderType">hostProviderType.</param>
         /// <param name="isCli">isCli.</param>
@@ -70,7 +71,7 @@ namespace akeyless.Model
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), bool enforceHostsRestriction = default(bool), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -87,6 +88,7 @@ namespace akeyless.Model
             this.Domain = domain;
             this.Enable = enable;
             this.Endpoint = endpoint;
+            this.EnforceHostsRestriction = enforceHostsRestriction;
             this.Host = host;
             this.HostProviderType = hostProviderType;
             this.IsCli = isCli;
@@ -198,6 +200,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "endpoint", EmitDefaultValue = false)]
         public string Endpoint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EnforceHostsRestriction
+        /// </summary>
+        [DataMember(Name = "enforce_hosts_restriction", EmitDefaultValue = true)]
+        public bool EnforceHostsRestriction { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
@@ -342,6 +350,7 @@ namespace akeyless.Model
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
             sb.Append("  Endpoint: ").Append(Endpoint).Append("\n");
+            sb.Append("  EnforceHostsRestriction: ").Append(EnforceHostsRestriction).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  HostProviderType: ").Append(HostProviderType).Append("\n");
             sb.Append("  IsCli: ").Append(IsCli).Append("\n");
@@ -466,6 +475,10 @@ namespace akeyless.Model
                     this.Endpoint == input.Endpoint ||
                     (this.Endpoint != null &&
                     this.Endpoint.Equals(input.Endpoint))
+                ) && 
+                (
+                    this.EnforceHostsRestriction == input.EnforceHostsRestriction ||
+                    this.EnforceHostsRestriction.Equals(input.EnforceHostsRestriction)
                 ) && 
                 (
                     this.Host == input.Host ||
@@ -617,6 +630,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Endpoint.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.EnforceHostsRestriction.GetHashCode();
                 if (this.Host != null)
                 {
                     hashCode = (hashCode * 59) + this.Host.GetHashCode();

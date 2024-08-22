@@ -62,7 +62,8 @@ namespace akeyless.Model
         /// <param name="stsUrl">sts URL (default to &quot;https://sts.amazonaws.com&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
+        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string stsUrl = "https://sts.amazonaws.com", string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null)
@@ -97,6 +98,7 @@ namespace akeyless.Model
             this.StsUrl = stsUrl ?? "https://sts.amazonaws.com";
             this.Token = token;
             this.UidToken = uidToken;
+            this.UniqueIdentifier = uniqueIdentifier;
         }
 
         /// <summary>
@@ -254,6 +256,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities.
+        /// </summary>
+        /// <value>A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities.</value>
+        [DataMember(Name = "unique-identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -283,6 +292,7 @@ namespace akeyless.Model
             sb.Append("  StsUrl: ").Append(StsUrl).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -434,6 +444,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
                 );
         }
 
@@ -521,6 +536,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UniqueIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
                 }
                 return hashCode;
             }

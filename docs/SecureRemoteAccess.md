@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Domain** | **string** |  | [optional] 
 **Enable** | **bool** |  | [optional] 
 **Endpoint** | **string** |  | [optional] 
+**EnforceHostsRestriction** | **bool** |  | [optional] 
 **Host** | **List&lt;string&gt;** |  | [optional] 
 **HostProviderType** | **string** |  | [optional] 
 **IsCli** | **bool** |  | [optional] 

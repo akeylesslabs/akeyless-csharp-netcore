@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="customField">For Password Management use, additional fields.</param>
-        /// <param name="format">Secret format [text/json] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
+        /// <param name="format">Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -103,9 +103,9 @@ namespace akeyless.Model
         public Dictionary<string, string> CustomField { get; set; }
 
         /// <summary>
-        /// Secret format [text/json] (relevant only for type &#39;generic&#39;)
+        /// Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;)
         /// </summary>
-        /// <value>Secret format [text/json] (relevant only for type &#39;generic&#39;)</value>
+        /// <value>Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;)</value>
         [DataMember(Name = "format", EmitDefaultValue = false)]
         public string Format { get; set; }
 

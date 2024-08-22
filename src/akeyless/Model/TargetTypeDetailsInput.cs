@@ -58,12 +58,13 @@ namespace akeyless.Model
         /// <param name="pingTargetDetails">pingTargetDetails.</param>
         /// <param name="rabbitMqTargetDetails">rabbitMqTargetDetails.</param>
         /// <param name="salesforceTargetDetails">salesforceTargetDetails.</param>
+        /// <param name="sectigoTargetDetails">sectigoTargetDetails.</param>
         /// <param name="sshTargetDetails">sshTargetDetails.</param>
         /// <param name="venafiTargetDetails">venafiTargetDetails.</param>
         /// <param name="webTargetDetails">webTargetDetails.</param>
         /// <param name="windowsTargetDetails">windowsTargetDetails.</param>
         /// <param name="zerosslTargetDetails">zerosslTargetDetails.</param>
-        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GitlabTargetDetails gitlabTargetDetails = default(GitlabTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), GodaddyTargetDetails godaddyTargetDetails = default(GodaddyTargetDetails), HashiVaultTargetDetails hashiVaultTargetDetails = default(HashiVaultTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
+        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GitlabTargetDetails gitlabTargetDetails = default(GitlabTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), GodaddyTargetDetails godaddyTargetDetails = default(GodaddyTargetDetails), HashiVaultTargetDetails hashiVaultTargetDetails = default(HashiVaultTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SectigoTargetDetails sectigoTargetDetails = default(SectigoTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
         {
             this.ArtifactoryTargetDetails = artifactoryTargetDetails;
             this.AwsTargetDetails = awsTargetDetails;
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.PingTargetDetails = pingTargetDetails;
             this.RabbitMqTargetDetails = rabbitMqTargetDetails;
             this.SalesforceTargetDetails = salesforceTargetDetails;
+            this.SectigoTargetDetails = sectigoTargetDetails;
             this.SshTargetDetails = sshTargetDetails;
             this.VenafiTargetDetails = venafiTargetDetails;
             this.WebTargetDetails = webTargetDetails;
@@ -234,6 +236,12 @@ namespace akeyless.Model
         public SalesforceTargetDetails SalesforceTargetDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets SectigoTargetDetails
+        /// </summary>
+        [DataMember(Name = "sectigo_target_details", EmitDefaultValue = false)]
+        public SectigoTargetDetails SectigoTargetDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets SshTargetDetails
         /// </summary>
         [DataMember(Name = "ssh_target_details", EmitDefaultValue = false)]
@@ -294,6 +302,7 @@ namespace akeyless.Model
             sb.Append("  PingTargetDetails: ").Append(PingTargetDetails).Append("\n");
             sb.Append("  RabbitMqTargetDetails: ").Append(RabbitMqTargetDetails).Append("\n");
             sb.Append("  SalesforceTargetDetails: ").Append(SalesforceTargetDetails).Append("\n");
+            sb.Append("  SectigoTargetDetails: ").Append(SectigoTargetDetails).Append("\n");
             sb.Append("  SshTargetDetails: ").Append(SshTargetDetails).Append("\n");
             sb.Append("  VenafiTargetDetails: ").Append(VenafiTargetDetails).Append("\n");
             sb.Append("  WebTargetDetails: ").Append(WebTargetDetails).Append("\n");
@@ -450,6 +459,11 @@ namespace akeyless.Model
                     this.SalesforceTargetDetails.Equals(input.SalesforceTargetDetails))
                 ) && 
                 (
+                    this.SectigoTargetDetails == input.SectigoTargetDetails ||
+                    (this.SectigoTargetDetails != null &&
+                    this.SectigoTargetDetails.Equals(input.SectigoTargetDetails))
+                ) && 
+                (
                     this.SshTargetDetails == input.SshTargetDetails ||
                     (this.SshTargetDetails != null &&
                     this.SshTargetDetails.Equals(input.SshTargetDetails))
@@ -576,6 +590,10 @@ namespace akeyless.Model
                 if (this.SalesforceTargetDetails != null)
                 {
                     hashCode = (hashCode * 59) + this.SalesforceTargetDetails.GetHashCode();
+                }
+                if (this.SectigoTargetDetails != null)
+                {
+                    hashCode = (hashCode * 59) + this.SectigoTargetDetails.GetHashCode();
                 }
                 if (this.SshTargetDetails != null)
                 {

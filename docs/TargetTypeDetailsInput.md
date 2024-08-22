@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **PingTargetDetails** | [**PingTargetDetails**](PingTargetDetails.md) |  | [optional] 
 **RabbitMqTargetDetails** | [**RabbitMQTargetDetails**](RabbitMQTargetDetails.md) |  | [optional] 
 **SalesforceTargetDetails** | [**SalesforceTargetDetails**](SalesforceTargetDetails.md) |  | [optional] 
+**SectigoTargetDetails** | [**SectigoTargetDetails**](SectigoTargetDetails.md) |  | [optional] 
 **SshTargetDetails** | [**SSHTargetDetails**](SSHTargetDetails.md) |  | [optional] 
 **VenafiTargetDetails** | [**VenafiTargetDetails**](VenafiTargetDetails.md) |  | [optional] 
 **WebTargetDetails** | [**WebTargetDetails**](WebTargetDetails.md) |  | [optional] 

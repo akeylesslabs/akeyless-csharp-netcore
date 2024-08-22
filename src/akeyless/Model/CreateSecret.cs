@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="customField">For Password Management use, additional fields.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="format">Secret format [text/json] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
+        /// <param name="format">Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
@@ -151,9 +151,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Secret format [text/json] (relevant only for type &#39;generic&#39;)
+        /// Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;)
         /// </summary>
-        /// <value>Secret format [text/json] (relevant only for type &#39;generic&#39;)</value>
+        /// <value>Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;)</value>
         [DataMember(Name = "format", EmitDefaultValue = false)]
         public string Format { get; set; }
 

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **BoundTenantId** | **string** | The tenants id for the Azure Active Directory organization. | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] 
 **JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 
+**UniqueIdentifier** | **string** | A unique identifier to distinguish different users | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **string** | Type of the GCP Access Rules | 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UniqueIdentifier** | **string** | A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

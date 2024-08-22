@@ -41,9 +41,10 @@ namespace akeyless.Model
         /// <param name="roleId">The list of role ids that the login is restricted to..</param>
         /// <param name="roleName">The list of role names that the login is restricted to..</param>
         /// <param name="stsEndpoint">The sts URL..</param>
+        /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
         /// <param name="userId">The list of user ids that the login is restricted to..</param>
         /// <param name="userName">The list of user names that the login is restricted to..</param>
-        public AWSIAMAccessRules(List<string> accountId = default(List<string>), List<string> arn = default(List<string>), List<string> resourceId = default(List<string>), List<string> roleId = default(List<string>), List<string> roleName = default(List<string>), string stsEndpoint = default(string), List<string> userId = default(List<string>), List<string> userName = default(List<string>))
+        public AWSIAMAccessRules(List<string> accountId = default(List<string>), List<string> arn = default(List<string>), List<string> resourceId = default(List<string>), List<string> roleId = default(List<string>), List<string> roleName = default(List<string>), string stsEndpoint = default(string), string uniqueIdentifier = default(string), List<string> userId = default(List<string>), List<string> userName = default(List<string>))
         {
             this.AccountId = accountId;
             this.Arn = arn;
@@ -51,6 +52,7 @@ namespace akeyless.Model
             this.RoleId = roleId;
             this.RoleName = roleName;
             this.StsEndpoint = stsEndpoint;
+            this.UniqueIdentifier = uniqueIdentifier;
             this.UserId = userId;
             this.UserName = userName;
         }
@@ -98,6 +100,13 @@ namespace akeyless.Model
         public string StsEndpoint { get; set; }
 
         /// <summary>
+        /// A unique identifier to distinguish different users
+        /// </summary>
+        /// <value>A unique identifier to distinguish different users</value>
+        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// The list of user ids that the login is restricted to.
         /// </summary>
         /// <value>The list of user ids that the login is restricted to.</value>
@@ -125,6 +134,7 @@ namespace akeyless.Model
             sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  StsEndpoint: ").Append(StsEndpoint).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("}\n");
@@ -198,6 +208,11 @@ namespace akeyless.Model
                     this.StsEndpoint.Equals(input.StsEndpoint))
                 ) && 
                 (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
+                ) && 
+                (
                     this.UserId == input.UserId ||
                     this.UserId != null &&
                     input.UserId != null &&
@@ -243,6 +258,10 @@ namespace akeyless.Model
                 if (this.StsEndpoint != null)
                 {
                     hashCode = (hashCode * 59) + this.StsEndpoint.GetHashCode();
+                }
+                if (this.UniqueIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
                 }
                 if (this.UserId != null)
                 {

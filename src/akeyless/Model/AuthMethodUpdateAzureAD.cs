@@ -66,7 +66,8 @@ namespace akeyless.Model
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodUpdateAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> auditLogsClaims = default(List<string>), List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
+        public AuthMethodUpdateAzureAD(long accessExpires = 0, string audience = "https://management.azure.com/", List<string> auditLogsClaims = default(List<string>), List<string> boundGroupId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundProviders = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundRgId = default(List<string>), List<string> boundSpid = default(List<string>), List<string> boundSubId = default(List<string>), string boundTenantId = default(string), string deleteProtection = default(string), string description = default(string), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = "https://sts.windows.net/---bound_tenant_id---", bool json = false, string jwksUri = "https://login.microsoftonline.com/common/discovery/keys", long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "boundTenantId" is required (not null)
             if (boundTenantId == null)
@@ -107,6 +108,7 @@ namespace akeyless.Model
             this.ProductType = productType;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UniqueIdentifier = uniqueIdentifier;
         }
 
         /// <summary>
@@ -292,6 +294,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities.
+        /// </summary>
+        /// <value>A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities.</value>
+        [DataMember(Name = "unique-identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -325,6 +334,7 @@ namespace akeyless.Model
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -497,6 +507,11 @@ namespace akeyless.Model
                     this.UidToken == input.UidToken ||
                     (this.UidToken != null &&
                     this.UidToken.Equals(input.UidToken))
+                ) && 
+                (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
                 );
         }
 
@@ -600,6 +615,10 @@ namespace akeyless.Model
                 if (this.UidToken != null)
                 {
                     hashCode = (hashCode * 59) + this.UidToken.GetHashCode();
+                }
+                if (this.UniqueIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
                 }
                 return hashCode;
             }

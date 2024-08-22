@@ -47,7 +47,8 @@ namespace akeyless.Model
         /// <param name="boundTenantId">The tenants id for the Azure Active Directory organization..</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server..</param>
-        public AzureADAccessRules(string adEndpoint = default(string), List<string> boundGroupIds = default(List<string>), List<string> boundResourceGroups = default(List<string>), List<string> boundResourceIds = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceProviders = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundServicePrincipalIds = default(List<string>), List<string> boundSubscriptionIds = default(List<string>), string boundTenantId = default(string), string issuer = default(string), string jwksUri = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
+        public AzureADAccessRules(string adEndpoint = default(string), List<string> boundGroupIds = default(List<string>), List<string> boundResourceGroups = default(List<string>), List<string> boundResourceIds = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceProviders = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundServicePrincipalIds = default(List<string>), List<string> boundSubscriptionIds = default(List<string>), string boundTenantId = default(string), string issuer = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
         {
             this.AdEndpoint = adEndpoint;
             this.BoundGroupIds = boundGroupIds;
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.BoundTenantId = boundTenantId;
             this.Issuer = issuer;
             this.JwksUri = jwksUri;
+            this.UniqueIdentifier = uniqueIdentifier;
         }
 
         /// <summary>
@@ -148,6 +150,13 @@ namespace akeyless.Model
         public string JwksUri { get; set; }
 
         /// <summary>
+        /// A unique identifier to distinguish different users
+        /// </summary>
+        /// <value>A unique identifier to distinguish different users</value>
+        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -167,6 +176,7 @@ namespace akeyless.Model
             sb.Append("  BoundTenantId: ").Append(BoundTenantId).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  JwksUri: ").Append(JwksUri).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -269,6 +279,11 @@ namespace akeyless.Model
                     this.JwksUri == input.JwksUri ||
                     (this.JwksUri != null &&
                     this.JwksUri.Equals(input.JwksUri))
+                ) && 
+                (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
                 );
         }
 
@@ -328,6 +343,10 @@ namespace akeyless.Model
                 if (this.JwksUri != null)
                 {
                     hashCode = (hashCode * 59) + this.JwksUri.GetHashCode();
+                }
+                if (this.UniqueIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
                 }
                 return hashCode;
             }

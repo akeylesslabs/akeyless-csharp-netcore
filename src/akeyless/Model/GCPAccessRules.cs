@@ -43,7 +43,8 @@ namespace akeyless.Model
         /// <param name="boundZones">&#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone..</param>
         /// <param name="serviceAccount">ServiceAccount holds the credentials file contents to be used by Akeyless to validate IAM (Human) and GCE (Machine) logins against GCP base64 encoded string.</param>
         /// <param name="type">type.</param>
-        public GCPAccessRules(string audience = "akeyless.io", Dictionary<string, string> boundLabels = default(Dictionary<string, string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string serviceAccount = default(string), string type = default(string))
+        /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
+        public GCPAccessRules(string audience = "akeyless.io", Dictionary<string, string> boundLabels = default(Dictionary<string, string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string serviceAccount = default(string), string type = default(string), string uniqueIdentifier = default(string))
         {
             // use default value if no "audience" provided
             this.Audience = audience ?? "akeyless.io";
@@ -54,6 +55,7 @@ namespace akeyless.Model
             this.BoundZones = boundZones;
             this.ServiceAccount = serviceAccount;
             this.Type = type;
+            this.UniqueIdentifier = uniqueIdentifier;
         }
 
         /// <summary>
@@ -112,6 +114,13 @@ namespace akeyless.Model
         public string Type { get; set; }
 
         /// <summary>
+        /// A unique identifier to distinguish different users
+        /// </summary>
+        /// <value>A unique identifier to distinguish different users</value>
+        [DataMember(Name = "unique_identifier", EmitDefaultValue = false)]
+        public string UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -127,6 +136,7 @@ namespace akeyless.Model
             sb.Append("  BoundZones: ").Append(BoundZones).Append("\n");
             sb.Append("  ServiceAccount: ").Append(ServiceAccount).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -206,6 +216,11 @@ namespace akeyless.Model
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this.UniqueIdentifier == input.UniqueIdentifier ||
+                    (this.UniqueIdentifier != null &&
+                    this.UniqueIdentifier.Equals(input.UniqueIdentifier))
                 );
         }
 
@@ -249,6 +264,10 @@ namespace akeyless.Model
                 if (this.Type != null)
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                }
+                if (this.UniqueIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.UniqueIdentifier.GetHashCode();
                 }
                 return hashCode;
             }

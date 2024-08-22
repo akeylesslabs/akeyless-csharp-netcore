@@ -16,6 +16,8 @@ docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
+docs/AliasDetails.md
+docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
 docs/AllowedAccess.md
 docs/AllowedAccessOld.md
@@ -71,6 +73,8 @@ docs/BastionListEntry.md
 docs/BastionsList.md
 docs/BatchEncryptionRequestLine.md
 docs/BatchEncryptionResponseLine.md
+docs/BatchTokenizationRequestLine.md
+docs/BatchTokenizationResponseLine.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -771,6 +775,7 @@ docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
 docs/SecretInfo.md
+docs/SectigoTargetDetails.md
 docs/SecureRemoteAccess.md
 docs/ServerInventoryMigration.md
 docs/ServerInventoryPayload.md
@@ -824,6 +829,7 @@ docs/TargetCreateOutput.md
 docs/TargetCreatePing.md
 docs/TargetCreateRabbitMq.md
 docs/TargetCreateSalesforce.md
+docs/TargetCreateSectigo.md
 docs/TargetCreateSsh.md
 docs/TargetCreateWeb.md
 docs/TargetCreateWindows.md
@@ -857,6 +863,7 @@ docs/TargetUpdateOutput.md
 docs/TargetUpdatePing.md
 docs/TargetUpdateRabbitMq.md
 docs/TargetUpdateSalesforce.md
+docs/TargetUpdateSectigo.md
 docs/TargetUpdateSsh.md
 docs/TargetUpdateWeb.md
 docs/TargetUpdateWindows.md
@@ -1009,8 +1016,13 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/BatchEncryptionRequestLineTests.cs
-src/akeyless.Test/Model/BatchEncryptionResponseLineTests.cs
+src/akeyless.Test/Model/AliasDetailsOutputTests.cs
+src/akeyless.Test/Model/AliasDetailsTests.cs
+src/akeyless.Test/Model/BatchTokenizationRequestLineTests.cs
+src/akeyless.Test/Model/BatchTokenizationResponseLineTests.cs
+src/akeyless.Test/Model/SectigoTargetDetailsTests.cs
+src/akeyless.Test/Model/TargetCreateSectigoTests.cs
+src/akeyless.Test/Model/TargetUpdateSectigoTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1044,6 +1056,8 @@ src/akeyless/Model/ActiveDirectoryPayload.cs
 src/akeyless/Model/AddGatewayAllowedAccessId.cs
 src/akeyless/Model/AdminsConfigPart.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
+src/akeyless/Model/AliasDetails.cs
+src/akeyless/Model/AliasDetailsOutput.cs
 src/akeyless/Model/AllAnalyticsData.cs
 src/akeyless/Model/AllowedAccess.cs
 src/akeyless/Model/AllowedAccessOld.cs
@@ -1099,6 +1113,8 @@ src/akeyless/Model/BastionListEntry.cs
 src/akeyless/Model/BastionsList.cs
 src/akeyless/Model/BatchEncryptionRequestLine.cs
 src/akeyless/Model/BatchEncryptionResponseLine.cs
+src/akeyless/Model/BatchTokenizationRequestLine.cs
+src/akeyless/Model/BatchTokenizationResponseLine.cs
 src/akeyless/Model/CFConfigPart.cs
 src/akeyless/Model/CacheConfigPart.cs
 src/akeyless/Model/CertAccessRules.cs
@@ -1799,6 +1815,7 @@ src/akeyless/Model/SSHCertificateIssueDetails.cs
 src/akeyless/Model/SSHTargetDetails.cs
 src/akeyless/Model/SalesforceTargetDetails.cs
 src/akeyless/Model/SecretInfo.cs
+src/akeyless/Model/SectigoTargetDetails.cs
 src/akeyless/Model/SecureRemoteAccess.cs
 src/akeyless/Model/ServerInventoryMigration.cs
 src/akeyless/Model/ServerInventoryPayload.cs
@@ -1852,6 +1869,7 @@ src/akeyless/Model/TargetCreateOutput.cs
 src/akeyless/Model/TargetCreatePing.cs
 src/akeyless/Model/TargetCreateRabbitMq.cs
 src/akeyless/Model/TargetCreateSalesforce.cs
+src/akeyless/Model/TargetCreateSectigo.cs
 src/akeyless/Model/TargetCreateSsh.cs
 src/akeyless/Model/TargetCreateWeb.cs
 src/akeyless/Model/TargetCreateWindows.cs
@@ -1885,6 +1903,7 @@ src/akeyless/Model/TargetUpdateOutput.cs
 src/akeyless/Model/TargetUpdatePing.cs
 src/akeyless/Model/TargetUpdateRabbitMq.cs
 src/akeyless/Model/TargetUpdateSalesforce.cs
+src/akeyless/Model/TargetUpdateSectigo.cs
 src/akeyless/Model/TargetUpdateSsh.cs
 src/akeyless/Model/TargetUpdateWeb.cs
 src/akeyless/Model/TargetUpdateWindows.cs

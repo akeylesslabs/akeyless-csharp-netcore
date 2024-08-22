@@ -53,12 +53,17 @@ namespace akeyless.Model
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="roleName">Name of the admin role to assign to the user, relevant only for role access-mode.</param>
         /// <param name="roleScope">roleScope.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless Web Access Bastion (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Name of existing target to use in dynamic secret creation.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
+        public DynamicSecretUpdateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = "60m")
         {
             // to ensure "accessMode" is required (not null)
             if (accessMode == null)
@@ -88,6 +93,11 @@ namespace akeyless.Model
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RoleName = roleName;
             this.RoleScope = roleScope;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWeb = secureAccessWeb;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -185,6 +195,41 @@ namespace akeyless.Model
         public string RoleScope { get; set; }
 
         /// <summary>
+        /// Enable/Disable secure remote access [true/false]
+        /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
+        /// Enable Web Secure Remote Access
+        /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
+        /// Secure browser via Akeyless Web Access Bastion
+        /// </summary>
+        /// <value>Secure browser via Akeyless Web Access Bastion</value>
+        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Web-Proxy via Akeyless Web Access Bastion
+        /// </summary>
+        /// <value>Web-Proxy via Akeyless Web Access Bastion</value>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -240,6 +285,11 @@ namespace akeyless.Model
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  RoleScope: ").Append(RoleScope).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -345,6 +395,28 @@ namespace akeyless.Model
                     this.RoleScope.Equals(input.RoleScope))
                 ) && 
                 (
+                    this.SecureAccessEnable == input.SecureAccessEnable ||
+                    (this.SecureAccessEnable != null &&
+                    this.SecureAccessEnable.Equals(input.SecureAccessEnable))
+                ) && 
+                (
+                    this.SecureAccessUrl == input.SecureAccessUrl ||
+                    (this.SecureAccessUrl != null &&
+                    this.SecureAccessUrl.Equals(input.SecureAccessUrl))
+                ) && 
+                (
+                    this.SecureAccessWeb == input.SecureAccessWeb ||
+                    this.SecureAccessWeb.Equals(input.SecureAccessWeb)
+                ) && 
+                (
+                    this.SecureAccessWebBrowsing == input.SecureAccessWebBrowsing ||
+                    this.SecureAccessWebBrowsing.Equals(input.SecureAccessWebBrowsing)
+                ) && 
+                (
+                    this.SecureAccessWebProxy == input.SecureAccessWebProxy ||
+                    this.SecureAccessWebProxy.Equals(input.SecureAccessWebProxy)
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
@@ -430,6 +502,17 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.RoleScope.GetHashCode();
                 }
+                if (this.SecureAccessEnable != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessEnable.GetHashCode();
+                }
+                if (this.SecureAccessUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecureAccessUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SecureAccessWeb.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebBrowsing.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecureAccessWebProxy.GetHashCode();
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
