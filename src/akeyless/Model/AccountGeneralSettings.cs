@@ -46,11 +46,12 @@ namespace akeyless.Model
         /// <param name="invalidCharacters">InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention.</param>
         /// <param name="itemUsageEvent">itemUsageEvent.</param>
         /// <param name="lockDefaultKey">LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty.</param>
+        /// <param name="passwordExpirationInfo">passwordExpirationInfo.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), string invalidCharacters = default(string), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
@@ -63,6 +64,7 @@ namespace akeyless.Model
             this.InvalidCharacters = invalidCharacters;
             this.ItemUsageEvent = itemUsageEvent;
             this.LockDefaultKey = lockDefaultKey;
+            this.PasswordExpirationInfo = passwordExpirationInfo;
             this.PasswordPolicy = passwordPolicy;
             this.ProtectItemsByDefault = protectItemsByDefault;
             this.RotationSecretMaxInterval = rotationSecretMaxInterval;
@@ -140,6 +142,12 @@ namespace akeyless.Model
         public bool LockDefaultKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets PasswordExpirationInfo
+        /// </summary>
+        [DataMember(Name = "password_expiration_info", EmitDefaultValue = false)]
+        public PasswordExpirationInfo PasswordExpirationInfo { get; set; }
+
+        /// <summary>
         /// Gets or Sets PasswordPolicy
         /// </summary>
         [DataMember(Name = "password_policy", EmitDefaultValue = false)]
@@ -182,6 +190,7 @@ namespace akeyless.Model
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
             sb.Append("  ItemUsageEvent: ").Append(ItemUsageEvent).Append("\n");
             sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
+            sb.Append("  PasswordExpirationInfo: ").Append(PasswordExpirationInfo).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  ProtectItemsByDefault: ").Append(ProtectItemsByDefault).Append("\n");
             sb.Append("  RotationSecretMaxInterval: ").Append(RotationSecretMaxInterval).Append("\n");
@@ -274,6 +283,11 @@ namespace akeyless.Model
                     this.LockDefaultKey.Equals(input.LockDefaultKey)
                 ) && 
                 (
+                    this.PasswordExpirationInfo == input.PasswordExpirationInfo ||
+                    (this.PasswordExpirationInfo != null &&
+                    this.PasswordExpirationInfo.Equals(input.PasswordExpirationInfo))
+                ) && 
+                (
                     this.PasswordPolicy == input.PasswordPolicy ||
                     (this.PasswordPolicy != null &&
                     this.PasswordPolicy.Equals(input.PasswordPolicy))
@@ -338,6 +352,10 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.ItemUsageEvent.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.LockDefaultKey.GetHashCode();
+                if (this.PasswordExpirationInfo != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordExpirationInfo.GetHashCode();
+                }
                 if (this.PasswordPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.PasswordPolicy.GetHashCode();

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | **string** | MongoDB server username | [optional] 
 **Name** | **string** | Dynamic secret name | 
-**NewName** | **string** | Dynamic secret new name | [optional] 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Encrypt producer with following key | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 

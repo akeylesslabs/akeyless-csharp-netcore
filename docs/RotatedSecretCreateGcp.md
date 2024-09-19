@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
+**RotationEventIn** | **List&lt;string&gt;** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | **int** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/service-account-rotator] | 

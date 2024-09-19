@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
-        /// <param name="newName">Dynamic secret new name.</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="pingAdministrativePort">Ping Federate administrative port (default to &quot;9999&quot;).</param>
         /// <param name="pingAtmId">Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set..</param>
         /// <param name="pingAuthorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
@@ -137,9 +137,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Dynamic secret new name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Dynamic secret new name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

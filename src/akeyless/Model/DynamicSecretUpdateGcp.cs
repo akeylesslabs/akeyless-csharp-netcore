@@ -49,7 +49,7 @@ namespace akeyless.Model
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
-        /// <param name="newName">Dynamic secret new name.</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="roleBinding">Role binding definitions in json format.</param>
         /// <param name="serviceAccountType">The type of the gcp dynamic secret. Options[fixed, dynamic] (required) (default to &quot;fixed&quot;).</param>
@@ -154,9 +154,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Dynamic secret new name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Dynamic secret new name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

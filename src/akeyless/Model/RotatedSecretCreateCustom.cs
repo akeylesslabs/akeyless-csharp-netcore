@@ -51,6 +51,7 @@ namespace akeyless.Model
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (default to false).</param>
@@ -69,7 +70,7 @@ namespace akeyless.Model
         /// <param name="timeoutSec">Maximum allowed time in seconds for the custom rotator to return the results (default to 40).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretCreateCustom(string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), long timeoutSec = 40, string token = default(string), string uidToken = default(string))
+        public RotatedSecretCreateCustom(string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = "false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), long timeoutSec = 40, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -95,6 +96,7 @@ namespace akeyless.Model
             this.PasswordLength = passwordLength;
             // use default value if no "rotateAfterDisconnect" provided
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
+            this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
@@ -190,6 +192,13 @@ namespace akeyless.Model
         /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
+
+        /// <summary>
+        /// How many days before the rotation of the item would you like to be notified
+        /// </summary>
+        /// <value>How many days before the rotation of the item would you like to be notified</value>
+        [DataMember(Name = "rotation-event-in", EmitDefaultValue = false)]
+        public List<string> RotationEventIn { get; set; }
 
         /// <summary>
         /// The Hour of the rotation in UTC
@@ -336,6 +345,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
+            sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
@@ -442,6 +452,12 @@ namespace akeyless.Model
                     this.RotateAfterDisconnect == input.RotateAfterDisconnect ||
                     (this.RotateAfterDisconnect != null &&
                     this.RotateAfterDisconnect.Equals(input.RotateAfterDisconnect))
+                ) && 
+                (
+                    this.RotationEventIn == input.RotationEventIn ||
+                    this.RotationEventIn != null &&
+                    input.RotationEventIn != null &&
+                    this.RotationEventIn.SequenceEqual(input.RotationEventIn)
                 ) && 
                 (
                     this.RotationHour == input.RotationHour ||
@@ -580,6 +596,10 @@ namespace akeyless.Model
                 if (this.RotateAfterDisconnect != null)
                 {
                     hashCode = (hashCode * 59) + this.RotateAfterDisconnect.GetHashCode();
+                }
+                if (this.RotationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationEventIn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)

@@ -58,6 +58,7 @@ namespace akeyless.Model
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;ldap).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;ldap).</param>
+        /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
@@ -72,7 +73,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">Base DN to Perform User Search.</param>
-        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
+        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = "cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
+            this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
             this.SecureAccessEnable = secureAccessEnable;
@@ -243,6 +245,13 @@ namespace akeyless.Model
         public string RotatedUsername { get; set; }
 
         /// <summary>
+        /// How many days before the rotation of the item would you like to be notified
+        /// </summary>
+        /// <value>How many days before the rotation of the item would you like to be notified</value>
+        [DataMember(Name = "rotation-event-in", EmitDefaultValue = false)]
+        public List<string> RotationEventIn { get; set; }
+
+        /// <summary>
         /// The Hour of the rotation in UTC
         /// </summary>
         /// <value>The Hour of the rotation in UTC</value>
@@ -366,6 +375,7 @@ namespace akeyless.Model
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
+            sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
@@ -505,6 +515,12 @@ namespace akeyless.Model
                     this.RotatedUsername == input.RotatedUsername ||
                     (this.RotatedUsername != null &&
                     this.RotatedUsername.Equals(input.RotatedUsername))
+                ) && 
+                (
+                    this.RotationEventIn == input.RotationEventIn ||
+                    this.RotationEventIn != null &&
+                    input.RotationEventIn != null &&
+                    this.RotationEventIn.SequenceEqual(input.RotationEventIn)
                 ) && 
                 (
                     this.RotationHour == input.RotationHour ||
@@ -653,6 +669,10 @@ namespace akeyless.Model
                 if (this.RotatedUsername != null)
                 {
                     hashCode = (hashCode * 59) + this.RotatedUsername.GetHashCode();
+                }
+                if (this.RotationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationEventIn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)

@@ -43,13 +43,17 @@ namespace akeyless.Model
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context).</param>
+        /// <param name="certIssuerName">Certificate Issuer Name.</param>
+        /// <param name="certUsername">The username to sign in the SSH certificate (use a comma-separated list for more than one username).</param>
+        /// <param name="defaultLocationPrefix">Default path prefix for name of items, targets and auth methods.</param>
         /// <param name="gcpAudience">GCP JWT audience (default to &quot;akeyless.io&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context).</param>
+        /// <param name="legacySigningAlgName">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate..</param>
         /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
         /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>))
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string certIssuerName = default(string), string certUsername = default(string), string defaultLocationPrefix = default(string), string gcpAudience = "akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string keyData = default(string), bool legacySigningAlgName = default(bool), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -60,11 +64,15 @@ namespace akeyless.Model
             this.AdminPassword = adminPassword;
             this.AzureAdObjectId = azureAdObjectId;
             this.CertData = certData;
+            this.CertIssuerName = certIssuerName;
+            this.CertUsername = certUsername;
+            this.DefaultLocationPrefix = defaultLocationPrefix;
             // use default value if no "gcpAudience" provided
             this.GcpAudience = gcpAudience ?? "akeyless.io";
             this.Json = json;
             this.K8sAuthConfigName = k8sAuthConfigName;
             this.KeyData = keyData;
+            this.LegacySigningAlgName = legacySigningAlgName;
             // use default value if no "ociAuthType" provided
             this.OciAuthType = ociAuthType ?? "apikey";
             this.OciGroupOcid = ociGroupOcid;
@@ -127,6 +135,27 @@ namespace akeyless.Model
         public string CertData { get; set; }
 
         /// <summary>
+        /// Certificate Issuer Name
+        /// </summary>
+        /// <value>Certificate Issuer Name</value>
+        [DataMember(Name = "cert-issuer-name", EmitDefaultValue = false)]
+        public string CertIssuerName { get; set; }
+
+        /// <summary>
+        /// The username to sign in the SSH certificate (use a comma-separated list for more than one username)
+        /// </summary>
+        /// <value>The username to sign in the SSH certificate (use a comma-separated list for more than one username)</value>
+        [DataMember(Name = "cert-username", EmitDefaultValue = false)]
+        public string CertUsername { get; set; }
+
+        /// <summary>
+        /// Default path prefix for name of items, targets and auth methods
+        /// </summary>
+        /// <value>Default path prefix for name of items, targets and auth methods</value>
+        [DataMember(Name = "default-location-prefix", EmitDefaultValue = false)]
+        public string DefaultLocationPrefix { get; set; }
+
+        /// <summary>
         /// GCP JWT audience
         /// </summary>
         /// <value>GCP JWT audience</value>
@@ -153,6 +182,13 @@ namespace akeyless.Model
         /// <value>Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context)</value>
         [DataMember(Name = "key-data", EmitDefaultValue = false)]
         public string KeyData { get; set; }
+
+        /// <summary>
+        /// Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate.
+        /// </summary>
+        /// <value>Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate.</value>
+        [DataMember(Name = "legacy-signing-alg-name", EmitDefaultValue = true)]
+        public bool LegacySigningAlgName { get; set; }
 
         /// <summary>
         /// The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci)
@@ -184,10 +220,14 @@ namespace akeyless.Model
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
             sb.Append("  CertData: ").Append(CertData).Append("\n");
+            sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
+            sb.Append("  CertUsername: ").Append(CertUsername).Append("\n");
+            sb.Append("  DefaultLocationPrefix: ").Append(DefaultLocationPrefix).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
+            sb.Append("  LegacySigningAlgName: ").Append(LegacySigningAlgName).Append("\n");
             sb.Append("  OciAuthType: ").Append(OciAuthType).Append("\n");
             sb.Append("  OciGroupOcid: ").Append(OciGroupOcid).Append("\n");
             sb.Append("}\n");
@@ -266,6 +306,21 @@ namespace akeyless.Model
                     this.CertData.Equals(input.CertData))
                 ) && 
                 (
+                    this.CertIssuerName == input.CertIssuerName ||
+                    (this.CertIssuerName != null &&
+                    this.CertIssuerName.Equals(input.CertIssuerName))
+                ) && 
+                (
+                    this.CertUsername == input.CertUsername ||
+                    (this.CertUsername != null &&
+                    this.CertUsername.Equals(input.CertUsername))
+                ) && 
+                (
+                    this.DefaultLocationPrefix == input.DefaultLocationPrefix ||
+                    (this.DefaultLocationPrefix != null &&
+                    this.DefaultLocationPrefix.Equals(input.DefaultLocationPrefix))
+                ) && 
+                (
                     this.GcpAudience == input.GcpAudience ||
                     (this.GcpAudience != null &&
                     this.GcpAudience.Equals(input.GcpAudience))
@@ -283,6 +338,10 @@ namespace akeyless.Model
                     this.KeyData == input.KeyData ||
                     (this.KeyData != null &&
                     this.KeyData.Equals(input.KeyData))
+                ) && 
+                (
+                    this.LegacySigningAlgName == input.LegacySigningAlgName ||
+                    this.LegacySigningAlgName.Equals(input.LegacySigningAlgName)
                 ) && 
                 (
                     this.OciAuthType == input.OciAuthType ||
@@ -338,6 +397,18 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CertData.GetHashCode();
                 }
+                if (this.CertIssuerName != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
+                if (this.CertUsername != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertUsername.GetHashCode();
+                }
+                if (this.DefaultLocationPrefix != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultLocationPrefix.GetHashCode();
+                }
                 if (this.GcpAudience != null)
                 {
                     hashCode = (hashCode * 59) + this.GcpAudience.GetHashCode();
@@ -351,6 +422,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.LegacySigningAlgName.GetHashCode();
                 if (this.OciAuthType != null)
                 {
                     hashCode = (hashCode * 59) + this.OciAuthType.GetHashCode();

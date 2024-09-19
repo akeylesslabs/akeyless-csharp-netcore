@@ -4,7 +4,7 @@ All URIs are relative to *https://api.akeyless.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AliasDetails**](V2Api.md#aliasdetails) | **GET** /alias-details |  |
+| [**AliasDetails**](V2Api.md#aliasdetails) | **POST** /alias-details |  |
 | [**AssocRoleAuthMethod**](V2Api.md#assocroleauthmethod) | **POST** /assoc-role-am |  |
 | [**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item |  |
 | [**Auth**](V2Api.md#auth) | **POST** /auth |  |
@@ -246,6 +246,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayGetLogForwarding**](V2Api.md#gatewaygetlogforwarding) | **POST** /gateway-get-log-forwarding |  |
 | [**GatewayGetMigration**](V2Api.md#gatewaygetmigration) | **POST** /gateway-get-migration |  |
 | [**GatewayGetProducer**](V2Api.md#gatewaygetproducer) | **POST** /gateway-get-producer |  |
+| [**GatewayGetRemoteAccess**](V2Api.md#gatewaygetremoteaccess) | **POST** /gateway-get-remote-access |  |
 | [**GatewayGetTmpUsers**](V2Api.md#gatewaygettmpusers) | **POST** /gateway-get-producer-tmp-creds |  |
 | [**GatewayListCustomerFragments**](V2Api.md#gatewaylistcustomerfragments) | **POST** /gateway-list-customer-fragments |  |
 | [**GatewayListMigration**](V2Api.md#gatewaylistmigration) | **POST** /gateway-list-migration |  |
@@ -301,6 +302,8 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayUpdateProducerRedshift**](V2Api.md#gatewayupdateproducerredshift) | **POST** /gateway-update-producer-redshift |  |
 | [**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake |  |
 | [**GatewayUpdateProducerVenafi**](V2Api.md#gatewayupdateproducervenafi) | **POST** /gateway-update-producer-certificate-automation |  |
+| [**GatewayUpdateRemoteAccess**](V2Api.md#gatewayupdateremoteaccess) | **POST** /gateway-update-remote-access |  |
+| [**GatewayUpdateRemoteAccessRdpRecordings**](V2Api.md#gatewayupdateremoteaccessrdprecordings) | **POST** /gateway-update-remote-access-rdp-recording |  |
 | [**GatewayUpdateTlsCert**](V2Api.md#gatewayupdatetlscert) | **POST** /gateway-update-tls-cert |  |
 | [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds |  |
 | [**GenerateCsr**](V2Api.md#generatecsr) | **POST** /generate-csr |  |
@@ -323,6 +326,17 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
 | [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
 | [**GetTargetDetails**](V2Api.md#gettargetdetails) | **POST** /get-target-details |  |
+| [**GwUpdateRemoteAccessSessionLogsAwsS3**](V2Api.md#gwupdateremoteaccesssessionlogsawss3) | **POST** /gateway-update-remote-access-session-forwarding-aws-s3 |  |
+| [**GwUpdateRemoteAccessSessionLogsAzureAnalytics**](V2Api.md#gwupdateremoteaccesssessionlogsazureanalytics) | **POST** /gateway-update-remote-access-session-forwarding-azure-analytics |  |
+| [**GwUpdateRemoteAccessSessionLogsDatadog**](V2Api.md#gwupdateremoteaccesssessionlogsdatadog) | **POST** /gateway-update-remote-access-session-forwarding-datadog |  |
+| [**GwUpdateRemoteAccessSessionLogsElasticsearch**](V2Api.md#gwupdateremoteaccesssessionlogselasticsearch) | **POST** /gateway-update-remote-access-session-forwarding-elasticsearch |  |
+| [**GwUpdateRemoteAccessSessionLogsGoogleChronicle**](V2Api.md#gwupdateremoteaccesssessionlogsgooglechronicle) | **POST** /gateway-update-remote-access-session-forwarding-google-chronicle |  |
+| [**GwUpdateRemoteAccessSessionLogsLogstash**](V2Api.md#gwupdateremoteaccesssessionlogslogstash) | **POST** /gateway-update-remote-access-session-forwarding-logstash |  |
+| [**GwUpdateRemoteAccessSessionLogsLogzIo**](V2Api.md#gwupdateremoteaccesssessionlogslogzio) | **POST** /gateway-update-remote-access-session-forwarding-logz-io |  |
+| [**GwUpdateRemoteAccessSessionLogsSplunk**](V2Api.md#gwupdateremoteaccesssessionlogssplunk) | **POST** /gateway-update-remote-access-session-forwarding-splunk |  |
+| [**GwUpdateRemoteAccessSessionLogsStdout**](V2Api.md#gwupdateremoteaccesssessionlogsstdout) | **POST** /gateway-update-remote-access-session-forwarding-stdout |  |
+| [**GwUpdateRemoteAccessSessionLogsSumologic**](V2Api.md#gwupdateremoteaccesssessionlogssumologic) | **POST** /gateway-update-remote-access-session-forwarding-sumologic |  |
+| [**GwUpdateRemoteAccessSessionLogsSyslog**](V2Api.md#gwupdateremoteaccesssessionlogssyslog) | **POST** /gateway-update-remote-access-session-forwarding-syslog |  |
 | [**Hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**ImportPasswords**](V2Api.md#importpasswords) | **POST** /import-passwords |  |
 | [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
@@ -21833,6 +21847,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewaygetremoteaccess"></a>
+# **GatewayGetRemoteAccess**
+> BastionConfigReplyObj GatewayGetRemoteAccess (GatewayGetRemoteAccess body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayGetRemoteAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayGetRemoteAccess(); // GatewayGetRemoteAccess | 
+
+            try
+            {
+                BastionConfigReplyObj result = apiInstance.GatewayGetRemoteAccess(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayGetRemoteAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayGetRemoteAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<BastionConfigReplyObj> response = apiInstance.GatewayGetRemoteAccessWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayGetRemoteAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayGetRemoteAccess**](GatewayGetRemoteAccess.md) |  |  |
+
+### Return type
+
+[**BastionConfigReplyObj**](BastionConfigReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayGetRemoteAccessResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewaygettmpusers"></a>
 # **GatewayGetTmpUsers**
 > List&lt;TmpUserData&gt; GatewayGetTmpUsers (GatewayGetTmpUsers body)
@@ -26669,6 +26771,177 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="gatewayupdateremoteaccess"></a>
+# **GatewayUpdateRemoteAccess**
+> Object GatewayUpdateRemoteAccess ()
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateRemoteAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+
+            try
+            {
+                Object result = apiInstance.GatewayUpdateRemoteAccess();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateRemoteAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateRemoteAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.GatewayUpdateRemoteAccessWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateRemoteAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayUpdateRemoteAccessResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gatewayupdateremoteaccessrdprecordings"></a>
+# **GatewayUpdateRemoteAccessRdpRecordings**
+> Object GatewayUpdateRemoteAccessRdpRecordings (GatewayUpdateRemoteAccessRdpRecordings body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateRemoteAccessRdpRecordingsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateRemoteAccessRdpRecordings(); // GatewayUpdateRemoteAccessRdpRecordings | 
+
+            try
+            {
+                Object result = apiInstance.GatewayUpdateRemoteAccessRdpRecordings(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateRemoteAccessRdpRecordings: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateRemoteAccessRdpRecordingsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.GatewayUpdateRemoteAccessRdpRecordingsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateRemoteAccessRdpRecordingsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateRemoteAccessRdpRecordings**](GatewayUpdateRemoteAccessRdpRecordings.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayUpdateRemoteAccessRdpRecordingsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gatewayupdatetlscert"></a>
 # **GatewayUpdateTlsCert**
 > GatewayUpdateTlsCertOutput GatewayUpdateTlsCert (GatewayUpdateTlsCert body)
@@ -28592,6 +28865,974 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getTargetDetailsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogsawss3"></a>
+# **GwUpdateRemoteAccessSessionLogsAwsS3**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsAwsS3 (GwUpdateRemoteAccessSessionLogsAwsS3 body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsAwsS3Example
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsAwsS3(); // GwUpdateRemoteAccessSessionLogsAwsS3 | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsAwsS3(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsAwsS3: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsAwsS3WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsAwsS3WithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsAwsS3WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsAwsS3**](GwUpdateRemoteAccessSessionLogsAwsS3.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogsazureanalytics"></a>
+# **GwUpdateRemoteAccessSessionLogsAzureAnalytics**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsAzureAnalytics (GwUpdateRemoteAccessSessionLogsAzureAnalytics body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsAzureAnalyticsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsAzureAnalytics(); // GwUpdateRemoteAccessSessionLogsAzureAnalytics | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsAzureAnalytics(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsAzureAnalytics: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsAzureAnalyticsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsAzureAnalyticsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsAzureAnalyticsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsAzureAnalytics**](GwUpdateRemoteAccessSessionLogsAzureAnalytics.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogsdatadog"></a>
+# **GwUpdateRemoteAccessSessionLogsDatadog**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsDatadog (GwUpdateRemoteAccessSessionLogsDatadog body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsDatadogExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsDatadog(); // GwUpdateRemoteAccessSessionLogsDatadog | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsDatadog(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsDatadog: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsDatadogWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsDatadogWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsDatadogWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsDatadog**](GwUpdateRemoteAccessSessionLogsDatadog.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogselasticsearch"></a>
+# **GwUpdateRemoteAccessSessionLogsElasticsearch**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsElasticsearch (GwUpdateRemoteAccessSessionLogsElasticsearch body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsElasticsearchExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsElasticsearch(); // GwUpdateRemoteAccessSessionLogsElasticsearch | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsElasticsearch(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsElasticsearch: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsElasticsearchWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsElasticsearchWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsElasticsearchWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsElasticsearch**](GwUpdateRemoteAccessSessionLogsElasticsearch.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogsgooglechronicle"></a>
+# **GwUpdateRemoteAccessSessionLogsGoogleChronicle**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsGoogleChronicle (GwUpdateRemoteAccessSessionLogsGoogleChronicle body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsGoogleChronicleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsGoogleChronicle(); // GwUpdateRemoteAccessSessionLogsGoogleChronicle | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsGoogleChronicle(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsGoogleChronicle: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsGoogleChronicleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsGoogleChronicleWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsGoogleChronicleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsGoogleChronicle**](GwUpdateRemoteAccessSessionLogsGoogleChronicle.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogslogstash"></a>
+# **GwUpdateRemoteAccessSessionLogsLogstash**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsLogstash (GwUpdateRemoteAccessSessionLogsLogstash body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsLogstashExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsLogstash(); // GwUpdateRemoteAccessSessionLogsLogstash | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsLogstash(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsLogstash: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsLogstashWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsLogstashWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsLogstashWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsLogstash**](GwUpdateRemoteAccessSessionLogsLogstash.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogslogzio"></a>
+# **GwUpdateRemoteAccessSessionLogsLogzIo**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsLogzIo (GwUpdateRemoteAccessSessionLogsLogzIo body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsLogzIoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsLogzIo(); // GwUpdateRemoteAccessSessionLogsLogzIo | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsLogzIo(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsLogzIo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsLogzIoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsLogzIoWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsLogzIoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsLogzIo**](GwUpdateRemoteAccessSessionLogsLogzIo.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogssplunk"></a>
+# **GwUpdateRemoteAccessSessionLogsSplunk**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsSplunk (GwUpdateRemoteAccessSessionLogsSplunk body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsSplunkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsSplunk(); // GwUpdateRemoteAccessSessionLogsSplunk | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsSplunk(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsSplunk: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsSplunkWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsSplunkWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsSplunkWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsSplunk**](GwUpdateRemoteAccessSessionLogsSplunk.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogsstdout"></a>
+# **GwUpdateRemoteAccessSessionLogsStdout**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsStdout (GwUpdateRemoteAccessSessionLogsStdout body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsStdoutExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsStdout(); // GwUpdateRemoteAccessSessionLogsStdout | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsStdout(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsStdout: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsStdoutWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsStdoutWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsStdoutWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsStdout**](GwUpdateRemoteAccessSessionLogsStdout.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogssumologic"></a>
+# **GwUpdateRemoteAccessSessionLogsSumologic**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsSumologic (GwUpdateRemoteAccessSessionLogsSumologic body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsSumologicExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsSumologic(); // GwUpdateRemoteAccessSessionLogsSumologic | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsSumologic(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsSumologic: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsSumologicWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsSumologicWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsSumologicWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsSumologic**](GwUpdateRemoteAccessSessionLogsSumologic.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gwupdateremoteaccesssessionlogssyslog"></a>
+# **GwUpdateRemoteAccessSessionLogsSyslog**
+> GatewayUpdateLogForwardingOutput GwUpdateRemoteAccessSessionLogsSyslog (GwUpdateRemoteAccessSessionLogsSyslog body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GwUpdateRemoteAccessSessionLogsSyslogExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GwUpdateRemoteAccessSessionLogsSyslog(); // GwUpdateRemoteAccessSessionLogsSyslog | 
+
+            try
+            {
+                GatewayUpdateLogForwardingOutput result = apiInstance.GwUpdateRemoteAccessSessionLogsSyslog(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsSyslog: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GwUpdateRemoteAccessSessionLogsSyslogWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GatewayUpdateLogForwardingOutput> response = apiInstance.GwUpdateRemoteAccessSessionLogsSyslogWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GwUpdateRemoteAccessSessionLogsSyslogWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GwUpdateRemoteAccessSessionLogsSyslog**](GwUpdateRemoteAccessSessionLogsSyslog.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLogForwardingOutput**](GatewayUpdateLogForwardingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | gwUpdateRemoteAccessSessionLogsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

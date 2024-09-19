@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **RmTag** | **List&lt;string&gt;** | List of the existent tags that will be removed from this item | [optional] 
 **RotatedPassword** | **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | **string** | username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotationEventIn** | **List&lt;string&gt;** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | **int** | The Rotation Hour | [optional] [default to 0]
 **RotationInterval** | **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorCredsType** | **string** | The rotation credentials type | [optional] [default to "use-self-creds"]

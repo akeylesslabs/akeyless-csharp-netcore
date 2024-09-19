@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateDFCKey" /> class.
         /// </summary>
         /// <param name="alg">DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096] (required).</param>
+        /// <param name="autoRotate">Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="certificateCommonName">Common name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateCountry">Country name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateDigestAlgo">Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI..</param>
@@ -53,15 +54,18 @@ namespace akeyless.Model
         /// <param name="customerFrgId">The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="generateSelfSignedCertificate">Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">DFCKey name (required).</param>
+        /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
+        /// <param name="rotationInterval">The number of days to wait between every automatic rotation (7-365).</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 3).</param>
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string autoRotate = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -75,6 +79,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for CreateDFCKey and cannot be null");
             }
             this.Name = name;
+            this.AutoRotate = autoRotate;
             this.CertificateCommonName = certificateCommonName;
             this.CertificateCountry = certificateCountry;
             this.CertificateDigestAlgo = certificateDigestAlgo;
@@ -87,9 +92,12 @@ namespace akeyless.Model
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.ExpirationEventIn = expirationEventIn;
             this.GenerateSelfSignedCertificate = generateSelfSignedCertificate;
             this.Json = json;
             this.Metadata = metadata;
+            this.RotationEventIn = rotationEventIn;
+            this.RotationInterval = rotationInterval;
             this.SplitLevel = splitLevel;
             this.Tag = tag;
             this.Token = token;
@@ -102,6 +110,13 @@ namespace akeyless.Model
         /// <value>DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]</value>
         [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = true)]
         public string Alg { get; set; }
+
+        /// <summary>
+        /// Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false]
+        /// </summary>
+        /// <value>Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false]</value>
+        [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
+        public string AutoRotate { get; set; }
 
         /// <summary>
         /// Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
@@ -187,6 +202,13 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
+
+        /// <summary>
         /// Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided.
         /// </summary>
         /// <value>Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided.</value>
@@ -213,6 +235,20 @@ namespace akeyless.Model
         /// <value>DFCKey name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// How many days before the rotation of the item would you like to be notified
+        /// </summary>
+        /// <value>How many days before the rotation of the item would you like to be notified</value>
+        [DataMember(Name = "rotation-event-in", EmitDefaultValue = false)]
+        public List<string> RotationEventIn { get; set; }
+
+        /// <summary>
+        /// The number of days to wait between every automatic rotation (7-365)
+        /// </summary>
+        /// <value>The number of days to wait between every automatic rotation (7-365)</value>
+        [DataMember(Name = "rotation-interval", EmitDefaultValue = false)]
+        public string RotationInterval { get; set; }
 
         /// <summary>
         /// The number of fragments that the item will be split into (not includes customer fragment)
@@ -251,6 +287,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateDFCKey {\n");
             sb.Append("  Alg: ").Append(Alg).Append("\n");
+            sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  CertificateCommonName: ").Append(CertificateCommonName).Append("\n");
             sb.Append("  CertificateCountry: ").Append(CertificateCountry).Append("\n");
             sb.Append("  CertificateDigestAlgo: ").Append(CertificateDigestAlgo).Append("\n");
@@ -263,10 +300,13 @@ namespace akeyless.Model
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GenerateSelfSignedCertificate: ").Append(GenerateSelfSignedCertificate).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");
+            sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  SplitLevel: ").Append(SplitLevel).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -310,6 +350,11 @@ namespace akeyless.Model
                     this.Alg == input.Alg ||
                     (this.Alg != null &&
                     this.Alg.Equals(input.Alg))
+                ) && 
+                (
+                    this.AutoRotate == input.AutoRotate ||
+                    (this.AutoRotate != null &&
+                    this.AutoRotate.Equals(input.AutoRotate))
                 ) && 
                 (
                     this.CertificateCommonName == input.CertificateCommonName ||
@@ -371,6 +416,12 @@ namespace akeyless.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.ExpirationEventIn == input.ExpirationEventIn ||
+                    this.ExpirationEventIn != null &&
+                    input.ExpirationEventIn != null &&
+                    this.ExpirationEventIn.SequenceEqual(input.ExpirationEventIn)
+                ) && 
+                (
                     this.GenerateSelfSignedCertificate == input.GenerateSelfSignedCertificate ||
                     this.GenerateSelfSignedCertificate.Equals(input.GenerateSelfSignedCertificate)
                 ) && 
@@ -387,6 +438,17 @@ namespace akeyless.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.RotationEventIn == input.RotationEventIn ||
+                    this.RotationEventIn != null &&
+                    input.RotationEventIn != null &&
+                    this.RotationEventIn.SequenceEqual(input.RotationEventIn)
+                ) && 
+                (
+                    this.RotationInterval == input.RotationInterval ||
+                    (this.RotationInterval != null &&
+                    this.RotationInterval.Equals(input.RotationInterval))
                 ) && 
                 (
                     this.SplitLevel == input.SplitLevel ||
@@ -422,6 +484,10 @@ namespace akeyless.Model
                 if (this.Alg != null)
                 {
                     hashCode = (hashCode * 59) + this.Alg.GetHashCode();
+                }
+                if (this.AutoRotate != null)
+                {
+                    hashCode = (hashCode * 59) + this.AutoRotate.GetHashCode();
                 }
                 if (this.CertificateCommonName != null)
                 {
@@ -468,6 +534,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                if (this.ExpirationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.GenerateSelfSignedCertificate.GetHashCode();
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)
@@ -477,6 +547,14 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.RotationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationEventIn.GetHashCode();
+                }
+                if (this.RotationInterval != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SplitLevel.GetHashCode();
                 if (this.Tag != null)

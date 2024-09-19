@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **GroupRole** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
-**NewName** | **string** | Dynamic secret new name | [optional] 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RoleName** | **string** | Name of the admin role to assign to the user, relevant only for role access-mode | [optional] 
 **RoleScope** | **string** |  | [optional] 

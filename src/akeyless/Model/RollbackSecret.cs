@@ -40,12 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RollbackSecret" /> class.
         /// </summary>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Secret name (required).</param>
         /// <param name="oldVersion">Old secret version to rollback to (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RollbackSecret(bool json = false, string name = default(string), int oldVersion = default(int), string token = default(string), string uidToken = default(string))
+        public RollbackSecret(string accessibility = "regular", bool json = false, string name = default(string), int oldVersion = default(int), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,10 +55,19 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.OldVersion = oldVersion;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "accessibility", EmitDefaultValue = false)]
+        public string Accessibility { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -102,6 +112,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RollbackSecret {\n");
+            sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OldVersion: ").Append(OldVersion).Append("\n");
@@ -143,6 +154,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Accessibility == input.Accessibility ||
+                    (this.Accessibility != null &&
+                    this.Accessibility.Equals(input.Accessibility))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -176,6 +192,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Accessibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)
                 {

@@ -5,7 +5,6 @@ Connect is a command that performs secure remote access
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BastionGatewayUrl** | **string** | todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000 | [optional] 
 **Helper** | **Object** |  | [optional] 
 **RcFileOverride** | **string** | used to override .akeyless-connect.rc in tests | [optional] 
 **BastionCtrlPath** | **string** | The Bastion API path | [optional] 
@@ -13,6 +12,7 @@ Name | Type | Description | Notes
 **BastionCtrlProto** | **string** | The Bastion API protocol | [optional] [default to "http"]
 **BastionCtrlSubdomain** | **string** | The Bastion API prefix | [optional] 
 **CertIssuerName** | **string** | The Akeyless certificate issuer name | [optional] 
+**GatewayUrl** | **string** | The Gateway URL (configuration management) address, e.g. http://localhost:8000 | [optional] 
 **IdentityFile** | **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Justification** | **string** |  | [optional] 

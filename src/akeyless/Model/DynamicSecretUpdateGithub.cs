@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="installationRepository">Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
-        /// <param name="newName">Dynamic secret new name.</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -155,9 +155,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Dynamic secret new name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Dynamic secret new name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

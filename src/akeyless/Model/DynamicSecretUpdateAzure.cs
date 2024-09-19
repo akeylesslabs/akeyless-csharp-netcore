@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
-        /// <param name="newName">Dynamic secret new name.</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic secret encryption key.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
@@ -178,9 +178,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Dynamic secret new name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Dynamic secret new name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

@@ -35,7 +35,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Connect" /> class.
         /// </summary>
-        /// <param name="bastionGatewayUrl">todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000.</param>
         /// <param name="helper">helper.</param>
         /// <param name="rcFileOverride">used to override .akeyless-connect.rc in tests.</param>
         /// <param name="bastionCtrlPath">The Bastion API path.</param>
@@ -43,6 +42,7 @@ namespace akeyless.Model
         /// <param name="bastionCtrlProto">The Bastion API protocol (default to &quot;http&quot;).</param>
         /// <param name="bastionCtrlSubdomain">The Bastion API prefix.</param>
         /// <param name="certIssuerName">The Akeyless certificate issuer name.</param>
+        /// <param name="gatewayUrl">The Gateway URL (configuration management) address, e.g. http://localhost:8000.</param>
         /// <param name="identityFile">The file from which the identity (private key) for public key authentication is read.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="justification">justification.</param>
@@ -55,9 +55,8 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useSshAgent">Enable ssh-agent.</param>
         /// <param name="viaBastion">The jump box server.</param>
-        public Connect(string bastionGatewayUrl = default(string), Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string identityFile = default(string), bool json = false, string justification = default(string), string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), bool useSshAgent = default(bool), string viaBastion = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = "9900", string bastionCtrlProto = "http", string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string gatewayUrl = default(string), string identityFile = default(string), bool json = false, string justification = default(string), string name = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), bool useSshAgent = default(bool), string viaBastion = default(string))
         {
-            this.BastionGatewayUrl = bastionGatewayUrl;
             this.Helper = helper;
             this.RcFileOverride = rcFileOverride;
             this.BastionCtrlPath = bastionCtrlPath;
@@ -67,6 +66,7 @@ namespace akeyless.Model
             this.BastionCtrlProto = bastionCtrlProto ?? "http";
             this.BastionCtrlSubdomain = bastionCtrlSubdomain;
             this.CertIssuerName = certIssuerName;
+            this.GatewayUrl = gatewayUrl;
             this.IdentityFile = identityFile;
             this.Json = json;
             this.Justification = justification;
@@ -80,13 +80,6 @@ namespace akeyless.Model
             this.UseSshAgent = useSshAgent;
             this.ViaBastion = viaBastion;
         }
-
-        /// <summary>
-        /// todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000
-        /// </summary>
-        /// <value>todo - enable when gw-sra unification is done The Gateway URL (configuration management) address, e.g. http://localhost:8000</value>
-        [DataMember(Name = "BastionGatewayUrl", EmitDefaultValue = false)]
-        public string BastionGatewayUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Helper
@@ -135,6 +128,13 @@ namespace akeyless.Model
         /// <value>The Akeyless certificate issuer name</value>
         [DataMember(Name = "cert-issuer-name", EmitDefaultValue = false)]
         public string CertIssuerName { get; set; }
+
+        /// <summary>
+        /// The Gateway URL (configuration management) address, e.g. http://localhost:8000
+        /// </summary>
+        /// <value>The Gateway URL (configuration management) address, e.g. http://localhost:8000</value>
+        [DataMember(Name = "gateway-url", EmitDefaultValue = false)]
+        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// The file from which the identity (private key) for public key authentication is read
@@ -227,7 +227,6 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Connect {\n");
-            sb.Append("  BastionGatewayUrl: ").Append(BastionGatewayUrl).Append("\n");
             sb.Append("  Helper: ").Append(Helper).Append("\n");
             sb.Append("  RcFileOverride: ").Append(RcFileOverride).Append("\n");
             sb.Append("  BastionCtrlPath: ").Append(BastionCtrlPath).Append("\n");
@@ -235,6 +234,7 @@ namespace akeyless.Model
             sb.Append("  BastionCtrlProto: ").Append(BastionCtrlProto).Append("\n");
             sb.Append("  BastionCtrlSubdomain: ").Append(BastionCtrlSubdomain).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
+            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  IdentityFile: ").Append(IdentityFile).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Justification: ").Append(Justification).Append("\n");
@@ -283,11 +283,6 @@ namespace akeyless.Model
             }
             return 
                 (
-                    this.BastionGatewayUrl == input.BastionGatewayUrl ||
-                    (this.BastionGatewayUrl != null &&
-                    this.BastionGatewayUrl.Equals(input.BastionGatewayUrl))
-                ) && 
-                (
                     this.Helper == input.Helper ||
                     (this.Helper != null &&
                     this.Helper.Equals(input.Helper))
@@ -321,6 +316,11 @@ namespace akeyless.Model
                     this.CertIssuerName == input.CertIssuerName ||
                     (this.CertIssuerName != null &&
                     this.CertIssuerName.Equals(input.CertIssuerName))
+                ) && 
+                (
+                    this.GatewayUrl == input.GatewayUrl ||
+                    (this.GatewayUrl != null &&
+                    this.GatewayUrl.Equals(input.GatewayUrl))
                 ) && 
                 (
                     this.IdentityFile == input.IdentityFile ||
@@ -390,10 +390,6 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.BastionGatewayUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.BastionGatewayUrl.GetHashCode();
-                }
                 if (this.Helper != null)
                 {
                     hashCode = (hashCode * 59) + this.Helper.GetHashCode();
@@ -421,6 +417,10 @@ namespace akeyless.Model
                 if (this.CertIssuerName != null)
                 {
                     hashCode = (hashCode * 59) + this.CertIssuerName.GetHashCode();
+                }
+                if (this.GatewayUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.GatewayUrl.GetHashCode();
                 }
                 if (this.IdentityFile != null)
                 {

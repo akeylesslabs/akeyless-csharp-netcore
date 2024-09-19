@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="enableAdminRotation">Should admin credentials be rotated (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
-        /// <param name="newName">Dynamic secret new name.</param>
+        /// <param name="newName">Dynamic secret name.</param>
         /// <param name="payload">Secret payload to be sent with each create/revoke webhook request.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
@@ -144,9 +144,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Dynamic secret new name
+        /// Dynamic secret name
         /// </summary>
-        /// <value>Dynamic secret new name</value>
+        /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

@@ -43,10 +43,11 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Key name (required).</param>
+        /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (7-365).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateRotationSettings(bool autoRotate = default(bool), bool json = false, string name = default(string), long rotationInterval = default(long), string token = default(string), string uidToken = default(string))
+        public UpdateRotationSettings(bool autoRotate = default(bool), bool json = false, string name = default(string), List<string> rotationEventIn = default(List<string>), long rotationInterval = default(long), string token = default(string), string uidToken = default(string))
         {
             this.AutoRotate = autoRotate;
             // to ensure "name" is required (not null)
@@ -56,6 +57,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.Json = json;
+            this.RotationEventIn = rotationEventIn;
             this.RotationInterval = rotationInterval;
             this.Token = token;
             this.UidToken = uidToken;
@@ -81,6 +83,13 @@ namespace akeyless.Model
         /// <value>Key name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// How many days before the rotation of the item would you like to be notified
+        /// </summary>
+        /// <value>How many days before the rotation of the item would you like to be notified</value>
+        [DataMember(Name = "rotation-event-in", EmitDefaultValue = false)]
+        public List<string> RotationEventIn { get; set; }
 
         /// <summary>
         /// The number of days to wait between every automatic key rotation (7-365)
@@ -114,6 +123,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
@@ -166,6 +176,12 @@ namespace akeyless.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.RotationEventIn == input.RotationEventIn ||
+                    this.RotationEventIn != null &&
+                    input.RotationEventIn != null &&
+                    this.RotationEventIn.SequenceEqual(input.RotationEventIn)
+                ) && 
+                (
                     this.RotationInterval == input.RotationInterval ||
                     this.RotationInterval.Equals(input.RotationInterval)
                 ) && 
@@ -195,6 +211,10 @@ namespace akeyless.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.RotationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationEventIn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RotationInterval.GetHashCode();
                 if (this.Token != null)

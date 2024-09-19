@@ -58,6 +58,7 @@ namespace akeyless.Model
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id.</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretUpdateAws(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string deleteProtection = default(string), string description = "default_metadata", string graceRotation = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", int rotationHour = default(int), string rotationInterval = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), string token = default(string), string uidToken = default(string))
+        public RotatedSecretUpdateAws(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string authenticationCredentials = "use-user-creds", string autoRotate = default(string), string awsRegion = "us-east-2", string deleteProtection = default(string), string description = "default_metadata", string graceRotation = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessEnable = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -95,6 +96,7 @@ namespace akeyless.Model
             this.RmTag = rmTag;
             // use default value if no "rotateAfterDisconnect" provided
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? "false";
+            this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
             this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
@@ -232,6 +234,13 @@ namespace akeyless.Model
         public string RotateAfterDisconnect { get; set; }
 
         /// <summary>
+        /// How many days before the rotation of the item would you like to be notified
+        /// </summary>
+        /// <value>How many days before the rotation of the item would you like to be notified</value>
+        [DataMember(Name = "rotation-event-in", EmitDefaultValue = false)]
+        public List<string> RotationEventIn { get; set; }
+
+        /// <summary>
         /// The Hour of the rotation in UTC
         /// </summary>
         /// <value>The Hour of the rotation in UTC</value>
@@ -313,6 +322,7 @@ namespace akeyless.Model
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
+            sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
@@ -448,6 +458,12 @@ namespace akeyless.Model
                     this.RotateAfterDisconnect.Equals(input.RotateAfterDisconnect))
                 ) && 
                 (
+                    this.RotationEventIn == input.RotationEventIn ||
+                    this.RotationEventIn != null &&
+                    input.RotationEventIn != null &&
+                    this.RotationEventIn.SequenceEqual(input.RotationEventIn)
+                ) && 
+                (
                     this.RotationHour == input.RotationHour ||
                     this.RotationHour.Equals(input.RotationHour)
                 ) && 
@@ -564,6 +580,10 @@ namespace akeyless.Model
                 if (this.RotateAfterDisconnect != null)
                 {
                     hashCode = (hashCode * 59) + this.RotateAfterDisconnect.GetHashCode();
+                }
+                if (this.RotationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationEventIn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)

@@ -43,14 +43,16 @@ namespace akeyless.Model
         /// <param name="clusterGwUrl">clusterGwUrl.</param>
         /// <param name="displayMetadata">displayMetadata.</param>
         /// <param name="dynamicSecretProducerDetails">dynamicSecretProducerDetails.</param>
+        /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="importerInfo">importerInfo.</param>
+        /// <param name="nextRotationEvents">nextRotationEvents.</param>
         /// <param name="oidcClientInfo">oidcClientInfo.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="rotatedSecretDetails">rotatedSecretDetails.</param>
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
         /// <param name="tokenizerInfo">tokenizerInfo.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), ImporterInfo importerInfo = default(ImporterInfo), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
+        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), ImporterInfo importerInfo = default(ImporterInfo), List<NextAutoRotationEvent> nextRotationEvents = default(List<NextAutoRotationEvent>), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
             this.CertIssueDetails = certIssueDetails;
             this.CertificateChainInfo = certificateChainInfo;
@@ -60,7 +62,9 @@ namespace akeyless.Model
             this.ClusterGwUrl = clusterGwUrl;
             this.DisplayMetadata = displayMetadata;
             this.DynamicSecretProducerDetails = dynamicSecretProducerDetails;
+            this.ExpirationEvents = expirationEvents;
             this.ImporterInfo = importerInfo;
+            this.NextRotationEvents = nextRotationEvents;
             this.OidcClientInfo = oidcClientInfo;
             this.PasswordPolicy = passwordPolicy;
             this.RotatedSecretDetails = rotatedSecretDetails;
@@ -118,10 +122,22 @@ namespace akeyless.Model
         public DynamicSecretProducerInfo DynamicSecretProducerDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpirationEvents
+        /// </summary>
+        [DataMember(Name = "expiration_events", EmitDefaultValue = false)]
+        public List<CertificateExpirationEvent> ExpirationEvents { get; set; }
+
+        /// <summary>
         /// Gets or Sets ImporterInfo
         /// </summary>
         [DataMember(Name = "importer_info", EmitDefaultValue = false)]
         public ImporterInfo ImporterInfo { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NextRotationEvents
+        /// </summary>
+        [DataMember(Name = "next_rotation_events", EmitDefaultValue = false)]
+        public List<NextAutoRotationEvent> NextRotationEvents { get; set; }
 
         /// <summary>
         /// Gets or Sets OidcClientInfo
@@ -175,7 +191,9 @@ namespace akeyless.Model
             sb.Append("  ClusterGwUrl: ").Append(ClusterGwUrl).Append("\n");
             sb.Append("  DisplayMetadata: ").Append(DisplayMetadata).Append("\n");
             sb.Append("  DynamicSecretProducerDetails: ").Append(DynamicSecretProducerDetails).Append("\n");
+            sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  ImporterInfo: ").Append(ImporterInfo).Append("\n");
+            sb.Append("  NextRotationEvents: ").Append(NextRotationEvents).Append("\n");
             sb.Append("  OidcClientInfo: ").Append(OidcClientInfo).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  RotatedSecretDetails: ").Append(RotatedSecretDetails).Append("\n");
@@ -258,9 +276,21 @@ namespace akeyless.Model
                     this.DynamicSecretProducerDetails.Equals(input.DynamicSecretProducerDetails))
                 ) && 
                 (
+                    this.ExpirationEvents == input.ExpirationEvents ||
+                    this.ExpirationEvents != null &&
+                    input.ExpirationEvents != null &&
+                    this.ExpirationEvents.SequenceEqual(input.ExpirationEvents)
+                ) && 
+                (
                     this.ImporterInfo == input.ImporterInfo ||
                     (this.ImporterInfo != null &&
                     this.ImporterInfo.Equals(input.ImporterInfo))
+                ) && 
+                (
+                    this.NextRotationEvents == input.NextRotationEvents ||
+                    this.NextRotationEvents != null &&
+                    input.NextRotationEvents != null &&
+                    this.NextRotationEvents.SequenceEqual(input.NextRotationEvents)
                 ) && 
                 (
                     this.OidcClientInfo == input.OidcClientInfo ||
@@ -335,9 +365,17 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DynamicSecretProducerDetails.GetHashCode();
                 }
+                if (this.ExpirationEvents != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpirationEvents.GetHashCode();
+                }
                 if (this.ImporterInfo != null)
                 {
                     hashCode = (hashCode * 59) + this.ImporterInfo.GetHashCode();
+                }
+                if (this.NextRotationEvents != null)
+                {
+                    hashCode = (hashCode * 59) + this.NextRotationEvents.GetHashCode();
                 }
                 if (this.OidcClientInfo != null)
                 {

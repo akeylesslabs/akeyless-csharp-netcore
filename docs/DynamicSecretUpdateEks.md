@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **EksSecretAccessKey** | **string** | Secret Access Key | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
-**NewName** | **string** | Dynamic secret new name | [optional] 
+**NewName** | **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | **bool** | Enable Port forwarding while using CLI access | [optional] 
 **SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 

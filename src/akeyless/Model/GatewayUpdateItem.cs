@@ -63,13 +63,14 @@ namespace akeyless.Model
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
+        /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationHour">The Rotation Hour (default to 0).</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="rotatorCredsType">The rotation credentials type (default to &quot;use-self-creds&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string appId = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
+        public GatewayUpdateItem(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string appId = default(string), string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = "default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), bool newVersion = default(bool), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = 0, string rotationInterval = default(string), string rotatorCredsType = "use-self-creds", string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -107,6 +108,7 @@ namespace akeyless.Model
             this.RmTag = rmTag;
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
+            this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
             // use default value if no "rotatorCredsType" provided
@@ -277,6 +279,13 @@ namespace akeyless.Model
         public string RotatedUsername { get; set; }
 
         /// <summary>
+        /// How many days before the rotation of the item would you like to be notified
+        /// </summary>
+        /// <value>How many days before the rotation of the item would you like to be notified</value>
+        [DataMember(Name = "rotation-event-in", EmitDefaultValue = false)]
+        public List<string> RotationEventIn { get; set; }
+
+        /// <summary>
         /// The Rotation Hour
         /// </summary>
         /// <value>The Rotation Hour</value>
@@ -349,6 +358,7 @@ namespace akeyless.Model
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
+            sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  RotatorCredsType: ").Append(RotatorCredsType).Append("\n");
@@ -506,6 +516,12 @@ namespace akeyless.Model
                     this.RotatedUsername.Equals(input.RotatedUsername))
                 ) && 
                 (
+                    this.RotationEventIn == input.RotationEventIn ||
+                    this.RotationEventIn != null &&
+                    input.RotationEventIn != null &&
+                    this.RotationEventIn.SequenceEqual(input.RotationEventIn)
+                ) && 
+                (
                     this.RotationHour == input.RotationHour ||
                     this.RotationHour.Equals(input.RotationHour)
                 ) && 
@@ -630,6 +646,10 @@ namespace akeyless.Model
                 if (this.RotatedUsername != null)
                 {
                     hashCode = (hashCode * 59) + this.RotatedUsername.GetHashCode();
+                }
+                if (this.RotationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationEventIn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RotationHour.GetHashCode();
                 if (this.RotationInterval != null)

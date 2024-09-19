@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="changeEvent">Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
@@ -82,7 +83,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", string hostProvider = default(string), bool json = false, string maxVersions = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", List<string> expirationEventIn = default(List<string>), string hostProvider = default(string), bool json = false, string maxVersions = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -99,6 +100,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             // use default value if no "description" provided
             this.Description = description ?? "default_metadata";
+            this.ExpirationEventIn = expirationEventIn;
             this.HostProvider = hostProvider;
             this.Json = json;
             this.MaxVersions = maxVersions;
@@ -184,6 +186,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
         /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
@@ -445,6 +454,7 @@ namespace akeyless.Model
             sb.Append("  ChangeEvent: ").Append(ChangeEvent).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
@@ -550,6 +560,12 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.ExpirationEventIn == input.ExpirationEventIn ||
+                    this.ExpirationEventIn != null &&
+                    input.ExpirationEventIn != null &&
+                    this.ExpirationEventIn.SequenceEqual(input.ExpirationEventIn)
                 ) && 
                 (
                     this.HostProvider == input.HostProvider ||
@@ -762,6 +778,10 @@ namespace akeyless.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.ExpirationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();
                 }
                 if (this.HostProvider != null)
                 {

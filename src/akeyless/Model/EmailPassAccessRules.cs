@@ -39,12 +39,14 @@ namespace akeyless.Model
         /// <param name="email">The Email value.</param>
         /// <param name="encEmailWithSharedKey">EncEmailWithSharedKey is the email of this auth method, encrypted with the shared auth/uam key (for use in uam).</param>
         /// <param name="hashPass">The password value.</param>
-        public EmailPassAccessRules(string alg = default(string), string email = default(string), string encEmailWithSharedKey = default(string), string hashPass = default(string))
+        /// <param name="lastResetPassword">The last password change date.</param>
+        public EmailPassAccessRules(string alg = default(string), string email = default(string), string encEmailWithSharedKey = default(string), string hashPass = default(string), DateTime lastResetPassword = default(DateTime))
         {
             this.Alg = alg;
             this.Email = email;
             this.EncEmailWithSharedKey = encEmailWithSharedKey;
             this.HashPass = hashPass;
+            this.LastResetPassword = lastResetPassword;
         }
 
         /// <summary>
@@ -75,6 +77,13 @@ namespace akeyless.Model
         public string HashPass { get; set; }
 
         /// <summary>
+        /// The last password change date
+        /// </summary>
+        /// <value>The last password change date</value>
+        [DataMember(Name = "last_reset_password", EmitDefaultValue = false)]
+        public DateTime LastResetPassword { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,6 +95,7 @@ namespace akeyless.Model
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  EncEmailWithSharedKey: ").Append(EncEmailWithSharedKey).Append("\n");
             sb.Append("  HashPass: ").Append(HashPass).Append("\n");
+            sb.Append("  LastResetPassword: ").Append(LastResetPassword).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,6 +150,11 @@ namespace akeyless.Model
                     this.HashPass == input.HashPass ||
                     (this.HashPass != null &&
                     this.HashPass.Equals(input.HashPass))
+                ) && 
+                (
+                    this.LastResetPassword == input.LastResetPassword ||
+                    (this.LastResetPassword != null &&
+                    this.LastResetPassword.Equals(input.LastResetPassword))
                 );
         }
 
@@ -167,6 +182,10 @@ namespace akeyless.Model
                 if (this.HashPass != null)
                 {
                     hashCode = (hashCode * 59) + this.HashPass.GetHashCode();
+                }
+                if (this.LastResetPassword != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastResetPassword.GetHashCode();
                 }
                 return hashCode;
             }

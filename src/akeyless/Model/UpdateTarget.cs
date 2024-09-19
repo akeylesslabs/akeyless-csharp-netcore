@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
-        /// <param name="newName">New Target name.</param>
+        /// <param name="newName">New target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public UpdateTarget(string description = "default_comment", bool json = false, string maxVersions = default(string), string name = default(string), string newComment = "default_comment", string newName = default(string), string token = default(string), string uidToken = default(string))
@@ -103,9 +103,9 @@ namespace akeyless.Model
         public string NewComment { get; set; }
 
         /// <summary>
-        /// New Target name
+        /// New target name
         /// </summary>
-        /// <value>New Target name</value>
+        /// <value>New target name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
 

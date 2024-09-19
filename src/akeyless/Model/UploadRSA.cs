@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="customerFrgId">The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Name of key to be created (required).</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadRSA(string alg = default(string), string certFileData = default(string), string certificateFormat = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadRSA(string alg = default(string), string certFileData = default(string), string certificateFormat = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool json = false, string metadata = default(string), string name = default(string), string overwrite = "false", string rsaFileData = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
             this.Metadata = metadata;
             // use default value if no "overwrite" provided
@@ -125,6 +127,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -203,6 +212,7 @@ namespace akeyless.Model
             sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -276,6 +286,12 @@ namespace akeyless.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.ExpirationEventIn == input.ExpirationEventIn ||
+                    this.ExpirationEventIn != null &&
+                    input.ExpirationEventIn != null &&
+                    this.ExpirationEventIn.SequenceEqual(input.ExpirationEventIn)
                 ) && 
                 (
                     this.Json == input.Json ||
@@ -355,6 +371,10 @@ namespace akeyless.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.ExpirationEventIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Metadata != null)

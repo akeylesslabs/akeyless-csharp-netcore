@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Secret name | 
 **OldVersion** | **int** | Old secret version to rollback to | 

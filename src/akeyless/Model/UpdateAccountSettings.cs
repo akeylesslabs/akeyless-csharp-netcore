@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="dynamicSecretMaxTtl">Set the maximum ttl for dynamic secrets.</param>
         /// <param name="dynamicSecretMaxTtlEnable">Set a maximum ttl for dynamic secrets [true/false].</param>
         /// <param name="enableItemSharing">Enable sharing items [true/false].</param>
+        /// <param name="enablePasswordExpiration">Enable password expiration policy [true/false].</param>
         /// <param name="forceNewVersions">If set to true, new version will be created on update.</param>
         /// <param name="gwBoundIps">A default list of comma-separated CIDR block that acts as a trusted Gateway entity..</param>
         /// <param name="invalidCharacters">Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. (default to &quot;notReceivedInvalidCharacter&quot;).</param>
@@ -62,6 +63,8 @@ namespace akeyless.Model
         /// <param name="maxRotationInterval">Set the maximum rotation interval for rotated secrets auto rotation settings.</param>
         /// <param name="maxRotationIntervalEnable">Set a maximum rotation interval for rotated secrets auto rotation settings [true/false].</param>
         /// <param name="maxVersions">Max versions.</param>
+        /// <param name="passwordExpirationDays">Specifies the number of days that a password is valid before it must be changed. A default value of 90 days is used..</param>
+        /// <param name="passwordExpirationNotificationDays">Specifies the number of days before a user receives notification that their password will expire. A default value of 14 days is used..</param>
         /// <param name="passwordLength">Password length between 5 - to 50 characters.</param>
         /// <param name="phone">Phone number.</param>
         /// <param name="postalCode">Postal code.</param>
@@ -74,7 +77,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
         /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableItemSharing = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
+        public UpdateAccountSettings(string address = default(string), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string invalidCharacters = "notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string useCapitalLetters = default(string))
         {
             this.Address = address;
             this.BoundIps = boundIps;
@@ -88,6 +91,7 @@ namespace akeyless.Model
             this.DynamicSecretMaxTtl = dynamicSecretMaxTtl;
             this.DynamicSecretMaxTtlEnable = dynamicSecretMaxTtlEnable;
             this.EnableItemSharing = enableItemSharing;
+            this.EnablePasswordExpiration = enablePasswordExpiration;
             this.ForceNewVersions = forceNewVersions;
             this.GwBoundIps = gwBoundIps;
             // use default value if no "invalidCharacters" provided
@@ -104,6 +108,8 @@ namespace akeyless.Model
             this.MaxRotationInterval = maxRotationInterval;
             this.MaxRotationIntervalEnable = maxRotationIntervalEnable;
             this.MaxVersions = maxVersions;
+            this.PasswordExpirationDays = passwordExpirationDays;
+            this.PasswordExpirationNotificationDays = passwordExpirationNotificationDays;
             this.PasswordLength = passwordLength;
             this.Phone = phone;
             this.PostalCode = postalCode;
@@ -201,6 +207,13 @@ namespace akeyless.Model
         /// <value>Enable sharing items [true/false]</value>
         [DataMember(Name = "enable-item-sharing", EmitDefaultValue = false)]
         public string EnableItemSharing { get; set; }
+
+        /// <summary>
+        /// Enable password expiration policy [true/false]
+        /// </summary>
+        /// <value>Enable password expiration policy [true/false]</value>
+        [DataMember(Name = "enable-password-expiration", EmitDefaultValue = false)]
+        public string EnablePasswordExpiration { get; set; }
 
         /// <summary>
         /// If set to true, new version will be created on update
@@ -308,6 +321,20 @@ namespace akeyless.Model
         public string MaxVersions { get; set; }
 
         /// <summary>
+        /// Specifies the number of days that a password is valid before it must be changed. A default value of 90 days is used.
+        /// </summary>
+        /// <value>Specifies the number of days that a password is valid before it must be changed. A default value of 90 days is used.</value>
+        [DataMember(Name = "password-expiration-days", EmitDefaultValue = false)]
+        public string PasswordExpirationDays { get; set; }
+
+        /// <summary>
+        /// Specifies the number of days before a user receives notification that their password will expire. A default value of 14 days is used.
+        /// </summary>
+        /// <value>Specifies the number of days before a user receives notification that their password will expire. A default value of 14 days is used.</value>
+        [DataMember(Name = "password-expiration-notification-days", EmitDefaultValue = false)]
+        public string PasswordExpirationNotificationDays { get; set; }
+
+        /// <summary>
         /// Password length between 5 - to 50 characters
         /// </summary>
         /// <value>Password length between 5 - to 50 characters</value>
@@ -411,6 +438,7 @@ namespace akeyless.Model
             sb.Append("  DynamicSecretMaxTtl: ").Append(DynamicSecretMaxTtl).Append("\n");
             sb.Append("  DynamicSecretMaxTtlEnable: ").Append(DynamicSecretMaxTtlEnable).Append("\n");
             sb.Append("  EnableItemSharing: ").Append(EnableItemSharing).Append("\n");
+            sb.Append("  EnablePasswordExpiration: ").Append(EnablePasswordExpiration).Append("\n");
             sb.Append("  ForceNewVersions: ").Append(ForceNewVersions).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
@@ -426,6 +454,8 @@ namespace akeyless.Model
             sb.Append("  MaxRotationInterval: ").Append(MaxRotationInterval).Append("\n");
             sb.Append("  MaxRotationIntervalEnable: ").Append(MaxRotationIntervalEnable).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
+            sb.Append("  PasswordExpirationDays: ").Append(PasswordExpirationDays).Append("\n");
+            sb.Append("  PasswordExpirationNotificationDays: ").Append(PasswordExpirationNotificationDays).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
@@ -534,6 +564,11 @@ namespace akeyless.Model
                     this.EnableItemSharing.Equals(input.EnableItemSharing))
                 ) && 
                 (
+                    this.EnablePasswordExpiration == input.EnablePasswordExpiration ||
+                    (this.EnablePasswordExpiration != null &&
+                    this.EnablePasswordExpiration.Equals(input.EnablePasswordExpiration))
+                ) && 
+                (
                     this.ForceNewVersions == input.ForceNewVersions ||
                     (this.ForceNewVersions != null &&
                     this.ForceNewVersions.Equals(input.ForceNewVersions))
@@ -603,6 +638,16 @@ namespace akeyless.Model
                     this.MaxVersions == input.MaxVersions ||
                     (this.MaxVersions != null &&
                     this.MaxVersions.Equals(input.MaxVersions))
+                ) && 
+                (
+                    this.PasswordExpirationDays == input.PasswordExpirationDays ||
+                    (this.PasswordExpirationDays != null &&
+                    this.PasswordExpirationDays.Equals(input.PasswordExpirationDays))
+                ) && 
+                (
+                    this.PasswordExpirationNotificationDays == input.PasswordExpirationNotificationDays ||
+                    (this.PasswordExpirationNotificationDays != null &&
+                    this.PasswordExpirationNotificationDays.Equals(input.PasswordExpirationNotificationDays))
                 ) && 
                 (
                     this.PasswordLength == input.PasswordLength ||
@@ -718,6 +763,10 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.EnableItemSharing.GetHashCode();
                 }
+                if (this.EnablePasswordExpiration != null)
+                {
+                    hashCode = (hashCode * 59) + this.EnablePasswordExpiration.GetHashCode();
+                }
                 if (this.ForceNewVersions != null)
                 {
                     hashCode = (hashCode * 59) + this.ForceNewVersions.GetHashCode();
@@ -762,6 +811,14 @@ namespace akeyless.Model
                 if (this.MaxVersions != null)
                 {
                     hashCode = (hashCode * 59) + this.MaxVersions.GetHashCode();
+                }
+                if (this.PasswordExpirationDays != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordExpirationDays.GetHashCode();
+                }
+                if (this.PasswordExpirationNotificationDays != null)
+                {
+                    hashCode = (hashCode * 59) + this.PasswordExpirationNotificationDays.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PasswordLength.GetHashCode();
                 if (this.Phone != null)
